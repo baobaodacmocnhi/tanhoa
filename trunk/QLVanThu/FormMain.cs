@@ -103,6 +103,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A3", "H3");
             rowHead.Font.Bold = true;
+            //rowHead.AutoFilter(1,Type.Missing,Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlAnd,Type.Missing,true);
             // Kẻ viền
             rowHead.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
             // Thiết lập màu nền
