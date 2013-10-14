@@ -46,6 +46,12 @@ namespace KTKS_DonKH
             ribbtnDangNhap.Enabled = true;
             ribbtnDangXuat.Enabled = false;
             ribbtnDoiMatKhau.Enabled = false;
+
+            if (this.ActiveMdiChild != null)
+            {
+                this.ActiveMdiChild.Close();
+            }
+
             ribbtnDangNhap_Click(sender, e);
             StripStatus_TaiKhoan.Text = "";
         }
