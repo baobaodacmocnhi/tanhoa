@@ -1,0 +1,13 @@
+D:\Projects\KTKS_DonKH\KTKS_DonKH\bin\Debug\KTKS_DonKH.exe.config
+D:\Projects\KTKS_DonKH\KTKS_DonKH\bin\Debug\KTKS_DonKH.exe
+D:\Projects\KTKS_DonKH\KTKS_DonKH\bin\Debug\KTKS_DonKH.pdb
+D:\Projects\KTKS_DonKH\KTKS_DonKH\bin\Debug\System.Windows.Forms.Ribbon35.dll
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\KTKS_DonKH.GUI.HeThong.frmDangNhap.resources
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\KTKS_DonKH.GUI.HeThong.frmTaiKhoan.resources
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\KTKS_DonKH.Main.resources
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\KTKS_DonKH.Properties.Resources.resources
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\KTKS_DonKH.exe
+D:\Projects\KTKS_DonKH\KTKS_DonKH\obj\x86\Debug\KTKS_DonKH.pdb
