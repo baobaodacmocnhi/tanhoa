@@ -12,8 +12,8 @@ namespace QLVanThu
 {
     public partial class FormMain : Form
     {
-        CDataQLVanThu _CDataQLVanThu = new CDataQLVanThu();
-        BindingSource vanthus = new BindingSource();
+        CDataQLVanThuDi _CDataQLVanThuDi = new CDataQLVanThuDi();
+        BindingSource vanthudis = new BindingSource();
         DataTable dt = new DataTable();
 
         public FormMain()
@@ -23,19 +23,19 @@ namespace QLVanThu
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            vanthus.DataSource = _CDataQLVanThu.LoadDSVanThu();
-            dgvDSVanThu.DataSource =  vanthus ;
+            vanthudis.DataSource = _CDataQLVanThuDi.LoadDSVanThuDi();
+            dgvDSVanThuDi.DataSource =  vanthudis ;
         }
 
-        private void LoadDSVanThuFilter()
+        private void LoadDSVanThuDiFilter()
         {
-            string expression = String.Format("(NgayDen like '%{0}%' or SoDen like '%{0}%' or TacGiaVB like '%{0}%' or SoKyHieuVB like '%{0}%' or LoaiTrichYeuNoiDung like '%{0}%' or NguoiNhan like '%{0}%')", txtNoiDungTimKiem.Text.Trim());
-            if (chkCongVanDen.Checked)
-                expression = "LoaiVBGID=3 and " + expression;
-            else
-                if (chkDonThuDen.Checked)
-                    expression = "LoaiVBGID=7 and " + expression;
-            vanthus.Filter = expression;
+            string expression = String.Format("(NgayDi like '%{0}%' or SoDi like '%{0}%' or SoKyHieuVB like '%{0}%' or LoaiTrichYeuNoiDung like '%{0}%')", txtNoiDungTimKiem.Text.Trim());
+            //if (chkCongVanDen.Checked)
+            //    expression = "LoaiVBGID=3 and " + expression;
+            //else
+            //    if (chkDonThuDen.Checked)
+            //        expression = "LoaiVBGID=7 and " + expression;
+            vanthudis.Filter = expression;
         }
 
         private void ExportToExcel(DataTable dt, string sheetName, string title)
@@ -59,7 +59,7 @@ namespace QLVanThu
             oSheet.Name = sheetName;
 
             // Tạo phần đầu nếu muốn
-            Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "H1");
+            Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "F1");
             head.MergeCells = true;
             head.Value2 = title;
             head.Font.Bold = true;
@@ -69,39 +69,30 @@ namespace QLVanThu
 
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
-            cl1.Value2 = "Ngày Đến";
+            cl1.Value2 = "Ngày Đi";
             cl1.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "B3");
-            cl2.Value2 = "Số Đến";
-            cl2.ColumnWidth = 10;
-            
+            cl2.Value2 = "Số Đi";
+            cl2.ColumnWidth = 20;
 
             Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C3", "C3");
-            cl3.Value2 = "Tác Giả Văn Bản";
-            cl3.ColumnWidth = 40;
+            cl3.Value2 = "Số Ký Hiệu Văn Bản";
+            cl3.ColumnWidth = 25;
 
             Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D3", "D3");
-            cl4.Value2 = "Số Ký Hiệu Văn Bản";
-            cl4.ColumnWidth = 25;
+            cl4.Value2 = "Ngày Tháng Văn Bản";
+            cl4.ColumnWidth = 20;
 
             Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E3", "E3");
-            cl5.Value2 = "Ngày Tháng Văn Bản";
-            cl5.ColumnWidth = 20;
+            cl5.Value2 = "Loại";
+            cl5.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F3", "F3");
-            cl6.Value2 = "Loại";
-            cl6.ColumnWidth = 5;
+            cl6.Value2 = "Loại Trích Yếu Nội Dung";
+            cl6.ColumnWidth = 150;
 
-            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G3", "G3");
-            cl7.Value2 = "Loại Trích Yếu Nội Dung";
-            cl7.ColumnWidth = 100;
-
-            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H3", "H3");
-            cl8.Value2 = "Người Nhận";
-            cl8.ColumnWidth = 25;
-
-            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A3", "H3");
+            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A3", "F3");
             rowHead.Font.Bold = true;
             //rowHead.AutoFilter(1,Type.Missing,Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlAnd,Type.Missing,true);
             // Kẻ viền
@@ -144,28 +135,28 @@ namespace QLVanThu
 
             // Kẻ viền
             range.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
-            // Căn giữa cột Ngày Đến
+            // Căn giữa cột Ngày Đi
             Microsoft.Office.Interop.Excel.Range c3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnStart];
             Microsoft.Office.Interop.Excel.Range c4 = oSheet.get_Range(c1, c3);
             oSheet.get_Range(c3, c4).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;            
-            // Căn trái cột Số Đến
+            // Căn trái cột Số Đi
             Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
             Microsoft.Office.Interop.Excel.Range c3b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
             Microsoft.Office.Interop.Excel.Range c4b = oSheet.get_Range(c1b, c3b);
             oSheet.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
             // Căn trái cột Số Ký Hiệu Văn Bản
-            Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
-            Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
             Microsoft.Office.Interop.Excel.Range c4c = oSheet.get_Range(c1c, c3c);
             oSheet.get_Range(c3c, c4c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
             // Căn giữa cột Ngày Tháng Văn Bản
-            Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
-            Microsoft.Office.Interop.Excel.Range c3d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
+            Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            Microsoft.Office.Interop.Excel.Range c3d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
             Microsoft.Office.Interop.Excel.Range c4d = oSheet.get_Range(c1d, c3d);
             oSheet.get_Range(c3d, c4d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             // Căn giữa cột Loại Văn Bản
-            Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 6];
-            Microsoft.Office.Interop.Excel.Range c3e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
+            Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
+            Microsoft.Office.Interop.Excel.Range c3e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
             Microsoft.Office.Interop.Excel.Range c4e = oSheet.get_Range(c1e, c3e);
             oSheet.get_Range(c3e, c4e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;      
         }
@@ -179,24 +170,24 @@ namespace QLVanThu
         {
             if (chkCongVanDen.Checked)
                 chkDonThuDen.Checked = false;
-            LoadDSVanThuFilter();
+            LoadDSVanThuDiFilter();
         }
 
         private void chkDonThuDen_CheckedChanged(object sender, EventArgs e)
         {
             if (chkDonThuDen.Checked)
                 chkCongVanDen.Checked = false;
-            LoadDSVanThuFilter();
+            LoadDSVanThuDiFilter();
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
-            LoadDSVanThuFilter();
+            LoadDSVanThuDiFilter();
         }
 
         private void btnXuatFileExcel_Click(object sender, EventArgs e)
         {
-            ExportToExcel(((DataTable)vanthus.DataSource).DefaultView.ToTable(), "Danh sách văn thư", "DANH SÁCH VĂN THƯ");
+            ExportToExcel(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), "Danh sách văn thư đi", "DANH SÁCH VĂN THƯ ĐI");
         }
 
         private void dateDenNgay_ValueChanged(object sender, EventArgs e)
@@ -204,7 +195,7 @@ namespace QLVanThu
             if (chkTimeTimKiem.Checked)
                 if (dateDenNgay.Value.Date >= dateTuNgay.Value.Date)
                 {
-                    vanthus.DataSource = _CDataQLVanThu.LoadDSVanThuDateToDate(dateTuNgay.Value.Date.ToString("yyyy-MM-dd"), dateDenNgay.Value.Date.AddDays(1).ToString("yyyy-MM-dd"));
+                    vanthudis.DataSource = _CDataQLVanThuDi.LoadDSVanThuDiDateToDate(dateTuNgay.Value.Date.ToString("yyyy-MM-dd"), dateDenNgay.Value.Date.AddDays(1).ToString("yyyy-MM-dd"));
                 }
                 else
                     MessageBox.Show("Đến Ngày phải lớn hơn Từ Ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -224,7 +215,7 @@ namespace QLVanThu
                 dateDenNgay.Value = DateTime.Now;
                 dateTuNgay.Enabled = false;
                 dateDenNgay.Enabled = false;
-                vanthus.DataSource = _CDataQLVanThu.LoadDSVanThu();
+                vanthudis.DataSource = _CDataQLVanThuDi.LoadDSVanThuDi();
             }
         }
 
