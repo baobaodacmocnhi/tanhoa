@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="CAPNUOCTANHOAOFFICESE2009" Class="DBVanThuDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.7,8819;Initial Catalog=CAPNUOCTANHOAOFFICESE2009;User ID=sa" SettingsObjectName="QLVanThu.Properties.Settings" SettingsPropertyName="CAPNUOCTANHOAOFFICESE2009ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.WF_Incoming_Docs" Member="WF_Incoming_Docs">
+    <Type Name="WF_Incoming_Doc">
+      <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DocumentNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IssuedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SecurityLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Priority" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssuedOrganizationGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssuedOrganizationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentOrganizationGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentOrganizationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentSummary" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UpdatedUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Signer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SignerPosition" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompletedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SignedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ImportantLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FieldID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EffectiveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ResolveLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpiredDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Scale" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Year" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="StoreID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentOrderNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ApprovedUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumOfCopies" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NumOfArchives" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ReplyDocumentNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ReceivedGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReceivedUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GlobalDocumentOrderNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsCompleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserGroupReceivers" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IndividualReceivers" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedContent" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ApprovedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PopupSentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsPopupSent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PopupIndividualReceivers" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PopupSentUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SMSSentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsSMSSent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SMSIndividualReceivers" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SMSSentUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsReviewed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReviewedUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReviewContent" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ReviewedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Note2" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AssignedReviewedUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentOrderNo2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssuedOrganizationName2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SentOrganizationName2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="StoreName2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SupervisedUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortalReceivers" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OfficeManagerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FlowType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrgManagerSentNote" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OrgManagerSentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsOrgManagerSent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EffectiveDate2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TaskRelatedTerms" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ReviewNote" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TaskFolderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IndividualReceivers2" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsDist" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="WF_Book_WF_Incoming_Doc" Member="WF_Book" ThisKey="BookID" OtherKey="BookID" Type="WF_Book" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WF_Books" Member="WF_Books">
+    <Type Name="WF_Book">
+      <Column Name="BookID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Notation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FinishedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="WF_Book_WF_Incoming_Doc" Member="WF_Incoming_Docs" ThisKey="BookID" OtherKey="BookID" Type="WF_Incoming_Doc" />
+    </Type>
+  </Table>
+</Database>
