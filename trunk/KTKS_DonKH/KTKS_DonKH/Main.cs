@@ -56,6 +56,21 @@ namespace KTKS_DonKH
             StripStatus_TaiKhoan.Text = "";
         }
 
+        private void ribbtnDoiMatKhau_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+            {
+                if (item.GetType() == typeof(frmDoiMatKhau))
+                {
+                    item.Activate();
+                    return;
+                }
+            }
+            Form frm = new frmDoiMatKhau();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
         private void ribbtnTaiKhoan_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
@@ -70,5 +85,7 @@ namespace KTKS_DonKH
             frm.MdiParent = this;
             frm.Show();
         }
+
+        
     }
 }

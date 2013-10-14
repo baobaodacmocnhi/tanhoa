@@ -28,8 +28,7 @@ namespace KTKS_DonKH.GUI.HeThong
                this.Hide();
                GetLoginResult(true);
            }
-           else
-               MessageBox.Show("Sai Tài Khoản hoặc Mật Khẩu","Thông Báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
+           
 
         }
 
