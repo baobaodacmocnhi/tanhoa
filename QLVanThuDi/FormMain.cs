@@ -71,7 +71,7 @@ namespace QLVanThu
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
             cl1.Value2 = "Ngày Đi";
             cl1.ColumnWidth = 15;
-
+            
             Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "B3");
             cl2.Value2 = "Số Đi";
             cl2.ColumnWidth = 20;
@@ -138,27 +138,44 @@ namespace QLVanThu
             // Căn giữa cột Ngày Đi
             Microsoft.Office.Interop.Excel.Range c3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnStart];
             Microsoft.Office.Interop.Excel.Range c4 = oSheet.get_Range(c1, c3);
-            oSheet.get_Range(c3, c4).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;            
+            oSheet.get_Range(c3, c4).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3, c4).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3, c4).Font.Size = 12;
             // Căn trái cột Số Đi
             Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
             Microsoft.Office.Interop.Excel.Range c3b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
             Microsoft.Office.Interop.Excel.Range c4b = oSheet.get_Range(c1b, c3b);
             oSheet.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range(c3b, c4b).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3b, c4b).Font.Size = 12;
             // Căn trái cột Số Ký Hiệu Văn Bản
             Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
             Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
             Microsoft.Office.Interop.Excel.Range c4c = oSheet.get_Range(c1c, c3c);
             oSheet.get_Range(c3c, c4c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range(c3c, c4c).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3c, c4c).Font.Size = 12;
             // Căn giữa cột Ngày Tháng Văn Bản
             Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
             Microsoft.Office.Interop.Excel.Range c3d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
             Microsoft.Office.Interop.Excel.Range c4d = oSheet.get_Range(c1d, c3d);
             oSheet.get_Range(c3d, c4d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3d, c4d).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3d, c4d).Font.Size = 12;
             // Căn giữa cột Loại Văn Bản
             Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
             Microsoft.Office.Interop.Excel.Range c3e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
             Microsoft.Office.Interop.Excel.Range c4e = oSheet.get_Range(c1e, c3e);
-            oSheet.get_Range(c3e, c4e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;      
+            oSheet.get_Range(c3e, c4e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3e, c4e).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3e, c4e).Font.Size = 12;
+            // Nội Dung
+            Microsoft.Office.Interop.Excel.Range c1f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 6];
+            Microsoft.Office.Interop.Excel.Range c3f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
+            Microsoft.Office.Interop.Excel.Range c4f = oSheet.get_Range(c1f, c3f);
+            oSheet.get_Range(c3f, c4f).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range(c3f, c4f).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3f, c4f).Font.Size = 12;
         }
 
         private void dgvDSVanThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
