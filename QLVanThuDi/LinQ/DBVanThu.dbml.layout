@@ -14,7 +14,7 @@
         <elementListCompartment Id="25a7e9bf-5313-4e8c-9e68-08ca3391a4e0" absoluteBounds="4.265, 5.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.25 : 5.89505126953125); (3.125 : 5.89505126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.25 : 5.89505126953125); (3.125 : 5.89505126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DBVanThuDataContext/WF_Book/WF_Book_WF_Incoming_Doc" />
       <nodes>
         <classShapeMoniker Id="ef15d15a-d56f-441d-8f2b-e0eed5eaee11" />
