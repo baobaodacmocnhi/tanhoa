@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 20.375" name="DBVanThu">
+  <DataContextMoniker Name="/DBVanThuDataContext" />
+  <nestedChildShapes>
+    <classShape Id="964af9c0-16d8-4308-9740-209589ba991f" absoluteBounds="1.125, 3, 2, 17.155011393229167">
+      <DataClassMoniker Name="/DBVanThuDataContext/WF_Incoming_Doc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1f852d36-634d-4af6-a63c-a390fb270dd8" absoluteBounds="1.1400000000000001, 3.46, 1.9700000000000002, 16.595011393229164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ef15d15a-d56f-441d-8f2b-e0eed5eaee11" absoluteBounds="4.25, 4.625, 2, 2.5401025390625">
+      <DataClassMoniker Name="/DBVanThuDataContext/WF_Book" />
+      <nestedChildShapes>
+        <elementListCompartment Id="25a7e9bf-5313-4e8c-9e68-08ca3391a4e0" absoluteBounds="4.265, 5.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 5.89505126953125); (3.125 : 5.89505126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBVanThuDataContext/WF_Book/WF_Book_WF_Incoming_Doc" />
+      <nodes>
+        <classShapeMoniker Id="ef15d15a-d56f-441d-8f2b-e0eed5eaee11" />
+        <classShapeMoniker Id="964af9c0-16d8-4308-9740-209589ba991f" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
