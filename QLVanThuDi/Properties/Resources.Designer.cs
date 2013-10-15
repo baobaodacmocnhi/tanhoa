@@ -60,6 +60,13 @@ namespace QLVanThuDi.Properties {
             }
         }
         
+        internal static System.Drawing.Icon email_send {
+            get {
+                object obj = ResourceManager.GetObject("email_send", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon icon {
             get {
                 object obj = ResourceManager.GetObject("icon", resourceCulture);
