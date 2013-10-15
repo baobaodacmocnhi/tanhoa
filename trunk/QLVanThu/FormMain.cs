@@ -24,7 +24,7 @@ namespace QLVanThuDen
         private void FormMain_Load(object sender, EventArgs e)
         {
             vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDen();
-            dgvDSVanThu.DataSource =  vanthus ;
+            dgvDSVanThuDen.DataSource =  vanthus ;
         }
 
         private void LoadDSVanThuFilter()
@@ -256,6 +256,14 @@ namespace QLVanThuDen
                 dateTuNgay.Enabled = false;
                 dateDenNgay.Enabled = false;
                 vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDen();
+            }
+        }
+
+        private void dgvDSVanThu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                System.Diagnostics.Process.Start(@"\\server_hp380\WorkflowData\"+dgvDSVanThuDen["PathFile", e.RowIndex].Value.ToString());
             }
         }
 
