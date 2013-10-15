@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QLVanThu.LinQ
+namespace QLVanThuDen.LinQ
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -39,7 +39,7 @@ namespace QLVanThu.LinQ
     #endregion
 		
 		public DBVanThuDataContext() : 
-				base(global::QLVanThu.Properties.Settings.Default.CAPNUOCTANHOAOFFICESE2009ConnectionString, mappingSource)
+				base(global::QLVanThuDen.Properties.Settings.Default.CAPNUOCTANHOAOFFICESE2009ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

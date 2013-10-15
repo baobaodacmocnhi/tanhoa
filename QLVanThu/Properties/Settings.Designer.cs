@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QLVanThu.Properties {
+namespace QLVanThuDen.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

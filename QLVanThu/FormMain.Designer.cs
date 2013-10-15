@@ -1,4 +1,4 @@
-﻿namespace QLVanThu
+﻿namespace QLVanThuDen
 {
     partial class FormMain
     {
@@ -366,7 +366,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
-            this.Text = "Chương trình QUẢN LÝ VĂN THƯ";
+            this.Text = "Chương trình QUẢN LÝ VĂN THƯ ĐẾN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.statusStrip1.ResumeLayout(false);

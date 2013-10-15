@@ -6,13 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using QLVanThu.DAL;
+using QLVanThuDen.DAL;
 
-namespace QLVanThu
+namespace QLVanThuDen
 {
     public partial class FormMain : Form
     {
-        CDataQLVanThu _CDataQLVanThu = new CDataQLVanThu();
+        CDataQLVanThuDen _CDataQLVanThuDen = new CDataQLVanThuDen();
         BindingSource vanthus = new BindingSource();
         DataTable dt = new DataTable();
 
@@ -23,7 +23,7 @@ namespace QLVanThu
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            vanthus.DataSource = _CDataQLVanThu.LoadDSVanThu();
+            vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDen();
             dgvDSVanThu.DataSource =  vanthus ;
         }
 
@@ -147,27 +147,58 @@ namespace QLVanThu
             // Căn giữa cột Ngày Đến
             Microsoft.Office.Interop.Excel.Range c3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnStart];
             Microsoft.Office.Interop.Excel.Range c4 = oSheet.get_Range(c1, c3);
-            oSheet.get_Range(c3, c4).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;            
+            oSheet.get_Range(c3, c4).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3, c4).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3, c4).Font.Size = 12;
             // Căn trái cột Số Đến
             Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
             Microsoft.Office.Interop.Excel.Range c3b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
             Microsoft.Office.Interop.Excel.Range c4b = oSheet.get_Range(c1b, c3b);
             oSheet.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range(c3b, c4b).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3b, c4b).Font.Size = 12;
             // Căn trái cột Số Ký Hiệu Văn Bản
             Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
             Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
             Microsoft.Office.Interop.Excel.Range c4c = oSheet.get_Range(c1c, c3c);
             oSheet.get_Range(c3c, c4c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range(c3c, c4c).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3c, c4c).Font.Size = 12;
             // Căn giữa cột Ngày Tháng Văn Bản
             Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
             Microsoft.Office.Interop.Excel.Range c3d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
             Microsoft.Office.Interop.Excel.Range c4d = oSheet.get_Range(c1d, c3d);
             oSheet.get_Range(c3d, c4d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3d, c4d).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3d, c4d).Font.Size = 12;
             // Căn giữa cột Loại Văn Bản
             Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 6];
             Microsoft.Office.Interop.Excel.Range c3e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
             Microsoft.Office.Interop.Excel.Range c4e = oSheet.get_Range(c1e, c3e);
-            oSheet.get_Range(c3e, c4e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;      
+            oSheet.get_Range(c3e, c4e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3e, c4e).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3e, c4e).Font.Size = 12;
+            // Căn giữa cột Nội Dung
+            Microsoft.Office.Interop.Excel.Range c1f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 7];
+            Microsoft.Office.Interop.Excel.Range c3f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 7];
+            Microsoft.Office.Interop.Excel.Range c4f = oSheet.get_Range(c1f, c3f);
+            oSheet.get_Range(c3f, c4f).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3f, c4f).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3f, c4f).Font.Size = 12;
+            // Căn giữa cột Người Nhận
+            Microsoft.Office.Interop.Excel.Range c1g = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 8];
+            Microsoft.Office.Interop.Excel.Range c3g = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 8];
+            Microsoft.Office.Interop.Excel.Range c4g = oSheet.get_Range(c1g, c3g);
+            oSheet.get_Range(c3g, c4g).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3g, c4g).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3g, c4g).Font.Size = 12;
+            // Căn giữa cột Tác Giả Văn Bản
+            Microsoft.Office.Interop.Excel.Range c1h = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            Microsoft.Office.Interop.Excel.Range c3h = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            Microsoft.Office.Interop.Excel.Range c4h = oSheet.get_Range(c1h, c3h);
+            oSheet.get_Range(c3h, c4h).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c3h, c4h).Font.Name = "Times New Roman";
+            oSheet.get_Range(c3h, c4h).Font.Size = 12;
         }
 
         private void dgvDSVanThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -204,7 +235,7 @@ namespace QLVanThu
             if (chkTimeTimKiem.Checked)
                 if (dateDenNgay.Value.Date >= dateTuNgay.Value.Date)
                 {
-                    vanthus.DataSource = _CDataQLVanThu.LoadDSVanThuDateToDate(dateTuNgay.Value.Date.ToString("yyyy-MM-dd"), dateDenNgay.Value.Date.AddDays(1).ToString("yyyy-MM-dd"));
+                    vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDenDateToDate(dateTuNgay.Value.Date.ToString("yyyy-MM-dd"), dateDenNgay.Value.Date.AddDays(1).ToString("yyyy-MM-dd"));
                 }
                 else
                     MessageBox.Show("Đến Ngày phải lớn hơn Từ Ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -224,7 +255,7 @@ namespace QLVanThu
                 dateDenNgay.Value = DateTime.Now;
                 dateTuNgay.Enabled = false;
                 dateDenNgay.Enabled = false;
-                vanthus.DataSource = _CDataQLVanThu.LoadDSVanThu();
+                vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDen();
             }
         }
 
