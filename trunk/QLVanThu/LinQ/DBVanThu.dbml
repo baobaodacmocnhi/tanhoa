@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="CAPNUOCTANHOAOFFICESE2009" Class="DBVanThuDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.7,8819;Initial Catalog=CAPNUOCTANHOAOFFICESE2009;User ID=sa" SettingsObjectName="QLVanThu.Properties.Settings" SettingsPropertyName="CAPNUOCTANHOAOFFICESE2009ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.7,8819;Initial Catalog=CAPNUOCTANHOAOFFICESE2009;User ID=sa" SettingsObjectName="QLVanThuDen.Properties.Settings" SettingsPropertyName="CAPNUOCTANHOAOFFICESE2009ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.WF_Incoming_Docs" Member="WF_Incoming_Docs">
     <Type Name="WF_Incoming_Doc">
       <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

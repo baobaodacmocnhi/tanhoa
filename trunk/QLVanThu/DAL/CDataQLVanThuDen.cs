@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using QLVanThu.LinQ;
+using QLVanThuDen.LinQ;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace QLVanThu.DAL
+namespace QLVanThuDen.DAL
 {
-    class CDataQLVanThu
+    class CDataQLVanThuDen
     {
         DBVanThuDataContext db = new DBVanThuDataContext();
-        public DataTable LoadDSVanThu()
+        public DataTable LoadDSVanThuDen()
         {
             //var vanthus = from itemDoc in db.WF_Incoming_Docs
             //              join itemBook in db.WF_Books on itemDoc.BookID equals itemBook.BookID
@@ -58,7 +58,7 @@ namespace QLVanThu.DAL
             return table;
         }
 
-        public DataTable LoadDSVanThuDateToDate(string tungay,string denngay)
+        public DataTable LoadDSVanThuDenDateToDate(string tungay,string denngay)
         {
             DataTable table = new DataTable();
             string sql = "select convert(varchar(10),CreatedDate,103) as NgayDen,DocumentOrderNo as SoDen,IssuedOrganizationName2 as TacGiaVB,DocumentNo as SoKyHieuVB,";
