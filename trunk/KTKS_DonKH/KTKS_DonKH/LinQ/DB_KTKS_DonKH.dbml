@@ -1,11 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="DB_KTKS_DonKHDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=KTKS_DonKH;Integrated Security=True" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=KTKS_DonKH;Integrated Security=True" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChungTu" Member="ChungTus">
     <Type Name="ChungTu">
       <Column Name="MaCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="KyHieuCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TenCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YNghia" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TenCT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ThoiHan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
@@ -103,7 +107,7 @@
       <Column Name="CuLy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MSTLK" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaoUoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="DC1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DC2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MSKH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -140,6 +144,7 @@
       <Column Name="GiaBanBuToiThieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ThueGTGTBuToiThieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="PhiBVMTBuToiThieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TongCongBuToiThieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoPhatHanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoHoaDon" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NgayPhatHanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -157,7 +162,10 @@
       <Column Name="MaLD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="KyHieuLD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TenLD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="LoaiDon_DonKH" Member="DonKHs" ThisKey="MaLD" OtherKey="MaLD" Type="DonKH" />
     </Type>
   </Table>

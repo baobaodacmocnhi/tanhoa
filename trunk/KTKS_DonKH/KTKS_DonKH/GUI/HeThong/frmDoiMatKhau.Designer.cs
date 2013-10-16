@@ -50,6 +50,7 @@
             // 
             this.txtMatKhauCu.Location = new System.Drawing.Point(181, 12);
             this.txtMatKhauCu.Name = "txtMatKhauCu";
+            this.txtMatKhauCu.PasswordChar = '*';
             this.txtMatKhauCu.Size = new System.Drawing.Size(200, 25);
             this.txtMatKhauCu.TabIndex = 1;
             // 
@@ -57,6 +58,7 @@
             // 
             this.txtMatKhauMoi.Location = new System.Drawing.Point(181, 43);
             this.txtMatKhauMoi.Name = "txtMatKhauMoi";
+            this.txtMatKhauMoi.PasswordChar = '*';
             this.txtMatKhauMoi.Size = new System.Drawing.Size(200, 25);
             this.txtMatKhauMoi.TabIndex = 3;
             // 
@@ -73,6 +75,7 @@
             // 
             this.txtXNMatKhauMoi.Location = new System.Drawing.Point(181, 74);
             this.txtXNMatKhauMoi.Name = "txtXNMatKhauMoi";
+            this.txtXNMatKhauMoi.PasswordChar = '*';
             this.txtXNMatKhauMoi.Size = new System.Drawing.Size(200, 25);
             this.txtXNMatKhauMoi.TabIndex = 5;
             // 
@@ -108,7 +111,7 @@
             this.Controls.Add(this.txtMatKhauCu);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDoiMatKhau";
             this.Text = "frmDoiMatKhau";
             this.ResumeLayout(false);

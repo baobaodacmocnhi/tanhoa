@@ -38,11 +38,12 @@
             this.ribbtnTaiKhoan = new System.Windows.Forms.RibbonButton();
             this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton5 = new System.Windows.Forms.RibbonButton();
+            this.ribbtnLoaiDonThu = new System.Windows.Forms.RibbonButton();
+            this.ribbtnChungTuMoi = new System.Windows.Forms.RibbonButton();
+            this.ribbtnKhachHang = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
+            this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -118,23 +119,34 @@
             // 
             this.ribbonPanel3.ButtonMoreEnabled = false;
             this.ribbonPanel3.ButtonMoreVisible = false;
-            this.ribbonPanel3.Items.Add(this.ribbonButton4);
-            this.ribbonPanel3.Items.Add(this.ribbonButton5);
+            this.ribbonPanel3.Items.Add(this.ribbtnLoaiDonThu);
+            this.ribbonPanel3.Items.Add(this.ribbtnChungTuMoi);
+            this.ribbonPanel3.Items.Add(this.ribbtnKhachHang);
             this.ribbonPanel3.Text = "Thông Tin";
             // 
-            // ribbonButton4
+            // ribbtnLoaiDonThu
             // 
-            this.ribbonButton4.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbonButton4.MinimumSize = new System.Drawing.Size(90, 0);
-            this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
-            this.ribbonButton4.Text = "Loại Đơn Thư";
+            this.ribbtnLoaiDonThu.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnLoaiDonThu.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnLoaiDonThu.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnLoaiDonThu.SmallImage")));
+            this.ribbtnLoaiDonThu.Text = "Loại Đơn Thư";
+            this.ribbtnLoaiDonThu.Click += new System.EventHandler(this.ribbtnLoaiDonThu_Click);
             // 
-            // ribbonButton5
+            // ribbtnChungTuMoi
             // 
-            this.ribbonButton5.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbonButton5.MinimumSize = new System.Drawing.Size(100, 0);
-            this.ribbonButton5.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton5.SmallImage")));
-            this.ribbonButton5.Text = "Chứng Từ Mới";
+            this.ribbtnChungTuMoi.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnChungTuMoi.MinimumSize = new System.Drawing.Size(100, 0);
+            this.ribbtnChungTuMoi.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnChungTuMoi.SmallImage")));
+            this.ribbtnChungTuMoi.Text = "Chứng Từ Mới";
+            this.ribbtnChungTuMoi.Click += new System.EventHandler(this.ribbtnChungTuMoi_Click);
+            // 
+            // ribbtnKhachHang
+            // 
+            this.ribbtnKhachHang.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnKhachHang.MinimumSize = new System.Drawing.Size(80, 0);
+            this.ribbtnKhachHang.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnKhachHang.SmallImage")));
+            this.ribbtnKhachHang.Text = "Khách Hàng";
+            this.ribbtnKhachHang.Click += new System.EventHandler(this.ribbtnKhachHang_Click);
             // 
             // ribbonTab3
             // 
@@ -145,14 +157,15 @@
             // 
             this.ribbonPanel4.ButtonMoreEnabled = false;
             this.ribbonPanel4.ButtonMoreVisible = false;
-            this.ribbonPanel4.Items.Add(this.ribbonButton1);
-            this.ribbonPanel4.Text = " Đơn Khách Hàng";
+            this.ribbonPanel4.Items.Add(this.ribbtnNhanDon);
+            this.ribbonPanel4.Text = "Khách Hàng";
             // 
-            // ribbonButton1
+            // ribbtnNhanDon
             // 
-            this.ribbonButton1.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
-            this.ribbonButton1.Text = "Nhập";
+            this.ribbtnNhanDon.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnNhanDon.MinimumSize = new System.Drawing.Size(70, 0);
+            this.ribbtnNhanDon.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnNhanDon.SmallImage")));
+            this.ribbtnNhanDon.Text = "Nhận Đơn";
             // 
             // statusStrip1
             // 
@@ -254,11 +267,11 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel1;
         private System.Windows.Forms.RibbonButton ribbtnTaiKhoan;
         private System.Windows.Forms.RibbonPanel ribbonPanel3;
-        private System.Windows.Forms.RibbonButton ribbonButton4;
-        private System.Windows.Forms.RibbonButton ribbonButton5;
+        private System.Windows.Forms.RibbonButton ribbtnLoaiDonThu;
+        private System.Windows.Forms.RibbonButton ribbtnChungTuMoi;
         private System.Windows.Forms.RibbonTab ribbonTab3;
         private System.Windows.Forms.RibbonPanel ribbonPanel4;
-        private System.Windows.Forms.RibbonButton ribbonButton1;
+        private System.Windows.Forms.RibbonButton ribbtnNhanDon;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
@@ -266,6 +279,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel StripStatus_TaiKhoan;
         private System.Windows.Forms.RibbonButton ribbtnDoiMatKhau;
+        private System.Windows.Forms.RibbonButton ribbtnKhachHang;
     }
 }
 

@@ -57,7 +57,7 @@ namespace KTKS_DonKH.LinQ
     #endregion
 		
 		public DB_KTKS_DonKHDataContext() : 
-				base(global::KTKS_DonKH.Properties.Settings.Default.KTKS_DonKHConnectionString, mappingSource)
+				base(global::KTKS_DonKH.Properties.Settings.Default.KTKS_DonKHConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -163,7 +163,15 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TenCT;
 		
-		private string _YNghia;
+		private string _ThoiHan;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private string _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private string _ModifyBy;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -175,8 +183,16 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyHieuCTChanged();
     partial void OnTenCTChanging(string value);
     partial void OnTenCTChanged();
-    partial void OnYNghiaChanging(string value);
-    partial void OnYNghiaChanged();
+    partial void OnThoiHanChanging(string value);
+    partial void OnThoiHanChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(string value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(string value);
+    partial void OnModifyByChanged();
     #endregion
 		
 		public ChungTu()
@@ -224,7 +240,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenCT", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenCT", DbType="NVarChar(MAX)")]
 		public string TenCT
 		{
 			get
@@ -244,22 +260,102 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YNghia", DbType="NVarChar(200)")]
-		public string YNghia
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiHan", DbType="NVarChar(100)")]
+		public string ThoiHan
 		{
 			get
 			{
-				return this._YNghia;
+				return this._ThoiHan;
 			}
 			set
 			{
-				if ((this._YNghia != value))
+				if ((this._ThoiHan != value))
 				{
-					this.OnYNghiaChanging(value);
+					this.OnThoiHanChanging(value);
 					this.SendPropertyChanging();
-					this._YNghia = value;
-					this.SendPropertyChanged("YNghia");
-					this.OnYNghiaChanged();
+					this._ThoiHan = value;
+					this.SendPropertyChanged("ThoiHan");
+					this.OnThoiHanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="NVarChar(50)")]
+		public string CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="NVarChar(50)")]
+		public string ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
 				}
 			}
 		}
@@ -2266,6 +2362,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _PhiBVMTBuToiThieu;
 		
+		private string _TongCongBuToiThieu;
+		
 		private string _SoPhatHanh;
 		
 		private string _SoHoaDon;
@@ -2378,6 +2476,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnThueGTGTBuToiThieuChanged();
     partial void OnPhiBVMTBuToiThieuChanging(string value);
     partial void OnPhiBVMTBuToiThieuChanged();
+    partial void OnTongCongBuToiThieuChanging(string value);
+    partial void OnTongCongBuToiThieuChanged();
     partial void OnSoPhatHanhChanging(string value);
     partial void OnSoPhatHanhChanged();
     partial void OnSoHoaDonChanging(string value);
@@ -2545,7 +2645,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(100)")]
 		public string HoTen
 		{
 			get
@@ -3285,6 +3385,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongCongBuToiThieu", DbType="NVarChar(50)")]
+		public string TongCongBuToiThieu
+		{
+			get
+			{
+				return this._TongCongBuToiThieu;
+			}
+			set
+			{
+				if ((this._TongCongBuToiThieu != value))
+				{
+					this.OnTongCongBuToiThieuChanging(value);
+					this.SendPropertyChanging();
+					this._TongCongBuToiThieu = value;
+					this.SendPropertyChanged("TongCongBuToiThieu");
+					this.OnTongCongBuToiThieuChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhatHanh", DbType="NVarChar(50)")]
 		public string SoPhatHanh
 		{
@@ -3518,7 +3638,13 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TenLD;
 		
-		private string _GhiChu;
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private string _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private string _ModifyBy;
 		
 		private EntitySet<DonKH> _DonKHs;
 		
@@ -3532,8 +3658,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyHieuLDChanged();
     partial void OnTenLDChanging(string value);
     partial void OnTenLDChanged();
-    partial void OnGhiChuChanging(string value);
-    partial void OnGhiChuChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(string value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(string value);
+    partial void OnModifyByChanged();
     #endregion
 		
 		public LoaiDon()
@@ -3602,22 +3734,82 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(100)")]
-		public string GhiChu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
 		{
 			get
 			{
-				return this._GhiChu;
+				return this._CreateDate;
 			}
 			set
 			{
-				if ((this._GhiChu != value))
+				if ((this._CreateDate != value))
 				{
-					this.OnGhiChuChanging(value);
+					this.OnCreateDateChanging(value);
 					this.SendPropertyChanging();
-					this._GhiChu = value;
-					this.SendPropertyChanged("GhiChu");
-					this.OnGhiChuChanged();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="NVarChar(50)")]
+		public string CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="NVarChar(50)")]
+		public string ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
 				}
 			}
 		}

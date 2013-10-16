@@ -108,5 +108,37 @@ namespace KTKS_DonKH.GUI.HeThong
 
             }
         }
+
+        private void dgvDSTaiKhoan_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ///Cập nhật quyền trực tiếp khi click vào datagridview
+                if (e.ColumnIndex > 3)
+                {
+                    int MaR = 0;
+                    switch (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name)
+                    {
+                        case "QTaiKhoan":
+                            MaR = 1;
+                            break;
+                        case "QCapNhat":
+                            MaR = 2;
+                            break;
+                    }
+                    bool ischecked = false;
+                    if (bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+                        ischecked = true;
+                    else
+                        ischecked = false;
+                    _cTaiKhoan.SuaQuyen(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()), MaR, ischecked);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        
     }
 }
