@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.GUI.HeThong;
 using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.GUI.CapNhat;
 
 namespace KTKS_DonKH
 {
@@ -30,7 +31,7 @@ namespace KTKS_DonKH
                 ribbtnDangNhap.Enabled = false;
                 ribbtnDangXuat.Enabled = true;
                 ribbtnDoiMatKhau.Enabled = true;
-                StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng: " + CDangNhap.TaiKhoan;
+                StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng: " + CTaiKhoan.TaiKhoan;
             }
         }
 
@@ -46,14 +47,14 @@ namespace KTKS_DonKH
             ribbtnDangNhap.Enabled = true;
             ribbtnDangXuat.Enabled = false;
             ribbtnDoiMatKhau.Enabled = false;
+            StripStatus_TaiKhoan.Text = "";
 
-            if (this.ActiveMdiChild != null)
+            foreach (Form item in this.MdiChildren)
             {
                 this.ActiveMdiChild.Close();
             }
 
-            ribbtnDangNhap_Click(sender, e);
-            StripStatus_TaiKhoan.Text = "";
+            ribbtnDangNhap_Click(sender, e);  
         }
 
         private void ribbtnDoiMatKhau_Click(object sender, EventArgs e)
@@ -84,6 +85,41 @@ namespace KTKS_DonKH
             Form frm = new frmTaiKhoan();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void ribbtnKhachHang_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+            {
+                if (item.GetType() == typeof(frmCapNhatTTKH))
+                {
+                    item.Activate();
+                    return;
+                }
+            }
+            Form frm = new frmCapNhatTTKH();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void ribbtnLoaiDonThu_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+            {
+                if (item.GetType() == typeof(frmCapNhatLoaiDon))
+                {
+                    item.Activate();
+                    return;
+                }
+            }
+            Form frm = new frmCapNhatLoaiDon();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void ribbtnChungTuMoi_Click(object sender, EventArgs e)
+        {
+
         }
 
         

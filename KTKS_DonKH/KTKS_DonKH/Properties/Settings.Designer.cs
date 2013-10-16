@@ -26,10 +26,20 @@ namespace KTKS_DonKH.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=KTKS_DonKH;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=KTKS_DonKH;User ID=sa;Password=123@tanhoa")]
         public string KTKS_DonKHConnectionString {
             get {
                 return ((string)(this["KTKS_DonKHConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=KTKS_DonKH;Integrated Security=True")]
+        public string KTKS_DonKHConnectionString1 {
+            get {
+                return ((string)(this["KTKS_DonKHConnectionString1"]));
             }
         }
     }

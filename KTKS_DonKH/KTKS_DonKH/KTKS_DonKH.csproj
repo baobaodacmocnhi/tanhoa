@@ -58,9 +58,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\HeThong\CDangNhap.cs" />
+    <Compile Include="DAL\CapNhat\CCapNhatChungTu.cs" />
+    <Compile Include="DAL\CapNhat\CCapNhatLoaiDon.cs" />
+    <Compile Include="DAL\CapNhat\CCapNhatTTKH.cs" />
     <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
     <Compile Include="Function\CLinQToDataTable.cs" />
+    <Compile Include="GUI\CapNhat\frmCapNhatChungTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmCapNhatChungTu.Designer.cs">
+      <DependentUpon>frmCapNhatChungTu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmCapNhatLoaiDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmCapNhatLoaiDon.Designer.cs">
+      <DependentUpon>frmCapNhatLoaiDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmCapNhatTTKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmCapNhatTTKH.Designer.cs">
+      <DependentUpon>frmCapNhatTTKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\HeThong\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +115,15 @@
     <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
       <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\CapNhat\frmCapNhatChungTu.resx">
+      <DependentUpon>frmCapNhatChungTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CapNhat\frmCapNhatLoaiDon.resx">
+      <DependentUpon>frmCapNhatLoaiDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CapNhat\frmCapNhatTTKH.resx">
+      <DependentUpon>frmCapNhatTTKH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BUS\" />
-    <Folder Include="GUI\CapNhat\" />
     <Folder Include="GUI\NhapLieu\" />
   </ItemGroup>
   <ItemGroup>
