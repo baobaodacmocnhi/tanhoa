@@ -10,11 +10,11 @@ using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.GUI.CapNhat
 {
-    public partial class frmCapNhatTTKH : Form
+    public partial class frmTTKH : Form
     {
-        CCapNhatTTKH _cCapNhatTTKH = new CCapNhatTTKH();
+        CTTKH _cTTKH = new CTTKH();
 
-        public frmCapNhatTTKH()
+        public frmTTKH()
         {
             InitializeComponent();
         }
@@ -42,7 +42,7 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             if (txtDuongDan.Text.Trim() != "")
             {
-                _cCapNhatTTKH.CapNhatTTKH(txtDuongDan.Text.Trim());
+                _cTTKH.CapNhatTTKH(txtDuongDan.Text.Trim());
             }
         }
     }

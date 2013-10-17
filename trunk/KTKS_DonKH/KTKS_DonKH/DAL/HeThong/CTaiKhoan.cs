@@ -14,7 +14,9 @@ namespace KTKS_DonKH.DAL.HeThong
         private static string _taiKhoan = "";
         private static bool _roleTaiKhoan = false;
         private static bool _roleCapNhat = false;
-      
+        private static bool _roleNhanDonKH = false;
+
+        
         DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
         public static bool RoleTaiKhoan
@@ -31,6 +33,11 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             get { return CTaiKhoan._roleCapNhat; }
             set { CTaiKhoan._roleCapNhat = value; }
+        }
+        public static bool RoleNhanDonKH
+        {
+            get { return CTaiKhoan._roleNhanDonKH; }
+            set { CTaiKhoan._roleNhanDonKH = value; }
         }
 
         /// <summary>
@@ -56,6 +63,11 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleCapNhat = true;
                     else
                         _roleCapNhat = false;
+                    //Mã Role Nhận Đơn Khách Hàng là 3
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 3).CapQuyen == true)
+                        _roleNhanDonKH = true;
+                    else
+                        _roleNhanDonKH = false;
                     return true;
                 }
                 else
@@ -99,6 +111,7 @@ namespace KTKS_DonKH.DAL.HeThong
                     table.Columns.Add("MatKhau", typeof(string));
                     table.Columns.Add("QTaiKhoan", typeof(bool));
                     table.Columns.Add("QCapNhat", typeof(bool));
+                    table.Columns.Add("QNhanDonKH", typeof(bool));
 
                     int i = 1;
                     foreach (var itemTK in taikhoans)
@@ -110,10 +123,12 @@ namespace KTKS_DonKH.DAL.HeThong
 
                         //MaR=1 => quyền Tài Khoản
                         //MaR=2 => quyền Cập Nhật
+                        //MaR=3 => quyền Nhận Đơn Khách Hàng
 
                         table.Rows.Add(i++, itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).CapQuyen
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).CapQuyen,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 3).CapQuyen
                                         );
                     }
                     return table;

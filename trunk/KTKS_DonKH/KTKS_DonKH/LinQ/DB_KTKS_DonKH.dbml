@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="DB_KTKS_DonKHDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=KTKS_DonKH;Integrated Security=True" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChungTu" Member="ChungTus">
     <Type Name="ChungTu">
       <Column Name="MaCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -73,9 +73,7 @@
       <Column Name="SangTen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="DangKyDM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CatChuyenDM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="MatDHN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="DutChiMS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="DucNuoc" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NuocDuc" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="LoaiKhac" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="GhiChuLoaiKhac" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CT_HoaDon" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -85,7 +83,6 @@
       <Column Name="CT_GC_SDSN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CT_GXN2SN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CT_GDKKD" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="CT_GCNMST" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CT_GCNDTDHN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -98,8 +95,27 @@
       <Association Name="LoaiDon_DonKH" Member="LoaiDon" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDon" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.HoaDon" Member="HoaDons">
-    <Type Name="HoaDon">
+  <Table Name="dbo.LoaiDon" Member="LoaiDons">
+    <Type Name="LoaiDon">
+      <Column Name="MaLD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="KyHieuLD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenLD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="LoaiDon_DonKH" Member="DonKHs" ThisKey="MaLD" OtherKey="MaLD" Type="DonKH" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roles" Member="Roles">
+    <Type Name="Role">
+      <Column Name="MaR" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Role_DetailRole" Member="DetailRoles" ThisKey="MaR" OtherKey="MaR" Type="DetailRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TTKhachHang" Member="TTKhachHangs">
+    <Type Name="TTKhachHang">
       <Column Name="Khu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -155,25 +171,6 @@
       <Column Name="TileTieuThu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NgayGanDHN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoHo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.LoaiDon" Member="LoaiDons">
-    <Type Name="LoaiDon">
-      <Column Name="MaLD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="KyHieuLD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TenLD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="LoaiDon_DonKH" Member="DonKHs" ThisKey="MaLD" OtherKey="MaLD" Type="DonKH" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Roles" Member="Roles">
-    <Type Name="Role">
-      <Column Name="MaR" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Role_DetailRole" Member="DetailRoles" ThisKey="MaR" OtherKey="MaR" Type="DetailRole" />
     </Type>
   </Table>
 </Database>

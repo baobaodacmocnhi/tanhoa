@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.CapNhat
 {
-    partial class frmCapNhatTTKH
+    partial class frmTTKH
     {
         /// <summary>
         /// Required designer variable.

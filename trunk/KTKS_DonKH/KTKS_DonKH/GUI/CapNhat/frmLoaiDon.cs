@@ -11,12 +11,12 @@ using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.CapNhat
 {
-    public partial class frmCapNhatLoaiDon : Form
+    public partial class frmLoaiDon : Form
     {
         int selectedindex = -1;
-        CCapNhatLoaiDon _cCapNhatLoaiDon = new CCapNhatLoaiDon();
+        CLoaiDon _cCapNhatLoaiDon = new CLoaiDon();
 
-        public frmCapNhatLoaiDon()
+        public frmLoaiDon()
         {
             InitializeComponent();
         }

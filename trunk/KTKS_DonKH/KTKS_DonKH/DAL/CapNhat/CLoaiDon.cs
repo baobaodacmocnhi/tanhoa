@@ -8,10 +8,14 @@ using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.DAL.CapNhat
 {
-    class CCapNhatLoaiDon
+    class CLoaiDon
     {
         DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
+        /// <summary>
+        /// Lấy danh sách loại đơn
+        /// </summary>
+        /// <returns></returns>
         public BindingSource LoadDSLoaiDon()
         {
             try
@@ -27,6 +31,33 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy danh sách loại đơn, hàm này được dùng trong nội bộ DAL
+        /// </summary>
+        /// <param name="inheritance">true</param>
+        /// <returns></returns>
+        public BindingSource LoadDSLoaiDon(bool inheritance)
+        {
+            try
+            {
+                if (inheritance)
+                {
+                    BindingSource source = new BindingSource();
+                    var table = from itemLD in db.LoaiDons
+                                select new { itemLD.MaLD, itemLD.KyHieuLD, itemLD.TenLD };
+                    source.DataSource = table.ToList();
+                    return source;
+                }
+                else
+                    return null;
             }
             catch (Exception ex)
             {
