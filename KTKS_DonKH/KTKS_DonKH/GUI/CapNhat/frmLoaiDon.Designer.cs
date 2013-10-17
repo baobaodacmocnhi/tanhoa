@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.CapNhat
 {
-    partial class frmCapNhatLoaiDon
+    partial class frmLoaiDon
     {
         /// <summary>
         /// Required designer variable.
@@ -33,11 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtTenLD = new System.Windows.Forms.TextBox();
             this.dgvDSLoaiDon = new System.Windows.Forms.DataGridView();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
             this.MaLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KyHieuLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSLoaiDon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,9 +54,9 @@
             // txtKyHieuLD
             // 
             this.txtKyHieuLD.Location = new System.Drawing.Point(175, 13);
-            this.txtKyHieuLD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtKyHieuLD.Margin = new System.Windows.Forms.Padding(4);
             this.txtKyHieuLD.Name = "txtKyHieuLD";
-            this.txtKyHieuLD.Size = new System.Drawing.Size(132, 25);
+            this.txtKyHieuLD.Size = new System.Drawing.Size(165, 25);
             this.txtKyHieuLD.TabIndex = 1;
             // 
             // label2
@@ -72,9 +72,9 @@
             // txtTenLD
             // 
             this.txtTenLD.Location = new System.Drawing.Point(175, 47);
-            this.txtTenLD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenLD.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenLD.Name = "txtTenLD";
-            this.txtTenLD.Size = new System.Drawing.Size(132, 25);
+            this.txtTenLD.Size = new System.Drawing.Size(165, 25);
             this.txtTenLD.TabIndex = 3;
             // 
             // dgvDSLoaiDon
@@ -85,41 +85,13 @@
             this.MaLD,
             this.KyHieuLD,
             this.TenLD});
-            this.dgvDSLoaiDon.Location = new System.Drawing.Point(13, 126);
-            this.dgvDSLoaiDon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvDSLoaiDon.Location = new System.Drawing.Point(13, 125);
+            this.dgvDSLoaiDon.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSLoaiDon.Name = "dgvDSLoaiDon";
             this.dgvDSLoaiDon.RowHeadersWidth = 20;
             this.dgvDSLoaiDon.Size = new System.Drawing.Size(372, 196);
-            this.dgvDSLoaiDon.TabIndex = 4;
+            this.dgvDSLoaiDon.TabIndex = 6;
             this.dgvDSLoaiDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDon_CellContentClick);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(241, 81);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(66, 35);
-            this.btnSua.TabIndex = 11;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
-            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(154, 81);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(77, 35);
-            this.btnThem.TabIndex = 9;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // MaLD
             // 
@@ -142,7 +114,35 @@
             this.TenLD.Name = "TenLD";
             this.TenLD.Width = 200;
             // 
-            // frmCapNhatLoaiDon
+            // btnSua
+            // 
+            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(274, 81);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(66, 35);
+            this.btnSua.TabIndex = 5;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(187, 81);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(5);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(77, 35);
+            this.btnThem.TabIndex = 4;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // frmLoaiDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,8 +155,8 @@
             this.Controls.Add(this.txtKyHieuLD);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frmCapNhatLoaiDon";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "frmLoaiDon";
             this.Text = "frmCapNhatLoaiDon";
             this.Load += new System.EventHandler(this.frmCapNhatLoaiDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSLoaiDon)).EndInit();

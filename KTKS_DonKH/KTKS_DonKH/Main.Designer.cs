@@ -166,6 +166,7 @@
             this.ribbtnNhanDon.MinimumSize = new System.Drawing.Size(70, 0);
             this.ribbtnNhanDon.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnNhanDon.SmallImage")));
             this.ribbtnNhanDon.Text = "Nhận Đơn";
+            this.ribbtnNhanDon.Click += new System.EventHandler(this.ribbtnNhanDon_Click);
             // 
             // statusStrip1
             // 
@@ -173,7 +174,7 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.StripStatus_TaiKhoan});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 440);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 640);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(787, 22);
             this.statusStrip1.TabIndex = 2;
@@ -239,12 +240,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 462);
+            this.ClientSize = new System.Drawing.Size(787, 662);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbon1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(700, 500);
+            this.MinimumSize = new System.Drawing.Size(800, 700);
             this.Name = "Main";
             this.Text = "Chương trình Quản Lý Đơn Từ Khách Hàng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

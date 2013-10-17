@@ -50,7 +50,7 @@
             // txtTaiKhoan
             // 
             this.txtTaiKhoan.Location = new System.Drawing.Point(255, 25);
-            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(132, 25);
             this.txtTaiKhoan.TabIndex = 1;
@@ -59,7 +59,7 @@
             // txtMatKhau
             // 
             this.txtMatKhau.Location = new System.Drawing.Point(255, 59);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(132, 25);
@@ -81,7 +81,7 @@
             // 
             this.pictureBox1.Image = global::KTKS_DonKH.Properties.Resources.people_128x128;
             this.pictureBox1.Location = new System.Drawing.Point(16, 16);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
             this.pictureBox1.TabIndex = 5;
@@ -92,7 +92,7 @@
             this.btnDangNhap.BackgroundImage = global::KTKS_DonKH.Properties.Resources.login_w_48x48;
             this.btnDangNhap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnDangNhap.Location = new System.Drawing.Point(196, 109);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(4);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(141, 55);
             this.btnDangNhap.TabIndex = 4;
@@ -113,7 +113,7 @@
             this.Controls.Add(this.txtTaiKhoan);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDangNhap";

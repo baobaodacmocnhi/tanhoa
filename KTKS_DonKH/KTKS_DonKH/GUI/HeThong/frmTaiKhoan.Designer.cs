@@ -45,6 +45,7 @@
             this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QTaiKhoan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QCapNhat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.QNhanDonKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +143,8 @@
             this.TaiKhoan,
             this.MatKhau,
             this.QTaiKhoan,
-            this.QCapNhat});
+            this.QCapNhat,
+            this.QNhanDonKH});
             this.dgvDSTaiKhoan.Location = new System.Drawing.Point(13, 158);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTaiKhoan.MultiSelect = false;
@@ -214,6 +216,15 @@
             this.QCapNhat.HeaderText = "Q.Cập Nhật";
             this.QCapNhat.Name = "QCapNhat";
             // 
+            // QNhanDonKH
+            // 
+            this.QNhanDonKH.DataPropertyName = "QNhanDonKH";
+            this.QNhanDonKH.HeaderText = "Nhận Đơn KH";
+            this.QNhanDonKH.Name = "QNhanDonKH";
+            this.QNhanDonKH.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.QNhanDonKH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.QNhanDonKH.Width = 120;
+            // 
             // frmTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -259,5 +270,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MatKhau;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QTaiKhoan;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QCapNhat;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn QNhanDonKH;
     }
 }

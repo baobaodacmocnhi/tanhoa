@@ -8,11 +8,11 @@ using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.DAL.CapNhat
 {
-    class CCapNhatChungTu
+    class CChungTu
     {
         DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
-        public BindingSource LoadDSLoaiDon()
+        public BindingSource LoadDSChungTu()
         {
             try
             {
@@ -48,13 +48,13 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
-        public void ThemLoaiDon(ChungTu chungtu)
+        public void ThemChungTu(ChungTu chungtu)
         {
             try
             {
                 if (CTaiKhoan.RoleCapNhat)
                 {
-                    if (db.LoaiDons.Count() > 0)
+                    if (db.ChungTus.Count() > 0)
                         chungtu.MaCT = db.ChungTus.Max(itemCT => itemCT.MaCT) + 1;
                     else
                         chungtu.MaCT = 1;
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
-        public void SuaLoaiDon(ChungTu chungtu)
+        public void SuaChungTu(ChungTu chungtu)
         {
             try
             {
