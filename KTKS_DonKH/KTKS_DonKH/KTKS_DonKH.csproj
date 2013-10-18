@@ -66,10 +66,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\DataSetBaoCao.cs">
+      <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\DataSetBaoCao.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BaoCao\rptBienNhanDonKH.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptBienNhanDonKH.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\rptHeader.cs">
       <AutoGen>True</AutoGen>
@@ -144,6 +154,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="BaoCao\DataSetBaoCao.xsc">
+      <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
+    </None>
+    <None Include="BaoCao\DataSetBaoCao.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBaoCao.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BaoCao\DataSetBaoCao.xss">
+      <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
+    </None>
     <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
       <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
     </None>

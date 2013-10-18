@@ -12,6 +12,7 @@ namespace KTKS_DonKH.DAL.HeThong
     class CTaiKhoan
     {
         private static string _taiKhoan = "";
+        private static string _hoTen = "";
         private static bool _roleTaiKhoan = false;
         private static bool _roleCapNhat = false;
         private static bool _roleNhanDonKH = false;
@@ -19,15 +20,20 @@ namespace KTKS_DonKH.DAL.HeThong
         
         DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
-        public static bool RoleTaiKhoan
-        {
-            get { return CTaiKhoan._roleTaiKhoan; }
-            set { CTaiKhoan._roleTaiKhoan = value; }
-        }
         public static string TaiKhoan
         {
             get { return CTaiKhoan._taiKhoan; }
             set { CTaiKhoan._taiKhoan = value; }
+        }
+        public static string HoTen
+        {
+            get { return CTaiKhoan._hoTen; }
+            set { CTaiKhoan._hoTen = value; }
+        }
+        public static bool RoleTaiKhoan
+        {
+            get { return CTaiKhoan._roleTaiKhoan; }
+            set { CTaiKhoan._roleTaiKhoan = value; }
         }
         public static bool RoleCapNhat
         {
@@ -53,6 +59,7 @@ namespace KTKS_DonKH.DAL.HeThong
                 if (db.Users.Any(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau))
                 {
                     _taiKhoan = taikhoan;
+                    _hoTen = db.Users.Single(item => item.TaiKhoan == taikhoan).HoTen;
                     //Mã Role Tài Khoản là 1
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 1).CapQuyen == true)
                         _roleTaiKhoan = true;

@@ -1255,6 +1255,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Ky;
 		
+		private string _GhiChu;
+		
 		private string _NoiDung;
 		
 		private System.Nullable<bool> _KiemTraDHN;
@@ -1335,6 +1337,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDotChanged();
     partial void OnKyChanging(string value);
     partial void OnKyChanged();
+    partial void OnGhiChuChanging(string value);
+    partial void OnGhiChuChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
     partial void OnKiemTraDHNChanging(System.Nullable<bool> value);
@@ -1593,6 +1597,26 @@ namespace KTKS_DonKH.LinQ
 					this._Ky = value;
 					this.SendPropertyChanged("Ky");
 					this.OnKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(MAX)")]
+		public string GhiChu
+		{
+			get
+			{
+				return this._GhiChu;
+			}
+			set
+			{
+				if ((this._GhiChu != value))
+				{
+					this.OnGhiChuChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChu = value;
+					this.SendPropertyChanged("GhiChu");
+					this.OnGhiChuChanged();
 				}
 			}
 		}
