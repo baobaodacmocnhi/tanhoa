@@ -1,4 +1,4 @@
-﻿namespace KTKS_DonKH.GUI.NhapLieu
+﻿namespace KTKS_DonKH.GUI.KhachHang
 {
     partial class frmNhanDonKH
     {
@@ -38,7 +38,7 @@
             this.chkCT_GC_SDSN = new System.Windows.Forms.CheckBox();
             this.chkCT_HDTN_CQN = new System.Windows.Forms.CheckBox();
             this.chkCT_STT_GXNTT = new System.Windows.Forms.CheckBox();
-            this.chkCT_HoKhau_KT3 = new System.Windows.Forms.CheckBox();
+            this.chkCT_HK_KT3 = new System.Windows.Forms.CheckBox();
             this.chkCT_HoaDon = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -138,7 +138,7 @@
             this.groupBox1.Controls.Add(this.chkCT_GC_SDSN);
             this.groupBox1.Controls.Add(this.chkCT_HDTN_CQN);
             this.groupBox1.Controls.Add(this.chkCT_STT_GXNTT);
-            this.groupBox1.Controls.Add(this.chkCT_HoKhau_KT3);
+            this.groupBox1.Controls.Add(this.chkCT_HK_KT3);
             this.groupBox1.Controls.Add(this.chkCT_HoaDon);
             this.groupBox1.Location = new System.Drawing.Point(14, 303);
             this.groupBox1.Name = "groupBox1";
@@ -207,15 +207,15 @@
             this.chkCT_STT_GXNTT.Text = "Sổ Tạm Trú hoặc Giấy XN Tạm Trú";
             this.chkCT_STT_GXNTT.UseVisualStyleBackColor = true;
             // 
-            // chkCT_HoKhau_KT3
+            // chkCT_HK_KT3
             // 
-            this.chkCT_HoKhau_KT3.AutoSize = true;
-            this.chkCT_HoKhau_KT3.Location = new System.Drawing.Point(243, 31);
-            this.chkCT_HoKhau_KT3.Name = "chkCT_HoKhau_KT3";
-            this.chkCT_HoKhau_KT3.Size = new System.Drawing.Size(118, 17);
-            this.chkCT_HoKhau_KT3.TabIndex = 1;
-            this.chkCT_HoKhau_KT3.Text = "Hộ Khẩu hoặc KT3";
-            this.chkCT_HoKhau_KT3.UseVisualStyleBackColor = true;
+            this.chkCT_HK_KT3.AutoSize = true;
+            this.chkCT_HK_KT3.Location = new System.Drawing.Point(243, 31);
+            this.chkCT_HK_KT3.Name = "chkCT_HK_KT3";
+            this.chkCT_HK_KT3.Size = new System.Drawing.Size(118, 17);
+            this.chkCT_HK_KT3.TabIndex = 1;
+            this.chkCT_HK_KT3.Text = "Hộ Khẩu hoặc KT3";
+            this.chkCT_HK_KT3.UseVisualStyleBackColor = true;
             // 
             // chkCT_HoaDon
             // 
@@ -408,6 +408,7 @@
             this.chkLyDoKhac.TabIndex = 12;
             this.chkLyDoKhac.Text = "Lý Do Khác";
             this.chkLyDoKhac.UseVisualStyleBackColor = true;
+            this.chkLyDoKhac.CheckedChanged += new System.EventHandler(this.chkLyDoKhac_CheckedChanged);
             // 
             // chkCatChuyenDM
             // 
@@ -587,7 +588,7 @@
         private System.Windows.Forms.CheckBox chkCT_GC_SDSN;
         private System.Windows.Forms.CheckBox chkCT_HDTN_CQN;
         private System.Windows.Forms.CheckBox chkCT_STT_GXNTT;
-        private System.Windows.Forms.CheckBox chkCT_HoKhau_KT3;
+        private System.Windows.Forms.CheckBox chkCT_HK_KT3;
         private System.Windows.Forms.CheckBox chkCT_HoaDon;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

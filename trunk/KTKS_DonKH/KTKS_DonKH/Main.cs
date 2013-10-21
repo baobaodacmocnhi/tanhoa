@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.GUI.HeThong;
 using KTKS_DonKH.DAL.HeThong;
 using KTKS_DonKH.GUI.CapNhat;
-using KTKS_DonKH.GUI.NhapLieu;
+using KTKS_DonKH.GUI.KhachHang;
 
 namespace KTKS_DonKH
 {
@@ -144,6 +144,21 @@ namespace KTKS_DonKH
                 }
             }
             Form frm = new frmNhanDonKH();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void ribbtnQLDonKH_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+            {
+                if (item.GetType() == typeof(frmQLDonKH))
+                {
+                    item.Activate();
+                    return;
+                }
+            }
+            Form frm = new frmQLDonKH();
             frm.MdiParent = this;
             frm.Show();
         }

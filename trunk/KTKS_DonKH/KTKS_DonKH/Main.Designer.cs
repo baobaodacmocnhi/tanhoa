@@ -51,6 +51,8 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
+            this.ribbonTab4 = new System.Windows.Forms.RibbonTab();
+            this.ribbtnQLDonKH = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,14 +153,15 @@
             // ribbonTab3
             // 
             this.ribbonTab3.Panels.Add(this.ribbonPanel4);
-            this.ribbonTab3.Text = "Nhập Liệu";
+            this.ribbonTab3.Text = "Khách Hàng";
             // 
             // ribbonPanel4
             // 
             this.ribbonPanel4.ButtonMoreEnabled = false;
             this.ribbonPanel4.ButtonMoreVisible = false;
             this.ribbonPanel4.Items.Add(this.ribbtnNhanDon);
-            this.ribbonPanel4.Text = "Khách Hàng";
+            this.ribbonPanel4.Items.Add(this.ribbtnQLDonKH);
+            this.ribbonPanel4.Text = "Đơn Từ";
             // 
             // ribbtnNhanDon
             // 
@@ -233,8 +236,21 @@
             this.ribbon1.Tabs.Add(this.ribbonTab1);
             this.ribbon1.Tabs.Add(this.ribbonTab2);
             this.ribbon1.Tabs.Add(this.ribbonTab3);
+            this.ribbon1.Tabs.Add(this.ribbonTab4);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
+            // 
+            // ribbonTab4
+            // 
+            this.ribbonTab4.Text = "Điều Chỉnh Biến Động";
+            // 
+            // ribbtnQLDonKH
+            // 
+            this.ribbtnQLDonKH.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnQLDonKH.MinimumSize = new System.Drawing.Size(70, 0);
+            this.ribbtnQLDonKH.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonKH.SmallImage")));
+            this.ribbtnQLDonKH.Text = "Quản Lý";
+            this.ribbtnQLDonKH.Click += new System.EventHandler(this.ribbtnQLDonKH_Click);
             // 
             // Main
             // 
@@ -281,6 +297,8 @@
         private System.Windows.Forms.ToolStripStatusLabel StripStatus_TaiKhoan;
         private System.Windows.Forms.RibbonButton ribbtnDoiMatKhau;
         private System.Windows.Forms.RibbonButton ribbtnKhachHang;
+        private System.Windows.Forms.RibbonButton ribbtnQLDonKH;
+        private System.Windows.Forms.RibbonTab ribbonTab4;
     }
 }
 

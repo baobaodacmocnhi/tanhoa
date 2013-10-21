@@ -1239,7 +1239,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DanhBo;
 		
-		private string _SoHopDong;
+		private string _HopDong;
 		
 		private string _HoTen;
 		
@@ -1321,8 +1321,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaDonChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
-    partial void OnSoHopDongChanging(string value);
-    partial void OnSoHopDongChanged();
+    partial void OnHopDongChanging(string value);
+    partial void OnHopDongChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -1441,22 +1441,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHopDong", DbType="NVarChar(50)")]
-		public string SoHopDong
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HopDong", DbType="NVarChar(50)")]
+		public string HopDong
 		{
 			get
 			{
-				return this._SoHopDong;
+				return this._HopDong;
 			}
 			set
 			{
-				if ((this._SoHopDong != value))
+				if ((this._HopDong != value))
 				{
-					this.OnSoHopDongChanging(value);
+					this.OnHopDongChanging(value);
 					this.SendPropertyChanging();
-					this._SoHopDong = value;
-					this.SendPropertyChanged("SoHopDong");
-					this.OnSoHopDongChanged();
+					this._HopDong = value;
+					this.SendPropertyChanged("HopDong");
+					this.OnHopDongChanged();
 				}
 			}
 		}
