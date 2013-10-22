@@ -18,6 +18,7 @@
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Login" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -90,9 +91,19 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="MaLD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Chuyen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="C_KTXM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="C_KTXM_LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="C_KTXM_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="C_DCBD" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="C_DCBD_LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="C_DCBD_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="C_ThaoThu" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="C_ThaoThu_LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="C_ThaoThu_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="C_TrinhDuyet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="C_TrinhDuyet_LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="C_TrinhDuyet_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="LoaiDon_DonKH" Member="LoaiDon" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDon" IsForeignKey="true" />
     </Type>
   </Table>

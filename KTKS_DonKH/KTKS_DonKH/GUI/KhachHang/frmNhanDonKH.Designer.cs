@@ -505,6 +505,7 @@
             this.txtNgayNhan.Name = "txtNgayNhan";
             this.txtNgayNhan.Size = new System.Drawing.Size(78, 25);
             this.txtNgayNhan.TabIndex = 2;
+            this.txtNgayNhan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -523,6 +524,7 @@
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.Size = new System.Drawing.Size(55, 25);
             this.txtMaDon.TabIndex = 1;
+            this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 

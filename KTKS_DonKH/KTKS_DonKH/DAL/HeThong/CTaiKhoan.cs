@@ -16,7 +16,9 @@ namespace KTKS_DonKH.DAL.HeThong
         private static bool _roleTaiKhoan = false;
         private static bool _roleCapNhat = false;
         private static bool _roleNhanDonKH = false;
+        private static bool _roleQLDonKH = false;
 
+        
         
         DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
@@ -45,6 +47,11 @@ namespace KTKS_DonKH.DAL.HeThong
             get { return CTaiKhoan._roleNhanDonKH; }
             set { CTaiKhoan._roleNhanDonKH = value; }
         }
+        public static bool RoleQLDonKH
+        {
+            get { return CTaiKhoan._roleQLDonKH; }
+            set { CTaiKhoan._roleQLDonKH = value; }
+        }
 
         /// <summary>
         /// Kiểm tra đăng nhập
@@ -56,7 +63,7 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (db.Users.Any(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau))
+                if (db.Users.Any(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau && item.Login == false))
                 {
                     _taiKhoan = taikhoan;
                     _hoTen = db.Users.Single(item => item.TaiKhoan == taikhoan).HoTen;
@@ -75,11 +82,19 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleNhanDonKH = true;
                     else
                         _roleNhanDonKH = false;
+                    //Mã Role Quản Lý Đơn Khách Hàng là 4
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 4).CapQuyen == true)
+                        _roleQLDonKH = true;
+                    else
+                        _roleQLDonKH = false;
+
+                    db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
+                    db.SubmitChanges();
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show("Sai Tài Khoản hoặc Mật Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Sai Tài Khoản,Mật Khẩu hoặc Tài Khoản đang được đăng nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
@@ -88,6 +103,21 @@ namespace KTKS_DonKH.DAL.HeThong
                 MessageBox.Show("Không thể kết nối cơ sở dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public void DangXuat()
+        {
+            if (_taiKhoan != "")
+            {
+                db.Users.Single(item => item.TaiKhoan == _taiKhoan).Login = false;
+                db.SubmitChanges();
+            }
+            _taiKhoan = "";
+            _hoTen = "";
+            _roleTaiKhoan = false;
+            _roleCapNhat = false;
+            _roleNhanDonKH = false;
+            _roleQLDonKH = false;
         }
 
         /// <summary>
@@ -111,7 +141,6 @@ namespace KTKS_DonKH.DAL.HeThong
                                     };
                     //1 tài khoản có nhiều quyền chưa biết làm ntn nên jờ tạm làm theo cách chạy vòng lập add từng record
                     DataTable table = new DataTable();
-                    table.Columns.Add("STT", typeof(string));
                     table.Columns.Add("MaU", typeof(string));
                     table.Columns.Add("HoTen", typeof(string));
                     table.Columns.Add("TaiKhoan", typeof(string));
@@ -119,8 +148,8 @@ namespace KTKS_DonKH.DAL.HeThong
                     table.Columns.Add("QTaiKhoan", typeof(bool));
                     table.Columns.Add("QCapNhat", typeof(bool));
                     table.Columns.Add("QNhanDonKH", typeof(bool));
+                    table.Columns.Add("QQLDonKH", typeof(bool));
 
-                    int i = 1;
                     foreach (var itemTK in taikhoans)
                     {
                         var quyens = from itemDetailRole in db.DetailRoles
@@ -131,11 +160,13 @@ namespace KTKS_DonKH.DAL.HeThong
                         //MaR=1 => quyền Tài Khoản
                         //MaR=2 => quyền Cập Nhật
                         //MaR=3 => quyền Nhận Đơn Khách Hàng
+                        //MaR=4 => quyền Quản Lý Đơn Khách Hàng
 
-                        table.Rows.Add(i++, itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
+                        table.Rows.Add(itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 3).CapQuyen
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 3).CapQuyen,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 4).CapQuyen
                                         );
                     }
                     return table;
@@ -186,7 +217,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         db.Users.InsertOnSubmit(nguoidung);
                         //Cấp quyền mặc định = False
                         //i tương ứng với số quyền trong bảng DetailRole
-                        for (int i = 1; i <= 2; i++)
+                        for (int i = 1; i <= 4; i++)
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;

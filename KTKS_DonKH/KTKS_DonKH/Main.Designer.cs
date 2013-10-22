@@ -44,6 +44,7 @@
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
+            this.ribbtnQLDonKH = new System.Windows.Forms.RibbonButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -52,7 +53,6 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonTab4 = new System.Windows.Forms.RibbonTab();
-            this.ribbtnQLDonKH = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,6 +171,14 @@
             this.ribbtnNhanDon.Text = "Nhận Đơn";
             this.ribbtnNhanDon.Click += new System.EventHandler(this.ribbtnNhanDon_Click);
             // 
+            // ribbtnQLDonKH
+            // 
+            this.ribbtnQLDonKH.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnQLDonKH.MinimumSize = new System.Drawing.Size(70, 0);
+            this.ribbtnQLDonKH.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonKH.SmallImage")));
+            this.ribbtnQLDonKH.Text = "Quản Lý";
+            this.ribbtnQLDonKH.Click += new System.EventHandler(this.ribbtnQLDonKH_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -244,14 +252,6 @@
             // 
             this.ribbonTab4.Text = "Điều Chỉnh Biến Động";
             // 
-            // ribbtnQLDonKH
-            // 
-            this.ribbtnQLDonKH.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnQLDonKH.MinimumSize = new System.Drawing.Size(70, 0);
-            this.ribbtnQLDonKH.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonKH.SmallImage")));
-            this.ribbtnQLDonKH.Text = "Quản Lý";
-            this.ribbtnQLDonKH.Click += new System.EventHandler(this.ribbtnQLDonKH_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,7 +264,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 700);
             this.Name = "Main";
             this.Text = "Chương trình Quản Lý Đơn Từ Khách Hàng";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
