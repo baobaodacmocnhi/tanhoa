@@ -395,6 +395,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MatKhau;
 		
+		private System.Nullable<bool> _Login;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private string _CreateBy;
@@ -417,6 +419,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTaiKhoanChanged();
     partial void OnMatKhauChanging(string value);
     partial void OnMatKhauChanged();
+    partial void OnLoginChanging(System.Nullable<bool> value);
+    partial void OnLoginChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(string value);
@@ -509,6 +513,26 @@ namespace KTKS_DonKH.LinQ
 					this._MatKhau = value;
 					this.SendPropertyChanged("MatKhau");
 					this.OnMatKhauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="Bit")]
+		public System.Nullable<bool> Login
+		{
+			get
+			{
+				return this._Login;
+			}
+			set
+			{
+				if ((this._Login != value))
+				{
+					this.OnLoginChanging(value);
+					this.SendPropertyChanging();
+					this._Login = value;
+					this.SendPropertyChanged("Login");
+					this.OnLoginChanged();
 				}
 			}
 		}
@@ -1305,11 +1329,31 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaLD;
 		
+		private System.Nullable<bool> _Chuyen;
+		
 		private System.Nullable<bool> _C_KTXM;
 		
 		private string _C_KTXM_LyDo;
 		
+		private System.Nullable<System.DateTime> _C_KTXM_Date;
+		
 		private System.Nullable<bool> _C_DCBD;
+		
+		private string _C_DCBD_LyDo;
+		
+		private System.Nullable<System.DateTime> _C_DCBD_Date;
+		
+		private System.Nullable<bool> _C_ThaoThu;
+		
+		private string _C_ThaoThu_LyDo;
+		
+		private System.Nullable<System.DateTime> _C_ThaoThu_Date;
+		
+		private System.Nullable<bool> _C_TrinhDuyet;
+		
+		private string _C_TrinhDuyet_LyDo;
+		
+		private System.Nullable<System.DateTime> _C_TrinhDuyet_Date;
 		
 		private EntityRef<LoaiDon> _LoaiDon;
 		
@@ -1387,12 +1431,32 @@ namespace KTKS_DonKH.LinQ
     partial void OnModifyByChanged();
     partial void OnMaLDChanging(System.Nullable<int> value);
     partial void OnMaLDChanged();
+    partial void OnChuyenChanging(System.Nullable<bool> value);
+    partial void OnChuyenChanged();
     partial void OnC_KTXMChanging(System.Nullable<bool> value);
     partial void OnC_KTXMChanged();
     partial void OnC_KTXM_LyDoChanging(string value);
     partial void OnC_KTXM_LyDoChanged();
+    partial void OnC_KTXM_DateChanging(System.Nullable<System.DateTime> value);
+    partial void OnC_KTXM_DateChanged();
     partial void OnC_DCBDChanging(System.Nullable<bool> value);
     partial void OnC_DCBDChanged();
+    partial void OnC_DCBD_LyDoChanging(string value);
+    partial void OnC_DCBD_LyDoChanged();
+    partial void OnC_DCBD_DateChanging(System.Nullable<System.DateTime> value);
+    partial void OnC_DCBD_DateChanged();
+    partial void OnC_ThaoThuChanging(System.Nullable<bool> value);
+    partial void OnC_ThaoThuChanged();
+    partial void OnC_ThaoThu_LyDoChanging(string value);
+    partial void OnC_ThaoThu_LyDoChanged();
+    partial void OnC_ThaoThu_DateChanging(System.Nullable<System.DateTime> value);
+    partial void OnC_ThaoThu_DateChanged();
+    partial void OnC_TrinhDuyetChanging(System.Nullable<bool> value);
+    partial void OnC_TrinhDuyetChanged();
+    partial void OnC_TrinhDuyet_LyDoChanging(string value);
+    partial void OnC_TrinhDuyet_LyDoChanged();
+    partial void OnC_TrinhDuyet_DateChanging(System.Nullable<System.DateTime> value);
+    partial void OnC_TrinhDuyet_DateChanged();
     #endregion
 		
 		public DonKH()
@@ -2105,6 +2169,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chuyen", DbType="Bit")]
+		public System.Nullable<bool> Chuyen
+		{
+			get
+			{
+				return this._Chuyen;
+			}
+			set
+			{
+				if ((this._Chuyen != value))
+				{
+					this.OnChuyenChanging(value);
+					this.SendPropertyChanging();
+					this._Chuyen = value;
+					this.SendPropertyChanged("Chuyen");
+					this.OnChuyenChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_KTXM", DbType="Bit")]
 		public System.Nullable<bool> C_KTXM
 		{
@@ -2145,6 +2229,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_KTXM_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> C_KTXM_Date
+		{
+			get
+			{
+				return this._C_KTXM_Date;
+			}
+			set
+			{
+				if ((this._C_KTXM_Date != value))
+				{
+					this.OnC_KTXM_DateChanging(value);
+					this.SendPropertyChanging();
+					this._C_KTXM_Date = value;
+					this.SendPropertyChanged("C_KTXM_Date");
+					this.OnC_KTXM_DateChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_DCBD", DbType="Bit")]
 		public System.Nullable<bool> C_DCBD
 		{
@@ -2161,6 +2265,166 @@ namespace KTKS_DonKH.LinQ
 					this._C_DCBD = value;
 					this.SendPropertyChanged("C_DCBD");
 					this.OnC_DCBDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_DCBD_LyDo", DbType="NVarChar(MAX)")]
+		public string C_DCBD_LyDo
+		{
+			get
+			{
+				return this._C_DCBD_LyDo;
+			}
+			set
+			{
+				if ((this._C_DCBD_LyDo != value))
+				{
+					this.OnC_DCBD_LyDoChanging(value);
+					this.SendPropertyChanging();
+					this._C_DCBD_LyDo = value;
+					this.SendPropertyChanged("C_DCBD_LyDo");
+					this.OnC_DCBD_LyDoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_DCBD_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> C_DCBD_Date
+		{
+			get
+			{
+				return this._C_DCBD_Date;
+			}
+			set
+			{
+				if ((this._C_DCBD_Date != value))
+				{
+					this.OnC_DCBD_DateChanging(value);
+					this.SendPropertyChanging();
+					this._C_DCBD_Date = value;
+					this.SendPropertyChanged("C_DCBD_Date");
+					this.OnC_DCBD_DateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_ThaoThu", DbType="Bit")]
+		public System.Nullable<bool> C_ThaoThu
+		{
+			get
+			{
+				return this._C_ThaoThu;
+			}
+			set
+			{
+				if ((this._C_ThaoThu != value))
+				{
+					this.OnC_ThaoThuChanging(value);
+					this.SendPropertyChanging();
+					this._C_ThaoThu = value;
+					this.SendPropertyChanged("C_ThaoThu");
+					this.OnC_ThaoThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_ThaoThu_LyDo", DbType="NVarChar(MAX)")]
+		public string C_ThaoThu_LyDo
+		{
+			get
+			{
+				return this._C_ThaoThu_LyDo;
+			}
+			set
+			{
+				if ((this._C_ThaoThu_LyDo != value))
+				{
+					this.OnC_ThaoThu_LyDoChanging(value);
+					this.SendPropertyChanging();
+					this._C_ThaoThu_LyDo = value;
+					this.SendPropertyChanged("C_ThaoThu_LyDo");
+					this.OnC_ThaoThu_LyDoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_ThaoThu_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> C_ThaoThu_Date
+		{
+			get
+			{
+				return this._C_ThaoThu_Date;
+			}
+			set
+			{
+				if ((this._C_ThaoThu_Date != value))
+				{
+					this.OnC_ThaoThu_DateChanging(value);
+					this.SendPropertyChanging();
+					this._C_ThaoThu_Date = value;
+					this.SendPropertyChanged("C_ThaoThu_Date");
+					this.OnC_ThaoThu_DateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_TrinhDuyet", DbType="Bit")]
+		public System.Nullable<bool> C_TrinhDuyet
+		{
+			get
+			{
+				return this._C_TrinhDuyet;
+			}
+			set
+			{
+				if ((this._C_TrinhDuyet != value))
+				{
+					this.OnC_TrinhDuyetChanging(value);
+					this.SendPropertyChanging();
+					this._C_TrinhDuyet = value;
+					this.SendPropertyChanged("C_TrinhDuyet");
+					this.OnC_TrinhDuyetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_TrinhDuyet_LyDo", DbType="NVarChar(MAX)")]
+		public string C_TrinhDuyet_LyDo
+		{
+			get
+			{
+				return this._C_TrinhDuyet_LyDo;
+			}
+			set
+			{
+				if ((this._C_TrinhDuyet_LyDo != value))
+				{
+					this.OnC_TrinhDuyet_LyDoChanging(value);
+					this.SendPropertyChanging();
+					this._C_TrinhDuyet_LyDo = value;
+					this.SendPropertyChanged("C_TrinhDuyet_LyDo");
+					this.OnC_TrinhDuyet_LyDoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_TrinhDuyet_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> C_TrinhDuyet_Date
+		{
+			get
+			{
+				return this._C_TrinhDuyet_Date;
+			}
+			set
+			{
+				if ((this._C_TrinhDuyet_Date != value))
+				{
+					this.OnC_TrinhDuyet_DateChanging(value);
+					this.SendPropertyChanging();
+					this._C_TrinhDuyet_Date = value;
+					this.SendPropertyChanged("C_TrinhDuyet_Date");
+					this.OnC_TrinhDuyet_DateChanged();
 				}
 			}
 		}

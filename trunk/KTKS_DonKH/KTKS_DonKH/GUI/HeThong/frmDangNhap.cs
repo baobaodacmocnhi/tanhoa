@@ -12,7 +12,6 @@ namespace KTKS_DonKH.GUI.HeThong
 {
     public partial class frmDangNhap : Form
     {
-        CTaiKhoan _CTaiKhoan = new CTaiKhoan();
         public frmDangNhap()
         {
             InitializeComponent();
@@ -23,13 +22,12 @@ namespace KTKS_DonKH.GUI.HeThong
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
+            CTaiKhoan _CTaiKhoan = new CTaiKhoan();
             if (_CTaiKhoan.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
                 this.Hide();
                 GetLoginResult(true);
             }
-
-
         }
 
         private void frmDangNhap_FormClosed(object sender, FormClosedEventArgs e)

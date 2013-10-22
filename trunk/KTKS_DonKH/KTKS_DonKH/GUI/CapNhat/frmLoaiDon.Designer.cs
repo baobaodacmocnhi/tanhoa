@@ -88,10 +88,10 @@
             this.dgvDSLoaiDon.Location = new System.Drawing.Point(13, 125);
             this.dgvDSLoaiDon.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSLoaiDon.Name = "dgvDSLoaiDon";
-            this.dgvDSLoaiDon.RowHeadersWidth = 20;
-            this.dgvDSLoaiDon.Size = new System.Drawing.Size(372, 196);
+            this.dgvDSLoaiDon.Size = new System.Drawing.Size(395, 196);
             this.dgvDSLoaiDon.TabIndex = 6;
             this.dgvDSLoaiDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDon_CellContentClick);
+            this.dgvDSLoaiDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSLoaiDon_RowPostPaint);
             // 
             // MaLD
             // 
@@ -146,7 +146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 337);
+            this.ClientSize = new System.Drawing.Size(421, 337);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.dgvDSLoaiDon);

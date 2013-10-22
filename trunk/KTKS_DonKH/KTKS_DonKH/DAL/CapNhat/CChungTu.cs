@@ -18,10 +18,10 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (CTaiKhoan.RoleCapNhat)
                 {
-                    BindingSource source = new BindingSource();
-                    var table = from itemCT in db.ChungTus
+                    var query = from itemCT in db.ChungTus
                                 select new { itemCT.MaCT, itemCT.KyHieuCT, itemCT.TenCT, itemCT.ThoiHan };
-                    source.DataSource = table.ToList();
+                    BindingSource source = new BindingSource();
+                    source.DataSource = query.ToList();
                     return source;
                 }
                 else
@@ -48,7 +48,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
-        public void ThemChungTu(ChungTu chungtu)
+        public bool ThemChungTu(ChungTu chungtu)
         {
             try
             {
@@ -63,18 +63,23 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.ChungTus.InsertOnSubmit(chungtu);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
+                return false;
             }
         }
 
-        public void SuaChungTu(ChungTu chungtu)
+        public bool SuaChungTu(ChungTu chungtu)
         {
             try
             {
@@ -84,14 +89,19 @@ namespace KTKS_DonKH.DAL.CapNhat
                     chungtu.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
+                return false;
             }
         }
     }

@@ -45,6 +45,9 @@ namespace KTKS_DonKH
 
         private void ribbtnDangXuat_Click(object sender, EventArgs e)
         {
+            CTaiKhoan _CTaiKhoan = new CTaiKhoan();
+            _CTaiKhoan.DangXuat();
+
             ribbtnDangNhap.Enabled = true;
             ribbtnDangXuat.Enabled = false;
             ribbtnDoiMatKhau.Enabled = false;
@@ -56,6 +59,12 @@ namespace KTKS_DonKH
             }
 
             ribbtnDangNhap_Click(sender, e);  
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CTaiKhoan _CTaiKhoan = new CTaiKhoan();
+            _CTaiKhoan.DangXuat();
         }
 
         private void ribbtnDoiMatKhau_Click(object sender, EventArgs e)
@@ -75,14 +84,16 @@ namespace KTKS_DonKH
 
         private void ribbtnTaiKhoan_Click(object sender, EventArgs e)
         {
+            //foreach (Form item in this.MdiChildren)
+            //{
+            //    if (item.GetType() == typeof(frmTaiKhoan))
+            //    {
+            //        item.Activate();
+            //        return;
+            //    }
+            //}
             foreach (Form item in this.MdiChildren)
-            {
-                if (item.GetType() == typeof(frmTaiKhoan))
-                {
-                    item.Activate();
-                    return;
-                }
-            }
+                item.Close();
             Form frm = new frmTaiKhoan();
             frm.MdiParent = this;
             frm.Show();
@@ -91,13 +102,7 @@ namespace KTKS_DonKH
         private void ribbtnKhachHang_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
-            {
-                if (item.GetType() == typeof(frmTTKH))
-                {
-                    item.Activate();
-                    return;
-                }
-            }
+                item.Close();
             Form frm = new frmTTKH();
             frm.MdiParent = this;
             frm.Show();
@@ -106,13 +111,7 @@ namespace KTKS_DonKH
         private void ribbtnLoaiDonThu_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
-            {
-                if (item.GetType() == typeof(frmLoaiDon))
-                {
-                    item.Activate();
-                    return;
-                }
-            }
+                item.Close();
             Form frm = new frmLoaiDon();
             frm.MdiParent = this;
             frm.Show();
@@ -121,13 +120,7 @@ namespace KTKS_DonKH
         private void ribbtnChungTuMoi_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
-            {
-                if (item.GetType() == typeof(frmChungTu))
-                {
-                    item.Activate();
-                    return;
-                }
-            }
+                item.Close();
             Form frm = new frmChungTu();
             frm.MdiParent = this;
             frm.Show();
@@ -136,13 +129,7 @@ namespace KTKS_DonKH
         private void ribbtnNhanDon_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
-            {
-                if (item.GetType() == typeof(frmNhanDonKH))
-                {
-                    item.Activate();
-                    return;
-                }
-            }
+                item.Close();
             Form frm = new frmNhanDonKH();
             frm.MdiParent = this;
             frm.Show();
@@ -151,17 +138,13 @@ namespace KTKS_DonKH
         private void ribbtnQLDonKH_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
-            {
-                if (item.GetType() == typeof(frmQLDonKH))
-                {
-                    item.Activate();
-                    return;
-                }
-            }
+                item.Close();
             Form frm = new frmQLDonKH();
             frm.MdiParent = this;
             frm.Show();
         }
+
+        
 
         
     }

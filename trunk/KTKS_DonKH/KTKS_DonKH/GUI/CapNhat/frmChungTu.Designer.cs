@@ -131,10 +131,10 @@
             this.ThoiHan});
             this.dgvDSChungTu.Location = new System.Drawing.Point(12, 150);
             this.dgvDSChungTu.Name = "dgvDSChungTu";
-            this.dgvDSChungTu.RowHeadersWidth = 20;
-            this.dgvDSChungTu.Size = new System.Drawing.Size(622, 196);
+            this.dgvDSChungTu.Size = new System.Drawing.Size(644, 196);
             this.dgvDSChungTu.TabIndex = 8;
             this.dgvDSChungTu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSChungTu_CellContentClick);
+            this.dgvDSChungTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSChungTu_RowPostPaint);
             // 
             // MaCT
             // 
@@ -168,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 358);
+            this.ClientSize = new System.Drawing.Size(674, 358);
             this.Controls.Add(this.dgvDSChungTu);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
