@@ -54,7 +54,7 @@
             this.NgayThangVB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiVB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiTrichYeuNoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiGuiDi = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.NoiNhan = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiVBID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiVBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,14 +101,14 @@
             this.NgayThangVB,
             this.LoaiVB,
             this.LoaiTrichYeuNoiDung,
-            this.NoiGuiDi,
+            this.NoiNhan,
             this.ID,
             this.LoaiVBID,
             this.LoaiVBName});
-            this.dgvDSVanThuDi.Location = new System.Drawing.Point(12, 118);
+            this.dgvDSVanThuDi.Location = new System.Drawing.Point(0, 118);
             this.dgvDSVanThuDi.Name = "dgvDSVanThuDi";
             this.dgvDSVanThuDi.RowHeadersWidth = 20;
-            this.dgvDSVanThuDi.Size = new System.Drawing.Size(1342, 557);
+            this.dgvDSVanThuDi.Size = new System.Drawing.Size(1366, 557);
             this.dgvDSVanThuDi.TabIndex = 0;
             this.dgvDSVanThuDi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSVanThu_CellContentClick);
             // 
@@ -175,7 +175,7 @@
             // 
             this.btnXuatFileExcel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXuatFileExcel.ForeColor = System.Drawing.Color.Red;
-            this.btnXuatFileExcel.Location = new System.Drawing.Point(1204, 35);
+            this.btnXuatFileExcel.Location = new System.Drawing.Point(1155, 32);
             this.btnXuatFileExcel.Name = "btnXuatFileExcel";
             this.btnXuatFileExcel.Size = new System.Drawing.Size(150, 33);
             this.btnXuatFileExcel.TabIndex = 4;
@@ -253,19 +253,23 @@
             // 
             // NgayDi
             // 
+            this.NgayDi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.NgayDi.DataPropertyName = "NgayDi";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.NullValue = null;
             this.NgayDi.DefaultCellStyle = dataGridViewCellStyle2;
             this.NgayDi.HeaderText = "Ngày Đi";
             this.NgayDi.Name = "NgayDi";
+            this.NgayDi.Width = 85;
             // 
             // SoDi
             // 
+            this.SoDi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.SoDi.DataPropertyName = "SoDi";
             this.SoDi.HeaderText = "Số Đi";
             this.SoDi.Name = "SoDi";
-            this.SoDi.Width = 170;
+            this.SoDi.Visible = false;
+            this.SoDi.Width = 69;
             // 
             // SoKyHieuVB
             // 
@@ -273,11 +277,11 @@
             this.SoKyHieuVB.DataPropertyName = "SoKyHieuVB";
             this.SoKyHieuVB.HeaderText = "Số Ký Hiệu Văn Bản";
             this.SoKyHieuVB.Name = "SoKyHieuVB";
-            this.SoKyHieuVB.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SoKyHieuVB.Width = 108;
+            this.SoKyHieuVB.Width = 127;
             // 
             // NgayThangVB
             // 
+            this.NgayThangVB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.NgayThangVB.DataPropertyName = "NgayThangVB";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.NullValue = null;
@@ -289,29 +293,29 @@
             // 
             // LoaiVB
             // 
+            this.LoaiVB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.LoaiVB.DataPropertyName = "LoaiVB";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.LoaiVB.DefaultCellStyle = dataGridViewCellStyle4;
             this.LoaiVB.HeaderText = "Loại";
             this.LoaiVB.Name = "LoaiVB";
+            this.LoaiVB.Width = 61;
             // 
             // LoaiTrichYeuNoiDung
             // 
-            this.LoaiTrichYeuNoiDung.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.LoaiTrichYeuNoiDung.DataPropertyName = "LoaiTrichYeuNoiDung";
             this.LoaiTrichYeuNoiDung.HeaderText = "Loại Trích Yếu Nội Dung";
             this.LoaiTrichYeuNoiDung.Name = "LoaiTrichYeuNoiDung";
             this.LoaiTrichYeuNoiDung.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.LoaiTrichYeuNoiDung.Width = 122;
+            this.LoaiTrichYeuNoiDung.Width = 620;
             // 
-            // NoiGuiDi
+            // NoiNhan
             // 
-            this.NoiGuiDi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.NoiGuiDi.DataPropertyName = "NoiGuiDi";
-            this.NoiGuiDi.HeaderText = "Nơi Gửi Đi";
-            this.NoiGuiDi.Name = "NoiGuiDi";
-            this.NoiGuiDi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NoiGuiDi.Width = 108;
+            this.NoiNhan.DataPropertyName = "NoiNhan";
+            this.NoiNhan.HeaderText = "Nơi Gửi Đi";
+            this.NoiNhan.Name = "NoiNhan";
+            this.NoiNhan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NoiNhan.Width = 290;
             // 
             // ID
             // 
@@ -391,7 +395,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThangVB;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVB;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiTrichYeuNoiDung;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn NoiGuiDi;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn NoiNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVBID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVBName;
