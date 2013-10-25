@@ -13,6 +13,7 @@ namespace KTKS_DonKH.GUI.CapNhat
     public partial class frmTTKH : Form
     {
         CTTKH _cTTKH = new CTTKH();
+        CTTKHDate _cTTKHDate = new CTTKHDate();
 
         public frmTTKH()
         {
@@ -25,6 +26,11 @@ namespace KTKS_DonKH.GUI.CapNhat
             this.ControlBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.BringToFront();
+        }
+
+        private void frmTTKH_Load(object sender, EventArgs e)
+        {
+            dgvDSTTKHDate.DataSource = _cTTKHDate.LoadDSTTKhachHangDate();
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -43,7 +49,10 @@ namespace KTKS_DonKH.GUI.CapNhat
             if (txtDuongDan.Text.Trim() != "")
             {
                 _cTTKH.CapNhatTTKH(txtDuongDan.Text.Trim());
+                dgvDSTTKHDate.DataSource = _cTTKHDate.LoadDSTTKhachHangDate();
             }
         }
+
+        
     }
 }

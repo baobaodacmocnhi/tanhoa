@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace KTKS_DonKH.DAL.HeThong
 {
-    class CTaiKhoan
+    class CTaiKhoan : CDAL
     {
         private static string _taiKhoan = "";
         private static string _hoTen = "";
@@ -18,9 +18,7 @@ namespace KTKS_DonKH.DAL.HeThong
         private static bool _roleNhanDonKH = false;
         private static bool _roleQLDonKH = false;
 
-        
-        
-        DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
+        //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
         public static string TaiKhoan
         {
@@ -88,7 +86,7 @@ namespace KTKS_DonKH.DAL.HeThong
                     else
                         _roleQLDonKH = false;
 
-                    db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
+                    //db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     db.SubmitChanges();
                     return true;
                 }
@@ -107,11 +105,11 @@ namespace KTKS_DonKH.DAL.HeThong
 
         public void DangXuat()
         {
-            if (_taiKhoan != "")
-            {
-                db.Users.Single(item => item.TaiKhoan == _taiKhoan).Login = false;
-                db.SubmitChanges();
-            }
+            //if (_taiKhoan != "")
+            //{
+            //    db.Users.Single(item => item.TaiKhoan == _taiKhoan).Login = false;
+            //    db.SubmitChanges();
+            //}
             _taiKhoan = "";
             _hoTen = "";
             _roleTaiKhoan = false;
@@ -200,7 +198,7 @@ namespace KTKS_DonKH.DAL.HeThong
             }
         }
 
-        public void ThemTaiKhoan(User nguoidung)
+        public bool ThemTaiKhoan(User nguoidung)
         {
             try
             {
@@ -226,20 +224,29 @@ namespace KTKS_DonKH.DAL.HeThong
                         }
                         db.SubmitChanges();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
                     }
                     else
+                    {
                         MessageBox.Show("Tài khoản này đã có người sử dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
             }    
         }
 
-        public void XoaTaiKhoan(User nguoidung)
+        public bool XoaTaiKhoan(User nguoidung)
         {
             try
             {
@@ -252,17 +259,23 @@ namespace KTKS_DonKH.DAL.HeThong
                     db.Users.DeleteOnSubmit(nguoidung);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
             }
         }
 
-        public void SuaTaiKhoan(User nguoidung,bool ChangedTaiKhoan)
+        public bool SuaTaiKhoan(User nguoidung,bool ChangedTaiKhoan)
         {
             try
             {
@@ -275,23 +288,33 @@ namespace KTKS_DonKH.DAL.HeThong
                             nguoidung.ModifyBy = CTaiKhoan.TaiKhoan;
                             db.SubmitChanges();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return true;
                         }
                         else
+                        {
                             MessageBox.Show("Tài khoản này đã có người sử dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
                     else
                     {
                         nguoidung.ModifyDate = DateTime.Now;
                         nguoidung.ModifyBy = CTaiKhoan.TaiKhoan;
                         db.SubmitChanges();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
                     }
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
             }
             
         }
@@ -301,7 +324,7 @@ namespace KTKS_DonKH.DAL.HeThong
         /// </summary>
         /// <param name="MaR">int</param>
         /// <param name="Value">true/false</param>
-        public void SuaQuyen(int MaU, int MaR, bool Value)
+        public bool SuaQuyen(int MaU, int MaR, bool Value)
         {
             try
             {
@@ -311,17 +334,23 @@ namespace KTKS_DonKH.DAL.HeThong
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyDate = DateTime.Now;
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
             }
         }
 
-        public void ThayDoiMatKhau(string MatKhauCu, string MatKhauMoi)
+        public bool ThayDoiMatKhau(string MatKhauCu, string MatKhauMoi)
         {
             try
             {
@@ -330,13 +359,19 @@ namespace KTKS_DonKH.DAL.HeThong
                     db.Users.Single(itemTaiKhoan => itemTaiKhoan.TaiKhoan == TaiKhoan).MatKhau = MatKhauMoi;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Mật khẩu cũ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
             }
         }
     }

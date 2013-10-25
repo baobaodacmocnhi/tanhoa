@@ -8,9 +8,9 @@ using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.DAL.CapNhat
 {
-    class CChungTu
+    class CChungTu : CDAL
     {
-        DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
+        //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
         public BindingSource LoadDSChungTu()
         {

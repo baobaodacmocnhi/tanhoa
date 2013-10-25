@@ -32,6 +32,13 @@
             this.txtDuongDan = new System.Windows.Forms.TextBox();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
+            this.dgvDSTTKHDate = new System.Windows.Forms.DataGridView();
+            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModifyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModifyBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSTTKHDate)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +62,7 @@
             // 
             // btnChonFile
             // 
-            this.btnChonFile.Location = new System.Drawing.Point(102, 55);
+            this.btnChonFile.Location = new System.Drawing.Point(101, 48);
             this.btnChonFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnChonFile.Name = "btnChonFile";
             this.btnChonFile.Size = new System.Drawing.Size(90, 30);
@@ -66,7 +73,7 @@
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(253, 55);
+            this.btnCapNhat.Location = new System.Drawing.Point(252, 48);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(100, 30);
             this.btnCapNhat.TabIndex = 3;
@@ -74,19 +81,69 @@
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
-            // frmCapNhatTTKH
+            // dgvDSTTKHDate
+            // 
+            this.dgvDSTTKHDate.AllowUserToAddRows = false;
+            this.dgvDSTTKHDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDSTTKHDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nam,
+            this.Ky,
+            this.Dot,
+            this.ModifyDate,
+            this.ModifyBy});
+            this.dgvDSTTKHDate.Location = new System.Drawing.Point(12, 84);
+            this.dgvDSTTKHDate.Name = "dgvDSTTKHDate";
+            this.dgvDSTTKHDate.Size = new System.Drawing.Size(613, 468);
+            this.dgvDSTTKHDate.TabIndex = 4;
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Nam";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.Name = "Nam";
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            // 
+            // Dot
+            // 
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            // 
+            // ModifyDate
+            // 
+            this.ModifyDate.DataPropertyName = "ModifyDate";
+            this.ModifyDate.HeaderText = "Ngày Cập Nhật";
+            this.ModifyDate.Name = "ModifyDate";
+            this.ModifyDate.Width = 148;
+            // 
+            // ModifyBy
+            // 
+            this.ModifyBy.DataPropertyName = "ModifyBy";
+            this.ModifyBy.HeaderText = "Cập Nhật Bởi";
+            this.ModifyBy.Name = "ModifyBy";
+            this.ModifyBy.Width = 120;
+            // 
+            // frmTTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 97);
+            this.ClientSize = new System.Drawing.Size(639, 570);
+            this.Controls.Add(this.dgvDSTTKHDate);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.btnChonFile);
             this.Controls.Add(this.txtDuongDan);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmCapNhatTTKH";
+            this.Name = "frmTTKH";
             this.Text = "frmCapNhatTTKH";
+            this.Load += new System.EventHandler(this.frmTTKH_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSTTKHDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,5 +155,11 @@
         private System.Windows.Forms.TextBox txtDuongDan;
         private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.Button btnCapNhat;
+        private System.Windows.Forms.DataGridView dgvDSTTKHDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModifyDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModifyBy;
     }
 }

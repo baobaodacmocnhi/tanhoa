@@ -22,6 +22,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CTTKH _cTTKH = new CTTKH();
         string Dot = "";
         string Ky = "";
+        string Nam = "";
 
         public frmNhanDonKH()
         {
@@ -71,6 +72,9 @@ namespace KTKS_DonKH.GUI.KhachHang
             chkCT_GXN2SN.Checked = false;
             chkCT_GDKKD.Checked = false;
             chkCT_GCNDTDHN.Checked = false;
+
+            txtDinhMucSau.Text = "";
+            txtHieuLucTuKy.Text = "";
         }
 
         private void frmNhanDonKH_Load(object sender, EventArgs e)
@@ -113,239 +117,244 @@ namespace KTKS_DonKH.GUI.KhachHang
                     txtDinhMuc.Text = ttkhachhang.TGDM;
                     Dot = ttkhachhang.Dot;
                     Ky = ttkhachhang.Ky;
+                    Nam = ttkhachhang.Nam;
                 }
             }
         }
 
         private void btnInBienNhan_Click(object sender, EventArgs e)
         {
-            DonKH donkh = new DonKH();
-            donkh.MaDon = int.Parse(txtMaDon.Text.Trim());
-            donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
-            donkh.DanhBo = txtDanhBo.Text.Trim();
-            donkh.HopDong = txtHopDong.Text.Trim();
-            donkh.HoTen = txtKhachHang.Text.Trim();
-            donkh.DiaChi = txtDiaChi.Text.Trim();
-            donkh.DienThoai = txtDienThoai.Text.Trim();
-            donkh.GiaBieu = txtGiaBieu.Text.Trim();
-            donkh.DinhMuc = txtDinhMuc.Text.Trim();
-            donkh.Dot = Dot;
-            donkh.Ky = Ky;
-            donkh.NoiDung = txtNoiDung.Text.Trim();
-            donkh.GhiChu = txtGhiChu.Text.Trim();
+            if (cmbLD.SelectedIndex != -1)
+            {
+                DonKH donkh = new DonKH();
+                donkh.MaDon = int.Parse(txtMaDon.Text.Trim());
+                donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
+                donkh.DanhBo = txtDanhBo.Text.Trim();
+                donkh.HopDong = txtHopDong.Text.Trim();
+                donkh.HoTen = txtKhachHang.Text.Trim();
+                donkh.DiaChi = txtDiaChi.Text.Trim();
+                donkh.DienThoai = txtDienThoai.Text.Trim();
+                donkh.GiaBieu = txtGiaBieu.Text.Trim();
+                donkh.DinhMuc = txtDinhMuc.Text.Trim();
+                donkh.Dot = Dot;
+                donkh.Ky = Ky;
+                donkh.Nam = Nam;
+                donkh.NoiDung = txtNoiDung.Text.Trim();
+                donkh.GhiChu = txtGhiChu.Text.Trim();
 
-            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-            dr["MaDon"] = txtMaDon.Text.Trim();
-            dr["TenLD"] = cmbLD.Text;
-            dr["KhachHang"] = txtKhachHang.Text.Trim();
-            dr["DanhBo"] = txtDanhBo.Text.Trim();
-            dr["DiaChi"] = txtDiaChi.Text.Trim();
-            dr["HopDong"] = txtHopDong.Text.Trim();
-            dr["DienThoai"] = txtDienThoai.Text.Trim();
-            if (chkKiemTraDHN.Checked)
-            {
-                donkh.KiemTraDHN = true;
-                dr["KiemTraDHN"] = true;
-            }
-            else
-            {
-                donkh.KiemTraDHN = false;
-                dr["KiemTraDHN"] = false;
-            }
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                dr["MaDon"] = txtMaDon.Text.Trim();
+                dr["TenLD"] = cmbLD.Text;
+                dr["KhachHang"] = txtKhachHang.Text.Trim();
+                dr["DanhBo"] = txtDanhBo.Text.Trim();
+                dr["DiaChi"] = txtDiaChi.Text.Trim();
+                dr["HopDong"] = txtHopDong.Text.Trim();
+                dr["DienThoai"] = txtDienThoai.Text.Trim();
+                if (chkKiemTraDHN.Checked)
+                {
+                    donkh.KiemTraDHN = true;
+                    dr["KiemTraDHN"] = true;
+                }
+                else
+                {
+                    donkh.KiemTraDHN = false;
+                    dr["KiemTraDHN"] = false;
+                }
 
-            if (chkTienNuoc.Checked)
-            {
-                donkh.TienNuoc = true;
-                dr["TienNuoc"] = true;
-            }
-            else
-            {
-                donkh.TienNuoc = false;
-                dr["TienNuoc"] = false;
-            }
+                if (chkTienNuoc.Checked)
+                {
+                    donkh.TienNuoc = true;
+                    dr["TienNuoc"] = true;
+                }
+                else
+                {
+                    donkh.TienNuoc = false;
+                    dr["TienNuoc"] = false;
+                }
 
-            if (chkChiSoNuoc.Checked)
-            {
-                donkh.ChiSoNuoc = true;
-                dr["ChiSoNuoc"] = true;
-            }
-            else
-            {
-                donkh.ChiSoNuoc = false;
-                dr["ChiSoNuoc"] = false;
-            }
+                if (chkChiSoNuoc.Checked)
+                {
+                    donkh.ChiSoNuoc = true;
+                    dr["ChiSoNuoc"] = true;
+                }
+                else
+                {
+                    donkh.ChiSoNuoc = false;
+                    dr["ChiSoNuoc"] = false;
+                }
 
-            if (chkDonGiaNuoc.Checked)
-            {
-                donkh.DonGiaNuoc = true;
-                dr["DonGiaNuoc"] = true;
-            }
-            else
-            {
-                donkh.DonGiaNuoc = false;
-                dr["DonGiaNuoc"] = false;
-            }
+                if (chkDonGiaNuoc.Checked)
+                {
+                    donkh.DonGiaNuoc = true;
+                    dr["DonGiaNuoc"] = true;
+                }
+                else
+                {
+                    donkh.DonGiaNuoc = false;
+                    dr["DonGiaNuoc"] = false;
+                }
 
-            if (chkSangTen.Checked)
-            {
-                donkh.SangTen = true;
-                dr["SangTen"] = true;
-            }
-            else
-            {
-                donkh.SangTen = false;
-                dr["SangTen"] = false;
-            }
+                if (chkSangTen.Checked)
+                {
+                    donkh.SangTen = true;
+                    dr["SangTen"] = true;
+                }
+                else
+                {
+                    donkh.SangTen = false;
+                    dr["SangTen"] = false;
+                }
 
-            if (chkDangKyDM.Checked)
-            {
-                donkh.DangKyDM = true;
-                dr["DangKyDM"] = true;
-            }
-            else
-            {
-                donkh.DangKyDM = false;
-                dr["DangKyDM"] = false;
-            }
+                if (chkDangKyDM.Checked)
+                {
+                    donkh.DangKyDM = true;
+                    dr["DangKyDM"] = true;
+                }
+                else
+                {
+                    donkh.DangKyDM = false;
+                    dr["DangKyDM"] = false;
+                }
 
-            if (chkCatChuyenDM.Checked)
-            {
-                donkh.CatChuyenDM = true;
-                dr["CatChuyenDM"] = true;
-            }
-            else
-            {
-                donkh.CatChuyenDM = false;
-                dr["CatChuyenDM"] = false;
-            }
+                if (chkCatChuyenDM.Checked)
+                {
+                    donkh.CatChuyenDM = true;
+                    dr["CatChuyenDM"] = true;
+                }
+                else
+                {
+                    donkh.CatChuyenDM = false;
+                    dr["CatChuyenDM"] = false;
+                }
 
-            if (chkNuocDuc.Checked)
-            {
-                donkh.NuocDuc = true;
-                dr["NuocDuc"] = true;
-            }
-            else
-            {
-                donkh.NuocDuc = false;
-                dr["NuocDuc"] = false;
-            }
+                if (chkNuocDuc.Checked)
+                {
+                    donkh.NuocDuc = true;
+                    dr["NuocDuc"] = true;
+                }
+                else
+                {
+                    donkh.NuocDuc = false;
+                    dr["NuocDuc"] = false;
+                }
 
-            if (chkLyDoKhac.Checked)
-            {
-                donkh.LoaiKhac = true;
-                dr["LoaiKhac"] = true;
-                donkh.GhiChuLoaiKhac = txtLyDoKhac.Text.Trim();
-                dr["GhiChuLoaiKhac"] = txtLyDoKhac.Text.Trim();
-            }
-            else
-            {
-                donkh.LoaiKhac = false;
-                dr["LoaiKhac"] = false;
-            }
+                if (chkLyDoKhac.Checked)
+                {
+                    donkh.LoaiKhac = true;
+                    dr["LoaiKhac"] = true;
+                    donkh.LyDoLoaiKhac = txtLyDoKhac.Text.Trim();
+                    dr["LyDoLoaiKhac"] = txtLyDoKhac.Text.Trim();
+                }
+                else
+                {
+                    donkh.LoaiKhac = false;
+                    dr["LoaiKhac"] = false;
+                }
 
-            if (chkCT_HoaDon.Checked)
-            {
-                donkh.CT_HoaDon = true;
-                dr["CT_HoaDon"] = true;
-            }
-            else
-            {
-                donkh.CT_HoaDon = false;
-                dr["CT_HoaDon"] = false;
-            }
+                if (chkCT_HoaDon.Checked)
+                {
+                    donkh.CT_HoaDon = true;
+                    dr["CT_HoaDon"] = true;
+                }
+                else
+                {
+                    donkh.CT_HoaDon = false;
+                    dr["CT_HoaDon"] = false;
+                }
 
-            if (chkCT_HK_KT3.Checked)
-            {
-                donkh.CT_HK_KT3 = true;
-                dr["CT_HK_KT3"] = true;
-            }
-            else
-            {
-                donkh.CT_HK_KT3 = false;
-                dr["CT_HK_KT3"] = false;
-            }
+                if (chkCT_HK_KT3.Checked)
+                {
+                    donkh.CT_HK_KT3 = true;
+                    dr["CT_HK_KT3"] = true;
+                }
+                else
+                {
+                    donkh.CT_HK_KT3 = false;
+                    dr["CT_HK_KT3"] = false;
+                }
 
-            if (chkCT_STT_GXNTT.Checked)
-            {
-                donkh.CT_STT_GXNTT = true;
-                dr["CT_STT_GXNTT"] = true;
-            }
-            else
-            {
-                donkh.CT_STT_GXNTT = false;
-                dr["CT_STT_GXNTT"] = false;
-            }
+                if (chkCT_STT_GXNTT.Checked)
+                {
+                    donkh.CT_STT_GXNTT = true;
+                    dr["CT_STT_GXNTT"] = true;
+                }
+                else
+                {
+                    donkh.CT_STT_GXNTT = false;
+                    dr["CT_STT_GXNTT"] = false;
+                }
 
-            if (chkCT_HDTN_CQN.Checked)
-            {
-                donkh.CT_HDTN_CQN = true;
-                dr["CT_HDTN_CQN"] = true;
-            }
-            else
-            {
-                donkh.CT_HDTN_CQN = false;
-                dr["CT_HDTN_CQN"] = false;
-            }
+                if (chkCT_HDTN_CQN.Checked)
+                {
+                    donkh.CT_HDTN_CQN = true;
+                    dr["CT_HDTN_CQN"] = true;
+                }
+                else
+                {
+                    donkh.CT_HDTN_CQN = false;
+                    dr["CT_HDTN_CQN"] = false;
+                }
 
-            if (chkCT_GC_SDSN.Checked)
-            {
-                donkh.CT_GC_SDSN = true;
-                dr["CT_GC_SDSN"] = true;
-            }
-            else
-            {
-                donkh.CT_GC_SDSN = false;
-                dr["CT_GC_SDSN"] = false;
-            }
+                if (chkCT_GC_SDSN.Checked)
+                {
+                    donkh.CT_GC_SDSN = true;
+                    dr["CT_GC_SDSN"] = true;
+                }
+                else
+                {
+                    donkh.CT_GC_SDSN = false;
+                    dr["CT_GC_SDSN"] = false;
+                }
 
-            if (chkCT_GXN2SN.Checked)
-            {
-                donkh.CT_GXN2SN = true;
-                dr["CT_GXN2SN"] = true;
-            }
-            else
-            {
-                donkh.CT_GXN2SN = false;
-                dr["CT_GXN2SN"] = false;
-            }
+                if (chkCT_GXN2SN.Checked)
+                {
+                    donkh.CT_GXN2SN = true;
+                    dr["CT_GXN2SN"] = true;
+                }
+                else
+                {
+                    donkh.CT_GXN2SN = false;
+                    dr["CT_GXN2SN"] = false;
+                }
 
-            if (chkCT_GDKKD.Checked)
-            {
-                donkh.CT_GDKKD = true;
-                dr["CT_GDKKD"] = true;
-            }
-            else
-            {
-                donkh.CT_GDKKD = false;
-                dr["CT_GDKKD"] = false;
-            }
+                if (chkCT_GDKKD.Checked)
+                {
+                    donkh.CT_GDKKD = true;
+                    dr["CT_GDKKD"] = true;
+                }
+                else
+                {
+                    donkh.CT_GDKKD = false;
+                    dr["CT_GDKKD"] = false;
+                }
 
-            if (chkCT_GCNDTDHN.Checked)
-            {
-                donkh.CT_GCNDTDHN = true;
-                dr["CT_GCNDTDHN"] = true;
+                if (chkCT_GCNDTDHN.Checked)
+                {
+                    donkh.CT_GCNDTDHN = true;
+                    dr["CT_GCNDTDHN"] = true;
+                }
+                else
+                {
+                    donkh.CT_GCNDTDHN = false;
+                    dr["CT_GCNDTDHN"] = false;
+                }
+
+                if (!_cDonKH.ThemDonKH(donkh))
+                    return;
+
+                dr["DinhMucSau"] = txtDinhMucSau.Text.Trim();
+                dr["HieuLucTuKy"] = txtHieuLucTuKy.Text.Trim();
+                dr["HoTenNV"] = CTaiKhoan.HoTen;
+                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
+                rptBienNhanDonKH rpt = new rptBienNhanDonKH();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+
+                Clear();
             }
-            else
-            {
-                donkh.CT_GCNDTDHN = false;
-                dr["CT_GCNDTDHN"] = false;
-            }
-
-            if (!_cDonKH.ThemDonKH(donkh))
-                return;
-
-            dr["DM"] = txtDinhMuc.Text.Trim();
-            dr["HoTenNV"] = CTaiKhoan.HoTen;
-            dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
-            rptBienNhanDonKH rpt = new rptBienNhanDonKH();
-            rpt.SetDataSource(dsBaoCao);
-            frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
-
-            Clear();
         }
 
-        
     }
 }
