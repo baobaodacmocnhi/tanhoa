@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.KhachHang
 {
-    partial class frmNhanDonKH
+    partial class frmShowDonKH
     {
         /// <summary>
         /// Required designer variable.
@@ -115,8 +115,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(752, 531);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(752, 492);
+            this.panel1.TabIndex = 1;
             // 
             // txtHieuLucTuKy
             // 
@@ -168,7 +168,6 @@
             this.btnInBienNhan.TabIndex = 16;
             this.btnInBienNhan.Text = "In Biên Nhận";
             this.btnInBienNhan.UseVisualStyleBackColor = true;
-            this.btnInBienNhan.Click += new System.EventHandler(this.btnInBienNhan_Click);
             // 
             // groupBox1
             // 
@@ -192,7 +191,7 @@
             this.chkCT_GCNDTDHN.AutoSize = true;
             this.chkCT_GCNDTDHN.Location = new System.Drawing.Point(480, 85);
             this.chkCT_GCNDTDHN.Name = "chkCT_GCNDTDHN";
-            this.chkCT_GCNDTDHN.Size = new System.Drawing.Size(182, 17);
+            this.chkCT_GCNDTDHN.Size = new System.Drawing.Size(226, 21);
             this.chkCT_GCNDTDHN.TabIndex = 7;
             this.chkCT_GCNDTDHN.Text = "Giấy Ưng Thuận Đứng Tên ĐHN";
             this.chkCT_GCNDTDHN.UseVisualStyleBackColor = true;
@@ -202,7 +201,7 @@
             this.chkCT_GDKKD.AutoSize = true;
             this.chkCT_GDKKD.Location = new System.Drawing.Point(13, 85);
             this.chkCT_GDKKD.Name = "chkCT_GDKKD";
-            this.chkCT_GDKKD.Size = new System.Drawing.Size(150, 17);
+            this.chkCT_GDKKD.Size = new System.Drawing.Size(187, 21);
             this.chkCT_GDKKD.TabIndex = 6;
             this.chkCT_GDKKD.Text = "Giấy Đăng Ký Kinh Doanh";
             this.chkCT_GDKKD.UseVisualStyleBackColor = true;
@@ -212,7 +211,7 @@
             this.chkCT_GXN2SN.AutoSize = true;
             this.chkCT_GXN2SN.Location = new System.Drawing.Point(480, 58);
             this.chkCT_GXN2SN.Name = "chkCT_GXN2SN";
-            this.chkCT_GXN2SN.Size = new System.Drawing.Size(137, 17);
+            this.chkCT_GXN2SN.Size = new System.Drawing.Size(169, 21);
             this.chkCT_GXN2SN.TabIndex = 5;
             this.chkCT_GXN2SN.Text = "Giấy XN 2 Số Nhà Là 1";
             this.chkCT_GXN2SN.UseVisualStyleBackColor = true;
@@ -222,7 +221,7 @@
             this.chkCT_GC_SDSN.AutoSize = true;
             this.chkCT_GC_SDSN.Location = new System.Drawing.Point(243, 58);
             this.chkCT_GC_SDSN.Name = "chkCT_GC_SDSN";
-            this.chkCT_GC_SDSN.Size = new System.Drawing.Size(154, 17);
+            this.chkCT_GC_SDSN.Size = new System.Drawing.Size(187, 21);
             this.chkCT_GC_SDSN.TabIndex = 4;
             this.chkCT_GC_SDSN.Text = "Giấy Cấp hoặc Đổi Số Nhà";
             this.chkCT_GC_SDSN.UseVisualStyleBackColor = true;
@@ -232,7 +231,7 @@
             this.chkCT_HDTN_CQN.AutoSize = true;
             this.chkCT_HDTN_CQN.Location = new System.Drawing.Point(13, 58);
             this.chkCT_HDTN_CQN.Name = "chkCT_HDTN_CQN";
-            this.chkCT_HDTN_CQN.Size = new System.Drawing.Size(161, 17);
+            this.chkCT_HDTN_CQN.Size = new System.Drawing.Size(199, 21);
             this.chkCT_HDTN_CQN.TabIndex = 3;
             this.chkCT_HDTN_CQN.Text = "Hợp Đồng TN hoặc CQ Nhà";
             this.chkCT_HDTN_CQN.UseVisualStyleBackColor = true;
@@ -242,7 +241,7 @@
             this.chkCT_STT_GXNTT.AutoSize = true;
             this.chkCT_STT_GXNTT.Location = new System.Drawing.Point(480, 31);
             this.chkCT_STT_GXNTT.Name = "chkCT_STT_GXNTT";
-            this.chkCT_STT_GXNTT.Size = new System.Drawing.Size(194, 17);
+            this.chkCT_STT_GXNTT.Size = new System.Drawing.Size(240, 21);
             this.chkCT_STT_GXNTT.TabIndex = 2;
             this.chkCT_STT_GXNTT.Text = "Sổ Tạm Trú hoặc Giấy XN Tạm Trú";
             this.chkCT_STT_GXNTT.UseVisualStyleBackColor = true;
@@ -252,7 +251,7 @@
             this.chkCT_HK_KT3.AutoSize = true;
             this.chkCT_HK_KT3.Location = new System.Drawing.Point(243, 31);
             this.chkCT_HK_KT3.Name = "chkCT_HK_KT3";
-            this.chkCT_HK_KT3.Size = new System.Drawing.Size(118, 17);
+            this.chkCT_HK_KT3.Size = new System.Drawing.Size(144, 21);
             this.chkCT_HK_KT3.TabIndex = 1;
             this.chkCT_HK_KT3.Text = "Hộ Khẩu hoặc KT3";
             this.chkCT_HK_KT3.UseVisualStyleBackColor = true;
@@ -262,7 +261,7 @@
             this.chkCT_HoaDon.AutoSize = true;
             this.chkCT_HoaDon.Location = new System.Drawing.Point(13, 31);
             this.chkCT_HoaDon.Name = "chkCT_HoaDon";
-            this.chkCT_HoaDon.Size = new System.Drawing.Size(69, 17);
+            this.chkCT_HoaDon.Size = new System.Drawing.Size(82, 21);
             this.chkCT_HoaDon.TabIndex = 0;
             this.chkCT_HoaDon.Text = "Hóa Đơn";
             this.chkCT_HoaDon.UseVisualStyleBackColor = true;
@@ -420,7 +419,6 @@
             this.txtDanhBo.Name = "txtDanhBo";
             this.txtDanhBo.Size = new System.Drawing.Size(150, 25);
             this.txtDanhBo.TabIndex = 0;
-            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // label2
             // 
@@ -448,7 +446,6 @@
             this.chkLyDoKhac.TabIndex = 12;
             this.chkLyDoKhac.Text = "Lý Do Khác";
             this.chkLyDoKhac.UseVisualStyleBackColor = true;
-            this.chkLyDoKhac.CheckedChanged += new System.EventHandler(this.chkLyDoKhac_CheckedChanged);
             // 
             // chkCatChuyenDM
             // 
@@ -584,7 +581,6 @@
             this.cmbLD.Name = "cmbLD";
             this.cmbLD.Size = new System.Drawing.Size(198, 25);
             this.cmbLD.TabIndex = 0;
-            this.cmbLD.SelectedIndexChanged += new System.EventHandler(this.cmbLD_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -596,18 +592,20 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "                 Loại Đơn                ";
             // 
-            // frmNhanDonKH
+            // frmShowDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(752, 531);
+            this.ClientSize = new System.Drawing.Size(752, 492);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmNhanDonKH";
-            this.Text = "frmNhanDonKH";
-            this.Load += new System.EventHandler(this.frmNhanDonKH_Load);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmShowDonKH";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "frmShowDonKH";
+            this.Load += new System.EventHandler(this.frmShowDonKH_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -622,6 +620,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtHieuLucTuKy;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtDinhMucSau;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox chkNuocDuc;
         private System.Windows.Forms.Button btnInBienNhan;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkCT_GCNDTDHN;
@@ -667,14 +670,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbLD;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkNuocDuc;
-        private System.Windows.Forms.TextBox txtHieuLucTuKy;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtDinhMucSau;
-        private System.Windows.Forms.Label label13;
-
-
-
-
     }
 }

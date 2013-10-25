@@ -8,9 +8,9 @@ using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.DAL.CapNhat
 {
-    class CLoaiDon
+    class CLoaiDon : CDAL
     {
-        DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
+        //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
         /// <summary>
         /// Lấy danh sách loại đơn
@@ -71,6 +71,24 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 return db.LoaiDons.Single(itemLD => itemLD.MaLD == MaLD);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Tên Loại Đơn từ Mã Loại Đơn
+        /// </summary>
+        /// <param name="MaLD"></param>
+        /// <returns></returns>
+        public string getTenLDbyID(int MaLD)
+        {
+            try
+            {
+                return db.LoaiDons.Single(itemLD => itemLD.MaLD == MaLD).TenLD;
             }
             catch (Exception ex)
             {

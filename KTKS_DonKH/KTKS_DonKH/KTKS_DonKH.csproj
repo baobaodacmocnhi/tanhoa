@@ -90,7 +90,10 @@
     <Compile Include="DAL\CapNhat\CChungTu.cs" />
     <Compile Include="DAL\CapNhat\CLoaiDon.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
+    <Compile Include="DAL\CapNhat\CTTKHDate.cs" />
+    <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
+    <Compile Include="DAL\KhachHang\CChuyenDi.cs" />
     <Compile Include="DAL\KhachHang\CDonKH.cs" />
     <Compile Include="Function\CLinQToDataTable.cs" />
     <Compile Include="GUI\BaoCao\frmBaoCao.cs">
@@ -146,6 +149,12 @@
     </Compile>
     <Compile Include="GUI\KhachHang\frmQLDonKH.Designer.cs">
       <DependentUpon>frmQLDonKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmShowDonKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmShowDonKH.Designer.cs">
+      <DependentUpon>frmShowDonKH.cs</DependentUpon>
     </Compile>
     <Compile Include="LinQ\DB_KTKS_DonKH.designer.cs">
       <AutoGen>True</AutoGen>
@@ -209,6 +218,9 @@
     <EmbeddedResource Include="GUI\KhachHang\frmQLDonKH.resx">
       <DependentUpon>frmQLDonKH.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\frmShowDonKH.resx">
+      <DependentUpon>frmShowDonKH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,7 +253,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BUS\" />
+    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoicon.ico" />
