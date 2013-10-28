@@ -25,8 +25,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                     return source;
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                    return null;
+                }
             }
             catch (Exception ex)
             {

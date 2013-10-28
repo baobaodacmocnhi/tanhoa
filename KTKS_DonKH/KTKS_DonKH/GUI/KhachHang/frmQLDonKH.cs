@@ -31,6 +31,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void frmQLDonKH_Load(object sender, EventArgs e)
         {
+            dgvDSDonKH.AutoGenerateColumns = false;
             //dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKH();
             DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSDonKH.Columns["MaChuyen"];
             //cmbColumn.Items.Add("Kiểm Tra Xác Minh");
@@ -56,13 +57,17 @@ namespace KTKS_DonKH.GUI.KhachHang
         private void radAll_CheckedChanged(object sender, EventArgs e)
         {
             if (radAll.Checked)
+            {
                 dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHAll();
+            }
         }
 
         private void radChuDuyet_CheckedChanged(object sender, EventArgs e)
         {
-            if(radChuDuyet.Checked)
+            if (radChuDuyet.Checked)
+            {
                 dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -73,10 +78,18 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (itemRow["MaChuyen"].ToString() != "")
                 {
                     DonKH donkh = _cDonKH.getDonKHbyID(int.Parse(itemRow["MaDon"].ToString()));
-                    donkh.Chuyen = true;
-                    donkh.MaChuyen = itemRow["MaChuyen"].ToString();
-                    donkh.LyDoChuyen = itemRow["LyDoChuyen"].ToString();
-                    _cDonKH.SuaDonKH(donkh);
+                    if (!donkh.Nhan)
+                    {
+                        donkh.Chuyen = true;
+                        donkh.MaChuyen = itemRow["MaChuyen"].ToString();
+                        donkh.LyDoChuyen = itemRow["LyDoChuyen"].ToString();
+                        _cDonKH.SuaDonKH(donkh);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
             }
             if(radAll.Checked)

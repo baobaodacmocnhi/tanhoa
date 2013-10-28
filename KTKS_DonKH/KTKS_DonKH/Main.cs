@@ -10,6 +10,8 @@ using KTKS_DonKH.GUI.HeThong;
 using KTKS_DonKH.DAL.HeThong;
 using KTKS_DonKH.GUI.CapNhat;
 using KTKS_DonKH.GUI.KhachHang;
+using KTKS_DonKH.GUI.KiemTraXacMinh;
+using KTKS_DonKH.GUI.DieuChinhBienDong;
 
 namespace KTKS_DonKH
 {
@@ -140,6 +142,24 @@ namespace KTKS_DonKH
             foreach (Form item in this.MdiChildren)
                 item.Close();
             Form frm = new frmQLDonKH();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void ribbtnDSDonKTXM_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmKTXM();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void ribbtnDSDonDCBD_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmDCBD();
             frm.MdiParent = this;
             frm.Show();
         }

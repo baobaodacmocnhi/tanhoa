@@ -131,6 +131,12 @@ namespace KTKS_DonKH.GUI.HeThong
                         case "QQLDonKH":
                             MaR = 4;
                             break;
+                        case "QKTXM":
+                            MaR = 5;
+                            break;
+                        case "QDCBD":
+                            MaR = 6;
+                            break;
                     }
                     bool ischecked = false;
                     if (bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)

@@ -73,7 +73,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 where itemDonKH.Chuyen == false
-                                select new 
+                                select new
                                 {
                                     itemDonKH.MaDon,
                                     itemLoaiDon.TenLD,
@@ -91,8 +91,10 @@ namespace KTKS_DonKH.DAL.KhachHang
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                    return null;
+                }
             }
             catch (Exception ex)
             {
@@ -124,8 +126,10 @@ namespace KTKS_DonKH.DAL.KhachHang
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                    return null;
+                }
             }
             catch (Exception ex)
             {
@@ -155,6 +159,27 @@ namespace KTKS_DonKH.DAL.KhachHang
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm Tra đơn đó có được nhận hay chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns></returns>
+        public bool CheckNhan(int MaDon)
+        {
+            try
+            {
+                if (db.DonKHs.Any(itemDonKH => itemDonKH.Nhan == true))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
