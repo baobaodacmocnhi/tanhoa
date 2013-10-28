@@ -17,6 +17,8 @@ namespace KTKS_DonKH.DAL.HeThong
         private static bool _roleCapNhat = false;
         private static bool _roleNhanDonKH = false;
         private static bool _roleQLDonKH = false;
+        private static bool _roleKTXM = false;
+        private static bool _roleDCBD = false;
 
         //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
@@ -49,6 +51,16 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             get { return CTaiKhoan._roleQLDonKH; }
             set { CTaiKhoan._roleQLDonKH = value; }
+        }
+        public static bool RoleKTXM
+        {
+            get { return CTaiKhoan._roleKTXM; }
+            set { CTaiKhoan._roleKTXM = value; }
+        }
+        public static bool RoleDCBD
+        {
+            get { return CTaiKhoan._roleDCBD; }
+            set { CTaiKhoan._roleDCBD = value; }
         }
 
         /// <summary>
@@ -85,7 +97,16 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleQLDonKH = true;
                     else
                         _roleQLDonKH = false;
-
+                    //Mã Role Kiểm Tra Xác Minh là 5
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 5).CapQuyen == true)
+                        _roleKTXM = true;
+                    else
+                        _roleKTXM = false;
+                    //Mã Role Điều Chỉnh Biến Động là 6
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 6).CapQuyen == true)
+                        _roleDCBD = true;
+                    else
+                        _roleDCBD = false;
                     //db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     db.SubmitChanges();
                     return true;
@@ -116,6 +137,8 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleCapNhat = false;
             _roleNhanDonKH = false;
             _roleQLDonKH = false;
+            _roleKTXM = false;
+            _roleDCBD = false;
         }
 
         /// <summary>
@@ -147,6 +170,8 @@ namespace KTKS_DonKH.DAL.HeThong
                     table.Columns.Add("QCapNhat", typeof(bool));
                     table.Columns.Add("QNhanDonKH", typeof(bool));
                     table.Columns.Add("QQLDonKH", typeof(bool));
+                    table.Columns.Add("QKTXM", typeof(bool));
+                    table.Columns.Add("QDCBD", typeof(bool));
 
                     foreach (var itemTK in taikhoans)
                     {
@@ -159,12 +184,15 @@ namespace KTKS_DonKH.DAL.HeThong
                         //MaR=2 => quyền Cập Nhật
                         //MaR=3 => quyền Nhận Đơn Khách Hàng
                         //MaR=4 => quyền Quản Lý Đơn Khách Hàng
-
+                        //MaR=5 => quyền Kiểm Tra Xác Minh
+                        //MaR=6 => quyền Điều Chỉnh Biến Động
                         table.Rows.Add(itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 3).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 4).CapQuyen
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 4).CapQuyen,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 5).CapQuyen,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 6).CapQuyen
                                         );
                     }
                     return table;
@@ -215,7 +243,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         db.Users.InsertOnSubmit(nguoidung);
                         //Cấp quyền mặc định = False
                         //i tương ứng với số quyền trong bảng DetailRole
-                        for (int i = 1; i <= 4; i++)
+                        for (int i = 1; i <= 6; i++)
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;

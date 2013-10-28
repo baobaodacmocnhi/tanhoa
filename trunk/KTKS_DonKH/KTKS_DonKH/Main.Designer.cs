@@ -51,13 +51,13 @@
             this.StripStatus_TaiKhoan = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonTab4 = new System.Windows.Forms.RibbonTab();
-            this.ribbonTab5 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnDSDonKTXM = new System.Windows.Forms.RibbonButton();
+            this.ribbonTab5 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnDSDonDCBD = new System.Windows.Forms.RibbonButton();
+            this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -225,6 +225,46 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
+            // ribbonTab4
+            // 
+            this.ribbonTab4.Panels.Add(this.ribbonPanel5);
+            this.ribbonTab4.Text = "Kiểm Tra Xác Minh";
+            // 
+            // ribbonPanel5
+            // 
+            this.ribbonPanel5.ButtonMoreEnabled = false;
+            this.ribbonPanel5.ButtonMoreVisible = false;
+            this.ribbonPanel5.Items.Add(this.ribbtnDSDonKTXM);
+            this.ribbonPanel5.Text = "";
+            // 
+            // ribbtnDSDonKTXM
+            // 
+            this.ribbtnDSDonKTXM.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDSDonKTXM.MinimumSize = new System.Drawing.Size(100, 0);
+            this.ribbtnDSDonKTXM.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonKTXM.SmallImage")));
+            this.ribbtnDSDonKTXM.Text = "Danh Sách Đơn";
+            this.ribbtnDSDonKTXM.Click += new System.EventHandler(this.ribbtnDSDonKTXM_Click);
+            // 
+            // ribbonTab5
+            // 
+            this.ribbonTab5.Panels.Add(this.ribbonPanel6);
+            this.ribbonTab5.Text = "Điều Chỉnh Biến Động";
+            // 
+            // ribbonPanel6
+            // 
+            this.ribbonPanel6.ButtonMoreEnabled = false;
+            this.ribbonPanel6.ButtonMoreVisible = false;
+            this.ribbonPanel6.Items.Add(this.ribbtnDSDonDCBD);
+            this.ribbonPanel6.Text = "";
+            // 
+            // ribbtnDSDonDCBD
+            // 
+            this.ribbtnDSDonDCBD.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDSDonDCBD.MinimumSize = new System.Drawing.Size(100, 0);
+            this.ribbtnDSDonDCBD.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonDCBD.SmallImage")));
+            this.ribbtnDSDonDCBD.Text = "Danh Sách Đơn";
+            this.ribbtnDSDonDCBD.Click += new System.EventHandler(this.ribbtnDSDonDCBD_Click);
+            // 
             // ribbon1
             // 
             this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -254,44 +294,6 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbonTab4
-            // 
-            this.ribbonTab4.Panels.Add(this.ribbonPanel5);
-            this.ribbonTab4.Text = "Kiểm Tra Xác Minh";
-            // 
-            // ribbonTab5
-            // 
-            this.ribbonTab5.Panels.Add(this.ribbonPanel6);
-            this.ribbonTab5.Text = "Điều Chỉnh Biến Động";
-            // 
-            // ribbonPanel5
-            // 
-            this.ribbonPanel5.ButtonMoreEnabled = false;
-            this.ribbonPanel5.ButtonMoreVisible = false;
-            this.ribbonPanel5.Items.Add(this.ribbtnDSDonKTXM);
-            this.ribbonPanel5.Text = "";
-            // 
-            // ribbtnDSDonKTXM
-            // 
-            this.ribbtnDSDonKTXM.Image = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonKTXM.Image")));
-            this.ribbtnDSDonKTXM.MinimumSize = new System.Drawing.Size(100, 0);
-            this.ribbtnDSDonKTXM.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonKTXM.SmallImage")));
-            this.ribbtnDSDonKTXM.Text = "Danh Sách Đơn";
-            // 
-            // ribbonPanel6
-            // 
-            this.ribbonPanel6.ButtonMoreEnabled = false;
-            this.ribbonPanel6.ButtonMoreVisible = false;
-            this.ribbonPanel6.Items.Add(this.ribbtnDSDonDCBD);
-            this.ribbonPanel6.Text = "";
-            // 
-            // ribbtnDSDonDCBD
-            // 
-            this.ribbtnDSDonDCBD.Image = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonDCBD.Image")));
-            this.ribbtnDSDonDCBD.MinimumSize = new System.Drawing.Size(100, 0);
-            this.ribbtnDSDonDCBD.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonDCBD.SmallImage")));
-            this.ribbtnDSDonDCBD.Text = "Danh Sách Đơn";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,6 +306,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 700);
             this.Name = "Main";
             this.Text = "Chương trình Quản Lý Đơn Từ Khách Hàng";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.statusStrip1.ResumeLayout(false);

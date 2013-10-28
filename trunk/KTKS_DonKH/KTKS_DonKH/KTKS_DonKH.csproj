@@ -95,6 +95,7 @@
     <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
     <Compile Include="DAL\KhachHang\CChuyenDi.cs" />
     <Compile Include="DAL\KhachHang\CDonKH.cs" />
+    <Compile Include="DAL\KiemTraXacMinh\CKTXM.cs" />
     <Compile Include="Function\CLinQToDataTable.cs" />
     <Compile Include="GUI\BaoCao\frmBaoCao.cs">
       <SubType>Form</SubType>
@@ -119,6 +120,12 @@
     </Compile>
     <Compile Include="GUI\CapNhat\frmTTKH.Designer.cs">
       <DependentUpon>frmTTKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDCBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDCBD.Designer.cs">
+      <DependentUpon>frmDCBD.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HeThong\frmDangNhap.cs">
       <SubType>Form</SubType>
@@ -155,6 +162,12 @@
     </Compile>
     <Compile Include="GUI\KhachHang\frmShowDonKH.Designer.cs">
       <DependentUpon>frmShowDonKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\KiemTraXacMinh\frmKTXM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KiemTraXacMinh\frmKTXM.Designer.cs">
+      <DependentUpon>frmKTXM.cs</DependentUpon>
     </Compile>
     <Compile Include="LinQ\DB_KTKS_DonKH.designer.cs">
       <AutoGen>True</AutoGen>
@@ -220,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmShowDonKH.resx">
       <DependentUpon>frmShowDonKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KiemTraXacMinh\frmKTXM.resx">
+      <DependentUpon>frmKTXM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

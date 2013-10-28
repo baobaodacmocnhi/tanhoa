@@ -23,5 +23,23 @@ namespace KTKS_DonKH.DAL.KhachHang
                 return null;
             }
         }
+
+        /// <summary>
+        /// Load Danh Sách trong bảng Chuyển Đi trừ MaChuyen truyền vào
+        /// </summary>
+        /// <param name="MaChuyen">giá trị truyền vào cần loại trừ</param>
+        /// <returns></returns>
+        public List<ChuyenDi> LoadDSChuyenDi(string MaChuyen)
+        {
+            try
+            {
+                return db.ChuyenDis.Where(itemCD => itemCD.MaChuyen != MaChuyen).OrderBy(itemCD => itemCD.STT).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

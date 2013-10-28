@@ -46,6 +46,8 @@
             this.QCapNhat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QNhanDonKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QQLDonKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.QKTXM = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.QDCBD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,7 +147,9 @@
             this.QTaiKhoan,
             this.QCapNhat,
             this.QNhanDonKH,
-            this.QQLDonKH});
+            this.QQLDonKH,
+            this.QKTXM,
+            this.QDCBD});
             this.dgvDSTaiKhoan.Location = new System.Drawing.Point(13, 158);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTaiKhoan.MultiSelect = false;
@@ -226,6 +230,18 @@
             this.QQLDonKH.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.QQLDonKH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // QKTXM
+            // 
+            this.QKTXM.DataPropertyName = "QKTXM";
+            this.QKTXM.HeaderText = "Q.Kiểm Tra Xác Minh";
+            this.QKTXM.Name = "QKTXM";
+            // 
+            // QDCBD
+            // 
+            this.QDCBD.DataPropertyName = "QDCBD";
+            this.QDCBD.HeaderText = "Q.Điều Chỉnh Biến Động";
+            this.QDCBD.Name = "QDCBD";
+            // 
             // frmTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -272,5 +288,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn QCapNhat;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QNhanDonKH;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QQLDonKH;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn QKTXM;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn QDCBD;
     }
 }
