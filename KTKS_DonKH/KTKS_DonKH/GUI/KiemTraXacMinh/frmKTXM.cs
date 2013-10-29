@@ -98,10 +98,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
         }
 
-        private void dgvDSKTXM_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSKTXM_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSKTXM["MaDon", e.RowIndex].Value.ToString())));
-            frm.ShowDialog();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSKTXM["MaDon", e.RowIndex].Value.ToString())));
+                frm.ShowDialog();
+            }
         }
 
         
