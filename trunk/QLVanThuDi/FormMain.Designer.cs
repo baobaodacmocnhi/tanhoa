@@ -307,12 +307,12 @@
             this.LoaiTrichYeuNoiDung.HeaderText = "Loại Trích Yếu Nội Dung";
             this.LoaiTrichYeuNoiDung.Name = "LoaiTrichYeuNoiDung";
             this.LoaiTrichYeuNoiDung.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.LoaiTrichYeuNoiDung.Width = 620;
+            this.LoaiTrichYeuNoiDung.Width = 650;
             // 
             // NoiNhan
             // 
             this.NoiNhan.DataPropertyName = "NoiNhan";
-            this.NoiNhan.HeaderText = "Nơi Gửi Đi";
+            this.NoiNhan.HeaderText = "Nơi Nhận";
             this.NoiNhan.Name = "NoiNhan";
             this.NoiNhan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.NoiNhan.Width = 290;
