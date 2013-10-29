@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.dgvDSDonKH = new System.Windows.Forms.DataGridView();
+            this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,8 +38,6 @@
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLuu = new System.Windows.Forms.Button();
             this.radAll = new System.Windows.Forms.RadioButton();
             this.radChuDuyet = new System.Windows.Forms.RadioButton();
@@ -49,22 +49,36 @@
             this.dgvDSDonKH.AllowUserToAddRows = false;
             this.dgvDSDonKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDonKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaChuyen,
+            this.LyDoChuyen,
             this.MaDon,
             this.TenLD,
             this.CreateDate,
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
-            this.NoiDung,
-            this.MaChuyen,
-            this.LyDoChuyen});
+            this.NoiDung});
             this.dgvDSDonKH.Location = new System.Drawing.Point(0, 67);
             this.dgvDSDonKH.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSDonKH.Name = "dgvDSDonKH";
-            this.dgvDSDonKH.Size = new System.Drawing.Size(1362, 490);
+            this.dgvDSDonKH.Size = new System.Drawing.Size(1615, 470);
             this.dgvDSDonKH.TabIndex = 0;
-            this.dgvDSDonKH.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSDonKH_CellDoubleClick);
+            this.dgvDSDonKH.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSDonKH_CellMouseClick);
             this.dgvDSDonKH.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonKH_RowPostPaint);
+            // 
+            // MaChuyen
+            // 
+            this.MaChuyen.DataPropertyName = "MaChuyen";
+            this.MaChuyen.HeaderText = "Chuyển Đi";
+            this.MaChuyen.Name = "MaChuyen";
+            this.MaChuyen.Width = 150;
+            // 
+            // LyDoChuyen
+            // 
+            this.LyDoChuyen.DataPropertyName = "LyDoChuyen";
+            this.LyDoChuyen.HeaderText = "Ly Do Chuyển";
+            this.LyDoChuyen.Name = "LyDoChuyen";
+            this.LyDoChuyen.Width = 250;
             // 
             // MaDon
             // 
@@ -72,7 +86,7 @@
             this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             this.MaDon.ReadOnly = true;
-            this.MaDon.Width = 60;
+            this.MaDon.Width = 90;
             // 
             // TenLD
             // 
@@ -104,7 +118,7 @@
             this.HoTen.HeaderText = "Khách Hàng";
             this.HoTen.Name = "HoTen";
             this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 200;
+            this.HoTen.Width = 250;
             // 
             // DiaChi
             // 
@@ -112,7 +126,7 @@
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 200;
+            this.DiaChi.Width = 250;
             // 
             // NoiDung
             // 
@@ -121,20 +135,6 @@
             this.NoiDung.Name = "NoiDung";
             this.NoiDung.ReadOnly = true;
             this.NoiDung.Width = 250;
-            // 
-            // MaChuyen
-            // 
-            this.MaChuyen.DataPropertyName = "MaChuyen";
-            this.MaChuyen.HeaderText = "Chuyển Đi";
-            this.MaChuyen.Name = "MaChuyen";
-            this.MaChuyen.Width = 150;
-            // 
-            // LyDoChuyen
-            // 
-            this.LyDoChuyen.DataPropertyName = "LyDoChuyen";
-            this.LyDoChuyen.HeaderText = "Ly Do Chuyển";
-            this.LyDoChuyen.Name = "LyDoChuyen";
-            this.LyDoChuyen.Width = 127;
             // 
             // btnLuu
             // 
@@ -173,6 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 562);
             this.Controls.Add(this.radChuDuyet);
             this.Controls.Add(this.radAll);
@@ -192,6 +193,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDSDonKH;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.RadioButton radAll;
+        private System.Windows.Forms.RadioButton radChuDuyet;
+        private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
@@ -199,11 +205,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyen;
-        private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.RadioButton radAll;
-        private System.Windows.Forms.RadioButton radChuDuyet;
 
 
     }

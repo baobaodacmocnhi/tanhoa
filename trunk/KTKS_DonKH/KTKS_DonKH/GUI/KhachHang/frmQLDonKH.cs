@@ -98,10 +98,13 @@ namespace KTKS_DonKH.GUI.KhachHang
                 dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
         }
 
-        private void dgvDSDonKH_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSDonKH_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSDonKH["MaDon", e.RowIndex].Value.ToString())));
-            frm.ShowDialog();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSDonKH["MaDon", e.RowIndex].Value.ToString())));
+                frm.ShowDialog();
+            }
         }
     }
 }
