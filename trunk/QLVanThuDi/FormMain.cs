@@ -29,7 +29,7 @@ namespace QLVanThu
 
         private void LoadDSVanThuDiFilter()
         {
-            string expression = String.Format("(NgayDi like '%{0}%' or SoDi like '%{0}%' or SoKyHieuVB like '%{0}%' or LoaiTrichYeuNoiDung like '%{0}%')", txtNoiDungTimKiem.Text.Trim());
+            string expression = String.Format("(NgayThangVB like '%{0}%' or SoKyHieuVB like '%{0}%' or LoaiTrichYeuNoiDung like '%{0}%')", txtNoiDungTimKiem.Text.Trim());
             //if (chkCongVanDen.Checked)
             //    expression = "LoaiVBGID=3 and " + expression;
             //else
@@ -69,8 +69,8 @@ namespace QLVanThu
 
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
-            cl1.Value2 = "Ngày Đi";
-            cl1.ColumnWidth = 12;
+            cl1.Value2 = "Ngày Tháng Văn Bản";
+            cl1.ColumnWidth = 18;
             
             Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "C3");
             cl2.Value2 = "Số Ký Hiệu A";
@@ -118,7 +118,7 @@ namespace QLVanThu
                 //{
                 //    arr[r, c] = dr[c];
                 //}
-                arr[r, 0] = dr["NgayDi"];
+                arr[r, 0] = dr["NgayThangVB"];
                 string[] SoKyHieuDatas = dr["SoKyHieuVB"].ToString().Split('/');
                 string[] NoiThaoDatas = dr["SoKyHieuVB"].ToString().Split('-');
                 arr[r, 1] = SoKyHieuDatas[0];

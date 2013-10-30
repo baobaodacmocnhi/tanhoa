@@ -34,9 +34,9 @@ namespace QLVanThu.DAL
             //return CLinQToDataTable.LINQToDataTable(vanthus);
 
             DataTable table = new DataTable();
-            string sql = "select convert(varchar(10),CreatedDate,103) as NgayDi,DocumentOrderNo as SoDi,OrganizationReceivers2 as NoiNhan,DocumentNo as SoKyHieuVB,";
-            sql += "convert(varchar(10),IssuedDate,103) as NgayThangVB,t.Notation as LoaiVB,DocumentSummary as LoaiTrichYeuNoiDung,DocumentID as ID,d.BookID as LoaiVBGID,b.Name as LoaiVBGName ";
-            sql += "from WF_Books b,WF_Outgoing_Docs d,WF_Doc_Types t where b.BookID=d.BookID and d.TypeID=t.TypeID order by CreatedDate desc,DocumentOrderNo desc";
+            string sql = "select convert(varchar(10),IssuedDate,103) as NgayThangVB,DocumentOrderNo as SoDi,OrganizationReceivers2 as NoiNhan,DocumentNo as SoKyHieuVB,";
+            sql += "convert(varchar(10),CreatedDate,103) as NgayNhap,t.Notation as LoaiVB,DocumentSummary as LoaiTrichYeuNoiDung,DocumentID as ID,d.BookID as LoaiVBGID,b.Name as LoaiVBGName ";
+            sql += "from WF_Books b,WF_Outgoing_Docs d,WF_Doc_Types t where b.BookID=d.BookID and d.TypeID=t.TypeID order by IssuedDate desc,DocumentOrderNo desc";
             try 
             {
                 if (db.Connection.State == ConnectionState.Open)
@@ -61,9 +61,9 @@ namespace QLVanThu.DAL
         public DataTable LoadDSVanThuDiDateToDate(string tungay,string denngay)
         {
             DataTable table = new DataTable();
-            string sql = "select convert(varchar(10),CreatedDate,103) as NgayDi,DocumentOrderNo as SoDi,OrganizationReceivers2 as NoiNhan,DocumentNo as SoKyHieuVB,";
-            sql += "convert(varchar(10),IssuedDate,103) as NgayThangVB,t.Notation as LoaiVB,DocumentSummary as LoaiTrichYeuNoiDung,DocumentID as ID,d.BookID as LoaiVBGID,b.Name as LoaiVBGName ";
-            sql += "from WF_Books b,WF_Outgoing_Docs d,WF_Doc_Types t where CreatedDate between '" + tungay + "' and '" + denngay + "' and b.BookID=d.BookID and d.TypeID=t.TypeID order by CreatedDate desc,DocumentOrderNo desc";
+            string sql = "select convert(varchar(10),IssuedDate,103) as NgayThangVB,DocumentOrderNo as SoDi,OrganizationReceivers2 as NoiNhan,DocumentNo as SoKyHieuVB,";
+            sql += "convert(varchar(10),CreatedDate,103) as NgayNhap,t.Notation as LoaiVB,DocumentSummary as LoaiTrichYeuNoiDung,DocumentID as ID,d.BookID as LoaiVBGID,b.Name as LoaiVBGName ";
+            sql += "from WF_Books b,WF_Outgoing_Docs d,WF_Doc_Types t where IssuedDate between '" + tungay + "' and '" + denngay + "' and b.BookID=d.BookID and d.TypeID=t.TypeID order by IssuedDate desc,DocumentOrderNo desc";
             try
             {
                 if (db.Connection.State == ConnectionState.Open)
