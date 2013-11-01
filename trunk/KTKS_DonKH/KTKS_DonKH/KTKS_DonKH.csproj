@@ -88,11 +88,13 @@
       <DependentUpon>rptHeader.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DAL\CapNhat\CChungTu.cs" />
+    <Compile Include="DAL\CapNhat\CChiNhanh.cs" />
+    <Compile Include="DAL\CapNhat\CLoaiChungTu.cs" />
     <Compile Include="DAL\CapNhat\CLoaiDon.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
     <Compile Include="DAL\CapNhat\CTTKHDate.cs" />
     <Compile Include="DAL\CDAL.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CDCBD.cs" />
     <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
     <Compile Include="DAL\KhachHang\CChuyenDi.cs" />
     <Compile Include="DAL\KhachHang\CDonKH.cs" />
@@ -104,11 +106,17 @@
     <Compile Include="GUI\BaoCao\frmBaoCao.Designer.cs">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmChungTu.cs">
+    <Compile Include="GUI\CapNhat\frmChiNhanh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CapNhat\frmChungTu.Designer.cs">
-      <DependentUpon>frmChungTu.cs</DependentUpon>
+    <Compile Include="GUI\CapNhat\frmChiNhanh.Designer.cs">
+      <DependentUpon>frmChiNhanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmLoaiChungTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmLoaiChungTu.Designer.cs">
+      <DependentUpon>frmLoaiChungTu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CapNhat\frmLoaiDon.cs">
       <SubType>Form</SubType>
@@ -127,6 +135,12 @@
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmDCBD.Designer.cs">
       <DependentUpon>frmDCBD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDSDCBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDSDCBD.Designer.cs">
+      <DependentUpon>frmDSDCBD.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HeThong\frmDangNhap.cs">
       <SubType>Form</SubType>
@@ -208,8 +222,11 @@
     <EmbeddedResource Include="GUI\BaoCao\frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CapNhat\frmChungTu.resx">
-      <DependentUpon>frmChungTu.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\CapNhat\frmChiNhanh.resx">
+      <DependentUpon>frmChiNhanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CapNhat\frmLoaiChungTu.resx">
+      <DependentUpon>frmLoaiChungTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CapNhat\frmLoaiDon.resx">
       <DependentUpon>frmLoaiDon.cs</DependentUpon>
@@ -219,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDCBD.resx">
       <DependentUpon>frmDCBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDSDCBD.resx">
+      <DependentUpon>frmDSDCBD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>

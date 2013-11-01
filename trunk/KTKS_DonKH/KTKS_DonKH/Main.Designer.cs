@@ -41,6 +41,7 @@
             this.ribbtnLoaiDonThu = new System.Windows.Forms.RibbonButton();
             this.ribbtnChungTuMoi = new System.Windows.Forms.RibbonButton();
             this.ribbtnKhachHang = new System.Windows.Forms.RibbonButton();
+            this.ribbtnChiNhanh = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
@@ -129,6 +130,7 @@
             this.ribbonPanel3.Items.Add(this.ribbtnLoaiDonThu);
             this.ribbonPanel3.Items.Add(this.ribbtnChungTuMoi);
             this.ribbonPanel3.Items.Add(this.ribbtnKhachHang);
+            this.ribbonPanel3.Items.Add(this.ribbtnChiNhanh);
             this.ribbonPanel3.Text = "Thông Tin";
             // 
             // ribbtnLoaiDonThu
@@ -154,6 +156,14 @@
             this.ribbtnKhachHang.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnKhachHang.SmallImage")));
             this.ribbtnKhachHang.Text = "Khách Hàng";
             this.ribbtnKhachHang.Click += new System.EventHandler(this.ribbtnKhachHang_Click);
+            // 
+            // ribbtnChiNhanh
+            // 
+            this.ribbtnChiNhanh.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnChiNhanh.MinimumSize = new System.Drawing.Size(70, 0);
+            this.ribbtnChiNhanh.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnChiNhanh.SmallImage")));
+            this.ribbtnChiNhanh.Text = "Chi Nhánh";
+            this.ribbtnChiNhanh.Click += new System.EventHandler(this.ribbtnChiNhanh_Click);
             // 
             // ribbonTab3
             // 
@@ -306,7 +316,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 700);
             this.Name = "Main";
             this.Text = "Chương trình Quản Lý Đơn Từ Khách Hàng";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.statusStrip1.ResumeLayout(false);
@@ -347,6 +356,7 @@
         private System.Windows.Forms.RibbonButton ribbtnDSDonKTXM;
         private System.Windows.Forms.RibbonPanel ribbonPanel6;
         private System.Windows.Forms.RibbonButton ribbtnDSDonDCBD;
+        private System.Windows.Forms.RibbonButton ribbtnChiNhanh;
     }
 }
 

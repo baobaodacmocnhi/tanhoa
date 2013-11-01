@@ -87,6 +87,7 @@
             this.TenLD});
             this.dgvDSLoaiDon.Location = new System.Drawing.Point(13, 125);
             this.dgvDSLoaiDon.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDSLoaiDon.MultiSelect = false;
             this.dgvDSLoaiDon.Name = "dgvDSLoaiDon";
             this.dgvDSLoaiDon.Size = new System.Drawing.Size(395, 196);
             this.dgvDSLoaiDon.TabIndex = 6;

@@ -11,12 +11,12 @@ using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.CapNhat
 {
-    public partial class frmChungTu : Form
+    public partial class frmLoaiChungTu : Form
     {
         int selectedindex = -1;
-        CChungTu _cCapNhatChungTu = new CChungTu();
+        CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
 
-        public frmChungTu()
+        public frmLoaiChungTu()
         {
             InitializeComponent();
         }
@@ -31,29 +31,31 @@ namespace KTKS_DonKH.GUI.CapNhat
 
         public void Clear()
         {
-            txtKyHieuCT.Text = "";
-            txtTenCT.Text = "";
+            txtKyHieuLCT.Text = "";
+            txtTenLCT.Text = "";
             txtThoiHan.Text = "";
             selectedindex = -1;
-            dgvDSChungTu.DataSource = _cCapNhatChungTu.LoadDSChungTu().DataSource;
+            dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu().DataSource;
         }
 
         private void frmCapNhatChungTu_Load(object sender, EventArgs e)
         {
-            dgvDSChungTu.DataSource = _cCapNhatChungTu.LoadDSChungTu().DataSource;
+            dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu().DataSource;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtKyHieuCT.Text.Trim() != "" && txtTenCT.Text.Trim() != "" && txtThoiHan.Text.Trim() != "")
+            if (txtKyHieuLCT.Text.Trim() != "" && txtTenLCT.Text.Trim() != "")
             {
-                ChungTu chungtu = new ChungTu();
-                chungtu.KyHieuCT = txtKyHieuCT.Text.Trim();
-                chungtu.TenCT = txtTenCT.Text.Trim();
-                chungtu.ThoiHan = txtThoiHan.Text.Trim();
+                LoaiChungTu loaichungtu = new LoaiChungTu();
+                loaichungtu.KyHieuLCT = txtKyHieuLCT.Text.Trim();
+                loaichungtu.TenLCT = txtTenLCT.Text.Trim();
+                if (txtThoiHan.Text.Trim() != "")
+                    loaichungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                else
+                    loaichungtu.ThoiHan = null;
 
-                _cCapNhatChungTu.ThemChungTu(chungtu);
-
+                _cLoaiChungTu.ThemLoaiChungTu(loaichungtu);
                 Clear();
             }
             else
@@ -64,15 +66,17 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             if (selectedindex != -1)
             {
-                if (txtKyHieuCT.Text.Trim() != "" && txtTenCT.Text.Trim() != "" && txtThoiHan.Text.Trim() != "")
+                if (txtKyHieuLCT.Text.Trim() != "" && txtTenLCT.Text.Trim() != "")
                 {
-                    ChungTu chungtu = _cCapNhatChungTu.getChungTubyID(int.Parse(dgvDSChungTu["MaCT", selectedindex].Value.ToString()));
-                    chungtu.KyHieuCT = txtKyHieuCT.Text.Trim();
-                    chungtu.TenCT = txtTenCT.Text.Trim();
-                    chungtu.ThoiHan = txtThoiHan.Text.Trim();
+                    LoaiChungTu loaichungtu = _cLoaiChungTu.getLoaiChungTubyID(int.Parse(dgvDSChungTu["MaLCT", selectedindex].Value.ToString()));
+                    loaichungtu.KyHieuLCT = txtKyHieuLCT.Text.Trim();
+                    loaichungtu.TenLCT = txtTenLCT.Text.Trim();
+                    if (txtThoiHan.Text.Trim() != "")
+                        loaichungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                    else
+                        loaichungtu.ThoiHan = null;
 
-                    _cCapNhatChungTu.SuaChungTu(chungtu);
-
+                    _cLoaiChungTu.SuaLoaiChungTu(loaichungtu);
                     Clear();
                 }
                 else
@@ -85,8 +89,8 @@ namespace KTKS_DonKH.GUI.CapNhat
             try
             {
                 selectedindex = e.RowIndex;
-                txtKyHieuCT.Text = dgvDSChungTu["KyHieuCT", e.RowIndex].Value.ToString();
-                txtTenCT.Text = dgvDSChungTu["TenCT", e.RowIndex].Value.ToString();
+                txtKyHieuLCT.Text = dgvDSChungTu["KyHieuLCT", e.RowIndex].Value.ToString();
+                txtTenLCT.Text = dgvDSChungTu["TenLCT", e.RowIndex].Value.ToString();
                 txtThoiHan.Text = dgvDSChungTu["ThoiHan", e.RowIndex].Value.ToString();
             }
             catch (Exception)
@@ -100,6 +104,12 @@ namespace KTKS_DonKH.GUI.CapNhat
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void txtThoiHan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true; 
         }
     }
 }

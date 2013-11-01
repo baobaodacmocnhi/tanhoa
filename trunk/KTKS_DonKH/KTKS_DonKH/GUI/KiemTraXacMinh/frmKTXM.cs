@@ -18,6 +18,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CChuyenDi _cChuyenDi = new CChuyenDi();
         CKTXM _cKTXM = new CKTXM();
         CDonKH _cDonKH = new CDonKH();
+        DataTable DSKTXM_Edited = new DataTable();
 
         public frmKTXM()
         {
@@ -64,49 +65,96 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            DataTable table = (DataTable)dgvDSKTXM.DataSource;
-            foreach (DataRow itemRow in table.Rows)
+            if (DSKTXM_Edited != null)
             {
-                if (itemRow["MaChuyen"].ToString() != "")
+                foreach (DataRow itemRow in DSKTXM_Edited.Rows)
                 {
-   
+                    //if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                    //{
                     KTXM ktxm = _cKTXM.getKTXMbyID(int.Parse(itemRow["MaDon"].ToString()));
-                    if(ktxm==null)
+                    if (ktxm == null)
                     {
                         ktxm = new KTXM();
                         ktxm.MaKTXM = int.Parse(itemRow["MaDon"].ToString());
                         ktxm.KetQua = itemRow["KetQua"].ToString();
-                        ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
-                        ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                        _cKTXM.ThemKTXM(ktxm); 
+                        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        {
+                            ktxm.Chuyen = true;
+                            ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
+                            ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        }
+                        _cKTXM.ThemKTXM(ktxm);
+                        ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                        DonKH donkh = _cDonKH.getDonKHbyID(int.Parse(itemRow["MaDon"].ToString()));
+                        donkh.Nhan = true;
+                        _cDonKH.SuaDonKH(donkh);
                     }
                     else
-                    {
-                        ktxm.KetQua = itemRow["KetQua"].ToString();
-                        ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
-                        ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                        _cKTXM.SuaKTXM(ktxm);
-                    }
-                    DonKH donkh = _cDonKH.getDonKHbyID(int.Parse(itemRow["MaDon"].ToString()));
-                    donkh.Nhan = true;
-                    _cDonKH.SuaDonKH(donkh);
-                } 
+                        if (!ktxm.Nhan)
+                        {
+                            ktxm.KetQua = itemRow["KetQua"].ToString();
+                            if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                            {
+                                ktxm.Chuyen = true;
+                                ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
+                                ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                            }
+                            else
+                                if (itemRow["MaChuyen"].ToString() == "NONE")
+                                {
+                                    ktxm.Chuyen = false;
+                                    ktxm.MaChuyen = null;
+                                    ktxm.LyDoChuyen = null;
+                                }
+                            _cKTXM.SuaKTXM(ktxm);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đơn " + ktxm.MaKTXM + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                }
+                DSKTXM_Edited.Clear();
+
+                if (radDaDuyet.Checked)
+                    dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
+                if (radChuDuyet.Checked)
+                    dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
             }
-            if (radDaDuyet.Checked)
-                dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
-            if (radChuDuyet.Checked)
-                dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
         }
 
-        private void dgvDSKTXM_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvDSKTXM_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            if (dgvDSKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSKTXM["MaDon", e.RowIndex].Value.ToString())));
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString())));
                 frm.ShowDialog();
             }
         }
 
-        
+        private void dgvDSKTXM_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            btnLuu.Enabled = false;
+        }
+
+        private void dgvDSKTXM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            ///Khai báo các cột tương ứng trong Datagridview
+            if (DSKTXM_Edited.Columns.Count == 0)
+                foreach (DataGridViewColumn itemCol in dgvDSKTXM.Columns)
+                {
+                    DSKTXM_Edited.Columns.Add(itemCol.Name, itemCol.ValueType);
+                }
+
+            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
+            ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row.EndEdit();
+
+            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
+            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
+            if (DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
+                DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
+
+            DSKTXM_Edited.ImportRow(((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row);
+            btnLuu.Enabled = true;
+        }       
     }
 }

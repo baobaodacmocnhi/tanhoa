@@ -168,6 +168,10 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     LyDoChuyenDen = itemDonKH.LyDoChuyen,
+                                    NgayXuLy = "",
+                                    KetQua = "",
+                                    MaChuyen = "",
+                                    LyDoChuyenDi = ""
                                 };
                     //DataTable tableTemp = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                     //foreach (DataRow itemRow in tableTemp.Rows)

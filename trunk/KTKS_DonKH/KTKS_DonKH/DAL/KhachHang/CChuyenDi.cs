@@ -41,5 +41,24 @@ namespace KTKS_DonKH.DAL.KhachHang
                 return null;
             }
         }
+
+        /// <summary>
+        /// Load Danh Sách trong bảng Chuyển Đi trừ MaChuyen truyền vào
+        /// </summary>
+        /// <param name="MaChuyen1"></param>
+        /// <param name="MaChuyen2"></param>
+        /// <returns></returns>
+        public List<ChuyenDi> LoadDSChuyenDi(string MaChuyen1,string MaChuyen2)
+        {
+            try
+            {
+                return db.ChuyenDis.Where(itemCD => itemCD.MaChuyen != MaChuyen1 && itemCD.MaChuyen != MaChuyen2).OrderBy(itemCD => itemCD.STT).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }
