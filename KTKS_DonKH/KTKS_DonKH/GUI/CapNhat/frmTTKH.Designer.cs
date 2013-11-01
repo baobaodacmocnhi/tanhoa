@@ -92,6 +92,7 @@
             this.ModifyDate,
             this.ModifyBy});
             this.dgvDSTTKHDate.Location = new System.Drawing.Point(12, 84);
+            this.dgvDSTTKHDate.MultiSelect = false;
             this.dgvDSTTKHDate.Name = "dgvDSTTKHDate";
             this.dgvDSTTKHDate.Size = new System.Drawing.Size(613, 468);
             this.dgvDSTTKHDate.TabIndex = 4;

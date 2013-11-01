@@ -85,9 +85,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.MaChuyen,
                                     itemDonKH.LyDoChuyen
                                 };
-                    //BindingSource source = new BindingSource();
-                    //source.DataSource = query.ToList();
-                    //return source;
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
@@ -103,7 +100,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
-        public DataTable LoadDSDonKHAll()
+        public DataTable LoadDSDonKHDaDuyet()
         {
             try
             {
@@ -111,6 +108,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                where itemDonKH.Chuyen == true
                                 select new
                                 {
                                     itemDonKH.MaDon,

@@ -20,6 +20,10 @@ namespace KTKS_DonKH.GUI.KhachHang
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CDonKH _cDonKH = new CDonKH();
         CTTKH _cTTKH = new CTTKH();
+        string SH = "";
+        string SX = "";
+        string DV = "";
+        string HCSN = "";
         string Dot = "";
         string Ky = "";
         string Nam = "";
@@ -115,6 +119,10 @@ namespace KTKS_DonKH.GUI.KhachHang
                     txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
                     txtGiaBieu.Text = ttkhachhang.GB;
                     txtDinhMuc.Text = ttkhachhang.TGDM;
+                    SH = ttkhachhang.SH;
+                    SX = ttkhachhang.SX;
+                    DV = ttkhachhang.DV;
+                    HCSN = ttkhachhang.HCSN;
                     Dot = ttkhachhang.Dot;
                     Ky = ttkhachhang.Ky;
                     Nam = ttkhachhang.Nam;
@@ -136,6 +144,10 @@ namespace KTKS_DonKH.GUI.KhachHang
                 donkh.DienThoai = txtDienThoai.Text.Trim();
                 donkh.GiaBieu = txtGiaBieu.Text.Trim();
                 donkh.DinhMuc = txtDinhMuc.Text.Trim();
+                donkh.SH = SH;
+                donkh.SX = SX;
+                donkh.DV = DV;
+                donkh.HCSN = HCSN;
                 donkh.Dot = Dot;
                 donkh.Ky = Ky;
                 donkh.Nam = Nam;

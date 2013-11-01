@@ -39,7 +39,7 @@
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLuu = new System.Windows.Forms.Button();
-            this.radAll = new System.Windows.Forms.RadioButton();
+            this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.radChuDuyet = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonKH)).BeginInit();
             this.SuspendLayout();
@@ -60,11 +60,14 @@
             this.NoiDung});
             this.dgvDSDonKH.Location = new System.Drawing.Point(0, 67);
             this.dgvDSDonKH.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDSDonKH.MultiSelect = false;
             this.dgvDSDonKH.Name = "dgvDSDonKH";
             this.dgvDSDonKH.Size = new System.Drawing.Size(1615, 470);
             this.dgvDSDonKH.TabIndex = 0;
-            this.dgvDSDonKH.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSDonKH_CellMouseClick);
+            this.dgvDSDonKH.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDSDonKH_CellBeginEdit);
+            this.dgvDSDonKH.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSDonKH_CellEndEdit);
             this.dgvDSDonKH.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonKH_RowPostPaint);
+            this.dgvDSDonKH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonKH_KeyDown);
             // 
             // MaChuyen
             // 
@@ -146,16 +149,16 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // radAll
+            // radDaDuyet
             // 
-            this.radAll.AutoSize = true;
-            this.radAll.Location = new System.Drawing.Point(12, 12);
-            this.radAll.Name = "radAll";
-            this.radAll.Size = new System.Drawing.Size(67, 21);
-            this.radAll.TabIndex = 2;
-            this.radAll.Text = "Tất Cả";
-            this.radAll.UseVisualStyleBackColor = true;
-            this.radAll.CheckedChanged += new System.EventHandler(this.radAll_CheckedChanged);
+            this.radDaDuyet.AutoSize = true;
+            this.radDaDuyet.Location = new System.Drawing.Point(12, 12);
+            this.radDaDuyet.Name = "radDaDuyet";
+            this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
+            this.radDaDuyet.TabIndex = 2;
+            this.radDaDuyet.Text = "Đã Duyệt";
+            this.radDaDuyet.UseVisualStyleBackColor = true;
+            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
             // 
             // radChuDuyet
             // 
@@ -176,7 +179,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 562);
             this.Controls.Add(this.radChuDuyet);
-            this.Controls.Add(this.radAll);
+            this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.dgvDSDonKH);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -194,7 +197,7 @@
 
         private System.Windows.Forms.DataGridView dgvDSDonKH;
         private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.RadioButton radAll;
+        private System.Windows.Forms.RadioButton radDaDuyet;
         private System.Windows.Forms.RadioButton radChuDuyet;
         private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyen;

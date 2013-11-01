@@ -16,12 +16,5 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            this.ControlBox = false;
-            this.WindowState = FormWindowState.Maximized;
-            this.BringToFront();
-        }
     }
 }

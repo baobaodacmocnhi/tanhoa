@@ -8,18 +8,18 @@ using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.DAL.CapNhat
 {
-    class CChungTu : CDAL
+    class CLoaiChungTu : CDAL
     {
         //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
-        public BindingSource LoadDSChungTu()
+        public BindingSource LoadDSLoaiChungTu()
         {
             try
             {
                 if (CTaiKhoan.RoleCapNhat)
                 {
-                    var query = from itemCT in db.ChungTus
-                                select new { itemCT.MaCT, itemCT.KyHieuCT, itemCT.TenCT, itemCT.ThoiHan };
+                    var query = from itemLCT in db.LoaiChungTus
+                                select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
                     BindingSource source = new BindingSource();
                     source.DataSource = query.ToList();
                     return source;
@@ -37,11 +37,11 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
-        public ChungTu getChungTubyID(int MaCT)
+        public LoaiChungTu getLoaiChungTubyID(int MaLCT)
         {
             try
             {
-                return db.ChungTus.Single(itemCT => itemCT.MaCT == MaCT);
+                return db.LoaiChungTus.Single(itemLCT => itemLCT.MaLCT == MaLCT);
             }
             catch (Exception ex)
             {
@@ -50,19 +50,19 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
-        public bool ThemChungTu(ChungTu chungtu)
+        public bool ThemLoaiChungTu(LoaiChungTu loaichungtu)
         {
             try
             {
                 if (CTaiKhoan.RoleCapNhat)
                 {
-                    if (db.ChungTus.Count() > 0)
-                        chungtu.MaCT = db.ChungTus.Max(itemCT => itemCT.MaCT) + 1;
+                    if (db.LoaiChungTus.Count() > 0)
+                        loaichungtu.MaLCT = db.LoaiChungTus.Max(itemLCT => itemLCT.MaLCT) + 1;
                     else
-                        chungtu.MaCT = 1;
-                    chungtu.CreateDate = DateTime.Now;
-                    chungtu.CreateBy = CTaiKhoan.TaiKhoan;
-                    db.ChungTus.InsertOnSubmit(chungtu);
+                        loaichungtu.MaLCT = 1;
+                    loaichungtu.CreateDate = DateTime.Now;
+                    loaichungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                    db.LoaiChungTus.InsertOnSubmit(loaichungtu);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -81,14 +81,14 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
-        public bool SuaChungTu(ChungTu chungtu)
+        public bool SuaLoaiChungTu(LoaiChungTu loaichungtu)
         {
             try
             {
                 if (CTaiKhoan.RoleCapNhat)
                 {
-                    chungtu.ModifyDate = DateTime.Now;
-                    chungtu.ModifyBy = CTaiKhoan.TaiKhoan;
+                    loaichungtu.ModifyDate = DateTime.Now;
+                    loaichungtu.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

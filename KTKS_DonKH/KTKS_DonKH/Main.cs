@@ -123,7 +123,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmChungTu();
+            Form frm = new frmLoaiChungTu();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -159,7 +159,16 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmDCBD();
+            Form frm = new frmDSDCBD();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void ribbtnChiNhanh_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmChiNhanh();
             frm.MdiParent = this;
             frm.Show();
         }
