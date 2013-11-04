@@ -70,9 +70,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.DataSource = _cDCBD.LoadDSKTXMChuaDuyet();
         }
 
+        private void dgvDSDCBD_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvDSDCBD.CurrentCell = dgvDSDCBD.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
         private void dgvDSDCBD_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (dgvDSDCBD.Rows.Count > 0 && e.Button == MouseButtons.Right)
             {
                 contextMenuStrip1.Show(dgvDSDCBD, new Point(e.X, e.Y));
             }
@@ -80,7 +89,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void điềuChỉnhBiếnĐộngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDCBD frm = new frmDCBD();
+            frmDCBD frm = new frmDCBD(_cDonKH.getDonKHbyID(int.Parse(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString())));
             frm.ShowDialog();
         }
 
@@ -93,5 +102,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
 
         }
+
+        
+
+        
     }
 }

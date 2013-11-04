@@ -69,8 +69,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 foreach (DataRow itemRow in DSKTXM_Edited.Rows)
                 {
-                    //if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                    //{
                     KTXM ktxm = _cKTXM.getKTXMbyID(int.Parse(itemRow["MaDon"].ToString()));
                     if (ktxm == null)
                     {

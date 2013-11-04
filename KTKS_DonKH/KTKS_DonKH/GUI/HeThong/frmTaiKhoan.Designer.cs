@@ -138,6 +138,7 @@
             // dgvDSTaiKhoan
             // 
             this.dgvDSTaiKhoan.AllowUserToAddRows = false;
+            this.dgvDSTaiKhoan.AllowUserToDeleteRows = false;
             this.dgvDSTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSTaiKhoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaU,

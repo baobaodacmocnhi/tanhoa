@@ -84,6 +84,7 @@
             // dgvDSTTKHDate
             // 
             this.dgvDSTTKHDate.AllowUserToAddRows = false;
+            this.dgvDSTTKHDate.AllowUserToDeleteRows = false;
             this.dgvDSTTKHDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSTTKHDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nam,

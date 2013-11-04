@@ -80,6 +80,7 @@
             // dgvDSLoaiDon
             // 
             this.dgvDSLoaiDon.AllowUserToAddRows = false;
+            this.dgvDSLoaiDon.AllowUserToDeleteRows = false;
             this.dgvDSLoaiDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSLoaiDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLD,
