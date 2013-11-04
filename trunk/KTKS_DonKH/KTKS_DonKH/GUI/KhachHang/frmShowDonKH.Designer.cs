@@ -79,6 +79,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbLD = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtMSThue = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -277,6 +279,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtMSThue);
+            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.txtGhiChu);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.txtDienThoai);
@@ -305,7 +309,7 @@
             // 
             this.txtGhiChu.Location = new System.Drawing.Point(98, 99);
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(603, 25);
+            this.txtGhiChu.Size = new System.Drawing.Size(393, 25);
             this.txtGhiChu.TabIndex = 7;
             // 
             // label12
@@ -592,6 +596,22 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "                 Loại Đơn                ";
             // 
+            // txtMSThue
+            // 
+            this.txtMSThue.Location = new System.Drawing.Point(601, 99);
+            this.txtMSThue.Name = "txtMSThue";
+            this.txtMSThue.Size = new System.Drawing.Size(100, 25);
+            this.txtMSThue.TabIndex = 15;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(519, 102);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(66, 17);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "MS Thuế:";
+            // 
             // frmShowDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -671,5 +691,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbLD;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtMSThue;
+        private System.Windows.Forms.Label label15;
     }
 }

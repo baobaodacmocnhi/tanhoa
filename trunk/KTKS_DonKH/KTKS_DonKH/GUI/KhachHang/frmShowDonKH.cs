@@ -63,6 +63,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtDienThoai.Text = _donkh.DienThoai;
             txtKhachHang.Text = _donkh.HoTen;
             txtDiaChi.Text = _donkh.DiaChi;
+            txtMSThue.Text = _donkh.MSThue;
             txtGiaBieu.Text = _donkh.GiaBieu;
             txtDinhMuc.Text = _donkh.DinhMuc;
             txtGhiChu.Text = _donkh.GhiChu;

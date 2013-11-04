@@ -1269,7 +1269,15 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _SoNKDangKy;
 		
-		private System.Nullable<System.DateTime> _HetHan;
+		private System.Nullable<System.DateTime> _NgayHetHan;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private string _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private string _ModifyBy;
 		
 		private EntityRef<ChungTu> _ChungTu;
 		
@@ -1283,8 +1291,16 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaCTChanged();
     partial void OnSoNKDangKyChanging(System.Nullable<int> value);
     partial void OnSoNKDangKyChanged();
-    partial void OnHetHanChanging(System.Nullable<System.DateTime> value);
-    partial void OnHetHanChanged();
+    partial void OnNgayHetHanChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayHetHanChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(string value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(string value);
+    partial void OnModifyByChanged();
     #endregion
 		
 		public CTChungTu()
@@ -1357,22 +1373,102 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HetHan", DbType="Date")]
-		public System.Nullable<System.DateTime> HetHan
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayHetHan", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayHetHan
 		{
 			get
 			{
-				return this._HetHan;
+				return this._NgayHetHan;
 			}
 			set
 			{
-				if ((this._HetHan != value))
+				if ((this._NgayHetHan != value))
 				{
-					this.OnHetHanChanging(value);
+					this.OnNgayHetHanChanging(value);
 					this.SendPropertyChanging();
-					this._HetHan = value;
-					this.SendPropertyChanged("HetHan");
-					this.OnHetHanChanged();
+					this._NgayHetHan = value;
+					this.SendPropertyChanged("NgayHetHan");
+					this.OnNgayHetHanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="NVarChar(50)")]
+		public string CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="NVarChar(50)")]
+		public string ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
 				}
 			}
 		}
@@ -1440,6 +1536,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _MaDCBD;
 		
+		private System.Nullable<int> _SoDon;
+		
 		private bool _DCBD1;
 		
 		private string _HoTen;
@@ -1490,6 +1588,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnMaDCBDChanging(int value);
     partial void OnMaDCBDChanged();
+    partial void OnSoDonChanging(System.Nullable<int> value);
+    partial void OnSoDonChanged();
     partial void OnDCBD1Changing(bool value);
     partial void OnDCBD1Changed();
     partial void OnHoTenChanging(string value);
@@ -1559,6 +1659,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDCBD = value;
 					this.SendPropertyChanged("MaDCBD");
 					this.OnMaDCBDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoDon", DbType="Int")]
+		public System.Nullable<int> SoDon
+		{
+			get
+			{
+				return this._SoDon;
+			}
+			set
+			{
+				if ((this._SoDon != value))
+				{
+					this.OnSoDonChanging(value);
+					this.SendPropertyChanging();
+					this._SoDon = value;
+					this.SendPropertyChanged("SoDon");
+					this.OnSoDonChanged();
 				}
 			}
 		}
@@ -2266,6 +2386,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DienThoai;
 		
+		private string _MSThue;
+		
 		private string _GiaBieu;
 		
 		private string _DinhMuc;
@@ -2370,6 +2492,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDiaChiChanged();
     partial void OnDienThoaiChanging(string value);
     partial void OnDienThoaiChanged();
+    partial void OnMSThueChanging(string value);
+    partial void OnMSThueChanged();
     partial void OnGiaBieuChanging(string value);
     partial void OnGiaBieuChanged();
     partial void OnDinhMucChanging(string value);
@@ -2577,6 +2701,26 @@ namespace KTKS_DonKH.LinQ
 					this._DienThoai = value;
 					this.SendPropertyChanged("DienThoai");
 					this.OnDienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MSThue", DbType="NVarChar(50)")]
+		public string MSThue
+		{
+			get
+			{
+				return this._MSThue;
+			}
+			set
+			{
+				if ((this._MSThue != value))
+				{
+					this.OnMSThueChanging(value);
+					this.SendPropertyChanging();
+					this._MSThue = value;
+					this.SendPropertyChanged("MSThue");
+					this.OnMSThueChanged();
 				}
 			}
 		}

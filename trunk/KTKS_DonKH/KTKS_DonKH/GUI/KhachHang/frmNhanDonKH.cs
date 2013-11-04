@@ -117,6 +117,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     txtHopDong.Text = ttkhachhang.GiaoUoc;
                     txtKhachHang.Text = ttkhachhang.HoTen;
                     txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
+                    txtMSThue.Text = ttkhachhang.MSThue;
                     txtGiaBieu.Text = ttkhachhang.GB;
                     txtDinhMuc.Text = ttkhachhang.TGDM;
                     SH = ttkhachhang.SH;
@@ -142,6 +143,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 donkh.HoTen = txtKhachHang.Text.Trim();
                 donkh.DiaChi = txtDiaChi.Text.Trim();
                 donkh.DienThoai = txtDienThoai.Text.Trim();
+                donkh.MSThue = txtMSThue.Text.Trim();
                 donkh.GiaBieu = txtGiaBieu.Text.Trim();
                 donkh.DinhMuc = txtDinhMuc.Text.Trim();
                 donkh.SH = SH;

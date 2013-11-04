@@ -116,6 +116,7 @@
             // dgvDSChungTu
             // 
             this.dgvDSChungTu.AllowUserToAddRows = false;
+            this.dgvDSChungTu.AllowUserToDeleteRows = false;
             this.dgvDSChungTu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSChungTu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLCT,
