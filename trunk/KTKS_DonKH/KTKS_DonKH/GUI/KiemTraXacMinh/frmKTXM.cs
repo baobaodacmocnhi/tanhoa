@@ -69,11 +69,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 foreach (DataRow itemRow in DSKTXM_Edited.Rows)
                 {
-                    KTXM ktxm = _cKTXM.getKTXMbyID(int.Parse(itemRow["MaDon"].ToString()));
-                    if (ktxm == null)
+                    if (itemRow["MaKTXM"].ToString() == "")
                     {
-                        ktxm = new KTXM();
-                        ktxm.MaKTXM = int.Parse(itemRow["MaDon"].ToString());
+                        KTXM ktxm = new KTXM();
+                        ktxm.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
+                        ktxm.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
+                        ktxm.MaDon = int.Parse(itemRow["MaDon"].ToString());
                         ktxm.KetQua = itemRow["KetQua"].ToString();
                         if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
                         {
@@ -88,6 +89,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _cDonKH.SuaDonKH(donkh);
                     }
                     else
+                    {
+                        KTXM ktxm = _cKTXM.getKTXMbyID(int.Parse(itemRow["MaKTXM"].ToString()));
+                        ///Đơn đã được nơi nhận xử lý thì không được sửa
                         if (!ktxm.Nhan)
                         {
                             ktxm.KetQua = itemRow["KetQua"].ToString();
@@ -110,6 +114,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             MessageBox.Show("Đơn " + ktxm.MaKTXM + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                    }
                 }
                 DSKTXM_Edited.Clear();
 

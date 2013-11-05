@@ -21,6 +21,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemCTCT in db.CTChungTus
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
+                            join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                             where itemCTCT.DanhBo == DanhBo
                             select new
                             {
@@ -31,6 +32,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCT.SoNKConLai,
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
+                                itemLCT.ThoiHan
                             };
                 return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
             }

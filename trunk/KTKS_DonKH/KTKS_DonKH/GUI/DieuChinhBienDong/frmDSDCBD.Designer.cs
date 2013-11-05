@@ -35,7 +35,8 @@
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
-            this.SoDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radChuDuyet = new System.Windows.Forms.RadioButton();
+            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayXuLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KetQua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -49,7 +50,6 @@
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LyDoChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radChuDuyet = new System.Windows.Forms.RadioButton();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
             this.SuspendLayout();
@@ -107,7 +107,7 @@
             this.dgvDSDCBD.AllowUserToDeleteRows = false;
             this.dgvDSDCBD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDCBD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SoDon,
+            this.SoPhieu,
             this.NgayXuLy,
             this.KetQua,
             this.MaChuyen,
@@ -132,17 +132,31 @@
             this.dgvDSDCBD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDCBD_KeyDown);
             this.dgvDSDCBD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSDCBD_MouseClick);
             // 
-            // SoDon
+            // radChuDuyet
             // 
-            this.SoDon.HeaderText = "Số Đơn";
-            this.SoDon.Name = "SoDon";
-            this.SoDon.Width = 80;
+            this.radChuDuyet.AutoSize = true;
+            this.radChuDuyet.Location = new System.Drawing.Point(12, 39);
+            this.radChuDuyet.Name = "radChuDuyet";
+            this.radChuDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuDuyet.TabIndex = 11;
+            this.radChuDuyet.Text = "Chưa Duyệt";
+            this.radChuDuyet.UseVisualStyleBackColor = true;
+            this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
+            // 
+            // SoPhieu
+            // 
+            this.SoPhieu.DataPropertyName = "SoPhieu";
+            this.SoPhieu.HeaderText = "Số Phiếu";
+            this.SoPhieu.Name = "SoPhieu";
+            this.SoPhieu.ReadOnly = true;
+            this.SoPhieu.Width = 90;
             // 
             // NgayXuLy
             // 
             this.NgayXuLy.DataPropertyName = "NgayXuLy";
             this.NgayXuLy.HeaderText = "Ngày Xử Lý";
             this.NgayXuLy.Name = "NgayXuLy";
+            this.NgayXuLy.ReadOnly = true;
             this.NgayXuLy.Width = 110;
             // 
             // KetQua
@@ -227,6 +241,7 @@
             this.NoiChuyenDen.DataPropertyName = "NoiChuyenDen";
             this.NoiChuyenDen.HeaderText = "Nơi Chuyển Đến";
             this.NoiChuyenDen.Name = "NoiChuyenDen";
+            this.NoiChuyenDen.ReadOnly = true;
             this.NoiChuyenDen.Width = 200;
             // 
             // LyDoChuyenDen
@@ -236,17 +251,6 @@
             this.LyDoChuyenDen.Name = "LyDoChuyenDen";
             this.LyDoChuyenDen.ReadOnly = true;
             this.LyDoChuyenDen.Width = 250;
-            // 
-            // radChuDuyet
-            // 
-            this.radChuDuyet.AutoSize = true;
-            this.radChuDuyet.Location = new System.Drawing.Point(12, 39);
-            this.radChuDuyet.Name = "radChuDuyet";
-            this.radChuDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuDuyet.TabIndex = 11;
-            this.radChuDuyet.Text = "Chưa Duyệt";
-            this.radChuDuyet.UseVisualStyleBackColor = true;
-            this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
             // 
             // frmDSDCBD
             // 
@@ -280,7 +284,7 @@
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.DataGridView dgvDSDCBD;
         private System.Windows.Forms.RadioButton radChuDuyet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn KetQua;
         private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;

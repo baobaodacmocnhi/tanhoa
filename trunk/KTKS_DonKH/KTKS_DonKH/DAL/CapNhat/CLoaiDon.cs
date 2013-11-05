@@ -16,17 +16,13 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// Lấy danh sách loại đơn
         /// </summary>
         /// <returns></returns>
-        public BindingSource LoadDSLoaiDon()
+        public List<LoaiDon> LoadDSLoaiDon()
         {
             try
             {
                 if (CTaiKhoan.RoleCapNhat)
                 {
-                    var query = from itemLD in db.LoaiDons
-                                select new { itemLD.MaLD, itemLD.KyHieuLD, itemLD.TenLD };
-                    BindingSource source = new BindingSource();
-                    source.DataSource = query.ToList();
-                    return source;
+                    return db.LoaiDons.ToList();
                 }
                 else
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -44,17 +40,13 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// </summary>
         /// <param name="inheritance">true</param>
         /// <returns></returns>
-        public BindingSource LoadDSLoaiDon(bool inheritance)
+        public List<LoaiDon> LoadDSLoaiDon(bool inheritance)
         {
             try
             {
                 if (inheritance)
                 {
-                    BindingSource source = new BindingSource();
-                    var table = from itemLD in db.LoaiDons
-                                select new { itemLD.MaLD, itemLD.KyHieuLD, itemLD.TenLD };
-                    source.DataSource = table.ToList();
-                    return source;
+                    return db.LoaiDons.ToList();
                 }
                 else
                     return null;

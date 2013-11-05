@@ -17,6 +17,10 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                 if (CTaiKhoan.RoleKTXM)
                 {
+                    if (db.KTXMs.Count() > 0)
+                        ktxm.MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM) + 1;
+                    else
+                        ktxm.MaKTXM = 1;
                     ktxm.CreateDate = DateTime.Now;
                     ktxm.CreateBy = CTaiKhoan.TaiKhoan;
                     db.KTXMs.InsertOnSubmit(ktxm);
@@ -68,21 +72,6 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                 if (CTaiKhoan.RoleKTXM)
                 {
-                    ///Phải load số cột như nhau ở 2 hàm LoadDSKTXM thì dategridview mới không bị lỗi cột
-                    //DataTable table = new DataTable();
-                    //table.Columns.Add("MaDon", typeof(string));
-                    //table.Columns.Add("TenLD", typeof(string));
-                    //table.Columns.Add("CreateDate", typeof(string));
-                    //table.Columns.Add("DanhBo", typeof(string));
-                    //table.Columns.Add("HoTen", typeof(string));
-                    //table.Columns.Add("DiaChi", typeof(string));
-                    //table.Columns.Add("NoiDung", typeof(string));
-                    //table.Columns.Add("LyDoChuyenDen", typeof(string));
-                    //table.Columns.Add("NgayXuLy", typeof(string));
-                    //table.Columns.Add("KetQua", typeof(string));
-                    //table.Columns.Add("MaChuyen", typeof(string));
-                    //table.Columns.Add("LyDoChuyenDi", typeof(string));
-
                     var query = from itemKTXM in db.KTXMs
                                 join itemDonKH in db.DonKHs on itemKTXM.MaKTXM equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
@@ -96,30 +85,12 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     LyDoChuyenDen = itemDonKH.LyDoChuyen,
+                                    itemKTXM.MaKTXM,
                                     NgayXuLy = itemKTXM.CreateDate,
                                     itemKTXM.KetQua,
                                     itemKTXM.MaChuyen,
                                     LyDoChuyenDi = itemKTXM.LyDoChuyen
                                 };
-                    //DataTable tableTemp = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                    //foreach (DataRow itemRow in tableTemp.Rows)
-                    //{
-                    //    table.Rows.Add(
-                    //        itemRow["MaDon"],
-                    //        itemRow["TenLD"],
-                    //        itemRow["CreateDate"],
-                    //        itemRow["DanhBo"],
-                    //        itemRow["HoTen"],
-                    //        itemRow["DiaChi"],
-                    //        itemRow["NoiDung"],
-                    //        itemRow["LyDoChuyenDen"],
-                    //        itemRow["NgayXuLy"],
-                    //        itemRow["KetQua"],
-                    //        itemRow["MaChuyen"],
-                    //        itemRow["LyDoChuyenDi"]
-                    //        );
-                    //}
-                    //return table;
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
@@ -141,21 +112,8 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                 if (CTaiKhoan.RoleKTXM)
                 {
-                    //DataTable table = new DataTable();
-                    //table.Columns.Add("MaDon", typeof(string));
-                    //table.Columns.Add("TenLD", typeof(string));
-                    //table.Columns.Add("CreateDate", typeof(string));
-                    //table.Columns.Add("DanhBo", typeof(string));
-                    //table.Columns.Add("HoTen", typeof(string));
-                    //table.Columns.Add("DiaChi", typeof(string));
-                    //table.Columns.Add("NoiDung", typeof(string));
-                    //table.Columns.Add("LyDoChuyenDen", typeof(string));
-                    //table.Columns.Add("NgayXuLy", typeof(string));
-                    //table.Columns.Add("KetQua", typeof(string));
-                    //table.Columns.Add("MaChuyen", typeof(string));
-                    //table.Columns.Add("LyDoChuyenDi", typeof(string));
-
-                    var query = from itemDonKH in db.DonKHs
+                    ///Bảng DonKH
+                    var query1 = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 where itemDonKH.Nhan == false && itemDonKH.MaChuyen == "KTXM"
                                 select new
@@ -167,28 +125,37 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
+                                    NoiChuyenDen = "Khách Hàng",
                                     LyDoChuyenDen = itemDonKH.LyDoChuyen,
+                                    MaKTXM = "",
                                     NgayXuLy = "",
                                     KetQua = "",
                                     MaChuyen = "",
                                     LyDoChuyenDi = ""
                                 };
-                    //DataTable tableTemp = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
-                    //foreach (DataRow itemRow in tableTemp.Rows)
-                    //{
-                    //    table.Rows.Add(
-                    //        itemRow["MaDon"],
-                    //        itemRow["TenLD"],
-                    //        itemRow["CreateDate"],
-                    //        itemRow["DanhBo"],
-                    //        itemRow["HoTen"],
-                    //        itemRow["DiaChi"],
-                    //        itemRow["NoiDung"],
-                    //        itemRow["LyDoChuyenDen"],
-                    //        "", "", "", ""
-                    //        );
-                    //}
-                    //return table;
+                    ///Bảng DCBD
+                    var query2 = from itemDCBD in db.DCBDs
+                                 join itemDonKH in db.DonKHs on itemDCBD.MaDon equals itemDonKH.MaDon
+                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                 where itemDCBD.Nhan == false && itemDCBD.MaChuyen == "KTXM"
+                                 select new
+                                 {
+                                     itemDonKH.MaDon,
+                                     itemLoaiDon.TenLD,
+                                     itemDonKH.CreateDate,
+                                     itemDonKH.DanhBo,
+                                     itemDonKH.HoTen,
+                                     itemDonKH.DiaChi,
+                                     itemDonKH.NoiDung,
+                                     NoiChuyenDen = "Điều Chỉnh Biến Động",
+                                     LyDoChuyenDen = itemDCBD.LyDoChuyen,
+                                     MaKTXM = "",
+                                     NgayXuLy = "",
+                                     KetQua = "",
+                                     MaChuyen = "",
+                                     LyDoChuyenDi = ""
+                                 };
+                    var query = query1.Union(query2);
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
                 else

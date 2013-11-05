@@ -31,6 +31,8 @@
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSKTXM = new System.Windows.Forms.DataGridView();
+            this.radChuDuyet = new System.Windows.Forms.RadioButton();
+            this.MaKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayXuLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KetQua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -42,8 +44,8 @@
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LyDoChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radChuDuyet = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKTXM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +79,7 @@
             this.dgvDSKTXM.AllowUserToDeleteRows = false;
             this.dgvDSKTXM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKTXM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaKTXM,
             this.NgayXuLy,
             this.KetQua,
             this.MaChuyen,
@@ -88,17 +91,36 @@
             this.HoTen,
             this.DiaChi,
             this.NoiDung,
+            this.NoiChuyenDen,
             this.LyDoChuyenDen});
             this.dgvDSKTXM.Location = new System.Drawing.Point(0, 67);
             this.dgvDSKTXM.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSKTXM.MultiSelect = false;
             this.dgvDSKTXM.Name = "dgvDSKTXM";
-            this.dgvDSKTXM.Size = new System.Drawing.Size(2175, 470);
+            this.dgvDSKTXM.Size = new System.Drawing.Size(2500, 470);
             this.dgvDSKTXM.TabIndex = 4;
             this.dgvDSKTXM.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDSKTXM_CellBeginEdit);
             this.dgvDSKTXM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKTXM_CellEndEdit);
             this.dgvDSKTXM.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonKH_RowPostPaint);
             this.dgvDSKTXM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSKTXM_KeyDown);
+            // 
+            // radChuDuyet
+            // 
+            this.radChuDuyet.AutoSize = true;
+            this.radChuDuyet.Location = new System.Drawing.Point(12, 39);
+            this.radChuDuyet.Name = "radChuDuyet";
+            this.radChuDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuDuyet.TabIndex = 7;
+            this.radChuDuyet.Text = "Chưa Duyệt";
+            this.radChuDuyet.UseVisualStyleBackColor = true;
+            this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
+            // 
+            // MaKTXM
+            // 
+            this.MaKTXM.DataPropertyName = "MaKTXM";
+            this.MaKTXM.HeaderText = "Mã KTXM";
+            this.MaKTXM.Name = "MaKTXM";
+            this.MaKTXM.Visible = false;
             // 
             // NgayXuLy
             // 
@@ -185,6 +207,14 @@
             this.NoiDung.ReadOnly = true;
             this.NoiDung.Width = 250;
             // 
+            // NoiChuyenDen
+            // 
+            this.NoiChuyenDen.DataPropertyName = "NoiChuyenDen";
+            this.NoiChuyenDen.HeaderText = "Nơi Chuyển Đến";
+            this.NoiChuyenDen.Name = "NoiChuyenDen";
+            this.NoiChuyenDen.ReadOnly = true;
+            this.NoiChuyenDen.Width = 200;
+            // 
             // LyDoChuyenDen
             // 
             this.LyDoChuyenDen.DataPropertyName = "LyDoChuyenDen";
@@ -192,17 +222,6 @@
             this.LyDoChuyenDen.Name = "LyDoChuyenDen";
             this.LyDoChuyenDen.ReadOnly = true;
             this.LyDoChuyenDen.Width = 250;
-            // 
-            // radChuDuyet
-            // 
-            this.radChuDuyet.AutoSize = true;
-            this.radChuDuyet.Location = new System.Drawing.Point(12, 39);
-            this.radChuDuyet.Name = "radChuDuyet";
-            this.radChuDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuDuyet.TabIndex = 7;
-            this.radChuDuyet.Text = "Chưa Duyệt";
-            this.radChuDuyet.UseVisualStyleBackColor = true;
-            this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
             // 
             // frmKTXM
             // 
@@ -232,6 +251,7 @@
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.RadioButton radChuDuyet;
         private System.Windows.Forms.DataGridView dgvDSKTXM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaKTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn KetQua;
         private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
@@ -243,6 +263,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyenDen;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyenDen;
     }
 }

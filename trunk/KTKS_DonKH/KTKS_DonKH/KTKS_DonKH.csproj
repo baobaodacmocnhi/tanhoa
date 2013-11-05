@@ -247,6 +247,9 @@
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDSDCBD.resx">
       <DependentUpon>frmDSDCBD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmSoDK.resx">
+      <DependentUpon>frmSoDK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
