@@ -73,6 +73,9 @@
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvDSSoDangKy = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLuu = new System.Windows.Forms.Button();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaLCT = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -81,9 +84,7 @@
             this.SoNKConLai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ThoiHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -502,7 +503,8 @@
             this.SoNKTong,
             this.SoNKConLai,
             this.SoNKDangKy,
-            this.NgayHetHan});
+            this.NgayHetHan,
+            this.ThoiHan});
             this.dgvDSSoDangKy.Location = new System.Drawing.Point(6, 24);
             this.dgvDSSoDangKy.MultiSelect = false;
             this.dgvDSSoDangKy.Name = "dgvDSSoDangKy";
@@ -511,6 +513,29 @@
             this.dgvDSSoDangKy.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSSoDangKy_CellMouseClick);
             this.dgvDSSoDangKy.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSSoDangKy_RowPostPaint);
             this.dgvDSSoDangKy.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSSoDangKy_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thêmToolStripMenuItem,
+            this.sửaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 48);
+            // 
+            // thêmToolStripMenuItem
+            // 
+            this.thêmToolStripMenuItem.Name = "thêmToolStripMenuItem";
+            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.thêmToolStripMenuItem.Text = "Thêm";
+            this.thêmToolStripMenuItem.Click += new System.EventHandler(this.thêmToolStripMenuItem_Click);
+            // 
+            // sửaToolStripMenuItem
+            // 
+            this.sửaToolStripMenuItem.Enabled = false;
+            this.sửaToolStripMenuItem.Name = "sửaToolStripMenuItem";
+            this.sửaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sửaToolStripMenuItem.Text = "Sửa";
+            this.sửaToolStripMenuItem.Click += new System.EventHandler(this.sửaToolStripMenuItem_Click);
             // 
             // btnLuu
             // 
@@ -529,6 +554,7 @@
             this.DanhBo.DataPropertyName = "DanhBo";
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
             this.DanhBo.Visible = false;
             // 
             // MaLCT
@@ -536,6 +562,7 @@
             this.MaLCT.DataPropertyName = "MaLCT";
             this.MaLCT.HeaderText = "Loại Chứng Từ";
             this.MaLCT.Name = "MaLCT";
+            this.MaLCT.ReadOnly = true;
             this.MaLCT.Width = 200;
             // 
             // MaCT
@@ -543,6 +570,7 @@
             this.MaCT.DataPropertyName = "MaCT";
             this.MaCT.HeaderText = "Số Chứng Từ";
             this.MaCT.Name = "MaCT";
+            this.MaCT.ReadOnly = true;
             this.MaCT.Width = 150;
             // 
             // SoNKTong
@@ -550,6 +578,7 @@
             this.SoNKTong.DataPropertyName = "SoNKTong";
             this.SoNKTong.HeaderText = "Tổng NK";
             this.SoNKTong.Name = "SoNKTong";
+            this.SoNKTong.ReadOnly = true;
             this.SoNKTong.Width = 90;
             // 
             // SoNKConLai
@@ -564,6 +593,7 @@
             this.SoNKDangKy.DataPropertyName = "SoNKDangKy";
             this.SoNKDangKy.HeaderText = "Số NK Đăng Ký";
             this.SoNKDangKy.Name = "SoNKDangKy";
+            this.SoNKDangKy.ReadOnly = true;
             // 
             // NgayHetHan
             // 
@@ -572,26 +602,12 @@
             this.NgayHetHan.Name = "NgayHetHan";
             this.NgayHetHan.ReadOnly = true;
             // 
-            // contextMenuStrip1
+            // ThoiHan
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thêmToolStripMenuItem,
-            this.sửaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 48);
-            // 
-            // thêmToolStripMenuItem
-            // 
-            this.thêmToolStripMenuItem.Name = "thêmToolStripMenuItem";
-            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.thêmToolStripMenuItem.Text = "Thêm";
-            // 
-            // sửaToolStripMenuItem
-            // 
-            this.sửaToolStripMenuItem.Enabled = false;
-            this.sửaToolStripMenuItem.Name = "sửaToolStripMenuItem";
-            this.sửaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sửaToolStripMenuItem.Text = "Sửa";
+            this.ThoiHan.DataPropertyName = "ThoiHan";
+            this.ThoiHan.HeaderText = "Thời Hạn";
+            this.ThoiHan.Name = "ThoiHan";
+            this.ThoiHan.Visible = false;
             // 
             // frmDCBD
             // 
@@ -668,6 +684,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvDSSoDangKy;
         private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem thêmToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sửaToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewComboBoxColumn MaLCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCT;
@@ -675,8 +694,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKConLai;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKDangKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayHetHan;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem thêmToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sửaToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThoiHan;
     }
 }

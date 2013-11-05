@@ -35,12 +35,12 @@ namespace KTKS_DonKH.GUI.CapNhat
             txtTenLCT.Text = "";
             txtThoiHan.Text = "";
             selectedindex = -1;
-            dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu().DataSource;
+            dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
         }
 
         private void frmCapNhatChungTu_Load(object sender, EventArgs e)
         {
-            dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu().DataSource;
+            dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
         }
 
         private void btnThem_Click(object sender, EventArgs e)

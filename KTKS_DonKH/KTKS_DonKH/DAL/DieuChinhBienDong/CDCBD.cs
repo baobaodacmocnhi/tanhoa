@@ -30,7 +30,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemDonKH.NoiDung,
                                     NoiChuyenDen = itemDCBD.NoiChuyenDen,
                                     LyDoChuyenDen = itemDCBD.LyDoChuyen,
-                                    itemDCBD.SoDon,
+                                    itemDCBD.SoPhieu,
                                     NgayXuLy = itemDCBD.CreateDate,
                                     itemDCBD.KetQua,
                                     itemDCBD.MaChuyen,
@@ -57,6 +57,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 if (CTaiKhoan.RoleDCBD)
                 {
+                    ///Bảng DonKH
                     var query1 = from itemDonKH in db.DonKHs
                                  join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                  where itemDonKH.Nhan == false && itemDonKH.MaChuyen == "DCBD"
@@ -71,13 +72,13 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                      itemDonKH.NoiDung,
                                      NoiChuyenDen = "Khách Hàng",
                                      LyDoChuyenDen = itemDonKH.LyDoChuyen,
-                                     SoDon = "",
+                                     SoPhieu = "",
                                      NgayXuLy = "",
                                      KetQua = "",
                                      MaChuyen = "",
                                      LyDoChuyenDi = ""
                                  };
-
+                    ///Bảng KTXM
                     var query2 = from itemKTXM in db.KTXMs
                                  join itemDonKH in db.DonKHs on itemKTXM.MaKTXM equals itemDonKH.MaDon
                                  join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
@@ -93,7 +94,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                      itemDonKH.NoiDung,
                                      NoiChuyenDen = "Kiểm Tra Xác Minh",
                                      LyDoChuyenDen = itemKTXM.LyDoChuyen,
-                                     SoDon = "",
+                                     SoPhieu = "",
                                      NgayXuLy = "",
                                      KetQua = "",
                                      MaChuyen = "",

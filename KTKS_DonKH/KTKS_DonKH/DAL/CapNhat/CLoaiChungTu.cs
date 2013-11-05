@@ -12,7 +12,7 @@ namespace KTKS_DonKH.DAL.CapNhat
     {
         //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
-        public BindingSource LoadDSLoaiChungTu()
+        public List<LoaiChungTu> LoadDSLoaiChungTu()
         {
             try
             {
@@ -20,13 +20,38 @@ namespace KTKS_DonKH.DAL.CapNhat
                 {
                     var query = from itemLCT in db.LoaiChungTus
                                 select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
-                    BindingSource source = new BindingSource();
-                    source.DataSource = query.ToList();
-                    return source;
+                    return db.LoaiChungTus.ToList();
                 }
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy danh sách loại chứng từ, hàm này được dùng trong nội bộ DAL
+        /// </summary>
+        /// <param name="inheritance">true</param>
+        /// <returns></returns>
+        public List<LoaiChungTu> LoadDSLoaiChungTu(bool inhertance)
+        {
+            try
+            {
+                if (inhertance)
+                {
+                    var query = from itemLCT in db.LoaiChungTus
+                                select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
+                    return db.LoaiChungTus.ToList();
+                }
+                else
+                {
                     return null;
                 }
             }

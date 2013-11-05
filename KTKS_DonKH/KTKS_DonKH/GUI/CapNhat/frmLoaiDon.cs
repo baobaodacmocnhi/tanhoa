@@ -34,12 +34,12 @@ namespace KTKS_DonKH.GUI.CapNhat
             txtKyHieuLD.Text = "";
             txtTenLD.Text = "";
             selectedindex = -1;
-            dgvDSLoaiDon.DataSource = _cCapNhatLoaiDon.LoadDSLoaiDon().DataSource;
+            dgvDSLoaiDon.DataSource = _cCapNhatLoaiDon.LoadDSLoaiDon();
         }
 
         private void frmCapNhatLoaiDon_Load(object sender, EventArgs e)
         {
-            dgvDSLoaiDon.DataSource = _cCapNhatLoaiDon.LoadDSLoaiDon().DataSource;
+            dgvDSLoaiDon.DataSource = _cCapNhatLoaiDon.LoadDSLoaiDon();
         }
 
         private void btnThem_Click(object sender, EventArgs e)

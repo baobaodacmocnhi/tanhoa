@@ -81,9 +81,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(139, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 17);
+            this.label3.Size = new System.Drawing.Size(113, 17);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Thời Hạn:";
+            this.label3.Text = "Thời Hạn (tháng):";
             // 
             // btnSua
             // 

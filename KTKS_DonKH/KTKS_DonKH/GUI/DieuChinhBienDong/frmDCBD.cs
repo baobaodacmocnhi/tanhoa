@@ -35,7 +35,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             this.Location = new Point(70, 70);
             dgvDSSoDangKy.AutoGenerateColumns = false;
             DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSSoDangKy.Columns["MaLCT"];
-            cmbColumn.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
+            cmbColumn.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
             cmbColumn.DisplayMember = "TenLCT";
             cmbColumn.ValueMember = "MaLCT";
 
@@ -81,6 +81,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 contextMenuStrip1.Show(dgvDSSoDangKy, new Point(e.X, e.Y));
             }
+        }
+
+        private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("DanhBo", txtDanhBo.Text.Trim());
+            frmSoDK frm = new frmSoDK("Thêm", source);
+            if (frm.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("đã thêm");
+        }
+
+        private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("DanhBo",txtDanhBo.Text.Trim());
+            source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
+            source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
+            source.Add("SoNKTong", dgvDSSoDangKy.CurrentRow.Cells["SoNKTong"].Value.ToString());
+            source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
+            source.Add("NgayHetHan", dgvDSSoDangKy.CurrentRow.Cells["NgayHetHan"].Value.ToString());
+            source.Add("ThoiHan", dgvDSSoDangKy.CurrentRow.Cells["ThoiHan"].Value.ToString());
+            frmSoDK frm = new frmSoDK("Sửa", source);
+            if (frm.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("đã sửa");
         }
 
 
