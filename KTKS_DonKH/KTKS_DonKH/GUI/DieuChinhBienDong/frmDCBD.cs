@@ -89,7 +89,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             frmSoDK frm = new frmSoDK("Thêm", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                MessageBox.Show("đã thêm");
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
         }
 
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("ThoiHan", dgvDSSoDangKy.CurrentRow.Cells["ThoiHan"].Value.ToString());
             frmSoDK frm = new frmSoDK("Sửa", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                MessageBox.Show("đã sửa");
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
         }
 
 

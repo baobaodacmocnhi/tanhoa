@@ -96,6 +96,8 @@
             this.txtMaCT.ReadOnly = true;
             this.txtMaCT.Size = new System.Drawing.Size(100, 25);
             this.txtMaCT.TabIndex = 5;
+            this.txtMaCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_KeyPress);
+            this.txtMaCT.Leave += new System.EventHandler(this.txtMaCT_Leave);
             // 
             // txtSoNKTong
             // 
@@ -104,6 +106,7 @@
             this.txtSoNKTong.ReadOnly = true;
             this.txtSoNKTong.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKTong.TabIndex = 7;
+            this.txtSoNKTong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKTong_KeyPress);
             // 
             // label4
             // 
@@ -121,6 +124,7 @@
             this.txtSoNKDangKy.ReadOnly = true;
             this.txtSoNKDangKy.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKDangKy.TabIndex = 9;
+            this.txtSoNKDangKy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKDangKy_KeyPress);
             // 
             // label5
             // 
@@ -138,6 +142,7 @@
             this.txtThoiHan.ReadOnly = true;
             this.txtThoiHan.Size = new System.Drawing.Size(100, 25);
             this.txtThoiHan.TabIndex = 11;
+            this.txtThoiHan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThoiHan_KeyPress);
             // 
             // label6
             // 

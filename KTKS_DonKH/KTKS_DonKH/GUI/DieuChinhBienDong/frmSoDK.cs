@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmSoDK : Form
     {
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
+        CChungTu _cChungTu = new CChungTu();
         Dictionary<string, string> _source = new Dictionary<string, string>();
-        bool flagFirst = false;
+        string _action = "";
 
         public frmSoDK()
         {
@@ -25,6 +28,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             InitializeComponent();
             ///Check để chọn chức năng Thêm hoặc Sửa
+            _action = action;
             if (action == "Thêm")
             {
                 cmbLoaiCT.Enabled = true;
@@ -51,7 +55,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
             cmbLoaiCT.DisplayMember = "TenLCT";
             cmbLoaiCT.ValueMember = "MaLCT";
-            cmbLoaiCT.SelectedIndex = -1;
 
             txtDanhBo.Text = _source["DanhBo"];
             cmbLoaiCT.SelectedValue = int.Parse(_source["MaLCT"]);
@@ -64,25 +67,89 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKTong.Text.Trim()))
+            {
+                ChungTu chungtu = new ChungTu();
+                chungtu.MaCT = txtMaCT.Text.Trim();
+                chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+
+                CTChungTu ctchungtu = new CTChungTu();
+                ctchungtu.DanhBo = txtDanhBo.Text.Trim();
+                ctchungtu.MaCT = txtMaCT.Text.Trim();
+                ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
+                ///Còn Ngày hết hạn
+                
+                if (_cChungTu.ThemChungTu(chungtu, ctchungtu))
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            else
+                MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-           
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKTong.Text.Trim()))
+            {
+                ChungTu chungtu = new ChungTu();
+                chungtu.MaCT = txtMaCT.Text.Trim();
+                chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+
+                CTChungTu ctchungtu = new CTChungTu();
+                ctchungtu.DanhBo = txtDanhBo.Text.Trim();
+                ctchungtu.MaCT = txtMaCT.Text.Trim();
+                ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
+                ///Còn Ngày hết hạn
+
+                if (_cChungTu.SuaChungTu(chungtu, ctchungtu))
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            else
+                MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void cmbLoaiCT_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(flagFirst)
-            if (cmbLoaiCT.SelectedIndex > -1)
+            if (_action == "Thêm" && cmbLoaiCT.SelectedIndex != -1)
             {
-                //txtThoiHan.Text = _cLoaiChungTu.getLoaiChungTubyID(int.Parse(cmbLoaiCT.SelectedValue.ToString())).ThoiHan.ToString();
-                MessageBox.Show(cmbLoaiCT.SelectedValue.ToString());
+                txtThoiHan.Text = ((KTKS_DonKH.LinQ.LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
             }
+        }
+
+        private void txtMaCT_Leave(object sender, EventArgs e)
+        {
+            if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim()))
+                    MessageBox.Show("Số đăng ký này đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtSoNKTong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtSoNKDangKy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtThoiHan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
     }
 }
