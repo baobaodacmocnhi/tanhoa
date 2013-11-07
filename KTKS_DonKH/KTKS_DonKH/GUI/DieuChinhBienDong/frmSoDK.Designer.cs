@@ -206,7 +206,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSoDK";
-            this.Text = "frmSoDK";
+            this.Text = "Cập Nhật Sổ Đăng Ký";
             this.Load += new System.EventHandler(this.frmSoDK_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
