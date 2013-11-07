@@ -107,6 +107,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
         }
 
+        private void cắtChuyểnĐịnhMứcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCatChuyenDM frm = new frmCatChuyenDM();
+            frm.ShowDialog();
+        }
+
 
     }
 }
