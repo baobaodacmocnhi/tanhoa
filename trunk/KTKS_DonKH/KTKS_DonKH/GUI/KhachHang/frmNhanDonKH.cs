@@ -136,7 +136,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (cmbLD.SelectedIndex != -1)
             {
                 DonKH donkh = new DonKH();
-                donkh.MaDon = int.Parse(txtMaDon.Text.Trim());
+                donkh.MaDon = txtMaDon.Text.Trim();
                 donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                 donkh.DanhBo = txtDanhBo.Text.Trim();
                 donkh.HopDong = txtHopDong.Text.Trim();

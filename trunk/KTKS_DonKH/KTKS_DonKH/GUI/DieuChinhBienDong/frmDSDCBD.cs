@@ -53,7 +53,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSDCBD.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString())));
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
         }
@@ -89,7 +89,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void điềuChỉnhBiếnĐộngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDCBD frm = new frmDCBD(_cDonKH.getDonKHbyID(int.Parse(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString())));
+            frmDCBD frm = new frmDCBD(_cDonKH.getDonKHbyID(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
             frm.ShowDialog();
         }
 

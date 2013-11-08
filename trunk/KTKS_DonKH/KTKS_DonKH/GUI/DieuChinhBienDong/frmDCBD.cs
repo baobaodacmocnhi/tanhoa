@@ -67,9 +67,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
             {
                 if (e.RowIndex >= 0)
+                {
                     sửaToolStripMenuItem.Enabled = true;
+                    
+                }
                 else
+                {
                     sửaToolStripMenuItem.Enabled = false;
+
+                }
                 ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
                 dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[e.RowIndex].Cells[e.ColumnIndex];
             }
@@ -87,6 +93,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
             source.Add("DanhBo", txtDanhBo.Text.Trim());
+            source.Add("MaLCT", "1");
+            source.Add("MaCT", "");
+            source.Add("DiaChi", "");
+            source.Add("SoNKTong", "");
+            source.Add("SoNKDangKy", "");
+            source.Add("NgayHetHan", "");
+            source.Add("ThoiHan", "");
             frmSoDK frm = new frmSoDK("Thêm", source);
             if (frm.ShowDialog() == DialogResult.OK)
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
@@ -98,6 +111,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DanhBo",txtDanhBo.Text.Trim());
             source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
+            source.Add("DiaChi", dgvDSSoDangKy.CurrentRow.Cells["DiaChi"].Value.ToString());
             source.Add("SoNKTong", dgvDSSoDangKy.CurrentRow.Cells["SoNKTong"].Value.ToString());
             source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
             source.Add("NgayHetHan", dgvDSSoDangKy.CurrentRow.Cells["NgayHetHan"].Value.ToString());
@@ -113,6 +127,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frm.ShowDialog();
         }
 
-
+        private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            frmNhanDM frm = new frmNhanDM();
+            frm.ShowDialog();
+        }
     }
 }
