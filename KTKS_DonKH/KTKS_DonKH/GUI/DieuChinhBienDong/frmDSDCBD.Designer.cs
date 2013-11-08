@@ -33,10 +33,10 @@
             this.điềuChỉnhBiếnĐộngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.điềuChỉnhHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
-            this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
             this.radChuDuyet = new System.Windows.Forms.RadioButton();
-            this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.MaDCBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayXuLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KetQua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -88,26 +88,13 @@
             this.radDaDuyet.UseVisualStyleBackColor = true;
             this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
             // 
-            // btnLuu
-            // 
-            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(1180, 12);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 9;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
             // dgvDSDCBD
             // 
             this.dgvDSDCBD.AllowUserToAddRows = false;
             this.dgvDSDCBD.AllowUserToDeleteRows = false;
             this.dgvDSDCBD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDCBD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SoPhieu,
+            this.MaDCBD,
             this.NgayXuLy,
             this.KetQua,
             this.MaChuyen,
@@ -143,13 +130,26 @@
             this.radChuDuyet.UseVisualStyleBackColor = true;
             this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
             // 
-            // SoPhieu
+            // btnLuu
             // 
-            this.SoPhieu.DataPropertyName = "SoPhieu";
-            this.SoPhieu.HeaderText = "Số Phiếu";
-            this.SoPhieu.Name = "SoPhieu";
-            this.SoPhieu.ReadOnly = true;
-            this.SoPhieu.Width = 90;
+            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(1180, 12);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(70, 35);
+            this.btnLuu.TabIndex = 9;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // MaDCBD
+            // 
+            this.MaDCBD.DataPropertyName = "MaDCBD";
+            this.MaDCBD.HeaderText = "Số Phiếu";
+            this.MaDCBD.Name = "MaDCBD";
+            this.MaDCBD.ReadOnly = true;
+            this.MaDCBD.Width = 90;
             // 
             // NgayXuLy
             // 
@@ -281,10 +281,10 @@
         private System.Windows.Forms.ToolStripMenuItem điềuChỉnhBiếnĐộngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem điềuChỉnhHóaĐơnToolStripMenuItem;
         private System.Windows.Forms.RadioButton radDaDuyet;
-        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.DataGridView dgvDSDCBD;
         private System.Windows.Forms.RadioButton radChuDuyet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDCBD;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn KetQua;
         private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;

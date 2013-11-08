@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
-using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
@@ -33,6 +32,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 cmbLoaiCT.Enabled = true;
                 txtMaCT.ReadOnly = false;
+                txtDiaChi.ReadOnly = false;
                 txtSoNKTong.ReadOnly = false;
                 txtSoNKDangKy.ReadOnly = false;
                 txtThoiHan.ReadOnly = false;
@@ -41,6 +41,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
                 if (action == "Sửa")
                 {
+                    txtDiaChi.ReadOnly = false;
                     txtSoNKTong.ReadOnly = false;
                     txtSoNKDangKy.ReadOnly = false;
                     txtThoiHan.ReadOnly = false;
@@ -71,6 +72,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 ChungTu chungtu = new ChungTu();
                 chungtu.MaCT = txtMaCT.Text.Trim();
+                chungtu.DiaChi = txtDiaChi.Text.Trim();
                 chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                 chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
@@ -96,6 +98,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 ChungTu chungtu = new ChungTu();
                 chungtu.MaCT = txtMaCT.Text.Trim();
+                chungtu.DiaChi = txtDiaChi.Text.Trim();
                 chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
 
                 CTChungTu ctchungtu = new CTChungTu();

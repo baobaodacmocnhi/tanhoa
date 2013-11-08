@@ -46,6 +46,8 @@
             this.chkCT_HoaDon = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtMSThue = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
@@ -79,8 +81,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbLD = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtMSThue = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -306,6 +306,22 @@
             this.tabPage1.Text = "Thông Tin Hóa Đơn";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // txtMSThue
+            // 
+            this.txtMSThue.Location = new System.Drawing.Point(601, 99);
+            this.txtMSThue.Name = "txtMSThue";
+            this.txtMSThue.Size = new System.Drawing.Size(100, 25);
+            this.txtMSThue.TabIndex = 15;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(519, 102);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(66, 17);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "MS Thuế:";
+            // 
             // txtGhiChu
             // 
             this.txtGhiChu.Location = new System.Drawing.Point(98, 99);
@@ -527,7 +543,7 @@
             // txtNoiDung
             // 
             this.txtNoiDung.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNoiDung.Location = new System.Drawing.Point(375, 32);
+            this.txtNoiDung.Location = new System.Drawing.Point(391, 32);
             this.txtNoiDung.Name = "txtNoiDung";
             this.txtNoiDung.Size = new System.Drawing.Size(329, 25);
             this.txtNoiDung.TabIndex = 3;
@@ -536,7 +552,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(375, 13);
+            this.label5.Location = new System.Drawing.Point(391, 13);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(329, 19);
             this.label5.TabIndex = 26;
@@ -545,7 +561,7 @@
             // txtNgayNhan
             // 
             this.txtNgayNhan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNgayNhan.Location = new System.Drawing.Point(297, 32);
+            this.txtNgayNhan.Location = new System.Drawing.Point(313, 32);
             this.txtNgayNhan.Name = "txtNgayNhan";
             this.txtNgayNhan.Size = new System.Drawing.Size(78, 25);
             this.txtNgayNhan.TabIndex = 2;
@@ -555,7 +571,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(297, 13);
+            this.label4.Location = new System.Drawing.Point(313, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 19);
             this.label4.TabIndex = 24;
@@ -564,27 +580,28 @@
             // txtMaDon
             // 
             this.txtMaDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaDon.Location = new System.Drawing.Point(242, 32);
+            this.txtMaDon.Location = new System.Drawing.Point(230, 32);
             this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(55, 25);
+            this.txtMaDon.Size = new System.Drawing.Size(83, 25);
             this.txtMaDon.TabIndex = 1;
+            this.txtMaDon.Text = "2013-12345";
             this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(242, 13);
+            this.label3.Location = new System.Drawing.Point(230, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 19);
+            this.label3.Size = new System.Drawing.Size(83, 19);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Số Đơn";
+            this.label3.Text = "   Số Đơn    ";
             // 
             // cmbLD
             // 
             this.cmbLD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbLD.FormattingEnabled = true;
-            this.cmbLD.Location = new System.Drawing.Point(44, 32);
+            this.cmbLD.Location = new System.Drawing.Point(32, 32);
             this.cmbLD.Name = "cmbLD";
             this.cmbLD.Size = new System.Drawing.Size(198, 25);
             this.cmbLD.TabIndex = 0;
@@ -594,27 +611,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(44, 13);
+            this.label1.Location = new System.Drawing.Point(32, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 19);
             this.label1.TabIndex = 20;
             this.label1.Text = "                 Loại Đơn                ";
-            // 
-            // txtMSThue
-            // 
-            this.txtMSThue.Location = new System.Drawing.Point(601, 99);
-            this.txtMSThue.Name = "txtMSThue";
-            this.txtMSThue.Size = new System.Drawing.Size(100, 25);
-            this.txtMSThue.TabIndex = 15;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(519, 102);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(66, 17);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "MS Thuế:";
             // 
             // frmNhanDonKH
             // 

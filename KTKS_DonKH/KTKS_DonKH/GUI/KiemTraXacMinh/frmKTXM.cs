@@ -74,7 +74,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         KTXM ktxm = new KTXM();
                         ktxm.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
                         ktxm.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
-                        ktxm.MaDon = int.Parse(itemRow["MaDon"].ToString());
+                        ktxm.MaDon = itemRow["MaDon"].ToString();
                         ktxm.KetQua = itemRow["KetQua"].ToString();
                         if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
                         {
@@ -84,13 +84,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
                         _cKTXM.ThemKTXM(ktxm);
                         ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                        DonKH donkh = _cDonKH.getDonKHbyID(int.Parse(itemRow["MaDon"].ToString()));
+                        DonKH donkh = _cDonKH.getDonKHbyID(itemRow["MaDon"].ToString());
                         donkh.Nhan = true;
                         _cDonKH.SuaDonKH(donkh);
                     }
                     else
                     {
-                        KTXM ktxm = _cKTXM.getKTXMbyID(int.Parse(itemRow["MaKTXM"].ToString()));
+                        KTXM ktxm = _cKTXM.getKTXMbyID(itemRow["MaKTXM"].ToString());
                         ///Đơn đã được nơi nhận xử lý thì không được sửa
                         if (!ktxm.Nhan)
                         {
@@ -129,7 +129,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (dgvDSKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString())));
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
         }

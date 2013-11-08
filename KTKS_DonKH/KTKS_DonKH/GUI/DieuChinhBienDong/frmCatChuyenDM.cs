@@ -21,13 +21,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmCatChuyenDM_Load(object sender, EventArgs e)
         {
-            cmbNoiChuyen.DataSource = _cChiNhanh.LoadDSChiNhanh();
-            cmbNoiChuyen.DisplayMember = "TenCN";
-            cmbNoiChuyen.ValueMember = "MaCN";
+            this.Location = new Point(70, 70);
+            cmbChiNhanh_Cat.DataSource = _cChiNhanh.LoadDSChiNhanh();
+            cmbChiNhanh_Cat.DisplayMember = "TenCN";
+            cmbChiNhanh_Cat.ValueMember = "MaCN";
 
-            cmbNoiNhan.DataSource = _cChiNhanh.LoadDSChiNhanh();
-            cmbNoiNhan.DisplayMember = "TenCN";
-            cmbNoiNhan.ValueMember = "MaCN";
+            cmbCN_Nhan.DataSource = _cChiNhanh.LoadDSChiNhanh();
+            cmbCN_Nhan.DisplayMember = "TenCN";
+            cmbCN_Nhan.ValueMember = "MaCN";
         }
 
 

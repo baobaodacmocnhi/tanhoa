@@ -17,15 +17,18 @@ namespace KTKS_DonKH.DAL.KhachHang
         /// Lấy Mã Đơn kế tiếp
         /// </summary>
         /// <returns></returns>
-        public int getMaxNextID()
+        public string getMaxNextID()
         {
             if (db.DonKHs.Count() > 0)
-                return db.DonKHs.Max(itemDonKH => itemDonKH.MaDon) + 1;
+            {
+                string MaDon = db.DonKHs.Max(itemDonKH => itemDonKH.MaDon);
+                return getMaxIDTable(MaDon);
+            }
             else
-                return 1;
+                return DateTime.Now.Year + "-" + 1;
         }
 
-        public DonKH getDonKHbyID(int MaDon)
+        public DonKH getDonKHbyID(string MaDon)
         {
             try
             {

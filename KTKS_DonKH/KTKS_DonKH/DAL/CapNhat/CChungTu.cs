@@ -7,7 +7,7 @@ using System.Data;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.HeThong;
 
-namespace KTKS_DonKH.DAL.DieuChinhBienDong
+namespace KTKS_DonKH.DAL.CapNhat
 {
     class CChungTu : CDAL
     {
@@ -28,6 +28,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 itemCTCT.DanhBo,
                                 itemCT.MaLCT,
                                 itemCTCT.MaCT,
+                                itemCT.DiaChi,
                                 itemCT.SoNKTong,
                                 itemCT.SoNKConLai,
                                 itemCTCT.SoNKDangKy,
@@ -310,9 +311,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     }
                     else
                     {
-                        MessageBox.Show("Số Nhân Khẩu có thể cấp bị thiếu, " + chungtuCN.SoNKConLai, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
+                ///Kiểm tra Địa Chỉ có thay đổi hay không
+                if (chungtuCN.DiaChi != chungtu.DiaChi)
+                {
+                    chungtuCN.DiaChi = chungtu.DiaChi;
+                    chungtuCN.ModifyDate = DateTime.Now;
+                    chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                }
 
                 ///Cập Nhật bảng CTChungTu khi thay đổi Số Nhân Khẩu đăng ký (frmSoDK)
                 CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
@@ -333,7 +341,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     }
                     else
                     {
-                        MessageBox.Show("Sổ Đăng Ký vượt định mức. Chỉ có thể tăng lên " + chungtuCN.SoNKConLai, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
                 db.SubmitChanges();

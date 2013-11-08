@@ -27,6 +27,7 @@
   <Table Name="dbo.ChungTu" Member="ChungTus">
     <Type Name="ChungTu">
       <Column Name="MaCT" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoNKTong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SoNKDaCap" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SoNKCat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -55,6 +56,7 @@
     <Type Name="CTChungTu">
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaCT" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoChinh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayHetHan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -66,8 +68,7 @@
   </Table>
   <Table Name="dbo.DCBD" Member="DCBDs">
     <Type Name="DCBD">
-      <Column Name="MaDCBD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SoPhieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDCBD" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DCBD" Member="DCBD1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -85,7 +86,7 @@
       <Column Name="MaChuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LyDoChuyen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MaDon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaDon" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -105,7 +106,7 @@
   </Table>
   <Table Name="dbo.DonKH" Member="DonKHs">
     <Type Name="DonKH">
-      <Column Name="MaDon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaDon" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="HopDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -160,7 +161,7 @@
   </Table>
   <Table Name="dbo.KTXM" Member="KTXMs">
     <Type Name="KTXM">
-      <Column Name="MaKTXM" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKTXM" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="NoiChuyenDen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="LyDoChuyenDen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="KetQua" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -168,7 +169,7 @@
       <Column Name="MaChuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LyDoChuyen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MaDon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaDon" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -182,8 +183,9 @@
       <Column Name="MaLSCT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SoNKCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoNKMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoNKTong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoNKConLai" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoNKCat" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NhanNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="NhanNK_CN" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -192,6 +194,7 @@
       <Column Name="CatNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CatNK_CN" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CatNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaDon" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>

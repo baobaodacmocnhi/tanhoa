@@ -73,7 +73,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
                     {
-                        DonKH donkh = _cDonKH.getDonKHbyID(int.Parse(itemRow["MaDon"].ToString()));
+                        DonKH donkh = _cDonKH.getDonKHbyID(itemRow["MaDon"].ToString());
                         if (!donkh.Nhan)
                         {
                             donkh.Chuyen = true;
@@ -89,7 +89,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     else
                         if (itemRow["MaChuyen"].ToString() == "NONE")
                         {
-                            DonKH donkh = _cDonKH.getDonKHbyID(int.Parse(itemRow["MaDon"].ToString()));
+                            DonKH donkh = _cDonKH.getDonKHbyID(itemRow["MaDon"].ToString());
                             if (!donkh.Nhan)
                             {
                                 donkh.Chuyen = false;
@@ -116,7 +116,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (dgvDSDonKH.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(int.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString())));
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
         }

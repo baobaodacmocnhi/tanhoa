@@ -18,9 +18,12 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 if (CTaiKhoan.RoleKTXM)
                 {
                     if (db.KTXMs.Count() > 0)
-                        ktxm.MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM) + 1;
+                    {
+                        string MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM);
+                        ktxm.MaKTXM = getMaxIDTable(MaKTXM);
+                    }
                     else
-                        ktxm.MaKTXM = 1;
+                        ktxm.MaKTXM = DateTime.Now.Year + "-" + 1;
                     ktxm.CreateDate = DateTime.Now;
                     ktxm.CreateBy = CTaiKhoan.TaiKhoan;
                     db.KTXMs.InsertOnSubmit(ktxm);
@@ -171,7 +174,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public KTXM getKTXMbyID(int MaKTXM)
+        public KTXM getKTXMbyID(string MaKTXM)
         {
             if (db.KTXMs.Any(itemKTXM => itemKTXM.MaKTXM == MaKTXM))
                 return db.KTXMs.Single(itemKTXM => itemKTXM.MaKTXM == MaKTXM);
