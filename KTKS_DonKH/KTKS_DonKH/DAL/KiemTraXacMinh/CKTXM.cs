@@ -17,13 +17,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                 if (CTaiKhoan.RoleKTXM)
                 {
-                    if (db.KTXMs.Count() > 0)
-                    {
-                        string MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM);
-                        ktxm.MaKTXM = getMaxIDTable(MaKTXM);
-                    }
-                    else
-                        ktxm.MaKTXM = DateTime.Now.Year + "-" + 1;
+                    //if (db.KTXMs.Count() > 0)
+                    //{
+                    //    string MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM);
+                    //    ktxm.MaKTXM = getMaxIDTable(MaKTXM);
+                    //}
+                    //else
+                    //    ktxm.MaKTXM = DateTime.Now.Year + "-" + 1;
                     ktxm.CreateDate = DateTime.Now;
                     ktxm.CreateBy = CTaiKhoan.TaiKhoan;
                     db.KTXMs.InsertOnSubmit(ktxm);

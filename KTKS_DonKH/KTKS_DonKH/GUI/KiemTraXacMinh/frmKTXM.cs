@@ -72,9 +72,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (itemRow["MaKTXM"].ToString() == "")
                     {
                         KTXM ktxm = new KTXM();
+                        ktxm.MaKTXM = itemRow["MaDon"].ToString();
                         ktxm.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
                         ktxm.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
-                        ktxm.MaDon = itemRow["MaDon"].ToString();
                         ktxm.KetQua = itemRow["KetQua"].ToString();
                         if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
                         {
@@ -153,8 +153,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
             ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
             ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
-                DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
+            if (DSKTXM_Edited.Select("MaDon like '" + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"] + "'").Count() > 0)
+                DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon like '" + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"] + "'")[0]);
 
             DSKTXM_Edited.ImportRow(((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row);
             btnLuu.Enabled = true;

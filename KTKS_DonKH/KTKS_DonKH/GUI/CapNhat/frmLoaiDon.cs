@@ -39,6 +39,7 @@ namespace KTKS_DonKH.GUI.CapNhat
 
         private void frmCapNhatLoaiDon_Load(object sender, EventArgs e)
         {
+            dgvDSLoaiDon.AutoGenerateColumns = false;
             dgvDSLoaiDon.DataSource = _cCapNhatLoaiDon.LoadDSLoaiDon();
         }
 
