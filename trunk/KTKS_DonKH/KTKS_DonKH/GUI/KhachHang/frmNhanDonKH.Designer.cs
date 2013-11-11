@@ -584,7 +584,6 @@
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.Size = new System.Drawing.Size(83, 25);
             this.txtMaDon.TabIndex = 1;
-            this.txtMaDon.Text = "2013-12345";
             this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3

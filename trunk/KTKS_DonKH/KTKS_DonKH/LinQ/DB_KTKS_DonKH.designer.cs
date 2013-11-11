@@ -1295,6 +1295,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _SoNKDangKy;
 		
+		private System.Nullable<int> _ThoiHan;
+		
 		private System.Nullable<System.DateTime> _NgayHetHan;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -1319,6 +1321,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoChinhChanged();
     partial void OnSoNKDangKyChanging(System.Nullable<int> value);
     partial void OnSoNKDangKyChanged();
+    partial void OnThoiHanChanging(System.Nullable<int> value);
+    partial void OnThoiHanChanged();
     partial void OnNgayHetHanChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayHetHanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -1417,6 +1421,26 @@ namespace KTKS_DonKH.LinQ
 					this._SoNKDangKy = value;
 					this.SendPropertyChanged("SoNKDangKy");
 					this.OnSoNKDangKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiHan", DbType="Int")]
+		public System.Nullable<int> ThoiHan
+		{
+			get
+			{
+				return this._ThoiHan;
+			}
+			set
+			{
+				if ((this._ThoiHan != value))
+				{
+					this.OnThoiHanChanging(value);
+					this.SendPropertyChanging();
+					this._ThoiHan = value;
+					this.SendPropertyChanged("ThoiHan");
+					this.OnThoiHanChanged();
 				}
 			}
 		}
@@ -2542,8 +2566,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<DCBD> _DCBDs;
 		
-		private EntitySet<KTXM> _KTXMs;
-		
 		private EntityRef<ChuyenDi> _ChuyenDi;
 		
 		private EntityRef<LoaiDon> _LoaiDon;
@@ -2651,7 +2673,6 @@ namespace KTKS_DonKH.LinQ
 		public DonKH()
 		{
 			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
-			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
 			this._ChuyenDi = default(EntityRef<ChuyenDi>);
 			this._LoaiDon = default(EntityRef<LoaiDon>);
 			OnCreated();
@@ -3618,19 +3639,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_KTXM", Storage="_KTXMs", ThisKey="MaDon", OtherKey="MaDon")]
-		public EntitySet<KTXM> KTXMs
-		{
-			get
-			{
-				return this._KTXMs;
-			}
-			set
-			{
-				this._KTXMs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChuyenDi_DonKH", Storage="_ChuyenDi", ThisKey="MaChuyen", OtherKey="MaChuyen", IsForeignKey=true)]
 		public ChuyenDi ChuyenDi
 		{
@@ -3730,18 +3738,6 @@ namespace KTKS_DonKH.LinQ
 			this.SendPropertyChanging();
 			entity.DonKH = null;
 		}
-		
-		private void attach_KTXMs(KTXM entity)
-		{
-			this.SendPropertyChanging();
-			entity.DonKH = this;
-		}
-		
-		private void detach_KTXMs(KTXM entity)
-		{
-			this.SendPropertyChanging();
-			entity.DonKH = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KTXM")]
@@ -3766,8 +3762,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _Nhan;
 		
-		private string _MaDon;
-		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private string _CreateBy;
@@ -3777,8 +3771,6 @@ namespace KTKS_DonKH.LinQ
 		private string _ModifyBy;
 		
 		private EntityRef<ChuyenDi> _ChuyenDi;
-		
-		private EntityRef<DonKH> _DonKH;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3800,8 +3792,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnLyDoChuyenChanged();
     partial void OnNhanChanging(bool value);
     partial void OnNhanChanged();
-    partial void OnMaDonChanging(string value);
-    partial void OnMaDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(string value);
@@ -3815,7 +3805,6 @@ namespace KTKS_DonKH.LinQ
 		public KTXM()
 		{
 			this._ChuyenDi = default(EntityRef<ChuyenDi>);
-			this._DonKH = default(EntityRef<DonKH>);
 			OnCreated();
 		}
 		
@@ -3983,30 +3972,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string MaDon
-		{
-			get
-			{
-				return this._MaDon;
-			}
-			set
-			{
-				if ((this._MaDon != value))
-				{
-					if (this._DonKH.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaDonChanging(value);
-					this.SendPropertyChanging();
-					this._MaDon = value;
-					this.SendPropertyChanged("MaDon");
-					this.OnMaDonChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateDate
 		{
@@ -4117,40 +4082,6 @@ namespace KTKS_DonKH.LinQ
 						this._MaChuyen = default(string);
 					}
 					this.SendPropertyChanged("ChuyenDi");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_KTXM", Storage="_DonKH", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
-		public DonKH DonKH
-		{
-			get
-			{
-				return this._DonKH.Entity;
-			}
-			set
-			{
-				DonKH previousValue = this._DonKH.Entity;
-				if (((previousValue != value) 
-							|| (this._DonKH.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DonKH.Entity = null;
-						previousValue.KTXMs.Remove(this);
-					}
-					this._DonKH.Entity = value;
-					if ((value != null))
-					{
-						value.KTXMs.Add(this);
-						this._MaDon = value.MaDon;
-					}
-					else
-					{
-						this._MaDon = default(string);
-					}
-					this.SendPropertyChanged("DonKH");
 				}
 			}
 		}

@@ -80,7 +80,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                 ctchungtu.MaCT = txtMaCT.Text.Trim();
                 ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-                ///Còn Ngày hết hạn
+                if (txtThoiHan.Text.Trim() != "")
+                    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                else
+                    ctchungtu.ThoiHan = null;
                 
                 if (_cChungTu.ThemChungTu(chungtu, ctchungtu))
                 {
@@ -105,7 +108,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                 ctchungtu.MaCT = txtMaCT.Text.Trim();
                 ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-                ///Còn Ngày hết hạn
+                if (txtThoiHan.Text.Trim() != "")
+                    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                else
+                    ctchungtu.ThoiHan = null;
 
                 if (_cChungTu.SuaChungTu(chungtu, ctchungtu))
                 {

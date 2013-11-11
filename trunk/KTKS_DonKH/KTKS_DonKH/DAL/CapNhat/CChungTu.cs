@@ -30,10 +30,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 itemCTCT.MaCT,
                                 itemCT.DiaChi,
                                 itemCT.SoNKTong,
+                                itemCT.SoNKCat,
+                                itemCT.SoNKNhan,
                                 itemCT.SoNKConLai,
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
-                                itemLCT.ThoiHan
+                                itemCTCT.ThoiHan,
+                                itemCTCT.SoChinh,
                             };
                 return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -253,6 +256,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                     ///Kiểm tra Số Nhân Khẩu còn có thể cấp
                     if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy)
                     {
+                        if (ctchungtu.ThoiHan != null)
+                            ctchungtu.NgayHetHan = DateTime.Now.AddMonths(ctchungtu.ThoiHan.Value);
                         ctchungtu.CreateDate = DateTime.Now;
                         ctchungtu.CreateBy = CTaiKhoan.TaiKhoan;
                         db.CTChungTus.InsertOnSubmit(ctchungtu);
@@ -333,11 +338,16 @@ namespace KTKS_DonKH.DAL.CapNhat
                         chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
-
+                        ///Cập nhật bảng CTChungTu
                         ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
+                        ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+                        if (ctchungtu.ThoiHan != null)
+                            ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                            ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                        else
+                            ctchungtuCN.NgayHetHan = null;
                         ctchungtuCN.ModifyDate = DateTime.Now;
                         ctchungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
-                        ///Còn cập nhật ngày hết hạn
                     }
                     else
                     {

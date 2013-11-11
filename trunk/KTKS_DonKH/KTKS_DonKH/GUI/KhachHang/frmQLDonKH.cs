@@ -140,8 +140,8 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
             ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
-                DSDonKH_Edited.Rows.Remove(DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
+            if (DSDonKH_Edited.Select("MaDon like '" + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"] + "'").Count() > 0)
+                DSDonKH_Edited.Rows.Remove(DSDonKH_Edited.Select("MaDon like '" + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"] + "'")[0]);
 
             DSDonKH_Edited.ImportRow(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row);
             btnLuu.Enabled = true; 

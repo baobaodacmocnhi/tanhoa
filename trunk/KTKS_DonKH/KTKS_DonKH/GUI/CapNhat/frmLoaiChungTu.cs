@@ -40,6 +40,7 @@ namespace KTKS_DonKH.GUI.CapNhat
 
         private void frmCapNhatChungTu_Load(object sender, EventArgs e)
         {
+            dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
         }
 

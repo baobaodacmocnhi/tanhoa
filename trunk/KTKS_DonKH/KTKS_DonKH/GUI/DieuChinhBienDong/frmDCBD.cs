@@ -123,14 +123,44 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void cắtChuyểnĐịnhMứcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCatChuyenDM frm = new frmCatChuyenDM();
+            Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("DanhBo", txtDanhBo.Text.Trim());
+            source.Add("HoTen", txtHoTen_BD.Text.Trim());
+            source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
+            source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
+            source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
+            frmCatChuyenDM frm = new frmCatChuyenDM(source);
             frm.ShowDialog();
         }
 
         private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            frmNhanDM frm = new frmNhanDM();
+            Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("DanhBo", txtDanhBo.Text.Trim());
+            source.Add("HoTen", txtHoTen_BD.Text.Trim());
+            source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
+            frmNhanDM frm = new frmNhanDM(source);
             frm.ShowDialog();
         }
+
+        private void dgvDSSoDangKy_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            this.ControlBox = false;
+        }
+
+        private void dgvDSSoDangKy_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            ///Hiện tại nếu check SoChinh mà exit bằng X thì dữ liệu không được lưu
+            ///Sau khi check phải check qua chỗ khác mới lưu
+            CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
+            if (bool.Parse(dgvDSSoDangKy[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+                ctchungtu.SoChinh = true;
+            else
+                ctchungtu.SoChinh = false;
+            _cChungTu.SuaCTChungTu(ctchungtu);
+            this.ControlBox = true;
+        }
+
+        
     }
 }
