@@ -160,5 +160,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        private void chkCatChuyen_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCatChuyen.Checked)
+                groupBox1.Enabled = true;
+            else
+                groupBox1.Enabled = false;
+        }
     }
 }

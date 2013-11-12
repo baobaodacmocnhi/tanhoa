@@ -138,6 +138,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 DonKH donkh = new DonKH();
                 donkh.MaDon = txtMaDon.Text.Trim();
                 donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
+                donkh.SoCongVan = txtSoCongVan.Text.Trim();
                 donkh.DanhBo = txtDanhBo.Text.Trim();
                 donkh.HopDong = txtHopDong.Text.Trim();
                 donkh.HoTen = txtKhachHang.Text.Trim();
@@ -165,6 +166,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 dr["DiaChi"] = txtDiaChi.Text.Trim();
                 dr["HopDong"] = txtHopDong.Text.Trim();
                 dr["DienThoai"] = txtDienThoai.Text.Trim();
+                #region CheckBox
                 if (chkKiemTraDHN.Checked)
                 {
                     donkh.KiemTraDHN = true;
@@ -353,6 +355,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     donkh.CT_GCNDTDHN = false;
                     dr["CT_GCNDTDHN"] = false;
                 }
+                #endregion
 
                 if (!_cDonKH.ThemDonKH(donkh))
                     return;

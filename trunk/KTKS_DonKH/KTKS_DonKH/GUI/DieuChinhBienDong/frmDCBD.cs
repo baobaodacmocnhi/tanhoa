@@ -15,19 +15,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     public partial class frmDCBD : Form
     {
         DonKH _donkh = new DonKH();
+        TTKhachHang _ttkhachhang = new TTKhachHang();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
-
+        CTTKH _cTTKH = new CTTKH();
 
         public frmDCBD()
         {
             InitializeComponent();
         }
 
-        public frmDCBD(DonKH donkh)
+        public frmDCBD(DonKH donkh,TTKhachHang ttkhachhang)
         {
-            _donkh = donkh;
             InitializeComponent();
+            _donkh = donkh;
+            _ttkhachhang = ttkhachhang;
         }
 
         private void frmDCBD_Load(object sender, EventArgs e)
@@ -39,19 +41,49 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbColumn.DisplayMember = "TenLCT";
             cmbColumn.ValueMember = "MaLCT";
 
-            txtDanhBo.Text = _donkh.DanhBo;
-            txtHopDong.Text = _donkh.HopDong;
-            txtHoTen_BD.Text = _donkh.HoTen;
-            txtDiaChi_BD.Text = _donkh.DiaChi;
-            txtMST_BD.Text = _donkh.MSThue;
-            txtGB_BD.Text = _donkh.GiaBieu;
-            txtDM_BD.Text = _donkh.DinhMuc;
-            txtSH_BD.Text = _donkh.SH;
-            txtSX_BD.Text = _donkh.SX;
-            txtDV_BD.Text = _donkh.DV;
-            txtHCSN_BD.Text = _donkh.HCSN;
+            if (_donkh != null)
+                txtMaDon.Text = _donkh.MaDon;
+            if (_ttkhachhang != null)
+                LoadDS(_ttkhachhang);
+        }
 
-            dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
+        /// <summary>
+        /// Nhận Entity DonKH để điền vào textbox
+        /// </summary>
+        /// <param name="donkh"></param>
+        public void LoadDS(TTKhachHang ttkhachhang)
+        {
+            txtDanhBo.Text = ttkhachhang.DanhBo;
+            txtHopDong.Text = ttkhachhang.GiaoUoc;
+            txtHoTen_BD.Text = ttkhachhang.HoTen;
+            txtDiaChi_BD.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
+            txtMST_BD.Text = ttkhachhang.MSThue;
+            txtGB_BD.Text = ttkhachhang.GB;
+            txtDM_BD.Text = ttkhachhang.TGDM;
+            txtSH_BD.Text = ttkhachhang.SH;
+            txtSX_BD.Text = ttkhachhang.SX;
+            txtDV_BD.Text = ttkhachhang.DV;
+            txtHCSN_BD.Text = ttkhachhang.HCSN;
+
+            dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(ttkhachhang.DanhBo);
+        }
+
+        public void Clear()
+        {
+            txtMaDon.Text = "";
+            txtDanhBo.Text = "";
+            txtHopDong.Text = "";
+            txtHoTen_BD.Text = "";
+            txtDiaChi_BD.Text = "";
+            txtMST_BD.Text = "";
+            txtGB_BD.Text = "";
+            txtDM_BD.Text = "";
+            txtSH_BD.Text = "";
+            txtSX_BD.Text = "";
+            txtDV_BD.Text = "";
+            txtHCSN_BD.Text = "";
+
+            dgvDSSoDangKy.DataSource = null;
         }
 
         private void dgvDSSoDangKy_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -159,6 +191,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctchungtu.SoChinh = false;
             _cChungTu.SuaCTChungTu(ctchungtu);
             this.ControlBox = true;
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                    LoadDS(_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()));
+                else
+                    Clear();
+            }
         }
 
         

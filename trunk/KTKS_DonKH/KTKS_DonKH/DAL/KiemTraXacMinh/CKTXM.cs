@@ -138,7 +138,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 };
                     ///Bảng DCBD
                     var query2 = from itemDCBD in db.DCBDs
-                                 join itemDonKH in db.DonKHs on itemDCBD.MaDon equals itemDonKH.MaDon
+                                 join itemDonKH in db.DonKHs on itemDCBD.MaDCBD equals itemDonKH.MaDon
                                  join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                  where itemDCBD.Nhan == false && itemDCBD.MaChuyen == "KTXM"
                                  select new
