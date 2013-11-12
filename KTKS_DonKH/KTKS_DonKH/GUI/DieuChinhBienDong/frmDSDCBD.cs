@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
+using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -17,6 +18,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChuyenDi _cChuyenDi = new CChuyenDi();
         CDonKH _cDonKH = new CDonKH();
         CDCBD _cDCBD = new CDCBD();
+        CTTKH _cTTKH = new CTTKH();
 
         public frmDSDCBD()
         {
@@ -61,13 +63,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
-                dgvDSDCBD.DataSource = _cDCBD.LoadDSKTXMDaDuyet();
+            {
+                dgvDSDCBD.DataSource = _cDCBD.LoadDSKTXMDaDuyet();    
+            }
         }
 
         private void radChuDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radChuDuyet.Checked)
+            {
                 dgvDSDCBD.DataSource = _cDCBD.LoadDSKTXMChuaDuyet();
+            }
         }
 
         private void dgvDSDCBD_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -89,7 +95,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void điềuChỉnhBiếnĐộngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDCBD frm = new frmDCBD(_cDonKH.getDonKHbyID(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
+            frmDCBD frm = new frmDCBD(_cDonKH.getDonKHbyID(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString()), _cTTKH.getTTKHbyID(dgvDSDCBD["DanhBo", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
             frm.ShowDialog();
         }
 

@@ -16,6 +16,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 if (CTaiKhoan.RoleDCBD)
                 {
+                    DataSet ds = new DataSet();
                     var query = from itemDCBD in db.DCBDs
                                 join itemDonKH in db.DonKHs on itemDCBD.MaDCBD equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
@@ -37,6 +38,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     LyDoChuyenDi = itemDCBD.LyDoChuyen
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+
                 }
                 else
                 {
@@ -50,6 +52,66 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 return null;
             }
         }
+
+        //public DataSet LoadDSKTXMDaDuyet()
+        //{
+        //    try
+        //    {
+        //        if (CTaiKhoan.RoleDCBD)
+        //        {
+        //            DataSet ds = new DataSet();
+        //            var query = from itemDCBD in db.DCBDs
+        //                        join itemDonKH in db.DonKHs on itemDCBD.MaDCBD equals itemDonKH.MaDon
+        //                        join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+        //                        select new
+        //                        {
+        //                            itemDonKH.MaDon,
+        //                            itemLoaiDon.TenLD,
+        //                            itemDonKH.CreateDate,
+        //                            itemDonKH.DanhBo,
+        //                            itemDonKH.HoTen,
+        //                            itemDonKH.DiaChi,
+        //                            itemDonKH.NoiDung,
+        //                            NoiChuyenDen = itemDCBD.NoiChuyenDen,
+        //                            LyDoChuyenDen = itemDCBD.LyDoChuyen,
+        //                            itemDCBD.MaDCBD,
+        //                            NgayXuLy = itemDCBD.CreateDate,
+        //                            itemDCBD.KetQua,
+        //                            itemDCBD.MaChuyen,
+        //                            LyDoChuyenDi = itemDCBD.LyDoChuyen
+        //                        };
+        //            DataTable dtDCBD = new DataTable();
+        //            dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //            dtDCBD.TableName = "DCBD";
+        //            ds.Tables.Add(dtDCBD);
+
+        //            var query2 = from itemCTDCBD in db.CTDCBDs
+        //                         select new
+        //                         {
+        //                             itemCTDCBD.MaDCBD,
+        //                             itemCTDCBD.MaCTDCBD
+        //                         };
+
+        //            DataTable dtCTDCBD = new DataTable();
+        //            dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query2);
+        //            dtCTDCBD.TableName = "CTDCBD";
+        //            ds.Tables.Add(dtCTDCBD);
+
+        //            ds.Relations.Add("1", ds.Tables["DCBD"].Columns["MaDCBD"], ds.Tables["CTDCBD"].Columns["MaDCBD"]);
+        //            return ds;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return null;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return null;
+        //    }
+        //}
 
         public DataTable LoadDSKTXMChuaDuyet()
         {
