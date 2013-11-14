@@ -86,11 +86,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     ds.Tables.Add(dtDCBD);
 
                     var query2 = from itemCTDCBD in db.CTDCBDs
-                                 select new
-                                 {
-                                     itemCTDCBD.MaDCBD,
-                                     itemCTDCBD.MaCTDCBD
-                                 };
+                                 select itemCTDCBD;         
 
                     DataTable dtCTDCBD = new DataTable();
                     dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query2);

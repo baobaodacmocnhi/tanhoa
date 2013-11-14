@@ -33,10 +33,11 @@
       <Column Name="SoNKCat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SoNKNhan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SoNKConLai" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NhanNK_SoNKCat" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NhanNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="NhanNK_CN" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanNK_MaCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NhanNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NhanNK_HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanNK_SoNKCat" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaLCT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -216,13 +217,15 @@
       <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoNKConLai" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoNKCat" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NhanNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="NhanNK_CN" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanNK_MaCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NhanNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NhanNK_HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoNKNhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CatNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CatNK_CN" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CatNK_MaCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CatNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CatNK_HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CatNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MaDon" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

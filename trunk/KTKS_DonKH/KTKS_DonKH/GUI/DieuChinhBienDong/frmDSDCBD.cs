@@ -67,9 +67,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             radChuDuyet.Checked = true;
 
-            GridAdjustment();
-            GridEditorAdjusment();
-
+            gridControl.LevelTree.Nodes.Add("Chi Tiết", gridViewCTDCBD);
         }
 
         #region dsg
@@ -164,93 +162,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void GridAdjustment()
-        {
-            GridView[] gvs = new GridView[2];
-            gvs[0] = gridViewDCBD;
-            for (int i = 0; i < 2; i++)
-            {
-                string prefix = "";
-                if (i > 0)
-                {
-                    gvs[i] = new GridView(gridControl);
-                    gvs[i].OptionsDetail.ShowDetailTabs = true;
-                    gvs[i].OptionsDetail.EnableDetailToolTip = true;
-                    prefix = _cDCBD.LoadDSKTXMDaDuyet().Relations[i - 1].RelationName;
-                }
-
-                if (i < 2)
-                    gvs[i].OptionsView.ColumnAutoWidth = false;
-
-                if (gvs[i].OptionsView.ShowGroupPanel)
-                    gvs[i].OptionsView.ShowGroupPanel = false;
-
-                gvs[i].DetailHeight = 600;
-
-                if (prefix == "Chi Tiết")
-                    gridControl.LevelTree.Nodes.Add(prefix, gvs[i]);
-                else
-                    if (prefix != "")
-                        gridControl.LevelTree.Nodes["Chi Tiết"].Nodes.Add(prefix, gvs[i]);
-            }
-        }
-
-        private void GridEditorAdjusment()
-        {
-            gridControl.BeginUpdate();
-            try
-            {
-                GridColumn col;
-                GridView gv;
-                //Màu Sắc
-                gv = gridControl.LevelTree.Nodes["Chi Tiết"].LevelTemplate as GridView;
-                foreach (DataColumn c in _cDCBD.LoadDSKTXMDaDuyet().Tables["CTDCBD"].Columns)
-                {
-                    col = gv.Columns.Add();
-                    col.FieldName = c.ColumnName;
-                    if (col.FieldName == "MaHH")
-                        col.VisibleIndex = -1;
-                    else
-                    {
-                        if (col.FieldName == "TenMau")
-                            col.Caption = "Màu Sắc";
-                        if (col.FieldName == "TenSize")
-                            col.Caption = "Size";
-                        if (col.FieldName == "SoLuong")
-                            col.Caption = "Số Lượng";
-                        col.VisibleIndex = c.Ordinal;
-                        col.OptionsColumn.AllowEdit = false;
-                    }
-                }
-                //gv.BeginSort();
-                //gv.Columns["TenMau"].GroupIndex = gv.SortInfo.Count;
-                //gv.EndSort();
-                //gv.ExpandAllGroups();
-                ////Size
-                //gv = gridControl.LevelTree.Nodes["Màu Sắc"].Nodes["Size"].LevelTemplate as GridView;
-                //foreach (DataColumn c in ds.Tables["SIZE"].Columns)
-                //{
-                //    col = gv.Columns.Add();
-                //    col.FieldName = c.ColumnName;
-                //    if (col.FieldName == "MaHH" || col.FieldName == "MaMau")
-                //        col.VisibleIndex = -1;
-                //    else
-                //    {
-                //        if (col.FieldName == "TenSize")
-                //            col.Caption = "Tên Size";
-                //        if (col.FieldName == "SoLuong")
-                //            col.Caption = "Số Lượng";
-                //        col.VisibleIndex = c.Ordinal;
-                //        col.OptionsColumn.AllowEdit = false;
-                //    }
-                //}
-            }
-            finally
-            {
-                gridControl.EndUpdate();
-            }
-        }
-
+       
         
     }
 }

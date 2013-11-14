@@ -15,6 +15,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
     {
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
+        CChiNhanh _cChiNhanh = new CChiNhanh();
         Dictionary<string, string> _source = new Dictionary<string, string>();
         string _action = "";
 
@@ -64,6 +65,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSoNKDangKy.Text = _source["SoNKDangKy"];
             txtThoiHan.Text = _source["ThoiHan"];
 
+            cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh();
+            cmbChiNhanh.DisplayMember = "TenCN";
+            cmbChiNhanh.ValueMember = "MaCN";
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -75,6 +79,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 chungtu.DiaChi = txtDiaChi.Text.Trim();
                 chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                 chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+                if (chkCatChuyen.Checked)
+                {
+                    chungtu.NhanNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
+                    chungtu.NhanNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                    chungtu.NhanNK_HoTen = txtHoTen_Cat.Text.Trim();
+                    chungtu.NhanNK_DiaChi = txtDiaChiKH_Cat.Text.Trim();
+                    chungtu.NhanNK_SoNKCat = int.Parse(txtSoNKCat.Text.Trim());
+                }
 
                 CTChungTu ctchungtu = new CTChungTu();
                 ctchungtu.DanhBo = txtDanhBo.Text.Trim();
@@ -167,6 +179,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 groupBox1.Enabled = true;
             else
                 groupBox1.Enabled = false;
+        }
+
+        private void txtSoNKCat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
     }
 }
