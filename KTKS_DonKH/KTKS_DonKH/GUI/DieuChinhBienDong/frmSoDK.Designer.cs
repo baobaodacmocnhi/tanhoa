@@ -50,10 +50,12 @@
             this.txtDanhBo_Cat = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtKhachHang_Cat = new System.Windows.Forms.TextBox();
+            this.txtHoTen_Cat = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDiaChiKH_Cat = new System.Windows.Forms.TextBox();
             this.chkCatChuyen = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSoNKCat = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -213,18 +215,20 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.txtSoNKCat);
             this.groupBox1.Controls.Add(this.cmbChiNhanh);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtDanhBo_Cat);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.txtKhachHang_Cat);
+            this.groupBox1.Controls.Add(this.txtHoTen_Cat);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtDiaChiKH_Cat);
             this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(430, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(402, 158);
+            this.groupBox1.Size = new System.Drawing.Size(402, 179);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nơi Cắt Chuyển:";
@@ -271,12 +275,12 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "Khách Hàng:";
             // 
-            // txtKhachHang_Cat
+            // txtHoTen_Cat
             // 
-            this.txtKhachHang_Cat.Location = new System.Drawing.Point(133, 86);
-            this.txtKhachHang_Cat.Name = "txtKhachHang_Cat";
-            this.txtKhachHang_Cat.Size = new System.Drawing.Size(200, 25);
-            this.txtKhachHang_Cat.TabIndex = 5;
+            this.txtHoTen_Cat.Location = new System.Drawing.Point(133, 86);
+            this.txtHoTen_Cat.Name = "txtHoTen_Cat";
+            this.txtHoTen_Cat.Size = new System.Drawing.Size(200, 25);
+            this.txtHoTen_Cat.TabIndex = 5;
             // 
             // label14
             // 
@@ -304,6 +308,23 @@
             this.chkCatChuyen.Text = "Cắt/Chuyển";
             this.chkCatChuyen.UseVisualStyleBackColor = true;
             this.chkCatChuyen.CheckedChanged += new System.EventHandler(this.chkCatChuyen_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 151);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 17);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Số NK Cắt:";
+            // 
+            // txtSoNKCat
+            // 
+            this.txtSoNKCat.Location = new System.Drawing.Point(133, 148);
+            this.txtSoNKCat.Name = "txtSoNKCat";
+            this.txtSoNKCat.Size = new System.Drawing.Size(250, 25);
+            this.txtSoNKCat.TabIndex = 9;
+            this.txtSoNKCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKCat_KeyPress);
             // 
             // frmSoDK
             // 
@@ -367,9 +388,11 @@
         private System.Windows.Forms.TextBox txtDanhBo_Cat;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtKhachHang_Cat;
+        private System.Windows.Forms.TextBox txtHoTen_Cat;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDiaChiKH_Cat;
         private System.Windows.Forms.CheckBox chkCatChuyen;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtSoNKCat;
     }
 }

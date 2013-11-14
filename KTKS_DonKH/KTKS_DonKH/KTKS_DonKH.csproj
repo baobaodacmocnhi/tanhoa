@@ -76,6 +76,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\rptPhieuDCBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuDCBD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\rptPhieuYCNhanDM.cs">
+      <DependentUpon>rptPhieuYCNhanDM.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\rptPhieuYCCatDM.cs">
       <DependentUpon>rptPhieuYCCatDM.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -252,6 +264,14 @@
     <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
       <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="BaoCao\rptPhieuDCBD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuDCBD.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptPhieuYCNhanDM.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuYCNhanDM.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptPhieuYCCatDM.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuYCCatDM.cs</LastGenOutput>
