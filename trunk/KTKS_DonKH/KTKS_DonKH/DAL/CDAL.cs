@@ -15,7 +15,7 @@ namespace KTKS_DonKH.DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public string getMaxIDTable(string id)
+        public string getMaxNextIDTable(string id)
         {
             string[] id_Sub = id.Split('-');
             string nam = "";

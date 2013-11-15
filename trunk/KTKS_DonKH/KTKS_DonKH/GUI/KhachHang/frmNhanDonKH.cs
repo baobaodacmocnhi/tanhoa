@@ -166,6 +166,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 dr["DiaChi"] = txtDiaChi.Text.Trim();
                 dr["HopDong"] = txtHopDong.Text.Trim();
                 dr["DienThoai"] = txtDienThoai.Text.Trim();
+
                 #region CheckBox
                 if (chkKiemTraDHN.Checked)
                 {
