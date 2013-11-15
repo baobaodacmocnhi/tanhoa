@@ -37,6 +37,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
                                 itemCTCT.SoChinh,
+                                itemCTCT.Cat,
                             };
                 return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -211,6 +212,13 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
+                if (db.LichSuChungTus.Count() > 0)
+                {
+                    string MaLSCT = db.LichSuChungTus.Max(itemLSCT => itemLSCT.MaLSCT);
+                    lichsuchungtu.MaLSCT = getMaxNextIDTable(MaLSCT);
+                }
+                else
+                    lichsuchungtu.MaLSCT = DateTime.Now.Year + "-" + 1;
                 lichsuchungtu.CreateDate = DateTime.Now;
                 lichsuchungtu.CreateBy = CTaiKhoan.TaiKhoan;
                 db.LichSuChungTus.InsertOnSubmit(lichsuchungtu);
@@ -226,6 +234,27 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        public string getMaxNextSoPhieuLSCT()
+        {
+            try
+            {
+                if (db.LichSuChungTus.Count() > 0)
+                {
+                    if (db.LichSuChungTus.Max(itemLSCT => itemLSCT.SoPhieu) == null)
+                        return DateTime.Now.Year + "-" + 1;
+                    else
+                        return getMaxNextIDTable(db.LichSuChungTus.Max(itemLSCT => itemLSCT.SoPhieu));
+                }
+                else
+                    return DateTime.Now.Year + "-" + 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region Method
@@ -236,7 +265,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// <param name="chungtu"></param>
         /// <param name="ctchungtu"></param>
         /// <returns>true/false</returns>
-        public bool ThemChungTu(ChungTu chungtu,CTChungTu ctchungtu)
+        public bool ThemChungTu(ChungTu chungtu,CTChungTu ctchungtu,LichSuChungTu lichsuchungtu)
         {
             try
             {
@@ -244,10 +273,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (!CheckChungTu(chungtu.MaCT))
                 {
                     chungtu.SoNKConLai = chungtu.SoNKTong;
-                    chungtu.CreateDate = DateTime.Now;
-                    chungtu.CreateBy = CTaiKhoan.TaiKhoan;
-                    db.ChungTus.InsertOnSubmit(chungtu);
-                    db.SubmitChanges();
+                    ////chungtu.CreateDate = DateTime.Now;
+                    ////chungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                    ////db.ChungTus.InsertOnSubmit(chungtu);
+                    ////db.SubmitChanges();
+                    ThemChungTu(chungtu);
                 }
                 ///Kiểm tra nếu CTChungTu(danh bộ, sổ đăng ký) chưa có thì thêm vào
                 if (!CheckCTChungTu(ctchungtu.DanhBo, ctchungtu.MaCT))
@@ -256,16 +286,36 @@ namespace KTKS_DonKH.DAL.CapNhat
                     ///Kiểm tra Số Nhân Khẩu còn có thể cấp
                     if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy)
                     {
+                        ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
                         if (ctchungtu.ThoiHan != null)
                             ctchungtu.NgayHetHan = DateTime.Now.AddMonths(ctchungtu.ThoiHan.Value);
-                        ctchungtu.CreateDate = DateTime.Now;
-                        ctchungtu.CreateBy = CTaiKhoan.TaiKhoan;
-                        db.CTChungTus.InsertOnSubmit(ctchungtu);
-                        ///Còn cập nhật ngày hết hạn
+                        //ctchungtu.CreateDate = DateTime.Now;
+                        //ctchungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                        //db.CTChungTus.InsertOnSubmit(ctchungtu);
+                        ThemCTChungTu(ctchungtu);
                         
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
                         chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
                         chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+
+                        ///Cập nhật bảng LichSuChungTu
+                        lichsuchungtu.MaCT = ctchungtu.MaCT;
+                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                        if (chungtuCN.YeuCauCat)
+                        {
+                            lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
+                            lichsuchungtu.NhanDM = true;
+                            lichsuchungtu.CatNK_MaCN= chungtuCN.NhanNK_MaCN;
+                            lichsuchungtu.CatNK_DanhBo= chungtuCN.NhanNK_DanhBo;
+                            lichsuchungtu.CatNK_HoTen= chungtuCN.NhanNK_HoTen;
+                            lichsuchungtu.CatNK_DiaChi= chungtuCN.NhanNK_DiaChi;
+                            lichsuchungtu.SoNKNhan= chungtuCN.NhanNK_SoNKCat;
+                        }
+                        ThemLichSuChungTu(lichsuchungtu);
 
                         db.SubmitChanges();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -273,7 +323,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     }
                     else
                     {
-                        MessageBox.Show("Sổ Đăng Ký vượt định mức. Chỉ có thể cấp " + chungtuCN.SoNKConLai, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
                 }
@@ -299,7 +349,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// <param name="chungtu"></param>
         /// <param name="ctchungtu"></param>
         /// <returns></returns>
-        public bool SuaChungTu(ChungTu chungtu, CTChungTu ctchungtu)
+        public bool SuaChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
         {
             try
             {
@@ -313,19 +363,23 @@ namespace KTKS_DonKH.DAL.CapNhat
                         chungtuCN.SoNKTong = chungtu.SoNKTong;
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        ///Cập nhật bảng LichSuChungTu
+                        lichsuchungtu.MaCT = chungtuCN.MaCT;
+                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
                     }
                     else
                     {
                         MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
-                ///Kiểm tra Địa Chỉ có thay đổi hay không
-                if (chungtuCN.DiaChi != chungtu.DiaChi)
-                {
-                    chungtuCN.DiaChi = chungtu.DiaChi;
-                    chungtuCN.ModifyDate = DateTime.Now;
-                    chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
-                }
+                /////Kiểm tra Địa Chỉ có thay đổi hay không
+                //if (chungtuCN.DiaChi != chungtu.DiaChi)
+                //{
+                //    chungtuCN.DiaChi = chungtu.DiaChi;
+                //    chungtuCN.ModifyDate = DateTime.Now;
+                //    chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                //}
 
                 ///Cập Nhật bảng CTChungTu khi thay đổi Số Nhân Khẩu đăng ký (frmSoDK)
                 CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
@@ -348,12 +402,20 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ctchungtuCN.NgayHetHan = null;
                         ctchungtuCN.ModifyDate = DateTime.Now;
                         ctchungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        ///Cập nhật bảng LichSuChungTu
+                        lichsuchungtu.DanhBo = ctchungtuCN.DanhBo;
+                        lichsuchungtu.SoNKDangKy = ctchungtuCN.SoNKDangKy;
+                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                        lichsuchungtu.ThoiHan = ctchungtuCN.ThoiHan;
                     }
                     else
                     {
                         MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
+                ///Thêm LichSuChungTu
+                if (chungtuCN.SoNKTong != chungtu.SoNKTong || ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
+                    ThemLichSuChungTu(lichsuchungtu);
                 db.SubmitChanges();
                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;

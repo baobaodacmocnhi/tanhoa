@@ -22,7 +22,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             if (db.DonKHs.Count() > 0)
             {
                 string MaDon = db.DonKHs.Max(itemDonKH => itemDonKH.MaDon);
-                return getMaxIDTable(MaDon);
+                return getMaxNextIDTable(MaDon);
             }
             else
                 return DateTime.Now.Year + "-" + 1;

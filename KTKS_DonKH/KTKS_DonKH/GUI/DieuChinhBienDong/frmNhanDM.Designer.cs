@@ -54,7 +54,7 @@
             this.txtKhachHang_Nhan = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtThoiHan = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -68,6 +68,7 @@
             this.cmbLoaiCT.Name = "cmbLoaiCT";
             this.cmbLoaiCT.Size = new System.Drawing.Size(121, 25);
             this.cmbLoaiCT.TabIndex = 9;
+            this.cmbLoaiCT.SelectedIndexChanged += new System.EventHandler(this.cmbLoaiCT_SelectedIndexChanged);
             // 
             // cmbChiNhanh
             // 
@@ -92,6 +93,7 @@
             this.txtSoNKNhan.Name = "txtSoNKNhan";
             this.txtSoNKNhan.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKNhan.TabIndex = 19;
+            this.txtSoNKNhan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKNhan_KeyPress);
             // 
             // label6
             // 
@@ -108,6 +110,7 @@
             this.txtMaCT.Name = "txtMaCT";
             this.txtMaCT.Size = new System.Drawing.Size(100, 25);
             this.txtMaCT.TabIndex = 11;
+            this.txtMaCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_KeyPress);
             // 
             // label5
             // 
@@ -181,6 +184,7 @@
             this.txtSoNKTong.Name = "txtSoNKTong";
             this.txtSoNKTong.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKTong.TabIndex = 17;
+            this.txtSoNKTong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKTong_KeyPress);
             // 
             // label7
             // 
@@ -272,7 +276,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtThoiHan);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.cmbChiNhanh);
             this.groupBox2.Controls.Add(this.label13);
@@ -299,12 +303,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nơi Cắt Chuyển:";
             // 
-            // textBox1
+            // txtThoiHan
             // 
-            this.textBox1.Location = new System.Drawing.Point(314, 179);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 25);
-            this.textBox1.TabIndex = 13;
+            this.txtThoiHan.Location = new System.Drawing.Point(314, 179);
+            this.txtThoiHan.Name = "txtThoiHan";
+            this.txtThoiHan.Size = new System.Drawing.Size(100, 25);
+            this.txtThoiHan.TabIndex = 13;
+            this.txtThoiHan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label9
             // 
@@ -326,6 +331,7 @@
             this.btnLuu.Text = "Lưu - In Phiếu Cắt";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // frmNhanDM
             // 
@@ -378,7 +384,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtThoiHan;
         private System.Windows.Forms.Label label9;
     }
 }

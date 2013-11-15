@@ -92,6 +92,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
+            if (bool.Parse(dgvDSSoDangKy.Rows[e.RowIndex].Cells["Cat"].Value.ToString()) == true)
+                dgvDSSoDangKy.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightSlateGray;
         }
 
         private void dgvDSSoDangKy_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -101,12 +103,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (e.RowIndex >= 0)
                 {
                     sửaToolStripMenuItem.Enabled = true;
-                    
+                    cắtChuyểnĐịnhMứcToolStripMenuItem.Enabled = true;
                 }
                 else
                 {
                     sửaToolStripMenuItem.Enabled = false;
-
+                    cắtChuyểnĐịnhMứcToolStripMenuItem.Enabled = false;
                 }
                 ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
                 dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -124,7 +126,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("MaDon", txtMaDon.Text.Trim());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
+            source.Add("HoTenKH", txtHoTen_BD.Text.Trim());
+            source.Add("DiaChiKH", txtDiaChi_BD.Text.Trim());
             source.Add("MaLCT", "1");
             source.Add("MaCT", "");
             source.Add("DiaChi", "");
@@ -140,6 +145,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("MaDon", txtMaDon.Text.Trim());
             source.Add("DanhBo",txtDanhBo.Text.Trim());
             source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
@@ -156,6 +162,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void cắtChuyểnĐịnhMứcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("MaDon", txtMaDon.Text.Trim());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTen", txtHoTen_BD.Text.Trim());
             source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
@@ -168,6 +175,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("MaDon", txtMaDon.Text.Trim());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTen", txtHoTen_BD.Text.Trim());
             source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
@@ -178,6 +186,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void dgvDSSoDangKy_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             this.ControlBox = false;
+            contextMenuStrip1.Enabled = false;
         }
 
         private void dgvDSSoDangKy_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -185,12 +194,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///Hiện tại nếu check SoChinh mà exit bằng X thì dữ liệu không được lưu
             ///Sau khi check phải check qua chỗ khác mới lưu
             CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
-            if (bool.Parse(dgvDSSoDangKy[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+            if (bool.Parse(dgvDSSoDangKy["SoChinh", e.RowIndex].Value.ToString()) == true)
                 ctchungtu.SoChinh = true;
             else
                 ctchungtu.SoChinh = false;
+            if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) == true)
+                ctchungtu.Cat = true;
+            else
+                ctchungtu.Cat = false;
             _cChungTu.SuaCTChungTu(ctchungtu);
             this.ControlBox = true;
+            contextMenuStrip1.Enabled = true;
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
