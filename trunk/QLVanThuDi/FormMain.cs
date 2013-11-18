@@ -232,7 +232,7 @@ namespace QLVanThu
             if (chkTimeTimKiem.Checked)
                 if (dateDenNgay.Value.Date >= dateTuNgay.Value.Date)
                 {
-                    vanthudis.DataSource = _CDataQLVanThuDi.LoadDSVanThuDiDateToDate(dateTuNgay.Value.Date.ToString("yyyy-MM-dd"), dateDenNgay.Value.Date.AddDays(1).ToString("yyyy-MM-dd"));
+                    vanthudis.DataSource = _CDataQLVanThuDi.LoadDSVanThuDiDateToDate(dateTuNgay.Value.Date.ToString("yyyy-MM-dd"), dateDenNgay.Value.Date.ToString("yyyy-MM-dd"));
                 }
                 else
                     MessageBox.Show("Đến Ngày phải lớn hơn Từ Ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -254,6 +254,58 @@ namespace QLVanThu
                 dateDenNgay.Enabled = false;
                 vanthudis.DataSource = _CDataQLVanThuDi.LoadDSVanThuDi();
             }
+        }
+
+        private void cmbPhongBanDoi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string KeyWord = "";
+            switch (cmbPhongBanDoi.SelectedIndex)
+            {
+                case 1:
+                    KeyWord = "TCHC";
+                    break;
+                case 2:
+                    KeyWord = "KTTC";
+                    break;
+                case 3:
+                    KeyWord = "KHVTTH";
+                    break;
+                case 4:
+                    KeyWord = "KTCN";
+                    break;
+                case 5:
+                    KeyWord = "KTKS";
+                    break;
+                case 6:
+                    KeyWord = "QLDA";
+                    break;
+                case 7:
+                    KeyWord = "QLĐHN";
+                    break;
+                case 8:
+                    KeyWord = "ĐTT";
+                    break;
+                case 9:
+                    KeyWord = "TCTB";
+                    break;
+                case 10:
+                    KeyWord = "TCXL";
+                    break;
+                case 11:
+                    KeyWord = "GNKDT";
+                    break;
+                case 12:
+                    KeyWord = "CNTT";
+                    break;
+                case 13:
+                    KeyWord = "TGV";
+                    break;
+                default:
+                    KeyWord = "";
+                    break;
+            }
+            string expression = String.Format("(SoKyHieuVB like '%{0}%')", KeyWord);
+            vanthudis.Filter = expression;
         }
 
 
