@@ -235,7 +235,7 @@ namespace QLVanThuDen
             if (chkTimeTimKiem.Checked)
                 if (dateDenNgay.Value.Date >= dateTuNgay.Value.Date)
                 {
-                    vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDenDateToDate(dateTuNgay.Value.Date.ToString("yyyy-MM-dd"), dateDenNgay.Value.Date.AddDays(1).ToString("yyyy-MM-dd"));
+                    vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDenDateToDate(dateTuNgay.Value.Date.ToString("yyyy-MM-dd"), dateDenNgay.Value.Date.ToString("yyyy-MM-dd"));
                 }
                 else
                     MessageBox.Show("Đến Ngày phải lớn hơn Từ Ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
