@@ -72,7 +72,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (itemRow["MaKTXM"].ToString() == "")
                     {
                         KTXM ktxm = new KTXM();
-                        ktxm.MaKTXM = itemRow["MaDon"].ToString();
+                        ktxm.MaKTXM = decimal.Parse(itemRow["MaDon"].ToString());
                         ktxm.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
                         ktxm.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
                         ktxm.KetQua = itemRow["KetQua"].ToString();
@@ -84,13 +84,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
                         _cKTXM.ThemKTXM(ktxm);
                         ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                        DonKH donkh = _cDonKH.getDonKHbyID(itemRow["MaDon"].ToString());
+                        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
                         donkh.Nhan = true;
                         _cDonKH.SuaDonKH(donkh);
                     }
                     else
                     {
-                        KTXM ktxm = _cKTXM.getKTXMbyID(itemRow["MaKTXM"].ToString());
+                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaKTXM"].ToString()));
                         ///Đơn đã được nơi nhận xử lý thì không được sửa
                         if (!ktxm.Nhan)
                         {
@@ -129,7 +129,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (dgvDSKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString()));
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString())));
                 frm.ShowDialog();
             }
         }
@@ -153,11 +153,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
             ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
             ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSKTXM_Edited.Select("MaDon like '" + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"] + "'").Count() > 0)
-                DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon like '" + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"] + "'")[0]);
+            if (DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
+                DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
 
             DSKTXM_Edited.ImportRow(((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row);
             btnLuu.Enabled = true;
+        }
+
+        private void dgvDSKTXM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, "-");
+            }
         }       
     }
 }

@@ -1809,7 +1809,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaCTDCBD;
+		private decimal _MaCTDCBD;
 		
 		private string _DanhBo;
 		
@@ -1857,7 +1857,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HCSN_BD;
 		
-		private string _MaDCBD;
+		private System.Nullable<decimal> _MaDCBD;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -1873,7 +1873,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaCTDCBDChanging(string value);
+    partial void OnMaCTDCBDChanging(decimal value);
     partial void OnMaCTDCBDChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
@@ -1921,7 +1921,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnDV_BDChanged();
     partial void OnHCSN_BDChanging(string value);
     partial void OnHCSN_BDChanged();
-    partial void OnMaDCBDChanging(string value);
+    partial void OnMaDCBDChanging(System.Nullable<decimal> value);
     partial void OnMaDCBDChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
@@ -1939,8 +1939,8 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTDCBD", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaCTDCBD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTDCBD", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaCTDCBD
 		{
 			get
 			{
@@ -2419,8 +2419,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDCBD", DbType="NVarChar(50)")]
-		public string MaDCBD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDCBD", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDCBD
 		{
 			get
 			{
@@ -2550,7 +2550,7 @@ namespace KTKS_DonKH.LinQ
 					}
 					else
 					{
-						this._MaDCBD = default(string);
+						this._MaDCBD = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DCBD");
 				}
@@ -2584,7 +2584,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaDCBD;
+		private decimal _MaDCBD;
 		
 		private string _NoiChuyenDen;
 		
@@ -2618,7 +2618,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaDCBDChanging(string value);
+    partial void OnMaDCBDChanging(decimal value);
     partial void OnMaDCBDChanged();
     partial void OnNoiChuyenDenChanging(string value);
     partial void OnNoiChuyenDenChanged();
@@ -2652,8 +2652,8 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDCBD", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaDCBD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDCBD", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaDCBD
 		{
 			get
 			{
@@ -2974,7 +2974,7 @@ namespace KTKS_DonKH.LinQ
 					}
 					else
 					{
-						this._MaDCBD = default(string);
+						this._MaDCBD = default(decimal);
 					}
 					this.SendPropertyChanged("DonKH");
 				}
@@ -3212,7 +3212,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaDon;
+		private decimal _MaDon;
 		
 		private string _SoCongVan;
 		
@@ -3320,7 +3320,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaDonChanging(string value);
+    partial void OnMaDonChanging(decimal value);
     partial void OnMaDonChanged();
     partial void OnSoCongVanChanging(string value);
     partial void OnSoCongVanChanged();
@@ -3427,8 +3427,8 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaDon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaDon
 		{
 			get
 			{
@@ -4548,7 +4548,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaKTXM;
+		private decimal _MaKTXM;
 		
 		private string _NoiChuyenDen;
 		
@@ -4580,7 +4580,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaKTXMChanging(string value);
+    partial void OnMaKTXMChanging(decimal value);
     partial void OnMaKTXMChanged();
     partial void OnNoiChuyenDenChanging(string value);
     partial void OnNoiChuyenDenChanged();
@@ -4613,8 +4613,8 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKTXM", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaKTXM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKTXM", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaKTXM
 		{
 			get
 			{
@@ -4922,7 +4922,7 @@ namespace KTKS_DonKH.LinQ
 					}
 					else
 					{
-						this._MaKTXM = default(string);
+						this._MaKTXM = default(decimal);
 					}
 					this.SendPropertyChanged("DonKH");
 				}
@@ -4956,7 +4956,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaLSCT;
+		private decimal _MaLSCT;
 		
 		private string _MaCT;
 		
@@ -4970,7 +4970,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ThoiHan;
 		
-		private string _SoPhieu;
+		private System.Nullable<System.DateTime> _NgayHetHan;
+		
+		private System.Nullable<decimal> _SoPhieu;
 		
 		private System.Nullable<bool> _CatDM;
 		
@@ -4996,7 +4998,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _CatNK_DiaChi;
 		
-		private string _MaDon;
+		private System.Nullable<decimal> _MaDon;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -5006,7 +5008,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaLSCTChanging(string value);
+    partial void OnMaLSCTChanging(decimal value);
     partial void OnMaLSCTChanged();
     partial void OnMaCTChanging(string value);
     partial void OnMaCTChanged();
@@ -5020,7 +5022,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnSoNKConLaiChanged();
     partial void OnThoiHanChanging(System.Nullable<int> value);
     partial void OnThoiHanChanged();
-    partial void OnSoPhieuChanging(string value);
+    partial void OnNgayHetHanChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayHetHanChanged();
+    partial void OnSoPhieuChanging(System.Nullable<decimal> value);
     partial void OnSoPhieuChanged();
     partial void OnCatDMChanging(System.Nullable<bool> value);
     partial void OnCatDMChanged();
@@ -5046,7 +5050,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_HoTenChanged();
     partial void OnCatNK_DiaChiChanging(string value);
     partial void OnCatNK_DiaChiChanged();
-    partial void OnMaDonChanging(string value);
+    partial void OnMaDonChanging(System.Nullable<decimal> value);
     partial void OnMaDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
@@ -5059,8 +5063,8 @@ namespace KTKS_DonKH.LinQ
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLSCT", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaLSCT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLSCT", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaLSCT
 		{
 			get
 			{
@@ -5199,8 +5203,28 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu", DbType="NVarChar(50)")]
-		public string SoPhieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayHetHan", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayHetHan
+		{
+			get
+			{
+				return this._NgayHetHan;
+			}
+			set
+			{
+				if ((this._NgayHetHan != value))
+				{
+					this.OnNgayHetHanChanging(value);
+					this.SendPropertyChanging();
+					this._NgayHetHan = value;
+					this.SendPropertyChanged("NgayHetHan");
+					this.OnNgayHetHanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SoPhieu
 		{
 			get
 			{
@@ -5459,8 +5483,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="NVarChar(50)")]
-		public string MaDon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDon
 		{
 			get
 			{

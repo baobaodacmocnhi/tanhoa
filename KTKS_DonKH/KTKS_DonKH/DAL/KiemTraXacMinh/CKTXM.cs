@@ -174,7 +174,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public KTXM getKTXMbyID(string MaKTXM)
+        public KTXM getKTXMbyID(decimal MaKTXM)
         {
             if (db.KTXMs.Any(itemKTXM => itemKTXM.MaKTXM == MaKTXM))
                 return db.KTXMs.Single(itemKTXM => itemKTXM.MaKTXM == MaKTXM);

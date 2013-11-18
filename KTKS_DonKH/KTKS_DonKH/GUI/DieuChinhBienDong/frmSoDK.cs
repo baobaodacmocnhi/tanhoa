@@ -86,7 +86,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                     LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                    lichsuchungtu.MaDon = _source["MaDon"];
+                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
 
                     if (chkCatChuyen.Checked)
                         if (txtSoNKCat.Text.Trim() == "")
@@ -123,7 +123,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                     ctchungtu.MaCT = txtMaCT.Text.Trim();
                     ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-                    if (txtThoiHan.Text.Trim() != "")
+                    if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                         ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                     else
                         ctchungtu.ThoiHan = null;
@@ -156,13 +156,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
 
                     LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                    lichsuchungtu.MaDon = _source["MaDon"];
+                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
 
                     CTChungTu ctchungtu = new CTChungTu();
                     ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                     ctchungtu.MaCT = txtMaCT.Text.Trim();
                     ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-                    if (txtThoiHan.Text.Trim() != "")
+                    if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                         ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                     else
                         ctchungtu.ThoiHan = null;
@@ -187,10 +187,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtMaCT_Leave(object sender, EventArgs e)
         {
-            if (_cChungTu.CheckChungTu(txtMaCT.Text.Trim()))
-                MessageBox.Show("Số đăng ký này đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim()))
-                    MessageBox.Show("Số đăng ký này đã đăng ký với danh bạ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Số đăng ký này đã đăng ký với danh bạ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                if (_cChungTu.CheckChungTu(txtMaCT.Text.Trim()))
+                    MessageBox.Show("Số đăng ký này đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)

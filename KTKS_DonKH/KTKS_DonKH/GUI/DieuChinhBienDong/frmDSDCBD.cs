@@ -83,7 +83,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSDCBD.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString())));
                 frm.ShowDialog();
             }
         }
@@ -130,7 +130,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //int selRows = ((GridView)gridControl.MainView).GetSelectedRows()[0];
             //DataRowView selRow = (DataRowView)(((GridView)gridControl.MainView).GetRow(selRows));
             DataRowView selRow = (DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0]);
-            string _MaDon = selRow["MaDon"].ToString();
+            decimal _MaDon = decimal.Parse(selRow["MaDon"].ToString());
             string _DanhBo = selRow["DanhBo"].ToString();
 
             frmDCBD frm = new frmDCBD(_cDonKH.getDonKHbyID(_MaDon), _cTTKH.getTTKHbyID(_DanhBo));
@@ -159,6 +159,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (gridControl.MainView.RowCount > 0 && e.Button == MouseButtons.Right)
             {
                 contextMenuStrip1.Show(gridControl, new Point(e.X, e.Y));
+            }
+        }
+
+        private void gridViewDCBD_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaDon" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(4, "-");
             }
         }
 

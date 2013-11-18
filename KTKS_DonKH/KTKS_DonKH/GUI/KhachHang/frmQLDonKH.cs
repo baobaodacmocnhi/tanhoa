@@ -73,7 +73,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
                     {
-                        DonKH donkh = _cDonKH.getDonKHbyID(itemRow["MaDon"].ToString());
+                        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
                         if (!donkh.Nhan)
                         {
                             donkh.Chuyen = true;
@@ -89,7 +89,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     else
                         if (itemRow["MaChuyen"].ToString() == "NONE")
                         {
-                            DonKH donkh = _cDonKH.getDonKHbyID(itemRow["MaDon"].ToString());
+                            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
                             if (!donkh.Nhan)
                             {
                                 donkh.Chuyen = false;
@@ -116,7 +116,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (dgvDSDonKH.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString()));
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString())));
                 frm.ShowDialog();
             }
         }
@@ -140,11 +140,19 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
             ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSDonKH_Edited.Select("MaDon like '" + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"] + "'").Count() > 0)
-                DSDonKH_Edited.Rows.Remove(DSDonKH_Edited.Select("MaDon like '" + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"] + "'")[0]);
+            if (DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
+                DSDonKH_Edited.Rows.Remove(DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
 
             DSDonKH_Edited.ImportRow(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row);
             btnLuu.Enabled = true; 
+        }
+
+        private void dgvDSDonKH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, "-");
+            }
         }
 
     }

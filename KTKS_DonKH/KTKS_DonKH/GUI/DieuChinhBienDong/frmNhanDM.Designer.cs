@@ -36,9 +36,9 @@
             this.txtMaCT = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtDiaChiKH_Cat = new System.Windows.Forms.TextBox();
+            this.txtDiaChi_Cat = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtKhachHang_Cat = new System.Windows.Forms.TextBox();
+            this.txtHoTen_Cat = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDanhBo_Cat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.txtDanhBo_Nhan = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtKhachHang_Nhan = new System.Windows.Forms.TextBox();
+            this.txtHoTen_Nhan = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtThoiHan = new System.Windows.Forms.TextBox();
@@ -130,12 +130,12 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Loại Chứng Từ:";
             // 
-            // txtDiaChiKH_Cat
+            // txtDiaChi_Cat
             // 
-            this.txtDiaChiKH_Cat.Location = new System.Drawing.Point(133, 117);
-            this.txtDiaChiKH_Cat.Name = "txtDiaChiKH_Cat";
-            this.txtDiaChiKH_Cat.Size = new System.Drawing.Size(250, 25);
-            this.txtDiaChiKH_Cat.TabIndex = 7;
+            this.txtDiaChi_Cat.Location = new System.Drawing.Point(133, 117);
+            this.txtDiaChi_Cat.Name = "txtDiaChi_Cat";
+            this.txtDiaChi_Cat.Size = new System.Drawing.Size(250, 25);
+            this.txtDiaChi_Cat.TabIndex = 7;
             // 
             // label3
             // 
@@ -146,12 +146,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Địa Chỉ:";
             // 
-            // txtKhachHang_Cat
+            // txtHoTen_Cat
             // 
-            this.txtKhachHang_Cat.Location = new System.Drawing.Point(133, 86);
-            this.txtKhachHang_Cat.Name = "txtKhachHang_Cat";
-            this.txtKhachHang_Cat.Size = new System.Drawing.Size(200, 25);
-            this.txtKhachHang_Cat.TabIndex = 5;
+            this.txtHoTen_Cat.Location = new System.Drawing.Point(133, 86);
+            this.txtHoTen_Cat.Name = "txtHoTen_Cat";
+            this.txtHoTen_Cat.Size = new System.Drawing.Size(200, 25);
+            this.txtHoTen_Cat.TabIndex = 5;
             // 
             // label2
             // 
@@ -217,7 +217,7 @@
             this.groupBox1.Controls.Add(this.txtDanhBo_Nhan);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtKhachHang_Nhan);
+            this.groupBox1.Controls.Add(this.txtHoTen_Nhan);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -258,12 +258,12 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Danh Bộ:";
             // 
-            // txtKhachHang_Nhan
+            // txtHoTen_Nhan
             // 
-            this.txtKhachHang_Nhan.Location = new System.Drawing.Point(126, 55);
-            this.txtKhachHang_Nhan.Name = "txtKhachHang_Nhan";
-            this.txtKhachHang_Nhan.Size = new System.Drawing.Size(200, 25);
-            this.txtKhachHang_Nhan.TabIndex = 3;
+            this.txtHoTen_Nhan.Location = new System.Drawing.Point(126, 55);
+            this.txtHoTen_Nhan.Name = "txtHoTen_Nhan";
+            this.txtHoTen_Nhan.Size = new System.Drawing.Size(200, 25);
+            this.txtHoTen_Nhan.TabIndex = 3;
             // 
             // label11
             // 
@@ -287,11 +287,11 @@
             this.groupBox2.Controls.Add(this.txtSoNKTong);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtKhachHang_Cat);
+            this.groupBox2.Controls.Add(this.txtHoTen_Cat);
             this.groupBox2.Controls.Add(this.cmbLoaiCT);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtSoNKNhan);
-            this.groupBox2.Controls.Add(this.txtDiaChiKH_Cat);
+            this.groupBox2.Controls.Add(this.txtDiaChi_Cat);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtMaCT);
@@ -309,7 +309,7 @@
             this.txtThoiHan.Name = "txtThoiHan";
             this.txtThoiHan.Size = new System.Drawing.Size(100, 25);
             this.txtThoiHan.TabIndex = 13;
-            this.txtThoiHan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.txtThoiHan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThoiHan_KeyPress);
             // 
             // label9
             // 
@@ -365,9 +365,9 @@
         private System.Windows.Forms.TextBox txtMaCT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDiaChiKH_Cat;
+        private System.Windows.Forms.TextBox txtDiaChi_Cat;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtKhachHang_Cat;
+        private System.Windows.Forms.TextBox txtHoTen_Cat;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDanhBo_Cat;
         private System.Windows.Forms.Label label1;
@@ -380,7 +380,7 @@
         private System.Windows.Forms.TextBox txtDanhBo_Nhan;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtKhachHang_Nhan;
+        private System.Windows.Forms.TextBox txtHoTen_Nhan;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnLuu;

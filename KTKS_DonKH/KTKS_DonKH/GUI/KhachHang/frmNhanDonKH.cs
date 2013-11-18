@@ -94,7 +94,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (cmbLD.SelectedIndex != -1)
             {
-                txtMaDon.Text = _cDonKH.getMaxNextID().ToString();
+                txtMaDon.Text = _cDonKH.getMaxNextID().ToString().Insert(4, "-");
                 txtNgayNhan.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
         }
@@ -136,7 +136,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (cmbLD.SelectedIndex != -1)
             {
                 DonKH donkh = new DonKH();
-                donkh.MaDon = txtMaDon.Text.Trim();
+                donkh.MaDon = decimal.Parse(txtMaDon.Text.Trim().Replace("-",""));
                 donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                 donkh.SoCongVan = txtSoCongVan.Text.Trim();
                 donkh.DanhBo = txtDanhBo.Text.Trim();
