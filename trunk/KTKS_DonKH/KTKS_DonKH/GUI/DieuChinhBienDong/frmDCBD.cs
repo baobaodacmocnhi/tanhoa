@@ -42,7 +42,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbColumn.ValueMember = "MaLCT";
 
             if (_donkh != null)
-                txtMaDon.Text = _donkh.MaDon;
+                txtMaDon.Text = _donkh.MaDon.ToString().Insert(4, "-");
             if (_ttkhachhang != null)
                 LoadDS(_ttkhachhang);
         }
@@ -126,7 +126,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
-            source.Add("MaDon", txtMaDon.Text.Trim());
+            source.Add("MaDon", _donkh.MaDon.ToString());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTenKH", txtHoTen_BD.Text.Trim());
             source.Add("DiaChiKH", txtDiaChi_BD.Text.Trim());
@@ -145,7 +145,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
-            source.Add("MaDon", txtMaDon.Text.Trim());
+            source.Add("MaDon", _donkh.MaDon.ToString());
             source.Add("DanhBo",txtDanhBo.Text.Trim());
             source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
@@ -162,25 +162,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void cắtChuyểnĐịnhMứcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
-            source.Add("MaDon", txtMaDon.Text.Trim());
+            source.Add("MaDon", _donkh.MaDon.ToString());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTen", txtHoTen_BD.Text.Trim());
             source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
             source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
             frmCatChuyenDM frm = new frmCatChuyenDM(source);
-            frm.ShowDialog();
+            if (frm.ShowDialog() == DialogResult.OK)
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
         }
 
         private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
-            source.Add("MaDon", txtMaDon.Text.Trim());
+            source.Add("MaDon", _donkh.MaDon.ToString());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTen", txtHoTen_BD.Text.Trim());
             source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
             frmNhanDM frm = new frmNhanDM(source);
-            frm.ShowDialog();
+            if (frm.ShowDialog() == DialogResult.OK)
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
         }
 
         private void dgvDSSoDangKy_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
