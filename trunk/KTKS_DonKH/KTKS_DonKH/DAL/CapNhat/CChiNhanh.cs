@@ -31,6 +31,60 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Lấy danh sách Chi Nhánh, hàm này được dùng trong nội bộ DAL
+        /// </summary>
+        /// <param name="inheritance">true</param>
+        /// <returns></returns>
+        public List<ChiNhanh> LoadDSChiNhanh(bool inhertance)
+        {
+            try
+            {
+                if (inhertance)
+                {
+                    return db.ChiNhanhs.ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy danh sách Chi Nhánh(ngoài trừ Chi Nhánh nào đó), hàm này được dùng trong nội bộ DAL
+        /// </summary>
+        /// <param name="inhertance"></param>
+        /// <param name="except">Tên Chi Nhánh ngoại trừ</param>
+        /// <returns></returns>
+        public List<ChiNhanh> LoadDSChiNhanh(bool inhertance,string except)
+        {
+            try
+            {
+                if (inhertance)
+                {
+                    var query = from itemCN in db.ChiNhanhs
+                                where !itemCN.TenCN.ToUpper().Contains(except.ToUpper())
+                                select itemCN;
+                    return query.ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public ChiNhanh getChiNhanhbyID(int MaCN)
         {
             try

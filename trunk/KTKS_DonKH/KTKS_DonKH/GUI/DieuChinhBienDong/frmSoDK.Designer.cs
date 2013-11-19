@@ -45,6 +45,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSoNKCat = new System.Windows.Forms.TextBox();
             this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtDanhBo_Cat = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtDiaChiKH_Cat = new System.Windows.Forms.TextBox();
             this.chkCatChuyen = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtSoNKCat = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +91,7 @@
             this.cmbLoaiCT.FormattingEnabled = true;
             this.cmbLoaiCT.Location = new System.Drawing.Point(128, 43);
             this.cmbLoaiCT.Name = "cmbLoaiCT";
-            this.cmbLoaiCT.Size = new System.Drawing.Size(199, 25);
+            this.cmbLoaiCT.Size = new System.Drawing.Size(200, 25);
             this.cmbLoaiCT.TabIndex = 3;
             this.cmbLoaiCT.SelectedIndexChanged += new System.EventHandler(this.cmbLoaiCT_SelectedIndexChanged);
             // 
@@ -228,17 +228,34 @@
             this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(430, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(402, 179);
+            this.groupBox1.Size = new System.Drawing.Size(438, 179);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Nơi Cắt Chuyển:";
+            this.groupBox1.Text = "Nơi Cắt/Chuyển:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 151);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 17);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Số NK Cắt:";
+            // 
+            // txtSoNKCat
+            // 
+            this.txtSoNKCat.Location = new System.Drawing.Point(133, 148);
+            this.txtSoNKCat.Name = "txtSoNKCat";
+            this.txtSoNKCat.Size = new System.Drawing.Size(100, 25);
+            this.txtSoNKCat.TabIndex = 9;
+            this.txtSoNKCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKCat_KeyPress);
             // 
             // cmbChiNhanh
             // 
             this.cmbChiNhanh.FormattingEnabled = true;
             this.cmbChiNhanh.Location = new System.Drawing.Point(133, 24);
             this.cmbChiNhanh.Name = "cmbChiNhanh";
-            this.cmbChiNhanh.Size = new System.Drawing.Size(200, 25);
+            this.cmbChiNhanh.Size = new System.Drawing.Size(290, 25);
             this.cmbChiNhanh.TabIndex = 1;
             // 
             // label13
@@ -279,7 +296,7 @@
             // 
             this.txtHoTen_Cat.Location = new System.Drawing.Point(133, 86);
             this.txtHoTen_Cat.Name = "txtHoTen_Cat";
-            this.txtHoTen_Cat.Size = new System.Drawing.Size(200, 25);
+            this.txtHoTen_Cat.Size = new System.Drawing.Size(290, 25);
             this.txtHoTen_Cat.TabIndex = 5;
             // 
             // label14
@@ -295,7 +312,7 @@
             // 
             this.txtDiaChiKH_Cat.Location = new System.Drawing.Point(133, 117);
             this.txtDiaChiKH_Cat.Name = "txtDiaChiKH_Cat";
-            this.txtDiaChiKH_Cat.Size = new System.Drawing.Size(250, 25);
+            this.txtDiaChiKH_Cat.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChiKH_Cat.TabIndex = 7;
             // 
             // chkCatChuyen
@@ -309,29 +326,12 @@
             this.chkCatChuyen.UseVisualStyleBackColor = true;
             this.chkCatChuyen.CheckedChanged += new System.EventHandler(this.chkCatChuyen_CheckedChanged);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 151);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 17);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Số NK Cắt:";
-            // 
-            // txtSoNKCat
-            // 
-            this.txtSoNKCat.Location = new System.Drawing.Point(133, 148);
-            this.txtSoNKCat.Name = "txtSoNKCat";
-            this.txtSoNKCat.Size = new System.Drawing.Size(250, 25);
-            this.txtSoNKCat.TabIndex = 9;
-            this.txtSoNKCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKCat_KeyPress);
-            // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(847, 239);
+            this.ClientSize = new System.Drawing.Size(882, 239);
             this.Controls.Add(this.chkCatChuyen);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtDiaChi);

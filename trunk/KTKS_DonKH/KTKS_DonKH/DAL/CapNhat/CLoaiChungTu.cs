@@ -18,8 +18,8 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (CTaiKhoan.RoleCapNhat)
                 {
-                    var query = from itemLCT in db.LoaiChungTus
-                                select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
+                    //var query = from itemLCT in db.LoaiChungTus
+                    //            select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
                     return db.LoaiChungTus.ToList();
                 }
                 else
@@ -46,8 +46,8 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (inhertance)
                 {
-                    var query = from itemLCT in db.LoaiChungTus
-                                select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
+                    //var query = from itemLCT in db.LoaiChungTus
+                    //            select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
                     return db.LoaiChungTus.ToList();
                 }
                 else

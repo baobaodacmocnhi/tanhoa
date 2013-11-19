@@ -54,7 +54,7 @@
             this.điềuChỉnhBiếnĐộngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.điềuChỉnhHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
-            this.radChuDuyet = new System.Windows.Forms.RadioButton();
+            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
             this.LyDoChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,8 +178,8 @@
             this.gridViewDCBD.GridControl = this.gridControl;
             this.gridViewDCBD.IndicatorWidth = 41;
             this.gridViewDCBD.Name = "gridViewDCBD";
-            this.gridViewDCBD.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
-            this.gridViewDCBD.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gridViewDCBD.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewDCBD.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDCBD.OptionsBehavior.AutoPopulateColumns = false;
             this.gridViewDCBD.OptionsView.ColumnAutoWidth = false;
             this.gridViewDCBD.OptionsView.ShowGroupPanel = false;
@@ -348,16 +348,16 @@
             this.radDaDuyet.UseVisualStyleBackColor = true;
             this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
             // 
-            // radChuDuyet
+            // radChuaDuyet
             // 
-            this.radChuDuyet.AutoSize = true;
-            this.radChuDuyet.Location = new System.Drawing.Point(12, 39);
-            this.radChuDuyet.Name = "radChuDuyet";
-            this.radChuDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuDuyet.TabIndex = 11;
-            this.radChuDuyet.Text = "Chưa Duyệt";
-            this.radChuDuyet.UseVisualStyleBackColor = true;
-            this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
+            this.radChuaDuyet.AutoSize = true;
+            this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
+            this.radChuaDuyet.Name = "radChuaDuyet";
+            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet.TabIndex = 11;
+            this.radChuaDuyet.Text = "Chưa Duyệt";
+            this.radChuaDuyet.UseVisualStyleBackColor = true;
+            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
             // 
             // btnLuu
             // 
@@ -520,11 +520,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1362, 611);
+            this.ClientSize = new System.Drawing.Size(1362, 628);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.gridControl);
-            this.Controls.Add(this.radChuDuyet);
+            this.Controls.Add(this.radChuaDuyet);
             this.Controls.Add(this.dgvDSDCBD);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -548,7 +548,7 @@
         private System.Windows.Forms.ToolStripMenuItem điềuChỉnhBiếnĐộngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem điềuChỉnhHóaĐơnToolStripMenuItem;
         private System.Windows.Forms.RadioButton radDaDuyet;
-        private System.Windows.Forms.RadioButton radChuDuyet;
+        private System.Windows.Forms.RadioButton radChuaDuyet;
         private System.Windows.Forms.Button btnLuu;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;

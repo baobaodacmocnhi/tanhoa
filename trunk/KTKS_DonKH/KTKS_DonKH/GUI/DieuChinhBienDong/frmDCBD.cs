@@ -48,9 +48,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         /// <summary>
-        /// Nhận Entity DonKH để điền vào textbox
+        /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>
-        /// <param name="donkh"></param>
+        /// <param name="ttkhachhang"></param>
         public void LoadDS(TTKhachHang ttkhachhang)
         {
             txtDanhBo.Text = ttkhachhang.DanhBo;
@@ -70,7 +70,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void Clear()
         {
-            txtMaDon.Text = "";
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtHoTen_BD.Text = "";
@@ -168,6 +167,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
             source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
+            source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
             frmCatChuyenDM frm = new frmCatChuyenDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
@@ -200,10 +200,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctchungtu.SoChinh = true;
             else
                 ctchungtu.SoChinh = false;
-            if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) == true)
-                ctchungtu.Cat = true;
-            else
-                ctchungtu.Cat = false;
+            //if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) == true)
+            //    ctchungtu.Cat = true;
+            //else
+            //    ctchungtu.Cat = false;
             _cChungTu.SuaCTChungTu(ctchungtu);
             this.ControlBox = true;
             contextMenuStrip1.Enabled = true;
