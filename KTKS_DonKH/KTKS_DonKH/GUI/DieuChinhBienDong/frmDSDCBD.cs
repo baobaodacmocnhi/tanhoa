@@ -65,7 +65,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radChuDuyet.Checked = true;
+            radChuaDuyet.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết", gridViewCTDCBD);
         }
@@ -111,15 +111,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (radDaDuyet.Checked)
             {
                 //dgvDSDCBD.DataSource = _cDCBD.LoadDSKTXMDaDuyet();
+                gridControl.DataSource = null;
+                GridView view = new GridView(gridControl);
+                view.OptionsView.ShowGroupPanel = false;
+                view.OptionsView.ShowColumnHeaders = false;
+                gridControl.MainView = view;
                 gridControl.DataSource = _cDCBD.LoadDSKTXMDaDuyet().Tables["DCBD"];
             }
         }
 
         private void radChuDuyet_CheckedChanged(object sender, EventArgs e)
         {
-            if (radChuDuyet.Checked)
+            if (radChuaDuyet.Checked)
             {
                 //dgvDSDCBD.DataSource = _cDCBD.LoadDSKTXMChuaDuyet();
+                
                 gridControl.DataSource = _cDCBD.LoadDSKTXMChuaDuyet();
             }
         }

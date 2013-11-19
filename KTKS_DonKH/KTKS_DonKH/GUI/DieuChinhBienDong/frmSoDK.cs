@@ -69,7 +69,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSoNKDangKy.Text = _source["SoNKDangKy"];
             txtThoiHan.Text = _source["ThoiHan"];
 
-            cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh();
+            cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh(true,"Tân Hòa");
             cmbChiNhanh.DisplayMember = "TenCN";
             cmbChiNhanh.ValueMember = "MaCN";
         }
@@ -106,7 +106,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                            dr["SoPhieu"] = _cChungTu.getMaxNextSoPhieuLSCT();
+                            dr["SoPhieu"] = _cChungTu.getMaxNextSoPhieuLSCT().ToString().Insert(4,"-");
                             dr["ChiNhanh"] = ((ChiNhanh)cmbChiNhanh.SelectedItem).TenCN;
                             dr["DanhBoNhan"] = txtDanhBo.Text.Trim();
                             dr["HoTenNhan"] = _source["HoTenKH"];
@@ -114,7 +114,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dr["DanhBoCat"] = txtDanhBo_Cat.Text.Trim();
                             dr["HoTenCat"] = txtHoTen_Cat.Text.Trim();
                             dr["DiaChiCat"] = txtDiaChiKH_Cat.Text.Trim();
-                            dr["SoNKCat"] = txtSoNKCat.Text.Trim() + " nhân khẩu (" + txtMaCT.Text.Trim() + ")";
+                            dr["SoNKCat"] = txtSoNKCat.Text.Trim() + " nhân khẩu (HK: " + txtMaCT.Text.Trim() + ")";
 
                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
                         }

@@ -564,6 +564,38 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Hàm được dùng cho frmCatChuyenDM, khi khách hàng yêu cầu cắt chuyển định mức đến địa phương khác,
+        /// sau khi nhập thì phải xuất phiếu yêu cầu nhập cho chi nhánh quản lý địa phương đó,
+        /// trường hợp cắt chuyển cùng chi nhánh thì khỏi xuất phiếu yêu cầu nhận
+        /// </summary>
+        /// <param name="chungtuCat"></param>
+        /// <param name="ctchungtuNhan"></param>
+        /// <param name="SoNKCat"></param>
+        /// <param name="lichsuchungtu"></param>
+        /// <returns></returns>
+        public bool CatChuyenChungTu(CTChungTu chungtuCat, CTChungTu ctchungtuNhan,int SoNKCat, LichSuChungTu lichsuchungtu)
+        {
+            try
+            {
+                CChiNhanh _cChiNhanh=new CChiNhanh();
+                if (_cChiNhanh.getChiNhanhbyID(lichsuchungtu.NhanNK_MaCN.Value).TenCN.ToUpper().Contains("TÂN HÒA"))
+                {
+                    MessageBox.Show("cùng chi nhánh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("khác chi nhánh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         #endregion
     }
 }
