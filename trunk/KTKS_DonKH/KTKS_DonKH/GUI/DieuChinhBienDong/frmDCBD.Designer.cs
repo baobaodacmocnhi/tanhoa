@@ -35,46 +35,46 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtHCSN_BD = new System.Windows.Forms.TextBox();
+            this.txtHCSN = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtDV_BD = new System.Windows.Forms.TextBox();
+            this.txtDV = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtSX_BD = new System.Windows.Forms.TextBox();
+            this.txtSX = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtSH_BD = new System.Windows.Forms.TextBox();
+            this.txtSH = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtDM_BD = new System.Windows.Forms.TextBox();
+            this.txtDinhMuc = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtGB_BD = new System.Windows.Forms.TextBox();
+            this.txtGiaBieu = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtMST_BD = new System.Windows.Forms.TextBox();
+            this.txtMSThue = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtDiaChi_BD = new System.Windows.Forms.TextBox();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtHoTen_BD = new System.Windows.Forms.TextBox();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtHopDong = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtHCSN_DC = new System.Windows.Forms.TextBox();
+            this.txtHCSN_BD = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtDV_DC = new System.Windows.Forms.TextBox();
+            this.txtDV_BD = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtSX_DC = new System.Windows.Forms.TextBox();
+            this.txtSX_BD = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtSH_DC = new System.Windows.Forms.TextBox();
+            this.txtSH_BD = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtDM_DC = new System.Windows.Forms.TextBox();
+            this.txtDinhMuc_BD = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtGB_DC = new System.Windows.Forms.TextBox();
+            this.txtGiaBieu_BD = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.txtMST_DC = new System.Windows.Forms.TextBox();
+            this.txtMSThue_BD = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtDiaChi_DC = new System.Windows.Forms.TextBox();
+            this.txtDiaChi_BD = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.txtHoTen_DC = new System.Windows.Forms.TextBox();
+            this.txtHoTen_BD = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvDSSoDangKy = new System.Windows.Forms.DataGridView();
@@ -108,23 +108,23 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtHCSN_BD);
+            this.groupBox1.Controls.Add(this.txtHCSN);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.txtDV_BD);
+            this.groupBox1.Controls.Add(this.txtDV);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtSX_BD);
+            this.groupBox1.Controls.Add(this.txtSX);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txtSH_BD);
+            this.groupBox1.Controls.Add(this.txtSH);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtDM_BD);
+            this.groupBox1.Controls.Add(this.txtDinhMuc);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtGB_BD);
+            this.groupBox1.Controls.Add(this.txtGiaBieu);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtMST_BD);
+            this.groupBox1.Controls.Add(this.txtMSThue);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtDiaChi_BD);
+            this.groupBox1.Controls.Add(this.txtDiaChi);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtHoTen_BD);
+            this.groupBox1.Controls.Add(this.txtHoTen);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtHopDong);
             this.groupBox1.Controls.Add(this.label2);
@@ -137,13 +137,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Ban Đầu";
             // 
-            // txtHCSN_BD
+            // txtHCSN
             // 
-            this.txtHCSN_BD.Location = new System.Drawing.Point(991, 43);
-            this.txtHCSN_BD.Name = "txtHCSN_BD";
-            this.txtHCSN_BD.ReadOnly = true;
-            this.txtHCSN_BD.Size = new System.Drawing.Size(35, 25);
-            this.txtHCSN_BD.TabIndex = 21;
+            this.txtHCSN.Location = new System.Drawing.Point(991, 43);
+            this.txtHCSN.Name = "txtHCSN";
+            this.txtHCSN.ReadOnly = true;
+            this.txtHCSN.Size = new System.Drawing.Size(35, 25);
+            this.txtHCSN.TabIndex = 21;
             // 
             // label11
             // 
@@ -154,13 +154,13 @@
             this.label11.TabIndex = 20;
             this.label11.Text = "%HCSN";
             // 
-            // txtDV_BD
+            // txtDV
             // 
-            this.txtDV_BD.Location = new System.Drawing.Point(950, 43);
-            this.txtDV_BD.Name = "txtDV_BD";
-            this.txtDV_BD.ReadOnly = true;
-            this.txtDV_BD.Size = new System.Drawing.Size(35, 25);
-            this.txtDV_BD.TabIndex = 19;
+            this.txtDV.Location = new System.Drawing.Point(950, 43);
+            this.txtDV.Name = "txtDV";
+            this.txtDV.ReadOnly = true;
+            this.txtDV.Size = new System.Drawing.Size(35, 25);
+            this.txtDV.TabIndex = 19;
             // 
             // label10
             // 
@@ -171,13 +171,13 @@
             this.label10.TabIndex = 18;
             this.label10.Text = "%DV";
             // 
-            // txtSX_BD
+            // txtSX
             // 
-            this.txtSX_BD.Location = new System.Drawing.Point(909, 43);
-            this.txtSX_BD.Name = "txtSX_BD";
-            this.txtSX_BD.ReadOnly = true;
-            this.txtSX_BD.Size = new System.Drawing.Size(35, 25);
-            this.txtSX_BD.TabIndex = 17;
+            this.txtSX.Location = new System.Drawing.Point(909, 43);
+            this.txtSX.Name = "txtSX";
+            this.txtSX.ReadOnly = true;
+            this.txtSX.Size = new System.Drawing.Size(35, 25);
+            this.txtSX.TabIndex = 17;
             // 
             // label9
             // 
@@ -188,13 +188,13 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "%SX";
             // 
-            // txtSH_BD
+            // txtSH
             // 
-            this.txtSH_BD.Location = new System.Drawing.Point(868, 43);
-            this.txtSH_BD.Name = "txtSH_BD";
-            this.txtSH_BD.ReadOnly = true;
-            this.txtSH_BD.Size = new System.Drawing.Size(35, 25);
-            this.txtSH_BD.TabIndex = 15;
+            this.txtSH.Location = new System.Drawing.Point(868, 43);
+            this.txtSH.Name = "txtSH";
+            this.txtSH.ReadOnly = true;
+            this.txtSH.Size = new System.Drawing.Size(35, 25);
+            this.txtSH.TabIndex = 15;
             // 
             // label8
             // 
@@ -205,13 +205,13 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "%SH";
             // 
-            // txtDM_BD
+            // txtDinhMuc
             // 
-            this.txtDM_BD.Location = new System.Drawing.Point(827, 43);
-            this.txtDM_BD.Name = "txtDM_BD";
-            this.txtDM_BD.ReadOnly = true;
-            this.txtDM_BD.Size = new System.Drawing.Size(35, 25);
-            this.txtDM_BD.TabIndex = 13;
+            this.txtDinhMuc.Location = new System.Drawing.Point(827, 43);
+            this.txtDinhMuc.Name = "txtDinhMuc";
+            this.txtDinhMuc.ReadOnly = true;
+            this.txtDinhMuc.Size = new System.Drawing.Size(35, 25);
+            this.txtDinhMuc.TabIndex = 13;
             // 
             // label7
             // 
@@ -222,13 +222,13 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "ĐM";
             // 
-            // txtGB_BD
+            // txtGiaBieu
             // 
-            this.txtGB_BD.Location = new System.Drawing.Point(786, 43);
-            this.txtGB_BD.Name = "txtGB_BD";
-            this.txtGB_BD.ReadOnly = true;
-            this.txtGB_BD.Size = new System.Drawing.Size(35, 25);
-            this.txtGB_BD.TabIndex = 11;
+            this.txtGiaBieu.Location = new System.Drawing.Point(786, 43);
+            this.txtGiaBieu.Name = "txtGiaBieu";
+            this.txtGiaBieu.ReadOnly = true;
+            this.txtGiaBieu.Size = new System.Drawing.Size(35, 25);
+            this.txtGiaBieu.TabIndex = 11;
             // 
             // label6
             // 
@@ -239,13 +239,13 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "GB";
             // 
-            // txtMST_BD
+            // txtMSThue
             // 
-            this.txtMST_BD.Location = new System.Drawing.Point(680, 43);
-            this.txtMST_BD.Name = "txtMST_BD";
-            this.txtMST_BD.ReadOnly = true;
-            this.txtMST_BD.Size = new System.Drawing.Size(100, 25);
-            this.txtMST_BD.TabIndex = 9;
+            this.txtMSThue.Location = new System.Drawing.Point(680, 43);
+            this.txtMSThue.Name = "txtMSThue";
+            this.txtMSThue.ReadOnly = true;
+            this.txtMSThue.Size = new System.Drawing.Size(100, 25);
+            this.txtMSThue.TabIndex = 9;
             // 
             // label5
             // 
@@ -256,13 +256,13 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Mã Số Thuế";
             // 
-            // txtDiaChi_BD
+            // txtDiaChi
             // 
-            this.txtDiaChi_BD.Location = new System.Drawing.Point(424, 43);
-            this.txtDiaChi_BD.Name = "txtDiaChi_BD";
-            this.txtDiaChi_BD.ReadOnly = true;
-            this.txtDiaChi_BD.Size = new System.Drawing.Size(250, 25);
-            this.txtDiaChi_BD.TabIndex = 7;
+            this.txtDiaChi.Location = new System.Drawing.Point(424, 43);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.ReadOnly = true;
+            this.txtDiaChi.Size = new System.Drawing.Size(250, 25);
+            this.txtDiaChi.TabIndex = 7;
             // 
             // label4
             // 
@@ -273,13 +273,13 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Địa Chỉ";
             // 
-            // txtHoTen_BD
+            // txtHoTen
             // 
-            this.txtHoTen_BD.Location = new System.Drawing.Point(218, 43);
-            this.txtHoTen_BD.Name = "txtHoTen_BD";
-            this.txtHoTen_BD.ReadOnly = true;
-            this.txtHoTen_BD.Size = new System.Drawing.Size(200, 25);
-            this.txtHoTen_BD.TabIndex = 5;
+            this.txtHoTen.Location = new System.Drawing.Point(218, 43);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.ReadOnly = true;
+            this.txtHoTen.Size = new System.Drawing.Size(200, 25);
+            this.txtHoTen.TabIndex = 5;
             // 
             // label3
             // 
@@ -326,23 +326,23 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtHCSN_DC);
+            this.groupBox2.Controls.Add(this.txtHCSN_BD);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.txtDV_DC);
+            this.groupBox2.Controls.Add(this.txtDV_BD);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.txtSX_DC);
+            this.groupBox2.Controls.Add(this.txtSX_BD);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.txtSH_DC);
+            this.groupBox2.Controls.Add(this.txtSH_BD);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.txtDM_DC);
+            this.groupBox2.Controls.Add(this.txtDinhMuc_BD);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.txtGB_DC);
+            this.groupBox2.Controls.Add(this.txtGiaBieu_BD);
             this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.txtMST_DC);
+            this.groupBox2.Controls.Add(this.txtMSThue_BD);
             this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.txtDiaChi_DC);
+            this.groupBox2.Controls.Add(this.txtDiaChi_BD);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.txtHoTen_DC);
+            this.groupBox2.Controls.Add(this.txtHoTen_BD);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Location = new System.Drawing.Point(12, 115);
             this.groupBox2.Name = "groupBox2";
@@ -351,12 +351,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin Điều Chỉnh";
             // 
-            // txtHCSN_DC
+            // txtHCSN_BD
             // 
-            this.txtHCSN_DC.Location = new System.Drawing.Point(991, 43);
-            this.txtHCSN_DC.Name = "txtHCSN_DC";
-            this.txtHCSN_DC.Size = new System.Drawing.Size(35, 25);
-            this.txtHCSN_DC.TabIndex = 21;
+            this.txtHCSN_BD.Location = new System.Drawing.Point(991, 43);
+            this.txtHCSN_BD.Name = "txtHCSN_BD";
+            this.txtHCSN_BD.Size = new System.Drawing.Size(35, 25);
+            this.txtHCSN_BD.TabIndex = 21;
             // 
             // label12
             // 
@@ -367,12 +367,12 @@
             this.label12.TabIndex = 20;
             this.label12.Text = "%HCSN";
             // 
-            // txtDV_DC
+            // txtDV_BD
             // 
-            this.txtDV_DC.Location = new System.Drawing.Point(950, 43);
-            this.txtDV_DC.Name = "txtDV_DC";
-            this.txtDV_DC.Size = new System.Drawing.Size(35, 25);
-            this.txtDV_DC.TabIndex = 19;
+            this.txtDV_BD.Location = new System.Drawing.Point(950, 43);
+            this.txtDV_BD.Name = "txtDV_BD";
+            this.txtDV_BD.Size = new System.Drawing.Size(35, 25);
+            this.txtDV_BD.TabIndex = 19;
             // 
             // label13
             // 
@@ -383,12 +383,12 @@
             this.label13.TabIndex = 18;
             this.label13.Text = "%DV";
             // 
-            // txtSX_DC
+            // txtSX_BD
             // 
-            this.txtSX_DC.Location = new System.Drawing.Point(909, 43);
-            this.txtSX_DC.Name = "txtSX_DC";
-            this.txtSX_DC.Size = new System.Drawing.Size(35, 25);
-            this.txtSX_DC.TabIndex = 17;
+            this.txtSX_BD.Location = new System.Drawing.Point(909, 43);
+            this.txtSX_BD.Name = "txtSX_BD";
+            this.txtSX_BD.Size = new System.Drawing.Size(35, 25);
+            this.txtSX_BD.TabIndex = 17;
             // 
             // label14
             // 
@@ -399,12 +399,12 @@
             this.label14.TabIndex = 16;
             this.label14.Text = "%SX";
             // 
-            // txtSH_DC
+            // txtSH_BD
             // 
-            this.txtSH_DC.Location = new System.Drawing.Point(868, 43);
-            this.txtSH_DC.Name = "txtSH_DC";
-            this.txtSH_DC.Size = new System.Drawing.Size(35, 25);
-            this.txtSH_DC.TabIndex = 15;
+            this.txtSH_BD.Location = new System.Drawing.Point(868, 43);
+            this.txtSH_BD.Name = "txtSH_BD";
+            this.txtSH_BD.Size = new System.Drawing.Size(35, 25);
+            this.txtSH_BD.TabIndex = 15;
             // 
             // label15
             // 
@@ -415,12 +415,12 @@
             this.label15.TabIndex = 14;
             this.label15.Text = "%SH";
             // 
-            // txtDM_DC
+            // txtDinhMuc_BD
             // 
-            this.txtDM_DC.Location = new System.Drawing.Point(827, 43);
-            this.txtDM_DC.Name = "txtDM_DC";
-            this.txtDM_DC.Size = new System.Drawing.Size(35, 25);
-            this.txtDM_DC.TabIndex = 13;
+            this.txtDinhMuc_BD.Location = new System.Drawing.Point(827, 43);
+            this.txtDinhMuc_BD.Name = "txtDinhMuc_BD";
+            this.txtDinhMuc_BD.Size = new System.Drawing.Size(35, 25);
+            this.txtDinhMuc_BD.TabIndex = 13;
             // 
             // label16
             // 
@@ -431,12 +431,12 @@
             this.label16.TabIndex = 12;
             this.label16.Text = "ĐM";
             // 
-            // txtGB_DC
+            // txtGiaBieu_BD
             // 
-            this.txtGB_DC.Location = new System.Drawing.Point(786, 43);
-            this.txtGB_DC.Name = "txtGB_DC";
-            this.txtGB_DC.Size = new System.Drawing.Size(35, 25);
-            this.txtGB_DC.TabIndex = 11;
+            this.txtGiaBieu_BD.Location = new System.Drawing.Point(786, 43);
+            this.txtGiaBieu_BD.Name = "txtGiaBieu_BD";
+            this.txtGiaBieu_BD.Size = new System.Drawing.Size(35, 25);
+            this.txtGiaBieu_BD.TabIndex = 11;
             // 
             // label17
             // 
@@ -447,12 +447,12 @@
             this.label17.TabIndex = 10;
             this.label17.Text = "GB";
             // 
-            // txtMST_DC
+            // txtMSThue_BD
             // 
-            this.txtMST_DC.Location = new System.Drawing.Point(680, 43);
-            this.txtMST_DC.Name = "txtMST_DC";
-            this.txtMST_DC.Size = new System.Drawing.Size(100, 25);
-            this.txtMST_DC.TabIndex = 9;
+            this.txtMSThue_BD.Location = new System.Drawing.Point(680, 43);
+            this.txtMSThue_BD.Name = "txtMSThue_BD";
+            this.txtMSThue_BD.Size = new System.Drawing.Size(100, 25);
+            this.txtMSThue_BD.TabIndex = 9;
             // 
             // label18
             // 
@@ -463,12 +463,12 @@
             this.label18.TabIndex = 8;
             this.label18.Text = "Mã Số Thuế";
             // 
-            // txtDiaChi_DC
+            // txtDiaChi_BD
             // 
-            this.txtDiaChi_DC.Location = new System.Drawing.Point(424, 43);
-            this.txtDiaChi_DC.Name = "txtDiaChi_DC";
-            this.txtDiaChi_DC.Size = new System.Drawing.Size(250, 25);
-            this.txtDiaChi_DC.TabIndex = 7;
+            this.txtDiaChi_BD.Location = new System.Drawing.Point(424, 43);
+            this.txtDiaChi_BD.Name = "txtDiaChi_BD";
+            this.txtDiaChi_BD.Size = new System.Drawing.Size(250, 25);
+            this.txtDiaChi_BD.TabIndex = 7;
             // 
             // label19
             // 
@@ -479,12 +479,12 @@
             this.label19.TabIndex = 6;
             this.label19.Text = "Địa Chỉ";
             // 
-            // txtHoTen_DC
+            // txtHoTen_BD
             // 
-            this.txtHoTen_DC.Location = new System.Drawing.Point(218, 43);
-            this.txtHoTen_DC.Name = "txtHoTen_DC";
-            this.txtHoTen_DC.Size = new System.Drawing.Size(200, 25);
-            this.txtHoTen_DC.TabIndex = 5;
+            this.txtHoTen_BD.Location = new System.Drawing.Point(218, 43);
+            this.txtHoTen_BD.Name = "txtHoTen_BD";
+            this.txtHoTen_BD.Size = new System.Drawing.Size(200, 25);
+            this.txtHoTen_BD.TabIndex = 5;
             // 
             // label20
             // 
@@ -500,7 +500,7 @@
             this.groupBox3.Controls.Add(this.dgvDSSoDangKy);
             this.groupBox3.Location = new System.Drawing.Point(-1, 198);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1292, 188);
+            this.groupBox3.Size = new System.Drawing.Size(1198, 188);
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh Sách Sổ Đăng Ký";
@@ -527,7 +527,7 @@
             this.dgvDSSoDangKy.Location = new System.Drawing.Point(6, 24);
             this.dgvDSSoDangKy.MultiSelect = false;
             this.dgvDSSoDangKy.Name = "dgvDSSoDangKy";
-            this.dgvDSSoDangKy.Size = new System.Drawing.Size(1279, 158);
+            this.dgvDSSoDangKy.Size = new System.Drawing.Size(1185, 158);
             this.dgvDSSoDangKy.TabIndex = 0;
             this.dgvDSSoDangKy.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDSSoDangKy_CellBeginEdit);
             this.dgvDSSoDangKy.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSoDangKy_CellEndEdit);
@@ -653,7 +653,7 @@
             this.cắtChuyểnĐịnhMứcToolStripMenuItem,
             this.nhậnĐịnhMứctoolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 92);
             // 
             // thêmToolStripMenuItem
             // 
@@ -696,6 +696,7 @@
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // label21
             // 
@@ -720,7 +721,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1290, 488);
+            this.ClientSize = new System.Drawing.Size(1197, 488);
             this.Controls.Add(this.txtMaDon);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.btnLuu);
@@ -733,6 +734,7 @@
             this.MinimizeBox = false;
             this.Name = "frmDCBD";
             this.Text = "Điều Chỉnh Biến Động";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDCBD_FormClosing);
             this.Load += new System.EventHandler(this.frmDCBD_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -751,46 +753,46 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtHCSN_BD;
+        private System.Windows.Forms.TextBox txtHCSN;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtDV_BD;
+        private System.Windows.Forms.TextBox txtDV;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtSX_BD;
+        private System.Windows.Forms.TextBox txtSX;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtSH_BD;
+        private System.Windows.Forms.TextBox txtSH;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtDM_BD;
+        private System.Windows.Forms.TextBox txtDinhMuc;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtGB_BD;
+        private System.Windows.Forms.TextBox txtGiaBieu;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMST_BD;
+        private System.Windows.Forms.TextBox txtMSThue;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtDiaChi_BD;
+        private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtHoTen_BD;
+        private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtHopDong;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtHCSN_DC;
+        private System.Windows.Forms.TextBox txtHCSN_BD;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtDV_DC;
+        private System.Windows.Forms.TextBox txtDV_BD;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtSX_DC;
+        private System.Windows.Forms.TextBox txtSX_BD;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtSH_DC;
+        private System.Windows.Forms.TextBox txtSH_BD;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtDM_DC;
+        private System.Windows.Forms.TextBox txtDinhMuc_BD;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtGB_DC;
+        private System.Windows.Forms.TextBox txtGiaBieu_BD;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtMST_DC;
+        private System.Windows.Forms.TextBox txtMSThue_BD;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtDiaChi_DC;
+        private System.Windows.Forms.TextBox txtDiaChi_BD;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtHoTen_DC;
+        private System.Windows.Forms.TextBox txtHoTen_BD;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvDSSoDangKy;

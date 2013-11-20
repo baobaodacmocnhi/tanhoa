@@ -82,11 +82,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
                             ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
                         }
-                        _cKTXM.ThemKTXM(ktxm);
-                        ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                        donkh.Nhan = true;
-                        _cDonKH.SuaDonKH(donkh);
+                        if (_cKTXM.ThemKTXM(ktxm))
+                        {
+                            ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                            donkh.Nhan = true;
+                            _cDonKH.SuaDonKH(donkh);
+                        }
                     }
                     else
                     {

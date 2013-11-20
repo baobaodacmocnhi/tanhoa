@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL.CapNhat
 {
     class CChungTu : CDAL
     {
-        /// Chứa hàm lấy dữ liệu từ ChungTu & CTChungTu & LichSuChungTu
+        ///Chứa hàm truy xuất dữ liệu từ bảng ChungTu & CTChungTu & LichSuChungTu
 
         #region ChungTu
 
@@ -544,7 +544,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 lichsuchungtu.MaCT = ctchungtu.MaCT;
                 lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                 lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
-                lichsuchungtu.SoNKNhan = chungtuCN.SoNKNhan;
+                lichsuchungtu.SoNKNhan = ctchungtu.SoNKDangKy;
                 if (ctchungtuCN != null)
                     lichsuchungtu.SoNKDangKy = ctchungtuCN.SoNKDangKy;
                 else
@@ -574,24 +574,183 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// <param name="SoNKCat"></param>
         /// <param name="lichsuchungtu"></param>
         /// <returns></returns>
-        public bool CatChuyenChungTu(CTChungTu chungtuCat, CTChungTu ctchungtuNhan,int SoNKCat, LichSuChungTu lichsuchungtu)
+        public bool CatChuyenChungTu(CTChungTu ctchungtuCat, CTChungTu ctchungtuNhan,int SoNKCat, LichSuChungTu lichsuchungtu)
         {
             try
             {
                 CChiNhanh _cChiNhanh=new CChiNhanh();
+                ///Cùng Chi Nhánh
                 if (_cChiNhanh.getChiNhanhbyID(lichsuchungtu.NhanNK_MaCN.Value).TenCN.ToUpper().Contains("TÂN HÒA"))
                 {
-                    MessageBox.Show("cùng chi nhánh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CTChungTu ctchungtuCatCN = getCTChungTubyID(ctchungtuCat.DanhBo, ctchungtuCat.MaCT);
+                    ///Nếu Chứng Từ đã đăng ký với Danh Bộ
+                    if (CheckCTChungTu(ctchungtuNhan.DanhBo, ctchungtuNhan.MaCT))
+                    {
+                        if (ctchungtuCatCN.SoNKDangKy >= SoNKCat)
+                        {
+                            ///Cập nhật CTChungTu, Danh Bộ Cắt
+                            ctchungtuCatCN.SoNKDangKy -= SoNKCat;
+                            ctchungtuCatCN.ModifyDate = DateTime.Now;
+                            ctchungtuCatCN.ModifyBy = CTaiKhoan.TaiKhoan;
+
+                            ///Cập nhật CTChungTu, Danh Bộ Nhận
+                            CTChungTu ctchungtuNhanCN = getCTChungTubyID(ctchungtuNhan.DanhBo,ctchungtuNhan.MaCT);
+                            ctchungtuNhanCN.SoNKDangKy += SoNKCat;
+                            ctchungtuNhanCN.ModifyDate = DateTime.Now;
+                            ctchungtuNhanCN.ModifyBy = CTaiKhoan.TaiKhoan;
+
+                            db.SubmitChanges();
+
+                            ChungTu chungtuCN = getChungTubyID(ctchungtuCat.MaCT);
+                            ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Cắt
+                            ///Xóa Số Phiếu
+                            lichsuchungtu.SoPhieu = null;
+                            lichsuchungtu.MaCT = ctchungtuCat.MaCT;
+                            lichsuchungtu.DanhBo = ctchungtuCat.DanhBo;
+                            lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu.SoNKCat = SoNKCat;
+                            lichsuchungtu.SoNKDangKy = ctchungtuCatCN.SoNKDangKy;
+                            lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu.ThoiHan = ctchungtuCatCN.ThoiHan;
+                            lichsuchungtu.NgayHetHan = ctchungtuCatCN.NgayHetHan;
+                            lichsuchungtu.CatNK_MaCN = lichsuchungtu.NhanNK_MaCN;
+                            ThemLichSuChungTu(lichsuchungtu);
+
+                            ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Nhận
+                            LichSuChungTu lichsuchungtuNhan = new LichSuChungTu();
+                            lichsuchungtuNhan.MaDon = lichsuchungtu.MaDon;
+                            lichsuchungtuNhan.MaCT = ctchungtuNhan.MaCT;
+                            lichsuchungtuNhan.DanhBo = ctchungtuNhan.DanhBo;
+                            lichsuchungtuNhan.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtuNhan.SoNKNhan = SoNKCat;
+                            lichsuchungtuNhan.SoNKDangKy = ctchungtuNhanCN.SoNKDangKy;
+                            lichsuchungtuNhan.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtuNhan.ThoiHan = ctchungtuCatCN.ThoiHan;
+                            lichsuchungtuNhan.NgayHetHan = ctchungtuCatCN.NgayHetHan;
+                            ///Chuyển đổi vị trí Cắt & Nhận
+                            lichsuchungtuNhan.CatNK_DanhBo = lichsuchungtu.NhanNK_DanhBo;
+                            lichsuchungtuNhan.CatNK_HoTen = lichsuchungtu.NhanNK_HoTen;
+                            lichsuchungtuNhan.CatNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
+                            lichsuchungtuNhan.CatNK_MaCN = lichsuchungtu.NhanNK_MaCN;
+                            lichsuchungtuNhan.NhanDM = true;
+                            lichsuchungtuNhan.NhanNK_MaCN = lichsuchungtu.CatNK_MaCN;
+                            lichsuchungtuNhan.NhanNK_DanhBo = lichsuchungtu.CatNK_DanhBo;
+                            lichsuchungtuNhan.NhanNK_HoTen = lichsuchungtu.CatNK_HoTen;
+                            lichsuchungtuNhan.NhanNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
+
+                            ThemLichSuChungTu(lichsuchungtuNhan);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cắt vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    ///Nếu Chứng Từ chưa đăng ký với Danh Bộ
+                    else
+                    {
+                        if (ctchungtuCatCN.SoNKDangKy >= SoNKCat)
+                        {
+                            ///Cập nhật CTChungTu, Danh Bộ Cắt
+                            ctchungtuCatCN.SoNKDangKy -= SoNKCat;
+                            ctchungtuCatCN.ModifyDate = DateTime.Now;
+                            ctchungtuCatCN.ModifyBy = CTaiKhoan.TaiKhoan;
+
+                            db.SubmitChanges();
+                            
+                            ///Thêm CTChungTu, Danh Bộ nhận
+                            ctchungtuNhan.SoNKDangKy = SoNKCat;
+                            ThemCTChungTu(ctchungtuNhan);
+
+                            ChungTu chungtuCN = getChungTubyID(ctchungtuCat.MaCT);
+                            ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Cắt
+                            ///Xóa Số Phiếu
+                            lichsuchungtu.SoPhieu = null;
+                            lichsuchungtu.MaCT = ctchungtuCat.MaCT;
+                            lichsuchungtu.DanhBo = ctchungtuCat.DanhBo;
+                            lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu.SoNKCat = SoNKCat;
+                            lichsuchungtu.SoNKDangKy = ctchungtuCatCN.SoNKDangKy;
+                            lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu.ThoiHan = ctchungtuCatCN.ThoiHan;
+                            lichsuchungtu.NgayHetHan = ctchungtuCatCN.NgayHetHan;
+                            ThemLichSuChungTu(lichsuchungtu);
+
+                            ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Nhận
+                            LichSuChungTu lichsuchungtuNhan = new LichSuChungTu();
+                            lichsuchungtuNhan.MaDon = lichsuchungtu.MaDon;
+                            lichsuchungtuNhan.MaCT = ctchungtuNhan.MaCT;
+                            lichsuchungtuNhan.DanhBo = ctchungtuNhan.DanhBo;
+                            lichsuchungtuNhan.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtuNhan.SoNKNhan = SoNKCat;
+                            lichsuchungtuNhan.SoNKDangKy = SoNKCat;
+                            lichsuchungtuNhan.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtuNhan.ThoiHan = ctchungtuCatCN.ThoiHan;
+                            lichsuchungtuNhan.NgayHetHan = ctchungtuCatCN.NgayHetHan;
+                            ///Chuyển đổi vị trí Cắt & Nhận
+                            lichsuchungtuNhan.CatNK_DanhBo = lichsuchungtu.NhanNK_DanhBo;
+                            lichsuchungtuNhan.CatNK_HoTen = lichsuchungtu.NhanNK_HoTen;
+                            lichsuchungtuNhan.CatNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
+                            lichsuchungtuNhan.NhanDM = true;
+                            lichsuchungtuNhan.NhanNK_MaCN = lichsuchungtu.NhanNK_MaCN;
+                            lichsuchungtuNhan.NhanNK_DanhBo = lichsuchungtu.CatNK_DanhBo;
+                            lichsuchungtuNhan.NhanNK_HoTen = lichsuchungtu.CatNK_HoTen;
+                            lichsuchungtuNhan.NhanNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
+
+                            ThemLichSuChungTu(lichsuchungtuNhan);
+
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cắt vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
                 }
+                ///Khác Chi Nhánh
                 else
                 {
-                    MessageBox.Show("khác chi nhánh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtuCat.DanhBo,ctchungtuCat.MaCT);
+                    if (ctchungtuCN.SoNKDangKy >= SoNKCat)
+                    {
+                        ctchungtuCN.SoNKDangKy -= SoNKCat;
+                        ctchungtuCN.ModifyDate = DateTime.Now;
+                        ctchungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+
+                        ChungTu chungtuCN = getChungTubyID(ctchungtuCat.MaCT);
+                        chungtuCN.SoNKCat += SoNKCat;
+                        chungtuCN.SoNKDaCap -= SoNKCat;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+
+                        db.SubmitChanges();
+
+                        ///Cập nhật LichSuChungTu
+                        lichsuchungtu.MaCT = ctchungtuCat.MaCT;
+                        lichsuchungtu.DanhBo = ctchungtuCat.DanhBo;
+                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                        lichsuchungtu.SoNKCat = SoNKCat;
+                        lichsuchungtu.SoNKDangKy = ctchungtuCN.SoNKDangKy;
+                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                        lichsuchungtu.ThoiHan = ctchungtuCN.ThoiHan;
+                        lichsuchungtu.NgayHetHan = ctchungtuCN.NgayHetHan;
+                        ThemLichSuChungTu(lichsuchungtu);
+
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cắt vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
                 return false;
             }
         }

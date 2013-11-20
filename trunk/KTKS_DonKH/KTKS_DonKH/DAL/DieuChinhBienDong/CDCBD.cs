@@ -5,63 +5,25 @@ using System.Text;
 using System.Data;
 using KTKS_DonKH.DAL.HeThong;
 using System.Windows.Forms;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CDCBD : CDAL
     {
-        //public DataTable LoadDSKTXMDaDuyet()
-        //{
-        //    try
-        //    {
-        //        if (CTaiKhoan.RoleDCBD)
-        //        {
-        //            DataSet ds = new DataSet();
-        //            var query = from itemDCBD in db.DCBDs
-        //                        join itemDonKH in db.DonKHs on itemDCBD.MaDCBD equals itemDonKH.MaDon
-        //                        join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-        //                        select new
-        //                        {
-        //                            itemDonKH.MaDon,
-        //                            itemLoaiDon.TenLD,
-        //                            itemDonKH.CreateDate,
-        //                            itemDonKH.DanhBo,
-        //                            itemDonKH.HoTen,
-        //                            itemDonKH.DiaChi,
-        //                            itemDonKH.NoiDung,
-        //                            NoiChuyenDen = itemDCBD.NoiChuyenDen,
-        //                            LyDoChuyenDen = itemDCBD.LyDoChuyen,
-        //                            itemDCBD.MaDCBD,
-        //                            NgayXuLy = itemDCBD.CreateDate,
-        //                            itemDCBD.KetQua,
-        //                            itemDCBD.MaChuyen,
-        //                            LyDoChuyenDi = itemDCBD.LyDoChuyen
-        //                        };
-        //            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        ///Chứa hàm truy xuất dữ liệu từ bảng DCBD & CTDCBD
+        
+        #region DCBD
 
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return null;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return null;
-        //    }
-        //}
-
-        public DataSet LoadDSKTXMDaDuyet()
+        public DataSet LoadDSDCBDDaDuyet()
         {
-            DataSet ds = new DataSet();
             try
             {
                 if (CTaiKhoan.RoleDCBD)
                 {
-                    
-                    var query = from itemDCBD in db.DCBDs
+                    DataSet ds = new DataSet();
+                    ///Table DCBD
+                    var queryDCBD = from itemDCBD in db.DCBDs
                                 join itemDonKH in db.DonKHs on itemDCBD.MaDCBD equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 select new
@@ -74,7 +36,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     NoiChuyenDen = itemDCBD.NoiChuyenDen,
-                                    LyDoChuyenDen = itemDCBD.LyDoChuyen,
+                                    LyDoChuyenDen = itemDCBD.LyDoChuyenDen,
                                     itemDCBD.MaDCBD,
                                     NgayXuLy = itemDCBD.CreateDate,
                                     itemDCBD.KetQua,
@@ -82,68 +44,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     LyDoChuyenDi = itemDCBD.LyDoChuyen
                                 };
                     DataTable dtDCBD = new DataTable();
-                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD);
                     dtDCBD.TableName = "DCBD";
-                    if (dtDCBD.Rows.Count <= 0)
-                    {
-                        dtDCBD.Columns.Add("MaDon", typeof(String));
-                        dtDCBD.Columns.Add("TenLD", typeof(String));
-                        dtDCBD.Columns.Add("CreateDate", typeof(String));
-                        dtDCBD.Columns.Add("DanhBo", typeof(String));
-                        dtDCBD.Columns.Add("HoTen", typeof(String));
-                        dtDCBD.Columns.Add("DiaChi", typeof(String));
-                        dtDCBD.Columns.Add("NoiDung", typeof(String));
-                        dtDCBD.Columns.Add("NoiChuyenDen", typeof(String));
-                        dtDCBD.Columns.Add("LyDoChuyenDen", typeof(String));
-                        dtDCBD.Columns.Add("MaDCBD", typeof(String));
-                        dtDCBD.Columns.Add("NgayXuLy", typeof(String));
-                        dtDCBD.Columns.Add("KetQua", typeof(String));
-                        dtDCBD.Columns.Add("MaChuyen", typeof(String));
-                        dtDCBD.Columns.Add("LyDoChuyenDi", typeof(String));
-
-                        DataRow row = dtDCBD.NewRow();
-                        row["MaDon"] = "a";
-                        row["TenLD"] = "a";
-                        row["CreateDate"] = "a";
-                        row["DanhBo"] = "a";
-                        row["HoTen"] = "a";
-                        row["DiaChi"] = "a";
-                        row["NoiDung"] = "a";
-                        row["NoiChuyenDen"] = "a";
-                        row["LyDoChuyenDen"] = "a";
-                        row["MaDCBD"] = "0";
-                        row["NgayXuLy"] = "a";
-                        row["KetQua"] = "a";
-                        row["MaChuyen"] = "a";
-                        row["LyDoChuyenDi"] = "a";
-                        dtDCBD.Rows.Add(row);
-                    }
                     ds.Tables.Add(dtDCBD);
 
-                    var query2 = from itemCTDCBD in db.CTDCBDs
+                    ///Table CTDCBD
+                    var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
                                  select itemCTDCBD;         
 
                     DataTable dtCTDCBD = new DataTable();
-                    dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query2);
+                    dtCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
                     dtCTDCBD.TableName = "CTDCBD";
-                    if (dtCTDCBD.Rows.Count <= 0)
-                    {
-                        dtCTDCBD.Columns.Add("MaCTDCBD", typeof(String));
-                        dtCTDCBD.Columns.Add("DanhBo", typeof(String));
-                        dtCTDCBD.Columns.Add("DinhMuc", typeof(String));
-                        dtCTDCBD.Columns.Add("DinhMuc_BD", typeof(String));
-                        dtCTDCBD.Columns.Add("MaDCBD", typeof(String));
-
-                        DataRow row = dtCTDCBD.NewRow();
-                        row["MaCTDCBD"] = "a";
-                        row["DanhBo"] = "a";
-                        row["DinhMuc"] = "a";
-                        row["DinhMuc_BD"] = "a";
-                        row["MaDCBD"] = "0";
-                    }
                     ds.Tables.Add(dtCTDCBD);
 
-                    ds.Relations.Add("Chi Tiết", ds.Tables["DCBD"].Columns["MaDCBD"], ds.Tables["CTDCBD"].Columns["MaDCBD"]);
+                    if (dtDCBD.Rows.Count > 0 && dtCTDCBD.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết", ds.Tables["DCBD"].Columns["MaDCBD"], ds.Tables["CTDCBD"].Columns["MaDCBD"]);
                     return ds;
                 }
                 else
@@ -159,7 +74,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public DataTable LoadDSKTXMChuaDuyet()
+        public DataTable LoadDSDCBDChuaDuyet()
         {
             try
             {
@@ -208,8 +123,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                      MaChuyen = "",
                                      LyDoChuyenDi = ""
                                  };
-                    var query = query1.Union(query2);
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    var queryDCBD = query1.Union(query2);
+                   return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD);
                 }
                 else
                 {
@@ -223,5 +138,86 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 return null;
             }
         }
+
+        public bool CheckDCBDbyID(decimal MaDCBD)
+        {
+            try
+            {
+                if (db.DCBDs.Any(itemDCBD => itemDCBD.MaDCBD == MaDCBD))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool ThemDCBD(DCBD dcbd)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    dcbd.CreateDate = DateTime.Now;
+                    dcbd.CreateBy = CTaiKhoan.TaiKhoan;
+                    db.DCBDs.InsertOnSubmit(dcbd);
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region CTDCBD
+
+        public bool ThemCTDCBD(CTDCBD ctdcbd)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    if (db.CTDCBDs.Count() > 0)
+                    {
+                        decimal MaCTDCBD = db.CTDCBDs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
+                        ctdcbd.MaCTDCBD = getMaxNextIDTable(MaCTDCBD);
+                    }
+                    else
+                        ctdcbd.MaCTDCBD = decimal.Parse(DateTime.Now.Year + "1");
+                    ctdcbd.CreateDate = DateTime.Now;
+                    ctdcbd.CreateBy = CTaiKhoan.TaiKhoan;
+                    db.CTDCBDs.InsertOnSubmit(ctdcbd);
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        #endregion
     }
 }
