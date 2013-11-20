@@ -43,6 +43,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbChiNhanh_Nhan.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
             cmbChiNhanh_Nhan.DisplayMember = "TenCN";
             cmbChiNhanh_Nhan.ValueMember = "MaCN";
+            cmbChiNhanh_Nhan.SelectedIndex = -1;
 
             cmbLoaiCT_Cat.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
             cmbLoaiCT_Cat.DisplayMember = "TenLCT";
@@ -75,6 +76,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtDanhBo_Nhan_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+
             if (e.KeyChar == 13 && ((ChiNhanh)cmbChiNhanh_Nhan.SelectedItem).TenCN.ToUpper().Contains("TÂN HÒA") && txtDanhBo_Cat.Text.Trim() != txtDanhBo_Nhan.Text.Trim())
             {
                 if (_cTTKH.getTTKHbyID(txtDanhBo_Nhan.Text.Trim()) != null)
@@ -92,9 +96,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtSoNK_Cat.Text.Trim() != "" && txtSoNK_Cat.Text.Trim() != "0")
+            if (txtSoNK_Cat.Text.Trim() != "" && txtSoNK_Cat.Text.Trim() != "0" && cmbChiNhanh_Nhan.SelectedIndex != -1)
             {
-                if (int.Parse(txtSoNK_Cat.Text.Trim()) <= int.Parse(_source["SoNKDangKy"]))
+                if (int.Parse(_source["SoNKDangKy"]) >= int.Parse(txtSoNK_Cat.Text.Trim()))
                 {
                     CTChungTu ctchungtuCat = new CTChungTu();
                     ctchungtuCat.DanhBo = _source["DanhBo"];
@@ -102,7 +106,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     CTChungTu ctchungtuNhan = new CTChungTu();
                     ctchungtuNhan.DanhBo = txtDanhBo_Nhan.Text.Trim();
-                    ctchungtuCat.MaCT = _source["MaCT"];
+                    ctchungtuNhan.MaCT = _source["MaCT"];
 
                     int SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
 
@@ -112,14 +116,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     lichsuchungtu.CatDM = true;
                     lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
                     lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
-                    lichsuchungtu.CatNK_DiaChi = txtDanhBo_Cat.Text.Trim();
+                    lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
                     lichsuchungtu.NhanNK_MaCN = int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString());
                     lichsuchungtu.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();
                     lichsuchungtu.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
-                    lichsuchungtu.NhanNK_DiaChi = txtHoTen_Nhan.Text.Trim();
+                    lichsuchungtu.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
                     lichsuchungtu.SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
 
-                    if(_cChungTu.CatChuyenChungTu(ctchungtuCat,ctchungtuNhan,int.Parse(txtSoNK_Cat.Text.Trim()),lichsuchungtu))
+                    if (_cChungTu.CatChuyenChungTu(ctchungtuCat, ctchungtuNhan, int.Parse(txtSoNK_Cat.Text.Trim()), lichsuchungtu))
                     {
                         if (!((ChiNhanh)cmbChiNhanh_Nhan.SelectedItem).TenCN.ToUpper().Contains("TÂN HÒA"))
                         {
@@ -138,7 +142,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
-                            rptPhieuYCCatDM rpt = new rptPhieuYCCatDM();
+                            rptPhieuYCNhanDM rpt = new rptPhieuYCNhanDM();
                             rpt.SetDataSource(dsBaoCao);
                             frmBaoCao frm = new frmBaoCao(rpt);
                             frm.ShowDialog();
@@ -149,8 +153,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                 }
                 else
-                    MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cắt vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+                MessageBox.Show("Bạn chưa nhập Số NK Cắt hoặc chưa chọn Chi Nhánh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

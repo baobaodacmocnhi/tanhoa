@@ -122,7 +122,6 @@
     <Compile Include="DAL\CapNhat\CTTKHDate.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CapNhat\CChungTu.cs" />
-    <Compile Include="DAL\DieuChinhBienDong\CCTDCDB.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDCBD.cs" />
     <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
     <Compile Include="DAL\KhachHang\CChuyenDi.cs" />

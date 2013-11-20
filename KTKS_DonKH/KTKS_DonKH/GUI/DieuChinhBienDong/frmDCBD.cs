@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
+using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -19,17 +21,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         CTTKH _cTTKH = new CTTKH();
+        CDCBD _cDCBD = new CDCBD();
+        Dictionary<string, string> _source = new Dictionary<string, string>();
+        CDonKH _cDonKH = new CDonKH();
+        CKTXM _cKTXM = new CKTXM();
 
         public frmDCBD()
         {
             InitializeComponent();
         }
 
-        public frmDCBD(DonKH donkh,TTKhachHang ttkhachhang)
+        public frmDCBD(Dictionary<string, string> source)
         {
             InitializeComponent();
-            _donkh = donkh;
-            _ttkhachhang = ttkhachhang;
+            _source = source;
         }
 
         private void frmDCBD_Load(object sender, EventArgs e)
@@ -41,10 +46,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbColumn.DisplayMember = "TenLCT";
             cmbColumn.ValueMember = "MaLCT";
 
-            if (_donkh != null)
+            if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
+            {
+                _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
                 txtMaDon.Text = _donkh.MaDon.ToString().Insert(4, "-");
-            if (_ttkhachhang != null)
+            }
+            if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
+            {
+                _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
                 LoadDS(_ttkhachhang);
+            }
         }
 
         /// <summary>
@@ -55,15 +66,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             txtDanhBo.Text = ttkhachhang.DanhBo;
             txtHopDong.Text = ttkhachhang.GiaoUoc;
-            txtHoTen_BD.Text = ttkhachhang.HoTen;
-            txtDiaChi_BD.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
-            txtMST_BD.Text = ttkhachhang.MSThue;
-            txtGB_BD.Text = ttkhachhang.GB;
-            txtDM_BD.Text = ttkhachhang.TGDM;
-            txtSH_BD.Text = ttkhachhang.SH;
-            txtSX_BD.Text = ttkhachhang.SX;
-            txtDV_BD.Text = ttkhachhang.DV;
-            txtHCSN_BD.Text = ttkhachhang.HCSN;
+            txtHoTen.Text = ttkhachhang.HoTen;
+            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
+            txtMSThue.Text = ttkhachhang.MSThue;
+            txtGiaBieu.Text = ttkhachhang.GB;
+            txtDinhMuc.Text = ttkhachhang.TGDM;
+            txtSH.Text = ttkhachhang.SH;
+            txtSX.Text = ttkhachhang.SX;
+            txtDV.Text = ttkhachhang.DV;
+            txtHCSN.Text = ttkhachhang.HCSN;
 
             dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(ttkhachhang.DanhBo);
         }
@@ -72,15 +83,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
-            txtHoTen_BD.Text = "";
-            txtDiaChi_BD.Text = "";
-            txtMST_BD.Text = "";
-            txtGB_BD.Text = "";
-            txtDM_BD.Text = "";
-            txtSH_BD.Text = "";
-            txtSX_BD.Text = "";
-            txtDV_BD.Text = "";
-            txtHCSN_BD.Text = "";
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtMSThue.Text = "";
+            txtGiaBieu.Text = "";
+            txtDinhMuc.Text = "";
+            txtSH.Text = "";
+            txtSX.Text = "";
+            txtDV.Text = "";
+            txtHCSN.Text = "";
 
             dgvDSSoDangKy.DataSource = null;
         }
@@ -127,8 +138,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             Dictionary<string, string> source = new Dictionary<string, string>();
             source.Add("MaDon", _donkh.MaDon.ToString());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
-            source.Add("HoTenKH", txtHoTen_BD.Text.Trim());
-            source.Add("DiaChiKH", txtDiaChi_BD.Text.Trim());
+            source.Add("HoTenKH", txtHoTen.Text.Trim());
+            source.Add("DiaChiKH", txtDiaChi.Text.Trim());
             source.Add("MaLCT", "1");
             source.Add("MaCT", "");
             source.Add("DiaChi", "");
@@ -163,8 +174,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             Dictionary<string, string> source = new Dictionary<string, string>();
             source.Add("MaDon", _donkh.MaDon.ToString());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
-            source.Add("HoTen", txtHoTen_BD.Text.Trim());
-            source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
+            source.Add("HoTen", txtHoTen.Text.Trim());
+            source.Add("DiaChi", txtDiaChi.Text.Trim());
             source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
             source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
@@ -178,8 +189,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             Dictionary<string, string> source = new Dictionary<string, string>();
             source.Add("MaDon", _donkh.MaDon.ToString());
             source.Add("DanhBo", txtDanhBo.Text.Trim());
-            source.Add("HoTen", txtHoTen_BD.Text.Trim());
-            source.Add("DiaChi", txtDiaChi_BD.Text.Trim());
+            source.Add("HoTen", txtHoTen.Text.Trim());
+            source.Add("DiaChi", txtDiaChi.Text.Trim());
             frmNhanDM frm = new frmNhanDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
@@ -214,10 +225,106 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.KeyChar == 13)
             {
                 if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
-                    LoadDS(_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()));
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                    LoadDS(_ttkhachhang);
+                }
                 else
+                {
+                    _ttkhachhang = null;
                     Clear();
+                }
             }
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (_ttkhachhang != null)
+            {
+                ///Nếu DCBD chưa có thì thêm vào
+                if (!_cDCBD.CheckDCBDbyID(_donkh.MaDon))
+                {
+                    DCBD dcbd = new DCBD();
+                    dcbd.MaDCBD = _donkh.MaDon;
+                    dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
+                    dcbd.LyDoChuyenDen=_source["LyDoChuyenDen"];
+                    if (_cDCBD.ThemDCBD(dcbd))
+                    {
+                        switch (_source["NoiChuyenDen"])
+                        {
+                            case "Khách Hàng":
+                                ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                                DonKH donkh = _cDonKH.getDonKHbyID(_donkh.MaDon);
+                                donkh.Nhan = true;
+                                _cDonKH.SuaDonKH(donkh);
+                                break;
+                            case "Kiểm Tra Xác Minh":
+                                ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                                KTXM ktxm = _cKTXM.getKTXMbyID(_donkh.MaDon);
+                                ktxm.Nhan = true;
+                                _cKTXM.SuaKTXM(ktxm);
+                                break;
+                        }
+                    }
+                }
+                ///Thêm CTDCBD
+                CTDCBD ctdcbd = new CTDCBD();
+                ctdcbd.MaDCBD = _donkh.MaDon;
+                ctdcbd.DanhBo = _ttkhachhang.DanhBo;
+                ctdcbd.HopDong = _ttkhachhang.GiaoUoc;
+                ctdcbd.HoTen = _ttkhachhang.HoTen;
+                ctdcbd.DiaChi = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2;
+                ctdcbd.MSThue = _ttkhachhang.MSThue;
+                ctdcbd.GiaBieu = _ttkhachhang.GB;
+                ctdcbd.DinhMuc = _ttkhachhang.TGDM;
+                ctdcbd.SH = _ttkhachhang.SH;
+                ctdcbd.SX = _ttkhachhang.SX;
+                ctdcbd.DV = _ttkhachhang.DV;
+                ctdcbd.HCSN = _ttkhachhang.HCSN;
+                ctdcbd.Dot = _ttkhachhang.Dot;
+                ctdcbd.Ky = _ttkhachhang.Ky;
+                ctdcbd.Nam = _ttkhachhang.Nam;
+                ///Họ Tên
+                if (txtHoTen_BD.Text.Trim() != "")
+                    ctdcbd.HoTen_BD = txtHoTen_BD.Text.Trim();
+                ///Địa Chỉ
+                if (txtDiaChi_BD.Text.Trim() != "")
+                    ctdcbd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
+                ///Mã Số Thuế
+                if (txtMSThue_BD.Text.Trim() != "")
+                    ctdcbd.MSThue_BD = txtMSThue_BD.Text.Trim();
+                ///Giá Biểu
+                if (txtGiaBieu_BD.Text.Trim() != "")
+                    ctdcbd.GiaBieu_BD = txtGiaBieu_BD.Text.Trim();
+                ///Định Mức
+                if (txtDinhMuc_BD.Text.Trim() != "")
+                    ctdcbd.DinhMuc_BD = txtDinhMuc_BD.Text.Trim();
+                ///SH
+                if (txtSH_BD.Text.Trim() != "")
+                    ctdcbd.SH_BD = txtSH_BD.Text.Trim();
+                ///SX
+                if (txtSX_BD.Text.Trim() != "")
+                    ctdcbd.SX_BD = txtSX_BD.Text.Trim();
+                ///DV
+                if (txtDV_BD.Text.Trim() != "")
+                    ctdcbd.DV_BD = txtDV_BD.Text.Trim();
+                ///HCSN
+                if (txtHCSN_BD.Text.Trim() != "")
+                    ctdcbd.HCSN_BD = txtHCSN_BD.Text.Trim();
+
+                if (_cDCBD.ThemCTDCBD(ctdcbd))
+                {
+                    _ttkhachhang = null;
+                    Clear();
+                }
+            }
+            //this.DialogResult = DialogResult.OK;
+            //this.Close();
+        }
+
+        private void frmDCBD_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
 
         
