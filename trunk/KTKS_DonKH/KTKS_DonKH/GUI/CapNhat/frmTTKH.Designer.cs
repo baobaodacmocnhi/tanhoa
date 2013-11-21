@@ -95,6 +95,7 @@
             this.dgvDSTTKHDate.Location = new System.Drawing.Point(12, 84);
             this.dgvDSTTKHDate.MultiSelect = false;
             this.dgvDSTTKHDate.Name = "dgvDSTTKHDate";
+            this.dgvDSTTKHDate.ReadOnly = true;
             this.dgvDSTTKHDate.Size = new System.Drawing.Size(613, 468);
             this.dgvDSTTKHDate.TabIndex = 4;
             // 
@@ -103,24 +104,28 @@
             this.Nam.DataPropertyName = "Nam";
             this.Nam.HeaderText = "Năm";
             this.Nam.Name = "Nam";
+            this.Nam.ReadOnly = true;
             // 
             // Ky
             // 
             this.Ky.DataPropertyName = "Ky";
             this.Ky.HeaderText = "Kỳ";
             this.Ky.Name = "Ky";
+            this.Ky.ReadOnly = true;
             // 
             // Dot
             // 
             this.Dot.DataPropertyName = "Dot";
             this.Dot.HeaderText = "Đợt";
             this.Dot.Name = "Dot";
+            this.Dot.ReadOnly = true;
             // 
             // ModifyDate
             // 
             this.ModifyDate.DataPropertyName = "ModifyDate";
             this.ModifyDate.HeaderText = "Ngày Cập Nhật";
             this.ModifyDate.Name = "ModifyDate";
+            this.ModifyDate.ReadOnly = true;
             this.ModifyDate.Width = 148;
             // 
             // ModifyBy
@@ -128,6 +133,7 @@
             this.ModifyBy.DataPropertyName = "ModifyBy";
             this.ModifyBy.HeaderText = "Cập Nhật Bởi";
             this.ModifyBy.Name = "ModifyBy";
+            this.ModifyBy.ReadOnly = true;
             this.ModifyBy.Width = 120;
             // 
             // frmTTKH

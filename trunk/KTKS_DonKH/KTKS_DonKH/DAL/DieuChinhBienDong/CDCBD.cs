@@ -218,6 +218,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public decimal getMaxMaCTDCBD()
+        {
+            try
+            {
+                return db.CTDCBDs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         #endregion
     }
 }

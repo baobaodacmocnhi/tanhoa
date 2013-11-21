@@ -90,6 +90,7 @@
             this.dgvDSLoaiDon.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSLoaiDon.MultiSelect = false;
             this.dgvDSLoaiDon.Name = "dgvDSLoaiDon";
+            this.dgvDSLoaiDon.ReadOnly = true;
             this.dgvDSLoaiDon.Size = new System.Drawing.Size(395, 196);
             this.dgvDSLoaiDon.TabIndex = 6;
             this.dgvDSLoaiDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDon_CellContentClick);
@@ -100,6 +101,7 @@
             this.MaLD.DataPropertyName = "MaLD";
             this.MaLD.HeaderText = "MaLD";
             this.MaLD.Name = "MaLD";
+            this.MaLD.ReadOnly = true;
             this.MaLD.Visible = false;
             // 
             // KyHieuLD
@@ -107,6 +109,7 @@
             this.KyHieuLD.DataPropertyName = "KyHieuLD";
             this.KyHieuLD.HeaderText = "Ký Hiệu Loại Đơn";
             this.KyHieuLD.Name = "KyHieuLD";
+            this.KyHieuLD.ReadOnly = true;
             this.KyHieuLD.Width = 150;
             // 
             // TenLD
@@ -114,6 +117,7 @@
             this.TenLD.DataPropertyName = "TenLD";
             this.TenLD.HeaderText = "Tên Loại Đơn";
             this.TenLD.Name = "TenLD";
+            this.TenLD.ReadOnly = true;
             this.TenLD.Width = 200;
             // 
             // btnSua

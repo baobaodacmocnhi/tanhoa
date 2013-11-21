@@ -101,6 +101,8 @@
       <Column Name="SX_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DV_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="HCSN_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CatMSThue" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -191,6 +193,17 @@
       <Association Name="DonKH_KTXM" Member="KTXM" ThisKey="MaDon" OtherKey="MaKTXM" Type="KTXM" Cardinality="One" />
       <Association Name="ChuyenDi_DonKH" Member="ChuyenDi" ThisKey="MaChuyen" OtherKey="MaChuyen" Type="ChuyenDi" IsForeignKey="true" />
       <Association Name="LoaiDon_DonKH" Member="LoaiDon" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDon" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GiaNuoc" Member="GiaNuocs">
+    <Type Name="GiaNuoc">
+      <Column Name="MaGN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenGN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.KTXM" Member="KTXMs">

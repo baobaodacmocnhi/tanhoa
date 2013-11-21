@@ -90,6 +90,7 @@
             this.TenCN});
             this.dgvDSChiNhanh.Location = new System.Drawing.Point(12, 84);
             this.dgvDSChiNhanh.Name = "dgvDSChiNhanh";
+            this.dgvDSChiNhanh.ReadOnly = true;
             this.dgvDSChiNhanh.Size = new System.Drawing.Size(515, 247);
             this.dgvDSChiNhanh.TabIndex = 4;
             this.dgvDSChiNhanh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSChiNhanh_CellContentClick);
@@ -100,6 +101,7 @@
             this.MaCN.DataPropertyName = "MaCN";
             this.MaCN.HeaderText = "Mã Chi Nhánh";
             this.MaCN.Name = "MaCN";
+            this.MaCN.ReadOnly = true;
             this.MaCN.Visible = false;
             // 
             // TenCN

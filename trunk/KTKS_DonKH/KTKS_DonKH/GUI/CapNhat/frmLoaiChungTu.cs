@@ -56,8 +56,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                 else
                     loaichungtu.ThoiHan = null;
 
-                _cLoaiChungTu.ThemLoaiChungTu(loaichungtu);
-                Clear();
+                if (_cLoaiChungTu.ThemLoaiChungTu(loaichungtu))
+                    Clear();
             }
             else
                 MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -77,8 +77,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                     else
                         loaichungtu.ThoiHan = null;
 
-                    _cLoaiChungTu.SuaLoaiChungTu(loaichungtu);
-                    Clear();
+                    if (_cLoaiChungTu.SuaLoaiChungTu(loaichungtu))
+                        Clear();
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

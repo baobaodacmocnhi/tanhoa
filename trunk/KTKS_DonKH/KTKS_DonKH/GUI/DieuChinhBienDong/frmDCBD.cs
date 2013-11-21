@@ -11,6 +11,8 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -92,6 +94,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = "";
             txtDV.Text = "";
             txtHCSN.Text = "";
+            txtHieuLucKy.Text = "";
+            chkCatMSThue.Checked = false;
 
             dgvDSSoDangKy.DataSource = null;
         }
@@ -156,7 +160,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
             source.Add("MaDon", _donkh.MaDon.ToString());
-            source.Add("DanhBo",txtDanhBo.Text.Trim());
+            source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("MaLCT", dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
             source.Add("DiaChi", dgvDSSoDangKy.CurrentRow.Cells["DiaChi"].Value.ToString());
@@ -239,7 +243,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (_ttkhachhang != null)
+            if (_ttkhachhang != null && txtHieuLucKy.Text.Trim() != "")
             {
                 ///Nếu DCBD chưa có thì thêm vào
                 if (!_cDCBD.CheckDCBDbyID(_donkh.MaDon))
@@ -247,7 +251,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     DCBD dcbd = new DCBD();
                     dcbd.MaDCBD = _donkh.MaDon;
                     dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
-                    dcbd.LyDoChuyenDen=_source["LyDoChuyenDen"];
+                    dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
                     if (_cDCBD.ThemDCBD(dcbd))
                     {
                         switch (_source["NoiChuyenDen"])
@@ -267,6 +271,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                     }
                 }
+                ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
+                string ThongTin = "";
                 ///Thêm CTDCBD
                 CTDCBD ctdcbd = new CTDCBD();
                 ctdcbd.MaDCBD = _donkh.MaDon;
@@ -286,19 +292,39 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctdcbd.Nam = _ttkhachhang.Nam;
                 ///Họ Tên
                 if (txtHoTen_BD.Text.Trim() != "")
+                {
+                    ThongTin += "Họ Tên. ";
                     ctdcbd.HoTen_BD = txtHoTen_BD.Text.Trim();
+                }
                 ///Địa Chỉ
                 if (txtDiaChi_BD.Text.Trim() != "")
+                {
+                    ThongTin += "Địa Chỉ. ";
                     ctdcbd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
+                }
                 ///Mã Số Thuế
                 if (txtMSThue_BD.Text.Trim() != "")
+                {
+                    ThongTin += "MST. ";
                     ctdcbd.MSThue_BD = txtMSThue_BD.Text.Trim();
+                }
+                if (chkCatMSThue.Checked)
+                {
+                    ThongTin += "MST. ";
+                    ctdcbd.CatMSThue = true;
+                }
                 ///Giá Biểu
                 if (txtGiaBieu_BD.Text.Trim() != "")
+                {
+                    ThongTin += "GB. ";
                     ctdcbd.GiaBieu_BD = txtGiaBieu_BD.Text.Trim();
+                }
                 ///Định Mức
                 if (txtDinhMuc_BD.Text.Trim() != "")
+                {
+                    ThongTin += "ĐM. ";
                     ctdcbd.DinhMuc_BD = txtDinhMuc_BD.Text.Trim();
+                }
                 ///SH
                 if (txtSH_BD.Text.Trim() != "")
                     ctdcbd.SH_BD = txtSH_BD.Text.Trim();
@@ -312,14 +338,50 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (txtHCSN_BD.Text.Trim() != "")
                     ctdcbd.HCSN_BD = txtHCSN_BD.Text.Trim();
 
+                ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
+
+
                 if (_cDCBD.ThemCTDCBD(ctdcbd))
                 {
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
+
+                    dr["SoPhieu"] = _cDCBD.getMaxMaCTDCBD().ToString().Insert(4, "-");
+                    dr["ThongTin"] = ThongTin;
+                    dr["HieuLucKy"] = ctdcbd.HieuLucKy;
+                    dr["Dot"] = ctdcbd.Dot;
+                    ///Hiện tại xử lý mã số thuế như vậy
+                    if (chkCatMSThue.Checked)
+                        dr["MSThue"] = "MST: Cắt MST";
+                    if (txtMSThue_BD.Text.Trim() != "")
+                        dr["MSThue"] = "MST: " + ctdcbd.MSThue_BD;
+                    dr["DanhBo"] = ctdcbd.DanhBo;
+                    dr["HopDong"] = ctdcbd.HopDong;
+                    dr["HoTen"] = ctdcbd.HoTen;
+                    dr["DiaChi"] = ctdcbd.DiaChi;
+                    dr["GiaBieu"] = ctdcbd.GiaBieu;
+                    dr["DinhMuc"] = ctdcbd.DinhMuc;
+                    ///Biến Động
+                    dr["HoTenBD"] = ctdcbd.HoTen_BD;
+                    dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
+                    dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
+                    dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+
+                    dsBaoCao.Tables["DCBD"].Rows.Add(dr);
+
+                    rptPhieuDCBD rpt = new rptPhieuDCBD();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+
                     _ttkhachhang = null;
                     Clear();
                 }
             }
-            //this.DialogResult = DialogResult.OK;
-            //this.Close();
+            else
+            {
+                MessageBox.Show("Chưa có Danh Bộ hoặc Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void frmDCBD_FormClosing(object sender, FormClosingEventArgs e)
@@ -327,6 +389,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             this.DialogResult = DialogResult.OK;
         }
 
-        
+
     }
 }
