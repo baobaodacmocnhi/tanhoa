@@ -126,6 +126,7 @@
             this.dgvDSChungTu.Location = new System.Drawing.Point(12, 150);
             this.dgvDSChungTu.MultiSelect = false;
             this.dgvDSChungTu.Name = "dgvDSChungTu";
+            this.dgvDSChungTu.ReadOnly = true;
             this.dgvDSChungTu.Size = new System.Drawing.Size(644, 196);
             this.dgvDSChungTu.TabIndex = 8;
             this.dgvDSChungTu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSChungTu_CellContentClick);
@@ -136,6 +137,7 @@
             this.MaLCT.DataPropertyName = "MaLCT";
             this.MaLCT.HeaderText = "MaLCT";
             this.MaLCT.Name = "MaLCT";
+            this.MaLCT.ReadOnly = true;
             this.MaLCT.Visible = false;
             // 
             // KyHieuLCT
@@ -143,6 +145,7 @@
             this.KyHieuLCT.DataPropertyName = "KyHieuLCT";
             this.KyHieuLCT.HeaderText = "Ký Hiệu Loại Chứng Từ";
             this.KyHieuLCT.Name = "KyHieuLCT";
+            this.KyHieuLCT.ReadOnly = true;
             this.KyHieuLCT.Width = 150;
             // 
             // TenLCT
@@ -150,6 +153,7 @@
             this.TenLCT.DataPropertyName = "TenLCT";
             this.TenLCT.HeaderText = "Tên Loại Chứng Từ";
             this.TenLCT.Name = "TenLCT";
+            this.TenLCT.ReadOnly = true;
             this.TenLCT.Width = 300;
             // 
             // ThoiHan
@@ -157,6 +161,7 @@
             this.ThoiHan.DataPropertyName = "ThoiHan";
             this.ThoiHan.HeaderText = "Thời Hạn";
             this.ThoiHan.Name = "ThoiHan";
+            this.ThoiHan.ReadOnly = true;
             this.ThoiHan.Width = 150;
             // 
             // txtThoiHan

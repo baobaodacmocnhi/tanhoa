@@ -116,6 +116,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\CapNhat\CChiNhanh.cs" />
+    <Compile Include="DAL\CapNhat\CGiaNuoc.cs" />
     <Compile Include="DAL\CapNhat\CLoaiChungTu.cs" />
     <Compile Include="DAL\CapNhat\CLoaiDon.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
@@ -146,6 +147,12 @@
     <Compile Include="GUI\CapNhat\frmChiNhanh.Designer.cs">
       <DependentUpon>frmChiNhanh.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\CapNhat\frmGiaNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmGiaNuoc.Designer.cs">
+      <DependentUpon>frmGiaNuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\CapNhat\frmLoaiChungTu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +182,12 @@
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmDCBD.Designer.cs">
       <DependentUpon>frmDCBD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDCHDN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDCHDN.Designer.cs">
+      <DependentUpon>frmDCHDN.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmDSDCBD.cs">
       <SubType>Form</SubType>
@@ -292,6 +305,9 @@
     <EmbeddedResource Include="GUI\CapNhat\frmChiNhanh.resx">
       <DependentUpon>frmChiNhanh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CapNhat\frmGiaNuoc.resx">
+      <DependentUpon>frmGiaNuoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\CapNhat\frmLoaiChungTu.resx">
       <DependentUpon>frmLoaiChungTu.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDCBD.resx">
       <DependentUpon>frmDCBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDCHDN.resx">
+      <DependentUpon>frmDCHDN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDSDCBD.resx">
       <DependentUpon>frmDSDCBD.cs</DependentUpon>

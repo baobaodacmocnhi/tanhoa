@@ -51,9 +51,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                 loaidon.KyHieuLD = txtKyHieuLD.Text.Trim();
                 loaidon.TenLD = txtTenLD.Text.Trim();
 
-                _cCapNhatLoaiDon.ThemLoaiDon(loaidon);
-
-                Clear();
+                if (_cCapNhatLoaiDon.ThemLoaiDon(loaidon))
+                    Clear();
             }
             else
                 MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -69,9 +68,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                     loaidon.KyHieuLD = txtKyHieuLD.Text.Trim();
                     loaidon.TenLD = txtTenLD.Text.Trim();
 
-                    _cCapNhatLoaiDon.SuaLoaiDon(loaidon);
-
-                    Clear();
+                    if (_cCapNhatLoaiDon.SuaLoaiDon(loaidon))
+                        Clear();
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

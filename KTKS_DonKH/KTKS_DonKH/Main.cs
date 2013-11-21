@@ -173,6 +173,15 @@ namespace KTKS_DonKH
             frm.Show();
         }
 
+        private void ribbtnGiaNuoc_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmGiaNuoc();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
         
 
         

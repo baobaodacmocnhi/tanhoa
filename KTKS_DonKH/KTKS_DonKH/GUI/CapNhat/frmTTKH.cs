@@ -48,8 +48,8 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             if (txtDuongDan.Text.Trim() != "")
             {
-                _cTTKH.CapNhatTTKH(txtDuongDan.Text.Trim());
-                dgvDSTTKHDate.DataSource = _cTTKHDate.LoadDSTTKhachHangDate();
+                if (_cTTKH.CapNhatTTKH(txtDuongDan.Text.Trim()))
+                    dgvDSTTKHDate.DataSource = _cTTKHDate.LoadDSTTKhachHangDate();
             }
         }
 

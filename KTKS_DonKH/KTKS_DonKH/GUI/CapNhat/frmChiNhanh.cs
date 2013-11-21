@@ -69,8 +69,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                 ChiNhanh chinhanh = new ChiNhanh();
                 chinhanh.TenCN = txtTenCN.Text.Trim();
 
-                _cChiNhanh.ThemChiNhanh(chinhanh);
-                Clear();
+                if (_cChiNhanh.ThemChiNhanh(chinhanh))
+                    Clear();
             }
             else
                 MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,8 +84,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                     ChiNhanh chinhanh = _cChiNhanh.getChiNhanhbyID(int.Parse(dgvDSChiNhanh["MaCN", selectedindex].Value.ToString()));
                     chinhanh.TenCN = txtTenCN.Text.Trim();
 
-                    _cChiNhanh.SuaChiNhanh(chinhanh);
-                    Clear();
+                    if (_cChiNhanh.SuaChiNhanh(chinhanh))
+                        Clear();
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -147,7 +147,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void điềuChỉnhHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Dictionary<string, string> source = new Dictionary<string, string>();
+            DataRowView selRow = (DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0]);
+            source.Add("MaDon", selRow["MaDon"].ToString());
+            source.Add("DanhBo", selRow["DanhBo"].ToString());
+            source.Add("HoTen", selRow["HoTen"].ToString());
+            frmDCHDN frm = new frmDCHDN(source);
+            if (frm.ShowDialog() == DialogResult.OK)
+                gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)

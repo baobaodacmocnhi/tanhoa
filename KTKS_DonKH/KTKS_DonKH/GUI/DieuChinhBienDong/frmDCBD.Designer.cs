@@ -99,6 +99,9 @@
             this.btnLuu = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.txtMaDon = new System.Windows.Forms.TextBox();
+            this.txtHieuLucKy = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.chkCatMSThue = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -715,6 +718,32 @@
             this.txtMaDon.Size = new System.Drawing.Size(100, 25);
             this.txtMaDon.TabIndex = 26;
             // 
+            // txtHieuLucKy
+            // 
+            this.txtHieuLucKy.Location = new System.Drawing.Point(961, 6);
+            this.txtHieuLucKy.Name = "txtHieuLucKy";
+            this.txtHieuLucKy.Size = new System.Drawing.Size(100, 25);
+            this.txtHieuLucKy.TabIndex = 28;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(866, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(89, 17);
+            this.label22.TabIndex = 27;
+            this.label22.Text = "Hiệu Lực Kỳ:";
+            // 
+            // chkCatMSThue
+            // 
+            this.chkCatMSThue.AutoSize = true;
+            this.chkCatMSThue.Location = new System.Drawing.Point(1070, 134);
+            this.chkCatMSThue.Name = "chkCatMSThue";
+            this.chkCatMSThue.Size = new System.Drawing.Size(103, 21);
+            this.chkCatMSThue.TabIndex = 29;
+            this.chkCatMSThue.Text = "Cắt MSThuế";
+            this.chkCatMSThue.UseVisualStyleBackColor = true;
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -722,6 +751,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1197, 488);
+            this.Controls.Add(this.chkCatMSThue);
+            this.Controls.Add(this.txtHieuLucKy);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.txtMaDon);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.btnLuu);
@@ -817,6 +849,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ThoiHan;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SoChinh;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Cat;
+        private System.Windows.Forms.TextBox txtHieuLucKy;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox chkCatMSThue;
         
     }
 }
