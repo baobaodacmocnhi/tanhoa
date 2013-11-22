@@ -36,12 +36,15 @@
             this.ribbtnDoiMatKhau = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnTaiKhoan = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel7 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnTest = new System.Windows.Forms.RibbonButton();
             this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnLoaiDonThu = new System.Windows.Forms.RibbonButton();
             this.ribbtnChungTuMoi = new System.Windows.Forms.RibbonButton();
             this.ribbtnKhachHang = new System.Windows.Forms.RibbonButton();
             this.ribbtnChiNhanh = new System.Windows.Forms.RibbonButton();
+            this.ribbtnGiaNuoc = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
@@ -59,7 +62,6 @@
             this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnDSDonDCBD = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbtnGiaNuoc = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +69,7 @@
             // 
             this.ribbonTab1.Panels.Add(this.ribbonPanel1);
             this.ribbonTab1.Panels.Add(this.ribbonPanel2);
+            this.ribbonTab1.Panels.Add(this.ribbonPanel7);
             this.ribbonTab1.Text = "Hệ Thống";
             // 
             // ribbonPanel1
@@ -119,6 +122,21 @@
             this.ribbtnTaiKhoan.Text = "";
             this.ribbtnTaiKhoan.Click += new System.EventHandler(this.ribbtnTaiKhoan_Click);
             // 
+            // ribbonPanel7
+            // 
+            this.ribbonPanel7.ButtonMoreEnabled = false;
+            this.ribbonPanel7.ButtonMoreVisible = false;
+            this.ribbonPanel7.Items.Add(this.ribbtnTest);
+            this.ribbonPanel7.Text = "Test";
+            // 
+            // ribbtnTest
+            // 
+            this.ribbtnTest.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnTest.MinimumSize = new System.Drawing.Size(50, 0);
+            this.ribbtnTest.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnTest.SmallImage")));
+            this.ribbtnTest.Text = "Test";
+            this.ribbtnTest.Click += new System.EventHandler(this.ribbtnTest_Click);
+            // 
             // ribbonTab2
             // 
             this.ribbonTab2.Panels.Add(this.ribbonPanel3);
@@ -166,6 +184,14 @@
             this.ribbtnChiNhanh.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnChiNhanh.SmallImage")));
             this.ribbtnChiNhanh.Text = "Chi Nhánh";
             this.ribbtnChiNhanh.Click += new System.EventHandler(this.ribbtnChiNhanh_Click);
+            // 
+            // ribbtnGiaNuoc
+            // 
+            this.ribbtnGiaNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnGiaNuoc.MinimumSize = new System.Drawing.Size(70, 0);
+            this.ribbtnGiaNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnGiaNuoc.SmallImage")));
+            this.ribbtnGiaNuoc.Text = "Giá Nước";
+            this.ribbtnGiaNuoc.Click += new System.EventHandler(this.ribbtnGiaNuoc_Click);
             // 
             // ribbonTab3
             // 
@@ -306,14 +332,6 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbtnGiaNuoc
-            // 
-            this.ribbtnGiaNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnGiaNuoc.MinimumSize = new System.Drawing.Size(70, 0);
-            this.ribbtnGiaNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnGiaNuoc.SmallImage")));
-            this.ribbtnGiaNuoc.Text = "Giá Nước";
-            this.ribbtnGiaNuoc.Click += new System.EventHandler(this.ribbtnGiaNuoc_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,7 +344,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 700);
             this.Name = "Main";
             this.Text = "Chương trình Quản Lý Đơn Từ Khách Hàng";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.statusStrip1.ResumeLayout(false);
@@ -369,6 +386,8 @@
         private System.Windows.Forms.RibbonButton ribbtnDSDonDCBD;
         private System.Windows.Forms.RibbonButton ribbtnChiNhanh;
         private System.Windows.Forms.RibbonButton ribbtnGiaNuoc;
+        private System.Windows.Forms.RibbonPanel ribbonPanel7;
+        private System.Windows.Forms.RibbonButton ribbtnTest;
     }
 }
 

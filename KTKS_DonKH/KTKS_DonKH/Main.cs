@@ -182,6 +182,15 @@ namespace KTKS_DonKH
             frm.Show();
         }
 
+        private void ribbtnTest_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmTest();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
         
 
         
