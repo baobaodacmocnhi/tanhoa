@@ -207,6 +207,12 @@
     <Compile Include="GUI\DieuChinhBienDong\frmSoDK.Designer.cs">
       <DependentUpon>frmSoDK.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\HeThong\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmSoDK.resx">
       <DependentUpon>frmSoDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
