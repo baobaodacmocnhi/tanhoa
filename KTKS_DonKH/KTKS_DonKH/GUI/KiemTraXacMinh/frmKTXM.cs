@@ -72,7 +72,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (itemRow["MaKTXM"].ToString() == "")
                     {
                         KTXM ktxm = new KTXM();
-                        ktxm.MaKTXM = decimal.Parse(itemRow["MaDon"].ToString());
+                        //ktxm.MaKTXM = decimal.Parse(itemRow["MaDon"].ToString());
+                        ktxm.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
+                        ktxm.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
                         ktxm.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
                         ktxm.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
                         ktxm.KetQua = itemRow["KetQua"].ToString();
@@ -168,6 +170,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 e.Value = e.Value.ToString().Insert(4, "-");
             }
-        }       
+        }
+
+  
     }
 }

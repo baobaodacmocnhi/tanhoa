@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CDCBD : CDAL
     {
-        ///Chứa hàm truy xuất dữ liệu từ bảng DCBD & CTDCBD
+        ///Chứa hàm truy xuất dữ liệu từ bảng DCBD & CTDCBD & CTDCHD
         
         #region DCBD
 
@@ -24,7 +24,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     DataSet ds = new DataSet();
                     ///Table DCBD
                     var queryDCBD = from itemDCBD in db.DCBDs
-                                join itemDonKH in db.DonKHs on itemDCBD.MaDCBD equals itemDonKH.MaDon
+                                join itemDonKH in db.DonKHs on itemDCBD.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 select new
                                 {
@@ -35,6 +35,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
+                                    MaNoiChuyenDen = itemDCBD.MaNoiChuyenDen,
                                     NoiChuyenDen = itemDCBD.NoiChuyenDen,
                                     LyDoChuyenDen = itemDCBD.LyDoChuyenDen,
                                     itemDCBD.MaDCBD,
@@ -81,7 +82,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (CTaiKhoan.RoleDCBD)
                 {
                     ///Bảng DonKH
-                    var query1 = from itemDonKH in db.DonKHs
+                    var queryDonKH = from itemDonKH in db.DonKHs
                                  join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                  where itemDonKH.Nhan == false && itemDonKH.MaChuyen == "DCBD"
                                  select new
@@ -93,6 +94,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                      itemDonKH.HoTen,
                                      itemDonKH.DiaChi,
                                      itemDonKH.NoiDung,
+                                     MaNoiChuyenDen = itemDonKH.MaDon,
                                      NoiChuyenDen = "Khách Hàng",
                                      LyDoChuyenDen = itemDonKH.LyDoChuyen,
                                      MaDCBD = "",
@@ -102,8 +104,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                      LyDoChuyenDi = ""
                                  };
                     ///Bảng KTXM
-                    var query2 = from itemKTXM in db.KTXMs
-                                 join itemDonKH in db.DonKHs on itemKTXM.MaKTXM equals itemDonKH.MaDon
+                    var queryKTXM = from itemKTXM in db.KTXMs
+                                 join itemDonKH in db.DonKHs on itemKTXM.MaDon equals itemDonKH.MaDon
                                  join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                  where itemKTXM.Nhan == false && itemKTXM.MaChuyen == "DCBD"
                                  select new
@@ -115,6 +117,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                      itemDonKH.HoTen,
                                      itemDonKH.DiaChi,
                                      itemDonKH.NoiDung,
+                                     MaNoiChuyenDen = itemKTXM.MaKTXM,
                                      NoiChuyenDen = "Kiểm Tra Xác Minh",
                                      LyDoChuyenDen = itemKTXM.LyDoChuyen,
                                      MaDCBD = "",
@@ -123,8 +126,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                      MaChuyen = "",
                                      LyDoChuyenDi = ""
                                  };
-                    var queryDCBD = query1.Union(query2);
-                   return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD);
+                    //if (queryKTXM.Count() > 0)
+                    //    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH.Union(queryKTXM));
+                    //else
+                    //    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
+                    DataTable tableDonKH = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
+                    DataTable tableKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                    tableDonKH.Merge(tableKTXM);
+                    return tableDonKH;
                 }
                 else
                 {
@@ -161,6 +170,13 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 if (CTaiKhoan.RoleDCBD)
                 {
+                    if (db.DCBDs.Count() > 0)
+                    {
+                        decimal MaDCBD = db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
+                        dcbd.MaDCBD = getMaxNextIDTable(MaDCBD);
+                    }
+                    else
+                        dcbd.MaDCBD = decimal.Parse(DateTime.Now.Year + "1");
                     dcbd.CreateDate = DateTime.Now;
                     dcbd.CreateBy = CTaiKhoan.TaiKhoan;
                     db.DCBDs.InsertOnSubmit(dcbd);
@@ -178,6 +194,38 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
                 return false;
+            }
+        }
+
+        public decimal getMaxNextMaDCBD()
+        {
+            try
+            {
+                if (db.DCBDs.Count() > 0)
+                {
+                    decimal MaDCBD = db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
+                    return getMaxNextIDTable(MaDCBD);
+                }
+                else
+                    return decimal.Parse(DateTime.Now.Year + "1");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        public decimal getMaxMaDCBD()
+        {
+            try
+            {
+                return db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
 
@@ -228,6 +276,43 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
+            }
+        }
+
+        #endregion
+
+        #region CTDCHD
+
+        public bool ThemCTDCHD(CTDCHD ctdchd)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    if (db.CTDCHDs.Count() > 0)
+                    {
+                        decimal MaCTDCHD = db.CTDCHDs.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
+                        ctdchd.MaCTDCHD = getMaxNextIDTable(MaCTDCHD);
+                    }
+                    else
+                        ctdchd.MaCTDCHD = decimal.Parse(DateTime.Now.Year + "1");
+                    ctdchd.CreateDate = DateTime.Now;
+                    ctdchd.CreateBy = CTaiKhoan.TaiKhoan;
+                    db.CTDCHDs.InsertOnSubmit(ctdchd);
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
             }
         }
 

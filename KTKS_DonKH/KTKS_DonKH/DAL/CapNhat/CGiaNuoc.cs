@@ -133,10 +133,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (TieuThu <= DinhMuc)
                             TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
                         else
-                            if (TieuThu - DinhMuc <= DinhMuc / 2)
+                            if (TieuThu - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                 TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                             else
-                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((TieuThu - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((TieuThu - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                         break;
                     case 12:
                     case 22:
@@ -171,10 +171,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     if (_SH <= DinhMuc)
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
                                     else
-                                        if (_SH - DinhMuc <= DinhMuc / 2)
+                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                             TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                                         else
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                                     TongTien += _SX * lstGiaNuoc[3].DonGia.Value;
                                 }
                         break;
@@ -199,10 +199,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     if (_SH <= DinhMuc)
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
                                     else
-                                        if (_SH - DinhMuc <= DinhMuc / 2)
+                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                             TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                                         else
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                                     TongTien += _DV * lstGiaNuoc[5].DonGia.Value;
                                 }
                         break;
@@ -227,10 +227,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     if (_SH <= DinhMuc)
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
                                     else
-                                        if (_SH - DinhMuc <= DinhMuc / 2)
+                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                             TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                                         else
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                                     TongTien += (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
                                 }
                         break;
@@ -260,10 +260,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     if (_SH <= DinhMuc)
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
                                     else
-                                        if (_SH - DinhMuc <= DinhMuc / 2)
+                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                             TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                                         else
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                                     TongTien += _HCSN * lstGiaNuoc[4].DonGia.Value;
                                 }
                         break;
@@ -281,10 +281,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 if (_SH <= DinhMuc)
                                     TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
                                 else
-                                    if (_SH - DinhMuc <= DinhMuc / 2)
+                                    if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                         TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                                     else
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                                 TongTien += (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
                             }
                         break;
@@ -428,10 +428,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (TieuThu <= DinhMuc)
                             TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
                         else
-                            if (TieuThu - DinhMuc <= DinhMuc / 2)
+                            if (TieuThu - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                 TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                             else
-                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((TieuThu - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((TieuThu - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                         TongTien -= TongTien * 10 / 100;
                         break;
                     case 52:///sỉ khu công nghiệp
@@ -458,10 +458,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 if (_SH <= DinhMuc)
                                     TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
                                 else
-                                    if (_SH - DinhMuc <= DinhMuc / 2)
+                                    if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                         TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                                     else
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                                 TongTien += (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
                                 TongTien -= TongTien * 10 / 100;
                             }
@@ -476,14 +476,17 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 if (_SH <= DinhMuc)
                                     TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
                                 else
-                                    if (_SH - DinhMuc <= DinhMuc / 2)
+                                    if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
                                         TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
                                     else
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + (DinhMuc / 2 * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - DinhMuc / 2) * lstGiaNuoc[2].DonGia.Value);
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
                                 TongTien += _DV * lstGiaNuoc[5].DonGia.Value;
                                 TongTien -= TongTien * 10 / 100;
                             }
                         break;
+                    //default:
+                    //    TongTien = 0;
+                    //    break;
                 }
                 return TongTien;
             }

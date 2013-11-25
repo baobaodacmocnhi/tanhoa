@@ -137,6 +137,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("MaDon", selRow["MaDon"].ToString());
             source.Add("DanhBo", selRow["DanhBo"].ToString());
             ///Nơi Chuyển Đến, dùng để xét Đơn Khách Hàng nhận từ bản nào, Vì lúc ta load danh sách đơn chưa duyệt ở nhiều bảng
+            source.Add("MaNoiChuyenDen", selRow["MaNoiChuyenDen"].ToString());
             source.Add("NoiChuyenDen",selRow["NoiChuyenDen"].ToString());
             source.Add("LyDoChuyenDen", selRow["LyDoChuyenDen"].ToString());
 
@@ -152,6 +153,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("MaDon", selRow["MaDon"].ToString());
             source.Add("DanhBo", selRow["DanhBo"].ToString());
             source.Add("HoTen", selRow["HoTen"].ToString());
+            ///Nơi Chuyển Đến, dùng để xét Đơn Khách Hàng nhận từ bản nào, Vì lúc ta load danh sách đơn chưa duyệt ở nhiều bảng
+            source.Add("MaNoiChuyenDen", selRow["MaNoiChuyenDen"].ToString());
+            source.Add("NoiChuyenDen", selRow["NoiChuyenDen"].ToString());
+            source.Add("LyDoChuyenDen", selRow["LyDoChuyenDen"].ToString());
             frmDCHDN frm = new frmDCHDN(source);
             if (frm.ShowDialog() == DialogResult.OK)
                 gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();

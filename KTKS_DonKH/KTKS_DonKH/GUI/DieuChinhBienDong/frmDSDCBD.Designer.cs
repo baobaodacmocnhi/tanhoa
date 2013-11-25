@@ -37,6 +37,7 @@
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridViewDCBD = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,6 +72,7 @@
             this.NgayXuLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDCBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).BeginInit();
@@ -162,6 +164,7 @@
             this.gridViewDCBD.Appearance.Row.Options.UseFont = true;
             this.gridViewDCBD.ColumnPanelRowHeight = 25;
             this.gridViewDCBD.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn18,
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
@@ -173,6 +176,7 @@
             this.gridColumn9,
             this.gridColumn10,
             this.gridColumn11,
+            this.gridColumn19,
             this.gridColumn12,
             this.gridColumn13});
             this.gridViewDCBD.GridControl = this.gridControl;
@@ -186,6 +190,12 @@
             this.gridViewDCBD.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_RowCellClick);
             this.gridViewDCBD.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_CustomDrawRowIndicator);
             this.gridViewDCBD.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewDCBD_CustomColumnDisplayText);
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Mã DCBD";
+            this.gridColumn18.FieldName = "MaDCBD";
+            this.gridColumn18.Name = "gridColumn18";
             // 
             // gridColumn1
             // 
@@ -514,6 +524,12 @@
             this.dgvDSDCBD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDCBD_KeyDown);
             this.dgvDSDCBD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSDCBD_MouseClick);
             // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "Mã Nơi Chuyển Đến";
+            this.gridColumn19.FieldName = "MaNoiChuyenDen";
+            this.gridColumn19.Name = "gridColumn19";
+            // 
             // frmDSDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -585,5 +601,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDCBD;
         private System.Windows.Forms.DataGridView dgvDSDCBD;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
     }
 }
