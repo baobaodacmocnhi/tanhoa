@@ -27,6 +27,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
+        bool flagFirst = true;
 
         public frmDCBD()
         {
@@ -246,10 +247,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_ttkhachhang != null && txtHieuLucKy.Text.Trim() != "")
             {
                 ///Nếu DCBD chưa có thì thêm vào
-                if (!_cDCBD.CheckDCBDbyID(_donkh.MaDon))
+                //if (!_cDCBD.CheckDCBDbyID(_donkh.MaDon))
+                if(flagFirst)
                 {
                     DCBD dcbd = new DCBD();
-                    dcbd.MaDCBD = _donkh.MaDon;
+                    dcbd.MaDon = _donkh.MaDon;
+                    dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
                     dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
                     dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
                     if (_cDCBD.ThemDCBD(dcbd))
@@ -258,24 +261,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             case "Khách Hàng":
                                 ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                DonKH donkh = _cDonKH.getDonKHbyID(_donkh.MaDon);
+                                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
                                 donkh.Nhan = true;
                                 _cDonKH.SuaDonKH(donkh);
                                 break;
                             case "Kiểm Tra Xác Minh":
                                 ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                KTXM ktxm = _cKTXM.getKTXMbyID(_donkh.MaDon);
+                                KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
                                 ktxm.Nhan = true;
                                 _cKTXM.SuaKTXM(ktxm);
                                 break;
                         }
+                        _source.Add("MaDCBD", _cDCBD.getMaxMaDCBD().ToString());
+                        flagFirst = false;
                     }
                 }
                 ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
                 string ThongTin = "";
                 ///Thêm CTDCBD
                 CTDCBD ctdcbd = new CTDCBD();
-                ctdcbd.MaDCBD = _donkh.MaDon;
+                ctdcbd.MaDCBD = decimal.Parse(_source["MaDCBD"]);
                 ctdcbd.DanhBo = _ttkhachhang.DanhBo;
                 ctdcbd.HopDong = _ttkhachhang.GiaoUoc;
                 ctdcbd.HoTen = _ttkhachhang.HoTen;

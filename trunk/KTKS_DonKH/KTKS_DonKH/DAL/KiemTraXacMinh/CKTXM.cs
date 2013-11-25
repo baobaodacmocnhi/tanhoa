@@ -17,13 +17,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                 if (CTaiKhoan.RoleKTXM)
                 {
-                    //if (db.KTXMs.Count() > 0)
-                    //{
-                    //    string MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM);
-                    //    ktxm.MaKTXM = getMaxIDTable(MaKTXM);
-                    //}
-                    //else
-                    //    ktxm.MaKTXM = DateTime.Now.Year + "-" + 1;
+                    if (db.KTXMs.Count() > 0)
+                    {
+                        decimal MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM);
+                        ktxm.MaKTXM = getMaxNextIDTable(MaKTXM);
+                    }
+                    else
+                        ktxm.MaKTXM = decimal.Parse(DateTime.Now.Year + "1");
                     ktxm.CreateDate = DateTime.Now;
                     ktxm.CreateBy = CTaiKhoan.TaiKhoan;
                     db.KTXMs.InsertOnSubmit(ktxm);
@@ -87,6 +87,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
+                                    MaNoiChuyenDen = itemKTXM.MaNoiChuyenDen,
                                     NoiChuyenDen = itemKTXM.NoiChuyenDen,
                                     LyDoChuyenDen = itemKTXM.LyDoChuyenDen,
                                     itemKTXM.MaKTXM,
@@ -117,50 +118,58 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 if (CTaiKhoan.RoleKTXM)
                 {
                     ///Bảng DonKH
-                    var query1 = from itemDonKH in db.DonKHs
-                                join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                where itemDonKH.Nhan == false && itemDonKH.MaChuyen == "KTXM"
-                                select new
-                                {
-                                    itemDonKH.MaDon,
-                                    itemLoaiDon.TenLD,
-                                    itemDonKH.CreateDate,
-                                    itemDonKH.DanhBo,
-                                    itemDonKH.HoTen,
-                                    itemDonKH.DiaChi,
-                                    itemDonKH.NoiDung,
-                                    NoiChuyenDen = "Khách Hàng",
-                                    LyDoChuyenDen = itemDonKH.LyDoChuyen,
-                                    MaKTXM = "",
-                                    NgayXuLy = "",
-                                    KetQua = "",
-                                    MaChuyen = "",
-                                    LyDoChuyenDi = ""
-                                };
+                    var queryDonKH = from itemDonKH in db.DonKHs
+                                     join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                     where itemDonKH.Nhan == false && itemDonKH.MaChuyen == "KTXM"
+                                     select new
+                                     {
+                                         itemDonKH.MaDon,
+                                         itemLoaiDon.TenLD,
+                                         itemDonKH.CreateDate,
+                                         itemDonKH.DanhBo,
+                                         itemDonKH.HoTen,
+                                         itemDonKH.DiaChi,
+                                         itemDonKH.NoiDung,
+                                         MaNoiChuyenDen = itemDonKH.MaDon,
+                                         NoiChuyenDen = "Khách Hàng",
+                                         LyDoChuyenDen = itemDonKH.LyDoChuyen,
+                                         MaKTXM = "",
+                                         NgayXuLy = "",
+                                         KetQua = "",
+                                         MaChuyen = "",
+                                         LyDoChuyenDi = ""
+                                     };
                     ///Bảng DCBD
-                    var query2 = from itemDCBD in db.DCBDs
-                                 join itemDonKH in db.DonKHs on itemDCBD.MaDCBD equals itemDonKH.MaDon
-                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                 where itemDCBD.Nhan == false && itemDCBD.MaChuyen == "KTXM"
-                                 select new
-                                 {
-                                     itemDonKH.MaDon,
-                                     itemLoaiDon.TenLD,
-                                     itemDonKH.CreateDate,
-                                     itemDonKH.DanhBo,
-                                     itemDonKH.HoTen,
-                                     itemDonKH.DiaChi,
-                                     itemDonKH.NoiDung,
-                                     NoiChuyenDen = "Điều Chỉnh Biến Động",
-                                     LyDoChuyenDen = itemDCBD.LyDoChuyen,
-                                     MaKTXM = "",
-                                     NgayXuLy = "",
-                                     KetQua = "",
-                                     MaChuyen = "",
-                                     LyDoChuyenDi = ""
-                                 };
-                    var query = query1.Union(query2);
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    var queryDCBD = from itemDCBD in db.DCBDs
+                                    join itemDonKH in db.DonKHs on itemDCBD.MaDCBD equals itemDonKH.MaDon
+                                    join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                    where itemDCBD.Nhan == false && itemDCBD.MaChuyen == "KTXM"
+                                    select new
+                                    {
+                                        itemDonKH.MaDon,
+                                        itemLoaiDon.TenLD,
+                                        itemDonKH.CreateDate,
+                                        itemDonKH.DanhBo,
+                                        itemDonKH.HoTen,
+                                        itemDonKH.DiaChi,
+                                        itemDonKH.NoiDung,
+                                        MaNoiChuyenDen = itemDCBD.MaDCBD,
+                                        NoiChuyenDen = "Điều Chỉnh Biến Động",
+                                        LyDoChuyenDen = itemDCBD.LyDoChuyen,
+                                        MaKTXM = "",
+                                        NgayXuLy = "",
+                                        KetQua = "",
+                                        MaChuyen = "",
+                                        LyDoChuyenDi = ""
+                                    };
+                    //if (queryDCBD.Count() > 0)
+                    //    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH.Union(queryDCBD));
+                    //else
+                    //    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
+                    DataTable tableDonKH = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonKH);
+                    DataTable tableDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD);
+                    tableDonKH.Merge(tableDCBD);
+                    return tableDonKH;
                 }
                 else
                 {

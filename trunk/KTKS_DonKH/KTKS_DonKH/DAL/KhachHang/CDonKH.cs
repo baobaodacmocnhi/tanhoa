@@ -19,13 +19,22 @@ namespace KTKS_DonKH.DAL.KhachHang
         /// <returns></returns>
         public decimal getMaxNextID()
         {
-            if (db.DonKHs.Count() > 0)
+            try
             {
-                decimal MaDon = db.DonKHs.Max(itemDonKH => itemDonKH.MaDon);
-                return getMaxNextIDTable(MaDon);
+                if (db.DonKHs.Count() > 0)
+                {
+                    decimal MaDon = db.DonKHs.Max(itemDonKH => itemDonKH.MaDon);
+                    return getMaxNextIDTable(MaDon);
+                }
+                else
+                    return decimal.Parse(DateTime.Now.Year + "1");
             }
-            else
-                return decimal.Parse(DateTime.Now.Year + "1");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+            
         }
 
         public DonKH getDonKHbyID(decimal MaDon)
