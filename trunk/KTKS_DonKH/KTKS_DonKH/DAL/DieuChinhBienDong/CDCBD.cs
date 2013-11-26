@@ -58,8 +58,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     dtCTDCBD.TableName = "CTDCBD";
                     ds.Tables.Add(dtCTDCBD);
 
+                    ///Table CTDCHD
+                    var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                                      select itemCTDCHD;
+
+                    DataTable dtCTDCHD = new DataTable();
+                    dtCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    dtCTDCHD.TableName = "CTDCHD";
+                    ds.Tables.Add(dtCTDCHD);
+
                     if (dtDCBD.Rows.Count > 0 && dtCTDCBD.Rows.Count > 0)
-                        ds.Relations.Add("Chi Tiết", ds.Tables["DCBD"].Columns["MaDCBD"], ds.Tables["CTDCBD"].Columns["MaDCBD"]);
+                        ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động", ds.Tables["DCBD"].Columns["MaDCBD"], ds.Tables["CTDCBD"].Columns["MaDCBD"]);
+                    if (dtDCBD.Rows.Count > 0 && dtCTDCHD.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Điều Chỉnh Hóa Đơn", ds.Tables["DCBD"].Columns["MaDCBD"], ds.Tables["CTDCHD"].Columns["MaDCBD"]);
                     return ds;
                 }
                 else
@@ -313,6 +324,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
                 return false;
+            }
+        }
+
+        public decimal getMaxMaCTDCHD()
+        {
+            try
+            {
+                return db.CTDCHDs.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
 

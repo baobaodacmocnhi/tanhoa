@@ -11,6 +11,8 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -191,7 +193,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     _source.Add("MaDCBD", _cDCBD.getMaxMaDCBD().ToString());
                 }
                 CTDCHD ctdchd = new CTDCHD();
-                ctdchd.MaDCDB = decimal.Parse(_source["MaDCBD"]);
+                ctdchd.MaDCBD = decimal.Parse(_source["MaDCBD"]);
                 ctdchd.DanhBo = txtDanhBo.Text.Trim();
                 ctdchd.HoTen = txtHoTen.Text.Trim();
                 ctdchd.SoVB = txtSoVB.Text.Trim();
@@ -207,15 +209,72 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctdchd.DinhMucBD = int.Parse(txtDinhMuc_Moi.Text.Trim());
                 ctdchd.TieuThuBD = int.Parse(txtTieuThu_Moi.Text.Trim());
                 ///
-                ctdchd.TienNuoc = int.Parse(txtThueGTGT_Start.Text.Trim());
-                ctdchd.ThueGTGT = int.Parse(txtThueGTGT_Start.Text.Trim());
-                ctdchd.PhiBVMT = int.Parse(txtPhiBVMT_Start.Text.Trim());
-                ctdchd.TongCong = int.Parse(txtTongCong_Start.Text.Trim());
+                ctdchd.TienNuocStart = int.Parse(txtTienNuoc_Start.Text.Trim());
+                ctdchd.ThueGTGTStart = int.Parse(txtThueGTGT_Start.Text.Trim());
+                ctdchd.PhiBVMTStart = int.Parse(txtPhiBVMT_Start.Text.Trim());
+                ctdchd.TongCongStart = int.Parse(txtTongCong_Start.Text.Trim());
                 ///
-                ctdchd.TienNuocBD = int.Parse(txtThueGTGT_End.Text.Trim());
-                ctdchd.ThueGTGTBD = int.Parse(txtThueGTGT_End.Text.Trim());
-                ctdchd.PhiBVMTBD = int.Parse(txtPhiBVMT_End.Text.Trim());
-                ctdchd.TongCongBD = int.Parse(txtTongCong_End.Text.Trim());
+                ctdchd.TienNuocBD = int.Parse(txtTienNuoc_BD.Text.Trim());
+                ctdchd.ThueGTGTBD = int.Parse(txtThueGTGT_BD.Text.Trim());
+                ctdchd.PhiBVMTBD = int.Parse(txtPhiBVMT_BD.Text.Trim());
+                ctdchd.TongCongBD = int.Parse(txtTongCong_BD.Text.Trim());
+                ///
+                ctdchd.TienNuocEnd = int.Parse(txtTienNuoc_End.Text.Trim());
+                ctdchd.ThueGTGTEnd = int.Parse(txtThueGTGT_End.Text.Trim());
+                ctdchd.PhiBVMTEnd = int.Parse(txtPhiBVMT_End.Text.Trim());
+                ctdchd.TongCongEnd = int.Parse(txtTongCong_End.Text.Trim());
+
+                if (ctdchd.TienNuocEnd - ctdchd.TienNuocStart == 0)
+                    ctdchd.TangGiam = "";
+                else
+                    if (ctdchd.TienNuocEnd - ctdchd.TienNuocStart > 0)
+                        ctdchd.TangGiam = "Tăng";
+                    else
+                        ctdchd.TangGiam = "Giảm";
+
+                if (_cDCBD.ThemCTDCHD(ctdchd))
+                {
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
+
+                    dr["SoPhieu"] = _cDCBD.getMaxMaCTDCHD().ToString().Insert(4, "-");
+                    dr["DanhBo"] = ctdchd.DanhBo;
+                    dr["HoTen"] = ctdchd.HoTen;
+                    dr["SoVB"] = ctdchd.SoVB;
+                    dr["NgayKy"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
+                    dr["KyHD"] = ctdchd.KyHD;
+                    dr["SoHD"] = ctdchd.SoHD;
+                    ///
+                    dr["TieuThuStart"] = ctdchd.TieuThu;
+                    dr["TienNuocStart"] = ctdchd.TienNuocStart;
+                    dr["ThueGTGTStart"] = ctdchd.ThueGTGTStart;
+                    dr["PhiBVMTStart"] = ctdchd.PhiBVMTStart;
+                    dr["TongCongStart"] = ctdchd.TongCongStart;
+                    ///
+                    dr["TangGiam"] = ctdchd.TangGiam;
+                    ///
+                    dr["TieuThuBD"] = ctdchd.TieuThuBD - ctdchd.TieuThu;
+                    dr["TienNuocBD"] = ctdchd.TienNuocBD;
+                    dr["ThueGTGTBD"] = ctdchd.ThueGTGTBD;
+                    dr["PhiBVMTBD"] = ctdchd.PhiBVMTBD;
+                    dr["TongCongBD"] = ctdchd.TongCongBD;
+                    ///
+                    dr["TieuThuEnd"] = ctdchd.TieuThuBD;
+                    dr["TienNuocEnd"] = ctdchd.TienNuocEnd;
+                    dr["ThueGTGTEnd"] = ctdchd.ThueGTGTEnd;
+                    dr["PhiBVMTEnd"] = ctdchd.PhiBVMTEnd;
+                    dr["TongCongEnd"] = ctdchd.TongCongEnd;
+
+                    dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+
+                    rptPhieuDCHD rpt = new rptPhieuDCHD();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
             else
                 MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

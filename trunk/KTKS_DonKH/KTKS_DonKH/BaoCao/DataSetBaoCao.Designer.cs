@@ -2030,7 +2030,7 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnThueGTGTBD;
             
-            private global::System.Data.DataColumn columnPhiBVMTDB;
+            private global::System.Data.DataColumn columnPhiBVMTBD;
             
             private global::System.Data.DataColumn columnTongCongBD;
             
@@ -2207,9 +2207,9 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PhiBVMTDBColumn {
+            public global::System.Data.DataColumn PhiBVMTBDColumn {
                 get {
-                    return this.columnPhiBVMTDB;
+                    return this.columnPhiBVMTBD;
                 }
             }
             
@@ -2315,7 +2315,7 @@ namespace KTKS_DonKH.BaoCao {
                         string TieuThuBD, 
                         string TienNuocBD, 
                         string ThueGTGTBD, 
-                        string PhiBVMTDB, 
+                        string PhiBVMTBD, 
                         string TongCongBD, 
                         string TieuThuEnd, 
                         string TienNuocEnd, 
@@ -2340,7 +2340,7 @@ namespace KTKS_DonKH.BaoCao {
                         TieuThuBD,
                         TienNuocBD,
                         ThueGTGTBD,
-                        PhiBVMTDB,
+                        PhiBVMTBD,
                         TongCongBD,
                         TieuThuEnd,
                         TienNuocEnd,
@@ -2385,7 +2385,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnTieuThuBD = base.Columns["TieuThuBD"];
                 this.columnTienNuocBD = base.Columns["TienNuocBD"];
                 this.columnThueGTGTBD = base.Columns["ThueGTGTBD"];
-                this.columnPhiBVMTDB = base.Columns["PhiBVMTDB"];
+                this.columnPhiBVMTBD = base.Columns["PhiBVMTBD"];
                 this.columnTongCongBD = base.Columns["TongCongBD"];
                 this.columnTieuThuEnd = base.Columns["TieuThuEnd"];
                 this.columnTienNuocEnd = base.Columns["TienNuocEnd"];
@@ -2429,8 +2429,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnTienNuocBD);
                 this.columnThueGTGTBD = new global::System.Data.DataColumn("ThueGTGTBD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnThueGTGTBD);
-                this.columnPhiBVMTDB = new global::System.Data.DataColumn("PhiBVMTDB", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPhiBVMTDB);
+                this.columnPhiBVMTBD = new global::System.Data.DataColumn("PhiBVMTBD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhiBVMTBD);
                 this.columnTongCongBD = new global::System.Data.DataColumn("TongCongBD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongBD);
                 this.columnTieuThuEnd = new global::System.Data.DataColumn("TieuThuEnd", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4594,17 +4594,17 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PhiBVMTDB {
+            public string PhiBVMTBD {
                 get {
                     try {
-                        return ((string)(this[this.tableDCHD.PhiBVMTDBColumn]));
+                        return ((string)(this[this.tableDCHD.PhiBVMTBDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMTDB\' in table \'DCHD\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMTBD\' in table \'DCHD\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDCHD.PhiBVMTDBColumn] = value;
+                    this[this.tableDCHD.PhiBVMTBDColumn] = value;
                 }
             }
             
@@ -4898,14 +4898,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPhiBVMTDBNull() {
-                return this.IsNull(this.tableDCHD.PhiBVMTDBColumn);
+            public bool IsPhiBVMTBDNull() {
+                return this.IsNull(this.tableDCHD.PhiBVMTBDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPhiBVMTDBNull() {
-                this[this.tableDCHD.PhiBVMTDBColumn] = global::System.Convert.DBNull;
+            public void SetPhiBVMTBDNull() {
+                this[this.tableDCHD.PhiBVMTBDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
