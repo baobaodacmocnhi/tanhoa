@@ -2680,13 +2680,13 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _TieuThuBD;
 		
-		private System.Nullable<int> _TienNuoc;
+		private System.Nullable<int> _TienNuocStart;
 		
-		private System.Nullable<int> _ThueGTGT;
+		private System.Nullable<int> _ThueGTGTStart;
 		
-		private System.Nullable<int> _PhiBVMT;
+		private System.Nullable<int> _PhiBVMTStart;
 		
-		private System.Nullable<int> _TongCong;
+		private System.Nullable<int> _TongCongStart;
 		
 		private string _TangGiam;
 		
@@ -2698,7 +2698,15 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _TongCongBD;
 		
-		private decimal _MaDCDB;
+		private System.Nullable<int> _TienNuocEnd;
+		
+		private System.Nullable<int> _ThueGTGTEnd;
+		
+		private System.Nullable<int> _PhiBVMTEnd;
+		
+		private System.Nullable<int> _TongCongEnd;
+		
+		private decimal _MaDCBD;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -2707,8 +2715,6 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
 		private string _ModifyBy;
-		
-		private EntityRef<DCBD> _DCBD;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2740,14 +2746,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnDinhMucBDChanged();
     partial void OnTieuThuBDChanging(System.Nullable<int> value);
     partial void OnTieuThuBDChanged();
-    partial void OnTienNuocChanging(System.Nullable<int> value);
-    partial void OnTienNuocChanged();
-    partial void OnThueGTGTChanging(System.Nullable<int> value);
-    partial void OnThueGTGTChanged();
-    partial void OnPhiBVMTChanging(System.Nullable<int> value);
-    partial void OnPhiBVMTChanged();
-    partial void OnTongCongChanging(System.Nullable<int> value);
-    partial void OnTongCongChanged();
+    partial void OnTienNuocStartChanging(System.Nullable<int> value);
+    partial void OnTienNuocStartChanged();
+    partial void OnThueGTGTStartChanging(System.Nullable<int> value);
+    partial void OnThueGTGTStartChanged();
+    partial void OnPhiBVMTStartChanging(System.Nullable<int> value);
+    partial void OnPhiBVMTStartChanged();
+    partial void OnTongCongStartChanging(System.Nullable<int> value);
+    partial void OnTongCongStartChanged();
     partial void OnTangGiamChanging(string value);
     partial void OnTangGiamChanged();
     partial void OnTienNuocBDChanging(System.Nullable<int> value);
@@ -2758,8 +2764,16 @@ namespace KTKS_DonKH.LinQ
     partial void OnPhiBVMTBDChanged();
     partial void OnTongCongBDChanging(System.Nullable<int> value);
     partial void OnTongCongBDChanged();
-    partial void OnMaDCDBChanging(decimal value);
-    partial void OnMaDCDBChanged();
+    partial void OnTienNuocEndChanging(System.Nullable<int> value);
+    partial void OnTienNuocEndChanged();
+    partial void OnThueGTGTEndChanging(System.Nullable<int> value);
+    partial void OnThueGTGTEndChanged();
+    partial void OnPhiBVMTEndChanging(System.Nullable<int> value);
+    partial void OnPhiBVMTEndChanged();
+    partial void OnTongCongEndChanging(System.Nullable<int> value);
+    partial void OnTongCongEndChanged();
+    partial void OnMaDCBDChanging(decimal value);
+    partial void OnMaDCBDChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(string value);
@@ -2772,7 +2786,6 @@ namespace KTKS_DonKH.LinQ
 		
 		public CTDCHD()
 		{
-			this._DCBD = default(EntityRef<DCBD>);
 			OnCreated();
 		}
 		
@@ -3036,82 +3049,82 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNuoc", DbType="Int")]
-		public System.Nullable<int> TienNuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNuocStart", DbType="Int")]
+		public System.Nullable<int> TienNuocStart
 		{
 			get
 			{
-				return this._TienNuoc;
+				return this._TienNuocStart;
 			}
 			set
 			{
-				if ((this._TienNuoc != value))
+				if ((this._TienNuocStart != value))
 				{
-					this.OnTienNuocChanging(value);
+					this.OnTienNuocStartChanging(value);
 					this.SendPropertyChanging();
-					this._TienNuoc = value;
-					this.SendPropertyChanged("TienNuoc");
-					this.OnTienNuocChanged();
+					this._TienNuocStart = value;
+					this.SendPropertyChanged("TienNuocStart");
+					this.OnTienNuocStartChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThueGTGT", DbType="Int")]
-		public System.Nullable<int> ThueGTGT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThueGTGTStart", DbType="Int")]
+		public System.Nullable<int> ThueGTGTStart
 		{
 			get
 			{
-				return this._ThueGTGT;
+				return this._ThueGTGTStart;
 			}
 			set
 			{
-				if ((this._ThueGTGT != value))
+				if ((this._ThueGTGTStart != value))
 				{
-					this.OnThueGTGTChanging(value);
+					this.OnThueGTGTStartChanging(value);
 					this.SendPropertyChanging();
-					this._ThueGTGT = value;
-					this.SendPropertyChanged("ThueGTGT");
-					this.OnThueGTGTChanged();
+					this._ThueGTGTStart = value;
+					this.SendPropertyChanged("ThueGTGTStart");
+					this.OnThueGTGTStartChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMT", DbType="Int")]
-		public System.Nullable<int> PhiBVMT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMTStart", DbType="Int")]
+		public System.Nullable<int> PhiBVMTStart
 		{
 			get
 			{
-				return this._PhiBVMT;
+				return this._PhiBVMTStart;
 			}
 			set
 			{
-				if ((this._PhiBVMT != value))
+				if ((this._PhiBVMTStart != value))
 				{
-					this.OnPhiBVMTChanging(value);
+					this.OnPhiBVMTStartChanging(value);
 					this.SendPropertyChanging();
-					this._PhiBVMT = value;
-					this.SendPropertyChanged("PhiBVMT");
-					this.OnPhiBVMTChanged();
+					this._PhiBVMTStart = value;
+					this.SendPropertyChanged("PhiBVMTStart");
+					this.OnPhiBVMTStartChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongCong", DbType="Int")]
-		public System.Nullable<int> TongCong
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongCongStart", DbType="Int")]
+		public System.Nullable<int> TongCongStart
 		{
 			get
 			{
-				return this._TongCong;
+				return this._TongCongStart;
 			}
 			set
 			{
-				if ((this._TongCong != value))
+				if ((this._TongCongStart != value))
 				{
-					this.OnTongCongChanging(value);
+					this.OnTongCongStartChanging(value);
 					this.SendPropertyChanging();
-					this._TongCong = value;
-					this.SendPropertyChanged("TongCong");
-					this.OnTongCongChanged();
+					this._TongCongStart = value;
+					this.SendPropertyChanged("TongCongStart");
+					this.OnTongCongStartChanged();
 				}
 			}
 		}
@@ -3216,26 +3229,102 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDCDB", DbType="Decimal(18,0) NOT NULL")]
-		public decimal MaDCDB
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNuocEnd", DbType="Int")]
+		public System.Nullable<int> TienNuocEnd
 		{
 			get
 			{
-				return this._MaDCDB;
+				return this._TienNuocEnd;
 			}
 			set
 			{
-				if ((this._MaDCDB != value))
+				if ((this._TienNuocEnd != value))
 				{
-					if (this._DCBD.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaDCDBChanging(value);
+					this.OnTienNuocEndChanging(value);
 					this.SendPropertyChanging();
-					this._MaDCDB = value;
-					this.SendPropertyChanged("MaDCDB");
-					this.OnMaDCDBChanged();
+					this._TienNuocEnd = value;
+					this.SendPropertyChanged("TienNuocEnd");
+					this.OnTienNuocEndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThueGTGTEnd", DbType="Int")]
+		public System.Nullable<int> ThueGTGTEnd
+		{
+			get
+			{
+				return this._ThueGTGTEnd;
+			}
+			set
+			{
+				if ((this._ThueGTGTEnd != value))
+				{
+					this.OnThueGTGTEndChanging(value);
+					this.SendPropertyChanging();
+					this._ThueGTGTEnd = value;
+					this.SendPropertyChanged("ThueGTGTEnd");
+					this.OnThueGTGTEndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMTEnd", DbType="Int")]
+		public System.Nullable<int> PhiBVMTEnd
+		{
+			get
+			{
+				return this._PhiBVMTEnd;
+			}
+			set
+			{
+				if ((this._PhiBVMTEnd != value))
+				{
+					this.OnPhiBVMTEndChanging(value);
+					this.SendPropertyChanging();
+					this._PhiBVMTEnd = value;
+					this.SendPropertyChanged("PhiBVMTEnd");
+					this.OnPhiBVMTEndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongCongEnd", DbType="Int")]
+		public System.Nullable<int> TongCongEnd
+		{
+			get
+			{
+				return this._TongCongEnd;
+			}
+			set
+			{
+				if ((this._TongCongEnd != value))
+				{
+					this.OnTongCongEndChanging(value);
+					this.SendPropertyChanging();
+					this._TongCongEnd = value;
+					this.SendPropertyChanged("TongCongEnd");
+					this.OnTongCongEndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDCBD", DbType="Decimal(18,0) NOT NULL")]
+		public decimal MaDCBD
+		{
+			get
+			{
+				return this._MaDCBD;
+			}
+			set
+			{
+				if ((this._MaDCBD != value))
+				{
+					this.OnMaDCBDChanging(value);
+					this.SendPropertyChanging();
+					this._MaDCBD = value;
+					this.SendPropertyChanged("MaDCBD");
+					this.OnMaDCBDChanged();
 				}
 			}
 		}
@@ -3320,40 +3409,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_CTDCHD", Storage="_DCBD", ThisKey="MaDCDB", OtherKey="MaDCBD", IsForeignKey=true)]
-		public DCBD DCBD
-		{
-			get
-			{
-				return this._DCBD.Entity;
-			}
-			set
-			{
-				DCBD previousValue = this._DCBD.Entity;
-				if (((previousValue != value) 
-							|| (this._DCBD.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DCBD.Entity = null;
-						previousValue.CTDCHDs.Remove(this);
-					}
-					this._DCBD.Entity = value;
-					if ((value != null))
-					{
-						value.CTDCHDs.Add(this);
-						this._MaDCDB = value.MaDCBD;
-					}
-					else
-					{
-						this._MaDCDB = default(decimal);
-					}
-					this.SendPropertyChanged("DCBD");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3411,8 +3466,6 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<CTDCBD> _CTDCBDs;
 		
-		private EntitySet<CTDCHD> _CTDCHDs;
-		
 		private EntityRef<ChuyenDi> _ChuyenDi;
 		
 		private EntityRef<DonKH> _DonKH;
@@ -3454,7 +3507,6 @@ namespace KTKS_DonKH.LinQ
 		public DCBD()
 		{
 			this._CTDCBDs = new EntitySet<CTDCBD>(new Action<CTDCBD>(this.attach_CTDCBDs), new Action<CTDCBD>(this.detach_CTDCBDs));
-			this._CTDCHDs = new EntitySet<CTDCHD>(new Action<CTDCHD>(this.attach_CTDCHDs), new Action<CTDCHD>(this.detach_CTDCHDs));
 			this._ChuyenDi = default(EntityRef<ChuyenDi>);
 			this._DonKH = default(EntityRef<DonKH>);
 			OnCreated();
@@ -3471,10 +3523,6 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDCBD != value))
 				{
-					if (this._DonKH.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMaDCBDChanging(value);
 					this.SendPropertyChanging();
 					this._MaDCBD = value;
@@ -3495,6 +3543,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDon != value))
 				{
+					if (this._DonKH.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonChanging(value);
 					this.SendPropertyChanging();
 					this._MaDon = value;
@@ -3761,19 +3813,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_CTDCHD", Storage="_CTDCHDs", ThisKey="MaDCBD", OtherKey="MaDCDB")]
-		public EntitySet<CTDCHD> CTDCHDs
-		{
-			get
-			{
-				return this._CTDCHDs;
-			}
-			set
-			{
-				this._CTDCHDs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChuyenDi_DCBD", Storage="_ChuyenDi", ThisKey="MaChuyen", OtherKey="MaChuyen", IsForeignKey=true)]
 		public ChuyenDi ChuyenDi
 		{
@@ -3808,7 +3847,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_DCBD", Storage="_DonKH", ThisKey="MaDCBD", OtherKey="MaDon", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_DCBD", Storage="_DonKH", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
 		public DonKH DonKH
 		{
 			get
@@ -3825,17 +3864,17 @@ namespace KTKS_DonKH.LinQ
 					if ((previousValue != null))
 					{
 						this._DonKH.Entity = null;
-						previousValue.DCBD = null;
+						previousValue.DCBDs.Remove(this);
 					}
 					this._DonKH.Entity = value;
 					if ((value != null))
 					{
-						value.DCBD = this;
-						this._MaDCBD = value.MaDon;
+						value.DCBDs.Add(this);
+						this._MaDon = value.MaDon;
 					}
 					else
 					{
-						this._MaDCBD = default(decimal);
+						this._MaDon = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonKH");
 				}
@@ -3869,18 +3908,6 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_CTDCBDs(CTDCBD entity)
-		{
-			this.SendPropertyChanging();
-			entity.DCBD = null;
-		}
-		
-		private void attach_CTDCHDs(CTDCHD entity)
-		{
-			this.SendPropertyChanging();
-			entity.DCBD = this;
-		}
-		
-		private void detach_CTDCHDs(CTDCHD entity)
 		{
 			this.SendPropertyChanging();
 			entity.DCBD = null;
@@ -4181,9 +4208,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _ModifyBy;
 		
-		private EntityRef<DCBD> _DCBD;
+		private EntitySet<DCBD> _DCBDs;
 		
-		private EntityRef<KTXM> _KTXM;
+		private EntitySet<KTXM> _KTXMs;
 		
 		private EntityRef<ChuyenDi> _ChuyenDi;
 		
@@ -4293,8 +4320,8 @@ namespace KTKS_DonKH.LinQ
 		
 		public DonKH()
 		{
-			this._DCBD = default(EntityRef<DCBD>);
-			this._KTXM = default(EntityRef<KTXM>);
+			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
+			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
 			this._ChuyenDi = default(EntityRef<ChuyenDi>);
 			this._LoaiDon = default(EntityRef<LoaiDon>);
 			OnCreated();
@@ -5268,61 +5295,29 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_DCBD", Storage="_DCBD", ThisKey="MaDon", OtherKey="MaDCBD", IsUnique=true, IsForeignKey=false)]
-		public DCBD DCBD
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_DCBD", Storage="_DCBDs", ThisKey="MaDon", OtherKey="MaDon")]
+		public EntitySet<DCBD> DCBDs
 		{
 			get
 			{
-				return this._DCBD.Entity;
+				return this._DCBDs;
 			}
 			set
 			{
-				DCBD previousValue = this._DCBD.Entity;
-				if (((previousValue != value) 
-							|| (this._DCBD.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DCBD.Entity = null;
-						previousValue.DonKH = null;
-					}
-					this._DCBD.Entity = value;
-					if ((value != null))
-					{
-						value.DonKH = this;
-					}
-					this.SendPropertyChanged("DCBD");
-				}
+				this._DCBDs.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_KTXM", Storage="_KTXM", ThisKey="MaDon", OtherKey="MaKTXM", IsUnique=true, IsForeignKey=false)]
-		public KTXM KTXM
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_KTXM", Storage="_KTXMs", ThisKey="MaDon", OtherKey="MaDon")]
+		public EntitySet<KTXM> KTXMs
 		{
 			get
 			{
-				return this._KTXM.Entity;
+				return this._KTXMs;
 			}
 			set
 			{
-				KTXM previousValue = this._KTXM.Entity;
-				if (((previousValue != value) 
-							|| (this._KTXM.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._KTXM.Entity = null;
-						previousValue.DonKH = null;
-					}
-					this._KTXM.Entity = value;
-					if ((value != null))
-					{
-						value.DonKH = this;
-					}
-					this.SendPropertyChanged("KTXM");
-				}
+				this._KTXMs.Assign(value);
 			}
 		}
 		
@@ -5412,6 +5407,30 @@ namespace KTKS_DonKH.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_DCBDs(DCBD entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = this;
+		}
+		
+		private void detach_DCBDs(DCBD entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = null;
+		}
+		
+		private void attach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = this;
+		}
+		
+		private void detach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = null;
 		}
 	}
 	
@@ -5711,10 +5730,6 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaKTXM != value))
 				{
-					if (this._DonKH.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMaKTXMChanging(value);
 					this.SendPropertyChanging();
 					this._MaKTXM = value;
@@ -5735,6 +5750,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDon != value))
 				{
+					if (this._DonKH.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonChanging(value);
 					this.SendPropertyChanging();
 					this._MaDon = value;
@@ -6022,7 +6041,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_KTXM", Storage="_DonKH", ThisKey="MaKTXM", OtherKey="MaDon", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_KTXM", Storage="_DonKH", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
 		public DonKH DonKH
 		{
 			get
@@ -6039,17 +6058,17 @@ namespace KTKS_DonKH.LinQ
 					if ((previousValue != null))
 					{
 						this._DonKH.Entity = null;
-						previousValue.KTXM = null;
+						previousValue.KTXMs.Remove(this);
 					}
 					this._DonKH.Entity = value;
 					if ((value != null))
 					{
-						value.KTXM = this;
-						this._MaKTXM = value.MaDon;
+						value.KTXMs.Add(this);
+						this._MaDon = value.MaDon;
 					}
 					else
 					{
-						this._MaKTXM = default(decimal);
+						this._MaDon = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonKH");
 				}

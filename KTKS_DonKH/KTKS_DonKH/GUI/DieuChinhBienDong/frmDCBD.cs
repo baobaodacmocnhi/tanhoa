@@ -345,7 +345,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
 
-
                 if (_cDCBD.ThemCTDCBD(ctdcbd))
                 {
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();

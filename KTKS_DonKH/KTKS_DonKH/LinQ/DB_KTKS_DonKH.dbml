@@ -126,21 +126,24 @@
       <Column Name="GiaBieuBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThuBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienNuoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThueGTGT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TongCong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienNuocStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGTStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMTStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongCongStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TienNuocBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGTBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMTBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCongBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaDCDB" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="TienNuocEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGTEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMTEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongCongEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="DCBD_CTDCHD" Member="DCBD" ThisKey="MaDCDB" OtherKey="MaDCBD" Type="DCBD" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DCBD" Member="DCBDs">
@@ -160,9 +163,8 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="DCBD_CTDCBD" Member="CTDCBDs" ThisKey="MaDCBD" OtherKey="MaDCBD" Type="CTDCBD" />
-      <Association Name="DCBD_CTDCHD" Member="CTDCHDs" ThisKey="MaDCBD" OtherKey="MaDCDB" Type="CTDCHD" />
       <Association Name="ChuyenDi_DCBD" Member="ChuyenDi" ThisKey="MaChuyen" OtherKey="MaChuyen" Type="ChuyenDi" IsForeignKey="true" />
-      <Association Name="DonKH_DCBD" Member="DonKH" ThisKey="MaDCBD" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonKH_DCBD" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DetailRoles" Member="DetailRoles">
@@ -224,8 +226,8 @@
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="DonKH_DCBD" Member="DCBD" ThisKey="MaDon" OtherKey="MaDCBD" Type="DCBD" Cardinality="One" />
-      <Association Name="DonKH_KTXM" Member="KTXM" ThisKey="MaDon" OtherKey="MaKTXM" Type="KTXM" Cardinality="One" />
+      <Association Name="DonKH_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDon" Type="DCBD" />
+      <Association Name="DonKH_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDon" Type="KTXM" />
       <Association Name="ChuyenDi_DonKH" Member="ChuyenDi" ThisKey="MaChuyen" OtherKey="MaChuyen" Type="ChuyenDi" IsForeignKey="true" />
       <Association Name="LoaiDon_DonKH" Member="LoaiDon" ThisKey="MaLD" OtherKey="MaLD" Type="LoaiDon" IsForeignKey="true" />
     </Type>
@@ -258,7 +260,7 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="ChuyenDi_KTXM" Member="ChuyenDi" ThisKey="MaChuyen" OtherKey="MaChuyen" Type="ChuyenDi" IsForeignKey="true" />
-      <Association Name="DonKH_KTXM" Member="DonKH" ThisKey="MaKTXM" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonKH_KTXM" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.LichSuChungTu" Member="LichSuChungTus">

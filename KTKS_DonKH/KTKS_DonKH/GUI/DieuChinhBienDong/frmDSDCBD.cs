@@ -60,7 +60,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             myLookUpEdit.AppearanceDropDownHeader.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             myLookUpEdit.Columns.Add(column);
             ///Load dữ liệu
-            myLookUpEdit.DataSource = _cChuyenDi.LoadDSChuyenDi("DCBD", "KTXM");
+            myLookUpEdit.DataSource = _cChuyenDi.LoadDSChuyenDi("DCBD");
             myLookUpEdit.DisplayMember = "NoiChuyenDi";
             myLookUpEdit.ValueMember = "MaChuyen";
             ///Add LookUpEdit vào GridControl
@@ -68,7 +68,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             radChuaDuyet.Checked = true;
 
-            gridControl.LevelTree.Nodes.Add("Chi Tiết", gridViewCTDCBD);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewCTDCBD);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Hóa Đơn", gridViewCTDCHD);
         }
 
         #region dsg
@@ -188,7 +189,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 e.DisplayText = e.Value.ToString().Insert(4, "-");
             }
         }
-
        
         
     }
