@@ -31,7 +31,6 @@
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSKTXM = new System.Windows.Forms.DataGridView();
-            this.radChuDuyet = new System.Windows.Forms.RadioButton();
             this.MaKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayXuLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KetQua = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,7 @@
             this.MaNoiChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LyDoChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKTXM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,17 +106,6 @@
             this.dgvDSKTXM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKTXM_CellFormatting);
             this.dgvDSKTXM.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonKH_RowPostPaint);
             this.dgvDSKTXM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSKTXM_KeyDown);
-            // 
-            // radChuDuyet
-            // 
-            this.radChuDuyet.AutoSize = true;
-            this.radChuDuyet.Location = new System.Drawing.Point(12, 39);
-            this.radChuDuyet.Name = "radChuDuyet";
-            this.radChuDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuDuyet.TabIndex = 7;
-            this.radChuDuyet.Text = "Chưa Duyệt";
-            this.radChuDuyet.UseVisualStyleBackColor = true;
-            this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
             // 
             // MaKTXM
             // 
@@ -233,17 +222,28 @@
             this.LyDoChuyenDen.ReadOnly = true;
             this.LyDoChuyenDen.Width = 250;
             // 
+            // radChuaDuyet
+            // 
+            this.radChuaDuyet.AutoSize = true;
+            this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
+            this.radChuaDuyet.Name = "radChuaDuyet";
+            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet.TabIndex = 7;
+            this.radChuaDuyet.Text = "Chưa Duyệt";
+            this.radChuaDuyet.UseVisualStyleBackColor = true;
+            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
+            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 562);
+            this.ClientSize = new System.Drawing.Size(1370, 579);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.dgvDSKTXM);
-            this.Controls.Add(this.radChuDuyet);
+            this.Controls.Add(this.radChuaDuyet);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmKTXM";
@@ -259,7 +259,7 @@
 
         private System.Windows.Forms.RadioButton radDaDuyet;
         private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.RadioButton radChuDuyet;
+        private System.Windows.Forms.RadioButton radChuaDuyet;
         private System.Windows.Forms.DataGridView dgvDSKTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy;
