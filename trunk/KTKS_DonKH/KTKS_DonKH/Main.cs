@@ -201,7 +201,7 @@ namespace KTKS_DonKH
             frm.Show();
         }
 
-        private void ribbtnDSDonCatHuyDanhBo_Click(object sender, EventArgs e)
+        private void ribbtnDSDonCHDB_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();

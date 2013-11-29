@@ -136,6 +136,7 @@
       <DependentUpon>rptHeader.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DAL\CapNhat\CBanGiamDoc.cs" />
     <Compile Include="DAL\CapNhat\CChiNhanh.cs" />
     <Compile Include="DAL\CapNhat\CGiaNuoc.cs" />
     <Compile Include="DAL\CapNhat\CLoaiChungTu.cs" />
@@ -198,11 +199,11 @@
     <Compile Include="GUI\CapNhat\frmTTKH.Designer.cs">
       <DependentUpon>frmTTKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\DSCatHuyDB.cs">
+    <Compile Include="GUI\CatHuyDanhBo\DSCHDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\DSCatHuyDB.Designer.cs">
-      <DependentUpon>DSCatHuyDB.cs</DependentUpon>
+    <Compile Include="GUI\CatHuyDanhBo\DSCHDB.Designer.cs">
+      <DependentUpon>DSCHDB.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmCatChuyenDM.cs">
       <SubType>Form</SubType>
@@ -363,8 +364,8 @@
     <EmbeddedResource Include="GUI\CapNhat\frmTTKH.resx">
       <DependentUpon>frmTTKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CatHuyDanhBo\DSCatHuyDB.resx">
-      <DependentUpon>DSCatHuyDB.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\CatHuyDanhBo\DSCHDB.resx">
+      <DependentUpon>DSCHDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmCatChuyenDM.resx">
       <DependentUpon>frmCatChuyenDM.cs</DependentUpon>
