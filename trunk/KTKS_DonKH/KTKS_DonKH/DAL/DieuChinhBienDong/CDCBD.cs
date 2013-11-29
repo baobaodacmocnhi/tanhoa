@@ -159,6 +159,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Kiểm tra Mã Điều Chỉnh Biến Động đã có hay chưa
+        /// </summary>
+        /// <param name="MaDCBD"></param>
+        /// <returns></returns>
         public bool CheckDCBDbyID(decimal MaDCBD)
         {
             try
@@ -208,6 +213,36 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool SuaDCBD(DCBD dcbd)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    
+                    dcbd.ModifyDate = DateTime.Now;
+                    dcbd.ModifyBy = CTaiKhoan.TaiKhoan;
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Mã Điều Chỉnh Biến Động kế tiếp để thêm 1 DCBD mới
+        /// </summary>
+        /// <returns></returns>
         public decimal getMaxNextMaDCBD()
         {
             try
@@ -227,6 +262,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Lấy Mã Điều Chỉnh Biến Động lớn nhất hiện tại
+        /// </summary>
+        /// <returns></returns>
         public decimal getMaxMaDCBD()
         {
             try
@@ -237,6 +276,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
+            }
+        }
+
+        public DCBD getDCBDbyID(decimal MaDCBD)
+        {
+            try
+            {
+                return db.DCBDs.Single(itemDCBD => itemDCBD.MaDCBD == MaDCBD);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 

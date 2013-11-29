@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -19,6 +20,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CKTXM _cKTXM = new CKTXM();
         CDonKH _cDonKH = new CDonKH();
         DataTable DSKTXM_Edited = new DataTable();
+        CDCBD _cDCBD = new CDCBD();
 
         public frmKTXM()
         {
@@ -40,7 +42,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
             cmbColumn.DisplayMember = "NoiChuyenDi";
             cmbColumn.ValueMember = "MaChuyen";
-            radChuDuyet.Checked = true;
+            radChuaDuyet.Checked = true;
         }
 
         private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -51,9 +53,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
-        private void radChuDuyet_CheckedChanged(object sender, EventArgs e)
+        private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
-            if (radChuDuyet.Checked)
+            if (radChuaDuyet.Checked)
                 dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
         }
 
@@ -65,7 +67,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (DSKTXM_Edited != null)
+            if (DSKTXM_Edited != null && DSKTXM_Edited.Rows.Count > 0)
             {
                 foreach (DataRow itemRow in DSKTXM_Edited.Rows)
                 {
@@ -86,10 +88,21 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
                         if (_cKTXM.ThemKTXM(ktxm))
                         {
-                            ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                            donkh.Nhan = true;
-                            _cDonKH.SuaDonKH(donkh);
+                            switch (itemRow["NoiChuyenDen"].ToString())
+                            {
+                                case "Khách Hàng":
+                                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                                    donkh.Nhan = true;
+                                    _cDonKH.SuaDonKH(donkh);
+                                    break;
+                                case "Điều Chỉnh Biến Động":
+                                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                                    DCBD dcbd = _cDCBD.getDCBDbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
+                                    dcbd.Nhan = true;
+                                    _cDCBD.SuaDCBD(dcbd);
+                                    break;
+                            }
                         }
                     }
                     else
@@ -124,7 +137,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 if (radDaDuyet.Checked)
                     dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
-                if (radChuDuyet.Checked)
+                if (radChuaDuyet.Checked)
                     dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
             }
         }

@@ -14,6 +14,8 @@ using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Columns;
+using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -23,7 +25,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDonKH _cDonKH = new CDonKH();
         CDCBD _cDCBD = new CDCBD();
         CTTKH _cTTKH = new CTTKH();
-        
+        DataTable DSDCBD_Edited = new DataTable();
+        CKTXM _cKTXM = new CKTXM();
 
         public frmDSDCBD()
         {
@@ -165,7 +168,78 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (DSDCBD_Edited != null && DSDCBD_Edited.Rows.Count > 0)
+            {
+                foreach (DataRow itemRow in DSDCBD_Edited.Rows)
+                {
+                    if (itemRow["MaDCBD"].ToString() == "")
+                    {
+                        DCBD dcbd = new DCBD();
+                        dcbd.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
+                        dcbd.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
+                        dcbd.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
+                        dcbd.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
+                        dcbd.KetQua = itemRow["KetQua"].ToString();
+                        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        {
+                            dcbd.Chuyen = true;
+                            dcbd.MaChuyen = itemRow["MaChuyen"].ToString();
+                            dcbd.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        }
+                        if (_cDCBD.ThemDCBD(dcbd))
+                        {
+                            switch (itemRow["NoiChuyenDen"].ToString())
+                            {
+                                case "Khách Hàng":
+                                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                                    donkh.Nhan = true;
+                                    _cDonKH.SuaDonKH(donkh);
+                                    break;
+                                case "Điều Chỉnh Biến Động":
+                                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                                    KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
+                                    ktxm.Nhan = true;
+                                    _cKTXM.SuaKTXM(ktxm);
+                                    break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DCBD dcbd = _cDCBD.getDCBDbyID(decimal.Parse(itemRow["MaDCBD"].ToString()));
+                        ///Đơn đã được nơi nhận xử lý thì không được sửa
+                        if (!dcbd.Nhan)
+                        {
+                            dcbd.KetQua = itemRow["KetQua"].ToString();
+                            if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                            {
+                                dcbd.Chuyen = true;
+                                dcbd.MaChuyen = itemRow["MaChuyen"].ToString();
+                                dcbd.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                            }
+                            else
+                                if (itemRow["MaChuyen"].ToString() == "NONE")
+                                {
+                                    dcbd.Chuyen = false;
+                                    dcbd.MaChuyen = null;
+                                    dcbd.LyDoChuyen = null;
+                                }
+                            _cDCBD.SuaDCBD(dcbd);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đơn " + dcbd.MaDCBD + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                DSDCBD_Edited.Clear();
 
+                if (radDaDuyet.Checked)
+                    gridControl.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
+                if (radChuaDuyet.Checked)
+                    gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
+            }
         }
 
         private void gridView_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -188,6 +262,32 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 e.DisplayText = e.Value.ToString().Insert(4, "-");
             }
+        }
+
+        private void gridViewDCBD_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            btnLuu.Enabled = false;
+        }
+
+        private void gridViewDCBD_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            ///Khai báo các cột tương ứng trong Datagridview
+            if (DSDCBD_Edited.Columns.Count == 0)
+                foreach (DataColumn itemCol in ((DataView)gridViewDCBD.DataSource).Table.Columns)
+                {
+                    DSDCBD_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
+                }
+
+            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
+            ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row.EndEdit();
+
+            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
+            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
+            if (DSDCBD_Edited.Select("MaDon = " + ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"]).Count() > 0)
+                DSDCBD_Edited.Rows.Remove(DSDCBD_Edited.Select("MaDon = " + ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"])[0]);
+
+            DSDCBD_Edited.ImportRow(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row);
+            btnLuu.Enabled = true;
         }
        
         

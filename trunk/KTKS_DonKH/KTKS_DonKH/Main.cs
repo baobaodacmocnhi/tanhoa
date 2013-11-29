@@ -12,6 +12,7 @@ using KTKS_DonKH.GUI.CapNhat;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.GUI.KiemTraXacMinh;
 using KTKS_DonKH.GUI.DieuChinhBienDong;
+using KTKS_DonKH.GUI.CatHuyDanhBo;
 
 namespace KTKS_DonKH
 {
@@ -19,7 +20,7 @@ namespace KTKS_DonKH
     {
         public Main()
         {
-            InitializeComponent();
+            InitializeComponent();  
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -191,8 +192,24 @@ namespace KTKS_DonKH
             frm.Show();
         }
 
-        
+        private void ribbtnBanGiamDoc_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmBanGiamDoc();
+            frm.MdiParent = this;
+            frm.Show();
+        }
 
-        
+        private void ribbtnDSDonCatHuyDanhBo_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmDSCatHuyDB();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+              
     }
 }
