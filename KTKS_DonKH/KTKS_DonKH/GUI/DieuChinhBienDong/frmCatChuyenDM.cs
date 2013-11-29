@@ -21,6 +21,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         TTKhachHang _ttkhachhang = new TTKhachHang();
         CTTKH _cTTKH = new CTTKH();
         CChungTu _cChungTu = new CChungTu();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         public frmCatChuyenDM()
         {
@@ -122,6 +123,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     lichsuchungtu.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
                     lichsuchungtu.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
                     lichsuchungtu.SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
+                    ///Ký Tên
+                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                    else
+                        lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                    lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
 
                     if (_cChungTu.CatChuyenChungTu(ctchungtuCat, ctchungtuNhan, int.Parse(txtSoNK_Cat.Text.Trim()), lichsuchungtu))
                     {
@@ -139,6 +147,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dr["HoTenCat"] = txtHoTen_Cat.Text.Trim();
                             dr["DiaChiCat"] = txtDiaChi_Cat.Text.Trim();
                             dr["SoNKCat"] = txtSoNK_Cat.Text.Trim() + " nhân khẩu (HK: " + txtMaCT_Cat.Text.Trim() + ")";
+
+                            dr["ChucVu"] = lichsuchungtu.ChucVu;
+                            dr["NguoiKy"] = lichsuchungtu.NguoiKy;
 
                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 

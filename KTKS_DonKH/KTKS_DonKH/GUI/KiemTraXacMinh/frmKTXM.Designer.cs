@@ -56,7 +56,7 @@
             this.radDaDuyet.Location = new System.Drawing.Point(12, 12);
             this.radDaDuyet.Name = "radDaDuyet";
             this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
-            this.radDaDuyet.TabIndex = 6;
+            this.radDaDuyet.TabIndex = 0;
             this.radDaDuyet.Text = "Đã Duyệt";
             this.radDaDuyet.UseVisualStyleBackColor = true;
             this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
@@ -68,7 +68,7 @@
             this.btnLuu.Location = new System.Drawing.Point(1180, 12);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 5;
+            this.btnLuu.TabIndex = 3;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             this.dgvDSKTXM.MultiSelect = false;
             this.dgvDSKTXM.Name = "dgvDSKTXM";
             this.dgvDSKTXM.Size = new System.Drawing.Size(2500, 470);
-            this.dgvDSKTXM.TabIndex = 4;
+            this.dgvDSKTXM.TabIndex = 2;
             this.dgvDSKTXM.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDSKTXM_CellBeginEdit);
             this.dgvDSKTXM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKTXM_CellEndEdit);
             this.dgvDSKTXM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKTXM_CellFormatting);
@@ -228,7 +228,7 @@
             this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
             this.radChuaDuyet.Name = "radChuaDuyet";
             this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuaDuyet.TabIndex = 7;
+            this.radChuaDuyet.TabIndex = 1;
             this.radChuaDuyet.Text = "Chưa Duyệt";
             this.radChuaDuyet.UseVisualStyleBackColor = true;
             this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);

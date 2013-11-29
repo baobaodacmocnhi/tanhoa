@@ -21,6 +21,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         Dictionary<string, string> _source = new Dictionary<string, string>();
         string _action = "";
         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         public frmSoDK()
         {
@@ -103,7 +104,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             chungtu.NhanNK_DiaChi = txtDiaChiKH_Cat.Text.Trim();
                             chungtu.NhanNK_SoNKCat = int.Parse(txtSoNKCat.Text.Trim());
 
-
                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
                             dr["SoPhieu"] = _cChungTu.getMaxNextSoPhieuLSCT().ToString().Insert(4,"-");
@@ -115,6 +115,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dr["HoTenCat"] = txtHoTen_Cat.Text.Trim();
                             dr["DiaChiCat"] = txtDiaChiKH_Cat.Text.Trim();
                             dr["SoNKCat"] = txtSoNKCat.Text.Trim() + " nhân khẩu (HK: " + txtMaCT.Text.Trim() + ")";
+
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                dr["ChucVu"] = "GIÁM ĐỐC";
+                            else
+                                dr["ChucVu"] = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
 
                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
                         }

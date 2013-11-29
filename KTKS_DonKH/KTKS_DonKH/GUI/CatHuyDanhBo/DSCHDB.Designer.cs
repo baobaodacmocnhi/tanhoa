@@ -1,6 +1,6 @@
-﻿namespace KTKS_DonKH.GUI.DieuChinhBienDong
+﻿namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
-    partial class frmDSDCBD
+    partial class frmDSCatHuyDB
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDCBD = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -40,7 +39,7 @@
             this.gridViewCTDCHD = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridViewDCBD = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewCHDB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,33 +55,13 @@
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.điềuChỉnhBiếnĐộngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.điềuChỉnhHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
-            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
-            this.LyDoChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LyDoChuyenDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.KetQua = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayXuLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDCBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
+            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCHD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCHDB)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewCTDCBD
@@ -154,13 +133,13 @@
             gridLevelNode1,
             gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(0, 67);
-            this.gridControl.MainView = this.gridViewDCBD;
+            this.gridControl.MainView = this.gridViewCHDB;
             this.gridControl.Name = "gridControl";
             this.gridControl.Size = new System.Drawing.Size(2500, 470);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCTDCHD,
-            this.gridViewDCBD,
+            this.gridViewCHDB,
             this.gridViewCTDCBD});
             // 
             // gridViewCTDCHD
@@ -202,16 +181,16 @@
             this.gridColumn21.VisibleIndex = 1;
             this.gridColumn21.Width = 90;
             // 
-            // gridViewDCBD
+            // gridViewCHDB
             // 
-            this.gridViewDCBD.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridViewDCBD.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridViewDCBD.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridViewDCBD.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridViewDCBD.Appearance.Row.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridViewDCBD.Appearance.Row.Options.UseFont = true;
-            this.gridViewDCBD.ColumnPanelRowHeight = 25;
-            this.gridViewDCBD.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewCHDB.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewCHDB.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridViewCHDB.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridViewCHDB.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridViewCHDB.Appearance.Row.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewCHDB.Appearance.Row.Options.UseFont = true;
+            this.gridViewCHDB.ColumnPanelRowHeight = 25;
+            this.gridViewCHDB.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn18,
             this.gridColumn1,
             this.gridColumn2,
@@ -227,19 +206,14 @@
             this.gridColumn19,
             this.gridColumn12,
             this.gridColumn13});
-            this.gridViewDCBD.GridControl = this.gridControl;
-            this.gridViewDCBD.IndicatorWidth = 41;
-            this.gridViewDCBD.Name = "gridViewDCBD";
-            this.gridViewDCBD.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridViewDCBD.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridViewDCBD.OptionsBehavior.AutoPopulateColumns = false;
-            this.gridViewDCBD.OptionsView.ColumnAutoWidth = false;
-            this.gridViewDCBD.OptionsView.ShowGroupPanel = false;
-            this.gridViewDCBD.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_RowCellClick);
-            this.gridViewDCBD.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_CustomDrawRowIndicator);
-            this.gridViewDCBD.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewDCBD_CellValueChanged);
-            this.gridViewDCBD.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewDCBD_CellValueChanging);
-            this.gridViewDCBD.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewDCBD_CustomColumnDisplayText);
+            this.gridViewCHDB.GridControl = this.gridControl;
+            this.gridViewCHDB.IndicatorWidth = 41;
+            this.gridViewCHDB.Name = "gridViewCHDB";
+            this.gridViewCHDB.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewCHDB.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewCHDB.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridViewCHDB.OptionsView.ColumnAutoWidth = false;
+            this.gridViewCHDB.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn18
             // 
@@ -380,29 +354,6 @@
             this.gridColumn13.VisibleIndex = 12;
             this.gridColumn13.Width = 250;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.điềuChỉnhBiếnĐộngToolStripMenuItem,
-            this.điềuChỉnhHóaĐơnToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(210, 48);
-            // 
-            // điềuChỉnhBiếnĐộngToolStripMenuItem
-            // 
-            this.điềuChỉnhBiếnĐộngToolStripMenuItem.Name = "điềuChỉnhBiếnĐộngToolStripMenuItem";
-            this.điềuChỉnhBiếnĐộngToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.điềuChỉnhBiếnĐộngToolStripMenuItem.Text = "Điều Chỉnh Biến Động";
-            this.điềuChỉnhBiếnĐộngToolStripMenuItem.Click += new System.EventHandler(this.điềuChỉnhBiếnĐộngToolStripMenuItem_Click);
-            // 
-            // điềuChỉnhHóaĐơnToolStripMenuItem
-            // 
-            this.điềuChỉnhHóaĐơnToolStripMenuItem.Name = "điềuChỉnhHóaĐơnToolStripMenuItem";
-            this.điềuChỉnhHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.điềuChỉnhHóaĐơnToolStripMenuItem.Text = "Điều Chỉnh Hóa Đơn";
-            this.điềuChỉnhHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.điềuChỉnhHóaĐơnToolStripMenuItem_Click);
-            // 
             // radDaDuyet
             // 
             this.radDaDuyet.AutoSize = true;
@@ -412,18 +363,6 @@
             this.radDaDuyet.TabIndex = 0;
             this.radDaDuyet.Text = "Đã Duyệt";
             this.radDaDuyet.UseVisualStyleBackColor = true;
-            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
-            // 
-            // radChuaDuyet
-            // 
-            this.radChuaDuyet.AutoSize = true;
-            this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
-            this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuaDuyet.TabIndex = 1;
-            this.radChuaDuyet.Text = "Chưa Duyệt";
-            this.radChuaDuyet.UseVisualStyleBackColor = true;
-            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
             // 
             // btnLuu
             // 
@@ -436,151 +375,18 @@
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // LyDoChuyenDen
+            // radChuaDuyet
             // 
-            this.LyDoChuyenDen.DataPropertyName = "LyDoChuyenDen";
-            this.LyDoChuyenDen.HeaderText = "Ly Do Chuyển Đến";
-            this.LyDoChuyenDen.Name = "LyDoChuyenDen";
-            this.LyDoChuyenDen.ReadOnly = true;
-            this.LyDoChuyenDen.Width = 250;
+            this.radChuaDuyet.AutoSize = true;
+            this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
+            this.radChuaDuyet.Name = "radChuaDuyet";
+            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet.TabIndex = 1;
+            this.radChuaDuyet.Text = "Chưa Duyệt";
+            this.radChuaDuyet.UseVisualStyleBackColor = true;
             // 
-            // NoiChuyenDen
-            // 
-            this.NoiChuyenDen.DataPropertyName = "NoiChuyenDen";
-            this.NoiChuyenDen.HeaderText = "Nơi Chuyển Đến";
-            this.NoiChuyenDen.Name = "NoiChuyenDen";
-            this.NoiChuyenDen.ReadOnly = true;
-            this.NoiChuyenDen.Width = 200;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.ReadOnly = true;
-            this.NoiDung.Width = 250;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 250;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 250;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            this.DanhBo.Width = 90;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Nhận";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 110;
-            // 
-            // TenLD
-            // 
-            this.TenLD.DataPropertyName = "TenLD";
-            this.TenLD.HeaderText = "Tên Loại Đơn";
-            this.TenLD.Name = "TenLD";
-            this.TenLD.ReadOnly = true;
-            this.TenLD.Width = 130;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            this.MaDon.Width = 90;
-            // 
-            // LyDoChuyenDi
-            // 
-            this.LyDoChuyenDi.DataPropertyName = "LyDoChuyenDi";
-            this.LyDoChuyenDi.HeaderText = "Ly Do Chuyển Đi";
-            this.LyDoChuyenDi.Name = "LyDoChuyenDi";
-            this.LyDoChuyenDi.Width = 250;
-            // 
-            // MaChuyen
-            // 
-            this.MaChuyen.DataPropertyName = "MaChuyen";
-            this.MaChuyen.HeaderText = "Chuyển Đi";
-            this.MaChuyen.Name = "MaChuyen";
-            this.MaChuyen.Width = 150;
-            // 
-            // KetQua
-            // 
-            this.KetQua.DataPropertyName = "KetQua";
-            this.KetQua.HeaderText = "Kết Quả";
-            this.KetQua.Name = "KetQua";
-            this.KetQua.Width = 200;
-            // 
-            // NgayXuLy
-            // 
-            this.NgayXuLy.DataPropertyName = "NgayXuLy";
-            this.NgayXuLy.HeaderText = "Ngày Xử Lý";
-            this.NgayXuLy.Name = "NgayXuLy";
-            this.NgayXuLy.ReadOnly = true;
-            this.NgayXuLy.Width = 110;
-            // 
-            // MaDCBD
-            // 
-            this.MaDCBD.DataPropertyName = "MaDCBD";
-            this.MaDCBD.HeaderText = "Mã DCBD";
-            this.MaDCBD.Name = "MaDCBD";
-            this.MaDCBD.ReadOnly = true;
-            this.MaDCBD.Visible = false;
-            this.MaDCBD.Width = 90;
-            // 
-            // dgvDSDCBD
-            // 
-            this.dgvDSDCBD.AllowUserToAddRows = false;
-            this.dgvDSDCBD.AllowUserToDeleteRows = false;
-            this.dgvDSDCBD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDSDCBD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaDCBD,
-            this.NgayXuLy,
-            this.KetQua,
-            this.MaChuyen,
-            this.LyDoChuyenDi,
-            this.MaDon,
-            this.TenLD,
-            this.CreateDate,
-            this.DanhBo,
-            this.HoTen,
-            this.DiaChi,
-            this.NoiDung,
-            this.NoiChuyenDen,
-            this.LyDoChuyenDen});
-            this.dgvDSDCBD.Location = new System.Drawing.Point(0, 67);
-            this.dgvDSDCBD.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvDSDCBD.MultiSelect = false;
-            this.dgvDSDCBD.Name = "dgvDSDCBD";
-            this.dgvDSDCBD.Size = new System.Drawing.Size(2500, 470);
-            this.dgvDSDCBD.TabIndex = 8;
-            this.dgvDSDCBD.Visible = false;
-            this.dgvDSDCBD.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSDCBD_CellMouseClick);
-            this.dgvDSDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDCBD_RowPostPaint);
-            this.dgvDSDCBD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDCBD_KeyDown);
-            this.dgvDSDCBD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSDCBD_MouseClick);
-            // 
-            // frmDSDCBD
+            // frmDSCatHuyDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -591,19 +397,14 @@
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.radChuaDuyet);
-            this.Controls.Add(this.dgvDSDCBD);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmDSDCBD";
-            this.Text = "frmDSDCBD";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmDSDCBD_Load);
+            this.Name = "frmDSCatHuyDB";
+            this.Text = "frmDSCHDB";
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCBD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCHD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDSDCBD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCHDB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -611,13 +412,19 @@
 
         #endregion
 
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem điềuChỉnhBiếnĐộngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem điềuChỉnhHóaĐơnToolStripMenuItem;
         private System.Windows.Forms.RadioButton radDaDuyet;
-        private System.Windows.Forms.RadioButton radChuaDuyet;
         private System.Windows.Forms.Button btnLuu;
         private DevExpress.XtraGrid.GridControl gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCTDCBD;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCTDCHD;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCHDB;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -629,33 +436,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCTDCBD;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDCBD;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyenDen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyenDen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyenDi;
-        private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KetQua;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayXuLy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDCBD;
-        private System.Windows.Forms.DataGridView dgvDSDCBD;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCTDCHD;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private System.Windows.Forms.RadioButton radChuaDuyet;
     }
 }

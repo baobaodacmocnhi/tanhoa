@@ -19,6 +19,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         public frmNhanDM()
         {
@@ -103,6 +104,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
                     lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
                     lichsuchungtu.SoNKNhan = int.Parse(txtSoNKNhan.Text.Trim());
+                    ///Ký Tên
+                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                    else
+                        lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                    lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
 
                     if (_cChungTu.NhanChungTu(chungtu, ctchungtu, lichsuchungtu))
                     {
@@ -118,6 +126,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["HoTenCat"] = txtHoTen_Cat.Text.Trim();
                         dr["DiaChiCat"] = txtDiaChi_Cat.Text.Trim();
                         dr["SoNKCat"] = txtSoNKNhan.Text.Trim() + " nhân khẩu (HK: " + txtMaCT.Text.Trim() + ")";
+
+                        dr["ChucVu"] = lichsuchungtu.ChucVu;
+                        dr["NguoiKy"] = lichsuchungtu.NguoiKy;
 
                         dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 

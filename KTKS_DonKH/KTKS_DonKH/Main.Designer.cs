@@ -45,6 +45,8 @@
             this.ribbtnKhachHang = new System.Windows.Forms.RibbonButton();
             this.ribbtnChiNhanh = new System.Windows.Forms.RibbonButton();
             this.ribbtnGiaNuoc = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel9 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnBanGiamDoc = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
@@ -64,9 +66,7 @@
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonTab6 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel8 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnDSDonCatHuyDanhBo = new System.Windows.Forms.RibbonButton();
-            this.ribbonPanel9 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnBanGiamDoc = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDSDonCHDB = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -198,6 +198,21 @@
             this.ribbtnGiaNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnGiaNuoc.SmallImage")));
             this.ribbtnGiaNuoc.Text = "Giá Nước";
             this.ribbtnGiaNuoc.Click += new System.EventHandler(this.ribbtnGiaNuoc_Click);
+            // 
+            // ribbonPanel9
+            // 
+            this.ribbonPanel9.ButtonMoreEnabled = false;
+            this.ribbonPanel9.ButtonMoreVisible = false;
+            this.ribbonPanel9.Items.Add(this.ribbtnBanGiamDoc);
+            this.ribbonPanel9.Text = "Trình Ký";
+            // 
+            // ribbtnBanGiamDoc
+            // 
+            this.ribbtnBanGiamDoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnBanGiamDoc.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnBanGiamDoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnBanGiamDoc.SmallImage")));
+            this.ribbtnBanGiamDoc.Text = "Ban Giám Đốc";
+            this.ribbtnBanGiamDoc.Click += new System.EventHandler(this.ribbtnBanGiamDoc_Click);
             // 
             // ribbonTab3
             // 
@@ -348,31 +363,16 @@
             // 
             this.ribbonPanel8.ButtonMoreEnabled = false;
             this.ribbonPanel8.ButtonMoreVisible = false;
-            this.ribbonPanel8.Items.Add(this.ribbtnDSDonCatHuyDanhBo);
+            this.ribbonPanel8.Items.Add(this.ribbtnDSDonCHDB);
             this.ribbonPanel8.Text = "";
             // 
-            // ribbtnDSDonCatHuyDanhBo
+            // ribbtnDSDonCHDB
             // 
-            this.ribbtnDSDonCatHuyDanhBo.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnDSDonCatHuyDanhBo.MinimumSize = new System.Drawing.Size(100, 0);
-            this.ribbtnDSDonCatHuyDanhBo.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonCatHuyDanhBo.SmallImage")));
-            this.ribbtnDSDonCatHuyDanhBo.Text = "Danh Sách Đơn";
-            this.ribbtnDSDonCatHuyDanhBo.Click += new System.EventHandler(this.ribbtnDSDonCatHuyDanhBo_Click);
-            // 
-            // ribbonPanel9
-            // 
-            this.ribbonPanel9.ButtonMoreEnabled = false;
-            this.ribbonPanel9.ButtonMoreVisible = false;
-            this.ribbonPanel9.Items.Add(this.ribbtnBanGiamDoc);
-            this.ribbonPanel9.Text = "Trình Ký";
-            // 
-            // ribbtnBanGiamDoc
-            // 
-            this.ribbtnBanGiamDoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnBanGiamDoc.MinimumSize = new System.Drawing.Size(90, 0);
-            this.ribbtnBanGiamDoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnBanGiamDoc.SmallImage")));
-            this.ribbtnBanGiamDoc.Text = "Ban Giám Đốc";
-            this.ribbtnBanGiamDoc.Click += new System.EventHandler(this.ribbtnBanGiamDoc_Click);
+            this.ribbtnDSDonCHDB.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDSDonCHDB.MinimumSize = new System.Drawing.Size(100, 0);
+            this.ribbtnDSDonCHDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonCHDB.SmallImage")));
+            this.ribbtnDSDonCHDB.Text = "Danh Sách Đơn";
+            this.ribbtnDSDonCHDB.Click += new System.EventHandler(this.ribbtnDSDonCHDB_Click);
             // 
             // Main
             // 
@@ -432,7 +432,7 @@
         private System.Windows.Forms.RibbonButton ribbtnTest;
         private System.Windows.Forms.RibbonTab ribbonTab6;
         private System.Windows.Forms.RibbonPanel ribbonPanel8;
-        private System.Windows.Forms.RibbonButton ribbtnDSDonCatHuyDanhBo;
+        private System.Windows.Forms.RibbonButton ribbtnDSDonCHDB;
         private System.Windows.Forms.RibbonPanel ribbonPanel9;
         private System.Windows.Forms.RibbonButton ribbtnBanGiamDoc;
     }

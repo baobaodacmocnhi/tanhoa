@@ -318,6 +318,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.CatNK_HoTen = chungtuCN.NhanNK_HoTen;
                             lichsuchungtu.CatNK_DiaChi = chungtuCN.NhanNK_DiaChi;
                             lichsuchungtu.SoNKNhan = chungtuCN.NhanNK_SoNKCat;
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
                         }
                         ThemLichSuChungTu(lichsuchungtu);
 

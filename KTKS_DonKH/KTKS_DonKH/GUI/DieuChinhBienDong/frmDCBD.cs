@@ -27,6 +27,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         bool flagFirst = true;
 
         public frmDCBD()
@@ -345,6 +346,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
 
+                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                    ctdcbd.ChucVu = "GIÁM ĐỐC";
+                else
+                    ctdcbd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+
                 if (_cDCBD.ThemCTDCBD(ctdcbd))
                 {
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -370,6 +378,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
                     dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
                     dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                    ///Ký Tên
+                    dr["ChucVu"] = ctdcbd.ChucVu;
+                    dr["NguoiKy"] = ctdcbd.NguoiKy;
 
                     dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
