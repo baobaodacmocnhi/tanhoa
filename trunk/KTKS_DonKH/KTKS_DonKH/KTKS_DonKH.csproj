@@ -91,6 +91,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\rptThongBaoCHDB.cs">
+      <DependentUpon>rptThongBaoCHDB.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\rptThongBaoCTDB.cs">
+      <DependentUpon>rptThongBaoCTDB.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\rptPhieuDCHD.cs">
       <DependentUpon>rptPhieuDCHD.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -143,6 +155,7 @@
     <Compile Include="DAL\CapNhat\CLoaiDon.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
     <Compile Include="DAL\CapNhat\CTTKHDate.cs" />
+    <Compile Include="DAL\CatHuyDanhBo\CCHDB.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CapNhat\CChungTu.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDCBD.cs" />
@@ -199,11 +212,23 @@
     <Compile Include="GUI\CapNhat\frmTTKH.Designer.cs">
       <DependentUpon>frmTTKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\DSCHDB.cs">
+    <Compile Include="GUI\CatHuyDanhBo\frmCHDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CatHuyDanhBo\DSCHDB.Designer.cs">
-      <DependentUpon>DSCHDB.cs</DependentUpon>
+    <Compile Include="GUI\CatHuyDanhBo\frmCHDB.Designer.cs">
+      <DependentUpon>frmCHDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CatHuyDanhBo\frmCTDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CatHuyDanhBo\frmCTDB.Designer.cs">
+      <DependentUpon>frmCTDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CatHuyDanhBo\frmDSCHDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CatHuyDanhBo\frmDSCHDB.Designer.cs">
+      <DependentUpon>frmDSCHDB.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmCatChuyenDM.cs">
       <SubType>Form</SubType>
@@ -289,6 +314,11 @@
     <Compile Include="GUI\KiemTraXacMinh\frmKTXM.Designer.cs">
       <DependentUpon>frmKTXM.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\DB_CAPNUOCTANHOA.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_CAPNUOCTANHOA.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\DB_KTKS_DonKH.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -313,9 +343,22 @@
     <None Include="BaoCao\DataSetBaoCao.xss">
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </None>
+    <None Include="LinQ\DB_CAPNUOCTANHOA.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DB_CAPNUOCTANHOA.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
       <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="BaoCao\rptThongBaoCHDB.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongBaoCHDB.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptThongBaoCTDB.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongBaoCTDB.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptPhieuDCHD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuDCHD.cs</LastGenOutput>
@@ -364,8 +407,14 @@
     <EmbeddedResource Include="GUI\CapNhat\frmTTKH.resx">
       <DependentUpon>frmTTKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CatHuyDanhBo\DSCHDB.resx">
-      <DependentUpon>DSCHDB.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmCHDB.resx">
+      <DependentUpon>frmCHDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmCTDB.resx">
+      <DependentUpon>frmCTDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CatHuyDanhBo\frmDSCHDB.resx">
+      <DependentUpon>frmDSCHDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmCatChuyenDM.resx">
       <DependentUpon>frmCatChuyenDM.cs</DependentUpon>
@@ -409,6 +458,9 @@
     <EmbeddedResource Include="GUI\KiemTraXacMinh\frmKTXM.resx">
       <DependentUpon>frmKTXM.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\DB_CAPNUOCTANHOA.dbml.layout">
+      <DependentUpon>DB_CAPNUOCTANHOA.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

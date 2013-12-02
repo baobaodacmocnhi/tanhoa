@@ -35,7 +35,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             cmbLD.SelectedValue = _donkh.MaLD.Value;
             txtSoCongVan.Text = _donkh.SoCongVan;
-            txtMaDon.Text = _donkh.MaDon.ToString();
+            txtMaDon.Text = _donkh.MaDon.ToString().Insert(4, "-");
             txtNgayNhan.Text = _donkh.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = _donkh.NoiDung;
 
