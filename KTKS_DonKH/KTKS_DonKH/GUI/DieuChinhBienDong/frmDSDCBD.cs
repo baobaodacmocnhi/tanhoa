@@ -50,8 +50,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //cmbColumn.DisplayMember = "NoiChuyenDi";
             //cmbColumn.ValueMember = "MaChuyen";
 
-            
-
             ///Tạo đối tượng LookUpEdit
             RepositoryItemLookUpEdit myLookUpEdit = new RepositoryItemLookUpEdit();
             ///Tạo đối tượng Column
@@ -288,6 +286,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             DSDCBD_Edited.ImportRow(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row);
             btnLuu.Enabled = true;
+        }
+
+        private void gridViewDCBD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (gridViewDCBD.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"].ToString())));
+                frm.ShowDialog();
+            }
         }
        
         

@@ -205,7 +205,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmDSCatHuyDB();
+            Form frm = new frmDSCHDB();
             frm.MdiParent = this;
             frm.Show();
         }
