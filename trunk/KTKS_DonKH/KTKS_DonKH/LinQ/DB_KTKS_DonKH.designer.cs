@@ -2324,9 +2324,17 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _SoTien;
 		
-		private System.Nullable<System.DateTime> _NgayXuLy;
+		private bool _TCTBXuLy;
 		
-		private string _KetQuaXuLy;
+		private System.Nullable<System.DateTime> _NgayTCTBXuLy;
+		
+		private string _KetQuaTCTBXuLy;
+		
+		private bool _CapTrenXuLy;
+		
+		private System.Nullable<System.DateTime> _NgayCapTrenXuLy;
+		
+		private string _KetQuaCapTrenXuLy;
 		
 		private System.Nullable<int> _ThoiGianLapPhieu;
 		
@@ -2341,6 +2349,10 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<decimal> _MaCTCTDB;
 		
 		private System.Nullable<decimal> _MaCHDB;
+		
+		private string _NguoiKy;
+		
+		private string _ChucVu;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -2378,10 +2390,18 @@ namespace KTKS_DonKH.LinQ
     partial void OnGhiChuLyDoChanged();
     partial void OnSoTienChanging(System.Nullable<int> value);
     partial void OnSoTienChanged();
-    partial void OnNgayXuLyChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayXuLyChanged();
-    partial void OnKetQuaXuLyChanging(string value);
-    partial void OnKetQuaXuLyChanged();
+    partial void OnTCTBXuLyChanging(bool value);
+    partial void OnTCTBXuLyChanged();
+    partial void OnNgayTCTBXuLyChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayTCTBXuLyChanged();
+    partial void OnKetQuaTCTBXuLyChanging(string value);
+    partial void OnKetQuaTCTBXuLyChanged();
+    partial void OnCapTrenXuLyChanging(bool value);
+    partial void OnCapTrenXuLyChanged();
+    partial void OnNgayCapTrenXuLyChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayCapTrenXuLyChanged();
+    partial void OnKetQuaCapTrenXuLyChanging(string value);
+    partial void OnKetQuaCapTrenXuLyChanged();
     partial void OnThoiGianLapPhieuChanging(System.Nullable<int> value);
     partial void OnThoiGianLapPhieuChanged();
     partial void OnSoPhieuChanging(System.Nullable<decimal> value);
@@ -2396,6 +2416,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaCTCTDBChanged();
     partial void OnMaCHDBChanging(System.Nullable<decimal> value);
     partial void OnMaCHDBChanged();
+    partial void OnNguoiKyChanging(string value);
+    partial void OnNguoiKyChanged();
+    partial void OnChucVuChanging(string value);
+    partial void OnChucVuChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(string value);
@@ -2632,42 +2656,122 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayXuLy", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayXuLy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TCTBXuLy", DbType="Bit NOT NULL")]
+		public bool TCTBXuLy
 		{
 			get
 			{
-				return this._NgayXuLy;
+				return this._TCTBXuLy;
 			}
 			set
 			{
-				if ((this._NgayXuLy != value))
+				if ((this._TCTBXuLy != value))
 				{
-					this.OnNgayXuLyChanging(value);
+					this.OnTCTBXuLyChanging(value);
 					this.SendPropertyChanging();
-					this._NgayXuLy = value;
-					this.SendPropertyChanged("NgayXuLy");
-					this.OnNgayXuLyChanged();
+					this._TCTBXuLy = value;
+					this.SendPropertyChanged("TCTBXuLy");
+					this.OnTCTBXuLyChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQuaXuLy", DbType="NVarChar(MAX)")]
-		public string KetQuaXuLy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTCTBXuLy", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayTCTBXuLy
 		{
 			get
 			{
-				return this._KetQuaXuLy;
+				return this._NgayTCTBXuLy;
 			}
 			set
 			{
-				if ((this._KetQuaXuLy != value))
+				if ((this._NgayTCTBXuLy != value))
 				{
-					this.OnKetQuaXuLyChanging(value);
+					this.OnNgayTCTBXuLyChanging(value);
 					this.SendPropertyChanging();
-					this._KetQuaXuLy = value;
-					this.SendPropertyChanged("KetQuaXuLy");
-					this.OnKetQuaXuLyChanged();
+					this._NgayTCTBXuLy = value;
+					this.SendPropertyChanged("NgayTCTBXuLy");
+					this.OnNgayTCTBXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQuaTCTBXuLy", DbType="NVarChar(MAX)")]
+		public string KetQuaTCTBXuLy
+		{
+			get
+			{
+				return this._KetQuaTCTBXuLy;
+			}
+			set
+			{
+				if ((this._KetQuaTCTBXuLy != value))
+				{
+					this.OnKetQuaTCTBXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._KetQuaTCTBXuLy = value;
+					this.SendPropertyChanged("KetQuaTCTBXuLy");
+					this.OnKetQuaTCTBXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CapTrenXuLy", DbType="Bit NOT NULL")]
+		public bool CapTrenXuLy
+		{
+			get
+			{
+				return this._CapTrenXuLy;
+			}
+			set
+			{
+				if ((this._CapTrenXuLy != value))
+				{
+					this.OnCapTrenXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._CapTrenXuLy = value;
+					this.SendPropertyChanged("CapTrenXuLy");
+					this.OnCapTrenXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayCapTrenXuLy", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayCapTrenXuLy
+		{
+			get
+			{
+				return this._NgayCapTrenXuLy;
+			}
+			set
+			{
+				if ((this._NgayCapTrenXuLy != value))
+				{
+					this.OnNgayCapTrenXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._NgayCapTrenXuLy = value;
+					this.SendPropertyChanged("NgayCapTrenXuLy");
+					this.OnNgayCapTrenXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQuaCapTrenXuLy", DbType="NVarChar(MAX)")]
+		public string KetQuaCapTrenXuLy
+		{
+			get
+			{
+				return this._KetQuaCapTrenXuLy;
+			}
+			set
+			{
+				if ((this._KetQuaCapTrenXuLy != value))
+				{
+					this.OnKetQuaCapTrenXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._KetQuaCapTrenXuLy = value;
+					this.SendPropertyChanged("KetQuaCapTrenXuLy");
+					this.OnKetQuaCapTrenXuLyChanged();
 				}
 			}
 		}
@@ -2812,6 +2916,46 @@ namespace KTKS_DonKH.LinQ
 					this._MaCHDB = value;
 					this.SendPropertyChanged("MaCHDB");
 					this.OnMaCHDBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiKy", DbType="NVarChar(100)")]
+		public string NguoiKy
+		{
+			get
+			{
+				return this._NguoiKy;
+			}
+			set
+			{
+				if ((this._NguoiKy != value))
+				{
+					this.OnNguoiKyChanging(value);
+					this.SendPropertyChanging();
+					this._NguoiKy = value;
+					this.SendPropertyChanged("NguoiKy");
+					this.OnNguoiKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChucVu", DbType="NVarChar(100)")]
+		public string ChucVu
+		{
+			get
+			{
+				return this._ChucVu;
+			}
+			set
+			{
+				if ((this._ChucVu != value))
+				{
+					this.OnChucVuChanging(value);
+					this.SendPropertyChanging();
+					this._ChucVu = value;
+					this.SendPropertyChanged("ChucVu");
+					this.OnChucVuChanged();
 				}
 			}
 		}
@@ -3322,13 +3466,25 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _SoTien;
 		
-		private System.Nullable<System.DateTime> _NgayXuLy;
+		private bool _TCTBXuLy;
 		
-		private string _KetQuaXuLy;
+		private System.Nullable<System.DateTime> _NgayTCTBXuLy;
+		
+		private string _KetQuaTCTBXuLy;
+		
+		private bool _CapTrenXuLy;
+		
+		private System.Nullable<System.DateTime> _NgayCapTrenXuLy;
+		
+		private string _KetQuaCapTrenXuLy;
 		
 		private System.Nullable<int> _ThoiGianLapCatHuy;
 		
 		private System.Nullable<decimal> _MaCHDB;
+		
+		private string _NguoiKy;
+		
+		private string _ChucVu;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -3366,14 +3522,26 @@ namespace KTKS_DonKH.LinQ
     partial void OnGhiChuLyDoChanged();
     partial void OnSoTienChanging(System.Nullable<int> value);
     partial void OnSoTienChanged();
-    partial void OnNgayXuLyChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayXuLyChanged();
-    partial void OnKetQuaXuLyChanging(string value);
-    partial void OnKetQuaXuLyChanged();
+    partial void OnTCTBXuLyChanging(bool value);
+    partial void OnTCTBXuLyChanged();
+    partial void OnNgayTCTBXuLyChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayTCTBXuLyChanged();
+    partial void OnKetQuaTCTBXuLyChanging(string value);
+    partial void OnKetQuaTCTBXuLyChanged();
+    partial void OnCapTrenXuLyChanging(bool value);
+    partial void OnCapTrenXuLyChanged();
+    partial void OnNgayCapTrenXuLyChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayCapTrenXuLyChanged();
+    partial void OnKetQuaCapTrenXuLyChanging(string value);
+    partial void OnKetQuaCapTrenXuLyChanged();
     partial void OnThoiGianLapCatHuyChanging(System.Nullable<int> value);
     partial void OnThoiGianLapCatHuyChanged();
     partial void OnMaCHDBChanging(System.Nullable<decimal> value);
     partial void OnMaCHDBChanged();
+    partial void OnNguoiKyChanging(string value);
+    partial void OnNguoiKyChanged();
+    partial void OnChucVuChanging(string value);
+    partial void OnChucVuChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(string value);
@@ -3610,42 +3778,122 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayXuLy", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayXuLy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TCTBXuLy", DbType="Bit NOT NULL")]
+		public bool TCTBXuLy
 		{
 			get
 			{
-				return this._NgayXuLy;
+				return this._TCTBXuLy;
 			}
 			set
 			{
-				if ((this._NgayXuLy != value))
+				if ((this._TCTBXuLy != value))
 				{
-					this.OnNgayXuLyChanging(value);
+					this.OnTCTBXuLyChanging(value);
 					this.SendPropertyChanging();
-					this._NgayXuLy = value;
-					this.SendPropertyChanged("NgayXuLy");
-					this.OnNgayXuLyChanged();
+					this._TCTBXuLy = value;
+					this.SendPropertyChanged("TCTBXuLy");
+					this.OnTCTBXuLyChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQuaXuLy", DbType="NVarChar(MAX)")]
-		public string KetQuaXuLy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTCTBXuLy", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayTCTBXuLy
 		{
 			get
 			{
-				return this._KetQuaXuLy;
+				return this._NgayTCTBXuLy;
 			}
 			set
 			{
-				if ((this._KetQuaXuLy != value))
+				if ((this._NgayTCTBXuLy != value))
 				{
-					this.OnKetQuaXuLyChanging(value);
+					this.OnNgayTCTBXuLyChanging(value);
 					this.SendPropertyChanging();
-					this._KetQuaXuLy = value;
-					this.SendPropertyChanged("KetQuaXuLy");
-					this.OnKetQuaXuLyChanged();
+					this._NgayTCTBXuLy = value;
+					this.SendPropertyChanged("NgayTCTBXuLy");
+					this.OnNgayTCTBXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQuaTCTBXuLy", DbType="NVarChar(MAX)")]
+		public string KetQuaTCTBXuLy
+		{
+			get
+			{
+				return this._KetQuaTCTBXuLy;
+			}
+			set
+			{
+				if ((this._KetQuaTCTBXuLy != value))
+				{
+					this.OnKetQuaTCTBXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._KetQuaTCTBXuLy = value;
+					this.SendPropertyChanged("KetQuaTCTBXuLy");
+					this.OnKetQuaTCTBXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CapTrenXuLy", DbType="Bit NOT NULL")]
+		public bool CapTrenXuLy
+		{
+			get
+			{
+				return this._CapTrenXuLy;
+			}
+			set
+			{
+				if ((this._CapTrenXuLy != value))
+				{
+					this.OnCapTrenXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._CapTrenXuLy = value;
+					this.SendPropertyChanged("CapTrenXuLy");
+					this.OnCapTrenXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayCapTrenXuLy", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayCapTrenXuLy
+		{
+			get
+			{
+				return this._NgayCapTrenXuLy;
+			}
+			set
+			{
+				if ((this._NgayCapTrenXuLy != value))
+				{
+					this.OnNgayCapTrenXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._NgayCapTrenXuLy = value;
+					this.SendPropertyChanged("NgayCapTrenXuLy");
+					this.OnNgayCapTrenXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetQuaCapTrenXuLy", DbType="NVarChar(MAX)")]
+		public string KetQuaCapTrenXuLy
+		{
+			get
+			{
+				return this._KetQuaCapTrenXuLy;
+			}
+			set
+			{
+				if ((this._KetQuaCapTrenXuLy != value))
+				{
+					this.OnKetQuaCapTrenXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._KetQuaCapTrenXuLy = value;
+					this.SendPropertyChanged("KetQuaCapTrenXuLy");
+					this.OnKetQuaCapTrenXuLyChanged();
 				}
 			}
 		}
@@ -3690,6 +3938,46 @@ namespace KTKS_DonKH.LinQ
 					this._MaCHDB = value;
 					this.SendPropertyChanged("MaCHDB");
 					this.OnMaCHDBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiKy", DbType="NVarChar(100)")]
+		public string NguoiKy
+		{
+			get
+			{
+				return this._NguoiKy;
+			}
+			set
+			{
+				if ((this._NguoiKy != value))
+				{
+					this.OnNguoiKyChanging(value);
+					this.SendPropertyChanging();
+					this._NguoiKy = value;
+					this.SendPropertyChanged("NguoiKy");
+					this.OnNguoiKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChucVu", DbType="NVarChar(100)")]
+		public string ChucVu
+		{
+			get
+			{
+				return this._ChucVu;
+			}
+			set
+			{
+				if ((this._ChucVu != value))
+				{
+					this.OnChucVuChanging(value);
+					this.SendPropertyChanging();
+					this._ChucVu = value;
+					this.SendPropertyChanged("ChucVu");
+					this.OnChucVuChanged();
 				}
 			}
 		}

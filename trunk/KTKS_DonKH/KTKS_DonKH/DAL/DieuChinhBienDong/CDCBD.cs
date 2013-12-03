@@ -13,7 +13,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
     {
         ///Chứa hàm truy xuất dữ liệu từ bảng DCBD & CTDCBD & CTDCHD
         
-        #region DCBD
+        #region DCBD (Điều Chỉnh Biến Động)
 
         public DataSet LoadDSDCBDDaDuyet()
         {
@@ -294,7 +294,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #endregion
 
-        #region CTDCBD
+        #region CTDCBD (Chi Tiết Điều Chỉnh Biến Động)
 
         public bool ThemCTDCBD(CTDCBD ctdcbd)
         {
@@ -344,7 +344,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         #endregion
 
-        #region CTDCHD
+        #region CTDCHD (Chi Tiết Điều Chỉnh Hóa Đơn)
 
         public bool ThemCTDCHD(CTDCHD ctdchd)
         {

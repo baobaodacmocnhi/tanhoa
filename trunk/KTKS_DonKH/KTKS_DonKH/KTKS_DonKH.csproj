@@ -91,37 +91,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoCao\rptThongBaoCHDB.cs">
+    <Compile Include="BaoCao\CatHuyDanhBo\rptThongBaoCHDB.cs">
       <DependentUpon>rptThongBaoCHDB.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\rptThongBaoCTDB.cs">
+    <Compile Include="BaoCao\CatHuyDanhBo\rptThongBaoCTDB.cs">
       <DependentUpon>rptThongBaoCTDB.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\rptPhieuDCHD.cs">
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuDCHD.cs">
       <DependentUpon>rptPhieuDCHD.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\rptPhieuDCBD.cs">
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuDCBD.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPhieuDCBD.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\rptPhieuYCNhanDM.cs">
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuYCNhanDM.cs">
       <DependentUpon>rptPhieuYCNhanDM.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BaoCao\rptPhieuYCCatDM.cs">
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuYCCatDM.cs">
       <DependentUpon>rptPhieuYCCatDM.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
@@ -136,7 +136,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BaoCao\rptBienNhanDonKH.cs">
+    <Compile Include="BaoCao\KhachHang\rptBienNhanDonKH.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptBienNhanDonKH.rpt</DependentUpon>
@@ -351,31 +351,31 @@
     <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
       <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="BaoCao\rptThongBaoCHDB.rpt">
+    <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptThongBaoCHDB.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongBaoCHDB.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\rptThongBaoCTDB.rpt">
+    <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptThongBaoCTDB.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongBaoCTDB.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\rptPhieuDCHD.rpt">
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuDCHD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuDCHD.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\rptPhieuDCBD.rpt">
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuDCBD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuDCBD.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\rptPhieuYCNhanDM.rpt">
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuYCNhanDM.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuYCNhanDM.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\rptPhieuYCCatDM.rpt">
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuYCCatDM.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuYCCatDM.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\rptBienNhanDonKH.rpt">
+    <EmbeddedResource Include="BaoCao\KhachHang\rptBienNhanDonKH.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptBienNhanDonKH.cs</LastGenOutput>
     </EmbeddedResource>

@@ -56,13 +56,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
             radChuaDuyet.Checked = true;
+
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm Danh Bộ", gridViewCTCTDB);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ", gridViewCTCHDB);
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
             {
-                //gridControl.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
+                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
             }
         }
 
@@ -70,7 +73,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radChuaDuyet.Checked)
             {
-                gridControl.DataSource = _cCHDB.LoadDSDCBDChuaDuyet();
+                gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
             }
         }
 
@@ -94,6 +97,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             //string _DanhBo = selRow["DanhBo"].ToString();       
             source.Add("MaDon", selRow["MaDon"].ToString());
             source.Add("DanhBo", selRow["DanhBo"].ToString());
+            source.Add("Action", "Thêm");
             ///Nơi Chuyển Đến, dùng để xét Đơn Khách Hàng nhận từ bản nào, Vì lúc ta load danh sách đơn chưa duyệt ở nhiều bảng
             source.Add("MaNoiChuyenDen", selRow["MaNoiChuyenDen"].ToString());
             source.Add("NoiChuyenDen", selRow["NoiChuyenDen"].ToString());
@@ -101,7 +105,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
             frmCTDB frm = new frmCTDB(source);
             if (frm.ShowDialog() == DialogResult.OK)
-                gridControl.DataSource = _cCHDB.LoadDSDCBDChuaDuyet();
+                gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
         }
 
         private void cắtHủyDanhBộtoolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -115,6 +119,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             //string _DanhBo = selRow["DanhBo"].ToString();       
             source.Add("MaDon", selRow["MaDon"].ToString());
             source.Add("DanhBo", selRow["DanhBo"].ToString());
+            source.Add("Action", "Thêm");
             ///Nơi Chuyển Đến, dùng để xét Đơn Khách Hàng nhận từ bản nào, Vì lúc ta load danh sách đơn chưa duyệt ở nhiều bảng
             source.Add("MaNoiChuyenDen", selRow["MaNoiChuyenDen"].ToString());
             source.Add("NoiChuyenDen", selRow["NoiChuyenDen"].ToString());
@@ -122,7 +127,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
             frmCHDB frm = new frmCHDB(source);
             if (frm.ShowDialog() == DialogResult.OK)
-                gridControl.DataSource = _cCHDB.LoadDSDCBDChuaDuyet();
+                gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
         }
 
         private void gridViewCHDB_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
@@ -136,6 +141,26 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (radChuaDuyet.Checked && gridControl.MainView.RowCount > 0 && e.Button == MouseButtons.Right)
             {
                 contextMenuStrip1.Show(gridControl, new Point(e.X, e.Y));
+                cắtTạmDanhBộtoolStripMenuItem.Visible = true;
+                cắtHủyDanhBộtoolStripMenuItem.Visible = true;
+            }
+        }
+
+        private void gridViewCTCTDB_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (radDaDuyet.Checked && e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(gridControl, new Point(e.X, e.Y));
+                cậpNhậtCắtTạmDanhBộtoolStripMenuItem.Visible = true;
+            }
+        }
+
+        private void gridViewCTCHDB_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (radDaDuyet.Checked && e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(gridControl, new Point(e.X, e.Y));
+                cậpNhậtCắtHủyDanhBộtoolStripMenuItem.Visible = true;
             }
         }
 
@@ -172,5 +197,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             DSCHDB_Edited.ImportRow(((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row);
             btnLuu.Enabled = true;
         }
+
+        
+
+
+
+
+
     }
 }
