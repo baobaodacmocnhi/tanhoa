@@ -12,6 +12,7 @@ using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
