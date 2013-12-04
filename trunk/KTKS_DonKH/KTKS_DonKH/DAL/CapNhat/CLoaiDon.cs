@@ -103,7 +103,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     loaidon.CreateBy = CTaiKhoan.TaiKhoan;
                     db.LoaiDons.InsertOnSubmit(loaidon);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Thêm LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -129,7 +129,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     loaidon.ModifyDate = DateTime.Now;
                     loaidon.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

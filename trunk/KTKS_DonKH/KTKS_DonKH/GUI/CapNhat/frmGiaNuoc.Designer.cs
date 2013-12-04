@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSGiaNuoc = new System.Windows.Forms.DataGridView();
+            this.MaGN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenGN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtGiaNuoc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDoiTuong = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.MaGN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenGN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSGiaNuoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,6 +46,14 @@
             // 
             this.dgvDSGiaNuoc.AllowUserToAddRows = false;
             this.dgvDSGiaNuoc.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSGiaNuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSGiaNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSGiaNuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaGN,
@@ -59,6 +68,29 @@
             this.dgvDSGiaNuoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSGiaNuoc_CellContentClick);
             this.dgvDSGiaNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSGiaNuoc_CellFormatting);
             this.dgvDSGiaNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSGiaNuoc_RowPostPaint);
+            // 
+            // MaGN
+            // 
+            this.MaGN.DataPropertyName = "MaGN";
+            this.MaGN.HeaderText = "MaGN";
+            this.MaGN.Name = "MaGN";
+            this.MaGN.ReadOnly = true;
+            this.MaGN.Visible = false;
+            // 
+            // TenGN
+            // 
+            this.TenGN.DataPropertyName = "TenGN";
+            this.TenGN.HeaderText = "Đối Tượng";
+            this.TenGN.Name = "TenGN";
+            this.TenGN.ReadOnly = true;
+            this.TenGN.Width = 250;
+            // 
+            // DonGia
+            // 
+            this.DonGia.DataPropertyName = "DonGia";
+            this.DonGia.HeaderText = "Đơn Giá";
+            this.DonGia.Name = "DonGia";
+            this.DonGia.ReadOnly = true;
             // 
             // btnSua
             // 
@@ -122,26 +154,6 @@
             this.label1.Size = new System.Drawing.Size(75, 17);
             this.label1.TabIndex = 9;
             this.label1.Text = "Đối Tượng:";
-            // 
-            // MaGN
-            // 
-            this.MaGN.DataPropertyName = "MaGN";
-            this.MaGN.HeaderText = "MaGN";
-            this.MaGN.Name = "MaGN";
-            this.MaGN.Visible = false;
-            // 
-            // TenGN
-            // 
-            this.TenGN.DataPropertyName = "TenGN";
-            this.TenGN.HeaderText = "Đối Tượng";
-            this.TenGN.Name = "TenGN";
-            this.TenGN.Width = 250;
-            // 
-            // DonGia
-            // 
-            this.DonGia.DataPropertyName = "DonGia";
-            this.DonGia.HeaderText = "Đơn Giá";
-            this.DonGia.Name = "DonGia";
             // 
             // frmGiaNuoc
             // 

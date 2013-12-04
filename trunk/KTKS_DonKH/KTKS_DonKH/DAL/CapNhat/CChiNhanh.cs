@@ -112,7 +112,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     chinhanh.CreateBy = CTaiKhoan.TaiKhoan;
                     db.ChiNhanhs.InsertOnSubmit(chinhanh);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Thêm ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -138,7 +138,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     chinhanh.ModifyDate = DateTime.Now;
                     chinhanh.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Sửa ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

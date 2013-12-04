@@ -26,6 +26,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        CTCTDB _ctctdb = null;
 
         public frmCTDB()
         {
@@ -55,10 +56,37 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
             }
             else
-                if (_source["Action"] == "Cập Nhật")
+                if (_source["Action"] == "Sửa")
                 {
                     groupBoxKetQuaXuLy.Enabled = true;
                     groupBoxCapTrenXuLy.Enabled = true;
+                    if (_cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"])) != null)
+                    {
+                        _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"]));
+                        ///Thông Tin
+                        txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(4, "-");
+                        txtDanhBo.Text = _ctctdb.DanhBo;
+                        txtHopDong.Text = _ctctdb.HopDong;
+                        txtHoTen.Text = _ctctdb.HoTen;
+                        txtDiaChi.Text = _ctctdb.DiaChi;
+                        ///Nguyên Nhân Xử Lý
+                        cmbLyDo.SelectedText = _ctctdb.LyDo;
+                        txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
+                        txtSoTien.Text = _ctctdb.SoTien.ToString();
+                        ///Kết Quả Xử Lý
+                        if (_ctctdb.TCTBXuLy)
+                        {
+                            dateTCTBXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
+                            txtKetQuaTCTBXuLy.Text = _ctctdb.KetQuaTCTBXuLy;
+                        }
+                        ///Cấp Trên Xử Lý
+                        if (_ctctdb.CapTrenXuLy)
+                        {
+                            dateCapTrenXuLy.Value = _ctctdb.NgayCapTrenXuLy.Value;
+                            txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
+                            txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.ToString();
+                        }
+                    }
                 }
         }
 
@@ -167,17 +195,34 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnCapNhatTCTBXuLy_Click(object sender, EventArgs e)
         {
-
+            if (_ctctdb != null)
+            {
+                _ctctdb.TCTBXuLy = true;
+                _ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
+                _ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
+                if (_cCHDB.SuaCTCTDB(_ctctdb))
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
         }
 
         private void btnCapNhatCapTrenXuLy_Click(object sender, EventArgs e)
         {
-
+            if (_ctctdb != null)
+            {
+                _ctctdb.CapTrenXuLy = true;
+                _ctctdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
+                _ctctdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
+                _ctctdb.ThoiGianLapCatHuy = int.Parse(txtThoiGianLapCatHuy.Text.Trim());
+                if (_cCHDB.SuaCTCTDB(_ctctdb))
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
         }
-
-       
-
-
 
     }
 }

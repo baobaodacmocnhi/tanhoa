@@ -30,6 +30,8 @@ namespace KTKS_DonKH.GUI.HeThong
 
         private void frmTaiKhoan_Load(object sender, EventArgs e)
         {
+            dgvDSTaiKhoan.AutoGenerateColumns = false;
+            dgvDSTaiKhoan.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSTaiKhoan.Font, FontStyle.Bold);
             dgvDSTaiKhoan.DataSource = _cTaiKhoan.LoadDSTaiKhoan();
         }
 

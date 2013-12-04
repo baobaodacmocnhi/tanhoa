@@ -41,6 +41,7 @@ namespace KTKS_DonKH.GUI.CapNhat
         private void frmCapNhatChungTu_Load(object sender, EventArgs e)
         {
             dgvDSChungTu.AutoGenerateColumns = false;
+            dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
             dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
         }
 

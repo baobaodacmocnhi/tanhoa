@@ -107,6 +107,7 @@
             this.gridViewCTDCBD.OptionsBehavior.AutoPopulateColumns = false;
             this.gridViewCTDCBD.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTDCBD.OptionsView.ShowGroupPanel = false;
+            this.gridViewCTDCBD.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTDCBD_CustomColumnDisplayText);
             // 
             // gridColumn14
             // 
@@ -165,7 +166,7 @@
             // 
             // gridViewCTDCHD
             // 
-            this.gridViewCTDCHD.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewCTDCHD.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridViewCTDCHD.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridViewCTDCHD.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gridViewCTDCHD.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -183,6 +184,7 @@
             this.gridViewCTDCHD.OptionsBehavior.AutoPopulateColumns = false;
             this.gridViewCTDCHD.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTDCHD.OptionsView.ShowGroupPanel = false;
+            this.gridViewCTDCHD.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTDCHD_CustomColumnDisplayText);
             // 
             // gridColumn20
             // 
@@ -588,7 +590,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1362, 628);
+            this.ClientSize = new System.Drawing.Size(1362, 560);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.gridControl);

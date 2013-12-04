@@ -89,7 +89,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     loaichungtu.CreateBy = CTaiKhoan.TaiKhoan;
                     db.LoaiChungTus.InsertOnSubmit(loaichungtu);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Thêm LoaiChungTu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -115,7 +115,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     loaichungtu.ModifyDate = DateTime.Now;
                     loaichungtu.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Sửa LoaiChungTu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

@@ -45,7 +45,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     gianuoc.CreateBy = CTaiKhoan.TaiKhoan;
                     db.GiaNuocs.InsertOnSubmit(gianuoc);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Thêm GiaNuoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -71,7 +71,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     gianuoc.ModifyDate = DateTime.Now;
                     gianuoc.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Sửa GiaNuoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

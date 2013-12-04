@@ -12,7 +12,9 @@ namespace KTKS_DonKH.DAL.CapNhat
     class CTTKH : CDAL
     {
         //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
-        CTTKHDate _cTTKHDate = new CTTKHDate();
+        ///Chứa hàm truy xuất dữ liệu từ bảng TTKhachHang & TTKhachHangDate
+        
+        #region TTKhachHang
 
         public bool CapNhatTTKH(string pathFile)
         {
@@ -90,14 +92,14 @@ namespace KTKS_DonKH.DAL.CapNhat
                     }
                     ///Cập nhật TTKhachHangDate
 
-                    TTKhachHangDate ttkhdate = _cTTKHDate.getTTKHDatebyID(int.Parse(ContentsLineDate[1].Replace("\"", "")));
+                    TTKhachHangDate ttkhdate = getTTKHDatebyID(int.Parse(ContentsLineDate[1].Replace("\"", "")));
                     ttkhdate.Nam = int.Parse(ContentsLineDate[19].Replace("\"", ""));
                     ttkhdate.Ky = int.Parse(ContentsLineDate[18].Replace("\"", ""));
-                    _cTTKHDate.SuaTTKhachHangDate(ttkhdate);
+                    SuaTTKhachHangDate(ttkhdate);
 
                     db.SubmitChanges();
                     db.Transaction.Commit();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Cập Nhật TTKhachHang", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -131,6 +133,70 @@ namespace KTKS_DonKH.DAL.CapNhat
                 return null;
             }
         }
+
+        #endregion
+
+        #region TTKhachHangDate
+
+        public List<TTKhachHangDate> LoadDSTTKhachHangDate()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCapNhat)
+                {
+                    return db.TTKhachHangDates.ToList();
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public bool SuaTTKhachHangDate(TTKhachHangDate ttkhdate)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCapNhat)
+                {
+                    ttkhdate.ModifyDate = DateTime.Now;
+                    ttkhdate.ModifyBy = CTaiKhoan.TaiKhoan;
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public TTKhachHangDate getTTKHDatebyID(int id)
+        {
+            try
+            {
+                return db.TTKhachHangDates.Single(itemCT => itemCT.Dot == id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        #endregion
 
     }
 }

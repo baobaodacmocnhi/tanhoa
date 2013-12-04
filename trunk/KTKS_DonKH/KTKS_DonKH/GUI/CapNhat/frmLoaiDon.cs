@@ -40,6 +40,7 @@ namespace KTKS_DonKH.GUI.CapNhat
         private void frmCapNhatLoaiDon_Load(object sender, EventArgs e)
         {
             dgvDSLoaiDon.AutoGenerateColumns = false;
+            dgvDSLoaiDon.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSLoaiDon.Font, FontStyle.Bold);
             dgvDSLoaiDon.DataSource = _cCapNhatLoaiDon.LoadDSLoaiDon();
         }
 
