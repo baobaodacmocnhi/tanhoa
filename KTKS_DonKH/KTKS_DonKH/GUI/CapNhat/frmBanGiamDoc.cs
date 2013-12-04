@@ -40,6 +40,7 @@ namespace KTKS_DonKH.GUI.CapNhat
         private void frmBanGiamDoc_Load(object sender, EventArgs e)
         {
             dgvDSBanGiamDoc.AutoGenerateColumns = false;
+            dgvDSBanGiamDoc.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSBanGiamDoc.Font, FontStyle.Bold);
             dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.LoadDSBanGiamDoc();
         }
 

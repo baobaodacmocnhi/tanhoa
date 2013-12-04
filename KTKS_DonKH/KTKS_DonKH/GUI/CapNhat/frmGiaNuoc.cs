@@ -40,6 +40,7 @@ namespace KTKS_DonKH.GUI.CapNhat
         private void frmGiaNuoc_Load(object sender, EventArgs e)
         {
             dgvDSGiaNuoc.AutoGenerateColumns = false;
+            dgvDSGiaNuoc.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSGiaNuoc.Font, FontStyle.Bold);
             dgvDSGiaNuoc.DataSource = _cGiaNuoc.LoadDSGiaNuoc();
         }
 

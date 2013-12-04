@@ -38,6 +38,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmKTXM_Load(object sender, EventArgs e)
         {
             dgvDSKTXM.AutoGenerateColumns = false;
+            dgvDSKTXM.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSKTXM.Font, FontStyle.Bold);
             DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSKTXM.Columns["MaChuyen"];
             cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
             cmbColumn.DisplayMember = "NoiChuyenDi";

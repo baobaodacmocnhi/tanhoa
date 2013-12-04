@@ -58,7 +58,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     bangiamdoc.CreateBy = CTaiKhoan.TaiKhoan;
                     db.BanGiamDocs.InsertOnSubmit(bangiamdoc);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Thêm BanGiamDoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -84,7 +84,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     bangiamdoc.ModifyDate = DateTime.Now;
                     bangiamdoc.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Sửa BanGiamDoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

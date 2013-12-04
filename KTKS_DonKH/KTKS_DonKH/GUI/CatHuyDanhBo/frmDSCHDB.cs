@@ -21,7 +21,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CCHDB _cCHDB = new CCHDB();
         CDonKH _cDonKH = new CDonKH();
         DataTable DSCHDB_Edited = new DataTable();
-        
+        DataRowView CTRow;
 
         public frmDSCHDB()
         {
@@ -59,13 +59,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm Danh Bộ", gridViewCTCTDB);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ", gridViewCTCHDB);
+
+            dgvDSCTCHDB.AutoGenerateColumns = false;
+            dgvDSCTCHDB.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSCTCHDB.Font, FontStyle.Bold);
+            dgvDSCTCHDB.Location = gridControl.Location;
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
             {
+                gridControl.Visible = true;
                 gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
+                dgvDSCTCHDB.Visible = false;
             }
         }
 
@@ -73,7 +79,29 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radChuaDuyet.Checked)
             {
+                gridControl.Visible = true;
                 gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
+                dgvDSCTCHDB.Visible = false;
+            }
+        }
+
+        private void radDSCatTamDanhBo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSCatTamDanhBo.Checked)
+            {
+                dgvDSCTCHDB.Visible = true;
+                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDB();
+                gridControl.Visible = false;
+            }
+        }
+
+        private void radDSCatHuyDanhBo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSCatHuyDanhBo.Checked)
+            {
+                dgvDSCTCHDB.Visible = true;
+                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDB();
+                gridControl.Visible = false;
             }
         }
 
@@ -108,6 +136,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
         }
 
+        private void cậpNhậtCắtTạmDanhBộtoolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("Action", "Sửa");
+            if (radDaDuyet.Checked)
+                source.Add("MaCTCTDB", CTRow["MaCTCTDB"].ToString());
+            if (radDSCatTamDanhBo.Checked)
+                source.Add("MaCTCTDB", dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString());
+            frmCTDB frm = new frmCTDB(source);
+            if (frm.ShowDialog() == DialogResult.OK)
+                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet();
+        }
+
         private void cắtHủyDanhBộtoolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
@@ -130,6 +171,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
         }
 
+        private void cậpNhậtCắtHủyDanhBộtoolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            Dictionary<string, string> source = new Dictionary<string, string>();
+            DataRowView selRow = (DataRowView)gridViewCTCHDB.GetRow(gridViewCTCHDB.GetSelectedRows()[0]);
+            source.Add("Action", "Sửa");
+            source.Add("MaCTCHDB", CTRow["MaCTCHDB"].ToString());
+            frmCHDB frm = new frmCHDB(source);
+            if (frm.ShowDialog() == DialogResult.OK)
+                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet();
+        } 
+
         private void gridViewCHDB_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator)
@@ -150,15 +202,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDaDuyet.Checked && e.Button == MouseButtons.Right)
             {
+                ///Mỗi 1 record là 1 gridcontrol và 1 gridview khác nhau nên để lấy
+                ///được dữ liệu phải làm cách sau
+                GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+                CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
                 contextMenuStrip1.Show(gridControl, new Point(e.X, e.Y));
                 cậpNhậtCắtTạmDanhBộtoolStripMenuItem.Visible = true;
-            }
+            } 
         }
 
         private void gridViewCTCHDB_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             if (radDaDuyet.Checked && e.Button == MouseButtons.Right)
             {
+                ///Mỗi 1 record là 1 gridcontrol và 1 gridview khác nhau nên để lấy
+                ///được dữ liệu phải làm cách sau
+                GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+                CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
                 contextMenuStrip1.Show(gridControl, new Point(e.X, e.Y));
                 cậpNhậtCắtHủyDanhBộtoolStripMenuItem.Visible = true;
             }
@@ -198,11 +258,69 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             btnLuu.Enabled = true;
         }
 
-        
+        private void gridViewCTCTDB_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTCTDB" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(4, "-");
+            }
+            if (e.Column.FieldName == "SoTien" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }   
+        }
 
+        private void gridViewCTCHDB_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTCHDB" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(4, "-");
+            }
+            if (e.Column.FieldName == "SoTien" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
 
+        private void dgvDSCTCHDB_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "MaTB" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, "-");
+            }
 
+            if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
 
+        private void dgvDSCTCHDB_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSCTCHDB.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSCTCHDB_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                cậpNhậtCắtTạmDanhBộtoolStripMenuItem.Visible = true;
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvDSCTCHDB.CurrentCell = dgvDSCTCHDB.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void dgvDSCTCHDB_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(dgvDSCTCHDB, new Point(e.X, e.Y));
+            }
+        }
+  
 
     }
 }

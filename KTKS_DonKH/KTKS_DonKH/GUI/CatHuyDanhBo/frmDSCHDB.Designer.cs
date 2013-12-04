@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewCTCTDB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -72,11 +73,22 @@
             this.cậpNhậtCắtTạmDanhBộtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cắtHủyDanhBộtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cậpNhậtCắtHủyDanhBộtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radDSCatTamDanhBo = new System.Windows.Forms.RadioButton();
+            this.radDSCatHuyDanhBo = new System.Windows.Forms.RadioButton();
+            this.dgvDSCTCHDB = new System.Windows.Forms.DataGridView();
+            this.MaTB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChuLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCTDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCHDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCHDB)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTCHDB)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewCTCTDB
@@ -105,6 +117,7 @@
             this.gridViewCTCTDB.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTCTDB.OptionsView.ShowGroupPanel = false;
             this.gridViewCTCTDB.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTCTDB_RowCellClick);
+            this.gridViewCTCTDB.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTCTDB_CustomColumnDisplayText);
             // 
             // gridColumn14
             // 
@@ -197,7 +210,7 @@
             // 
             // gridViewCTCHDB
             // 
-            this.gridViewCTCHDB.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewCTCHDB.Appearance.HeaderPanel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridViewCTCHDB.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridViewCTCHDB.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gridViewCTCHDB.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -221,6 +234,7 @@
             this.gridViewCTCHDB.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTCHDB.OptionsView.ShowGroupPanel = false;
             this.gridViewCTCHDB.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTCHDB_RowCellClick);
+            this.gridViewCTCHDB.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTCHDB_CustomColumnDisplayText);
             // 
             // gridColumn20
             // 
@@ -529,6 +543,8 @@
             this.cậpNhậtCắtTạmDanhBộtoolStripMenuItem.Name = "cậpNhậtCắtTạmDanhBộtoolStripMenuItem";
             this.cậpNhậtCắtTạmDanhBộtoolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.cậpNhậtCắtTạmDanhBộtoolStripMenuItem.Text = "Cập Nhật Cắt Tạm Danh Bộ";
+            this.cậpNhậtCắtTạmDanhBộtoolStripMenuItem.Visible = false;
+            this.cậpNhậtCắtTạmDanhBộtoolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtCắtTạmDanhBộtoolStripMenuItem_Click);
             // 
             // cắtHủyDanhBộtoolStripMenuItem
             // 
@@ -544,6 +560,116 @@
             this.cậpNhậtCắtHủyDanhBộtoolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.cậpNhậtCắtHủyDanhBộtoolStripMenuItem.Text = "Cập Nhật Cắt Hủy Danh Bộ";
             this.cậpNhậtCắtHủyDanhBộtoolStripMenuItem.Visible = false;
+            this.cậpNhậtCắtHủyDanhBộtoolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtCắtHủyDanhBộtoolStripMenuItem_Click);
+            // 
+            // radDSCatTamDanhBo
+            // 
+            this.radDSCatTamDanhBo.AutoSize = true;
+            this.radDSCatTamDanhBo.Location = new System.Drawing.Point(130, 12);
+            this.radDSCatTamDanhBo.Name = "radDSCatTamDanhBo";
+            this.radDSCatTamDanhBo.Size = new System.Drawing.Size(147, 21);
+            this.radDSCatTamDanhBo.TabIndex = 4;
+            this.radDSCatTamDanhBo.Text = "Danh Sách Cắt Tạm";
+            this.radDSCatTamDanhBo.UseVisualStyleBackColor = true;
+            this.radDSCatTamDanhBo.CheckedChanged += new System.EventHandler(this.radDSCatTamDanhBo_CheckedChanged);
+            // 
+            // radDSCatHuyDanhBo
+            // 
+            this.radDSCatHuyDanhBo.AutoSize = true;
+            this.radDSCatHuyDanhBo.Location = new System.Drawing.Point(130, 39);
+            this.radDSCatHuyDanhBo.Name = "radDSCatHuyDanhBo";
+            this.radDSCatHuyDanhBo.Size = new System.Drawing.Size(145, 21);
+            this.radDSCatHuyDanhBo.TabIndex = 5;
+            this.radDSCatHuyDanhBo.Text = "Danh Sách Cắt Hủy";
+            this.radDSCatHuyDanhBo.UseVisualStyleBackColor = true;
+            this.radDSCatHuyDanhBo.CheckedChanged += new System.EventHandler(this.radDSCatHuyDanhBo_CheckedChanged);
+            // 
+            // dgvDSCTCHDB
+            // 
+            this.dgvDSCTCHDB.AllowUserToAddRows = false;
+            this.dgvDSCTCHDB.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvDSCTCHDB.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDSCTCHDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDSCTCHDB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaTB,
+            this.DanhBo,
+            this.HoTen,
+            this.DiaChi,
+            this.LyDo,
+            this.GhiChuLyDo,
+            this.SoTien});
+            this.dgvDSCTCHDB.Location = new System.Drawing.Point(0, 115);
+            this.dgvDSCTCHDB.Name = "dgvDSCTCHDB";
+            this.dgvDSCTCHDB.ReadOnly = true;
+            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1354, 470);
+            this.dgvDSCTCHDB.TabIndex = 6;
+            this.dgvDSCTCHDB.Visible = false;
+            this.dgvDSCTCHDB.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCTCHDB_CellFormatting);
+            this.dgvDSCTCHDB.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSCTCHDB_CellMouseClick);
+            this.dgvDSCTCHDB.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCTCHDB_RowPostPaint);
+            this.dgvDSCTCHDB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSCTCHDB_MouseClick);
+            // 
+            // MaTB
+            // 
+            this.MaTB.DataPropertyName = "MaTB";
+            this.MaTB.HeaderText = "Mã Thông Báo";
+            this.MaTB.Name = "MaTB";
+            this.MaTB.ReadOnly = true;
+            this.MaTB.Width = 130;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            this.DanhBo.Width = 90;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Width = 350;
+            // 
+            // LyDo
+            // 
+            this.LyDo.DataPropertyName = "LyDo";
+            this.LyDo.HeaderText = "Lý Do Xử Lý";
+            this.LyDo.Name = "LyDo";
+            this.LyDo.ReadOnly = true;
+            this.LyDo.Width = 250;
+            // 
+            // GhiChuLyDo
+            // 
+            this.GhiChuLyDo.DataPropertyName = "GhiChuLyDo";
+            this.GhiChuLyDo.HeaderText = "Ghi Chú";
+            this.GhiChuLyDo.Name = "GhiChuLyDo";
+            this.GhiChuLyDo.ReadOnly = true;
+            this.GhiChuLyDo.Width = 250;
+            // 
+            // SoTien
+            // 
+            this.SoTien.DataPropertyName = "SoTien";
+            this.SoTien.HeaderText = "Số Tiền";
+            this.SoTien.Name = "SoTien";
+            this.SoTien.ReadOnly = true;
+            this.SoTien.Width = 90;
             // 
             // frmDSCHDB
             // 
@@ -551,7 +677,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1362, 696);
+            this.ClientSize = new System.Drawing.Size(1370, 600);
+            this.Controls.Add(this.radDSCatHuyDanhBo);
+            this.Controls.Add(this.dgvDSCTCHDB);
+            this.Controls.Add(this.radDSCatTamDanhBo);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.gridControl);
@@ -566,12 +695,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCHDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCHDB)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTCHDB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        
+       
 
         #endregion
 
@@ -616,5 +746,15 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
         private System.Windows.Forms.ToolStripMenuItem cậpNhậtCắtTạmDanhBộtoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cậpNhậtCắtHủyDanhBộtoolStripMenuItem;
+        private System.Windows.Forms.RadioButton radDSCatTamDanhBo;
+        private System.Windows.Forms.RadioButton radDSCatHuyDanhBo;
+        private System.Windows.Forms.DataGridView dgvDSCTCHDB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuLyDo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
     }
 }

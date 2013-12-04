@@ -176,6 +176,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     chdb.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CHDBs.InsertOnSubmit(chdb);
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Thêm CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -202,6 +203,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     chdb.ModifyDate = DateTime.Now;
                     chdb.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -256,6 +258,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctctdb.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTCTDBs.InsertOnSubmit(ctctdb);
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Thêm CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -281,6 +284,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctctdb.ModifyDate = DateTime.Now;
                     ctctdb.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Sửa CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -323,6 +327,42 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCTCTDB()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                select new
+                                {
+                                    MaTB=itemCTCTDB.MaCTCTDB,
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
+                                    itemCTCTDB.SoTien,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region CTCHDB (Chi Tiết Cắt Hủy Danh Bộ)
@@ -344,6 +384,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctchdb.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTCHDBs.InsertOnSubmit(ctchdb);
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Thêm CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -369,6 +410,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctchdb.ModifyDate = DateTime.Now;
                     ctchdb.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Sửa CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -408,6 +450,42 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCTCHDB()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB)
+                {
+                    var query = from itemCTCHDB in db.CTCHDBs
+                                select new
+                                {
+                                    MaThongBao = itemCTCHDB.MaCTCHDB,
+                                    itemCTCHDB.DanhBo,
+                                    itemCTCHDB.HoTen,
+                                    itemCTCHDB.DiaChi,
+                                    itemCTCHDB.LyDo,
+                                    itemCTCHDB.GhiChuLyDo,
+                                    itemCTCHDB.SoTien,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 

@@ -197,6 +197,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     dcbd.CreateBy = CTaiKhoan.TaiKhoan;
                     db.DCBDs.InsertOnSubmit(dcbd);
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Thêm DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -223,6 +224,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     dcbd.ModifyDate = DateTime.Now;
                     dcbd.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Sửa DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -313,6 +315,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     ctdcbd.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTDCBDs.InsertOnSubmit(ctdcbd);
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Thêm CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -363,6 +366,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     ctdchd.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTDCHDs.InsertOnSubmit(ctdchd);
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Thêm CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

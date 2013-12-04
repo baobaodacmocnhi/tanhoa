@@ -296,6 +296,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 frm.ShowDialog();
             }
         }
+
+        private void gridViewCTDCBD_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTDCBD" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(4, "-");
+            }
+        }
+
+        private void gridViewCTDCHD_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTDCHD" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(4, "-");
+            }
+        }
        
         
     }

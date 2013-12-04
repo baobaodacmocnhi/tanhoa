@@ -39,6 +39,7 @@ namespace KTKS_DonKH.GUI.CapNhat
         private void frmChiNhanh_Load(object sender, EventArgs e)
         {
             dgvDSChiNhanh.AutoGenerateColumns = false;
+            dgvDSChiNhanh.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChiNhanh.Font, FontStyle.Bold);
             dgvDSChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh();
         }
 

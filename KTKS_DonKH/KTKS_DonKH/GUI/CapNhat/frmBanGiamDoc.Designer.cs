@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtChucVu = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -104,6 +105,14 @@
             // 
             this.dgvDSBanGiamDoc.AllowUserToAddRows = false;
             this.dgvDSBanGiamDoc.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSBanGiamDoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSBanGiamDoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSBanGiamDoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaBGD,
@@ -112,7 +121,7 @@
             this.KyTen});
             this.dgvDSBanGiamDoc.Location = new System.Drawing.Point(12, 115);
             this.dgvDSBanGiamDoc.Name = "dgvDSBanGiamDoc";
-            this.dgvDSBanGiamDoc.Size = new System.Drawing.Size(444, 150);
+            this.dgvDSBanGiamDoc.Size = new System.Drawing.Size(454, 150);
             this.dgvDSBanGiamDoc.TabIndex = 6;
             this.dgvDSBanGiamDoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSBanGiamDoc_CellContentClick);
             this.dgvDSBanGiamDoc.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSBanGiamDoc_CellEndEdit);
@@ -145,13 +154,14 @@
             this.KyTen.DataPropertyName = "KyTen";
             this.KyTen.HeaderText = "Ký Tên Phiếu";
             this.KyTen.Name = "KyTen";
+            this.KyTen.Width = 110;
             // 
             // frmBanGiamDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(470, 277);
+            this.ClientSize = new System.Drawing.Size(480, 277);
             this.Controls.Add(this.dgvDSBanGiamDoc);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
