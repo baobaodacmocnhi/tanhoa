@@ -64,6 +64,10 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtHieuLucKy = new System.Windows.Forms.TextBox();
+            this.txtMaThongBaoCH = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtMaThongBaoCT = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBoxCapTrenXuLy.SuspendLayout();
             this.groupBoxKetQuaXuLy.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -416,6 +420,7 @@
             this.btnInPhieu.Text = "In Phiếu";
             this.btnInPhieu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInPhieu.UseVisualStyleBackColor = true;
+            this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
             // 
             // label10
             // 
@@ -434,12 +439,50 @@
             this.txtHieuLucKy.Size = new System.Drawing.Size(58, 25);
             this.txtHieuLucKy.TabIndex = 5;
             // 
+            // txtMaThongBaoCH
+            // 
+            this.txtMaThongBaoCH.Location = new System.Drawing.Point(575, 6);
+            this.txtMaThongBaoCH.Name = "txtMaThongBaoCH";
+            this.txtMaThongBaoCH.ReadOnly = true;
+            this.txtMaThongBaoCH.Size = new System.Drawing.Size(100, 25);
+            this.txtMaThongBaoCH.TabIndex = 9;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(444, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(125, 17);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Mã Thông Báo CH:";
+            // 
+            // txtMaThongBaoCT
+            // 
+            this.txtMaThongBaoCT.Location = new System.Drawing.Point(814, 6);
+            this.txtMaThongBaoCT.Name = "txtMaThongBaoCT";
+            this.txtMaThongBaoCT.ReadOnly = true;
+            this.txtMaThongBaoCT.Size = new System.Drawing.Size(100, 25);
+            this.txtMaThongBaoCT.TabIndex = 11;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(686, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(122, 17);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "Mã Thông Báo CT:";
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 435);
+            this.Controls.Add(this.txtMaThongBaoCT);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtMaThongBaoCH);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.txtHieuLucKy);
@@ -507,6 +550,10 @@
         private System.Windows.Forms.Button btnInPhieu;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtHieuLucKy;
+        private System.Windows.Forms.TextBox txtMaThongBaoCH;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtMaThongBaoCT;
+        private System.Windows.Forms.Label label15;
 
     }
 }

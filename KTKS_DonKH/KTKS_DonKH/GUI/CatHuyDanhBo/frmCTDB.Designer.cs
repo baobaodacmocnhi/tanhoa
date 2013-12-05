@@ -61,6 +61,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtKetQuaCapTrenXuLy = new System.Windows.Forms.TextBox();
+            this.txtMaThongBao = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaXuLy.SuspendLayout();
@@ -401,12 +403,31 @@
             this.txtKetQuaCapTrenXuLy.Size = new System.Drawing.Size(386, 25);
             this.txtKetQuaCapTrenXuLy.TabIndex = 3;
             // 
+            // txtMaThongBao
+            // 
+            this.txtMaThongBao.Location = new System.Drawing.Point(550, 6);
+            this.txtMaThongBao.Name = "txtMaThongBao";
+            this.txtMaThongBao.ReadOnly = true;
+            this.txtMaThongBao.Size = new System.Drawing.Size(100, 25);
+            this.txtMaThongBao.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(444, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 17);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Mã Thông Báo:";
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 435);
+            this.Controls.Add(this.txtMaThongBao);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.groupBoxCapTrenXuLy);
             this.Controls.Add(this.groupBoxKetQuaXuLy);
             this.Controls.Add(this.groupBoxNguyenNhanXuLy);
@@ -468,5 +489,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtKetQuaCapTrenXuLy;
         private System.Windows.Forms.Button btnCapNhatCapTrenXuLy;
+        private System.Windows.Forms.TextBox txtMaThongBao;
+        private System.Windows.Forms.Label label10;
     }
 }
