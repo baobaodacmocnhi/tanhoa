@@ -376,7 +376,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     if (db.CTCHDBs.Count() > 0)
                     {
                         decimal MaCTCHDB = db.CTCHDBs.Max(itemCTCHDB => itemCTCHDB.MaCTCHDB);
-                        ctchdb.MaCTCTDB = getMaxNextIDTable(MaCTCHDB);
+                        ctchdb.MaCTCHDB = getMaxNextIDTable(MaCTCHDB);
                     }
                     else
                         ctchdb.MaCTCHDB = decimal.Parse(DateTime.Now.Year + "1");
@@ -466,7 +466,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     var query = from itemCTCHDB in db.CTCHDBs
                                 select new
                                 {
-                                    MaThongBao = itemCTCHDB.MaCTCHDB,
+                                    MaTB = itemCTCHDB.MaCTCHDB,
                                     itemCTCHDB.DanhBo,
                                     itemCTCHDB.HoTen,
                                     itemCTCHDB.DiaChi,
@@ -486,6 +486,24 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra Cắt Hủy đã được lập trước đó chưa, trong record Cắt Hủy có column Mã Chi Tiết Cắt Tạm
+        /// </summary>
+        /// <param name="MaCTCTDB"></param>
+        /// <returns></returns>
+        public bool CheckCTCHDBbyCTCTDB(decimal MaCTCTDB)
+        {
+            try
+            {
+                return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.MaCTCTDB == MaCTCTDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 

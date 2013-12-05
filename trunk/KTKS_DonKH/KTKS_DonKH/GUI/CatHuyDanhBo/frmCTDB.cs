@@ -65,6 +65,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"]));
                         ///Thông Tin
                         txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(4, "-");
+                        txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(4, "-");
                         txtDanhBo.Text = _ctctdb.DanhBo;
                         txtHopDong.Text = _ctctdb.HopDong;
                         txtHoTen.Text = _ctctdb.HoTen;
