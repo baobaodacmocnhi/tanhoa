@@ -49,6 +49,8 @@
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridViewCHDB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -83,9 +85,11 @@
             this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChuLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaLapPhieu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCTDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCHDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCHDB)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTCHDB)).BeginInit();
@@ -137,7 +141,7 @@
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 1;
-            this.gridColumn15.Width = 90;
+            this.gridColumn15.Width = 100;
             // 
             // gridColumn16
             // 
@@ -147,7 +151,7 @@
             this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 2;
-            this.gridColumn16.Width = 150;
+            this.gridColumn16.Width = 180;
             // 
             // gridColumn17
             // 
@@ -157,7 +161,7 @@
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 3;
-            this.gridColumn17.Width = 350;
+            this.gridColumn17.Width = 300;
             // 
             // gridColumn22
             // 
@@ -167,7 +171,7 @@
             this.gridColumn22.OptionsColumn.AllowEdit = false;
             this.gridColumn22.Visible = true;
             this.gridColumn22.VisibleIndex = 4;
-            this.gridColumn22.Width = 250;
+            this.gridColumn22.Width = 230;
             // 
             // gridColumn23
             // 
@@ -177,7 +181,7 @@
             this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 5;
-            this.gridColumn23.Width = 250;
+            this.gridColumn23.Width = 255;
             // 
             // gridColumn29
             // 
@@ -201,6 +205,8 @@
             this.gridControl.Location = new System.Drawing.Point(0, 67);
             this.gridControl.MainView = this.gridViewCHDB;
             this.gridControl.Name = "gridControl";
+            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
             this.gridControl.Size = new System.Drawing.Size(2500, 470);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -224,7 +230,8 @@
             this.gridColumn25,
             this.gridColumn26,
             this.gridColumn27,
-            this.gridColumn28});
+            this.gridColumn28,
+            this.gridColumn30});
             this.gridViewCTCHDB.GridControl = this.gridControl;
             this.gridViewCTCHDB.IndicatorWidth = 41;
             this.gridViewCTCHDB.Name = "gridViewCTCHDB";
@@ -254,7 +261,7 @@
             this.gridColumn21.OptionsColumn.AllowEdit = false;
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 1;
-            this.gridColumn21.Width = 90;
+            this.gridColumn21.Width = 100;
             // 
             // gridColumn24
             // 
@@ -264,7 +271,7 @@
             this.gridColumn24.OptionsColumn.AllowEdit = false;
             this.gridColumn24.Visible = true;
             this.gridColumn24.VisibleIndex = 2;
-            this.gridColumn24.Width = 150;
+            this.gridColumn24.Width = 180;
             // 
             // gridColumn25
             // 
@@ -274,7 +281,7 @@
             this.gridColumn25.OptionsColumn.AllowEdit = false;
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 3;
-            this.gridColumn25.Width = 350;
+            this.gridColumn25.Width = 300;
             // 
             // gridColumn26
             // 
@@ -284,27 +291,41 @@
             this.gridColumn26.OptionsColumn.AllowEdit = false;
             this.gridColumn26.Visible = true;
             this.gridColumn26.VisibleIndex = 4;
-            this.gridColumn26.Width = 250;
+            this.gridColumn26.Width = 230;
             // 
             // gridColumn27
             // 
             this.gridColumn27.Caption = "Ghi Chú";
             this.gridColumn27.FieldName = "GhiChuLyDo";
             this.gridColumn27.Name = "gridColumn27";
-            this.gridColumn27.OptionsColumn.AllowEdit = false;
             this.gridColumn27.Visible = true;
-            this.gridColumn27.VisibleIndex = 6;
-            this.gridColumn27.Width = 250;
+            this.gridColumn27.VisibleIndex = 5;
+            this.gridColumn27.Width = 255;
             // 
             // gridColumn28
             // 
             this.gridColumn28.Caption = "Số Tiền";
             this.gridColumn28.FieldName = "SoTien";
             this.gridColumn28.Name = "gridColumn28";
-            this.gridColumn28.OptionsColumn.AllowEdit = false;
             this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 5;
+            this.gridColumn28.VisibleIndex = 6;
             this.gridColumn28.Width = 90;
+            // 
+            // gridColumn30
+            // 
+            this.gridColumn30.Caption = "Đã Lập Phiếu";
+            this.gridColumn30.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn30.FieldName = "DaLapPhieu";
+            this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.Visible = true;
+            this.gridColumn30.VisibleIndex = 7;
+            this.gridColumn30.Width = 100;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Caption = "Check";
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
             // gridViewCHDB
             // 
@@ -594,6 +615,7 @@
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDSCTCHDB.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSCTCHDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCTCHDB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -603,11 +625,13 @@
             this.DiaChi,
             this.LyDo,
             this.GhiChuLyDo,
-            this.SoTien});
+            this.SoTien,
+            this.DaLapPhieu});
             this.dgvDSCTCHDB.Location = new System.Drawing.Point(0, 115);
+            this.dgvDSCTCHDB.MultiSelect = false;
             this.dgvDSCTCHDB.Name = "dgvDSCTCHDB";
             this.dgvDSCTCHDB.ReadOnly = true;
-            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1354, 470);
+            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1361, 470);
             this.dgvDSCTCHDB.TabIndex = 6;
             this.dgvDSCTCHDB.Visible = false;
             this.dgvDSCTCHDB.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCTCHDB_CellFormatting);
@@ -621,7 +645,6 @@
             this.MaTB.HeaderText = "Mã Thông Báo";
             this.MaTB.Name = "MaTB";
             this.MaTB.ReadOnly = true;
-            this.MaTB.Width = 130;
             // 
             // DanhBo
             // 
@@ -629,7 +652,6 @@
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
             this.DanhBo.ReadOnly = true;
-            this.DanhBo.Width = 90;
             // 
             // HoTen
             // 
@@ -637,7 +659,7 @@
             this.HoTen.HeaderText = "Khách Hàng";
             this.HoTen.Name = "HoTen";
             this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 150;
+            this.HoTen.Width = 180;
             // 
             // DiaChi
             // 
@@ -645,7 +667,7 @@
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 350;
+            this.DiaChi.Width = 300;
             // 
             // LyDo
             // 
@@ -653,7 +675,7 @@
             this.LyDo.HeaderText = "Lý Do Xử Lý";
             this.LyDo.Name = "LyDo";
             this.LyDo.ReadOnly = true;
-            this.LyDo.Width = 250;
+            this.LyDo.Width = 230;
             // 
             // GhiChuLyDo
             // 
@@ -661,7 +683,7 @@
             this.GhiChuLyDo.HeaderText = "Ghi Chú";
             this.GhiChuLyDo.Name = "GhiChuLyDo";
             this.GhiChuLyDo.ReadOnly = true;
-            this.GhiChuLyDo.Width = 250;
+            this.GhiChuLyDo.Width = 253;
             // 
             // SoTien
             // 
@@ -671,18 +693,26 @@
             this.SoTien.ReadOnly = true;
             this.SoTien.Width = 90;
             // 
+            // DaLapPhieu
+            // 
+            this.DaLapPhieu.DataPropertyName = "DaLapPhieu";
+            this.DaLapPhieu.HeaderText = "Đã Lập Phiếu";
+            this.DaLapPhieu.Name = "DaLapPhieu";
+            this.DaLapPhieu.ReadOnly = true;
+            this.DaLapPhieu.Width = 65;
+            // 
             // frmDSCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 600);
+            this.ClientSize = new System.Drawing.Size(1363, 610);
             this.Controls.Add(this.radDSCatHuyDanhBo);
-            this.Controls.Add(this.dgvDSCTCHDB);
             this.Controls.Add(this.radDSCatTamDanhBo);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
+            this.Controls.Add(this.dgvDSCTCHDB);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.radChuaDuyet);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -693,6 +723,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCTDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCHDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCHDB)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTCHDB)).EndInit();
@@ -742,13 +773,15 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
         private System.Windows.Forms.ToolStripMenuItem cậpNhậtCắtTạmDanhBộtoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cậpNhậtCắtHủyDanhBộtoolStripMenuItem;
         private System.Windows.Forms.RadioButton radDSCatTamDanhBo;
         private System.Windows.Forms.RadioButton radDSCatHuyDanhBo;
         private System.Windows.Forms.DataGridView dgvDSCTCHDB;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTB;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -756,5 +789,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuLyDo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DaLapPhieu;
     }
 }

@@ -114,9 +114,13 @@
       <Column Name="NgayCapTrenXuLy" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="KetQuaCapTrenXuLy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ThoiGianLapPhieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DaLapPhieu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoPhieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NgayLapPhieu" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DotLapPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NguoiKyLapPhieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ChucVuLapPhieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="DaLapCatTam" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="MaCTCTDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaCHDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />

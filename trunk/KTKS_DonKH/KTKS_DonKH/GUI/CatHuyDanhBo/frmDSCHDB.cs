@@ -91,6 +91,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 dgvDSCTCHDB.Visible = true;
                 dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDB();
+                dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
                 gridControl.Visible = false;
             }
         }
@@ -101,6 +102,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 dgvDSCTCHDB.Visible = true;
                 dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDB();
+                dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
                 gridControl.Visible = false;
             }
         }

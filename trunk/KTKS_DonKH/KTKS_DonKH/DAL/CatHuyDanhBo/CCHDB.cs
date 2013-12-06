@@ -473,6 +473,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.LyDo,
                                     itemCTCHDB.GhiChuLyDo,
                                     itemCTCHDB.SoTien,
+                                    itemCTCHDB.DaLapPhieu,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -499,6 +500,49 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                 return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.MaCTCTDB == MaCTCTDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Số Phiếu kế tiếp khi lập Cắt Hủy Danh Bộ
+        /// </summary>
+        /// <returns></returns>
+        public decimal getMaxNextSoPhieuCHDB()
+        {
+            try
+            {
+                if (db.CTCHDBs.Count() > 0)
+                {
+                    if (db.CTCHDBs.Max(itemCTCHDB => itemCTCHDB.SoPhieu) == null)
+                        return decimal.Parse(DateTime.Now.Year + "1");
+                    else
+                        return getMaxNextIDTable(db.CTCHDBs.Max(itemCTCHDB => itemCTCHDB.SoPhieu).Value);
+                }
+                else
+                    return decimal.Parse(DateTime.Now.Year + "1");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm Tra Cắt Hủy Danh Bộ đã lập Phiếu chưa
+        /// </summary>
+        /// <param name="MaCTCHDB"></param>
+        /// <returns></returns>
+        public bool CheckDaLapPhieuCHDB(decimal MaCTCHDB)
+        {
+            try
+            {
+                return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.MaCTCHDB == MaCTCHDB && itemCTCHDB.DaLapPhieu == true);
             }
             catch (Exception ex)
             {
