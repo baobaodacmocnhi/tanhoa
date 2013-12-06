@@ -234,6 +234,10 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Lấy Số Phiếu kế tiếp cho Cắt Chuyển Định Mức
+        /// </summary>
+        /// <returns></returns>
         public decimal getMaxNextSoPhieuLSCT()
         {
             try

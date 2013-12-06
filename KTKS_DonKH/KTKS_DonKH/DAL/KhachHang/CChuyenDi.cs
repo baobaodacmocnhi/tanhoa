@@ -48,7 +48,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         /// <param name="MaChuyen1"></param>
         /// <param name="MaChuyen2"></param>
         /// <returns></returns>
-        public List<ChuyenDi> LoadDSChuyenDi(string MaChuyen1,string MaChuyen2)
+        public List<ChuyenDi> LoadDSChuyenDi(string MaChuyen1, string MaChuyen2)
         {
             try
             {

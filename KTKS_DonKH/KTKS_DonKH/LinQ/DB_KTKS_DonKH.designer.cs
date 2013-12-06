@@ -2338,11 +2338,19 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ThoiGianLapPhieu;
 		
+		private bool _DaLapPhieu;
+		
 		private System.Nullable<decimal> _SoPhieu;
 		
 		private System.Nullable<System.DateTime> _NgayLapPhieu;
 		
 		private string _HieuLucKy;
+		
+		private string _DotLapPhieu;
+		
+		private string _NguoiKyLapPhieu;
+		
+		private string _ChucVuLapPhieu;
 		
 		private System.Nullable<bool> _DaLapCatTam;
 		
@@ -2404,12 +2412,20 @@ namespace KTKS_DonKH.LinQ
     partial void OnKetQuaCapTrenXuLyChanged();
     partial void OnThoiGianLapPhieuChanging(System.Nullable<int> value);
     partial void OnThoiGianLapPhieuChanged();
+    partial void OnDaLapPhieuChanging(bool value);
+    partial void OnDaLapPhieuChanged();
     partial void OnSoPhieuChanging(System.Nullable<decimal> value);
     partial void OnSoPhieuChanged();
     partial void OnNgayLapPhieuChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayLapPhieuChanged();
     partial void OnHieuLucKyChanging(string value);
     partial void OnHieuLucKyChanged();
+    partial void OnDotLapPhieuChanging(string value);
+    partial void OnDotLapPhieuChanged();
+    partial void OnNguoiKyLapPhieuChanging(string value);
+    partial void OnNguoiKyLapPhieuChanged();
+    partial void OnChucVuLapPhieuChanging(string value);
+    partial void OnChucVuLapPhieuChanged();
     partial void OnDaLapCatTamChanging(System.Nullable<bool> value);
     partial void OnDaLapCatTamChanged();
     partial void OnMaCTCTDBChanging(System.Nullable<decimal> value);
@@ -2796,6 +2812,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaLapPhieu", DbType="Bit NOT NULL")]
+		public bool DaLapPhieu
+		{
+			get
+			{
+				return this._DaLapPhieu;
+			}
+			set
+			{
+				if ((this._DaLapPhieu != value))
+				{
+					this.OnDaLapPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._DaLapPhieu = value;
+					this.SendPropertyChanged("DaLapPhieu");
+					this.OnDaLapPhieuChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu", DbType="Decimal(18,0)")]
 		public System.Nullable<decimal> SoPhieu
 		{
@@ -2852,6 +2888,66 @@ namespace KTKS_DonKH.LinQ
 					this._HieuLucKy = value;
 					this.SendPropertyChanged("HieuLucKy");
 					this.OnHieuLucKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DotLapPhieu", DbType="NVarChar(50)")]
+		public string DotLapPhieu
+		{
+			get
+			{
+				return this._DotLapPhieu;
+			}
+			set
+			{
+				if ((this._DotLapPhieu != value))
+				{
+					this.OnDotLapPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._DotLapPhieu = value;
+					this.SendPropertyChanged("DotLapPhieu");
+					this.OnDotLapPhieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiKyLapPhieu", DbType="NVarChar(100)")]
+		public string NguoiKyLapPhieu
+		{
+			get
+			{
+				return this._NguoiKyLapPhieu;
+			}
+			set
+			{
+				if ((this._NguoiKyLapPhieu != value))
+				{
+					this.OnNguoiKyLapPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._NguoiKyLapPhieu = value;
+					this.SendPropertyChanged("NguoiKyLapPhieu");
+					this.OnNguoiKyLapPhieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChucVuLapPhieu", DbType="NVarChar(100)")]
+		public string ChucVuLapPhieu
+		{
+			get
+			{
+				return this._ChucVuLapPhieu;
+			}
+			set
+			{
+				if ((this._ChucVuLapPhieu != value))
+				{
+					this.OnChucVuLapPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._ChucVuLapPhieu = value;
+					this.SendPropertyChanged("ChucVuLapPhieu");
+					this.OnChucVuLapPhieuChanged();
 				}
 			}
 		}
