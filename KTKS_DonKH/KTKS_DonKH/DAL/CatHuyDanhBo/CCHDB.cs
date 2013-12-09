@@ -340,13 +340,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     var query = from itemCTCTDB in db.CTCTDBs
                                 select new
                                 {
-                                    MaTB=itemCTCTDB.MaCTCTDB,
+                                    MaTB = itemCTCTDB.MaCTCTDB,
                                     itemCTCTDB.DanhBo,
                                     itemCTCTDB.HoTen,
                                     itemCTCTDB.DiaChi,
                                     itemCTCTDB.LyDo,
                                     itemCTCTDB.GhiChuLyDo,
                                     itemCTCTDB.SoTien,
+                                    itemCTCTDB.ThongBaoDuocKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -473,7 +474,9 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.LyDo,
                                     itemCTCHDB.GhiChuLyDo,
                                     itemCTCHDB.SoTien,
+                                    itemCTCHDB.ThongBaoDuocKy,
                                     itemCTCHDB.DaLapPhieu,
+                                    itemCTCHDB.PhieuDuocKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

@@ -345,6 +345,47 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Điều Chỉnh Biến Động
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSDCBD()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                select new
+                                {
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region CTDCHD (Chi Tiết Điều Chỉnh Hóa Đơn)
@@ -393,6 +434,47 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Điều Chỉnh Hóa Đơn
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSDCHD()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                select new
+                                {
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 

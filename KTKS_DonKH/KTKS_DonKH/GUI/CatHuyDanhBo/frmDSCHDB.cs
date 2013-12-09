@@ -12,6 +12,7 @@ using KTKS_DonKH.DAL.KhachHang;
 using DevExpress.XtraGrid.Views.Grid;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.GUI.KhachHang;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -92,6 +93,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvDSCTCHDB.Visible = true;
                 dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDB();
                 dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
+                dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = false;
                 gridControl.Visible = false;
             }
         }
@@ -103,6 +105,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvDSCTCHDB.Visible = true;
                 dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDB();
                 dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
+                dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
                 gridControl.Visible = false;
             }
         }
@@ -334,7 +337,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 e.Value = e.Value.ToString().Insert(4, "-");
             }
-
             if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
@@ -387,6 +389,33 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (dgvDSCTCHDB.RowCount > 0 && e.Button == MouseButtons.Right)
             {
                 contextMenuStrip1.Show(dgvDSCTCHDB, new Point(e.X, e.Y));
+            }
+        }
+
+        private void dgvDSCTCHDB_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (radDSCatTamDanhBo.Checked)
+            {
+                CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
+                if (bool.Parse(dgvDSCTCHDB.CurrentCell.Value.ToString()) != ctctdb.ThongBaoDuocKy)
+                {
+                    ctctdb.ThongBaoDuocKy = bool.Parse(dgvDSCTCHDB.CurrentCell.Value.ToString());
+                    _cCHDB.SuaCTCTDB(ctctdb);
+                }
+            }
+            if (radDSCatHuyDanhBo.Checked)
+            {
+                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString()));
+                if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["ThongBaoDuocKy"].Value.ToString())!=ctchdb.ThongBaoDuocKy)
+                {
+                    ctchdb.ThongBaoDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["ThongBaoDuocKy"].Value.ToString());
+                    _cCHDB.SuaCTCHDB(ctchdb);
+                }
+                if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString()) != ctchdb.PhieuDuocKy)
+                {
+                    ctchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
+                    _cCHDB.SuaCTCHDB(ctchdb);
+                }
             }
         }
   

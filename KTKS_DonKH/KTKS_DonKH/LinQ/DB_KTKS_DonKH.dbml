@@ -38,6 +38,7 @@
       <Column Name="MaChuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LyDoChuyen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -121,11 +122,13 @@
       <Column Name="DotLapPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NguoiKyLapPhieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVuLapPhieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DaLapCatTam" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="MaCTCTDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaCHDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ThongBaoDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -172,6 +175,7 @@
       <Column Name="MaCHDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ThongBaoDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -210,6 +214,7 @@
       <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -229,25 +234,26 @@
       <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaBieuBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DinhMucBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TieuThuBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienNuocStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThueGTGTStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMTStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TongCongStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBieu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuThu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienNuoc_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGT_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongCong_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TienNuocBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThueGTGTBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMTBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TongCongBD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienNuocEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThueGTGTEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMTEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TongCongEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongCong_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienNuoc_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGT_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongCong_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -267,6 +273,7 @@
       <Column Name="MaChuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LyDoChuyen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -366,6 +373,7 @@
       <Column Name="MaChuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LyDoChuyen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="XepDon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -400,6 +408,7 @@
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>

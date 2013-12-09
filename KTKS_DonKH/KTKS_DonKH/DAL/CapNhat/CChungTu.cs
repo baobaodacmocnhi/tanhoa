@@ -259,6 +259,105 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Phiếu Cắt Chuyển Định Mức
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCatChuyenDM()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                where itemLSCT.SoPhieu != null
+                                select new
+                                {
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        DataTable table = new DataTable();
+                        table.Columns.Add("MaLSCT", typeof(string));
+                        table.Columns.Add("SoPhieu", typeof(string));
+                        table.Columns.Add("MaCT", typeof(string));
+                        table.Columns.Add("CatNhan", typeof(string));
+                        table.Columns.Add("SoNK", typeof(string));
+                        table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        table.Columns.Add("CatNK_MaCN", typeof(string));
+                        table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        table.Columns.Add("CatNK_HoTen", typeof(string));
+                        table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        foreach (DataRow itemRow in table2.Rows)
+                        {
+                            DataRow Row = table.NewRow();
+                            Row["MaLSCT"] = itemRow["MaLSCT"];
+                            Row["SoPhieu"] = itemRow["SoPhieu"];
+                            Row["MaCT"] = itemRow["MaCT"];
+                            //MessageBox.Show(itemRow["CatDM"].ToString());
+                            if (itemRow["CatDM"].ToString() != "")
+                                if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                                {
+                                    Row["CatNhan"] = "Cắt";
+                                    Row["SoNK"] = itemRow["SoNKCat"];
+                                }
+                            if (itemRow["NhanDM"].ToString() != "")
+                                if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                                {
+                                    Row["CatNhan"] = "Nhận";
+                                    Row["SoNK"] = itemRow["SoNKNhan"];
+                                }
+                            Row["NhanNK_MaCN"] = itemRow["NhanNK_MaCN"];
+                            Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                            Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                            Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                            Row["CatNK_MaCN"] = itemRow["CatNK_MaCN"];
+                            Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                            Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                            Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                            Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                            table.Rows.Add(Row);
+                        }
+                        return table;
+                    }
+                    else
+                        return null;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region Method

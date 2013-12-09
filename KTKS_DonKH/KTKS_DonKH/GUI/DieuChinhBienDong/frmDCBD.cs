@@ -214,15 +214,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///Hiện tại nếu check SoChinh mà exit bằng X thì dữ liệu không được lưu
             ///Sau khi check phải check qua chỗ khác mới lưu
             CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
-            if (bool.Parse(dgvDSSoDangKy["SoChinh", e.RowIndex].Value.ToString()) == true)
-                ctchungtu.SoChinh = true;
-            else
-                ctchungtu.SoChinh = false;
+            if (bool.Parse(dgvDSSoDangKy["SoChinh", e.RowIndex].Value.ToString()) != ctchungtu.SoChinh)
+            {
+                ctchungtu.SoChinh = bool.Parse(dgvDSSoDangKy["SoChinh", e.RowIndex].Value.ToString());
+                _cChungTu.SuaCTChungTu(ctchungtu);
+            }
+            
             //if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) == true)
             //    ctchungtu.Cat = true;
             //else
             //    ctchungtu.Cat = false;
-            _cChungTu.SuaCTChungTu(ctchungtu);
+            
             this.ControlBox = true;
             contextMenuStrip1.Enabled = true;
         }
