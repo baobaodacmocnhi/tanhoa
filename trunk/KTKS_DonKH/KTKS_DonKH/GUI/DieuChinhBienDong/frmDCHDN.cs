@@ -207,29 +207,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctdchd.DinhMuc = int.Parse(txtDinhMuc_Cu.Text.Trim());
                 ctdchd.TieuThu = int.Parse(txtTieuThu_Cu.Text.Trim());
                 ///
-                ctdchd.GiaBieuBD = int.Parse(txtGiaBieu_Moi.Text.Trim());
-                ctdchd.DinhMucBD = int.Parse(txtDinhMuc_Moi.Text.Trim());
-                ctdchd.TieuThuBD = int.Parse(txtTieuThu_Moi.Text.Trim());
+                ctdchd.GiaBieu_BD = int.Parse(txtGiaBieu_Moi.Text.Trim());
+                ctdchd.DinhMuc_BD = int.Parse(txtDinhMuc_Moi.Text.Trim());
+                ctdchd.TieuThu_BD = int.Parse(txtTieuThu_Moi.Text.Trim());
                 ///
-                ctdchd.TienNuocStart = int.Parse(txtTienNuoc_Start.Text.Trim());
-                ctdchd.ThueGTGTStart = int.Parse(txtThueGTGT_Start.Text.Trim());
-                ctdchd.PhiBVMTStart = int.Parse(txtPhiBVMT_Start.Text.Trim());
-                ctdchd.TongCongStart = int.Parse(txtTongCong_Start.Text.Trim());
+                ctdchd.TienNuoc_Start = int.Parse(txtTienNuoc_Start.Text.Trim());
+                ctdchd.ThueGTGT_Start = int.Parse(txtThueGTGT_Start.Text.Trim());
+                ctdchd.PhiBVMT_Start = int.Parse(txtPhiBVMT_Start.Text.Trim());
+                ctdchd.TongCong_Start = int.Parse(txtTongCong_Start.Text.Trim());
                 ///
-                ctdchd.TienNuocBD = int.Parse(txtTienNuoc_BD.Text.Trim());
-                ctdchd.ThueGTGTBD = int.Parse(txtThueGTGT_BD.Text.Trim());
-                ctdchd.PhiBVMTBD = int.Parse(txtPhiBVMT_BD.Text.Trim());
-                ctdchd.TongCongBD = int.Parse(txtTongCong_BD.Text.Trim());
+                ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim());
+                ctdchd.ThueGTGT_BD = int.Parse(txtThueGTGT_BD.Text.Trim());
+                ctdchd.PhiBVMT_BD = int.Parse(txtPhiBVMT_BD.Text.Trim());
+                ctdchd.TongCong_BD = int.Parse(txtTongCong_BD.Text.Trim());
                 ///
-                ctdchd.TienNuocEnd = int.Parse(txtTienNuoc_End.Text.Trim());
-                ctdchd.ThueGTGTEnd = int.Parse(txtThueGTGT_End.Text.Trim());
-                ctdchd.PhiBVMTEnd = int.Parse(txtPhiBVMT_End.Text.Trim());
-                ctdchd.TongCongEnd = int.Parse(txtTongCong_End.Text.Trim());
+                ctdchd.TienNuoc_End = int.Parse(txtTienNuoc_End.Text.Trim());
+                ctdchd.ThueGTGT_End = int.Parse(txtThueGTGT_End.Text.Trim());
+                ctdchd.PhiBVMT_End = int.Parse(txtPhiBVMT_End.Text.Trim());
+                ctdchd.TongCong_End = int.Parse(txtTongCong_End.Text.Trim());
 
-                if (ctdchd.TienNuocEnd - ctdchd.TienNuocStart == 0)
+                if (ctdchd.TienNuoc_End - ctdchd.TienNuoc_Start == 0)
                     ctdchd.TangGiam = "";
                 else
-                    if (ctdchd.TienNuocEnd - ctdchd.TienNuocStart > 0)
+                    if (ctdchd.TienNuoc_End - ctdchd.TienNuoc_Start > 0)
                         ctdchd.TangGiam = "Tăng";
                     else
                         ctdchd.TangGiam = "Giảm";
@@ -256,24 +256,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["SoHD"] = ctdchd.SoHD;
                     ///
                     dr["TieuThuStart"] = ctdchd.TieuThu;
-                    dr["TienNuocStart"] = ctdchd.TienNuocStart;
-                    dr["ThueGTGTStart"] = ctdchd.ThueGTGTStart;
-                    dr["PhiBVMTStart"] = ctdchd.PhiBVMTStart;
-                    dr["TongCongStart"] = ctdchd.TongCongStart;
+                    dr["TienNuocStart"] = ctdchd.TienNuoc_Start;
+                    dr["ThueGTGTStart"] = ctdchd.ThueGTGT_Start;
+                    dr["PhiBVMTStart"] = ctdchd.PhiBVMT_Start;
+                    dr["TongCongStart"] = ctdchd.TongCong_Start;
                     ///
                     dr["TangGiam"] = ctdchd.TangGiam;
                     ///
-                    dr["TieuThuBD"] = ctdchd.TieuThuBD - ctdchd.TieuThu;
-                    dr["TienNuocBD"] = ctdchd.TienNuocBD;
-                    dr["ThueGTGTBD"] = ctdchd.ThueGTGTBD;
-                    dr["PhiBVMTBD"] = ctdchd.PhiBVMTBD;
-                    dr["TongCongBD"] = ctdchd.TongCongBD;
+                    dr["TieuThuBD"] = ctdchd.TieuThu_BD - ctdchd.TieuThu;
+                    dr["TienNuocBD"] = ctdchd.TienNuoc_BD;
+                    dr["ThueGTGTBD"] = ctdchd.ThueGTGT_BD;
+                    dr["PhiBVMTBD"] = ctdchd.PhiBVMT_BD;
+                    dr["TongCongBD"] = ctdchd.TongCong_BD;
                     ///
-                    dr["TieuThuEnd"] = ctdchd.TieuThuBD;
-                    dr["TienNuocEnd"] = ctdchd.TienNuocEnd;
-                    dr["ThueGTGTEnd"] = ctdchd.ThueGTGTEnd;
-                    dr["PhiBVMTEnd"] = ctdchd.PhiBVMTEnd;
-                    dr["TongCongEnd"] = ctdchd.TongCongEnd;
+                    dr["TieuThuEnd"] = ctdchd.TieuThu_BD;
+                    dr["TienNuocEnd"] = ctdchd.TienNuoc_End;
+                    dr["ThueGTGTEnd"] = ctdchd.ThueGTGT_End;
+                    dr["PhiBVMTEnd"] = ctdchd.PhiBVMT_End;
+                    dr["TongCongEnd"] = ctdchd.TongCong_End;
 
                     dr["ChucVu"] = ctdchd.ChucVu;
                     dr["NguoiKy"] = ctdchd.NguoiKy;

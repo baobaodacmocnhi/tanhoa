@@ -55,6 +55,7 @@ namespace KTKS_DonKH
             ribbtnDangXuat.Enabled = false;
             ribbtnDoiMatKhau.Enabled = false;
             StripStatus_TaiKhoan.Text = "";
+            StripStatus_Form.Text = "";
 
             foreach (Form item in this.MdiChildren)
             {
@@ -73,16 +74,11 @@ namespace KTKS_DonKH
         private void ribbtnDoiMatKhau_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
-            {
-                if (item.GetType() == typeof(frmDoiMatKhau))
-                {
-                    item.Activate();
-                    return;
-                }
-            }
+                item.Close();
             Form frm = new frmDoiMatKhau();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnTaiKhoan_Click(object sender, EventArgs e)
@@ -100,6 +96,7 @@ namespace KTKS_DonKH
             Form frm = new frmTaiKhoan();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnKhachHang_Click(object sender, EventArgs e)
@@ -109,6 +106,7 @@ namespace KTKS_DonKH
             Form frm = new frmTTKH();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnLoaiDonThu_Click(object sender, EventArgs e)
@@ -118,6 +116,7 @@ namespace KTKS_DonKH
             Form frm = new frmLoaiDon();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnChungTuMoi_Click(object sender, EventArgs e)
@@ -127,6 +126,7 @@ namespace KTKS_DonKH
             Form frm = new frmLoaiChungTu();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnNhanDon_Click(object sender, EventArgs e)
@@ -136,6 +136,7 @@ namespace KTKS_DonKH
             Form frm = new frmNhanDonKH();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnQLDonKH_Click(object sender, EventArgs e)
@@ -145,6 +146,7 @@ namespace KTKS_DonKH
             Form frm = new frmQLDonKH();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnDSDonKTXM_Click(object sender, EventArgs e)
@@ -154,6 +156,7 @@ namespace KTKS_DonKH
             Form frm = new frmKTXM();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnDSDonDCBD_Click(object sender, EventArgs e)
@@ -163,6 +166,7 @@ namespace KTKS_DonKH
             Form frm = new frmDSDCBD();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnChiNhanh_Click(object sender, EventArgs e)
@@ -172,6 +176,7 @@ namespace KTKS_DonKH
             Form frm = new frmChiNhanh();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnGiaNuoc_Click(object sender, EventArgs e)
@@ -181,6 +186,7 @@ namespace KTKS_DonKH
             Form frm = new frmGiaNuoc();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnTest_Click(object sender, EventArgs e)
@@ -199,6 +205,7 @@ namespace KTKS_DonKH
             Form frm = new frmBanGiamDoc();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         private void ribbtnDSDonCHDB_Click(object sender, EventArgs e)
@@ -208,6 +215,7 @@ namespace KTKS_DonKH
             Form frm = new frmDSCHDB();
             frm.MdiParent = this;
             frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
               

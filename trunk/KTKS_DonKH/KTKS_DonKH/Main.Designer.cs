@@ -54,6 +54,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StripStatus_Form = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_TaiKhoan = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -248,10 +250,12 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
+            this.StripStatus_Form,
+            this.toolStripStatusLabel5,
             this.StripStatus_TaiKhoan});
             this.statusStrip1.Location = new System.Drawing.Point(0, 640);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(787, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -264,13 +268,28 @@
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(631, 15);
-            this.toolStripStatusLabel4.Text = resources.GetString("toolStripStatusLabel4.Text");
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(151, 17);
+            this.toolStripStatusLabel4.Text = "                                                ";
+            // 
+            // StripStatus_Form
+            // 
+            this.StripStatus_Form.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StripStatus_Form.Name = "StripStatus_Form";
+            this.StripStatus_Form.Size = new System.Drawing.Size(93, 17);
+            this.StripStatus_Form.Text = "Đang mở Form:";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(172, 17);
+            this.toolStripStatusLabel5.Text = "                                                       ";
             // 
             // StripStatus_TaiKhoan
             // 
             this.StripStatus_TaiKhoan.Name = "StripStatus_TaiKhoan";
-            this.StripStatus_TaiKhoan.Size = new System.Drawing.Size(0, 0);
+            this.StripStatus_TaiKhoan.Size = new System.Drawing.Size(124, 17);
+            this.StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng:";
+            this.StripStatus_TaiKhoan.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // toolStripStatusLabel1
             // 
@@ -343,7 +362,7 @@
             // 
             // 
             this.ribbon1.QuickAcessToolbar.Visible = false;
-            this.ribbon1.Size = new System.Drawing.Size(787, 145);
+            this.ribbon1.Size = new System.Drawing.Size(784, 145);
             this.ribbon1.TabIndex = 0;
             this.ribbon1.Tabs.Add(this.ribbonTab1);
             this.ribbon1.Tabs.Add(this.ribbonTab2);
@@ -378,7 +397,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 662);
+            this.ClientSize = new System.Drawing.Size(784, 662);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbon1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -386,7 +405,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 700);
             this.Name = "Main";
             this.Text = "Chương trình Quản Lý Đơn Từ Khách Hàng";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.statusStrip1.ResumeLayout(false);
@@ -436,6 +454,8 @@
         private System.Windows.Forms.RibbonButton ribbtnDSDonCHDB;
         private System.Windows.Forms.RibbonPanel ribbonPanel9;
         private System.Windows.Forms.RibbonButton ribbtnBanGiamDoc;
+        private System.Windows.Forms.ToolStripStatusLabel StripStatus_Form;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
     }
 }
 

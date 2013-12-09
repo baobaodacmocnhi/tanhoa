@@ -27,6 +27,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CTTKH _cTTKH = new CTTKH();
         DataTable DSDCBD_Edited = new DataTable();
         CKTXM _cKTXM = new CKTXM();
+        CChiNhanh _cChiNhanh = new CChiNhanh();
+        CChungTu _cChungTu = new CChungTu();
 
         public frmDSDCBD()
         {
@@ -44,12 +46,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDSDCBD_Load(object sender, EventArgs e)
         {
-            //dgvDSDCBD.AutoGenerateColumns = false;
-            //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSDCBD.Columns["MaChuyen"];
-            //cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi("DCBD","KTXM");
-            //cmbColumn.DisplayMember = "NoiChuyenDi";
-            //cmbColumn.ValueMember = "MaChuyen";
-
             ///Tạo đối tượng LookUpEdit
             RepositoryItemLookUpEdit myLookUpEdit = new RepositoryItemLookUpEdit();
             ///Tạo đối tượng Column
@@ -71,50 +67,33 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewCTDCBD);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Hóa Đơn", gridViewCTDCHD);
-        }
 
-        #region dsg
-        private void dgvDSDCBD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDSDCBD.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
-            }
-        }
+            dgvDSDCBD.AutoGenerateColumns = false;
+            dgvDSDCBD.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDCBD.Font, FontStyle.Bold);
+            dgvDSDCBD.Location = gridControl.Location;
 
-        private void dgvDSDCBD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (dgvDSDCBD.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
-            {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString())));
-                frm.ShowDialog();
-            }
-        }
+            dgvDSCatChuyenDM.AutoGenerateColumns = false;
+            dgvDSCatChuyenDM.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDCBD.Font, FontStyle.Bold);
+            dgvDSCatChuyenDM.Location = gridControl.Location;
 
-        private void dgvDSDCBD_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
-            {
-                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
-                dgvDSDCBD.CurrentCell = dgvDSDCBD.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            }
+            DataGridViewComboBoxColumn cmbColumn_NhanNK = (DataGridViewComboBoxColumn)dgvDSDCBD.Columns["CT_NhanNK_MaCN"];
+            cmbColumn_NhanNK.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
+            cmbColumn_NhanNK.DisplayMember = "TenCN";
+            cmbColumn_NhanNK.ValueMember = "MaCN";
+            DataGridViewComboBoxColumn cmbColumn_CatNK = (DataGridViewComboBoxColumn)dgvDSDCBD.Columns["CT_CatNK_MaCN"];
+            cmbColumn_CatNK.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
+            cmbColumn_CatNK.DisplayMember = "TenCN";
+            cmbColumn_CatNK.ValueMember = "MaCN";
         }
-
-        private void dgvDSDCBD_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (dgvDSDCBD.Rows.Count > 0 && e.Button == MouseButtons.Right)
-            {
-                contextMenuStrip1.Show(dgvDSDCBD, new Point(e.X, e.Y));
-            }
-        }
-        #endregion
         
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
             {
-                //dgvDSDCBD.DataSource = _cDCBD.LoadDSKTXMDaDuyet();
+                gridControl.Visible = true;
                 gridControl.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
+                dgvDSDCBD.Visible = false;
+                dgvDSCatChuyenDM.Visible = false;
             }
         }
 
@@ -122,9 +101,77 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radChuaDuyet.Checked)
             {
-                //dgvDSDCBD.DataSource = _cDCBD.LoadDSKTXMChuaDuyet();
+                gridControl.Visible = true;
                 gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
+                dgvDSDCBD.Visible = false;
+                dgvDSCatChuyenDM.Visible = false;
             }
+        }
+
+        private void radDSDCDB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSDCDB.Checked)
+            {
+                dgvDSDCBD.Visible = true;
+                dgvDSDCBD.DataSource = _cDCBD.LoadDSDCBD();
+                dgvDSDCBD.Columns["HoTen"].Visible = true;
+                dgvDSDCBD.Columns["HoTen_BD"].Visible = true;
+                dgvDSDCBD.Columns["DiaChi"].Visible = true;
+                dgvDSDCBD.Columns["DiaChi_BD"].Visible = true;
+                dgvDSDCBD.Columns["MSThue"].Visible = true;
+                dgvDSDCBD.Columns["MSThue_BD"].Visible = true;
+                dgvDSDCBD.Columns["GiaBieu"].Visible = true;
+                dgvDSDCBD.Columns["GiaBieu_BD"].Visible = true;
+                dgvDSDCBD.Columns["DinhMuc"].Visible = true;
+                dgvDSDCBD.Columns["DinhMuc_BD"].Visible = true;
+                ///
+                dgvDSDCBD.Columns["TieuThu"].Visible = false;
+                dgvDSDCBD.Columns["TieuThu_BD"].Visible = false;
+                dgvDSDCBD.Columns["TongCong_Start"].Visible = false;
+                dgvDSDCBD.Columns["TongCong_End"].Visible = false;
+                dgvDSDCBD.Columns["TongCong_BD"].Visible = false;
+                dgvDSDCBD.Columns["TangGiam"].Visible = false;
+
+                gridControl.Visible = false;
+                dgvDSCatChuyenDM.Visible = false;
+            }
+        }
+
+        private void radDSDCHD_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSDCHD.Checked)
+            {
+                dgvDSDCBD.Visible = true;
+                dgvDSDCBD.DataSource = _cDCBD.LoadDSDCHD();
+                dgvDSDCBD.Columns["HoTen"].Visible = false;
+                dgvDSDCBD.Columns["HoTen_BD"].Visible = false;
+                dgvDSDCBD.Columns["DiaChi"].Visible = false;
+                dgvDSDCBD.Columns["DiaChi_BD"].Visible = false;
+                dgvDSDCBD.Columns["MSThue"].Visible = false;
+                dgvDSDCBD.Columns["MSThue_BD"].Visible = false;
+                ///
+                dgvDSDCBD.Columns["GiaBieu"].Visible = true;
+                dgvDSDCBD.Columns["GiaBieu_BD"].Visible = true;
+                dgvDSDCBD.Columns["DinhMuc"].Visible = true;
+                dgvDSDCBD.Columns["DinhMuc_BD"].Visible = true;
+                dgvDSDCBD.Columns["TieuThu"].Visible = true;
+                dgvDSDCBD.Columns["TieuThu_BD"].Visible = true;
+                dgvDSDCBD.Columns["TongCong_Start"].Visible = true;
+                dgvDSDCBD.Columns["TongCong_End"].Visible = true;
+                dgvDSDCBD.Columns["TongCong_BD"].Visible = true;
+                dgvDSDCBD.Columns["TangGiam"].Visible = true;
+
+                gridControl.Visible = false;
+                dgvDSCatChuyenDM.Visible = false;
+            }
+        }
+
+        private void radDSCatChuyenDM_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvDSCatChuyenDM.Visible = true;
+            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDM();
+            gridControl.Visible = false;
+            dgvDSDCBD.Visible = false;
         }
 
         private void điềuChỉnhBiếnĐộngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,8 +358,74 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 e.DisplayText = e.Value.ToString().Insert(4, "-");
             }
+            if (e.Column.FieldName == "TongCong_Start" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (e.Column.FieldName == "TongCong_End" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (e.Column.FieldName == "TongCong_BD" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }    
+
+        //private void dgvDSDCBD_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (dgvDSDCBD.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+        //    {
+        //        frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString())));
+        //        frm.ShowDialog();
+        //    }
+        //}
+
+        //private void dgvDSDCBD_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+        //    {
+        //        ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+        //        dgvDSDCBD.CurrentCell = dgvDSDCBD.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        //    }
+        //}
+
+        //private void dgvDSDCBD_MouseClick(object sender, MouseEventArgs e)
+        //{
+        //    if (dgvDSDCBD.Rows.Count > 0 && e.Button == MouseButtons.Right)
+        //    {
+        //        contextMenuStrip1.Show(dgvDSDCBD, new Point(e.X, e.Y));
+        //    }
+        //}
+
+        private void dgvDSDCBD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSDCBD.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
         }
-       
+
+        private void dgvDSDCBD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "SoPhieu" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, "-");
+            }
+            if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "TongCong_Start" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "TongCong_End" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "TongCong_BD" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
         
     }
 }

@@ -32,6 +32,8 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewCTCTDB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -78,6 +80,9 @@
             this.radDSCatTamDanhBo = new System.Windows.Forms.RadioButton();
             this.radDSCatHuyDanhBo = new System.Windows.Forms.RadioButton();
             this.dgvDSCTCHDB = new System.Windows.Forms.DataGridView();
+            this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DaLapPhieu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ThongBaoDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaTB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +90,6 @@
             this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChuLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DaLapPhieu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCTDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCHDB)).BeginInit();
@@ -202,13 +206,13 @@
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1,
             gridLevelNode2});
-            this.gridControl.Location = new System.Drawing.Point(0, 67);
+            this.gridControl.Location = new System.Drawing.Point(0, 66);
             this.gridControl.MainView = this.gridViewCHDB;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
             this.gridControl.Size = new System.Drawing.Size(2500, 470);
-            this.gridControl.TabIndex = 2;
+            this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCTCHDB,
             this.gridViewCHDB,
@@ -525,7 +529,7 @@
             this.btnLuu.Location = new System.Drawing.Point(1180, 12);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 3;
+            this.btnLuu.TabIndex = 6;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -589,7 +593,7 @@
             this.radDSCatTamDanhBo.Location = new System.Drawing.Point(130, 12);
             this.radDSCatTamDanhBo.Name = "radDSCatTamDanhBo";
             this.radDSCatTamDanhBo.Size = new System.Drawing.Size(147, 21);
-            this.radDSCatTamDanhBo.TabIndex = 4;
+            this.radDSCatTamDanhBo.TabIndex = 2;
             this.radDSCatTamDanhBo.Text = "Danh Sách Cắt Tạm";
             this.radDSCatTamDanhBo.UseVisualStyleBackColor = true;
             this.radDSCatTamDanhBo.CheckedChanged += new System.EventHandler(this.radDSCatTamDanhBo_CheckedChanged);
@@ -600,7 +604,7 @@
             this.radDSCatHuyDanhBo.Location = new System.Drawing.Point(130, 39);
             this.radDSCatHuyDanhBo.Name = "radDSCatHuyDanhBo";
             this.radDSCatHuyDanhBo.Size = new System.Drawing.Size(145, 21);
-            this.radDSCatHuyDanhBo.TabIndex = 5;
+            this.radDSCatHuyDanhBo.TabIndex = 3;
             this.radDSCatHuyDanhBo.Text = "Danh Sách Cắt Hủy";
             this.radDSCatHuyDanhBo.UseVisualStyleBackColor = true;
             this.radDSCatHuyDanhBo.CheckedChanged += new System.EventHandler(this.radDSCatHuyDanhBo_CheckedChanged);
@@ -619,25 +623,57 @@
             this.dgvDSCTCHDB.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSCTCHDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCTCHDB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PhieuDuocKy,
+            this.DaLapPhieu,
+            this.ThongBaoDuocKy,
             this.MaTB,
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
             this.LyDo,
             this.GhiChuLyDo,
-            this.SoTien,
-            this.DaLapPhieu});
-            this.dgvDSCTCHDB.Location = new System.Drawing.Point(0, 115);
+            this.SoTien});
+            this.dgvDSCTCHDB.Location = new System.Drawing.Point(0, 113);
             this.dgvDSCTCHDB.MultiSelect = false;
             this.dgvDSCTCHDB.Name = "dgvDSCTCHDB";
-            this.dgvDSCTCHDB.ReadOnly = true;
-            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1361, 470);
-            this.dgvDSCTCHDB.TabIndex = 6;
+            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1498, 470);
+            this.dgvDSCTCHDB.TabIndex = 5;
             this.dgvDSCTCHDB.Visible = false;
+            this.dgvDSCTCHDB.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCTCHDB_CellEndEdit);
             this.dgvDSCTCHDB.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCTCHDB_CellFormatting);
             this.dgvDSCTCHDB.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSCTCHDB_CellMouseClick);
             this.dgvDSCTCHDB.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCTCHDB_RowPostPaint);
             this.dgvDSCTCHDB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSCTCHDB_MouseClick);
+            // 
+            // PhieuDuocKy
+            // 
+            this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.NullValue = false;
+            this.PhieuDuocKy.DefaultCellStyle = dataGridViewCellStyle2;
+            this.PhieuDuocKy.HeaderText = "Phiếu Được Ký";
+            this.PhieuDuocKy.Name = "PhieuDuocKy";
+            this.PhieuDuocKy.Width = 80;
+            // 
+            // DaLapPhieu
+            // 
+            this.DaLapPhieu.DataPropertyName = "DaLapPhieu";
+            this.DaLapPhieu.HeaderText = "Đã Lập Phiếu";
+            this.DaLapPhieu.Name = "DaLapPhieu";
+            this.DaLapPhieu.ReadOnly = true;
+            this.DaLapPhieu.Width = 70;
+            // 
+            // ThongBaoDuocKy
+            // 
+            this.ThongBaoDuocKy.DataPropertyName = "ThongBaoDuocKy";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.NullValue = false;
+            this.ThongBaoDuocKy.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ThongBaoDuocKy.HeaderText = "Được Ký";
+            this.ThongBaoDuocKy.Name = "ThongBaoDuocKy";
+            this.ThongBaoDuocKy.Width = 50;
             // 
             // MaTB
             // 
@@ -693,32 +729,24 @@
             this.SoTien.ReadOnly = true;
             this.SoTien.Width = 90;
             // 
-            // DaLapPhieu
-            // 
-            this.DaLapPhieu.DataPropertyName = "DaLapPhieu";
-            this.DaLapPhieu.HeaderText = "Đã Lập Phiếu";
-            this.DaLapPhieu.Name = "DaLapPhieu";
-            this.DaLapPhieu.ReadOnly = true;
-            this.DaLapPhieu.Width = 65;
-            // 
             // frmDSCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1363, 610);
+            this.ClientSize = new System.Drawing.Size(1363, 661);
             this.Controls.Add(this.radDSCatHuyDanhBo);
             this.Controls.Add(this.radDSCatTamDanhBo);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
+            this.Controls.Add(this.radChuaDuyet);
             this.Controls.Add(this.dgvDSCTCHDB);
             this.Controls.Add(this.gridControl);
-            this.Controls.Add(this.radChuaDuyet);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDSCHDB";
-            this.Text = "frmDSCHDB";
+            this.Text = "Danh Sách Cắt Hủy Danh Bộ";
             this.Load += new System.EventHandler(this.frmDSCHDB_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTCTDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
@@ -782,6 +810,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DaLapPhieu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ThongBaoDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTB;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -789,6 +820,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuLyDo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn DaLapPhieu;
     }
 }

@@ -30,9 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSDonKH = new System.Windows.Forms.DataGridView();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.radDaDuyet = new System.Windows.Forms.RadioButton();
-            this.radChuDuyet = new System.Windows.Forms.RadioButton();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +39,9 @@
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.radDaDuyet = new System.Windows.Forms.RadioButton();
+            this.radChuDuyet = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonKH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,41 +71,6 @@
             this.dgvDSDonKH.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonKH_CellFormatting);
             this.dgvDSDonKH.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonKH_RowPostPaint);
             this.dgvDSDonKH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonKH_KeyDown);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(1180, 12);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 1;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // radDaDuyet
-            // 
-            this.radDaDuyet.AutoSize = true;
-            this.radDaDuyet.Location = new System.Drawing.Point(12, 12);
-            this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
-            this.radDaDuyet.TabIndex = 2;
-            this.radDaDuyet.Text = "Đã Duyệt";
-            this.radDaDuyet.UseVisualStyleBackColor = true;
-            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
-            // 
-            // radChuDuyet
-            // 
-            this.radChuDuyet.AutoSize = true;
-            this.radChuDuyet.Location = new System.Drawing.Point(12, 39);
-            this.radChuDuyet.Name = "radChuDuyet";
-            this.radChuDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuDuyet.TabIndex = 3;
-            this.radChuDuyet.Text = "Chưa Duyệt";
-            this.radChuDuyet.UseVisualStyleBackColor = true;
-            this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
             // 
             // MaChuyen
             // 
@@ -179,6 +144,41 @@
             this.NoiDung.ReadOnly = true;
             this.NoiDung.Width = 250;
             // 
+            // btnLuu
+            // 
+            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(1180, 12);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(70, 35);
+            this.btnLuu.TabIndex = 1;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // radDaDuyet
+            // 
+            this.radDaDuyet.AutoSize = true;
+            this.radDaDuyet.Location = new System.Drawing.Point(12, 12);
+            this.radDaDuyet.Name = "radDaDuyet";
+            this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
+            this.radDaDuyet.TabIndex = 2;
+            this.radDaDuyet.Text = "Đã Duyệt";
+            this.radDaDuyet.UseVisualStyleBackColor = true;
+            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
+            // 
+            // radChuDuyet
+            // 
+            this.radChuDuyet.AutoSize = true;
+            this.radChuDuyet.Location = new System.Drawing.Point(12, 39);
+            this.radChuDuyet.Name = "radChuDuyet";
+            this.radChuDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuDuyet.TabIndex = 3;
+            this.radChuDuyet.Text = "Chưa Duyệt";
+            this.radChuDuyet.UseVisualStyleBackColor = true;
+            this.radChuDuyet.CheckedChanged += new System.EventHandler(this.radChuDuyet_CheckedChanged);
+            // 
             // frmQLDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -193,7 +193,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQLDonKH";
-            this.Text = "frmQLDonKH";
+            this.Text = "Danh Sách Đơn Khách Hàng";
             this.Load += new System.EventHandler(this.frmQLDonKH_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonKH)).EndInit();
             this.ResumeLayout(false);
