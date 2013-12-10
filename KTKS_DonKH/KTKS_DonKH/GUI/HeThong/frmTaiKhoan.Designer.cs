@@ -38,6 +38,7 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.dgvDSTaiKhoan = new System.Windows.Forms.DataGridView();
+            this.btnThem = new System.Windows.Forms.Button();
             this.MaU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +50,7 @@
             this.QKTXM = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QDCBD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QCHDB = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnThem = new System.Windows.Forms.Button();
+            this.QTTTL = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,16 +162,31 @@
             this.QQLDonKH,
             this.QKTXM,
             this.QDCBD,
-            this.QCHDB});
+            this.QCHDB,
+            this.QTTTL});
             this.dgvDSTaiKhoan.Location = new System.Drawing.Point(0, 156);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTaiKhoan.MultiSelect = false;
             this.dgvDSTaiKhoan.Name = "dgvDSTaiKhoan";
-            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(978, 384);
+            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(1075, 384);
             this.dgvDSTaiKhoan.TabIndex = 9;
             this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
             this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
             this.dgvDSTaiKhoan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTaiKhoan_RowPostPaint);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(210, 113);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(77, 35);
+            this.btnThem.TabIndex = 6;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // MaU
             // 
@@ -249,19 +265,11 @@
             this.QCHDB.HeaderText = "Q.Cắt Hủy Danh Bộ";
             this.QCHDB.Name = "QCHDB";
             // 
-            // btnThem
+            // QTTTL
             // 
-            this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
-            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(210, 113);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(77, 35);
-            this.btnThem.TabIndex = 6;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            this.QTTTL.DataPropertyName = "QTTTL";
+            this.QTTTL.HeaderText = "Q.Thảo Thư Trả Lời";
+            this.QTTTL.Name = "QTTTL";
             // 
             // frmTaiKhoan
             // 
@@ -313,5 +321,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn QKTXM;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QDCBD;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QCHDB;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn QTTTL;
     }
 }

@@ -20,8 +20,7 @@ namespace KTKS_DonKH.DAL.HeThong
         private static bool _roleKTXM = false;
         private static bool _roleDCBD = false;
         private static bool _roleCHDB = false;
-
-        
+        private static bool _roleTTTL = false;
 
         //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
@@ -70,7 +69,11 @@ namespace KTKS_DonKH.DAL.HeThong
             get { return CTaiKhoan._roleCHDB; }
             set { CTaiKhoan._roleCHDB = value; }
         }
-
+        public static bool RoleTTTL
+        {
+            get { return CTaiKhoan._roleTTTL; }
+            set { CTaiKhoan._roleTTTL = value; }
+        }
 
         /// <summary>
         /// Kiểm tra đăng nhập
@@ -121,6 +124,11 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleCHDB = true;
                     else
                         _roleCHDB = false;
+                    ///Mã Role Thảo Thư Trả Lời là 8
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 8).CapQuyen == true)
+                        _roleTTTL = true;
+                    else
+                        _roleTTTL = false;
                     ///db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     db.SubmitChanges();
                     return true;
@@ -154,6 +162,7 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleKTXM = false;
             _roleDCBD = false;
             _roleCHDB = false;
+            _roleTTTL = false;
         }
 
         /// <summary>
@@ -188,6 +197,7 @@ namespace KTKS_DonKH.DAL.HeThong
                     table.Columns.Add("QKTXM", typeof(bool));
                     table.Columns.Add("QDCBD", typeof(bool));
                     table.Columns.Add("QCHDB", typeof(bool));
+                    table.Columns.Add("QTTTL", typeof(bool));
 
                     foreach (var itemTK in taikhoans)
                     {
@@ -203,6 +213,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         ///MaR=5 => quyền Kiểm Tra Xác Minh
                         ///MaR=6 => quyền Điều Chỉnh Biến Động
                         ///MaR=7 => quyền Cắt Hủy Danh Bộ
+                        ///MaR=8 => quyền Thảo Thư Trả Lời
                         table.Rows.Add(itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).CapQuyen,
@@ -210,7 +221,8 @@ namespace KTKS_DonKH.DAL.HeThong
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 4).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 5).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 6).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 7).CapQuyen
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 7).CapQuyen,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 8).CapQuyen
                                         );
                     }
                     return table;
@@ -261,7 +273,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         db.Users.InsertOnSubmit(nguoidung);
                         ///Cấp quyền mặc định = False
                         ///i tương ứng với số quyền trong bảng DetailRole
-                        for (int i = 1; i <= 7; i++)
+                        for (int i = 1; i <= 8; i++)
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;

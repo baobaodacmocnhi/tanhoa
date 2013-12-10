@@ -69,6 +69,9 @@
             this.ribbonTab6 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel8 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnDSDonCHDB = new System.Windows.Forms.RibbonButton();
+            this.ribbonTab7 = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel10 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnDSDonTTTL = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -281,13 +284,13 @@
             // toolStripStatusLabel5
             // 
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(172, 17);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(172, 15);
             this.toolStripStatusLabel5.Text = "                                                       ";
             // 
             // StripStatus_TaiKhoan
             // 
             this.StripStatus_TaiKhoan.Name = "StripStatus_TaiKhoan";
-            this.StripStatus_TaiKhoan.Size = new System.Drawing.Size(124, 17);
+            this.StripStatus_TaiKhoan.Size = new System.Drawing.Size(124, 15);
             this.StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng:";
             this.StripStatus_TaiKhoan.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
@@ -370,6 +373,7 @@
             this.ribbon1.Tabs.Add(this.ribbonTab4);
             this.ribbon1.Tabs.Add(this.ribbonTab5);
             this.ribbon1.Tabs.Add(this.ribbonTab6);
+            this.ribbon1.Tabs.Add(this.ribbonTab7);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
@@ -392,6 +396,26 @@
             this.ribbtnDSDonCHDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonCHDB.SmallImage")));
             this.ribbtnDSDonCHDB.Text = "Danh Sách Đơn";
             this.ribbtnDSDonCHDB.Click += new System.EventHandler(this.ribbtnDSDonCHDB_Click);
+            // 
+            // ribbonTab7
+            // 
+            this.ribbonTab7.Panels.Add(this.ribbonPanel10);
+            this.ribbonTab7.Text = "Thảo Thư Trả Lời";
+            // 
+            // ribbonPanel10
+            // 
+            this.ribbonPanel10.ButtonMoreEnabled = false;
+            this.ribbonPanel10.ButtonMoreVisible = false;
+            this.ribbonPanel10.Items.Add(this.ribbtnDSDonTTTL);
+            this.ribbonPanel10.Text = "";
+            // 
+            // ribbtnDSDonTTTL
+            // 
+            this.ribbtnDSDonTTTL.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDSDonTTTL.MinimumSize = new System.Drawing.Size(100, 0);
+            this.ribbtnDSDonTTTL.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonTTTL.SmallImage")));
+            this.ribbtnDSDonTTTL.Text = "Danh Sách Đơn";
+            this.ribbtnDSDonTTTL.Click += new System.EventHandler(this.ribbtnDSDonTTTL_Click);
             // 
             // Main
             // 
@@ -456,6 +480,9 @@
         private System.Windows.Forms.RibbonButton ribbtnBanGiamDoc;
         private System.Windows.Forms.ToolStripStatusLabel StripStatus_Form;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+        private System.Windows.Forms.RibbonTab ribbonTab7;
+        private System.Windows.Forms.RibbonPanel ribbonPanel10;
+        private System.Windows.Forms.RibbonButton ribbtnDSDonTTTL;
     }
 }
 
