@@ -46,10 +46,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             this.Location = new Point(70, 70);
             dgvDSSoDangKy.AutoGenerateColumns = false;
-            DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSSoDangKy.Columns["MaLCT"];
-            cmbColumn.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
-            cmbColumn.DisplayMember = "TenLCT";
-            cmbColumn.ValueMember = "MaLCT";
+            dgvDSSoDangKy.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
+            //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSSoDangKy.Columns["MaLCT"];
+            //cmbColumn.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
+            //cmbColumn.DisplayMember = "TenLCT";
+            //cmbColumn.ValueMember = "MaLCT";
 
             if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
             {
@@ -61,6 +62,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
                 LoadDS(_ttkhachhang);
             }
+
+            dgvDSDieuChinh.AutoGenerateColumns = false;
+            dgvDSDieuChinh.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
+
+            dgvDSChungTu.AutoGenerateColumns = false;
+            dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
         }
 
         /// <summary>
@@ -82,6 +89,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN.Text = ttkhachhang.HCSN;
 
             dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(ttkhachhang.DanhBo);
+            dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(ttkhachhang.DanhBo);
+
         }
 
         public void Clear()
@@ -405,6 +414,34 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmDCBD_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSDieuChinh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSChungTu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSSoDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dgvDSChungTu.DataSource = _cChungTu.LoadDSCTChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
+            }
+            catch (Exception)
+            {
+                
+            }
         }
 
 
