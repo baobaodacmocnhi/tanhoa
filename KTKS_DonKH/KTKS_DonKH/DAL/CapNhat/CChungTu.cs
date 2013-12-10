@@ -26,7 +26,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             select new
                             {
                                 itemCTCT.DanhBo,
-                                itemCT.MaLCT,
+                                itemLCT.TenLCT,
                                 itemCTCT.MaCT,
                                 itemCT.DiaChi,
                                 itemCT.SoNKTong,
@@ -204,6 +204,24 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách các Danh Bộ được đăng ký định mức với Sổ Đăng Ký truyền vào
+        /// </summary>
+        /// <param name="MaCT"></param>
+        /// <returns></returns>
+        public List<CTChungTu> LoadDSCTChungTubyID(string MaCT)
+        {
+            try
+            {
+                return db.CTChungTus.Where(itemCTChungTu => itemCTChungTu.MaCT == MaCT).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region LichSuChungTu
@@ -222,6 +240,24 @@ namespace KTKS_DonKH.DAL.CapNhat
                 lichsuchungtu.CreateDate = DateTime.Now;
                 lichsuchungtu.CreateBy = CTaiKhoan.TaiKhoan;
                 db.LichSuChungTus.InsertOnSubmit(lichsuchungtu);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaLichSuChungTu(LichSuChungTu lichsuchungtu)
+        {
+            try
+            {
+                lichsuchungtu.ModifyDate = DateTime.Now;
+                lichsuchungtu.ModifyBy = CTaiKhoan.TaiKhoan;
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
@@ -309,13 +345,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                         table.Columns.Add("PhieuDuocKy", typeof(bool));
 
                         DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        CChiNhanh _cChiNhanh = new CChiNhanh();
                         foreach (DataRow itemRow in table2.Rows)
                         {
                             DataRow Row = table.NewRow();
                             Row["MaLSCT"] = itemRow["MaLSCT"];
                             Row["SoPhieu"] = itemRow["SoPhieu"];
                             Row["MaCT"] = itemRow["MaCT"];
-                            //MessageBox.Show(itemRow["CatDM"].ToString());
                             if (itemRow["CatDM"].ToString() != "")
                                 if (bool.Parse(itemRow["CatDM"].ToString()) == true)
                                 {
@@ -328,12 +364,18 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     Row["CatNhan"] = "Nhận";
                                     Row["SoNK"] = itemRow["SoNKNhan"];
                                 }
-                            Row["NhanNK_MaCN"] = itemRow["NhanNK_MaCN"];
+                            if (itemRow["NhanNK_MaCN"].ToString() != "")
+                                Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                            else
+                                Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
                             Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
                             Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
                             Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
-                            Row["CatNK_MaCN"] = itemRow["CatNK_MaCN"];
-                            Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                            if (itemRow["CatNK_MaCN"].ToString() != "")
+                                Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                            else
+                                Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                            Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
                             Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
                             Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
                             Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
@@ -350,6 +392,24 @@ namespace KTKS_DonKH.DAL.CapNhat
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return null;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Lịch Sử Chứng Từ
+        /// </summary>
+        /// <param name="MaLSCT"></param>
+        /// <returns></returns>
+        public LichSuChungTu getLSCTbyID(decimal MaLSCT)
+        {
+            try
+            {
+                return db.LichSuChungTus.Single(itemLSCT => itemLSCT.MaLSCT == MaLSCT);
             }
             catch (Exception ex)
             {

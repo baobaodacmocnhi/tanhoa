@@ -98,6 +98,24 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Lấy Tên Chi Nhánh từ Mã Chi Nhánh truyền vào
+        /// </summary>
+        /// <param name="MaCN"></param>
+        /// <returns></returns>
+        public string getTenChiNhanhbyID(int MaCN)
+        {
+            try
+            {
+                return db.ChiNhanhs.Single(itemCN => itemCN.MaCN == MaCN).TenCN;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public bool ThemChiNhanh(ChiNhanh chinhanh)
         {
             try

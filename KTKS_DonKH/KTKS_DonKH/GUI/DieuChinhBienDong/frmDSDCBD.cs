@@ -29,6 +29,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CChungTu _cChungTu = new CChungTu();
+        
 
         public frmDSDCBD()
         {
@@ -76,14 +77,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSCatChuyenDM.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDCBD.Font, FontStyle.Bold);
             dgvDSCatChuyenDM.Location = gridControl.Location;
 
-            DataGridViewComboBoxColumn cmbColumn_NhanNK = (DataGridViewComboBoxColumn)dgvDSDCBD.Columns["CT_NhanNK_MaCN"];
-            cmbColumn_NhanNK.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
-            cmbColumn_NhanNK.DisplayMember = "TenCN";
-            cmbColumn_NhanNK.ValueMember = "MaCN";
-            DataGridViewComboBoxColumn cmbColumn_CatNK = (DataGridViewComboBoxColumn)dgvDSDCBD.Columns["CT_CatNK_MaCN"];
-            cmbColumn_CatNK.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
-            cmbColumn_CatNK.DisplayMember = "TenCN";
-            cmbColumn_CatNK.ValueMember = "MaCN";
+            //DataGridViewComboBoxColumn cmbColumn_NhanNK = (DataGridViewComboBoxColumn)dgvDSDCBD.Columns["CT_NhanNK_MaCN"];
+            //cmbColumn_NhanNK.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
+            //cmbColumn_NhanNK.DisplayMember = "TenCN";
+            //cmbColumn_NhanNK.ValueMember = "MaCN";
+
         }
         
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
@@ -425,6 +423,51 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
+
+        private void dgvDSDCBD_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (radDSDCDB.Checked)
+            {
+                CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                if (bool.Parse(dgvDSDCBD.CurrentCell.Value.ToString()) != ctdcbd.PhieuDuocKy)
+                {
+                    ctdcbd.PhieuDuocKy = bool.Parse(dgvDSDCBD.CurrentCell.Value.ToString());
+                    _cDCBD.SuaCTDCBD(ctdcbd);
+                }
+            }
+            if (radDSDCHD.Checked)
+            {
+                CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
+                if (bool.Parse(dgvDSDCBD.CurrentCell.Value.ToString()) != ctdchd.PhieuDuocKy)
+                {
+                    ctdchd.PhieuDuocKy = bool.Parse(dgvDSDCBD.CurrentCell.Value.ToString());
+                    _cDCBD.SuaCTDCHD(ctdchd);
+                }
+            }
+        }
+
+        private void dgvDSCatChuyenDM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (radDSCatChuyenDM.Checked)
+            {
+                LichSuChungTu lichsuchungtu = _cChungTu.getLSCTbyID(decimal.Parse(dgvDSCatChuyenDM.CurrentRow.Cells["MaLSCT"].Value.ToString()));
+                if (bool.Parse(dgvDSCatChuyenDM.CurrentCell.Value.ToString()) != lichsuchungtu.PhieuDuocKy)
+                {
+                    lichsuchungtu.PhieuDuocKy = bool.Parse(dgvDSCatChuyenDM.CurrentCell.Value.ToString());
+                    _cChungTu.SuaLichSuChungTu(lichsuchungtu);
+                }
+            }
+        }
+
+        private void dgvDSCatChuyenDM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "CT_SoPhieu" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, "-");
+            }
+        }
+
+        
 
         
     }

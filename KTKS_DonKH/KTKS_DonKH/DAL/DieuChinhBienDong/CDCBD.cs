@@ -294,6 +294,53 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Điều Chỉnh Biến Động & Hóa Đơn với Số Danh Bộ truyền vào
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public DataTable LoadDSDCbyDanhBo(string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    ///Bảng CTDCBD
+                    var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
+                                      where itemCTDCBD.DanhBo == DanhBo
+                                      select new
+                                      {
+                                          MaDC = itemCTDCBD.MaCTDCBD,
+                                          DieuChinh = "Biến Động",
+                                          itemCTDCBD.CreateDate,
+                                      };
+                    ///Bảng CTDCHD
+                    var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                                      where itemCTDCHD.DanhBo == DanhBo
+                                      select new
+                                      {
+                                          MaDC = itemCTDCHD.MaCTDCHD,
+                                          DieuChinh = "Hóa Đơn",
+                                          itemCTDCHD.CreateDate,
+                                      };
+                    DataTable tableCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
+                    DataTable tableCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
+                    tableCTDCBD.Merge(tableCTDCHD);
+                    return tableCTDCBD;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region CTDCBD (Chi Tiết Điều Chỉnh Biến Động)
@@ -316,6 +363,32 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     db.CTDCBDs.InsertOnSubmit(ctdcbd);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaCTDCBD(CTDCBD ctdcbd)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    ctdcbd.ModifyDate = DateTime.Now;
+                    ctdcbd.ModifyBy = CTaiKhoan.TaiKhoan;
+                    db.SubmitChanges();
+                    MessageBox.Show("Thành công Sửa CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -370,6 +443,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.GiaBieu_BD,
                                     itemCTDCBD.DinhMuc,
                                     itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -378,6 +452,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return null;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public CTDCBD getCTDCBDbyID(decimal MaCTDCBD)
+        {
+            try
+            {
+                return db.CTDCBDs.Single(itemCTDCBD => itemCTDCBD.MaCTDCBD == MaCTDCBD);
             }
             catch (Exception ex)
             {
@@ -408,6 +495,32 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     db.CTDCHDs.InsertOnSubmit(ctdchd);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaCTDCHD(CTDCHD ctdchd)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD)
+                {
+                    ctdchd.ModifyDate = DateTime.Now;
+                    ctdchd.ModifyBy = CTaiKhoan.TaiKhoan;
+                    db.SubmitChanges();
+                    MessageBox.Show("Thành công Sửa CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -462,6 +575,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TongCong_End,
                                     itemCTDCHD.TongCong_BD,
                                     itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -470,6 +584,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return null;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public CTDCHD getCTDCHDbyID(decimal MaCTDCHD)
+        {
+            try
+            {
+                return db.CTDCHDs.Single(itemCTDCHD => itemCTDCHD.MaCTDCHD == MaCTDCHD);
             }
             catch (Exception ex)
             {

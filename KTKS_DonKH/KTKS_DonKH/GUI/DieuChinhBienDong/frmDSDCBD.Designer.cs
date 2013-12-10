@@ -96,6 +96,7 @@
             this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
+            this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,7 +120,7 @@
             this.radDSCatChuyenDM = new System.Windows.Forms.RadioButton();
             this.dgvDSCatChuyenDM = new System.Windows.Forms.DataGridView();
             this.MaLSCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CT_PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CT_SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CT_MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CT_CatNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,6 +179,7 @@
             this.gridColumn14.Caption = "Số Phiếu";
             this.gridColumn14.FieldName = "MaCTDCBD";
             this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 0;
             this.gridColumn14.Width = 90;
@@ -187,6 +189,7 @@
             this.gridColumn15.Caption = "Danh Bộ";
             this.gridColumn15.FieldName = "DanhBo";
             this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 1;
             this.gridColumn15.Width = 90;
@@ -196,6 +199,7 @@
             this.gridColumn16.Caption = "Khách Hàng Cũ";
             this.gridColumn16.FieldName = "HoTen";
             this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 2;
             this.gridColumn16.Width = 200;
@@ -207,6 +211,7 @@
             this.gridColumn17.Caption = "Khách Hàng Mới";
             this.gridColumn17.FieldName = "HoTen_BD";
             this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 3;
             this.gridColumn17.Width = 200;
@@ -216,6 +221,7 @@
             this.gridColumn22.Caption = "Địa Chỉ Cũ";
             this.gridColumn22.FieldName = "DiaChi";
             this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.OptionsColumn.AllowEdit = false;
             this.gridColumn22.Visible = true;
             this.gridColumn22.VisibleIndex = 4;
             this.gridColumn22.Width = 300;
@@ -227,6 +233,7 @@
             this.gridColumn23.Caption = "Địa Chỉ Mới";
             this.gridColumn23.FieldName = "DiaChi_BD";
             this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 5;
             this.gridColumn23.Width = 300;
@@ -236,6 +243,7 @@
             this.gridColumn24.Caption = "MST Cũ";
             this.gridColumn24.FieldName = "MSThue";
             this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.OptionsColumn.AllowEdit = false;
             this.gridColumn24.Visible = true;
             this.gridColumn24.VisibleIndex = 6;
             this.gridColumn24.Width = 100;
@@ -247,6 +255,7 @@
             this.gridColumn25.Caption = "MST Mới";
             this.gridColumn25.FieldName = "MSThue_BD";
             this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowEdit = false;
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 7;
             this.gridColumn25.Width = 100;
@@ -256,6 +265,7 @@
             this.gridColumn26.Caption = "GB Cũ";
             this.gridColumn26.FieldName = "GiaBieu";
             this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.OptionsColumn.AllowEdit = false;
             this.gridColumn26.Visible = true;
             this.gridColumn26.VisibleIndex = 8;
             this.gridColumn26.Width = 60;
@@ -267,6 +277,7 @@
             this.gridColumn27.Caption = "GB Mới";
             this.gridColumn27.FieldName = "GiaBieu_BD";
             this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.OptionsColumn.AllowEdit = false;
             this.gridColumn27.Visible = true;
             this.gridColumn27.VisibleIndex = 9;
             this.gridColumn27.Width = 60;
@@ -276,6 +287,7 @@
             this.gridColumn28.Caption = "ĐM Cũ";
             this.gridColumn28.FieldName = "DinhMuc";
             this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.OptionsColumn.AllowEdit = false;
             this.gridColumn28.Visible = true;
             this.gridColumn28.VisibleIndex = 10;
             this.gridColumn28.Width = 60;
@@ -287,6 +299,7 @@
             this.gridColumn29.Caption = "ĐM Mới";
             this.gridColumn29.FieldName = "DinhMuc_BD";
             this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.OptionsColumn.AllowEdit = false;
             this.gridColumn29.Visible = true;
             this.gridColumn29.VisibleIndex = 11;
             this.gridColumn29.Width = 65;
@@ -347,6 +360,7 @@
             this.gridColumn20.Caption = "Số Phiếu";
             this.gridColumn20.FieldName = "MaCTDCHD";
             this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.OptionsColumn.AllowEdit = false;
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 0;
             this.gridColumn20.Width = 90;
@@ -356,6 +370,7 @@
             this.gridColumn21.Caption = "Danh Bộ";
             this.gridColumn21.FieldName = "DanhBo";
             this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.OptionsColumn.AllowEdit = false;
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 1;
             this.gridColumn21.Width = 90;
@@ -365,6 +380,7 @@
             this.gridColumn30.Caption = "GB Cũ";
             this.gridColumn30.FieldName = "GiaBieu";
             this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.OptionsColumn.AllowEdit = false;
             this.gridColumn30.Visible = true;
             this.gridColumn30.VisibleIndex = 2;
             // 
@@ -375,6 +391,7 @@
             this.gridColumn31.Caption = "GB Mới";
             this.gridColumn31.FieldName = "GiaBieu_BD";
             this.gridColumn31.Name = "gridColumn31";
+            this.gridColumn31.OptionsColumn.AllowEdit = false;
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 3;
             // 
@@ -383,6 +400,7 @@
             this.gridColumn32.Caption = "ĐM Cũ";
             this.gridColumn32.FieldName = "DinhMuc";
             this.gridColumn32.Name = "gridColumn32";
+            this.gridColumn32.OptionsColumn.AllowEdit = false;
             this.gridColumn32.Visible = true;
             this.gridColumn32.VisibleIndex = 4;
             // 
@@ -393,6 +411,7 @@
             this.gridColumn33.Caption = "ĐM Mới";
             this.gridColumn33.FieldName = "DinhMuc_BD";
             this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.OptionsColumn.AllowEdit = false;
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 5;
             // 
@@ -401,6 +420,7 @@
             this.gridColumn34.Caption = "TT Cũ";
             this.gridColumn34.FieldName = "TieuThu";
             this.gridColumn34.Name = "gridColumn34";
+            this.gridColumn34.OptionsColumn.AllowEdit = false;
             this.gridColumn34.Visible = true;
             this.gridColumn34.VisibleIndex = 6;
             // 
@@ -411,6 +431,7 @@
             this.gridColumn35.Caption = "TT Mới";
             this.gridColumn35.FieldName = "TieuThu_BD";
             this.gridColumn35.Name = "gridColumn35";
+            this.gridColumn35.OptionsColumn.AllowEdit = false;
             this.gridColumn35.Visible = true;
             this.gridColumn35.VisibleIndex = 7;
             // 
@@ -419,6 +440,7 @@
             this.gridColumn36.Caption = "TC Cũ";
             this.gridColumn36.FieldName = "TongCong_Start";
             this.gridColumn36.Name = "gridColumn36";
+            this.gridColumn36.OptionsColumn.AllowEdit = false;
             this.gridColumn36.Visible = true;
             this.gridColumn36.VisibleIndex = 8;
             this.gridColumn36.Width = 100;
@@ -430,6 +452,7 @@
             this.gridColumn37.Caption = "TC Mới";
             this.gridColumn37.FieldName = "TongCong_End";
             this.gridColumn37.Name = "gridColumn37";
+            this.gridColumn37.OptionsColumn.AllowEdit = false;
             this.gridColumn37.Visible = true;
             this.gridColumn37.VisibleIndex = 9;
             this.gridColumn37.Width = 100;
@@ -441,6 +464,7 @@
             this.gridColumn38.Caption = "Biến Động";
             this.gridColumn38.FieldName = "TangGiam";
             this.gridColumn38.Name = "gridColumn38";
+            this.gridColumn38.OptionsColumn.AllowEdit = false;
             this.gridColumn38.Visible = true;
             this.gridColumn38.VisibleIndex = 10;
             this.gridColumn38.Width = 80;
@@ -452,6 +476,7 @@
             this.gridColumn39.Caption = "TC Biến Động";
             this.gridColumn39.FieldName = "TongCong_BD";
             this.gridColumn39.Name = "gridColumn39";
+            this.gridColumn39.OptionsColumn.AllowEdit = false;
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 11;
             this.gridColumn39.Width = 120;
@@ -708,6 +733,7 @@
             this.dgvDSDCBD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSDCBD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDCBD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PhieuDuocKy,
             this.SoPhieu,
             this.DanhBo,
             this.HoTen,
@@ -730,11 +756,18 @@
             this.dgvDSDCBD.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSDCBD.MultiSelect = false;
             this.dgvDSDCBD.Name = "dgvDSDCBD";
-            this.dgvDSDCBD.Size = new System.Drawing.Size(1668, 470);
+            this.dgvDSDCBD.Size = new System.Drawing.Size(1745, 470);
             this.dgvDSDCBD.TabIndex = 8;
-            this.dgvDSDCBD.Visible = false;
+            this.dgvDSDCBD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSDCBD_CellEndEdit);
             this.dgvDSDCBD.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDCBD_CellFormatting);
             this.dgvDSDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDCBD_RowPostPaint);
+            // 
+            // PhieuDuocKy
+            // 
+            this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
+            this.PhieuDuocKy.HeaderText = "Phiếu Được Ký";
+            this.PhieuDuocKy.Name = "PhieuDuocKy";
+            this.PhieuDuocKy.Width = 80;
             // 
             // SoPhieu
             // 
@@ -757,6 +790,7 @@
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Khách Hàng Cũ";
             this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
             this.HoTen.Visible = false;
             this.HoTen.Width = 200;
             // 
@@ -767,6 +801,7 @@
             this.HoTen_BD.DefaultCellStyle = dataGridViewCellStyle2;
             this.HoTen_BD.HeaderText = "Khách Hàng Mới";
             this.HoTen_BD.Name = "HoTen_BD";
+            this.HoTen_BD.ReadOnly = true;
             this.HoTen_BD.Visible = false;
             this.HoTen_BD.Width = 200;
             // 
@@ -775,6 +810,7 @@
             this.DiaChi.DataPropertyName = "DiaChi";
             this.DiaChi.HeaderText = "Địa Chỉ Cũ";
             this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
             this.DiaChi.Visible = false;
             this.DiaChi.Width = 300;
             // 
@@ -785,6 +821,7 @@
             this.DiaChi_BD.DefaultCellStyle = dataGridViewCellStyle3;
             this.DiaChi_BD.HeaderText = "Địa Chỉ Mới";
             this.DiaChi_BD.Name = "DiaChi_BD";
+            this.DiaChi_BD.ReadOnly = true;
             this.DiaChi_BD.Visible = false;
             this.DiaChi_BD.Width = 300;
             // 
@@ -793,6 +830,7 @@
             this.MSThue.DataPropertyName = "MSThue";
             this.MSThue.HeaderText = "MST Cũ";
             this.MSThue.Name = "MSThue";
+            this.MSThue.ReadOnly = true;
             this.MSThue.Visible = false;
             // 
             // MSThue_BD
@@ -802,6 +840,7 @@
             this.MSThue_BD.DefaultCellStyle = dataGridViewCellStyle4;
             this.MSThue_BD.HeaderText = "MST Mới";
             this.MSThue_BD.Name = "MSThue_BD";
+            this.MSThue_BD.ReadOnly = true;
             this.MSThue_BD.Visible = false;
             // 
             // GiaBieu
@@ -809,6 +848,7 @@
             this.GiaBieu.DataPropertyName = "GiaBieu";
             this.GiaBieu.HeaderText = "GB Cũ";
             this.GiaBieu.Name = "GiaBieu";
+            this.GiaBieu.ReadOnly = true;
             this.GiaBieu.Visible = false;
             this.GiaBieu.Width = 60;
             // 
@@ -819,6 +859,7 @@
             this.GiaBieu_BD.DefaultCellStyle = dataGridViewCellStyle5;
             this.GiaBieu_BD.HeaderText = "GB Mới";
             this.GiaBieu_BD.Name = "GiaBieu_BD";
+            this.GiaBieu_BD.ReadOnly = true;
             this.GiaBieu_BD.Visible = false;
             this.GiaBieu_BD.Width = 60;
             // 
@@ -827,6 +868,7 @@
             this.DinhMuc.DataPropertyName = "DinhMuc";
             this.DinhMuc.HeaderText = "ĐM Cũ";
             this.DinhMuc.Name = "DinhMuc";
+            this.DinhMuc.ReadOnly = true;
             this.DinhMuc.Visible = false;
             this.DinhMuc.Width = 60;
             // 
@@ -837,6 +879,7 @@
             this.DinhMuc_BD.DefaultCellStyle = dataGridViewCellStyle6;
             this.DinhMuc_BD.HeaderText = "ĐM Mới";
             this.DinhMuc_BD.Name = "DinhMuc_BD";
+            this.DinhMuc_BD.ReadOnly = true;
             this.DinhMuc_BD.Visible = false;
             this.DinhMuc_BD.Width = 60;
             // 
@@ -845,6 +888,7 @@
             this.TieuThu.DataPropertyName = "TieuThu";
             this.TieuThu.HeaderText = "TT Cũ";
             this.TieuThu.Name = "TieuThu";
+            this.TieuThu.ReadOnly = true;
             this.TieuThu.Visible = false;
             this.TieuThu.Width = 60;
             // 
@@ -855,6 +899,7 @@
             this.TieuThu_BD.DefaultCellStyle = dataGridViewCellStyle7;
             this.TieuThu_BD.HeaderText = "TT Mới";
             this.TieuThu_BD.Name = "TieuThu_BD";
+            this.TieuThu_BD.ReadOnly = true;
             this.TieuThu_BD.Visible = false;
             this.TieuThu_BD.Width = 70;
             // 
@@ -863,6 +908,7 @@
             this.TongCong_Start.DataPropertyName = "TongCong_Start";
             this.TongCong_Start.HeaderText = "TC Cũ";
             this.TongCong_Start.Name = "TongCong_Start";
+            this.TongCong_Start.ReadOnly = true;
             this.TongCong_Start.Visible = false;
             // 
             // TongCong_End
@@ -872,6 +918,7 @@
             this.TongCong_End.DefaultCellStyle = dataGridViewCellStyle8;
             this.TongCong_End.HeaderText = "TC Mới";
             this.TongCong_End.Name = "TongCong_End";
+            this.TongCong_End.ReadOnly = true;
             this.TongCong_End.Visible = false;
             // 
             // TangGiam
@@ -881,6 +928,7 @@
             this.TangGiam.DefaultCellStyle = dataGridViewCellStyle9;
             this.TangGiam.HeaderText = "Biến Động";
             this.TangGiam.Name = "TangGiam";
+            this.TangGiam.ReadOnly = true;
             this.TangGiam.Visible = false;
             this.TangGiam.Width = 90;
             // 
@@ -891,6 +939,7 @@
             this.TongCong_BD.DefaultCellStyle = dataGridViewCellStyle10;
             this.TongCong_BD.HeaderText = "TC Biến Động";
             this.TongCong_BD.Name = "TongCong_BD";
+            this.TongCong_BD.ReadOnly = true;
             this.TongCong_BD.Visible = false;
             // 
             // radDSDCDB
@@ -941,7 +990,7 @@
             this.dgvDSCatChuyenDM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCatChuyenDM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLSCT,
-            this.PhieuDuocKy,
+            this.CT_PhieuDuocKy,
             this.CT_SoPhieu,
             this.CT_MaCT,
             this.CT_CatNhan,
@@ -958,9 +1007,10 @@
             this.dgvDSCatChuyenDM.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSCatChuyenDM.MultiSelect = false;
             this.dgvDSCatChuyenDM.Name = "dgvDSCatChuyenDM";
-            this.dgvDSCatChuyenDM.Size = new System.Drawing.Size(2170, 470);
+            this.dgvDSCatChuyenDM.Size = new System.Drawing.Size(2025, 470);
             this.dgvDSCatChuyenDM.TabIndex = 12;
-            this.dgvDSCatChuyenDM.Visible = false;
+            this.dgvDSCatChuyenDM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCatChuyenDM_CellEndEdit);
+            this.dgvDSCatChuyenDM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCatChuyenDM_CellFormatting);
             // 
             // MaLSCT
             // 
@@ -969,12 +1019,12 @@
             this.MaLSCT.Name = "MaLSCT";
             this.MaLSCT.Visible = false;
             // 
-            // PhieuDuocKy
+            // CT_PhieuDuocKy
             // 
-            this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
-            this.PhieuDuocKy.HeaderText = "Phiếu Được Ký";
-            this.PhieuDuocKy.Name = "PhieuDuocKy";
-            this.PhieuDuocKy.Width = 80;
+            this.CT_PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
+            this.CT_PhieuDuocKy.HeaderText = "Phiếu Được Ký";
+            this.CT_PhieuDuocKy.Name = "CT_PhieuDuocKy";
+            this.CT_PhieuDuocKy.Width = 80;
             // 
             // CT_SoPhieu
             // 
@@ -1014,7 +1064,8 @@
             this.CT_NhanNK_MaCN.HeaderText = "Chi Nhánh Nhận";
             this.CT_NhanNK_MaCN.Name = "CT_NhanNK_MaCN";
             this.CT_NhanNK_MaCN.ReadOnly = true;
-            this.CT_NhanNK_MaCN.Width = 200;
+            this.CT_NhanNK_MaCN.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CT_NhanNK_MaCN.Width = 250;
             // 
             // CT_NhanNK_DanhBo
             // 
@@ -1048,7 +1099,8 @@
             this.CT_CatNK_MaCN.HeaderText = "Chi Nhánh Cắt";
             this.CT_CatNK_MaCN.Name = "CT_CatNK_MaCN";
             this.CT_CatNK_MaCN.ReadOnly = true;
-            this.CT_CatNK_MaCN.Width = 200;
+            this.CT_CatNK_MaCN.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CT_CatNK_MaCN.Width = 250;
             // 
             // CT_CatNK_DanhBo
             // 
@@ -1086,7 +1138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 594);
+            this.ClientSize = new System.Drawing.Size(1370, 628);
             this.Controls.Add(this.dgvDSCatChuyenDM);
             this.Controls.Add(this.radDSCatChuyenDM);
             this.Controls.Add(this.radDSDCDB);
@@ -1168,6 +1220,23 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
+        private System.Windows.Forms.RadioButton radDSCatChuyenDM;
+        private System.Windows.Forms.DataGridView dgvDSCatChuyenDM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLSCT;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CT_PhieuDuocKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_SoPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_MaCT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNhan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_SoNK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_NhanNK_MaCN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_NhanNK_DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_NhanNK_HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_NhanNK_DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_MaCN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_DiaChi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -1186,21 +1255,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_End;
         private System.Windows.Forms.DataGridViewTextBoxColumn TangGiam;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_BD;
-        private System.Windows.Forms.RadioButton radDSCatChuyenDM;
-        private System.Windows.Forms.DataGridView dgvDSCatChuyenDM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaLSCT;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_SoPhieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_MaCT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNhan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_SoNK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_NhanNK_MaCN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_NhanNK_DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_NhanNK_HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_NhanNK_DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_MaCN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_DiaChi;
     }
 }
