@@ -13,6 +13,7 @@ using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.GUI.KiemTraXacMinh;
 using KTKS_DonKH.GUI.DieuChinhBienDong;
 using KTKS_DonKH.GUI.CatHuyDanhBo;
+using KTKS_DonKH.GUI.ThaoThuTraLoi;
 
 namespace KTKS_DonKH
 {
@@ -213,6 +214,16 @@ namespace KTKS_DonKH
             foreach (Form item in this.MdiChildren)
                 item.Close();
             Form frm = new frmDSCHDB();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnDSDonTTTL_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmDSTTTL();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

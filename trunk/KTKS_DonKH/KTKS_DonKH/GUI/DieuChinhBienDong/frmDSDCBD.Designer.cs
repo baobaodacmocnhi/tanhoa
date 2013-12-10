@@ -317,7 +317,7 @@
             this.gridControl.MainView = this.gridViewDCBD;
             this.gridControl.Name = "gridControl";
             this.gridControl.Size = new System.Drawing.Size(2500, 470);
-            this.gridControl.TabIndex = 2;
+            this.gridControl.TabIndex = 5;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCTDCHD,
             this.gridViewDCBD,
@@ -713,7 +713,7 @@
             this.btnLuu.Location = new System.Drawing.Point(1180, 12);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 3;
+            this.btnLuu.TabIndex = 8;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -757,7 +757,7 @@
             this.dgvDSDCBD.MultiSelect = false;
             this.dgvDSDCBD.Name = "dgvDSDCBD";
             this.dgvDSDCBD.Size = new System.Drawing.Size(1745, 470);
-            this.dgvDSDCBD.TabIndex = 8;
+            this.dgvDSDCBD.TabIndex = 6;
             this.dgvDSDCBD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSDCBD_CellEndEdit);
             this.dgvDSDCBD.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDCBD_CellFormatting);
             this.dgvDSDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDCBD_RowPostPaint);
@@ -948,7 +948,7 @@
             this.radDSDCDB.Location = new System.Drawing.Point(130, 12);
             this.radDSDCDB.Name = "radDSDCDB";
             this.radDSDCDB.Size = new System.Drawing.Size(137, 21);
-            this.radDSDCDB.TabIndex = 9;
+            this.radDSDCDB.TabIndex = 2;
             this.radDSDCDB.Text = "Danh Sách ĐCBĐ";
             this.radDSDCDB.UseVisualStyleBackColor = true;
             this.radDSDCDB.CheckedChanged += new System.EventHandler(this.radDSDCDB_CheckedChanged);
@@ -959,7 +959,7 @@
             this.radDSDCHD.Location = new System.Drawing.Point(130, 39);
             this.radDSDCHD.Name = "radDSDCHD";
             this.radDSDCHD.Size = new System.Drawing.Size(138, 21);
-            this.radDSDCHD.TabIndex = 10;
+            this.radDSDCHD.TabIndex = 3;
             this.radDSDCHD.Text = "Danh Sách ĐCHD";
             this.radDSDCHD.UseVisualStyleBackColor = true;
             this.radDSDCHD.CheckedChanged += new System.EventHandler(this.radDSDCHD_CheckedChanged);
@@ -970,7 +970,7 @@
             this.radDSCatChuyenDM.Location = new System.Drawing.Point(291, 12);
             this.radDSCatChuyenDM.Name = "radDSCatChuyenDM";
             this.radDSCatChuyenDM.Size = new System.Drawing.Size(193, 21);
-            this.radDSCatChuyenDM.TabIndex = 11;
+            this.radDSCatChuyenDM.TabIndex = 4;
             this.radDSCatChuyenDM.Text = "Danh Sách Cắt Chuyển ĐM";
             this.radDSCatChuyenDM.UseVisualStyleBackColor = true;
             this.radDSCatChuyenDM.CheckedChanged += new System.EventHandler(this.radDSCatChuyenDM_CheckedChanged);
@@ -1008,7 +1008,7 @@
             this.dgvDSCatChuyenDM.MultiSelect = false;
             this.dgvDSCatChuyenDM.Name = "dgvDSCatChuyenDM";
             this.dgvDSCatChuyenDM.Size = new System.Drawing.Size(2025, 470);
-            this.dgvDSCatChuyenDM.TabIndex = 12;
+            this.dgvDSCatChuyenDM.TabIndex = 7;
             this.dgvDSCatChuyenDM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCatChuyenDM_CellEndEdit);
             this.dgvDSCatChuyenDM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCatChuyenDM_CellFormatting);
             // 
