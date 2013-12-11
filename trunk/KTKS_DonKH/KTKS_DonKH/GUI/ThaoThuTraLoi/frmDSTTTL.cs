@@ -24,6 +24,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
         DataTable DSTTTL_Edited = new DataTable();
+        DataRowView _CTRow = null;
 
         public frmDSTTTL()
         {
@@ -181,6 +182,30 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        private void gridViewCTTTTL_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewCTTTTL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_CTRow != null && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowTTTL frm = new frmShowTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()));
+                frm.ShowDialog();
+            }
+        }
+
+        private void dgvDSThu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDSThu.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowTTTL frm = new frmShowTTTL(decimal.Parse(dgvDSThu["MaCTTTTL", dgvDSThu.CurrentRow.Index].Value.ToString()));
+                frm.ShowDialog();
+            }
+        }
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (DSTTTL_Edited != null && DSTTTL_Edited.Rows.Count > 0)
@@ -254,7 +279,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
             }
         }
-
-        
+ 
     }
 }

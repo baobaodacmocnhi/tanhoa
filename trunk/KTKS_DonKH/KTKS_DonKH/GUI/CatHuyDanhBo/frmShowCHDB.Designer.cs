@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
-    partial class frmCTDB
+    partial class frmShowCHDB
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtMaThongBaoCT = new System.Windows.Forms.TextBox();
+            this.txtMaThongBaoCH = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnInPhieu = new System.Windows.Forms.Button();
+            this.txtHieuLucKy = new System.Windows.Forms.TextBox();
             this.txtMaDon = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,35 +46,107 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.groupBoxNguyenNhanXuLy = new System.Windows.Forms.GroupBox();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtGhiChuXuLy = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbLyDo = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtKetQuaTCTBXuLy = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dateTCTBXuLy = new System.Windows.Forms.DateTimePicker();
+            this.btnCapNhatTCTBXuLy = new System.Windows.Forms.Button();
             this.groupBoxKetQuaXuLy = new System.Windows.Forms.GroupBox();
-            this.groupBoxCapTrenXuLy = new System.Windows.Forms.GroupBox();
+            this.dateTCTBXuLy = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtKetQuaTCTBXuLy = new System.Windows.Forms.TextBox();
+            this.btnCapNhatCapTrenXuLy = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtThoiGianLapCatHuy = new System.Windows.Forms.TextBox();
+            this.txtThoiGianLapPhieu = new System.Windows.Forms.TextBox();
+            this.groupBoxCapTrenXuLy = new System.Windows.Forms.GroupBox();
             this.dateCapTrenXuLy = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtKetQuaCapTrenXuLy = new System.Windows.Forms.TextBox();
-            this.txtMaThongBao = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnCapNhatCapTrenXuLy = new System.Windows.Forms.Button();
-            this.btnCapNhatTCTBXuLy = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaXuLy.SuspendLayout();
             this.groupBoxCapTrenXuLy.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 17);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Ngày Xử Lý:";
+            // 
+            // txtMaThongBaoCT
+            // 
+            this.txtMaThongBaoCT.Location = new System.Drawing.Point(814, 6);
+            this.txtMaThongBaoCT.Name = "txtMaThongBaoCT";
+            this.txtMaThongBaoCT.ReadOnly = true;
+            this.txtMaThongBaoCT.Size = new System.Drawing.Size(100, 25);
+            this.txtMaThongBaoCT.TabIndex = 24;
+            // 
+            // txtMaThongBaoCH
+            // 
+            this.txtMaThongBaoCH.Location = new System.Drawing.Point(575, 6);
+            this.txtMaThongBaoCH.Name = "txtMaThongBaoCH";
+            this.txtMaThongBaoCH.ReadOnly = true;
+            this.txtMaThongBaoCH.Size = new System.Drawing.Size(100, 25);
+            this.txtMaThongBaoCH.TabIndex = 22;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(444, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(125, 17);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Mã Thông Báo CH:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(770, 339);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 17);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Hiệu Lực Kỳ:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 17);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Lý Do:";
+            // 
+            // btnInPhieu
+            // 
+            this.btnInPhieu.Enabled = false;
+            this.btnInPhieu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnInPhieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInPhieu.Location = new System.Drawing.Point(831, 367);
+            this.btnInPhieu.Name = "btnInPhieu";
+            this.btnInPhieu.Size = new System.Drawing.Size(92, 35);
+            this.btnInPhieu.TabIndex = 18;
+            this.btnInPhieu.Text = "In Phiếu";
+            this.btnInPhieu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInPhieu.UseVisualStyleBackColor = true;
+            // 
+            // txtHieuLucKy
+            // 
+            this.txtHieuLucKy.Location = new System.Drawing.Point(865, 336);
+            this.txtHieuLucKy.Name = "txtHieuLucKy";
+            this.txtHieuLucKy.ReadOnly = true;
+            this.txtHieuLucKy.Size = new System.Drawing.Size(58, 25);
+            this.txtHieuLucKy.TabIndex = 17;
             // 
             // txtMaDon
             // 
@@ -75,16 +154,15 @@
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(100, 25);
-            this.txtMaDon.TabIndex = 5;
+            this.txtMaDon.TabIndex = 20;
             // 
-            // label21
+            // txtDiaChi
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(266, 9);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(61, 17);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "Mã Đơn:";
+            this.txtDiaChi.Location = new System.Drawing.Point(429, 43);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.ReadOnly = true;
+            this.txtDiaChi.Size = new System.Drawing.Size(470, 25);
+            this.txtDiaChi.TabIndex = 7;
             // 
             // groupBox1
             // 
@@ -99,17 +177,9 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 37);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(911, 80);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin";
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Location = new System.Drawing.Point(429, 43);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.ReadOnly = true;
-            this.txtDiaChi.Size = new System.Drawing.Size(470, 25);
-            this.txtDiaChi.TabIndex = 7;
             // 
             // label4
             // 
@@ -171,6 +241,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Danh Bộ";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(266, 9);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(61, 17);
+            this.label21.TabIndex = 19;
+            this.label21.Text = "Mã Đơn:";
+            // 
             // groupBoxNguyenNhanXuLy
             // 
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnLuu);
@@ -184,9 +263,22 @@
             this.groupBoxNguyenNhanXuLy.Location = new System.Drawing.Point(12, 123);
             this.groupBoxNguyenNhanXuLy.Name = "groupBoxNguyenNhanXuLy";
             this.groupBoxNguyenNhanXuLy.Size = new System.Drawing.Size(638, 94);
-            this.groupBoxNguyenNhanXuLy.TabIndex = 1;
+            this.groupBoxNguyenNhanXuLy.TabIndex = 13;
             this.groupBoxNguyenNhanXuLy.TabStop = false;
             this.groupBoxNguyenNhanXuLy.Text = "Nguyên Nhân Xử Lý";
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(515, 45);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(70, 35);
+            this.btnLuu.TabIndex = 6;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Visible = false;
             // 
             // txtSoTien
             // 
@@ -195,7 +287,6 @@
             this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
-            this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
             // 
             // label7
             // 
@@ -236,50 +327,19 @@
             this.cmbLyDo.Name = "cmbLyDo";
             this.cmbLyDo.Size = new System.Drawing.Size(240, 25);
             this.cmbLyDo.TabIndex = 1;
-            this.cmbLyDo.SelectedIndexChanged += new System.EventHandler(this.cmbLyDo_SelectedIndexChanged);
             // 
-            // label5
+            // btnCapNhatTCTBXuLy
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 17);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Lý Do:";
-            // 
-            // txtKetQuaTCTBXuLy
-            // 
-            this.txtKetQuaTCTBXuLy.Location = new System.Drawing.Point(99, 55);
-            this.txtKetQuaTCTBXuLy.Name = "txtKetQuaTCTBXuLy";
-            this.txtKetQuaTCTBXuLy.Size = new System.Drawing.Size(386, 25);
-            this.txtKetQuaTCTBXuLy.TabIndex = 3;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 58);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 17);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Kết Quả:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 30);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 17);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Ngày Xử Lý:";
-            // 
-            // dateTCTBXuLy
-            // 
-            this.dateTCTBXuLy.CustomFormat = "dd/MM/yyyy";
-            this.dateTCTBXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTCTBXuLy.Location = new System.Drawing.Point(99, 24);
-            this.dateTCTBXuLy.Name = "dateTCTBXuLy";
-            this.dateTCTBXuLy.Size = new System.Drawing.Size(109, 25);
-            this.dateTCTBXuLy.TabIndex = 1;
+            this.btnCapNhatTCTBXuLy.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnCapNhatTCTBXuLy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCapNhatTCTBXuLy.Location = new System.Drawing.Point(515, 45);
+            this.btnCapNhatTCTBXuLy.Name = "btnCapNhatTCTBXuLy";
+            this.btnCapNhatTCTBXuLy.Size = new System.Drawing.Size(100, 35);
+            this.btnCapNhatTCTBXuLy.TabIndex = 0;
+            this.btnCapNhatTCTBXuLy.Text = "Cập Nhật";
+            this.btnCapNhatTCTBXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCapNhatTCTBXuLy.UseVisualStyleBackColor = true;
+            this.btnCapNhatTCTBXuLy.Visible = false;
             // 
             // groupBoxKetQuaXuLy
             // 
@@ -292,15 +352,69 @@
             this.groupBoxKetQuaXuLy.Location = new System.Drawing.Point(12, 223);
             this.groupBoxKetQuaXuLy.Name = "groupBoxKetQuaXuLy";
             this.groupBoxKetQuaXuLy.Size = new System.Drawing.Size(638, 93);
-            this.groupBoxKetQuaXuLy.TabIndex = 2;
+            this.groupBoxKetQuaXuLy.TabIndex = 14;
             this.groupBoxKetQuaXuLy.TabStop = false;
             this.groupBoxKetQuaXuLy.Text = "Kết Quả Xử Lý";
+            // 
+            // dateTCTBXuLy
+            // 
+            this.dateTCTBXuLy.CustomFormat = "dd/MM/yyyy";
+            this.dateTCTBXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTCTBXuLy.Location = new System.Drawing.Point(99, 24);
+            this.dateTCTBXuLy.Name = "dateTCTBXuLy";
+            this.dateTCTBXuLy.Size = new System.Drawing.Size(109, 25);
+            this.dateTCTBXuLy.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(62, 17);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Kết Quả:";
+            // 
+            // txtKetQuaTCTBXuLy
+            // 
+            this.txtKetQuaTCTBXuLy.Location = new System.Drawing.Point(99, 55);
+            this.txtKetQuaTCTBXuLy.Name = "txtKetQuaTCTBXuLy";
+            this.txtKetQuaTCTBXuLy.Size = new System.Drawing.Size(386, 25);
+            this.txtKetQuaTCTBXuLy.TabIndex = 3;
+            // 
+            // btnCapNhatCapTrenXuLy
+            // 
+            this.btnCapNhatCapTrenXuLy.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnCapNhatCapTrenXuLy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCapNhatCapTrenXuLy.Location = new System.Drawing.Point(515, 45);
+            this.btnCapNhatCapTrenXuLy.Name = "btnCapNhatCapTrenXuLy";
+            this.btnCapNhatCapTrenXuLy.Size = new System.Drawing.Size(100, 35);
+            this.btnCapNhatCapTrenXuLy.TabIndex = 6;
+            this.btnCapNhatCapTrenXuLy.Text = "Cập Nhật";
+            this.btnCapNhatCapTrenXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCapNhatCapTrenXuLy.UseVisualStyleBackColor = true;
+            this.btnCapNhatCapTrenXuLy.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(248, 30);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(173, 17);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Số Tháng Lập Phiếu(tháng):";
+            // 
+            // txtThoiGianLapPhieu
+            // 
+            this.txtThoiGianLapPhieu.Location = new System.Drawing.Point(427, 24);
+            this.txtThoiGianLapPhieu.Name = "txtThoiGianLapPhieu";
+            this.txtThoiGianLapPhieu.Size = new System.Drawing.Size(58, 25);
+            this.txtThoiGianLapPhieu.TabIndex = 5;
             // 
             // groupBoxCapTrenXuLy
             // 
             this.groupBoxCapTrenXuLy.Controls.Add(this.btnCapNhatCapTrenXuLy);
             this.groupBoxCapTrenXuLy.Controls.Add(this.label11);
-            this.groupBoxCapTrenXuLy.Controls.Add(this.txtThoiGianLapCatHuy);
+            this.groupBoxCapTrenXuLy.Controls.Add(this.txtThoiGianLapPhieu);
             this.groupBoxCapTrenXuLy.Controls.Add(this.dateCapTrenXuLy);
             this.groupBoxCapTrenXuLy.Controls.Add(this.label12);
             this.groupBoxCapTrenXuLy.Controls.Add(this.label13);
@@ -309,26 +423,9 @@
             this.groupBoxCapTrenXuLy.Location = new System.Drawing.Point(12, 322);
             this.groupBoxCapTrenXuLy.Name = "groupBoxCapTrenXuLy";
             this.groupBoxCapTrenXuLy.Size = new System.Drawing.Size(638, 95);
-            this.groupBoxCapTrenXuLy.TabIndex = 3;
+            this.groupBoxCapTrenXuLy.TabIndex = 15;
             this.groupBoxCapTrenXuLy.TabStop = false;
             this.groupBoxCapTrenXuLy.Text = "Cấp Trên Xử Lý";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(231, 30);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(190, 17);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Số Tháng Lập Cắt Hủy(tháng):";
-            // 
-            // txtThoiGianLapCatHuy
-            // 
-            this.txtThoiGianLapCatHuy.Location = new System.Drawing.Point(427, 24);
-            this.txtThoiGianLapCatHuy.Name = "txtThoiGianLapCatHuy";
-            this.txtThoiGianLapCatHuy.Size = new System.Drawing.Size(58, 25);
-            this.txtThoiGianLapCatHuy.TabIndex = 5;
-            this.txtThoiGianLapCatHuy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThoiGianLapCatHuy_KeyPress);
             // 
             // dateCapTrenXuLy
             // 
@@ -364,83 +461,55 @@
             this.txtKetQuaCapTrenXuLy.Size = new System.Drawing.Size(386, 25);
             this.txtKetQuaCapTrenXuLy.TabIndex = 3;
             // 
-            // txtMaThongBao
+            // label15
             // 
-            this.txtMaThongBao.Location = new System.Drawing.Point(550, 6);
-            this.txtMaThongBao.Name = "txtMaThongBao";
-            this.txtMaThongBao.ReadOnly = true;
-            this.txtMaThongBao.Size = new System.Drawing.Size(100, 25);
-            this.txtMaThongBao.TabIndex = 7;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(686, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(122, 17);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "Mã Thông Báo CT:";
             // 
-            // label10
+            // btnIn
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(444, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 17);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Mã Thông Báo:";
+            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(740, 272);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(125, 35);
+            this.btnIn.TabIndex = 25;
+            this.btnIn.Text = "In Thông Báo";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
-            // btnCapNhatCapTrenXuLy
-            // 
-            this.btnCapNhatCapTrenXuLy.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnCapNhatCapTrenXuLy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCapNhatCapTrenXuLy.Location = new System.Drawing.Point(515, 45);
-            this.btnCapNhatCapTrenXuLy.Name = "btnCapNhatCapTrenXuLy";
-            this.btnCapNhatCapTrenXuLy.Size = new System.Drawing.Size(100, 35);
-            this.btnCapNhatCapTrenXuLy.TabIndex = 6;
-            this.btnCapNhatCapTrenXuLy.Text = "Cập Nhật";
-            this.btnCapNhatCapTrenXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCapNhatCapTrenXuLy.UseVisualStyleBackColor = true;
-            this.btnCapNhatCapTrenXuLy.Click += new System.EventHandler(this.btnCapNhatCapTrenXuLy_Click);
-            // 
-            // btnCapNhatTCTBXuLy
-            // 
-            this.btnCapNhatTCTBXuLy.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnCapNhatTCTBXuLy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCapNhatTCTBXuLy.Location = new System.Drawing.Point(515, 45);
-            this.btnCapNhatTCTBXuLy.Name = "btnCapNhatTCTBXuLy";
-            this.btnCapNhatTCTBXuLy.Size = new System.Drawing.Size(100, 35);
-            this.btnCapNhatTCTBXuLy.TabIndex = 0;
-            this.btnCapNhatTCTBXuLy.Text = "Cập Nhật";
-            this.btnCapNhatTCTBXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCapNhatTCTBXuLy.UseVisualStyleBackColor = true;
-            this.btnCapNhatTCTBXuLy.Click += new System.EventHandler(this.btnCapNhatTCTBXuLy_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(515, 45);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 6;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // frmCTDB
+            // frmShowCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 429);
-            this.Controls.Add(this.txtMaThongBao);
+            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.txtMaThongBaoCT);
+            this.Controls.Add(this.txtMaThongBaoCH);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.groupBoxCapTrenXuLy);
-            this.Controls.Add(this.groupBoxKetQuaXuLy);
-            this.Controls.Add(this.groupBoxNguyenNhanXuLy);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnInPhieu);
+            this.Controls.Add(this.txtHieuLucKy);
             this.Controls.Add(this.txtMaDon);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label21);
+            this.Controls.Add(this.groupBoxNguyenNhanXuLy);
+            this.Controls.Add(this.groupBoxKetQuaXuLy);
+            this.Controls.Add(this.groupBoxCapTrenXuLy);
+            this.Controls.Add(this.label15);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCTDB";
-            this.Text = "Cắt Tạm Danh Bộ";
-            this.Load += new System.EventHandler(this.frmCTDB_Load);
+            this.Name = "frmShowCHDB";
+            this.Text = "Hiện Thị Cắt Hủy Danh Bộ";
+            this.Load += new System.EventHandler(this.frmShowCHDB_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxNguyenNhanXuLy.ResumeLayout(false);
@@ -456,10 +525,17 @@
 
         #endregion
 
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtMaThongBaoCT;
+        private System.Windows.Forms.TextBox txtMaThongBaoCH;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnInPhieu;
+        private System.Windows.Forms.TextBox txtHieuLucKy;
         private System.Windows.Forms.TextBox txtMaDon;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label3;
@@ -467,29 +543,28 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBoxNguyenNhanXuLy;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.TextBox txtSoTien;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtGhiChuXuLy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbLyDo;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtSoTien;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtKetQuaTCTBXuLy;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTCTBXuLy;
-        private System.Windows.Forms.GroupBox groupBoxKetQuaXuLy;
-        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnCapNhatTCTBXuLy;
-        private System.Windows.Forms.GroupBox groupBoxCapTrenXuLy;
+        private System.Windows.Forms.GroupBox groupBoxKetQuaXuLy;
+        private System.Windows.Forms.DateTimePicker dateTCTBXuLy;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtKetQuaTCTBXuLy;
+        private System.Windows.Forms.Button btnCapNhatCapTrenXuLy;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtThoiGianLapCatHuy;
+        private System.Windows.Forms.TextBox txtThoiGianLapPhieu;
+        private System.Windows.Forms.GroupBox groupBoxCapTrenXuLy;
         private System.Windows.Forms.DateTimePicker dateCapTrenXuLy;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtKetQuaCapTrenXuLy;
-        private System.Windows.Forms.Button btnCapNhatCapTrenXuLy;
-        private System.Windows.Forms.TextBox txtMaThongBao;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnIn;
     }
 }

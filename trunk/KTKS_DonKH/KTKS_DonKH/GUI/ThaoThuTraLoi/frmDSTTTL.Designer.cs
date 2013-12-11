@@ -97,7 +97,9 @@
             this.gridViewCTTTTL.OptionsBehavior.AutoPopulateColumns = false;
             this.gridViewCTTTTL.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTTTTL.OptionsView.ShowGroupPanel = false;
+            this.gridViewCTTTTL.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTTTTL_RowCellClick);
             this.gridViewCTTTTL.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTTTTL_CustomColumnDisplayText);
+            this.gridViewCTTTTL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewCTTTTL_KeyDown);
             // 
             // gridColumn14
             // 
@@ -428,6 +430,7 @@
             this.dgvDSThu.Size = new System.Drawing.Size(1361, 470);
             this.dgvDSThu.TabIndex = 4;
             this.dgvDSThu.Visible = false;
+            this.dgvDSThu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSThu_KeyDown);
             // 
             // ThuDuocKy
             // 

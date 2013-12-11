@@ -126,6 +126,7 @@
             this.gridViewCTCTDB.OptionsView.ShowGroupPanel = false;
             this.gridViewCTCTDB.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTCTDB_RowCellClick);
             this.gridViewCTCTDB.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTCTDB_CustomColumnDisplayText);
+            this.gridViewCTCTDB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewCTCTDB_KeyDown);
             // 
             // gridColumn14
             // 
@@ -246,6 +247,7 @@
             this.gridViewCTCHDB.OptionsView.ShowGroupPanel = false;
             this.gridViewCTCHDB.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTCHDB_RowCellClick);
             this.gridViewCTCHDB.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTCHDB_CustomColumnDisplayText);
+            this.gridViewCTCHDB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewCTCHDB_KeyDown);
             // 
             // gridColumn20
             // 
@@ -644,6 +646,7 @@
             this.dgvDSCTCHDB.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCTCHDB_CellFormatting);
             this.dgvDSCTCHDB.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSCTCHDB_CellMouseClick);
             this.dgvDSCTCHDB.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCTCHDB_RowPostPaint);
+            this.dgvDSCTCHDB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSCTCHDB_KeyDown);
             this.dgvDSCTCHDB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSCTCHDB_MouseClick);
             // 
             // PhieuDuocKy
@@ -736,7 +739,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1363, 661);
+            this.ClientSize = new System.Drawing.Size(1363, 678);
             this.Controls.Add(this.radDSCatHuyDanhBo);
             this.Controls.Add(this.radDSCatTamDanhBo);
             this.Controls.Add(this.radDaDuyet);

@@ -24,7 +24,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
         DataTable DSCHDB_Edited = new DataTable();
-        DataRowView CTRow;
+        DataRowView _CTRow;
 
         public frmDSCHDB()
         {
@@ -149,7 +149,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             source.Add("Action", "Sửa");
             ///gridcontrol
             if (radDaDuyet.Checked)
-                source.Add("MaCTCTDB", CTRow["MaCTCTDB"].ToString());
+                source.Add("MaCTCTDB", _CTRow["MaCTCTDB"].ToString());
             ///datagridview
             if (radDSCatTamDanhBo.Checked)
                 source.Add("MaCTCTDB", dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString());
@@ -184,7 +184,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 source.Add("Action", "CTDBThêm");
                 ///gridcontrol
                 if (radDaDuyet.Checked)
-                    source.Add("MaCTCTDB", CTRow["MaCTCTDB"].ToString());
+                    source.Add("MaCTCTDB", _CTRow["MaCTCTDB"].ToString());
                 ///datagridview
                 if (radDSCatTamDanhBo.Checked)
                     source.Add("MaCTCTDB", dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString());
@@ -209,7 +209,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             source.Add("Action", "Sửa");
             ///gridcontrol
             if (radDaDuyet.Checked)
-                source.Add("MaCTCHDB", CTRow["MaCTCHDB"].ToString());
+                source.Add("MaCTCHDB", _CTRow["MaCTCHDB"].ToString());
             ///datagridview
             if (radDSCatHuyDanhBo.Checked)
                 source.Add("MaCTCHDB", dgvDSCTCHDB.CurrentRow.Cells["MaTB"].Value.ToString());
@@ -245,12 +245,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void gridViewCTCTDB_RowCellClick(object sender, RowCellClickEventArgs e)
         {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
             if (radDaDuyet.Checked && e.Button == MouseButtons.Right)
             {
                 ///Mỗi 1 record là 1 gridcontrol và 1 gridview khác nhau nên để lấy
                 ///được dữ liệu phải làm cách sau
-                GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-                CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+                //GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+                //_CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
 
                 contextMenuStrip1.Show(gridControl, new Point(e.X, e.Y));
 
@@ -263,12 +265,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void gridViewCTCHDB_RowCellClick(object sender, RowCellClickEventArgs e)
         {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
             if (radDaDuyet.Checked && e.Button == MouseButtons.Right)
             {
                 ///Mỗi 1 record là 1 gridcontrol và 1 gridview khác nhau nên để lấy
                 ///được dữ liệu phải làm cách sau
-                GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
-                CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+                //GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+                //_CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
 
                 contextMenuStrip1.Show(gridControl, new Point(e.X, e.Y));
 
@@ -334,6 +338,24 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (e.Column.FieldName == "SoTien" && e.Value != null)
             {
                 e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void gridViewCTCTDB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_CTRow != null && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCTCTDB"].ToString()));
+                frm.ShowDialog();
+            }
+        }
+
+        private void gridViewCTCHDB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_CTRow != null && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCTCHDB"].ToString()));
+                frm.ShowDialog();
             }
         }
 
@@ -423,6 +445,22 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     _cCHDB.SuaCTCHDB(ctchdb);
                 }
             }
+        } 
+
+        private void dgvDSCTCHDB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (radDSCatTamDanhBo.Checked)
+                if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+                {
+                    frmShowCTDB frm = new frmShowCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+                }
+            if (radDSCatHuyDanhBo.Checked)
+                if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+                {
+                    frmShowCHDB frm = new frmShowCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+                }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)

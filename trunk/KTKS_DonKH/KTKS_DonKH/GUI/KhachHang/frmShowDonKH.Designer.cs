@@ -637,7 +637,7 @@
             this.MinimizeBox = false;
             this.Name = "frmShowDonKH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Đơn Khách Hàng";
+            this.Text = "Hiện Thị Đơn Khách Hàng";
             this.Load += new System.EventHandler(this.frmShowDonKH_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
