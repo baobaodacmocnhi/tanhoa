@@ -190,15 +190,6 @@ namespace KTKS_DonKH
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
-        private void ribbtnTest_Click(object sender, EventArgs e)
-        {
-            foreach (Form item in this.MdiChildren)
-                item.Close();
-            Form frm = new frmTest();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
         private void ribbtnBanGiamDoc_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)

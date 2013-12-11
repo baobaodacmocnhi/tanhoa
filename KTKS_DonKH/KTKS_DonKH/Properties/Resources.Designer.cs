@@ -67,6 +67,27 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap cash_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("cash_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Chief_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("Chief_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap customer_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("customer_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap delete_24x24 {
             get {
                 object obj = ResourceManager.GetObject("delete_24x24", resourceCulture);
@@ -74,9 +95,37 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap folder_document_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("folder_document_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap forms_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("forms_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap id_home_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("id_home_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap key_48x48 {
             get {
                 object obj = ResourceManager.GetObject("key_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap list_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("list_48x48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -109,6 +158,20 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap my_documents_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("my_documents_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap office_building_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("office_building_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap pencil_24x24 {
             get {
                 object obj = ResourceManager.GetObject("pencil_24x24", resourceCulture);
@@ -126,6 +189,13 @@ namespace KTKS_DonKH.Properties {
         internal static System.Drawing.Bitmap people_48x48 {
             get {
                 object obj = ResourceManager.GetObject("people_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap print_24x24 {
+            get {
+                object obj = ResourceManager.GetObject("print_24x24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
