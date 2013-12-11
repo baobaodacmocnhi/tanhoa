@@ -193,7 +193,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool SuaDCBD(CHDB chdb)
+        public bool SuaCHDB(CHDB chdb)
         {
             try
             {
@@ -234,6 +234,19 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
+            }
+        }
+
+        public CHDB getCHDBbyID(decimal MaCHDB)
+        {
+            try
+            {
+                return db.CHDBs.Single(itemCHDB => itemCHDB.MaCHDB == MaCHDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 

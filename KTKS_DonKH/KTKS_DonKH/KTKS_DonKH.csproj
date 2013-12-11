@@ -91,6 +91,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\ThaoThuTraLoi\rptThaoThuTraLoi.cs">
+      <DependentUpon>rptThaoThuTraLoi.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\CatHuyDanhBo\rptPhieuCHDB.cs">
       <DependentUpon>rptPhieuCHDB.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -369,6 +375,10 @@
     <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
       <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="BaoCao\ThaoThuTraLoi\rptThaoThuTraLoi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThaoThuTraLoi.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptPhieuCHDB.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuCHDB.cs</LastGenOutput>
