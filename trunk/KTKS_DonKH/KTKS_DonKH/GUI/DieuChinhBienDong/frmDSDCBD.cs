@@ -92,6 +92,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 gridControl.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
                 dgvDSDCBD.Visible = false;
                 dgvDSCatChuyenDM.Visible = false;
+                btnLuu.Enabled = true;
             }
         }
 
@@ -103,6 +104,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
                 dgvDSDCBD.Visible = false;
                 dgvDSCatChuyenDM.Visible = false;
+                btnLuu.Enabled = false;
             }
         }
 
@@ -132,6 +134,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 gridControl.Visible = false;
                 dgvDSCatChuyenDM.Visible = false;
+                btnLuu.Enabled = false;
             }
         }
 
@@ -161,6 +164,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 gridControl.Visible = false;
                 dgvDSCatChuyenDM.Visible = false;
+                btnLuu.Enabled = false;
             }
         }
 
@@ -170,6 +174,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDM();
             gridControl.Visible = false;
             dgvDSDCBD.Visible = false;
+            btnLuu.Enabled = false;
         }
 
         private void điềuChỉnhBiếnĐộngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -280,8 +285,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 if (radDaDuyet.Checked)
                     gridControl.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
-                if (radChuaDuyet.Checked)
-                    gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
             }
         }
 

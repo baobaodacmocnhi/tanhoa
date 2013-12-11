@@ -37,6 +37,7 @@
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridViewTTTL = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -86,7 +87,8 @@
             this.gridColumn14,
             this.gridColumn15,
             this.gridColumn16,
-            this.gridColumn17});
+            this.gridColumn17,
+            this.gridColumn20});
             this.gridViewCTTTTL.GridControl = this.gridControl;
             this.gridViewCTTTTL.IndicatorWidth = 41;
             this.gridViewCTTTTL.Name = "gridViewCTTTTL";
@@ -125,7 +127,7 @@
             this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 2;
-            this.gridColumn16.Width = 200;
+            this.gridColumn16.Width = 250;
             // 
             // gridColumn17
             // 
@@ -135,7 +137,16 @@
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 3;
-            this.gridColumn17.Width = 400;
+            this.gridColumn17.Width = 500;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "Nơi Nhận";
+            this.gridColumn20.FieldName = "NoiNhan";
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 4;
+            this.gridColumn20.Width = 300;
             // 
             // gridControl
             // 
@@ -191,11 +202,12 @@
             this.gridViewTTTL.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewTTTL_CellValueChanged);
             this.gridViewTTTL.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewTTTL_CellValueChanging);
             this.gridViewTTTL.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewTTTL_CustomColumnDisplayText);
+            this.gridViewTTTL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewTTTL_KeyDown);
             // 
             // gridColumn18
             // 
-            this.gridColumn18.Caption = "Mã DCBD";
-            this.gridColumn18.FieldName = "MaDCBD";
+            this.gridColumn18.Caption = "Mã TTTL";
+            this.gridColumn18.FieldName = "MaTTTL";
             this.gridColumn18.Name = "gridColumn18";
             // 
             // gridColumn1
@@ -464,7 +476,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1363, 661);
+            this.ClientSize = new System.Drawing.Size(1363, 612);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.radChuaDuyet);
             this.Controls.Add(this.radDaDuyet);
@@ -522,5 +534,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
     }
 }

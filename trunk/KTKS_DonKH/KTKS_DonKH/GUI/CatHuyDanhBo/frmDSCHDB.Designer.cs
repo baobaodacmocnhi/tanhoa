@@ -374,8 +374,8 @@
             // 
             // gridColumn18
             // 
-            this.gridColumn18.Caption = "Mã DCBD";
-            this.gridColumn18.FieldName = "MaDCBD";
+            this.gridColumn18.Caption = "Mã CHDB";
+            this.gridColumn18.FieldName = "MaCHDB";
             this.gridColumn18.Name = "gridColumn18";
             // 
             // gridColumn1
@@ -533,6 +533,7 @@
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // radChuaDuyet
             // 

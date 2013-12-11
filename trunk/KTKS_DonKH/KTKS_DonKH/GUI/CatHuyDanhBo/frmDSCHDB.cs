@@ -13,6 +13,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -21,6 +22,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CChuyenDi _cChuyenDi = new CChuyenDi();
         CCHDB _cCHDB = new CCHDB();
         CDonKH _cDonKH = new CDonKH();
+        CKTXM _cKTXM = new CKTXM();
         DataTable DSCHDB_Edited = new DataTable();
         DataRowView CTRow;
 
@@ -73,6 +75,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 gridControl.Visible = true;
                 gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
                 dgvDSCTCHDB.Visible = false;
+                btnLuu.Enabled = true;
             }
         }
 
@@ -83,6 +86,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 gridControl.Visible = true;
                 gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
                 dgvDSCTCHDB.Visible = false;
+                btnLuu.Enabled = false;
             }
         }
 
@@ -95,6 +99,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
                 dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = false;
                 gridControl.Visible = false;
+                btnLuu.Enabled = false;
             }
         }
 
@@ -107,6 +112,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
                 dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
                 gridControl.Visible = false;
+                btnLuu.Enabled = false;
             }
         }
 
@@ -418,7 +424,79 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
             }
         }
-  
 
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (DSCHDB_Edited != null && DSCHDB_Edited.Rows.Count > 0)
+            {
+                foreach (DataRow itemRow in DSCHDB_Edited.Rows)
+                {
+                    if (itemRow["MaCHDB"].ToString() == "")
+                    {
+                        CHDB chdb = new CHDB();
+                        chdb.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
+                        chdb.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
+                        chdb.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
+                        chdb.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
+                        chdb.KetQua = itemRow["KetQua"].ToString();
+                        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        {
+                            chdb.Chuyen = true;
+                            chdb.MaChuyen = itemRow["MaChuyen"].ToString();
+                            chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        }
+                        if (_cCHDB.ThemCHDB(chdb))
+                        {
+                            switch (itemRow["NoiChuyenDen"].ToString())
+                            {
+                                case "Khách Hàng":
+                                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                                    donkh.Nhan = true;
+                                    _cDonKH.SuaDonKH(donkh);
+                                    break;
+                                case "Điều Chỉnh Biến Động":
+                                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                                    KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
+                                    ktxm.Nhan = true;
+                                    _cKTXM.SuaKTXM(ktxm);
+                                    break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        CHDB chdb = _cCHDB.getCHDBbyID(decimal.Parse(itemRow["MaCHDB"].ToString()));
+                        ///Đơn đã được nơi nhận xử lý thì không được sửa
+                        if (!chdb.Nhan)
+                        {
+                            chdb.KetQua = itemRow["KetQua"].ToString();
+                            if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                            {
+                                chdb.Chuyen = true;
+                                chdb.MaChuyen = itemRow["MaChuyen"].ToString();
+                                chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                            }
+                            else
+                                if (itemRow["MaChuyen"].ToString() == "NONE")
+                                {
+                                    chdb.Chuyen = false;
+                                    chdb.MaChuyen = null;
+                                    chdb.LyDoChuyen = null;
+                                }
+                            _cCHDB.SuaCHDB(chdb);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đơn " + chdb.MaCHDB + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                DSCHDB_Edited.Clear();
+
+                if (radDaDuyet.Checked)
+                    gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
+            }
+        }
     }
 }

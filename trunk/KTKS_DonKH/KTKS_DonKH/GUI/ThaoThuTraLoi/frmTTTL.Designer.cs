@@ -51,6 +51,13 @@
             this.txtVeViec = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
+            this.chkGiamNuocXaBo = new System.Windows.Forms.CheckBox();
+            this.chkKiemDinhDHN_Sai = new System.Windows.Forms.CheckBox();
+            this.chkKiemDinhDHN_Dung = new System.Windows.Forms.CheckBox();
+            this.chkThayDHN = new System.Windows.Forms.CheckBox();
+            this.chkDieuChinh_GB_DM = new System.Windows.Forms.CheckBox();
+            this.chkThuMoi = new System.Windows.Forms.CheckBox();
+            this.chkThuBao = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +68,7 @@
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(100, 25);
-            this.txtMaDon.TabIndex = 29;
+            this.txtMaDon.TabIndex = 4;
             // 
             // label21
             // 
@@ -69,7 +76,7 @@
             this.label21.Location = new System.Drawing.Point(342, 9);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(61, 17);
-            this.label21.TabIndex = 28;
+            this.label21.TabIndex = 3;
             this.label21.Text = "Mã Đơn:";
             // 
             // groupBox1
@@ -88,8 +95,8 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1086, 77);
-            this.groupBox1.TabIndex = 27;
+            this.groupBox1.Size = new System.Drawing.Size(1097, 77);
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Ban Đầu";
             // 
@@ -197,6 +204,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkThuBao);
+            this.groupBox2.Controls.Add(this.chkThuMoi);
+            this.groupBox2.Controls.Add(this.chkDieuChinh_GB_DM);
+            this.groupBox2.Controls.Add(this.chkThayDHN);
+            this.groupBox2.Controls.Add(this.chkKiemDinhDHN_Dung);
+            this.groupBox2.Controls.Add(this.chkKiemDinhDHN_Sai);
+            this.groupBox2.Controls.Add(this.chkGiamNuocXaBo);
             this.groupBox2.Controls.Add(this.txtNoiNhan);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtNoiDung);
@@ -205,23 +219,23 @@
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Location = new System.Drawing.Point(12, 112);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1086, 320);
-            this.groupBox2.TabIndex = 28;
+            this.groupBox2.Size = new System.Drawing.Size(1097, 320);
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nội Dung Thư";
             // 
             // txtNoiNhan
             // 
-            this.txtNoiNhan.Location = new System.Drawing.Point(855, 82);
+            this.txtNoiNhan.Location = new System.Drawing.Point(737, 82);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
-            this.txtNoiNhan.Size = new System.Drawing.Size(209, 227);
+            this.txtNoiNhan.Size = new System.Drawing.Size(149, 227);
             this.txtNoiNhan.TabIndex = 5;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(852, 62);
+            this.label10.Location = new System.Drawing.Point(734, 62);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 17);
             this.label10.TabIndex = 4;
@@ -232,7 +246,7 @@
             this.txtNoiDung.Location = new System.Drawing.Point(12, 82);
             this.txtNoiDung.Multiline = true;
             this.txtNoiDung.Name = "txtNoiDung";
-            this.txtNoiDung.Size = new System.Drawing.Size(837, 227);
+            this.txtNoiDung.Size = new System.Drawing.Size(719, 227);
             this.txtNoiDung.TabIndex = 3;
             // 
             // label11
@@ -267,17 +281,88 @@
             this.btnLuu.Location = new System.Drawing.Point(867, 438);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 30;
+            this.btnLuu.TabIndex = 2;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // chkGiamNuocXaBo
+            // 
+            this.chkGiamNuocXaBo.AutoSize = true;
+            this.chkGiamNuocXaBo.Location = new System.Drawing.Point(895, 84);
+            this.chkGiamNuocXaBo.Name = "chkGiamNuocXaBo";
+            this.chkGiamNuocXaBo.Size = new System.Drawing.Size(181, 21);
+            this.chkGiamNuocXaBo.TabIndex = 6;
+            this.chkGiamNuocXaBo.Text = "Giảm Lượng Nước Xả Bỏ";
+            this.chkGiamNuocXaBo.UseVisualStyleBackColor = true;
+            // 
+            // chkKiemDinhDHN_Sai
+            // 
+            this.chkKiemDinhDHN_Sai.AutoSize = true;
+            this.chkKiemDinhDHN_Sai.Location = new System.Drawing.Point(895, 111);
+            this.chkKiemDinhDHN_Sai.Name = "chkKiemDinhDHN_Sai";
+            this.chkKiemDinhDHN_Sai.Size = new System.Drawing.Size(199, 21);
+            this.chkKiemDinhDHN_Sai.TabIndex = 7;
+            this.chkKiemDinhDHN_Sai.Text = "Thử Kiểm Định ĐHN (đúng)";
+            this.chkKiemDinhDHN_Sai.UseVisualStyleBackColor = true;
+            // 
+            // chkKiemDinhDHN_Dung
+            // 
+            this.chkKiemDinhDHN_Dung.AutoSize = true;
+            this.chkKiemDinhDHN_Dung.Location = new System.Drawing.Point(895, 138);
+            this.chkKiemDinhDHN_Dung.Name = "chkKiemDinhDHN_Dung";
+            this.chkKiemDinhDHN_Dung.Size = new System.Drawing.Size(186, 21);
+            this.chkKiemDinhDHN_Dung.TabIndex = 8;
+            this.chkKiemDinhDHN_Dung.Text = "Thử Kiểm Định ĐHN (sai)";
+            this.chkKiemDinhDHN_Dung.UseVisualStyleBackColor = true;
+            // 
+            // chkThayDHN
+            // 
+            this.chkThayDHN.AutoSize = true;
+            this.chkThayDHN.Location = new System.Drawing.Point(895, 165);
+            this.chkThayDHN.Name = "chkThayDHN";
+            this.chkThayDHN.Size = new System.Drawing.Size(94, 21);
+            this.chkThayDHN.TabIndex = 9;
+            this.chkThayDHN.Text = "Thay ĐHN";
+            this.chkThayDHN.UseVisualStyleBackColor = true;
+            // 
+            // chkDieuChinh_GB_DM
+            // 
+            this.chkDieuChinh_GB_DM.AutoSize = true;
+            this.chkDieuChinh_GB_DM.Location = new System.Drawing.Point(895, 192);
+            this.chkDieuChinh_GB_DM.Name = "chkDieuChinh_GB_DM";
+            this.chkDieuChinh_GB_DM.Size = new System.Drawing.Size(146, 21);
+            this.chkDieuChinh_GB_DM.TabIndex = 10;
+            this.chkDieuChinh_GB_DM.Text = "Điều Chỉnh GB-ĐM";
+            this.chkDieuChinh_GB_DM.UseVisualStyleBackColor = true;
+            // 
+            // chkThuMoi
+            // 
+            this.chkThuMoi.AutoSize = true;
+            this.chkThuMoi.Location = new System.Drawing.Point(895, 261);
+            this.chkThuMoi.Name = "chkThuMoi";
+            this.chkThuMoi.Size = new System.Drawing.Size(79, 21);
+            this.chkThuMoi.TabIndex = 11;
+            this.chkThuMoi.Text = "Thư Mời";
+            this.chkThuMoi.UseVisualStyleBackColor = true;
+            // 
+            // chkThuBao
+            // 
+            this.chkThuBao.AutoSize = true;
+            this.chkThuBao.Location = new System.Drawing.Point(895, 288);
+            this.chkThuBao.Name = "chkThuBao";
+            this.chkThuBao.Size = new System.Drawing.Size(79, 21);
+            this.chkThuBao.TabIndex = 12;
+            this.chkThuBao.Text = "Thư Báo";
+            this.chkThuBao.UseVisualStyleBackColor = true;
             // 
             // frmTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1110, 483);
+            this.ClientSize = new System.Drawing.Size(1123, 483);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtMaDon);
@@ -322,5 +407,12 @@
         private System.Windows.Forms.TextBox txtVeViec;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.CheckBox chkThuBao;
+        private System.Windows.Forms.CheckBox chkThuMoi;
+        private System.Windows.Forms.CheckBox chkDieuChinh_GB_DM;
+        private System.Windows.Forms.CheckBox chkThayDHN;
+        private System.Windows.Forms.CheckBox chkKiemDinhDHN_Dung;
+        private System.Windows.Forms.CheckBox chkKiemDinhDHN_Sai;
+        private System.Windows.Forms.CheckBox chkGiamNuocXaBo;
     }
 }
