@@ -46,14 +46,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             radChuaDuyet.Checked = true;
         }
 
-        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDSKTXM.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
-            }
-        }
-
         private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radChuaDuyet.Checked)
@@ -143,6 +135,24 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
+        /// <summary>
+        /// Hiện thị số thứ tự dòng
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSKTXM.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSKTXM_KeyDown(object sender, KeyEventArgs e)
         {
             if (dgvDSKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
@@ -152,11 +162,21 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
+        /// <summary>
+        /// Bắt đầu Edit Column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSKTXM_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             btnLuu.Enabled = false;
         }
 
+        /// <summary>
+        /// Kết thúc Edit Column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSKTXM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             ///Khai báo các cột tương ứng trong Datagridview
@@ -178,6 +198,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             btnLuu.Enabled = true;
         }
 
+        /// <summary>
+        /// Format dữ liệu trong column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSKTXM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvDSKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)

@@ -129,7 +129,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleTTTL = true;
                     else
                         _roleTTTL = false;
-                    ///db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
+                    db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     db.SubmitChanges();
                     return true;
                 }
@@ -148,11 +148,11 @@ namespace KTKS_DonKH.DAL.HeThong
 
         public void DangXuat()
         {
-            //if (_taiKhoan != "")
-            //{
-            //    db.Users.Single(item => item.TaiKhoan == _taiKhoan).Login = false;
-            //    db.SubmitChanges();
-            //}
+            if (_taiKhoan != "")
+            {
+                db.Users.Single(item => item.TaiKhoan == _taiKhoan).Login = false;
+                db.SubmitChanges();
+            }
             _taiKhoan = "";
             _hoTen = "";
             _roleTaiKhoan = false;

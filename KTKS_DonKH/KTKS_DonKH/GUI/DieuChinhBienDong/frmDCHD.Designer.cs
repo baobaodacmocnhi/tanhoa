@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
-    partial class frmDCHDN
+    partial class frmDCHD
     {
         /// <summary>
         /// Required designer variable.
@@ -612,7 +612,7 @@
             // 
             this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(707, 211);
+            this.btnLuu.Location = new System.Drawing.Point(726, 252);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
             this.btnLuu.TabIndex = 3;
@@ -621,7 +621,7 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // frmDCHDN
+            // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -635,7 +635,7 @@
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmDCHDN";
+            this.Name = "frmDCHD";
             this.Text = "Điều Chỉnh Hóa Đơn Tiền Nước";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDCHDN_FormClosing);
             this.Load += new System.EventHandler(this.frmDCHDN_Load);
@@ -700,10 +700,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.DateTimePicker dateNgayKy;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtSoVB;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnLuu;
     }
 }

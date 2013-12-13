@@ -29,7 +29,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CChungTu _cChungTu = new CChungTu();
-        
+        DataRowView _CTRow = null;
 
         public frmDSDCBD()
         {
@@ -209,7 +209,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("MaNoiChuyenDen", selRow["MaNoiChuyenDen"].ToString());
             source.Add("NoiChuyenDen", selRow["NoiChuyenDen"].ToString());
             source.Add("LyDoChuyenDen", selRow["LyDoChuyenDen"].ToString());
-            frmDCHDN frm = new frmDCHDN(source);
+            frmDCHD frm = new frmDCHD(source);
             if (frm.ShowDialog() == DialogResult.OK)
                 gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
         }
@@ -288,13 +288,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void gridView_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        #region gridViewDCBD (Danh Sách Điều Chỉnh Biến Động)
+
+        /// <summary>
+        /// Hiện thị số thứ tự dòng
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridViewDCBD_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
-        private void gridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        /// <summary>
+        /// Hiện thị menuStrip tại chỗ click chuột
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridViewDCBD_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             if (radChuaDuyet.Checked && gridControl.MainView.RowCount > 0 && e.Button == MouseButtons.Right)
             {
@@ -302,6 +314,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Format dữ liệu trong column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewDCBD_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "MaDon" && e.Value != null)
@@ -310,11 +327,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Bắt đầu Edit Column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewDCBD_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             btnLuu.Enabled = false;
         }
 
+        /// <summary>
+        /// Kết thúc Edit Column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewDCBD_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             ///Khai báo các cột tương ứng trong Datagridview
@@ -336,6 +363,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             btnLuu.Enabled = true;
         }
 
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewDCBD_KeyDown(object sender, KeyEventArgs e)
         {
             if (gridViewDCBD.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
@@ -345,6 +377,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        #endregion
+
+        #region gridViewCTDCBD (Chi Tiết Điều Chỉnh Biến Động)
+
+        /// <summary>
+        /// Format dữ liệu trong column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewCTDCBD_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "MaCTDCBD" && e.Value != null)
@@ -353,6 +394,41 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Lấy DataRow tại chỗ click chuột
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridViewCTDCBD_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridViewCTDCBD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_CTRow != null && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowDCBD frm = new frmShowDCBD(decimal.Parse(_CTRow.Row["MaCTDCBD"].ToString()));
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
+            }
+        }
+
+        #endregion
+
+        #region gridViewCTDCHD (Chi Tiết Điều Chỉnh Hóa Đơn)
+
+        /// <summary>
+        /// Format dữ liệu trong column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewCTDCHD_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "MaCTDCHD" && e.Value != null)
@@ -371,34 +447,43 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-        }    
+        }
 
-        //private void dgvDSDCBD_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (dgvDSDCBD.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
-        //    {
-        //        frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(dgvDSDCBD["MaDon", dgvDSDCBD.CurrentRow.Index].Value.ToString())));
-        //        frm.ShowDialog();
-        //    }
-        //}
+        /// <summary>
+        /// Lấy DataRow tại chỗ click chuột
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridViewCTDCHD_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
 
-        //private void dgvDSDCBD_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        //{
-        //    if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
-        //    {
-        //        ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
-        //        dgvDSDCBD.CurrentCell = dgvDSDCBD.Rows[e.RowIndex].Cells[e.ColumnIndex];
-        //    }
-        //}
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridViewCTDCHD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_CTRow != null && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowDCHD frm = new frmShowDCHD(decimal.Parse(_CTRow.Row["MaCTDCHD"].ToString()));
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
+            }
+        }
 
-        //private void dgvDSDCBD_MouseClick(object sender, MouseEventArgs e)
-        //{
-        //    if (dgvDSDCBD.Rows.Count > 0 && e.Button == MouseButtons.Right)
-        //    {
-        //        contextMenuStrip1.Show(dgvDSDCBD, new Point(e.X, e.Y));
-        //    }
-        //}
+        #endregion
 
+        #region dgvDSDCBD (Danh Sách Điều Chỉnh Biến Động)
+
+        /// <summary>
+        /// Hiện thị số thứ tự dòng
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSDCBD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvDSDCBD.RowHeadersDefaultCellStyle.ForeColor))
@@ -407,6 +492,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Format dữ liệu trong column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSDCBD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "SoPhieu" && e.Value != null)
@@ -427,6 +517,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Kết thúc Edit Column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSDCBD_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (radDSDCDB.Checked)
@@ -449,6 +544,37 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvDSDCBD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDSDCBD.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                if (radDSDCDB.Checked)
+                {
+                    frmShowDCBD frm = new frmShowDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+                }
+                if (radDSDCHD.Checked)
+                {
+                    frmShowDCHD frm = new frmShowDCHD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+                }
+            }
+        }
+
+        #endregion
+
+        #region dgvDSCatChuyenDM (Danh Sách Cắt Chuyển Định Mức)
+
+        /// <summary>
+        /// Kết thúc Edit Column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSCatChuyenDM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (radDSCatChuyenDM.Checked)
@@ -462,6 +588,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Format dữ liệu trong column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSCatChuyenDM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "CT_SoPhieu" && e.Value != null)
@@ -470,8 +601,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvDSCatChuyenDM_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDSCatChuyenDM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                if (dgvDSCatChuyenDM["CT_CatNhan", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString() == "Nhận")
+                {
+                    frmShowNhanDM frm = new frmShowNhanDM(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+                }
+                if (dgvDSCatChuyenDM["CT_CatNhan", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString() == "Cắt")
+                {
+                    frmShowCatChuyenDM frm = new frmShowCatChuyenDM(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+                }
+            }
+        }
 
-        
+        #endregion
+
     }
 }

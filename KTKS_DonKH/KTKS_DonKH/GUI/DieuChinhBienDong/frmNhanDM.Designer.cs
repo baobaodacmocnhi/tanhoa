@@ -327,11 +327,11 @@
             // 
             this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(721, 331);
+            this.btnLuu.Location = new System.Drawing.Point(807, 331);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(156, 35);
+            this.btnLuu.Size = new System.Drawing.Size(70, 35);
             this.btnLuu.TabIndex = 2;
-            this.btnLuu.Text = "Lưu - In Phiếu Cắt";
+            this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);

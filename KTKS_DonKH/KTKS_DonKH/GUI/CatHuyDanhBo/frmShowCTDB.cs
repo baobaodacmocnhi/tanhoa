@@ -48,12 +48,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
                 txtSoTien.Text = _ctctdb.SoTien.Value.ToString();
                 ///
-                dateTCTBXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
-                txtKetQuaTCTBXuLy.Text = _ctctdb.KetQuaTCTBXuLy;
+                ///phải có if ở đây vì dateTCTBXuLy không nhận giá trị null
+                if (_ctctdb.TCTBXuLy)
+                {
+                    dateTCTBXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
+                    txtKetQuaTCTBXuLy.Text = _ctctdb.KetQuaTCTBXuLy;
+                }
                 ///
-                dateCapTrenXuLy.Value = _ctctdb.NgayCapTrenXuLy.Value;
-                txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
-                txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.Value.ToString();
+                ///phải có if ở đây vì dateCapTrenXuLy không nhận giá trị null
+                if (_ctctdb.CapTrenXuLy)
+                {
+                    dateCapTrenXuLy.Value = _ctctdb.NgayCapTrenXuLy.Value;
+                    txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
+                    txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.Value.ToString();
+                }
             }
         }
 
@@ -84,6 +92,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }
+        }
+
+        private void frmShowCTDB_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

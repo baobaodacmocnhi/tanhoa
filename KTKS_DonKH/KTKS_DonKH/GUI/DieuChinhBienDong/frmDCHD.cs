@@ -17,7 +17,7 @@ using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
-    public partial class frmDCHDN : Form
+    public partial class frmDCHD : Form
     {
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CTTKH _cTTKH = new CTTKH();
@@ -27,12 +27,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
-        public frmDCHDN()
+        public frmDCHD()
         {
             InitializeComponent();
         }
 
-        public frmDCHDN(Dictionary<string, string> source)
+        public frmDCHD(Dictionary<string, string> source)
         {
             InitializeComponent();
             _source = source;
@@ -292,11 +292,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
                 MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        
-
-
-
 
     }
 }

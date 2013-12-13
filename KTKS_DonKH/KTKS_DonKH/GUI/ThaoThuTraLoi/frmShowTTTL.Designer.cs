@@ -374,6 +374,7 @@
             this.MinimizeBox = false;
             this.Name = "frmShowTTTL";
             this.Text = "Hiện Thị Thảo Thư Trả Lời";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShowTTTL_FormClosing);
             this.Load += new System.EventHandler(this.frmShowTTTL_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

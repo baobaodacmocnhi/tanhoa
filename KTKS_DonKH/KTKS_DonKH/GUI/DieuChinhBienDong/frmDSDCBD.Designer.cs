@@ -172,7 +172,9 @@
             this.gridViewCTDCBD.OptionsBehavior.AutoPopulateColumns = false;
             this.gridViewCTDCBD.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTDCBD.OptionsView.ShowGroupPanel = false;
+            this.gridViewCTDCBD.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTDCBD_RowCellClick);
             this.gridViewCTDCBD.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTDCBD_CustomColumnDisplayText);
+            this.gridViewCTDCBD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewCTDCBD_KeyDown);
             // 
             // gridColumn14
             // 
@@ -353,7 +355,9 @@
             this.gridViewCTDCHD.OptionsBehavior.AutoPopulateColumns = false;
             this.gridViewCTDCHD.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTDCHD.OptionsView.ShowGroupPanel = false;
+            this.gridViewCTDCHD.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTDCHD_RowCellClick);
             this.gridViewCTDCHD.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTDCHD_CustomColumnDisplayText);
+            this.gridViewCTDCHD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewCTDCHD_KeyDown);
             // 
             // gridColumn20
             // 
@@ -515,8 +519,8 @@
             this.gridViewDCBD.OptionsFind.AllowFindPanel = false;
             this.gridViewDCBD.OptionsView.ColumnAutoWidth = false;
             this.gridViewDCBD.OptionsView.ShowGroupPanel = false;
-            this.gridViewDCBD.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_RowCellClick);
-            this.gridViewDCBD.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_CustomDrawRowIndicator);
+            this.gridViewDCBD.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewDCBD_RowCellClick);
+            this.gridViewDCBD.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewDCBD_CustomDrawRowIndicator);
             this.gridViewDCBD.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewDCBD_CellValueChanged);
             this.gridViewDCBD.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewDCBD_CellValueChanging);
             this.gridViewDCBD.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewDCBD_CustomColumnDisplayText);
@@ -761,6 +765,7 @@
             this.dgvDSDCBD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSDCBD_CellEndEdit);
             this.dgvDSDCBD.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDCBD_CellFormatting);
             this.dgvDSDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDCBD_RowPostPaint);
+            this.dgvDSDCBD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDCBD_KeyDown);
             // 
             // PhieuDuocKy
             // 
@@ -1011,6 +1016,7 @@
             this.dgvDSCatChuyenDM.TabIndex = 7;
             this.dgvDSCatChuyenDM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCatChuyenDM_CellEndEdit);
             this.dgvDSCatChuyenDM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCatChuyenDM_CellFormatting);
+            this.dgvDSCatChuyenDM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSCatChuyenDM_KeyDown);
             // 
             // MaLSCT
             // 

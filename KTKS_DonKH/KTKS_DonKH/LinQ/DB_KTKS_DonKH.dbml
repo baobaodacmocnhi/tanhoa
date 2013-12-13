@@ -201,6 +201,7 @@
       <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThongTin" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="HoTen_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DiaChi_BD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MSThue_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -210,7 +211,7 @@
       <Column Name="SX_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DV_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="HCSN_BD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CatMSThue" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CatMSThue" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
