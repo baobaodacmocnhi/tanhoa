@@ -94,5 +94,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 frm.ShowDialog();
             }
         }
+
+        private void frmShowTTTL_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
     }
 }

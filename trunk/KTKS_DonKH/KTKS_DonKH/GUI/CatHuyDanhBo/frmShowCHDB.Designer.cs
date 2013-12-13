@@ -129,8 +129,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Enabled = false;
-            this.btnInPhieu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnInPhieu.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnInPhieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInPhieu.Location = new System.Drawing.Point(831, 367);
             this.btnInPhieu.Name = "btnInPhieu";
@@ -139,6 +138,7 @@
             this.btnInPhieu.Text = "In Phiếu";
             this.btnInPhieu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInPhieu.UseVisualStyleBackColor = true;
+            this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
             // 
             // txtHieuLucKy
             // 
@@ -509,6 +509,7 @@
             this.MinimizeBox = false;
             this.Name = "frmShowCHDB";
             this.Text = "Hiện Thị Cắt Hủy Danh Bộ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShowCHDB_FormClosing);
             this.Load += new System.EventHandler(this.frmShowCHDB_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

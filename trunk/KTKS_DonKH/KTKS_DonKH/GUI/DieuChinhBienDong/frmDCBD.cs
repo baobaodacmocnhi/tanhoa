@@ -356,6 +356,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (txtHCSN_BD.Text.Trim() != "")
                     ctdcbd.HCSN_BD = txtHCSN_BD.Text.Trim();
 
+                ctdcbd.ThongTin = ThongTin;
                 ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
 
                 BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -371,7 +372,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
                     dr["SoPhieu"] = _cDCBD.getMaxMaCTDCBD().ToString().Insert(4, "-");
-                    dr["ThongTin"] = ThongTin;
+                    dr["ThongTin"] = ctdcbd.ThongTin;
                     dr["HieuLucKy"] = ctdcbd.HieuLucKy;
                     dr["Dot"] = ctdcbd.Dot;
                     ///Hiện tại xử lý mã số thuế như vậy

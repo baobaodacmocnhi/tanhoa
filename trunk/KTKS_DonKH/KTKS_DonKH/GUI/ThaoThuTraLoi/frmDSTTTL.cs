@@ -117,12 +117,24 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 gridControl.DataSource = _cTTTL.LoadDSTTTLChuaDuyet();
         }
 
+        #region gridViewTTTL (Danh Sách Thảo Thư Trả Lời)
+
+        /// <summary>
+        /// Hiện thị số thứ tự dòng
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewTTTL_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
+        /// <summary>
+        /// Format dữ liệu trong column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewTTTL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "MaDon" && e.Value != null)
@@ -131,6 +143,11 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        /// <summary>
+        /// Hiện thị menuStrip tại chỗ click chuột
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewTTTL_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             if (radChuaDuyet.Checked && gridControl.MainView.RowCount > 0 && e.Button == MouseButtons.Right)
@@ -139,6 +156,11 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewTTTL_KeyDown(object sender, KeyEventArgs e)
         {
             if (gridViewTTTL.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
@@ -148,11 +170,21 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        /// <summary>
+        /// Bắt đầu Edit Column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewTTTL_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             btnLuu.Enabled = false;
         }
 
+        /// <summary>
+        /// Kết thúc Edit Column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewTTTL_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             ///Khai báo các cột tương ứng trong Datagridview
@@ -174,6 +206,15 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             btnLuu.Enabled = true;
         }
 
+        #endregion
+
+        #region gridViewCTTTTL (Chi Tiết Thảo Thư Trả Lời)
+
+        /// <summary>
+        /// Format dữ liệu trong column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewCTTTTL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "MaCTTTTL" && e.Value != null)
@@ -182,21 +223,41 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        /// <summary>
+        /// Lấy DataRow tại click chuột
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewCTTTTL_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
             _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
         }
 
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridViewCTTTTL_KeyDown(object sender, KeyEventArgs e)
         {
             if (_CTRow != null && e.Control && e.KeyCode == Keys.F)
             {
                 frmShowTTTL frm = new frmShowTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()));
-                frm.ShowDialog();
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
             }
         }
 
+        #endregion
+
+        #region dgvDSThu (Danh Sách Thư Trả Lời)
+
+        /// <summary>
+        /// Ctrl+F Tìm kiếm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDSThu_KeyDown(object sender, KeyEventArgs e)
         {
             if (dgvDSThu.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
@@ -206,6 +267,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        #endregion
+        
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (DSTTTL_Edited != null && DSTTTL_Edited.Rows.Count > 0)

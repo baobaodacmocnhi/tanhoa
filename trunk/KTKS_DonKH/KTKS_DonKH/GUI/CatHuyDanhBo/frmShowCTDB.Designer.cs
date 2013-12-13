@@ -452,6 +452,7 @@
             this.MinimizeBox = false;
             this.Name = "frmShowCTDB";
             this.Text = "Hiện Thị Cắt Tạm Danh Bộ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShowCTDB_FormClosing);
             this.Load += new System.EventHandler(this.frmShowCTDB_Load);
             this.groupBoxCapTrenXuLy.ResumeLayout(false);
             this.groupBoxCapTrenXuLy.PerformLayout();

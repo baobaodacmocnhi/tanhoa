@@ -4395,6 +4395,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Nam;
 		
+		private string _ThongTin;
+		
 		private string _HoTen_BD;
 		
 		private string _DiaChi_BD;
@@ -4413,7 +4415,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HCSN_BD;
 		
-		private System.Nullable<bool> _CatMSThue;
+		private bool _CatMSThue;
 		
 		private string _HieuLucKy;
 		
@@ -4469,6 +4471,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyChanged();
     partial void OnNamChanging(string value);
     partial void OnNamChanged();
+    partial void OnThongTinChanging(string value);
+    partial void OnThongTinChanged();
     partial void OnHoTen_BDChanging(string value);
     partial void OnHoTen_BDChanged();
     partial void OnDiaChi_BDChanging(string value);
@@ -4487,7 +4491,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnDV_BDChanged();
     partial void OnHCSN_BDChanging(string value);
     partial void OnHCSN_BDChanged();
-    partial void OnCatMSThueChanging(System.Nullable<bool> value);
+    partial void OnCatMSThueChanging(bool value);
     partial void OnCatMSThueChanged();
     partial void OnHieuLucKyChanging(string value);
     partial void OnHieuLucKyChanged();
@@ -4815,6 +4819,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThongTin", DbType="NVarChar(200)")]
+		public string ThongTin
+		{
+			get
+			{
+				return this._ThongTin;
+			}
+			set
+			{
+				if ((this._ThongTin != value))
+				{
+					this.OnThongTinChanging(value);
+					this.SendPropertyChanging();
+					this._ThongTin = value;
+					this.SendPropertyChanged("ThongTin");
+					this.OnThongTinChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen_BD", DbType="NVarChar(50)")]
 		public string HoTen_BD
 		{
@@ -4995,8 +5019,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatMSThue", DbType="Bit")]
-		public System.Nullable<bool> CatMSThue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatMSThue", DbType="Bit NOT NULL")]
+		public bool CatMSThue
 		{
 			get
 			{
