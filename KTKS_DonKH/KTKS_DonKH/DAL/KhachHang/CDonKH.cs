@@ -11,8 +11,6 @@ namespace KTKS_DonKH.DAL.KhachHang
 {
     class CDonKH : CDAL
     {
-        //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
-
         /// <summary>
         /// Lấy Mã Đơn kế tiếp
         /// </summary>
@@ -27,7 +25,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                     return getMaxNextIDTable(MaDon);
                 }
                 else
-                    return decimal.Parse(DateTime.Now.Year + "1");
+                    return decimal.Parse("1" + DateTime.Now.ToString("yy"));
             }
             catch (Exception ex)
             {

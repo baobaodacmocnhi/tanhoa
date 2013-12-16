@@ -173,6 +173,7 @@
     <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
     <Compile Include="DAL\KhachHang\CChuyenDi.cs" />
     <Compile Include="DAL\KhachHang\CDonKH.cs" />
+    <Compile Include="DAL\KhachHang\CPhuongQuan.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CKTXM.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CTTTL.cs" />
     <Compile Include="frmMain.cs">

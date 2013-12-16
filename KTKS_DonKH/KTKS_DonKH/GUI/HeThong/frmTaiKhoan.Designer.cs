@@ -164,11 +164,11 @@
             this.QDCBD,
             this.QCHDB,
             this.QTTTL});
-            this.dgvDSTaiKhoan.Location = new System.Drawing.Point(0, 156);
+            this.dgvDSTaiKhoan.Location = new System.Drawing.Point(13, 156);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTaiKhoan.MultiSelect = false;
             this.dgvDSTaiKhoan.Name = "dgvDSTaiKhoan";
-            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(1075, 384);
+            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(1175, 384);
             this.dgvDSTaiKhoan.TabIndex = 9;
             this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
             this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
@@ -201,6 +201,7 @@
             this.HoTen.HeaderText = "Họ Tên";
             this.HoTen.Name = "HoTen";
             this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 200;
             // 
             // TaiKhoan
             // 
@@ -276,7 +277,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1246, 576);
+            this.ClientSize = new System.Drawing.Size(1202, 547);
             this.Controls.Add(this.dgvDSTaiKhoan);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnXoa);

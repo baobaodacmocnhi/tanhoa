@@ -34,24 +34,24 @@ namespace KTKS_DonKH.DAL
         //}
 
         /// <summary>
-        /// Lấy mã tiếp theo, theo định dạng nămstt (20131)
+        /// Lấy mã tiếp theo, theo định dạng sttnăm 113(12013)
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public decimal getMaxNextIDTable(decimal id)
         {
-            string nam = id.ToString().Substring(0,4);
-            string stt = id.ToString().Substring(4);
-            if (decimal.Parse(nam) == decimal.Parse(DateTime.Now.Year.ToString()))
+            string nam = id.ToString().Substring(id.ToString().Length - 3, 2);
+            string stt = id.ToString().Substring(0, id.ToString().Length - 3);
+            if (decimal.Parse(nam) == decimal.Parse(DateTime.Now.ToString("yy")))
             {
                 stt = (decimal.Parse(stt) + 1).ToString();
             }
             else
             {
-                nam = DateTime.Now.Year.ToString();
+                nam = DateTime.Now.ToString("yy");
                 stt = "1";
             }
-            return decimal.Parse(nam + stt);
+            return decimal.Parse(stt + nam);
         }
     }
 }
