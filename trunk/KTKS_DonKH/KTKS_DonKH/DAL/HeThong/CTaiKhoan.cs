@@ -22,8 +22,6 @@ namespace KTKS_DonKH.DAL.HeThong
         private static bool _roleCHDB = false;
         private static bool _roleTTTL = false;
 
-        //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
-
         public static string TaiKhoan
         {
             get { return CTaiKhoan._taiKhoan; }
@@ -129,7 +127,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleTTTL = true;
                     else
                         _roleTTTL = false;
-                    db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
+                    //db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     db.SubmitChanges();
                     return true;
                 }
@@ -150,8 +148,8 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             if (_taiKhoan != "")
             {
-                db.Users.Single(item => item.TaiKhoan == _taiKhoan).Login = false;
-                db.SubmitChanges();
+                //db.Users.Single(item => item.TaiKhoan == _taiKhoan).Login = false;
+                //db.SubmitChanges();
             }
             _taiKhoan = "";
             _hoTen = "";
@@ -176,7 +174,7 @@ namespace KTKS_DonKH.DAL.HeThong
                 if (CTaiKhoan.RoleTaiKhoan)
                 {
                     var taikhoans = from itemUser in db.Users
-                                    where itemUser.MaU != 0
+                                    where itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan
                                     select new
                                     {
                                         MaU = itemUser.MaU,
@@ -248,6 +246,24 @@ namespace KTKS_DonKH.DAL.HeThong
             try
             {
                 return db.Users.Single(item => item.MaU == MaU);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Họ Tên người dùng bằng Tài Khoản đăng nhập
+        /// </summary>
+        /// <param name="TaiKhoan"></param>
+        /// <returns></returns>
+        public string getHoTenUserbyTaiKhoan(string TaiKhoan)
+        {
+            try
+            {
+                return db.Users.Single(item => item.TaiKhoan == TaiKhoan).HoTen;
             }
             catch (Exception ex)
             {

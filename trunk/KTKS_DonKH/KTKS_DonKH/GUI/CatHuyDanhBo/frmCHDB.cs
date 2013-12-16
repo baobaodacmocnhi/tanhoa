@@ -27,6 +27,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CTCTDB _ctctdb = null;
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         public frmCHDB()
@@ -54,7 +55,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtDanhBo.Text = _ttkhachhang.DanhBo;
                     txtHopDong.Text = _ttkhachhang.GiaoUoc;
                     txtHoTen.Text = _ttkhachhang.HoTen;
-                    txtDiaChi.Text = _ttkhachhang.DC1 + _ttkhachhang.DC2 + _cCHDB.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
+                    txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
                 }
             }
             else

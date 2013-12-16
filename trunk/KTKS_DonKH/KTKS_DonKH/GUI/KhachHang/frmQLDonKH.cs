@@ -16,6 +16,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CDonKH _cDonKH = new CDonKH();
         CChuyenDi _cChuyenDi = new CChuyenDi();
         DataTable DSDonKH_Edited = new DataTable();
+        BindingSource DSDonKH_BS = new BindingSource();
 
         public frmQLDonKH()
         {
@@ -37,15 +38,16 @@ namespace KTKS_DonKH.GUI.KhachHang
             cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi();
             cmbColumn.DisplayMember = "NoiChuyenDi";
             cmbColumn.ValueMember = "MaChuyen";
-            radChuDuyet.Checked = true;
-            
+            dgvDSDonKH.DataSource = DSDonKH_BS;
+            radChuDuyet.Checked = true;  
         }
             
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
             {
-                dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
+                DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
+                //dgvDSDonKH.DataSource = DSDonKH_BS;
             }
         }
 
@@ -53,7 +55,8 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (radChuDuyet.Checked)
             {
-                dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                //dgvDSDonKH.DataSource = DSDonKH_BS;
             }
         }
 
@@ -98,9 +101,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                 DSDonKH_Edited.Clear();
 
                 if (radDaDuyet.Checked)
-                    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
+                    DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
                 if (radChuDuyet.Checked)
-                    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                    DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
             }          
         }
 
@@ -176,8 +179,15 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(4, "-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-",""));
+            DSDonKH_BS.Filter = expression;
+            
         }
 
     }

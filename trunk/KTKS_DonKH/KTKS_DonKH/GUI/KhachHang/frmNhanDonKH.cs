@@ -21,6 +21,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CLoaiDon _cLoaiDon = new CLoaiDon();
         CDonKH _cDonKH = new CDonKH();
         CTTKH _cTTKH = new CTTKH();
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         string SH = "";
         string SX = "";
         string DV = "";
@@ -95,7 +96,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (cmbLD.SelectedIndex != -1)
             {
-                txtMaDon.Text = _cDonKH.getMaxNextID().ToString().Insert(4, "-");
+                txtMaDon.Text = _cDonKH.getMaxNextID().ToString().Insert(_cDonKH.getMaxNextID().ToString().Length - 2, "-");
                 txtNgayNhan.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
         }
@@ -117,7 +118,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     txtHopDong.Text = ttkhachhang.GiaoUoc;
                     txtKhachHang.Text = ttkhachhang.HoTen;
-                    txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
+                    txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
                     txtMSThue.Text = ttkhachhang.MSThue;
                     txtGiaBieu.Text = ttkhachhang.GB;
                     txtDinhMuc.Text = ttkhachhang.TGDM;
@@ -157,6 +158,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                 donkh.Nam = Nam;
                 donkh.NoiDung = txtNoiDung.Text.Trim();
                 donkh.GhiChu = txtGhiChu.Text.Trim();
+                donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
+                donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
@@ -362,7 +365,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (!_cDonKH.ThemDonKH(donkh))
                     return;
 
-                dr["DinhMucSau"] = txtDinhMucSau.Text.Trim();
+                dr["DinhMucSau"] = txtDinhMucSau.Text.Trim() + " m3";
                 dr["HieuLucTuKy"] = txtHieuLucTuKy.Text.Trim();
                 dr["HoTenNV"] = CTaiKhoan.HoTen;
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);

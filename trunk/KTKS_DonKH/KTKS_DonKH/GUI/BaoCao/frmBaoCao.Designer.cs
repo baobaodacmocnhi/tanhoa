@@ -53,7 +53,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBaoCao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmBaoCao";
+            this.Text = "Hiện Thị Dữ Liệu Để In";
             this.ResumeLayout(false);
 
         }

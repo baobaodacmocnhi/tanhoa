@@ -409,6 +409,7 @@
             this.btnInBienNhan.TabIndex = 80;
             this.btnInBienNhan.Text = "In Biên Nhận";
             this.btnInBienNhan.UseVisualStyleBackColor = true;
+            this.btnInBienNhan.Click += new System.EventHandler(this.btnInBienNhan_Click);
             // 
             // chkCT_GXN2SN
             // 
