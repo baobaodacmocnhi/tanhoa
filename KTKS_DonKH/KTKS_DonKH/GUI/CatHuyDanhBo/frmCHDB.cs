@@ -14,6 +14,7 @@ using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
+using System.Globalization;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -48,7 +49,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (_source["Action"] == "Thêm")
             {
                 groupBoxNguyenNhanXuLy.Enabled = true;
-                txtMaDon.Text = _source["MaDon"].Insert(4, "-");
+                txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
                 if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
@@ -70,8 +71,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         _ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(_source["MaCTCHDB"]));
                         ///Thông Tin
-                        txtMaDon.Text = _ctchdb.CHDB.MaDon.ToString().Insert(4, "-");
-                        txtMaThongBaoCH.Text = _ctchdb.MaCTCHDB.ToString().Insert(4, "-");
+                        txtMaDon.Text = _ctchdb.CHDB.MaDon.ToString().Insert(_ctchdb.CHDB.MaDon.ToString().Length - 2, "-");
+                        txtMaThongBaoCH.Text = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                         txtDanhBo.Text = _ctchdb.DanhBo;
                         txtHopDong.Text = _ctchdb.HopDong;
                         txtHoTen.Text = _ctchdb.HoTen;
@@ -105,8 +106,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"]));
                             ///Thông Tin
-                            txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(4, "-");
-                            txtMaThongBaoCT.Text = _ctctdb.MaCTCTDB.ToString().Insert(4, "-");
+                            txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
+                            txtMaThongBaoCT.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
                             txtDanhBo.Text = _ctctdb.DanhBo;
                             txtHopDong.Text = _ctctdb.HopDong;
                             txtHoTen.Text = _ctctdb.HoTen;
@@ -197,7 +198,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                         DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                        dr["SoPhieu"] = _cCHDB.getMaxMaCTCTDB().ToString().Insert(4, "-");
+                        dr["SoPhieu"] = _cCHDB.getMaxMaCTCTDB().ToString().Insert(_cCHDB.getMaxMaCTCTDB().ToString().Length - 2, "-");
                         dr["HoTen"] = ctchdb.HoTen;
                         dr["DiaChi"] = ctchdb.DiaChi;
                         dr["DanhBo"] = ctchdb.DanhBo;
@@ -206,7 +207,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (ctchdb.GhiChuLyDo != "")
                             dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
                         if (ctchdb.SoTien.ToString() != "")
-                            dr["LyDo"] += "Số Tiền: " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
+                            dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
                         dr["ChucVu"] = ctchdb.ChucVu;
                         dr["NguoiKy"] = ctchdb.NguoiKy;
 
@@ -259,7 +260,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                            dr["SoPhieu"] = _cCHDB.getMaxMaCTCTDB().ToString().Insert(4, "-");
+                            dr["SoPhieu"] = _cCHDB.getMaxMaCTCTDB().ToString().Insert(_cCHDB.getMaxMaCTCTDB().ToString().Length - 2, "-");
                             dr["HoTen"] = ctchdb.HoTen;
                             dr["DiaChi"] = ctchdb.DiaChi;
                             dr["DanhBo"] = ctchdb.DanhBo;
@@ -268,7 +269,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (ctchdb.GhiChuLyDo != "")
                                 dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
                             if (ctchdb.SoTien.ToString() != "")
-                                dr["LyDo"] += "Số Tiền: " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
+                                dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
                             dr["ChucVu"] = ctchdb.ChucVu;
                             dr["NguoiKy"] = ctchdb.NguoiKy;
 
@@ -346,7 +347,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 
-                            dr["SoPhieu"] = _ctchdb.SoPhieu.ToString().Insert(4, "-");
+                            dr["SoPhieu"] = _ctchdb.SoPhieu.ToString().Insert(_ctchdb.SoPhieu.ToString().Length - 2, "-");
                             dr["HieuLucKy"] = _ctchdb.HieuLucKy;
                             dr["Dot"] = _ctchdb.DotLapPhieu;
                             dr["HoTen"] = _ctchdb.HoTen;
@@ -357,7 +358,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (_ctchdb.GhiChuLyDo != "")
                                 dr["LyDo"] += _ctchdb.GhiChuLyDo + ". ";
                             if (_ctchdb.SoTien.ToString() != "")
-                                dr["LyDo"] += "Số Tiền: " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctchdb.SoTien);
+                                dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctchdb.SoTien);
 
                             dr["ChucVu"] = _ctchdb.ChucVuLapPhieu;
                             dr["NguoiKy"] = _ctchdb.NguoiKyLapPhieu;
@@ -382,7 +383,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 
-                    dr["SoPhieu"] = _ctchdb.SoPhieu.ToString().Insert(4, "-");
+                    dr["SoPhieu"] = _ctchdb.SoPhieu.ToString().Insert(_ctchdb.SoPhieu.ToString().Length - 2, "-");
                     dr["HieuLucKy"] = _ctchdb.HieuLucKy;
                     dr["Dot"] = _ctchdb.DotLapPhieu;
                     dr["HoTen"] = _ctchdb.HoTen;
@@ -393,7 +394,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (_ctchdb.GhiChuLyDo != "")
                         dr["LyDo"] += _ctchdb.GhiChuLyDo + ". ";
                     if (_ctchdb.SoTien.ToString() != "")
-                        dr["LyDo"] += "Số Tiền: " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctchdb.SoTien);
+                        dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctchdb.SoTien);
 
                     dr["ChucVu"] = _ctchdb.ChucVuLapPhieu;
                     dr["NguoiKy"] = _ctchdb.NguoiKyLapPhieu;
@@ -411,7 +412,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
             else
                 MessageBox.Show("Chưa có Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }    
+        }
 
     }
 }

@@ -39,27 +39,27 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             cmbLD.SelectedValue = _donkh.MaLD.Value;
             txtSoCongVan.Text = _donkh.SoCongVan;
-            txtMaDon.Text = _donkh.MaDon.ToString().Insert(4, "-");
+            txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
             txtNgayNhan.Text = _donkh.CreateDate.Value.ToString("dd/MM/yyyy");
             txtNoiDung.Text = _donkh.NoiDung;
 
-            if (_donkh.KiemTraDHN.Value)
+            if (_donkh.KiemTraDHN)
                 chkKiemTraDHN.Checked = true;
-            if (_donkh.TienNuoc.Value)
+            if (_donkh.TienNuoc)
                 chkTienNuoc.Checked = true;
-            if (_donkh.ChiSoNuoc.Value)
+            if (_donkh.ChiSoNuoc)
                 chkChiSoNuoc.Checked = true;
-            if (_donkh.DonGiaNuoc.Value)
+            if (_donkh.DonGiaNuoc)
                 chkDonGiaNuoc.Checked = true;
-            if (_donkh.SangTen.Value)
+            if (_donkh.SangTen)
                 chkSangTen.Checked = true;
-            if (_donkh.DangKyDM.Value)
+            if (_donkh.DangKyDM)
                 chkDangKyDM.Checked = true;
-            if (_donkh.CatChuyenDM.Value)
+            if (_donkh.CatChuyenDM)
                 chkCatChuyenDM.Checked = true;
-            if (_donkh.NuocDuc.Value)
+            if (_donkh.NuocDuc)
                 chkNuocDuc.Checked = true;
-            if (_donkh.LoaiKhac.Value)
+            if (_donkh.LoaiKhac)
                 chkLyDoKhac.Checked = true;
 
             txtLyDoKhac.Text = _donkh.LyDoLoaiKhac;
@@ -73,21 +73,21 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtDinhMuc.Text = _donkh.DinhMuc;
             txtGhiChu.Text = _donkh.GhiChu;
 
-            if (_donkh.CT_HoaDon.Value)
+            if (_donkh.CT_HoaDon)
                 chkCT_HoaDon.Checked = true;
-            if (_donkh.CT_HK_KT3.Value)
+            if (_donkh.CT_HK_KT3)
                 chkCT_HK_KT3.Checked = true;
-            if (_donkh.CT_STT_GXNTT.Value)
+            if (_donkh.CT_STT_GXNTT)
                 chkCT_STT_GXNTT.Checked = true;
-            if (_donkh.CT_HDTN_CQN.Value)
+            if (_donkh.CT_HDTN_CQN)
                 chkCT_HDTN_CQN.Checked = true;
-            if (_donkh.CT_GC_SDSN.Value)
+            if (_donkh.CT_GC_SDSN)
                 chkCT_GC_SDSN.Checked = true;
-            if (_donkh.CT_GXN2SN.Value)
+            if (_donkh.CT_GXN2SN)
                 chkCT_GXN2SN.Checked = true;
-            if (_donkh.CT_GDKKD.Value)
+            if (_donkh.CT_GDKKD)
                 chkCT_GDKKD.Checked = true;
-            if (_donkh.CT_GCNDTDHN.Value)
+            if (_donkh.CT_GCNDTDHN)
                 chkCT_GCNDTDHN.Checked = true;
 
             txtDinhMucSau.Text = _donkh.DinhMucSau;
@@ -100,16 +100,17 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                dr["MaDon"] = _donkh.MaDon.ToString().Insert(4, "-");
+                dr["MaDon"] = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                 dr["TenLD"] = _donkh.LoaiDon.TenLD;
                 dr["KhachHang"] = _donkh.HoTen;
-                dr["DanhBo"] = _donkh.DanhBo;
+                if (_donkh.DanhBo != "")
+                    dr["DanhBo"] = _donkh.DanhBo.Insert(4, ".").Insert(8, ".");
                 dr["DiaChi"] = _donkh.DiaChi;
                 dr["HopDong"] = _donkh.HopDong;
                 dr["DienThoai"] = _donkh.DienThoai;
 
                 #region CheckBox
-                if (_donkh.KiemTraDHN.Value)
+                if (_donkh.KiemTraDHN)
                 {
                     dr["KiemTraDHN"] = true;
                 }
@@ -118,7 +119,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["KiemTraDHN"] = false;
                 }
 
-                if (_donkh.TienNuoc.Value)
+                if (_donkh.TienNuoc)
                 {
                     dr["TienNuoc"] = true;
                 }
@@ -127,7 +128,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["TienNuoc"] = false;
                 }
 
-                if (_donkh.ChiSoNuoc.Value)
+                if (_donkh.ChiSoNuoc)
                 {
                     dr["ChiSoNuoc"] = true;
                 }
@@ -136,7 +137,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["ChiSoNuoc"] = false;
                 }
 
-                if (_donkh.DonGiaNuoc.Value)
+                if (_donkh.DonGiaNuoc)
                 {
                     dr["DonGiaNuoc"] = true;
                 }
@@ -145,7 +146,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["DonGiaNuoc"] = false;
                 }
 
-                if (_donkh.SangTen.Value)
+                if (_donkh.SangTen)
                 {
                     dr["SangTen"] = true;
                 }
@@ -154,7 +155,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["SangTen"] = false;
                 }
 
-                if (_donkh.DangKyDM.Value)
+                if (_donkh.DangKyDM)
                 {
                     dr["DangKyDM"] = true;
                 }
@@ -163,7 +164,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["DangKyDM"] = false;
                 }
 
-                if (_donkh.CatChuyenDM.Value)
+                if (_donkh.CatChuyenDM)
                 {
                     dr["CatChuyenDM"] = true;
                 }
@@ -172,7 +173,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["CatChuyenDM"] = false;
                 }
 
-                if (_donkh.NuocDuc.Value)
+                if (_donkh.NuocDuc)
                 {
                     dr["NuocDuc"] = true;
                 }
@@ -181,7 +182,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["NuocDuc"] = false;
                 }
 
-                if (_donkh.LoaiKhac.Value)
+                if (_donkh.LoaiKhac)
                 {
                     dr["LoaiKhac"] = true;
                     dr["LyDoLoaiKhac"] = _donkh.LyDoLoaiKhac;
@@ -191,7 +192,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["LoaiKhac"] = false;
                 }
 
-                if (_donkh.CT_HoaDon.Value)
+                if (_donkh.CT_HoaDon)
                 {
                     dr["CT_HoaDon"] = true;
                 }
@@ -200,7 +201,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["CT_HoaDon"] = false;
                 }
 
-                if (_donkh.CT_HK_KT3.Value)
+                if (_donkh.CT_HK_KT3)
                 {
                     dr["CT_HK_KT3"] = true;
                 }
@@ -209,7 +210,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["CT_HK_KT3"] = false;
                 }
 
-                if (_donkh.CT_STT_GXNTT.Value)
+                if (_donkh.CT_STT_GXNTT)
                 {
                     dr["CT_STT_GXNTT"] = true;
                 }
@@ -218,7 +219,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["CT_STT_GXNTT"] = false;
                 }
 
-                if (_donkh.CT_HDTN_CQN.Value)
+                if (_donkh.CT_HDTN_CQN)
                 {
                     dr["CT_HDTN_CQN"] = true;
                 }
@@ -227,7 +228,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["CT_HDTN_CQN"] = false;
                 }
 
-                if (_donkh.CT_GC_SDSN.Value)
+                if (_donkh.CT_GC_SDSN)
                 {
                     dr["CT_GC_SDSN"] = true;
                 }
@@ -236,7 +237,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["CT_GC_SDSN"] = false;
                 }
 
-                if (_donkh.CT_GXN2SN.Value)
+                if (_donkh.CT_GXN2SN)
                 {
                     dr["CT_GXN2SN"] = true;
                 }
@@ -245,7 +246,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["CT_GXN2SN"] = false;
                 }
 
-                if (_donkh.CT_GDKKD.Value)
+                if (_donkh.CT_GDKKD)
                 {
                     dr["CT_GDKKD"] = true;
                 }
@@ -254,7 +255,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["CT_GDKKD"] = false;
                 }
 
-                if (_donkh.CT_GCNDTDHN.Value)
+                if (_donkh.CT_GCNDTDHN)
                 {
                     dr["CT_GCNDTDHN"] = true;
                 }
@@ -264,7 +265,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 }
                 #endregion
 
-                dr["DinhMucSau"] = _donkh.DinhMucSau + " m3";
+                dr["DinhMucSau"] = _donkh.DinhMucSau;
                 dr["HieuLucTuKy"] = _donkh.HieuLucTuKy;
                 CTaiKhoan _cTaiKhoan = new CTaiKhoan();
                 dr["HoTenNV"] = _cTaiKhoan.getHoTenUserbyTaiKhoan(_donkh.CreateBy);

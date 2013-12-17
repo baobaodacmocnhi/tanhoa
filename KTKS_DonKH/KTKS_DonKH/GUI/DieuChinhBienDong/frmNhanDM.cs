@@ -118,7 +118,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                         DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                        dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(4, "-");
+                        dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                         dr["ChiNhanh"] = ((ChiNhanh)cmbChiNhanh.SelectedItem).TenCN;
                         dr["DanhBoNhan"] = txtDanhBo_Nhan.Text.Trim();
                         dr["HoTenNhan"] = txtHoTen_Nhan.Text.Trim();
@@ -154,6 +154,5 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        
     }
 }

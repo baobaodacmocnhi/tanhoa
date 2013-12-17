@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_cDCBD.getCTDCBDbyID(_MaCTDCBD) != null)
             {
                 _ctdcbd = _cDCBD.getCTDCBDbyID(_MaCTDCBD);
-                txtMaDon.Text = _ctdcbd.MaCTDCBD.ToString().Insert(4, "-");
+                txtMaDon.Text = _ctdcbd.MaCTDCBD.ToString().Insert(_ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                 txtHieuLucKy.Text = _ctdcbd.HieuLucKy;
                 txtDanhBo.Text = _ctdcbd.DanhBo;
                 txtHopDong.Text = _ctdcbd.HopDong;
@@ -72,7 +72,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
-                dr["SoPhieu"] = _ctdcbd.MaCTDCBD.ToString().Insert(4, "-");
+                dr["SoPhieu"] = _ctdcbd.MaCTDCBD.ToString().Insert(_ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                 dr["ThongTin"] = _ctdcbd.ThongTin;
                 dr["HieuLucKy"] = _ctdcbd.HieuLucKy;
                 dr["Dot"] = _ctdcbd.Dot;

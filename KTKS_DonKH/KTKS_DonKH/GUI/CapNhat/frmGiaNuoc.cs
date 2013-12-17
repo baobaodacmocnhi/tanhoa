@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.LinQ;
+using System.Globalization;
 
 namespace KTKS_DonKH.GUI.CapNhat
 {
@@ -109,7 +110,7 @@ namespace KTKS_DonKH.GUI.CapNhat
             if (dgvDSGiaNuoc.Columns[e.ColumnIndex].Name == "DonGia" && e.Value != null)
             {
                 ///9.500
-                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
                 ///5,500
                 //e.Value = String.Format("{0:0,0}", e.Value);
                 //e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"), "{0:#,##}", e.Value);

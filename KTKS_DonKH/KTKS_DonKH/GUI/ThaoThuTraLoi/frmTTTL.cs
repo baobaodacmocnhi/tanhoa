@@ -48,7 +48,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
             {
                 _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
-                txtMaDon.Text = _donkh.MaDon.ToString().Insert(4, "-");
+                txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
             }
             if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
             {
@@ -130,7 +130,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                    dr["SoPhieu"] = _cTTTL.getMaxMaCTTTTL().ToString().Insert(4, "-");
+                    dr["SoPhieu"] = _cTTTL.getMaxMaCTTTTL().ToString().Insert(_cTTTL.getMaxMaCTTTTL().ToString().Length - 2, "-");
                     dr["HoTen"] = cttttl.HoTen;
                     dr["DiaChi"] = cttttl.DiaChi;
                     dr["DanhBo"] = cttttl.DanhBo;

@@ -107,7 +107,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                            dr["SoPhieu"] = _cChungTu.getMaxNextSoPhieuLSCT().ToString().Insert(4,"-");
+                            dr["SoPhieu"] = _cChungTu.getMaxNextSoPhieuLSCT().ToString().Insert(_cChungTu.getMaxNextSoPhieuLSCT().ToString().Length - 2, "-");
                             dr["ChiNhanh"] = ((ChiNhanh)cmbChiNhanh.SelectedItem).TenCN;
                             dr["DanhBoNhan"] = txtDanhBo.Text.Trim();
                             dr["HoTenNhan"] = _source["HoTenKH"];

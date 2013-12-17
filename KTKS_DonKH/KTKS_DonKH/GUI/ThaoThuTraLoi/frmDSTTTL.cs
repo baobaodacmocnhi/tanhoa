@@ -139,7 +139,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (e.Column.FieldName == "MaDon" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(4, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 
@@ -219,7 +219,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (e.Column.FieldName == "MaCTTTTL" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(4, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 
@@ -268,7 +268,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         }
 
         #endregion
-        
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (DSTTTL_Edited != null && DSTTTL_Edited.Rows.Count > 0)
@@ -342,6 +342,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
             }
         }
- 
+
     }
 }

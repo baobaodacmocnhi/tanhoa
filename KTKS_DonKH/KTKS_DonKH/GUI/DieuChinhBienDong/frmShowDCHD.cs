@@ -42,9 +42,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 this.Location = new Point(70, 70);
                 _ctdchd = _cDCBD.getCTDCHDbyID(_MaCTDCHD);
-                txtMaDon.Text = _ctdchd.MaCTDCHD.ToString().Insert(4, "-");
+                txtMaDon.Text = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                 txtSoVB.Text = _ctdchd.SoVB;
-                dateNgayKy.Value=_ctdchd.NgayKy.Value;
+                dateNgayKy.Value = _ctdchd.NgayKy.Value;
                 txtKyHD.Text = _ctdchd.KyHD;
                 txtSoHD.Text = _ctdchd.SoHD;
                 txtDanhBo.Text = _ctdchd.DanhBo;
@@ -64,7 +64,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtTongCong_Start.Text = _ctdchd.TongCong_Start.Value.ToString();
                 ///
                 lbTangGiam.Text = _ctdchd.TangGiam;
-                txtTieuThu_BD.Text = (_ctdchd.TieuThu_BD-_ctdchd.TieuThu).Value.ToString();
+                txtTieuThu_BD.Text = (_ctdchd.TieuThu_BD - _ctdchd.TieuThu).Value.ToString();
                 txtTienNuoc_BD.Text = _ctdchd.TienNuoc_BD.Value.ToString();
                 txtThueGTGT_BD.Text = _ctdchd.ThueGTGT_BD.Value.ToString();
                 txtPhiBVMT_BD.Text = _ctdchd.PhiBVMT_BD.Value.ToString();
@@ -85,7 +85,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
-                dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(4, "-");
+                dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                 dr["DanhBo"] = _ctdchd.DanhBo;
                 dr["HoTen"] = _ctdchd.HoTen;
                 dr["SoVB"] = _ctdchd.SoVB;

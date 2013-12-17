@@ -55,7 +55,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
             {
                 _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
-                txtMaDon.Text = _donkh.MaDon.ToString().Insert(4, "-");
+                txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
             }
             if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
             {
@@ -228,12 +228,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctchungtu.SoChinh = bool.Parse(dgvDSSoDangKy["SoChinh", e.RowIndex].Value.ToString());
                 _cChungTu.SuaCTChungTu(ctchungtu);
             }
-            
+
             //if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) == true)
             //    ctchungtu.Cat = true;
             //else
             //    ctchungtu.Cat = false;
-            
+
             this.ControlBox = true;
             contextMenuStrip1.Enabled = true;
         }
@@ -261,7 +261,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 ///Nếu DCBD chưa có thì thêm vào
                 //if (!_cDCBD.CheckDCBDbyID(_donkh.MaDon))
-                if(flagFirst)
+                if (flagFirst)
                 {
                     DCBD dcbd = new DCBD();
                     dcbd.MaDon = _donkh.MaDon;
@@ -371,7 +371,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
-                    dr["SoPhieu"] = _cDCBD.getMaxMaCTDCBD().ToString().Insert(4, "-");
+                    dr["SoPhieu"] = _cDCBD.getMaxMaCTDCBD().ToString().Insert(_cDCBD.getMaxMaCTDCBD().ToString().Length - 2, "-");
                     dr["ThongTin"] = ctdcbd.ThongTin;
                     dr["HieuLucKy"] = ctdcbd.HieuLucKy;
                     dr["Dot"] = ctdcbd.Dot;
@@ -441,10 +441,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             catch (Exception)
             {
-                
+
             }
         }
-
 
     }
 }
