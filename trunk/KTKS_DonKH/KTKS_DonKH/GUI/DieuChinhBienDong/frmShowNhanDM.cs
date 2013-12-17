@@ -67,7 +67,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                    dr["SoPhieu"] = _lichsuchungtu.SoPhieu.ToString().Insert(4, "-");
+                    dr["SoPhieu"] = _lichsuchungtu.SoPhieu.ToString().Insert(_lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                     dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(_lichsuchungtu.CatNK_MaCN.Value);
                     dr["DanhBoNhan"] = _lichsuchungtu.NhanNK_DanhBo;
                     dr["HoTenNhan"] = _lichsuchungtu.NhanNK_HoTen;

@@ -40,8 +40,8 @@ namespace KTKS_DonKH.DAL
         /// <returns></returns>
         public decimal getMaxNextIDTable(decimal id)
         {
-            string nam = id.ToString().Substring(id.ToString().Length - 3, 2);
-            string stt = id.ToString().Substring(0, id.ToString().Length - 3);
+            string nam = id.ToString().Substring(id.ToString().Length - 2, 2);
+            string stt = id.ToString().Substring(0, id.ToString().Length - 2);
             if (decimal.Parse(nam) == decimal.Parse(DateTime.Now.ToString("yy")))
             {
                 stt = (decimal.Parse(stt) + 1).ToString();

@@ -51,7 +51,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbLoaiCT_Cat.DisplayMember = "TenLCT";
             cmbLoaiCT_Cat.ValueMember = "MaLCT";
 
-            txtDanhBo_Cat.Text=_source["DanhBo"];
+            txtDanhBo_Cat.Text = _source["DanhBo"];
             txtHoTen_Cat.Text = _source["HoTen"];
             txtDiaChi_Cat.Text = _source["DiaChi"];
             cmbLoaiCT_Cat.SelectedValue = int.Parse(_source["MaLCT"]);
@@ -139,7 +139,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                            dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(4, "-");
+                            dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                             dr["ChiNhanh"] = ((ChiNhanh)cmbChiNhanh_Nhan.SelectedItem).TenCN;
                             dr["DanhBoNhan"] = txtDanhBo_Nhan.Text.Trim();
                             dr["HoTenNhan"] = txtHoTen_Nhan.Text.Trim();
@@ -170,7 +170,5 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
                 MessageBox.Show("Bạn chưa nhập Số NK Cắt hoặc chưa chọn Chi Nhánh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-
     }
 }

@@ -207,7 +207,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (dgvDSKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(4, "-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 

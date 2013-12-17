@@ -14,6 +14,7 @@ using KTKS_DonKH.DAL.CatHuyDanhBo;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
+using System.Globalization;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -346,7 +347,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.Column.FieldName == "MaDon" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(4, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
             }
         }
 
@@ -424,11 +425,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.Column.FieldName == "MaCTCTDB" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(4, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
             }
             if (e.Column.FieldName == "SoTien" && e.Value != null)
             {
-                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+                e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 
@@ -485,11 +486,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.Column.FieldName == "MaCTCHDB" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(4, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
             }
             if (e.Column.FieldName == "SoTien" && e.Value != null)
             {
-                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+                e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 
@@ -521,11 +522,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "MaTB" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(4, "-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
             }
             if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
             {
-                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 

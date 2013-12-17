@@ -7624,41 +7624,41 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDung;
 		
-		private System.Nullable<bool> _KiemTraDHN;
+		private bool _KiemTraDHN;
 		
-		private System.Nullable<bool> _TienNuoc;
+		private bool _TienNuoc;
 		
-		private System.Nullable<bool> _ChiSoNuoc;
+		private bool _ChiSoNuoc;
 		
-		private System.Nullable<bool> _DonGiaNuoc;
+		private bool _DonGiaNuoc;
 		
-		private System.Nullable<bool> _SangTen;
+		private bool _SangTen;
 		
-		private System.Nullable<bool> _DangKyDM;
+		private bool _DangKyDM;
 		
-		private System.Nullable<bool> _CatChuyenDM;
+		private bool _CatChuyenDM;
 		
-		private System.Nullable<bool> _NuocDuc;
+		private bool _NuocDuc;
 		
-		private System.Nullable<bool> _LoaiKhac;
+		private bool _LoaiKhac;
 		
 		private string _LyDoLoaiKhac;
 		
-		private System.Nullable<bool> _CT_HoaDon;
+		private bool _CT_HoaDon;
 		
-		private System.Nullable<bool> _CT_HK_KT3;
+		private bool _CT_HK_KT3;
 		
-		private System.Nullable<bool> _CT_STT_GXNTT;
+		private bool _CT_STT_GXNTT;
 		
-		private System.Nullable<bool> _CT_HDTN_CQN;
+		private bool _CT_HDTN_CQN;
 		
-		private System.Nullable<bool> _CT_GC_SDSN;
+		private bool _CT_GC_SDSN;
 		
-		private System.Nullable<bool> _CT_GXN2SN;
+		private bool _CT_GXN2SN;
 		
-		private System.Nullable<bool> _CT_GDKKD;
+		private bool _CT_GDKKD;
 		
-		private System.Nullable<bool> _CT_GCNDTDHN;
+		private bool _CT_GCNDTDHN;
 		
 		private string _DinhMucSau;
 		
@@ -7736,41 +7736,41 @@ namespace KTKS_DonKH.LinQ
     partial void OnGhiChuChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
-    partial void OnKiemTraDHNChanging(System.Nullable<bool> value);
+    partial void OnKiemTraDHNChanging(bool value);
     partial void OnKiemTraDHNChanged();
-    partial void OnTienNuocChanging(System.Nullable<bool> value);
+    partial void OnTienNuocChanging(bool value);
     partial void OnTienNuocChanged();
-    partial void OnChiSoNuocChanging(System.Nullable<bool> value);
+    partial void OnChiSoNuocChanging(bool value);
     partial void OnChiSoNuocChanged();
-    partial void OnDonGiaNuocChanging(System.Nullable<bool> value);
+    partial void OnDonGiaNuocChanging(bool value);
     partial void OnDonGiaNuocChanged();
-    partial void OnSangTenChanging(System.Nullable<bool> value);
+    partial void OnSangTenChanging(bool value);
     partial void OnSangTenChanged();
-    partial void OnDangKyDMChanging(System.Nullable<bool> value);
+    partial void OnDangKyDMChanging(bool value);
     partial void OnDangKyDMChanged();
-    partial void OnCatChuyenDMChanging(System.Nullable<bool> value);
+    partial void OnCatChuyenDMChanging(bool value);
     partial void OnCatChuyenDMChanged();
-    partial void OnNuocDucChanging(System.Nullable<bool> value);
+    partial void OnNuocDucChanging(bool value);
     partial void OnNuocDucChanged();
-    partial void OnLoaiKhacChanging(System.Nullable<bool> value);
+    partial void OnLoaiKhacChanging(bool value);
     partial void OnLoaiKhacChanged();
     partial void OnLyDoLoaiKhacChanging(string value);
     partial void OnLyDoLoaiKhacChanged();
-    partial void OnCT_HoaDonChanging(System.Nullable<bool> value);
+    partial void OnCT_HoaDonChanging(bool value);
     partial void OnCT_HoaDonChanged();
-    partial void OnCT_HK_KT3Changing(System.Nullable<bool> value);
+    partial void OnCT_HK_KT3Changing(bool value);
     partial void OnCT_HK_KT3Changed();
-    partial void OnCT_STT_GXNTTChanging(System.Nullable<bool> value);
+    partial void OnCT_STT_GXNTTChanging(bool value);
     partial void OnCT_STT_GXNTTChanged();
-    partial void OnCT_HDTN_CQNChanging(System.Nullable<bool> value);
+    partial void OnCT_HDTN_CQNChanging(bool value);
     partial void OnCT_HDTN_CQNChanged();
-    partial void OnCT_GC_SDSNChanging(System.Nullable<bool> value);
+    partial void OnCT_GC_SDSNChanging(bool value);
     partial void OnCT_GC_SDSNChanged();
-    partial void OnCT_GXN2SNChanging(System.Nullable<bool> value);
+    partial void OnCT_GXN2SNChanging(bool value);
     partial void OnCT_GXN2SNChanged();
-    partial void OnCT_GDKKDChanging(System.Nullable<bool> value);
+    partial void OnCT_GDKKDChanging(bool value);
     partial void OnCT_GDKKDChanged();
-    partial void OnCT_GCNDTDHNChanging(System.Nullable<bool> value);
+    partial void OnCT_GCNDTDHNChanging(bool value);
     partial void OnCT_GCNDTDHNChanged();
     partial void OnDinhMucSauChanging(string value);
     partial void OnDinhMucSauChanged();
@@ -8187,8 +8187,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KiemTraDHN", DbType="Bit")]
-		public System.Nullable<bool> KiemTraDHN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KiemTraDHN", DbType="Bit NOT NULL")]
+		public bool KiemTraDHN
 		{
 			get
 			{
@@ -8207,8 +8207,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNuoc", DbType="Bit")]
-		public System.Nullable<bool> TienNuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNuoc", DbType="Bit NOT NULL")]
+		public bool TienNuoc
 		{
 			get
 			{
@@ -8227,8 +8227,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSoNuoc", DbType="Bit")]
-		public System.Nullable<bool> ChiSoNuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSoNuoc", DbType="Bit NOT NULL")]
+		public bool ChiSoNuoc
 		{
 			get
 			{
@@ -8247,8 +8247,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonGiaNuoc", DbType="Bit")]
-		public System.Nullable<bool> DonGiaNuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonGiaNuoc", DbType="Bit NOT NULL")]
+		public bool DonGiaNuoc
 		{
 			get
 			{
@@ -8267,8 +8267,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SangTen", DbType="Bit")]
-		public System.Nullable<bool> SangTen
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SangTen", DbType="Bit NOT NULL")]
+		public bool SangTen
 		{
 			get
 			{
@@ -8287,8 +8287,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DangKyDM", DbType="Bit")]
-		public System.Nullable<bool> DangKyDM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DangKyDM", DbType="Bit NOT NULL")]
+		public bool DangKyDM
 		{
 			get
 			{
@@ -8307,8 +8307,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatChuyenDM", DbType="Bit")]
-		public System.Nullable<bool> CatChuyenDM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatChuyenDM", DbType="Bit NOT NULL")]
+		public bool CatChuyenDM
 		{
 			get
 			{
@@ -8327,8 +8327,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NuocDuc", DbType="Bit")]
-		public System.Nullable<bool> NuocDuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NuocDuc", DbType="Bit NOT NULL")]
+		public bool NuocDuc
 		{
 			get
 			{
@@ -8347,8 +8347,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoaiKhac", DbType="Bit")]
-		public System.Nullable<bool> LoaiKhac
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoaiKhac", DbType="Bit NOT NULL")]
+		public bool LoaiKhac
 		{
 			get
 			{
@@ -8387,8 +8387,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_HoaDon", DbType="Bit")]
-		public System.Nullable<bool> CT_HoaDon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_HoaDon", DbType="Bit NOT NULL")]
+		public bool CT_HoaDon
 		{
 			get
 			{
@@ -8407,8 +8407,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_HK_KT3", DbType="Bit")]
-		public System.Nullable<bool> CT_HK_KT3
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_HK_KT3", DbType="Bit NOT NULL")]
+		public bool CT_HK_KT3
 		{
 			get
 			{
@@ -8427,8 +8427,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_STT_GXNTT", DbType="Bit")]
-		public System.Nullable<bool> CT_STT_GXNTT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_STT_GXNTT", DbType="Bit NOT NULL")]
+		public bool CT_STT_GXNTT
 		{
 			get
 			{
@@ -8447,8 +8447,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_HDTN_CQN", DbType="Bit")]
-		public System.Nullable<bool> CT_HDTN_CQN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_HDTN_CQN", DbType="Bit NOT NULL")]
+		public bool CT_HDTN_CQN
 		{
 			get
 			{
@@ -8467,8 +8467,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GC_SDSN", DbType="Bit")]
-		public System.Nullable<bool> CT_GC_SDSN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GC_SDSN", DbType="Bit NOT NULL")]
+		public bool CT_GC_SDSN
 		{
 			get
 			{
@@ -8487,8 +8487,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GXN2SN", DbType="Bit")]
-		public System.Nullable<bool> CT_GXN2SN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GXN2SN", DbType="Bit NOT NULL")]
+		public bool CT_GXN2SN
 		{
 			get
 			{
@@ -8507,8 +8507,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GDKKD", DbType="Bit")]
-		public System.Nullable<bool> CT_GDKKD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GDKKD", DbType="Bit NOT NULL")]
+		public bool CT_GDKKD
 		{
 			get
 			{
@@ -8527,8 +8527,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GCNDTDHN", DbType="Bit")]
-		public System.Nullable<bool> CT_GCNDTDHN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_GCNDTDHN", DbType="Bit NOT NULL")]
+		public bool CT_GCNDTDHN
 		{
 			get
 			{

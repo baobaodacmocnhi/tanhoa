@@ -34,7 +34,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         public frmDSDCBD()
         {
             InitializeComponent();
-            
+
         }
 
         protected override void OnLoad(EventArgs e)
@@ -83,7 +83,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //cmbColumn_NhanNK.ValueMember = "MaCN";
 
         }
-        
+
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
@@ -190,7 +190,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DanhBo", selRow["DanhBo"].ToString());
             ///Nơi Chuyển Đến, dùng để xét Đơn Khách Hàng nhận từ bản nào, Vì lúc ta load danh sách đơn chưa duyệt ở nhiều bảng
             source.Add("MaNoiChuyenDen", selRow["MaNoiChuyenDen"].ToString());
-            source.Add("NoiChuyenDen",selRow["NoiChuyenDen"].ToString());
+            source.Add("NoiChuyenDen", selRow["NoiChuyenDen"].ToString());
             source.Add("LyDoChuyenDen", selRow["LyDoChuyenDen"].ToString());
 
             frmDCBD frm = new frmDCBD(source);
@@ -323,7 +323,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Column.FieldName == "MaDon" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(4, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 
@@ -390,7 +390,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Column.FieldName == "MaCTDCBD" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(4, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 
@@ -433,7 +433,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Column.FieldName == "MaCTDCHD" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(4, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
             if (e.Column.FieldName == "TongCong_Start" && e.Value != null)
             {
@@ -501,7 +501,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "SoPhieu" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(4, "-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
             if (dgvDSDCBD.Columns[e.ColumnIndex].Name == "TongCong_Start" && e.Value != null)
             {
@@ -597,7 +597,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "CT_SoPhieu" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(4, "-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 

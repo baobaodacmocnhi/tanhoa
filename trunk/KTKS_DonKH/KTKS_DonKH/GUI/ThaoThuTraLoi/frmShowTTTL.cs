@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             if (_cTTTL.getCTTTTLbyID(_MaCTTTTL) != null)
             {
                 _cttttl = _cTTTL.getCTTTTLbyID(_MaCTTTTL);
-                txtMaDon.Text = _cttttl.TTTL.MaDon.Value.ToString().Insert(4, "-");
+                txtMaDon.Text = _cttttl.TTTL.MaDon.Value.ToString().Insert(_cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
                 txtDanhBo.Text = _cttttl.DanhBo;
                 txtHopDong.Text = _cttttl.HopDong;
                 txtHoTen.Text = _cttttl.HoTen;
@@ -72,7 +72,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(4, "-");
+                dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
                 dr["HoTen"] = _cttttl.HoTen;
                 dr["DiaChi"] = _cttttl.DiaChi;
                 dr["DanhBo"] = _cttttl.DanhBo;

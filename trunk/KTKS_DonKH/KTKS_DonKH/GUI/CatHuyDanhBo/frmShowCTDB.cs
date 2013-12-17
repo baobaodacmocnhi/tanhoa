@@ -11,6 +11,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
+using System.Globalization;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -37,8 +38,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (_cCHDB.getCTCTDBbyID(_MaCTCTDB) != null)
             {
                 _ctctdb = _cCHDB.getCTCTDBbyID(_MaCTCTDB);
-                txtMaDon.Text = _ctctdb.CHDB.MaDon.Value.ToString().Insert(4, "-");
-                txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(4, "-");
+                txtMaDon.Text = _ctctdb.CHDB.MaDon.Value.ToString().Insert(_ctctdb.CHDB.MaDon.Value.ToString().Length - 2, "-");
+                txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                 txtDanhBo.Text = _ctctdb.DanhBo;
                 txtHopDong.Text = _ctctdb.HopDong;
                 txtHoTen.Text = _ctctdb.HoTen;
@@ -72,7 +73,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(4, "-");
+                dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                 dr["HoTen"] = _ctctdb.HoTen;
                 dr["DiaChi"] = _ctctdb.DiaChi;
                 dr["DanhBo"] = _ctctdb.DanhBo;
@@ -81,7 +82,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (_ctctdb.GhiChuLyDo != "")
                     dr["LyDo"] += _ctctdb.GhiChuLyDo + ". ";
                 if (_ctctdb.SoTien.ToString() != "")
-                    dr["LyDo"] += "Số Tiền: " + String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctctdb.SoTien);
+                    dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctctdb.SoTien);
                 dr["ChucVu"] = _ctctdb.ChucVu;
                 dr["NguoiKy"] = _ctctdb.NguoiKy;
 

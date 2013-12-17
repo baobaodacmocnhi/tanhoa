@@ -41,7 +41,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmDCHDN_Load(object sender, EventArgs e)
         {
             this.Location = new Point(70, 70);
-            txtMaDon.Text = _source["MaDon"].Insert(4, "-");
+            txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
             txtDanhBo.Text = _source["DanhBo"];
             txtHoTen.Text = _source["HoTen"];
             TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
@@ -247,7 +247,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
-                    dr["SoPhieu"] = _cDCBD.getMaxMaCTDCHD().ToString().Insert(4, "-");
+                    dr["SoPhieu"] = _cDCBD.getMaxMaCTDCHD().ToString().Insert(_cDCBD.getMaxMaCTDCHD().ToString().Length - 2, "-");
                     dr["DanhBo"] = ctdchd.DanhBo;
                     dr["HoTen"] = ctdchd.HoTen;
                     dr["SoVB"] = ctdchd.SoVB;
