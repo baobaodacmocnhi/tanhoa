@@ -38,8 +38,11 @@ namespace KTKS_DonKH.GUI.KhachHang
             cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi();
             cmbColumn.DisplayMember = "NoiChuyenDi";
             cmbColumn.ValueMember = "MaChuyen";
+
             dgvDSDonKH.DataSource = DSDonKH_BS;
-            radChuDuyet.Checked = true;  
+            radChuDuyet.Checked = true;
+
+            dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
             
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
@@ -47,7 +50,6 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (radDaDuyet.Checked)
             {
                 DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
-                //dgvDSDonKH.DataSource = DSDonKH_BS;
             }
         }
 
@@ -56,7 +58,6 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (radChuDuyet.Checked)
             {
                 DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
-                //dgvDSDonKH.DataSource = DSDonKH_BS;
             }
         }
 
@@ -183,11 +184,42 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
         }
 
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Mã Đơn":
+                    txtNoiDungTimKiem.Visible = true;
+                    dateTimKiem.Visible = false;
+                    break;
+                case "Ngày Lập":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = true;
+                    break;
+            }
+        }
+
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-",""));
+            if (txtNoiDungTimKiem.Text.Trim() != "")
+            {
+                string expression = "";
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        break;
+                }
+                DSDonKH_BS.Filter = expression;
+            }
+            else
+                DSDonKH_BS.RemoveFilter();
+        }
+
+        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
             DSDonKH_BS.Filter = expression;
-            
         }
 
     }
