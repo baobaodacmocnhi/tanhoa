@@ -21,6 +21,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CDonKH _cDonKH = new CDonKH();
         DataTable DSKTXM_Edited = new DataTable();
         CDCBD _cDCBD = new CDCBD();
+        BindingSource DSDonKH_BS = new BindingSource();
 
         public frmKTXM()
         {
@@ -43,19 +44,23 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
             cmbColumn.DisplayMember = "NoiChuyenDi";
             cmbColumn.ValueMember = "MaChuyen";
+
+            dgvDSKTXM.DataSource = DSDonKH_BS;
             radChuaDuyet.Checked = true;
+
+            dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
         private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radChuaDuyet.Checked)
-                dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
-                dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
+                DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -129,9 +134,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 DSKTXM_Edited.Clear();
 
                 if (radDaDuyet.Checked)
-                    dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
                 if (radChuaDuyet.Checked)
-                    dgvDSKTXM.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
             }
         }
 
@@ -209,6 +214,44 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Mã Đơn":
+                    txtNoiDungTimKiem.Visible = true;
+                    dateTimKiem.Visible = false;
+                    break;
+                case "Ngày Lập":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = true;
+                    break;
+            }
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNoiDungTimKiem.Text.Trim() != "")
+            {
+                string expression = "";
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        break;
+                }
+                DSDonKH_BS.Filter = expression;
+            }
+            else
+                DSDonKH_BS.RemoveFilter();
+        }
+
+        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            DSDonKH_BS.Filter = expression;
         }
 
   

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewCTTTTL = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -67,6 +67,11 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTimTheo = new System.Windows.Forms.ComboBox();
+            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTTTTL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTTTL)).BeginInit();
@@ -152,10 +157,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTTTTL;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewCTTTTL;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(0, 66);
             this.gridControl.MainView = this.gridViewTTTL;
             this.gridControl.Name = "gridControl";
@@ -409,14 +414,14 @@
             // 
             this.dgvDSThu.AllowUserToAddRows = false;
             this.dgvDSThu.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ThuDuocKy,
@@ -435,10 +440,10 @@
             // ThuDuocKy
             // 
             this.ThuDuocKy.DataPropertyName = "ThuDuocKy";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.NullValue = false;
-            this.ThuDuocKy.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.NullValue = false;
+            this.ThuDuocKy.DefaultCellStyle = dataGridViewCellStyle4;
             this.ThuDuocKy.HeaderText = "Được Ký";
             this.ThuDuocKy.Name = "ThuDuocKy";
             this.ThuDuocKy.Width = 50;
@@ -473,6 +478,53 @@
             this.NoiDung.ReadOnly = true;
             this.NoiDung.Width = 400;
             // 
+            // dateTimKiem
+            // 
+            this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
+            this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimKiem.Location = new System.Drawing.Point(780, 35);
+            this.dateTimKiem.Name = "dateTimKiem";
+            this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
+            this.dateTimKiem.TabIndex = 11;
+            this.dateTimKiem.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(505, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Tìm Theo:";
+            // 
+            // cmbTimTheo
+            // 
+            this.cmbTimTheo.FormattingEnabled = true;
+            this.cmbTimTheo.Items.AddRange(new object[] {
+            "Mã Đơn",
+            "Ngày Lập"});
+            this.cmbTimTheo.Location = new System.Drawing.Point(579, 12);
+            this.cmbTimTheo.Name = "cmbTimTheo";
+            this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
+            this.cmbTimTheo.TabIndex = 8;
+            // 
+            // txtNoiDungTimKiem
+            // 
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(780, 12);
+            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
+            this.txtNoiDungTimKiem.TabIndex = 10;
+            this.txtNoiDungTimKiem.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(706, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Nội Dung:";
+            // 
             // frmDSTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -480,6 +532,11 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1363, 612);
+            this.Controls.Add(this.dateTimKiem);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbTimTheo);
+            this.Controls.Add(this.txtNoiDungTimKiem);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.radChuaDuyet);
             this.Controls.Add(this.radDaDuyet);
@@ -538,5 +595,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private System.Windows.Forms.DateTimePicker dateTimKiem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbTimTheo;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem;
+        private System.Windows.Forms.Label label1;
     }
 }

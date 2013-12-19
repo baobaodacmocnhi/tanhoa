@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSKTXM = new System.Windows.Forms.DataGridView();
@@ -48,6 +48,11 @@
             this.NoiChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LyDoChuyenDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radChuaDuyet = new System.Windows.Forms.RadioButton();
+            this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTimTheo = new System.Windows.Forms.ComboBox();
+            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKTXM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +74,7 @@
             this.btnLuu.Location = new System.Drawing.Point(1180, 12);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 3;
+            this.btnLuu.TabIndex = 8;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -79,14 +84,14 @@
             // 
             this.dgvDSKTXM.AllowUserToAddRows = false;
             this.dgvDSKTXM.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKTXM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKTXM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDSKTXM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKTXM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaKTXM,
@@ -109,7 +114,7 @@
             this.dgvDSKTXM.MultiSelect = false;
             this.dgvDSKTXM.Name = "dgvDSKTXM";
             this.dgvDSKTXM.Size = new System.Drawing.Size(2500, 470);
-            this.dgvDSKTXM.TabIndex = 2;
+            this.dgvDSKTXM.TabIndex = 7;
             this.dgvDSKTXM.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDSKTXM_CellBeginEdit);
             this.dgvDSKTXM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKTXM_CellEndEdit);
             this.dgvDSKTXM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKTXM_CellFormatting);
@@ -242,6 +247,56 @@
             this.radChuaDuyet.UseVisualStyleBackColor = true;
             this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
             // 
+            // dateTimKiem
+            // 
+            this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
+            this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimKiem.Location = new System.Drawing.Point(577, 35);
+            this.dateTimKiem.Name = "dateTimKiem";
+            this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
+            this.dateTimKiem.TabIndex = 6;
+            this.dateTimKiem.Visible = false;
+            this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(302, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Tìm Theo:";
+            // 
+            // cmbTimTheo
+            // 
+            this.cmbTimTheo.FormattingEnabled = true;
+            this.cmbTimTheo.Items.AddRange(new object[] {
+            "Mã Đơn",
+            "Ngày Lập"});
+            this.cmbTimTheo.Location = new System.Drawing.Point(376, 12);
+            this.cmbTimTheo.Name = "cmbTimTheo";
+            this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
+            this.cmbTimTheo.TabIndex = 3;
+            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
+            // 
+            // txtNoiDungTimKiem
+            // 
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(577, 12);
+            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
+            this.txtNoiDungTimKiem.TabIndex = 5;
+            this.txtNoiDungTimKiem.Visible = false;
+            this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(503, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nội Dung:";
+            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -249,6 +304,11 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 579);
+            this.Controls.Add(this.dateTimKiem);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbTimTheo);
+            this.Controls.Add(this.txtNoiDungTimKiem);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.dgvDSKTXM);
@@ -285,5 +345,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNoiChuyenDen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiChuyenDen;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyenDen;
+        private System.Windows.Forms.DateTimePicker dateTimKiem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbTimTheo;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem;
+        private System.Windows.Forms.Label label1;
     }
 }
