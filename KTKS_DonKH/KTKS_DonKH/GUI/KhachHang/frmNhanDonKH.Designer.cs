@@ -131,11 +131,14 @@
             // 
             // btnInBienNhan
             // 
-            this.btnInBienNhan.Location = new System.Drawing.Point(672, 425);
+            this.btnInBienNhan.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInBienNhan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInBienNhan.Location = new System.Drawing.Point(655, 425);
             this.btnInBienNhan.Name = "btnInBienNhan";
-            this.btnInBienNhan.Size = new System.Drawing.Size(105, 30);
+            this.btnInBienNhan.Size = new System.Drawing.Size(122, 35);
             this.btnInBienNhan.TabIndex = 24;
             this.btnInBienNhan.Text = "In Biên Nhận";
+            this.btnInBienNhan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInBienNhan.UseVisualStyleBackColor = true;
             this.btnInBienNhan.Click += new System.EventHandler(this.btnInBienNhan_Click);
             // 

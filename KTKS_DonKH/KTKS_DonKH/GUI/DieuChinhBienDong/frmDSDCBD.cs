@@ -285,6 +285,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 if (radDaDuyet.Checked)
                     gridControl.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
+                if (radChuaDuyet.Checked)
+                    gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
             }
         }
 
@@ -372,7 +374,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (gridViewDCBD.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"].ToString())));
+                Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("MaDon", ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                frmShowDonKH frm = new frmShowDonKH(source);
+                //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"].ToString())));
                 frm.ShowDialog();
             }
         }

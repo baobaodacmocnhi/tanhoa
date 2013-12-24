@@ -162,7 +162,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (dgvDSKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString())));
+                Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("MaDon", dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString());
+                frmShowDonKH frm = new frmShowDonKH(source);
                 frm.ShowDialog();
             }
         }

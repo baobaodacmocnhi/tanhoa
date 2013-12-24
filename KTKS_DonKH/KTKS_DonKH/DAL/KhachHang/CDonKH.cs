@@ -171,6 +171,30 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
+        public bool XoaDonKH(DonKH donkh)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH)
+                {
+                    db.DonKHs.DeleteOnSubmit(donkh);
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         /// <summary>
         /// Kiểm Tra đơn đó có được nhận hay chưa
         /// </summary>
