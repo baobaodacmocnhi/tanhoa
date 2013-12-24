@@ -226,7 +226,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["TenLD"] = cmbLD.Text;
                     dr["KhachHang"] = txtKhachHang.Text.Trim();
                     if (txtDanhBo.Text.Trim() != "")
-                        dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(4, ".").Insert(8, ".");
+                        dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, ".").Insert(4, ".");
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
                     dr["HopDong"] = txtHopDong.Text.Trim();
                     dr["DienThoai"] = txtDienThoai.Text.Trim();

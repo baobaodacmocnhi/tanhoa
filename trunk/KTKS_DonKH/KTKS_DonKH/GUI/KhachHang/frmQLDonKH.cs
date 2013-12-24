@@ -130,8 +130,12 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (dgvDSDonKH.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString())));
-                frm.ShowDialog();
+                Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("Action", "Cập Nhật");
+                source.Add("MaDon", dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString());
+                frmShowDonKH frm = new frmShowDonKH(source);
+                if(frm.ShowDialog()==DialogResult.OK)
+                    DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
             }
         }
 

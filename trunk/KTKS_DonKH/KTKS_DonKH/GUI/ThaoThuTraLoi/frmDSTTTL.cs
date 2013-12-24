@@ -165,7 +165,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (gridViewTTTL.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString())));
+                Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("MaDon", ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                frmShowDonKH frm = new frmShowDonKH(source);
+                //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString())));
                 frm.ShowDialog();
             }
         }
@@ -340,6 +343,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                 if (radDaDuyet.Checked)
                     gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
+                if (radChuaDuyet.Checked)
+                    gridControl.DataSource = _cTTTL.LoadDSTTTLChuaDuyet();
             }
         }
 
