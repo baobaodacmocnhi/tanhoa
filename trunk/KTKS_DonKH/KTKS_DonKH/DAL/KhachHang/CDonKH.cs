@@ -58,6 +58,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                     donkh.CreateBy = CTaiKhoan.TaiKhoan;
                     db.DonKHs.InsertOnSubmit(donkh);
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Thêm DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -155,6 +156,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                     donkh.ModifyDate = DateTime.Now;
                     donkh.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -179,6 +181,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     db.DonKHs.DeleteOnSubmit(donkh);
                     db.SubmitChanges();
+                    MessageBox.Show("Thành công Xóa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
