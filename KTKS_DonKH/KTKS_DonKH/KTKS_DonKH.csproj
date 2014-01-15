@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -394,6 +394,12 @@
     <Compile Include="GUI\KiemTraXacMinh\frmKTXM.Designer.cs">
       <DependentUpon>frmKTXM.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Loading\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Loading\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThaoThuTraLoi\frmDSTTTL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -586,6 +592,9 @@
     <None Include="LinQ\DB_CAPNUOCTANHOA.dbml.layout">
       <DependentUpon>DB_CAPNUOCTANHOA.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\Loading\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmDSTTTL.resx">
       <DependentUpon>frmDSTTTL.cs</DependentUpon>
     </EmbeddedResource>
@@ -677,13 +686,15 @@
     <None Include="Resources\print 24x24.png" />
     <None Include="Resources\cash 48x48.png" />
     <None Include="Resources\Chief 48x48.png" />
-    <None Include="Resources\customer 48x48.png" />
     <None Include="Resources\office building 48x48.png" />
     <None Include="Resources\list 48x48.png" />
     <None Include="Resources\folder document 48x48.png" />
     <None Include="Resources\forms 48x48.png" />
     <None Include="Resources\id home 48x48.png" />
     <None Include="Resources\my documents 48x48.png" />
+    <None Include="Resources\loading6.gif" />
+    <None Include="Resources\customer 48x48.png" />
+    <None Include="Resources\documents 24x24.png" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\System.Windows.Forms.Ribbon35.dll" />
   </ItemGroup>

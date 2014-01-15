@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.GUI.Loading;
 
 namespace KTKS_DonKH.GUI.CapNhat
 {
     public partial class frmTTKH : Form
     {
         CTTKH _cTTKH = new CTTKH();
+        string _fileName = "";
 
         public frmTTKH()
         {
@@ -42,6 +44,7 @@ namespace KTKS_DonKH.GUI.CapNhat
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 txtDuongDan.Text = dialog.FileName;
+                _fileName = dialog.SafeFileName;
             }
         }
 
@@ -49,11 +52,22 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             if (txtDuongDan.Text.Trim() != "")
             {
-                if (_cTTKH.CapNhatTTKH(txtDuongDan.Text.Trim()))
-                    dgvDSTTKHDate.DataSource = _cTTKH.LoadDSTTKhachHangDate();
+                ///Theo Kỳ
+                if(_fileName.Length==10)
+                    if (_cTTKH.CapNhatTTKHs(txtDuongDan.Text.Trim()))
+                    {
+                        dgvDSTTKHDate.DataSource = _cTTKH.LoadDSTTKhachHangDate();
+                        txtDuongDan.Text = "";
+                    }
+                ///Theo Đợt
+                if(_fileName.Length==12)
+                    if (_cTTKH.CapNhatTTKH(txtDuongDan.Text.Trim()))
+                    {
+                        dgvDSTTKHDate.DataSource = _cTTKH.LoadDSTTKhachHangDate();
+                        txtDuongDan.Text = "";
+                    }
             }
         }
-
         
     }
 }
