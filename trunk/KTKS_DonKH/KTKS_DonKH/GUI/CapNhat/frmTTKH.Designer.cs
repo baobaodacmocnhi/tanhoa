@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTTKH));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDuongDan = new System.Windows.Forms.TextBox();
@@ -39,6 +40,8 @@
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTTKHDate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,22 +66,28 @@
             // 
             // btnChonFile
             // 
+            this.btnChonFile.Image = ((System.Drawing.Image)(resources.GetObject("btnChonFile.Image")));
+            this.btnChonFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChonFile.Location = new System.Drawing.Point(101, 48);
             this.btnChonFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(90, 30);
+            this.btnChonFile.Size = new System.Drawing.Size(100, 35);
             this.btnChonFile.TabIndex = 2;
             this.btnChonFile.Text = "Chọn File";
+            this.btnChonFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnChonFile.UseVisualStyleBackColor = true;
             this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
             // 
             // btnCapNhat
             // 
+            this.btnCapNhat.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnCapNhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCapNhat.Location = new System.Drawing.Point(252, 48);
             this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(100, 30);
+            this.btnCapNhat.Size = new System.Drawing.Size(100, 35);
             this.btnCapNhat.TabIndex = 3;
             this.btnCapNhat.Text = "Cập Nhật";
+            this.btnCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
@@ -101,7 +110,7 @@
             this.Dot,
             this.ModifyDate,
             this.ModifyBy});
-            this.dgvDSTTKHDate.Location = new System.Drawing.Point(12, 84);
+            this.dgvDSTTKHDate.Location = new System.Drawing.Point(12, 89);
             this.dgvDSTTKHDate.MultiSelect = false;
             this.dgvDSTTKHDate.Name = "dgvDSTTKHDate";
             this.dgvDSTTKHDate.ReadOnly = true;
@@ -145,12 +154,32 @@
             this.ModifyBy.ReadOnly = true;
             this.ModifyBy.Width = 120;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(631, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(235, 17);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Cập Nhật theo Kỳ mất khoảng 30 phút";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(631, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(233, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Cập Nhật theo Đợt mất khoảng 2 phút";
+            // 
             // frmTTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(639, 570);
+            this.ClientSize = new System.Drawing.Size(873, 570);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvDSTTKHDate);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.btnChonFile);
@@ -179,5 +208,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyBy;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

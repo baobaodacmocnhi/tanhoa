@@ -127,9 +127,6 @@
   <data name="Chief_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Chief 48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="customer_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\customer 48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="delete_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete 24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -183,5 +180,14 @@
   </data>
   <data name="stock_example" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stock_example.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loading6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loading6.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="customer_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customer 48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="documents_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\documents 24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
