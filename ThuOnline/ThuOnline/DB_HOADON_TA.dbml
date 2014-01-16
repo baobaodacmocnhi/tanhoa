@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HOADON_TA" Class="DB_HOADON_TADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuOnline.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ThuOnline" Member="ThuOnlines">
+    <Type Name="ThuOnline">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Dbo" Type="System.String" DbType="NChar(11)" CanBeNull="true" />
+      <Column Name="KHang" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Dchi1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DChi2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Gbieu" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Dot" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="KyHD" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NamHD" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="GiaBan" Type="System.Decimal" DbType="Decimal(12,0)" CanBeNull="true" />
+      <Column Name="TGTGT" Type="System.Decimal" DbType="Decimal(12,0)" CanBeNull="true" />
+      <Column Name="PBVMT" Type="System.Decimal" DbType="Decimal(12,0)" CanBeNull="true" />
+      <Column Name="TThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SHDon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Ngaythanhtoan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Giothanhtoan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaNH" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MagiaodichVT" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ID_HD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
