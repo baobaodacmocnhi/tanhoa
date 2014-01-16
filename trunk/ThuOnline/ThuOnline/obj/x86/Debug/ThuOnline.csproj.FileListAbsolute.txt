@@ -1,0 +1,10 @@
+D:\Projects\ThuOnline\ThuOnline\bin\Debug\ThuOnline.exe.config
+D:\Projects\ThuOnline\ThuOnline\bin\Debug\ThuOnline.exe
+D:\Projects\ThuOnline\ThuOnline\bin\Debug\ThuOnline.pdb
+D:\Projects\ThuOnline\ThuOnline\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projects\ThuOnline\ThuOnline\obj\x86\Debug\ThuOnline.frmMain.resources
+D:\Projects\ThuOnline\ThuOnline\obj\x86\Debug\ThuOnline.Properties.Resources.resources
+D:\Projects\ThuOnline\ThuOnline\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Projects\ThuOnline\ThuOnline\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Projects\ThuOnline\ThuOnline\obj\x86\Debug\ThuOnline.exe
+D:\Projects\ThuOnline\ThuOnline\obj\x86\Debug\ThuOnline.pdb
