@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbKey = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,10 +38,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.dgvDSThuOnline = new System.Windows.Forms.DataGridView();
-            this.groupBox_NoiDung = new System.Windows.Forms.GroupBox();
-            this.groupBox_ThoiGian = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtTongCong = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +48,10 @@
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox_NoiDung = new System.Windows.Forms.GroupBox();
+            this.groupBox_ThoiGian = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTongCong = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThuOnline)).BeginInit();
             this.groupBox_NoiDung.SuspendLayout();
             this.groupBox_ThoiGian.SuspendLayout();
@@ -142,14 +142,14 @@
             // 
             this.dgvDSThuOnline.AllowUserToAddRows = false;
             this.dgvDSThuOnline.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSThuOnline.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSThuOnline.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSThuOnline.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSThuOnline.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -168,48 +168,6 @@
             this.dgvDSThuOnline.TabIndex = 8;
             this.dgvDSThuOnline.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThuOnline_CellFormatting);
             this.dgvDSThuOnline.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSThuOnline_RowPostPaint);
-            // 
-            // groupBox_NoiDung
-            // 
-            this.groupBox_NoiDung.Controls.Add(this.txtNoiDung);
-            this.groupBox_NoiDung.Controls.Add(this.label4);
-            this.groupBox_NoiDung.Location = new System.Drawing.Point(362, -10);
-            this.groupBox_NoiDung.Name = "groupBox_NoiDung";
-            this.groupBox_NoiDung.Size = new System.Drawing.Size(204, 60);
-            this.groupBox_NoiDung.TabIndex = 9;
-            this.groupBox_NoiDung.TabStop = false;
-            this.groupBox_NoiDung.Visible = false;
-            // 
-            // groupBox_ThoiGian
-            // 
-            this.groupBox_ThoiGian.Controls.Add(this.dateDenNgay);
-            this.groupBox_ThoiGian.Controls.Add(this.label2);
-            this.groupBox_ThoiGian.Controls.Add(this.dateTuNgay);
-            this.groupBox_ThoiGian.Controls.Add(this.label3);
-            this.groupBox_ThoiGian.Location = new System.Drawing.Point(572, -10);
-            this.groupBox_ThoiGian.Name = "groupBox_ThoiGian";
-            this.groupBox_ThoiGian.Size = new System.Drawing.Size(382, 60);
-            this.groupBox_ThoiGian.TabIndex = 10;
-            this.groupBox_ThoiGian.TabStop = false;
-            this.groupBox_ThoiGian.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(749, 521);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 17);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Tổng Cộng:";
-            // 
-            // txtTongCong
-            // 
-            this.txtTongCong.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong.Location = new System.Drawing.Point(841, 513);
-            this.txtTongCong.Name = "txtTongCong";
-            this.txtTongCong.Size = new System.Drawing.Size(150, 25);
-            this.txtTongCong.TabIndex = 12;
             // 
             // ID
             // 
@@ -279,12 +237,55 @@
             this.NgayThanhToan.Name = "NgayThanhToan";
             this.NgayThanhToan.Width = 110;
             // 
+            // groupBox_NoiDung
+            // 
+            this.groupBox_NoiDung.Controls.Add(this.txtNoiDung);
+            this.groupBox_NoiDung.Controls.Add(this.label4);
+            this.groupBox_NoiDung.Location = new System.Drawing.Point(362, -10);
+            this.groupBox_NoiDung.Name = "groupBox_NoiDung";
+            this.groupBox_NoiDung.Size = new System.Drawing.Size(204, 60);
+            this.groupBox_NoiDung.TabIndex = 9;
+            this.groupBox_NoiDung.TabStop = false;
+            this.groupBox_NoiDung.Visible = false;
+            // 
+            // groupBox_ThoiGian
+            // 
+            this.groupBox_ThoiGian.Controls.Add(this.dateDenNgay);
+            this.groupBox_ThoiGian.Controls.Add(this.label2);
+            this.groupBox_ThoiGian.Controls.Add(this.dateTuNgay);
+            this.groupBox_ThoiGian.Controls.Add(this.label3);
+            this.groupBox_ThoiGian.Location = new System.Drawing.Point(572, -10);
+            this.groupBox_ThoiGian.Name = "groupBox_ThoiGian";
+            this.groupBox_ThoiGian.Size = new System.Drawing.Size(382, 60);
+            this.groupBox_ThoiGian.TabIndex = 10;
+            this.groupBox_ThoiGian.TabStop = false;
+            this.groupBox_ThoiGian.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(749, 521);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 17);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Tổng Cộng:";
+            // 
+            // txtTongCong
+            // 
+            this.txtTongCong.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongCong.ForeColor = System.Drawing.Color.Red;
+            this.txtTongCong.Location = new System.Drawing.Point(841, 513);
+            this.txtTongCong.Name = "txtTongCong";
+            this.txtTongCong.Size = new System.Drawing.Size(150, 25);
+            this.txtTongCong.TabIndex = 12;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1204, 550);
+            this.ClientSize = new System.Drawing.Size(1147, 550);
             this.Controls.Add(this.txtTongCong);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox_ThoiGian);

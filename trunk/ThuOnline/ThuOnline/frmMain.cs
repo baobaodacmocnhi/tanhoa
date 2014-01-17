@@ -122,6 +122,7 @@ namespace ThuOnline
             if (txtNoiDung.Text.Trim() != "")
                 expression = String.Format("SoHoaDon = {0}", txtNoiDung.Text.Trim());
             DSThuOnline_BS.Filter = expression;
+            txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đ", dgvDSThuOnline.Rows.OfType<DataGridViewRow>().Sum(row => Convert.ToDecimal(row.Cells["TongTien"].Value)));
         }
 
         private void dateTuNgay_ValueChanged(object sender, EventArgs e)
@@ -134,22 +135,34 @@ namespace ThuOnline
                 if (cmbKey.SelectedItem.ToString() == "Tháng")
                 {
                     DateTime date1 = new DateTime(dateTuNgay.Value.Year, dateTuNgay.Value.Month, 1);
-                    
-                    DateTime date2 = new DateTime(dateTuNgay.Value.Year, dateTuNgay.Value.Month, 1);
-                    expression = String.Format("NgayThanhToan > #{0:yyyy-MM-dd} 00:00:00# and NgayThanhToan < #{1:yyyy-MM-dd} 23:59:59#", dateTuNgay.Value, dateTuNgay.Value);
+                    DateTime date2 = new DateTime(dateTuNgay.Value.Year, dateTuNgay.Value.Month, DateTime.DaysInMonth(dateTuNgay.Value.Year,dateTuNgay.Value.Month));
+                    expression = String.Format("NgayThanhToan > #{0:yyyy-MM-dd} 00:00:00# and NgayThanhToan < #{1:yyyy-MM-dd} 23:59:59#", date1, date2);
                 }
+                if (cmbKey.SelectedItem.ToString() == "Khoảng Thời Gian")
+                    expression = String.Format("NgayThanhToan > #{0:yyyy-MM-dd} 00:00:00# and NgayThanhToan < #{1:yyyy-MM-dd} 23:59:59#", dateTuNgay.Value, dateDenNgay.Value);
                 DSThuOnline_BS.Filter = expression;
+                txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đ", dgvDSThuOnline.Rows.OfType<DataGridViewRow>().Sum(row => Convert.ToDecimal(row.Cells["TongTien"].Value)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }     
+        }
+
+        private void dateDenNgay_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string expression = "";
+                if (cmbKey.SelectedItem.ToString() == "Khoảng Thời Gian")
+                    expression = String.Format("NgayThanhToan > #{0:yyyy-MM-dd} 00:00:00# and NgayThanhToan < #{1:yyyy-MM-dd} 23:59:59#", dateTuNgay.Value, dateDenNgay.Value);
+                DSThuOnline_BS.Filter = expression;
+                txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đ", dgvDSThuOnline.Rows.OfType<DataGridViewRow>().Sum(row => Convert.ToDecimal(row.Cells["TongTien"].Value)));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-        }
-
-        private void dateDenNgay_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
