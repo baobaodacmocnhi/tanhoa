@@ -24,6 +24,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CDonKH _cDonKH = new CDonKH();
         CTTKH _cTTKH=new CTTKH();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CNhanVien _cNhanVien = new CNhanVien();
 
         public frmShowDonKH()
         {
@@ -44,6 +45,10 @@ namespace KTKS_DonKH.GUI.KhachHang
                 cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon(true);
                 cmbLD.DisplayMember = "TenLD";
                 cmbLD.ValueMember = "MaLD";
+
+                cmbNVKiemTra.DataSource = _cNhanVien.LoadDSNhanVien(true);
+                cmbNVKiemTra.DisplayMember = "HoTen";
+                cmbNVKiemTra.ValueMember = "HoTen";
 
                 cmbLD.SelectedValue = _donkh.MaLD.Value;
                 txtSoCongVan.Text = _donkh.SoCongVan;
@@ -79,7 +84,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 txtMSThue.Text = _donkh.MSThue;
                 txtGiaBieu.Text = _donkh.GiaBieu;
                 txtDinhMuc.Text = _donkh.DinhMuc;
-                txtGhiChu.Text = _donkh.GhiChu;
+                cmbNVKiemTra.Text = _donkh.GhiChuNguoiDi;
 
                 if (_donkh.CT_HoaDon)
                     chkCT_HoaDon.Checked = true;
@@ -107,6 +112,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     btnXoa.Visible = true;
                 }
             }
+
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -347,7 +353,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 //donkh.Ky = Ky;
                 //donkh.Nam = Nam;
                 _donkh.NoiDung = txtNoiDung.Text.Trim();
-                _donkh.GhiChu = txtGhiChu.Text.Trim();
+                _donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
                 _donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
                 _donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
 

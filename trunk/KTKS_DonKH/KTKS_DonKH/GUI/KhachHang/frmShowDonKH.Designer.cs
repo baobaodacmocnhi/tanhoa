@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label15 = new System.Windows.Forms.Label();
-            this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.txtHieuLucTuKy = new System.Windows.Forms.TextBox();
             this.txtMSThue = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -84,6 +83,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.cmbNVKiemTra = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -95,15 +95,8 @@
             this.label15.Location = new System.Drawing.Point(610, 102);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(66, 17);
-            this.label15.TabIndex = 16;
+            this.label15.TabIndex = 14;
             this.label15.Text = "MS Thuế:";
-            // 
-            // txtGhiChu
-            // 
-            this.txtGhiChu.Location = new System.Drawing.Point(98, 99);
-            this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(506, 25);
-            this.txtGhiChu.TabIndex = 15;
             // 
             // txtHieuLucTuKy
             // 
@@ -117,16 +110,17 @@
             this.txtMSThue.Location = new System.Drawing.Point(692, 99);
             this.txtMSThue.Name = "txtMSThue";
             this.txtMSThue.Size = new System.Drawing.Size(100, 25);
-            this.txtMSThue.TabIndex = 17;
+            this.txtMSThue.TabIndex = 15;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
             this.label12.Location = new System.Drawing.Point(6, 102);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 17);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Ghi Chú:";
+            this.label12.Size = new System.Drawing.Size(118, 17);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Ghi Chú Người Đi:";
             // 
             // txtDienThoai
             // 
@@ -576,9 +570,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cmbNVKiemTra);
             this.tabPage1.Controls.Add(this.txtMSThue);
             this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.txtGhiChu);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.txtDienThoai);
             this.tabPage1.Controls.Add(this.label11);
@@ -639,6 +633,14 @@
             this.btnXoa.Visible = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
+            // cmbNVKiemTra
+            // 
+            this.cmbNVKiemTra.FormattingEnabled = true;
+            this.cmbNVKiemTra.Location = new System.Drawing.Point(130, 99);
+            this.cmbNVKiemTra.Name = "cmbNVKiemTra";
+            this.cmbNVKiemTra.Size = new System.Drawing.Size(230, 25);
+            this.cmbNVKiemTra.TabIndex = 17;
+            // 
             // frmShowDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -695,7 +697,6 @@
         #endregion
 
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.TextBox txtHieuLucTuKy;
         private System.Windows.Forms.TextBox txtMSThue;
         private System.Windows.Forms.Label label12;
@@ -750,6 +751,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.ComboBox cmbNVKiemTra;
 
 
     }

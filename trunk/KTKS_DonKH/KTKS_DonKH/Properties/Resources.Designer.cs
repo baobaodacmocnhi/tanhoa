@@ -67,6 +67,13 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap bill_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("bill_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap cash_48x48 {
             get {
                 object obj = ResourceManager.GetObject("cash_48x48", resourceCulture);
@@ -98,6 +105,13 @@ namespace KTKS_DonKH.Properties {
         internal static System.Drawing.Bitmap documents_24x24 {
             get {
                 object obj = ResourceManager.GetObject("documents_24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap edit_paper_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("edit_paper_48x48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -168,6 +182,13 @@ namespace KTKS_DonKH.Properties {
         internal static System.Drawing.Bitmap logout_48x48 {
             get {
                 object obj = ResourceManager.GetObject("logout_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap man_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("man_48x48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

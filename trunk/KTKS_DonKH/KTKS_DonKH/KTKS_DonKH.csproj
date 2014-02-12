@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -196,6 +196,7 @@
     <Compile Include="DAL\CapNhat\CGiaNuoc.cs" />
     <Compile Include="DAL\CapNhat\CLoaiChungTu.cs" />
     <Compile Include="DAL\CapNhat\CLoaiDon.cs" />
+    <Compile Include="DAL\CapNhat\CNhanVien.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB.cs" />
     <Compile Include="DAL\CDAL.cs" />
@@ -249,6 +250,12 @@
     </Compile>
     <Compile Include="GUI\CapNhat\frmLoaiDon.Designer.cs">
       <DependentUpon>frmLoaiDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmNVKiemTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmNVKiemTra.Designer.cs">
+      <DependentUpon>frmNVKiemTra.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CapNhat\frmTTKH.cs">
       <SubType>Form</SubType>
@@ -517,6 +524,9 @@
     <EmbeddedResource Include="GUI\CapNhat\frmLoaiDon.resx">
       <DependentUpon>frmLoaiDon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CapNhat\frmNVKiemTra.resx">
+      <DependentUpon>frmNVKiemTra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\CapNhat\frmTTKH.resx">
       <DependentUpon>frmTTKH.cs</DependentUpon>
     </EmbeddedResource>
@@ -695,6 +705,9 @@
     <None Include="Resources\loading6.gif" />
     <None Include="Resources\customer 48x48.png" />
     <None Include="Resources\documents 24x24.png" />
+    <None Include="Resources\man 48x48.png" />
+    <None Include="Resources\bill 48x48.png" />
+    <None Include="Resources\edit paper 48x48.png" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\System.Windows.Forms.Ribbon35.dll" />
   </ItemGroup>

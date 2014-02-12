@@ -47,7 +47,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtMSThue = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -82,6 +81,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoCongVan = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.cmbNVKiemTra = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -164,7 +164,7 @@
             this.chkCT_GCNDTDHN.AutoSize = true;
             this.chkCT_GCNDTDHN.Location = new System.Drawing.Point(480, 85);
             this.chkCT_GCNDTDHN.Name = "chkCT_GCNDTDHN";
-            this.chkCT_GCNDTDHN.Size = new System.Drawing.Size(182, 17);
+            this.chkCT_GCNDTDHN.Size = new System.Drawing.Size(226, 21);
             this.chkCT_GCNDTDHN.TabIndex = 7;
             this.chkCT_GCNDTDHN.Text = "Giấy Ưng Thuận Đứng Tên ĐHN";
             this.chkCT_GCNDTDHN.UseVisualStyleBackColor = true;
@@ -174,7 +174,7 @@
             this.chkCT_GDKKD.AutoSize = true;
             this.chkCT_GDKKD.Location = new System.Drawing.Point(13, 85);
             this.chkCT_GDKKD.Name = "chkCT_GDKKD";
-            this.chkCT_GDKKD.Size = new System.Drawing.Size(150, 17);
+            this.chkCT_GDKKD.Size = new System.Drawing.Size(187, 21);
             this.chkCT_GDKKD.TabIndex = 6;
             this.chkCT_GDKKD.Text = "Giấy Đăng Ký Kinh Doanh";
             this.chkCT_GDKKD.UseVisualStyleBackColor = true;
@@ -184,7 +184,7 @@
             this.chkCT_GXN2SN.AutoSize = true;
             this.chkCT_GXN2SN.Location = new System.Drawing.Point(480, 58);
             this.chkCT_GXN2SN.Name = "chkCT_GXN2SN";
-            this.chkCT_GXN2SN.Size = new System.Drawing.Size(137, 17);
+            this.chkCT_GXN2SN.Size = new System.Drawing.Size(169, 21);
             this.chkCT_GXN2SN.TabIndex = 5;
             this.chkCT_GXN2SN.Text = "Giấy XN 2 Số Nhà Là 1";
             this.chkCT_GXN2SN.UseVisualStyleBackColor = true;
@@ -194,7 +194,7 @@
             this.chkCT_GC_SDSN.AutoSize = true;
             this.chkCT_GC_SDSN.Location = new System.Drawing.Point(243, 58);
             this.chkCT_GC_SDSN.Name = "chkCT_GC_SDSN";
-            this.chkCT_GC_SDSN.Size = new System.Drawing.Size(154, 17);
+            this.chkCT_GC_SDSN.Size = new System.Drawing.Size(187, 21);
             this.chkCT_GC_SDSN.TabIndex = 4;
             this.chkCT_GC_SDSN.Text = "Giấy Cấp hoặc Đổi Số Nhà";
             this.chkCT_GC_SDSN.UseVisualStyleBackColor = true;
@@ -204,7 +204,7 @@
             this.chkCT_HDTN_CQN.AutoSize = true;
             this.chkCT_HDTN_CQN.Location = new System.Drawing.Point(13, 58);
             this.chkCT_HDTN_CQN.Name = "chkCT_HDTN_CQN";
-            this.chkCT_HDTN_CQN.Size = new System.Drawing.Size(161, 17);
+            this.chkCT_HDTN_CQN.Size = new System.Drawing.Size(199, 21);
             this.chkCT_HDTN_CQN.TabIndex = 3;
             this.chkCT_HDTN_CQN.Text = "Hợp Đồng TN hoặc CQ Nhà";
             this.chkCT_HDTN_CQN.UseVisualStyleBackColor = true;
@@ -214,7 +214,7 @@
             this.chkCT_STT_GXNTT.AutoSize = true;
             this.chkCT_STT_GXNTT.Location = new System.Drawing.Point(480, 31);
             this.chkCT_STT_GXNTT.Name = "chkCT_STT_GXNTT";
-            this.chkCT_STT_GXNTT.Size = new System.Drawing.Size(194, 17);
+            this.chkCT_STT_GXNTT.Size = new System.Drawing.Size(240, 21);
             this.chkCT_STT_GXNTT.TabIndex = 2;
             this.chkCT_STT_GXNTT.Text = "Sổ Tạm Trú hoặc Giấy XN Tạm Trú";
             this.chkCT_STT_GXNTT.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.chkCT_HK_KT3.AutoSize = true;
             this.chkCT_HK_KT3.Location = new System.Drawing.Point(243, 31);
             this.chkCT_HK_KT3.Name = "chkCT_HK_KT3";
-            this.chkCT_HK_KT3.Size = new System.Drawing.Size(118, 17);
+            this.chkCT_HK_KT3.Size = new System.Drawing.Size(144, 21);
             this.chkCT_HK_KT3.TabIndex = 1;
             this.chkCT_HK_KT3.Text = "Hộ Khẩu hoặc KT3";
             this.chkCT_HK_KT3.UseVisualStyleBackColor = true;
@@ -234,7 +234,7 @@
             this.chkCT_HoaDon.AutoSize = true;
             this.chkCT_HoaDon.Location = new System.Drawing.Point(13, 31);
             this.chkCT_HoaDon.Name = "chkCT_HoaDon";
-            this.chkCT_HoaDon.Size = new System.Drawing.Size(69, 17);
+            this.chkCT_HoaDon.Size = new System.Drawing.Size(82, 21);
             this.chkCT_HoaDon.TabIndex = 0;
             this.chkCT_HoaDon.Text = "Hóa Đơn";
             this.chkCT_HoaDon.UseVisualStyleBackColor = true;
@@ -250,9 +250,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cmbNVKiemTra);
             this.tabPage1.Controls.Add(this.txtMSThue);
             this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.txtGhiChu);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.txtDienThoai);
             this.tabPage1.Controls.Add(this.label11);
@@ -281,7 +281,7 @@
             this.txtMSThue.Location = new System.Drawing.Point(692, 99);
             this.txtMSThue.Name = "txtMSThue";
             this.txtMSThue.Size = new System.Drawing.Size(100, 25);
-            this.txtMSThue.TabIndex = 17;
+            this.txtMSThue.TabIndex = 15;
             // 
             // label15
             // 
@@ -289,24 +289,18 @@
             this.label15.Location = new System.Drawing.Point(610, 102);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(66, 17);
-            this.label15.TabIndex = 16;
+            this.label15.TabIndex = 14;
             this.label15.Text = "MS Thuế:";
-            // 
-            // txtGhiChu
-            // 
-            this.txtGhiChu.Location = new System.Drawing.Point(98, 99);
-            this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(506, 25);
-            this.txtGhiChu.TabIndex = 15;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
             this.label12.Location = new System.Drawing.Point(6, 102);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 17);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Ghi Chú:";
+            this.label12.Size = new System.Drawing.Size(118, 17);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Ghi Chú Người Đi:";
             // 
             // txtDienThoai
             // 
@@ -610,6 +604,14 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "   Số Công Văn   ";
             // 
+            // cmbNVKiemTra
+            // 
+            this.cmbNVKiemTra.FormattingEnabled = true;
+            this.cmbNVKiemTra.Location = new System.Drawing.Point(130, 99);
+            this.cmbNVKiemTra.Name = "cmbNVKiemTra";
+            this.cmbNVKiemTra.Size = new System.Drawing.Size(230, 25);
+            this.cmbNVKiemTra.TabIndex = 17;
+            // 
             // frmNhanDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -680,7 +682,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox txtMSThue;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDienThoai;
         private System.Windows.Forms.Label label11;
@@ -715,6 +716,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSoCongVan;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cmbNVKiemTra;
 
 
 

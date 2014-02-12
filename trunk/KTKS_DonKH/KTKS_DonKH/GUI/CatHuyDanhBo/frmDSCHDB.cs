@@ -307,6 +307,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (gridViewCHDB.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("Action", "View");
                 source.Add("MaDon", ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"].ToString());
                 frmShowDonKH frm = new frmShowDonKH(source);
                 //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"].ToString())));

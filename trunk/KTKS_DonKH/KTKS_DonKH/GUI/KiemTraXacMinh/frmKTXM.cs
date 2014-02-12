@@ -54,13 +54,19 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radChuaDuyet.Checked)
+            {
                 DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                cmbTimTheo.SelectedIndex = 0;
+            }
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
+            {
                 DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
+                cmbTimTheo.SelectedIndex = 0;
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -163,6 +169,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (dgvDSKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("Action", "View");
                 source.Add("MaDon", dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString());
                 frmShowDonKH frm = new frmShowDonKH(source);
                 frm.ShowDialog();
@@ -229,6 +236,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 case "Ngày Lập":
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    DSDonKH_BS.RemoveFilter();
                     break;
             }
         }
