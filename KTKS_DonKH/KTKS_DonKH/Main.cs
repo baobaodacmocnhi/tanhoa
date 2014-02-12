@@ -37,6 +37,7 @@ namespace KTKS_DonKH
                 ribbtnDangXuat.Enabled = true;
                 ribbtnDoiMatKhau.Enabled = true;
                 StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng: " + CTaiKhoan.TaiKhoan;
+                StripStatus_Version.Text += ". V"+Application.ProductVersion.ToString();
             }
         }
 
@@ -215,6 +216,36 @@ namespace KTKS_DonKH
             foreach (Form item in this.MdiChildren)
                 item.Close();
             Form frm = new frmDSTTTL();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnNVKiemTra_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmNVKiemTra();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnDCBD_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmDCBD(true);
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnDCHD_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmDCHD(true);
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

@@ -19,6 +19,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmDCHD : Form
     {
+        DonKH _donkh = null;
+        TTKhachHang _ttkhachhang = null;
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CTTKH _cTTKH = new CTTKH();
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
@@ -26,10 +28,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDCBD _cDCBD = new CDCBD();
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        bool _direct = false;
 
         public frmDCHD()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Load Form trực tiếp không qua Danh Sách Đơn
+        /// </summary>
+        /// <param name="direct">true</param>
+        public frmDCHD(bool direct)
+        {
+            InitializeComponent();
+            _direct = direct;
         }
 
         public frmDCHD(Dictionary<string, string> source)
@@ -40,13 +53,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDCHDN_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
-            txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
-            txtDanhBo.Text = _source["DanhBo"];
-            txtHoTen.Text = _source["HoTen"];
-            TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-            txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = ttkhachhang.GB;
-            txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = ttkhachhang.TGDM;
+            if (_direct)
+            {
+                this.ControlBox = false;
+                this.WindowState = FormWindowState.Maximized;
+                this.BringToFront();
+                txtMaDon.ReadOnly = false;
+            }
+            else
+            {
+                this.Location = new Point(70, 70);
+                if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
+                {
+                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
+                    txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                }
+                if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
+                    txtDanhBo.Text = _ttkhachhang.DanhBo;
+                    txtHoTen.Text = _ttkhachhang.HoTen;
+                    txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
+                    txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                }
+            }
         }
 
         private void frmDCHDN_FormClosing(object sender, FormClosingEventArgs e)
@@ -168,10 +198,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtSoVB.Text.Trim() != "" && txtKyHD.Text.Trim() != "" && txtSoHD.Text.Trim() != "")
+            if (_donkh != null && _ttkhachhang != null && txtSoVB.Text.Trim() != "" && txtKyHD.Text.Trim() != "" && txtSoHD.Text.Trim() != "")
             {
                 DCBD dcbd = new DCBD();
-                dcbd.MaDon = decimal.Parse(_source["MaDon"]);
+                dcbd.MaDon = _donkh.MaDon;
+                ///mới check donkh còn ktxm chưa
+                if (_direct)
+                {
+                    string a, b, c;
+                    _cDCBD.GetInfobyMaDon(_donkh.MaDon, out a, out b, out c);
+                    _source.Add("MaNoiChuyenDen", a);
+                    _source.Add("NoiChuyenDen", b);
+                    _source.Add("LyDoChuyenDen", c);
+                }
                 dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
                 dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
                 dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
@@ -290,7 +329,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
             }
             else
-                MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chưa có Mã Đơn/Danh Bộ/Số Văn Bản/Kỳ Hóa Đơn/Số Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")), "DCBD") != null)
+                {
+                    //txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
+
+                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")), "DCBD");
+                    _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
+
+                    txtDanhBo.Text = _ttkhachhang.DanhBo;
+                    txtHoTen.Text = _ttkhachhang.HoTen;
+                    txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
+                    txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                }
+                else
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
     }

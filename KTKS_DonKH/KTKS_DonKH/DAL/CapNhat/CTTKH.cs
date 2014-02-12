@@ -248,7 +248,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.TTKhachHangs.Single(itemTTKH => itemTTKH.DanhBo == DanhBo);
+                return db.TTKhachHangs.SingleOrDefault(itemTTKH => itemTTKH.DanhBo == DanhBo);
             }
             catch (Exception ex)
             {

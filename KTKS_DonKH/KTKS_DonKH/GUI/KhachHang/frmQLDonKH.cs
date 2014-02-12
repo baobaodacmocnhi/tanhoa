@@ -50,6 +50,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (radDaDuyet.Checked)
             {
                 DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
+                cmbTimTheo.SelectedIndex = 0;
             }
         }
 
@@ -58,6 +59,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (radChuDuyet.Checked)
             {
                 DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                cmbTimTheo.SelectedIndex = 0;
             }
         }
 
@@ -134,8 +136,12 @@ namespace KTKS_DonKH.GUI.KhachHang
                 source.Add("Action", "Cập Nhật");
                 source.Add("MaDon", dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString());
                 frmShowDonKH frm = new frmShowDonKH(source);
-                if(frm.ShowDialog()==DialogResult.OK)
-                    DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                if (frm.ShowDialog() == DialogResult.OK)
+                    if (radChuDuyet.Checked)
+                        DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                    else
+                        if (radDaDuyet.Checked)
+                            DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
             }
         }
 
@@ -199,6 +205,11 @@ namespace KTKS_DonKH.GUI.KhachHang
                 case "Ngày Lập":
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    DSDonKH_BS.RemoveFilter();
                     break;
             }
         }

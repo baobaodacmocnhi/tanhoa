@@ -19,8 +19,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmDCBD : Form
     {
-        DonKH _donkh = new DonKH();
-        TTKhachHang _ttkhachhang = new TTKhachHang();
+        DonKH _donkh = null;
+        TTKhachHang _ttkhachhang = null;
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
         CTTKH _cTTKH = new CTTKH();
@@ -29,11 +29,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-        bool flagFirst = true;
+        bool flagFirst = true;///Lần đầu Load Form (trường hợp 1 đơn nhiều Danh Bộ)
+        bool _direct = false;
 
         public frmDCBD()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Load Form trực tiếp không qua Danh Sách Đơn
+        /// </summary>
+        /// <param name="direct">true</param>
+        public frmDCBD(bool direct)
+        {
+            InitializeComponent();
+            _direct = direct;
         }
 
         public frmDCBD(Dictionary<string, string> source)
@@ -44,24 +55,33 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDCBD_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
+            if (_direct)
+            {
+                this.ControlBox = false;
+                this.WindowState = FormWindowState.Maximized;
+                this.BringToFront();
+                txtMaDon.ReadOnly = false;
+            }
+            else
+            {
+                this.Location = new Point(70, 70);
+                if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
+                {
+                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
+                    txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                }
+                if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
+                    LoadDS(_ttkhachhang);
+                }
+            }
             dgvDSSoDangKy.AutoGenerateColumns = false;
             dgvDSSoDangKy.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
             //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSSoDangKy.Columns["MaLCT"];
             //cmbColumn.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
             //cmbColumn.DisplayMember = "TenLCT";
             //cmbColumn.ValueMember = "MaLCT";
-
-            if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
-            {
-                _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
-                txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-            }
-            if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
-            {
-                _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-                LoadDS(_ttkhachhang);
-            }
 
             dgvDSDieuChinh.AutoGenerateColumns = false;
             dgvDSDieuChinh.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
@@ -249,6 +269,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                 {
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     _ttkhachhang = null;
                     Clear();
                 }
@@ -257,7 +278,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (_ttkhachhang != null && txtHieuLucKy.Text.Trim() != "")
+            if (_donkh!=null && _ttkhachhang != null && txtHieuLucKy.Text.Trim() != "")
             {
                 ///Nếu DCBD chưa có thì thêm vào
                 //if (!_cDCBD.CheckDCBDbyID(_donkh.MaDon))
@@ -265,6 +286,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     DCBD dcbd = new DCBD();
                     dcbd.MaDon = _donkh.MaDon;
+                    ///mới check donkh còn ktxm chưa
+                    if (_direct)
+                    {
+                        string a, b, c;
+                        _cDCBD.GetInfobyMaDon(_donkh.MaDon, out a, out b, out c);
+                        _source.Add("MaNoiChuyenDen", a);
+                        _source.Add("NoiChuyenDen", b);
+                        _source.Add("LyDoChuyenDen", c);
+                    }
                     dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
                     dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
                     dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
@@ -408,7 +438,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             else
             {
-                MessageBox.Show("Chưa có Danh Bộ hoặc Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chưa có Mã Đơn/Danh Bộ/Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -442,6 +472,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             catch (Exception)
             {
 
+            }
+        }
+
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-","")),"DCBD") != null)
+                {
+                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                    //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                    if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                    {
+                        _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
+                        LoadDS(_ttkhachhang);
+                    }
+                }
+                else
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

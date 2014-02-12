@@ -166,6 +166,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             if (gridViewTTTL.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("Action", "View");
                 source.Add("MaDon", ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString());
                 frmShowDonKH frm = new frmShowDonKH(source);
                 //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString())));

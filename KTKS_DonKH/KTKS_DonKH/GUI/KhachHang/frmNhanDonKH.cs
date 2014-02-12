@@ -22,6 +22,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CDonKH _cDonKH = new CDonKH();
         CTTKH _cTTKH = new CTTKH();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CNhanVien _cNhanVien = new CNhanVien();
         string SH = "";
         string SX = "";
         string DV = "";
@@ -68,7 +69,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
-            txtGhiChu.Text = "";
+            cmbNVKiemTra.SelectedIndex = 0;
 
             chkCT_HoaDon.Checked = false;
             chkCT_HK_KT3.Checked = false;
@@ -89,6 +90,11 @@ namespace KTKS_DonKH.GUI.KhachHang
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;
+
+            cmbNVKiemTra.DataSource = _cNhanVien.LoadDSNhanVien(true);
+            cmbNVKiemTra.DisplayMember = "HoTen";
+            cmbNVKiemTra.ValueMember = "HoTen";
+            
             Clear();
         }
 
@@ -130,6 +136,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                     Ky = ttkhachhang.Ky;
                     Nam = ttkhachhang.Nam;
                 }
+                else
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -157,7 +165,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 donkh.Ky = Ky;
                 donkh.Nam = Nam;
                 donkh.NoiDung = txtNoiDung.Text.Trim();
-                donkh.GhiChu = txtGhiChu.Text.Trim();
+                donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
                 donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
                 donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
 

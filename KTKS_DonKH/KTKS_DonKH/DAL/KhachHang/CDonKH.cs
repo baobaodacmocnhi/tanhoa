@@ -48,6 +48,25 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
+        /// <summary>
+        /// Lấy Đơn Khách Hàng kèm theo điều kiện Đơn được chuyến đến đúng Bộ Phận xử lý
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="MaChuyen"></param>
+        /// <returns></returns>
+        public DonKH getDonKHbyID(decimal MaDon, string MaChuyen)
+        {
+            try
+            {
+                return db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon && itemDonKH.MaChuyen == MaChuyen);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public bool ThemDonKH(DonKH donkh)
         {
             try

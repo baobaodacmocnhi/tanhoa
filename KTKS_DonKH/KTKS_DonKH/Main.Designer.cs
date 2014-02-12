@@ -31,26 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnDangNhap = new System.Windows.Forms.RibbonButton();
-            this.ribbtnDangXuat = new System.Windows.Forms.RibbonButton();
-            this.ribbtnDoiMatKhau = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnTaiKhoan = new System.Windows.Forms.RibbonButton();
             this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnLoaiDonThu = new System.Windows.Forms.RibbonButton();
-            this.ribbtnChungTuMoi = new System.Windows.Forms.RibbonButton();
-            this.ribbtnKhachHang = new System.Windows.Forms.RibbonButton();
-            this.ribbtnChiNhanh = new System.Windows.Forms.RibbonButton();
-            this.ribbtnGiaNuoc = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel9 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnBanGiamDoc = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
-            this.ribbtnQLDonKH = new System.Windows.Forms.RibbonButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StripStatus_Version = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_Form = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -59,17 +47,33 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbonTab4 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnDSDonKTXM = new System.Windows.Forms.RibbonButton();
             this.ribbonTab5 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnDSDonDCBD = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel7 = new System.Windows.Forms.RibbonPanel();
             this.ribbonTab6 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel8 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnDSDonCHDB = new System.Windows.Forms.RibbonButton();
             this.ribbonTab7 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel10 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnDSDonTTTL = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
+            this.ribbtnDangNhap = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDangXuat = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDoiMatKhau = new System.Windows.Forms.RibbonButton();
+            this.ribbtnTaiKhoan = new System.Windows.Forms.RibbonButton();
+            this.ribbtnLoaiDonThu = new System.Windows.Forms.RibbonButton();
+            this.ribbtnChungTuMoi = new System.Windows.Forms.RibbonButton();
+            this.ribbtnKhachHang = new System.Windows.Forms.RibbonButton();
+            this.ribbtnChiNhanh = new System.Windows.Forms.RibbonButton();
+            this.ribbtnGiaNuoc = new System.Windows.Forms.RibbonButton();
+            this.ribbtnNVKiemTra = new System.Windows.Forms.RibbonButton();
+            this.ribbtnBanGiamDoc = new System.Windows.Forms.RibbonButton();
+            this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
+            this.ribbtnQLDonKH = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDSDonKTXM = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDSDonDCBD = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDCBD = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDCHD = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDSDonCHDB = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDSDonTTTL = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +91,197 @@
             this.ribbonPanel1.Items.Add(this.ribbtnDangXuat);
             this.ribbonPanel1.Items.Add(this.ribbtnDoiMatKhau);
             this.ribbonPanel1.Text = "Đăng Nhập";
+            // 
+            // ribbonPanel2
+            // 
+            this.ribbonPanel2.ButtonMoreEnabled = false;
+            this.ribbonPanel2.ButtonMoreVisible = false;
+            this.ribbonPanel2.Items.Add(this.ribbtnTaiKhoan);
+            this.ribbonPanel2.Text = "Tạo Tài Khoản & Cấp Quyền";
+            // 
+            // ribbonTab2
+            // 
+            this.ribbonTab2.Panels.Add(this.ribbonPanel3);
+            this.ribbonTab2.Panels.Add(this.ribbonPanel9);
+            this.ribbonTab2.Text = "Cập Nhật";
+            // 
+            // ribbonPanel3
+            // 
+            this.ribbonPanel3.ButtonMoreEnabled = false;
+            this.ribbonPanel3.ButtonMoreVisible = false;
+            this.ribbonPanel3.Items.Add(this.ribbtnLoaiDonThu);
+            this.ribbonPanel3.Items.Add(this.ribbtnChungTuMoi);
+            this.ribbonPanel3.Items.Add(this.ribbtnKhachHang);
+            this.ribbonPanel3.Items.Add(this.ribbtnChiNhanh);
+            this.ribbonPanel3.Items.Add(this.ribbtnGiaNuoc);
+            this.ribbonPanel3.Items.Add(this.ribbtnNVKiemTra);
+            this.ribbonPanel3.Text = "Thông Tin";
+            // 
+            // ribbonPanel9
+            // 
+            this.ribbonPanel9.ButtonMoreEnabled = false;
+            this.ribbonPanel9.ButtonMoreVisible = false;
+            this.ribbonPanel9.Items.Add(this.ribbtnBanGiamDoc);
+            this.ribbonPanel9.Text = "Trình Ký";
+            // 
+            // ribbonTab3
+            // 
+            this.ribbonTab3.Panels.Add(this.ribbonPanel4);
+            this.ribbonTab3.Text = "Khách Hàng";
+            // 
+            // ribbonPanel4
+            // 
+            this.ribbonPanel4.ButtonMoreEnabled = false;
+            this.ribbonPanel4.ButtonMoreVisible = false;
+            this.ribbonPanel4.Items.Add(this.ribbtnNhanDon);
+            this.ribbonPanel4.Items.Add(this.ribbtnQLDonKH);
+            this.ribbonPanel4.Text = "Đơn Từ";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StripStatus_Version,
+            this.toolStripStatusLabel4,
+            this.StripStatus_Form,
+            this.toolStripStatusLabel5,
+            this.StripStatus_TaiKhoan});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 640);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1140, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // StripStatus_Version
+            // 
+            this.StripStatus_Version.Name = "StripStatus_Version";
+            this.StripStatus_Version.Size = new System.Drawing.Size(475, 17);
+            this.StripStatus_Version.Text = "Bản quyền(2013) thuộc Công ty TNHH MTV Cấp Nước Tân Hòa. Được P.CNTT phát triển";
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(151, 17);
+            this.toolStripStatusLabel4.Text = "                                                ";
+            // 
+            // StripStatus_Form
+            // 
+            this.StripStatus_Form.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StripStatus_Form.Name = "StripStatus_Form";
+            this.StripStatus_Form.Size = new System.Drawing.Size(93, 17);
+            this.StripStatus_Form.Text = "Đang mở Form:";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(172, 17);
+            this.toolStripStatusLabel5.Text = "                                                       ";
+            // 
+            // StripStatus_TaiKhoan
+            // 
+            this.StripStatus_TaiKhoan.Name = "StripStatus_TaiKhoan";
+            this.StripStatus_TaiKhoan.Size = new System.Drawing.Size(124, 17);
+            this.StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng:";
+            this.StripStatus_TaiKhoan.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(475, 17);
+            this.toolStripStatusLabel1.Text = "Bản quyền(2013) thuộc Công ty TNHH MTV Cấp Nước Tân Hòa. Được P.CNTT phát triển";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
+            // ribbonTab4
+            // 
+            this.ribbonTab4.Panels.Add(this.ribbonPanel5);
+            this.ribbonTab4.Text = "Kiểm Tra Xác Minh";
+            // 
+            // ribbonPanel5
+            // 
+            this.ribbonPanel5.ButtonMoreEnabled = false;
+            this.ribbonPanel5.ButtonMoreVisible = false;
+            this.ribbonPanel5.Items.Add(this.ribbtnDSDonKTXM);
+            this.ribbonPanel5.Text = "";
+            // 
+            // ribbonTab5
+            // 
+            this.ribbonTab5.Panels.Add(this.ribbonPanel6);
+            this.ribbonTab5.Panels.Add(this.ribbonPanel7);
+            this.ribbonTab5.Text = "Điều Chỉnh Biến Động";
+            // 
+            // ribbonPanel6
+            // 
+            this.ribbonPanel6.ButtonMoreEnabled = false;
+            this.ribbonPanel6.ButtonMoreVisible = false;
+            this.ribbonPanel6.Items.Add(this.ribbtnDSDonDCBD);
+            this.ribbonPanel6.Text = "Thông Tin";
+            // 
+            // ribbonPanel7
+            // 
+            this.ribbonPanel7.ButtonMoreEnabled = false;
+            this.ribbonPanel7.ButtonMoreVisible = false;
+            this.ribbonPanel7.Items.Add(this.ribbtnDCBD);
+            this.ribbonPanel7.Items.Add(this.ribbtnDCHD);
+            this.ribbonPanel7.Text = "Xử Lý";
+            // 
+            // ribbonTab6
+            // 
+            this.ribbonTab6.Panels.Add(this.ribbonPanel8);
+            this.ribbonTab6.Text = "Cắt Hủy Danh Bộ";
+            // 
+            // ribbonPanel8
+            // 
+            this.ribbonPanel8.ButtonMoreEnabled = false;
+            this.ribbonPanel8.ButtonMoreVisible = false;
+            this.ribbonPanel8.Items.Add(this.ribbtnDSDonCHDB);
+            this.ribbonPanel8.Text = "";
+            // 
+            // ribbonTab7
+            // 
+            this.ribbonTab7.Panels.Add(this.ribbonPanel10);
+            this.ribbonTab7.Text = "Thảo Thư Trả Lời";
+            // 
+            // ribbonPanel10
+            // 
+            this.ribbonPanel10.ButtonMoreEnabled = false;
+            this.ribbonPanel10.ButtonMoreVisible = false;
+            this.ribbonPanel10.Items.Add(this.ribbtnDSDonTTTL);
+            this.ribbonPanel10.Text = "";
+            // 
+            // ribbon1
+            // 
+            this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ribbon1.Location = new System.Drawing.Point(0, 0);
+            this.ribbon1.Minimized = false;
+            this.ribbon1.Name = "ribbon1";
+            // 
+            // 
+            // 
+            this.ribbon1.OrbDropDown.BorderRoundness = 8;
+            this.ribbon1.OrbDropDown.Location = new System.Drawing.Point(0, 0);
+            this.ribbon1.OrbDropDown.Name = "";
+            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 72);
+            this.ribbon1.OrbDropDown.TabIndex = 0;
+            this.ribbon1.OrbImage = global::KTKS_DonKH.Properties.Resources.logocty;
+            // 
+            // 
+            // 
+            this.ribbon1.QuickAcessToolbar.Visible = false;
+            this.ribbon1.Size = new System.Drawing.Size(1140, 145);
+            this.ribbon1.TabIndex = 0;
+            this.ribbon1.Tabs.Add(this.ribbonTab1);
+            this.ribbon1.Tabs.Add(this.ribbonTab2);
+            this.ribbon1.Tabs.Add(this.ribbonTab3);
+            this.ribbon1.Tabs.Add(this.ribbonTab4);
+            this.ribbon1.Tabs.Add(this.ribbonTab5);
+            this.ribbon1.Tabs.Add(this.ribbonTab6);
+            this.ribbon1.Tabs.Add(this.ribbonTab7);
+            this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
+            this.ribbon1.Text = "ribbon1";
             // 
             // ribbtnDangNhap
             // 
@@ -114,13 +309,6 @@
             this.ribbtnDoiMatKhau.Text = "Đổi Mật Khẩu";
             this.ribbtnDoiMatKhau.Click += new System.EventHandler(this.ribbtnDoiMatKhau_Click);
             // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.ButtonMoreEnabled = false;
-            this.ribbonPanel2.ButtonMoreVisible = false;
-            this.ribbonPanel2.Items.Add(this.ribbtnTaiKhoan);
-            this.ribbonPanel2.Text = "Tạo Tài Khoản & Cấp Quyền";
-            // 
             // ribbtnTaiKhoan
             // 
             this.ribbtnTaiKhoan.Image = ((System.Drawing.Image)(resources.GetObject("ribbtnTaiKhoan.Image")));
@@ -128,23 +316,6 @@
             this.ribbtnTaiKhoan.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnTaiKhoan.SmallImage")));
             this.ribbtnTaiKhoan.Text = "";
             this.ribbtnTaiKhoan.Click += new System.EventHandler(this.ribbtnTaiKhoan_Click);
-            // 
-            // ribbonTab2
-            // 
-            this.ribbonTab2.Panels.Add(this.ribbonPanel3);
-            this.ribbonTab2.Panels.Add(this.ribbonPanel9);
-            this.ribbonTab2.Text = "Cập Nhật";
-            // 
-            // ribbonPanel3
-            // 
-            this.ribbonPanel3.ButtonMoreEnabled = false;
-            this.ribbonPanel3.ButtonMoreVisible = false;
-            this.ribbonPanel3.Items.Add(this.ribbtnLoaiDonThu);
-            this.ribbonPanel3.Items.Add(this.ribbtnChungTuMoi);
-            this.ribbonPanel3.Items.Add(this.ribbtnKhachHang);
-            this.ribbonPanel3.Items.Add(this.ribbtnChiNhanh);
-            this.ribbonPanel3.Items.Add(this.ribbtnGiaNuoc);
-            this.ribbonPanel3.Text = "Thông Tin";
             // 
             // ribbtnLoaiDonThu
             // 
@@ -186,12 +357,13 @@
             this.ribbtnGiaNuoc.Text = "Giá Nước";
             this.ribbtnGiaNuoc.Click += new System.EventHandler(this.ribbtnGiaNuoc_Click);
             // 
-            // ribbonPanel9
+            // ribbtnNVKiemTra
             // 
-            this.ribbonPanel9.ButtonMoreEnabled = false;
-            this.ribbonPanel9.ButtonMoreVisible = false;
-            this.ribbonPanel9.Items.Add(this.ribbtnBanGiamDoc);
-            this.ribbonPanel9.Text = "Trình Ký";
+            this.ribbtnNVKiemTra.Image = global::KTKS_DonKH.Properties.Resources.man_48x48;
+            this.ribbtnNVKiemTra.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnNVKiemTra.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnNVKiemTra.SmallImage")));
+            this.ribbtnNVKiemTra.Text = "NV Kiểm Tra";
+            this.ribbtnNVKiemTra.Click += new System.EventHandler(this.ribbtnNVKiemTra_Click);
             // 
             // ribbtnBanGiamDoc
             // 
@@ -200,19 +372,6 @@
             this.ribbtnBanGiamDoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnBanGiamDoc.SmallImage")));
             this.ribbtnBanGiamDoc.Text = "Ban Giám Đốc";
             this.ribbtnBanGiamDoc.Click += new System.EventHandler(this.ribbtnBanGiamDoc_Click);
-            // 
-            // ribbonTab3
-            // 
-            this.ribbonTab3.Panels.Add(this.ribbonPanel4);
-            this.ribbonTab3.Text = "Khách Hàng";
-            // 
-            // ribbonPanel4
-            // 
-            this.ribbonPanel4.ButtonMoreEnabled = false;
-            this.ribbonPanel4.ButtonMoreVisible = false;
-            this.ribbonPanel4.Items.Add(this.ribbtnNhanDon);
-            this.ribbonPanel4.Items.Add(this.ribbtnQLDonKH);
-            this.ribbonPanel4.Text = "Đơn Từ";
             // 
             // ribbtnNhanDon
             // 
@@ -230,76 +389,6 @@
             this.ribbtnQLDonKH.Text = "Quản Lý";
             this.ribbtnQLDonKH.Click += new System.EventHandler(this.ribbtnQLDonKH_Click);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel3,
-            this.toolStripStatusLabel4,
-            this.StripStatus_Form,
-            this.toolStripStatusLabel5,
-            this.StripStatus_TaiKhoan});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 640);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(988, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(475, 17);
-            this.toolStripStatusLabel3.Text = "Bản quyền(2013) thuộc Công ty TNHH MTV Cấp Nước Tân Hòa. Được P.CNTT phát triển";
-            // 
-            // toolStripStatusLabel4
-            // 
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(151, 17);
-            this.toolStripStatusLabel4.Text = "                                                ";
-            // 
-            // StripStatus_Form
-            // 
-            this.StripStatus_Form.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StripStatus_Form.Name = "StripStatus_Form";
-            this.StripStatus_Form.Size = new System.Drawing.Size(93, 17);
-            this.StripStatus_Form.Text = "Đang mở Form:";
-            // 
-            // toolStripStatusLabel5
-            // 
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(172, 17);
-            this.toolStripStatusLabel5.Text = "                                                       ";
-            // 
-            // StripStatus_TaiKhoan
-            // 
-            this.StripStatus_TaiKhoan.Name = "StripStatus_TaiKhoan";
-            this.StripStatus_TaiKhoan.Size = new System.Drawing.Size(124, 15);
-            this.StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng:";
-            this.StripStatus_TaiKhoan.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(475, 17);
-            this.toolStripStatusLabel1.Text = "Bản quyền(2013) thuộc Công ty TNHH MTV Cấp Nước Tân Hòa. Được P.CNTT phát triển";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
-            // 
-            // ribbonTab4
-            // 
-            this.ribbonTab4.Panels.Add(this.ribbonPanel5);
-            this.ribbonTab4.Text = "Kiểm Tra Xác Minh";
-            // 
-            // ribbonPanel5
-            // 
-            this.ribbonPanel5.ButtonMoreEnabled = false;
-            this.ribbonPanel5.ButtonMoreVisible = false;
-            this.ribbonPanel5.Items.Add(this.ribbtnDSDonKTXM);
-            this.ribbonPanel5.Text = "";
-            // 
             // ribbtnDSDonKTXM
             // 
             this.ribbtnDSDonKTXM.Image = global::KTKS_DonKH.Properties.Resources.list_48x48;
@@ -307,18 +396,6 @@
             this.ribbtnDSDonKTXM.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSDonKTXM.SmallImage")));
             this.ribbtnDSDonKTXM.Text = "Danh Sách Đơn";
             this.ribbtnDSDonKTXM.Click += new System.EventHandler(this.ribbtnDSDonKTXM_Click);
-            // 
-            // ribbonTab5
-            // 
-            this.ribbonTab5.Panels.Add(this.ribbonPanel6);
-            this.ribbonTab5.Text = "Điều Chỉnh Biến Động";
-            // 
-            // ribbonPanel6
-            // 
-            this.ribbonPanel6.ButtonMoreEnabled = false;
-            this.ribbonPanel6.ButtonMoreVisible = false;
-            this.ribbonPanel6.Items.Add(this.ribbtnDSDonDCBD);
-            this.ribbonPanel6.Text = "";
             // 
             // ribbtnDSDonDCBD
             // 
@@ -328,17 +405,21 @@
             this.ribbtnDSDonDCBD.Text = "Danh Sách Đơn";
             this.ribbtnDSDonDCBD.Click += new System.EventHandler(this.ribbtnDSDonDCBD_Click);
             // 
-            // ribbonTab6
+            // ribbtnDCBD
             // 
-            this.ribbonTab6.Panels.Add(this.ribbonPanel8);
-            this.ribbonTab6.Text = "Cắt Hủy Danh Bộ";
+            this.ribbtnDCBD.Image = global::KTKS_DonKH.Properties.Resources.edit_paper_48x48;
+            this.ribbtnDCBD.MinimumSize = new System.Drawing.Size(70, 0);
+            this.ribbtnDCBD.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDCBD.SmallImage")));
+            this.ribbtnDCBD.Text = "Biến Động";
+            this.ribbtnDCBD.Click += new System.EventHandler(this.ribbtnDCBD_Click);
             // 
-            // ribbonPanel8
+            // ribbtnDCHD
             // 
-            this.ribbonPanel8.ButtonMoreEnabled = false;
-            this.ribbonPanel8.ButtonMoreVisible = false;
-            this.ribbonPanel8.Items.Add(this.ribbtnDSDonCHDB);
-            this.ribbonPanel8.Text = "";
+            this.ribbtnDCHD.Image = global::KTKS_DonKH.Properties.Resources.bill_48x48;
+            this.ribbtnDCHD.MinimumSize = new System.Drawing.Size(70, 0);
+            this.ribbtnDCHD.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDCHD.SmallImage")));
+            this.ribbtnDCHD.Text = "Hóa Đơn";
+            this.ribbtnDCHD.Click += new System.EventHandler(this.ribbtnDCHD_Click);
             // 
             // ribbtnDSDonCHDB
             // 
@@ -348,18 +429,6 @@
             this.ribbtnDSDonCHDB.Text = "Danh Sách Đơn";
             this.ribbtnDSDonCHDB.Click += new System.EventHandler(this.ribbtnDSDonCHDB_Click);
             // 
-            // ribbonTab7
-            // 
-            this.ribbonTab7.Panels.Add(this.ribbonPanel10);
-            this.ribbonTab7.Text = "Thảo Thư Trả Lời";
-            // 
-            // ribbonPanel10
-            // 
-            this.ribbonPanel10.ButtonMoreEnabled = false;
-            this.ribbonPanel10.ButtonMoreVisible = false;
-            this.ribbonPanel10.Items.Add(this.ribbtnDSDonTTTL);
-            this.ribbonPanel10.Text = "";
-            // 
             // ribbtnDSDonTTTL
             // 
             this.ribbtnDSDonTTTL.Image = global::KTKS_DonKH.Properties.Resources.list_48x48;
@@ -368,42 +437,11 @@
             this.ribbtnDSDonTTTL.Text = "Danh Sách Đơn";
             this.ribbtnDSDonTTTL.Click += new System.EventHandler(this.ribbtnDSDonTTTL_Click);
             // 
-            // ribbon1
-            // 
-            this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ribbon1.Location = new System.Drawing.Point(0, 0);
-            this.ribbon1.Minimized = false;
-            this.ribbon1.Name = "ribbon1";
-            // 
-            // 
-            // 
-            this.ribbon1.OrbDropDown.BorderRoundness = 8;
-            this.ribbon1.OrbDropDown.Location = new System.Drawing.Point(0, 0);
-            this.ribbon1.OrbDropDown.Name = "";
-            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 72);
-            this.ribbon1.OrbDropDown.TabIndex = 0;
-            this.ribbon1.OrbImage = global::KTKS_DonKH.Properties.Resources.logocty;
-            // 
-            // 
-            // 
-            this.ribbon1.QuickAcessToolbar.Visible = false;
-            this.ribbon1.Size = new System.Drawing.Size(988, 145);
-            this.ribbon1.TabIndex = 0;
-            this.ribbon1.Tabs.Add(this.ribbonTab1);
-            this.ribbon1.Tabs.Add(this.ribbonTab2);
-            this.ribbon1.Tabs.Add(this.ribbonTab3);
-            this.ribbon1.Tabs.Add(this.ribbonTab4);
-            this.ribbon1.Tabs.Add(this.ribbonTab5);
-            this.ribbon1.Tabs.Add(this.ribbonTab6);
-            this.ribbon1.Tabs.Add(this.ribbonTab7);
-            this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
-            this.ribbon1.Text = "ribbon1";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(988, 662);
+            this.ClientSize = new System.Drawing.Size(1140, 662);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbon1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -440,7 +478,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel StripStatus_Version;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel StripStatus_TaiKhoan;
         private System.Windows.Forms.RibbonButton ribbtnDoiMatKhau;
@@ -464,6 +502,10 @@
         private System.Windows.Forms.RibbonTab ribbonTab7;
         private System.Windows.Forms.RibbonPanel ribbonPanel10;
         private System.Windows.Forms.RibbonButton ribbtnDSDonTTTL;
+        private System.Windows.Forms.RibbonButton ribbtnNVKiemTra;
+        private System.Windows.Forms.RibbonPanel ribbonPanel7;
+        private System.Windows.Forms.RibbonButton ribbtnDCBD;
+        private System.Windows.Forms.RibbonButton ribbtnDCHD;
     }
 }
 
