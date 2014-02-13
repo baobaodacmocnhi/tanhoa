@@ -80,7 +80,25 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.LoaiDons.Single(itemLD => itemLD.MaLD == MaLD).TenLD;
+                return db.LoaiDons.SingleOrDefault(itemLD => itemLD.MaLD == MaLD).TenLD;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Ký Hiệu loại đơn từ Mã Loại Đơn
+        /// </summary>
+        /// <param name="MaLD"></param>
+        /// <returns></returns>
+        public string getKyHieuLDubyID(int MaLD)
+        {
+            try
+            {
+                return db.LoaiDons.SingleOrDefault(itemLD => itemLD.MaLD == MaLD).KyHieuLD;
             }
             catch (Exception ex)
             {

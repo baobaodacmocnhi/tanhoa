@@ -7599,6 +7599,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private decimal _MaDon;
 		
+		private System.Nullable<decimal> _MaXepDon;
+		
 		private string _SoCongVan;
 		
 		private string _DanhBo;
@@ -7711,6 +7713,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnMaDonChanging(decimal value);
     partial void OnMaDonChanged();
+    partial void OnMaXepDonChanging(System.Nullable<decimal> value);
+    partial void OnMaXepDonChanged();
     partial void OnSoCongVanChanging(string value);
     partial void OnSoCongVanChanged();
     partial void OnDanhBoChanging(string value);
@@ -7834,6 +7838,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaDon = value;
 					this.SendPropertyChanged("MaDon");
 					this.OnMaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaXepDon", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaXepDon
+		{
+			get
+			{
+				return this._MaXepDon;
+			}
+			set
+			{
+				if ((this._MaXepDon != value))
+				{
+					this.OnMaXepDonChanging(value);
+					this.SendPropertyChanging();
+					this._MaXepDon = value;
+					this.SendPropertyChanged("MaXepDon");
+					this.OnMaXepDonChanged();
 				}
 			}
 		}

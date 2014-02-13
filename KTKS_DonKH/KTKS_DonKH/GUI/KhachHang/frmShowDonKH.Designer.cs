@@ -80,10 +80,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cmbNVKiemTra = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.cmbNVKiemTra = new System.Windows.Forms.ComboBox();
+            this.txtMaXepDon = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -121,6 +123,7 @@
             this.label12.Size = new System.Drawing.Size(118, 17);
             this.label12.TabIndex = 16;
             this.label12.Text = "Ghi Chú Người Đi:";
+            this.label12.Visible = false;
             // 
             // txtDienThoai
             // 
@@ -283,6 +286,7 @@
             this.txtNgayNhan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNgayNhan.Location = new System.Drawing.Point(410, 28);
             this.txtNgayNhan.Name = "txtNgayNhan";
+            this.txtNgayNhan.ReadOnly = true;
             this.txtNgayNhan.Size = new System.Drawing.Size(78, 25);
             this.txtNgayNhan.TabIndex = 63;
             this.txtNgayNhan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -303,6 +307,7 @@
             this.txtMaDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaDon.Location = new System.Drawing.Point(327, 28);
             this.txtMaDon.Name = "txtMaDon";
+            this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(83, 25);
             this.txtMaDon.TabIndex = 61;
             this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -596,6 +601,15 @@
             this.tabPage1.Text = "Thông Tin Hóa Đơn";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // cmbNVKiemTra
+            // 
+            this.cmbNVKiemTra.FormattingEnabled = true;
+            this.cmbNVKiemTra.Location = new System.Drawing.Point(130, 99);
+            this.cmbNVKiemTra.Name = "cmbNVKiemTra";
+            this.cmbNVKiemTra.Size = new System.Drawing.Size(230, 25);
+            this.cmbNVKiemTra.TabIndex = 17;
+            this.cmbNVKiemTra.Visible = false;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -617,7 +631,6 @@
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Visible = false;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -633,20 +646,35 @@
             this.btnXoa.Visible = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // cmbNVKiemTra
+            // txtMaXepDon
             // 
-            this.cmbNVKiemTra.FormattingEnabled = true;
-            this.cmbNVKiemTra.Location = new System.Drawing.Point(130, 99);
-            this.cmbNVKiemTra.Name = "cmbNVKiemTra";
-            this.cmbNVKiemTra.Size = new System.Drawing.Size(230, 25);
-            this.cmbNVKiemTra.TabIndex = 17;
+            this.txtMaXepDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMaXepDon.Location = new System.Drawing.Point(818, 28);
+            this.txtMaXepDon.Name = "txtMaXepDon";
+            this.txtMaXepDon.ReadOnly = true;
+            this.txtMaXepDon.Size = new System.Drawing.Size(127, 25);
+            this.txtMaXepDon.TabIndex = 86;
+            this.txtMaXepDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label17.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(818, 9);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(127, 19);
+            this.label17.TabIndex = 85;
+            this.label17.Text = "     Số Xếp Đơn     ";
             // 
             // frmShowDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(829, 492);
+            this.ClientSize = new System.Drawing.Size(957, 492);
+            this.Controls.Add(this.txtMaXepDon);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.txtHieuLucTuKy);
@@ -752,6 +780,8 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.ComboBox cmbNVKiemTra;
+        private System.Windows.Forms.TextBox txtMaXepDon;
+        private System.Windows.Forms.Label label17;
 
 
     }

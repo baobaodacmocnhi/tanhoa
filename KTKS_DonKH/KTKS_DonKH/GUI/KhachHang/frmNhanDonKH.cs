@@ -69,7 +69,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
-            cmbNVKiemTra.SelectedIndex = 0;
+            //cmbNVKiemTra.SelectedIndex = 0;
 
             chkCT_HoaDon.Checked = false;
             chkCT_HK_KT3.Checked = false;
@@ -91,9 +91,9 @@ namespace KTKS_DonKH.GUI.KhachHang
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;
 
-            cmbNVKiemTra.DataSource = _cNhanVien.LoadDSNhanVien(true);
-            cmbNVKiemTra.DisplayMember = "HoTen";
-            cmbNVKiemTra.ValueMember = "HoTen";
+            //cmbNVKiemTra.DataSource = _cNhanVien.LoadDSNhanVien(true);
+            //cmbNVKiemTra.DisplayMember = "HoTen";
+            //cmbNVKiemTra.ValueMember = "HoTen";
             
             Clear();
         }
@@ -104,6 +104,16 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 txtMaDon.Text = _cDonKH.getMaxNextID().ToString().Insert(_cDonKH.getMaxNextID().ToString().Length - 2, "-");
                 txtNgayNhan.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                ///Thêm Số Loại Đơn đễ lưu trữ
+                try
+                {
+                    ///combobox bị lỗi ở lần đầu tiên nên phải đặc trong try/catch
+                    txtMaXepDon.Text = _cDonKH.getMaXepDonNext(int.Parse(cmbLD.SelectedValue.ToString())).ToString().Insert(_cDonKH.getMaXepDonNext(int.Parse(cmbLD.SelectedValue.ToString())).ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
+                }
+                catch (Exception)
+                {
+                    txtMaXepDon.Text = "";
+                }
             }
         }
 
@@ -149,6 +159,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                 donkh.MaDon = decimal.Parse(txtMaDon.Text.Trim().Replace("-",""));
                 donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                 donkh.SoCongVan = txtSoCongVan.Text.Trim();
+                donkh.NoiDung = txtNoiDung.Text.Trim();
+                donkh.MaXepDon = decimal.Parse(txtMaXepDon.Text.Trim().Substring(0, txtMaXepDon.Text.Trim().IndexOf("/")).Replace("-", ""));
+
                 donkh.DanhBo = txtDanhBo.Text.Trim();
                 donkh.HopDong = txtHopDong.Text.Trim();
                 donkh.HoTen = txtKhachHang.Text.Trim();
@@ -164,8 +177,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                 donkh.Dot = Dot;
                 donkh.Ky = Ky;
                 donkh.Nam = Nam;
-                donkh.NoiDung = txtNoiDung.Text.Trim();
-                donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
+                
+                //donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
                 donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
                 donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
 
