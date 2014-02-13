@@ -328,6 +328,7 @@
   <Table Name="dbo.DonKH" Member="DonKHs">
     <Type Name="DonKH">
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaXepDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="SoCongVan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="HopDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

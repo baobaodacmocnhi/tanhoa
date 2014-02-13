@@ -156,7 +156,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                         tttl.MaTTTL = getMaxNextIDTable(MaTTTL);
                     }
                     else
-                        tttl.MaTTTL = decimal.Parse(DateTime.Now.Year + "1");
+                        tttl.MaTTTL = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     tttl.CreateDate = DateTime.Now;
                     tttl.CreateBy = CTaiKhoan.TaiKhoan;
                     db.TTTLs.InsertOnSubmit(tttl);
@@ -251,7 +251,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                         cttttl.MaCTTTTL = getMaxNextIDTable(MaCTTTTL);
                     }
                     else
-                        cttttl.MaCTTTTL = decimal.Parse(DateTime.Now.Year + "1");
+                        cttttl.MaCTTTTL = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     cttttl.CreateDate = DateTime.Now;
                     cttttl.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTTTTLs.InsertOnSubmit(cttttl);

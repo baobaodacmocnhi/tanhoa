@@ -23,7 +23,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         ktxm.MaKTXM = getMaxNextIDTable(MaKTXM);
                     }
                     else
-                        ktxm.MaKTXM = decimal.Parse(DateTime.Now.Year + "1");
+                        ktxm.MaKTXM = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ktxm.CreateDate = DateTime.Now;
                     ktxm.CreateBy = CTaiKhoan.TaiKhoan;
                     db.KTXMs.InsertOnSubmit(ktxm);

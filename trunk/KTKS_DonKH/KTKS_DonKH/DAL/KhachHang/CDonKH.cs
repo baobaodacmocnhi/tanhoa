@@ -238,5 +238,16 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
+        public decimal getMaXepDonNext(int MaLD)
+        {
+            if (db.DonKHs.Where(itemDonKH => itemDonKH.MaLD == MaLD).Max(itemDonKH => itemDonKH.MaXepDon) != null)
+            {
+                decimal a = getMaxNextIDTable(db.DonKHs.Where(itemDonKH => itemDonKH.MaLD == MaLD).Max(itemDonKH => itemDonKH.MaXepDon).Value);
+                return a;
+            }
+            else
+                return decimal.Parse("1" + DateTime.Now.ToString("yy"));
+        }
+
     }
 }

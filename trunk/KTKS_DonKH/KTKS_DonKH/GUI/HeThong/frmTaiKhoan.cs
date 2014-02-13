@@ -82,7 +82,7 @@ namespace KTKS_DonKH.GUI.HeThong
                 {
                     User nguoidung = _cTaiKhoan.getUserbyID(int.Parse(dgvDSTaiKhoan["MaU", selectedindex].Value.ToString()));
                     nguoidung.HoTen = txtHoTen.Text.Trim();
-                    //nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
+                    nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
 
                     if (nguoidung.TaiKhoan != dgvDSTaiKhoan["TaiKhoan", selectedindex].Value.ToString())

@@ -48,8 +48,8 @@ namespace KTKS_DonKH.DAL
             }
             else
             {
-                nam = DateTime.Now.ToString("yy");
                 stt = "1";
+                nam = DateTime.Now.ToString("yy");
             }
             return decimal.Parse(stt + nam);
         }

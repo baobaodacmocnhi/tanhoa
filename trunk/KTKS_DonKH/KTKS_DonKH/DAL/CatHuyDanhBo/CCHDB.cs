@@ -171,7 +171,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         chdb.MaCHDB = getMaxNextIDTable(MaCHDB);
                     }
                     else
-                        chdb.MaCHDB = decimal.Parse(DateTime.Now.Year + "1");
+                        chdb.MaCHDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     chdb.CreateDate = DateTime.Now;
                     chdb.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CHDBs.InsertOnSubmit(chdb);
@@ -266,7 +266,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         ctctdb.MaCTCTDB = getMaxNextIDTable(MaCTCTDB);
                     }
                     else
-                        ctctdb.MaCTCTDB = decimal.Parse(DateTime.Now.Year + "1");
+                        ctctdb.MaCTCTDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctctdb.CreateDate = DateTime.Now;
                     ctctdb.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTCTDBs.InsertOnSubmit(ctctdb);
@@ -393,7 +393,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         ctchdb.MaCTCHDB = getMaxNextIDTable(MaCTCHDB);
                     }
                     else
-                        ctchdb.MaCTCHDB = decimal.Parse(DateTime.Now.Year + "1");
+                        ctchdb.MaCTCHDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctchdb.CreateDate = DateTime.Now;
                     ctchdb.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTCHDBs.InsertOnSubmit(ctchdb);
@@ -535,12 +535,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (db.CTCHDBs.Count() > 0)
                 {
                     if (db.CTCHDBs.Max(itemCTCHDB => itemCTCHDB.SoPhieu) == null)
-                        return decimal.Parse(DateTime.Now.Year + "1");
+                        return decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     else
                         return getMaxNextIDTable(db.CTCHDBs.Max(itemCTCHDB => itemCTCHDB.SoPhieu).Value);
                 }
                 else
-                    return decimal.Parse(DateTime.Now.Year + "1");
+                    return decimal.Parse("1" + DateTime.Now.ToString("yy"));
             }
             catch (Exception ex)
             {

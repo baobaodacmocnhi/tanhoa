@@ -192,7 +192,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         dcbd.MaDCBD = getMaxNextIDTable(MaDCBD);
                     }
                     else
-                        dcbd.MaDCBD = decimal.Parse(DateTime.Now.Year + "1");
+                        dcbd.MaDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     dcbd.CreateDate = DateTime.Now;
                     dcbd.CreateBy = CTaiKhoan.TaiKhoan;
                     db.DCBDs.InsertOnSubmit(dcbd);
@@ -255,7 +255,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     return getMaxNextIDTable(MaDCBD);
                 }
                 else
-                    return decimal.Parse(DateTime.Now.Year + "1");
+                    return decimal.Parse("1" + DateTime.Now.ToString("yy"));
             }
             catch (Exception ex)
             {
@@ -376,7 +376,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         ctdcbd.MaCTDCBD = getMaxNextIDTable(MaCTDCBD);
                     }
                     else
-                        ctdcbd.MaCTDCBD = decimal.Parse(DateTime.Now.Year + "1");
+                        ctdcbd.MaCTDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctdcbd.CreateDate = DateTime.Now;
                     ctdcbd.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTDCBDs.InsertOnSubmit(ctdcbd);
@@ -508,7 +508,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         ctdchd.MaCTDCHD = getMaxNextIDTable(MaCTDCHD);
                     }
                     else
-                        ctdchd.MaCTDCHD = decimal.Parse(DateTime.Now.Year + "1");
+                        ctdchd.MaCTDCHD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctdchd.CreateDate = DateTime.Now;
                     ctdchd.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CTDCHDs.InsertOnSubmit(ctdchd);
