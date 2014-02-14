@@ -134,14 +134,17 @@ namespace KTKS_DonKH.GUI.HeThong
                     case "QKTXM":
                         MaR = 5;
                         break;
-                    case "QDCBD":
+                    case "QQLKTXM":
                         MaR = 6;
                         break;
-                    case "QCHDB":
+                    case "QDCBD":
                         MaR = 7;
                         break;
-                    case "QTTTL":
+                    case "QCHDB":
                         MaR = 8;
+                        break;
+                    case "QTTTL":
+                        MaR = 9;
                         break;
                 }
                 bool ischecked = false;

@@ -242,6 +242,13 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Search_Results_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("Search_Results_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap stock_example {
             get {
                 object obj = ResourceManager.GetObject("stock_example", resourceCulture);

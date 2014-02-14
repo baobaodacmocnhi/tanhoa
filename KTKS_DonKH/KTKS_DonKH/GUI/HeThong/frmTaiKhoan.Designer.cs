@@ -48,6 +48,7 @@
             this.QNhanDonKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QQLDonKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QKTXM = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.QQLKTXM = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QDCBD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QCHDB = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QTTTL = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -161,14 +162,15 @@
             this.QNhanDonKH,
             this.QQLDonKH,
             this.QKTXM,
+            this.QQLKTXM,
             this.QDCBD,
             this.QCHDB,
             this.QTTTL});
-            this.dgvDSTaiKhoan.Location = new System.Drawing.Point(13, 156);
+            this.dgvDSTaiKhoan.Location = new System.Drawing.Point(0, 156);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTaiKhoan.MultiSelect = false;
             this.dgvDSTaiKhoan.Name = "dgvDSTaiKhoan";
-            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(1175, 384);
+            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(1371, 384);
             this.dgvDSTaiKhoan.TabIndex = 9;
             this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
             this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
@@ -241,7 +243,7 @@
             // QQLDonKH
             // 
             this.QQLDonKH.DataPropertyName = "QQLDonKH";
-            this.QQLDonKH.HeaderText = "Q.Quản Lý Đơn KH";
+            this.QQLDonKH.HeaderText = "  Q.QL   Đơn KH";
             this.QQLDonKH.Name = "QQLDonKH";
             this.QQLDonKH.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.QQLDonKH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -252,6 +254,13 @@
             this.QKTXM.DataPropertyName = "QKTXM";
             this.QKTXM.HeaderText = "Q.Kiểm Tra Xác Minh";
             this.QKTXM.Name = "QKTXM";
+            // 
+            // QQLKTXM
+            // 
+            this.QQLKTXM.DataPropertyName = "QQLKTXM";
+            this.QQLKTXM.HeaderText = "Q.QL Kiểm Tra Xác Minh";
+            this.QQLKTXM.Name = "QQLKTXM";
+            this.QQLKTXM.Width = 110;
             // 
             // QDCBD
             // 
@@ -277,7 +286,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1202, 547);
+            this.ClientSize = new System.Drawing.Size(1370, 547);
             this.Controls.Add(this.dgvDSTaiKhoan);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnXoa);
@@ -320,6 +329,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn QNhanDonKH;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QQLDonKH;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QKTXM;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn QQLKTXM;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QDCBD;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QCHDB;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QTTTL;

@@ -59,7 +59,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtGiaBieu = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtKhachHang = new System.Windows.Forms.TextBox();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -266,7 +266,7 @@
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.txtGiaBieu);
             this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.txtKhachHang);
+            this.tabPage1.Controls.Add(this.txtHoTen);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.txtDanhBo);
             this.tabPage1.Controls.Add(this.label2);
@@ -394,12 +394,12 @@
             this.label7.TabIndex = 8;
             this.label7.Text = "Giá Biểu:";
             // 
-            // txtKhachHang
+            // txtHoTen
             // 
-            this.txtKhachHang.Location = new System.Drawing.Point(98, 37);
-            this.txtKhachHang.Name = "txtKhachHang";
-            this.txtKhachHang.Size = new System.Drawing.Size(393, 25);
-            this.txtKhachHang.TabIndex = 7;
+            this.txtHoTen.Location = new System.Drawing.Point(98, 37);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(393, 25);
+            this.txtHoTen.TabIndex = 7;
             // 
             // label6
             // 
@@ -722,7 +722,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtGiaBieu;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtKhachHang;
+        private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label2;

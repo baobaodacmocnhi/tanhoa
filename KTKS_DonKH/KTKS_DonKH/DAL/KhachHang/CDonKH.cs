@@ -222,11 +222,11 @@ namespace KTKS_DonKH.DAL.KhachHang
         /// </summary>
         /// <param name="MaDon"></param>
         /// <returns></returns>
-        public bool CheckNhan(int MaDon)
+        public bool CheckNhan(decimal MaDon)
         {
             try
             {
-                if (db.DonKHs.Any(itemDonKH => itemDonKH.Nhan == true))
+                if (db.DonKHs.Any(itemDonKH => itemDonKH.MaDon==MaDon && itemDonKH.Nhan == true))
                     return true;
                 else
                     return false;
@@ -249,5 +249,32 @@ namespace KTKS_DonKH.DAL.KhachHang
                 return decimal.Parse("1" + DateTime.Now.ToString("yy"));
         }
 
+        /// <summary>
+        /// Kiểm tra Đơn KH có phải được chưa chuyển hoặc được chuyển cho KTXM không
+        /// Hàm này được dùng cho form Nhập Kết Quả Kiểm Tra, đi kiểm tra về lấy số đơn rồi nhập luôn
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns>true/thỏa 1 trong 2 điều kiện trên</returns>
+        public bool CheckDonKTXM(decimal MaDon)
+        {
+            try
+            {
+                if (db.DonKHs.Any(itemDonKH => itemDonKH.MaDon == MaDon && (itemDonKH.MaChuyen == "" || itemDonKH.MaChuyen == "KTXM")))
+                {
+                    
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show((db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon && (itemDonKH.MaChuyen == "" || itemDonKH.MaChuyen == "KTXM"))).MaChuyen, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

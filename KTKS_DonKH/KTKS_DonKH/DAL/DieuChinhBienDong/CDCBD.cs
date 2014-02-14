@@ -163,7 +163,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// Kiểm tra Mã Điều Chỉnh Biến Động đã có hay chưa
         /// </summary>
         /// <param name="MaDCBD"></param>
-        /// <returns></returns>
+        /// <returns>true/có</returns>
         public bool CheckDCBDbyID(decimal MaDCBD)
         {
             try
@@ -341,6 +341,13 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Lấy thông tin Đơn KH
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="MaNoiChuyenDen"></param>
+        /// <param name="NoiChuyenDen"></param>
+        /// <param name="LyDoChuyenDen"></param>
         public void GetInfobyMaDon(decimal MaDon, out string MaNoiChuyenDen, out string NoiChuyenDen, out string LyDoChuyenDen)
         {
             MaNoiChuyenDen = "";

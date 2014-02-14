@@ -136,7 +136,7 @@
             this.dgvDSChungTu.MultiSelect = false;
             this.dgvDSChungTu.Name = "dgvDSChungTu";
             this.dgvDSChungTu.ReadOnly = true;
-            this.dgvDSChungTu.Size = new System.Drawing.Size(644, 196);
+            this.dgvDSChungTu.Size = new System.Drawing.Size(650, 300);
             this.dgvDSChungTu.TabIndex = 8;
             this.dgvDSChungTu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSChungTu_CellContentClick);
             this.dgvDSChungTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSChungTu_RowPostPaint);
@@ -186,7 +186,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(674, 358);
+            this.ClientSize = new System.Drawing.Size(674, 462);
             this.Controls.Add(this.dgvDSChungTu);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);

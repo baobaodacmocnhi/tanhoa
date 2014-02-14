@@ -65,7 +65,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtDienThoai.Text = "";
-            txtKhachHang.Text = "";
+            txtHoTen.Text = "";
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
@@ -133,7 +133,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (ttkhachhang != null)
                 {
                     txtHopDong.Text = ttkhachhang.GiaoUoc;
-                    txtKhachHang.Text = ttkhachhang.HoTen;
+                    txtHoTen.Text = ttkhachhang.HoTen;
                     txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
                     txtMSThue.Text = ttkhachhang.MSThue;
                     txtGiaBieu.Text = ttkhachhang.GB;
@@ -164,7 +164,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 donkh.DanhBo = txtDanhBo.Text.Trim();
                 donkh.HopDong = txtHopDong.Text.Trim();
-                donkh.HoTen = txtKhachHang.Text.Trim();
+                donkh.HoTen = txtHoTen.Text.Trim();
                 donkh.DiaChi = txtDiaChi.Text.Trim();
                 donkh.DienThoai = txtDienThoai.Text.Trim();
                 donkh.MSThue = txtMSThue.Text.Trim();
@@ -245,7 +245,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                     dr["MaDon"] = txtMaDon.Text.Trim();
                     dr["TenLD"] = cmbLD.Text;
-                    dr["KhachHang"] = txtKhachHang.Text.Trim();
+                    dr["KhachHang"] = txtHoTen.Text.Trim();
                     if (txtDanhBo.Text.Trim() != "")
                         dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, ".").Insert(4, ".");
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
