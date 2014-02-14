@@ -7,26 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.KhachHang;
-using KTKS_DonKH.DAL.KiemTraXacMinh;
-using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.LinQ;
-using KTKS_DonKH.DAL.DieuChinhBienDong;
+using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
     public partial class frmKTXM : Form
     {
-        CChuyenDi _cChuyenDi = new CChuyenDi();
-        CKTXM _cKTXM = new CKTXM();
+        Dictionary<string, string> _source = new Dictionary<string, string>();
+        DonKH _donkh = new DonKH();
+        TTKhachHang _ttkhachhang = new TTKhachHang();
         CDonKH _cDonKH = new CDonKH();
-        DataTable DSKTXM_Edited = new DataTable();
-        CDCBD _cDCBD = new CDCBD();
-        BindingSource DSDonKH_BS = new BindingSource();
-
-        public frmKTXM()
-        {
-            InitializeComponent();
-        }
+        CTTKH _cTTKH = new CTTKH();
+        CKTXM _cKTXM = new CKTXM();
+        int selectedindex = -1;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -36,238 +31,254 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             this.BringToFront();
         }
 
+        public frmKTXM()
+        {
+            InitializeComponent();
+        }
+
         private void frmKTXM_Load(object sender, EventArgs e)
         {
-            dgvDSKTXM.AutoGenerateColumns = false;
-            dgvDSKTXM.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSKTXM.Font, FontStyle.Bold);
-            DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSKTXM.Columns["MaChuyen"];
-            cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
-            cmbColumn.DisplayMember = "NoiChuyenDi";
-            cmbColumn.ValueMember = "MaChuyen";
-
-            dgvDSKTXM.DataSource = DSDonKH_BS;
-            radChuaDuyet.Checked = true;
-
-            dateTimKiem.Location = txtNoiDungTimKiem.Location;
+            dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
+            dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSKetQuaKiemTra.Font, FontStyle.Bold);
         }
 
-        private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
+        public void LoadTTKH(TTKhachHang ttkhachhang)
         {
-            if (radChuaDuyet.Checked)
-            {
-                DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
-                cmbTimTheo.SelectedIndex = 0;
-            }
+            txtDanhBo.Text = ttkhachhang.DanhBo;
+            txtHopDong.Text = ttkhachhang.GiaoUoc;
+            txtHoTen.Text = ttkhachhang.HoTen;
+            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2;
+            //txtDienThoai.Text = _donkh.DienThoai;
+            txtGiaBieu.Text = ttkhachhang.GB;
+            txtDinhMuc.Text = ttkhachhang.TGDM;
         }
 
-        private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
+        public void LoadCTKTXM(CTKTXM ctktxm)
         {
-            if (radDaDuyet.Checked)
-            {
-                DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
-                cmbTimTheo.SelectedIndex = 0;
-            }
+            txtDanhBo.Text = ctktxm.DanhBo;
+            txtHopDong.Text = ctktxm.HopDong;
+            txtHoTen.Text = ctktxm.HoTen;
+            txtDiaChi.Text = ctktxm.DiaChi;
+            txtGiaBieu.Text = ctktxm.GiaBieu;
+            txtDinhMuc.Text = ctktxm.DinhMuc;
+            ///
+            dateKTXM.Value = ctktxm.NgayKTXM.Value;
+            txtHieu.Text = ctktxm.Hieu;
+            txtCo.Text = ctktxm.Co;
+            txtSoThan.Text = ctktxm.SoThan;
+            txtChiSo.Text = ctktxm.ChiSo;
+            txtChiMatSo.Text = ctktxm.ChiMatSo;
+            txtChiKhoaGoc.Text = ctktxm.ChiKhoaGoc;
+            txtMucDichSuDung.Text = ctktxm.MucDichSuDung;
+            txtDienThoai.Text = ctktxm.DienThoai;
+            txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
+            txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        public void Clear()
         {
-            if (DSKTXM_Edited != null && DSKTXM_Edited.Rows.Count > 0)
+            txtDanhBo.Text = "";
+            txtHopDong.Text = "";
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtGiaBieu.Text = "";
+            txtDinhMuc.Text = "";
+            txtNoiDungKiemTra.Text = "";
+            ///
+            dateKTXM.Value = DateTime.Now;
+            txtHieu.Text = "";
+            txtCo.Text = "";
+            txtSoThan.Text = "";
+            txtChiSo.Text = "";
+            txtChiMatSo.Text = "";
+            txtChiKhoaGoc.Text = "";
+            txtMucDichSuDung.Text = "";
+            txtDienThoai.Text = "";
+            txtHoTenKHKy.Text = "";
+            txtNoiDungKiemTra.Text = "";
+
+            selectedindex = -1;
+        }
+
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
             {
-                foreach (DataRow itemRow in DSKTXM_Edited.Rows)
+                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
                 {
-                    if (itemRow["MaKTXM"].ToString() == "")
+                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                    if (string.IsNullOrEmpty(_donkh.MaChuyen) || _donkh.MaChuyen == "" || _donkh.MaChuyen == "KTXM")
                     {
-                        KTXM ktxm = new KTXM();
-                        //ktxm.MaKTXM = decimal.Parse(itemRow["MaDon"].ToString());
-                        ktxm.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
-                        ktxm.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
-                        ktxm.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
-                        ktxm.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
-                        ktxm.KetQua = itemRow["KetQua"].ToString();
-                        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
                         {
-                            ktxm.Chuyen = true;
-                            ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
-                            ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                            _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
+                            LoadTTKH(_ttkhachhang);
                         }
-                        if (_cKTXM.ThemKTXM(ktxm))
-                        {
-                            switch (itemRow["NoiChuyenDen"].ToString())
-                            {
-                                case "Khách Hàng":
-                                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                                    donkh.Nhan = true;
-                                    _cDonKH.SuaDonKH(donkh);
-                                    break;
-                                case "Điều Chỉnh Biến Động":
-                                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                    DCBD dcbd = _cDCBD.getDCBDbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
-                                    dcbd.Nhan = true;
-                                    _cDCBD.SuaDCBD(dcbd);
-                                    break;
-                            }
-                        }
+                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon);
                     }
                     else
                     {
-                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaKTXM"].ToString()));
-                        ///Đơn đã được nơi nhận xử lý thì không được sửa
-                        if (!ktxm.Nhan)
-                        {
-                            ktxm.KetQua = itemRow["KetQua"].ToString();
-                            if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                            {
-                                ktxm.Chuyen = true;
-                                ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
-                                ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                            }
-                            else
-                                if (itemRow["MaChuyen"].ToString() == "NONE")
-                                {
-                                    ktxm.Chuyen = false;
-                                    ktxm.MaChuyen = null;
-                                    ktxm.LyDoChuyen = null;
-                                }
-                            _cKTXM.SuaKTXM(ktxm);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Đơn " + ktxm.MaKTXM + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        Clear();
+                        _donkh = null;
+                        dgvDSKetQuaKiemTra.DataSource = null;
+                        MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                DSKTXM_Edited.Clear();
-
-                if (radDaDuyet.Checked)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
-                if (radChuaDuyet.Checked)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
-            }
-        }
-
-        /// <summary>
-        /// Hiện thị số thứ tự dòng
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDSKTXM.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        /// <summary>
-        /// Ctrl+F Tìm kiếm
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSKTXM_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (dgvDSKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
-            {
-                Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("Action", "View");
-                source.Add("MaDon", dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString());
-                frmShowDonKH frm = new frmShowDonKH(source);
-                frm.ShowDialog();
-            }
-        }
-
-        /// <summary>
-        /// Bắt đầu Edit Column
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSKTXM_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            btnLuu.Enabled = false;
-        }
-
-        /// <summary>
-        /// Kết thúc Edit Column
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSKTXM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            ///Khai báo các cột tương ứng trong Datagridview
-            if (DSKTXM_Edited.Columns.Count == 0)
-                foreach (DataGridViewColumn itemCol in dgvDSKTXM.Columns)
+                else
                 {
-                    DSKTXM_Edited.Columns.Add(itemCol.Name, itemCol.ValueType);
+                    Clear();
+                    _donkh = null;
+                    dgvDSKetQuaKiemTra.DataSource = null;
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
-            ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row.EndEdit();
-
-            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
-            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
-                DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
-
-            DSKTXM_Edited.ImportRow(((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row);
-            btnLuu.Enabled = true;
+            }
         }
 
-        /// <summary>
-        /// Format dữ liệu trong column
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDSKTXM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (dgvDSKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                    LoadTTKH(_ttkhachhang);
+                }
+                else
+                {
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _ttkhachhang = null;
+                    Clear();
+                }
+            }
+        }
+
+        private void dgvDSKetQuaKiemTra_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSKetQuaKiemTra.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSKetQuaKiemTra_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSKetQuaKiemTra.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 
-        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        private void dgvDSKetQuaKiemTra_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (cmbTimTheo.SelectedItem.ToString())
+            try
             {
-                case "Mã Đơn":
-                    txtNoiDungTimKiem.Visible = true;
-                    dateTimKiem.Visible = false;
-                    break;
-                case "Ngày Lập":
-                    txtNoiDungTimKiem.Visible = false;
-                    dateTimKiem.Visible = true;
-                    break;
-                default:
-                    txtNoiDungTimKiem.Visible = false;
-                    dateTimKiem.Visible = false;
-                    DSDonKH_BS.RemoveFilter();
-                    break;
+                selectedindex = e.RowIndex;
+                LoadCTKTXM(_cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", e.RowIndex].Value.ToString())));
+            }
+            catch (Exception)
+            {
             }
         }
 
-        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtNoiDungTimKiem.Text.Trim() != "")
+            if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
             {
-                string expression = "";
-                switch (cmbTimTheo.SelectedItem.ToString())
-                {
-                    case "Mã Đơn":
-                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                        break;
+                //if (_cDonKH.CheckDonKTXM(_donkh.MaDon))
+                //{
+                    if (!_cKTXM.CheckKTMXbyIDMaDon(_donkh.MaDon))
+                    {
+                        KTXM ktxm = new KTXM();
+                        ktxm.MaDon = _donkh.MaDon;
+                        string MaNoiChuyenDen, NoiChuyenDen, LyDoChuyenDen;
+                        _cKTXM.GetInfobyMaDon(_donkh.MaDon, out MaNoiChuyenDen, out NoiChuyenDen, out LyDoChuyenDen);
+                        ktxm.MaNoiChuyenDen = decimal.Parse(MaNoiChuyenDen);
+                        ktxm.NoiChuyenDen = NoiChuyenDen;
+                        ktxm.LyDoChuyenDen = LyDoChuyenDen;
+                        if (_cKTXM.ThemKTXM(ktxm))
+                        {
+                            ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(MaNoiChuyenDen));
+                            donkh.Chuyen = true;
+                            donkh.MaChuyen = "KTXM";
+                            donkh.LyDoChuyen = "";
+                            donkh.Nhan = true;
+                            _cDonKH.SuaDonKH(donkh);
+                        }
+                    }
+                    CTKTXM ctktxm = new CTKTXM();
+                    ctktxm.MaKTXM = _cKTXM.getKTXMbyIDMaDon(_donkh.MaDon).MaKTXM;
+                    ctktxm.DanhBo = txtDanhBo.Text.Trim();
+                    ctktxm.HopDong = txtHopDong.Text.Trim();
+                    ctktxm.HoTen = txtHoTen.Text.Trim();
+                    ctktxm.DiaChi = txtDiaChi.Text.Trim();
+                    ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
+                    ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
+                    ctktxm.Dot = _ttkhachhang.Dot;
+                    ctktxm.Ky = _ttkhachhang.Ky;
+                    ctktxm.Nam = _ttkhachhang.Nam;
+                    ///
+                    ctktxm.NgayKTXM = dateKTXM.Value;
+                    ctktxm.Hieu = txtHieu.Text.Trim();
+                    ctktxm.Co = txtCo.Text.Trim();
+                    ctktxm.SoThan = txtSoThan.Text.Trim();
+                    ctktxm.ChiSo = txtChiSo.Text.Trim();
+                    ctktxm.ChiMatSo = txtChiMatSo.Text.Trim();
+                    ctktxm.ChiKhoaGoc = txtChiKhoaGoc.Text.Trim();
+                    ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
+                    ctktxm.DienThoai = txtDienThoai.Text.Trim();
+                    ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
+                    ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
+
+                    if (_cKTXM.ThemCTKTXM(ctktxm))
+                    {
+                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon);
+                        Clear();
+                    }
                 }
-                DSDonKH_BS.Filter = expression;
-            }
-            else
-                DSDonKH_BS.RemoveFilter();
+                else
+                    MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //else
+            //    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
+        private void btnSua_Click(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-            DSDonKH_BS.Filter = expression;
-        }
+            if (selectedindex != -1)
+            {
+                CTKTXM ctktxm = new CTKTXM();
+                ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", selectedindex].Value.ToString()));
+                ctktxm.DanhBo = txtDanhBo.Text.Trim();
+                ctktxm.HopDong = txtHopDong.Text.Trim();
+                ctktxm.HoTen = txtHoTen.Text.Trim();
+                ctktxm.DiaChi = txtDiaChi.Text.Trim();
+                ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
+                ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
+                ctktxm.Dot = _ttkhachhang.Dot;
+                ctktxm.Ky = _ttkhachhang.Ky;
+                ctktxm.Nam = _ttkhachhang.Nam;
+                ///
+                ctktxm.NgayKTXM = dateKTXM.Value;
+                ctktxm.Hieu = txtHieu.Text.Trim();
+                ctktxm.Co = txtCo.Text.Trim();
+                ctktxm.SoThan = txtSoThan.Text.Trim();
+                ctktxm.ChiSo = txtChiSo.Text.Trim();
+                ctktxm.ChiMatSo = txtChiMatSo.Text.Trim();
+                ctktxm.ChiKhoaGoc = txtChiKhoaGoc.Text.Trim();
+                ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
+                ctktxm.DienThoai = txtDienThoai.Text.Trim();
+                ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
+                ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
 
-  
+                if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
+                {
+                    if (_cKTXM.SuaCTKTXM(ctktxm))
+                        Clear();
+                }
+                else
+                    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

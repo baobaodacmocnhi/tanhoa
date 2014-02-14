@@ -18,6 +18,7 @@ namespace KTKS_DonKH.DAL.HeThong
         private static bool _roleNhanDonKH = false;
         private static bool _roleQLDonKH = false;
         private static bool _roleKTXM = false;
+        private static bool _roleQLKTXM = false;
         private static bool _roleDCBD = false;
         private static bool _roleCHDB = false;
         private static bool _roleTTTL = false;
@@ -56,6 +57,11 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             get { return CTaiKhoan._roleKTXM; }
             set { CTaiKhoan._roleKTXM = value; }
+        }
+        public static bool RoleQLKTXM
+        {
+            get { return CTaiKhoan._roleQLKTXM; }
+            set { CTaiKhoan._roleQLKTXM = value; }
         }
         public static bool RoleDCBD
         {
@@ -112,18 +118,23 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleKTXM = true;
                     else
                         _roleKTXM = false;
-                    ///Mã Role Điều Chỉnh Biến Động là 6
+                    ///Mã Role Quản Lý Kiểm Tra Xác Minh là 6
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 6).CapQuyen == true)
+                        _roleQLKTXM = true;
+                    else
+                        _roleQLKTXM = false;
+                    ///Mã Role Điều Chỉnh Biến Động là 7
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 7).CapQuyen == true)
                         _roleDCBD = true;
                     else
                         _roleDCBD = false;
-                    ///Mã Role Cắt Hủy Danh Bộ là 7
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 7).CapQuyen == true)
+                    ///Mã Role Cắt Hủy Danh Bộ là 8
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 8).CapQuyen == true)
                         _roleCHDB = true;
                     else
                         _roleCHDB = false;
-                    ///Mã Role Thảo Thư Trả Lời là 8
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 8).CapQuyen == true)
+                    ///Mã Role Thảo Thư Trả Lời là 9
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 9).CapQuyen == true)
                         _roleTTTL = true;
                     else
                         _roleTTTL = false;
@@ -158,6 +169,7 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleNhanDonKH = false;
             _roleQLDonKH = false;
             _roleKTXM = false;
+            _roleQLKTXM = false;
             _roleDCBD = false;
             _roleCHDB = false;
             _roleTTTL = false;
@@ -193,6 +205,7 @@ namespace KTKS_DonKH.DAL.HeThong
                     table.Columns.Add("QNhanDonKH", typeof(bool));
                     table.Columns.Add("QQLDonKH", typeof(bool));
                     table.Columns.Add("QKTXM", typeof(bool));
+                    table.Columns.Add("QQLKTXM", typeof(bool));
                     table.Columns.Add("QDCBD", typeof(bool));
                     table.Columns.Add("QCHDB", typeof(bool));
                     table.Columns.Add("QTTTL", typeof(bool));
@@ -209,9 +222,10 @@ namespace KTKS_DonKH.DAL.HeThong
                         ///MaR=3 => quyền Nhận Đơn Khách Hàng
                         ///MaR=4 => quyền Quản Lý Đơn Khách Hàng
                         ///MaR=5 => quyền Kiểm Tra Xác Minh
-                        ///MaR=6 => quyền Điều Chỉnh Biến Động
-                        ///MaR=7 => quyền Cắt Hủy Danh Bộ
-                        ///MaR=8 => quyền Thảo Thư Trả Lời
+                        ///MaR=6 => quyền Quản Lý Kiểm Tra Xác Minh
+                        ///MaR=7 => quyền Điều Chỉnh Biến Động
+                        ///MaR=8 => quyền Cắt Hủy Danh Bộ
+                        ///MaR=9 => quyền Thảo Thư Trả Lời
                         table.Rows.Add(itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).CapQuyen,
@@ -220,7 +234,8 @@ namespace KTKS_DonKH.DAL.HeThong
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 5).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 6).CapQuyen,
                                         quyens.FirstOrDefault(itemQ => itemQ.MaR == 7).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 8).CapQuyen
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 8).CapQuyen,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 9).CapQuyen
                                         );
                     }
                     return table;

@@ -80,7 +80,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 txtDanhBo.Text = _donkh.DanhBo;
                 txtHopDong.Text = _donkh.HopDong;
                 txtDienThoai.Text = _donkh.DienThoai;
-                txtKhachHang.Text = _donkh.HoTen;
+                txtHoTen.Text = _donkh.HoTen;
                 txtDiaChi.Text = _donkh.DiaChi;
                 txtMSThue.Text = _donkh.MSThue;
                 txtGiaBieu.Text = _donkh.GiaBieu;
@@ -124,7 +124,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (ttkhachhang != null)
                 {
                     txtHopDong.Text = ttkhachhang.GiaoUoc;
-                    txtKhachHang.Text = ttkhachhang.HoTen;
+                    txtHoTen.Text = ttkhachhang.HoTen;
                     txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
                     txtMSThue.Text = ttkhachhang.MSThue;
                     txtGiaBieu.Text = ttkhachhang.GB;
@@ -340,7 +340,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 _donkh.SoCongVan = txtSoCongVan.Text.Trim();
                 _donkh.DanhBo = txtDanhBo.Text.Trim();
                 _donkh.HopDong = txtHopDong.Text.Trim();
-                _donkh.HoTen = txtKhachHang.Text.Trim();
+                _donkh.HoTen = txtHoTen.Text.Trim();
                 _donkh.DiaChi = txtDiaChi.Text.Trim();
                 _donkh.DienThoai = txtDienThoai.Text.Trim();
                 _donkh.MSThue = txtMSThue.Text.Trim();
