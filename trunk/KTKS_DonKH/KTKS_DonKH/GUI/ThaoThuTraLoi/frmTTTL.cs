@@ -30,10 +30,21 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CTTTL _cTTTL = new CTTTL();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-
+        bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
+                             
         public frmTTTL()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Load Form trực tiếp không qua Danh Sách Đơn
+        /// </summary>
+        /// <param name="direct"></param>
+        public frmTTTL(bool direct)
+        {
+            InitializeComponent();
+            _direct = direct;
         }
 
         public frmTTTL(Dictionary<string, string> source)
@@ -44,21 +55,31 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void frmTTTL_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
-            if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
+            if (_direct)
             {
-                _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
-                txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                this.ControlBox = false;
+                this.WindowState = FormWindowState.Maximized;
+                this.BringToFront();
+                txtMaDon.ReadOnly = false;
             }
-            if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
+            else
             {
-                _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-                txtDanhBo.Text = _ttkhachhang.DanhBo;
-                txtHopDong.Text = _ttkhachhang.GiaoUoc;
-                txtHoTen.Text = _ttkhachhang.HoTen;
-                txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
-                txtGiaBieu.Text = _ttkhachhang.GB;
-                txtDinhMuc.Text = _ttkhachhang.TGDM;
+                this.Location = new Point(70, 70);
+                if (_cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"])) != null)
+                {
+                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaDon"]));
+                    txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                }
+                if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
+                    txtDanhBo.Text = _ttkhachhang.DanhBo;
+                    txtHopDong.Text = _ttkhachhang.GiaoUoc;
+                    txtHoTen.Text = _ttkhachhang.HoTen;
+                    txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
+                    txtGiaBieu.Text = _ttkhachhang.GB;
+                    txtDinhMuc.Text = _ttkhachhang.TGDM;
+                }
             }
         }
 

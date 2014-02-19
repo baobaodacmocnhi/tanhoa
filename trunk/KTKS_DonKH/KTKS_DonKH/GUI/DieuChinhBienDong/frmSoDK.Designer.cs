@@ -56,6 +56,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtDiaChiKH_Cat = new System.Windows.Forms.TextBox();
             this.chkCatChuyen = new System.Windows.Forms.CheckBox();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,10 +175,10 @@
             this.btnSua.Enabled = false;
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(347, 188);
+            this.btnSua.Location = new System.Drawing.Point(526, 224);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(66, 35);
-            this.btnSua.TabIndex = 15;
+            this.btnSua.TabIndex = 17;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
@@ -187,10 +189,10 @@
             this.btnThem.Enabled = false;
             this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(250, 188);
+            this.btnThem.Location = new System.Drawing.Point(429, 224);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(77, 35);
-            this.btnThem.TabIndex = 14;
+            this.btnThem.TabIndex = 16;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThem.UseVisualStyleBackColor = true;
@@ -229,7 +231,7 @@
             this.groupBox1.Location = new System.Drawing.Point(430, 39);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(438, 179);
-            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nơi Cắt/Chuyển:";
             // 
@@ -321,17 +323,36 @@
             this.chkCatChuyen.Location = new System.Drawing.Point(430, 12);
             this.chkCatChuyen.Name = "chkCatChuyen";
             this.chkCatChuyen.Size = new System.Drawing.Size(97, 21);
-            this.chkCatChuyen.TabIndex = 16;
+            this.chkCatChuyen.TabIndex = 18;
             this.chkCatChuyen.Text = "Cắt/Chuyển";
             this.chkCatChuyen.UseVisualStyleBackColor = true;
             this.chkCatChuyen.CheckedChanged += new System.EventHandler(this.chkCatChuyen_CheckedChanged);
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(128, 229);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.ReadOnly = true;
+            this.txtGhiChu.Size = new System.Drawing.Size(285, 25);
+            this.txtGhiChu.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 232);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 17);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Ghi Chú:";
             // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(882, 239);
+            this.ClientSize = new System.Drawing.Size(882, 271);
+            this.Controls.Add(this.txtGhiChu);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.chkCatChuyen);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtDiaChi);
@@ -394,5 +415,7 @@
         private System.Windows.Forms.CheckBox chkCatChuyen;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSoNKCat;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.Label label9;
     }
 }

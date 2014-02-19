@@ -105,6 +105,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
                     lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
                     lichsuchungtu.SoNKNhan = int.Parse(txtSoNKNhan.Text.Trim());
+                    lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
                     ///Ký Tên
                     BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                     if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")

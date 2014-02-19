@@ -58,7 +58,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radChuaDuyet.Checked = true;
+            radDaDuyet.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewCTTTTL);
 

@@ -29,10 +29,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CTCTDB _ctctdb = null;
-
+        bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
+                             
         public frmCTDB()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Load Form trực tiếp không qua Danh Sách Đơn
+        /// </summary>
+        /// <param name="direct"></param>
+        public frmCTDB(bool direct)
+        {
+            InitializeComponent();
+            _direct = direct;
         }
 
         public frmCTDB(Dictionary<string, string> source)
@@ -43,54 +54,64 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmCTDB_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
-            if (_source["Action"] == "Thêm")
+            if (_direct)
             {
-                groupBoxNguyenNhanXuLy.Enabled = true;
-                txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
-                if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
-                {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-                    txtDanhBo.Text = _ttkhachhang.DanhBo;
-                    txtHopDong.Text = _ttkhachhang.GiaoUoc;
-                    txtHoTen.Text = _ttkhachhang.HoTen;
-                    txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
-                }
+                this.ControlBox = false;
+                this.WindowState = FormWindowState.Maximized;
+                this.BringToFront();
+                txtMaDon.ReadOnly = false;
             }
             else
-                if (_source["Action"] == "Sửa")
+            {
+                this.Location = new Point(70, 70);
+                if (_source["Action"] == "Thêm")
                 {
-                    groupBoxKetQuaXuLy.Enabled = true;
-                    groupBoxCapTrenXuLy.Enabled = true;
-                    if (_cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"])) != null)
+                    groupBoxNguyenNhanXuLy.Enabled = true;
+                    txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
+                    if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
                     {
-                        _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"]));
-                        ///Thông Tin
-                        txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
-                        txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
-                        txtDanhBo.Text = _ctctdb.DanhBo;
-                        txtHopDong.Text = _ctctdb.HopDong;
-                        txtHoTen.Text = _ctctdb.HoTen;
-                        txtDiaChi.Text = _ctctdb.DiaChi;
-                        ///Nguyên Nhân Xử Lý
-                        cmbLyDo.SelectedText = _ctctdb.LyDo;
-                        txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
-                        txtSoTien.Text = _ctctdb.SoTien.ToString();
-                        ///Kết Quả Xử Lý
-                        if (_ctctdb.TCTBXuLy)
-                        {
-                            dateTCTBXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
-                            txtKetQuaTCTBXuLy.Text = _ctctdb.KetQuaTCTBXuLy;
-                        }
-                        ///Cấp Trên Xử Lý
-                        if (_ctctdb.CapTrenXuLy)
-                        {
-                            dateCapTrenXuLy.Value = _ctctdb.NgayCapTrenXuLy.Value;
-                            txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
-                            txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.ToString();
-                        }
+                        _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
+                        txtDanhBo.Text = _ttkhachhang.DanhBo;
+                        txtHopDong.Text = _ttkhachhang.GiaoUoc;
+                        txtHoTen.Text = _ttkhachhang.HoTen;
+                        txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
                     }
                 }
+                else
+                    if (_source["Action"] == "Sửa")
+                    {
+                        groupBoxKetQuaXuLy.Enabled = true;
+                        groupBoxCapTrenXuLy.Enabled = true;
+                        if (_cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"])) != null)
+                        {
+                            _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"]));
+                            ///Thông Tin
+                            txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
+                            txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                            txtDanhBo.Text = _ctctdb.DanhBo;
+                            txtHopDong.Text = _ctctdb.HopDong;
+                            txtHoTen.Text = _ctctdb.HoTen;
+                            txtDiaChi.Text = _ctctdb.DiaChi;
+                            ///Nguyên Nhân Xử Lý
+                            cmbLyDo.SelectedText = _ctctdb.LyDo;
+                            txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
+                            txtSoTien.Text = _ctctdb.SoTien.ToString();
+                            ///Kết Quả Xử Lý
+                            if (_ctctdb.TCTBXuLy)
+                            {
+                                dateTCTBXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
+                                txtKetQuaTCTBXuLy.Text = _ctctdb.KetQuaTCTBXuLy;
+                            }
+                            ///Cấp Trên Xử Lý
+                            if (_ctctdb.CapTrenXuLy)
+                            {
+                                dateCapTrenXuLy.Value = _ctctdb.NgayCapTrenXuLy.Value;
+                                txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
+                                txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.ToString();
+                            }
+                        }
+                    }
+            }
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)

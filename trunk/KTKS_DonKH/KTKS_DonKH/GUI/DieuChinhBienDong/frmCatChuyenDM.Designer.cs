@@ -55,6 +55,8 @@
             this.txtDanhBo_Nhan = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -207,6 +209,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtGhiChu);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cmbChiNhanh_Nhan);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtSoNK_Nhan);
@@ -243,7 +247,7 @@
             // 
             // txtSoNK_Nhan
             // 
-            this.txtSoNK_Nhan.Location = new System.Drawing.Point(127, 211);
+            this.txtSoNK_Nhan.Location = new System.Drawing.Point(127, 182);
             this.txtSoNK_Nhan.Name = "txtSoNK_Nhan";
             this.txtSoNK_Nhan.Size = new System.Drawing.Size(100, 25);
             this.txtSoNK_Nhan.TabIndex = 9;
@@ -252,7 +256,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 214);
+            this.label7.Location = new System.Drawing.Point(14, 185);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 17);
             this.label7.TabIndex = 8;
@@ -312,7 +316,7 @@
             // 
             this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(692, 274);
+            this.btnLuu.Location = new System.Drawing.Point(687, 274);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
             this.btnLuu.TabIndex = 2;
@@ -321,12 +325,28 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(127, 213);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(290, 25);
+            this.txtGhiChu.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 216);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 17);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Ghi Chú:";
+            // 
             // frmCatChuyenDM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(907, 322);
+            this.ClientSize = new System.Drawing.Size(907, 319);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -374,5 +394,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbLoaiCT_Cat;
         private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.Label label8;
     }
 }

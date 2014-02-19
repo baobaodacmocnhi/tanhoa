@@ -64,7 +64,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radChuaDuyet.Checked = true;
+            radDaDuyet.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewCTDCBD);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Hóa Đơn", gridViewCTDCHD);

@@ -418,6 +418,24 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Lịch Sử Chứng Từ với Sổ Đăng Ký truyền vào
+        /// </summary>
+        /// <param name="MaCT"></param>
+        /// <returns></returns>
+        public List<LichSuChungTu> LoadDSLichSuChungTubyID(string MaCT)
+        {
+            try
+            {
+                return db.LichSuChungTus.Where(itemLSCT => itemLSCT.MaCT == MaCT).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region Method

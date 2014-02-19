@@ -644,7 +644,7 @@
             this.dgvDSCTCHDB.Location = new System.Drawing.Point(0, 113);
             this.dgvDSCTCHDB.MultiSelect = false;
             this.dgvDSCTCHDB.Name = "dgvDSCTCHDB";
-            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1498, 470);
+            this.dgvDSCTCHDB.Size = new System.Drawing.Size(1520, 470);
             this.dgvDSCTCHDB.TabIndex = 5;
             this.dgvDSCTCHDB.Visible = false;
             this.dgvDSCTCHDB.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCTCHDB_CellEndEdit);
@@ -791,7 +791,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1363, 678);
+            this.ClientSize = new System.Drawing.Size(1363, 603);
             this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTimTheo);

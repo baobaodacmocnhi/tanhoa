@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>21</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -718,6 +718,9 @@
     <None Include="Resources\bill 48x48.png" />
     <None Include="Resources\edit paper 48x48.png" />
     <None Include="Resources\Search Results 48x48.png" />
+    <None Include="Resources\Close 48x48.png" />
+    <None Include="Resources\cut 48x48.png" />
+    <None Include="Resources\letter 48x48.png" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\System.Windows.Forms.Ribbon35.dll" />
   </ItemGroup>

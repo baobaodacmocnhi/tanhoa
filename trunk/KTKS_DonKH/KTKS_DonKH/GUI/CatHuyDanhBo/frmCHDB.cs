@@ -30,10 +30,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CKTXM _cKTXM = new CKTXM();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-
+        bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
+                             
         public frmCHDB()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Load Form trực tiếp không qua Danh Sách Đơn
+        /// </summary>
+        /// <param name="direct"></param>
+        public frmCHDB(bool direct)
+        {
+            InitializeComponent();
+            _direct = direct;
         }
 
         public frmCHDB(Dictionary<string, string> source)
@@ -44,81 +55,90 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmCHDB_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
-            ///Tạo Cắt Hủy
-            if (_source["Action"] == "Thêm")
+            if (_direct)
             {
-                groupBoxNguyenNhanXuLy.Enabled = true;
-                txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
-                if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
-                {
-                    _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-                    txtDanhBo.Text = _ttkhachhang.DanhBo;
-                    txtHopDong.Text = _ttkhachhang.GiaoUoc;
-                    txtHoTen.Text = _ttkhachhang.HoTen;
-                    txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
-                }
+                this.ControlBox = false;
+                this.WindowState = FormWindowState.Maximized;
+                this.BringToFront();
+                txtMaDon.ReadOnly = false;
             }
             else
-                ///Sửa Cắt Hủy
-                if (_source["Action"] == "Sửa")
+            {
+                this.Location = new Point(70, 70);
+                ///Tạo Cắt Hủy
+                if (_source["Action"] == "Thêm")
                 {
-                    groupBoxKetQuaXuLy.Enabled = true;
-                    groupBoxCapTrenXuLy.Enabled = true;
-                    txtHieuLucKy.ReadOnly = false;
-                    btnInPhieu.Enabled = true;
-                    if (_cCHDB.getCTCHDBbyID(decimal.Parse(_source["MaCTCHDB"])) != null)
+                    groupBoxNguyenNhanXuLy.Enabled = true;
+                    txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
+                    if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
                     {
-                        _ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(_source["MaCTCHDB"]));
-                        ///Thông Tin
-                        txtMaDon.Text = _ctchdb.CHDB.MaDon.ToString().Insert(_ctchdb.CHDB.MaDon.ToString().Length - 2, "-");
-                        txtMaThongBaoCH.Text = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
-                        txtDanhBo.Text = _ctchdb.DanhBo;
-                        txtHopDong.Text = _ctchdb.HopDong;
-                        txtHoTen.Text = _ctchdb.HoTen;
-                        txtDiaChi.Text = _ctchdb.DiaChi;
-                        ///Nguyên Nhân Xử Lý
-                        cmbLyDo.SelectedText = _ctchdb.LyDo;
-                        txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;
-                        txtSoTien.Text = _ctchdb.SoTien.ToString();
-                        ///Kết Quả Xử Lý
-                        if (_ctchdb.TCTBXuLy)
-                        {
-                            dateTCTBXuLy.Value = _ctchdb.NgayTCTBXuLy.Value;
-                            txtKetQuaTCTBXuLy.Text = _ctchdb.KetQuaTCTBXuLy;
-                        }
-                        ///Cấp Trên Xử Lý
-                        if (_ctchdb.CapTrenXuLy)
-                        {
-                            dateCapTrenXuLy.Value = _ctchdb.NgayCapTrenXuLy.Value;
-                            txtKetQuaCapTrenXuLy.Text = _ctchdb.KetQuaCapTrenXuLy;
-                            txtThoiGianLapPhieu.Text = _ctchdb.ThoiGianLapPhieu.ToString();
-                        }
+                        _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
+                        txtDanhBo.Text = _ttkhachhang.DanhBo;
+                        txtHopDong.Text = _ttkhachhang.GiaoUoc;
+                        txtHoTen.Text = _ttkhachhang.HoTen;
+                        txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
                     }
                 }
                 else
-                    ///Từ Cắt Tạm lập Cắt Hủy
-                    if (_source["Action"] == "CTDBThêm")
+                    ///Sửa Cắt Hủy
+                    if (_source["Action"] == "Sửa")
                     {
-                        groupBoxNguyenNhanXuLy.Enabled = true;
-                        ///Kiểm tra record bên bảng CTCTDB để lấy qua bên bảng CTCHDB
-                        if (_cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"])) != null)
+                        groupBoxKetQuaXuLy.Enabled = true;
+                        groupBoxCapTrenXuLy.Enabled = true;
+                        txtHieuLucKy.ReadOnly = false;
+                        btnInPhieu.Enabled = true;
+                        if (_cCHDB.getCTCHDBbyID(decimal.Parse(_source["MaCTCHDB"])) != null)
                         {
-                            _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"]));
+                            _ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(_source["MaCTCHDB"]));
                             ///Thông Tin
-                            txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
-                            txtMaThongBaoCT.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
-                            txtDanhBo.Text = _ctctdb.DanhBo;
-                            txtHopDong.Text = _ctctdb.HopDong;
-                            txtHoTen.Text = _ctctdb.HoTen;
-                            txtDiaChi.Text = _ctctdb.DiaChi;
+                            txtMaDon.Text = _ctchdb.CHDB.MaDon.ToString().Insert(_ctchdb.CHDB.MaDon.ToString().Length - 2, "-");
+                            txtMaThongBaoCH.Text = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                            txtDanhBo.Text = _ctchdb.DanhBo;
+                            txtHopDong.Text = _ctchdb.HopDong;
+                            txtHoTen.Text = _ctchdb.HoTen;
+                            txtDiaChi.Text = _ctchdb.DiaChi;
                             ///Nguyên Nhân Xử Lý
-                            cmbLyDo.SelectedItem = _ctctdb.LyDo;
-                            txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
-                            txtSoTien.Text = _ctctdb.SoTien.ToString();
+                            cmbLyDo.SelectedText = _ctchdb.LyDo;
+                            txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;
+                            txtSoTien.Text = _ctchdb.SoTien.ToString();
+                            ///Kết Quả Xử Lý
+                            if (_ctchdb.TCTBXuLy)
+                            {
+                                dateTCTBXuLy.Value = _ctchdb.NgayTCTBXuLy.Value;
+                                txtKetQuaTCTBXuLy.Text = _ctchdb.KetQuaTCTBXuLy;
+                            }
+                            ///Cấp Trên Xử Lý
+                            if (_ctchdb.CapTrenXuLy)
+                            {
+                                dateCapTrenXuLy.Value = _ctchdb.NgayCapTrenXuLy.Value;
+                                txtKetQuaCapTrenXuLy.Text = _ctchdb.KetQuaCapTrenXuLy;
+                                txtThoiGianLapPhieu.Text = _ctchdb.ThoiGianLapPhieu.ToString();
+                            }
                         }
                     }
-
+                    else
+                        ///Từ Cắt Tạm lập Cắt Hủy
+                        if (_source["Action"] == "CTDBThêm")
+                        {
+                            groupBoxNguyenNhanXuLy.Enabled = true;
+                            ///Kiểm tra record bên bảng CTCTDB để lấy qua bên bảng CTCHDB
+                            if (_cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"])) != null)
+                            {
+                                _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(_source["MaCTCTDB"]));
+                                ///Thông Tin
+                                txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
+                                txtMaThongBaoCT.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
+                                txtDanhBo.Text = _ctctdb.DanhBo;
+                                txtHopDong.Text = _ctctdb.HopDong;
+                                txtHoTen.Text = _ctctdb.HoTen;
+                                txtDiaChi.Text = _ctctdb.DiaChi;
+                                ///Nguyên Nhân Xử Lý
+                                cmbLyDo.SelectedItem = _ctctdb.LyDo;
+                                txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
+                                txtSoTien.Text = _ctctdb.SoTien.ToString();
+                            }
+                        }
+            }
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)

@@ -46,7 +46,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             cmbColumn.ValueMember = "MaChuyen";
 
             dgvDSKTXM.DataSource = DSDonKH_BS;
-            radChuaDuyet.Checked = true;
+            radDaDuyet.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
