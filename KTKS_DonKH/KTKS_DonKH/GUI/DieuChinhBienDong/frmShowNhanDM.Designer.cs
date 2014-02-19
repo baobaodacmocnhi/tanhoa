@@ -57,6 +57,8 @@
             this.txtMaCT = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -130,7 +132,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(244, 182);
+            this.label9.Location = new System.Drawing.Point(233, 182);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 17);
             this.label9.TabIndex = 12;
@@ -187,6 +189,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtGhiChu);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtThoiHan);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.cmbChiNhanh);
@@ -272,7 +276,7 @@
             // 
             // txtSoNKNhan
             // 
-            this.txtSoNKNhan.Location = new System.Drawing.Point(127, 272);
+            this.txtSoNKNhan.Location = new System.Drawing.Point(317, 241);
             this.txtSoNKNhan.Name = "txtSoNKNhan";
             this.txtSoNKNhan.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKNhan.TabIndex = 19;
@@ -287,7 +291,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 275);
+            this.label6.Location = new System.Drawing.Point(233, 244);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 17);
             this.label6.TabIndex = 18;
@@ -322,7 +326,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(785, 331);
+            this.btnIn.Location = new System.Drawing.Point(786, 331);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(92, 35);
             this.btnIn.TabIndex = 5;
@@ -330,6 +334,22 @@
             this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(127, 272);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(290, 25);
+            this.txtGhiChu.TabIndex = 21;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(14, 275);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(59, 17);
+            this.label14.TabIndex = 20;
+            this.label14.Text = "Ghi Chú:";
             // 
             // frmShowNhanDM
             // 
@@ -341,7 +361,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnIn);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmShowNhanDM";
             this.Text = "Hiện Thị Nhận Định Mức";
             this.Load += new System.EventHandler(this.frmShowNhanDM_Load);
@@ -384,5 +404,7 @@
         private System.Windows.Forms.TextBox txtMaCT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.Label label14;
     }
 }

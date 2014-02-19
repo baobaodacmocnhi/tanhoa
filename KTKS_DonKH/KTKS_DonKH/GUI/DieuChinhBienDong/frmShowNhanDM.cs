@@ -53,7 +53,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtHoTen_Cat.Text = _lichsuchungtu.CatNK_HoTen;
                     txtDiaChi_Cat.Text = _lichsuchungtu.CatNK_DiaChi;
                     txtMaCT.Text = _lichsuchungtu.MaCT;
+                    txtSoNKTong.Text = _lichsuchungtu.SoNKTong.ToString();
                     txtSoNKNhan.Text = _lichsuchungtu.SoNKNhan.Value.ToString();
+                    txtGhiChu.Text = _lichsuchungtu.GhiChu;
                 }
             }
         }

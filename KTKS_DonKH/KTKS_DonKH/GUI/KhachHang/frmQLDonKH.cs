@@ -34,13 +34,14 @@ namespace KTKS_DonKH.GUI.KhachHang
         private void frmQLDonKH_Load(object sender, EventArgs e)
         {
             dgvDSDonKH.AutoGenerateColumns = false;
+            dgvDSDonKH.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDonKH.Font, FontStyle.Bold);
             DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSDonKH.Columns["MaChuyen"];
             cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi();
             cmbColumn.DisplayMember = "NoiChuyenDi";
             cmbColumn.ValueMember = "MaChuyen";
 
             dgvDSDonKH.DataSource = DSDonKH_BS;
-            radChuDuyet.Checked = true;
+            radChuaDuyet.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
@@ -56,7 +57,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void radChuDuyet_CheckedChanged(object sender, EventArgs e)
         {
-            if (radChuDuyet.Checked)
+            if (radChuaDuyet.Checked)
             {
                 DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
                 cmbTimTheo.SelectedIndex = 0;
@@ -105,7 +106,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 if (radDaDuyet.Checked)
                     DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
-                if (radChuDuyet.Checked)
+                if (radChuaDuyet.Checked)
                     DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
             }          
         }
@@ -137,7 +138,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 source.Add("MaDon", dgvDSDonKH["MaDon", dgvDSDonKH.CurrentRow.Index].Value.ToString());
                 frmShowDonKH frm = new frmShowDonKH(source);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    if (radChuDuyet.Checked)
+                    if (radChuaDuyet.Checked)
                         DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
                     else
                         if (radDaDuyet.Checked)

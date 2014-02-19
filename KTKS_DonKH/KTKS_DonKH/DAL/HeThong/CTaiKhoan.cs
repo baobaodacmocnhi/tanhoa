@@ -304,7 +304,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         db.Users.InsertOnSubmit(nguoidung);
                         ///Cấp quyền mặc định = False
                         ///i tương ứng với số quyền trong bảng DetailRole
-                        for (int i = 1; i <= 8; i++)
+                        for (int i = 1; i <= 9; i++)
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;

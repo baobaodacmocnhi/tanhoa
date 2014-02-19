@@ -202,4 +202,13 @@
   <data name="Search_Results_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Search Results 48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Close_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close 48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cut_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cut 48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="letter_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\letter 48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

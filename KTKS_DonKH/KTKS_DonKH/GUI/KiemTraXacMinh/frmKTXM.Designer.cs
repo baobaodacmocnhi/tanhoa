@@ -221,7 +221,6 @@
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(100, 26);
             this.txtDienThoai.TabIndex = 19;
-            this.txtDienThoai.Visible = false;
             // 
             // label11
             // 
@@ -231,7 +230,6 @@
             this.label11.Size = new System.Drawing.Size(78, 19);
             this.label11.TabIndex = 18;
             this.label11.Text = "Điện Thoại:";
-            this.label11.Visible = false;
             // 
             // txtNoiDungKiemTra
             // 
@@ -363,7 +361,6 @@
             this.txtHoTenKHKy.Name = "txtHoTenKHKy";
             this.txtHoTenKHKy.Size = new System.Drawing.Size(200, 26);
             this.txtHoTenKHKy.TabIndex = 31;
-            this.txtHoTenKHKy.Visible = false;
             // 
             // label17
             // 
@@ -373,7 +370,6 @@
             this.label17.Size = new System.Drawing.Size(108, 19);
             this.label17.TabIndex = 30;
             this.label17.Text = "Họ Tên KH Ký:";
-            this.label17.Visible = false;
             // 
             // dateKTXM
             // 

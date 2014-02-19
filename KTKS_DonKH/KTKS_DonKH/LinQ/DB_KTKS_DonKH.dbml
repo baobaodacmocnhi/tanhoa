@@ -12,6 +12,20 @@
       <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="MaU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Login" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="User_DetailRole" Member="DetailRoles" ThisKey="MaU" OtherKey="MaU" Type="DetailRole" />
+    </Type>
+  </Table>
   <Table Name="dbo.CHDB" Member="CHDBs">
     <Type Name="CHDB">
       <Column Name="MaCHDB" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -338,8 +352,8 @@
       <Column Name="MaU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaR" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="CapQuyen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Role_DetailRole" Member="Role" ThisKey="MaR" OtherKey="MaR" Type="Role" IsForeignKey="true" />
       <Association Name="User_DetailRole" Member="User" ThisKey="MaU" OtherKey="MaU" Type="User" IsForeignKey="true" />
+      <Association Name="Role_DetailRole" Member="Role" ThisKey="MaR" OtherKey="MaR" Type="Role" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DonKH" Member="DonKHs">
@@ -457,6 +471,7 @@
       <Column Name="CatNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CatNK_HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="CatNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -597,20 +612,6 @@
       <Association Name="TTTL_CTTTTL" Member="CTTTTLs" ThisKey="MaTTTL" OtherKey="MaTTTL" Type="CTTTTL" />
       <Association Name="ChuyenDi_TTTL" Member="ChuyenDi" ThisKey="MaChuyen" OtherKey="MaChuyen" Type="ChuyenDi" IsForeignKey="true" />
       <Association Name="DonKH_TTTL" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="User">
-      <Column Name="MaU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Login" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="User_DetailRole" Member="DetailRoles" ThisKey="MaU" OtherKey="MaU" Type="DetailRole" />
     </Type>
   </Table>
 </Database>

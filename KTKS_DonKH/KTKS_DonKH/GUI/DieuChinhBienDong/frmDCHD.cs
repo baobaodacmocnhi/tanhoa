@@ -28,7 +28,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDCBD _cDCBD = new CDCBD();
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-        bool _direct = false;
+        bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
 
         public frmDCHD()
         {

@@ -30,7 +30,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         bool flagFirst = true;///Lần đầu Load Form (trường hợp 1 đơn nhiều Danh Bộ)
-        bool _direct = false;
+        bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
 
         public frmDCBD()
         {
@@ -85,6 +85,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             dgvDSDieuChinh.AutoGenerateColumns = false;
             dgvDSDieuChinh.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
+
+            dgvLichSuChungTu.AutoGenerateColumns = false;
+            dgvLichSuChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLichSuChungTu.Font, FontStyle.Bold);
 
             dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
@@ -468,6 +471,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             try
             {
                 dgvDSChungTu.DataSource = _cChungTu.LoadDSCTChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
+                dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
             }
             catch (Exception)
             {

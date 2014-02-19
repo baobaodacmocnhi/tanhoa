@@ -53,6 +53,10 @@
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKTXM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -251,7 +255,7 @@
             // 
             this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
             this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(577, 35);
+            this.dateTimKiem.Location = new System.Drawing.Point(951, 35);
             this.dateTimKiem.Name = "dateTimKiem";
             this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
             this.dateTimKiem.TabIndex = 6;
@@ -261,11 +265,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(302, 15);
+            this.label2.Location = new System.Drawing.Point(676, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tìm Theo:";
+            this.label2.Visible = false;
             // 
             // cmbTimTheo
             // 
@@ -274,15 +279,16 @@
             "",
             "Mã Đơn",
             "Ngày Lập"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(376, 12);
+            this.cmbTimTheo.Location = new System.Drawing.Point(750, 12);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
             this.cmbTimTheo.TabIndex = 3;
+            this.cmbTimTheo.Visible = false;
             this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(577, 12);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(951, 12);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem.TabIndex = 5;
@@ -292,19 +298,60 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(503, 15);
+            this.label1.Location = new System.Drawing.Point(877, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Nội Dung:";
+            this.label1.Visible = false;
             // 
-            // frmKTXM
+            // dateTu
+            // 
+            this.dateTu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu.Location = new System.Drawing.Point(388, 7);
+            this.dateTu.Name = "dateTu";
+            this.dateTu.Size = new System.Drawing.Size(100, 25);
+            this.dateTu.TabIndex = 9;
+            // 
+            // dateDen
+            // 
+            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen.Location = new System.Drawing.Point(388, 38);
+            this.dateDen.Name = "dateDen";
+            this.dateDen.Size = new System.Drawing.Size(100, 25);
+            this.dateDen.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(310, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 17);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Từ Ngày:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(310, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Đến Ngày:";
+            // 
+            // frmDSKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 579);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dateDen);
+            this.Controls.Add(this.dateTu);
             this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTimTheo);
@@ -316,7 +363,7 @@
             this.Controls.Add(this.radChuaDuyet);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmKTXM";
+            this.Name = "frmDSKTXM";
             this.Text = "Danh Sách Kiểm Tra Xác Minh";
             this.Load += new System.EventHandler(this.frmKTXM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKTXM)).EndInit();
@@ -351,5 +398,9 @@
         private System.Windows.Forms.ComboBox cmbTimTheo;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTu;
+        private System.Windows.Forms.DateTimePicker dateDen;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

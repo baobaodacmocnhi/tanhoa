@@ -42,6 +42,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtSoNKTong.ReadOnly = false;
                 txtSoNKDangKy.ReadOnly = false;
                 txtThoiHan.ReadOnly = false;
+                txtGhiChu.ReadOnly = false;
                 btnThem.Enabled = true;
             }
             else
@@ -51,6 +52,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtSoNKTong.ReadOnly = false;
                     txtSoNKDangKy.ReadOnly = false;
                     txtThoiHan.ReadOnly = false;
+                    txtGhiChu.ReadOnly = false;
                     btnSua.Enabled = true;
                 }
             _source = source;
@@ -89,6 +91,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     LichSuChungTu lichsuchungtu = new LichSuChungTu();
                     lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                    lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                     if (chkCatChuyen.Checked)
                         if (txtSoNKCat.Text.Trim() == "")
@@ -165,6 +168,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     LichSuChungTu lichsuchungtu = new LichSuChungTu();
                     lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                    lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                     CTChungTu ctchungtu = new CTChungTu();
                     ctchungtu.DanhBo = txtDanhBo.Text.Trim();

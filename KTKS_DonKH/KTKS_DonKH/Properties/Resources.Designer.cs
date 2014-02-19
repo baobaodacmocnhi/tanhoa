@@ -88,9 +88,23 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Close_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("Close_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap customer_48x48 {
             get {
                 object obj = ResourceManager.GetObject("customer_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap cut_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("cut_48x48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -140,6 +154,13 @@ namespace KTKS_DonKH.Properties {
         internal static System.Drawing.Bitmap key_48x48 {
             get {
                 object obj = ResourceManager.GetObject("key_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap letter_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("letter_48x48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
