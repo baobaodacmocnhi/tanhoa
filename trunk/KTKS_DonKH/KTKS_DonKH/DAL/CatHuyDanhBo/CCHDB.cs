@@ -241,7 +241,46 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                return db.CHDBs.Single(itemCHDB => itemCHDB.MaCHDB == MaCHDB);
+                return db.CHDBs.SingleOrDefault(itemCHDB => itemCHDB.MaCHDB == MaCHDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra Đơn KH có được CHDB xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns>true/có</returns>
+        public bool CheckCHDBbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                if (db.CHDBs.Any(itemCHDB => itemCHDB.MaDon == MaDon))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy CHDB bằng MaDon
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns></returns>
+        public CHDB getCHDBbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                return db.CHDBs.SingleOrDefault(itemCHDB => itemCHDB.MaDon == MaDon);
             }
             catch (Exception ex)
             {
@@ -318,7 +357,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                return db.CTCTDBs.Single(itemCTCTDB => itemCTCTDB.MaCTCTDB == MaCTCTDB);
+                return db.CTCTDBs.SingleOrDefault(itemCTCTDB => itemCTCTDB.MaCTCTDB == MaCTCTDB);
             }
             catch (Exception ex)
             {
@@ -445,7 +484,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                return db.CTCHDBs.Single(itemCTCHDB => itemCTCHDB.MaCTCHDB == MaCTCHDB);
+                return db.CTCHDBs.SingleOrDefault(itemCTCHDB => itemCTCHDB.MaCTCHDB == MaCTCHDB);
             }
             catch (Exception ex)
             {

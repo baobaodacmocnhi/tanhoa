@@ -73,7 +73,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-                    LoadDS(_ttkhachhang);
+                    LoadThongTin(_ttkhachhang);
                 }
             }
             dgvDSSoDangKy.AutoGenerateColumns = false;
@@ -97,7 +97,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>
         /// <param name="ttkhachhang"></param>
-        public void LoadDS(TTKhachHang ttkhachhang)
+        public void LoadThongTin(TTKhachHang ttkhachhang)
         {
             txtDanhBo.Text = ttkhachhang.DanhBo;
             txtHopDong.Text = ttkhachhang.GiaoUoc;
@@ -268,7 +268,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                    LoadDS(_ttkhachhang);
+                    LoadThongTin(_ttkhachhang);
                 }
                 else
                 {
@@ -289,18 +289,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     DCBD dcbd = new DCBD();
                     dcbd.MaDon = _donkh.MaDon;
-                    ///mới check donkh còn ktxm chưa
                     if (_direct)
                     {
-                        string a, b, c;
-                        _cDCBD.GetInfobyMaDon(_donkh.MaDon, out a, out b, out c);
-                        _source.Add("MaNoiChuyenDen", a);
-                        _source.Add("NoiChuyenDen", b);
-                        _source.Add("LyDoChuyenDen", c);
+                        ///mới check DonKH còn KTXM chưa
+                        //string a, b, c;
+                        //_cDonKH.GetInfobyMaDon(_donkh.MaDon, "DCBD", out a, out b, out c);
+                        //_source.Add("MaNoiChuyenDen", a);
+                        _source.Add("NoiChuyenDen", "");
+                        //_source.Add("LyDoChuyenDen", c);
                     }
-                    dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
-                    dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
-                    dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
+                    else
+                    {
+                        dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
+                        dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
+                        dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
+                    }
                     if (_cDCBD.ThemDCBD(dcbd))
                     {
                         switch (_source["NoiChuyenDen"])
@@ -483,14 +486,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13)
             {
-                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-","")),"DCBD") != null)
+                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-",""))) != null)
                 {
                     _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                     //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                     if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
                     {
                         _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                        LoadDS(_ttkhachhang);
+                        LoadThongTin(_ttkhachhang);
                     }
                 }
                 else

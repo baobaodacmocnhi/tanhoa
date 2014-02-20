@@ -39,7 +39,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                return db.DonKHs.Single(itemDonKH => itemDonKH.MaDon == MaDon);
+                return db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon);
             }
             catch (Exception ex)
             {
@@ -250,30 +250,29 @@ namespace KTKS_DonKH.DAL.KhachHang
         }
 
         /// <summary>
-        /// Kiểm tra Đơn KH có phải được chưa chuyển hoặc được chuyển cho KTXM không
-        /// Hàm này được dùng cho form Nhập Kết Quả Kiểm Tra, đi kiểm tra về lấy số đơn rồi nhập luôn
+        /// Lấy thông tin Đơn KH
         /// </summary>
         /// <param name="MaDon"></param>
-        /// <returns>true/thỏa 1 trong 2 điều kiện trên</returns>
-        public bool CheckDonKTXM(decimal MaDon)
+        /// <param name="MaChuyen">nơi đơn được chuyến đến để xử lý</param>
+        /// <param name="MaNoiChuyenDen"></param>
+        /// <param name="NoiChuyenDen"></param>
+        /// <param name="LyDoChuyenDen"></param>
+        public void GetInfobyMaDon(decimal MaDon,string MaChuyen, out string MaNoiChuyenDen, out string NoiChuyenDen, out string LyDoChuyenDen)
         {
-            try
+            MaNoiChuyenDen = "";
+            NoiChuyenDen = "";
+            LyDoChuyenDen = "";
+            if (db.DonKHs.Any(itemDonKH => itemDonKH.MaDon == MaDon && itemDonKH.Nhan == false && itemDonKH.MaChuyen == MaChuyen))
             {
-                if (db.DonKHs.Any(itemDonKH => itemDonKH.MaDon == MaDon && (itemDonKH.MaChuyen == "" || itemDonKH.MaChuyen == "KTXM")))
-                {
-                    
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show((db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon && (itemDonKH.MaChuyen == "" || itemDonKH.MaChuyen == "KTXM"))).MaChuyen, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+                MaNoiChuyenDen = db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon && itemDonKH.Nhan == false && itemDonKH.MaChuyen == MaChuyen).MaDon.ToString();
+                NoiChuyenDen = "Khách Hàng";
+                LyDoChuyenDen = db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon && itemDonKH.Nhan == false && itemDonKH.MaChuyen == MaChuyen).LyDoChuyen;
             }
-            catch (Exception ex)
+            if (db.KTXMs.Any(itemKTXM => itemKTXM.MaDon == MaDon && itemKTXM.Nhan == false && itemKTXM.MaChuyen == MaChuyen))
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                MaNoiChuyenDen = db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDon == MaDon && itemKTXM.Nhan == false && itemKTXM.MaChuyen == MaChuyen).MaKTXM.ToString();
+                NoiChuyenDen = "Kiểm Tra Xác Minh";
+                LyDoChuyenDen = db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDon == MaDon && itemKTXM.Nhan == false && itemKTXM.MaChuyen == MaChuyen).LyDoChuyen;
             }
         }
     }
