@@ -341,31 +341,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        /// <summary>
-        /// Lấy thông tin Đơn KH
-        /// </summary>
-        /// <param name="MaDon"></param>
-        /// <param name="MaNoiChuyenDen"></param>
-        /// <param name="NoiChuyenDen"></param>
-        /// <param name="LyDoChuyenDen"></param>
-        public void GetInfobyMaDon(decimal MaDon, out string MaNoiChuyenDen, out string NoiChuyenDen, out string LyDoChuyenDen)
-        {
-            MaNoiChuyenDen = "";
-            NoiChuyenDen = "";
-            LyDoChuyenDen = "";
-            if (db.DonKHs.Any(itemDonKH => itemDonKH.MaDon == MaDon && itemDonKH.Nhan == false && itemDonKH.MaChuyen == "DCBD"))
-            {
-                MaNoiChuyenDen = db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon && itemDonKH.Nhan == false && itemDonKH.MaChuyen == "DCBD").MaDon.ToString();
-                NoiChuyenDen = "Khách Hàng";
-                LyDoChuyenDen = db.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon && itemDonKH.Nhan == false && itemDonKH.MaChuyen == "DCBD").LyDoChuyen;
-            }
-            if (db.KTXMs.Any(itemKTXM => itemKTXM.MaDon == MaDon && itemKTXM.Nhan == false && itemKTXM.MaChuyen == "DCBD"))
-            {
-                MaNoiChuyenDen = db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDon == MaDon && itemKTXM.Nhan == false && itemKTXM.MaChuyen == "DCBD").MaKTXM.ToString();
-                NoiChuyenDen = "Kiểm Tra Xác Minh";
-                LyDoChuyenDen = db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDon == MaDon && itemKTXM.Nhan == false && itemKTXM.MaChuyen == "DCBD").LyDoChuyen;
-            }
-        }
+        
 
         #endregion
 

@@ -272,11 +272,11 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         }
 
         /// <summary>
-        /// Kiểm tra Đơn KH có được chuyển qua cho KTXM xử lý hay chưa
+        /// Kiểm tra Đơn KH có được KTXM xử lý hay chưa
         /// </summary>
         /// <param name="MaDon"></param>
         /// <returns>true/có</returns>
-        public bool CheckKTMXbyIDMaDon(decimal MaDon)
+        public bool CheckKTMXbyMaDon(decimal MaDon)
         {
             try
             {
@@ -297,7 +297,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         /// </summary>
         /// <param name="MaDon"></param>
         /// <returns></returns>
-        public KTXM getKTXMbyIDMaDon(decimal MaDon)
+        public KTXM getKTXMbyMaDon(decimal MaDon)
         {
             try
             {

@@ -262,6 +262,7 @@
             this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(100, 25);
             this.txtMaDon.TabIndex = 8;
+            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
             // 
             // txtDiaChi
             // 
@@ -446,6 +447,7 @@
             this.txtMaThongBaoCH.ReadOnly = true;
             this.txtMaThongBaoCH.Size = new System.Drawing.Size(100, 25);
             this.txtMaThongBaoCH.TabIndex = 9;
+            this.txtMaThongBaoCH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaThongBaoCH_KeyPress);
             // 
             // label14
             // 
@@ -463,6 +465,7 @@
             this.txtMaThongBaoCT.ReadOnly = true;
             this.txtMaThongBaoCT.Size = new System.Drawing.Size(100, 25);
             this.txtMaThongBaoCT.TabIndex = 11;
+            this.txtMaThongBaoCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaThongBaoCT_KeyPress);
             // 
             // label15
             // 

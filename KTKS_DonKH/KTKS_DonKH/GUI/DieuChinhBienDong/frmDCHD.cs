@@ -205,15 +205,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ///mới check donkh còn ktxm chưa
                 if (_direct)
                 {
-                    string a, b, c;
-                    _cDCBD.GetInfobyMaDon(_donkh.MaDon, out a, out b, out c);
-                    _source.Add("MaNoiChuyenDen", a);
-                    _source.Add("NoiChuyenDen", b);
-                    _source.Add("LyDoChuyenDen", c);
+                    //string a, b, c;
+                    //_cDonKH.GetInfobyMaDon(_donkh.MaDon, "DCBD", out a, out b, out c);
+                    //_source.Add("MaNoiChuyenDen", a);
+                    _source.Add("NoiChuyenDen", "");
+                    //_source.Add("LyDoChuyenDen", c);
                 }
-                dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
-                dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
-                dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
+                else
+                {
+                    dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
+                    dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
+                    dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
+                }
                 if (_cDCBD.ThemDCBD(dcbd))
                 {
                     switch (_source["NoiChuyenDen"])
@@ -336,17 +339,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13)
             {
-                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")), "DCBD") != null)
+                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
                 {
-                    //txtMaDon.Text = _source["MaDon"].Insert(_source["MaDon"].Length - 2, "-");
+                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                    //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                    if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                    {
+                        _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
 
-                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")), "DCBD");
-                    _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-
-                    txtDanhBo.Text = _ttkhachhang.DanhBo;
-                    txtHoTen.Text = _ttkhachhang.HoTen;
-                    txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
-                    txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                        txtDanhBo.Text = _ttkhachhang.DanhBo;
+                        txtHoTen.Text = _ttkhachhang.HoTen;
+                        txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
+                        txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                    }
                 }
                 else
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

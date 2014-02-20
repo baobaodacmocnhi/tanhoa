@@ -40,6 +40,7 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxNguyenNhanXuLy = new System.Windows.Forms.GroupBox();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtGhiChuXuLy = new System.Windows.Forms.TextBox();
@@ -51,7 +52,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dateTCTBXuLy = new System.Windows.Forms.DateTimePicker();
             this.groupBoxKetQuaXuLy = new System.Windows.Forms.GroupBox();
+            this.btnCapNhatTCTBXuLy = new System.Windows.Forms.Button();
             this.groupBoxCapTrenXuLy = new System.Windows.Forms.GroupBox();
+            this.btnCapNhatCapTrenXuLy = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtThoiGianLapCatHuy = new System.Windows.Forms.TextBox();
             this.dateCapTrenXuLy = new System.Windows.Forms.DateTimePicker();
@@ -60,9 +63,6 @@
             this.txtKetQuaCapTrenXuLy = new System.Windows.Forms.TextBox();
             this.txtMaThongBao = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnCapNhatCapTrenXuLy = new System.Windows.Forms.Button();
-            this.btnCapNhatTCTBXuLy = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaXuLy.SuspendLayout();
@@ -76,6 +76,7 @@
             this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(100, 25);
             this.txtMaDon.TabIndex = 5;
+            this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
             // 
             // label21
             // 
@@ -188,6 +189,19 @@
             this.groupBoxNguyenNhanXuLy.TabStop = false;
             this.groupBoxNguyenNhanXuLy.Text = "Nguyên Nhân Xử Lý";
             // 
+            // btnLuu
+            // 
+            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(515, 45);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(70, 35);
+            this.btnLuu.TabIndex = 6;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
             // txtSoTien
             // 
             this.txtSoTien.Location = new System.Drawing.Point(385, 24);
@@ -296,6 +310,19 @@
             this.groupBoxKetQuaXuLy.TabStop = false;
             this.groupBoxKetQuaXuLy.Text = "Kết Quả Xử Lý";
             // 
+            // btnCapNhatTCTBXuLy
+            // 
+            this.btnCapNhatTCTBXuLy.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnCapNhatTCTBXuLy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCapNhatTCTBXuLy.Location = new System.Drawing.Point(515, 45);
+            this.btnCapNhatTCTBXuLy.Name = "btnCapNhatTCTBXuLy";
+            this.btnCapNhatTCTBXuLy.Size = new System.Drawing.Size(100, 35);
+            this.btnCapNhatTCTBXuLy.TabIndex = 0;
+            this.btnCapNhatTCTBXuLy.Text = "Cập Nhật";
+            this.btnCapNhatTCTBXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCapNhatTCTBXuLy.UseVisualStyleBackColor = true;
+            this.btnCapNhatTCTBXuLy.Click += new System.EventHandler(this.btnCapNhatTCTBXuLy_Click);
+            // 
             // groupBoxCapTrenXuLy
             // 
             this.groupBoxCapTrenXuLy.Controls.Add(this.btnCapNhatCapTrenXuLy);
@@ -312,6 +339,19 @@
             this.groupBoxCapTrenXuLy.TabIndex = 3;
             this.groupBoxCapTrenXuLy.TabStop = false;
             this.groupBoxCapTrenXuLy.Text = "Cấp Trên Xử Lý";
+            // 
+            // btnCapNhatCapTrenXuLy
+            // 
+            this.btnCapNhatCapTrenXuLy.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnCapNhatCapTrenXuLy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCapNhatCapTrenXuLy.Location = new System.Drawing.Point(515, 45);
+            this.btnCapNhatCapTrenXuLy.Name = "btnCapNhatCapTrenXuLy";
+            this.btnCapNhatCapTrenXuLy.Size = new System.Drawing.Size(100, 35);
+            this.btnCapNhatCapTrenXuLy.TabIndex = 6;
+            this.btnCapNhatCapTrenXuLy.Text = "Cập Nhật";
+            this.btnCapNhatCapTrenXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCapNhatCapTrenXuLy.UseVisualStyleBackColor = true;
+            this.btnCapNhatCapTrenXuLy.Click += new System.EventHandler(this.btnCapNhatCapTrenXuLy_Click);
             // 
             // label11
             // 
@@ -371,6 +411,7 @@
             this.txtMaThongBao.ReadOnly = true;
             this.txtMaThongBao.Size = new System.Drawing.Size(100, 25);
             this.txtMaThongBao.TabIndex = 7;
+            this.txtMaThongBao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaThongBao_KeyPress);
             // 
             // label10
             // 
@@ -380,45 +421,6 @@
             this.label10.Size = new System.Drawing.Size(100, 17);
             this.label10.TabIndex = 6;
             this.label10.Text = "Mã Thông Báo:";
-            // 
-            // btnCapNhatCapTrenXuLy
-            // 
-            this.btnCapNhatCapTrenXuLy.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnCapNhatCapTrenXuLy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCapNhatCapTrenXuLy.Location = new System.Drawing.Point(515, 45);
-            this.btnCapNhatCapTrenXuLy.Name = "btnCapNhatCapTrenXuLy";
-            this.btnCapNhatCapTrenXuLy.Size = new System.Drawing.Size(100, 35);
-            this.btnCapNhatCapTrenXuLy.TabIndex = 6;
-            this.btnCapNhatCapTrenXuLy.Text = "Cập Nhật";
-            this.btnCapNhatCapTrenXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCapNhatCapTrenXuLy.UseVisualStyleBackColor = true;
-            this.btnCapNhatCapTrenXuLy.Click += new System.EventHandler(this.btnCapNhatCapTrenXuLy_Click);
-            // 
-            // btnCapNhatTCTBXuLy
-            // 
-            this.btnCapNhatTCTBXuLy.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnCapNhatTCTBXuLy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCapNhatTCTBXuLy.Location = new System.Drawing.Point(515, 45);
-            this.btnCapNhatTCTBXuLy.Name = "btnCapNhatTCTBXuLy";
-            this.btnCapNhatTCTBXuLy.Size = new System.Drawing.Size(100, 35);
-            this.btnCapNhatTCTBXuLy.TabIndex = 0;
-            this.btnCapNhatTCTBXuLy.Text = "Cập Nhật";
-            this.btnCapNhatTCTBXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCapNhatTCTBXuLy.UseVisualStyleBackColor = true;
-            this.btnCapNhatTCTBXuLy.Click += new System.EventHandler(this.btnCapNhatTCTBXuLy_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(515, 45);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 6;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // frmCTDB
             // 

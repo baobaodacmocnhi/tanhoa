@@ -209,7 +209,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                return db.TTTLs.Single(itemTTTL => itemTTTL.MaTTTL == MaTTTL);
+                return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaTTTL == MaTTTL);
             }
             catch (Exception ex)
             {
@@ -232,6 +232,45 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra Đơn KH có được TTTL xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns>true/có</returns>
+        public bool CheckTTTLbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                if (db.TTTLs.Any(itemTTTL => itemTTTL.MaDon == MaDon))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy TTTL bằng MaDon
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns></returns>
+        public TTTL getTTTLbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
@@ -303,7 +342,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         {
             try
             {
-                return db.CTTTTLs.Single(itemCTTTTL => itemCTTTTL.MaCTTTTL == MaCTTTTL);
+                return db.CTTTTLs.SingleOrDefault(itemCTTTTL => itemCTTTTL.MaCTTTTL == MaCTTTTL);
             }
             catch (Exception ex)
             {

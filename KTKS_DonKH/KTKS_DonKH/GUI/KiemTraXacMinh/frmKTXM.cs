@@ -16,7 +16,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
     public partial class frmKTXM : Form
     {
         Dictionary<string, string> _source = new Dictionary<string, string>();
-        DonKH _donkh = new DonKH();
+        DonKH _donkh = null;
         TTKhachHang _ttkhachhang = new TTKhachHang();
         CDonKH _cDonKH = new CDonKH();
         CTTKH _cTTKH = new CTTKH();
@@ -107,28 +107,26 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
                 {
                     _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                    if (string.IsNullOrEmpty(_donkh.MaChuyen) || _donkh.MaChuyen == "" || _donkh.MaChuyen == "KTXM")
+                    //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                    if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
                     {
-                        if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
-                        {
-                            _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                            LoadTTKH(_ttkhachhang);
-                        }
-                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon);
+                        _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
+                        LoadTTKH(_ttkhachhang);
                     }
                     else
                     {
+                        _ttkhachhang = null;
                         Clear();
-                        _donkh = null;
-                        dgvDSKetQuaKiemTra.DataSource = null;
-                        MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon);
+
                 }
                 else
                 {
-                    Clear();
                     _donkh = null;
                     dgvDSKetQuaKiemTra.DataSource = null;
+                    Clear();
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -145,9 +143,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 }
                 else
                 {
-                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     _ttkhachhang = null;
                     Clear();
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 }
             }
         }
@@ -184,63 +182,59 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
             {
-                //if (_cDonKH.CheckDonKTXM(_donkh.MaDon))
-                //{
-                    if (!_cKTXM.CheckKTMXbyIDMaDon(_donkh.MaDon))
+                if (!_cKTXM.CheckKTMXbyMaDon(_donkh.MaDon))
+                {
+                    KTXM ktxm = new KTXM();
+                    ktxm.MaDon = _donkh.MaDon;
+                    //string MaNoiChuyenDen, NoiChuyenDen, LyDoChuyenDen;
+                    //_cKTXM.GetInfobyMaDon(_donkh.MaDon, out MaNoiChuyenDen, out NoiChuyenDen, out LyDoChuyenDen);
+                    //ktxm.MaNoiChuyenDen = decimal.Parse(MaNoiChuyenDen);
+                    //ktxm.NoiChuyenDen = NoiChuyenDen;
+                    //ktxm.LyDoChuyenDen = LyDoChuyenDen;
+                    if (_cKTXM.ThemKTXM(ktxm))
                     {
-                        KTXM ktxm = new KTXM();
-                        ktxm.MaDon = _donkh.MaDon;
-                        string MaNoiChuyenDen, NoiChuyenDen, LyDoChuyenDen;
-                        _cKTXM.GetInfobyMaDon(_donkh.MaDon, out MaNoiChuyenDen, out NoiChuyenDen, out LyDoChuyenDen);
-                        ktxm.MaNoiChuyenDen = decimal.Parse(MaNoiChuyenDen);
-                        ktxm.NoiChuyenDen = NoiChuyenDen;
-                        ktxm.LyDoChuyenDen = LyDoChuyenDen;
-                        if (_cKTXM.ThemKTXM(ktxm))
-                        {
-                            ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(MaNoiChuyenDen));
-                            donkh.Chuyen = true;
-                            donkh.MaChuyen = "KTXM";
-                            donkh.LyDoChuyen = "";
-                            donkh.Nhan = true;
-                            _cDonKH.SuaDonKH(donkh);
-                        }
-                    }
-                    CTKTXM ctktxm = new CTKTXM();
-                    ctktxm.MaKTXM = _cKTXM.getKTXMbyIDMaDon(_donkh.MaDon).MaKTXM;
-                    ctktxm.DanhBo = txtDanhBo.Text.Trim();
-                    ctktxm.HopDong = txtHopDong.Text.Trim();
-                    ctktxm.HoTen = txtHoTen.Text.Trim();
-                    ctktxm.DiaChi = txtDiaChi.Text.Trim();
-                    ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
-                    ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
-                    ctktxm.Dot = _ttkhachhang.Dot;
-                    ctktxm.Ky = _ttkhachhang.Ky;
-                    ctktxm.Nam = _ttkhachhang.Nam;
-                    ///
-                    ctktxm.NgayKTXM = dateKTXM.Value;
-                    ctktxm.Hieu = txtHieu.Text.Trim();
-                    ctktxm.Co = txtCo.Text.Trim();
-                    ctktxm.SoThan = txtSoThan.Text.Trim();
-                    ctktxm.ChiSo = txtChiSo.Text.Trim();
-                    ctktxm.ChiMatSo = txtChiMatSo.Text.Trim();
-                    ctktxm.ChiKhoaGoc = txtChiKhoaGoc.Text.Trim();
-                    ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
-                    ctktxm.DienThoai = txtDienThoai.Text.Trim();
-                    ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
-                    ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
-
-                    if (_cKTXM.ThemCTKTXM(ctktxm))
-                    {
-                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon);
-                        Clear();
+                        ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                        //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(MaNoiChuyenDen));
+                        //donkh.Chuyen = true;
+                        //donkh.MaChuyen = "KTXM";
+                        //donkh.LyDoChuyen = "";
+                        //donkh.Nhan = true;
+                        //_cDonKH.SuaDonKH(donkh);
                     }
                 }
-                else
-                    MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //else
-            //    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CTKTXM ctktxm = new CTKTXM();
+                ctktxm.MaKTXM = _cKTXM.getKTXMbyMaDon(_donkh.MaDon).MaKTXM;
+                ctktxm.DanhBo = txtDanhBo.Text.Trim();
+                ctktxm.HopDong = txtHopDong.Text.Trim();
+                ctktxm.HoTen = txtHoTen.Text.Trim();
+                ctktxm.DiaChi = txtDiaChi.Text.Trim();
+                ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
+                ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
+                ctktxm.Dot = _ttkhachhang.Dot;
+                ctktxm.Ky = _ttkhachhang.Ky;
+                ctktxm.Nam = _ttkhachhang.Nam;
+                ///
+                ctktxm.NgayKTXM = dateKTXM.Value;
+                ctktxm.Hieu = txtHieu.Text.Trim();
+                ctktxm.Co = txtCo.Text.Trim();
+                ctktxm.SoThan = txtSoThan.Text.Trim();
+                ctktxm.ChiSo = txtChiSo.Text.Trim();
+                ctktxm.ChiMatSo = txtChiMatSo.Text.Trim();
+                ctktxm.ChiKhoaGoc = txtChiKhoaGoc.Text.Trim();
+                ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
+                ctktxm.DienThoai = txtDienThoai.Text.Trim();
+                ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
+                ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
+
+                if (_cKTXM.ThemCTKTXM(ctktxm))
+                {
+                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon);
+                    _ttkhachhang = null;
+                    Clear();
+                }
+            }
+            else
+                MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
