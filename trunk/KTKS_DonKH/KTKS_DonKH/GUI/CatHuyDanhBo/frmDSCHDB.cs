@@ -53,7 +53,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             myLookUpEdit.AppearanceDropDownHeader.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             myLookUpEdit.Columns.Add(column);
             ///Load dữ liệu
-            myLookUpEdit.DataSource = _cChuyenDi.LoadDSChuyenDi("DCBD");
+            myLookUpEdit.DataSource = _cChuyenDi.LoadDSChuyenDi("CTCHDB");
             myLookUpEdit.DisplayMember = "NoiChuyenDi";
             myLookUpEdit.ValueMember = "MaChuyen";
             ///Add LookUpEdit vào GridControl

@@ -66,7 +66,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.LoaiChungTus.Single(itemLCT => itemLCT.MaLCT == MaLCT);
+                return db.LoaiChungTus.SingleOrDefault(itemLCT => itemLCT.MaLCT == MaLCT);
             }
             catch (Exception ex)
             {

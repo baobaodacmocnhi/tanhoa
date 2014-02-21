@@ -105,7 +105,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.BanGiamDocs.Single(itemBGD => itemBGD.KyTen == true);
+                return db.BanGiamDocs.SingleOrDefault(itemBGD => itemBGD.KyTen == true);
             }
             catch (Exception ex)
             {

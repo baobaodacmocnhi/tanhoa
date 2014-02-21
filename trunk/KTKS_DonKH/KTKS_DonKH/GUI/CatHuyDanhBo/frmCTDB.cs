@@ -209,6 +209,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 break;
                         }
                         //_source.Add("MaCHDB", _cCHDB.getMaxMaCHDB().ToString());
+                        if (_donkh.LyDoChuyen == "")
+                            _donkh.LyDoChuyen = "CTCHDB";
+                        else
+                            _donkh.LyDoChuyen += ",CTCHDB";
+                        _donkh.Nhan = true;
+                        _cDonKH.SuaDonKH(_donkh);
                     }
                 }
                 CTCTDB ctctdb = new CTCTDB();

@@ -60,7 +60,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.NhanViens.Single(itemNV => itemNV.MaNV == MaNV);
+                return db.NhanViens.SingleOrDefault(itemNV => itemNV.MaNV == MaNV);
             }
             catch (Exception ex)
             {

@@ -220,6 +220,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         CHDB chdb = new CHDB();
                         chdb.MaDon = _donkh.MaDon;
                         _cCHDB.ThemCHDB(chdb);
+                        {
+                            if (_donkh.LyDoChuyen == "")
+                                _donkh.LyDoChuyen = "CTCHDB";
+                            else
+                                _donkh.LyDoChuyen += ",CTCHDB";
+                            _donkh.Nhan = true;
+                            _cDonKH.SuaDonKH(_donkh);
+                        }
                     }
                     CTCHDB ctchdb = new CTCHDB();
                     ctchdb.MaCHDB = _cCHDB.getCHDBbyMaDon(_donkh.MaDon).MaCHDB;
@@ -307,6 +315,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     break;
                             }
                             _source.Add("MaCHDB", _cCHDB.getMaxMaCHDB().ToString());
+                            if (_donkh.LyDoChuyen == "")
+                                _donkh.LyDoChuyen = "CTCHDB";
+                            else
+                                _donkh.LyDoChuyen += ",CTCHDB";
+                            _donkh.Nhan = true;
+                            _cDonKH.SuaDonKH(_donkh);
                         }
                         CTCHDB ctchdb = new CTCHDB();
                         ctchdb.MaCHDB = decimal.Parse(_source["MaCHDB"]);

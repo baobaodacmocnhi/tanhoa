@@ -158,7 +158,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.CTChungTus.Single(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT);
+                return db.CTChungTus.SingleOrDefault(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT);
             }
             catch (Exception ex)
             {

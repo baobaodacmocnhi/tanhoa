@@ -8,6 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.KhachHang;
+using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -17,6 +21,8 @@ namespace KTKS_DonKH.GUI.KhachHang
         CChuyenDi _cChuyenDi = new CChuyenDi();
         DataTable DSDonKH_Edited = new DataTable();
         BindingSource DSDonKH_BS = new BindingSource();
+        CLoaiDon _cLoaiDon = new CLoaiDon();
+        string _tuNgay = "", _denNgay = "";
 
         public frmQLDonKH()
         {
@@ -55,7 +61,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
         }
 
-        private void radChuDuyet_CheckedChanged(object sender, EventArgs e)
+        private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radChuaDuyet.Checked)
             {
@@ -236,6 +242,66 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
             DSDonKH_BS.Filter = expression;
+        }
+
+        private void dateTu_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+            DSDonKH_BS.Filter = expression;
+            _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+            _denNgay = "";
+        }
+
+        private void dateDen_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+            DSDonKH_BS.Filter = expression;
+            _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+        }
+
+        private void btnInDSDonKH_Click(object sender, EventArgs e)
+        {
+            DataTable dt = ((DataTable)DSDonKH_BS.DataSource).DefaultView.ToTable();
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DanhSachDonKH"].NewRow();
+
+                dr["TuNgay"] = _tuNgay;
+                dr["DenNgay"] = _denNgay;
+                dr["TenLD"] = itemRow["TenLD"];
+                dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                dr["MaXepDon"] = donkh.MaXepDon.ToString().Insert(donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(donkh.MaLD.Value);
+                if (donkh.KiemTraDHN)
+                    dr["ChiTiet"] += "Kiểm Tra ĐHN, ";
+                if (donkh.TienNuoc)
+                    dr["ChiTiet"] += "Tiền Nước, ";
+                if (donkh.ChiSoNuoc)
+                    dr["ChiTiet"] += "Chỉ Số Nước, ";
+                if (donkh.DonGiaNuoc)
+                    dr["ChiTiet"] += "Đơn Giá Nước, ";
+                if (donkh.SangTen)
+                    dr["ChiTiet"] += "Sang Tên, ";
+                if (donkh.NuocDuc)
+                    dr["ChiTiet"] += "Nước Đục, ";
+                if (donkh.DangKyDM || donkh.CatChuyenDM)
+                    dr["ChiTiet"] += "Định Mức, ";
+                if (donkh.LoaiKhac)
+                    dr["ChiTiet"] += donkh.LyDoLoaiKhac + ", ";
+                dr["DanhBo"] = itemRow["DanhBo"];
+                dr["HoTen"] = itemRow["HoTen"];
+                dr["DiaChi"] = itemRow["DiaChi"];
+                dr["NoiDung"] = itemRow["NoiDung"];
+
+                dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
+            }
+            
+            rptDSDonKH rpt = new rptDSDonKH();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
     }

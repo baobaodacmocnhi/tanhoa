@@ -260,7 +260,7 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                return db.Users.Single(item => item.MaU == MaU);
+                return db.Users.SingleOrDefault(item => item.MaU == MaU);
             }
             catch (Exception ex)
             {

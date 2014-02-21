@@ -62,7 +62,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.LoaiDons.Single(itemLD => itemLD.MaLD == MaLD);
+                return db.LoaiDons.SingleOrDefault(itemLD => itemLD.MaLD == MaLD);
             }
             catch (Exception ex)
             {

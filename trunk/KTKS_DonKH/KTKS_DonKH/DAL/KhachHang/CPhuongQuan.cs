@@ -21,8 +21,8 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                string Phuong = ", Phuong " + dbCAPNUOCTANHOA.PHUONGs.Single(itemPhuong => itemPhuong.MAQUAN == int.Parse(MaQuan) && itemPhuong.MAPHUONG == MaPhuong).TENPHUONG;
-                string Quan = ", Quan " + dbCAPNUOCTANHOA.QUANs.Single(itemQuan => itemQuan.MAQUAN == int.Parse(MaQuan)).TENQUAN;
+                string Phuong = ", P. " + dbCAPNUOCTANHOA.PHUONGs.Single(itemPhuong => itemPhuong.MAQUAN == int.Parse(MaQuan) && itemPhuong.MAPHUONG == MaPhuong).TENPHUONG;
+                string Quan = ", Q. " + dbCAPNUOCTANHOA.QUANs.Single(itemQuan => itemQuan.MAQUAN == int.Parse(MaQuan)).TENQUAN;
                 return Phuong + Quan;
             }
             catch (Exception ex)

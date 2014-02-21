@@ -92,7 +92,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.GiaNuocs.Single(itemGN => itemGN.MaGN == MaGN);
+                return db.GiaNuocs.SingleOrDefault(itemGN => itemGN.MaGN == MaGN);
             }
             catch (Exception ex)
             {
