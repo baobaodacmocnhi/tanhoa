@@ -143,7 +143,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public DataTable LoadDSKTXMDaDuyet()
+        public DataTable LoadDSKTXMDaDuyet_Old()
         {
             try
             {
@@ -171,6 +171,66 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     LyDoChuyenDi = itemKTXM.LyDoChuyen
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataSet LoadDSKTXMDaDuyet()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM)
+                {
+                    DataSet ds = new DataSet();
+                    ///Table KTXM
+                    var queryKTXM = from itemKTXM in db.KTXMs
+                                join itemDonKH in db.DonKHs on itemKTXM.MaKTXM equals itemDonKH.MaDon
+                                join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                select new
+                                {
+                                    itemDonKH.MaDon,
+                                    itemLoaiDon.TenLD,
+                                    itemDonKH.CreateDate,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemDonKH.NoiDung,
+                                    MaNoiChuyenDen = itemKTXM.MaNoiChuyenDen,
+                                    NoiChuyenDen = itemKTXM.NoiChuyenDen,
+                                    LyDoChuyenDen = itemKTXM.LyDoChuyenDen,
+                                    itemKTXM.MaKTXM,
+                                    NgayXuLy = itemKTXM.CreateDate,
+                                    itemKTXM.KetQua,
+                                    itemKTXM.MaChuyen,
+                                    LyDoChuyenDi = itemKTXM.LyDoChuyen
+                                };
+                    DataTable dtKTXM = new DataTable();
+                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                    dtKTXM.TableName = "KTXM";
+                    ds.Tables.Add(dtKTXM);
+
+                    ///Table CTKTXM
+                    var queryCTKTXM = from itemCTKTXM in db.CTKTXMs
+                                      select itemCTKTXM;
+
+                    DataTable dtCTKTXM = new DataTable();
+                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM.TableName = "CTKTXM";
+                    ds.Tables.Add(dtCTKTXM);
+
+                    if (dtKTXM.Rows.Count > 0 && dtCTKTXM.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["KTXM"].Columns["MaKTXM"], ds.Tables["CTKTXM"].Columns["MaKTXM"]);
+                    return ds;
                 }
                 else
                 {

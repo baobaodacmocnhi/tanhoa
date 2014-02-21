@@ -152,6 +152,12 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 break;
                         }
                         //_source.Add("MaTTTL", _cTTTL.getMaxMaTTTL().ToString());
+                        if (_donkh.LyDoChuyen == "")
+                            _donkh.LyDoChuyen = "TTTL";
+                        else
+                            _donkh.LyDoChuyen += ",TTTL";
+                        _donkh.Nhan = true;
+                        _cDonKH.SuaDonKH(_donkh);
                     }
                 }
                 CTTTTL cttttl = new CTTTTL();

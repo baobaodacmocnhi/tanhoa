@@ -11,6 +11,9 @@ using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -49,14 +52,35 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             radDaDuyet.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
+
+            ///GridControl
+            ///Tạo đối tượng LookUpEdit
+            RepositoryItemLookUpEdit myLookUpEdit = new RepositoryItemLookUpEdit();
+            ///Tạo đối tượng Column
+            LookUpColumnInfo column = new LookUpColumnInfo();
+            column.FieldName = "NoiChuyenDi";
+            column.Caption = "Nơi Chuyển Đi";
+            column.Width = 70;
+            myLookUpEdit.AppearanceDropDown.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            myLookUpEdit.AppearanceDropDownHeader.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            myLookUpEdit.Columns.Add(column);
+            ///Load dữ liệu
+            myLookUpEdit.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
+            myLookUpEdit.DisplayMember = "NoiChuyenDi";
+            myLookUpEdit.ValueMember = "MaChuyen";
+            ///Add LookUpEdit vào GridControl
+            ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
+
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh", gridViewCTKTXM);
         }
 
         private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radChuaDuyet.Checked)
             {
-                DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
-                cmbTimTheo.SelectedIndex = 0;
+                //DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                //cmbTimTheo.SelectedIndex = 0;
+                gridControl.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
             }
         }
 
@@ -64,8 +88,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radDaDuyet.Checked)
             {
-                DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
-                cmbTimTheo.SelectedIndex = 0;
+                //DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_Old();
+                //cmbTimTheo.SelectedIndex = 0;
+                gridControl.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
             }
         }
 
@@ -140,7 +165,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 DSKTXM_Edited.Clear();
 
                 if (radDaDuyet.Checked)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet();
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_Old();
                 if (radChuaDuyet.Checked)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
             }

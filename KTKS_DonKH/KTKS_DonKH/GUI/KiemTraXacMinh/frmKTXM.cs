@@ -197,9 +197,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(MaNoiChuyenDen));
                         //donkh.Chuyen = true;
                         //donkh.MaChuyen = "KTXM";
-                        //donkh.LyDoChuyen = "";
-                        //donkh.Nhan = true;
-                        //_cDonKH.SuaDonKH(donkh);
+                        if (_donkh.LyDoChuyen == "")
+                            _donkh.LyDoChuyen = "KTXM";
+                        else
+                            _donkh.LyDoChuyen += ",KTXM";
+                        _donkh.Nhan = true;
+                        _cDonKH.SuaDonKH(_donkh);
                     }
                 }
                 CTKTXM ctktxm = new CTKTXM();

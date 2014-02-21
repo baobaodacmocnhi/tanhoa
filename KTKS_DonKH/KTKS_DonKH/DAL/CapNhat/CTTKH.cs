@@ -323,7 +323,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.TTKhachHangDates.Single(itemCT => itemCT.Dot == id);
+                return db.TTKhachHangDates.SingleOrDefault(itemCT => itemCT.Dot == id);
             }
             catch (Exception ex)
             {

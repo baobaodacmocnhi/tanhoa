@@ -341,7 +341,44 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        
+        /// <summary>
+        /// Kiểm tra Đơn KH có được DCBD xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns>true/có</returns>
+        public bool CheckDCBDbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                if (db.DCBDs.Any(itemDCBD => itemDCBD.MaDon == MaDon))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy DCBD bằng MaDon
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns></returns>
+        public DCBD getDCBDbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                return db.DCBDs.SingleOrDefault(itemDCBD => itemDCBD.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
         #endregion
 

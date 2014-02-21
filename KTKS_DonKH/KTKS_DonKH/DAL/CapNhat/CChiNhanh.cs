@@ -89,7 +89,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                return db.ChiNhanhs.Single(itemCN => itemCN.MaCN == MaCN);
+                return db.ChiNhanhs.SingleOrDefault(itemCN => itemCN.MaCN == MaCN);
             }
             catch (Exception ex)
             {
