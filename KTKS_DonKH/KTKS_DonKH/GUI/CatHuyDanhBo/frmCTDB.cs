@@ -199,13 +199,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
                                 DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
                                 donkh.Nhan = true;
-                                _cDonKH.SuaDonKH(donkh);
+                                _cDonKH.SuaDonKH(donkh, true);
                                 break;
                             case "Kiểm Tra Xác Minh":
                                 ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
                                 KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
                                 ktxm.Nhan = true;
-                                _cKTXM.SuaKTXM(ktxm);
+                                _cKTXM.SuaKTXM(ktxm, true);
                                 break;
                         }
                         //_source.Add("MaCHDB", _cCHDB.getMaxMaCHDB().ToString());
@@ -214,7 +214,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                             _donkh.LyDoChuyen += ",CTCHDB";
                         _donkh.Nhan = true;
-                        _cDonKH.SuaDonKH(_donkh);
+                        _cDonKH.SuaDonKH(_donkh, true);
                     }
                 }
                 CTCTDB ctctdb = new CTCTDB();

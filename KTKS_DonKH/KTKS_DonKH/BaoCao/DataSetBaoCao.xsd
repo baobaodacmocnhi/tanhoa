@@ -43,6 +43,7 @@
               <xs:element name="HoTenNV" msprop:Generator_ColumnVarNameInTable="columnHoTenNV" msprop:Generator_ColumnPropNameInRow="HoTenNV" msprop:Generator_ColumnPropNameInTable="HoTenNVColumn" msprop:Generator_UserColumnName="HoTenNV" type="xs:string" minOccurs="0" />
               <xs:element name="DinhMucSau" msprop:Generator_ColumnVarNameInTable="columnDinhMucSau" msprop:Generator_ColumnPropNameInRow="DinhMucSau" msprop:Generator_ColumnPropNameInTable="DinhMucSauColumn" msprop:Generator_UserColumnName="DinhMucSau" type="xs:string" minOccurs="0" />
               <xs:element name="HieuLucTuKy" msprop:Generator_ColumnVarNameInTable="columnHieuLucTuKy" msprop:Generator_ColumnPropNameInRow="HieuLucTuKy" msprop:Generator_ColumnPropNameInTable="HieuLucTuKyColumn" msprop:Generator_UserColumnName="HieuLucTuKy" type="xs:string" minOccurs="0" />
+              <xs:element name="MaXepDon" msprop:Generator_ColumnVarNameInTable="columnMaXepDon" msprop:Generator_ColumnPropNameInRow="MaXepDon" msprop:Generator_ColumnPropNameInTable="MaXepDonColumn" msprop:Generator_UserColumnName="MaXepDon" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

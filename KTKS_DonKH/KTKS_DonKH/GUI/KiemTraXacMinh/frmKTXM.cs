@@ -202,7 +202,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         else
                             _donkh.LyDoChuyen += ",KTXM";
                         _donkh.Nhan = true;
-                        _cDonKH.SuaDonKH(_donkh);
+                        _cDonKH.SuaDonKH(_donkh, true);
                     }
                 }
                 CTKTXM ctktxm = new CTKTXM();

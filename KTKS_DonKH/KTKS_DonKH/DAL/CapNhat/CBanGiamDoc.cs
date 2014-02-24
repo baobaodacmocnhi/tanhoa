@@ -15,9 +15,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 if (CTaiKhoan.RoleCapNhat)
-                {
                     return db.BanGiamDocs.ToList();
-                }
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
