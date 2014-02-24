@@ -102,7 +102,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                where itemDonKH.Chuyen == false
+                                where itemDonKH.Nhan == false
                                 select new
                                 {
                                     itemDonKH.MaDon,
@@ -138,7 +138,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                where itemDonKH.Chuyen == true
+                                where itemDonKH.Nhan == true
                                 select new
                                 {
                                     itemDonKH.MaDon,
@@ -171,6 +171,32 @@ namespace KTKS_DonKH.DAL.KhachHang
             try
             {
                 if (CTaiKhoan.RoleQLDonKH)
+                {
+                    donkh.ModifyDate = DateTime.Now;
+                    donkh.ModifyBy = CTaiKhoan.TaiKhoan;
+                    db.SubmitChanges();
+                    MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaDonKH(DonKH donkh, bool inhertance)
+        {
+            try
+            {
+                if (inhertance)
                 {
                     donkh.ModifyDate = DateTime.Now;
                     donkh.ModifyBy = CTaiKhoan.TaiKhoan;

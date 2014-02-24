@@ -19,7 +19,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM)
+                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
                 {
                     if (db.KTXMs.Count() > 0)
                     {
@@ -52,7 +52,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM)
+                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
                 {
                     ktxm.ModifyDate = DateTime.Now;
                     ktxm.ModifyBy = CTaiKhoan.TaiKhoan;
@@ -194,7 +194,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     DataSet ds = new DataSet();
                     ///Table KTXM
                     var queryKTXM = from itemKTXM in db.KTXMs
-                                join itemDonKH in db.DonKHs on itemKTXM.MaKTXM equals itemDonKH.MaDon
+                                join itemDonKH in db.DonKHs on itemKTXM.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 select new
                                 {
@@ -429,7 +429,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
                 {
                     if (db.CTKTXMs.Count() > 0)
                     {
@@ -462,7 +462,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
                 {
                     ctktxm.ModifyDate = DateTime.Now;
                     ctktxm.ModifyBy = CTaiKhoan.TaiKhoan;

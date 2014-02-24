@@ -155,6 +155,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                 dr["MaDon"] = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                dr["MaXepDon"] = "Số Xếp Đơn: " + _donkh.MaXepDon.ToString().Insert(_donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
                 dr["TenLD"] = _donkh.LoaiDon.TenLD;
                 dr["KhachHang"] = _donkh.HoTen;
                 if (_donkh.DanhBo != "")
