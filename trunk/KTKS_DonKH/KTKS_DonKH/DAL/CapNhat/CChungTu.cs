@@ -105,7 +105,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 chungtu.CreateDate = DateTime.Now;
-                chungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                chungtu.CreateBy = CTaiKhoan.MaUser;
                 db.ChungTus.InsertOnSubmit(chungtu);
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -124,7 +124,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 chungtu.ModifyDate = DateTime.Now;
-                chungtu.ModifyBy = CTaiKhoan.TaiKhoan;
+                chungtu.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
@@ -172,7 +172,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 ctchungtu.CreateDate = DateTime.Now;
-                ctchungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                ctchungtu.CreateBy = CTaiKhoan.MaUser;
                 db.CTChungTus.InsertOnSubmit(ctchungtu);
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -191,7 +191,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 ctchungtu.ModifyDate = DateTime.Now;
-                ctchungtu.ModifyBy = CTaiKhoan.TaiKhoan;
+                ctchungtu.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
@@ -238,7 +238,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                     lichsuchungtu.MaLSCT = decimal.Parse(DateTime.Now.Year + "1");
                 lichsuchungtu.CreateDate = DateTime.Now;
-                lichsuchungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                lichsuchungtu.CreateBy = CTaiKhoan.MaUser;
                 db.LichSuChungTus.InsertOnSubmit(lichsuchungtu);
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -257,7 +257,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 lichsuchungtu.ModifyDate = DateTime.Now;
-                lichsuchungtu.ModifyBy = CTaiKhoan.TaiKhoan;
+                lichsuchungtu.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
@@ -556,7 +556,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         chungtuCN.SoNKConLai = chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai;
                         chungtuCN.SoNKTong = chungtu.SoNKTong;
                         chungtuCN.ModifyDate = DateTime.Now;
-                        chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         flagEdited = true;
                     }
                     else
@@ -582,7 +582,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
                         chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
                         chungtuCN.ModifyDate = DateTime.Now;
-                        chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         ///Cập nhật bảng CTChungTu
                         ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
                         ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
@@ -592,7 +592,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         else
                             ctchungtuCN.NgayHetHan = null;
                         ctchungtuCN.ModifyDate = DateTime.Now;
-                        ctchungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         flagEdited = true;
                     }
                     else
@@ -609,7 +609,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                         ctchungtuCN.NgayHetHan = null;
                     ctchungtuCN.ModifyDate = DateTime.Now;
-                    ctchungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                     flagEdited = true;
                 }
 
@@ -673,7 +673,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         chungtuCN.SoNKDaCap += ctchungtu.SoNKDangKy.Value;
                         chungtuCN.SoNKConLai = chungtuCN.SoNKNhan - chungtuCN.SoNKDaCap;
                         chungtuCN.ModifyDate = DateTime.Now;
-                        chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
 
                         ///Cập nhật CTChungTu
                         ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
@@ -684,7 +684,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         else
                             ctchungtuCN.NgayHetHan = null;
                         ctchungtuCN.ModifyDate = DateTime.Now;
-                        ctchungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                     }
                     else
                     {
@@ -712,7 +712,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             chungtuCN.SoNKDaCap += ctchungtu.SoNKDangKy.Value;
                             chungtuCN.SoNKConLai = chungtuCN.SoNKNhan - chungtuCN.SoNKDaCap;
                             chungtuCN.ModifyDate = DateTime.Now;
-                            chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                            chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         }
                         else
                         {
@@ -780,13 +780,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ///Cập nhật CTChungTu, Danh Bộ Cắt
                             ctchungtuCatCN.SoNKDangKy -= SoNKCat;
                             ctchungtuCatCN.ModifyDate = DateTime.Now;
-                            ctchungtuCatCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                            ctchungtuCatCN.ModifyBy = CTaiKhoan.MaUser;
 
                             ///Cập nhật CTChungTu, Danh Bộ Nhận
                             CTChungTu ctchungtuNhanCN = getCTChungTubyID(ctchungtuNhan.DanhBo,ctchungtuNhan.MaCT);
                             ctchungtuNhanCN.SoNKDangKy += SoNKCat;
                             ctchungtuNhanCN.ModifyDate = DateTime.Now;
-                            ctchungtuNhanCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                            ctchungtuNhanCN.ModifyBy = CTaiKhoan.MaUser;
 
                             db.SubmitChanges();
 
@@ -843,7 +843,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ///Cập nhật CTChungTu, Danh Bộ Cắt
                             ctchungtuCatCN.SoNKDangKy -= SoNKCat;
                             ctchungtuCatCN.ModifyDate = DateTime.Now;
-                            ctchungtuCatCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                            ctchungtuCatCN.ModifyBy = CTaiKhoan.MaUser;
 
                             db.SubmitChanges();
                             
@@ -905,13 +905,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                     {
                         ctchungtuCN.SoNKDangKy -= SoNKCat;
                         ctchungtuCN.ModifyDate = DateTime.Now;
-                        ctchungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
 
                         ChungTu chungtuCN = getChungTubyID(ctchungtuCat.MaCT);
                         chungtuCN.SoNKCat += SoNKCat;
                         chungtuCN.SoNKDaCap -= SoNKCat;
                         chungtuCN.ModifyDate = DateTime.Now;
-                        chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
 
                         db.SubmitChanges();
 

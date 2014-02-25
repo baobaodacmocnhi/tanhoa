@@ -31,5 +31,24 @@ namespace KTKS_DonKH.DAL.KhachHang
                 return "";
             }
         }
+
+        public void getTTDHNbyID(string DanhBo,out string Hieu,out string Co,out string SoThan)
+        {
+            try
+            {
+                TB_DULIEUKHACHHANG ttkhachhang = dbCAPNUOCTANHOA.TB_DULIEUKHACHHANGs.SingleOrDefault(itemttkhachhang => itemttkhachhang.DANHBO == DanhBo);
+                Hieu = ttkhachhang.HIEUDH;
+                Co = ttkhachhang.CODH;
+                SoThan = ttkhachhang.SOTHANDH;
+            }
+            catch (Exception ex)
+            {
+                Hieu = "";
+                Co = "";
+                SoThan = "";
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
     }
 }

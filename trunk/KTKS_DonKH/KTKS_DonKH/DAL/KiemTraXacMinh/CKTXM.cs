@@ -29,7 +29,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     else
                         ktxm.MaKTXM = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ktxm.CreateDate = DateTime.Now;
-                    ktxm.CreateBy = CTaiKhoan.TaiKhoan;
+                    ktxm.CreateBy = CTaiKhoan.MaUser;
                     db.KTXMs.InsertOnSubmit(ktxm);
                     db.SubmitChanges();
                     return true;
@@ -55,7 +55,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
                 {
                     ktxm.ModifyDate = DateTime.Now;
-                    ktxm.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ktxm.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
                 }
@@ -93,7 +93,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     else
                         ktxm.MaKTXM = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ktxm.CreateDate = DateTime.Now;
-                    ktxm.CreateBy = CTaiKhoan.TaiKhoan;
+                    ktxm.CreateBy = CTaiKhoan.MaUser;
                     db.KTXMs.InsertOnSubmit(ktxm);
                     db.SubmitChanges();
                     return true;
@@ -125,7 +125,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 if (inhertance)
                 {
                     ktxm.ModifyDate = DateTime.Now;
-                    ktxm.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ktxm.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
                 }
@@ -425,6 +425,43 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách theo người đăng nhập
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="MaUser"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTKTXM(decimal MaDon, int MaUser)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                {
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                where itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.CreateBy == MaUser
+                                select new
+                                {
+                                    itemCTKTXM.MaCTKTXM,
+                                    itemCTKTXM.KTXM.MaDon,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    NguoiDi = itemCTKTXM.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public bool ThemCTKTXM(CTKTXM ctktxm)
         {
             try
@@ -439,7 +476,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     else
                         ctktxm.MaCTKTXM = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctktxm.CreateDate = DateTime.Now;
-                    ctktxm.CreateBy = CTaiKhoan.TaiKhoan;
+                    ctktxm.CreateBy = CTaiKhoan.MaUser;
                     db.CTKTXMs.InsertOnSubmit(ctktxm);
                     db.SubmitChanges();
                     return true;
@@ -465,7 +502,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
                 {
                     ctktxm.ModifyDate = DateTime.Now;
-                    ctktxm.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ctktxm.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
                 }

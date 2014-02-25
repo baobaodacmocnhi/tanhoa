@@ -85,7 +85,7 @@
             this.txtMaDon.Location = new System.Drawing.Point(400, 6);
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.Size = new System.Drawing.Size(100, 26);
-            this.txtMaDon.TabIndex = 28;
+            this.txtMaDon.TabIndex = 0;
             this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
             // 
             // label21
@@ -220,7 +220,7 @@
             this.txtDienThoai.Location = new System.Drawing.Point(552, 27);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(100, 26);
-            this.txtDienThoai.TabIndex = 19;
+            this.txtDienThoai.TabIndex = 5;
             // 
             // label11
             // 
@@ -237,7 +237,7 @@
             this.txtNoiDungKiemTra.Multiline = true;
             this.txtNoiDungKiemTra.Name = "txtNoiDungKiemTra";
             this.txtNoiDungKiemTra.Size = new System.Drawing.Size(497, 113);
-            this.txtNoiDungKiemTra.TabIndex = 31;
+            this.txtNoiDungKiemTra.TabIndex = 7;
             // 
             // label1
             // 
@@ -255,7 +255,7 @@
             this.btnLuu.Location = new System.Drawing.Point(1096, 343);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 32;
+            this.btnLuu.TabIndex = 2;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -351,7 +351,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 174);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1268, 163);
-            this.groupBox2.TabIndex = 30;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
             // 
@@ -360,7 +360,7 @@
             this.txtHoTenKHKy.Location = new System.Drawing.Point(552, 59);
             this.txtHoTenKHKy.Name = "txtHoTenKHKy";
             this.txtHoTenKHKy.Size = new System.Drawing.Size(200, 26);
-            this.txtHoTenKHKy.TabIndex = 31;
+            this.txtHoTenKHKy.TabIndex = 6;
             // 
             // label17
             // 
@@ -378,7 +378,7 @@
             this.dateKTXM.Location = new System.Drawing.Point(110, 27);
             this.dateKTXM.Name = "dateKTXM";
             this.dateKTXM.Size = new System.Drawing.Size(109, 26);
-            this.dateKTXM.TabIndex = 29;
+            this.dateKTXM.TabIndex = 0;
             // 
             // label16
             // 
@@ -395,7 +395,6 @@
             this.txtSoThan.Name = "txtSoThan";
             this.txtSoThan.Size = new System.Drawing.Size(109, 26);
             this.txtSoThan.TabIndex = 19;
-            this.txtSoThan.Visible = false;
             // 
             // label3
             // 
@@ -405,14 +404,13 @@
             this.label3.Size = new System.Drawing.Size(63, 19);
             this.label3.TabIndex = 18;
             this.label3.Text = "Số Thân:";
-            this.label3.Visible = false;
             // 
             // txtChiKhoaGoc
             // 
             this.txtChiKhoaGoc.Location = new System.Drawing.Point(332, 91);
             this.txtChiKhoaGoc.Name = "txtChiKhoaGoc";
             this.txtChiKhoaGoc.Size = new System.Drawing.Size(100, 26);
-            this.txtChiKhoaGoc.TabIndex = 27;
+            this.txtChiKhoaGoc.TabIndex = 3;
             // 
             // label4
             // 
@@ -428,7 +426,7 @@
             this.txtMucDichSuDung.Location = new System.Drawing.Point(361, 123);
             this.txtMucDichSuDung.Name = "txtMucDichSuDung";
             this.txtMucDichSuDung.Size = new System.Drawing.Size(300, 26);
-            this.txtMucDichSuDung.TabIndex = 25;
+            this.txtMucDichSuDung.TabIndex = 4;
             // 
             // label5
             // 
@@ -460,7 +458,7 @@
             this.txtChiMatSo.Location = new System.Drawing.Point(332, 59);
             this.txtChiMatSo.Name = "txtChiMatSo";
             this.txtChiMatSo.Size = new System.Drawing.Size(100, 26);
-            this.txtChiMatSo.TabIndex = 23;
+            this.txtChiMatSo.TabIndex = 2;
             // 
             // label13
             // 
@@ -476,7 +474,7 @@
             this.txtChiSo.Location = new System.Drawing.Point(332, 27);
             this.txtChiSo.Name = "txtChiSo";
             this.txtChiSo.Size = new System.Drawing.Size(100, 26);
-            this.txtChiSo.TabIndex = 21;
+            this.txtChiSo.TabIndex = 1;
             // 
             // label14
             // 
@@ -510,7 +508,7 @@
             this.btnSua.Location = new System.Drawing.Point(824, 343);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(65, 35);
-            this.btnSua.TabIndex = 84;
+            this.btnSua.TabIndex = 3;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;

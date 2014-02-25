@@ -158,7 +158,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     else
                         tttl.MaTTTL = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     tttl.CreateDate = DateTime.Now;
-                    tttl.CreateBy = CTaiKhoan.TaiKhoan;
+                    tttl.CreateBy = CTaiKhoan.MaUser;
                     db.TTTLs.InsertOnSubmit(tttl);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -186,7 +186,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 {
 
                     tttl.ModifyDate = DateTime.Now;
-                    tttl.ModifyBy = CTaiKhoan.TaiKhoan;
+                    tttl.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -292,7 +292,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     else
                         cttttl.MaCTTTTL = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     cttttl.CreateDate = DateTime.Now;
-                    cttttl.CreateBy = CTaiKhoan.TaiKhoan;
+                    cttttl.CreateBy = CTaiKhoan.MaUser;
                     db.CTTTTLs.InsertOnSubmit(cttttl);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -319,7 +319,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 if (CTaiKhoan.RoleTTTL)
                 {
                     cttttl.ModifyDate = DateTime.Now;
-                    cttttl.ModifyBy = CTaiKhoan.TaiKhoan;
+                    cttttl.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

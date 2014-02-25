@@ -127,7 +127,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                         chinhanh.MaCN = 1;
                     chinhanh.CreateDate = DateTime.Now;
-                    chinhanh.CreateBy = CTaiKhoan.TaiKhoan;
+                    chinhanh.CreateBy = CTaiKhoan.MaUser;
                     db.ChiNhanhs.InsertOnSubmit(chinhanh);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -154,7 +154,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleCapNhat)
                 {
                     chinhanh.ModifyDate = DateTime.Now;
-                    chinhanh.ModifyBy = CTaiKhoan.TaiKhoan;
+                    chinhanh.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa ChiNhanh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

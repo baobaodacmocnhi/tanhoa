@@ -47,7 +47,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             cmbColumn.ValueMember = "MaChuyen";
 
             dgvDSDonKH.DataSource = DSDonKH_BS;
-            radChuaDuyet.Checked = true;
+            radAll.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
@@ -66,6 +66,15 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (radChuaDuyet.Checked)
             {
                 DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                cmbTimTheo.SelectedIndex = 0;
+            }
+        }
+
+        private void radAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radAll.Checked)
+            {
+                DSDonKH_BS.DataSource = _cDonKH.LoadDSAllDonKH();
                 cmbTimTheo.SelectedIndex = 0;
             }
         }
@@ -303,6 +312,8 @@ namespace KTKS_DonKH.GUI.KhachHang
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
+
+        
 
     }
 }

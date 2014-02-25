@@ -80,7 +80,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                         nhanvien.MaNV = 1;
                     nhanvien.CreateDate = DateTime.Now;
-                    nhanvien.CreateBy = CTaiKhoan.TaiKhoan;
+                    nhanvien.CreateBy = CTaiKhoan.MaUser;
                     db.NhanViens.InsertOnSubmit(nhanvien);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm NhanVien", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -107,7 +107,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleCapNhat)
                 {
                     nhanvien.ModifyDate = DateTime.Now;
-                    nhanvien.ModifyBy = CTaiKhoan.TaiKhoan;
+                    nhanvien.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa BanGiamDoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

@@ -307,7 +307,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     else
                         ctctdb.MaCTCTDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctctdb.CreateDate = DateTime.Now;
-                    ctctdb.CreateBy = CTaiKhoan.TaiKhoan;
+                    ctctdb.CreateBy = CTaiKhoan.MaUser;
                     db.CTCTDBs.InsertOnSubmit(ctctdb);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -334,7 +334,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB)
                 {
                     ctctdb.ModifyDate = DateTime.Now;
-                    ctctdb.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ctctdb.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -434,7 +434,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     else
                         ctchdb.MaCTCHDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctchdb.CreateDate = DateTime.Now;
-                    ctchdb.CreateBy = CTaiKhoan.TaiKhoan;
+                    ctchdb.CreateBy = CTaiKhoan.MaUser;
                     db.CTCHDBs.InsertOnSubmit(ctchdb);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -461,7 +461,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB)
                 {
                     ctchdb.ModifyDate = DateTime.Now;
-                    ctchdb.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ctchdb.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

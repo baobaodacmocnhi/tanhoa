@@ -42,7 +42,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                         gianuoc.MaGN = 1;
                     gianuoc.CreateDate = DateTime.Now;
-                    gianuoc.CreateBy = CTaiKhoan.TaiKhoan;
+                    gianuoc.CreateBy = CTaiKhoan.MaUser;
                     db.GiaNuocs.InsertOnSubmit(gianuoc);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm GiaNuoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -69,7 +69,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleCapNhat)
                 {
                     gianuoc.ModifyDate = DateTime.Now;
-                    gianuoc.ModifyBy = CTaiKhoan.TaiKhoan;
+                    gianuoc.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa GiaNuoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -21,6 +22,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CDonKH _cDonKH = new CDonKH();
         CTTKH _cTTKH = new CTTKH();
         CKTXM _cKTXM = new CKTXM();
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         int selectedindex = -1;
 
         protected override void OnLoad(EventArgs e)
@@ -140,6 +142,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
+                    string a, b, c;
+                    _cPhuongQuan.getTTDHNbyID(txtDanhBo.Text.Trim(),out a,out b,out c);
+                    txtHieu.Text = a;
+                    txtCo.Text = b;
+                    txtSoThan.Text = c;
                 }
                 else
                 {
@@ -197,10 +204,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(MaNoiChuyenDen));
                         //donkh.Chuyen = true;
                         //donkh.MaChuyen = "KTXM";
-                        if (_donkh.LyDoChuyen == "")
-                            _donkh.LyDoChuyen = "KTXM";
+                        if (string.IsNullOrEmpty(_donkh.TienTrinh))
+                            _donkh.TienTrinh = "KTXM";
                         else
-                            _donkh.LyDoChuyen += ",KTXM";
+                            _donkh.TienTrinh += ",KTXM";
                         _donkh.Nhan = true;
                         _cDonKH.SuaDonKH(_donkh, true);
                     }

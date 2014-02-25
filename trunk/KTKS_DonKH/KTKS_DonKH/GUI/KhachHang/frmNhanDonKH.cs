@@ -156,7 +156,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (cmbLD.SelectedIndex != -1)
             {
                 DonKH donkh = new DonKH();
-                donkh.MaDon = decimal.Parse(txtMaDon.Text.Trim().Replace("-",""));
+                donkh.MaDon = _cDonKH.getMaxNextID();
                 donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                 donkh.SoCongVan = txtSoCongVan.Text.Trim();
                 donkh.NoiDung = txtNoiDung.Text.Trim();
@@ -244,7 +244,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                     dr["MaDon"] = txtMaDon.Text.Trim();
-                    dr["MaXepDon"] = "Số Xếp Đơn: " + donkh.MaXepDon.ToString().Insert(donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
+                    dr["MaXepDon"] = _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
                     dr["TenLD"] = cmbLD.Text;
                     dr["KhachHang"] = txtHoTen.Text.Trim();
                     if (txtDanhBo.Text.Trim() != "")
