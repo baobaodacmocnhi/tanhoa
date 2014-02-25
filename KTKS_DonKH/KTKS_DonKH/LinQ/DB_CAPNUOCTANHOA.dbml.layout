@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DB_CAPNUOCTANHOA">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13" name="DB_CAPNUOCTANHOA">
   <DataContextMoniker Name="/DB_CAPNUOCTANHOADataContext" />
   <nestedChildShapes>
     <classShape Id="ffe6f3e0-bf97-4617-aaa7-5eb10aec12fd" absoluteBounds="3.5, 0.875, 2, 1.3862939453124998">
@@ -21,5 +21,11 @@
         <classShapeMoniker Id="ffe6f3e0-bf97-4617-aaa7-5eb10aec12fd" />
       </nodes>
     </associationConnector>
+    <classShape Id="bc9b7a73-c73a-45f9-b9f7-b8714aefb3f5" absoluteBounds="4.625, 2.875, 2, 9.8475569661458326">
+      <DataClassMoniker Name="/DB_CAPNUOCTANHOADataContext/TB_DULIEUKHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dbd7b99c-ad69-4b16-bd4f-56077530f9f8" absoluteBounds="4.64, 3.335, 1.9700000000000002, 9.2875569661458321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

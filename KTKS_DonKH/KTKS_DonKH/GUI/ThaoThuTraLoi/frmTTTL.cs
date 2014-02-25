@@ -152,10 +152,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 break;
                         }
                         //_source.Add("MaTTTL", _cTTTL.getMaxMaTTTL().ToString());
-                        if (_donkh.LyDoChuyen == "")
-                            _donkh.LyDoChuyen = "TTTL";
+                        if (string.IsNullOrEmpty(_donkh.TienTrinh))
+                            _donkh.TienTrinh = "TTTL";
                         else
-                            _donkh.LyDoChuyen += ",TTTL";
+                            _donkh.TienTrinh += ",TTTL";
                         _donkh.Nhan = true;
                         _cDonKH.SuaDonKH(_donkh, true);
                     }

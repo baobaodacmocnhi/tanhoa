@@ -118,7 +118,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                         loaidon.MaLD = 1;
                     loaidon.CreateDate = DateTime.Now;
-                    loaidon.CreateBy = CTaiKhoan.TaiKhoan;
+                    loaidon.CreateBy = CTaiKhoan.MaUser;
                     db.LoaiDons.InsertOnSubmit(loaidon);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -145,7 +145,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleCapNhat)
                 {
                     loaidon.ModifyDate = DateTime.Now;
-                    loaidon.ModifyBy = CTaiKhoan.TaiKhoan;
+                    loaidon.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

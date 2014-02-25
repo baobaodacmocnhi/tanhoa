@@ -150,187 +150,195 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void btnInBienNhan_Click(object sender, EventArgs e)
         {
-            if (_donkh != null)
+            try
             {
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                dr["MaDon"] = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                dr["MaXepDon"] = "Số Xếp Đơn: " + _donkh.MaXepDon.ToString().Insert(_donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
-                dr["TenLD"] = _donkh.LoaiDon.TenLD;
-                dr["KhachHang"] = _donkh.HoTen;
-                if (_donkh.DanhBo != "")
-                    dr["DanhBo"] = _donkh.DanhBo.Insert(4, ".").Insert(8, ".");
-                dr["DiaChi"] = _donkh.DiaChi;
-                dr["HopDong"] = _donkh.HopDong;
-                dr["DienThoai"] = _donkh.DienThoai;
+                if (_donkh != null)
+                {
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                    dr["MaDon"] = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                    dr["MaXepDon"] = _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
+                    dr["TenLD"] = _donkh.LoaiDon.TenLD;
+                    dr["KhachHang"] = _donkh.HoTen;
+                    if (_donkh.DanhBo != "")
+                        dr["DanhBo"] = _donkh.DanhBo.Insert(4, ".").Insert(8, ".");
+                    dr["DiaChi"] = _donkh.DiaChi;
+                    dr["HopDong"] = _donkh.HopDong;
+                    dr["DienThoai"] = _donkh.DienThoai;
 
-                #region CheckBox
-                if (_donkh.KiemTraDHN)
-                {
-                    dr["KiemTraDHN"] = true;
-                }
-                else
-                {
-                    dr["KiemTraDHN"] = false;
-                }
+                    #region CheckBox
+                    if (_donkh.KiemTraDHN)
+                    {
+                        dr["KiemTraDHN"] = true;
+                    }
+                    else
+                    {
+                        dr["KiemTraDHN"] = false;
+                    }
 
-                if (_donkh.TienNuoc)
-                {
-                    dr["TienNuoc"] = true;
-                }
-                else
-                {
-                    dr["TienNuoc"] = false;
-                }
+                    if (_donkh.TienNuoc)
+                    {
+                        dr["TienNuoc"] = true;
+                    }
+                    else
+                    {
+                        dr["TienNuoc"] = false;
+                    }
 
-                if (_donkh.ChiSoNuoc)
-                {
-                    dr["ChiSoNuoc"] = true;
-                }
-                else
-                {
-                    dr["ChiSoNuoc"] = false;
-                }
+                    if (_donkh.ChiSoNuoc)
+                    {
+                        dr["ChiSoNuoc"] = true;
+                    }
+                    else
+                    {
+                        dr["ChiSoNuoc"] = false;
+                    }
 
-                if (_donkh.DonGiaNuoc)
-                {
-                    dr["DonGiaNuoc"] = true;
-                }
-                else
-                {
-                    dr["DonGiaNuoc"] = false;
-                }
+                    if (_donkh.DonGiaNuoc)
+                    {
+                        dr["DonGiaNuoc"] = true;
+                    }
+                    else
+                    {
+                        dr["DonGiaNuoc"] = false;
+                    }
 
-                if (_donkh.SangTen)
-                {
-                    dr["SangTen"] = true;
-                }
-                else
-                {
-                    dr["SangTen"] = false;
-                }
+                    if (_donkh.SangTen)
+                    {
+                        dr["SangTen"] = true;
+                    }
+                    else
+                    {
+                        dr["SangTen"] = false;
+                    }
 
-                if (_donkh.DangKyDM)
-                {
-                    dr["DangKyDM"] = true;
-                }
-                else
-                {
-                    dr["DangKyDM"] = false;
-                }
+                    if (_donkh.DangKyDM)
+                    {
+                        dr["DangKyDM"] = true;
+                    }
+                    else
+                    {
+                        dr["DangKyDM"] = false;
+                    }
 
-                if (_donkh.CatChuyenDM)
-                {
-                    dr["CatChuyenDM"] = true;
-                }
-                else
-                {
-                    dr["CatChuyenDM"] = false;
-                }
+                    if (_donkh.CatChuyenDM)
+                    {
+                        dr["CatChuyenDM"] = true;
+                    }
+                    else
+                    {
+                        dr["CatChuyenDM"] = false;
+                    }
 
-                if (_donkh.NuocDuc)
-                {
-                    dr["NuocDuc"] = true;
-                }
-                else
-                {
-                    dr["NuocDuc"] = false;
-                }
+                    if (_donkh.NuocDuc)
+                    {
+                        dr["NuocDuc"] = true;
+                    }
+                    else
+                    {
+                        dr["NuocDuc"] = false;
+                    }
 
-                if (_donkh.LoaiKhac)
-                {
-                    dr["LoaiKhac"] = true;
-                    dr["LyDoLoaiKhac"] = _donkh.LyDoLoaiKhac;
-                }
-                else
-                {
-                    dr["LoaiKhac"] = false;
-                }
+                    if (_donkh.LoaiKhac)
+                    {
+                        dr["LoaiKhac"] = true;
+                        dr["LyDoLoaiKhac"] = _donkh.LyDoLoaiKhac;
+                    }
+                    else
+                    {
+                        dr["LoaiKhac"] = false;
+                    }
 
-                if (_donkh.CT_HoaDon)
-                {
-                    dr["CT_HoaDon"] = true;
-                }
-                else
-                {
-                    dr["CT_HoaDon"] = false;
-                }
+                    if (_donkh.CT_HoaDon)
+                    {
+                        dr["CT_HoaDon"] = true;
+                    }
+                    else
+                    {
+                        dr["CT_HoaDon"] = false;
+                    }
 
-                if (_donkh.CT_HK_KT3)
-                {
-                    dr["CT_HK_KT3"] = true;
-                }
-                else
-                {
-                    dr["CT_HK_KT3"] = false;
-                }
+                    if (_donkh.CT_HK_KT3)
+                    {
+                        dr["CT_HK_KT3"] = true;
+                    }
+                    else
+                    {
+                        dr["CT_HK_KT3"] = false;
+                    }
 
-                if (_donkh.CT_STT_GXNTT)
-                {
-                    dr["CT_STT_GXNTT"] = true;
-                }
-                else
-                {
-                    dr["CT_STT_GXNTT"] = false;
-                }
+                    if (_donkh.CT_STT_GXNTT)
+                    {
+                        dr["CT_STT_GXNTT"] = true;
+                    }
+                    else
+                    {
+                        dr["CT_STT_GXNTT"] = false;
+                    }
 
-                if (_donkh.CT_HDTN_CQN)
-                {
-                    dr["CT_HDTN_CQN"] = true;
-                }
-                else
-                {
-                    dr["CT_HDTN_CQN"] = false;
-                }
+                    if (_donkh.CT_HDTN_CQN)
+                    {
+                        dr["CT_HDTN_CQN"] = true;
+                    }
+                    else
+                    {
+                        dr["CT_HDTN_CQN"] = false;
+                    }
 
-                if (_donkh.CT_GC_SDSN)
-                {
-                    dr["CT_GC_SDSN"] = true;
-                }
-                else
-                {
-                    dr["CT_GC_SDSN"] = false;
-                }
+                    if (_donkh.CT_GC_SDSN)
+                    {
+                        dr["CT_GC_SDSN"] = true;
+                    }
+                    else
+                    {
+                        dr["CT_GC_SDSN"] = false;
+                    }
 
-                if (_donkh.CT_GXN2SN)
-                {
-                    dr["CT_GXN2SN"] = true;
-                }
-                else
-                {
-                    dr["CT_GXN2SN"] = false;
-                }
+                    if (_donkh.CT_GXN2SN)
+                    {
+                        dr["CT_GXN2SN"] = true;
+                    }
+                    else
+                    {
+                        dr["CT_GXN2SN"] = false;
+                    }
 
-                if (_donkh.CT_GDKKD)
-                {
-                    dr["CT_GDKKD"] = true;
-                }
-                else
-                {
-                    dr["CT_GDKKD"] = false;
-                }
+                    if (_donkh.CT_GDKKD)
+                    {
+                        dr["CT_GDKKD"] = true;
+                    }
+                    else
+                    {
+                        dr["CT_GDKKD"] = false;
+                    }
 
-                if (_donkh.CT_GCNDTDHN)
-                {
-                    dr["CT_GCNDTDHN"] = true;
-                }
-                else
-                {
-                    dr["CT_GCNDTDHN"] = false;
-                }
-                #endregion
+                    if (_donkh.CT_GCNDTDHN)
+                    {
+                        dr["CT_GCNDTDHN"] = true;
+                    }
+                    else
+                    {
+                        dr["CT_GCNDTDHN"] = false;
+                    }
+                    #endregion
 
-                dr["DinhMucSau"] = _donkh.DinhMucSau;
-                dr["HieuLucTuKy"] = _donkh.HieuLucTuKy;
-                CTaiKhoan _cTaiKhoan = new CTaiKhoan();
-                dr["HoTenNV"] = _cTaiKhoan.getHoTenUserbyTaiKhoan(_donkh.CreateBy);
-                
-                dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
-                rptBienNhanDonKH rpt = new rptBienNhanDonKH();
-                rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                    dr["DinhMucSau"] = _donkh.DinhMucSau;
+                    dr["HieuLucTuKy"] = _donkh.HieuLucTuKy;
+                    CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+                    dr["HoTenNV"] = _cTaiKhoan.getHoTenUserbyID(_donkh.CreateBy.Value);
+
+                    dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
+                    rptBienNhanDonKH rpt = new rptBienNhanDonKH();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnSua_Click(object sender, EventArgs e)

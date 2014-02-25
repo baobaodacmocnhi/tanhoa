@@ -209,10 +209,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 break;
                         }
                         //_source.Add("MaCHDB", _cCHDB.getMaxMaCHDB().ToString());
-                        if (_donkh.LyDoChuyen == "")
-                            _donkh.LyDoChuyen = "CTCHDB";
+                        if (string.IsNullOrEmpty(_donkh.TienTrinh))
+                            _donkh.TienTrinh = "CTCHDB";
                         else
-                            _donkh.LyDoChuyen += ",CTCHDB";
+                            _donkh.TienTrinh += ",CTCHDB";
                         _donkh.Nhan = true;
                         _cDonKH.SuaDonKH(_donkh, true);
                     }

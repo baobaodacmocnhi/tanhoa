@@ -11,6 +11,7 @@ namespace KTKS_DonKH.DAL.HeThong
 {
     class CTaiKhoan : CDAL
     {
+        private static int _maUser = -1;
         private static string _taiKhoan = "";
         private static string _hoTen = "";
         private static bool _roleTaiKhoan = false;
@@ -23,6 +24,11 @@ namespace KTKS_DonKH.DAL.HeThong
         private static bool _roleCHDB = false;
         private static bool _roleTTTL = false;
 
+        public static int MaUser
+        {
+            get { return CTaiKhoan._maUser; }
+            set { CTaiKhoan._maUser = value; }
+        }
         public static string TaiKhoan
         {
             get { return CTaiKhoan._taiKhoan; }
@@ -91,8 +97,9 @@ namespace KTKS_DonKH.DAL.HeThong
             {
                 if (db.Users.Any(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau && item.Login == false))
                 {
-                    _taiKhoan = taikhoan;
-                    _hoTen = db.Users.Single(item => item.TaiKhoan == taikhoan).HoTen;
+                    _maUser = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).MaU;
+                    _taiKhoan = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).TaiKhoan;
+                    _hoTen = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).HoTen;
                     ///Mã Role Tài Khoản là 1
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 1).CapQuyen == true)
                         _roleTaiKhoan = true;
@@ -162,6 +169,7 @@ namespace KTKS_DonKH.DAL.HeThong
                 //db.Users.Single(item => item.TaiKhoan == _taiKhoan).Login = false;
                 //db.SubmitChanges();
             }
+            _maUser = -1;
             _taiKhoan = "";
             _hoTen = "";
             _roleTaiKhoan = false;
@@ -274,11 +282,11 @@ namespace KTKS_DonKH.DAL.HeThong
         /// </summary>
         /// <param name="TaiKhoan"></param>
         /// <returns></returns>
-        public string getHoTenUserbyTaiKhoan(string TaiKhoan)
+        public string getHoTenUserbyID(int MaU)
         {
             try
             {
-                return db.Users.Single(item => item.TaiKhoan == TaiKhoan).HoTen;
+                return db.Users.Single(item => item.MaU == MaU).HoTen;
             }
             catch (Exception ex)
             {
@@ -300,7 +308,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         else
                             nguoidung.MaU = 1;
                         nguoidung.CreateDate = DateTime.Now;
-                        nguoidung.CreateBy = CTaiKhoan.TaiKhoan;
+                        nguoidung.CreateBy = CTaiKhoan.MaUser;
                         db.Users.InsertOnSubmit(nguoidung);
                         ///Cấp quyền mặc định = False
                         ///i tương ứng với số quyền trong bảng DetailRole
@@ -374,7 +382,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         if (!db.Users.Any(item => item.TaiKhoan == nguoidung.TaiKhoan))
                         {
                             nguoidung.ModifyDate = DateTime.Now;
-                            nguoidung.ModifyBy = CTaiKhoan.TaiKhoan;
+                            nguoidung.ModifyBy = CTaiKhoan.MaUser;
                             db.SubmitChanges();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return true;
@@ -387,7 +395,7 @@ namespace KTKS_DonKH.DAL.HeThong
                     else
                     {
                         nguoidung.ModifyDate = DateTime.Now;
-                        nguoidung.ModifyBy = CTaiKhoan.TaiKhoan;
+                        nguoidung.ModifyBy = CTaiKhoan.MaUser;
                         db.SubmitChanges();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
@@ -421,7 +429,7 @@ namespace KTKS_DonKH.DAL.HeThong
                 {
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).CapQuyen = Value;
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyDate = DateTime.Now;
-                    db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyBy = CTaiKhoan.TaiKhoan;
+                    db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
                 }

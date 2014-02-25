@@ -86,7 +86,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                         loaichungtu.MaLCT = 1;
                     loaichungtu.CreateDate = DateTime.Now;
-                    loaichungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                    loaichungtu.CreateBy = CTaiKhoan.MaUser;
                     db.LoaiChungTus.InsertOnSubmit(loaichungtu);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm LoaiChungTu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -113,7 +113,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleCapNhat)
                 {
                     loaichungtu.ModifyDate = DateTime.Now;
-                    loaichungtu.ModifyBy = CTaiKhoan.TaiKhoan;
+                    loaichungtu.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa LoaiChungTu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

@@ -194,7 +194,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     else
                         dcbd.MaDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     dcbd.CreateDate = DateTime.Now;
-                    dcbd.CreateBy = CTaiKhoan.TaiKhoan;
+                    dcbd.CreateBy = CTaiKhoan.MaUser;
                     db.DCBDs.InsertOnSubmit(dcbd);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -222,7 +222,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     
                     dcbd.ModifyDate = DateTime.Now;
-                    dcbd.ModifyBy = CTaiKhoan.TaiKhoan;
+                    dcbd.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa DCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -398,7 +398,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     else
                         ctdcbd.MaCTDCBD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctdcbd.CreateDate = DateTime.Now;
-                    ctdcbd.CreateBy = CTaiKhoan.TaiKhoan;
+                    ctdcbd.CreateBy = CTaiKhoan.MaUser;
                     db.CTDCBDs.InsertOnSubmit(ctdcbd);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -425,7 +425,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (CTaiKhoan.RoleDCBD)
                 {
                     ctdcbd.ModifyDate = DateTime.Now;
-                    ctdcbd.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ctdcbd.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa CTDCBD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -530,7 +530,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     else
                         ctdchd.MaCTDCHD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     ctdchd.CreateDate = DateTime.Now;
-                    ctdchd.CreateBy = CTaiKhoan.TaiKhoan;
+                    ctdchd.CreateBy = CTaiKhoan.MaUser;
                     db.CTDCHDs.InsertOnSubmit(ctdchd);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -557,7 +557,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (CTaiKhoan.RoleDCBD)
                 {
                     ctdchd.ModifyDate = DateTime.Now;
-                    ctdchd.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ctdchd.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa CTDCHD", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

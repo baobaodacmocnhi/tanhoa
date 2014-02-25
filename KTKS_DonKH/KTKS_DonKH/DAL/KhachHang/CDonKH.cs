@@ -74,7 +74,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 if (CTaiKhoan.RoleNhanDonKH)
                 {
                     donkh.CreateDate = DateTime.Now;
-                    donkh.CreateBy = CTaiKhoan.TaiKhoan;
+                    donkh.CreateBy = CTaiKhoan.MaUser;
                     db.DonKHs.InsertOnSubmit(donkh);
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Thêm DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -91,6 +91,41 @@ namespace KTKS_DonKH.DAL.KhachHang
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
                 return false;
+            }
+        }
+
+        public DataTable LoadDSAllDonKH()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH)
+                {
+                    var query = from itemDonKH in db.DonKHs
+                                join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                select new
+                                {
+                                    itemDonKH.MaDon,
+                                    itemLoaiDon.TenLD,
+                                    itemDonKH.CreateDate,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemDonKH.NoiDung,
+                                    itemDonKH.MaChuyen,
+                                    itemDonKH.LyDoChuyen
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
@@ -173,7 +208,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 if (CTaiKhoan.RoleQLDonKH)
                 {
                     donkh.ModifyDate = DateTime.Now;
-                    donkh.ModifyBy = CTaiKhoan.TaiKhoan;
+                    donkh.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -199,7 +234,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 if (inhertance)
                 {
                     donkh.ModifyDate = DateTime.Now;
-                    donkh.ModifyBy = CTaiKhoan.TaiKhoan;
+                    donkh.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

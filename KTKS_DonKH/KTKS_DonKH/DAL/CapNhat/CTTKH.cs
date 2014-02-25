@@ -302,7 +302,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleCapNhat)
                 {
                     ttkhdate.ModifyDate = DateTime.Now;
-                    ttkhdate.ModifyBy = CTaiKhoan.TaiKhoan;
+                    ttkhdate.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     return true;
                 }

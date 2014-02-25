@@ -323,10 +323,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         //_source.Add("MaDCBD", _cDCBD.getMaxMaDCBD().ToString());
                         //flagFirst = false;
-                        if (_donkh.LyDoChuyen == "")
-                            _donkh.LyDoChuyen = "DCBD";
+                        if (string.IsNullOrEmpty(_donkh.TienTrinh))
+                            _donkh.TienTrinh = "DCBD";
                         else
-                            _donkh.LyDoChuyen += ",DCBD";
+                            _donkh.TienTrinh += ",DCBD";
                         _donkh.Nhan = true;
                         _cDonKH.SuaDonKH(_donkh, true);
                     }
