@@ -43,7 +43,6 @@
               <xs:element name="HoTenNV" msprop:Generator_ColumnVarNameInTable="columnHoTenNV" msprop:Generator_ColumnPropNameInRow="HoTenNV" msprop:Generator_ColumnPropNameInTable="HoTenNVColumn" msprop:Generator_UserColumnName="HoTenNV" type="xs:string" minOccurs="0" />
               <xs:element name="DinhMucSau" msprop:Generator_ColumnVarNameInTable="columnDinhMucSau" msprop:Generator_ColumnPropNameInRow="DinhMucSau" msprop:Generator_ColumnPropNameInTable="DinhMucSauColumn" msprop:Generator_UserColumnName="DinhMucSau" type="xs:string" minOccurs="0" />
               <xs:element name="HieuLucTuKy" msprop:Generator_ColumnVarNameInTable="columnHieuLucTuKy" msprop:Generator_ColumnPropNameInRow="HieuLucTuKy" msprop:Generator_ColumnPropNameInTable="HieuLucTuKyColumn" msprop:Generator_UserColumnName="HieuLucTuKy" type="xs:string" minOccurs="0" />
-              <xs:element name="MaXepDon" msprop:Generator_ColumnVarNameInTable="columnMaXepDon" msprop:Generator_ColumnPropNameInRow="MaXepDon" msprop:Generator_ColumnPropNameInTable="MaXepDonColumn" msprop:Generator_UserColumnName="MaXepDon" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -183,7 +182,6 @@
               <xs:element name="DenNgay" msprop:Generator_ColumnVarNameInTable="columnDenNgay" msprop:Generator_ColumnPropNameInRow="DenNgay" msprop:Generator_ColumnPropNameInTable="DenNgayColumn" msprop:Generator_UserColumnName="DenNgay" type="xs:string" minOccurs="0" />
               <xs:element name="TenLD" msprop:Generator_ColumnVarNameInTable="columnTenLD" msprop:Generator_ColumnPropNameInRow="TenLD" msprop:Generator_ColumnPropNameInTable="TenLDColumn" msprop:Generator_UserColumnName="TenLD" type="xs:string" minOccurs="0" />
               <xs:element name="MaDon" msprop:Generator_ColumnVarNameInTable="columnMaDon" msprop:Generator_ColumnPropNameInRow="MaDon" msprop:Generator_ColumnPropNameInTable="MaDonColumn" msprop:Generator_UserColumnName="MaDon" type="xs:string" minOccurs="0" />
-              <xs:element name="MaXepDon" msprop:Generator_ColumnVarNameInTable="columnMaXepDon" msprop:Generator_ColumnPropNameInRow="MaXepDon" msprop:Generator_ColumnPropNameInTable="MaXepDonColumn" msprop:Generator_UserColumnName="MaXepDon" type="xs:string" minOccurs="0" />
               <xs:element name="NgayNhan" msprop:Generator_ColumnVarNameInTable="columnNgayNhan" msprop:Generator_ColumnPropNameInRow="NgayNhan" msprop:Generator_ColumnPropNameInTable="NgayNhanColumn" msprop:Generator_UserColumnName="NgayNhan" type="xs:string" minOccurs="0" />
               <xs:element name="ChiTiet" msprop:Generator_ColumnVarNameInTable="columnChiTiet" msprop:Generator_ColumnPropNameInRow="ChiTiet" msprop:Generator_ColumnPropNameInTable="ChiTietColumn" msprop:Generator_UserColumnName="ChiTiet" type="xs:string" minOccurs="0" />
               <xs:element name="DanhBo" msprop:Generator_ColumnVarNameInTable="columnDanhBo" msprop:Generator_ColumnPropNameInRow="DanhBo" msprop:Generator_ColumnPropNameInTable="DanhBoColumn" msprop:Generator_UserColumnName="DanhBo" type="xs:string" minOccurs="0" />

@@ -655,6 +655,7 @@
             this.txtMaXepDon.Size = new System.Drawing.Size(127, 25);
             this.txtMaXepDon.TabIndex = 86;
             this.txtMaXepDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaXepDon.Visible = false;
             // 
             // label17
             // 
@@ -666,6 +667,7 @@
             this.label17.Size = new System.Drawing.Size(127, 19);
             this.label17.TabIndex = 85;
             this.label17.Text = "     Số Xếp Đơn     ";
+            this.label17.Visible = false;
             // 
             // frmShowDonKH
             // 

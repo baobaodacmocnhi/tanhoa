@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSDonKH = new System.Windows.Forms.DataGridView();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,14 +61,14 @@
             // 
             this.dgvDSDonKH.AllowUserToAddRows = false;
             this.dgvDSDonKH.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDonKH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDonKH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSDonKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDonKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaChuyen,
@@ -109,8 +109,8 @@
             // MaDon
             // 
             this.MaDon.DataPropertyName = "MaDon";
-            dataGridViewCellStyle4.NullValue = null;
-            this.MaDon.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.NullValue = null;
+            this.MaDon.DefaultCellStyle = dataGridViewCellStyle2;
             this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             this.MaDon.ReadOnly = true;
@@ -257,7 +257,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 44);
+            this.label4.Location = new System.Drawing.Point(297, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 16;
@@ -266,7 +266,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(229, 13);
+            this.label3.Location = new System.Drawing.Point(297, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 17);
             this.label3.TabIndex = 15;
@@ -276,7 +276,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(307, 38);
+            this.dateDen.Location = new System.Drawing.Point(375, 38);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 25);
             this.dateDen.TabIndex = 14;
@@ -286,7 +286,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(307, 7);
+            this.dateTu.Location = new System.Drawing.Point(375, 7);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 25);
             this.dateTu.TabIndex = 13;
@@ -296,7 +296,7 @@
             // 
             this.btnInDSDonKH.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnInDSDonKH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDSDonKH.Location = new System.Drawing.Point(444, 7);
+            this.btnInDSDonKH.Location = new System.Drawing.Point(512, 7);
             this.btnInDSDonKH.Name = "btnInDSDonKH";
             this.btnInDSDonKH.Size = new System.Drawing.Size(125, 35);
             this.btnInDSDonKH.TabIndex = 17;
@@ -308,7 +308,7 @@
             // radAll
             // 
             this.radAll.AutoSize = true;
-            this.radAll.Location = new System.Drawing.Point(102, 12);
+            this.radAll.Location = new System.Drawing.Point(121, 12);
             this.radAll.Name = "radAll";
             this.radAll.Size = new System.Drawing.Size(67, 21);
             this.radAll.TabIndex = 18;

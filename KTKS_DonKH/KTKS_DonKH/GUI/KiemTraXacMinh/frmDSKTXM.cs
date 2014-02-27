@@ -14,6 +14,7 @@ using KTKS_DonKH.DAL.DieuChinhBienDong;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -41,15 +42,23 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void frmKTXM_Load(object sender, EventArgs e)
         {
-            dgvDSKTXM.AutoGenerateColumns = false;
-            dgvDSKTXM.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSKTXM.Font, FontStyle.Bold);
-            DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSKTXM.Columns["MaChuyen"];
-            cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
-            cmbColumn.DisplayMember = "NoiChuyenDi";
-            cmbColumn.ValueMember = "MaChuyen";
+            dgvDSCTKTXM.Location = gridControl.Location;
+            dgvDSCTKTXM.AutoGenerateColumns = false;
+            dgvDSCTKTXM.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSCTKTXM.Font, FontStyle.Bold);
+            //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSCTKTXM.Columns["MaChuyen"];
+            //cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
+            //cmbColumn.DisplayMember = "NoiChuyenDi";
+            //cmbColumn.ValueMember = "MaChuyen";
 
-            dgvDSKTXM.DataSource = DSDonKH_BS;
-            radDaDuyet.Checked = true;
+            //dgvDSCTKTXM.DataSource = DSDonKH_BS;
+            if (CTaiKhoan.RoleQLKTXM)
+            {
+                radDaDuyet.Checked = true;
+                //btnLuu.Visible = true;
+            }
+            else
+                if (CTaiKhoan.RoleKTXM)
+                    radDSKTXM.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
 
@@ -78,9 +87,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radChuaDuyet.Checked)
             {
-                //DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                DSDonKH_BS = new BindingSource();
+                DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
                 //cmbTimTheo.SelectedIndex = 0;
-                gridControl.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                gridControl.DataSource = DSDonKH_BS;
+                dgvDSCTKTXM.Visible = false;
+                gridControl.Visible = true;
             }
         }
 
@@ -88,9 +100,29 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radDaDuyet.Checked)
             {
-                //DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_Old();
+                DSDonKH_BS = new BindingSource();
+                if (CTaiKhoan.RoleQLKTXM)
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
                 //cmbTimTheo.SelectedIndex = 0;
-                gridControl.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
+                gridControl.DataSource = DSDonKH_BS;
+                dgvDSCTKTXM.Visible = false;
+                gridControl.Visible = true;
+            }
+        }
+
+        private void radDSKTXM_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSKTXM.Checked)
+            {
+                DSDonKH_BS = new BindingSource();
+                if(CTaiKhoan.RoleQLKTXM)
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
+                else
+
+                DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
+                dgvDSCTKTXM.DataSource = DSDonKH_BS;
+                dgvDSCTKTXM.Visible = true;
+                gridControl.Visible = false;
             }
         }
 
@@ -178,7 +210,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         /// <param name="e"></param>
         private void dgvDSDonKH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(dgvDSKTXM.RowHeadersDefaultCellStyle.ForeColor))
+            using (SolidBrush b = new SolidBrush(dgvDSCTKTXM.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
@@ -191,14 +223,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         /// <param name="e"></param>
         private void dgvDSKTXM_KeyDown(object sender, KeyEventArgs e)
         {
-            if (dgvDSKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
-            {
-                Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("Action", "View");
-                source.Add("MaDon", dgvDSKTXM["MaDon", dgvDSKTXM.CurrentRow.Index].Value.ToString());
-                frmShowDonKH frm = new frmShowDonKH(source);
-                frm.ShowDialog();
-            }
+            //if (dgvDSCTKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            //{
+            //    Dictionary<string, string> source = new Dictionary<string, string>();
+            //    source.Add("Action", "View");
+            //    source.Add("MaDon", dgvDSCTKTXM["MaDon", dgvDSCTKTXM.CurrentRow.Index].Value.ToString());
+            //    frmShowDonKH frm = new frmShowDonKH(source);
+            //    frm.ShowDialog();
+            //}
         }
 
         /// <summary>
@@ -208,7 +240,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         /// <param name="e"></param>
         private void dgvDSKTXM_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            btnLuu.Enabled = false;
+            //btnLuu.Enabled = false;
         }
 
         /// <summary>
@@ -218,23 +250,23 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         /// <param name="e"></param>
         private void dgvDSKTXM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            ///Khai báo các cột tương ứng trong Datagridview
-            if (DSKTXM_Edited.Columns.Count == 0)
-                foreach (DataGridViewColumn itemCol in dgvDSKTXM.Columns)
-                {
-                    DSKTXM_Edited.Columns.Add(itemCol.Name, itemCol.ValueType);
-                }
+            /////Khai báo các cột tương ứng trong Datagridview
+            //if (DSKTXM_Edited.Columns.Count == 0)
+            //    foreach (DataGridViewColumn itemCol in dgvDSCTKTXM.Columns)
+            //    {
+            //        DSKTXM_Edited.Columns.Add(itemCol.Name, itemCol.ValueType);
+            //    }
 
-            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
-            ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row.EndEdit();
+            /////Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
+            //((DataRowView)dgvDSCTKTXM.CurrentRow.DataBoundItem).Row.EndEdit();
 
-            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
-            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
-                DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
+            /////DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
+            /////Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
+            //if (DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSCTKTXM.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
+            //    DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon = " + ((DataRowView)dgvDSCTKTXM.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
 
-            DSKTXM_Edited.ImportRow(((DataRowView)dgvDSKTXM.CurrentRow.DataBoundItem).Row);
-            btnLuu.Enabled = true;
+            //DSKTXM_Edited.ImportRow(((DataRowView)dgvDSCTKTXM.CurrentRow.DataBoundItem).Row);
+            //btnLuu.Enabled = true;
         }
 
         /// <summary>
@@ -244,7 +276,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         /// <param name="e"></param>
         private void dgvDSKTXM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            if (dgvDSCTKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -314,6 +346,34 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
+
+        private void gridViewKTXM_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            btnLuu.Enabled = false;
+        }
+
+        private void gridViewKTXM_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            ///Khai báo các cột tương ứng trong Datagridview
+            if (DSKTXM_Edited.Columns.Count == 0)
+                foreach (DataColumn itemCol in ((DataTable)DSDonKH_BS.DataSource).Columns)
+                {
+                    DSKTXM_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
+                }
+
+            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
+            ((DataRowView)gridViewKTXM.GetRow(gridViewKTXM.GetSelectedRows()[0])).Row.EndEdit();
+
+            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
+            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
+            if (DSKTXM_Edited.Select("MaDon = " + ((DataRowView)gridViewKTXM.GetRow(gridViewKTXM.GetSelectedRows()[0])).Row["MaDon"]).Count() > 0)
+                DSKTXM_Edited.Rows.Remove(DSKTXM_Edited.Select("MaDon = " + ((DataRowView)gridViewKTXM.GetRow(gridViewKTXM.GetSelectedRows()[0])).Row["MaDon"])[0]);
+
+            DSKTXM_Edited.ImportRow(((DataRowView)gridViewKTXM.GetRow(gridViewKTXM.GetSelectedRows()[0])).Row);
+            btnLuu.Enabled = true;
+        }
+
+        
 
   
     }

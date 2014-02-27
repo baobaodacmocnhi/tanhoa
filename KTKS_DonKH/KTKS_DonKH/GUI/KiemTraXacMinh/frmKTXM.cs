@@ -121,7 +121,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         Clear();
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon);
+                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon, CTaiKhoan.MaUser);
 
                 }
                 else
@@ -238,7 +238,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 if (_cKTXM.ThemCTKTXM(ctktxm))
                 {
-                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon);
+                    dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon, CTaiKhoan.MaUser);
                     _ttkhachhang = null;
                     Clear();
                 }

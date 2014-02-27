@@ -8123,7 +8123,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _MaR;
 		
-		private System.Nullable<bool> _CapQuyen;
+		private bool _QuyenCapNhat;
+		
+		private bool _QuyenXem;
 		
 		private EntityRef<User> _User;
 		
@@ -8137,8 +8139,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaUChanged();
     partial void OnMaRChanging(int value);
     partial void OnMaRChanged();
-    partial void OnCapQuyenChanging(System.Nullable<bool> value);
-    partial void OnCapQuyenChanged();
+    partial void OnQuyenCapNhatChanging(bool value);
+    partial void OnQuyenCapNhatChanged();
+    partial void OnQuyenXemChanging(bool value);
+    partial void OnQuyenXemChanged();
     #endregion
 		
 		public DetailRole()
@@ -8196,22 +8200,42 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CapQuyen", DbType="Bit")]
-		public System.Nullable<bool> CapQuyen
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuyenCapNhat", DbType="Bit NOT NULL")]
+		public bool QuyenCapNhat
 		{
 			get
 			{
-				return this._CapQuyen;
+				return this._QuyenCapNhat;
 			}
 			set
 			{
-				if ((this._CapQuyen != value))
+				if ((this._QuyenCapNhat != value))
 				{
-					this.OnCapQuyenChanging(value);
+					this.OnQuyenCapNhatChanging(value);
 					this.SendPropertyChanging();
-					this._CapQuyen = value;
-					this.SendPropertyChanged("CapQuyen");
-					this.OnCapQuyenChanged();
+					this._QuyenCapNhat = value;
+					this.SendPropertyChanged("QuyenCapNhat");
+					this.OnQuyenCapNhatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuyenXem", DbType="Bit NOT NULL")]
+		public bool QuyenXem
+		{
+			get
+			{
+				return this._QuyenXem;
+			}
+			set
+			{
+				if ((this._QuyenXem != value))
+				{
+					this.OnQuyenXemChanging(value);
+					this.SendPropertyChanging();
+					this._QuyenXem = value;
+					this.SendPropertyChanged("QuyenXem");
+					this.OnQuyenXemChanged();
 				}
 			}
 		}

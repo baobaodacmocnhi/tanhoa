@@ -88,33 +88,33 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
                     {
                         DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                        if (!donkh.Nhan)
-                        {
+                        //if (!donkh.Nhan)
+                        //{
                             donkh.Chuyen = true;
                             donkh.MaChuyen = itemRow["MaChuyen"].ToString();
                             donkh.LyDoChuyen = itemRow["LyDoChuyen"].ToString();
                             _cDonKH.SuaDonKH(donkh);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //}
                     }
                     else
                         if (itemRow["MaChuyen"].ToString() == "NONE")
                         {
                             DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                            if (!donkh.Nhan)
-                            {
+                            //if (!donkh.Nhan)
+                            //{
                                 donkh.Chuyen = false;
                                 donkh.MaChuyen = null;
                                 donkh.LyDoChuyen = null;
                                 _cDonKH.SuaDonKH(donkh);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            //}
+                            //else
+                            //{
+                            //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //}
                         }
                 }
                 DSDonKH_Edited.Clear();
@@ -279,10 +279,10 @@ namespace KTKS_DonKH.GUI.KhachHang
                 dr["TuNgay"] = _tuNgay;
                 dr["DenNgay"] = _denNgay;
                 dr["TenLD"] = itemRow["TenLD"];
-                dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
                 dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
                 DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                dr["MaXepDon"] = donkh.MaXepDon.ToString().Insert(donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(donkh.MaLD.Value);
+                dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(donkh.MaLD.Value);
+                //dr["MaXepDon"] = donkh.MaXepDon.ToString().Insert(donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(donkh.MaLD.Value);
                 if (donkh.KiemTraDHN)
                     dr["ChiTiet"] += "Kiểm Tra ĐHN, ";
                 if (donkh.TienNuoc)

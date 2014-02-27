@@ -196,6 +196,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var queryKTXM = from itemKTXM in db.KTXMs
                                 join itemDonKH in db.DonKHs on itemKTXM.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                orderby itemDonKH.MaDon ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
@@ -221,7 +222,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
                     ///Table CTKTXM
                     var queryCTKTXM = from itemCTKTXM in db.CTKTXMs
-                                      select itemCTKTXM;
+                                      join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                      select new
+                                      {
+                                          itemCTKTXM.MaKTXM,
+                                          itemCTKTXM.MaCTKTXM,
+                                          itemCTKTXM.CreateDate,
+                                          itemCTKTXM.DanhBo,
+                                          itemCTKTXM.NoiDungKiemTra,
+                                          CreateBy = itemUser.HoTen,
+                                      };
 
                     DataTable dtCTKTXM = new DataTable();
                     dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
@@ -255,6 +265,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var queryDonKH = from itemDonKH in db.DonKHs
                                      join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                      where itemDonKH.Nhan == false && itemDonKH.MaChuyen == "KTXM"
+                                     orderby itemDonKH.MaDon ascending
                                      select new
                                      {
                                          itemDonKH.MaDon,
@@ -394,6 +405,41 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         #region CTKTXM (Chi Tiết Kiểm Tra Xác Minh)
 
+        public DataTable LoadDSCTKTXM()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                {
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                orderby itemCTKTXM.KTXM.MaDon ascending
+                                select new
+                                {
+                                    itemCTKTXM.MaCTKTXM,
+                                    itemCTKTXM.KTXM.MaDon,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    itemCTKTXM.CreateDate,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTKTXM(decimal MaDon)
         {
             try
@@ -401,14 +447,19 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
                 {
                     var query = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.KTXM.MaDon == MaDon
+                                orderby itemCTKTXM.KTXM.MaDon ascending
                                 select new
                                 {
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
-                                    NguoiDi = itemCTKTXM.CreateBy,
+                                    itemCTKTXM.CreateDate,
+                                    CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -426,7 +477,48 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         }
 
         /// <summary>
-        /// Lấy Danh Sách theo người đăng nhập
+        /// Lấy Danh Sách CTKTXM theo User
+        /// </summary>
+        /// <param name="MaUser"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTKTXM(int MaUser)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                {
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                where itemCTKTXM.CreateBy == MaUser
+                                orderby itemCTKTXM.KTXM.MaDon ascending
+                                select new
+                                {
+                                    itemCTKTXM.MaCTKTXM,
+                                    itemCTKTXM.KTXM.MaDon,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    itemCTKTXM.CreateDate,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách CTKTXM theo Mã Đơn & User
         /// </summary>
         /// <param name="MaDon"></param>
         /// <param name="MaUser"></param>
@@ -438,14 +530,19 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
                 {
                     var query = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.CreateBy == MaUser
+                                orderby itemCTKTXM.KTXM.MaDon ascending
                                 select new
                                 {
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
-                                    NguoiDi = itemCTKTXM.CreateBy,
+                                    itemCTKTXM.CreateDate,
+                                    CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
