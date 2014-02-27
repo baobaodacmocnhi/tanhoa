@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="DB_KTKS_DonKHDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BanGiamDoc" Member="BanGiamDocs">
     <Type Name="BanGiamDoc">
       <Column Name="MaBGD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -351,7 +351,8 @@
     <Type Name="DetailRole">
       <Column Name="MaU" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaR" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CapQuyen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="QuyenCapNhat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="QuyenXem" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="User_DetailRole" Member="User" ThisKey="MaU" OtherKey="MaU" Type="User" IsForeignKey="true" />
       <Association Name="Role_DetailRole" Member="Role" ThisKey="MaR" OtherKey="MaR" Type="Role" IsForeignKey="true" />
     </Type>

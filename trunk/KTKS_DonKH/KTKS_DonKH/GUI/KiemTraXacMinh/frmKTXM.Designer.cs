@@ -50,11 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSKetQuaKiemTra = new System.Windows.Forms.DataGridView();
-            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtHoTenKHKy = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -75,6 +70,11 @@
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
+            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -288,42 +288,6 @@
             this.dgvDSKetQuaKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKetQuaKiemTra_CellFormatting);
             this.dgvDSKetQuaKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSKetQuaKiemTra_RowPostPaint);
             // 
-            // MaCTKTXM
-            // 
-            this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
-            this.MaCTKTXM.HeaderText = "MaCTKTXM";
-            this.MaCTKTXM.Name = "MaCTKTXM";
-            this.MaCTKTXM.Visible = false;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // NoiDungKiemTra
-            // 
-            this.NoiDungKiemTra.DataPropertyName = "NoiDungKiemTra";
-            this.NoiDungKiemTra.HeaderText = "Kết Qủa";
-            this.NoiDungKiemTra.Name = "NoiDungKiemTra";
-            this.NoiDungKiemTra.ReadOnly = true;
-            this.NoiDungKiemTra.Width = 420;
-            // 
-            // NguoiDi
-            // 
-            this.NguoiDi.DataPropertyName = "NguoiDi";
-            this.NguoiDi.HeaderText = "Người Đi";
-            this.NguoiDi.Name = "NguoiDi";
-            this.NguoiDi.ReadOnly = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtHoTenKHKy);
@@ -513,6 +477,43 @@
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // MaCTKTXM
+            // 
+            this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
+            this.MaCTKTXM.HeaderText = "MaCTKTXM";
+            this.MaCTKTXM.Name = "MaCTKTXM";
+            this.MaCTKTXM.Visible = false;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // NoiDungKiemTra
+            // 
+            this.NoiDungKiemTra.DataPropertyName = "NoiDungKiemTra";
+            this.NoiDungKiemTra.HeaderText = "Kết Qủa";
+            this.NoiDungKiemTra.Name = "NoiDungKiemTra";
+            this.NoiDungKiemTra.ReadOnly = true;
+            this.NoiDungKiemTra.Width = 420;
+            // 
+            // NguoiDi
+            // 
+            this.NguoiDi.DataPropertyName = "NguoiDi";
+            this.NguoiDi.HeaderText = "Người Đi";
+            this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.ReadOnly = true;
+            this.NguoiDi.Visible = false;
             // 
             // frmKTXM
             // 

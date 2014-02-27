@@ -14,16 +14,134 @@ namespace KTKS_DonKH.DAL.HeThong
         private static int _maUser = -1;
         private static string _taiKhoan = "";
         private static string _hoTen = "";
-        private static bool _roleTaiKhoan = false;
-        private static bool _roleCapNhat = false;
-        private static bool _roleNhanDonKH = false;
-        private static bool _roleQLDonKH = false;
-        private static bool _roleKTXM = false;
-        private static bool _roleQLKTXM = false;
-        private static bool _roleDCBD = false;
-        private static bool _roleCHDB = false;
-        private static bool _roleTTTL = false;
+        private static bool _roleTaiKhoan_Xem = false;
 
+        public static bool RoleTaiKhoan_Xem
+        {
+            get { return CTaiKhoan._roleTaiKhoan_Xem; }
+            set { CTaiKhoan._roleTaiKhoan_Xem = value; }
+        }
+        private static bool _roleCapNhat_Xem = false;
+
+        public static bool RoleCapNhat_Xem
+        {
+            get { return CTaiKhoan._roleCapNhat_Xem; }
+            set { CTaiKhoan._roleCapNhat_Xem = value; }
+        }
+        private static bool _roleNhanDonKH_Xem = false;
+
+        public static bool RoleNhanDonKH_Xem
+        {
+            get { return CTaiKhoan._roleNhanDonKH_Xem; }
+            set { CTaiKhoan._roleNhanDonKH_Xem = value; }
+        }
+        private static bool _roleQLDonKH_Xem = false;
+
+        public static bool RoleQLDonKH_Xem
+        {
+            get { return CTaiKhoan._roleQLDonKH_Xem; }
+            set { CTaiKhoan._roleQLDonKH_Xem = value; }
+        }
+        private static bool _roleKTXM_Xem = false;
+
+        public static bool RoleKTXM_Xem
+        {
+            get { return CTaiKhoan._roleKTXM_Xem; }
+            set { CTaiKhoan._roleKTXM_Xem = value; }
+        }
+        private static bool _roleQLKTXM_Xem = false;
+
+        public static bool RoleQLKTXM_Xem
+        {
+            get { return CTaiKhoan._roleQLKTXM_Xem; }
+            set { CTaiKhoan._roleQLKTXM_Xem = value; }
+        }
+        private static bool _roleDCBD_Xem = false;
+
+        public static bool RoleDCBD_Xem
+        {
+            get { return CTaiKhoan._roleDCBD_Xem; }
+            set { CTaiKhoan._roleDCBD_Xem = value; }
+        }
+        private static bool _roleCHDB_Xem = false;
+
+        public static bool RoleCHDB_Xem
+        {
+            get { return CTaiKhoan._roleCHDB_Xem; }
+            set { CTaiKhoan._roleCHDB_Xem = value; }
+        }
+        private static bool _roleTTTL_Xem = false;
+
+        public static bool RoleTTTL_Xem
+        {
+            get { return CTaiKhoan._roleTTTL_Xem; }
+            set { CTaiKhoan._roleTTTL_Xem = value; }
+        }
+        ///
+        private static bool _roleTaiKhoan_CapNhat = false;
+
+        public static bool RoleTaiKhoan_CapNhat
+        {
+            get { return CTaiKhoan._roleTaiKhoan_CapNhat; }
+            set { CTaiKhoan._roleTaiKhoan_CapNhat = value; }
+        }
+        private static bool _roleCapNhat_CapNhat = false;
+
+        public static bool RoleCapNhat_CapNhat
+        {
+            get { return CTaiKhoan._roleCapNhat_CapNhat; }
+            set { CTaiKhoan._roleCapNhat_CapNhat = value; }
+        }
+        private static bool _roleNhanDonKH_CapNhat = false;
+
+        public static bool RoleNhanDonKH_CapNhat
+        {
+            get { return CTaiKhoan._roleNhanDonKH_CapNhat; }
+            set { CTaiKhoan._roleNhanDonKH_CapNhat = value; }
+        }
+        private static bool _roleQLDonKH_CapNhat = false;
+
+        public static bool RoleQLDonKH_CapNhat
+        {
+            get { return CTaiKhoan._roleQLDonKH_CapNhat; }
+            set { CTaiKhoan._roleQLDonKH_CapNhat = value; }
+        }
+        private static bool _roleKTXM_CapNhat = false;
+
+        public static bool RoleKTXM_CapNhat
+        {
+            get { return CTaiKhoan._roleKTXM_CapNhat; }
+            set { CTaiKhoan._roleKTXM_CapNhat = value; }
+        }
+        private static bool _roleQLKTXM_CapNhat = false;
+
+        public static bool RoleQLKTXM_CapNhat
+        {
+            get { return CTaiKhoan._roleQLKTXM_CapNhat; }
+            set { CTaiKhoan._roleQLKTXM_CapNhat = value; }
+        }
+        private static bool _roleDCBD_CapNhat = false;
+
+        public static bool RoleDCBD_CapNhat
+        {
+            get { return CTaiKhoan._roleDCBD_CapNhat; }
+            set { CTaiKhoan._roleDCBD_CapNhat = value; }
+        }
+        private static bool _roleCHDB_CapNhat = false;
+
+        public static bool RoleCHDB_CapNhat
+        {
+            get { return CTaiKhoan._roleCHDB_CapNhat; }
+            set { CTaiKhoan._roleCHDB_CapNhat = value; }
+        }
+        private static bool _roleTTTL_CapNhat = false;
+
+        public static bool RoleTTTL_CapNhat
+        {
+            get { return CTaiKhoan._roleTTTL_CapNhat; }
+            set { CTaiKhoan._roleTTTL_CapNhat = value; }
+        }
+        ///
         public static int MaUser
         {
             get { return CTaiKhoan._maUser; }
@@ -39,51 +157,7 @@ namespace KTKS_DonKH.DAL.HeThong
             get { return CTaiKhoan._hoTen; }
             set { CTaiKhoan._hoTen = value; }
         }
-        public static bool RoleTaiKhoan
-        {
-            get { return CTaiKhoan._roleTaiKhoan; }
-            set { CTaiKhoan._roleTaiKhoan = value; }
-        }
-        public static bool RoleCapNhat
-        {
-            get { return CTaiKhoan._roleCapNhat; }
-            set { CTaiKhoan._roleCapNhat = value; }
-        }
-        public static bool RoleNhanDonKH
-        {
-            get { return CTaiKhoan._roleNhanDonKH; }
-            set { CTaiKhoan._roleNhanDonKH = value; }
-        }
-        public static bool RoleQLDonKH
-        {
-            get { return CTaiKhoan._roleQLDonKH; }
-            set { CTaiKhoan._roleQLDonKH = value; }
-        }
-        public static bool RoleKTXM
-        {
-            get { return CTaiKhoan._roleKTXM; }
-            set { CTaiKhoan._roleKTXM = value; }
-        }
-        public static bool RoleQLKTXM
-        {
-            get { return CTaiKhoan._roleQLKTXM; }
-            set { CTaiKhoan._roleQLKTXM = value; }
-        }
-        public static bool RoleDCBD
-        {
-            get { return CTaiKhoan._roleDCBD; }
-            set { CTaiKhoan._roleDCBD = value; }
-        }
-        public static bool RoleCHDB
-        {
-            get { return CTaiKhoan._roleCHDB; }
-            set { CTaiKhoan._roleCHDB = value; }
-        }
-        public static bool RoleTTTL
-        {
-            get { return CTaiKhoan._roleTTTL; }
-            set { CTaiKhoan._roleTTTL = value; }
-        }
+
 
         /// <summary>
         /// Kiểm tra đăng nhập
@@ -101,47 +175,47 @@ namespace KTKS_DonKH.DAL.HeThong
                     _taiKhoan = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).TaiKhoan;
                     _hoTen = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).HoTen;
                     ///Mã Role Tài Khoản là 1
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 1).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 1).QuyenCapNhat == true)
                         _roleTaiKhoan = true;
                     else
                         _roleTaiKhoan = false;
                     ///Mã Role Cập Nhật là 2
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 2).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 2).QuyenCapNhat == true)
                         _roleCapNhat = true;
                     else
                         _roleCapNhat = false;
                     ///Mã Role Nhận Đơn Khách Hàng là 3
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 3).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 3).QuyenCapNhat == true)
                         _roleNhanDonKH = true;
                     else
                         _roleNhanDonKH = false;
                     ///Mã Role Quản Lý Đơn Khách Hàng là 4
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 4).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 4).QuyenCapNhat == true)
                         _roleQLDonKH = true;
                     else
                         _roleQLDonKH = false;
                     ///Mã Role Kiểm Tra Xác Minh là 5
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 5).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 5).QuyenCapNhat == true)
                         _roleKTXM = true;
                     else
                         _roleKTXM = false;
                     ///Mã Role Quản Lý Kiểm Tra Xác Minh là 6
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 6).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 6).QuyenCapNhat == true)
                         _roleQLKTXM = true;
                     else
                         _roleQLKTXM = false;
                     ///Mã Role Điều Chỉnh Biến Động là 7
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 7).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 7).QuyenCapNhat == true)
                         _roleDCBD = true;
                     else
                         _roleDCBD = false;
                     ///Mã Role Cắt Hủy Danh Bộ là 8
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 8).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 8).QuyenCapNhat == true)
                         _roleCHDB = true;
                     else
                         _roleCHDB = false;
                     ///Mã Role Thảo Thư Trả Lời là 9
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 9).CapQuyen == true)
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 9).QuyenCapNhat == true)
                         _roleTTTL = true;
                     else
                         _roleTTTL = false;
@@ -187,7 +261,7 @@ namespace KTKS_DonKH.DAL.HeThong
         /// Lấy danh sách tài khoản
         /// </summary>
         /// <returns>datatable</returns>
-        public DataTable LoadDSTaiKhoan()
+        public DataTable LoadDSTaiKhoan_Old()
         {
             try
             {
@@ -235,18 +309,41 @@ namespace KTKS_DonKH.DAL.HeThong
                         ///MaR=8 => quyền Cắt Hủy Danh Bộ
                         ///MaR=9 => quyền Thảo Thư Trả Lời
                         table.Rows.Add(itemTK.MaU, itemTK.HoTen, itemTK.TaiKhoan, itemTK.MatKhau,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 3).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 4).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 5).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 6).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 7).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 8).CapQuyen,
-                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 9).CapQuyen
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 1).QuyenCapNhat,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 2).QuyenCapNhat,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 3).QuyenCapNhat,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 4).QuyenCapNhat,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 5).QuyenCapNhat,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 6).QuyenCapNhat,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 7).QuyenCapNhat,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 8).QuyenCapNhat,
+                                        quyens.FirstOrDefault(itemQ => itemQ.MaR == 9).QuyenCapNhat
                                         );
                     }
                     return table;
+                }
+                else
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy danh sách tài khoản
+        /// </summary>
+        /// <returns></returns>
+        public List<User> LoadDSTaiKhoan()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTaiKhoan)
+                {
+                    return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan).ToList();
                 }
                 else
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -316,7 +413,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;
-                            qTaiKhoan.CapQuyen = false;
+                            qTaiKhoan.QuyenCapNhat = false;
                             nguoidung.DetailRoles.Add(qTaiKhoan);
                         }
                         db.SubmitChanges();
@@ -427,7 +524,7 @@ namespace KTKS_DonKH.DAL.HeThong
             {
                 if (CTaiKhoan.RoleTaiKhoan)
                 {
-                    db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).CapQuyen = Value;
+                    db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenCapNhat = Value;
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyDate = DateTime.Now;
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
