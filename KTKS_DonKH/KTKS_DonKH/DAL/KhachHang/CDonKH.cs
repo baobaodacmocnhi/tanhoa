@@ -71,7 +71,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleNhanDonKH)
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
                 {
                     donkh.CreateDate = DateTime.Now;
                     donkh.CreateBy = CTaiKhoan.MaUser;
@@ -83,6 +83,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
                     return false;
                 }
             }
@@ -98,7 +99,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH)
+                if (CTaiKhoan.RoleQLDonKH_Xem||CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
@@ -113,7 +114,9 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen
+                                    itemDonKH.LyDoChuyen,
+                                    itemDonKH.SoLuongDiaChi,
+                                    itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -134,7 +137,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH)
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
@@ -150,7 +153,9 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen
+                                    itemDonKH.LyDoChuyen,
+                                    itemDonKH.SoLuongDiaChi,
+                                    itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -171,7 +176,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH)
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
@@ -187,7 +192,9 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen
+                                    itemDonKH.LyDoChuyen,
+                                    itemDonKH.SoLuongDiaChi,
+                                    itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -208,7 +215,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH)
+                if (CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     donkh.ModifyDate = DateTime.Now;
                     donkh.ModifyBy = CTaiKhoan.MaUser;
@@ -219,6 +226,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
                     return false;
                 }
             }
@@ -244,7 +252,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
                     return false;
                 }
             }
@@ -260,7 +268,7 @@ namespace KTKS_DonKH.DAL.KhachHang
         {
             try
             {
-                if (CTaiKhoan.RoleQLDonKH)
+                if (CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     db.DonKHs.DeleteOnSubmit(donkh);
                     db.SubmitChanges();
@@ -269,7 +277,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
                     return false;
                 }
             }

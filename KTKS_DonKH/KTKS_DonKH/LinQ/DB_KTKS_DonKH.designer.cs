@@ -8123,9 +8123,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private int _MaR;
 		
-		private bool _QuyenCapNhat;
-		
 		private bool _QuyenXem;
+		
+		private bool _QuyenCapNhat;
 		
 		private EntityRef<User> _User;
 		
@@ -8139,10 +8139,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaUChanged();
     partial void OnMaRChanging(int value);
     partial void OnMaRChanged();
-    partial void OnQuyenCapNhatChanging(bool value);
-    partial void OnQuyenCapNhatChanged();
     partial void OnQuyenXemChanging(bool value);
     partial void OnQuyenXemChanged();
+    partial void OnQuyenCapNhatChanging(bool value);
+    partial void OnQuyenCapNhatChanged();
     #endregion
 		
 		public DetailRole()
@@ -8200,26 +8200,6 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuyenCapNhat", DbType="Bit NOT NULL")]
-		public bool QuyenCapNhat
-		{
-			get
-			{
-				return this._QuyenCapNhat;
-			}
-			set
-			{
-				if ((this._QuyenCapNhat != value))
-				{
-					this.OnQuyenCapNhatChanging(value);
-					this.SendPropertyChanging();
-					this._QuyenCapNhat = value;
-					this.SendPropertyChanged("QuyenCapNhat");
-					this.OnQuyenCapNhatChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuyenXem", DbType="Bit NOT NULL")]
 		public bool QuyenXem
 		{
@@ -8236,6 +8216,26 @@ namespace KTKS_DonKH.LinQ
 					this._QuyenXem = value;
 					this.SendPropertyChanged("QuyenXem");
 					this.OnQuyenXemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuyenCapNhat", DbType="Bit NOT NULL")]
+		public bool QuyenCapNhat
+		{
+			get
+			{
+				return this._QuyenCapNhat;
+			}
+			set
+			{
+				if ((this._QuyenCapNhat != value))
+				{
+					this.OnQuyenCapNhatChanging(value);
+					this.SendPropertyChanging();
+					this._QuyenCapNhat = value;
+					this.SendPropertyChanged("QuyenCapNhat");
+					this.OnQuyenCapNhatChanged();
 				}
 			}
 		}
@@ -8371,7 +8371,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Nam;
 		
-		private string _GhiChuNguoiDi;
+		private System.Nullable<int> _SoLuongDiaChi;
+		
+		private string _NVKiemTra;
 		
 		private string _NoiDung;
 		
@@ -8487,8 +8489,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnKyChanged();
     partial void OnNamChanging(string value);
     partial void OnNamChanged();
-    partial void OnGhiChuNguoiDiChanging(string value);
-    partial void OnGhiChuNguoiDiChanged();
+    partial void OnSoLuongDiaChiChanging(System.Nullable<int> value);
+    partial void OnSoLuongDiaChiChanged();
+    partial void OnNVKiemTraChanging(string value);
+    partial void OnNVKiemTraChanged();
     partial void OnNoiDungChanging(string value);
     partial void OnNoiDungChanged();
     partial void OnKiemTraDHNChanging(bool value);
@@ -8924,22 +8928,42 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChuNguoiDi", DbType="NVarChar(MAX)")]
-		public string GhiChuNguoiDi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongDiaChi", DbType="Int")]
+		public System.Nullable<int> SoLuongDiaChi
 		{
 			get
 			{
-				return this._GhiChuNguoiDi;
+				return this._SoLuongDiaChi;
 			}
 			set
 			{
-				if ((this._GhiChuNguoiDi != value))
+				if ((this._SoLuongDiaChi != value))
 				{
-					this.OnGhiChuNguoiDiChanging(value);
+					this.OnSoLuongDiaChiChanging(value);
 					this.SendPropertyChanging();
-					this._GhiChuNguoiDi = value;
-					this.SendPropertyChanged("GhiChuNguoiDi");
-					this.OnGhiChuNguoiDiChanged();
+					this._SoLuongDiaChi = value;
+					this.SendPropertyChanged("SoLuongDiaChi");
+					this.OnSoLuongDiaChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVKiemTra", DbType="NVarChar(MAX)")]
+		public string NVKiemTra
+		{
+			get
+			{
+				return this._NVKiemTra;
+			}
+			set
+			{
+				if ((this._NVKiemTra != value))
+				{
+					this.OnNVKiemTraChanging(value);
+					this.SendPropertyChanging();
+					this._NVKiemTra = value;
+					this.SendPropertyChanged("NVKiemTra");
+					this.OnNVKiemTraChanged();
 				}
 			}
 		}

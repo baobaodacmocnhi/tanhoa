@@ -14,7 +14,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_Xem||CTaiKhoan.RoleCapNhat_CapNhat)
                     return db.BanGiamDocs.ToList();
                 else
                 {
@@ -46,7 +46,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     if (db.BanGiamDocs.Count() > 0)
                         bangiamdoc.MaBGD = db.BanGiamDocs.Max(itemBGD => itemBGD.MaBGD) + 1;
@@ -62,6 +62,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.BanGiamDocs);
                     return false;
                 }
             }
@@ -77,7 +78,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     bangiamdoc.ModifyDate = DateTime.Now;
                     bangiamdoc.ModifyBy = CTaiKhoan.MaUser;
@@ -88,6 +89,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.BanGiamDocs);
                     return false;
                 }
             }

@@ -20,7 +20,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     return db.LoaiDons.ToList();
                 }
@@ -111,7 +111,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     if (db.LoaiDons.Count() > 0)
                         loaidon.MaLD = db.LoaiDons.Max(itemLD => itemLD.MaLD) + 1;
@@ -127,6 +127,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiDons);
                     return false;
                 }
             }
@@ -142,7 +143,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     loaidon.ModifyDate = DateTime.Now;
                     loaidon.ModifyBy = CTaiKhoan.MaUser;
@@ -153,6 +154,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiDons);
                     return false;
                 }
             }

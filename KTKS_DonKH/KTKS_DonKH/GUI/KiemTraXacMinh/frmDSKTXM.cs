@@ -51,13 +51,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //cmbColumn.ValueMember = "MaChuyen";
 
             //dgvDSCTKTXM.DataSource = DSDonKH_BS;
-            if (CTaiKhoan.RoleQLKTXM)
+            if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
             {
                 radDaDuyet.Checked = true;
                 //btnLuu.Visible = true;
             }
             else
-                if (CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
                     radDSKTXM.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
@@ -101,7 +101,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (radDaDuyet.Checked)
             {
                 DSDonKH_BS = new BindingSource();
-                if (CTaiKhoan.RoleQLKTXM)
+                if (CTaiKhoan.RoleQLKTXM_Xem||CTaiKhoan.RoleQLKTXM_CapNhat)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
                 //cmbTimTheo.SelectedIndex = 0;
                 gridControl.DataSource = DSDonKH_BS;
@@ -115,7 +115,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (radDSKTXM.Checked)
             {
                 DSDonKH_BS = new BindingSource();
-                if(CTaiKhoan.RoleQLKTXM)
+                if(CTaiKhoan.RoleQLKTXM_Xem||CTaiKhoan.RoleQLKTXM_CapNhat)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
                 else
 
@@ -132,76 +132,88 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 foreach (DataRow itemRow in DSKTXM_Edited.Rows)
                 {
-                    if (itemRow["MaKTXM"].ToString() == "")
-                    {
-                        KTXM ktxm = new KTXM();
-                        //ktxm.MaKTXM = decimal.Parse(itemRow["MaDon"].ToString());
-                        ktxm.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
-                        ktxm.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
-                        ktxm.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
-                        ktxm.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
-                        ktxm.KetQua = itemRow["KetQua"].ToString();
-                        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                        {
-                            ktxm.Chuyen = true;
-                            ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
-                            ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                        }
-                        if (_cKTXM.ThemKTXM(ktxm))
-                        {
-                            switch (itemRow["NoiChuyenDen"].ToString())
-                            {
-                                case "Khách Hàng":
-                                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                                    donkh.Nhan = true;
-                                    _cDonKH.SuaDonKH(donkh);
-                                    break;
-                                case "Điều Chỉnh Biến Động":
-                                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                    DCBD dcbd = _cDCBD.getDCBDbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
-                                    dcbd.Nhan = true;
-                                    _cDCBD.SuaDCBD(dcbd);
-                                    break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaKTXM"].ToString()));
-                        ///Đơn đã được nơi nhận xử lý thì không được sửa
-                        if (!ktxm.Nhan)
-                        {
-                            ktxm.KetQua = itemRow["KetQua"].ToString();
-                            if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                            {
-                                ktxm.Chuyen = true;
-                                ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
-                                ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                            }
-                            else
-                                if (itemRow["MaChuyen"].ToString() == "NONE")
-                                {
-                                    ktxm.Chuyen = false;
-                                    ktxm.MaChuyen = null;
-                                    ktxm.LyDoChuyen = null;
-                                }
-                            _cKTXM.SuaKTXM(ktxm);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Đơn " + ktxm.MaKTXM + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    //    if (itemRow["MaKTXM"].ToString() == "")
+                    //    {
+                    //        KTXM ktxm = new KTXM();
+                    //        //ktxm.MaKTXM = decimal.Parse(itemRow["MaDon"].ToString());
+                    //        ktxm.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
+                    //        ktxm.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
+                    //        ktxm.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
+                    //        ktxm.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
+                    //        ktxm.KetQua = itemRow["KetQua"].ToString();
+                    //        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                    //        {
+                    //            ktxm.Chuyen = true;
+                    //            ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
+                    //            ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                    //        }
+                    //        if (_cKTXM.ThemKTXM(ktxm))
+                    //        {
+                    //            switch (itemRow["NoiChuyenDen"].ToString())
+                    //            {
+                    //                case "Khách Hàng":
+                    //                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                    //                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                    //                    donkh.Nhan = true;
+                    //                    _cDonKH.SuaDonKH(donkh);
+                    //                    break;
+                    //                case "Điều Chỉnh Biến Động":
+                    //                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                    //                    DCBD dcbd = _cDCBD.getDCBDbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
+                    //                    dcbd.Nhan = true;
+                    //                    _cDCBD.SuaDCBD(dcbd);
+                    //                    break;
+                    //            }
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaKTXM"].ToString()));
+                    //        ///Đơn đã được nơi nhận xử lý thì không được sửa
+                    //        if (!ktxm.Nhan)
+                    //        {
+                    //            ktxm.KetQua = itemRow["KetQua"].ToString();
+                    //            if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                    //            {
+                    //                ktxm.Chuyen = true;
+                    //                ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
+                    //                ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                    //            }
+                    //            else
+                    //                if (itemRow["MaChuyen"].ToString() == "NONE")
+                    //                {
+                    //                    ktxm.Chuyen = false;
+                    //                    ktxm.MaChuyen = null;
+                    //                    ktxm.LyDoChuyen = null;
+                    //                }
+                    //            _cKTXM.SuaKTXM(ktxm);
+                    //        }
+                    //        else
+                    //        {
+                    //            MessageBox.Show("Đơn " + ktxm.MaKTXM + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //        }
+                    //    }
+
+                    KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaKTXM"].ToString()));
+                    ktxm.KetQua = itemRow["KetQua"].ToString();
+                    ktxm.Chuyen = true;
+                    ktxm.MaChuyen = itemRow["MaChuyen"].ToString();
+                    ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                    _cKTXM.SuaKTXM(ktxm);
+
+
                 }
                 DSKTXM_Edited.Clear();
 
                 if (radDaDuyet.Checked)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_Old();
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
                 if (radChuaDuyet.Checked)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                if (radDSKTXM.Checked)
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
             }
         }
+            
 
         /// <summary>
         /// Hiện thị số thứ tự dòng

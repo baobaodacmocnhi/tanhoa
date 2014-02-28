@@ -33,6 +33,10 @@ namespace KTKS_DonKH.GUI.HeThong
             dgvDSTaiKhoan.AutoGenerateColumns = false;
             dgvDSTaiKhoan.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSTaiKhoan.Font, FontStyle.Bold);
             dgvDSTaiKhoan.DataSource = _cTaiKhoan.LoadDSTaiKhoan();
+
+            dgvPhanQuyen.AutoGenerateColumns = false;
+            dgvPhanQuyen.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSTaiKhoan.Font, FontStyle.Bold);
+            dgvPhanQuyen.DataSource = _cTaiKhoan.LoadDSTaiKhoan();
         }
 
         private void Clear()
@@ -42,6 +46,7 @@ namespace KTKS_DonKH.GUI.HeThong
             txtMatKhau.Text = "";
             selectedindex = -1;
             dgvDSTaiKhoan.DataSource = _cTaiKhoan.LoadDSTaiKhoan();
+            dgvPhanQuyen.DataSource = null;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -82,11 +87,12 @@ namespace KTKS_DonKH.GUI.HeThong
                 {
                     User nguoidung = _cTaiKhoan.getUserbyID(int.Parse(dgvDSTaiKhoan["MaU", selectedindex].Value.ToString()));
                     nguoidung.HoTen = txtHoTen.Text.Trim();
-                    nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
-
-                    if (nguoidung.TaiKhoan != dgvDSTaiKhoan["TaiKhoan", selectedindex].Value.ToString())
+                    if (nguoidung.TaiKhoan != txtTaiKhoan.Text.Trim())
+                    {
+                        nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                         _cTaiKhoan.SuaTaiKhoan(nguoidung, true);
+                    }
                     else
                         _cTaiKhoan.SuaTaiKhoan(nguoidung, false);
 
@@ -104,6 +110,7 @@ namespace KTKS_DonKH.GUI.HeThong
                 txtHoTen.Text = dgvDSTaiKhoan["HoTen", e.RowIndex].Value.ToString();
                 txtTaiKhoan.Text = dgvDSTaiKhoan["TaiKhoan", e.RowIndex].Value.ToString();
                 txtMatKhau.Text = dgvDSTaiKhoan["MatKhau", e.RowIndex].Value.ToString();
+                dgvPhanQuyen.DataSource = _cTaiKhoan.LoadDSRolebyUser(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
             }
             catch (Exception)
             {
@@ -114,46 +121,46 @@ namespace KTKS_DonKH.GUI.HeThong
         private void dgvDSTaiKhoan_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             ///Cập nhật quyền trực tiếp khi click vào datagridview
-            if (e.ColumnIndex > 3)
-            {
-                int MaR = 0;
-                switch (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name)
-                {
-                    case "QTaiKhoan":
-                        MaR = 1;
-                        break;
-                    case "QCapNhat":
-                        MaR = 2;
-                        break;
-                    case "QNhanDonKH":
-                        MaR = 3;
-                        break;
-                    case "QQLDonKH":
-                        MaR = 4;
-                        break;
-                    case "QKTXM":
-                        MaR = 5;
-                        break;
-                    case "QQLKTXM":
-                        MaR = 6;
-                        break;
-                    case "QDCBD":
-                        MaR = 7;
-                        break;
-                    case "QCHDB":
-                        MaR = 8;
-                        break;
-                    case "QTTTL":
-                        MaR = 9;
-                        break;
-                }
-                bool ischecked = false;
-                if (bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
-                    ischecked = true;
-                else
-                    ischecked = false;
-                _cTaiKhoan.SuaQuyen(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()), MaR, ischecked);
-            }
+            //if (e.ColumnIndex > 3)
+            //{
+            //    int MaR = 0;
+            //    switch (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name)
+            //    {
+            //        case "QTaiKhoan":
+            //            MaR = 1;
+            //            break;
+            //        case "QCapNhat":
+            //            MaR = 2;
+            //            break;
+            //        case "QNhanDonKH":
+            //            MaR = 3;
+            //            break;
+            //        case "QQLDonKH":
+            //            MaR = 4;
+            //            break;
+            //        case "QKTXM":
+            //            MaR = 5;
+            //            break;
+            //        case "QQLKTXM":
+            //            MaR = 6;
+            //            break;
+            //        case "QDCBD":
+            //            MaR = 7;
+            //            break;
+            //        case "QCHDB":
+            //            MaR = 8;
+            //            break;
+            //        case "QTTTL":
+            //            MaR = 9;
+            //            break;
+            //    }
+            //    bool ischecked = false;
+            //    if (bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+            //        ischecked = true;
+            //    else
+            //        ischecked = false;
+            //    _cTaiKhoan.SuaQuyen(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()), MaR, ischecked);
+            //}
         }
 
         private void dgvDSTaiKhoan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -162,6 +169,24 @@ namespace KTKS_DonKH.GUI.HeThong
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void dgvPhanQuyen_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvPhanQuyen.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvPhanQuyen_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            bool ischecked = false;
+            if (bool.Parse(dgvPhanQuyen[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+                ischecked = true;
+            else
+                ischecked = false;
+            _cTaiKhoan.SuaQuyen(int.Parse(dgvDSTaiKhoan["MaU", selectedindex].Value.ToString()), e.RowIndex + 1, dgvPhanQuyen.Columns[e.ColumnIndex].Name, ischecked);
         }
         
     }

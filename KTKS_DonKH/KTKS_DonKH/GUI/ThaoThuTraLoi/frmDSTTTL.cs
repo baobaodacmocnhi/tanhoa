@@ -279,66 +279,73 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 foreach (DataRow itemRow in DSTTTL_Edited.Rows)
                 {
-                    if (itemRow["MaTTTL"].ToString() == "")
-                    {
-                        TTTL tttl = new TTTL();
-                        tttl.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
-                        tttl.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
-                        tttl.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
-                        tttl.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
-                        tttl.KetQua = itemRow["KetQua"].ToString();
-                        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                        {
-                            tttl.Chuyen = true;
-                            tttl.MaChuyen = itemRow["MaChuyen"].ToString();
-                            tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                        }
-                        if (_cTTTL.ThemTTTL(tttl))
-                        {
-                            switch (itemRow["NoiChuyenDen"].ToString())
-                            {
-                                case "Khách Hàng":
-                                    ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                    DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                                    donkh.Nhan = true;
-                                    _cDonKH.SuaDonKH(donkh);
-                                    break;
-                                case "Điều Chỉnh Biến Động":
-                                    ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                    KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
-                                    ktxm.Nhan = true;
-                                    _cKTXM.SuaKTXM(ktxm);
-                                    break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        TTTL tttl = _cTTTL.getTTTLbyID(decimal.Parse(itemRow["MaTTTL"].ToString()));
-                        ///Đơn đã được nơi nhận xử lý thì không được sửa
-                        if (!tttl.Nhan)
-                        {
-                            tttl.KetQua = itemRow["KetQua"].ToString();
-                            if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                            {
-                                tttl.Chuyen = true;
-                                tttl.MaChuyen = itemRow["MaChuyen"].ToString();
-                                tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                            }
-                            else
-                                if (itemRow["MaChuyen"].ToString() == "NONE")
-                                {
-                                    tttl.Chuyen = false;
-                                    tttl.MaChuyen = null;
-                                    tttl.LyDoChuyen = null;
-                                }
-                            _cTTTL.SuaTTTL(tttl);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Đơn " + tttl.MaTTTL + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    //if (itemRow["MaTTTL"].ToString() == "")
+                    //{
+                    //    TTTL tttl = new TTTL();
+                    //    tttl.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
+                    //    tttl.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
+                    //    tttl.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
+                    //    tttl.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
+                    //    tttl.KetQua = itemRow["KetQua"].ToString();
+                    //    if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                    //    {
+                    //        tttl.Chuyen = true;
+                    //        tttl.MaChuyen = itemRow["MaChuyen"].ToString();
+                    //        tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                    //    }
+                    //    if (_cTTTL.ThemTTTL(tttl))
+                    //    {
+                    //        switch (itemRow["NoiChuyenDen"].ToString())
+                    //        {
+                    //            case "Khách Hàng":
+                    //                ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                    //                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                    //                donkh.Nhan = true;
+                    //                _cDonKH.SuaDonKH(donkh);
+                    //                break;
+                    //            case "Điều Chỉnh Biến Động":
+                    //                ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                    //                KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
+                    //                ktxm.Nhan = true;
+                    //                _cKTXM.SuaKTXM(ktxm);
+                    //                break;
+                    //        }
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    TTTL tttl = _cTTTL.getTTTLbyID(decimal.Parse(itemRow["MaTTTL"].ToString()));
+                    //    ///Đơn đã được nơi nhận xử lý thì không được sửa
+                    //    if (!tttl.Nhan)
+                    //    {
+                    //        tttl.KetQua = itemRow["KetQua"].ToString();
+                    //        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                    //        {
+                    //            tttl.Chuyen = true;
+                    //            tttl.MaChuyen = itemRow["MaChuyen"].ToString();
+                    //            tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                    //        }
+                    //        else
+                    //            if (itemRow["MaChuyen"].ToString() == "NONE")
+                    //            {
+                    //                tttl.Chuyen = false;
+                    //                tttl.MaChuyen = null;
+                    //                tttl.LyDoChuyen = null;
+                    //            }
+                    //        _cTTTL.SuaTTTL(tttl);
+                    //    }
+                    //    else
+                    //    {
+                    //        MessageBox.Show("Đơn " + tttl.MaTTTL + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    }
+                    //}
+
+                    TTTL tttl = _cTTTL.getTTTLbyID(decimal.Parse(itemRow["MaTTTL"].ToString()));
+                    tttl.KetQua = itemRow["KetQua"].ToString();
+                    tttl.Chuyen = true;
+                    tttl.MaChuyen = itemRow["MaChuyen"].ToString();
+                    tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                    _cTTTL.SuaTTTL(tttl);
                 }
                 DSTTTL_Edited.Clear();
 

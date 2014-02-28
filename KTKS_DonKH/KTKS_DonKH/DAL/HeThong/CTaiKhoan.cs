@@ -169,58 +169,105 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
+                db = new DB_KTKS_DonKHDataContext();
                 if (db.Users.Any(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau && item.Login == false))
                 {
                     _maUser = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).MaU;
                     _taiKhoan = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).TaiKhoan;
                     _hoTen = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).HoTen;
                     ///Mã Role Tài Khoản là 1
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 1).QuyenXem == true)
+                        _roleTaiKhoan_Xem = true;
+                    else
+                        _roleTaiKhoan_Xem = false;
+
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 1).QuyenCapNhat == true)
-                        _roleTaiKhoan = true;
+                        _roleTaiKhoan_CapNhat = true;
                     else
-                        _roleTaiKhoan = false;
+                        _roleTaiKhoan_CapNhat = false;
                     ///Mã Role Cập Nhật là 2
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 2).QuyenXem == true)
+                        _roleCapNhat_Xem = true;
+                    else
+                        _roleCapNhat_Xem = false;
+
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 2).QuyenCapNhat == true)
-                        _roleCapNhat = true;
+                        _roleCapNhat_CapNhat = true;
                     else
-                        _roleCapNhat = false;
+                        _roleCapNhat_CapNhat = false;
                     ///Mã Role Nhận Đơn Khách Hàng là 3
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 3).QuyenXem == true)
+                        _roleNhanDonKH_Xem = true;
+                    else
+                        _roleNhanDonKH_Xem = false;
+
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 3).QuyenCapNhat == true)
-                        _roleNhanDonKH = true;
+                        _roleNhanDonKH_CapNhat = true;
                     else
-                        _roleNhanDonKH = false;
+                        _roleNhanDonKH_CapNhat = false;
                     ///Mã Role Quản Lý Đơn Khách Hàng là 4
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 4).QuyenXem == true)
+                        _roleQLDonKH_Xem = true;
+                    else
+                        _roleQLDonKH_Xem = false;
+
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 4).QuyenCapNhat == true)
-                        _roleQLDonKH = true;
+                        _roleQLDonKH_CapNhat = true;
                     else
-                        _roleQLDonKH = false;
+                        _roleQLDonKH_CapNhat = false;
                     ///Mã Role Kiểm Tra Xác Minh là 5
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 5).QuyenXem == true)
+                        _roleKTXM_Xem = true;
+                    else
+                        _roleKTXM_Xem = false;
+
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 5).QuyenCapNhat == true)
-                        _roleKTXM = true;
+                        _roleKTXM_CapNhat = true;
                     else
-                        _roleKTXM = false;
+                        _roleKTXM_CapNhat = false;
                     ///Mã Role Quản Lý Kiểm Tra Xác Minh là 6
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 6).QuyenXem == true)
+                        _roleQLKTXM_Xem = true;
+                    else
+                        _roleQLKTXM_Xem = false;
+
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 6).QuyenCapNhat == true)
-                        _roleQLKTXM = true;
+                        _roleQLKTXM_CapNhat = true;
                     else
-                        _roleQLKTXM = false;
+                        _roleQLKTXM_CapNhat = false;
                     ///Mã Role Điều Chỉnh Biến Động là 7
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 7).QuyenXem == true)
+                        _roleDCBD_Xem = true;
+                    else
+                        _roleDCBD_Xem = false;
+
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 7).QuyenCapNhat == true)
-                        _roleDCBD = true;
+                        _roleDCBD_CapNhat = true;
                     else
-                        _roleDCBD = false;
+                        _roleDCBD_CapNhat = false;
                     ///Mã Role Cắt Hủy Danh Bộ là 8
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 8).QuyenXem == true)
+                        _roleCHDB_Xem = true;
+                    else
+                        _roleCHDB_Xem = false;
+
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 8).QuyenCapNhat == true)
-                        _roleCHDB = true;
+                        _roleCHDB_CapNhat = true;
                     else
-                        _roleCHDB = false;
+                        _roleCHDB_CapNhat = false;
                     ///Mã Role Thảo Thư Trả Lời là 9
-                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 9).QuyenCapNhat == true)
-                        _roleTTTL = true;
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 9).QuyenXem == true)
+                        _roleTTTL_Xem = true;
                     else
-                        _roleTTTL = false;
+                        _roleTTTL_Xem = false;
+
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 9).QuyenCapNhat == true)
+                        _roleTTTL_CapNhat = true;
+                    else
+                        _roleTTTL_CapNhat = false;
+
                     //db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
-                    db.SubmitChanges();
+                    //db.SubmitChanges();
                     return true;
                 }
                 else
@@ -246,15 +293,27 @@ namespace KTKS_DonKH.DAL.HeThong
             _maUser = -1;
             _taiKhoan = "";
             _hoTen = "";
-            _roleTaiKhoan = false;
-            _roleCapNhat = false;
-            _roleNhanDonKH = false;
-            _roleQLDonKH = false;
-            _roleKTXM = false;
-            _roleQLKTXM = false;
-            _roleDCBD = false;
-            _roleCHDB = false;
-            _roleTTTL = false;
+            _roleTaiKhoan_Xem = false;
+            _roleCapNhat_Xem = false;
+            _roleNhanDonKH_Xem = false;
+            _roleQLDonKH_Xem = false;
+            _roleKTXM_Xem = false;
+            _roleQLKTXM_Xem = false;
+            _roleDCBD_Xem = false;
+            _roleCHDB_Xem = false;
+            _roleTTTL_Xem = false;
+            ///
+            _roleTaiKhoan_CapNhat = false;
+            _roleCapNhat_CapNhat = false;
+            _roleNhanDonKH_CapNhat = false;
+            _roleQLDonKH_CapNhat = false;
+            _roleKTXM_CapNhat = false;
+            _roleQLKTXM_CapNhat = false;
+            _roleDCBD_CapNhat = false;
+            _roleCHDB_CapNhat = false;
+            _roleTTTL_CapNhat = false;
+            ///
+            db.Connection.Close();
         }
 
         /// <summary>
@@ -265,7 +324,7 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan)
+                if (CTaiKhoan.RoleTaiKhoan_Xem||CTaiKhoan.RoleTaiKhoan_CapNhat)
                 {
                     var taikhoans = from itemUser in db.Users
                                     where itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan
@@ -341,13 +400,15 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan)
+                if (CTaiKhoan.RoleTaiKhoan_Xem || CTaiKhoan.RoleTaiKhoan_CapNhat)
                 {
                     return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.TaiKhoan != TaiKhoan).ToList();
                 }
                 else
+                {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                    return null;
+                }
             }
             catch (Exception ex)
             {
@@ -396,7 +457,7 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan)
+                if (CTaiKhoan.RoleTaiKhoan_CapNhat)
                 {
                     if (!db.Users.Any(item => item.TaiKhoan == nguoidung.TaiKhoan))
                     {
@@ -413,6 +474,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;
+                            qTaiKhoan.QuyenXem = false;
                             qTaiKhoan.QuyenCapNhat = false;
                             nguoidung.DetailRoles.Add(qTaiKhoan);
                         }
@@ -423,12 +485,14 @@ namespace KTKS_DonKH.DAL.HeThong
                     else
                     {
                         MessageBox.Show("Tài khoản này đã có người sử dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
                         return false;
                     }
                 }
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
                     return false;
                 }
             }
@@ -444,7 +508,7 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan)
+                if (CTaiKhoan.RoleTaiKhoan_CapNhat)
                 {
                     foreach (var itemDetailRole in db.DetailRoles.Where(itemTaiKhoan => itemTaiKhoan.MaU == nguoidung.MaU))
                     {
@@ -458,6 +522,7 @@ namespace KTKS_DonKH.DAL.HeThong
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
                     return false;
                 }
             }
@@ -473,7 +538,7 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan)
+                if (CTaiKhoan.RoleTaiKhoan_CapNhat)
                 {
                     if (ChangedTaiKhoan)
                         if (!db.Users.Any(item => item.TaiKhoan == nguoidung.TaiKhoan))
@@ -487,6 +552,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         else
                         {
                             MessageBox.Show("Tài khoản này đã có người sử dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
                             return false;
                         }
                     else
@@ -501,6 +567,7 @@ namespace KTKS_DonKH.DAL.HeThong
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
                     return false;
                 }
             }
@@ -518,13 +585,17 @@ namespace KTKS_DonKH.DAL.HeThong
         /// </summary>
         /// <param name="MaR">int</param>
         /// <param name="Value">true/false</param>
-        public bool SuaQuyen(int MaU, int MaR, bool Value)
+        public bool SuaQuyen(int MaU, int MaR, string Quyen,bool Value)
         {
             try
             {
-                if (CTaiKhoan.RoleTaiKhoan)
+                if (CTaiKhoan.RoleTaiKhoan_CapNhat)
                 {
-                    db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenCapNhat = Value;
+                    if (Quyen == "QuyenXem")
+                        db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenXem = Value;
+                    else
+                        if (Quyen == "QuyenCapNhat")
+                            db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).QuyenCapNhat = Value;
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyDate = DateTime.Now;
                     db.DetailRoles.Single(itemRoleTaiKhoan => itemRoleTaiKhoan.MaU == MaU && itemRoleTaiKhoan.MaR == MaR).User.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
@@ -533,6 +604,7 @@ namespace KTKS_DonKH.DAL.HeThong
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DetailRoles);
                     return false;
                 }
             }
@@ -558,6 +630,7 @@ namespace KTKS_DonKH.DAL.HeThong
                 else
                 {
                     MessageBox.Show("Mật khẩu cũ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.Users);
                     return false;
                 }
             }
@@ -566,6 +639,36 @@ namespace KTKS_DonKH.DAL.HeThong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
                 return false;
+            }
+        }
+
+        public DataTable LoadDSRolebyUser(int MaU)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTaiKhoan_Xem || CTaiKhoan.RoleTaiKhoan_CapNhat)
+                {
+                    var queryRoles = from itemDR in db.DetailRoles
+                                     where itemDR.MaU == MaU
+                                     select new
+                                     {
+                                         itemDR.MaR,
+                                         itemDR.Role.TenR,
+                                         itemDR.QuyenXem,
+                                         itemDR.QuyenCapNhat
+                                     };
+                    return CLinQToDataTable.LINQToDataTable(queryRoles);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
     }

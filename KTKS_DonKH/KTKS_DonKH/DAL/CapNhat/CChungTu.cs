@@ -303,7 +303,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleDCBD)
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemLSCT in db.LichSuChungTus
                                 where itemLSCT.SoPhieu != null

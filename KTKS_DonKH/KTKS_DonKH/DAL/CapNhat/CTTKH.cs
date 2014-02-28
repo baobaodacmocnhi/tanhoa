@@ -24,7 +24,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     string[] lines = File.ReadAllLines(pathFile);
                     string[] ContentsLineDate = lines[0].Split(',');
@@ -115,6 +115,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangs);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangDates);
                     return false;
                 }
             }
@@ -141,7 +143,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     string[] lines = File.ReadAllLines(pathFile);
                     string[] ContentsLineDate = lines[0].Split(',');
@@ -227,6 +229,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangs);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangDates);
                     return false;
                 }
             }
@@ -278,7 +282,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     return db.TTKhachHangDates.ToList();
                 }
@@ -299,7 +303,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (CTaiKhoan.RoleCapNhat)
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
                 {
                     ttkhdate.ModifyDate = DateTime.Now;
                     ttkhdate.ModifyBy = CTaiKhoan.MaUser;
@@ -309,6 +313,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TTKhachHangDates);
                     return false;
                 }
             }
