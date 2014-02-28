@@ -48,8 +48,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtNoiDungKiemTra = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.dgvDSKetQuaKiemTra = new System.Windows.Forms.DataGridView();
+            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtHoTenKHKy = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -70,11 +75,6 @@
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
-            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -248,18 +248,18 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "Nội Dung Kiểm Tra:";
             // 
-            // btnLuu
+            // btnThem
             // 
-            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(1096, 343);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 2;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(1096, 343);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(76, 35);
+            this.btnThem.TabIndex = 2;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // dgvDSKetQuaKiemTra
             // 
@@ -287,6 +287,43 @@
             this.dgvDSKetQuaKiemTra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKetQuaKiemTra_CellContentClick);
             this.dgvDSKetQuaKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKetQuaKiemTra_CellFormatting);
             this.dgvDSKetQuaKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSKetQuaKiemTra_RowPostPaint);
+            // 
+            // MaCTKTXM
+            // 
+            this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
+            this.MaCTKTXM.HeaderText = "MaCTKTXM";
+            this.MaCTKTXM.Name = "MaCTKTXM";
+            this.MaCTKTXM.Visible = false;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // NoiDungKiemTra
+            // 
+            this.NoiDungKiemTra.DataPropertyName = "NoiDungKiemTra";
+            this.NoiDungKiemTra.HeaderText = "Kết Qủa";
+            this.NoiDungKiemTra.Name = "NoiDungKiemTra";
+            this.NoiDungKiemTra.ReadOnly = true;
+            this.NoiDungKiemTra.Width = 420;
+            // 
+            // NguoiDi
+            // 
+            this.NguoiDi.DataPropertyName = "NguoiDi";
+            this.NguoiDi.HeaderText = "Người Đi";
+            this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.ReadOnly = true;
+            this.NguoiDi.Visible = false;
             // 
             // groupBox2
             // 
@@ -478,43 +515,6 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // MaCTKTXM
-            // 
-            this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
-            this.MaCTKTXM.HeaderText = "MaCTKTXM";
-            this.MaCTKTXM.Name = "MaCTKTXM";
-            this.MaCTKTXM.Visible = false;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // NoiDungKiemTra
-            // 
-            this.NoiDungKiemTra.DataPropertyName = "NoiDungKiemTra";
-            this.NoiDungKiemTra.HeaderText = "Kết Qủa";
-            this.NoiDungKiemTra.Name = "NoiDungKiemTra";
-            this.NoiDungKiemTra.ReadOnly = true;
-            this.NoiDungKiemTra.Width = 420;
-            // 
-            // NguoiDi
-            // 
-            this.NguoiDi.DataPropertyName = "NguoiDi";
-            this.NguoiDi.HeaderText = "Người Đi";
-            this.NguoiDi.Name = "NguoiDi";
-            this.NguoiDi.ReadOnly = true;
-            this.NguoiDi.Visible = false;
-            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -524,7 +524,7 @@
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvDSKetQuaKiemTra);
-            this.Controls.Add(this.btnLuu);
+            this.Controls.Add(this.btnThem);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtMaDon);
             this.Controls.Add(this.label21);
@@ -564,7 +564,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNoiDungKiemTra;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvDSKetQuaKiemTra;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label16;

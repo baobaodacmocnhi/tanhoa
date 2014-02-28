@@ -19,7 +19,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
                 {
                     if (db.KTXMs.Count() > 0)
                     {
@@ -37,6 +37,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.KTXMs);
                     return false;
                 }
             }
@@ -52,7 +53,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
                 {
                     ktxm.ModifyDate = DateTime.Now;
                     ktxm.ModifyBy = CTaiKhoan.MaUser;
@@ -62,6 +63,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.KTXMs);
                     return false;
                 }
             }
@@ -100,7 +102,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.KTXMs);
                     return false;
                 }
             }
@@ -131,7 +133,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.KTXMs);
                     return false;
                 }
             }
@@ -147,7 +149,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM)
+                if (CTaiKhoan.RoleQLKTXM_Xem||CTaiKhoan.RoleQLKTXM_CapNhat)
                 {
                     var query = from itemKTXM in db.KTXMs
                                 join itemDonKH in db.DonKHs on itemKTXM.MaKTXM equals itemDonKH.MaDon
@@ -189,7 +191,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM)
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
                 {
                     DataSet ds = new DataSet();
                     ///Table KTXM
@@ -259,7 +261,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM)
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
                 {
                     ///Bảng DonKH
                     var queryDonKH = from itemDonKH in db.DonKHs
@@ -409,7 +411,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
                 {
                     var query = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
@@ -444,7 +446,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
                 {
                     var query = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
@@ -485,7 +487,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
                 {
                     var query = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
@@ -527,7 +529,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
                 {
                     var query = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
@@ -563,7 +565,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
                 {
                     if (db.CTKTXMs.Count() > 0)
                     {
@@ -581,6 +583,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTKTXMs);
                     return false;
                 }
             }
@@ -596,7 +599,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM || CTaiKhoan.RoleKTXM)
+                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
                 {
                     ctktxm.ModifyDate = DateTime.Now;
                     ctktxm.ModifyBy = CTaiKhoan.MaUser;
@@ -606,6 +609,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTKTXMs);
                     return false;
                 }
             }

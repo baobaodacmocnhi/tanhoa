@@ -185,7 +185,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
             {

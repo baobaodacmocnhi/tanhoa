@@ -713,6 +713,7 @@
             this.radChuaDuyet.TabIndex = 1;
             this.radChuaDuyet.Text = "Chưa Duyệt";
             this.radChuaDuyet.UseVisualStyleBackColor = true;
+            this.radChuaDuyet.Visible = false;
             this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
             // 
             // btnLuu

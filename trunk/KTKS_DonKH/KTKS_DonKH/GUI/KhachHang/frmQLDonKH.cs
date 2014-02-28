@@ -85,37 +85,44 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 foreach (DataRow itemRow in DSDonKH_Edited.Rows)
                 {
-                    if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                    {
+                    //if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                    //{
                         DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
                         //if (!donkh.Nhan)
                         //{
                             donkh.Chuyen = true;
                             donkh.MaChuyen = itemRow["MaChuyen"].ToString();
                             donkh.LyDoChuyen = itemRow["LyDoChuyen"].ToString();
+                            if (string.IsNullOrEmpty(itemRow["SoLuongDiaChi"].ToString()))
+                                donkh.SoLuongDiaChi = null;
+                            else
+                                donkh.SoLuongDiaChi = int.Parse(itemRow["SoLuongDiaChi"].ToString());
+                            donkh.NVKiemTra = itemRow["NVKiemTra"].ToString();
                             _cDonKH.SuaDonKH(donkh);
                         //}
                         //else
                         //{
                         //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //}
-                    }
-                    else
-                        if (itemRow["MaChuyen"].ToString() == "NONE")
-                        {
-                            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                            //if (!donkh.Nhan)
-                            //{
-                                donkh.Chuyen = false;
-                                donkh.MaChuyen = null;
-                                donkh.LyDoChuyen = null;
-                                _cDonKH.SuaDonKH(donkh);
+                    //}
+                    //else
+                    //    if (itemRow["MaChuyen"].ToString() == "NONE")
+                    //    {
+                    //        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                    //        //if (!donkh.Nhan)
+                    //        //{
+                    //            donkh.Chuyen = false;
+                    //            donkh.MaChuyen = null;
+                    //            donkh.LyDoChuyen = null;
+                    //            donkh.SoLuongDiaChi = null;
+                    //            donkh.NVKiemTra = null;
+                    //            _cDonKH.SuaDonKH(donkh);
                             //}
                             //else
                             //{
                             //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             //}
-                        }
+                        //}
                 }
                 DSDonKH_Edited.Clear();
 
@@ -123,6 +130,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                     DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
                 if (radChuaDuyet.Checked)
                     DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                if(radAll.Checked)
+                    DSDonKH_BS.DataSource = _cDonKH.LoadDSAllDonKH();
             }          
         }
 
@@ -313,7 +322,27 @@ namespace KTKS_DonKH.GUI.KhachHang
             frm.ShowDialog();
         }
 
-        
+        private void dgvDSDonKH_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(itemID_KeyPress);//This line of code resolved my issue
+            if (dgvDSDonKH.CurrentCell.ColumnIndex == dgvDSDonKH.Columns["SoLuongDiaChi"].Index)
+            {
+                TextBox itemID = e.Control as TextBox;
+                if (itemID != null)
+                {
+                    itemID.KeyPress += new KeyPressEventHandler(itemID_KeyPress);
+                }
+            }
+        }
+
+        private void itemID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
     }
 }

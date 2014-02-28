@@ -39,12 +39,12 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.dgvDSTaiKhoan = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.dgvPhanQuyen = new System.Windows.Forms.DataGridView();
             this.MaU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.dgvPhanQuyen = new System.Windows.Forms.DataGridView();
             this.MaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuyenXem = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -155,15 +155,45 @@
             this.HoTen,
             this.TaiKhoan,
             this.MatKhau});
-            this.dgvDSTaiKhoan.Location = new System.Drawing.Point(454, 13);
+            this.dgvDSTaiKhoan.Location = new System.Drawing.Point(13, 156);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTaiKhoan.MultiSelect = false;
             this.dgvDSTaiKhoan.Name = "dgvDSTaiKhoan";
-            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(378, 202);
+            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(378, 378);
             this.dgvDSTaiKhoan.TabIndex = 9;
             this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
             this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
             this.dgvDSTaiKhoan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTaiKhoan_RowPostPaint);
+            // 
+            // MaU
+            // 
+            this.MaU.DataPropertyName = "MaU";
+            this.MaU.HeaderText = "Mã Tài Khoản";
+            this.MaU.Name = "MaU";
+            this.MaU.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 200;
+            // 
+            // TaiKhoan
+            // 
+            this.TaiKhoan.DataPropertyName = "TaiKhoan";
+            this.TaiKhoan.HeaderText = "Tài Khoản";
+            this.TaiKhoan.Name = "TaiKhoan";
+            this.TaiKhoan.ReadOnly = true;
+            this.TaiKhoan.Width = 110;
+            // 
+            // MatKhau
+            // 
+            this.MatKhau.DataPropertyName = "MatKhau";
+            this.MatKhau.HeaderText = "Mật Khẩu";
+            this.MatKhau.Name = "MatKhau";
+            this.MatKhau.Visible = false;
             // 
             // btnThem
             // 
@@ -197,42 +227,14 @@
             this.TenR,
             this.QuyenXem,
             this.QuyenCapNhat});
-            this.dgvPhanQuyen.Location = new System.Drawing.Point(13, 223);
+            this.dgvPhanQuyen.Location = new System.Drawing.Point(399, 156);
             this.dgvPhanQuyen.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPhanQuyen.MultiSelect = false;
             this.dgvPhanQuyen.Name = "dgvPhanQuyen";
-            this.dgvPhanQuyen.Size = new System.Drawing.Size(819, 311);
+            this.dgvPhanQuyen.Size = new System.Drawing.Size(546, 378);
             this.dgvPhanQuyen.TabIndex = 10;
-            // 
-            // MaU
-            // 
-            this.MaU.DataPropertyName = "MaU";
-            this.MaU.HeaderText = "Mã Tài Khoản";
-            this.MaU.Name = "MaU";
-            this.MaU.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 200;
-            // 
-            // TaiKhoan
-            // 
-            this.TaiKhoan.DataPropertyName = "TaiKhoan";
-            this.TaiKhoan.HeaderText = "Tài Khoản";
-            this.TaiKhoan.Name = "TaiKhoan";
-            this.TaiKhoan.ReadOnly = true;
-            this.TaiKhoan.Width = 110;
-            // 
-            // MatKhau
-            // 
-            this.MatKhau.DataPropertyName = "MatKhau";
-            this.MatKhau.HeaderText = "Mật Khẩu";
-            this.MatKhau.Name = "MatKhau";
-            this.MatKhau.Visible = false;
+            this.dgvPhanQuyen.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhanQuyen_CellEndEdit);
+            this.dgvPhanQuyen.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPhanQuyen_RowPostPaint);
             // 
             // MaR
             // 
@@ -246,6 +248,7 @@
             this.TenR.DataPropertyName = "TenR";
             this.TenR.HeaderText = "Tên Quyền";
             this.TenR.Name = "TenR";
+            this.TenR.ReadOnly = true;
             this.TenR.Width = 300;
             // 
             // QuyenXem
