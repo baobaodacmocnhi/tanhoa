@@ -73,7 +73,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_cTTKH.getTTKHbyID(_source["DanhBo"]) != null)
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(_source["DanhBo"]);
-                    LoadThongTin(_ttkhachhang);
+                    LoadTTKH(_ttkhachhang);
                 }
             }
             dgvDSSoDangKy.AutoGenerateColumns = false;
@@ -97,7 +97,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>
         /// <param name="ttkhachhang"></param>
-        public void LoadThongTin(TTKhachHang ttkhachhang)
+        public void LoadTTKH(TTKhachHang ttkhachhang)
         {
             txtDanhBo.Text = ttkhachhang.DanhBo;
             txtHopDong.Text = ttkhachhang.GiaoUoc;
@@ -269,7 +269,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
-                    LoadThongTin(_ttkhachhang);
+                    LoadTTKH(_ttkhachhang);
                 }
                 else
                 {
@@ -405,7 +405,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                     ctdcbd.ChucVu = "GIÁM ĐỐC";
                 else
-                    ctdcbd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                    ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                 ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
 
                 if (_cDCBD.ThemCTDCBD(ctdcbd))
@@ -498,7 +498,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
                     {
                         _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                        LoadThongTin(_ttkhachhang);
+                        LoadTTKH(_ttkhachhang);
                     }
                 }
                 else

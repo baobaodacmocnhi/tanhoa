@@ -309,7 +309,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                     ctdchd.ChucVu = "GIÁM ĐỐC";
                 else
-                    ctdchd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                    ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                 ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
 
                 if (_cDCBD.ThemCTDCHD(ctdchd))

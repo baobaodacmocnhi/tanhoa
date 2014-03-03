@@ -6910,6 +6910,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HopDong;
 		
+		private string _LoTrinh;
+		
 		private string _HoTen;
 		
 		private string _DiaChi;
@@ -6966,6 +6968,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
     partial void OnHopDongChanged();
+    partial void OnLoTrinhChanging(string value);
+    partial void OnLoTrinhChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -7074,6 +7078,26 @@ namespace KTKS_DonKH.LinQ
 					this._HopDong = value;
 					this.SendPropertyChanged("HopDong");
 					this.OnHopDongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoTrinh", DbType="NVarChar(50)")]
+		public string LoTrinh
+		{
+			get
+			{
+				return this._LoTrinh;
+			}
+			set
+			{
+				if ((this._LoTrinh != value))
+				{
+					this.OnLoTrinhChanging(value);
+					this.SendPropertyChanging();
+					this._LoTrinh = value;
+					this.SendPropertyChanged("LoTrinh");
+					this.OnLoTrinhChanged();
 				}
 			}
 		}

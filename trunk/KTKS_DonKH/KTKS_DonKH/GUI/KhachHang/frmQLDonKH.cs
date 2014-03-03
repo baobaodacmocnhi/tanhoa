@@ -81,58 +81,67 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (DSDonKH_Edited.Rows.Count > 0)
+            try
             {
-                foreach (DataRow itemRow in DSDonKH_Edited.Rows)
+                if (DSDonKH_Edited.Rows.Count > 0)
                 {
-                    //if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                    //{
+                    foreach (DataRow itemRow in DSDonKH_Edited.Rows)
+                    {
+                        //if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        //{
                         DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
                         //if (!donkh.Nhan)
                         //{
-                            donkh.Chuyen = true;
-                            donkh.MaChuyen = itemRow["MaChuyen"].ToString();
-                            donkh.LyDoChuyen = itemRow["LyDoChuyen"].ToString();
-                            if (string.IsNullOrEmpty(itemRow["SoLuongDiaChi"].ToString()))
-                                donkh.SoLuongDiaChi = null;
-                            else
-                                donkh.SoLuongDiaChi = int.Parse(itemRow["SoLuongDiaChi"].ToString());
-                            donkh.NVKiemTra = itemRow["NVKiemTra"].ToString();
-                            _cDonKH.SuaDonKH(donkh);
+                        donkh.Chuyen = true;
+                        donkh.MaChuyen = itemRow["MaChuyen"].ToString();
+                        donkh.LyDoChuyen = itemRow["LyDoChuyen"].ToString();
+                        if (string.IsNullOrEmpty(itemRow["SoLuongDiaChi"].ToString()))
+                            donkh.SoLuongDiaChi = null;
+                        else
+                            donkh.SoLuongDiaChi = int.Parse(itemRow["SoLuongDiaChi"].ToString());
+                        donkh.NVKiemTra = itemRow["NVKiemTra"].ToString();
+                        _cDonKH.SuaDonKH(donkh);
                         //}
                         //else
                         //{
                         //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //}
-                    //}
-                    //else
-                    //    if (itemRow["MaChuyen"].ToString() == "NONE")
-                    //    {
-                    //        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                    //        //if (!donkh.Nhan)
-                    //        //{
-                    //            donkh.Chuyen = false;
-                    //            donkh.MaChuyen = null;
-                    //            donkh.LyDoChuyen = null;
-                    //            donkh.SoLuongDiaChi = null;
-                    //            donkh.NVKiemTra = null;
-                    //            _cDonKH.SuaDonKH(donkh);
-                            //}
-                            //else
-                            //{
-                            //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //}
                         //}
-                }
-                DSDonKH_Edited.Clear();
+                        //else
+                        //    if (itemRow["MaChuyen"].ToString() == "NONE")
+                        //    {
+                        //        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                        //        //if (!donkh.Nhan)
+                        //        //{
+                        //            donkh.Chuyen = false;
+                        //            donkh.MaChuyen = null;
+                        //            donkh.LyDoChuyen = null;
+                        //            donkh.SoLuongDiaChi = null;
+                        //            donkh.NVKiemTra = null;
+                        //            _cDonKH.SuaDonKH(donkh);
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("Đơn " + donkh.MaDon + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //}
+                        //}
+                    }
+                    MessageBox.Show("Lưu thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DSDonKH_Edited.Clear();
 
-                if (radDaDuyet.Checked)
-                    DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
-                if (radChuaDuyet.Checked)
-                    DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
-                if(radAll.Checked)
-                    DSDonKH_BS.DataSource = _cDonKH.LoadDSAllDonKH();
-            }          
+                    if (radDaDuyet.Checked)
+                        DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
+                    if (radChuaDuyet.Checked)
+                        DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHChuaDuyet();
+                    if (radAll.Checked)
+                        DSDonKH_BS.DataSource = _cDonKH.LoadDSAllDonKH();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                      
         }
 
         /// <summary>
