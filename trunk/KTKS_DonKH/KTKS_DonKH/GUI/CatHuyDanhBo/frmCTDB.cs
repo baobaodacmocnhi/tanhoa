@@ -183,6 +183,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (_direct)
                     {
                         ///Sợ phía dưới bị lỗi nên phải thêm như thế
+                        if (!_source.ContainsKey("NoiChuyenDen"))
                         _source.Add("NoiChuyenDen", "");
                     }
                     else
@@ -241,6 +242,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 if (_cCHDB.ThemCTCTDB(ctctdb))
                 {
+                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 

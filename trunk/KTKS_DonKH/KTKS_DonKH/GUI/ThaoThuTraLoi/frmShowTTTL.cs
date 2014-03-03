@@ -151,7 +151,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 if (chkThuBao.Checked)
                     _cttttl.ThuBao = true;
 
-                _cTTTL.SuaCTTTTL(_cttttl);
+                if(_cTTTL.SuaCTTTTL(_cttttl))
+                    MessageBox.Show("Sửa Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

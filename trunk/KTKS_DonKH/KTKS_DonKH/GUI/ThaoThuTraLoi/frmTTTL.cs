@@ -127,7 +127,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     if (_direct)
                     {
                         ///Sợ phía dưới bị lỗi nên phải thêm như thế
-                        _source.Add("NoiChuyenDen", "");
+                        if (!_source.ContainsKey("NoiChuyenDen"))
+                            _source.Add("NoiChuyenDen", "");   
                     }
                     else
                     {
@@ -204,6 +205,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
                 if (_cTTTL.ThemCTTTTL(cttttl))
                 {
+                    MessageBox.Show("Thêm Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 

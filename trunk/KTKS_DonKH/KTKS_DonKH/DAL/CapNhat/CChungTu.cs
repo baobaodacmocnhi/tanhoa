@@ -510,7 +510,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ThemLichSuChungTu(lichsuchungtu);
 
                         db.SubmitChanges();
-                        MessageBox.Show("Thành công Thêm ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Thành công Thêm ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
                     else
@@ -629,7 +629,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     flagEdited = false;
                 }
                 db.SubmitChanges();
-                MessageBox.Show("Thành công Sửa ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Thành công Sửa ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -742,7 +742,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
 
                 ThemLichSuChungTu(lichsuchungtu);
-                MessageBox.Show("Thành công Thêm NhanChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Thành công Thêm NhanChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
@@ -887,7 +887,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtuNhan.NhanNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
 
                             ThemLichSuChungTu(lichsuchungtuNhan);
-                            MessageBox.Show("Thành công Thêm CatChuyenChungTu cùng ChiNhanh Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show("Thành công Thêm CatChuyenChungTu cùng ChiNhanh Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return true;
                         }
                         else
@@ -926,7 +926,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         lichsuchungtu.NgayHetHan = ctchungtuCN.NgayHetHan;
 
                         ThemLichSuChungTu(lichsuchungtu);
-                        MessageBox.Show("Thành công Thêm CatChuyenChungTu khác ChiNhanh Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Thành công Thêm CatChuyenChungTu khác ChiNhanh Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
                     else

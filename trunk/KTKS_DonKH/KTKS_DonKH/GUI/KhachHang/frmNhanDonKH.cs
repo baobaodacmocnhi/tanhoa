@@ -241,6 +241,8 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 if (_cDonKH.ThemDonKH(donkh))
                 {
+                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                     dr["MaDon"] = txtMaDon.Text.Trim() + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString())); ;

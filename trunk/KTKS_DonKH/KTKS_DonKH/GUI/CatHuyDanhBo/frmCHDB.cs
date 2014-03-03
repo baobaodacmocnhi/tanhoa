@@ -258,6 +258,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     if (_cCHDB.ThemCTCHDB(ctchdb))
                     {
+                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                         DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
@@ -346,6 +347,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                         if (_cCHDB.ThemCTCHDB(ctchdb))
                         {
+                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
@@ -410,6 +412,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                             if (_cCHDB.ThemCTCHDB(ctchdb))
                             {
+                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
