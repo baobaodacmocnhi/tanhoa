@@ -57,12 +57,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>
         /// <param name="ttkhachhang"></param>
-        public void LoadThongTin(TTKhachHang ttkhachhang)
+        public void LoadTTKH(TTKhachHang ttkhachhang)
         {
-            txtDanhBo.Text = _ttkhachhang.DanhBo;
-            txtHopDong.Text = _ttkhachhang.GiaoUoc;
-            txtHoTen.Text = _ttkhachhang.HoTen;
-            txtDiaChi.Text = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
+            txtDanhBo.Text = ttkhachhang.DanhBo;
+            txtHopDong.Text = ttkhachhang.GiaoUoc;
+            txtHoTen.Text = ttkhachhang.HoTen;
+            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
         }
 
         public void Clear()
@@ -236,7 +236,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                     ctctdb.ChucVu = "GIÁM ĐỐC";
                 else
-                    ctctdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                    ctctdb.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                 ctctdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
 
                 if (_cCHDB.ThemCTCTDB(ctctdb))
@@ -320,7 +320,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
                     {
                         _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                        LoadThongTin(_ttkhachhang);
+                        LoadTTKH(_ttkhachhang);
                         groupBoxNguyenNhanXuLy.Enabled = true;
                         groupBoxKetQuaXuLy.Enabled = false;
                         groupBoxCapTrenXuLy.Enabled = false;
@@ -350,7 +350,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                     txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                     ///
-                    LoadThongTin(_cTTKH.getTTKHbyID(_ctctdb.DanhBo));
+                    LoadTTKH(_cTTKH.getTTKHbyID(_ctctdb.DanhBo));
                     ///Nguyên Nhân Xử Lý
                     cmbLyDo.SelectedText = _ctctdb.LyDo;
                     txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;

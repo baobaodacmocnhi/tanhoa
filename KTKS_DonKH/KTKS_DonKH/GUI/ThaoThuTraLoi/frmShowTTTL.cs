@@ -11,6 +11,8 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.KhachHang;
 
 namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 {
@@ -19,6 +21,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         decimal _MaCTTTTL = 0;
         CTTTL _cTTTL = new CTTTL();
         CTTTTL _cttttl = null;
+        CTTKH _cTTKH = new CTTKH();
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
 
         public frmShowTTTL()
         {
@@ -31,6 +35,21 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             _MaCTTTTL = MaCTTTTL;
         }
 
+        /// <summary>
+        /// Nhận Entity TTKhachHang để điền vào textbox
+        /// </summary>
+        /// <param name="ttkhachhang"></param>
+        public void LoadTTKH(TTKhachHang ttkhachhang)
+        {
+            txtDanhBo.Text = ttkhachhang.DanhBo;
+            txtHopDong.Text = ttkhachhang.GiaoUoc;
+            txtLoTrinh.Text = ttkhachhang.Dot + ttkhachhang.CuonGCS + ttkhachhang.CuonSTT;
+            txtHoTen.Text = ttkhachhang.HoTen;
+            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
+            txtGiaBieu.Text = ttkhachhang.GB;
+            txtDinhMuc.Text = ttkhachhang.TGDM;
+        }
+
         private void frmShowTTTL_Load(object sender, EventArgs e)
         {
             this.Location = new Point(70, 70);
@@ -40,6 +59,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 txtMaDon.Text = _cttttl.TTTL.MaDon.Value.ToString().Insert(_cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
                 txtDanhBo.Text = _cttttl.DanhBo;
                 txtHopDong.Text = _cttttl.HopDong;
+                txtLoTrinh.Text = _cttttl.LoTrinh;
                 txtHoTen.Text = _cttttl.HoTen;
                 txtDiaChi.Text = _cttttl.DiaChi;
                 txtGiaBieu.Text = _cttttl.GiaBieu;
@@ -73,13 +93,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
                 dr["SoPhieu"] = _cttttl.MaCTTTTL.ToString().Insert(_cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                dr["LoTrinh"] = _cttttl.LoTrinh;
                 dr["HoTen"] = _cttttl.HoTen;
                 dr["DiaChi"] = _cttttl.DiaChi;
-                dr["DanhBo"] = _cttttl.DanhBo;
+                dr["DanhBo"] = _cttttl.DanhBo.Insert(7, " ").Insert(4, " "); ;
                 dr["HopDong"] = _cttttl.HopDong;
                 dr["GiaBieu"] = _cttttl.GiaBieu;
                 dr["DinhMuc"] = _cttttl.DinhMuc;
-                dr["NgayNhanDon"] = _cttttl.TTTL.DonKH.CreateDate;
+                dr["NgayNhanDon"] = _cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
                 dr["VeViec"] = _cttttl.VeViec;
                 dr["NoiDung"] = _cttttl.NoiDung;
                 dr["NoiNhan"] = _cttttl.NoiNhan;
@@ -98,6 +119,55 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         private void frmShowTTTL_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (_cttttl != null)
+            {
+                _cttttl.DanhBo = txtDanhBo.Text.Trim();
+                _cttttl.HopDong = txtHopDong.Text.Trim();
+                _cttttl.LoTrinh = txtLoTrinh.Text.Trim();
+                _cttttl.HoTen = txtHoTen.Text.Trim();
+                _cttttl.DiaChi = txtDiaChi.Text.Trim();
+                _cttttl.GiaBieu = txtGiaBieu.Text.Trim();
+                _cttttl.DinhMuc = txtDinhMuc.Text.Trim();
+                _cttttl.VeViec = txtVeViec.Text.Trim();
+                _cttttl.NoiDung = txtNoiDung.Text;
+                _cttttl.NoiNhan = txtNoiNhan.Text.Trim();
+                ///
+                if (chkGiamNuocXaBo.Checked)
+                    _cttttl.GiamNuocXaBo = true;
+                if (chkKiemDinhDHN_Dung.Checked)
+                    _cttttl.KiemDinhDHN_Dung = true;
+                if (chkKiemDinhDHN_Sai.Checked)
+                    _cttttl.KiemDinhDHN_Sai = true;
+                if (chkThayDHN.Checked)
+                    _cttttl.ThayDHN = true;
+                if (chkDieuChinh_GB_DM.Checked)
+                    _cttttl.DieuChinh_GB_DM = true;
+                if (chkThuMoi.Checked)
+                    _cttttl.ThuMoi = true;
+                if (chkThuBao.Checked)
+                    _cttttl.ThuBao = true;
+
+                _cTTTL.SuaCTTTTL(_cttttl);
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                {
+                    LoadTTKH(_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()));
+                }
+                else
+                {
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

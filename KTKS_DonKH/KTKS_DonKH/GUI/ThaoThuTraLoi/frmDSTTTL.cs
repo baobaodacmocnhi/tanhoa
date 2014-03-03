@@ -25,6 +25,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CKTXM _cKTXM = new CKTXM();
         DataTable DSTTTL_Edited = new DataTable();
         DataRowView _CTRow = null;
+        BindingSource DSTTTL_BS;
 
         public frmDSTTTL()
         {
@@ -65,16 +66,22 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             dgvDSThu.AutoGenerateColumns = false;
             dgvDSThu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSThu.Font, FontStyle.Bold);
             dgvDSThu.Location = gridControl.Location;
+
+            dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
             {
+                DSTTTL_BS = new BindingSource();
+                DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
+                gridControl.DataSource = DSTTTL_BS;
+
                 gridControl.Visible = true;
-                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
                 dgvDSThu.Visible = false;
-                btnLuu.Enabled = true;
+                //btnLuu.Enabled = true;
+                DSTTTL_Edited = new DataTable();
             }
         }
 
@@ -82,10 +89,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (radChuaDuyet.Checked)
             {
+                DSTTTL_BS = new BindingSource();
+                DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLChuaDuyet();
+                gridControl.DataSource = DSTTTL_BS;
+
                 gridControl.Visible = true;
-                gridControl.DataSource = _cTTTL.LoadDSTTTLChuaDuyet();
                 dgvDSThu.Visible = false;
-                btnLuu.Enabled = false;
+                //btnLuu.Enabled = false;
+                DSTTTL_Edited = new DataTable();
             }
         }
 
@@ -93,10 +104,13 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (radDSThu.Checked)
             {
+                DSTTTL_BS = new BindingSource();
+                DSTTTL_BS.DataSource = _cTTTL.LoadDSCTTTTL();
                 dgvDSThu.Visible = true;
-                dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTL();
+                dgvDSThu.DataSource = DSTTTL_BS;
                 gridControl.Visible = false;
-                btnLuu.Enabled = false;
+                //btnLuu.Enabled = false;
+                DSTTTL_Edited = new DataTable();
             }
         }
 
@@ -191,23 +205,31 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         /// <param name="e"></param>
         private void gridViewTTTL_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            ///Khai báo các cột tương ứng trong Datagridview
-            if (DSTTTL_Edited.Columns.Count == 0)
-                foreach (DataColumn itemCol in ((DataView)gridViewTTTL.DataSource).Table.Columns)
-                {
-                    DSTTTL_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
-                }
+            /////Khai báo các cột tương ứng trong Datagridview
+            //if (DSTTTL_Edited.Columns.Count == 0)
+            //    foreach (DataColumn itemCol in ((DataView)gridViewTTTL.DataSource).Table.Columns)
+            //    {
+            //        DSTTTL_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
+            //    }
 
-            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
-            ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row.EndEdit();
+            /////Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
+            //((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row.EndEdit();
 
-            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
-            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSTTTL_Edited.Select("MaDon = " + ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"]).Count() > 0)
-                DSTTTL_Edited.Rows.Remove(DSTTTL_Edited.Select("MaDon = " + ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"])[0]);
+            /////DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
+            /////Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
+            //if (DSTTTL_Edited.Select("MaDon = " + ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"]).Count() > 0)
+            //    DSTTTL_Edited.Rows.Remove(DSTTTL_Edited.Select("MaDon = " + ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"])[0]);
 
-            DSTTTL_Edited.ImportRow(((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row);
-            btnLuu.Enabled = true;
+            //DSTTTL_Edited.ImportRow(((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row);
+            //btnLuu.Enabled = true;
+            DataRowView itemRow = (DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0]);
+
+            TTTL tttl = _cTTTL.getTTTLbyID(decimal.Parse(itemRow["MaTTTL"].ToString()));
+            tttl.KetQua = itemRow["KetQua"].ToString();
+            tttl.Chuyen = true;
+            tttl.MaChuyen = itemRow["MaChuyen"].ToString();
+            tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+            _cTTTL.SuaTTTL(tttl);
         }
 
         #endregion
@@ -275,85 +297,161 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (DSTTTL_Edited != null && DSTTTL_Edited.Rows.Count > 0)
+            try
             {
-                foreach (DataRow itemRow in DSTTTL_Edited.Rows)
+                if (DSTTTL_Edited != null && DSTTTL_Edited.Rows.Count > 0)
                 {
-                    //if (itemRow["MaTTTL"].ToString() == "")
-                    //{
-                    //    TTTL tttl = new TTTL();
-                    //    tttl.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
-                    //    tttl.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
-                    //    tttl.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
-                    //    tttl.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
-                    //    tttl.KetQua = itemRow["KetQua"].ToString();
-                    //    if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                    //    {
-                    //        tttl.Chuyen = true;
-                    //        tttl.MaChuyen = itemRow["MaChuyen"].ToString();
-                    //        tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                    //    }
-                    //    if (_cTTTL.ThemTTTL(tttl))
-                    //    {
-                    //        switch (itemRow["NoiChuyenDen"].ToString())
-                    //        {
-                    //            case "Khách Hàng":
-                    //                ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                    //                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                    //                donkh.Nhan = true;
-                    //                _cDonKH.SuaDonKH(donkh);
-                    //                break;
-                    //            case "Điều Chỉnh Biến Động":
-                    //                ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                    //                KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
-                    //                ktxm.Nhan = true;
-                    //                _cKTXM.SuaKTXM(ktxm);
-                    //                break;
-                    //        }
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    TTTL tttl = _cTTTL.getTTTLbyID(decimal.Parse(itemRow["MaTTTL"].ToString()));
-                    //    ///Đơn đã được nơi nhận xử lý thì không được sửa
-                    //    if (!tttl.Nhan)
-                    //    {
-                    //        tttl.KetQua = itemRow["KetQua"].ToString();
-                    //        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                    //        {
-                    //            tttl.Chuyen = true;
-                    //            tttl.MaChuyen = itemRow["MaChuyen"].ToString();
-                    //            tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                    //        }
-                    //        else
-                    //            if (itemRow["MaChuyen"].ToString() == "NONE")
-                    //            {
-                    //                tttl.Chuyen = false;
-                    //                tttl.MaChuyen = null;
-                    //                tttl.LyDoChuyen = null;
-                    //            }
-                    //        _cTTTL.SuaTTTL(tttl);
-                    //    }
-                    //    else
-                    //    {
-                    //        MessageBox.Show("Đơn " + tttl.MaTTTL + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    }
-                    //}
+                    foreach (DataRow itemRow in DSTTTL_Edited.Rows)
+                    {
+                        //if (itemRow["MaTTTL"].ToString() == "")
+                        //{
+                        //    TTTL tttl = new TTTL();
+                        //    tttl.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
+                        //    tttl.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
+                        //    tttl.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
+                        //    tttl.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
+                        //    tttl.KetQua = itemRow["KetQua"].ToString();
+                        //    if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        //    {
+                        //        tttl.Chuyen = true;
+                        //        tttl.MaChuyen = itemRow["MaChuyen"].ToString();
+                        //        tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        //    }
+                        //    if (_cTTTL.ThemTTTL(tttl))
+                        //    {
+                        //        switch (itemRow["NoiChuyenDen"].ToString())
+                        //        {
+                        //            case "Khách Hàng":
+                        //                ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                        //                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                        //                donkh.Nhan = true;
+                        //                _cDonKH.SuaDonKH(donkh);
+                        //                break;
+                        //            case "Điều Chỉnh Biến Động":
+                        //                ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                        //                KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
+                        //                ktxm.Nhan = true;
+                        //                _cKTXM.SuaKTXM(ktxm);
+                        //                break;
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    TTTL tttl = _cTTTL.getTTTLbyID(decimal.Parse(itemRow["MaTTTL"].ToString()));
+                        //    ///Đơn đã được nơi nhận xử lý thì không được sửa
+                        //    if (!tttl.Nhan)
+                        //    {
+                        //        tttl.KetQua = itemRow["KetQua"].ToString();
+                        //        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        //        {
+                        //            tttl.Chuyen = true;
+                        //            tttl.MaChuyen = itemRow["MaChuyen"].ToString();
+                        //            tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        //        }
+                        //        else
+                        //            if (itemRow["MaChuyen"].ToString() == "NONE")
+                        //            {
+                        //                tttl.Chuyen = false;
+                        //                tttl.MaChuyen = null;
+                        //                tttl.LyDoChuyen = null;
+                        //            }
+                        //        _cTTTL.SuaTTTL(tttl);
+                        //    }
+                        //    else
+                        //    {
+                        //        MessageBox.Show("Đơn " + tttl.MaTTTL + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    }
+                        //}
 
-                    TTTL tttl = _cTTTL.getTTTLbyID(decimal.Parse(itemRow["MaTTTL"].ToString()));
-                    tttl.KetQua = itemRow["KetQua"].ToString();
-                    tttl.Chuyen = true;
-                    tttl.MaChuyen = itemRow["MaChuyen"].ToString();
-                    tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                    _cTTTL.SuaTTTL(tttl);
+                        TTTL tttl = _cTTTL.getTTTLbyID(decimal.Parse(itemRow["MaTTTL"].ToString()));
+                        tttl.KetQua = itemRow["KetQua"].ToString();
+                        tttl.Chuyen = true;
+                        tttl.MaChuyen = itemRow["MaChuyen"].ToString();
+                        tttl.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        _cTTTL.SuaTTTL(tttl);
+                    }
+                    MessageBox.Show("Lưu thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DSTTTL_Edited.Clear();
+
+                    if (radDaDuyet.Checked)
+                        gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
+                    if (radChuaDuyet.Checked)
+                        gridControl.DataSource = _cTTTL.LoadDSTTTLChuaDuyet();
                 }
-                DSTTTL_Edited.Clear();
-
-                if (radDaDuyet.Checked)
-                    gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
-                if (radChuaDuyet.Checked)
-                    gridControl.DataSource = _cTTTL.LoadDSTTTLChuaDuyet();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void dgvDSThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSThu.Columns[e.ColumnIndex].Name == "MaCTTTTL" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void dgvDSThu_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            bool ischecked = false;
+            if (bool.Parse(dgvDSThu["ThuDuocKy", e.RowIndex].Value.ToString()) == true)
+                ischecked = true;
+            else
+                ischecked = false;
+            CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
+            cttttl.ThuDuocKy = ischecked;
+            _cTTTL.SuaCTTTTL(cttttl);
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Mã Đơn":
+                case "Mã Thư":
+                    txtNoiDungTimKiem.Visible = true;
+                    dateTimKiem.Visible = false;
+                    break;
+                case "Ngày Lập":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    DSTTTL_BS.RemoveFilter();
+                    break;
+            }
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNoiDungTimKiem.Text.Trim() != "")
+            {
+                string expression = "";
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        break;
+                    case "Mã Thư":
+                        expression = String.Format("MaCTTTTL = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        break;
+                }
+                DSTTTL_BS.Filter = expression;
+            }
+            else
+                DSTTTL_BS.RemoveFilter();
+        }
+
+        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            DSTTTL_BS.Filter = expression;
         }
 
     }

@@ -221,84 +221,93 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (DSCHDB_Edited != null && DSCHDB_Edited.Rows.Count > 0)
+            try
             {
-                foreach (DataRow itemRow in DSCHDB_Edited.Rows)
+                if (DSCHDB_Edited != null && DSCHDB_Edited.Rows.Count > 0)
                 {
-                    //if (itemRow["MaCHDB"].ToString() == "")
-                    //{
-                    //    CHDB chdb = new CHDB();
-                    //    chdb.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
-                    //    chdb.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
-                    //    chdb.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
-                    //    chdb.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
-                    //    chdb.KetQua = itemRow["KetQua"].ToString();
-                    //    if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                    //    {
-                    //        chdb.Chuyen = true;
-                    //        chdb.MaChuyen = itemRow["MaChuyen"].ToString();
-                    //        chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                    //    }
-                    //    if (_cCHDB.ThemCHDB(chdb))
-                    //    {
-                    //        switch (itemRow["NoiChuyenDen"].ToString())
-                    //        {
-                    //            case "Khách Hàng":
-                    //                ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                    //                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                    //                donkh.Nhan = true;
-                    //                _cDonKH.SuaDonKH(donkh);
-                    //                break;
-                    //            case "Điều Chỉnh Biến Động":
-                    //                ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                    //                KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
-                    //                ktxm.Nhan = true;
-                    //                _cKTXM.SuaKTXM(ktxm);
-                    //                break;
-                    //        }
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    CHDB chdb = _cCHDB.getCHDBbyID(decimal.Parse(itemRow["MaCHDB"].ToString()));
-                    //    ///Đơn đã được nơi nhận xử lý thì không được sửa
-                    //    if (!chdb.Nhan)
-                    //    {
-                    //        chdb.KetQua = itemRow["KetQua"].ToString();
-                    //        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
-                    //        {
-                    //            chdb.Chuyen = true;
-                    //            chdb.MaChuyen = itemRow["MaChuyen"].ToString();
-                    //            chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                    //        }
-                    //        else
-                    //            if (itemRow["MaChuyen"].ToString() == "NONE")
-                    //            {
-                    //                chdb.Chuyen = false;
-                    //                chdb.MaChuyen = null;
-                    //                chdb.LyDoChuyen = null;
-                    //            }
-                    //        _cCHDB.SuaCHDB(chdb);
-                    //    }
-                    //    else
-                    //    {
-                    //        MessageBox.Show("Đơn " + chdb.MaCHDB + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    }
-                    //}
-                    CHDB chdb = _cCHDB.getCHDBbyID(decimal.Parse(itemRow["MaCHDB"].ToString()));
-                    chdb.KetQua = itemRow["KetQua"].ToString();
-                    chdb.Chuyen = true;
-                    chdb.MaChuyen = itemRow["MaChuyen"].ToString();
-                    chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
-                    _cCHDB.SuaCHDB(chdb);
-                }
-                DSCHDB_Edited.Clear();
+                    foreach (DataRow itemRow in DSCHDB_Edited.Rows)
+                    {
+                        //if (itemRow["MaCHDB"].ToString() == "")
+                        //{
+                        //    CHDB chdb = new CHDB();
+                        //    chdb.MaDon = decimal.Parse(itemRow["MaDon"].ToString());
+                        //    chdb.MaNoiChuyenDen = decimal.Parse(itemRow["MaNoiChuyenDen"].ToString());
+                        //    chdb.NoiChuyenDen = itemRow["NoiChuyenDen"].ToString();
+                        //    chdb.LyDoChuyenDen = itemRow["LyDoChuyenDen"].ToString();
+                        //    chdb.KetQua = itemRow["KetQua"].ToString();
+                        //    if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        //    {
+                        //        chdb.Chuyen = true;
+                        //        chdb.MaChuyen = itemRow["MaChuyen"].ToString();
+                        //        chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        //    }
+                        //    if (_cCHDB.ThemCHDB(chdb))
+                        //    {
+                        //        switch (itemRow["NoiChuyenDen"].ToString())
+                        //        {
+                        //            case "Khách Hàng":
+                        //                ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
+                        //                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                        //                donkh.Nhan = true;
+                        //                _cDonKH.SuaDonKH(donkh);
+                        //                break;
+                        //            case "Điều Chỉnh Biến Động":
+                        //                ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                        //                KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(itemRow["MaNoiChuyenDen"].ToString()));
+                        //                ktxm.Nhan = true;
+                        //                _cKTXM.SuaKTXM(ktxm);
+                        //                break;
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    CHDB chdb = _cCHDB.getCHDBbyID(decimal.Parse(itemRow["MaCHDB"].ToString()));
+                        //    ///Đơn đã được nơi nhận xử lý thì không được sửa
+                        //    if (!chdb.Nhan)
+                        //    {
+                        //        chdb.KetQua = itemRow["KetQua"].ToString();
+                        //        if (itemRow["MaChuyen"].ToString() != "" && itemRow["MaChuyen"].ToString() != "NONE")
+                        //        {
+                        //            chdb.Chuyen = true;
+                        //            chdb.MaChuyen = itemRow["MaChuyen"].ToString();
+                        //            chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        //        }
+                        //        else
+                        //            if (itemRow["MaChuyen"].ToString() == "NONE")
+                        //            {
+                        //                chdb.Chuyen = false;
+                        //                chdb.MaChuyen = null;
+                        //                chdb.LyDoChuyen = null;
+                        //            }
+                        //        _cCHDB.SuaCHDB(chdb);
+                        //    }
+                        //    else
+                        //    {
+                        //        MessageBox.Show("Đơn " + chdb.MaCHDB + " đã được xử lý nên không sửa đổi được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    }
+                        //}
+                        CHDB chdb = _cCHDB.getCHDBbyID(decimal.Parse(itemRow["MaCHDB"].ToString()));
+                        chdb.KetQua = itemRow["KetQua"].ToString();
+                        chdb.Chuyen = true;
+                        chdb.MaChuyen = itemRow["MaChuyen"].ToString();
+                        chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+                        _cCHDB.SuaCHDB(chdb);
+                    }
+                    MessageBox.Show("Lưu thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DSCHDB_Edited.Clear();
 
-                if (radDaDuyet.Checked)
-                    gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
-                if (radChuaDuyet.Checked)
-                    gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
+                    if (radDaDuyet.Checked)
+                        gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
+                    if (radChuaDuyet.Checked)
+                        gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         #region gridViewCHDB (Danh Sách Cắt Hủy Danh Bộ)

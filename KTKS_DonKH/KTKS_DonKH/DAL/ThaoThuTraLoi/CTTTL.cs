@@ -189,7 +189,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     tttl.ModifyDate = DateTime.Now;
                     tttl.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -297,7 +297,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     cttttl.CreateBy = CTaiKhoan.MaUser;
                     db.CTTTTLs.InsertOnSubmit(cttttl);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công Thêm CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -324,7 +324,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     cttttl.ModifyDate = DateTime.Now;
                     cttttl.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -393,6 +393,24 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
+        /// <summary>
+        /// Kiểm tra Thư đã được tạo cho Mã Đơn và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTTTTLbyMaDonDanhBo(decimal MaDon,string DanhBo)
+        {
+            try
+            {
+                return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDon == MaDon && itemCTTTTL.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
         #endregion
     }

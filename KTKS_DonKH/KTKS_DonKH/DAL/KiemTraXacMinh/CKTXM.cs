@@ -58,6 +58,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     ktxm.ModifyDate = DateTime.Now;
                     ktxm.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa KTXM", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
