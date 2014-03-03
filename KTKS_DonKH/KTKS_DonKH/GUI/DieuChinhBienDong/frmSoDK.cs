@@ -141,6 +141,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu))
                     {
+                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (chkCatChuyen.Checked)
                         {
                             rptPhieuYCCatDM rpt = new rptPhieuYCCatDM();
@@ -181,6 +182,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
                     {
+                        MessageBox.Show("SửaThành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }

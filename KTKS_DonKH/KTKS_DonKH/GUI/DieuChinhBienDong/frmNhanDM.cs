@@ -116,6 +116,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     if (_cChungTu.NhanChungTu(chungtu, ctchungtu, lichsuchungtu))
                     {
+                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                         DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 

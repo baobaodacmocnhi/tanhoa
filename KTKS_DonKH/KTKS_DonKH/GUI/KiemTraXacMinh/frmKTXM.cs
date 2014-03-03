@@ -238,6 +238,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 if (_cKTXM.ThemCTKTXM(ctktxm))
                 {
+                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon, CTaiKhoan.MaUser);
                     _ttkhachhang = null;
                     Clear();

@@ -161,7 +161,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     tttl.CreateBy = CTaiKhoan.MaUser;
                     db.TTTLs.InsertOnSubmit(tttl);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -297,7 +297,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     cttttl.CreateBy = CTaiKhoan.MaUser;
                     db.CTTTTLs.InsertOnSubmit(cttttl);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Thêm CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

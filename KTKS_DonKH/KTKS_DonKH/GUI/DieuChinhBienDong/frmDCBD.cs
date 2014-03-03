@@ -295,6 +295,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         //string a, b, c;
                         //_cDonKH.GetInfobyMaDon(_donkh.MaDon, "DCBD", out a, out b, out c);
                         //_source.Add("MaNoiChuyenDen", a);
+                        if (!_source.ContainsKey("NoiChuyenDen"))
                         _source.Add("NoiChuyenDen", "");
                         //_source.Add("LyDoChuyenDen", c);
                     }
@@ -410,6 +411,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 if (_cDCBD.ThemCTDCBD(ctdcbd))
                 {
+                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 

@@ -424,7 +424,8 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 #endregion
 
-                _cDonKH.SuaDonKH(_donkh);
+                if(_cDonKH.SuaDonKH(_donkh))
+                    MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 #region if SuaDonKH
                 //if (_cDonKH.SuaDonKH(_donkh))

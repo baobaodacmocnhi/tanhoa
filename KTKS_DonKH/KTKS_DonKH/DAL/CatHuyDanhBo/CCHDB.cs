@@ -176,7 +176,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     chdb.CreateBy = CTaiKhoan.TaiKhoan;
                     db.CHDBs.InsertOnSubmit(chdb);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Thêm CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -204,7 +204,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     chdb.ModifyDate = DateTime.Now;
                     chdb.ModifyBy = CTaiKhoan.TaiKhoan;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -312,7 +312,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctctdb.CreateBy = CTaiKhoan.MaUser;
                     db.CTCTDBs.InsertOnSubmit(ctctdb);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Thêm CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -339,7 +339,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctctdb.ModifyDate = DateTime.Now;
                     ctctdb.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -441,7 +441,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctchdb.CreateBy = CTaiKhoan.MaUser;
                     db.CTCHDBs.InsertOnSubmit(ctchdb);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Thêm CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -468,7 +468,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctchdb.ModifyDate = DateTime.Now;
                     ctchdb.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
