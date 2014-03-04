@@ -110,6 +110,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = ttkhachhang.SX;
             txtDV.Text = ttkhachhang.DV;
             txtHCSN.Text = ttkhachhang.HCSN;
+            txtDot.Text = ttkhachhang.Dot;
 
             dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(ttkhachhang.DanhBo);
             dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(ttkhachhang.DanhBo);
@@ -129,6 +130,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX.Text = "";
             txtDV.Text = "";
             txtHCSN.Text = "";
+            txtDot.Text = "";
             txtHieuLucKy.Text = "";
             chkCatMSThue.Checked = false;
 
@@ -341,6 +343,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ctdcbd.HopDong = txtHopDong.Text.Trim();
                 ctdcbd.HoTen = txtHoTen.Text.Trim();
                 ctdcbd.DiaChi = txtDiaChi.Text.Trim();
+                ctdcbd.MaPhuongQuan = _ttkhachhang.Phuong + " " + _ttkhachhang.Quan;
                 ctdcbd.MSThue = txtMSThue.Text.Trim();
                 ctdcbd.GiaBieu = txtGiaBieu.Text.Trim();
                 ctdcbd.DinhMuc = txtDinhMuc.Text.Trim();
@@ -424,10 +427,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["MSThue"] = "MST: Cắt MST";
                     if (txtMSThue_BD.Text.Trim() != "")
                         dr["MSThue"] = "MST: " + ctdcbd.MSThue_BD;
-                    dr["DanhBo"] = ctdcbd.DanhBo;
+                    dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HopDong"] = ctdcbd.HopDong;
                     dr["HoTen"] = ctdcbd.HoTen;
                     dr["DiaChi"] = ctdcbd.DiaChi;
+                    dr["MaPhuongQuan"] = ctdcbd.MaPhuongQuan;
                     dr["GiaBieu"] = ctdcbd.GiaBieu;
                     dr["DinhMuc"] = ctdcbd.DinhMuc;
                     ///Biến Động
@@ -509,6 +513,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void txtDanhBo_Leave(object sender, EventArgs e)
+        {
+            txtHieuLucKy.Focus();
+        }
+
+        private void txtHieuLucKy_Leave(object sender, EventArgs e)
+        {
+            txtHoTen_BD.Focus();
         }
 
     }

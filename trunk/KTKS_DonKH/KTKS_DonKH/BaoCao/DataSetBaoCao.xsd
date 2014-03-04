@@ -92,6 +92,7 @@
               <xs:element name="ThongTin" msprop:Generator_ColumnVarNameInTable="columnThongTin" msprop:Generator_ColumnPropNameInRow="ThongTin" msprop:Generator_ColumnPropNameInTable="ThongTinColumn" msprop:Generator_UserColumnName="ThongTin" type="xs:string" minOccurs="0" />
               <xs:element name="ChucVu" msprop:Generator_ColumnVarNameInTable="columnChucVu" msprop:Generator_ColumnPropNameInRow="ChucVu" msprop:Generator_ColumnPropNameInTable="ChucVuColumn" msprop:Generator_UserColumnName="ChucVu" type="xs:string" minOccurs="0" />
               <xs:element name="NguoiKy" msprop:Generator_ColumnVarNameInTable="columnNguoiKy" msprop:Generator_ColumnPropNameInRow="NguoiKy" msprop:Generator_ColumnPropNameInTable="NguoiKyColumn" msprop:Generator_UserColumnName="NguoiKy" type="xs:string" minOccurs="0" />
+              <xs:element name="MaPhuongQuan" msprop:Generator_ColumnVarNameInTable="columnMaPhuongQuan" msprop:Generator_ColumnPropNameInRow="MaPhuongQuan" msprop:Generator_ColumnPropNameInTable="MaPhuongQuanColumn" msprop:Generator_UserColumnName="MaPhuongQuan" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

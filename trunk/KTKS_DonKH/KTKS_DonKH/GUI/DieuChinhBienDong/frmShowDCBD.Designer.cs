@@ -76,6 +76,9 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
+            this.txtDot = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.btnSua = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -515,7 +518,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(985, 198);
+            this.btnIn.Location = new System.Drawing.Point(1094, 197);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(92, 35);
             this.btnIn.TabIndex = 37;
@@ -524,12 +527,45 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
+            // txtDot
+            // 
+            this.txtDot.Location = new System.Drawing.Point(804, 6);
+            this.txtDot.Name = "txtDot";
+            this.txtDot.ReadOnly = true;
+            this.txtDot.Size = new System.Drawing.Size(56, 25);
+            this.txtDot.TabIndex = 39;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(764, 9);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(34, 17);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "Đợt:";
+            // 
+            // btnSua
+            // 
+            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(1012, 198);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(65, 35);
+            this.btnSua.TabIndex = 84;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // frmShowDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1198, 244);
+            this.Controls.Add(this.btnSua);
+            this.Controls.Add(this.txtDot);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtHieuLucKy);
             this.Controls.Add(this.label22);
@@ -605,5 +641,8 @@
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.TextBox txtDot;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button btnSua;
     }
 }

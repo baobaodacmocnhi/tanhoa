@@ -4397,6 +4397,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DiaChi;
 		
+		private string _MaPhuongQuan;
+		
 		private string _MSThue;
 		
 		private string _GiaBieu;
@@ -4473,6 +4475,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
     partial void OnDiaChiChanged();
+    partial void OnMaPhuongQuanChanging(string value);
+    partial void OnMaPhuongQuanChanged();
     partial void OnMSThueChanging(string value);
     partial void OnMSThueChanged();
     partial void OnGiaBieuChanging(string value);
@@ -4637,6 +4641,26 @@ namespace KTKS_DonKH.LinQ
 					this._DiaChi = value;
 					this.SendPropertyChanged("DiaChi");
 					this.OnDiaChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhuongQuan", DbType="NVarChar(50)")]
+		public string MaPhuongQuan
+		{
+			get
+			{
+				return this._MaPhuongQuan;
+			}
+			set
+			{
+				if ((this._MaPhuongQuan != value))
+				{
+					this.OnMaPhuongQuanChanging(value);
+					this.SendPropertyChanging();
+					this._MaPhuongQuan = value;
+					this.SendPropertyChanged("MaPhuongQuan");
+					this.OnMaPhuongQuanChanged();
 				}
 			}
 		}
