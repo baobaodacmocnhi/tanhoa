@@ -191,6 +191,7 @@
       <Column Name="HopDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaPhuongQuan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MSThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DinhMuc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

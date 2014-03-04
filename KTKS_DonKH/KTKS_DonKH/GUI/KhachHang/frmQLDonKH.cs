@@ -49,6 +49,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             dgvDSDonKH.DataSource = DSDonKH_BS;
             radAll.Checked = true;
 
+            cmbTimTheo.SelectedIndex = 3;
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
             
@@ -235,14 +236,22 @@ namespace KTKS_DonKH.GUI.KhachHang
                 case "Mã Đơn":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày Lập":
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = true;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Khoảng Thời Gian":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
                     DSDonKH_BS.RemoveFilter();
                     break;
             }

@@ -68,6 +68,7 @@
             // 
             this.txtMaDon.Location = new System.Drawing.Point(409, 8);
             this.txtMaDon.Name = "txtMaDon";
+            this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(100, 25);
             this.txtMaDon.TabIndex = 1;
             this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
