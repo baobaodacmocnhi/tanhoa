@@ -31,6 +31,31 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Lấy danh sách Giá Nước, hàm này được dùng trong nội bộ DAL
+        /// </summary>
+        /// <param name="inheritance"></param>
+        /// <returns></returns>
+        public List<GiaNuoc> LoadDSGiaNuoc(bool inheritance)
+        {
+            try
+            {
+                if (inheritance)
+                {
+                    return db.GiaNuocs.ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public bool ThemGiaNuoc(GiaNuoc gianuoc)
         {
             try
@@ -106,15 +131,19 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// <summary>
         /// Công thức tính tiền nước theo giá biểu
         /// </summary>
+        /// <param name="DieuChinhGia">true là điều chỉnh giá/ false là không</param>
+        /// <param name="GiaDieuChinh"></param>
         /// <param name="DanhBo">Danh Bộ được dùng để lấy SH,SX,DV,HCSN</param>
         /// <param name="GiaBieu"></param>
         /// <param name="DinhMuc"></param>
         /// <param name="TieuThu"></param>
+        /// <param name="ChiTiet"></param>
         /// <returns></returns>
-        public int TinhTienNuoc(string DanhBo, int GiaBieu, int DinhMuc, int TieuThu)
+        public int TinhTienNuoc(bool DieuChinhGia,int GiaDieuChinh,string DanhBo, int GiaBieu, int DinhMuc, int TieuThu, out string ChiTiet)
         {
             try
             {
+                string _chiTiet = "";
                 TTKhachHang ttkhachhang = null;
                 CTTKH _cTTKH = new CTTKH();
                 List<GiaNuoc> lstGiaNuoc = db.GiaNuocs.ToList();
@@ -133,24 +162,61 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 11:
                     case 21:///SH thuần túy
                         if (TieuThu <= DinhMuc)
+                        {
                             TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
+                            _chiTiet = TieuThu + " x " + lstGiaNuoc[0].DonGia.Value;
+                        }
                         else
-                            if (TieuThu - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                            if (!DieuChinhGia)
+                                if (TieuThu - DinhMuc <= Math.Round((double)DinhMuc / 2))
+                                {
+                                    TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                    _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                + (TieuThu - DinhMuc) + " x " + lstGiaNuoc[1].DonGia.Value;
+                                }
+                                else
+                                {
+                                    TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((TieuThu - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                    _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                + (int)Math.Round((double)DinhMuc / 2) + " x " + lstGiaNuoc[1].DonGia.Value + "\r\n"
+                                                + (TieuThu - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + lstGiaNuoc[2].DonGia.Value;
+                                }
                             else
-                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((TieuThu - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                            {
+                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * GiaDieuChinh);
+                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                            + (TieuThu - DinhMuc) + " x " + GiaDieuChinh;
+                            }
                         break;
                     case 12:
                     case 22:
                     case 32:
                     case 42:///SX thuần túy
-                        TongTien = TieuThu * lstGiaNuoc[3].DonGia.Value;
+                        if (!DieuChinhGia)
+                        {
+                            TongTien = TieuThu * lstGiaNuoc[3].DonGia.Value;
+                            _chiTiet = TieuThu + " x " + lstGiaNuoc[3].DonGia.Value;
+                        }
+                        else
+                        {
+                            TongTien = TieuThu * GiaDieuChinh;
+                            _chiTiet = TieuThu + " x " + GiaDieuChinh;
+                        }
                         break;
                     case 13:
                     case 23:
                     case 33:
                     case 43:///DV thuần túy
-                        TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
+                        if (DieuChinhGia)
+                        {
+                            TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
+                            _chiTiet = TieuThu + " x " + lstGiaNuoc[5].DonGia.Value;
+                        }
+                        else
+                        {
+                            TongTien = TieuThu * GiaDieuChinh;
+                            _chiTiet = TieuThu + " x " + GiaDieuChinh;
+                        }
                         break;
                     case 14:
                     case 24:///SH + SX
@@ -160,9 +226,23 @@ namespace KTKS_DonKH.DAL.CapNhat
                             if (ttkhachhang.SH.Trim() == "" && ttkhachhang.SX.Trim() == "")
                             {
                                 if (TieuThu <= DinhMuc)
+                                {
                                     TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
+                                    _chiTiet = TieuThu + " x " + lstGiaNuoc[0].DonGia.Value;
+                                }
                                 else
-                                    TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[3].DonGia.Value);
+                                    if (!DieuChinhGia)
+                                    {
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[3].DonGia.Value);
+                                        _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                   + (TieuThu - DinhMuc) + " x " + lstGiaNuoc[3].DonGia.Value;
+                                    }
+                                    else
+                                    {
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * GiaDieuChinh);
+                                        _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                   + (TieuThu - DinhMuc) + " x " + GiaDieuChinh;
+                                    }
                             }
                             else
                                 ///Nếu có tỉ lệ SH + SX
@@ -171,13 +251,33 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
                                     int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                     if (_SH <= DinhMuc)
+                                    {
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
+                                        _chiTiet = _SH + " x " + lstGiaNuoc[0].DonGia.Value;
+                                    }
                                     else
-                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                        if (!DieuChinhGia)
+                                            if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
+                                            {
+                                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                            + (_SH - DinhMuc) + " x " + lstGiaNuoc[1].DonGia.Value;
+                                            }
+                                            else
+                                            {
+                                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                            + (int)Math.Round((double)DinhMuc / 2) + " x " + lstGiaNuoc[1].DonGia.Value + "\r\n"
+                                                            + (_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + lstGiaNuoc[2].DonGia.Value;
+                                            }
                                         else
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                        {
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * GiaDieuChinh);
+                                            _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                        + (_SH - DinhMuc) + " x " + GiaDieuChinh;
+                                        }
                                     TongTien += _SX * lstGiaNuoc[3].DonGia.Value;
+                                    _chiTiet += "\r\n" + _SX + " x " + lstGiaNuoc[3].DonGia.Value;
                                 }
                         break;
                     case 15:
@@ -188,9 +288,23 @@ namespace KTKS_DonKH.DAL.CapNhat
                             if (ttkhachhang.SH.Trim() == "" && ttkhachhang.DV.Trim() == "")
                             {
                                 if (TieuThu <= DinhMuc)
+                                {
                                     TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
+                                    _chiTiet = TieuThu + " x " + lstGiaNuoc[0].DonGia.Value;
+                                }
                                 else
-                                    TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[5].DonGia.Value);
+                                    if (!DieuChinhGia)
+                                    {
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[5].DonGia.Value);
+                                        _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                    + (TieuThu - DinhMuc) + " x " + lstGiaNuoc[5].DonGia.Value;
+                                    }
+                                    else
+                                    {
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * GiaDieuChinh);
+                                        _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                    + (TieuThu - DinhMuc) + " x " + GiaDieuChinh;
+                                    }
                             }
                             else
                                 ///Nếu có tỉ lệ SH + DV
@@ -199,13 +313,33 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
                                     int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                     if (_SH <= DinhMuc)
+                                    {
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
+                                        _chiTiet = _SH + " x " + lstGiaNuoc[0].DonGia.Value;
+                                    }
                                     else
-                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                        if (!DieuChinhGia)
+                                            if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
+                                            {
+                                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                            + (_SH - DinhMuc) + " x " + lstGiaNuoc[1].DonGia.Value;
+                                            }
+                                            else
+                                            {
+                                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                            + (int)Math.Round((double)DinhMuc / 2) + " x " + lstGiaNuoc[1].DonGia.Value + "\r\n"
+                                                            + (_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + lstGiaNuoc[2].DonGia.Value;
+                                            }
                                         else
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                        {
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * GiaDieuChinh);
+                                            _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                        + (_SH - DinhMuc) + " x " + GiaDieuChinh;
+                                        }
                                     TongTien += _DV * lstGiaNuoc[5].DonGia.Value;
+                                    _chiTiet += _DV + " x " + lstGiaNuoc[5].DonGia.Value;
                                 }
                         break;
                     case 16:
@@ -218,6 +352,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                 TongTien = (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
+                                _chiTiet = _SX + " x " + lstGiaNuoc[3].DonGia.Value + "\r\n"
+                                            + _DV + " x " + lstGiaNuoc[5].DonGia.Value;
                             }
                             else
                                 ///Nếu có đủ 3 tỉ lệ SH + SX + DV
@@ -227,18 +363,48 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                     int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                     if (_SH <= DinhMuc)
+                                    {
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
+                                        _chiTiet = _SH + " x " + lstGiaNuoc[0].DonGia.Value;
+                                    }
                                     else
-                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                        if (!DieuChinhGia)
+                                            if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
+                                            {
+                                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                            + (_SH - DinhMuc) + " x " + lstGiaNuoc[1].DonGia.Value;
+                                            }
+                                            else
+                                            {
+                                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                            + (int)Math.Round((double)DinhMuc / 2) + " x " + lstGiaNuoc[1].DonGia.Value + "\r\n"
+                                                            + (_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + lstGiaNuoc[2].DonGia.Value;
+                                            }
                                         else
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                        {
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * GiaDieuChinh);
+                                            _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                        + (_SH - DinhMuc) + " x " + GiaDieuChinh;
+                                        }
                                     TongTien += (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
+                                    _chiTiet += _SX + " x " + lstGiaNuoc[3].DonGia.Value + "\r\n"
+                                                 + _DV + " x " + lstGiaNuoc[5].DonGia.Value;
                                 }
                         break;
                     case 17:
                     case 27:///SH ĐB
-                        TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
+                        if (!DieuChinhGia)
+                        {
+                            TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
+                            _chiTiet = TieuThu + " x " + lstGiaNuoc[0].DonGia.Value;
+                        }
+                        else
+                        {
+                            TongTien = TieuThu * GiaDieuChinh;
+                            _chiTiet = TieuThu + " x " + GiaDieuChinh;
+                        }
                         break;
                     case 18:
                     case 28:
@@ -249,9 +415,23 @@ namespace KTKS_DonKH.DAL.CapNhat
                             if (ttkhachhang.SH.Trim() == "" && ttkhachhang.HCSN.Trim() == "")
                             {
                                 if (TieuThu <= DinhMuc)
+                                {
                                     TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
+                                    _chiTiet = TieuThu + " x " + lstGiaNuoc[0].DonGia.Value;
+                                }
                                 else
-                                    TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[4].DonGia.Value);
+                                    if (!DieuChinhGia)
+                                    {
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[4].DonGia.Value);
+                                        _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                    + (TieuThu - DinhMuc) + " x " + lstGiaNuoc[4].DonGia.Value;
+                                    }
+                                    else
+                                    {
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * GiaDieuChinh);
+                                        _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                    + (TieuThu - DinhMuc) + " x " + GiaDieuChinh;
+                                    }
                             }
                             else
                                 ///Nếu có tỉ lệ SH + HCSN
@@ -260,13 +440,33 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
                                     int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
                                     if (_SH <= DinhMuc)
+                                    {
                                         TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
+                                        _chiTiet = _SH + " x " + lstGiaNuoc[0].DonGia.Value;
+                                    }
                                     else
-                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                        if (!DieuChinhGia)
+                                            if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
+                                            {
+                                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                            + (_SH - DinhMuc) + " x " + lstGiaNuoc[1].DonGia.Value;
+                                            }
+                                            else
+                                            {
+                                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                                _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                            + (int)Math.Round((double)DinhMuc / 2) + " x " + lstGiaNuoc[1].DonGia.Value + "\r\n"
+                                                            + (_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + lstGiaNuoc[2].DonGia.Value;
+                                            }
                                         else
-                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                        {
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * GiaDieuChinh);
+                                            _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                        + (_SH - DinhMuc) + " x " + GiaDieuChinh;
+                                        }
                                     TongTien += _HCSN * lstGiaNuoc[4].DonGia.Value;
+                                    _chiTiet += _HCSN + " x " + lstGiaNuoc[4].DonGia.Value;
                                 }
                         break;
                     case 19:
@@ -281,13 +481,35 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                 if (_SH <= DinhMuc)
+                                {
                                     TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
+                                    _chiTiet = _SH + " x " + lstGiaNuoc[0].DonGia.Value;
+                                }
                                 else
-                                    if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                    if (!DieuChinhGia)
+                                        if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
+                                        {
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                            _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                        + (_SH - DinhMuc) + " x " + lstGiaNuoc[1].DonGia.Value;
+                                        }
+                                        else
+                                        {
+                                            TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                            _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                        + (int)Math.Round((double)DinhMuc / 2) + " x " + lstGiaNuoc[1].DonGia.Value + "\r\n"
+                                                        + (_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + lstGiaNuoc[2].DonGia.Value;
+                                        }
                                     else
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
+                                    {
+                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * GiaDieuChinh);
+                                        _chiTiet = DinhMuc + " x " + lstGiaNuoc[0].DonGia.Value + "\r\n"
+                                                    + (_SH - DinhMuc) + " x " + GiaDieuChinh;
+                                    }
                                 TongTien += (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
+                                _chiTiet += _HCSN + " x " + lstGiaNuoc[4].DonGia.Value + "\r\n"
+                                            + _SX + " x " + lstGiaNuoc[3].DonGia.Value + "\r\n"
+                                            + _DV + " x " + lstGiaNuoc[5].DonGia.Value;
                             }
                         break;
                     ///TẬP THỂ
@@ -332,7 +554,16 @@ namespace KTKS_DonKH.DAL.CapNhat
                     //    break;
                     ///CƠ QUAN
                     case 31:///SHVM thuần túy
-                        TongTien = TieuThu * lstGiaNuoc[4].DonGia.Value;
+                        if (!DieuChinhGia)
+                        {
+                            TongTien = TieuThu * lstGiaNuoc[4].DonGia.Value;
+                            _chiTiet = TieuThu + " x " + lstGiaNuoc[4].DonGia.Value;
+                        }
+                        else
+                        {
+                            TongTien = TieuThu * GiaDieuChinh;
+                            _chiTiet = TieuThu + " x " + GiaDieuChinh;
+                        }
                         break;
                     //case 32:///SX
                     //    TongTien = TieuThu * lstGiaNuoc[3].DonGia.Value;
@@ -348,6 +579,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
                                 int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                 TongTien = (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value);
+                                _chiTiet = _HCSN + " x " + lstGiaNuoc[4].DonGia.Value + "\r\n"
+                                            + _SX + " x " + lstGiaNuoc[3].DonGia.Value;
                             }
                         break;
                     case 35:///HCSN + DV
@@ -358,6 +591,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _HCSN = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.HCSN.Trim()) / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                 TongTien = (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
+                                _chiTiet = _HCSN + " x " + lstGiaNuoc[4].DonGia.Value + "\r\n"
+                                            + _DV + " x " + lstGiaNuoc[5].DonGia.Value;
                             }
                         break;
                     case 36:///HCSN + SX + DV
@@ -369,6 +604,9 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                 TongTien = (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
+                                _chiTiet = _HCSN + " x " + lstGiaNuoc[4].DonGia.Value + "\r\n"
+                                            + _SX + " x " + lstGiaNuoc[3].DonGia.Value + "\r\n"
+                                            + _DV + " x " + lstGiaNuoc[5].DonGia.Value;
                             }
                         break;
                     //case 38:///SH + HCSN
@@ -379,7 +617,16 @@ namespace KTKS_DonKH.DAL.CapNhat
                     //    break;
                     ///NƯỚC NGOÀI
                     case 41:///SHVM thuần túy
-                        TongTien = TieuThu * lstGiaNuoc[2].DonGia.Value;
+                        if (!DieuChinhGia)
+                        {
+                            TongTien = TieuThu * lstGiaNuoc[2].DonGia.Value;
+                            _chiTiet = TieuThu + " x " + lstGiaNuoc[2].DonGia.Value;
+                        }
+                        else
+                        {
+                            TongTien = TieuThu * GiaDieuChinh;
+                            _chiTiet = TieuThu + " x " + GiaDieuChinh;
+                        }
                         break;
                     //case 42:///SX
                     //    TongTien = TieuThu * lstGiaNuoc[3].DonGia.Value;
@@ -395,6 +642,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
                                 int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                 TongTien = (_SH * lstGiaNuoc[2].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value);
+                                _chiTiet = _SH + " x " + lstGiaNuoc[2].DonGia.Value + "\r\n"
+                                            + _SX + " x " + lstGiaNuoc[3].DonGia.Value;
                             }
                         break;
                     case 45:///SH + DV
@@ -405,6 +654,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                 TongTien = (_SH * lstGiaNuoc[2].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
+                                _chiTiet = _SH + " x " + lstGiaNuoc[2].DonGia.Value + "\r\n"
+                                            + _DV + " x " + lstGiaNuoc[5].DonGia.Value;
                             }
                         break;
                     case 46:///SH + SX + DV
@@ -416,10 +667,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                 TongTien = (_SH * lstGiaNuoc[2].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
+                                _chiTiet = _SH + " x " + lstGiaNuoc[2].DonGia.Value + "\r\n"
+                                            + _SX + " x " + lstGiaNuoc[3].DonGia.Value + "\r\n"
+                                            + _DV + " x " + lstGiaNuoc[5].DonGia.Value;
                             }
                         break;
                     ///BÁN SỈ
-                    case 51:///sỉ khu dân cư
+                    case 51:///sỉ khu dân cư - Giảm % tiền nước cho ban quản lý chung cư
                         //if (TieuThu <= DinhMuc)
                         //    TongTien = TieuThu * (lstGiaNuoc[0].DonGia.Value - (lstGiaNuoc[0].DonGia.Value * 10 / 100));
                         //else
@@ -428,25 +682,71 @@ namespace KTKS_DonKH.DAL.CapNhat
                         //    else
                         //        TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - (lstGiaNuoc[0].DonGia.Value * 10 / 100))) + (DinhMuc / 2 * (lstGiaNuoc[1].DonGia.Value - (lstGiaNuoc[1].DonGia.Value * 10 / 100))) + ((TieuThu - DinhMuc - DinhMuc / 2) * (lstGiaNuoc[2].DonGia.Value - (lstGiaNuoc[2].DonGia.Value * 10 / 100)));
                         if (TieuThu <= DinhMuc)
-                            TongTien = TieuThu * lstGiaNuoc[0].DonGia.Value;
+                        {
+                            TongTien = TieuThu * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                            _chiTiet = TieuThu + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                        }
                         else
-                            if (TieuThu - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((TieuThu - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                            if (!DieuChinhGia)
+                                if (TieuThu - DinhMuc <= Math.Round((double)DinhMuc / 2))
+                                {
+                                    TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((TieuThu - DinhMuc) * (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100));
+                                    _chiTiet = DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                                + (TieuThu - DinhMuc) + " x " + (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                }
+                                else
+                                {
+                                    TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((int)Math.Round((double)DinhMuc / 2) * (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((TieuThu - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * (lstGiaNuoc[2].DonGia.Value - lstGiaNuoc[2].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100));
+                                    _chiTiet = DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                                + (int)Math.Round((double)DinhMuc / 2) + " x " + (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                                + (TieuThu - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + (lstGiaNuoc[2].DonGia.Value - lstGiaNuoc[2].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                }
                             else
-                                TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((TieuThu - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
-                        TongTien -= TongTien * 10 / 100;
+                            {
+                                TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((TieuThu - DinhMuc) * (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100));
+                                _chiTiet = DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                            + (TieuThu - DinhMuc) + " x " + (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                            }
+                        //TongTien -= TongTien * 10 / 100;
                         break;
                     case 52:///sỉ khu công nghiệp
-                        TongTien = TieuThu * lstGiaNuoc[3].DonGia.Value;
-                        TongTien -= TongTien * 10 / 100;
+                        if (!DieuChinhGia)
+                        {
+                            TongTien = TieuThu * (lstGiaNuoc[3].DonGia.Value - lstGiaNuoc[3].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                            _chiTiet = TieuThu + " x " + (lstGiaNuoc[3].DonGia.Value - lstGiaNuoc[3].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                        }
+                        else
+                        {
+                            TongTien = TieuThu * (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                            _chiTiet = TieuThu + " x " + (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                        }
+                        //TongTien -= TongTien * 10 / 100;
                         break;
                     case 53:///sỉ KD - TM
-                        TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
-                        TongTien -= TongTien * 10 / 100;
+                        if (!DieuChinhGia)
+                        {
+                            TongTien = TieuThu * (lstGiaNuoc[5].DonGia.Value - lstGiaNuoc[5].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                            _chiTiet = TieuThu + " x " + (lstGiaNuoc[5].DonGia.Value - lstGiaNuoc[5].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                        }
+                        else
+                        {
+                            TongTien = TieuThu * (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                            _chiTiet = TieuThu + " x " + (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                        }
+                        //TongTien -= TongTien * 10 / 100;
                         break;
                     case 54:///sỉ HCSN
-                        TongTien = TieuThu * lstGiaNuoc[4].DonGia.Value;
-                        TongTien -= TongTien * 10 / 100;
+                        if (!DieuChinhGia)
+                        {
+                            TongTien = TieuThu * (lstGiaNuoc[4].DonGia.Value - lstGiaNuoc[4].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                            _chiTiet = TieuThu + " x " + (lstGiaNuoc[4].DonGia.Value - lstGiaNuoc[4].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                        }
+                        else
+                        {
+                            TongTien = TieuThu * (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                            _chiTiet = TieuThu + " x " + (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                        }
+                        //TongTien -= TongTien * 10 / 100;
                         break;
                     case 59:///sỉ phức tạp
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
@@ -458,14 +758,36 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _SX = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SX.Trim()) / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                 if (_SH <= DinhMuc)
-                                    TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
+                                {
+                                    TongTien = _SH * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                    _chiTiet = _SH + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                }
                                 else
+                                    if(!DieuChinhGia)
                                     if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                    {
+                                        TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((_SH - DinhMuc) * (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100));
+                                        _chiTiet = DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                                    + (_SH - DinhMuc) + " x " + (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                    }
                                     else
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
-                                TongTien += (_HCSN * lstGiaNuoc[4].DonGia.Value) + (_SX * lstGiaNuoc[3].DonGia.Value) + (_DV * lstGiaNuoc[5].DonGia.Value);
-                                TongTien -= TongTien * 10 / 100;
+                                    {
+                                        TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((int)Math.Round((double)DinhMuc / 2) * (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * (lstGiaNuoc[2].DonGia.Value - lstGiaNuoc[2].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100));
+                                        _chiTiet = DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                                    + (int)Math.Round((double)DinhMuc / 2) + " x " + (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                                    + (_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + (lstGiaNuoc[2].DonGia.Value - lstGiaNuoc[2].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                    }
+                                    else
+                                    {
+                                        TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((_SH - DinhMuc) * (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100));
+                                        _chiTiet = DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                                    + (_SH - DinhMuc) + " x " + (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                                    }
+                                TongTien += (_HCSN * (lstGiaNuoc[4].DonGia.Value - lstGiaNuoc[4].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) +  (_SX * (lstGiaNuoc[3].DonGia.Value - lstGiaNuoc[3].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + + (_DV * (lstGiaNuoc[5].DonGia.Value - lstGiaNuoc[5].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100));
+                                _chiTiet += _HCSN + " x " + (lstGiaNuoc[4].DonGia.Value - lstGiaNuoc[4].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                             + _SX + " x " + (lstGiaNuoc[3].DonGia.Value - lstGiaNuoc[3].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                             + _DV + " x " + (lstGiaNuoc[5].DonGia.Value - lstGiaNuoc[5].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                //TongTien -= TongTien * 10 / 100;
                             }
                         break;
                     case 68:///SH giá sỉ - KD giá lẻ
@@ -476,25 +798,48 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 int _SH = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.SH.Trim()) / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * int.Parse(ttkhachhang.DV.Trim()) / 100);
                                 if (_SH <= DinhMuc)
-                                    TongTien = _SH * lstGiaNuoc[0].DonGia.Value;
+                                {
+                                    TongTien = _SH * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                    _chiTiet = _SH + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                }
                                 else
+                                    if(!DieuChinhGia)
                                     if (_SH - DinhMuc <= Math.Round((double)DinhMuc / 2))
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((_SH - DinhMuc) * lstGiaNuoc[1].DonGia.Value);
+                                    {
+                                        TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((_SH - DinhMuc) * (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100));
+                                        _chiTiet = DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                             + (_SH - DinhMuc) + " x " + (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                    }
                                     else
-                                        TongTien = (DinhMuc * lstGiaNuoc[0].DonGia.Value) + ((int)Math.Round((double)DinhMuc / 2) * lstGiaNuoc[1].DonGia.Value) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * lstGiaNuoc[2].DonGia.Value);
-                                TongTien += _DV * lstGiaNuoc[5].DonGia.Value;
-                                TongTien -= TongTien * 10 / 100;
+                                    {
+                                        TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((int)Math.Round((double)DinhMuc / 2) * (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) * (lstGiaNuoc[2].DonGia.Value - lstGiaNuoc[2].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100));
+                                        _chiTiet = (DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + "\r\n"
+                                             + (int)Math.Round((double)DinhMuc / 2) + " x " + (lstGiaNuoc[1].DonGia.Value - lstGiaNuoc[1].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                             + (_SH - DinhMuc - (int)Math.Round((double)DinhMuc / 2)) + " x " + (lstGiaNuoc[2].DonGia.Value - lstGiaNuoc[2].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                    }
+                                    else
+                                    {
+                                        TongTien = (DinhMuc * (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100)) + ((_SH - DinhMuc) * (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100));
+                                        _chiTiet = DinhMuc + " x " + (lstGiaNuoc[0].DonGia.Value - lstGiaNuoc[0].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100) + "\r\n"
+                                             + (_SH - DinhMuc) + " x " + (GiaDieuChinh - GiaDieuChinh * CTaiKhoan.GiamTienNuoc / 100);
+                                    }
+                                TongTien += _DV * (lstGiaNuoc[5].DonGia.Value - lstGiaNuoc[5].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                _chiTiet += _DV + " x " + (lstGiaNuoc[5].DonGia.Value - lstGiaNuoc[5].DonGia.Value * CTaiKhoan.GiamTienNuoc / 100);
+                                //TongTien -= TongTien * 10 / 100;
                             }
                         break;
-                    //default:
-                    //    TongTien = 0;
-                    //    break;
+                    default:
+                        _chiTiet = "";
+                        TongTien = 0;
+                        break;
                 }
+                ChiTiet = _chiTiet;
                 return TongTien;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ChiTiet = "";
                 return 0;
             }
         }

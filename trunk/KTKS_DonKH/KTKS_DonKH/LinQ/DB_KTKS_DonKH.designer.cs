@@ -5366,6 +5366,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TangGiam;
 		
+		private bool _DieuChinhGia;
+		
+		private System.Nullable<int> _GiaDieuChinh;
+		
 		private System.Nullable<int> _TienNuoc_BD;
 		
 		private System.Nullable<int> _ThueGTGT_BD;
@@ -5440,6 +5444,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnTongCong_StartChanged();
     partial void OnTangGiamChanging(string value);
     partial void OnTangGiamChanged();
+    partial void OnDieuChinhGiaChanging(bool value);
+    partial void OnDieuChinhGiaChanged();
+    partial void OnGiaDieuChinhChanging(System.Nullable<int> value);
+    partial void OnGiaDieuChinhChanged();
     partial void OnTienNuoc_BDChanging(System.Nullable<int> value);
     partial void OnTienNuoc_BDChanged();
     partial void OnThueGTGT_BDChanging(System.Nullable<int> value);
@@ -5836,6 +5844,46 @@ namespace KTKS_DonKH.LinQ
 					this._TangGiam = value;
 					this.SendPropertyChanged("TangGiam");
 					this.OnTangGiamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DieuChinhGia", DbType="Bit NOT NULL")]
+		public bool DieuChinhGia
+		{
+			get
+			{
+				return this._DieuChinhGia;
+			}
+			set
+			{
+				if ((this._DieuChinhGia != value))
+				{
+					this.OnDieuChinhGiaChanging(value);
+					this.SendPropertyChanging();
+					this._DieuChinhGia = value;
+					this.SendPropertyChanged("DieuChinhGia");
+					this.OnDieuChinhGiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaDieuChinh", DbType="Int")]
+		public System.Nullable<int> GiaDieuChinh
+		{
+			get
+			{
+				return this._GiaDieuChinh;
+			}
+			set
+			{
+				if ((this._GiaDieuChinh != value))
+				{
+					this.OnGiaDieuChinhChanging(value);
+					this.SendPropertyChanging();
+					this._GiaDieuChinh = value;
+					this.SendPropertyChanged("GiaDieuChinh");
+					this.OnGiaDieuChinhChanged();
 				}
 			}
 		}

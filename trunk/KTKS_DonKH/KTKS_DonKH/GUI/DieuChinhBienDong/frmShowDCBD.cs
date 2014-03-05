@@ -100,7 +100,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
-                rptPhieuDCBDtest rpt = new rptPhieuDCBDtest();
+                rptPhieuDCBD rpt = new rptPhieuDCBD();
                 rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();

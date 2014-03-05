@@ -245,6 +245,8 @@
       <Column Name="PhiBVMT_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCong_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DieuChinhGia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GiaDieuChinh" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />

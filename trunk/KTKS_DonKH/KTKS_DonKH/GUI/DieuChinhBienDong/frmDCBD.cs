@@ -495,7 +495,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
                 if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
                 {

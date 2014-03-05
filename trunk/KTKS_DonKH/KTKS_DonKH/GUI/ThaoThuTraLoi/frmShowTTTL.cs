@@ -158,7 +158,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
                 if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
                 {

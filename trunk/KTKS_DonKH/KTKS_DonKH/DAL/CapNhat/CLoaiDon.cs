@@ -13,7 +13,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
         /// <summary>
-        /// Lấy danh sách loại đơn
+        /// Lấy danh sách Loại Đơn
         /// </summary>
         /// <returns></returns>
         public List<LoaiDon> LoadDSLoaiDon()
@@ -36,7 +36,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         }
 
         /// <summary>
-        /// Lấy danh sách loại đơn, hàm này được dùng trong nội bộ DAL
+        /// Lấy danh sách Loại Đơn, hàm này được dùng trong nội bộ DAL
         /// </summary>
         /// <param name="inheritance">true</param>
         /// <returns></returns>
