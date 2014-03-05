@@ -29,7 +29,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void button1_Click(object sender, EventArgs e)
         {
-            txtKetQua.Text = _cGiaNuoc.TinhTienNuoc(txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtTieuThu.Text.Trim())).ToString();
+            //string ChiTiet = ""; ;
+            //txtKetQua.Text = _cGiaNuoc.TinhTienNuoc(txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out ChiTiet).ToString();
         }
 
 

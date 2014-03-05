@@ -11,6 +11,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -19,6 +20,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         decimal _MaCTDCHD = 0;
         CDCBD _cDCBD = new CDCBD();
         CTDCHD _ctdchd = null;
+        CGiaNuoc _cGiaNuoc = new CGiaNuoc();
 
         public frmShowDCHD()
         {
@@ -63,6 +65,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtPhiBVMT_Start.Text = _ctdchd.PhiBVMT_Start.Value.ToString();
                 txtTongCong_Start.Text = _ctdchd.TongCong_Start.Value.ToString();
                 ///
+                if (_ctdchd.DieuChinhGia)
+                {
+                    chkGiaDieuChinh.Checked = true;
+                    txtGiaDieuChinh.Text = _ctdchd.GiaDieuChinh.ToString();
+                }
+                ///
                 lbTangGiam.Text = _ctdchd.TangGiam;
                 txtTieuThu_BD.Text = (_ctdchd.TieuThu_BD - _ctdchd.TieuThu).Value.ToString();
                 txtTienNuoc_BD.Text = _ctdchd.TienNuoc_BD.Value.ToString();
@@ -86,9 +94,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
                 dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
-                dr["DanhBo"] = _ctdchd.DanhBo;
+                dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                 dr["HoTen"] = _ctdchd.HoTen;
-                dr["SoVB"] = _ctdchd.SoVB;
+                dr["SoVB"] = _ctdchd.DCBD.MaDon.Value.ToString().Insert(_ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                 dr["NgayKy"] = _ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
                 dr["KyHD"] = _ctdchd.KyHD;
                 dr["SoHD"] = _ctdchd.SoHD;
@@ -149,6 +157,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 _ctdchd.PhiBVMT_Start = int.Parse(txtPhiBVMT_Start.Text.Trim());
                 _ctdchd.TongCong_Start = int.Parse(txtTongCong_Start.Text.Trim());
                 ///
+                if (chkGiaDieuChinh.Checked)
+                {
+                    _ctdchd.DieuChinhGia = true;
+                    _ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim());
+                }
+                ///
                 _ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim());
                 _ctdchd.ThueGTGT_BD = int.Parse(txtThueGTGT_BD.Text.Trim());
                 _ctdchd.PhiBVMT_BD = int.Parse(txtPhiBVMT_BD.Text.Trim());
@@ -170,6 +184,164 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_cDCBD.SuaCTDCHD(_ctdchd))
                     MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void txtGiaBieu_Cu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtDinhMuc_Cu.Focus();
+        }
+
+        private void txtDinhMuc_Cu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtTieuThu_Cu.Focus();
+        }
+
+        private void txtTieuThu_Cu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                chkGiaDieuChinh.Focus();
+        }
+
+        private void chkGiaDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaDieuChinh.Focus();
+        }
+
+        private void txtGiaDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtGiaBieu_Moi.Focus();
+        }
+
+        private void txtGiaBieu_Moi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtDinhMuc_Moi.Focus();
+        }
+
+        private void txtDinhMuc_Moi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtTieuThu_Moi.Focus();
+        }
+
+        private void txtTieuThu_Moi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                btnSua.Focus();
+        }
+
+        private void txtGiaBieu_Cu_TextChanged(object sender, EventArgs e)
+        {
+            if (txtGiaBieu_Cu.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
+        private void txtDinhMuc_Cu_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDinhMuc_Cu.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
+        private void txtTieuThu_Cu_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTieuThu_Cu.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
+        private void txtGiaDieuChinh_TextChanged(object sender, EventArgs e)
+        {
+            if (txtGiaDieuChinh.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
+        private void chkGiaDieuChinh_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkGiaDieuChinh.Checked)
+            {
+                txtGiaDieuChinh.ReadOnly = false;
+                //TinhTienNuoc();
+            }
+            else
+            {
+                txtGiaDieuChinh.Text = "0";
+                txtGiaDieuChinh.ReadOnly = true;
+                //TinhTienNuoc();
+            }
+        }
+
+        private void txtGiaBieu_Moi_TextChanged(object sender, EventArgs e)
+        {
+            if (txtGiaBieu_Moi.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
+        private void txtDinhMuc_Moi_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDinhMuc_Moi.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
+        private void txtTieuThu_Moi_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTieuThu_Moi.Text.Trim() != "")
+                TinhTienNuoc();
+        }
+
+        private void TinhTienNuoc()
+        {
+            string ChiTietCu = "";
+            string ChiTietMoi = "";
+            int TongTienCu = _cGiaNuoc.TinhTienNuoc(false, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Cu.Text.Trim()), int.Parse(txtDinhMuc_Cu.Text.Trim()), int.Parse(txtTieuThu_Cu.Text.Trim()), out ChiTietCu);
+            int TongTienMoi = _cGiaNuoc.TinhTienNuoc(chkGiaDieuChinh.Checked, int.Parse(txtGiaDieuChinh.Text.Trim()), txtDanhBo.Text.Trim(), int.Parse(txtGiaBieu_Moi.Text.Trim()), int.Parse(txtDinhMuc_Moi.Text.Trim()), int.Parse(txtTieuThu_Moi.Text.Trim()), out ChiTietMoi);
+            ///Chi Tiết
+            txtChiTietCu.Text = ChiTietCu;
+            txtChiTietMoi.Text = ChiTietMoi;
+            ///Tiêu Thụ
+            txtTieuThu_Start.Text = txtTieuThu_Cu.Text.Trim();
+            txtTieuThu_BD.Text = (int.Parse(txtTieuThu_Moi.Text.Trim()) - int.Parse(txtTieuThu_Cu.Text.Trim())).ToString();
+            txtTieuThu_End.Text = txtTieuThu_Moi.Text.Trim();
+            ///Tiền Nước
+            txtTienNuoc_Start.Text = TongTienCu.ToString();
+            txtTienNuoc_BD.Text = (TongTienMoi - TongTienCu).ToString();
+            txtTienNuoc_End.Text = TongTienMoi.ToString();
+            ///Thuế GTGT
+            txtThueGTGT_Start.Text = Math.Round((double)TongTienCu * 5 / 100).ToString();
+            txtThueGTGT_BD.Text = (Math.Round((double)TongTienMoi * 5 / 100) - Math.Round((double)TongTienCu * 5 / 100)).ToString();
+            txtThueGTGT_End.Text = Math.Round((double)TongTienMoi * 5 / 100).ToString();
+            ///Phí BVMT
+            txtPhiBVMT_Start.Text = (TongTienCu * 10 / 100).ToString();
+            txtPhiBVMT_BD.Text = ((TongTienMoi * 10 / 100) - (TongTienCu * 10 / 100)).ToString();
+            txtPhiBVMT_End.Text = (TongTienMoi * 10 / 100).ToString();
+            ///Tổng Cộng
+            txtTongCong_Start.Text = (TongTienCu + Math.Round((double)TongTienCu * 5 / 100) + (TongTienCu * 10 / 100)).ToString();
+            txtTongCong_BD.Text = ((TongTienMoi + Math.Round((double)TongTienMoi * 5 / 100) + (TongTienMoi * 10 / 100)) - (TongTienCu + Math.Round((double)TongTienCu * 5 / 100) + (TongTienCu * 10 / 100))).ToString();
+            txtTongCong_End.Text = (TongTienMoi + Math.Round((double)TongTienMoi * 5 / 100) + (TongTienMoi * 10 / 100)).ToString();
+
+            if (TongTienMoi - TongTienCu == 0)
+                lbTangGiam.Text = "";
+            else
+                if (TongTienMoi - TongTienCu > 0)
+                    lbTangGiam.Text = "Tăng:";
+                else
+                    lbTangGiam.Text = "Giảm:";
         }
     }
 }
