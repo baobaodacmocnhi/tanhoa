@@ -420,6 +420,25 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        /// <summary>
+        /// Kiểm tra CTCTDB đã được tạo cho Mã Đơn và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTCTDBbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        {
+            try
+            {
+                return db.CTCTDBs.Any(itemCTCTDB => itemCTCTDB.CHDB.MaDon == MaDon && itemCTCTDB.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         #endregion
 
         #region CTCHDB (Chi Tiết Cắt Hủy Danh Bộ)
@@ -604,6 +623,25 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                 return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.MaCTCHDB == MaCTCHDB && itemCTCHDB.DaLapPhieu == true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra CTCHDB đã được tạo cho Mã Đơn và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTCHDBbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        {
+            try
+            {
+                return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.CHDB.MaDon == MaDon && itemCTCHDB.DanhBo == DanhBo);
             }
             catch (Exception ex)
             {

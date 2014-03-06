@@ -207,30 +207,30 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 {
                     MessageBox.Show("Thêm Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                    DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+                    //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    //DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                    dr["SoPhieu"] = _cTTTL.getMaxMaCTTTTL().ToString().Insert(_cTTTL.getMaxMaCTTTTL().ToString().Length - 2, "-");
-                    dr["LoTrinh"] = cttttl.LoTrinh;
-                    dr["HoTen"] = cttttl.HoTen;
-                    dr["DiaChi"] = cttttl.DiaChi;
-                    dr["DanhBo"] = cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
-                    dr["HopDong"] = cttttl.HopDong;
-                    dr["GiaBieu"] = cttttl.GiaBieu;
-                    dr["DinhMuc"] = cttttl.DinhMuc;
-                    dr["NgayNhanDon"] = _donkh.CreateDate.Value.ToString("dd/MM/yyyy");
-                    dr["VeViec"] = cttttl.VeViec;
-                    dr["NoiDung"] = cttttl.NoiDung;
-                    dr["NoiNhan"] = cttttl.NoiNhan;
-                    dr["ChucVu"] = cttttl.ChucVu;
-                    dr["NguoiKy"] = cttttl.NguoiKy;
+                    //dr["SoPhieu"] = _cTTTL.getMaxMaCTTTTL().ToString().Insert(_cTTTL.getMaxMaCTTTTL().ToString().Length - 2, "-");
+                    //dr["LoTrinh"] = cttttl.LoTrinh;
+                    //dr["HoTen"] = cttttl.HoTen;
+                    //dr["DiaChi"] = cttttl.DiaChi;
+                    //dr["DanhBo"] = cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
+                    //dr["HopDong"] = cttttl.HopDong;
+                    //dr["GiaBieu"] = cttttl.GiaBieu;
+                    //dr["DinhMuc"] = cttttl.DinhMuc;
+                    //dr["NgayNhanDon"] = _donkh.CreateDate.Value.ToString("dd/MM/yyyy");
+                    //dr["VeViec"] = cttttl.VeViec;
+                    //dr["NoiDung"] = cttttl.NoiDung;
+                    //dr["NoiNhan"] = cttttl.NoiNhan;
+                    //dr["ChucVu"] = cttttl.ChucVu;
+                    //dr["NguoiKy"] = cttttl.NguoiKy;
 
-                    dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                    //dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                    rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
-                    rpt.SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.ShowDialog();
+                    //rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
+                    //rpt.SetDataSource(dsBaoCao);
+                    //frmBaoCao frm = new frmBaoCao(rpt);
+                    //frm.ShowDialog();
 
                     Clear();
 

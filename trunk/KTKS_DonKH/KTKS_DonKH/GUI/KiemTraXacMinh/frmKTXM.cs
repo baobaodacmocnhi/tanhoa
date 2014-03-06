@@ -187,7 +187,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
+            //if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
+            if (_donkh != null && txtNoiDungKiemTra.Text.Trim() != "")
             {
                 if (!_cKTXM.CheckKTMXbyMaDon(_donkh.MaDon))
                 {
@@ -211,6 +212,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         _donkh.Nhan = true;
                         _cDonKH.SuaDonKH(_donkh, true);
                     }
+                }
+                if (_cKTXM.CheckCTKTXMbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                {
+                    MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 CTKTXM ctktxm = new CTKTXM();
                 ctktxm.MaKTXM = _cKTXM.getKTXMbyMaDon(_donkh.MaDon).MaKTXM;

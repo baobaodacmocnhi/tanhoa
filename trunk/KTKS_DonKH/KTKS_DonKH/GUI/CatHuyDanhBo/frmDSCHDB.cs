@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radDaDuyet.Checked = true;
+            radDSCatTamDanhBo.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm Danh Bộ", gridViewCTCTDB);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ", gridViewCTCHDB);

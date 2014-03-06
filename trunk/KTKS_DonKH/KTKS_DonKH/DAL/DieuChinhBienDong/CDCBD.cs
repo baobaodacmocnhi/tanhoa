@@ -474,7 +474,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     var query = from itemCTDCBD in db.CTDCBDs
                                 select new
                                 {
+                                    In = false,
                                     SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    itemCTDCBD.CreateDate,
                                     itemCTDCBD.DanhBo,
                                     itemCTDCBD.HoTen,
                                     itemCTDCBD.HoTen_BD,
@@ -513,6 +515,25 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra CTDCBD đã được tạo cho Mã Đơn và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTDCBDbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        {
+            try
+            {
+                return db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == MaDon && itemCTDCBD.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
@@ -608,6 +629,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     var query = from itemCTDCHD in db.CTDCHDs
                                 select new
                                 {
+                                    In = false,
                                     SoPhieu = itemCTDCHD.MaCTDCHD,
                                     itemCTDCHD.DanhBo,
                                     itemCTDCHD.GiaBieu,

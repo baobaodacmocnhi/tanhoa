@@ -218,6 +218,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _cDonKH.SuaDonKH(_donkh, true);
                     }
                 }
+                if (_cCHDB.CheckCTCHDBbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                {
+                    MessageBox.Show("Danh Bộ này đã được Lập Cắt Tạm Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 CTCTDB ctctdb = new CTCTDB();
                 ctctdb.MaCHDB = _cCHDB.getCHDBbyMaDon(_donkh.MaDon).MaCHDB;
                 ctctdb.DanhBo = txtDanhBo.Text.Trim();

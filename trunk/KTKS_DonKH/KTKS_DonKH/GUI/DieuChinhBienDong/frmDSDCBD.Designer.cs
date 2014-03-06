@@ -96,8 +96,10 @@
             this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSDCBD = new System.Windows.Forms.DataGridView();
+            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,7 +117,7 @@
             this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TangGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radDSDCDB = new System.Windows.Forms.RadioButton();
+            this.radDSDCBD = new System.Windows.Forms.RadioButton();
             this.radDSDCHD = new System.Windows.Forms.RadioButton();
             this.radDSCatChuyenDM = new System.Windows.Forms.RadioButton();
             this.dgvDSCatChuyenDM = new System.Windows.Forms.DataGridView();
@@ -138,6 +140,8 @@
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.chkSelectAll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCHD)).BeginInit();
@@ -707,7 +711,7 @@
             // radChuaDuyet
             // 
             this.radChuaDuyet.AutoSize = true;
-            this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
+            this.radChuaDuyet.Location = new System.Drawing.Point(291, 39);
             this.radChuaDuyet.Name = "radChuaDuyet";
             this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
             this.radChuaDuyet.TabIndex = 1;
@@ -744,8 +748,10 @@
             this.dgvDSDCBD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSDCBD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDCBD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.In,
             this.PhieuDuocKy,
             this.SoPhieu,
+            this.CreateDate,
             this.DanhBo,
             this.HoTen,
             this.HoTen_BD,
@@ -774,6 +780,13 @@
             this.dgvDSDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDCBD_RowPostPaint);
             this.dgvDSDCBD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDCBD_KeyDown);
             // 
+            // In
+            // 
+            this.In.DataPropertyName = "In";
+            this.In.HeaderText = "In";
+            this.In.Name = "In";
+            this.In.Width = 30;
+            // 
             // PhieuDuocKy
             // 
             this.PhieuDuocKy.DataPropertyName = "PhieuDuocKy";
@@ -788,6 +801,13 @@
             this.SoPhieu.Name = "SoPhieu";
             this.SoPhieu.ReadOnly = true;
             this.SoPhieu.Width = 90;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Xử Lý";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Width = 90;
             // 
             // DanhBo
             // 
@@ -954,21 +974,21 @@
             this.TongCong_BD.ReadOnly = true;
             this.TongCong_BD.Visible = false;
             // 
-            // radDSDCDB
+            // radDSDCBD
             // 
-            this.radDSDCDB.AutoSize = true;
-            this.radDSDCDB.Location = new System.Drawing.Point(130, 12);
-            this.radDSDCDB.Name = "radDSDCDB";
-            this.radDSDCDB.Size = new System.Drawing.Size(137, 21);
-            this.radDSDCDB.TabIndex = 2;
-            this.radDSDCDB.Text = "Danh Sách ĐCBĐ";
-            this.radDSDCDB.UseVisualStyleBackColor = true;
-            this.radDSDCDB.CheckedChanged += new System.EventHandler(this.radDSDCDB_CheckedChanged);
+            this.radDSDCBD.AutoSize = true;
+            this.radDSDCBD.Location = new System.Drawing.Point(137, 12);
+            this.radDSDCBD.Name = "radDSDCBD";
+            this.radDSDCBD.Size = new System.Drawing.Size(137, 21);
+            this.radDSDCBD.TabIndex = 2;
+            this.radDSDCBD.Text = "Danh Sách ĐCBĐ";
+            this.radDSDCBD.UseVisualStyleBackColor = true;
+            this.radDSDCBD.CheckedChanged += new System.EventHandler(this.radDSDCDB_CheckedChanged);
             // 
             // radDSDCHD
             // 
             this.radDSDCHD.AutoSize = true;
-            this.radDSDCHD.Location = new System.Drawing.Point(130, 39);
+            this.radDSDCHD.Location = new System.Drawing.Point(137, 39);
             this.radDSDCHD.Name = "radDSDCHD";
             this.radDSDCHD.Size = new System.Drawing.Size(138, 21);
             this.radDSDCHD.TabIndex = 3;
@@ -1154,6 +1174,7 @@
             this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
             this.dateTimKiem.TabIndex = 13;
             this.dateTimKiem.Visible = false;
+            this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
             // 
             // label2
             // 
@@ -1168,12 +1189,15 @@
             // 
             this.cmbTimTheo.FormattingEnabled = true;
             this.cmbTimTheo.Items.AddRange(new object[] {
+            "",
             "Mã Đơn",
+            "Số Phiếu",
             "Ngày Lập"});
             this.cmbTimTheo.Location = new System.Drawing.Point(579, 12);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
             this.cmbTimTheo.TabIndex = 10;
+            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
             // 
             // txtNoiDungTimKiem
             // 
@@ -1182,6 +1206,7 @@
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem.TabIndex = 12;
             this.txtNoiDungTimKiem.Visible = false;
+            this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
             // 
             // label1
             // 
@@ -1192,6 +1217,32 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Nội Dung:";
             // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(1082, 12);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(92, 35);
+            this.btnIn.TabIndex = 38;
+            this.btnIn.Text = "In Phiếu";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // chkSelectAll
+            // 
+            this.chkSelectAll.AutoSize = true;
+            this.chkSelectAll.ForeColor = System.Drawing.Color.Red;
+            this.chkSelectAll.Location = new System.Drawing.Point(12, 39);
+            this.chkSelectAll.Name = "chkSelectAll";
+            this.chkSelectAll.Size = new System.Drawing.Size(119, 21);
+            this.chkSelectAll.TabIndex = 39;
+            this.chkSelectAll.Text = "Chọn In Tất Cả";
+            this.chkSelectAll.UseVisualStyleBackColor = true;
+            this.chkSelectAll.Visible = false;
+            this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
+            // 
             // frmDSDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1199,6 +1250,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 628);
+            this.Controls.Add(this.chkSelectAll);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTimTheo);
@@ -1206,9 +1259,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDSCatChuyenDM);
             this.Controls.Add(this.radDSCatChuyenDM);
-            this.Controls.Add(this.radDSDCDB);
-            this.Controls.Add(this.radDSDCHD);
             this.Controls.Add(this.dgvDSDCBD);
+            this.Controls.Add(this.radDSDCBD);
+            this.Controls.Add(this.radDSDCHD);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.radChuaDuyet);
@@ -1265,7 +1318,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewCTDCHD;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
-        private System.Windows.Forms.RadioButton radDSDCDB;
+        private System.Windows.Forms.RadioButton radDSDCBD;
         private System.Windows.Forms.RadioButton radDSDCHD;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
@@ -1301,8 +1354,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_DiaChi;
+        private System.Windows.Forms.DateTimePicker dateTimKiem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbTimTheo;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.CheckBox chkSelectAll;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn In;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PhieuDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_BD;
@@ -1320,10 +1382,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_End;
         private System.Windows.Forms.DataGridViewTextBoxColumn TangGiam;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_BD;
-        private System.Windows.Forms.DateTimePicker dateTimKiem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbTimTheo;
-        private System.Windows.Forms.TextBox txtNoiDungTimKiem;
-        private System.Windows.Forms.Label label1;
     }
 }
