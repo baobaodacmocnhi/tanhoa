@@ -14,6 +14,8 @@ using KTKS_DonKH.DAL.ThaoThuTraLoi;
 using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
+using KTKS_DonKH.BaoCao;
 
 namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 {
@@ -59,7 +61,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radDaDuyet.Checked = true;
+            radDSThu.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewCTTTTL);
 
@@ -81,7 +83,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 gridControl.Visible = true;
                 dgvDSThu.Visible = false;
                 //btnLuu.Enabled = true;
-                DSTTTL_Edited = new DataTable();
+                //DSTTTL_Edited = new DataTable();
+                chkSelectAll.Visible = false;
             }
         }
 
@@ -96,7 +99,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 gridControl.Visible = true;
                 dgvDSThu.Visible = false;
                 //btnLuu.Enabled = false;
-                DSTTTL_Edited = new DataTable();
+                //DSTTTL_Edited = new DataTable();
+                chkSelectAll.Visible = false;
             }
         }
 
@@ -110,7 +114,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 dgvDSThu.DataSource = DSTTTL_BS;
                 gridControl.Visible = false;
                 //btnLuu.Enabled = false;
-                DSTTTL_Edited = new DataTable();
+                //DSTTTL_Edited = new DataTable();
+                chkSelectAll.Visible = true;
             }
         }
 
@@ -452,6 +457,53 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
             DSTTTL_BS.Filter = expression;
+        }
+
+        private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSelectAll.Checked)
+                for (int i = 0; i < dgvDSThu.Rows.Count; i++)
+                {
+                    dgvDSThu["In", i].Value = true;
+                }
+            else
+                for (int i = 0; i < dgvDSThu.Rows.Count; i++)
+                {
+                    dgvDSThu["In", i].Value = false;
+                }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (radDSThu.Checked)
+                for (int i = 0; i < dgvDSThu.Rows.Count; i++)
+                    if (bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                    {
+                        DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                        DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+
+                        CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                        dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                        dr["LoTrinh"] = cttttl.LoTrinh;
+                        dr["HoTen"] = cttttl.HoTen;
+                        dr["DiaChi"] = cttttl.DiaChi;
+                        dr["DanhBo"] = cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
+                        dr["HopDong"] = cttttl.HopDong;
+                        dr["GiaBieu"] = cttttl.GiaBieu;
+                        dr["DinhMuc"] = cttttl.DinhMuc;
+                        dr["NgayNhanDon"] = cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
+                        dr["VeViec"] = cttttl.VeViec;
+                        dr["NoiDung"] = cttttl.NoiDung;
+                        dr["NoiNhan"] = cttttl.NoiNhan;
+                        dr["ChucVu"] = cttttl.ChucVu;
+                        dr["NguoiKy"] = cttttl.NguoiKy;
+
+                        dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+
+                        rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
+                        rpt.SetDataSource(dsBaoCao);
+                        rpt.PrintToPrinter(1, false, 0, 0);
+                    }
         }
 
     }

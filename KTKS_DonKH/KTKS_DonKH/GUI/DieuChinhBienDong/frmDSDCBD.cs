@@ -16,6 +16,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Columns;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
+using KTKS_DonKH.BaoCao.DieuChinhBienDong;
+using KTKS_DonKH.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -30,6 +32,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CChungTu _cChungTu = new CChungTu();
         DataRowView _CTRow = null;
+        BindingSource DSDCBD_BS;
 
         public frmDSDCBD()
         {
@@ -47,6 +50,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDSDCBD_Load(object sender, EventArgs e)
         {
+            dateTimKiem.Location = txtNoiDungTimKiem.Location;
             ///Tạo đối tượng LookUpEdit
             RepositoryItemLookUpEdit myLookUpEdit = new RepositoryItemLookUpEdit();
             ///Tạo đối tượng Column
@@ -64,7 +68,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radDaDuyet.Checked = true;
+            radDSDCBD.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewCTDCBD);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Hóa Đơn", gridViewCTDCHD);
@@ -88,11 +92,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radDaDuyet.Checked)
             {
+                DSDCBD_BS = new BindingSource();
+                DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
+                gridControl.DataSource = DSDCBD_BS;
+
                 gridControl.Visible = true;
-                gridControl.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
                 dgvDSDCBD.Visible = false;
                 dgvDSCatChuyenDM.Visible = false;
-                btnLuu.Enabled = true;
+                chkSelectAll.Visible = false;
             }
         }
 
@@ -100,20 +107,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radChuaDuyet.Checked)
             {
+                DSDCBD_BS = new BindingSource();
+                DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
+                gridControl.DataSource = DSDCBD_BS;
+
                 gridControl.Visible = true;
-                gridControl.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
                 dgvDSDCBD.Visible = false;
                 dgvDSCatChuyenDM.Visible = false;
-                btnLuu.Enabled = false;
+                chkSelectAll.Visible = false;
             }
         }
 
         private void radDSDCDB_CheckedChanged(object sender, EventArgs e)
         {
-            if (radDSDCDB.Checked)
+            if (radDSDCBD.Checked)
             {
-                dgvDSDCBD.Visible = true;
-                dgvDSDCBD.DataSource = _cDCBD.LoadDSDCBD();
+                DSDCBD_BS = new BindingSource();
+                DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBD();
+                dgvDSDCBD.DataSource = DSDCBD_BS;
+
                 dgvDSDCBD.Columns["HoTen"].Visible = true;
                 dgvDSDCBD.Columns["HoTen_BD"].Visible = true;
                 dgvDSDCBD.Columns["DiaChi"].Visible = true;
@@ -132,9 +144,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["TongCong_BD"].Visible = false;
                 dgvDSDCBD.Columns["TangGiam"].Visible = false;
 
+                dgvDSDCBD.Visible = true;
                 gridControl.Visible = false;
                 dgvDSCatChuyenDM.Visible = false;
-                btnLuu.Enabled = false;
+                chkSelectAll.Visible = true;
             }
         }
 
@@ -142,8 +155,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radDSDCHD.Checked)
             {
-                dgvDSDCBD.Visible = true;
-                dgvDSDCBD.DataSource = _cDCBD.LoadDSDCHD();
+                DSDCBD_BS = new BindingSource();
+                DSDCBD_BS.DataSource = _cDCBD.LoadDSDCHD();
+                dgvDSDCBD.DataSource = DSDCBD_BS;
+
                 dgvDSDCBD.Columns["HoTen"].Visible = false;
                 dgvDSDCBD.Columns["HoTen_BD"].Visible = false;
                 dgvDSDCBD.Columns["DiaChi"].Visible = false;
@@ -162,19 +177,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSDCBD.Columns["TongCong_BD"].Visible = true;
                 dgvDSDCBD.Columns["TangGiam"].Visible = true;
 
+                dgvDSDCBD.Visible = true;
                 gridControl.Visible = false;
                 dgvDSCatChuyenDM.Visible = false;
-                btnLuu.Enabled = false;
+                chkSelectAll.Visible = true;
             }
         }
 
         private void radDSCatChuyenDM_CheckedChanged(object sender, EventArgs e)
         {
+            DSDCBD_BS = new BindingSource();
+            DSDCBD_BS.DataSource = _cChungTu.LoadDSCatChuyenDM();
+            dgvDSCatChuyenDM.DataSource = DSDCBD_BS;
+
             dgvDSCatChuyenDM.Visible = true;
-            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDM();
             gridControl.Visible = false;
             dgvDSDCBD.Visible = false;
-            btnLuu.Enabled = false;
+            chkSelectAll.Visible = false;
         }
 
         private void điềuChỉnhBiếnĐộngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -302,7 +321,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         #region gridViewDCBD (Danh Sách Điều Chỉnh Biến Động)
@@ -361,23 +380,32 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         /// <param name="e"></param>
         private void gridViewDCBD_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            ///Khai báo các cột tương ứng trong Datagridview
-            if (DSDCBD_Edited.Columns.Count == 0)
-                foreach (DataColumn itemCol in ((DataView)gridViewDCBD.DataSource).Table.Columns)
-                {
-                    DSDCBD_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
-                }
+            /////Khai báo các cột tương ứng trong Datagridview
+            //if (DSDCBD_Edited.Columns.Count == 0)
+            //    foreach (DataColumn itemCol in ((DataView)gridViewDCBD.DataSource).Table.Columns)
+            //    {
+            //        DSDCBD_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
+            //    }
 
-            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
-            ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row.EndEdit();
+            /////Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
+            //((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row.EndEdit();
 
-            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
-            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSDCBD_Edited.Select("MaDon = " + ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"]).Count() > 0)
-                DSDCBD_Edited.Rows.Remove(DSDCBD_Edited.Select("MaDon = " + ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"])[0]);
+            /////DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
+            /////Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
+            //if (DSDCBD_Edited.Select("MaDon = " + ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"]).Count() > 0)
+            //    DSDCBD_Edited.Rows.Remove(DSDCBD_Edited.Select("MaDon = " + ((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"])[0]);
 
-            DSDCBD_Edited.ImportRow(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row);
-            btnLuu.Enabled = true;
+            //DSDCBD_Edited.ImportRow(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row);
+            //btnLuu.Enabled = true;
+
+            DataRowView itemRow = (DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0]);
+
+            DCBD dcbd = _cDCBD.getDCBDbyID(decimal.Parse(itemRow["MaDCBD"].ToString()));
+            dcbd.KetQua = itemRow["KetQua"].ToString();
+            dcbd.Chuyen = true;
+            dcbd.MaChuyen = itemRow["MaChuyen"].ToString();
+            dcbd.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+            _cDCBD.SuaDCBD(dcbd);
         }
 
         /// <summary>
@@ -545,23 +573,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         /// <param name="e"></param>
         private void dgvDSDCBD_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (radDSDCDB.Checked)
+            if (radDSDCBD.Checked)
             {
+                bool ischecked = false;
+                if (bool.Parse(dgvDSDCBD["PhieuDuocKy", e.RowIndex].Value.ToString()) == true)
+                    ischecked = true;
+                else
+                    ischecked = false;
                 CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
-                if (bool.Parse(dgvDSDCBD.CurrentCell.Value.ToString()) != ctdcbd.PhieuDuocKy)
-                {
-                    ctdcbd.PhieuDuocKy = bool.Parse(dgvDSDCBD.CurrentCell.Value.ToString());
-                    _cDCBD.SuaCTDCBD(ctdcbd);
-                }
+                ctdcbd.PhieuDuocKy = ischecked;
+                _cDCBD.SuaCTDCBD(ctdcbd);
             }
             if (radDSDCHD.Checked)
             {
+                bool ischecked = false;
+                if (bool.Parse(dgvDSDCBD["PhieuDuocKy", e.RowIndex].Value.ToString()) == true)
+                    ischecked = true;
+                else
+                    ischecked = false;
                 CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDSDCBD.CurrentRow.Cells["SoPhieu"].Value.ToString()));
-                if (bool.Parse(dgvDSDCBD.CurrentCell.Value.ToString()) != ctdchd.PhieuDuocKy)
-                {
-                    ctdchd.PhieuDuocKy = bool.Parse(dgvDSDCBD.CurrentCell.Value.ToString());
-                    _cDCBD.SuaCTDCHD(ctdchd);
-                }
+                ctdchd.PhieuDuocKy = ischecked;
+                _cDCBD.SuaCTDCHD(ctdchd);
             }
         }
 
@@ -574,7 +606,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSDCBD.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                if (radDSDCDB.Checked)
+                if (radDSDCBD.Checked)
                 {
                     frmShowDCBD frm = new frmShowDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
                     frm.ShowDialog();
@@ -645,6 +677,156 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         #endregion
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Mã Đơn":
+                case "Số Phiếu":
+                    txtNoiDungTimKiem.Visible = true;
+                    dateTimKiem.Visible = false;
+                    break;
+                case "Ngày Lập":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    DSDCBD_BS.RemoveFilter();
+                    break;
+            }
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNoiDungTimKiem.Text.Trim() != "")
+            {
+                string expression = "";
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        break;
+                    case "Số Phiếu":
+                        expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        break;
+                }
+                DSDCBD_BS.Filter = expression;
+            }
+            else
+                DSDCBD_BS.RemoveFilter();
+        }
+
+        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            DSDCBD_BS.Filter = expression;
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (radDSDCBD.Checked)
+                for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                    if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                    {
+                        DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                        DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
+
+                        CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                        dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                        dr["ThongTin"] = ctdcbd.ThongTin;
+                        dr["HieuLucKy"] = ctdcbd.HieuLucKy;
+                        dr["Dot"] = ctdcbd.Dot;
+                        ///Hiện tại xử lý mã số thuế như vậy
+                        if (ctdcbd.CatMSThue)
+                            dr["MSThue"] = "MST: Cắt MST";
+                        if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
+                            dr["MSThue"] = "MST: " + ctdcbd.MSThue_BD;
+                        dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
+                        dr["HopDong"] = ctdcbd.HopDong;
+                        dr["HoTen"] = ctdcbd.HoTen;
+                        dr["DiaChi"] = ctdcbd.DiaChi;
+                        dr["MaPhuongQuan"] = ctdcbd.MaPhuongQuan;
+                        dr["GiaBieu"] = ctdcbd.GiaBieu;
+                        dr["DinhMuc"] = ctdcbd.DinhMuc;
+                        ///Biến Động
+                        dr["HoTenBD"] = ctdcbd.HoTen_BD;
+                        dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
+                        dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
+                        dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                        ///Ký Tên
+                        dr["ChucVu"] = ctdcbd.ChucVu;
+                        dr["NguoiKy"] = ctdcbd.NguoiKy;
+
+                        dsBaoCao.Tables["DCBD"].Rows.Add(dr);
+
+                        rptPhieuDCBD rpt = new rptPhieuDCBD();
+                        rpt.SetDataSource(dsBaoCao);
+                        rpt.PrintToPrinter(1, false, 0, 0);
+                    }
+                    else
+                        if (radDSDCHD.Checked)
+                            for (int j = 0; j < dgvDSDCBD.Rows.Count; j++)
+                                if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                                {
+                                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                    DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
+
+                                    CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                    dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                                    dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                    dr["HoTen"] = ctdchd.HoTen;
+                                    dr["SoVB"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                                    dr["NgayKy"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
+                                    dr["KyHD"] = ctdchd.KyHD;
+                                    dr["SoHD"] = ctdchd.SoHD;
+                                    ///
+                                    dr["TieuThuStart"] = ctdchd.TieuThu;
+                                    dr["TienNuocStart"] = ctdchd.TienNuoc_Start;
+                                    dr["ThueGTGTStart"] = ctdchd.ThueGTGT_Start;
+                                    dr["PhiBVMTStart"] = ctdchd.PhiBVMT_Start;
+                                    dr["TongCongStart"] = ctdchd.TongCong_Start;
+                                    ///
+                                    dr["TangGiam"] = ctdchd.TangGiam;
+                                    ///
+                                    dr["TieuThuBD"] = ctdchd.TieuThu_BD - ctdchd.TieuThu;
+                                    dr["TienNuocBD"] = ctdchd.TienNuoc_BD;
+                                    dr["ThueGTGTBD"] = ctdchd.ThueGTGT_BD;
+                                    dr["PhiBVMTBD"] = ctdchd.PhiBVMT_BD;
+                                    dr["TongCongBD"] = ctdchd.TongCong_BD;
+                                    ///
+                                    dr["TieuThuEnd"] = ctdchd.TieuThu_BD;
+                                    dr["TienNuocEnd"] = ctdchd.TienNuoc_End;
+                                    dr["ThueGTGTEnd"] = ctdchd.ThueGTGT_End;
+                                    dr["PhiBVMTEnd"] = ctdchd.PhiBVMT_End;
+                                    dr["TongCongEnd"] = ctdchd.TongCong_End;
+
+                                    dr["ChucVu"] = ctdchd.ChucVu;
+                                    dr["NguoiKy"] = ctdchd.NguoiKy;
+
+                                    dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+
+                                    rptPhieuDCHD rpt = new rptPhieuDCHD();
+                                    rpt.SetDataSource(dsBaoCao);
+                                    rpt.PrintToPrinter(1, false, 0, 0);
+                                }
+        }
+
+        private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSelectAll.Checked)
+                for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                {
+                    dgvDSDCBD["In", i].Value = true;
+                }
+            else
+                for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                {
+                    dgvDSDCBD["In", i].Value = false;
+                }
+        }
 
     }
 }

@@ -635,6 +635,25 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        /// <summary>
+        /// Kiểm tra CTKTXM đã được tạo cho Mã Đơn và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTKTXMbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        {
+            try
+            {
+                return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         #endregion
     }
 }

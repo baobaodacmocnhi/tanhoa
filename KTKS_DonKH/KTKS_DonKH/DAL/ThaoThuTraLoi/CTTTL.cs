@@ -372,13 +372,23 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời
         /// </summary>
         /// <returns></returns>
-        public List<CTTTTL> LoadDSCTTTTL()
+        public DataTable LoadDSCTTTTL()
         {
             try
             {
                 if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
                 {
-                    return db.CTTTTLs.ToList();
+                    var query = from itemCTTTTL in db.CTTTTLs
+                                select new
+                                {
+                                    In = false,
+                                    itemCTTTTL.MaCTTTTL,
+                                    itemCTTTTL.ThuDuocKy,
+                                    itemCTTTTL.CreateDate,
+                                    itemCTTTTL.VeViec,
+                                    itemCTTTTL.NoiDung,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
                 {

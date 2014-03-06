@@ -63,6 +63,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtHCSN_BD.Text = _ctdcbd.HCSN_BD;
                 if (_ctdcbd.CatMSThue)
                     chkCatMSThue.Checked = true;
+                else
+                    chkCatMSThue.Checked = false;
             }
         }
 
@@ -78,9 +80,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["HieuLucKy"] = _ctdcbd.HieuLucKy;
                 dr["Dot"] = _ctdcbd.Dot;
                 ///Hiện tại xử lý mã số thuế như vậy
-                if (chkCatMSThue.Checked)
+                if (_ctdcbd.CatMSThue)
                     dr["MSThue"] = "MST: Cắt MST";
-                if (txtMSThue_BD.Text.Trim() != "")
+                if (!string.IsNullOrEmpty(_ctdcbd.MSThue_BD))
                     dr["MSThue"] = "MST: " + _ctdcbd.MSThue_BD;
                 dr["DanhBo"] = _ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctdcbd.HopDong;

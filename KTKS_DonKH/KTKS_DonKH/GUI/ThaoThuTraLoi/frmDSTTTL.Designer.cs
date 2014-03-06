@@ -62,6 +62,7 @@
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.radDSThu = new System.Windows.Forms.RadioButton();
             this.dgvDSThu = new System.Windows.Forms.DataGridView();
+            this.In = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ThuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaCTTTTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +73,8 @@
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkSelectAll = new System.Windows.Forms.CheckBox();
+            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTTTTL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTTTL)).BeginInit();
@@ -367,7 +370,7 @@
             // radChuaDuyet
             // 
             this.radChuaDuyet.AutoSize = true;
-            this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
+            this.radChuaDuyet.Location = new System.Drawing.Point(137, 39);
             this.radChuaDuyet.Name = "radChuaDuyet";
             this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
             this.radChuaDuyet.TabIndex = 1;
@@ -404,7 +407,7 @@
             // radDSThu
             // 
             this.radDSThu.AutoSize = true;
-            this.radDSThu.Location = new System.Drawing.Point(130, 12);
+            this.radDSThu.Location = new System.Drawing.Point(137, 12);
             this.radDSThu.Name = "radDSThu";
             this.radDSThu.Size = new System.Drawing.Size(119, 21);
             this.radDSThu.TabIndex = 2;
@@ -426,6 +429,7 @@
             this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.In,
             this.ThuDuocKy,
             this.MaCTTTTL,
             this.CreateDate,
@@ -440,6 +444,13 @@
             this.dgvDSThu.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSThu_CellEndEdit);
             this.dgvDSThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSThu_CellFormatting);
             this.dgvDSThu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSThu_KeyDown);
+            // 
+            // In
+            // 
+            this.In.DataPropertyName = "In";
+            this.In.HeaderText = "In";
+            this.In.Name = "In";
+            this.In.Width = 30;
             // 
             // ThuDuocKy
             // 
@@ -533,21 +544,49 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Nội Dung:";
             // 
+            // chkSelectAll
+            // 
+            this.chkSelectAll.AutoSize = true;
+            this.chkSelectAll.ForeColor = System.Drawing.Color.Red;
+            this.chkSelectAll.Location = new System.Drawing.Point(12, 39);
+            this.chkSelectAll.Name = "chkSelectAll";
+            this.chkSelectAll.Size = new System.Drawing.Size(119, 21);
+            this.chkSelectAll.TabIndex = 40;
+            this.chkSelectAll.Text = "Chọn In Tất Cả";
+            this.chkSelectAll.UseVisualStyleBackColor = true;
+            this.chkSelectAll.Visible = false;
+            this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(1082, 12);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(92, 35);
+            this.btnIn.TabIndex = 41;
+            this.btnIn.Text = "In Phiếu";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // frmDSTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1363, 629);
+            this.ClientSize = new System.Drawing.Size(1363, 646);
+            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.radChuaDuyet);
             this.Controls.Add(this.radDaDuyet);
+            this.Controls.Add(this.radChuaDuyet);
             this.Controls.Add(this.radDSThu);
             this.Controls.Add(this.dgvDSThu);
             this.Controls.Add(this.gridControl);
@@ -597,16 +636,19 @@
         private System.Windows.Forms.RadioButton radDaDuyet;
         private System.Windows.Forms.RadioButton radDSThu;
         private System.Windows.Forms.DataGridView dgvDSThu;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ThuDuocKy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTTTL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private System.Windows.Forms.DateTimePicker dateTimKiem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbTimTheo;
         private System.Windows.Forms.TextBox txtNoiDungTimKiem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn In;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ThuDuocKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTTTL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.CheckBox chkSelectAll;
+        private System.Windows.Forms.Button btnIn;
     }
 }
