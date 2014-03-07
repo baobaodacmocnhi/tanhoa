@@ -133,5 +133,23 @@ namespace KTKS_DonKH.DAL.CapNhat
                 return false;
             }
         }
+
+        /// <summary>
+        /// Lấy MaLCT bằng TenLCT
+        /// </summary>
+        /// <param name="TenLCT"></param>
+        /// <returns></returns>
+        public int getMaLCTbyTenLCT(string TenLCT)
+        {
+            try
+            {
+                return db.LoaiChungTus.SingleOrDefault(itemLCT => itemLCT.TenLCT == TenLCT).MaLCT;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
     }
 }

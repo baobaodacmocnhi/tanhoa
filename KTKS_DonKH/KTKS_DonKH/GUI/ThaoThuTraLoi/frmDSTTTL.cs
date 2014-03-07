@@ -475,35 +475,38 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            if (radDSThu.Checked)
-                for (int i = 0; i < dgvDSThu.Rows.Count; i++)
-                    if (bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
-                    {
-                        DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                        DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
+            if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (radDSThu.Checked)
+                    for (int i = 0; i < dgvDSThu.Rows.Count; i++)
+                        if (bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                        {
+                            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                            DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
 
-                        CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
-                        dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
-                        dr["LoTrinh"] = cttttl.LoTrinh;
-                        dr["HoTen"] = cttttl.HoTen;
-                        dr["DiaChi"] = cttttl.DiaChi;
-                        dr["DanhBo"] = cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
-                        dr["HopDong"] = cttttl.HopDong;
-                        dr["GiaBieu"] = cttttl.GiaBieu;
-                        dr["DinhMuc"] = cttttl.DinhMuc;
-                        dr["NgayNhanDon"] = cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
-                        dr["VeViec"] = cttttl.VeViec;
-                        dr["NoiDung"] = cttttl.NoiDung;
-                        dr["NoiNhan"] = cttttl.NoiNhan;
-                        dr["ChucVu"] = cttttl.ChucVu;
-                        dr["NguoiKy"] = cttttl.NguoiKy;
+                            CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                            dr["SoPhieu"] = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
+                            dr["LoTrinh"] = cttttl.LoTrinh;
+                            dr["HoTen"] = cttttl.HoTen;
+                            dr["DiaChi"] = cttttl.DiaChi;
+                            dr["DanhBo"] = cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["HopDong"] = cttttl.HopDong;
+                            dr["GiaBieu"] = cttttl.GiaBieu;
+                            dr["DinhMuc"] = cttttl.DinhMuc;
+                            dr["NgayNhanDon"] = cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
+                            dr["VeViec"] = cttttl.VeViec;
+                            dr["NoiDung"] = cttttl.NoiDung;
+                            dr["NoiNhan"] = cttttl.NoiNhan;
+                            dr["ChucVu"] = cttttl.ChucVu;
+                            dr["NguoiKy"] = cttttl.NguoiKy;
 
-                        dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
-                        rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
-                        rpt.SetDataSource(dsBaoCao);
-                        rpt.PrintToPrinter(1, false, 0, 0);
-                    }
+                            rptThaoThuTraLoi rpt = new rptThaoThuTraLoi();
+                            rpt.SetDataSource(dsBaoCao);
+                            rpt.PrintToPrinter(1, false, 0, 0);
+                        }
+            }
         }
 
     }
