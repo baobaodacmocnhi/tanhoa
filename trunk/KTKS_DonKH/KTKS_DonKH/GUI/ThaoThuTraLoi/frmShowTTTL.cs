@@ -123,37 +123,45 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (_cttttl != null)
+            try
             {
-                _cttttl.DanhBo = txtDanhBo.Text.Trim();
-                _cttttl.HopDong = txtHopDong.Text.Trim();
-                _cttttl.LoTrinh = txtLoTrinh.Text.Trim();
-                _cttttl.HoTen = txtHoTen.Text.Trim();
-                _cttttl.DiaChi = txtDiaChi.Text.Trim();
-                _cttttl.GiaBieu = txtGiaBieu.Text.Trim();
-                _cttttl.DinhMuc = txtDinhMuc.Text.Trim();
-                _cttttl.VeViec = txtVeViec.Text.Trim();
-                _cttttl.NoiDung = txtNoiDung.Text;
-                _cttttl.NoiNhan = txtNoiNhan.Text.Trim();
-                ///
-                if (chkGiamNuocXaBo.Checked)
-                    _cttttl.GiamNuocXaBo = true;
-                if (chkKiemDinhDHN_Dung.Checked)
-                    _cttttl.KiemDinhDHN_Dung = true;
-                if (chkKiemDinhDHN_Sai.Checked)
-                    _cttttl.KiemDinhDHN_Sai = true;
-                if (chkThayDHN.Checked)
-                    _cttttl.ThayDHN = true;
-                if (chkDieuChinh_GB_DM.Checked)
-                    _cttttl.DieuChinh_GB_DM = true;
-                if (chkThuMoi.Checked)
-                    _cttttl.ThuMoi = true;
-                if (chkThuBao.Checked)
-                    _cttttl.ThuBao = true;
+                if (_cttttl != null)
+                {
+                    _cttttl.DanhBo = txtDanhBo.Text.Trim();
+                    _cttttl.HopDong = txtHopDong.Text.Trim();
+                    _cttttl.LoTrinh = txtLoTrinh.Text.Trim();
+                    _cttttl.HoTen = txtHoTen.Text.Trim();
+                    _cttttl.DiaChi = txtDiaChi.Text.Trim();
+                    _cttttl.GiaBieu = txtGiaBieu.Text.Trim();
+                    _cttttl.DinhMuc = txtDinhMuc.Text.Trim();
+                    _cttttl.VeViec = txtVeViec.Text.Trim();
+                    _cttttl.NoiDung = txtNoiDung.Text;
+                    _cttttl.NoiNhan = txtNoiNhan.Text.Trim();
+                    ///
+                    if (chkGiamNuocXaBo.Checked)
+                        _cttttl.GiamNuocXaBo = true;
+                    if (chkKiemDinhDHN_Dung.Checked)
+                        _cttttl.KiemDinhDHN_Dung = true;
+                    if (chkKiemDinhDHN_Sai.Checked)
+                        _cttttl.KiemDinhDHN_Sai = true;
+                    if (chkThayDHN.Checked)
+                        _cttttl.ThayDHN = true;
+                    if (chkDieuChinh_GB_DM.Checked)
+                        _cttttl.DieuChinh_GB_DM = true;
+                    if (chkThuMoi.Checked)
+                        _cttttl.ThuMoi = true;
+                    if (chkThuBao.Checked)
+                        _cttttl.ThuBao = true;
 
-                if(_cTTTL.SuaCTTTTL(_cttttl))
-                    MessageBox.Show("Sửa Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (_cTTTL.SuaCTTTTL(_cttttl))
+                        MessageBox.Show("Sửa Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)

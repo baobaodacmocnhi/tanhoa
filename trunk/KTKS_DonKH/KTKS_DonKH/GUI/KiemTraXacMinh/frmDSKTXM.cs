@@ -252,6 +252,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //    frmShowDonKH frm = new frmShowDonKH(source);
             //    frm.ShowDialog();
             //}
+            if (dgvDSCTKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowKTXM frm = new frmShowKTXM(decimal.Parse(dgvDSCTKTXM["MaCTKTXM", dgvDSCTKTXM.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+            }
         }
 
         /// <summary>

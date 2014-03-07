@@ -82,8 +82,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
-                    rptPhieuYCNhanDM rpt = new rptPhieuYCNhanDM();
-                    rpt.SetDataSource(dsBaoCao);
+                    //rptPhieuYCNhanDM rpt = new rptPhieuYCNhanDM();
+                    //rpt.SetDataSource(dsBaoCao);
+                    rptPhieuYCNhanDMx2 rpt = new rptPhieuYCNhanDMx2();
+                    for (int j = 0; j < rpt.Subreports.Count; j++)
+                    {
+                        rpt.Subreports[j].SetDataSource(dsBaoCao);
+                    }
                     frmBaoCao frm = new frmBaoCao(rpt);
                     frm.ShowDialog();
                 }

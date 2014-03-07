@@ -21,7 +21,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChiNhanh _cChiNhanh = new CChiNhanh();
         Dictionary<string, string> _source = new Dictionary<string, string>();
         string _action = "";
-        DataSetBaoCao dsBaoCao = new DataSetBaoCao();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         public frmSoDK()
@@ -60,135 +59,222 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmSoDK_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
-            cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
-            cmbLoaiCT.DisplayMember = "TenLCT";
-            cmbLoaiCT.ValueMember = "MaLCT";
+            try
+            {
+                this.Location = new Point(70, 70);
+                cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
+                cmbLoaiCT.DisplayMember = "TenLCT";
+                cmbLoaiCT.ValueMember = "MaLCT";
 
-            txtDanhBo.Text = _source["DanhBo"];
-            cmbLoaiCT.SelectedValue = int.Parse(_source["MaLCT"]);
-            txtMaCT.Text = _source["MaCT"];
-            txtDiaChi.Text = _source["DiaChi"];
-            txtSoNKTong.Text = _source["SoNKTong"];
-            txtSoNKDangKy.Text = _source["SoNKDangKy"];
-            txtThoiHan.Text = _source["ThoiHan"];
+                txtDanhBo.Text = _source["DanhBo"];
+                cmbLoaiCT.SelectedValue = _cLoaiChungTu.getMaLCTbyTenLCT(_source["TenLCT"]);
+                txtMaCT.Text = _source["MaCT"];
+                txtDiaChi.Text = _source["DiaChi"];
+                txtSoNKTong.Text = _source["SoNKTong"];
+                txtSoNKDangKy.Text = _source["SoNKDangKy"];
+                txtThoiHan.Text = _source["ThoiHan"];
 
-            cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh(true,"Tân Hòa");
-            cmbChiNhanh.DisplayMember = "TenCN";
-            cmbChiNhanh.ValueMember = "MaCN";
+                CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(_source["DanhBo"], _source["MaCT"]);
+                if (ctchungtu.YeuCauCat)
+                {
+                    chkCatChuyen.Checked = true;
+                    cmbChiNhanh.SelectedValue = ctchungtu.CatNK_MaCN;
+                    txtDanhBo_Cat.Text = ctchungtu.CatNK_DanhBo;
+                    txtHoTen_Cat.Text = ctchungtu.CatNK_HoTen;
+                    txtDiaChiKH_Cat.Text = ctchungtu.CatNK_DiaChi;
+                    txtSoNKCat.Text = ctchungtu.CatNK_SoNKCat.ToString();
+                }
+
+                cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh(true, "Tân Hòa");
+                cmbChiNhanh.DisplayMember = "TenCN";
+                cmbChiNhanh.ValueMember = "MaCN";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0")
-                if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
-                {
-                    ChungTu chungtu = new ChungTu();
-                    chungtu.MaCT = txtMaCT.Text.Trim();
-                    chungtu.DiaChi = txtDiaChi.Text.Trim();
-                    chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
-                    chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
-
-                    LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
-                    lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
-
-                    if (chkCatChuyen.Checked)
-                        if (txtSoNKCat.Text.Trim() == "")
-                        {
-                            MessageBox.Show("Chưa nhập Số Nhân Khẩu cắt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        else
-                        {
-                            chungtu.YeuCauCat = true;
-                            chungtu.NhanNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
-                            chungtu.NhanNK_DanhBo = txtDanhBo_Cat.Text.Trim();
-                            chungtu.NhanNK_HoTen = txtHoTen_Cat.Text.Trim();
-                            chungtu.NhanNK_DiaChi = txtDiaChiKH_Cat.Text.Trim();
-                            chungtu.NhanNK_SoNKCat = int.Parse(txtSoNKCat.Text.Trim());
-
-                            DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
-
-                            dr["SoPhieu"] = _cChungTu.getMaxNextSoPhieuLSCT().ToString().Insert(_cChungTu.getMaxNextSoPhieuLSCT().ToString().Length - 2, "-");
-                            dr["ChiNhanh"] = ((ChiNhanh)cmbChiNhanh.SelectedItem).TenCN;
-                            dr["DanhBoNhan"] = txtDanhBo.Text.Trim();
-                            dr["HoTenNhan"] = _source["HoTenKH"];
-                            dr["DiaChiNhan"] = _source["DiaChiKH"];
-                            dr["DanhBoCat"] = txtDanhBo_Cat.Text.Trim();
-                            dr["HoTenCat"] = txtHoTen_Cat.Text.Trim();
-                            dr["DiaChiCat"] = txtDiaChiKH_Cat.Text.Trim();
-                            dr["SoNKCat"] = txtSoNKCat.Text.Trim() + " nhân khẩu (HK: " + txtMaCT.Text.Trim() + ")";
-
-                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                dr["ChucVu"] = "GIÁM ĐỐC";
-                            else
-                                dr["ChucVu"] = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                            dr["NguoiKy"] = bangiamdoc.HoTen.ToUpper();
-
-                            dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
-                        }
-
-                    CTChungTu ctchungtu = new CTChungTu();
-                    ctchungtu.DanhBo = txtDanhBo.Text.Trim();
-                    ctchungtu.MaCT = txtMaCT.Text.Trim();
-                    ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-                    if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
-                        ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                    else
-                        ctchungtu.ThoiHan = null;
-
-                    if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu))
+            try
+            {
+                if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0")
+                    if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
-                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ChungTu chungtu = new ChungTu();
+                        chungtu.MaCT = txtMaCT.Text.Trim();
+                        chungtu.DiaChi = txtDiaChi.Text.Trim();
+                        chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                        chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+
+                        CTChungTu ctchungtu = new CTChungTu();
+                        ctchungtu.DanhBo = txtDanhBo.Text.Trim();
+                        ctchungtu.MaCT = txtMaCT.Text.Trim();
+                        ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
+                        if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
+                            ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                        else
+                            ctchungtu.ThoiHan = null;
+
+                        LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                        lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
+
                         if (chkCatChuyen.Checked)
+                            if (txtSoNKCat.Text.Trim() == "")
+                            {
+                                MessageBox.Show("Chưa nhập Số Nhân Khẩu cắt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            else
+                            {
+                                ///Cập nhật cái mới nhất(cuối cùng)
+                                chungtu.YeuCauCat = true;
+                                chungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
+                                chungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                                chungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
+                                chungtu.CatNK_DiaChi = txtDiaChiKH_Cat.Text.Trim();
+                                chungtu.CatNK_SoNKCat = int.Parse(txtSoNKCat.Text.Trim());
+                                ///Chi tiết liên quan đến Danh Bộ nào
+                                ctchungtu.YeuCauCat = true;
+                                ctchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
+                                ctchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                                ctchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
+                                ctchungtu.CatNK_DiaChi = txtDiaChiKH_Cat.Text.Trim();
+                                ctchungtu.CatNK_SoNKCat = int.Parse(txtSoNKCat.Text.Trim());
+                                ///
+                                lichsuchungtu.NhanDM = true;
+                                lichsuchungtu.NhanNK_DanhBo = txtDanhBo.Text.Trim();
+                                lichsuchungtu.NhanNK_HoTen = _source["HoTenKH"];
+                                lichsuchungtu.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                //lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
+                                //lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                                //lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
+                                //lichsuchungtu.CatNK_DiaChi = txtDiaChiKH_Cat.Text.Trim();
+                                //lichsuchungtu.SoNKNhan = int.Parse(txtSoNKCat.Text.Trim());
+                                /////Ký Tên
+                                //BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                //if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                //    lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                                //else
+                                //    lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                //lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            }
+
+                        if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu))
                         {
-                            rptPhieuYCCatDM rpt = new rptPhieuYCCatDM();
-                            rpt.SetDataSource(dsBaoCao);
-                            frmBaoCao frm = new frmBaoCao(rpt);
-                            frm.ShowDialog();
+                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (chkCatChuyen.Checked)
+                            {
+                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
+
+                                dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
+                                dr["ChiNhanh"] = ((ChiNhanh)cmbChiNhanh.SelectedItem).TenCN;
+                                dr["DanhBoNhan"] = lichsuchungtu.NhanNK_DanhBo;
+                                dr["HoTenNhan"] = lichsuchungtu.NhanNK_HoTen;
+                                dr["DiaChiNhan"] = lichsuchungtu.NhanNK_DiaChi;
+                                dr["DanhBoCat"] = lichsuchungtu.CatNK_DanhBo;
+                                dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
+                                dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
+                                ///có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
+                                dr["SoNKCat"] = lichsuchungtu.SoNKNhan.ToString() + " nhân khẩu (HK: " + lichsuchungtu.MaCT + ")";
+
+                                dr["ChucVu"] = lichsuchungtu.ChucVu;
+                                dr["NguoiKy"] = lichsuchungtu.NguoiKy;
+
+                                dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
+
+                                rptPhieuYCCatDM rpt = new rptPhieuYCCatDM();
+                                rpt.SetDataSource(dsBaoCao);
+                                frmBaoCao frm = new frmBaoCao(rpt);
+                                frm.ShowDialog();
+                            }
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
                         }
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
                     }
-                }
-                else
-                    MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "")
-                if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
-                {
-                    ChungTu chungtu = new ChungTu();
-                    chungtu.MaCT = txtMaCT.Text.Trim();
-                    //chungtu.DiaChi = txtDiaChi.Text.Trim();
-                    chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
-
-                    LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                    lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
-                    lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
-
-                    CTChungTu ctchungtu = new CTChungTu();
-                    ctchungtu.DanhBo = txtDanhBo.Text.Trim();
-                    ctchungtu.MaCT = txtMaCT.Text.Trim();
-                    ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-                    if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
-                        ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                    else
-                        ctchungtu.ThoiHan = null;
-
-                    if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
+            try
+            {
+                if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "")
+                    if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
-                        MessageBox.Show("SửaThành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
+                        ChungTu chungtu = new ChungTu();
+                        chungtu.MaCT = txtMaCT.Text.Trim();
+                        //chungtu.DiaChi = txtDiaChi.Text.Trim();
+                        chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+
+                        CTChungTu ctchungtu = new CTChungTu();
+                        ctchungtu.DanhBo = txtDanhBo.Text.Trim();
+                        ctchungtu.MaCT = txtMaCT.Text.Trim();
+                        ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
+                        if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
+                            ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                        else
+                            ctchungtu.ThoiHan = null;
+
+                        LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                        lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
+
+                        if (chkCatChuyen.Checked)
+                            if (txtSoNKCat.Text.Trim() == "")
+                            {
+                                MessageBox.Show("Chưa nhập Số Nhân Khẩu cắt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            else
+                            {
+                                ///Cập nhật cái mới nhất(cuối cùng)
+                                chungtu.YeuCauCat = true;
+                                chungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
+                                chungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                                chungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
+                                chungtu.CatNK_DiaChi = txtDiaChiKH_Cat.Text.Trim();
+                                chungtu.CatNK_SoNKCat = int.Parse(txtSoNKCat.Text.Trim());
+                                ///Chi tiết liên quan đến Danh Bộ nào
+                                ctchungtu.YeuCauCat = true;
+                                ctchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
+                                ctchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                                ctchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
+                                ctchungtu.CatNK_DiaChi = txtDiaChiKH_Cat.Text.Trim();
+                                ctchungtu.CatNK_SoNKCat = int.Parse(txtSoNKCat.Text.Trim());
+                            }
+                        else
+                        {
+                            chungtu.YeuCauCat = false;
+                            ctchungtu.YeuCauCat = false;
+                        }
+
+                        if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
+                        {
+                            MessageBox.Show("SửaThành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
                     }
-                }
-                else
-                    MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void cmbLoaiCT_SelectedIndexChanged(object sender, EventArgs e)

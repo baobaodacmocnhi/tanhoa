@@ -281,12 +281,12 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (db.LichSuChungTus.Count() > 0)
                 {
                     if (db.LichSuChungTus.Max(itemLSCT => itemLSCT.SoPhieu) == null)
-                        return decimal.Parse(DateTime.Now.Year + "1");
+                        return decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     else
                         return getMaxNextIDTable(db.LichSuChungTus.Max(itemLSCT => itemLSCT.SoPhieu).Value);
                 }
                 else
-                    return decimal.Parse(DateTime.Now.Year + "1");
+                    return decimal.Parse("1" + DateTime.Now.ToString("yy"));
             }
             catch (Exception ex)
             {
@@ -329,6 +329,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     if (query.Count() > 0)
                     {
                         DataTable table = new DataTable();
+                        table.Columns.Add("In", typeof(bool));
                         table.Columns.Add("MaLSCT", typeof(string));
                         table.Columns.Add("SoPhieu", typeof(string));
                         table.Columns.Add("MaCT", typeof(string));
@@ -349,6 +350,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         foreach (DataRow itemRow in table2.Rows)
                         {
                             DataRow Row = table.NewRow();
+                            Row["In"] = false;
                             Row["MaLSCT"] = itemRow["MaLSCT"];
                             Row["SoPhieu"] = itemRow["SoPhieu"];
                             Row["MaCT"] = itemRow["MaCT"];
@@ -436,6 +438,24 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        /// <summary>
+        /// Lấy LichSuChungTu dự theo Số Phiếu
+        /// </summary>
+        /// <param name="SoPhieu"></param>
+        /// <returns></returns>
+        public LichSuChungTu getLichSuChungTubySoPhieu(decimal SoPhieu)
+        {
+            try
+            {
+                return db.LichSuChungTus.SingleOrDefault(itemLSCT => itemLSCT.SoPhieu == SoPhieu);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region Method
@@ -481,6 +501,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
                         chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
                         chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        db.SubmitChanges();
 
                         ///Cập nhật bảng LichSuChungTu
                         lichsuchungtu.MaCT = ctchungtu.MaCT;
@@ -493,12 +514,14 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (chungtuCN.YeuCauCat)
                         {
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
+                            chungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
                             lichsuchungtu.NhanDM = true;
-                            lichsuchungtu.CatNK_MaCN = chungtuCN.NhanNK_MaCN;
-                            lichsuchungtu.CatNK_DanhBo = chungtuCN.NhanNK_DanhBo;
-                            lichsuchungtu.CatNK_HoTen = chungtuCN.NhanNK_HoTen;
-                            lichsuchungtu.CatNK_DiaChi = chungtuCN.NhanNK_DiaChi;
-                            lichsuchungtu.SoNKNhan = chungtuCN.NhanNK_SoNKCat;
+
+                            lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                            lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                            lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                            lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                            lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat;
                             CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -509,7 +532,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         }
                         ThemLichSuChungTu(lichsuchungtu);
 
-                        db.SubmitChanges();
+                        
                         //MessageBox.Show("Thành công Thêm ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
@@ -612,7 +635,37 @@ namespace KTKS_DonKH.DAL.CapNhat
                     ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                     flagEdited = true;
                 }
+                if (chungtu.YeuCauCat != chungtuCN.YeuCauCat || ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
+                    if (chungtu.YeuCauCat || ctchungtu.YeuCauCat)
+                    {
 
+                        chungtuCN.YeuCauCat = true;
+                        chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
+                        chungtuCN.CatNK_DanhBo = chungtu.CatNK_DanhBo;
+                        chungtuCN.CatNK_HoTen = chungtu.CatNK_HoTen;
+                        chungtuCN.CatNK_DiaChi = chungtu.CatNK_DiaChi;
+                        chungtuCN.CatNK_SoNKCat = chungtu.CatNK_SoNKCat;
+                        ///
+                        ctchungtuCN.YeuCauCat = true;
+                        ctchungtuCN.CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                        ctchungtuCN.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                        ctchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                        ctchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                        ctchungtuCN.CatNK_SoNKCat = ctchungtu.CatNK_SoNKCat;
+                        ///
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(chungtuCN.SoPhieu.Value);
+                        lichsuchungtuCN.CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                        lichsuchungtuCN.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                        lichsuchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                        lichsuchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                        lichsuchungtuCN.SoNKNhan = ctchungtu.CatNK_SoNKCat;
+                        SuaLichSuChungTu(lichsuchungtuCN);
+                    }
+                    else
+                    {
+                        chungtuCN.YeuCauCat = false;
+                        ctchungtuCN.YeuCauCat = false;
+                    }
                 ///Thêm LichSuChungTu
                 if (flagEdited)
                 {

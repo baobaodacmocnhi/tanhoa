@@ -94,7 +94,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             //cmbNVKiemTra.DataSource = _cNhanVien.LoadDSNhanVien(true);
             //cmbNVKiemTra.DisplayMember = "HoTen";
             //cmbNVKiemTra.ValueMember = "HoTen";
-            
+
             Clear();
         }
 
@@ -153,276 +153,284 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void btnInBienNhan_Click(object sender, EventArgs e)
         {
-            if (cmbLD.SelectedIndex != -1)
+            try
             {
-                DonKH donkh = new DonKH();
-                donkh.MaDon = _cDonKH.getMaxNextID();
-                donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
-                donkh.SoCongVan = txtSoCongVan.Text.Trim();
-                donkh.NoiDung = txtNoiDung.Text.Trim();
-                donkh.MaXepDon = decimal.Parse(txtMaXepDon.Text.Trim().Substring(0, txtMaXepDon.Text.Trim().IndexOf("/")).Replace("-", ""));
-
-                donkh.DanhBo = txtDanhBo.Text.Trim();
-                donkh.HopDong = txtHopDong.Text.Trim();
-                donkh.HoTen = txtHoTen.Text.Trim();
-                donkh.DiaChi = txtDiaChi.Text.Trim();
-                donkh.DienThoai = txtDienThoai.Text.Trim();
-                donkh.MSThue = txtMSThue.Text.Trim();
-                donkh.GiaBieu = txtGiaBieu.Text.Trim();
-                donkh.DinhMuc = txtDinhMuc.Text.Trim();
-                donkh.SH = SH;
-                donkh.SX = SX;
-                donkh.DV = DV;
-                donkh.HCSN = HCSN;
-                donkh.Dot = Dot;
-                donkh.Ky = Ky;
-                donkh.Nam = Nam;
-                
-                //donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
-                donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
-                donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
-
-                #region CheckBox
-                if (chkKiemTraDHN.Checked)
-                    donkh.KiemTraDHN = true;
-
-                if (chkTienNuoc.Checked)
-                    donkh.TienNuoc = true;
-
-                if (chkChiSoNuoc.Checked)
-                    donkh.ChiSoNuoc = true;
-
-                if (chkDonGiaNuoc.Checked)
-                    donkh.DonGiaNuoc = true;
-
-                if (chkSangTen.Checked)
-                    donkh.SangTen = true;
-
-                if (chkDangKyDM.Checked)
-                    donkh.DangKyDM = true;
-
-                if (chkCatChuyenDM.Checked)
-                    donkh.CatChuyenDM = true;
-
-                if (chkNuocDuc.Checked)
-                    donkh.NuocDuc = true;
-
-                if (chkLyDoKhac.Checked)
+                if (cmbLD.SelectedIndex != -1)
                 {
-                    donkh.LoaiKhac = true;
-                    donkh.LyDoLoaiKhac = txtLyDoKhac.Text.Trim();
-                }
+                    DonKH donkh = new DonKH();
+                    donkh.MaDon = _cDonKH.getMaxNextID();
+                    donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
+                    donkh.SoCongVan = txtSoCongVan.Text.Trim();
+                    donkh.NoiDung = txtNoiDung.Text.Trim();
+                    donkh.MaXepDon = decimal.Parse(txtMaXepDon.Text.Trim().Substring(0, txtMaXepDon.Text.Trim().IndexOf("/")).Replace("-", ""));
 
-                if (chkCT_HoaDon.Checked)
-                    donkh.CT_HoaDon = true;
+                    donkh.DanhBo = txtDanhBo.Text.Trim();
+                    donkh.HopDong = txtHopDong.Text.Trim();
+                    donkh.HoTen = txtHoTen.Text.Trim();
+                    donkh.DiaChi = txtDiaChi.Text.Trim();
+                    donkh.DienThoai = txtDienThoai.Text.Trim();
+                    donkh.MSThue = txtMSThue.Text.Trim();
+                    donkh.GiaBieu = txtGiaBieu.Text.Trim();
+                    donkh.DinhMuc = txtDinhMuc.Text.Trim();
+                    donkh.SH = SH;
+                    donkh.SX = SX;
+                    donkh.DV = DV;
+                    donkh.HCSN = HCSN;
+                    donkh.Dot = Dot;
+                    donkh.Ky = Ky;
+                    donkh.Nam = Nam;
 
-                if (chkCT_HK_KT3.Checked)
-                    donkh.CT_HK_KT3 = true;
-
-                if (chkCT_STT_GXNTT.Checked)
-                    donkh.CT_STT_GXNTT = true;
-
-                if (chkCT_HDTN_CQN.Checked)
-                    donkh.CT_HDTN_CQN = true;
-
-                if (chkCT_GC_SDSN.Checked)
-                    donkh.CT_GC_SDSN = true;
-
-                if (chkCT_GXN2SN.Checked)
-                    donkh.CT_GXN2SN = true;
-
-                if (chkCT_GDKKD.Checked)
-                    donkh.CT_GDKKD = true;
-
-                if (chkCT_GCNDTDHN.Checked)
-                    donkh.CT_GCNDTDHN = true;
-
-                #endregion
-
-                if (_cDonKH.ThemDonKH(donkh))
-                {
-                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                    DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                    dr["MaDon"] = txtMaDon.Text.Trim() + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString())); ;
-                    //dr["MaXepDon"] = _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
-                    dr["TenLD"] = cmbLD.Text;
-                    dr["KhachHang"] = txtHoTen.Text.Trim();
-                    if (txtDanhBo.Text.Trim() != "")
-                        dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, ".").Insert(4, ".");
-                    dr["DiaChi"] = txtDiaChi.Text.Trim();
-                    dr["HopDong"] = txtHopDong.Text.Trim();
-                    dr["DienThoai"] = txtDienThoai.Text.Trim();
+                    //donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
+                    donkh.DinhMucSau = txtDinhMucSau.Text.Trim();
+                    donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
 
                     #region CheckBox
-                    if (donkh.KiemTraDHN)
+                    if (chkKiemTraDHN.Checked)
+                        donkh.KiemTraDHN = true;
+
+                    if (chkTienNuoc.Checked)
+                        donkh.TienNuoc = true;
+
+                    if (chkChiSoNuoc.Checked)
+                        donkh.ChiSoNuoc = true;
+
+                    if (chkDonGiaNuoc.Checked)
+                        donkh.DonGiaNuoc = true;
+
+                    if (chkSangTen.Checked)
+                        donkh.SangTen = true;
+
+                    if (chkDangKyDM.Checked)
+                        donkh.DangKyDM = true;
+
+                    if (chkCatChuyenDM.Checked)
+                        donkh.CatChuyenDM = true;
+
+                    if (chkNuocDuc.Checked)
+                        donkh.NuocDuc = true;
+
+                    if (chkLyDoKhac.Checked)
                     {
-                        dr["KiemTraDHN"] = true;
-                    }
-                    else
-                    {
-                        dr["KiemTraDHN"] = false;
+                        donkh.LoaiKhac = true;
+                        donkh.LyDoLoaiKhac = txtLyDoKhac.Text.Trim();
                     }
 
-                    if (donkh.TienNuoc)
-                    {
-                        dr["TienNuoc"] = true;
-                    }
-                    else
-                    {
-                        dr["TienNuoc"] = false;
-                    }
+                    if (chkCT_HoaDon.Checked)
+                        donkh.CT_HoaDon = true;
 
-                    if (donkh.ChiSoNuoc)
-                    {
-                        dr["ChiSoNuoc"] = true;
-                    }
-                    else
-                    {
-                        dr["ChiSoNuoc"] = false;
-                    }
+                    if (chkCT_HK_KT3.Checked)
+                        donkh.CT_HK_KT3 = true;
 
-                    if (donkh.DonGiaNuoc)
-                    {
-                        dr["DonGiaNuoc"] = true;
-                    }
-                    else
-                    {
-                        dr["DonGiaNuoc"] = false;
-                    }
+                    if (chkCT_STT_GXNTT.Checked)
+                        donkh.CT_STT_GXNTT = true;
 
-                    if (donkh.SangTen)
-                    {
-                        dr["SangTen"] = true;
-                    }
-                    else
-                    {
-                        dr["SangTen"] = false;
-                    }
+                    if (chkCT_HDTN_CQN.Checked)
+                        donkh.CT_HDTN_CQN = true;
 
-                    if (donkh.DangKyDM)
-                    {
-                        dr["DangKyDM"] = true;
-                    }
-                    else
-                    {
-                        dr["DangKyDM"] = false;
-                    }
+                    if (chkCT_GC_SDSN.Checked)
+                        donkh.CT_GC_SDSN = true;
 
-                    if (donkh.CatChuyenDM)
-                    {
-                        dr["CatChuyenDM"] = true;
-                    }
-                    else
-                    {
-                        dr["CatChuyenDM"] = false;
-                    }
+                    if (chkCT_GXN2SN.Checked)
+                        donkh.CT_GXN2SN = true;
 
-                    if (donkh.NuocDuc)
-                    {
-                        dr["NuocDuc"] = true;
-                    }
-                    else
-                    {
-                        dr["NuocDuc"] = false;
-                    }
+                    if (chkCT_GDKKD.Checked)
+                        donkh.CT_GDKKD = true;
 
-                    if (donkh.LoaiKhac)
-                    {
-                        dr["LoaiKhac"] = true;
-                        dr["LyDoLoaiKhac"] = donkh.LyDoLoaiKhac;
-                    }
-                    else
-                    {
-                        dr["LoaiKhac"] = false;
-                    }
+                    if (chkCT_GCNDTDHN.Checked)
+                        donkh.CT_GCNDTDHN = true;
 
-                    if (donkh.CT_HoaDon)
-                    {
-                        dr["CT_HoaDon"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_HoaDon"] = false;
-                    }
-
-                    if (donkh.CT_HK_KT3)
-                    {
-                        dr["CT_HK_KT3"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_HK_KT3"] = false;
-                    }
-
-                    if (donkh.CT_STT_GXNTT)
-                    {
-                        dr["CT_STT_GXNTT"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_STT_GXNTT"] = false;
-                    }
-
-                    if (donkh.CT_HDTN_CQN)
-                    {
-                        dr["CT_HDTN_CQN"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_HDTN_CQN"] = false;
-                    }
-
-                    if (donkh.CT_GC_SDSN)
-                    {
-                        dr["CT_GC_SDSN"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_GC_SDSN"] = false;
-                    }
-
-                    if (donkh.CT_GXN2SN)
-                    {
-                        dr["CT_GXN2SN"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_GXN2SN"] = false;
-                    }
-
-                    if (donkh.CT_GDKKD)
-                    {
-                        dr["CT_GDKKD"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_GDKKD"] = false;
-                    }
-
-                    if (donkh.CT_GCNDTDHN)
-                    {
-                        dr["CT_GCNDTDHN"] = true;
-                    }
-                    else
-                    {
-                        dr["CT_GCNDTDHN"] = false;
-                    }
                     #endregion
 
-                    dr["DinhMucSau"] = txtDinhMucSau.Text.Trim();
-                    dr["HieuLucTuKy"] = txtHieuLucTuKy.Text.Trim();
-                    dr["HoTenNV"] = CTaiKhoan.HoTen;
-                    dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
-                    rptBienNhanDonKH rpt = new rptBienNhanDonKH();
-                    rpt.SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.ShowDialog();
+                    if (_cDonKH.ThemDonKH(donkh))
+                    {
+                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Clear();
-                }    
+                        DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                        DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                        dr["MaDon"] = txtMaDon.Text.Trim() + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString())); ;
+                        //dr["MaXepDon"] = _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
+                        dr["TenLD"] = cmbLD.Text;
+                        dr["KhachHang"] = txtHoTen.Text.Trim();
+                        if (txtDanhBo.Text.Trim() != "")
+                            dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, ".").Insert(4, ".");
+                        dr["DiaChi"] = txtDiaChi.Text.Trim();
+                        dr["HopDong"] = txtHopDong.Text.Trim();
+                        dr["DienThoai"] = txtDienThoai.Text.Trim();
+
+                        #region CheckBox
+                        if (donkh.KiemTraDHN)
+                        {
+                            dr["KiemTraDHN"] = true;
+                        }
+                        else
+                        {
+                            dr["KiemTraDHN"] = false;
+                        }
+
+                        if (donkh.TienNuoc)
+                        {
+                            dr["TienNuoc"] = true;
+                        }
+                        else
+                        {
+                            dr["TienNuoc"] = false;
+                        }
+
+                        if (donkh.ChiSoNuoc)
+                        {
+                            dr["ChiSoNuoc"] = true;
+                        }
+                        else
+                        {
+                            dr["ChiSoNuoc"] = false;
+                        }
+
+                        if (donkh.DonGiaNuoc)
+                        {
+                            dr["DonGiaNuoc"] = true;
+                        }
+                        else
+                        {
+                            dr["DonGiaNuoc"] = false;
+                        }
+
+                        if (donkh.SangTen)
+                        {
+                            dr["SangTen"] = true;
+                        }
+                        else
+                        {
+                            dr["SangTen"] = false;
+                        }
+
+                        if (donkh.DangKyDM)
+                        {
+                            dr["DangKyDM"] = true;
+                        }
+                        else
+                        {
+                            dr["DangKyDM"] = false;
+                        }
+
+                        if (donkh.CatChuyenDM)
+                        {
+                            dr["CatChuyenDM"] = true;
+                        }
+                        else
+                        {
+                            dr["CatChuyenDM"] = false;
+                        }
+
+                        if (donkh.NuocDuc)
+                        {
+                            dr["NuocDuc"] = true;
+                        }
+                        else
+                        {
+                            dr["NuocDuc"] = false;
+                        }
+
+                        if (donkh.LoaiKhac)
+                        {
+                            dr["LoaiKhac"] = true;
+                            dr["LyDoLoaiKhac"] = donkh.LyDoLoaiKhac;
+                        }
+                        else
+                        {
+                            dr["LoaiKhac"] = false;
+                        }
+
+                        if (donkh.CT_HoaDon)
+                        {
+                            dr["CT_HoaDon"] = true;
+                        }
+                        else
+                        {
+                            dr["CT_HoaDon"] = false;
+                        }
+
+                        if (donkh.CT_HK_KT3)
+                        {
+                            dr["CT_HK_KT3"] = true;
+                        }
+                        else
+                        {
+                            dr["CT_HK_KT3"] = false;
+                        }
+
+                        if (donkh.CT_STT_GXNTT)
+                        {
+                            dr["CT_STT_GXNTT"] = true;
+                        }
+                        else
+                        {
+                            dr["CT_STT_GXNTT"] = false;
+                        }
+
+                        if (donkh.CT_HDTN_CQN)
+                        {
+                            dr["CT_HDTN_CQN"] = true;
+                        }
+                        else
+                        {
+                            dr["CT_HDTN_CQN"] = false;
+                        }
+
+                        if (donkh.CT_GC_SDSN)
+                        {
+                            dr["CT_GC_SDSN"] = true;
+                        }
+                        else
+                        {
+                            dr["CT_GC_SDSN"] = false;
+                        }
+
+                        if (donkh.CT_GXN2SN)
+                        {
+                            dr["CT_GXN2SN"] = true;
+                        }
+                        else
+                        {
+                            dr["CT_GXN2SN"] = false;
+                        }
+
+                        if (donkh.CT_GDKKD)
+                        {
+                            dr["CT_GDKKD"] = true;
+                        }
+                        else
+                        {
+                            dr["CT_GDKKD"] = false;
+                        }
+
+                        if (donkh.CT_GCNDTDHN)
+                        {
+                            dr["CT_GCNDTDHN"] = true;
+                        }
+                        else
+                        {
+                            dr["CT_GCNDTDHN"] = false;
+                        }
+                        #endregion
+
+                        dr["DinhMucSau"] = txtDinhMucSau.Text.Trim();
+                        dr["HieuLucTuKy"] = txtHieuLucTuKy.Text.Trim();
+                        dr["HoTenNV"] = CTaiKhoan.HoTen;
+                        dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
+                        rptBienNhanDonKH rpt = new rptBienNhanDonKH();
+                        rpt.SetDataSource(dsBaoCao);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.ShowDialog();
+
+                        Clear();
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
     }
