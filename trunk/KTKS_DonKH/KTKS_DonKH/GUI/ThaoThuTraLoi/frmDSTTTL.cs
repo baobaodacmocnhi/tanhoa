@@ -284,6 +284,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         #region dgvDSThu (Danh Sách Thư Trả Lời)
 
+        private void dgvDSThu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSThu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
         /// <summary>
         /// Ctrl+F Tìm kiếm
         /// </summary>
@@ -508,6 +516,8 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         }
             }
         }
+
+        
 
     }
 }

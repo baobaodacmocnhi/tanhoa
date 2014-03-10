@@ -103,7 +103,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1097, 93);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông Tin Ban Đầu";
+            this.groupBox1.Text = "Thông Tin Khách Hàng";
             // 
             // txtLoTrinh
             // 
@@ -169,9 +169,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(364, 58);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 17);
+            this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Địa Chỉ";
+            this.label4.Text = "Địa Chỉ:";
             // 
             // txtHoTen
             // 
@@ -186,9 +186,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 17);
+            this.label3.Size = new System.Drawing.Size(86, 17);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Khách Hàng";
+            this.label3.Text = "Khách Hàng:";
             // 
             // txtHopDong
             // 

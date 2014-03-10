@@ -123,6 +123,7 @@
             this.txtKyHD.Name = "txtKyHD";
             this.txtKyHD.Size = new System.Drawing.Size(100, 25);
             this.txtKyHD.TabIndex = 5;
+            this.txtKyHD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKyHD_KeyPress);
             // 
             // txtSoHD
             // 
@@ -130,6 +131,7 @@
             this.txtSoHD.Name = "txtSoHD";
             this.txtSoHD.Size = new System.Drawing.Size(100, 25);
             this.txtSoHD.TabIndex = 7;
+            this.txtSoHD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoHD_KeyPress);
             // 
             // label2
             // 
@@ -534,6 +536,7 @@
             this.dateNgayKy.Name = "dateNgayKy";
             this.dateNgayKy.Size = new System.Drawing.Size(105, 25);
             this.dateNgayKy.TabIndex = 3;
+            this.dateNgayKy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dateNgayKy_KeyPress);
             // 
             // label20
             // 

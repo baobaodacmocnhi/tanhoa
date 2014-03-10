@@ -18,6 +18,8 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.BaoCao;
+using CrystalDecisions.CrystalReports.Engine;
+using System.Drawing.Printing;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -623,6 +625,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         #region dgvDSCatChuyenDM (Danh Sách Cắt Chuyển Định Mức)
 
+        private void dgvDSCatChuyenDM_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSCatChuyenDM.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
         /// <summary>
         /// Kết thúc Edit Column
         /// </summary>
@@ -772,9 +782,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                 rptPhieuDCBD rpt = new rptPhieuDCBD();
                                 rpt.SetDataSource(dsBaoCao);
+
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
+
+                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
-                                //rpt.PrintToPrinter(1, false, 0, 0);
+                                //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
+                                rpt.PrintToPrinter(1, false, 1, 1);
+
                             }
                     }
                     else
@@ -822,16 +839,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                     rptPhieuDCHD rpt = new rptPhieuDCHD();
                                     rpt.SetDataSource(dsBaoCao);
+
+                                    printDialog.AllowSomePages = true;
+                                    printDialog.ShowHelp = true;
+
+                                    rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                    rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                     rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
-                                    //rpt.PrintToPrinter(1, false, 0, 0);
+                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
+                                    rpt.PrintToPrinter(1, false, 1, 1);
                                 }
                         }
                         else
                             if (radDSCatChuyenDM.Checked)
                             {
+
                                 for (int i = 0; i < dgvDSCatChuyenDM.Rows.Count; i++)
-                                    if (bool.Parse(dgvDSCatChuyenDM["InCatChuyen", i].Value.ToString()) == true)
+                                     if (bool.Parse(dgvDSCatChuyenDM["InCatChuyen", i].Value.ToString()) == true)
                                     {
                                         LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDSCatChuyenDM["CT_SoPhieu", i].Value.ToString()));
                                         if (lichsuchungtu.NhanDM.Value)
@@ -854,15 +878,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             dr["NguoiKy"] = lichsuchungtu.NguoiKy;
 
                                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
-                                            
+
                                             rptPhieuYCCatDMx2 rpt = new rptPhieuYCCatDMx2();
                                             for (int j = 0; j < rpt.Subreports.Count; j++)
                                             {
                                                 rpt.Subreports[j].SetDataSource(dsBaoCao);
                                             }
-                                            //rpt.SetDataSource(dsBaoCao);
+
+                                            printDialog.AllowSomePages = true;
+                                            printDialog.ShowHelp = true;
+
+                                            rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                            rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
                                             rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                            rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
+                                            rpt.PrintToPrinter(1, false, 1, 1);
                                         }
                                         else
                                             if (lichsuchungtu.CatDM.Value)
@@ -890,9 +919,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 {
                                                     rpt.Subreports[j].SetDataSource(dsBaoCao);
                                                 }
-                                                //rpt.SetDataSource(dsBaoCao);
+
+                                                printDialog.AllowSomePages = true;
+                                                printDialog.ShowHelp = true;
+
+                                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
                                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
+                                                rpt.PrintToPrinter(1, false, 1, 1);
                                             }
                                     }
                             }
@@ -929,6 +963,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dgvDSCatChuyenDM["InCatChuyen", i].Value = false;
                         }
         }
+
+        
 
     }
 }

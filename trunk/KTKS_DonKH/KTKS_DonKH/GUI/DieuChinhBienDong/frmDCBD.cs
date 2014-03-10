@@ -279,6 +279,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             contextMenuStrip1.Enabled = true;
         }
 
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
+            {
+                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
+                {
+                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                    //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                    if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                    {
+                        _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
+                        LoadTTKH(_ttkhachhang);
+                        txtHieuLucKy.Focus();
+                    }
+                }
+                else
+                {
+                    _donkh = null;
+                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -287,6 +310,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
+                    txtHieuLucKy.Focus();
                 }
                 else
                 {
@@ -521,27 +545,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
-            {
-                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
-                {
-                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                    //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                    if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
-                    {
-                        _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                        LoadTTKH(_ttkhachhang);
-                    }
-                }
-                else
-                {
-                    _donkh = null;
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
+        #region Configure TextBox
 
         private void txtDanhBo_Leave(object sender, EventArgs e)
         {
@@ -554,6 +558,42 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             flagFirst = false;
         }
 
+        private void txtHieuLucKy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_BD.Focus();
+        }
 
+        private void txtHoTen_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChi_BD.Focus();
+        }
+
+        private void txtDiaChi_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtMSThue_BD.Focus();
+        }
+
+        private void txtMSThue_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaBieu_BD.Focus();
+        }
+
+        private void txtGiaBieu_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDinhMuc_BD.Focus();
+        }
+
+        private void txtDinhMuc_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                dgvDSSoDangKy.Focus();
+        }
+
+        #endregion
     }
 }

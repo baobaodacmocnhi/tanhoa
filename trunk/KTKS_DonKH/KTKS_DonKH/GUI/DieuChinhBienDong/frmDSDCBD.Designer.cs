@@ -121,13 +121,6 @@
             this.radDSDCHD = new System.Windows.Forms.RadioButton();
             this.radDSCatChuyenDM = new System.Windows.Forms.RadioButton();
             this.dgvDSCatChuyenDM = new System.Windows.Forms.DataGridView();
-            this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbTimTheo = new System.Windows.Forms.ComboBox();
-            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.MaLSCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InCatChuyen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CT_PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -143,6 +136,13 @@
             this.CT_CatNK_DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CT_CatNK_HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CT_CatNK_DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTimTheo = new System.Windows.Forms.ComboBox();
+            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.chkSelectAll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCHD)).BeginInit();
@@ -1045,85 +1045,8 @@
             this.dgvDSCatChuyenDM.TabIndex = 7;
             this.dgvDSCatChuyenDM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCatChuyenDM_CellEndEdit);
             this.dgvDSCatChuyenDM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCatChuyenDM_CellFormatting);
+            this.dgvDSCatChuyenDM.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSCatChuyenDM_RowPostPaint);
             this.dgvDSCatChuyenDM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSCatChuyenDM_KeyDown);
-            // 
-            // dateTimKiem
-            // 
-            this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
-            this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(780, 35);
-            this.dateTimKiem.Name = "dateTimKiem";
-            this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
-            this.dateTimKiem.TabIndex = 13;
-            this.dateTimKiem.Visible = false;
-            this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(505, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Tìm Theo:";
-            // 
-            // cmbTimTheo
-            // 
-            this.cmbTimTheo.FormattingEnabled = true;
-            this.cmbTimTheo.Items.AddRange(new object[] {
-            "",
-            "Mã Đơn",
-            "Số Phiếu",
-            "Ngày Lập"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(579, 12);
-            this.cmbTimTheo.Name = "cmbTimTheo";
-            this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
-            this.cmbTimTheo.TabIndex = 10;
-            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
-            // 
-            // txtNoiDungTimKiem
-            // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(780, 12);
-            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
-            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
-            this.txtNoiDungTimKiem.TabIndex = 12;
-            this.txtNoiDungTimKiem.Visible = false;
-            this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(706, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Nội Dung:";
-            // 
-            // btnIn
-            // 
-            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(1082, 12);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(92, 35);
-            this.btnIn.TabIndex = 38;
-            this.btnIn.Text = "In Phiếu";
-            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // chkSelectAll
-            // 
-            this.chkSelectAll.AutoSize = true;
-            this.chkSelectAll.ForeColor = System.Drawing.Color.Red;
-            this.chkSelectAll.Location = new System.Drawing.Point(12, 39);
-            this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(119, 21);
-            this.chkSelectAll.TabIndex = 39;
-            this.chkSelectAll.Text = "Chọn In Tất Cả";
-            this.chkSelectAll.UseVisualStyleBackColor = true;
-            this.chkSelectAll.Visible = false;
-            this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
             // 
             // MaLSCT
             // 
@@ -1252,13 +1175,91 @@
             this.CT_CatNK_DiaChi.ReadOnly = true;
             this.CT_CatNK_DiaChi.Width = 250;
             // 
+            // dateTimKiem
+            // 
+            this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
+            this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimKiem.Location = new System.Drawing.Point(780, 35);
+            this.dateTimKiem.Name = "dateTimKiem";
+            this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
+            this.dateTimKiem.TabIndex = 13;
+            this.dateTimKiem.Visible = false;
+            this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(505, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Tìm Theo:";
+            // 
+            // cmbTimTheo
+            // 
+            this.cmbTimTheo.FormattingEnabled = true;
+            this.cmbTimTheo.Items.AddRange(new object[] {
+            "",
+            "Mã Đơn",
+            "Số Phiếu",
+            "Ngày Lập"});
+            this.cmbTimTheo.Location = new System.Drawing.Point(579, 12);
+            this.cmbTimTheo.Name = "cmbTimTheo";
+            this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
+            this.cmbTimTheo.TabIndex = 10;
+            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
+            // 
+            // txtNoiDungTimKiem
+            // 
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(780, 12);
+            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
+            this.txtNoiDungTimKiem.TabIndex = 12;
+            this.txtNoiDungTimKiem.Visible = false;
+            this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(706, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Nội Dung:";
+            // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(1082, 12);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(92, 35);
+            this.btnIn.TabIndex = 38;
+            this.btnIn.Text = "In Phiếu";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // chkSelectAll
+            // 
+            this.chkSelectAll.AutoSize = true;
+            this.chkSelectAll.ForeColor = System.Drawing.Color.Red;
+            this.chkSelectAll.Location = new System.Drawing.Point(12, 39);
+            this.chkSelectAll.Name = "chkSelectAll";
+            this.chkSelectAll.Size = new System.Drawing.Size(119, 21);
+            this.chkSelectAll.TabIndex = 39;
+            this.chkSelectAll.Text = "Chọn In Tất Cả";
+            this.chkSelectAll.UseVisualStyleBackColor = true;
+            this.chkSelectAll.Visible = false;
+            this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
+            // 
             // frmDSDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 628);
+            this.ClientSize = new System.Drawing.Size(1362, 628);
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dateTimKiem);

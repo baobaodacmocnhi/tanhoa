@@ -447,6 +447,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         txtHoTen.Text = _ttkhachhang.HoTen;
                         txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
                         txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                        dateNgayKy.Focus();
                     }
                 }
                 else
@@ -458,5 +459,28 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void dateNgayKy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtKyHD.Focus();
+        }
+
+        private void txtKyHD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSoHD.Focus();
+        }
+
+        private void txtSoHD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaBieu_Cu.Focus();
+        }
+
+        #region Configure TextBox
+
+
+
+        #endregion
     }
 }
