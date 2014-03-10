@@ -96,5 +96,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
             }
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (_lichsuchungtu != null)
+            {
+                if (_lichsuchungtu.NhanDM.Value)
+                {
+                    
+                }
+            }
+        }
     }
 }
