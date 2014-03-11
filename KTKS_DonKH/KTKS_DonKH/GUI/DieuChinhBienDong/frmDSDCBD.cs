@@ -45,7 +45,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            this.ControlBox = false;
+            //this.ControlBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.BringToFront();
         }
@@ -664,6 +664,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "SoPhieuDCBD" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
         }
 
         /// <summary>
@@ -807,7 +811,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                                     dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                                     dr["HoTen"] = ctdchd.HoTen;
-                                    dr["SoVB"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                                    dr["SoDon"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                                     dr["NgayKy"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
                                     dr["KyHD"] = ctdchd.KyHD;
                                     dr["SoHD"] = ctdchd.SoHD;

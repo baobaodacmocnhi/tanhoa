@@ -631,6 +631,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 {
                                     In = false,
                                     SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    itemCTDCHD.CreateDate,
                                     itemCTDCHD.DanhBo,
                                     itemCTDCHD.GiaBieu,
                                     itemCTDCHD.GiaBieu_BD,

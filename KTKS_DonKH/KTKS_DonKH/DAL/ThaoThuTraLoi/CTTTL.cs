@@ -384,6 +384,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     In = false,
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.ThuDuocKy,
+                                    itemCTTTTL.GhiChu,
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.VeViec,
                                     itemCTTTTL.NoiDung,
