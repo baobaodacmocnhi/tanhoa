@@ -3355,6 +3355,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _Cat;
 		
+		private System.Nullable<int> _SoLuongDC_YCC;
+		
 		private bool _YeuCauCat;
 		
 		private System.Nullable<decimal> _SoPhieu;
@@ -3368,6 +3370,62 @@ namespace KTKS_DonKH.LinQ
 		private string _CatNK_DiaChi;
 		
 		private System.Nullable<int> _CatNK_SoNKCat;
+		
+		private bool _YeuCauCat2;
+		
+		private System.Nullable<decimal> _SoPhieu2;
+		
+		private System.Nullable<int> _CatNK_MaCN2;
+		
+		private string _CatNK_DanhBo2;
+		
+		private string _CatNK_HoTen2;
+		
+		private string _CatNK_DiaChi2;
+		
+		private System.Nullable<int> _CatNK_SoNKCat2;
+		
+		private bool _YeuCauCat3;
+		
+		private System.Nullable<decimal> _SoPhieu3;
+		
+		private System.Nullable<int> _CatNK_MaCN3;
+		
+		private string _CatNK_DanhBo3;
+		
+		private string _CatNK_HoTen3;
+		
+		private string _CatNK_DiaChi3;
+		
+		private System.Nullable<int> _CatNK_SoNKCat3;
+		
+		private bool _YeuCauCat4;
+		
+		private System.Nullable<decimal> _SoPhieu4;
+		
+		private System.Nullable<int> _CatNK_MaCN4;
+		
+		private string _CatNK_DanhBo4;
+		
+		private string _CatNK_HoTen4;
+		
+		private string _CatNK_DiaChi4;
+		
+		private System.Nullable<int> _CatNK_SoNKCat4;
+		
+		private bool _YeuCauCat5;
+		
+		private System.Nullable<decimal> _SoPhieu5;
+		
+		private System.Nullable<int> _CatNK_MaCN5;
+		
+		private string _CatNK_DanhBo5;
+		
+		private string _CatNK_HoTen5;
+		
+		private string _CatNK_DiaChi5;
+		
+		private System.Nullable<int> _CatNK_SoNKCat5;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -3397,6 +3455,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayHetHanChanged();
     partial void OnCatChanging(bool value);
     partial void OnCatChanged();
+    partial void OnSoLuongDC_YCCChanging(System.Nullable<int> value);
+    partial void OnSoLuongDC_YCCChanged();
     partial void OnYeuCauCatChanging(bool value);
     partial void OnYeuCauCatChanged();
     partial void OnSoPhieuChanging(System.Nullable<decimal> value);
@@ -3411,6 +3471,62 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_DiaChiChanged();
     partial void OnCatNK_SoNKCatChanging(System.Nullable<int> value);
     partial void OnCatNK_SoNKCatChanged();
+    partial void OnYeuCauCat2Changing(bool value);
+    partial void OnYeuCauCat2Changed();
+    partial void OnSoPhieu2Changing(System.Nullable<decimal> value);
+    partial void OnSoPhieu2Changed();
+    partial void OnCatNK_MaCN2Changing(System.Nullable<int> value);
+    partial void OnCatNK_MaCN2Changed();
+    partial void OnCatNK_DanhBo2Changing(string value);
+    partial void OnCatNK_DanhBo2Changed();
+    partial void OnCatNK_HoTen2Changing(string value);
+    partial void OnCatNK_HoTen2Changed();
+    partial void OnCatNK_DiaChi2Changing(string value);
+    partial void OnCatNK_DiaChi2Changed();
+    partial void OnCatNK_SoNKCat2Changing(System.Nullable<int> value);
+    partial void OnCatNK_SoNKCat2Changed();
+    partial void OnYeuCauCat3Changing(bool value);
+    partial void OnYeuCauCat3Changed();
+    partial void OnSoPhieu3Changing(System.Nullable<decimal> value);
+    partial void OnSoPhieu3Changed();
+    partial void OnCatNK_MaCN3Changing(System.Nullable<int> value);
+    partial void OnCatNK_MaCN3Changed();
+    partial void OnCatNK_DanhBo3Changing(string value);
+    partial void OnCatNK_DanhBo3Changed();
+    partial void OnCatNK_HoTen3Changing(string value);
+    partial void OnCatNK_HoTen3Changed();
+    partial void OnCatNK_DiaChi3Changing(string value);
+    partial void OnCatNK_DiaChi3Changed();
+    partial void OnCatNK_SoNKCat3Changing(System.Nullable<int> value);
+    partial void OnCatNK_SoNKCat3Changed();
+    partial void OnYeuCauCat4Changing(bool value);
+    partial void OnYeuCauCat4Changed();
+    partial void OnSoPhieu4Changing(System.Nullable<decimal> value);
+    partial void OnSoPhieu4Changed();
+    partial void OnCatNK_MaCN4Changing(System.Nullable<int> value);
+    partial void OnCatNK_MaCN4Changed();
+    partial void OnCatNK_DanhBo4Changing(string value);
+    partial void OnCatNK_DanhBo4Changed();
+    partial void OnCatNK_HoTen4Changing(string value);
+    partial void OnCatNK_HoTen4Changed();
+    partial void OnCatNK_DiaChi4Changing(string value);
+    partial void OnCatNK_DiaChi4Changed();
+    partial void OnCatNK_SoNKCat4Changing(System.Nullable<int> value);
+    partial void OnCatNK_SoNKCat4Changed();
+    partial void OnYeuCauCat5Changing(bool value);
+    partial void OnYeuCauCat5Changed();
+    partial void OnSoPhieu5Changing(System.Nullable<decimal> value);
+    partial void OnSoPhieu5Changed();
+    partial void OnCatNK_MaCN5Changing(System.Nullable<int> value);
+    partial void OnCatNK_MaCN5Changed();
+    partial void OnCatNK_DanhBo5Changing(string value);
+    partial void OnCatNK_DanhBo5Changed();
+    partial void OnCatNK_HoTen5Changing(string value);
+    partial void OnCatNK_HoTen5Changed();
+    partial void OnCatNK_DiaChi5Changing(string value);
+    partial void OnCatNK_DiaChi5Changed();
+    partial void OnCatNK_SoNKCat5Changing(System.Nullable<int> value);
+    partial void OnCatNK_SoNKCat5Changed();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -3571,6 +3687,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongDC_YCC", DbType="Int")]
+		public System.Nullable<int> SoLuongDC_YCC
+		{
+			get
+			{
+				return this._SoLuongDC_YCC;
+			}
+			set
+			{
+				if ((this._SoLuongDC_YCC != value))
+				{
+					this.OnSoLuongDC_YCCChanging(value);
+					this.SendPropertyChanging();
+					this._SoLuongDC_YCC = value;
+					this.SendPropertyChanged("SoLuongDC_YCC");
+					this.OnSoLuongDC_YCCChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YeuCauCat", DbType="Bit NOT NULL")]
 		public bool YeuCauCat
 		{
@@ -3707,6 +3843,566 @@ namespace KTKS_DonKH.LinQ
 					this._CatNK_SoNKCat = value;
 					this.SendPropertyChanged("CatNK_SoNKCat");
 					this.OnCatNK_SoNKCatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YeuCauCat2", DbType="Bit NOT NULL")]
+		public bool YeuCauCat2
+		{
+			get
+			{
+				return this._YeuCauCat2;
+			}
+			set
+			{
+				if ((this._YeuCauCat2 != value))
+				{
+					this.OnYeuCauCat2Changing(value);
+					this.SendPropertyChanging();
+					this._YeuCauCat2 = value;
+					this.SendPropertyChanged("YeuCauCat2");
+					this.OnYeuCauCat2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu2", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SoPhieu2
+		{
+			get
+			{
+				return this._SoPhieu2;
+			}
+			set
+			{
+				if ((this._SoPhieu2 != value))
+				{
+					this.OnSoPhieu2Changing(value);
+					this.SendPropertyChanging();
+					this._SoPhieu2 = value;
+					this.SendPropertyChanged("SoPhieu2");
+					this.OnSoPhieu2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_MaCN2", DbType="Int")]
+		public System.Nullable<int> CatNK_MaCN2
+		{
+			get
+			{
+				return this._CatNK_MaCN2;
+			}
+			set
+			{
+				if ((this._CatNK_MaCN2 != value))
+				{
+					this.OnCatNK_MaCN2Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_MaCN2 = value;
+					this.SendPropertyChanged("CatNK_MaCN2");
+					this.OnCatNK_MaCN2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DanhBo2", DbType="NVarChar(50)")]
+		public string CatNK_DanhBo2
+		{
+			get
+			{
+				return this._CatNK_DanhBo2;
+			}
+			set
+			{
+				if ((this._CatNK_DanhBo2 != value))
+				{
+					this.OnCatNK_DanhBo2Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_DanhBo2 = value;
+					this.SendPropertyChanged("CatNK_DanhBo2");
+					this.OnCatNK_DanhBo2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTen2", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTen2
+		{
+			get
+			{
+				return this._CatNK_HoTen2;
+			}
+			set
+			{
+				if ((this._CatNK_HoTen2 != value))
+				{
+					this.OnCatNK_HoTen2Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTen2 = value;
+					this.SendPropertyChanged("CatNK_HoTen2");
+					this.OnCatNK_HoTen2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DiaChi2", DbType="NVarChar(MAX)")]
+		public string CatNK_DiaChi2
+		{
+			get
+			{
+				return this._CatNK_DiaChi2;
+			}
+			set
+			{
+				if ((this._CatNK_DiaChi2 != value))
+				{
+					this.OnCatNK_DiaChi2Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_DiaChi2 = value;
+					this.SendPropertyChanged("CatNK_DiaChi2");
+					this.OnCatNK_DiaChi2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_SoNKCat2", DbType="Int")]
+		public System.Nullable<int> CatNK_SoNKCat2
+		{
+			get
+			{
+				return this._CatNK_SoNKCat2;
+			}
+			set
+			{
+				if ((this._CatNK_SoNKCat2 != value))
+				{
+					this.OnCatNK_SoNKCat2Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_SoNKCat2 = value;
+					this.SendPropertyChanged("CatNK_SoNKCat2");
+					this.OnCatNK_SoNKCat2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YeuCauCat3", DbType="Bit NOT NULL")]
+		public bool YeuCauCat3
+		{
+			get
+			{
+				return this._YeuCauCat3;
+			}
+			set
+			{
+				if ((this._YeuCauCat3 != value))
+				{
+					this.OnYeuCauCat3Changing(value);
+					this.SendPropertyChanging();
+					this._YeuCauCat3 = value;
+					this.SendPropertyChanged("YeuCauCat3");
+					this.OnYeuCauCat3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu3", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SoPhieu3
+		{
+			get
+			{
+				return this._SoPhieu3;
+			}
+			set
+			{
+				if ((this._SoPhieu3 != value))
+				{
+					this.OnSoPhieu3Changing(value);
+					this.SendPropertyChanging();
+					this._SoPhieu3 = value;
+					this.SendPropertyChanged("SoPhieu3");
+					this.OnSoPhieu3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_MaCN3", DbType="Int")]
+		public System.Nullable<int> CatNK_MaCN3
+		{
+			get
+			{
+				return this._CatNK_MaCN3;
+			}
+			set
+			{
+				if ((this._CatNK_MaCN3 != value))
+				{
+					this.OnCatNK_MaCN3Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_MaCN3 = value;
+					this.SendPropertyChanged("CatNK_MaCN3");
+					this.OnCatNK_MaCN3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DanhBo3", DbType="NVarChar(50)")]
+		public string CatNK_DanhBo3
+		{
+			get
+			{
+				return this._CatNK_DanhBo3;
+			}
+			set
+			{
+				if ((this._CatNK_DanhBo3 != value))
+				{
+					this.OnCatNK_DanhBo3Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_DanhBo3 = value;
+					this.SendPropertyChanged("CatNK_DanhBo3");
+					this.OnCatNK_DanhBo3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTen3", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTen3
+		{
+			get
+			{
+				return this._CatNK_HoTen3;
+			}
+			set
+			{
+				if ((this._CatNK_HoTen3 != value))
+				{
+					this.OnCatNK_HoTen3Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTen3 = value;
+					this.SendPropertyChanged("CatNK_HoTen3");
+					this.OnCatNK_HoTen3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DiaChi3", DbType="NVarChar(MAX)")]
+		public string CatNK_DiaChi3
+		{
+			get
+			{
+				return this._CatNK_DiaChi3;
+			}
+			set
+			{
+				if ((this._CatNK_DiaChi3 != value))
+				{
+					this.OnCatNK_DiaChi3Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_DiaChi3 = value;
+					this.SendPropertyChanged("CatNK_DiaChi3");
+					this.OnCatNK_DiaChi3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_SoNKCat3", DbType="Int")]
+		public System.Nullable<int> CatNK_SoNKCat3
+		{
+			get
+			{
+				return this._CatNK_SoNKCat3;
+			}
+			set
+			{
+				if ((this._CatNK_SoNKCat3 != value))
+				{
+					this.OnCatNK_SoNKCat3Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_SoNKCat3 = value;
+					this.SendPropertyChanged("CatNK_SoNKCat3");
+					this.OnCatNK_SoNKCat3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YeuCauCat4", DbType="Bit NOT NULL")]
+		public bool YeuCauCat4
+		{
+			get
+			{
+				return this._YeuCauCat4;
+			}
+			set
+			{
+				if ((this._YeuCauCat4 != value))
+				{
+					this.OnYeuCauCat4Changing(value);
+					this.SendPropertyChanging();
+					this._YeuCauCat4 = value;
+					this.SendPropertyChanged("YeuCauCat4");
+					this.OnYeuCauCat4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu4", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SoPhieu4
+		{
+			get
+			{
+				return this._SoPhieu4;
+			}
+			set
+			{
+				if ((this._SoPhieu4 != value))
+				{
+					this.OnSoPhieu4Changing(value);
+					this.SendPropertyChanging();
+					this._SoPhieu4 = value;
+					this.SendPropertyChanged("SoPhieu4");
+					this.OnSoPhieu4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_MaCN4", DbType="Int")]
+		public System.Nullable<int> CatNK_MaCN4
+		{
+			get
+			{
+				return this._CatNK_MaCN4;
+			}
+			set
+			{
+				if ((this._CatNK_MaCN4 != value))
+				{
+					this.OnCatNK_MaCN4Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_MaCN4 = value;
+					this.SendPropertyChanged("CatNK_MaCN4");
+					this.OnCatNK_MaCN4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DanhBo4", DbType="NVarChar(50)")]
+		public string CatNK_DanhBo4
+		{
+			get
+			{
+				return this._CatNK_DanhBo4;
+			}
+			set
+			{
+				if ((this._CatNK_DanhBo4 != value))
+				{
+					this.OnCatNK_DanhBo4Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_DanhBo4 = value;
+					this.SendPropertyChanged("CatNK_DanhBo4");
+					this.OnCatNK_DanhBo4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTen4", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTen4
+		{
+			get
+			{
+				return this._CatNK_HoTen4;
+			}
+			set
+			{
+				if ((this._CatNK_HoTen4 != value))
+				{
+					this.OnCatNK_HoTen4Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTen4 = value;
+					this.SendPropertyChanged("CatNK_HoTen4");
+					this.OnCatNK_HoTen4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DiaChi4", DbType="NVarChar(MAX)")]
+		public string CatNK_DiaChi4
+		{
+			get
+			{
+				return this._CatNK_DiaChi4;
+			}
+			set
+			{
+				if ((this._CatNK_DiaChi4 != value))
+				{
+					this.OnCatNK_DiaChi4Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_DiaChi4 = value;
+					this.SendPropertyChanged("CatNK_DiaChi4");
+					this.OnCatNK_DiaChi4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_SoNKCat4", DbType="Int")]
+		public System.Nullable<int> CatNK_SoNKCat4
+		{
+			get
+			{
+				return this._CatNK_SoNKCat4;
+			}
+			set
+			{
+				if ((this._CatNK_SoNKCat4 != value))
+				{
+					this.OnCatNK_SoNKCat4Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_SoNKCat4 = value;
+					this.SendPropertyChanged("CatNK_SoNKCat4");
+					this.OnCatNK_SoNKCat4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YeuCauCat5", DbType="Bit NOT NULL")]
+		public bool YeuCauCat5
+		{
+			get
+			{
+				return this._YeuCauCat5;
+			}
+			set
+			{
+				if ((this._YeuCauCat5 != value))
+				{
+					this.OnYeuCauCat5Changing(value);
+					this.SendPropertyChanging();
+					this._YeuCauCat5 = value;
+					this.SendPropertyChanged("YeuCauCat5");
+					this.OnYeuCauCat5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu5", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SoPhieu5
+		{
+			get
+			{
+				return this._SoPhieu5;
+			}
+			set
+			{
+				if ((this._SoPhieu5 != value))
+				{
+					this.OnSoPhieu5Changing(value);
+					this.SendPropertyChanging();
+					this._SoPhieu5 = value;
+					this.SendPropertyChanged("SoPhieu5");
+					this.OnSoPhieu5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_MaCN5", DbType="Int")]
+		public System.Nullable<int> CatNK_MaCN5
+		{
+			get
+			{
+				return this._CatNK_MaCN5;
+			}
+			set
+			{
+				if ((this._CatNK_MaCN5 != value))
+				{
+					this.OnCatNK_MaCN5Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_MaCN5 = value;
+					this.SendPropertyChanged("CatNK_MaCN5");
+					this.OnCatNK_MaCN5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DanhBo5", DbType="NVarChar(50)")]
+		public string CatNK_DanhBo5
+		{
+			get
+			{
+				return this._CatNK_DanhBo5;
+			}
+			set
+			{
+				if ((this._CatNK_DanhBo5 != value))
+				{
+					this.OnCatNK_DanhBo5Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_DanhBo5 = value;
+					this.SendPropertyChanged("CatNK_DanhBo5");
+					this.OnCatNK_DanhBo5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_HoTen5", DbType="NVarChar(MAX)")]
+		public string CatNK_HoTen5
+		{
+			get
+			{
+				return this._CatNK_HoTen5;
+			}
+			set
+			{
+				if ((this._CatNK_HoTen5 != value))
+				{
+					this.OnCatNK_HoTen5Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_HoTen5 = value;
+					this.SendPropertyChanged("CatNK_HoTen5");
+					this.OnCatNK_HoTen5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_DiaChi5", DbType="NVarChar(MAX)")]
+		public string CatNK_DiaChi5
+		{
+			get
+			{
+				return this._CatNK_DiaChi5;
+			}
+			set
+			{
+				if ((this._CatNK_DiaChi5 != value))
+				{
+					this.OnCatNK_DiaChi5Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_DiaChi5 = value;
+					this.SendPropertyChanged("CatNK_DiaChi5");
+					this.OnCatNK_DiaChi5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatNK_SoNKCat5", DbType="Int")]
+		public System.Nullable<int> CatNK_SoNKCat5
+		{
+			get
+			{
+				return this._CatNK_SoNKCat5;
+			}
+			set
+			{
+				if ((this._CatNK_SoNKCat5 != value))
+				{
+					this.OnCatNK_SoNKCat5Changing(value);
+					this.SendPropertyChanging();
+					this._CatNK_SoNKCat5 = value;
+					this.SendPropertyChanged("CatNK_SoNKCat5");
+					this.OnCatNK_SoNKCat5Changed();
 				}
 			}
 		}
@@ -7188,6 +7884,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _ThuDuocKy;
 		
+		private string _GhiChu;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -7246,6 +7944,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnChucVuChanged();
     partial void OnThuDuocKyChanging(bool value);
     partial void OnThuDuocKyChanged();
+    partial void OnGhiChuChanging(string value);
+    partial void OnGhiChuChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -7702,6 +8402,26 @@ namespace KTKS_DonKH.LinQ
 					this._ThuDuocKy = value;
 					this.SendPropertyChanged("ThuDuocKy");
 					this.OnThuDuocKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(MAX)")]
+		public string GhiChu
+		{
+			get
+			{
+				return this._GhiChu;
+			}
+			set
+			{
+				if ((this._GhiChu != value))
+				{
+					this.OnGhiChuChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChu = value;
+					this.SendPropertyChanged("GhiChu");
+					this.OnGhiChuChanged();
 				}
 			}
 		}

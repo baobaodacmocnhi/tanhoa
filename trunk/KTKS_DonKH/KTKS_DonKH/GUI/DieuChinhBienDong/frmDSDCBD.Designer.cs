@@ -125,6 +125,7 @@
             this.InCatChuyen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CT_PhieuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CT_SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhieuDCBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CT_MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CT_CatNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CT_SoNK = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -774,7 +775,7 @@
             this.dgvDSDCBD.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSDCBD.MultiSelect = false;
             this.dgvDSDCBD.Name = "dgvDSDCBD";
-            this.dgvDSDCBD.Size = new System.Drawing.Size(1745, 470);
+            this.dgvDSDCBD.Size = new System.Drawing.Size(1922, 470);
             this.dgvDSDCBD.TabIndex = 6;
             this.dgvDSDCBD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSDCBD_CellEndEdit);
             this.dgvDSDCBD.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDCBD_CellFormatting);
@@ -1026,6 +1027,7 @@
             this.InCatChuyen,
             this.CT_PhieuDuocKy,
             this.CT_SoPhieu,
+            this.SoPhieuDCBD,
             this.CT_MaCT,
             this.CT_CatNhan,
             this.CT_SoNK,
@@ -1041,7 +1043,7 @@
             this.dgvDSCatChuyenDM.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSCatChuyenDM.MultiSelect = false;
             this.dgvDSCatChuyenDM.Name = "dgvDSCatChuyenDM";
-            this.dgvDSCatChuyenDM.Size = new System.Drawing.Size(2045, 470);
+            this.dgvDSCatChuyenDM.Size = new System.Drawing.Size(2171, 470);
             this.dgvDSCatChuyenDM.TabIndex = 7;
             this.dgvDSCatChuyenDM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSCatChuyenDM_CellEndEdit);
             this.dgvDSCatChuyenDM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSCatChuyenDM_CellFormatting);
@@ -1076,6 +1078,12 @@
             this.CT_SoPhieu.Name = "CT_SoPhieu";
             this.CT_SoPhieu.ReadOnly = true;
             this.CT_SoPhieu.Width = 90;
+            // 
+            // SoPhieuDCBD
+            // 
+            this.SoPhieuDCBD.DataPropertyName = "SoPhieuDCBD";
+            this.SoPhieuDCBD.HeaderText = "Số Phiếu ĐCBD";
+            this.SoPhieuDCBD.Name = "SoPhieuDCBD";
             // 
             // CT_MaCT
             // 
@@ -1382,6 +1390,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn InCatChuyen;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CT_PhieuDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_SoPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuDCBD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_MaCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_SoNK;

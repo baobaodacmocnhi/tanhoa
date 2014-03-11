@@ -135,6 +135,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                         lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        lichsuchungtu.PhieuDuocKy = true;
 
                         if (_cChungTu.CatChuyenChungTu(ctchungtuCat, ctchungtuNhan, int.Parse(txtSoNK_Cat.Text.Trim()), lichsuchungtu))
                         {

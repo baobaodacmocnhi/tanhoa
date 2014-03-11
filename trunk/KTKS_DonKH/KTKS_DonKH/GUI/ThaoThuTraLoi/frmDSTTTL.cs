@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            this.ControlBox = false;
+            //this.ControlBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.BringToFront();
         }
@@ -306,6 +306,27 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        private void dgvDSThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSThu.Columns[e.ColumnIndex].Name == "MaCTTTTL" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void dgvDSThu_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            bool ischecked = false;
+            if (bool.Parse(dgvDSThu["ThuDuocKy", e.RowIndex].Value.ToString()) == true)
+                ischecked = true;
+            else
+                ischecked = false;
+            CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
+            cttttl.ThuDuocKy = ischecked;
+            cttttl.GhiChu = dgvDSThu["GhiChu", e.RowIndex].Value.ToString();
+            _cTTTL.SuaCTTTTL(cttttl);
+        }
+
         #endregion
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -398,26 +419,6 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-        }
-
-        private void dgvDSThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvDSThu.Columns[e.ColumnIndex].Name == "MaCTTTTL" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-        }
-
-        private void dgvDSThu_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            bool ischecked = false;
-            if (bool.Parse(dgvDSThu["ThuDuocKy", e.RowIndex].Value.ToString()) == true)
-                ischecked = true;
-            else
-                ischecked = false;
-            CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
-            cttttl.ThuDuocKy = ischecked;
-            _cTTTL.SuaCTTTTL(cttttl);
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)

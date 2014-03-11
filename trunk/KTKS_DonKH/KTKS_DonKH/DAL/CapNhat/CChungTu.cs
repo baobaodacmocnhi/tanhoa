@@ -306,11 +306,14 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemLSCT in db.LichSuChungTus
+                                join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null
+                                orderby itemLSCT.SoPhieu ascending
                                 select new
                                 {
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
+                                    SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemLSCT.DanhBo).MaCTDCBD,
                                     itemLSCT.MaCT,
                                     itemLSCT.CatDM,
                                     itemLSCT.SoNKCat,
@@ -332,6 +335,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         table.Columns.Add("In", typeof(bool));
                         table.Columns.Add("MaLSCT", typeof(string));
                         table.Columns.Add("SoPhieu", typeof(string));
+                        table.Columns.Add("SoPhieuDCBD", typeof(string));
                         table.Columns.Add("MaCT", typeof(string));
                         table.Columns.Add("CatNhan", typeof(string));
                         table.Columns.Add("SoNK", typeof(string));
@@ -353,6 +357,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             Row["In"] = false;
                             Row["MaLSCT"] = itemRow["MaLSCT"];
                             Row["SoPhieu"] = itemRow["SoPhieu"];
+                            Row["SoPhieuDCBD"] = itemRow["SoPhieuDCBD"];
                             Row["MaCT"] = itemRow["MaCT"];
                             if (itemRow["CatDM"].ToString() != "")
                                 if (bool.Parse(itemRow["CatDM"].ToString()) == true)
@@ -511,10 +516,106 @@ namespace KTKS_DonKH.DAL.CapNhat
                         lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
                         lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                        if (chungtuCN.YeuCauCat)
+                        if (ctchungtu.YeuCauCat)
                         {
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                            chungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
+                            ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
+                            lichsuchungtu.NhanDM = true;
+
+                            lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                            lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                            lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                            lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                            lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat;
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        }
+                        ThemLichSuChungTu(lichsuchungtu);
+              
+                        //MessageBox.Show("Thành công Thêm ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sổ này đã được đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Dùng cho Form Cập Nhật Sổ Đăng Ký, khi có >2 yêu cầu cắt nhân khẩu
+        /// </summary>
+        /// <param name="chungtu"></param>
+        /// <param name="ctchungtu"></param>
+        /// <param name="lichsuchungtu"></param>
+        /// <param name="lstLichSuChungTu"></param>
+        /// <returns></returns>
+        public bool ThemChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu, List<LichSuChungTu> lstLichSuChungTu)
+        {
+            try
+            {
+                ///Kiểm tra nếu ChungTu(sổ đăng ký) chưa có thì thêm vào
+                if (!CheckChungTu(chungtu.MaCT))
+                {
+                    chungtu.SoNKConLai = chungtu.SoNKTong;
+                    ////chungtu.CreateDate = DateTime.Now;
+                    ////chungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                    ////db.ChungTus.InsertOnSubmit(chungtu);
+                    ////db.SubmitChanges();
+                    ThemChungTu(chungtu);
+                }
+                ///Kiểm tra nếu CTChungTu(danh bộ, sổ đăng ký) chưa có thì thêm vào
+                if (!CheckCTChungTu(ctchungtu.DanhBo, ctchungtu.MaCT))
+                {
+                    ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
+                    ///Kiểm tra Số Nhân Khẩu còn có thể cấp
+                    if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy)
+                    {
+                        ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                        if (ctchungtu.ThoiHan != null)
+                            ctchungtu.NgayHetHan = DateTime.Now.AddMonths(ctchungtu.ThoiHan.Value);
+                        else
+                            ctchungtu.NgayHetHan = null;
+                        //ctchungtu.CreateDate = DateTime.Now;
+                        //ctchungtu.CreateBy = CTaiKhoan.TaiKhoan;
+                        //db.CTChungTus.InsertOnSubmit(ctchungtu);
+                        ThemCTChungTu(ctchungtu);
+
+                        ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        db.SubmitChanges();
+
+                        ///Cập nhật bảng LichSuChungTu
+                        lichsuchungtu.MaCT = ctchungtu.MaCT;
+                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                        lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                        if (ctchungtu.YeuCauCat)
+                        {
+                            lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
+                            ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
                             lichsuchungtu.NhanDM = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
@@ -532,7 +633,51 @@ namespace KTKS_DonKH.DAL.CapNhat
                         }
                         ThemLichSuChungTu(lichsuchungtu);
 
-                        
+                        for (int i = 0; i < lstLichSuChungTu.Count; i++)
+                        {
+                            ///Cập nhật bảng LichSuChungTu
+                            lstLichSuChungTu[i].MaCT = ctchungtu.MaCT;
+                            lstLichSuChungTu[i].DanhBo = ctchungtu.DanhBo;
+                            lstLichSuChungTu[i].SoNKTong = chungtuCN.SoNKTong;
+                            lstLichSuChungTu[i].SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lstLichSuChungTu[i].SoNKConLai = chungtuCN.SoNKConLai;
+                            lstLichSuChungTu[i].ThoiHan = ctchungtu.ThoiHan;
+                            lstLichSuChungTu[i].NgayHetHan = ctchungtu.NgayHetHan;
+                            ///
+                            lstLichSuChungTu[i].SoPhieu = getMaxNextSoPhieuLSCT();
+                            switch (i)
+                            {
+                                case 0:
+                                    ctchungtu.SoPhieu2 = lstLichSuChungTu[i].SoPhieu;
+                                    break;
+                                case 1:
+                                    ctchungtu.SoPhieu3 = lstLichSuChungTu[i].SoPhieu;
+                                    break;
+                                case 2:
+                                    ctchungtu.SoPhieu4 = lstLichSuChungTu[i].SoPhieu;
+                                    break;
+                                case 3:
+                                    ctchungtu.SoPhieu5 = lstLichSuChungTu[i].SoPhieu;
+                                    break;
+                            }
+                            
+                            lstLichSuChungTu[i].NhanDM = true;
+
+                            lstLichSuChungTu[i].CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                            lstLichSuChungTu[i].CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                            lstLichSuChungTu[i].CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                            lstLichSuChungTu[i].CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                            lstLichSuChungTu[i].SoNKNhan = ctchungtu.CatNK_SoNKCat;
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lstLichSuChungTu[i].ChucVu = "GIÁM ĐỐC";
+                            else
+                                lstLichSuChungTu[i].ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lstLichSuChungTu[i].NguoiKy = bangiamdoc.HoTen.ToUpper();
+
+                            ThemLichSuChungTu(lstLichSuChungTu[i]);
+                        }
                         //MessageBox.Show("Thành công Thêm ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
@@ -547,8 +692,6 @@ namespace KTKS_DonKH.DAL.CapNhat
                     MessageBox.Show("Sổ này đã được đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -638,13 +781,12 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (chungtu.YeuCauCat != chungtuCN.YeuCauCat || ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
                     if (chungtu.YeuCauCat || ctchungtu.YeuCauCat)
                     {
-
-                        chungtuCN.YeuCauCat = true;
-                        chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
-                        chungtuCN.CatNK_DanhBo = chungtu.CatNK_DanhBo;
-                        chungtuCN.CatNK_HoTen = chungtu.CatNK_HoTen;
-                        chungtuCN.CatNK_DiaChi = chungtu.CatNK_DiaChi;
-                        chungtuCN.CatNK_SoNKCat = chungtu.CatNK_SoNKCat;
+                        //chungtuCN.YeuCauCat = true;
+                        //chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
+                        //chungtuCN.CatNK_DanhBo = chungtu.CatNK_DanhBo;
+                        //chungtuCN.CatNK_HoTen = chungtu.CatNK_HoTen;
+                        //chungtuCN.CatNK_DiaChi = chungtu.CatNK_DiaChi;
+                        //chungtuCN.CatNK_SoNKCat = chungtu.CatNK_SoNKCat;
                         ///
                         ctchungtuCN.YeuCauCat = true;
                         ctchungtuCN.CatNK_MaCN = ctchungtu.CatNK_MaCN;

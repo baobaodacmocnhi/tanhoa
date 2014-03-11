@@ -96,7 +96,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
                 dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
                 dr["HoTen"] = _ctdchd.HoTen;
-                dr["SoVB"] = _ctdchd.DCBD.MaDon.Value.ToString().Insert(_ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                dr["SoDon"] = _ctdchd.DCBD.MaDon.Value.ToString().Insert(_ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                 dr["NgayKy"] = _ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
                 dr["KyHD"] = _ctdchd.KyHD;
                 dr["SoHD"] = _ctdchd.SoHD;

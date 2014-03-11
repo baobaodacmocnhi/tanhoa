@@ -60,14 +60,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDanhBo.Text = "";
             txtHoTen.Text = "";
             ///
-            txtGiaBieu_Cu.Text = "";
-            txtDinhMuc_Cu.Text = "";
-            txtTieuThu_Cu.Text = "";
+            txtGiaBieu_Cu.Text = "0";
+            txtDinhMuc_Cu.Text = "0";
+            txtTieuThu_Cu.Text = "0";
+            txtChiTietCu.Text = "";
             chkGiaDieuChinh.Checked = false;
             ///
-            txtGiaBieu_Moi.Text = "";
-            txtDinhMuc_Moi.Text = "";
-            txtTieuThu_Moi.Text = "";
+            txtGiaBieu_Moi.Text = "0";
+            txtDinhMuc_Moi.Text = "0";
+            txtTieuThu_Moi.Text = "0";
+            txtChiTietMoi.Text = "";
+            _donkh = null;
             _ttkhachhang = null;
         }
 
@@ -266,7 +269,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (_donkh != null && _ttkhachhang != null && txtSoVB.Text.Trim() != "" && txtKyHD.Text.Trim() != "" && txtSoHD.Text.Trim() != "")
+                if (_donkh != null && _ttkhachhang != null && txtKyHD.Text.Trim() != "" && txtSoHD.Text.Trim() != "")
                 {
                     if (!_cDCBD.CheckDCBDbyMaDon(_donkh.MaDon))
                     {
@@ -367,52 +370,54 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                     ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                    ctdchd.PhieuDuocKy = true;
 
                     if (_cDCBD.ThemCTDCHD(ctdchd))
                     {
                         MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                        DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
+                        //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                        //DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
-                        dr["SoPhieu"] = _cDCBD.getMaxMaCTDCHD().ToString().Insert(_cDCBD.getMaxMaCTDCHD().ToString().Length - 2, "-");
-                        dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " ");
-                        dr["HoTen"] = ctdchd.HoTen;
-                        dr["SoVB"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
-                        dr["NgayKy"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
-                        dr["KyHD"] = ctdchd.KyHD;
-                        dr["SoHD"] = ctdchd.SoHD;
-                        ///
-                        dr["TieuThuStart"] = ctdchd.TieuThu;
-                        dr["TienNuocStart"] = ctdchd.TienNuoc_Start;
-                        dr["ThueGTGTStart"] = ctdchd.ThueGTGT_Start;
-                        dr["PhiBVMTStart"] = ctdchd.PhiBVMT_Start;
-                        dr["TongCongStart"] = ctdchd.TongCong_Start;
-                        ///
-                        dr["TangGiam"] = ctdchd.TangGiam;
-                        ///
-                        dr["TieuThuBD"] = ctdchd.TieuThu_BD - ctdchd.TieuThu;
-                        dr["TienNuocBD"] = ctdchd.TienNuoc_BD;
-                        dr["ThueGTGTBD"] = ctdchd.ThueGTGT_BD;
-                        dr["PhiBVMTBD"] = ctdchd.PhiBVMT_BD;
-                        dr["TongCongBD"] = ctdchd.TongCong_BD;
-                        ///
-                        dr["TieuThuEnd"] = ctdchd.TieuThu_BD;
-                        dr["TienNuocEnd"] = ctdchd.TienNuoc_End;
-                        dr["ThueGTGTEnd"] = ctdchd.ThueGTGT_End;
-                        dr["PhiBVMTEnd"] = ctdchd.PhiBVMT_End;
-                        dr["TongCongEnd"] = ctdchd.TongCong_End;
+                        //dr["SoPhieu"] = _cDCBD.getMaxMaCTDCHD().ToString().Insert(_cDCBD.getMaxMaCTDCHD().ToString().Length - 2, "-");
+                        //dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " ");
+                        //dr["HoTen"] = ctdchd.HoTen;
+                        //dr["SoDon"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                        //dr["NgayKy"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
+                        //dr["KyHD"] = ctdchd.KyHD;
+                        //dr["SoHD"] = ctdchd.SoHD;
+                        /////
+                        //dr["TieuThuStart"] = ctdchd.TieuThu;
+                        //dr["TienNuocStart"] = ctdchd.TienNuoc_Start;
+                        //dr["ThueGTGTStart"] = ctdchd.ThueGTGT_Start;
+                        //dr["PhiBVMTStart"] = ctdchd.PhiBVMT_Start;
+                        //dr["TongCongStart"] = ctdchd.TongCong_Start;
+                        /////
+                        //dr["TangGiam"] = ctdchd.TangGiam;
+                        /////
+                        //dr["TieuThuBD"] = ctdchd.TieuThu_BD - ctdchd.TieuThu;
+                        //dr["TienNuocBD"] = ctdchd.TienNuoc_BD;
+                        //dr["ThueGTGTBD"] = ctdchd.ThueGTGT_BD;
+                        //dr["PhiBVMTBD"] = ctdchd.PhiBVMT_BD;
+                        //dr["TongCongBD"] = ctdchd.TongCong_BD;
+                        /////
+                        //dr["TieuThuEnd"] = ctdchd.TieuThu_BD;
+                        //dr["TienNuocEnd"] = ctdchd.TienNuoc_End;
+                        //dr["ThueGTGTEnd"] = ctdchd.ThueGTGT_End;
+                        //dr["PhiBVMTEnd"] = ctdchd.PhiBVMT_End;
+                        //dr["TongCongEnd"] = ctdchd.TongCong_End;
 
-                        dr["ChucVu"] = ctdchd.ChucVu;
-                        dr["NguoiKy"] = ctdchd.NguoiKy;
+                        //dr["ChucVu"] = ctdchd.ChucVu;
+                        //dr["NguoiKy"] = ctdchd.NguoiKy;
 
-                        dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+                        //dsBaoCao.Tables["DCHD"].Rows.Add(dr);
 
-                        rptPhieuDCHD rpt = new rptPhieuDCHD();
-                        rpt.SetDataSource(dsBaoCao);
-                        frmBaoCao frm = new frmBaoCao(rpt);
-                        frm.ShowDialog();
+                        //rptPhieuDCHD rpt = new rptPhieuDCHD();
+                        //rpt.SetDataSource(dsBaoCao);
+                        //frmBaoCao frm = new frmBaoCao(rpt);
+                        //frm.ShowDialog();
 
                         Clear();
+                        txtMaDon.Focus();
 
                         if (!_direct)
                         {

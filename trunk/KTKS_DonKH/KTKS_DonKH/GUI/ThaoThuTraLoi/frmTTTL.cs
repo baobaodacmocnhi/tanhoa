@@ -204,6 +204,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     else
                         cttttl.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                     cttttl.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                    cttttl.ThuDuocKy = true;
 
                     if (_cTTTL.ThemCTTTTL(cttttl))
                     {

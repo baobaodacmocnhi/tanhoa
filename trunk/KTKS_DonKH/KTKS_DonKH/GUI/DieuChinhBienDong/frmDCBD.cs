@@ -206,7 +206,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("ThoiHan", "");
             frmSoDK frm = new frmSoDK("Thêm", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
         }
 
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -223,7 +223,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("ThoiHan", dgvDSSoDangKy.CurrentRow.Cells["ThoiHan"].Value.ToString());
             frmSoDK frm = new frmSoDK("Sửa", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
         }
 
         private void cắtChuyểnĐịnhMứcToolStripMenuItem_Click(object sender, EventArgs e)
@@ -238,7 +238,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
             frmCatChuyenDM frm = new frmCatChuyenDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
-                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
         }
 
         private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -250,7 +250,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DiaChi", txtDiaChi.Text.Trim());
             frmNhanDM frm = new frmNhanDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
-                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_donkh.DanhBo);
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
         }
 
         private void dgvDSSoDangKy_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -457,6 +457,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                     ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                    ctdcbd.PhieuDuocKy = true;
 
                     if (_cDCBD.ThemCTDCBD(ctdcbd))
                     {
