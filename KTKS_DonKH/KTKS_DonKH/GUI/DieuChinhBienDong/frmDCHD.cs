@@ -76,6 +76,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDCHDN_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             if (_direct)
             {
                 this.ControlBox = false;
@@ -105,68 +106,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmDCHDN_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-        }
-
-        private void txtGiaBieu_Cu_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-            if (e.KeyChar == 13)
-                txtDinhMuc_Cu.Focus();
-        }
-
-        private void txtDinhMuc_Cu_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-            if (e.KeyChar == 13)
-                txtTieuThu_Cu.Focus();
-        }
-
-        private void txtTieuThu_Cu_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-            if (e.KeyChar == 13)
-                chkGiaDieuChinh.Focus();
-        }
-
-        private void chkGiaDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                txtGiaDieuChinh.Focus();
-        }
-
-        private void txtGiaDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-            if (e.KeyChar == 13)
-                txtGiaBieu_Moi.Focus();
-        }
-
-        private void txtGiaBieu_Moi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-            if (e.KeyChar == 13)
-                txtDinhMuc_Moi.Focus();
-        }
-
-        private void txtDinhMuc_Moi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-            if (e.KeyChar == 13)
-                txtTieuThu_Moi.Focus();
-        }
-
-        private void txtTieuThu_Moi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-            if (e.KeyChar == 13)
-                btnLuu.Focus();
         }
 
         private void txtGiaBieu_Cu_TextChanged(object sender, EventArgs e)
@@ -464,6 +403,70 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        #region Configure TextBox
+
+        private void txtGiaBieu_Cu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtDinhMuc_Cu.Focus();
+        }
+
+        private void txtDinhMuc_Cu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtTieuThu_Cu.Focus();
+        }
+
+        private void txtTieuThu_Cu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                chkGiaDieuChinh.Focus();
+        }
+
+        private void chkGiaDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaDieuChinh.Focus();
+        }
+
+        private void txtGiaDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtGiaBieu_Moi.Focus();
+        }
+
+        private void txtGiaBieu_Moi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtDinhMuc_Moi.Focus();
+        }
+
+        private void txtDinhMuc_Moi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                txtTieuThu_Moi.Focus();
+        }
+
+        private void txtTieuThu_Moi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == 13)
+                btnLuu.Focus();
+        }
+
         private void dateNgayKy_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -482,10 +485,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtGiaBieu_Cu.Focus();
         }
 
-        #region Configure TextBox
-
-
-
         #endregion
+
+        private void frmDCHD_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Add)
+                btnLuu.PerformClick();
+        }
+
+       
+
     }
 }

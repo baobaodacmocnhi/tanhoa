@@ -430,6 +430,7 @@
             this.chkYCCat3.TabIndex = 21;
             this.chkYCCat3.Text = "Yêu Cầu Cắt 3";
             this.chkYCCat3.UseVisualStyleBackColor = true;
+            this.chkYCCat3.CheckedChanged += new System.EventHandler(this.chkYCCat3_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -551,6 +552,7 @@
             this.chkYCCat2.TabIndex = 21;
             this.chkYCCat2.Text = "Yêu Cầu Cắt 2";
             this.chkYCCat2.UseVisualStyleBackColor = true;
+            this.chkYCCat2.CheckedChanged += new System.EventHandler(this.chkYCCat2_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -672,6 +674,7 @@
             this.chkYCCat4.TabIndex = 21;
             this.chkYCCat4.Text = "Yêu Cầu Cắt 4";
             this.chkYCCat4.UseVisualStyleBackColor = true;
+            this.chkYCCat4.CheckedChanged += new System.EventHandler(this.chkYCCat4_CheckedChanged);
             // 
             // groupBox4
             // 
@@ -806,6 +809,7 @@
             this.chkYCCat5.TabIndex = 21;
             this.chkYCCat5.Text = "Yêu Cầu Cắt 5";
             this.chkYCCat5.UseVisualStyleBackColor = true;
+            this.chkYCCat5.CheckedChanged += new System.EventHandler(this.chkYCCat5_CheckedChanged);
             // 
             // groupBox5
             // 
