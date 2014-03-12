@@ -56,6 +56,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDCBD_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
+
             if (_direct)
             {
                 this.ControlBox = false;
@@ -216,7 +218,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("TenLCT", dgvDSSoDangKy.CurrentRow.Cells["TenLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
-            source.Add("DiaChi", dgvDSSoDangKy.CurrentRow.Cells["DiaChi"].Value.ToString());
+            source.Add("HoTenKH", txtHoTen.Text.Trim());
+            source.Add("DiaChiKH", dgvDSSoDangKy.CurrentRow.Cells["DiaChi"].Value.ToString());
             source.Add("SoNKTong", dgvDSSoDangKy.CurrentRow.Cells["SoNKTong"].Value.ToString());
             source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
             source.Add("NgayHetHan", dgvDSSoDangKy.CurrentRow.Cells["NgayHetHan"].Value.ToString());
@@ -291,7 +294,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
                         LoadTTKH(_ttkhachhang);
-                        txtHieuLucKy.Focus();
+                        txtDanhBo.Focus();
                     }
                 }
                 else
@@ -498,6 +501,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         //frm.ShowDialog();
 
                         Clear();
+                        txtMaDon.Focus();
                     }
                 }
                 else
@@ -550,16 +554,46 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtDanhBo_Leave(object sender, EventArgs e)
         {
-            txtHieuLucKy.Focus();
+            //txtHieuLucKy.Focus();
         }
 
         private void txtHieuLucKy_Leave(object sender, EventArgs e)
         {
-            txtHoTen_BD.Focus();
-            flagFirst = false;
+            //txtHoTen_BD.Focus();
+            //flagFirst = false;
         }
 
         private void txtHieuLucKy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_BD.Focus();
+        }
+
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChi.Focus();
+        }
+
+        private void txtDiaChi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtMSThue.Focus();
+        }
+
+        private void txtMSThue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaBieu.Focus();
+        }
+
+        private void txtGiaBieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDinhMuc.Focus();
+        }
+
+        private void txtDinhMuc_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 txtHoTen_BD.Focus();
@@ -596,5 +630,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         #endregion
+
+        private void frmDCBD_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Add)
+                btnLuu.PerformClick();
+        }
+
     }
 }

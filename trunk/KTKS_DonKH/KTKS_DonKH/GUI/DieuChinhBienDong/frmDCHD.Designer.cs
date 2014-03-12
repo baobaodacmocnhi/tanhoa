@@ -694,6 +694,7 @@
             this.Text = "Điều Chỉnh Hóa Đơn Tiền Nước";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDCHDN_FormClosing);
             this.Load += new System.EventHandler(this.frmDCHDN_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmDCHD_KeyUp);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
