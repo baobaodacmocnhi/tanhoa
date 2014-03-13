@@ -44,7 +44,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 this.Location = new Point(70, 70);
                 _ctdchd = _cDCBD.getCTDCHDbyID(_MaCTDCHD);
-                txtMaDon.Text = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                txtMaDon.Text = _ctdchd.DCBD.MaDon.ToString().Insert(_ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
                 txtSoVB.Text = _ctdchd.SoVB;
                 dateNgayKy.Value = _ctdchd.NgayKy.Value;
                 txtKyHD.Text = _ctdchd.KyHD;
@@ -194,6 +194,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             
         }
 
+        #region Configure TextBox
+
+        private void dateNgayKy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtKyHD.Focus();
+        }
+
+        private void txtKyHD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSoHD.Focus();
+        }
+
+        private void txtSoHD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaBieu_Cu.Focus();
+        }
+
         private void txtGiaBieu_Cu_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
@@ -255,6 +275,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.KeyChar == 13)
                 btnSua.Focus();
         }
+
+        #endregion
 
         private void txtGiaBieu_Cu_TextChanged(object sender, EventArgs e)
         {
@@ -351,5 +373,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     lbTangGiam.Text = "Giảm:";
         }
+
+        
     }
 }

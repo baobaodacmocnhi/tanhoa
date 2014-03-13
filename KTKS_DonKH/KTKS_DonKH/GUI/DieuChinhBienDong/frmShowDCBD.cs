@@ -37,7 +37,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_cDCBD.getCTDCBDbyID(_MaCTDCBD) != null)
             {
                 _ctdcbd = _cDCBD.getCTDCBDbyID(_MaCTDCBD);
-                txtMaDon.Text = _ctdcbd.MaCTDCBD.ToString().Insert(_ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                txtMaDon.Text = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                 txtHieuLucKy.Text = _ctdcbd.HieuLucKy;
                 txtDanhBo.Text = _ctdcbd.DanhBo;
                 txtHopDong.Text = _ctdcbd.HopDong;
@@ -195,6 +195,74 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             
         }
+
+        private void txtHieuLucKy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_BD.Focus();
+        }
+
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChi.Focus();
+        }
+
+        private void txtDiaChi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtMSThue.Focus();
+        }
+
+        private void txtMSThue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaBieu.Focus();
+        }
+
+        private void txtGiaBieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDinhMuc.Focus();
+        }
+
+        private void txtDinhMuc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_BD.Focus();
+        }
+
+        private void txtHoTen_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChi_BD.Focus();
+        }
+
+        private void txtDiaChi_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtMSThue_BD.Focus();
+        }
+
+        private void txtMSThue_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtGiaBieu_BD.Focus();
+        }
+
+        private void txtGiaBieu_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDinhMuc_BD.Focus();
+        }
+
+        private void txtDinhMuc_BD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnSua.Focus();
+        }
+
+        
 
     }
 }

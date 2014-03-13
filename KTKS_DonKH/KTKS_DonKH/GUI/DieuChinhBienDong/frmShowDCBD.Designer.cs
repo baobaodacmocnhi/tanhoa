@@ -88,7 +88,8 @@
             this.txtHieuLucKy.Location = new System.Drawing.Point(961, 6);
             this.txtHieuLucKy.Name = "txtHieuLucKy";
             this.txtHieuLucKy.Size = new System.Drawing.Size(100, 25);
-            this.txtHieuLucKy.TabIndex = 35;
+            this.txtHieuLucKy.TabIndex = 1;
+            this.txtHieuLucKy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHieuLucKy_KeyPress);
             // 
             // label22
             // 
@@ -96,7 +97,7 @@
             this.label22.Location = new System.Drawing.Point(866, 9);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(89, 17);
-            this.label22.TabIndex = 34;
+            this.label22.TabIndex = 0;
             this.label22.Text = "Hiệu Lực Kỳ:";
             // 
             // chkCatMSThue
@@ -105,7 +106,7 @@
             this.chkCatMSThue.Location = new System.Drawing.Point(1091, 126);
             this.chkCatMSThue.Name = "chkCatMSThue";
             this.chkCatMSThue.Size = new System.Drawing.Size(103, 21);
-            this.chkCatMSThue.TabIndex = 36;
+            this.chkCatMSThue.TabIndex = 3;
             this.chkCatMSThue.Text = "Cắt MSThuế";
             this.chkCatMSThue.UseVisualStyleBackColor = true;
             // 
@@ -115,7 +116,7 @@
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(100, 25);
-            this.txtMaDon.TabIndex = 33;
+            this.txtMaDon.TabIndex = 8;
             // 
             // label21
             // 
@@ -123,7 +124,7 @@
             this.label21.Location = new System.Drawing.Point(342, 9);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(61, 17);
-            this.label21.TabIndex = 32;
+            this.label21.TabIndex = 7;
             this.label21.Text = "Mã Đơn:";
             // 
             // groupBox2
@@ -149,7 +150,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 115);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1065, 77);
-            this.groupBox2.TabIndex = 31;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin Điều Chỉnh";
             // 
@@ -223,6 +224,7 @@
             this.txtDinhMuc_BD.Name = "txtDinhMuc_BD";
             this.txtDinhMuc_BD.Size = new System.Drawing.Size(35, 25);
             this.txtDinhMuc_BD.TabIndex = 13;
+            this.txtDinhMuc_BD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDinhMuc_BD_KeyPress);
             // 
             // label16
             // 
@@ -239,6 +241,7 @@
             this.txtGiaBieu_BD.Name = "txtGiaBieu_BD";
             this.txtGiaBieu_BD.Size = new System.Drawing.Size(35, 25);
             this.txtGiaBieu_BD.TabIndex = 11;
+            this.txtGiaBieu_BD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaBieu_BD_KeyPress);
             // 
             // label17
             // 
@@ -255,6 +258,7 @@
             this.txtMSThue_BD.Name = "txtMSThue_BD";
             this.txtMSThue_BD.Size = new System.Drawing.Size(100, 25);
             this.txtMSThue_BD.TabIndex = 9;
+            this.txtMSThue_BD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMSThue_BD_KeyPress);
             // 
             // label18
             // 
@@ -271,6 +275,7 @@
             this.txtDiaChi_BD.Name = "txtDiaChi_BD";
             this.txtDiaChi_BD.Size = new System.Drawing.Size(256, 25);
             this.txtDiaChi_BD.TabIndex = 7;
+            this.txtDiaChi_BD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_BD_KeyPress);
             // 
             // label19
             // 
@@ -287,6 +292,7 @@
             this.txtHoTen_BD.Name = "txtHoTen_BD";
             this.txtHoTen_BD.Size = new System.Drawing.Size(200, 25);
             this.txtHoTen_BD.TabIndex = 5;
+            this.txtHoTen_BD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_BD_KeyPress);
             // 
             // label20
             // 
@@ -324,7 +330,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1065, 77);
-            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Ban Đầu";
             // 
@@ -402,6 +408,7 @@
             this.txtDinhMuc.Name = "txtDinhMuc";
             this.txtDinhMuc.Size = new System.Drawing.Size(35, 25);
             this.txtDinhMuc.TabIndex = 13;
+            this.txtDinhMuc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDinhMuc_KeyPress);
             // 
             // label7
             // 
@@ -418,6 +425,7 @@
             this.txtGiaBieu.Name = "txtGiaBieu";
             this.txtGiaBieu.Size = new System.Drawing.Size(35, 25);
             this.txtGiaBieu.TabIndex = 11;
+            this.txtGiaBieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaBieu_KeyPress);
             // 
             // label6
             // 
@@ -434,6 +442,7 @@
             this.txtMSThue.Name = "txtMSThue";
             this.txtMSThue.Size = new System.Drawing.Size(100, 25);
             this.txtMSThue.TabIndex = 9;
+            this.txtMSThue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMSThue_KeyPress);
             // 
             // label5
             // 
@@ -450,6 +459,7 @@
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(256, 25);
             this.txtDiaChi.TabIndex = 7;
+            this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
             // 
             // label4
             // 
@@ -466,6 +476,7 @@
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(200, 25);
             this.txtHoTen.TabIndex = 5;
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
             // 
             // label3
             // 
@@ -497,6 +508,7 @@
             // 
             this.txtDanhBo.Location = new System.Drawing.Point(12, 43);
             this.txtDanhBo.Name = "txtDanhBo";
+            this.txtDanhBo.ReadOnly = true;
             this.txtDanhBo.Size = new System.Drawing.Size(100, 25);
             this.txtDanhBo.TabIndex = 1;
             // 
@@ -516,7 +528,7 @@
             this.btnIn.Location = new System.Drawing.Point(1094, 197);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(92, 35);
-            this.btnIn.TabIndex = 37;
+            this.btnIn.TabIndex = 5;
             this.btnIn.Text = "In Phiếu";
             this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIn.UseVisualStyleBackColor = true;
@@ -528,7 +540,7 @@
             this.txtDot.Name = "txtDot";
             this.txtDot.ReadOnly = true;
             this.txtDot.Size = new System.Drawing.Size(56, 25);
-            this.txtDot.TabIndex = 39;
+            this.txtDot.TabIndex = 10;
             // 
             // label23
             // 
@@ -536,7 +548,7 @@
             this.label23.Location = new System.Drawing.Point(764, 9);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(34, 17);
-            this.label23.TabIndex = 38;
+            this.label23.TabIndex = 9;
             this.label23.Text = "Đợt:";
             // 
             // btnSua
@@ -546,7 +558,7 @@
             this.btnSua.Location = new System.Drawing.Point(1012, 198);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(65, 35);
-            this.btnSua.TabIndex = 84;
+            this.btnSua.TabIndex = 4;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
