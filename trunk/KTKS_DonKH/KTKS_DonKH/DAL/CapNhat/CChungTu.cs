@@ -306,14 +306,14 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemLSCT in db.LichSuChungTus
-                                join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null
                                 orderby itemLSCT.SoPhieu ascending
                                 select new
                                 {
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
-                                    SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemLSCT.DanhBo).MaCTDCBD,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemLSCT.DanhBo).MaCTDCBD,
                                     itemLSCT.MaCT,
                                     itemLSCT.CatDM,
                                     itemLSCT.SoNKCat,
@@ -329,6 +329,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemLSCT.CatNK_HoTen,
                                     itemLSCT.CatNK_DiaChi,
                                     itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
                                 };
                     if (query.Count() > 0)
                     {
@@ -358,7 +359,10 @@ namespace KTKS_DonKH.DAL.CapNhat
                             Row["In"] = false;
                             Row["MaLSCT"] = itemRow["MaLSCT"];
                             Row["SoPhieu"] = itemRow["SoPhieu"];
-                            Row["SoPhieuDCBD"] = itemRow["SoPhieuDCBD"];
+                            if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                                Row["SoPhieuDCBD"] = db.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                            else
+                                Row["SoPhieuDCBD"] = "";
                             Row["MaCT"] = itemRow["MaCT"];
                             if (itemRow["CatDM"].ToString() != "")
                                 if (bool.Parse(itemRow["CatDM"].ToString()) == true)
@@ -1088,12 +1092,14 @@ namespace KTKS_DonKH.DAL.CapNhat
                         chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         ///Cập nhật bảng CTChungTu
                         ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
-                        ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
-                        if (ctchungtu.ThoiHan != null)
-                            ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
-                            ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
-                        else
-                            ctchungtuCN.NgayHetHan = null;
+
+                        //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+                        //if (ctchungtu.ThoiHan != null)
+                        //    ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                        //    ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                        //else
+                        //    ctchungtuCN.NgayHetHan = null;
+
                         ctchungtuCN.ModifyDate = DateTime.Now;
                         ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         flagEdited = true;
@@ -1526,6 +1532,95 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                 ThemLichSuChungTu(lichsuchungtu);
                 //MessageBox.Show("Thành công Thêm NhanChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Hàm được dùng cho frmShowNhanDM, khi khách hàng yêu cầu nhập định mức từ địa phương khác
+        /// </summary>
+        /// <param name="chungtu"></param>
+        /// <param name="ctchungtu"></param>
+        /// <param name="lichsuchungtu"></param>
+        /// <returns></returns>
+        public bool SuaNhanChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
+        {
+            try
+            {
+                ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
+                CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
+
+                ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
+                if (chungtuCN.SoNKTong != chungtu.SoNKTong)
+                    if (chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai >= 0)
+                    {
+                        chungtuCN.SoNKConLai = chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai;
+                        chungtuCN.SoNKTong = chungtu.SoNKTong;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                ///Kiểm tra Địa Chỉ có thay đổi hay không
+                if (chungtuCN.DiaChi != chungtu.DiaChi)
+                {
+                    chungtuCN.DiaChi = chungtu.DiaChi;
+                    chungtuCN.ModifyDate = DateTime.Now;
+                    chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                }
+
+                ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
+                if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
+                    if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
+                    {
+                        ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                        ///Cập nhật bảng CTChungTu
+                        ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
+
+                        //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+                        //if (ctchungtu.ThoiHan != null)
+                        //    ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                        //    ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                        //else
+                        //    ctchungtuCN.NgayHetHan = null;
+
+                        ctchungtuCN.ModifyDate = DateTime.Now;
+                        ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
+                {
+                    ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+                    if (ctchungtu.ThoiHan != null)
+                        ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                        ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                    else
+                        ctchungtuCN.NgayHetHan = null;
+                    ctchungtuCN.ModifyDate = DateTime.Now;
+                    ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                }
+                
+                SuaLichSuChungTu(lichsuchungtu);
+
+                db.SubmitChanges();
+                //MessageBox.Show("Sửa công Thêm SuaNhanChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)

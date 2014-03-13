@@ -19,7 +19,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         decimal _MaLSCT = 0;
         CChungTu _cChungTu = new CChungTu();
         LichSuChungTu _lichsuchungtu = null;
+        ChungTu _chungtu = null;
         CChiNhanh _cChiNhanh = new CChiNhanh();
+        CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
 
         public frmShowNhanDM()
         {
@@ -37,15 +39,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
             cmbChiNhanh.DisplayMember = "TenCN";
             cmbChiNhanh.ValueMember = "MaCN";
-            cmbChiNhanh.SelectedIndex = -1;
+
+            cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
+            cmbLoaiCT.DisplayMember = "TenLCT";
+            cmbLoaiCT.ValueMember = "MaLCT";
 
             if (_cChungTu.getLSCTbyID(_MaLSCT) != null)
             {
                 _lichsuchungtu = _cChungTu.getLSCTbyID(_MaLSCT);
+                _chungtu = _cChungTu.getChungTubyID(_lichsuchungtu.MaCT);
+
                 if (!string.IsNullOrEmpty(_lichsuchungtu.NhanDM.ToString()))
                 {
                     if (_lichsuchungtu.NhanDM.Value)
                     {
+                        btnSua.Visible = true;
                         txtDanhBo_Nhan.Text = _lichsuchungtu.NhanNK_DanhBo;
                         txtHoTen_Nhan.Text = _lichsuchungtu.NhanNK_HoTen;
                         txtDiaChi_Nhan.Text = _lichsuchungtu.NhanNK_DiaChi;
@@ -54,7 +62,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         txtDanhBo_Cat.Text = _lichsuchungtu.CatNK_DanhBo;
                         txtHoTen_Cat.Text = _lichsuchungtu.CatNK_HoTen;
                         txtDiaChi_Cat.Text = _lichsuchungtu.CatNK_DiaChi;
+                        cmbLoaiCT.SelectedValue = _chungtu.MaLCT;
                         txtMaCT.Text = _lichsuchungtu.MaCT;
+                        txtDiaChiCT_Cat.Text = _chungtu.DiaChi;
                         txtSoNKTong.Text = _lichsuchungtu.SoNKTong.ToString();
                         txtSoNKNhan.Text = _lichsuchungtu.SoNKNhan.Value.ToString();
                         txtGhiChu.Text = _lichsuchungtu.GhiChu;
@@ -65,6 +75,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         if (_lichsuchungtu.YeuCauCat.Value)
                         {
+                            label6.Text = "Số NK YC Cắt:";
+                            
                             txtDanhBo_Nhan.Text = _lichsuchungtu.NhanNK_DanhBo;
                             txtHoTen_Nhan.Text = _lichsuchungtu.NhanNK_HoTen;
                             txtDiaChi_Nhan.Text = _lichsuchungtu.NhanNK_DiaChi;
@@ -73,7 +85,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             txtDanhBo_Cat.Text = _lichsuchungtu.CatNK_DanhBo;
                             txtHoTen_Cat.Text = _lichsuchungtu.CatNK_HoTen;
                             txtDiaChi_Cat.Text = _lichsuchungtu.CatNK_DiaChi;
+                            cmbLoaiCT.SelectedValue = _chungtu.MaLCT;
                             txtMaCT.Text = _lichsuchungtu.MaCT;
+                            txtDiaChiCT_Cat.Text = _chungtu.DiaChi;
                             txtSoNKTong.Text = _lichsuchungtu.SoNKTong.ToString();
                             txtSoNKNhan.Text = _lichsuchungtu.SoNKNhan.Value.ToString();
                             txtGhiChu.Text = _lichsuchungtu.GhiChu;
@@ -160,9 +174,58 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (_lichsuchungtu != null)
             {
-                if (_lichsuchungtu.NhanDM.Value)
+                if (!string.IsNullOrEmpty(_lichsuchungtu.NhanDM.ToString()))
                 {
-                    
+                    if (_lichsuchungtu.NhanDM.Value)
+                    {
+                        try
+                        {
+                            if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKNhan.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKNhan.Text.Trim() != "0")
+                                if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKNhan.Text.Trim()))
+                                {
+                                    ChungTu chungtu = new ChungTu();
+                                    chungtu.MaCT = txtMaCT.Text.Trim();
+                                    chungtu.DiaChi = txtDiaChiCT_Cat.Text.Trim();
+                                    chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                                    chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+
+                                    CTChungTu ctchungtu = new CTChungTu();
+                                    ctchungtu.DanhBo = txtDanhBo_Nhan.Text.Trim();
+                                    ctchungtu.MaCT = txtMaCT.Text.Trim();
+                                    ctchungtu.SoNKDangKy = int.Parse(txtSoNKNhan.Text.Trim());
+                                    if (txtThoiHan.Text.Trim() != "")
+                                        ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                                    else
+                                        ctchungtu.ThoiHan = null;
+
+                                    _lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
+                                    _lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                                    _lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
+                                    _lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
+                                    _lichsuchungtu.SoNKNhan = int.Parse(txtSoNKNhan.Text.Trim());
+                                    _lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
+
+                                    if (_cChungTu.SuaNhanChungTu(chungtu, ctchungtu, _lichsuchungtu))
+                                    {
+                                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                }
+                                else
+                                    MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(_lichsuchungtu.YeuCauCat.ToString()))
+                {
+                    if (_lichsuchungtu.YeuCauCat.Value)
+                    {
+                        MessageBox.Show("Yêu Cầu Cắt không được sửa ở đây\n Vui lòng vào Số Đơn, Danh Bộ & Số Chứng Từ để sửa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
