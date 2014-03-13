@@ -293,9 +293,9 @@
             // 
             // txtSoNKNhan
             // 
-            this.txtSoNKNhan.Location = new System.Drawing.Point(317, 241);
+            this.txtSoNKNhan.Location = new System.Drawing.Point(339, 241);
             this.txtSoNKNhan.Name = "txtSoNKNhan";
-            this.txtSoNKNhan.Size = new System.Drawing.Size(100, 25);
+            this.txtSoNKNhan.Size = new System.Drawing.Size(78, 25);
             this.txtSoNKNhan.TabIndex = 19;
             // 
             // txtDiaChi_Cat
@@ -327,6 +327,7 @@
             // 
             this.txtMaCT.Location = new System.Drawing.Point(127, 179);
             this.txtMaCT.Name = "txtMaCT";
+            this.txtMaCT.ReadOnly = true;
             this.txtMaCT.Size = new System.Drawing.Size(100, 25);
             this.txtMaCT.TabIndex = 11;
             // 
@@ -356,11 +357,11 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(715, 331);
+            this.btnSua.Location = new System.Drawing.Point(652, 331);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(65, 35);
+            this.btnSua.Size = new System.Drawing.Size(128, 35);
             this.btnSua.TabIndex = 85;
-            this.btnSua.Text = "Sửa";
+            this.btnSua.Text = "Sửa Nhận ĐM";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Visible = false;
