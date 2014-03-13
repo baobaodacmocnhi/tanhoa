@@ -53,24 +53,32 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+            if (e.KeyChar == 13)
+                txtThoiHan.Focus();
         }
 
         private void txtThoiHan_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+            if (e.KeyChar == 13)
+                txtDiaChiCT_Cat.Focus();
         }
 
         private void txtSoNKTong_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+            if (e.KeyChar == 13)
+                txtSoNKNhan.Focus();
         }
 
         private void txtSoNKNhan_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+            if (e.KeyChar == 13)
+                txtGhiChu.Focus();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -120,29 +128,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (_cChungTu.NhanChungTu(chungtu, ctchungtu, lichsuchungtu))
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                            DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
+                            //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                            //DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
-                            dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
-                            dr["ChiNhanh"] = ((ChiNhanh)cmbChiNhanh.SelectedItem).TenCN;
-                            dr["DanhBoNhan"] = lichsuchungtu.NhanNK_DanhBo;
-                            dr["HoTenNhan"] = lichsuchungtu.NhanNK_HoTen;
-                            dr["DiaChiNhan"] = lichsuchungtu.NhanNK_DiaChi;
-                            dr["DanhBoCat"] = lichsuchungtu.CatNK_DanhBo;
-                            dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
-                            dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
-                            ///có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
-                            dr["SoNKCat"] = lichsuchungtu.SoNKNhan.ToString() + " nhân khẩu (HK: " + lichsuchungtu.MaCT + ")";
+                            //dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
+                            //dr["ChiNhanh"] = ((ChiNhanh)cmbChiNhanh.SelectedItem).TenCN;
+                            //dr["DanhBoNhan"] = lichsuchungtu.NhanNK_DanhBo;
+                            //dr["HoTenNhan"] = lichsuchungtu.NhanNK_HoTen;
+                            //dr["DiaChiNhan"] = lichsuchungtu.NhanNK_DiaChi;
+                            //dr["DanhBoCat"] = lichsuchungtu.CatNK_DanhBo;
+                            //dr["HoTenCat"] = lichsuchungtu.CatNK_HoTen;
+                            //dr["DiaChiCat"] = lichsuchungtu.CatNK_DiaChi;
+                            /////có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
+                            //dr["SoNKCat"] = lichsuchungtu.SoNKNhan.ToString() + " nhân khẩu (HK: " + lichsuchungtu.MaCT + ")";
 
-                            dr["ChucVu"] = lichsuchungtu.ChucVu;
-                            dr["NguoiKy"] = lichsuchungtu.NguoiKy;
+                            //dr["ChucVu"] = lichsuchungtu.ChucVu;
+                            //dr["NguoiKy"] = lichsuchungtu.NguoiKy;
 
-                            dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
+                            //dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
 
-                            rptPhieuYCCatDM rpt = new rptPhieuYCCatDM();
-                            rpt.SetDataSource(dsBaoCao);
-                            frmBaoCao frm = new frmBaoCao(rpt);
-                            frm.ShowDialog();
+                            //rptPhieuYCCatDM rpt = new rptPhieuYCCatDM();
+                            //rpt.SetDataSource(dsBaoCao);
+                            //frmBaoCao frm = new frmBaoCao(rpt);
+                            //frm.ShowDialog();
 
                             this.DialogResult = DialogResult.OK;
                             this.Close();
@@ -164,6 +172,48 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 txtThoiHan.Text = ((KTKS_DonKH.LinQ.LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
             }
+        }
+
+        private void cmbChiNhanh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDanhBo_Cat.Focus();
+        }
+
+        private void txtDanhBo_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_Cat.Focus();
+        }
+
+        private void txtHoTen_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChi_Cat.Focus();
+        }
+
+        private void txtDiaChi_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                cmbLoaiCT.Focus();
+        }
+
+        private void cmbLoaiCT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtMaCT.Focus();
+        }
+
+        private void txtDiaChiCT_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSoNKTong.Focus();
+        }
+
+        private void txtGhiChu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnLuu.Focus();
         }
 
     }

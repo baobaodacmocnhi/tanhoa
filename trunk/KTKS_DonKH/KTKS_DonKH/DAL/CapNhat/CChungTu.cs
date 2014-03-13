@@ -36,7 +36,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
                                 itemCTCT.ThoiHan,
-                                itemCTCT.SoChinh,
+                                itemCTCT.DienThoai,
                                 itemCTCT.Cat,
                             };
                 return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -322,6 +322,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemLSCT.NhanNK_HoTen,
                                     itemLSCT.NhanNK_DiaChi,
                                     itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
                                     itemLSCT.SoNKNhan,
                                     itemLSCT.CatNK_MaCN,
                                     itemLSCT.CatNK_DanhBo,
@@ -369,6 +370,12 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
                                 {
                                     Row["CatNhan"] = "Nhận";
+                                    Row["SoNK"] = itemRow["SoNKNhan"];
+                                }
+                            if (itemRow["YeuCauCat"].ToString() != "")
+                                if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                                {
+                                    Row["CatNhan"] = "YC Cắt";
                                     Row["SoNK"] = itemRow["SoNKNhan"];
                                 }
                             if (itemRow["NhanNK_MaCN"].ToString() != "")
@@ -538,7 +545,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         {
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
                             ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
-                            lichsuchungtu.NhanDM = true;
+                            lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
                             lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
@@ -634,7 +641,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         {
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
                             ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
-                            lichsuchungtu.NhanDM = true;
+                            lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
                             lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
@@ -651,51 +658,197 @@ namespace KTKS_DonKH.DAL.CapNhat
                         }
                         ThemLichSuChungTu(lichsuchungtu);
 
-                        for (int i = 0; i < lstLichSuChungTu.Count; i++)
+                        if (ctchungtu.YeuCauCat2)
                         {
-                            ///Cập nhật bảng LichSuChungTu
-                            lstLichSuChungTu[i].MaCT = ctchungtu.MaCT;
-                            lstLichSuChungTu[i].DanhBo = ctchungtu.DanhBo;
-                            lstLichSuChungTu[i].SoNKTong = chungtuCN.SoNKTong;
-                            lstLichSuChungTu[i].SoNKDangKy = ctchungtu.SoNKDangKy;
-                            lstLichSuChungTu[i].SoNKConLai = chungtuCN.SoNKConLai;
-                            lstLichSuChungTu[i].ThoiHan = ctchungtu.ThoiHan;
-                            lstLichSuChungTu[i].NgayHetHan = ctchungtu.NgayHetHan;
+                            LichSuChungTu lichsuchungtu2 = new LichSuChungTu();
+                            lichsuchungtu2.MaCT = ctchungtu.MaCT;
+                            lichsuchungtu2.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu2.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu2.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lichsuchungtu2.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu2.ThoiHan = ctchungtu.ThoiHan;
+                            lichsuchungtu2.NgayHetHan = ctchungtu.NgayHetHan;
                             ///
-                            lstLichSuChungTu[i].SoPhieu = getMaxNextSoPhieuLSCT();
-                            switch (i)
-                            {
-                                case 0:
-                                    ctchungtu.SoPhieu2 = lstLichSuChungTu[i].SoPhieu;
-                                    break;
-                                case 1:
-                                    ctchungtu.SoPhieu3 = lstLichSuChungTu[i].SoPhieu;
-                                    break;
-                                case 2:
-                                    ctchungtu.SoPhieu4 = lstLichSuChungTu[i].SoPhieu;
-                                    break;
-                                case 3:
-                                    ctchungtu.SoPhieu5 = lstLichSuChungTu[i].SoPhieu;
-                                    break;
-                            }
-                            
-                            lstLichSuChungTu[i].NhanDM = true;
+                            lichsuchungtu2.SoPhieu = getMaxNextSoPhieuLSCT();
+                            ctchungtu.SoPhieu2 = lichsuchungtu2.SoPhieu;
+                            ///
+                            lichsuchungtu2.NhanNK_DanhBo = lichsuchungtu.NhanNK_DanhBo;
+                            lichsuchungtu2.NhanNK_HoTen = lichsuchungtu.NhanNK_HoTen;
+                            lichsuchungtu2.NhanNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
+                            ///
+                            lichsuchungtu2.YeuCauCat = true;
+                            lichsuchungtu2.CatNK_MaCN = ctchungtu.CatNK_MaCN2;
+                            lichsuchungtu2.CatNK_DanhBo = ctchungtu.CatNK_DanhBo2;
+                            lichsuchungtu2.CatNK_HoTen = ctchungtu.CatNK_HoTen2;
+                            lichsuchungtu2.CatNK_DiaChi = ctchungtu.CatNK_DiaChi2;
+                            lichsuchungtu2.SoNKNhan = ctchungtu.CatNK_SoNKCat2;
 
-                            lstLichSuChungTu[i].CatNK_MaCN = ctchungtu.CatNK_MaCN;
-                            lstLichSuChungTu[i].CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
-                            lstLichSuChungTu[i].CatNK_HoTen = ctchungtu.CatNK_HoTen;
-                            lstLichSuChungTu[i].CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
-                            lstLichSuChungTu[i].SoNKNhan = ctchungtu.CatNK_SoNKCat;
                             CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                lstLichSuChungTu[i].ChucVu = "GIÁM ĐỐC";
+                                lichsuchungtu2.ChucVu = "GIÁM ĐỐC";
                             else
-                                lstLichSuChungTu[i].ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                            lstLichSuChungTu[i].NguoiKy = bangiamdoc.HoTen.ToUpper();
+                                lichsuchungtu2.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu2.NguoiKy = bangiamdoc.HoTen.ToUpper();
 
-                            ThemLichSuChungTu(lstLichSuChungTu[i]);
+                            ThemLichSuChungTu(lichsuchungtu2);
                         }
+
+                        if (ctchungtu.YeuCauCat3)
+                        {
+                            LichSuChungTu lichsuchungtu3 = new LichSuChungTu();
+                            lichsuchungtu3.MaCT = ctchungtu.MaCT;
+                            lichsuchungtu3.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu3.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu3.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lichsuchungtu3.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu3.ThoiHan = ctchungtu.ThoiHan;
+                            lichsuchungtu3.NgayHetHan = ctchungtu.NgayHetHan;
+                            ///
+                            lichsuchungtu3.SoPhieu = getMaxNextSoPhieuLSCT();
+                            ctchungtu.SoPhieu3 = lichsuchungtu3.SoPhieu;
+                            ///
+                            lichsuchungtu3.NhanNK_DanhBo = lichsuchungtu.NhanNK_DanhBo;
+                            lichsuchungtu3.NhanNK_HoTen = lichsuchungtu.NhanNK_HoTen;
+                            lichsuchungtu3.NhanNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
+                            ///
+                            lichsuchungtu3.YeuCauCat = true;
+                            lichsuchungtu3.CatNK_MaCN = ctchungtu.CatNK_MaCN3;
+                            lichsuchungtu3.CatNK_DanhBo = ctchungtu.CatNK_DanhBo3;
+                            lichsuchungtu3.CatNK_HoTen = ctchungtu.CatNK_HoTen3;
+                            lichsuchungtu3.CatNK_DiaChi = ctchungtu.CatNK_DiaChi3;
+                            lichsuchungtu3.SoNKNhan = ctchungtu.CatNK_SoNKCat3;
+
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu3.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu3.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu3.NguoiKy = bangiamdoc.HoTen.ToUpper();
+
+                            ThemLichSuChungTu(lichsuchungtu3);
+                        }
+
+                        if (ctchungtu.YeuCauCat4)
+                        {
+                            LichSuChungTu lichsuchungtu4 = new LichSuChungTu();
+                            lichsuchungtu4.MaCT = ctchungtu.MaCT;
+                            lichsuchungtu4.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu4.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu4.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lichsuchungtu4.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu4.ThoiHan = ctchungtu.ThoiHan;
+                            lichsuchungtu4.NgayHetHan = ctchungtu.NgayHetHan;
+                            ///
+                            lichsuchungtu4.SoPhieu = getMaxNextSoPhieuLSCT();
+                            ctchungtu.SoPhieu2 = lichsuchungtu4.SoPhieu;
+                            ///
+                            lichsuchungtu4.NhanNK_DanhBo = lichsuchungtu.NhanNK_DanhBo;
+                            lichsuchungtu4.NhanNK_HoTen = lichsuchungtu.NhanNK_HoTen;
+                            lichsuchungtu4.NhanNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
+                            ///
+                            lichsuchungtu4.YeuCauCat = true;
+                            lichsuchungtu4.CatNK_MaCN = ctchungtu.CatNK_MaCN4;
+                            lichsuchungtu4.CatNK_DanhBo = ctchungtu.CatNK_DanhBo4;
+                            lichsuchungtu4.CatNK_HoTen = ctchungtu.CatNK_HoTen4;
+                            lichsuchungtu4.CatNK_DiaChi = ctchungtu.CatNK_DiaChi4;
+                            lichsuchungtu4.SoNKNhan = ctchungtu.CatNK_SoNKCat4;
+
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu4.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu4.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu4.NguoiKy = bangiamdoc.HoTen.ToUpper();
+
+                            ThemLichSuChungTu(lichsuchungtu4);
+                        }
+
+                        if (ctchungtu.YeuCauCat5)
+                        {
+                            LichSuChungTu lichsuchungtu5 = new LichSuChungTu();
+                            lichsuchungtu5.MaCT = ctchungtu.MaCT;
+                            lichsuchungtu5.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu5.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu5.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lichsuchungtu5.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu5.ThoiHan = ctchungtu.ThoiHan;
+                            lichsuchungtu5.NgayHetHan = ctchungtu.NgayHetHan;
+                            ///
+                            lichsuchungtu5.SoPhieu = getMaxNextSoPhieuLSCT();
+                            ctchungtu.SoPhieu2 = lichsuchungtu5.SoPhieu;
+                            ///
+                            lichsuchungtu5.NhanNK_DanhBo = lichsuchungtu.NhanNK_DanhBo;
+                            lichsuchungtu5.NhanNK_HoTen = lichsuchungtu.NhanNK_HoTen;
+                            lichsuchungtu5.NhanNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
+                            ///
+                            lichsuchungtu5.YeuCauCat = true;
+                            lichsuchungtu5.CatNK_MaCN = ctchungtu.CatNK_MaCN5;
+                            lichsuchungtu5.CatNK_DanhBo = ctchungtu.CatNK_DanhBo5;
+                            lichsuchungtu5.CatNK_HoTen = ctchungtu.CatNK_HoTen5;
+                            lichsuchungtu5.CatNK_DiaChi = ctchungtu.CatNK_DiaChi5;
+                            lichsuchungtu5.SoNKNhan = ctchungtu.CatNK_SoNKCat5;
+
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu5.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu5.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu5.NguoiKy = bangiamdoc.HoTen.ToUpper();
+
+                            ThemLichSuChungTu(lichsuchungtu5);
+                        }
+
+
+                        //for (int i = 0; i < lstLichSuChungTu.Count; i++)
+                        //{
+                        //    ///Cập nhật bảng LichSuChungTu
+                        //    lstLichSuChungTu[i].MaCT = ctchungtu.MaCT;
+                        //    lstLichSuChungTu[i].DanhBo = ctchungtu.DanhBo;
+                        //    lstLichSuChungTu[i].SoNKTong = chungtuCN.SoNKTong;
+                        //    lstLichSuChungTu[i].SoNKDangKy = ctchungtu.SoNKDangKy;
+                        //    lstLichSuChungTu[i].SoNKConLai = chungtuCN.SoNKConLai;
+                        //    lstLichSuChungTu[i].ThoiHan = ctchungtu.ThoiHan;
+                        //    lstLichSuChungTu[i].NgayHetHan = ctchungtu.NgayHetHan;
+                        //    ///
+                        //    lstLichSuChungTu[i].SoPhieu = getMaxNextSoPhieuLSCT();
+                        //    switch (i)
+                        //    {
+                        //        case 0:
+                        //            ctchungtu.SoPhieu2 = lstLichSuChungTu[i].SoPhieu;
+                        //            break;
+                        //        case 1:
+                        //            ctchungtu.SoPhieu3 = lstLichSuChungTu[i].SoPhieu;
+                        //            break;
+                        //        case 2:
+                        //            ctchungtu.SoPhieu4 = lstLichSuChungTu[i].SoPhieu;
+                        //            break;
+                        //        case 3:
+                        //            ctchungtu.SoPhieu5 = lstLichSuChungTu[i].SoPhieu;
+                        //            break;
+                        //    }
+                            
+                        //    lstLichSuChungTu[i].NhanDM = true;
+                        //    lstLichSuChungTu[i].YCCat = true;
+
+                        //    lstLichSuChungTu[i].CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                        //    lstLichSuChungTu[i].CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                        //    lstLichSuChungTu[i].CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                        //    lstLichSuChungTu[i].CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                        //    lstLichSuChungTu[i].SoNKNhan = ctchungtu.CatNK_SoNKCat;
+                        //    CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                        //    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        //    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        //        lstLichSuChungTu[i].ChucVu = "GIÁM ĐỐC";
+                        //    else
+                        //        lstLichSuChungTu[i].ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        //    lstLichSuChungTu[i].NguoiKy = bangiamdoc.HoTen.ToUpper();
+
+                        //    ThemLichSuChungTu(lstLichSuChungTu[i]);
+                        //}
                         //MessageBox.Show("Thành công Thêm ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
@@ -796,8 +949,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                     ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                     flagEdited = true;
                 }
-                if (chungtu.YeuCauCat != chungtuCN.YeuCauCat || ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
-                    if (chungtu.YeuCauCat || ctchungtu.YeuCauCat)
+                if (ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
+                    if (ctchungtu.YeuCauCat)
                     {
                         //chungtuCN.YeuCauCat = true;
                         //chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
@@ -835,7 +988,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ///
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
                             ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
-                            lichsuchungtu.NhanDM = true;
+                            lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
                             lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
@@ -914,13 +1067,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                         MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
-                /////Kiểm tra Địa Chỉ có thay đổi hay không
-                //if (chungtuCN.DiaChi != chungtu.DiaChi)
-                //{
-                //    chungtuCN.DiaChi = chungtu.DiaChi;
-                //    chungtuCN.ModifyDate = DateTime.Now;
-                //    chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
-                //}
+                ///Kiểm tra Địa Chỉ có thay đổi hay không
+                if (chungtuCN.DiaChi != chungtu.DiaChi)
+                {
+                    chungtuCN.DiaChi = chungtu.DiaChi;
+                    chungtuCN.ModifyDate = DateTime.Now;
+                    chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                }
 
                 ///Cập Nhật bảng CTChungTu khi thay đổi Số Nhân Khẩu đăng ký (frmSoDK)
                 CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
@@ -962,8 +1115,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                     ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                     flagEdited = true;
                 }
-                if (chungtu.YeuCauCat != chungtuCN.YeuCauCat || ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
-                    if (chungtu.YeuCauCat || ctchungtu.YeuCauCat)
+                if (ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
+                    if (ctchungtu.YeuCauCat)
                     {
                         //chungtuCN.YeuCauCat = true;
                         //chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
@@ -1001,7 +1154,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ///
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
                             ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
-                            lichsuchungtu.NhanDM = true;
+                            lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
                             lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
@@ -1020,13 +1173,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                     }
                     else
                     {
-                        chungtuCN.YeuCauCat = false;
                         ctchungtuCN.YeuCauCat = false;
                     }
 
                 #region Yêu Cầu Cắt 2,3,4,5
 
-                if (ctchungtu.YeuCauCat2)
+                if (ctchungtu.YeuCauCat2 != ctchungtuCN.YeuCauCat2)
+                    if (ctchungtu.YeuCauCat2)
                     {
                         ctchungtuCN.YeuCauCat2 = true;
                         ctchungtuCN.CatNK_MaCN2 = ctchungtu.CatNK_MaCN2;
@@ -1057,7 +1210,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ///
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
                             ctchungtu.SoPhieu2 = lichsuchungtu.SoPhieu;
-                            lichsuchungtu.NhanDM = true;
+                            lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN2;
                             lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo2;
@@ -1079,164 +1232,167 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ctchungtuCN.YeuCauCat2 = false;
                     }
 
-                if (ctchungtu.YeuCauCat3)
-                {
-                    ctchungtuCN.YeuCauCat3 = true;
-                    ctchungtuCN.CatNK_MaCN3 = ctchungtu.CatNK_MaCN3;
-                    ctchungtuCN.CatNK_DanhBo3 = ctchungtu.CatNK_DanhBo3;
-                    ctchungtuCN.CatNK_HoTen3 = ctchungtu.CatNK_HoTen3;
-                    ctchungtuCN.CatNK_DiaChi3 = ctchungtu.CatNK_DiaChi3;
-                    ctchungtuCN.CatNK_SoNKCat3 = ctchungtu.CatNK_SoNKCat3;
-                    ///
-                    if (ctchungtuCN.SoPhieu3.HasValue)
+                if (ctchungtu.YeuCauCat3 != ctchungtuCN.YeuCauCat3)
+                    if (ctchungtu.YeuCauCat3)
                     {
-                        LichSuChungTu lichsuchungtuCN3 = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu3.Value);
-                        lichsuchungtuCN3.CatNK_MaCN = ctchungtu.CatNK_MaCN3;
-                        lichsuchungtuCN3.CatNK_DanhBo = ctchungtu.CatNK_DanhBo3;
-                        lichsuchungtuCN3.CatNK_HoTen = ctchungtu.CatNK_HoTen3;
-                        lichsuchungtuCN3.CatNK_DiaChi = ctchungtu.CatNK_DiaChi3;
-                        lichsuchungtuCN3.SoNKNhan = ctchungtu.CatNK_SoNKCat3;
-                        SuaLichSuChungTu(lichsuchungtuCN3);
+                        ctchungtuCN.YeuCauCat3 = true;
+                        ctchungtuCN.CatNK_MaCN3 = ctchungtu.CatNK_MaCN3;
+                        ctchungtuCN.CatNK_DanhBo3 = ctchungtu.CatNK_DanhBo3;
+                        ctchungtuCN.CatNK_HoTen3 = ctchungtu.CatNK_HoTen3;
+                        ctchungtuCN.CatNK_DiaChi3 = ctchungtu.CatNK_DiaChi3;
+                        ctchungtuCN.CatNK_SoNKCat3 = ctchungtu.CatNK_SoNKCat3;
+                        ///
+                        if (ctchungtuCN.SoPhieu3.HasValue)
+                        {
+                            LichSuChungTu lichsuchungtuCN3 = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu3.Value);
+                            lichsuchungtuCN3.CatNK_MaCN = ctchungtu.CatNK_MaCN3;
+                            lichsuchungtuCN3.CatNK_DanhBo = ctchungtu.CatNK_DanhBo3;
+                            lichsuchungtuCN3.CatNK_HoTen = ctchungtu.CatNK_HoTen3;
+                            lichsuchungtuCN3.CatNK_DiaChi = ctchungtu.CatNK_DiaChi3;
+                            lichsuchungtuCN3.SoNKNhan = ctchungtu.CatNK_SoNKCat3;
+                            SuaLichSuChungTu(lichsuchungtuCN3);
+                        }
+                        else
+                        {
+                            lichsuchungtu.MaCT = ctchungtu.MaCT;
+                            lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                            lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                            ///
+                            lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
+                            ctchungtu.SoPhieu3 = lichsuchungtu.SoPhieu;
+                            lichsuchungtu.YeuCauCat = true;
+
+                            lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN3;
+                            lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo3;
+                            lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen3;
+                            lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi3;
+                            lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat3;
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            ThemLichSuChungTu(lichsuchungtu);
+                        }
                     }
                     else
                     {
-                        lichsuchungtu.MaCT = ctchungtu.MaCT;
-                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
-                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
-                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                        lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                        ///
-                        lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtu.SoPhieu3 = lichsuchungtu.SoPhieu;
-                        lichsuchungtu.NhanDM = true;
-
-                        lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN3;
-                        lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo3;
-                        lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen3;
-                        lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi3;
-                        lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat3;
-                        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            lichsuchungtu.ChucVu = "GIÁM ĐỐC";
-                        else
-                            lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        ThemLichSuChungTu(lichsuchungtu);
+                        ctchungtuCN.YeuCauCat3 = false;
                     }
-                }
-                else
-                {
-                    ctchungtuCN.YeuCauCat3 = false;
-                }
 
-                if (ctchungtu.YeuCauCat4)
-                {
-                    ctchungtuCN.YeuCauCat4 = true;
-                    ctchungtuCN.CatNK_MaCN4 = ctchungtu.CatNK_MaCN4;
-                    ctchungtuCN.CatNK_DanhBo4 = ctchungtu.CatNK_DanhBo4;
-                    ctchungtuCN.CatNK_HoTen4 = ctchungtu.CatNK_HoTen4;
-                    ctchungtuCN.CatNK_DiaChi4 = ctchungtu.CatNK_DiaChi4;
-                    ctchungtuCN.CatNK_SoNKCat4 = ctchungtu.CatNK_SoNKCat4;
-                    ///
-                    if (ctchungtuCN.SoPhieu4.HasValue)
+                if (ctchungtu.YeuCauCat4 != ctchungtuCN.YeuCauCat4)
+                    if (ctchungtu.YeuCauCat4)
                     {
-                        LichSuChungTu lichsuchungtuCN4 = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu4.Value);
-                        lichsuchungtuCN4.CatNK_MaCN = ctchungtu.CatNK_MaCN4;
-                        lichsuchungtuCN4.CatNK_DanhBo = ctchungtu.CatNK_DanhBo4;
-                        lichsuchungtuCN4.CatNK_HoTen = ctchungtu.CatNK_HoTen4;
-                        lichsuchungtuCN4.CatNK_DiaChi = ctchungtu.CatNK_DiaChi4;
-                        lichsuchungtuCN4.SoNKNhan = ctchungtu.CatNK_SoNKCat4;
-                        SuaLichSuChungTu(lichsuchungtuCN4);
+                        ctchungtuCN.YeuCauCat4 = true;
+                        ctchungtuCN.CatNK_MaCN4 = ctchungtu.CatNK_MaCN4;
+                        ctchungtuCN.CatNK_DanhBo4 = ctchungtu.CatNK_DanhBo4;
+                        ctchungtuCN.CatNK_HoTen4 = ctchungtu.CatNK_HoTen4;
+                        ctchungtuCN.CatNK_DiaChi4 = ctchungtu.CatNK_DiaChi4;
+                        ctchungtuCN.CatNK_SoNKCat4 = ctchungtu.CatNK_SoNKCat4;
+                        ///
+                        if (ctchungtuCN.SoPhieu4.HasValue)
+                        {
+                            LichSuChungTu lichsuchungtuCN4 = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu4.Value);
+                            lichsuchungtuCN4.CatNK_MaCN = ctchungtu.CatNK_MaCN4;
+                            lichsuchungtuCN4.CatNK_DanhBo = ctchungtu.CatNK_DanhBo4;
+                            lichsuchungtuCN4.CatNK_HoTen = ctchungtu.CatNK_HoTen4;
+                            lichsuchungtuCN4.CatNK_DiaChi = ctchungtu.CatNK_DiaChi4;
+                            lichsuchungtuCN4.SoNKNhan = ctchungtu.CatNK_SoNKCat4;
+                            SuaLichSuChungTu(lichsuchungtuCN4);
+                        }
+                        else
+                        {
+                            lichsuchungtu.MaCT = ctchungtu.MaCT;
+                            lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                            lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                            ///
+                            lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
+                            ctchungtu.SoPhieu4 = lichsuchungtu.SoPhieu;
+                            lichsuchungtu.YeuCauCat = true;
+
+                            lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN4;
+                            lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo4;
+                            lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen4;
+                            lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi4;
+                            lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat4;
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            ThemLichSuChungTu(lichsuchungtu);
+                        }
                     }
                     else
                     {
-                        lichsuchungtu.MaCT = ctchungtu.MaCT;
-                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
-                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
-                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                        lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                        ///
-                        lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtu.SoPhieu4 = lichsuchungtu.SoPhieu;
-                        lichsuchungtu.NhanDM = true;
-
-                        lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN4;
-                        lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo4;
-                        lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen4;
-                        lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi4;
-                        lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat4;
-                        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            lichsuchungtu.ChucVu = "GIÁM ĐỐC";
-                        else
-                            lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        ThemLichSuChungTu(lichsuchungtu);
+                        ctchungtuCN.YeuCauCat4 = false;
                     }
-                }
-                else
-                {
-                    ctchungtuCN.YeuCauCat4 = false;
-                }
 
-                if (ctchungtu.YeuCauCat5)
-                {
-                    ctchungtuCN.YeuCauCat5 = true;
-                    ctchungtuCN.CatNK_MaCN5 = ctchungtu.CatNK_MaCN5;
-                    ctchungtuCN.CatNK_DanhBo5 = ctchungtu.CatNK_DanhBo5;
-                    ctchungtuCN.CatNK_HoTen5 = ctchungtu.CatNK_HoTen5;
-                    ctchungtuCN.CatNK_DiaChi5 = ctchungtu.CatNK_DiaChi5;
-                    ctchungtuCN.CatNK_SoNKCat5 = ctchungtu.CatNK_SoNKCat5;
-                    ///
-                    if (ctchungtuCN.SoPhieu5.HasValue)
+                if (ctchungtu.YeuCauCat5 != ctchungtuCN.YeuCauCat5)
+                    if (ctchungtu.YeuCauCat5)
                     {
-                        LichSuChungTu lichsuchungtuCN5 = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu5.Value);
-                        lichsuchungtuCN5.CatNK_MaCN = ctchungtu.CatNK_MaCN5;
-                        lichsuchungtuCN5.CatNK_DanhBo = ctchungtu.CatNK_DanhBo5;
-                        lichsuchungtuCN5.CatNK_HoTen = ctchungtu.CatNK_HoTen5;
-                        lichsuchungtuCN5.CatNK_DiaChi = ctchungtu.CatNK_DiaChi5;
-                        lichsuchungtuCN5.SoNKNhan = ctchungtu.CatNK_SoNKCat5;
-                        SuaLichSuChungTu(lichsuchungtuCN5);
+                        ctchungtuCN.YeuCauCat5 = true;
+                        ctchungtuCN.CatNK_MaCN5 = ctchungtu.CatNK_MaCN5;
+                        ctchungtuCN.CatNK_DanhBo5 = ctchungtu.CatNK_DanhBo5;
+                        ctchungtuCN.CatNK_HoTen5 = ctchungtu.CatNK_HoTen5;
+                        ctchungtuCN.CatNK_DiaChi5 = ctchungtu.CatNK_DiaChi5;
+                        ctchungtuCN.CatNK_SoNKCat5 = ctchungtu.CatNK_SoNKCat5;
+                        ///
+                        if (ctchungtuCN.SoPhieu5.HasValue)
+                        {
+                            LichSuChungTu lichsuchungtuCN5 = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu5.Value);
+                            lichsuchungtuCN5.CatNK_MaCN = ctchungtu.CatNK_MaCN5;
+                            lichsuchungtuCN5.CatNK_DanhBo = ctchungtu.CatNK_DanhBo5;
+                            lichsuchungtuCN5.CatNK_HoTen = ctchungtu.CatNK_HoTen5;
+                            lichsuchungtuCN5.CatNK_DiaChi = ctchungtu.CatNK_DiaChi5;
+                            lichsuchungtuCN5.SoNKNhan = ctchungtu.CatNK_SoNKCat5;
+                            SuaLichSuChungTu(lichsuchungtuCN5);
+                        }
+                        else
+                        {
+                            lichsuchungtu.MaCT = ctchungtu.MaCT;
+                            lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                            lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                            lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                            lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                            ///
+                            lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
+                            ctchungtu.SoPhieu5 = lichsuchungtu.SoPhieu;
+                            lichsuchungtu.YeuCauCat = true;
+
+                            lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN5;
+                            lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo5;
+                            lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen5;
+                            lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi5;
+                            lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat5;
+                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            ThemLichSuChungTu(lichsuchungtu);
+                        }
                     }
                     else
                     {
-                        lichsuchungtu.MaCT = ctchungtu.MaCT;
-                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
-                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
-                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                        lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                        ///
-                        lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtu.SoPhieu5 = lichsuchungtu.SoPhieu;
-                        lichsuchungtu.NhanDM = true;
-
-                        lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN5;
-                        lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo5;
-                        lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen5;
-                        lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi5;
-                        lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat5;
-                        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            lichsuchungtu.ChucVu = "GIÁM ĐỐC";
-                        else
-                            lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        ThemLichSuChungTu(lichsuchungtu);
+                        ctchungtuCN.YeuCauCat5 = false;
                     }
-                }
-                else
-                {
-                    ctchungtuCN.YeuCauCat5 = false;
-                }
 
                 #endregion
 

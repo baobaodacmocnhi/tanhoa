@@ -264,19 +264,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            ///Hiện tại nếu check SoChinh mà exit bằng X thì dữ liệu không được lưu
+            ///Hiện tại nếu check Cat mà exit bằng X thì dữ liệu không được lưu
             ///Sau khi check phải check qua chỗ khác mới lưu
             CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
-            if (bool.Parse(dgvDSSoDangKy["SoChinh", e.RowIndex].Value.ToString()) != ctchungtu.SoChinh)
+            if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.SoChinh)
             {
-                ctchungtu.SoChinh = bool.Parse(dgvDSSoDangKy["SoChinh", e.RowIndex].Value.ToString());
+                ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
                 _cChungTu.SuaCTChungTu(ctchungtu);
             }
-
-            //if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) == true)
-            //    ctchungtu.Cat = true;
-            //else
-            //    ctchungtu.Cat = false;
+            if (dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString() != ctchungtu.DienThoai)
+            {
+                ctchungtu.DienThoai = dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString();
+                _cChungTu.SuaCTChungTu(ctchungtu);
+            }
 
             this.ControlBox = true;
             contextMenuStrip1.Enabled = true;
