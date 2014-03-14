@@ -69,6 +69,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
+            txtMSThue.Text = "";
             //cmbNVKiemTra.SelectedIndex = 0;
 
             chkCT_HoaDon.Checked = false;
@@ -147,7 +148,17 @@ namespace KTKS_DonKH.GUI.KhachHang
                     Nam = ttkhachhang.Nam;
                 }
                 else
+                {
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtDanhBo.Text = "";
+                    txtHopDong.Text = "";
+                    txtDienThoai.Text = "";
+                    txtHoTen.Text = "";
+                    txtDiaChi.Text = "";
+                    txtGiaBieu.Text = "";
+                    txtDinhMuc.Text = "";
+                    txtMSThue.Text = "";
+                }
             }
         }
 

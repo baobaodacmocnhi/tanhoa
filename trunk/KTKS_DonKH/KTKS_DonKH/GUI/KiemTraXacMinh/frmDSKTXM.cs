@@ -26,6 +26,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         DataTable DSKTXM_Edited = new DataTable();
         CDCBD _cDCBD = new CDCBD();
         BindingSource DSDonKH_BS;
+        DataRowView _CTRow = null;
 
         public frmDSKTXM()
         {
@@ -115,11 +116,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (radDSKTXM.Checked)
             {
                 DSDonKH_BS = new BindingSource();
-                if(CTaiKhoan.RoleQLKTXM_Xem||CTaiKhoan.RoleQLKTXM_CapNhat)
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
                 else
-
-                DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
                 dgvDSCTKTXM.DataSource = DSDonKH_BS;
                 dgvDSCTKTXM.Visible = true;
                 gridControl.Visible = false;
@@ -255,7 +255,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (dgvDSCTKTXM.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
                 frmShowKTXM frm = new frmShowKTXM(decimal.Parse(dgvDSCTKTXM["MaCTKTXM", dgvDSCTKTXM.CurrentRow.Index].Value.ToString()));
-                    frm.ShowDialog();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                        DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
+                    else
+                        DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
+                }
+
             }
         }
 
@@ -347,8 +354,17 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-            DSDonKH_BS.Filter = expression;
+            if (radDaDuyet.Checked)
+            {
+                string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+                DSDonKH_BS.Filter = expression;
+            }
+            else
+                if (radDSKTXM.Checked)
+                {
+                    string expression = String.Format("NgayKTXM >= #{0:yyyy-MM-dd} 00:00:00# and NgayKTXM < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+                    DSDonKH_BS.Filter = expression;
+                }
         }
 
         private void gridViewKTXM_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
@@ -407,6 +423,27 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             ktxm.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
             _cKTXM.SuaKTXM(ktxm);
         }
+
+        private void gridViewCTKTXM_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewCTKTXM_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowKTXM frm = new frmShowKTXM(decimal.Parse(_CTRow.Row["MaCTKTXM"].ToString()));
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                        DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
+                }
+            }
+        }
+
+        
 
     }
 }

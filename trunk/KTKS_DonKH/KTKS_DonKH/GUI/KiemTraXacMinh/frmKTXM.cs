@@ -18,7 +18,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
     {
         Dictionary<string, string> _source = new Dictionary<string, string>();
         DonKH _donkh = null;
-        TTKhachHang _ttkhachhang = new TTKhachHang();
+        TTKhachHang _ttkhachhang = null;
         CDonKH _cDonKH = new CDonKH();
         CTTKH _cTTKH = new CTTKH();
         CKTXM _cKTXM = new CKTXM();
@@ -220,7 +220,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             //_cDonKH.SuaDonKH(_donkh, true);
                         }
                     }
-                    if (_cKTXM.CheckCTKTXMbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                    if (_cKTXM.CheckCTKTXMbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(),dateKTXM.Value))
                     {
                         MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -283,9 +283,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.DiaChi = txtDiaChi.Text.Trim();
                     ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
                     ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
-                    ctktxm.Dot = _ttkhachhang.Dot;
-                    ctktxm.Ky = _ttkhachhang.Ky;
-                    ctktxm.Nam = _ttkhachhang.Nam;
+                    if (_ttkhachhang != null)
+                    {
+                        ctktxm.Dot = _ttkhachhang.Dot;
+                        ctktxm.Ky = _ttkhachhang.Ky;
+                        ctktxm.Nam = _ttkhachhang.Nam;
+                    }
                     ///
                     ctktxm.NgayKTXM = dateKTXM.Value;
                     ctktxm.Hieu = txtHieu.Text.Trim();
