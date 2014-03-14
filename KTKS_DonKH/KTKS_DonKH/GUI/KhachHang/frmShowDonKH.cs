@@ -137,6 +137,18 @@ namespace KTKS_DonKH.GUI.KhachHang
                     //Ky = ttkhachhang.Ky;
                     //Nam = ttkhachhang.Nam;
                 }
+                else
+                {
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtDanhBo.Text = "";
+                    txtHopDong.Text = "";
+                    txtDienThoai.Text = "";
+                    txtHoTen.Text = "";
+                    txtDiaChi.Text = "";
+                    txtGiaBieu.Text = "";
+                    txtDinhMuc.Text = "";
+                    txtMSThue.Text = "";
+                }
             }
         }
 

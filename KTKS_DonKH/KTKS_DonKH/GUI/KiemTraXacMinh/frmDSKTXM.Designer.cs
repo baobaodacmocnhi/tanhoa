@@ -59,7 +59,7 @@
             this.dgvDSCTKTXM = new System.Windows.Forms.DataGridView();
             this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,7 +101,9 @@
             this.gridViewCTKTXM.OptionsBehavior.AutoPopulateColumns = false;
             this.gridViewCTKTXM.OptionsView.ColumnAutoWidth = false;
             this.gridViewCTKTXM.OptionsView.ShowGroupPanel = false;
+            this.gridViewCTKTXM.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewCTKTXM_RowCellClick);
             this.gridViewCTKTXM.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTKTXM_CustomColumnDisplayText);
+            this.gridViewCTKTXM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewCTKTXM_KeyDown);
             // 
             // gridColumn14
             // 
@@ -116,7 +118,7 @@
             // gridColumn15
             // 
             this.gridColumn15.Caption = "Ngày Lập";
-            this.gridColumn15.FieldName = "CreateDate";
+            this.gridColumn15.FieldName = "NgayKTXM";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
@@ -395,7 +397,7 @@
             this.dgvDSCTKTXM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
             this.MaDon,
-            this.CreateDate,
+            this.NgayKTXM,
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
@@ -429,13 +431,13 @@
             this.MaDon.ReadOnly = true;
             this.MaDon.Width = 90;
             // 
-            // CreateDate
+            // NgayKTXM
             // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Nhập";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 110;
+            this.NgayKTXM.DataPropertyName = "NgayKTXM";
+            this.NgayKTXM.HeaderText = "Ngày Nhập";
+            this.NgayKTXM.Name = "NgayKTXM";
+            this.NgayKTXM.ReadOnly = true;
+            this.NgayKTXM.Width = 110;
             // 
             // DanhBo
             // 
@@ -620,7 +622,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTKTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayKTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;

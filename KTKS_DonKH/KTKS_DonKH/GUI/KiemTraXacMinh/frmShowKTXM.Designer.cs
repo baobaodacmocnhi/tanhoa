@@ -73,8 +73,8 @@
             this.label21 = new System.Windows.Forms.Label();
             this.dgvDSKetQuaKiemTra = new System.Windows.Forms.DataGridView();
             this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
@@ -134,8 +134,9 @@
             // 
             this.txtMaDon.Location = new System.Drawing.Point(400, 6);
             this.txtMaDon.Name = "txtMaDon";
+            this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(100, 26);
-            this.txtMaDon.TabIndex = 34;
+            this.txtMaDon.TabIndex = 0;
             // 
             // NguoiDi
             // 
@@ -187,7 +188,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 174);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1268, 163);
-            this.groupBox2.TabIndex = 35;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
             // 
@@ -408,7 +409,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 38);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(691, 130);
-            this.groupBox1.TabIndex = 39;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
             // 
@@ -434,6 +435,7 @@
             this.txtDanhBo.Name = "txtDanhBo";
             this.txtDanhBo.Size = new System.Drawing.Size(150, 26);
             this.txtDanhBo.TabIndex = 15;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // label2
             // 
@@ -475,7 +477,8 @@
             this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 343);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
             this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(765, 150);
-            this.dgvDSKetQuaKiemTra.TabIndex = 40;
+            this.dgvDSKetQuaKiemTra.TabIndex = 4;
+            this.dgvDSKetQuaKiemTra.Visible = false;
             // 
             // MaCTKTXM
             // 
@@ -484,18 +487,6 @@
             this.MaCTKTXM.Name = "MaCTKTXM";
             this.MaCTKTXM.Visible = false;
             // 
-            // btnThem
-            // 
-            this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
-            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(822, 343);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(76, 35);
-            this.btnThem.TabIndex = 36;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThem.UseVisualStyleBackColor = true;
-            // 
             // btnSua
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
@@ -503,23 +494,38 @@
             this.btnSua.Location = new System.Drawing.Point(1202, 343);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(65, 35);
-            this.btnSua.TabIndex = 37;
+            this.btnSua.TabIndex = 2;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(1023, 344);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(68, 35);
+            this.btnXoa.TabIndex = 3;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmShowKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1298, 551);
+            this.ClientSize = new System.Drawing.Size(1298, 389);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.txtMaDon);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.dgvDSKetQuaKiemTra);
-            this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnSua);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -582,7 +588,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DataGridView dgvDSKetQuaKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTKTXM;
-        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
