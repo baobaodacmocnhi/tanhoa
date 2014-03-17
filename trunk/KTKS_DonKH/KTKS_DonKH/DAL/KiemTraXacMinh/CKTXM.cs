@@ -258,6 +258,77 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public DataSet LoadDSKTXMDaDuyet_TXL()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                {
+                    DataSet ds = new DataSet();
+                    ///Table KTXM
+                    var queryKTXM = from itemKTXM in db.KTXMs
+                                    join itemDonTXL in db.DonTXLs on itemKTXM.MaDon equals itemDonTXL.MaDon
+                                    join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                    orderby itemDonTXL.MaDon ascending
+                                    select new
+                                    {
+                                        itemKTXM.ToXuLy,
+                                        itemDonTXL.MaDon,
+                                        itemLoaiDonTXL.TenLD,
+                                        itemDonTXL.CreateDate,
+                                        itemDonTXL.DanhBo,
+                                        itemDonTXL.HoTen,
+                                        itemDonTXL.DiaChi,
+                                        itemDonTXL.NoiDung,
+                                        MaNoiChuyenDen = itemKTXM.MaNoiChuyenDen,
+                                        NoiChuyenDen = itemKTXM.NoiChuyenDen,
+                                        LyDoChuyenDen = itemKTXM.LyDoChuyenDen,
+                                        itemKTXM.MaKTXM,
+                                        NgayXuLy = itemKTXM.CreateDate,
+                                        itemKTXM.KetQua,
+                                        itemKTXM.MaChuyen,
+                                        LyDoChuyenDi = itemKTXM.LyDoChuyen,
+                                    };
+                    DataTable dtKTXM = new DataTable();
+                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                    dtKTXM.TableName = "KTXM";
+                    ds.Tables.Add(dtKTXM);
+
+                    ///Table CTKTXM
+                    var queryCTKTXM = from itemCTKTXM in db.CTKTXMs
+                                      join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                      select new
+                                      {
+                                          itemCTKTXM.MaKTXM,
+                                          itemCTKTXM.MaCTKTXM,
+                                          itemCTKTXM.NgayKTXM,
+                                          itemCTKTXM.DanhBo,
+                                          itemCTKTXM.NoiDungKiemTra,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    DataTable dtCTKTXM = new DataTable();
+                    dtCTKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTKTXM);
+                    dtCTKTXM.TableName = "CTKTXM";
+                    ds.Tables.Add(dtCTKTXM);
+
+                    if (dtKTXM.Rows.Count > 0 && dtCTKTXM.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh", ds.Tables["KTXM"].Columns["MaKTXM"], ds.Tables["CTKTXM"].Columns["MaKTXM"]);
+                    return ds;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSKTXMChuaDuyet()
         {
             try
@@ -367,6 +438,27 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         }
 
         /// <summary>
+        /// Kiểm tra Đơn Tổ Xử Lý có được KTXM xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns>true/có</returns>
+        public bool CheckKTMXbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (db.KTXMs.Any(itemKTXM => itemKTXM.MaDonTXL == MaDonTXL))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Lấy KTXM bằng MaDon
         /// </summary>
         /// <param name="MaDon"></param>
@@ -376,6 +468,24 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             try
             {
                 return db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy KTXM bằng MaDon Tổ Xử Lý
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns></returns>
+        public KTXM getKTXMbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                return db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDonTXL == MaDonTXL);
             }
             catch (Exception ex)
             {
@@ -421,6 +531,42 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 {
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.KTXM.MaDon,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    itemCTKTXM.NgayKTXM,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTKTXM_TXL()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                {
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                orderby itemCTKTXM.KTXM.MaDonTXL ascending
+                                select new
+                                {
+                                    itemCTKTXM.MaCTKTXM,
+                                    itemCTKTXM.KTXM.ToXuLy,
+                                    itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.HoTen,
                                     itemCTKTXM.DiaChi,
@@ -520,8 +666,45 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public DataTable LoadDSCTKTXM_TXL(int MaUser)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
+                {
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                where itemCTKTXM.CreateBy == MaUser
+                                orderby itemCTKTXM.KTXM.MaDonTXL ascending
+                                select new
+                                {
+                                    itemCTKTXM.MaCTKTXM,
+                                    itemCTKTXM.KTXM.ToXuLy,
+                                    itemCTKTXM.KTXM.MaDonTXL,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    itemCTKTXM.NgayKTXM,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
-        /// Lấy Danh Sách CTKTXM theo Mã Đơn & User
+        /// Lấy Danh Sách CTKTXM theo Mã Đơn Khách Hàng & User
         /// Nếu User có quyền quản lý KTXM thì được xem hết CTKTXM của Mã Đơn
         /// </summary>
         /// <param name="MaDon"></param>
@@ -567,6 +750,71 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.NoiDungKiemTra,
                                         itemCTKTXM.CreateDate,
                                         CreateBy = itemUser.HoTen,
+                                    };
+                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return null;
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách CTKTXM theo Mã Đơn Tổ Xử Lý & User
+        /// Nếu User có quyền quản lý KTXM thì được xem hết CTKTXM của Mã Đơn
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <param name="MaUser"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTKTXM_TXL(decimal MaDonTXL, int MaUser)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                {
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                where itemCTKTXM.KTXM.MaDonTXL == MaDonTXL
+                                orderby itemCTKTXM.KTXM.MaDonTXL ascending
+                                select new
+                                {
+                                    itemCTKTXM.MaCTKTXM,
+                                    itemCTKTXM.KTXM.MaDonTXL,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    itemCTKTXM.CreateDate,
+                                    CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.KTXM.ToXuLy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                    if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
+                    {
+                        var query = from itemCTKTXM in db.CTKTXMs
+                                    join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                    where itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaUser
+                                    orderby itemCTKTXM.KTXM.MaDonTXL ascending
+                                    select new
+                                    {
+                                        itemCTKTXM.MaCTKTXM,
+                                        itemCTKTXM.KTXM.MaDonTXL,
+                                        itemCTKTXM.DanhBo,
+                                        itemCTKTXM.HoTen,
+                                        itemCTKTXM.DiaChi,
+                                        itemCTKTXM.NoiDungKiemTra,
+                                        itemCTKTXM.CreateDate,
+                                        CreateBy = itemUser.HoTen,
+                                        itemCTKTXM.KTXM.ToXuLy,
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                     }
@@ -697,7 +945,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         }
 
         /// <summary>
-        /// Kiểm tra CTKTXM đã được tạo cho Mã Đơn, Danh Bộ, Cùng Ngày chưa
+        /// Kiểm tra CTKTXM đã được tạo cho Mã Đơn Tổ Khách Hàng, Danh Bộ, Cùng Ngày chưa
         /// </summary>
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
@@ -708,6 +956,26 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             try
             {
                 return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.DanhBo == DanhBo && itemCTKTXM.NgayKTXM == NgayKTXM);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra CTKTXM đã được tạo cho Mã Đơn Tổ Xử Lý, Danh Bộ, Cùng Ngày chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <param name="NgayKTXM"></param>
+        /// <returns></returns>
+        public bool CheckCTKTXMbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo, DateTime NgayKTXM)
+        {
+            try
+            {
+                return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.DanhBo == DanhBo && itemCTKTXM.NgayKTXM == NgayKTXM);
             }
             catch (Exception ex)
             {

@@ -627,7 +627,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (_action == "Thêm" && cmbLoaiCT.SelectedIndex != -1)
             {
-                txtThoiHan.Text = ((KTKS_DonKH.LinQ.LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
+                txtThoiHan.Text = ((LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
             }
         }  
 

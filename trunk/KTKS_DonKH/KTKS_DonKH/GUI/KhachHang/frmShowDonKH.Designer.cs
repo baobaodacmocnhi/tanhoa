@@ -411,7 +411,7 @@
             // 
             this.btnInBienNhan.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnInBienNhan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInBienNhan.Location = new System.Drawing.Point(655, 425);
+            this.btnInBienNhan.Location = new System.Drawing.Point(823, 425);
             this.btnInBienNhan.Name = "btnInBienNhan";
             this.btnInBienNhan.Size = new System.Drawing.Size(122, 35);
             this.btnInBienNhan.TabIndex = 80;
@@ -623,7 +623,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(460, 425);
+            this.btnSua.Location = new System.Drawing.Point(712, 425);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(65, 35);
             this.btnSua.TabIndex = 83;

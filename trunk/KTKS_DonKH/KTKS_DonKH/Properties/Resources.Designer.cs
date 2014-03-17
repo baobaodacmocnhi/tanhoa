@@ -144,6 +144,13 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap forms_48x48_b {
+            get {
+                object obj = ResourceManager.GetObject("forms_48x48_b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap id_home_48x48 {
             get {
                 object obj = ResourceManager.GetObject("id_home_48x48", resourceCulture);
@@ -217,6 +224,13 @@ namespace KTKS_DonKH.Properties {
         internal static System.Drawing.Bitmap my_documents_48x48 {
             get {
                 object obj = ResourceManager.GetObject("my_documents_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap my_documents_48x48_b {
+            get {
+                object obj = ResourceManager.GetObject("my_documents_48x48_b", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

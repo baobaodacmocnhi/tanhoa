@@ -13,8 +13,10 @@ namespace KTKS_DonKH.GUI.CapNhat
 {
     public partial class frmLoaiDon : Form
     {
-        int selectedindex = -1;
-        CLoaiDon _cCapNhatLoaiDon = new CLoaiDon();
+        int _selectedindex = -1;
+        int _selectedindexTXL = -1;
+        CLoaiDon _cLoaiDon = new CLoaiDon();
+        CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
 
         public frmLoaiDon()
         {
@@ -33,15 +35,24 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             txtKyHieuLD.Text = "";
             txtTenLD.Text = "";
-            selectedindex = -1;
-            dgvDSLoaiDon.DataSource = _cCapNhatLoaiDon.LoadDSLoaiDon();
+            _selectedindex = -1;
+            dgvDSLoaiDon.DataSource = _cLoaiDon.LoadDSLoaiDon();
+            ///
+            txtKyHieuLDTXL.Text = "";
+            txtTenLDTXL.Text = "";
+            _selectedindexTXL = -1;
+            dgvDSLoaiDonTXL.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
         }
 
         private void frmCapNhatLoaiDon_Load(object sender, EventArgs e)
         {
             dgvDSLoaiDon.AutoGenerateColumns = false;
             dgvDSLoaiDon.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSLoaiDon.Font, FontStyle.Bold);
-            dgvDSLoaiDon.DataSource = _cCapNhatLoaiDon.LoadDSLoaiDon();
+            dgvDSLoaiDon.DataSource = _cLoaiDon.LoadDSLoaiDon();
+
+            dgvDSLoaiDonTXL.AutoGenerateColumns = false;
+            dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSLoaiDon.Font, FontStyle.Bold);
+            dgvDSLoaiDonTXL.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -52,7 +63,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                 loaidon.KyHieuLD = txtKyHieuLD.Text.Trim();
                 loaidon.TenLD = txtTenLD.Text.Trim();
 
-                if (_cCapNhatLoaiDon.ThemLoaiDon(loaidon))
+                if (_cLoaiDon.ThemLoaiDon(loaidon))
                     Clear();
             }
             else
@@ -61,15 +72,15 @@ namespace KTKS_DonKH.GUI.CapNhat
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (selectedindex != -1)
+            if (_selectedindex != -1)
             {
                 if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
                 {
-                    LoaiDon loaidon = _cCapNhatLoaiDon.getLoaiDonbyID(int.Parse(dgvDSLoaiDon["MaLD", selectedindex].Value.ToString()));
+                    LoaiDon loaidon = _cLoaiDon.getLoaiDonbyID(int.Parse(dgvDSLoaiDon["MaLD", _selectedindex].Value.ToString()));
                     loaidon.KyHieuLD = txtKyHieuLD.Text.Trim();
                     loaidon.TenLD = txtTenLD.Text.Trim();
 
-                    if (_cCapNhatLoaiDon.SuaLoaiDon(loaidon))
+                    if (_cLoaiDon.SuaLoaiDon(loaidon))
                         Clear();
                 }
                 else
@@ -81,7 +92,7 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             try
             {
-                selectedindex = e.RowIndex;
+                _selectedindex = e.RowIndex;
                 txtKyHieuLD.Text = dgvDSLoaiDon["KyHieuLD", e.RowIndex].Value.ToString();
                 txtTenLD.Text = dgvDSLoaiDon["TenLD", e.RowIndex].Value.ToString();
             }
@@ -95,6 +106,60 @@ namespace KTKS_DonKH.GUI.CapNhat
             using (SolidBrush b = new SolidBrush(dgvDSLoaiDon.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSLoaiDonTXL_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _selectedindexTXL = e.RowIndex;
+                txtKyHieuLDTXL.Text = dgvDSLoaiDonTXL["KyHieuLD", e.RowIndex].Value.ToString();
+                txtTenLDTXL.Text = dgvDSLoaiDonTXL["TenLD", e.RowIndex].Value.ToString();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void dgvDSLoaiDonTXL_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSLoaiDonTXL.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void btnThemTXL_Click(object sender, EventArgs e)
+        {
+            if (txtKyHieuLDTXL.Text.Trim() != "" && txtTenLDTXL.Text.Trim() != "")
+            {
+                LoaiDonTXL loaidontxl = new LoaiDonTXL();
+                loaidontxl.KyHieuLD = txtKyHieuLDTXL.Text.Trim();
+                loaidontxl.TenLD = txtTenLDTXL.Text.Trim();
+
+                if (_cLoaiDonTXL.ThemLoaiDonTXL(loaidontxl))
+                    Clear();
+            }
+            else
+                MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSuaTXL_Click(object sender, EventArgs e)
+        {
+            if (_selectedindexTXL != -1)
+            {
+                if (txtKyHieuLDTXL.Text.Trim() != "" && txtTenLDTXL.Text.Trim() != "")
+                {
+                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLD", _selectedindexTXL].Value.ToString()));
+                    loaidontxl.KyHieuLD = txtKyHieuLD.Text.Trim();
+                    loaidontxl.TenLD = txtTenLD.Text.Trim();
+
+                    if (_cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl))
+                        Clear();
+                }
+                else
+                    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

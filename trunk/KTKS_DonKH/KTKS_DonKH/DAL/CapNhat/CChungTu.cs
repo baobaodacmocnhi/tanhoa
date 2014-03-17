@@ -360,7 +360,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             Row["MaLSCT"] = itemRow["MaLSCT"];
                             Row["SoPhieu"] = itemRow["SoPhieu"];
                             if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
-                                Row["SoPhieuDCBD"] = db.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                                Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
                             else
                                 Row["SoPhieuDCBD"] = "";
                             Row["MaCT"] = itemRow["MaCT"];

@@ -315,6 +315,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                           MaDC = itemCTDCBD.MaCTDCBD,
                                           DieuChinh = "Biến Động",
                                           itemCTDCBD.CreateDate,
+                                          itemCTDCBD.ThongTin,
+                                          itemCTDCBD.DCBD.MaDon,
                                       };
                     ///Bảng CTDCHD
                     var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
@@ -324,6 +326,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                           MaDC = itemCTDCHD.MaCTDCHD,
                                           DieuChinh = "Hóa Đơn",
                                           itemCTDCHD.CreateDate,
+                                          itemCTDCHD.DCBD.MaDon,
                                       };
                     DataTable tableCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
                     DataTable tableCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);

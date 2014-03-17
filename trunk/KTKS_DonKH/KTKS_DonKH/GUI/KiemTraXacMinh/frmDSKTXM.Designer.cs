@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewCTKTXM = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,14 +57,6 @@
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.btnLuu = new System.Windows.Forms.Button();
             this.dgvDSCTKTXM = new System.Windows.Forms.DataGridView();
-            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,10 +64,27 @@
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.radDSKTXM = new System.Windows.Forms.RadioButton();
+            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radDaDuyet_TXL = new System.Windows.Forms.RadioButton();
+            this.radDSKTXM_TXL = new System.Windows.Forms.RadioButton();
+            this.radChuaDuyet_TXL = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTKTXM)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridViewCTKTXM
@@ -156,11 +165,11 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTKTXM;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewCTKTXM;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
-            this.gridControl.Location = new System.Drawing.Point(0, 66);
+            gridLevelNode2});
+            this.gridControl.Location = new System.Drawing.Point(0, 68);
             this.gridControl.MainView = this.gridViewKTXM;
             this.gridControl.Name = "gridControl";
             this.gridControl.Size = new System.Drawing.Size(2500, 470);
@@ -186,6 +195,7 @@
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
+            this.gridColumn22,
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8,
@@ -221,7 +231,7 @@
             this.gridColumn1.Caption = "Xếp Đơn";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 13;
+            this.gridColumn1.VisibleIndex = 14;
             // 
             // gridColumn2
             // 
@@ -267,7 +277,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 90;
             // 
             // gridColumn7
@@ -277,7 +287,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.VisibleIndex = 6;
             this.gridColumn7.Width = 130;
             // 
             // gridColumn8
@@ -287,7 +297,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 6;
+            this.gridColumn8.VisibleIndex = 7;
             this.gridColumn8.Width = 110;
             // 
             // gridColumn9
@@ -297,7 +307,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 7;
+            this.gridColumn9.VisibleIndex = 8;
             this.gridColumn9.Width = 90;
             // 
             // gridColumn10
@@ -307,7 +317,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 8;
+            this.gridColumn10.VisibleIndex = 9;
             this.gridColumn10.Width = 250;
             // 
             // gridColumn11
@@ -317,7 +327,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 9;
+            this.gridColumn11.VisibleIndex = 10;
             this.gridColumn11.Width = 250;
             // 
             // gridColumn12
@@ -327,7 +337,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 10;
+            this.gridColumn12.VisibleIndex = 11;
             this.gridColumn12.Width = 250;
             // 
             // gridColumn21
@@ -343,7 +353,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 11;
+            this.gridColumn13.VisibleIndex = 12;
             this.gridColumn13.Width = 200;
             // 
             // gridColumn18
@@ -353,13 +363,13 @@
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 12;
+            this.gridColumn18.VisibleIndex = 13;
             this.gridColumn18.Width = 250;
             // 
             // radDaDuyet
             // 
             this.radDaDuyet.AutoSize = true;
-            this.radDaDuyet.Location = new System.Drawing.Point(12, 12);
+            this.radDaDuyet.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet.Name = "radDaDuyet";
             this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
             this.radDaDuyet.TabIndex = 0;
@@ -385,17 +395,18 @@
             // 
             this.dgvDSCTKTXM.AllowUserToAddRows = false;
             this.dgvDSCTKTXM.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSCTKTXM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSCTKTXM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDSCTKTXM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCTKTXM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
+            this.ToXuLy,
             this.MaDon,
             this.NgayKTXM,
             this.DanhBo,
@@ -407,7 +418,7 @@
             this.dgvDSCTKTXM.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSCTKTXM.MultiSelect = false;
             this.dgvDSCTKTXM.Name = "dgvDSCTKTXM";
-            this.dgvDSCTKTXM.Size = new System.Drawing.Size(1351, 470);
+            this.dgvDSCTKTXM.Size = new System.Drawing.Size(1411, 470);
             this.dgvDSCTKTXM.TabIndex = 7;
             this.dgvDSCTKTXM.Visible = false;
             this.dgvDSCTKTXM.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDSKTXM_CellBeginEdit);
@@ -416,12 +427,93 @@
             this.dgvDSCTKTXM.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonKH_RowPostPaint);
             this.dgvDSCTKTXM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSKTXM_KeyDown);
             // 
+            // radChuaDuyet
+            // 
+            this.radChuaDuyet.AutoSize = true;
+            this.radChuaDuyet.Location = new System.Drawing.Point(6, 42);
+            this.radChuaDuyet.Name = "radChuaDuyet";
+            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet.TabIndex = 1;
+            this.radChuaDuyet.Text = "Chưa Duyệt";
+            this.radChuaDuyet.UseVisualStyleBackColor = true;
+            this.radChuaDuyet.Visible = false;
+            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
+            // 
+            // dateTimKiem
+            // 
+            this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
+            this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimKiem.Location = new System.Drawing.Point(855, 39);
+            this.dateTimKiem.Name = "dateTimKiem";
+            this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
+            this.dateTimKiem.TabIndex = 6;
+            this.dateTimKiem.Visible = false;
+            this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(580, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Tìm Theo:";
+            // 
+            // cmbTimTheo
+            // 
+            this.cmbTimTheo.FormattingEnabled = true;
+            this.cmbTimTheo.Items.AddRange(new object[] {
+            "",
+            "Mã Đơn",
+            "Ngày Lập"});
+            this.cmbTimTheo.Location = new System.Drawing.Point(654, 16);
+            this.cmbTimTheo.Name = "cmbTimTheo";
+            this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
+            this.cmbTimTheo.TabIndex = 3;
+            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
+            // 
+            // txtNoiDungTimKiem
+            // 
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(855, 16);
+            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
+            this.txtNoiDungTimKiem.TabIndex = 5;
+            this.txtNoiDungTimKiem.Visible = false;
+            this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(781, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nội Dung:";
+            // 
+            // radDSKTXM
+            // 
+            this.radDSKTXM.AutoSize = true;
+            this.radDSKTXM.Location = new System.Drawing.Point(105, 18);
+            this.radDSKTXM.Name = "radDSKTXM";
+            this.radDSKTXM.Size = new System.Drawing.Size(138, 21);
+            this.radDSKTXM.TabIndex = 10;
+            this.radDSKTXM.Text = "Danh Sách KTXM";
+            this.radDSKTXM.UseVisualStyleBackColor = true;
+            this.radDSKTXM.CheckedChanged += new System.EventHandler(this.radDSKTXM_CheckedChanged);
+            // 
             // MaCTKTXM
             // 
             this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
             this.MaCTKTXM.HeaderText = "MaCTKTXM";
             this.MaCTKTXM.Name = "MaCTKTXM";
             this.MaCTKTXM.Visible = false;
+            // 
+            // ToXuLy
+            // 
+            this.ToXuLy.DataPropertyName = "ToXuLy";
+            this.ToXuLy.HeaderText = "TXL";
+            this.ToXuLy.Name = "ToXuLy";
+            this.ToXuLy.Width = 50;
             // 
             // MaDon
             // 
@@ -478,79 +570,71 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Width = 150;
             // 
-            // radChuaDuyet
+            // gridColumn22
             // 
-            this.radChuaDuyet.AutoSize = true;
-            this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
-            this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuaDuyet.TabIndex = 1;
-            this.radChuaDuyet.Text = "Chưa Duyệt";
-            this.radChuaDuyet.UseVisualStyleBackColor = true;
-            this.radChuaDuyet.Visible = false;
-            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
+            this.gridColumn22.Caption = "TXL";
+            this.gridColumn22.FieldName = "ToXuLy";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 4;
+            this.gridColumn22.Width = 50;
             // 
-            // dateTimKiem
+            // groupBox1
             // 
-            this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
-            this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(577, 35);
-            this.dateTimKiem.Name = "dateTimKiem";
-            this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
-            this.dateTimKiem.TabIndex = 6;
-            this.dateTimKiem.Visible = false;
-            this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
+            this.groupBox1.Controls.Add(this.radDaDuyet);
+            this.groupBox1.Controls.Add(this.radDSKTXM);
+            this.groupBox1.Controls.Add(this.radChuaDuyet);
+            this.groupBox1.Location = new System.Drawing.Point(12, 1);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(245, 65);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tổ Khách Hàng";
             // 
-            // label2
+            // groupBox2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(302, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Tìm Theo:";
+            this.groupBox2.Controls.Add(this.radDaDuyet_TXL);
+            this.groupBox2.Controls.Add(this.radDSKTXM_TXL);
+            this.groupBox2.Controls.Add(this.radChuaDuyet_TXL);
+            this.groupBox2.Location = new System.Drawing.Point(263, 1);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(245, 65);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tổ Xử Lý";
             // 
-            // cmbTimTheo
+            // radDaDuyet_TXL
             // 
-            this.cmbTimTheo.FormattingEnabled = true;
-            this.cmbTimTheo.Items.AddRange(new object[] {
-            "",
-            "Mã Đơn",
-            "Ngày Lập"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(376, 12);
-            this.cmbTimTheo.Name = "cmbTimTheo";
-            this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
-            this.cmbTimTheo.TabIndex = 3;
-            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
+            this.radDaDuyet_TXL.AutoSize = true;
+            this.radDaDuyet_TXL.Location = new System.Drawing.Point(6, 18);
+            this.radDaDuyet_TXL.Name = "radDaDuyet_TXL";
+            this.radDaDuyet_TXL.Size = new System.Drawing.Size(84, 21);
+            this.radDaDuyet_TXL.TabIndex = 0;
+            this.radDaDuyet_TXL.Text = "Đã Duyệt";
+            this.radDaDuyet_TXL.UseVisualStyleBackColor = true;
+            this.radDaDuyet_TXL.CheckedChanged += new System.EventHandler(this.radDaDuyet_TXL_CheckedChanged);
             // 
-            // txtNoiDungTimKiem
+            // radDSKTXM_TXL
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(577, 12);
-            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
-            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
-            this.txtNoiDungTimKiem.TabIndex = 5;
-            this.txtNoiDungTimKiem.Visible = false;
-            this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
+            this.radDSKTXM_TXL.AutoSize = true;
+            this.radDSKTXM_TXL.Location = new System.Drawing.Point(105, 18);
+            this.radDSKTXM_TXL.Name = "radDSKTXM_TXL";
+            this.radDSKTXM_TXL.Size = new System.Drawing.Size(138, 21);
+            this.radDSKTXM_TXL.TabIndex = 10;
+            this.radDSKTXM_TXL.Text = "Danh Sách KTXM";
+            this.radDSKTXM_TXL.UseVisualStyleBackColor = true;
+            this.radDSKTXM_TXL.CheckedChanged += new System.EventHandler(this.radDSKTXM_TXL_CheckedChanged);
             // 
-            // label1
+            // radChuaDuyet_TXL
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(503, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Nội Dung:";
-            // 
-            // radDSKTXM
-            // 
-            this.radDSKTXM.AutoSize = true;
-            this.radDSKTXM.Location = new System.Drawing.Point(127, 12);
-            this.radDSKTXM.Name = "radDSKTXM";
-            this.radDSKTXM.Size = new System.Drawing.Size(138, 21);
-            this.radDSKTXM.TabIndex = 10;
-            this.radDSKTXM.Text = "Danh Sách KTXM";
-            this.radDSKTXM.UseVisualStyleBackColor = true;
-            this.radDSKTXM.CheckedChanged += new System.EventHandler(this.radDSKTXM_CheckedChanged);
+            this.radChuaDuyet_TXL.AutoSize = true;
+            this.radChuaDuyet_TXL.Location = new System.Drawing.Point(6, 42);
+            this.radChuaDuyet_TXL.Name = "radChuaDuyet_TXL";
+            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet_TXL.TabIndex = 1;
+            this.radChuaDuyet_TXL.Text = "Chưa Duyệt";
+            this.radChuaDuyet_TXL.UseVisualStyleBackColor = true;
+            this.radChuaDuyet_TXL.Visible = false;
             // 
             // frmDSKTXM
             // 
@@ -559,7 +643,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 596);
-            this.Controls.Add(this.radDSKTXM);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvDSCTKTXM);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.dateTimKiem);
@@ -567,9 +652,7 @@
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.radChuaDuyet);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDSKTXM";
@@ -579,6 +662,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCTKTXM)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -620,7 +707,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
         private System.Windows.Forms.RadioButton radDSKTXM;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTKTXM;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
@@ -628,5 +717,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radDaDuyet_TXL;
+        private System.Windows.Forms.RadioButton radDSKTXM_TXL;
+        private System.Windows.Forms.RadioButton radChuaDuyet_TXL;
     }
 }

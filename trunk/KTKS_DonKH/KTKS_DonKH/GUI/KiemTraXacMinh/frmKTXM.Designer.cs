@@ -75,6 +75,7 @@
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -279,10 +280,11 @@
             this.MaDon,
             this.DanhBo,
             this.NoiDungKiemTra,
-            this.NguoiDi});
+            this.NguoiDi,
+            this.ToXuLy});
             this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 343);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
-            this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(752, 150);
+            this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(768, 150);
             this.dgvDSKetQuaKiemTra.TabIndex = 33;
             this.dgvDSKetQuaKiemTra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKetQuaKiemTra_CellContentClick);
             this.dgvDSKetQuaKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKetQuaKiemTra_CellFormatting);
@@ -515,6 +517,15 @@
             this.NguoiDi.ReadOnly = true;
             this.NguoiDi.Width = 200;
             // 
+            // ToXuLy
+            // 
+            this.ToXuLy.DataPropertyName = "ToXuLy";
+            this.ToXuLy.HeaderText = "TXL";
+            this.ToXuLy.Name = "ToXuLy";
+            this.ToXuLy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToXuLy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ToXuLy.Width = 50;
+            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -591,5 +602,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
     }
 }
