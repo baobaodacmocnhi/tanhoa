@@ -144,6 +144,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
+            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCBD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDCHD)).BeginInit();
@@ -1261,6 +1262,15 @@
             this.chkSelectAll.Visible = false;
             this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
             // 
+            // txtNoiDungTimKiem2
+            // 
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(916, 35);
+            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
+            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(130, 25);
+            this.txtNoiDungTimKiem2.TabIndex = 40;
+            this.txtNoiDungTimKiem2.Visible = false;
+            this.txtNoiDungTimKiem2.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem2_TextChanged);
+            // 
             // frmDSDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1268,6 +1278,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1362, 628);
+            this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dateTimKiem);
@@ -1402,5 +1413,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn CT_CatNK_DiaChi;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
     }
 }

@@ -50,6 +50,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtMaDon.Text = "";
             txtNgayNhan.Text = "";
             txtNoiDung.Text = "";
+            txtSoCongVan.Text = "";
 
             chkKiemTraDHN.Checked = false;
             chkTienNuoc.Checked = false;

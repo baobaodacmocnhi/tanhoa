@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>80</ApplicationRevision>
+    <ApplicationRevision>83</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -215,6 +215,7 @@
     <Compile Include="DAL\CapNhat\CLoaiChungTu.cs" />
     <Compile Include="DAL\CapNhat\CLoaiDon.cs" />
     <Compile Include="DAL\CapNhat\CNhanVien.cs" />
+    <Compile Include="DAL\CapNhat\CLoaiDonTXL.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB.cs" />
     <Compile Include="DAL\CDAL.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="DAL\KhachHang\CPhuongQuan.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CKTXM.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CTTTL.cs" />
+    <Compile Include="DAL\ToXuLy\CDonTXL.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -455,6 +457,24 @@
     <Compile Include="GUI\ThaoThuTraLoi\frmTTTL.Designer.cs">
       <DependentUpon>frmTTTL.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToXuLy\frmNhanDonTXL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmNhanDonTXL.Designer.cs">
+      <DependentUpon>frmNhanDonTXL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmQLDonTXL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmQLDonTXL.Designer.cs">
+      <DependentUpon>frmQLDonTXL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmShowDonTXL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmShowDonTXL.Designer.cs">
+      <DependentUpon>frmShowDonTXL.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\DB_CAPNUOCTANHOA.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -662,6 +682,15 @@
     <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmTTTL.resx">
       <DependentUpon>frmTTTL.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToXuLy\frmNhanDonTXL.resx">
+      <DependentUpon>frmNhanDonTXL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToXuLy\frmQLDonTXL.resx">
+      <DependentUpon>frmQLDonTXL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToXuLy\frmShowDonTXL.resx">
+      <DependentUpon>frmShowDonTXL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -760,6 +789,8 @@
     <None Include="Resources\Close 48x48.png" />
     <None Include="Resources\cut 48x48.png" />
     <None Include="Resources\letter 48x48.png" />
+    <None Include="Resources\forms 48x48 b.jpg" />
+    <None Include="Resources\my documents 48x48 b.jpg" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\System.Windows.Forms.Ribbon35.dll" />
   </ItemGroup>

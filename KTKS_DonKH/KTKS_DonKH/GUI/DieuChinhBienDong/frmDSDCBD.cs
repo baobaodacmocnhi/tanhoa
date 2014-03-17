@@ -53,6 +53,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmDSDCBD_Load(object sender, EventArgs e)
         {
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
+            txtNoiDungTimKiem2.Location = new Point(780, 35);
             ///Tạo đối tượng LookUpEdit
             RepositoryItemLookUpEdit myLookUpEdit = new RepositoryItemLookUpEdit();
             ///Tạo đối tượng Column
@@ -706,14 +707,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 case "Mã Đơn":
                 case "Số Phiếu":
                     txtNoiDungTimKiem.Visible = true;
+                    txtNoiDungTimKiem2.Visible = true;
                     dateTimKiem.Visible = false;
                     break;
                 case "Ngày Lập":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     DSDCBD_BS.RemoveFilter();
                     break;
@@ -725,13 +729,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtNoiDungTimKiem.Text.Trim() != "")
             {
                 string expression = "";
+                txtNoiDungTimKiem2.Text = "";
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
                     case "Mã Đơn":
-                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        if (txtNoiDungTimKiem2.Text.Trim() == "")
+                            expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        else
+                            expression = String.Format("MaDon >= {0} and MaDon <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
                         break;
                     case "Số Phiếu":
-                        expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        if (txtNoiDungTimKiem2.Text.Trim() == "")
+                            expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        else
+                            expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
                         break;
                 }
                 DSDCBD_BS.Filter = expression;
@@ -1018,7 +1029,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
         }
 
-        
-
+        private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+            {
+                string expression = "";
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        expression = String.Format("MaDon >= {0} and MaDon <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
+                        break;
+                    case "Số Phiếu":
+                        expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
+                        break;
+                }
+                DSDCBD_BS.Filter = expression;
+            }
+            else
+                DSDCBD_BS.RemoveFilter();
+        }
     }
 }

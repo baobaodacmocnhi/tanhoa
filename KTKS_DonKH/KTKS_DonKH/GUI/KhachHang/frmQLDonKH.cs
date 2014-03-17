@@ -177,6 +177,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                     else
                         if (radDaDuyet.Checked)
                             DSDonKH_BS.DataSource = _cDonKH.LoadDSDonKHDaDuyet();
+                        else
+                            if (radAll.Checked)
+                                DSDonKH_BS.DataSource = _cDonKH.LoadDSAllDonKH();
             }
         }
 
@@ -197,23 +200,34 @@ namespace KTKS_DonKH.GUI.KhachHang
         /// <param name="e"></param>
         private void dgvDSDonKH_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            ///Khai báo các cột tương ứng trong Datagridview
-            if (DSDonKH_Edited.Columns.Count == 0)
-                foreach (DataGridViewColumn itemCol in dgvDSDonKH.Columns)
-                {
-                    DSDonKH_Edited.Columns.Add(itemCol.Name, itemCol.ValueType);
-                }
+            /////Khai báo các cột tương ứng trong Datagridview
+            //if (DSDonKH_Edited.Columns.Count == 0)
+            //    foreach (DataGridViewColumn itemCol in dgvDSDonKH.Columns)
+            //    {
+            //        DSDonKH_Edited.Columns.Add(itemCol.Name, itemCol.ValueType);
+            //    }
 
-            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
-            ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row.EndEdit();
+            /////Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
+            //((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row.EndEdit();
 
-            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
-            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
-                DSDonKH_Edited.Rows.Remove(DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
+            /////DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
+            /////Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
+            //if (DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"]).Count() > 0)
+            //    DSDonKH_Edited.Rows.Remove(DSDonKH_Edited.Select("MaDon = " + ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"])[0]);
 
-            DSDonKH_Edited.ImportRow(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row);
-            btnLuu.Enabled = true; 
+            //DSDonKH_Edited.ImportRow(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row);
+            //btnLuu.Enabled = true; 
+
+            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(dgvDSDonKH["MaDon",e.RowIndex].ToString()));
+            donkh.Chuyen = true;
+            donkh.MaChuyen = dgvDSDonKH["MaChuyen", e.RowIndex].ToString();
+            donkh.LyDoChuyen = dgvDSDonKH["LyDoChuyen", e.RowIndex].ToString();
+            if (string.IsNullOrEmpty(dgvDSDonKH["SoLuongDiaChi", e.RowIndex].ToString()))
+                donkh.SoLuongDiaChi = null;
+            else
+                donkh.SoLuongDiaChi = int.Parse(dgvDSDonKH["SoLuongDiaChi", e.RowIndex].ToString());
+            donkh.NVKiemTra = dgvDSDonKH["NVKiemTra", e.RowIndex].ToString();
+            _cDonKH.SuaDonKH(donkh);
         }
 
         /// <summary>

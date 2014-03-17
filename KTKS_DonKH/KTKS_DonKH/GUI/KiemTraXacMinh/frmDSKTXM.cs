@@ -443,6 +443,35 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
+        private void radDaDuyet_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDaDuyet_TXL.Checked)
+            {
+                DSDonKH_BS = new BindingSource();
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_TXL().Tables["KTXM"];
+                //cmbTimTheo.SelectedIndex = 0;
+                gridControl.DataSource = DSDonKH_BS;
+                dgvDSCTKTXM.Visible = false;
+                gridControl.Visible = true;
+            }
+        }
+
+        private void radDSKTXM_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSKTXM.Checked)
+            {
+                DSDonKH_BS = new BindingSource();
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL();
+                else
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL(CTaiKhoan.MaUser);
+                dgvDSCTKTXM.DataSource = DSDonKH_BS;
+                dgvDSCTKTXM.Visible = true;
+                gridControl.Visible = false;
+            }
+        }
+
         
 
     }
