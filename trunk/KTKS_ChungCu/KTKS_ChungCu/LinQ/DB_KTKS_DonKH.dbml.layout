@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.625" name="DB_KTKS_DonKH">
+  <DataContextMoniker Name="/DB_KTKS_DonKHDataContext" />
+  <nestedChildShapes>
+    <classShape Id="bb98574c-d9e0-45fd-b80b-6c7d7aba73ff" absoluteBounds="1.125, 1, 2, 11.385968424479165">
+      <DataClassMoniker Name="/DB_KTKS_DonKHDataContext/TTKhachHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="94bb933d-993e-476b-be24-fc90fb0f8eb7" absoluteBounds="1.1399999999999997, 1.46, 1.9700000000000002, 10.825968424479166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="05cd08e3-3e1d-4813-81c4-0a73da65bba3" absoluteBounds="6.125, 0.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DB_KTKS_DonKHDataContext/LoaiChungTu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e45e622-9e5a-4d29-ae77-17e687f44624" absoluteBounds="6.14, 1.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8c9d4af7-4b62-44e9-ad35-f455033d3d0f" absoluteBounds="4.375, 4.75, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/DB_KTKS_DonKHDataContext/ChungCu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f6aaa97d-ec29-4bab-b236-e93659176375" absoluteBounds="4.39, 5.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
