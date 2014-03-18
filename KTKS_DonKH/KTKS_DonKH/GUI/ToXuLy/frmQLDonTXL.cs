@@ -120,7 +120,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (dgvDSDonTXL.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                e.Value = "TXL"+e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 

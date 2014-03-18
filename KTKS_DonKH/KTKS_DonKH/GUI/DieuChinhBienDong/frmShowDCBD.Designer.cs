@@ -491,7 +491,6 @@
             // 
             this.txtHopDong.Location = new System.Drawing.Point(118, 43);
             this.txtHopDong.Name = "txtHopDong";
-            this.txtHopDong.ReadOnly = true;
             this.txtHopDong.Size = new System.Drawing.Size(100, 25);
             this.txtHopDong.TabIndex = 3;
             // 
@@ -538,7 +537,6 @@
             // 
             this.txtDot.Location = new System.Drawing.Point(804, 6);
             this.txtDot.Name = "txtDot";
-            this.txtDot.ReadOnly = true;
             this.txtDot.Size = new System.Drawing.Size(56, 25);
             this.txtDot.TabIndex = 10;
             // 

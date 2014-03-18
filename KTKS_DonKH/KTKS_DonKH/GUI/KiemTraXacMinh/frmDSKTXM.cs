@@ -310,9 +310,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void dgvDSKTXM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvDSCTKTXM.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+                if (radDaDuyet_TXL.Checked || radDSKTXM_TXL.Checked)
+                    e.Value = "TXL" + e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                else
+                    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -376,9 +377,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void gridViewKTXM_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "MaDon" && e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
+                if (radDaDuyet_TXL.Checked || radDSKTXM_TXL.Checked)
+                    e.DisplayText = "TXL" + e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                else
+                    e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
         }
 
         private void gridViewCTKTXM_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)

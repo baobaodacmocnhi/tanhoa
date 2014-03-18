@@ -237,7 +237,7 @@
             this.ribbonPanel4.ButtonMoreVisible = false;
             this.ribbonPanel4.Items.Add(this.ribbtnNhanDon);
             this.ribbonPanel4.Items.Add(this.ribbtnQLDonKH);
-            this.ribbonPanel4.Text = "Khách Hàng";
+            this.ribbonPanel4.Text = "Tổ Khách Hàng";
             // 
             // ribbtnNhanDon
             // 

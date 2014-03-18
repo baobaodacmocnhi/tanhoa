@@ -103,10 +103,11 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                orderby itemDonKH.MaDon ascending
+                                orderby itemDonKH.MaLD, itemDonKH.MaDon ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
+                                    itemDonKH.MaLD,
                                     itemLoaiDon.TenLD,
                                     itemDonKH.CreateDate,
                                     itemDonKH.DanhBo,
@@ -142,10 +143,11 @@ namespace KTKS_DonKH.DAL.KhachHang
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 where itemDonKH.Nhan == false
-                                orderby itemDonKH.MaDon ascending
+                                orderby itemDonKH.MaLD, itemDonKH.MaDon ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
+                                    itemDonKH.MaLD,
                                     itemLoaiDon.TenLD,
                                     itemDonKH.CreateDate,
                                     itemDonKH.DanhBo,
@@ -181,10 +183,11 @@ namespace KTKS_DonKH.DAL.KhachHang
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 where itemDonKH.Nhan == true
-                                orderby itemDonKH.MaDon ascending
+                                orderby itemDonKH.MaLD, itemDonKH.MaDon ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
+                                    itemDonKH.MaLD,
                                     itemLoaiDon.TenLD,
                                     itemDonKH.CreateDate,
                                     itemDonKH.DanhBo,

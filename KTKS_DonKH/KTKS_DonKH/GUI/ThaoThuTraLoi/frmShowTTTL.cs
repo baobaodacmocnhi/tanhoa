@@ -56,7 +56,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             if (_cTTTL.getCTTTTLbyID(_MaCTTTTL) != null)
             {
                 _cttttl = _cTTTL.getCTTTTLbyID(_MaCTTTTL);
-                txtMaDon.Text = _cttttl.TTTL.MaDon.Value.ToString().Insert(_cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
+                if(_cttttl.TTTL.ToXuLy)
+                    txtMaDon.Text = "TXL"+_cttttl.TTTL.MaDonTXL.Value.ToString().Insert(_cttttl.TTTL.MaDonTXL.Value.ToString().Length - 2, "-");
+                else
+                    txtMaDon.Text = _cttttl.TTTL.MaDon.Value.ToString().Insert(_cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
                 txtDanhBo.Text = _cttttl.DanhBo;
                 txtHopDong.Text = _cttttl.HopDong;
                 txtLoTrinh.Text = _cttttl.LoTrinh;

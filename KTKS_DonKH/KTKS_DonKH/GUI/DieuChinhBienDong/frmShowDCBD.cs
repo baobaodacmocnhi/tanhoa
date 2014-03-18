@@ -134,11 +134,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     _ctdcbd.SX = txtSX.Text.Trim();
                     _ctdcbd.DV = txtDV.Text.Trim();
                     _ctdcbd.HCSN = txtHCSN.Text.Trim();
+                    _ctdcbd.Dot = txtDot.Text.Trim();
                     ///Họ Tên
                     if (txtHoTen_BD.Text.Trim() != "")
                     {
                         ThongTin += "Họ Tên. ";
                         _ctdcbd.HoTen_BD = txtHoTen_BD.Text.Trim();
+                    }
+                    else
+                    {
+                        ThongTin.Replace("Họ Tên. ", "");
+                        _ctdcbd.HoTen_BD = null;
                     }
                     ///Địa Chỉ
                     if (txtDiaChi_BD.Text.Trim() != "")
@@ -146,16 +152,31 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ThongTin += "Địa Chỉ. ";
                         _ctdcbd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
                     }
+                    else
+                    {
+                        ThongTin.Replace("Địa Chỉ. ", "");
+                        _ctdcbd.DiaChi_BD = null;
+                    }
                     ///Mã Số Thuế
                     if (txtMSThue_BD.Text.Trim() != "")
                     {
                         ThongTin += "MST. ";
                         _ctdcbd.MSThue_BD = txtMSThue_BD.Text.Trim();
                     }
+                    else
+                    {
+                        ThongTin.Replace("MST. ", "");
+                        _ctdcbd.MSThue_BD = null;
+                    }
                     if (chkCatMSThue.Checked)
                     {
                         ThongTin += "MST. ";
                         _ctdcbd.CatMSThue = true;
+                    }
+                    else
+                    {
+                        ThongTin.Replace("MST. ", "");
+                        _ctdcbd.CatMSThue = false;
                     }
                     ///Giá Biểu
                     if (txtGiaBieu_BD.Text.Trim() != "")
@@ -163,24 +184,42 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ThongTin += "GB. ";
                         _ctdcbd.GiaBieu_BD = txtGiaBieu_BD.Text.Trim();
                     }
+                    else
+                    {
+                        ThongTin.Replace("GB. ", "");
+                        _ctdcbd.GiaBieu_BD = null;
+                    }
                     ///Định Mức
                     if (txtDinhMuc_BD.Text.Trim() != "")
                     {
                         ThongTin += "ĐM. ";
                         _ctdcbd.DinhMuc_BD = txtDinhMuc_BD.Text.Trim();
                     }
+                    else
+                    {
+                        ThongTin.Replace("ĐM. ", "");
+                        _ctdcbd.DinhMuc_BD = null;
+                    }
                     ///SH
                     if (txtSH_BD.Text.Trim() != "")
                         _ctdcbd.SH_BD = txtSH_BD.Text.Trim();
+                    else
+                        _ctdcbd.SH_BD = null;
                     ///SX
                     if (txtSX_BD.Text.Trim() != "")
                         _ctdcbd.SX_BD = txtSX_BD.Text.Trim();
+                    else
+                        _ctdcbd.SX_BD = null;
                     ///DV
                     if (txtDV_BD.Text.Trim() != "")
                         _ctdcbd.DV_BD = txtDV_BD.Text.Trim();
+                    else
+                        _ctdcbd.DV_BD = null;
                     ///HCSN
                     if (txtHCSN_BD.Text.Trim() != "")
                         _ctdcbd.HCSN_BD = txtHCSN_BD.Text.Trim();
+                    else
+                        _ctdcbd.HCSN_BD = null;
 
                     _ctdcbd.ThongTin = ThongTin;
                     _ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
