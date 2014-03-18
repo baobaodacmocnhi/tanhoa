@@ -46,6 +46,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         public void Clear()
         {
+            cmbLD.SelectedIndex = -1;
+            txtMaDon.Text = "";
+            txtNgayNhan.Text = "";
+            txtNoiDung.Text = "";
+            txtSoCongVan.Text = "";
+            ///
             txtHopDong.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";

@@ -319,6 +319,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 dr["TuNgay"] = _tuNgay;
                 dr["DenNgay"] = _denNgay;
+                dr["MaLD"] = itemRow["MaLD"];
                 dr["TenLD"] = itemRow["TenLD"];
                 dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
                 DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));

@@ -57,6 +57,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmDCBD_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
+            ///Hàm Properties không có nên phải add code
+            ///Dùng để bôi đen Text
+            txtMaDon.GotFocus += new EventHandler(txtMaDon_GotFocus);
 
             if (_direct)
             {
@@ -94,6 +97,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
+        }
+
+        void txtMaDon_GotFocus(object sender, EventArgs e)
+        {
+            txtMaDon.SelectAll();
         }
 
         /// <summary>
@@ -400,7 +408,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdcbd.SX = txtSX.Text.Trim();
                     ctdcbd.DV = txtDV.Text.Trim();
                     ctdcbd.HCSN = txtHCSN.Text.Trim();
-                    ctdcbd.Dot = _ttkhachhang.Dot;
+                    ctdcbd.Dot = txtDot.Text.Trim();
                     ctdcbd.Ky = _ttkhachhang.Ky;
                     ctdcbd.Nam = _ttkhachhang.Nam;
                     ///Họ Tên

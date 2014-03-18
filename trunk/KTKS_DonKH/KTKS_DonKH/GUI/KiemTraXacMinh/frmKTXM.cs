@@ -27,7 +27,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CKTXM _cKTXM = new CKTXM();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         int selectedindex = -1;
-        bool _flagTXL = false;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -109,20 +108,20 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtNoiDungKiemTra.Text = "";
 
             selectedindex = -1;
-            _flagTXL = false;
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
+                ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (_cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
+                    if (_cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) != null)
                     {
-                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM_TXL(_donkh.MaDon, CTaiKhoan.MaUser);
-                        _flagTXL = true;
+                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                        dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
+                        MessageBox.Show("Mã Đơn này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -132,6 +131,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                ///Đơn Tổ Khách Hàng
                 else
                     if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
                     {
@@ -217,7 +217,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             try
             {
                 ///Nếu đơn thuộc Tổ Xử Lý
-                if (_flagTXL)
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
                     if (_dontxl != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
                     {
@@ -242,7 +242,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 else
                                     _dontxl.TienTrinh += ",KTXM";
                                 _dontxl.Nhan = true;
-                                //_cDonKH.SuaDonKH(_donkh, true);
+                                _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
                         if (_cKTXM.CheckCTKTXMbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
@@ -251,7 +251,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             return;
                         }
                         CTKTXM ctktxm = new CTKTXM();
-                        ctktxm.MaKTXM = _cKTXM.getKTXMbyMaDon(_dontxl.MaDon).MaKTXM;
+                        ctktxm.MaKTXM = _cKTXM.getKTXMbyMaDon_TXL(_dontxl.MaDon).MaKTXM;
                         ctktxm.DanhBo = txtDanhBo.Text.Trim();
                         ctktxm.HopDong = txtHopDong.Text.Trim();
                         ctktxm.HoTen = txtHoTen.Text.Trim();
@@ -313,7 +313,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 else
                                     _donkh.TienTrinh += ",KTXM";
                                 _donkh.Nhan = true;
-                                //_cDonKH.SuaDonKH(_donkh, true);
+                                _cDonKH.SuaDonKH(_donkh, true);
                             }
                         }
                         if (_cKTXM.CheckCTKTXMbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
@@ -399,7 +399,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
 
                     ///Nếu Đơn thuộc Tổ Xử Lý
-                    if (_flagTXL)
+                    if (ctktxm.KTXM.ToXuLy)
                     {
                         if (_dontxl != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
                         {

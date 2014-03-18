@@ -109,10 +109,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dr["SoPhieu"] = _lichsuchungtu.SoPhieu.ToString().Insert(_lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                         dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(_lichsuchungtu.CatNK_MaCN.Value);
-                        dr["DanhBoNhan"] = _lichsuchungtu.NhanNK_DanhBo;
+                        if (!string.IsNullOrEmpty(_lichsuchungtu.NhanNK_DanhBo))
+                            dr["DanhBoNhan"] = _lichsuchungtu.NhanNK_DanhBo.Insert(7, " ").Insert(4, " ");
                         dr["HoTenNhan"] = _lichsuchungtu.NhanNK_HoTen;
                         dr["DiaChiNhan"] = _lichsuchungtu.NhanNK_DiaChi;
-                        dr["DanhBoCat"] = _lichsuchungtu.CatNK_DanhBo;
+                        if (!string.IsNullOrEmpty(_lichsuchungtu.CatNK_DanhBo))
+                            dr["DanhBoCat"] = _lichsuchungtu.CatNK_DanhBo.Insert(7, " ").Insert(4, " ");
                         dr["HoTenCat"] = _lichsuchungtu.CatNK_HoTen;
                         dr["DiaChiCat"] = _lichsuchungtu.CatNK_DiaChi;
                         dr["SoNKCat"] = _lichsuchungtu.SoNKNhan + " nhân khẩu (HK: " + _lichsuchungtu.MaCT + ")";
@@ -143,10 +145,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             dr["SoPhieu"] = _lichsuchungtu.SoPhieu.ToString().Insert(_lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                             dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(_lichsuchungtu.CatNK_MaCN.Value);
-                            dr["DanhBoNhan"] = _lichsuchungtu.NhanNK_DanhBo;
+                            if (!string.IsNullOrEmpty(_lichsuchungtu.NhanNK_DanhBo))
+                                dr["DanhBoNhan"] = _lichsuchungtu.NhanNK_DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["HoTenNhan"] = _lichsuchungtu.NhanNK_HoTen;
                             dr["DiaChiNhan"] = _lichsuchungtu.NhanNK_DiaChi;
-                            dr["DanhBoCat"] = _lichsuchungtu.CatNK_DanhBo;
+                            if (!string.IsNullOrEmpty(_lichsuchungtu.CatNK_DanhBo))
+                                dr["DanhBoCat"] = _lichsuchungtu.CatNK_DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["HoTenCat"] = _lichsuchungtu.CatNK_HoTen;
                             dr["DiaChiCat"] = _lichsuchungtu.CatNK_DiaChi;
                             dr["SoNKCat"] = _lichsuchungtu.SoNKNhan + " nhân khẩu (HK: " + _lichsuchungtu.MaCT + ")";

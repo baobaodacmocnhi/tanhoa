@@ -259,6 +259,27 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         }
 
         /// <summary>
+        /// Kiểm tra Đơn Tổ Xử Lý có được TTTL xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns>true/có</returns>
+        public bool CheckTTTLbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (db.TTTLs.Any(itemTTTL => itemTTTL.MaDonTXL == MaDonTXL))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Lấy TTTL bằng MaDon
         /// </summary>
         /// <param name="MaDon"></param>
@@ -268,6 +289,24 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             try
             {
                 return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy TTTL bằng MaDon Tổ Xử Lý
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns></returns>
+        public TTTL getTTTLbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                return db.TTTLs.SingleOrDefault(itemTTTL => itemTTTL.MaDonTXL == MaDonTXL);
             }
             catch (Exception ex)
             {
@@ -415,6 +454,25 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             try
             {
                 return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDon == MaDon && itemCTTTTL.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra Thư đã được tạo cho Mã Đơn Tổ Xử Lý và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTTTTLbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        {
+            try
+            {
+                return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDonTXL == MaDonTXL && itemCTTTTL.DanhBo == DanhBo);
             }
             catch (Exception ex)
             {

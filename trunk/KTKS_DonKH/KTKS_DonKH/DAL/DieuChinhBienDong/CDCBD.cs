@@ -316,6 +316,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                           DieuChinh = "Biến Động",
                                           itemCTDCBD.CreateDate,
                                           itemCTDCBD.ThongTin,
+                                          itemCTDCBD.HoTen_BD,
+                                          itemCTDCBD.DiaChi_BD,
+                                          itemCTDCBD.MSThue_BD,
+                                          itemCTDCBD.GiaBieu_BD,
+                                          itemCTDCBD.DinhMuc_BD,
                                           itemCTDCBD.DCBD.MaDon,
                                       };
                     ///Bảng CTDCHD

@@ -121,6 +121,11 @@
             this.label23 = new System.Windows.Forms.Label();
             this.DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThongTin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MSThue_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -322,7 +327,6 @@
             // 
             this.txtHopDong.Location = new System.Drawing.Point(118, 43);
             this.txtHopDong.Name = "txtHopDong";
-            this.txtHopDong.ReadOnly = true;
             this.txtHopDong.Size = new System.Drawing.Size(100, 25);
             this.txtHopDong.TabIndex = 3;
             // 
@@ -807,6 +811,11 @@
             this.dgvDSDieuChinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DieuChinh,
             this.ThongTin,
+            this.HoTen_BD,
+            this.DiaChi_BD,
+            this.MSThue_BD,
+            this.GiaBieu_BD,
+            this.DinhMuc_BD,
             this.MaDC,
             this.CreateDate,
             this.MaDon});
@@ -936,7 +945,6 @@
             // 
             this.txtDot.Location = new System.Drawing.Point(804, 6);
             this.txtDot.Name = "txtDot";
-            this.txtDot.ReadOnly = true;
             this.txtDot.Size = new System.Drawing.Size(56, 25);
             this.txtDot.TabIndex = 13;
             // 
@@ -963,7 +971,48 @@
             this.ThongTin.HeaderText = "Thông Tin";
             this.ThongTin.Name = "ThongTin";
             this.ThongTin.ReadOnly = true;
+            this.ThongTin.Visible = false;
             this.ThongTin.Width = 200;
+            // 
+            // HoTen_BD
+            // 
+            this.HoTen_BD.DataPropertyName = "HoTen_BD";
+            this.HoTen_BD.HeaderText = "Họ Tên BĐ";
+            this.HoTen_BD.Name = "HoTen_BD";
+            this.HoTen_BD.ReadOnly = true;
+            this.HoTen_BD.Width = 210;
+            // 
+            // DiaChi_BD
+            // 
+            this.DiaChi_BD.DataPropertyName = "DiaChi_BD";
+            this.DiaChi_BD.HeaderText = "Địa Chỉ BĐ";
+            this.DiaChi_BD.Name = "DiaChi_BD";
+            this.DiaChi_BD.ReadOnly = true;
+            this.DiaChi_BD.Width = 240;
+            // 
+            // MSThue_BD
+            // 
+            this.MSThue_BD.DataPropertyName = "MSThue_BD";
+            this.MSThue_BD.HeaderText = "MSThuế BĐ";
+            this.MSThue_BD.Name = "MSThue_BD";
+            this.MSThue_BD.ReadOnly = true;
+            this.MSThue_BD.Width = 90;
+            // 
+            // GiaBieu_BD
+            // 
+            this.GiaBieu_BD.DataPropertyName = "GiaBieu_BD";
+            this.GiaBieu_BD.HeaderText = "Giá Biểu BĐ";
+            this.GiaBieu_BD.Name = "GiaBieu_BD";
+            this.GiaBieu_BD.ReadOnly = true;
+            this.GiaBieu_BD.Width = 90;
+            // 
+            // DinhMuc_BD
+            // 
+            this.DinhMuc_BD.DataPropertyName = "DinhMuc_BD";
+            this.DinhMuc_BD.HeaderText = "Định Mức BĐ";
+            this.DinhMuc_BD.Name = "DinhMuc_BD";
+            this.DinhMuc_BD.ReadOnly = true;
+            this.DinhMuc_BD.Width = 90;
             // 
             // MaDC
             // 
@@ -1119,6 +1168,11 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Cat;
         private System.Windows.Forms.DataGridViewTextBoxColumn DieuChinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThongTin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_BD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_BD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MSThue_BD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_BD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_BD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDC;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;

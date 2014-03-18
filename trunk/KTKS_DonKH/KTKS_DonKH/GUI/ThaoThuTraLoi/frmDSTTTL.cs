@@ -530,6 +530,16 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        private void radDaDuyet_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radDSThu_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         
 
     }

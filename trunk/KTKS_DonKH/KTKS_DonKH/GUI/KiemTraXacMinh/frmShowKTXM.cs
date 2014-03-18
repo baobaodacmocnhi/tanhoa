@@ -42,7 +42,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 _ctktxm = _cKTXM.getCTKTXMbyID(_MaCTKTXM);
                 //if (CTaiKhoan.RoleQLKTXM_CapNhat)
                 //    btnXoa.Enabled = true;
-                txtMaDon.Text = _ctktxm.KTXM.MaDon.ToString().Insert(_ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
+                if (_ctktxm.KTXM.ToXuLy)
+                    txtMaDon.Text = "TXL"+_ctktxm.KTXM.MaDonTXL.ToString().Insert(_ctktxm.KTXM.MaDonTXL.ToString().Length - 2, "-");
+                else
+                    txtMaDon.Text = _ctktxm.KTXM.MaDon.ToString().Insert(_ctktxm.KTXM.MaDon.ToString().Length - 2, "-");
                 LoadCTKTXM(_ctktxm);
             }
         }
