@@ -101,6 +101,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radDaDuyet.Checked)
             {
+                radDaDuyet_TXL.Checked = false;
+                radDSKTXM_TXL.Checked = false;
+
                 DSDonKH_BS = new BindingSource();
                 if (CTaiKhoan.RoleQLKTXM_Xem||CTaiKhoan.RoleQLKTXM_CapNhat)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
@@ -115,6 +118,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radDSKTXM.Checked)
             {
+                radDaDuyet_TXL.Checked = false;
+                radDSKTXM_TXL.Checked = false;
+
                 DSDonKH_BS = new BindingSource();
                 if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
@@ -321,6 +327,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
+                case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
                     break;
@@ -338,19 +345,33 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
-            if (txtNoiDungTimKiem.Text.Trim() != "")
+            try
             {
-                string expression = "";
-                switch (cmbTimTheo.SelectedItem.ToString())
+                if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
-                    case "Mã Đơn":
-                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                        break;
+                    string expression = "";
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            if (radDaDuyet.Checked || radDSKTXM.Checked)
+                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDaDuyet_TXL.Checked || radDSKTXM_TXL.Checked)
+                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
+                            break;
+                        case "Danh Bộ":
+                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                    }
+                    DSDonKH_BS.Filter = expression;
                 }
-                DSDonKH_BS.Filter = expression;
+                else
+                    DSDonKH_BS.RemoveFilter();
             }
-            else
-                DSDonKH_BS.RemoveFilter();
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
@@ -449,6 +470,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radDaDuyet_TXL.Checked)
             {
+                radDaDuyet.Checked = false;
+                radDSKTXM.Checked = false;
+
                 DSDonKH_BS = new BindingSource();
                 if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_TXL().Tables["KTXM"];
@@ -461,8 +485,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void radDSKTXM_TXL_CheckedChanged(object sender, EventArgs e)
         {
-            if (radDSKTXM.Checked)
+            if (radDSKTXM_TXL.Checked)
             {
+                radDaDuyet.Checked = false;
+                radDSKTXM.Checked = false;
+
                 DSDonKH_BS = new BindingSource();
                 if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
                     DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL();

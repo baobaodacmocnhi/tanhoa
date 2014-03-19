@@ -942,6 +942,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonKH> _DonKH;
 		
+		private EntityRef<DonTXL> _DonTXL;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -988,6 +990,7 @@ namespace KTKS_DonKH.LinQ
 			this._CTCTDBs = new EntitySet<CTCTDB>(new Action<CTCTDB>(this.attach_CTCTDBs), new Action<CTCTDB>(this.detach_CTCTDBs));
 			this._ChuyenDi = default(EntityRef<ChuyenDi>);
 			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
 		
@@ -1066,6 +1069,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTXL != value))
 				{
+					if (this._DonTXL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTXLChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTXL = value;
@@ -1429,6 +1436,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDon = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_CHDB", Storage="_DonTXL", ThisKey="MaDonTXL", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTXL DonTXL
+		{
+			get
+			{
+				return this._DonTXL.Entity;
+			}
+			set
+			{
+				DonTXL previousValue = this._DonTXL.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTXL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTXL.Entity = null;
+						previousValue.CHDBs.Remove(this);
+					}
+					this._DonTXL.Entity = value;
+					if ((value != null))
+					{
+						value.CHDBs.Add(this);
+						this._MaDonTXL = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTXL = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTXL");
 				}
 			}
 		}
@@ -11384,7 +11425,11 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private EntitySet<CHDB> _CHDBs;
+		
 		private EntitySet<KTXM> _KTXMs;
+		
+		private EntitySet<TTTL> _TTTLs;
 		
 		private EntityRef<ChuyenDi> _ChuyenDi;
 		
@@ -11452,7 +11497,9 @@ namespace KTKS_DonKH.LinQ
 		
 		public DonTXL()
 		{
+			this._CHDBs = new EntitySet<CHDB>(new Action<CHDB>(this.attach_CHDBs), new Action<CHDB>(this.detach_CHDBs));
 			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
+			this._TTTLs = new EntitySet<TTTL>(new Action<TTTL>(this.attach_TTTLs), new Action<TTTL>(this.detach_TTTLs));
 			this._ChuyenDi = default(EntityRef<ChuyenDi>);
 			this._LoaiDonTXL = default(EntityRef<LoaiDonTXL>);
 			OnCreated();
@@ -12006,6 +12053,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_CHDB", Storage="_CHDBs", ThisKey="MaDon", OtherKey="MaDonTXL")]
+		public EntitySet<CHDB> CHDBs
+		{
+			get
+			{
+				return this._CHDBs;
+			}
+			set
+			{
+				this._CHDBs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_KTXM", Storage="_KTXMs", ThisKey="MaDon", OtherKey="MaDonTXL")]
 		public EntitySet<KTXM> KTXMs
 		{
@@ -12016,6 +12076,19 @@ namespace KTKS_DonKH.LinQ
 			set
 			{
 				this._KTXMs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_TTTL", Storage="_TTTLs", ThisKey="MaDon", OtherKey="MaDonTXL")]
+		public EntitySet<TTTL> TTTLs
+		{
+			get
+			{
+				return this._TTTLs;
+			}
+			set
+			{
+				this._TTTLs.Assign(value);
 			}
 		}
 		
@@ -12107,6 +12180,18 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		private void attach_CHDBs(CHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = this;
+		}
+		
+		private void detach_CHDBs(CHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = null;
+		}
+		
 		private void attach_KTXMs(KTXM entity)
 		{
 			this.SendPropertyChanging();
@@ -12114,6 +12199,18 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = null;
+		}
+		
+		private void attach_TTTLs(TTTL entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = this;
+		}
+		
+		private void detach_TTTLs(TTTL entity)
 		{
 			this.SendPropertyChanging();
 			entity.DonTXL = null;
@@ -16289,6 +16386,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntityRef<DonKH> _DonKH;
 		
+		private EntityRef<DonTXL> _DonTXL;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -16334,6 +16433,7 @@ namespace KTKS_DonKH.LinQ
 			this._CTTTTLs = new EntitySet<CTTTTL>(new Action<CTTTTL>(this.attach_CTTTTLs), new Action<CTTTTL>(this.detach_CTTTTLs));
 			this._ChuyenDi = default(EntityRef<ChuyenDi>);
 			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
 		
@@ -16412,6 +16512,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._MaDonTXL != value))
 				{
+					if (this._DonTXL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDonTXLChanging(value);
 					this.SendPropertyChanging();
 					this._MaDonTXL = value;
@@ -16762,6 +16866,40 @@ namespace KTKS_DonKH.LinQ
 						this._MaDon = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_TTTL", Storage="_DonTXL", ThisKey="MaDonTXL", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTXL DonTXL
+		{
+			get
+			{
+				return this._DonTXL.Entity;
+			}
+			set
+			{
+				DonTXL previousValue = this._DonTXL.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTXL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTXL.Entity = null;
+						previousValue.TTTLs.Remove(this);
+					}
+					this._DonTXL.Entity = value;
+					if ((value != null))
+					{
+						value.TTTLs.Add(this);
+						this._MaDonTXL = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTXL = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTXL");
 				}
 			}
 		}

@@ -76,6 +76,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (radDaDuyet.Checked)
             {
+                radDaDuyet_TXL.Checked = false;
+                radDSThu_TXL.Checked = false;
+
                 DSTTTL_BS = new BindingSource();
                 DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
                 gridControl.DataSource = DSTTTL_BS;
@@ -108,10 +111,14 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (radDSThu.Checked)
             {
+                radDaDuyet_TXL.Checked = false;
+                radDSThu_TXL.Checked = false;
+
                 DSTTTL_BS = new BindingSource();
                 DSTTTL_BS.DataSource = _cTTTL.LoadDSCTTTTL();
-                dgvDSThu.Visible = true;
                 dgvDSThu.DataSource = DSTTTL_BS;
+
+                dgvDSThu.Visible = true;
                 gridControl.Visible = false;
                 //btnLuu.Enabled = false;
                 //DSTTTL_Edited = new DataTable();
@@ -427,6 +434,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             {
                 case "Mã Đơn":
                 case "Mã Thư":
+                case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
                     break;
@@ -444,22 +452,36 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
-            if (txtNoiDungTimKiem.Text.Trim() != "")
+            try
             {
-                string expression = "";
-                switch (cmbTimTheo.SelectedItem.ToString())
+                if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
-                    case "Mã Đơn":
-                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                        break;
-                    case "Mã Thư":
-                        expression = String.Format("MaCTTTTL = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                        break;
+                    string expression = "";
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            if (radDaDuyet.Checked || radDSThu.Checked)
+                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDaDuyet_TXL.Checked || radDSThu_TXL.Checked)
+                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
+                            break;
+                        case "Mã Thư":
+                            expression = String.Format("MaCTTTTL = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                        case "Danh Bộ":
+                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                    }
+                    DSTTTL_BS.Filter = expression;
                 }
-                DSTTTL_BS.Filter = expression;
+                else
+                    DSTTTL_BS.RemoveFilter();
             }
-            else
-                DSTTTL_BS.RemoveFilter();
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
@@ -489,7 +511,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                  PrintDialog printDialog = new PrintDialog();
                  if (printDialog.ShowDialog() == DialogResult.OK)
                  {
-                     if (radDSThu.Checked)
+                     if (radDSThu.Checked||radDSThu_TXL.Checked)
                          for (int i = 0; i < dgvDSThu.Rows.Count; i++)
                              if (bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
                              {
@@ -505,7 +527,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                  dr["HopDong"] = cttttl.HopDong;
                                  dr["GiaBieu"] = cttttl.GiaBieu;
                                  dr["DinhMuc"] = cttttl.DinhMuc;
-                                 dr["NgayNhanDon"] = cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
+                                 if (radDSThu.Checked)
+                                     dr["NgayNhanDon"] = cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
+                                 if (radDSThu_TXL.Checked)
+                                     dr["NgayNhanDon"] = cttttl.TTTL.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
                                  dr["VeViec"] = cttttl.VeViec;
                                  dr["NoiDung"] = cttttl.NoiDung;
                                  dr["NoiNhan"] = cttttl.NoiNhan;
@@ -532,12 +557,40 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void radDaDuyet_TXL_CheckedChanged(object sender, EventArgs e)
         {
+            if (radDaDuyet_TXL.Checked)
+            {
+                radDaDuyet.Checked = false;
+                radDSThu.Checked = false;
 
+                DSTTTL_BS = new BindingSource();
+                DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLDaDuyet_TXL().Tables["TTTL"];
+                gridControl.DataSource = DSTTTL_BS;
+
+                gridControl.Visible = true;
+                dgvDSThu.Visible = false;
+                //btnLuu.Enabled = true;
+                //DSTTTL_Edited = new DataTable();
+                chkSelectAll.Visible = false;
+            }
         }
 
         private void radDSThu_TXL_CheckedChanged(object sender, EventArgs e)
         {
+            if (radDSThu_TXL.Checked)
+            {
+                radDaDuyet.Checked = false;
+                radDSThu.Checked = false;
 
+                DSTTTL_BS = new BindingSource();
+                DSTTTL_BS.DataSource = _cTTTL.LoadDSCTTTTL_TXL();
+                dgvDSThu.DataSource = DSTTTL_BS;
+
+                dgvDSThu.Visible = true;
+                gridControl.Visible = false;
+                //btnLuu.Enabled = false;
+                //DSTTTL_Edited = new DataTable();
+                chkSelectAll.Visible = true;
+            }
         }
 
         

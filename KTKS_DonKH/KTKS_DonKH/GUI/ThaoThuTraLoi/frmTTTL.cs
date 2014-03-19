@@ -376,7 +376,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     if (_cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) != null)
                     {
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
-                        //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                        txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                         if (_cTTKH.getTTKHbyID(_dontxl.DanhBo) != null)
                         {
                             _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);

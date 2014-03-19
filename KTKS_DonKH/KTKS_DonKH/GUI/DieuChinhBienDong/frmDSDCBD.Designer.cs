@@ -1211,7 +1211,8 @@
             "",
             "Mã Đơn",
             "Số Phiếu",
-            "Ngày Lập"});
+            "Ngày Lập",
+            "Danh Bộ"});
             this.cmbTimTheo.Location = new System.Drawing.Point(579, 12);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);

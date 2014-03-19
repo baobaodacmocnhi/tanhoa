@@ -38,9 +38,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (_cCHDB.getCTCHDBbyID(_MaCTCHDB) != null)
             {
                 _ctchdb = _cCHDB.getCTCHDBbyID(_MaCTCHDB);
-                txtMaDon.Text = _ctchdb.CHDB.MaDon.Value.ToString().Insert(_ctchdb.CHDB.MaDon.Value.ToString().Length - 2, "-");
+                if (!string.IsNullOrEmpty(_ctchdb.CHDB.MaDonTXL.ToString()))
+                    txtMaDon.Text = "TXL"+_ctchdb.CHDB.MaDonTXL.Value.ToString().Insert(_ctchdb.CHDB.MaDonTXL.Value.ToString().Length - 2, "-");
+                else
+                    if (!string.IsNullOrEmpty(_ctchdb.CHDB.MaDon.ToString()))
+                        txtMaDon.Text = _ctchdb.CHDB.MaDon.Value.ToString().Insert(_ctchdb.CHDB.MaDon.Value.ToString().Length - 2, "-");
                 txtMaThongBaoCH.Text = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
-                txtMaThongBaoCT.Text = _ctchdb.MaCTCTDB.ToString().Insert(_ctchdb.MaCTCTDB.ToString().Length - 2, "-");
+                if (!string.IsNullOrEmpty(_ctchdb.MaCTCTDB.ToString()))
+                    txtMaThongBaoCT.Text = _ctchdb.MaCTCTDB.ToString().Insert(_ctchdb.MaCTCTDB.ToString().Length - 2, "-");
                 txtDanhBo.Text = _ctchdb.DanhBo;
                 txtHopDong.Text = _ctchdb.HopDong;
                 txtHoTen.Text = _ctchdb.HoTen;

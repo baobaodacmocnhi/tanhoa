@@ -382,7 +382,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
                 {
                     _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                    //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                    txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                     if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
                     {
                         _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
