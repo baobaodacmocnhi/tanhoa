@@ -15,6 +15,8 @@ using KTKS_DonKH.GUI.KhachHang;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using System.Globalization;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -26,6 +28,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CKTXM _cKTXM = new CKTXM();
         DataTable DSCHDB_Edited = new DataTable();
         DataRowView _CTRow = null;
+        BindingSource DSCHDB_BS;
 
         public frmDSCHDB()
         {
@@ -59,7 +62,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radDSCatTamDanhBo.Checked = true;
+            radDaDuyet.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm Danh Bộ", gridViewCTCTDB);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ", gridViewCTCHDB);
@@ -67,16 +70,25 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvDSCTCHDB.AutoGenerateColumns = false;
             dgvDSCTCHDB.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSCTCHDB.Font, FontStyle.Bold);
             dgvDSCTCHDB.Location = gridControl.Location;
+
+            dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radDaDuyet.Checked)
             {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
+                gridControl.DataSource = DSCHDB_BS;
+
+                radDaDuyet_TXL.Checked = false;
+                radDSCatHuyDanhBo_TXL.Checked = false;
+                radDSCatTamDanhBo_TXL.Checked = false;
                 gridControl.Visible = true;
-                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
                 dgvDSCTCHDB.Visible = false;
-                btnLuu.Enabled = true;
+                //btnLuu.Enabled = true;
+                chkSelectAll.Visible = false;
             }
         }
 
@@ -84,10 +96,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radChuaDuyet.Checked)
             {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
+                gridControl.DataSource = DSCHDB_BS;
+
                 gridControl.Visible = true;
-                gridControl.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
                 dgvDSCTCHDB.Visible = false;
-                btnLuu.Enabled = false;
+                //btnLuu.Enabled = false;
+                chkSelectAll.Visible = false;
             }
         }
 
@@ -95,12 +111,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSCatTamDanhBo.Checked)
             {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
+                dgvDSCTCHDB.DataSource = DSCHDB_BS;
+
+                radDaDuyet_TXL.Checked = false;
+                radDSCatHuyDanhBo_TXL.Checked = false;
+                radDSCatTamDanhBo_TXL.Checked = false;
                 dgvDSCTCHDB.Visible = true;
-                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDB();
                 dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
                 dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = false;
                 gridControl.Visible = false;
-                btnLuu.Enabled = false;
+                //btnLuu.Enabled = false;
+                chkSelectAll.Visible = true;
             }
         }
 
@@ -108,12 +131,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSCatHuyDanhBo.Checked)
             {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
+                dgvDSCTCHDB.DataSource = DSCHDB_BS;
+
+                radDaDuyet_TXL.Checked = false;
+                radDSCatHuyDanhBo_TXL.Checked = false;
+                radDSCatTamDanhBo_TXL.Checked = false;
                 dgvDSCTCHDB.Visible = true;
-                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDB();
                 dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
                 dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
                 gridControl.Visible = false;
-                btnLuu.Enabled = false;
+                //btnLuu.Enabled = false;
+                chkSelectAll.Visible = true;
             }
         } 
 
@@ -389,23 +419,32 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         /// <param name="e"></param>
         private void gridViewCHDB_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            ///Khai báo các cột tương ứng trong Datagridview
-            if (DSCHDB_Edited.Columns.Count == 0)
-                foreach (DataColumn itemCol in ((DataView)gridViewCHDB.DataSource).Table.Columns)
-                {
-                    DSCHDB_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
-                }
+            /////Khai báo các cột tương ứng trong Datagridview
+            //if (DSCHDB_Edited.Columns.Count == 0)
+            //    foreach (DataColumn itemCol in ((DataView)gridViewCHDB.DataSource).Table.Columns)
+            //    {
+            //        DSCHDB_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
+            //    }
 
-            ///Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
-            ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row.EndEdit();
+            /////Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
+            //((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row.EndEdit();
 
-            ///DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
-            ///Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
-            if (DSCHDB_Edited.Select("MaDon = " + ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"]).Count() > 0)
-                DSCHDB_Edited.Rows.Remove(DSCHDB_Edited.Select("MaDon = " + ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"])[0]);
+            /////DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
+            /////Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
+            //if (DSCHDB_Edited.Select("MaDon = " + ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"]).Count() > 0)
+            //    DSCHDB_Edited.Rows.Remove(DSCHDB_Edited.Select("MaDon = " + ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"])[0]);
 
-            DSCHDB_Edited.ImportRow(((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row);
-            btnLuu.Enabled = true;
+            //DSCHDB_Edited.ImportRow(((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row);
+            //btnLuu.Enabled = true;
+
+            DataRowView itemRow = (DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0]);
+
+            CHDB chdb = _cCHDB.getCHDBbyID(decimal.Parse(itemRow["MaCHDB"].ToString()));
+            chdb.KetQua = itemRow["KetQua"].ToString();
+            chdb.Chuyen = true;
+            chdb.MaChuyen = itemRow["MaChuyen"].ToString();
+            chdb.LyDoChuyen = itemRow["LyDoChuyenDi"].ToString();
+            _cCHDB.SuaCHDB(chdb);
         }
 
         #endregion
@@ -669,6 +708,217 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         }
 
         #endregion
+
+        private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSelectAll.Checked)
+                for (int i = 0; i < dgvDSCTCHDB.Rows.Count; i++)
+                {
+                    dgvDSCTCHDB["In", i].Value = true;
+                }
+            else
+                for (int i = 0; i < dgvDSCTCHDB.Rows.Count; i++)
+                {
+                    dgvDSCTCHDB["In", i].Value = false;
+                }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (radDSCatTamDanhBo.Checked||radDSCatTamDanhBo_TXL.Checked)
+                        for (int i = 0; i < dgvDSCTCHDB.Rows.Count; i++)
+                            if (bool.Parse(dgvDSCTCHDB["In", i].Value.ToString()) == true)
+                            {
+                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                                CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                                dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                                dr["HoTen"] = ctctdb.HoTen;
+                                dr["DiaChi"] = ctctdb.DiaChi;
+                                dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                dr["HopDong"] = ctctdb.HopDong;
+                                dr["LyDo"] = ctctdb.LyDo + ". ";
+                                if (ctctdb.GhiChuLyDo != "")
+                                    dr["LyDo"] += ctctdb.GhiChuLyDo + ". ";
+                                if (ctctdb.SoTien.ToString() != "")
+                                    dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctctdb.SoTien);
+                                dr["ChucVu"] = ctctdb.ChucVu;
+                                dr["NguoiKy"] = ctctdb.NguoiKy;
+
+                                dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                                rptThongBaoCTDB rpt = new rptThongBaoCTDB();
+                                rpt.SetDataSource(dsBaoCao);
+
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
+
+                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                                rpt.PrintToPrinter(1, false, 0, 0);
+                            }
+                    if (radDSCatHuyDanhBo.Checked || radDSCatHuyDanhBo_TXL.Checked)
+                        for (int i = 0; i < dgvDSCTCHDB.Rows.Count; i++)
+                            if (bool.Parse(dgvDSCTCHDB["In", i].Value.ToString()) == true)
+                            {
+                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
+
+                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                                dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                                dr["HoTen"] = ctchdb.HoTen;
+                                dr["DiaChi"] = ctchdb.DiaChi;
+                                dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                dr["HopDong"] = ctchdb.HopDong;
+                                dr["LyDo"] = ctchdb.LyDo + ". ";
+                                if (ctchdb.GhiChuLyDo != "")
+                                    dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
+                                if (ctchdb.SoTien.ToString() != "")
+                                    dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
+                                dr["ChucVu"] = ctchdb.ChucVu;
+                                dr["NguoiKy"] = ctchdb.NguoiKy;
+
+                                dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                                rptThongBaoCHDB rpt = new rptThongBaoCHDB();
+                                rpt.SetDataSource(dsBaoCao);
+
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
+
+                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                                rpt.PrintToPrinter(1, false, 0, 0);
+                            }
+                }
+            }
+        }
+
+        private void radDaDuyet_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDaDuyet_TXL.Checked)
+            {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBDaDuyet_TXL().Tables["CHDB"];
+                gridControl.DataSource = DSCHDB_BS;
+
+                radDaDuyet_TXL.Checked = false;
+                radDSCatHuyDanhBo_TXL.Checked = false;
+                radDSCatTamDanhBo_TXL.Checked = false;
+                gridControl.Visible = true;
+                dgvDSCTCHDB.Visible = false;
+                //btnLuu.Enabled = true;
+                chkSelectAll.Visible = false;
+            }
+        }
+
+        private void radDSCatTamDanhBo_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSCatTamDanhBo_TXL.Checked)
+            {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB_TXL();
+                dgvDSCTCHDB.DataSource = DSCHDB_BS;
+
+                radDaDuyet_TXL.Checked = false;
+                radDSCatHuyDanhBo_TXL.Checked = false;
+                radDSCatTamDanhBo_TXL.Checked = false;
+                dgvDSCTCHDB.Visible = true;
+                dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
+                dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = false;
+                gridControl.Visible = false;
+                //btnLuu.Enabled = false;
+                chkSelectAll.Visible = true;
+            }
+        }
+
+        private void radDSCatHuyDanhBo_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSCatHuyDanhBo_TXL.Checked)
+            {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB_TXL();
+                dgvDSCTCHDB.DataSource = DSCHDB_BS;
+
+                radDaDuyet_TXL.Checked = false;
+                radDSCatHuyDanhBo_TXL.Checked = false;
+                radDSCatTamDanhBo_TXL.Checked = false;
+                dgvDSCTCHDB.Visible = true;
+                dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
+                dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
+                gridControl.Visible = false;
+                //btnLuu.Enabled = false;
+                chkSelectAll.Visible = true;
+            }
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Mã Đơn":
+                case "Danh Bộ":
+                    txtNoiDungTimKiem.Visible = true;
+                    dateTimKiem.Visible = false;
+                    break;
+                case "Ngày Lập":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    DSCHDB_BS.RemoveFilter();
+                    break;
+            }
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtNoiDungTimKiem.Text.Trim() != "")
+                {
+                    string expression = "";
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            if (radDaDuyet.Checked || radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
+                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDaDuyet_TXL.Checked || radDSCatTamDanhBo_TXL.Checked || radDSCatHuyDanhBo_TXL.Checked)
+                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
+                            break;
+                        case "Danh Bộ":
+                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                    }
+                    DSCHDB_BS.Filter = expression;
+                }
+                else
+                    DSCHDB_BS.RemoveFilter();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            DSCHDB_BS.Filter = expression;
+        }
 
     }
 }

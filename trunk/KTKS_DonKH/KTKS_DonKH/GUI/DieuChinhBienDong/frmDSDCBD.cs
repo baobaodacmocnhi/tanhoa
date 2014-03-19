@@ -706,6 +706,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 case "Mã Đơn":
                 case "Số Phiếu":
+                case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
                     txtNoiDungTimKiem2.Visible = true;
                     dateTimKiem.Visible = false;
@@ -726,29 +727,40 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
-            if (txtNoiDungTimKiem.Text.Trim() != "")
+            try
             {
-                string expression = "";
-                txtNoiDungTimKiem2.Text = "";
-                switch (cmbTimTheo.SelectedItem.ToString())
+                if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
-                    case "Mã Đơn":
-                        if (txtNoiDungTimKiem2.Text.Trim() == "")
-                            expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                        else
-                            expression = String.Format("MaDon >= {0} and MaDon <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
-                        break;
-                    case "Số Phiếu":
-                        if (txtNoiDungTimKiem2.Text.Trim() == "")
-                            expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                        else
-                            expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
-                        break;
+                    string expression = "";
+                    txtNoiDungTimKiem2.Text = "";
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            if (txtNoiDungTimKiem2.Text.Trim() == "")
+                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            else
+                                expression = String.Format("MaDon >= {0} and MaDon <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
+                            break;
+                        case "Số Phiếu":
+                            if (txtNoiDungTimKiem2.Text.Trim() == "")
+                                expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            else
+                                expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
+                            break;
+                        case "Danh Bộ":
+                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                    }
+                    DSDCBD_BS.Filter = expression;
                 }
-                DSDCBD_BS.Filter = expression;
+                else
+                    DSDCBD_BS.RemoveFilter();
             }
-            else
-                DSDCBD_BS.RemoveFilter();
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)

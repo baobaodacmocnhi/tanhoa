@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewCTTTTL = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -380,7 +380,7 @@
             this.radChuaDuyet.AutoSize = true;
             this.radChuaDuyet.Location = new System.Drawing.Point(6, 42);
             this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
             this.radChuaDuyet.TabIndex = 1;
             this.radChuaDuyet.Text = "Chưa Duyệt";
             this.radChuaDuyet.UseVisualStyleBackColor = true;
@@ -406,7 +406,7 @@
             this.radDaDuyet.AutoSize = true;
             this.radDaDuyet.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
+            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
             this.radDaDuyet.TabIndex = 0;
             this.radDaDuyet.Text = "Đã Duyệt";
             this.radDaDuyet.UseVisualStyleBackColor = true;
@@ -417,7 +417,7 @@
             this.radDSThu.AutoSize = true;
             this.radDSThu.Location = new System.Drawing.Point(96, 18);
             this.radDSThu.Name = "radDSThu";
-            this.radDSThu.Size = new System.Drawing.Size(119, 21);
+            this.radDSThu.Size = new System.Drawing.Size(101, 17);
             this.radDSThu.TabIndex = 2;
             this.radDSThu.Text = "Danh Sách Thư";
             this.radDSThu.UseVisualStyleBackColor = true;
@@ -427,14 +427,14 @@
             // 
             this.dgvDSThu.AllowUserToAddRows = false;
             this.dgvDSThu.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.In,
@@ -465,10 +465,10 @@
             // ThuDuocKy
             // 
             this.ThuDuocKy.DataPropertyName = "ThuDuocKy";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle6.NullValue = false;
-            this.ThuDuocKy.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.NullValue = false;
+            this.ThuDuocKy.DefaultCellStyle = dataGridViewCellStyle2;
             this.ThuDuocKy.HeaderText = "Được Ký";
             this.ThuDuocKy.Name = "ThuDuocKy";
             this.ThuDuocKy.Width = 50;
@@ -514,7 +514,7 @@
             // 
             this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
             this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(883, 34);
+            this.dateTimKiem.Location = new System.Drawing.Point(868, 32);
             this.dateTimKiem.Name = "dateTimKiem";
             this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
             this.dateTimKiem.TabIndex = 11;
@@ -524,7 +524,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(608, 14);
+            this.label2.Location = new System.Drawing.Point(593, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 7;
@@ -534,10 +534,12 @@
             // 
             this.cmbTimTheo.FormattingEnabled = true;
             this.cmbTimTheo.Items.AddRange(new object[] {
+            "",
             "Mã Đơn",
             "Mã Thư",
-            "Ngày Lập"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(682, 11);
+            "Ngày Lập",
+            "Danh Bộ"});
+            this.cmbTimTheo.Location = new System.Drawing.Point(667, 9);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
             this.cmbTimTheo.TabIndex = 8;
@@ -545,7 +547,7 @@
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(883, 11);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(868, 9);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem.TabIndex = 10;
@@ -555,7 +557,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(809, 14);
+            this.label1.Location = new System.Drawing.Point(794, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 9;
@@ -578,7 +580,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(1082, 12);
+            this.btnIn.Location = new System.Drawing.Point(1039, 12);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(92, 35);
             this.btnIn.TabIndex = 41;
@@ -616,7 +618,7 @@
             this.radDaDuyet_TXL.AutoSize = true;
             this.radDaDuyet_TXL.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet_TXL.Name = "radDaDuyet_TXL";
-            this.radDaDuyet_TXL.Size = new System.Drawing.Size(84, 21);
+            this.radDaDuyet_TXL.Size = new System.Drawing.Size(70, 17);
             this.radDaDuyet_TXL.TabIndex = 0;
             this.radDaDuyet_TXL.Text = "Đã Duyệt";
             this.radDaDuyet_TXL.UseVisualStyleBackColor = true;
@@ -627,7 +629,7 @@
             this.radDSThu_TXL.AutoSize = true;
             this.radDSThu_TXL.Location = new System.Drawing.Point(96, 18);
             this.radDSThu_TXL.Name = "radDSThu_TXL";
-            this.radDSThu_TXL.Size = new System.Drawing.Size(119, 21);
+            this.radDSThu_TXL.Size = new System.Drawing.Size(101, 17);
             this.radDSThu_TXL.TabIndex = 2;
             this.radDSThu_TXL.Text = "Danh Sách Thư";
             this.radDSThu_TXL.UseVisualStyleBackColor = true;
@@ -638,7 +640,7 @@
             this.radChuaDuyet_TXL.AutoSize = true;
             this.radChuaDuyet_TXL.Location = new System.Drawing.Point(6, 42);
             this.radChuaDuyet_TXL.Name = "radChuaDuyet_TXL";
-            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(81, 17);
             this.radChuaDuyet_TXL.TabIndex = 1;
             this.radChuaDuyet_TXL.Text = "Chưa Duyệt";
             this.radChuaDuyet_TXL.UseVisualStyleBackColor = true;
@@ -653,15 +655,15 @@
             this.ClientSize = new System.Drawing.Size(1362, 646);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.chkSelectAll);
+            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.dateTimKiem);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.dgvDSThu);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.gridControl);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);

@@ -26,6 +26,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                     var queryTTTL = from itemTTTL in db.TTTLs
                                     join itemDonKH in db.DonKHs on itemTTTL.MaDon equals itemDonKH.MaDon
                                     join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                    where itemTTTL.MaDon!=null
                                     select new
                                     {
                                         itemDonKH.MaDon,
@@ -51,6 +52,69 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
 
                     ///Table CTTTTL
                     var queryCTTTTL = from itemCTTTTL in db.CTTTTLs
+                                      where itemCTTTTL.TTTL.MaDon!=null
+                                      select itemCTTTTL;
+
+                    DataTable dtCTTTTL = new DataTable();
+                    dtCTTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTTTTL);
+                    dtCTTTTL.TableName = "CTTTTL";
+                    ds.Tables.Add(dtCTTTTL);
+
+                    if (dtTTTL.Rows.Count > 0 && dtCTTTTL.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["TTTL"].Columns["MaTTTL"], ds.Tables["CTTTTL"].Columns["MaTTTL"]);
+                    return ds;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataSet LoadDSTTTLDaDuyet_TXL()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    DataSet ds = new DataSet();
+                    ///Table TTTL
+                    var queryTTTL = from itemTTTL in db.TTTLs
+                                    join itemDonTXL in db.DonTXLs on itemTTTL.MaDonTXL equals itemDonTXL.MaDon
+                                    join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                    where itemTTTL.MaDonTXL != null
+                                    select new
+                                    {
+                                        itemDonTXL.MaDon,
+                                        itemLoaiDonTXL.TenLD,
+                                        itemDonTXL.CreateDate,
+                                        itemDonTXL.DanhBo,
+                                        itemDonTXL.HoTen,
+                                        itemDonTXL.DiaChi,
+                                        itemDonTXL.NoiDung,
+                                        MaNoiChuyenDen = itemTTTL.MaNoiChuyenDen,
+                                        NoiChuyenDen = itemTTTL.NoiChuyenDen,
+                                        LyDoChuyenDen = itemTTTL.LyDoChuyenDen,
+                                        itemTTTL.MaTTTL,
+                                        NgayXuLy = itemTTTL.CreateDate,
+                                        itemTTTL.KetQua,
+                                        itemTTTL.MaChuyen,
+                                        LyDoChuyenDi = itemTTTL.LyDoChuyen
+                                    };
+                    DataTable dtTTTL = new DataTable();
+                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL);
+                    dtTTTL.TableName = "TTTL";
+                    ds.Tables.Add(dtTTTL);
+
+                    ///Table CTTTTL
+                    var queryCTTTTL = from itemCTTTTL in db.CTTTTLs
+                                      where itemCTTTTL.TTTL.MaDonTXL != null
                                       select itemCTTTTL;
 
                     DataTable dtCTTTTL = new DataTable();
@@ -408,7 +472,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         }
 
         /// <summary>
-        /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời
+        /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời Tổ Khách Hàng
         /// </summary>
         /// <returns></returns>
         public DataTable LoadDSCTTTTL()
@@ -418,6 +482,44 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
                 {
                     var query = from itemCTTTTL in db.CTTTTLs
+                                where itemCTTTTL.TTTL.MaDon!=null
+                                select new
+                                {
+                                    In = false,
+                                    itemCTTTTL.MaCTTTTL,
+                                    itemCTTTTL.ThuDuocKy,
+                                    itemCTTTTL.GhiChu,
+                                    itemCTTTTL.CreateDate,
+                                    itemCTTTTL.VeViec,
+                                    itemCTTTTL.NoiDung,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời Tổ Xử Lý
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCTTTTL_TXL()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    var query = from itemCTTTTL in db.CTTTTLs
+                                where itemCTTTTL.TTTL.MaDonTXL != null
                                 select new
                                 {
                                     In = false,

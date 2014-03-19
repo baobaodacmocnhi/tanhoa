@@ -19,13 +19,14 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                if (CTaiKhoan.RoleCHDB_Xem||CTaiKhoan.RoleDCBD_CapNhat)
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     DataSet ds = new DataSet();
                     ///Table CHDB
                     var queryCHDB = from itemCHDB in db.CHDBs
                                     join itemDonKH in db.DonKHs on itemCHDB.MaDon equals itemDonKH.MaDon
                                     join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                    where itemCHDB.MaDon!=null
                                     select new
                                     {
                                         itemDonKH.MaDon,
@@ -51,6 +52,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
                     ///Table CTCTDB
                     var queryCTCTDB = from itemCTCTDB in db.CTCTDBs
+                                      where itemCTCTDB.CHDB.MaDon!=null
                                       select itemCTCTDB;
 
                     DataTable dtCTCTDB = new DataTable();
@@ -60,6 +62,81 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
                     ///Table CTCHDB
                     var queryCTCHDB = from itemCTCHDB in db.CTCHDBs
+                                      where itemCTCHDB.CHDB.MaDon != null
+                                      select itemCTCHDB;
+
+                    DataTable dtCTCHDB = new DataTable();
+                    dtCTCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCHDB);
+                    dtCTCHDB.TableName = "CTCHDB";
+                    ds.Tables.Add(dtCTCHDB);
+
+                    if (dtCHDB.Rows.Count > 0 && dtCTCTDB.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Cắt Tạm Danh Bộ", ds.Tables["CHDB"].Columns["MaCHDB"], ds.Tables["CTCTDB"].Columns["MaCHDB"]);
+                    if (dtCHDB.Rows.Count > 0 && dtCTCHDB.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Cắt Hủy Danh Bộ", ds.Tables["CHDB"].Columns["MaCHDB"], ds.Tables["CTCHDB"].Columns["MaCHDB"]);
+                    return ds;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataSet LoadDSCHDBDaDuyet_TXL()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    DataSet ds = new DataSet();
+                    ///Table CHDB
+                    var queryCHDB = from itemCHDB in db.CHDBs
+                                    join itemDonTXL in db.DonTXLs on itemCHDB.MaDonTXL equals itemDonTXL.MaDon
+                                    join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                    where itemCHDB.MaDon != null
+                                    select new
+                                    {
+                                        itemDonTXL.MaDon,
+                                        itemLoaiDonTXL.TenLD,
+                                        itemDonTXL.CreateDate,
+                                        itemDonTXL.DanhBo,
+                                        itemDonTXL.HoTen,
+                                        itemDonTXL.DiaChi,
+                                        itemDonTXL.NoiDung,
+                                        MaNoiChuyenDen = itemCHDB.MaNoiChuyenDen,
+                                        NoiChuyenDen = itemCHDB.NoiChuyenDen,
+                                        LyDoChuyenDen = itemCHDB.LyDoChuyenDen,
+                                        itemCHDB.MaCHDB,
+                                        NgayXuLy = itemCHDB.CreateDate,
+                                        itemCHDB.KetQua,
+                                        itemCHDB.MaChuyen,
+                                        LyDoChuyenDi = itemCHDB.LyDoChuyen
+                                    };
+                    DataTable dtCHDB = new DataTable();
+                    dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCHDB);
+                    dtCHDB.TableName = "CHDB";
+                    ds.Tables.Add(dtCHDB);
+
+                    ///Table CTCTDB
+                    var queryCTCTDB = from itemCTCTDB in db.CTCTDBs
+                                      where itemCTCTDB.CHDB.MaDonTXL != null
+                                      select itemCTCTDB;
+
+                    DataTable dtCTCTDB = new DataTable();
+                    dtCTCTDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);
+                    dtCTCTDB.TableName = "CTCTDB";
+                    ds.Tables.Add(dtCTCTDB);
+
+                    ///Table CTCHDB
+                    var queryCTCHDB = from itemCTCHDB in db.CTCHDBs
+                                      where itemCTCHDB.CHDB.MaDonTXL != null
                                       select itemCTCHDB;
 
                     DataTable dtCTCHDB = new DataTable();
@@ -90,7 +167,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     ///Bảng DonKH
                     var queryDonKH = from itemDonKH in db.DonKHs
@@ -253,7 +330,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         /// <summary>
-        /// Kiểm tra Đơn KH có được CHDB xử lý hay chưa
+        /// Kiểm tra Đơn Khách Hàng có được CHDB xử lý hay chưa
         /// </summary>
         /// <param name="MaDon"></param>
         /// <returns>true/có</returns>
@@ -262,6 +339,27 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                 if (db.CHDBs.Any(itemCHDB => itemCHDB.MaDon == MaDon))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra Đơn Tổ Xử Lý có được CHDB xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <returns>true/có</returns>
+        public bool CheckCHDBbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (db.CHDBs.Any(itemCHDB => itemCHDB.MaDonTXL == MaDonTXL))
                     return true;
                 else
                     return false;
@@ -283,6 +381,24 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                 return db.CHDBs.SingleOrDefault(itemCHDB => itemCHDB.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy CHDB bằng MaDon Tổ Xử Lý
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <returns></returns>
+        public CHDB getCHDBbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                return db.CHDBs.SingleOrDefault(itemCHDB => itemCHDB.MaDonTXL == MaDonTXL);
             }
             catch (Exception ex)
             {
@@ -384,7 +500,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ
+        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ Tổ Khách Hàng
         /// </summary>
         /// <returns></returns>
         public DataTable LoadDSCTCTDB()
@@ -394,8 +510,49 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB_Xem||CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.CHDB.MaDon!=null
                                 select new
                                 {
+                                    In=false,
+                                    MaTB = itemCTCTDB.MaCTCTDB,
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
+                                    itemCTCTDB.SoTien,
+                                    itemCTCTDB.ThongBaoDuocKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ Tổ Xử Lý
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCTCTDB_TXL()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.CHDB.MaDonTXL != null
+                                select new
+                                {
+                                    In=false,
                                     MaTB = itemCTCTDB.MaCTCTDB,
                                     itemCTCTDB.DanhBo,
                                     itemCTCTDB.HoTen,
@@ -532,18 +689,20 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ
+        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ Tổ Khách Hàng
         /// </summary>
         /// <returns></returns>
         public DataTable LoadDSCTCHDB()
         {
             try
             {
-                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemCTCHDB in db.CTCHDBs
+                                where itemCTCHDB.CHDB.MaDon!=null
                                 select new
                                 {
+                                    In = false,
                                     MaTB = itemCTCHDB.MaCTCHDB,
                                     itemCTCHDB.DanhBo,
                                     itemCTCHDB.HoTen,
@@ -570,6 +729,47 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ Tổ Xử Lý
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCTCHDB_TXL()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCHDB in db.CTCHDBs
+                                where itemCTCHDB.CHDB.MaDonTXL != null
+                                select new
+                                {
+                                    In = false,
+                                    MaTB = itemCTCHDB.MaCTCHDB,
+                                    itemCTCHDB.DanhBo,
+                                    itemCTCHDB.HoTen,
+                                    itemCTCHDB.DiaChi,
+                                    itemCTCHDB.LyDo,
+                                    itemCTCHDB.GhiChuLyDo,
+                                    itemCTCHDB.SoTien,
+                                    itemCTCHDB.ThongBaoDuocKy,
+                                    itemCTCHDB.DaLapPhieu,
+                                    itemCTCHDB.PhieuDuocKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+        }
         /// <summary>
         /// Kiểm tra Cắt Hủy đã được lập trước đó chưa, trong record Cắt Hủy có column Mã Chi Tiết Cắt Tạm
         /// </summary>
@@ -632,7 +832,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         /// <summary>
-        /// Kiểm tra CTCHDB đã được tạo cho Mã Đơn và Danh Bộ này chưa
+        /// Kiểm tra CTCHDB đã được tạo cho Mã Đơn Khách Hàng và Danh Bộ này chưa
         /// </summary>
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
@@ -642,6 +842,25 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                 return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.CHDB.MaDon == MaDon && itemCTCHDB.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra CTCHDB đã được tạo cho Mã Đơn Tổ Xử Lý và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTCHDBbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        {
+            try
+            {
+                return db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.CHDB.MaDonTXL == MaDonTXL && itemCTCHDB.DanhBo == DanhBo);
             }
             catch (Exception ex)
             {

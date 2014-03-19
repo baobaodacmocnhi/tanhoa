@@ -248,6 +248,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
+                case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
@@ -273,19 +274,30 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
-            if (txtNoiDungTimKiem.Text.Trim() != "")
+            try
             {
-                string expression = "";
-                switch (cmbTimTheo.SelectedItem.ToString())
+                if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
-                    case "Mã Đơn":
-                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                        break;
+                    string expression = "";
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                        case "Danh Bộ":
+                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                    }
+                    DSDonKH_BS.Filter = expression;
                 }
-                DSDonKH_BS.Filter = expression;
+                else
+                    DSDonKH_BS.RemoveFilter();
             }
-            else
-                DSDonKH_BS.RemoveFilter();
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)

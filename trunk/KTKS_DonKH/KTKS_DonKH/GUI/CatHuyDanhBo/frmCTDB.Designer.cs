@@ -40,6 +40,7 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxNguyenNhanXuLy = new System.Windows.Forms.GroupBox();
+            this.btnSua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.ReadOnly = true;
             this.txtMaDon.Size = new System.Drawing.Size(100, 25);
-            this.txtMaDon.TabIndex = 5;
+            this.txtMaDon.TabIndex = 1;
             this.txtMaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
             // 
             // label21
@@ -84,7 +85,7 @@
             this.label21.Location = new System.Drawing.Point(266, 9);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(61, 17);
-            this.label21.TabIndex = 4;
+            this.label21.TabIndex = 0;
             this.label21.Text = "Mã Đơn:";
             // 
             // groupBox1
@@ -100,7 +101,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 37);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(911, 80);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
             // 
@@ -174,6 +175,7 @@
             // 
             // groupBoxNguyenNhanXuLy
             // 
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnSua);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnLuu);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtSoTien);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label7);
@@ -184,10 +186,24 @@
             this.groupBoxNguyenNhanXuLy.Enabled = false;
             this.groupBoxNguyenNhanXuLy.Location = new System.Drawing.Point(12, 123);
             this.groupBoxNguyenNhanXuLy.Name = "groupBoxNguyenNhanXuLy";
-            this.groupBoxNguyenNhanXuLy.Size = new System.Drawing.Size(638, 94);
-            this.groupBoxNguyenNhanXuLy.TabIndex = 1;
+            this.groupBoxNguyenNhanXuLy.Size = new System.Drawing.Size(710, 94);
+            this.groupBoxNguyenNhanXuLy.TabIndex = 5;
             this.groupBoxNguyenNhanXuLy.TabStop = false;
             this.groupBoxNguyenNhanXuLy.Text = "Nguyên Nhân Xử Lý";
+            // 
+            // btnSua
+            // 
+            this.btnSua.Enabled = false;
+            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(639, 45);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(65, 35);
+            this.btnSua.TabIndex = 7;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnLuu
             // 
@@ -306,7 +322,7 @@
             this.groupBoxKetQuaXuLy.Location = new System.Drawing.Point(12, 223);
             this.groupBoxKetQuaXuLy.Name = "groupBoxKetQuaXuLy";
             this.groupBoxKetQuaXuLy.Size = new System.Drawing.Size(638, 93);
-            this.groupBoxKetQuaXuLy.TabIndex = 2;
+            this.groupBoxKetQuaXuLy.TabIndex = 6;
             this.groupBoxKetQuaXuLy.TabStop = false;
             this.groupBoxKetQuaXuLy.Text = "Kết Quả Xử Lý";
             // 
@@ -336,7 +352,7 @@
             this.groupBoxCapTrenXuLy.Location = new System.Drawing.Point(12, 322);
             this.groupBoxCapTrenXuLy.Name = "groupBoxCapTrenXuLy";
             this.groupBoxCapTrenXuLy.Size = new System.Drawing.Size(638, 95);
-            this.groupBoxCapTrenXuLy.TabIndex = 3;
+            this.groupBoxCapTrenXuLy.TabIndex = 7;
             this.groupBoxCapTrenXuLy.TabStop = false;
             this.groupBoxCapTrenXuLy.Text = "Cấp Trên Xử Lý";
             // 
@@ -410,7 +426,7 @@
             this.txtMaThongBao.Name = "txtMaThongBao";
             this.txtMaThongBao.ReadOnly = true;
             this.txtMaThongBao.Size = new System.Drawing.Size(100, 25);
-            this.txtMaThongBao.TabIndex = 7;
+            this.txtMaThongBao.TabIndex = 3;
             this.txtMaThongBao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaThongBao_KeyPress);
             // 
             // label10
@@ -419,7 +435,7 @@
             this.label10.Location = new System.Drawing.Point(444, 9);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 17);
-            this.label10.TabIndex = 6;
+            this.label10.TabIndex = 2;
             this.label10.Text = "Mã Thông Báo:";
             // 
             // frmCTDB
@@ -493,5 +509,6 @@
         private System.Windows.Forms.Button btnCapNhatCapTrenXuLy;
         private System.Windows.Forms.TextBox txtMaThongBao;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnSua;
     }
 }

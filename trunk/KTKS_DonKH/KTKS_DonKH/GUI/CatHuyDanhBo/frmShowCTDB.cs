@@ -38,7 +38,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (_cCHDB.getCTCTDBbyID(_MaCTCTDB) != null)
             {
                 _ctctdb = _cCHDB.getCTCTDBbyID(_MaCTCTDB);
-                txtMaDon.Text = _ctctdb.CHDB.MaDon.Value.ToString().Insert(_ctctdb.CHDB.MaDon.Value.ToString().Length - 2, "-");
+                if (!string.IsNullOrEmpty(_ctctdb.CHDB.MaDonTXL.ToString()))
+                    txtMaDon.Text = "TXL" + _ctctdb.CHDB.MaDonTXL.Value.ToString().Insert(_ctctdb.CHDB.MaDonTXL.Value.ToString().Length - 2, "-");
+                else
+                    if (!string.IsNullOrEmpty(_ctctdb.CHDB.MaDon.ToString()))
+                        txtMaDon.Text = _ctctdb.CHDB.MaDon.Value.ToString().Insert(_ctctdb.CHDB.MaDon.Value.ToString().Length - 2, "-");
                 txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                 txtDanhBo.Text = _ctctdb.DanhBo;
                 txtHopDong.Text = _ctctdb.HopDong;
