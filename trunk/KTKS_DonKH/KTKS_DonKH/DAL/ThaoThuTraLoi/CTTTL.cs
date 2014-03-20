@@ -492,6 +492,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.VeViec,
                                     itemCTTTTL.NoiDung,
+                                    itemCTTTTL.NoiNhan,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -529,6 +530,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.CreateDate,
                                     itemCTTTTL.VeViec,
                                     itemCTTTTL.NoiDung,
+                                    itemCTTTTL.NoiNhan,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

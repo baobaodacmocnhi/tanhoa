@@ -15,6 +15,7 @@ using KTKS_DonKH.GUI.DieuChinhBienDong;
 using KTKS_DonKH.GUI.CatHuyDanhBo;
 using KTKS_DonKH.GUI.ThaoThuTraLoi;
 using KTKS_DonKH.GUI.ToXuLy;
+using KTKS_DonKH.GUI.TimKiem;
 
 namespace KTKS_DonKH
 {
@@ -307,6 +308,16 @@ namespace KTKS_DonKH
             foreach (Form item in this.MdiChildren)
                 item.Close();
             Form frm = new frmQLDonTXL();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnTimKiemTienTrinh_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmTienTrinhDon();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

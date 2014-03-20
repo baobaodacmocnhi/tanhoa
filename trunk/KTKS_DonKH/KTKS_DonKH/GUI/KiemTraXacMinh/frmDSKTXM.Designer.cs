@@ -142,7 +142,7 @@
             this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 2;
-            this.gridColumn16.Width = 250;
+            this.gridColumn16.Width = 90;
             // 
             // gridColumn17
             // 
@@ -172,8 +172,8 @@
             this.gridControl.Location = new System.Drawing.Point(0, 68);
             this.gridControl.MainView = this.gridViewKTXM;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(2500, 470);
-            this.gridControl.TabIndex = 9;
+            this.gridControl.Size = new System.Drawing.Size(1362, 470);
+            this.gridControl.TabIndex = 8;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewKTXM,
             this.gridViewCTKTXM});
@@ -207,7 +207,7 @@
             this.gridColumn13,
             this.gridColumn18});
             this.gridViewKTXM.GridControl = this.gridControl;
-            this.gridViewKTXM.IndicatorWidth = 41;
+            this.gridViewKTXM.IndicatorWidth = 60;
             this.gridViewKTXM.Name = "gridViewKTXM";
             this.gridViewKTXM.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewKTXM.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -393,7 +393,7 @@
             this.btnLuu.Location = new System.Drawing.Point(1180, 12);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 8;
+            this.btnLuu.TabIndex = 7;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -427,8 +427,9 @@
             this.dgvDSCTKTXM.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSCTKTXM.MultiSelect = false;
             this.dgvDSCTKTXM.Name = "dgvDSCTKTXM";
-            this.dgvDSCTKTXM.Size = new System.Drawing.Size(1411, 470);
-            this.dgvDSCTKTXM.TabIndex = 7;
+            this.dgvDSCTKTXM.RowHeadersWidth = 60;
+            this.dgvDSCTKTXM.Size = new System.Drawing.Size(1362, 470);
+            this.dgvDSCTKTXM.TabIndex = 9;
             this.dgvDSCTKTXM.Visible = false;
             this.dgvDSCTKTXM.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDSKTXM_CellBeginEdit);
             this.dgvDSCTKTXM.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKTXM_CellEndEdit);
@@ -448,6 +449,7 @@
             this.ToXuLy.DataPropertyName = "ToXuLy";
             this.ToXuLy.HeaderText = "TXL";
             this.ToXuLy.Name = "ToXuLy";
+            this.ToXuLy.Visible = false;
             this.ToXuLy.Width = 50;
             // 
             // MaDon
@@ -588,7 +590,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(245, 65);
-            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tổ Khách Hàng";
             // 
@@ -600,7 +602,7 @@
             this.groupBox2.Location = new System.Drawing.Point(263, 1);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(245, 65);
-            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tổ Xử Lý";
             // 
@@ -709,6 +711,11 @@
         private System.Windows.Forms.RadioButton radDSKTXM;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radDaDuyet_TXL;
+        private System.Windows.Forms.RadioButton radDSKTXM_TXL;
+        private System.Windows.Forms.RadioButton radChuaDuyet_TXL;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTKTXM;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
@@ -718,10 +725,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radDaDuyet_TXL;
-        private System.Windows.Forms.RadioButton radDSKTXM_TXL;
-        private System.Windows.Forms.RadioButton radChuaDuyet_TXL;
     }
 }

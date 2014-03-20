@@ -194,8 +194,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && _donkh!=null)
             {
+                thêmToolStripMenuItem.Enabled = true;
+                nhậnĐịnhMứctoolStripMenuItem.Enabled = true;
                 contextMenuStrip1.Show(dgvDSSoDangKy, new Point(e.X, e.Y));
             }
         }
@@ -655,6 +657,35 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Control && e.KeyCode == Keys.Add)
                 btnLuu.PerformClick();
+            if (_donkh!=null && e.Control && e.KeyCode == Keys.D1)
+            {
+                Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("MaDon", _donkh.MaDon.ToString());
+                source.Add("DanhBo", txtDanhBo.Text.Trim());
+                source.Add("HoTenKH", txtHoTen.Text.Trim());
+                source.Add("DiaChiKH", txtDiaChi.Text.Trim());
+                source.Add("TenLCT", "Hộ Khẩu");
+                source.Add("MaCT", "");
+                source.Add("DiaChi", "");
+                source.Add("SoNKTong", "");
+                source.Add("SoNKDangKy", "");
+                source.Add("NgayHetHan", "");
+                source.Add("ThoiHan", "");
+                frmSoDK frm = new frmSoDK("Thêm", source);
+                if (frm.ShowDialog() == DialogResult.OK)
+                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+            }
+            if (_donkh != null && e.Control && e.KeyCode == Keys.D2)
+            {
+                Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("MaDon", _donkh.MaDon.ToString());
+                source.Add("DanhBo", txtDanhBo.Text.Trim());
+                source.Add("HoTen", txtHoTen.Text.Trim());
+                source.Add("DiaChi", txtDiaChi.Text.Trim());
+                frmNhanDM frm = new frmNhanDM(source);
+                if (frm.ShowDialog() == DialogResult.OK)
+                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+            }
         }
 
         private void dgvDSDieuChinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

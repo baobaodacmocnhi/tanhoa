@@ -24,17 +24,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     DataSet ds = new DataSet();
                     ///Table DCBD
                     var queryDCBD = from itemDCBD in db.DCBDs
-                                join itemDonKH in db.DonKHs on itemDCBD.MaDon equals itemDonKH.MaDon
-                                join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                //join itemDonKH in db.DonKHs on itemDCBD.MaDon equals itemDonKH.MaDon
+                                //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 select new
                                 {
-                                    itemDonKH.MaDon,
-                                    itemLoaiDon.TenLD,
-                                    itemDonKH.CreateDate,
-                                    itemDonKH.DanhBo,
-                                    itemDonKH.HoTen,
-                                    itemDonKH.DiaChi,
-                                    itemDonKH.NoiDung,
+                                    itemDCBD.DonKH.MaDon,
+                                    itemDCBD.DonKH.LoaiDon.TenLD,
+                                    itemDCBD.DonKH.CreateDate,
+                                    itemDCBD.DonKH.DanhBo,
+                                    itemDCBD.DonKH.HoTen,
+                                    itemDCBD.DonKH.DiaChi,
+                                    itemDCBD.DonKH.NoiDung,
                                     MaNoiChuyenDen = itemDCBD.MaNoiChuyenDen,
                                     NoiChuyenDen = itemDCBD.NoiChuyenDen,
                                     LyDoChuyenDen = itemDCBD.LyDoChuyenDen,
@@ -484,6 +484,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 {
                                     In = false,
                                     SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh="Biến Động",
                                     itemCTDCBD.CreateDate,
                                     itemCTDCBD.DanhBo,
                                     itemCTDCBD.HoTen,
@@ -639,6 +640,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 {
                                     In = false,
                                     SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
                                     itemCTDCHD.CreateDate,
                                     itemCTDCHD.DanhBo,
                                     itemCTDCHD.GiaBieu,
