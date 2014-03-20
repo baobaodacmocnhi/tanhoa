@@ -314,6 +314,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
                                     //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemLSCT.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
                                     itemLSCT.MaCT,
                                     itemLSCT.CatDM,
                                     itemLSCT.SoNKCat,
@@ -338,6 +339,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         table.Columns.Add("MaLSCT", typeof(string));
                         table.Columns.Add("SoPhieu", typeof(string));
                         table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        table.Columns.Add("CreateDate", typeof(string));
                         table.Columns.Add("MaCT", typeof(string));
                         table.Columns.Add("CatNhan", typeof(string));
                         table.Columns.Add("SoNK", typeof(string));
@@ -363,6 +365,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
                             else
                                 Row["SoPhieuDCBD"] = "";
+                            Row["CreateDate"] = itemRow["CreateDate"];
                             Row["MaCT"] = itemRow["MaCT"];
                             if (itemRow["CatDM"].ToString() != "")
                                 if (bool.Parse(itemRow["CatDM"].ToString()) == true)

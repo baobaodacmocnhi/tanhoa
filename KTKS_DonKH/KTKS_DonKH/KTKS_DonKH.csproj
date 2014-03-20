@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>99</ApplicationRevision>
+    <ApplicationRevision>100</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -227,6 +227,7 @@
     <Compile Include="DAL\KhachHang\CPhuongQuan.cs" />
     <Compile Include="DAL\KiemTraXacMinh\CKTXM.cs" />
     <Compile Include="DAL\ThaoThuTraLoi\CTTTL.cs" />
+    <Compile Include="DAL\TimKiem\CTimKiem.cs" />
     <Compile Include="DAL\ToXuLy\CDonTXL.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -457,6 +458,12 @@
     <Compile Include="GUI\ThaoThuTraLoi\frmTTTL.Designer.cs">
       <DependentUpon>frmTTTL.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\TimKiem\frmTienTrinhDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TimKiem\frmTienTrinhDon.Designer.cs">
+      <DependentUpon>frmTienTrinhDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToXuLy\frmNhanDonTXL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -682,6 +689,9 @@
     <EmbeddedResource Include="GUI\ThaoThuTraLoi\frmTTTL.resx">
       <DependentUpon>frmTTTL.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TimKiem\frmTienTrinhDon.resx">
+      <DependentUpon>frmTienTrinhDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmNhanDonTXL.resx">
       <DependentUpon>frmNhanDonTXL.cs</DependentUpon>
     </EmbeddedResource>
@@ -791,6 +801,7 @@
     <None Include="Resources\letter 48x48.png" />
     <None Include="Resources\forms 48x48 b.jpg" />
     <None Include="Resources\my documents 48x48 b.jpg" />
+    <None Include="Resources\find.png" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\System.Windows.Forms.Ribbon35.dll" />
   </ItemGroup>

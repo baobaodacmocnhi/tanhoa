@@ -710,16 +710,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtNoiDungTimKiem.Visible = true;
                     txtNoiDungTimKiem2.Visible = true;
                     dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày Lập":
                     txtNoiDungTimKiem.Visible = false;
                     txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = true;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Khoảng Thời Gian":
+                    txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
                     txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
                     DSDCBD_BS.RemoveFilter();
                     break;
             }
@@ -765,8 +774,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
             DSDCBD_BS.Filter = expression;
+            if (radDSDCBD.Checked)
+            {
+                int a = 0;
+                int b = 0;
+                DataTable dt = ((DataTable)DSDCBD_BS.DataSource).DefaultView.ToTable();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    if (!string.IsNullOrEmpty(itemRow["HoTen_BD"].ToString()))
+                    {
+                        a++;
+                    }
+                    else
+                        b++;
+                }
+                textBox1.Text = a.ToString();
+                textBox2.Text = b.ToString();
+            }
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -1065,6 +1091,34 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             else
                 DSDCBD_BS.RemoveFilter();
+        }
+
+        private void dateTu_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateDen_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+            DSDCBD_BS.Filter = expression;
+            if (radDSDCBD.Checked)
+            {
+                int a = 0;
+                int b = 0;
+                DataTable dt = ((DataTable)DSDCBD_BS.DataSource).DefaultView.ToTable();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    if (!string.IsNullOrEmpty(itemRow["HoTen_BD"].ToString()))
+                    {
+                        a++;
+                    }
+                    else
+                        b++;
+                }
+                textBox1.Text = a.ToString();
+                textBox2.Text = b.ToString();
+            }
         }
     }
 }

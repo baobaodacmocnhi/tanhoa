@@ -221,9 +221,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 }
                                 //_source.Add("MaCHDB", _cCHDB.getMaxMaCHDB().ToString());
                                 if (string.IsNullOrEmpty(_dontxl.TienTrinh))
-                                    _dontxl.TienTrinh = "CTCHDB";
+                                    _dontxl.TienTrinh = "CHDB";
                                 else
-                                    _dontxl.TienTrinh += ",CTCHDB";
+                                    _dontxl.TienTrinh += ",CHDB";
                                 _dontxl.Nhan = true;
                                 _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
