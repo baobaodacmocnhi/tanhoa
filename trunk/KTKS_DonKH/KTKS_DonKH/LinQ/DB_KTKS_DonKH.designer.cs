@@ -6748,6 +6748,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HoTen;
 		
+		private string _DiaChi;
+		
 		private string _SoVB;
 		
 		private System.Nullable<System.DateTime> _NgayKy;
@@ -6826,6 +6828,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
+    partial void OnDiaChiChanging(string value);
+    partial void OnDiaChiChanged();
     partial void OnSoVBChanging(string value);
     partial void OnSoVBChanged();
     partial void OnNgayKyChanging(System.Nullable<System.DateTime> value);
@@ -6956,6 +6960,26 @@ namespace KTKS_DonKH.LinQ
 					this._HoTen = value;
 					this.SendPropertyChanged("HoTen");
 					this.OnHoTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(MAX)")]
+		public string DiaChi
+		{
+			get
+			{
+				return this._DiaChi;
+			}
+			set
+			{
+				if ((this._DiaChi != value))
+				{
+					this.OnDiaChiChanging(value);
+					this.SendPropertyChanging();
+					this._DiaChi = value;
+					this.SendPropertyChanged("DiaChi");
+					this.OnDiaChiChanged();
 				}
 			}
 		}

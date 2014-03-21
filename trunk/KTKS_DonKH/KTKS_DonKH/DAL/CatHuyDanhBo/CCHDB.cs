@@ -100,7 +100,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     var queryCHDB = from itemCHDB in db.CHDBs
                                     join itemDonTXL in db.DonTXLs on itemCHDB.MaDonTXL equals itemDonTXL.MaDon
                                     join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
-                                    where itemCHDB.MaDon != null
+                                    where itemCHDB.MaDonTXL != null
                                     select new
                                     {
                                         itemDonTXL.MaDon,

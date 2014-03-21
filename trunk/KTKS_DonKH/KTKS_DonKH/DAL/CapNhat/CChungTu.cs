@@ -301,6 +301,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// <returns></returns>
         public DataTable LoadDSCatChuyenDM()
         {
+            //string a = "";
             try
             {
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
@@ -308,6 +309,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     var query = from itemLSCT in db.LichSuChungTus
                                 //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null
+                                //where itemLSCT.SoPhieu == 32814
                                 orderby itemLSCT.SoPhieu ascending
                                 select new
                                 {
@@ -357,6 +359,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         CChiNhanh _cChiNhanh = new CChiNhanh();
                         foreach (DataRow itemRow in table2.Rows)
                         {
+                            //a = itemRow["MaLSCT"].ToString();
                             DataRow Row = table.NewRow();
                             Row["In"] = false;
                             Row["MaLSCT"] = itemRow["MaLSCT"];
@@ -416,6 +419,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
             catch (Exception ex)
             {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
@@ -668,6 +672,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ctchungtu.YeuCauCat2)
                         {
                             LichSuChungTu lichsuchungtu2 = new LichSuChungTu();
+                            lichsuchungtu2.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtu2.MaCT = ctchungtu.MaCT;
                             lichsuchungtu2.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu2.SoNKTong = chungtuCN.SoNKTong;
@@ -697,6 +702,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             else
                                 lichsuchungtu2.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             lichsuchungtu2.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            lichsuchungtu2.PhieuDuocKy = true;
 
                             ThemLichSuChungTu(lichsuchungtu2);
                         }
@@ -704,6 +710,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ctchungtu.YeuCauCat3)
                         {
                             LichSuChungTu lichsuchungtu3 = new LichSuChungTu();
+                            lichsuchungtu3.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtu3.MaCT = ctchungtu.MaCT;
                             lichsuchungtu3.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu3.SoNKTong = chungtuCN.SoNKTong;
@@ -733,6 +740,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             else
                                 lichsuchungtu3.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             lichsuchungtu3.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            lichsuchungtu3.PhieuDuocKy = true;
 
                             ThemLichSuChungTu(lichsuchungtu3);
                         }
@@ -740,6 +748,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ctchungtu.YeuCauCat4)
                         {
                             LichSuChungTu lichsuchungtu4 = new LichSuChungTu();
+                            lichsuchungtu4.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtu4.MaCT = ctchungtu.MaCT;
                             lichsuchungtu4.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu4.SoNKTong = chungtuCN.SoNKTong;
@@ -769,6 +778,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             else
                                 lichsuchungtu4.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             lichsuchungtu4.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            lichsuchungtu4.PhieuDuocKy = true;
 
                             ThemLichSuChungTu(lichsuchungtu4);
                         }
@@ -776,6 +786,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ctchungtu.YeuCauCat5)
                         {
                             LichSuChungTu lichsuchungtu5 = new LichSuChungTu();
+                            lichsuchungtu5.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtu5.MaCT = ctchungtu.MaCT;
                             lichsuchungtu5.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu5.SoNKTong = chungtuCN.SoNKTong;
@@ -805,6 +816,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             else
                                 lichsuchungtu5.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             lichsuchungtu5.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            lichsuchungtu5.PhieuDuocKy = true;
 
                             ThemLichSuChungTu(lichsuchungtu5);
                         }

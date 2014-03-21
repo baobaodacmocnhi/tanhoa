@@ -62,8 +62,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cmbLyDo = new System.Windows.Forms.ComboBox();
             this.groupBoxNguyenNhanXuLy = new System.Windows.Forms.GroupBox();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
             this.groupBoxCapTrenXuLy.SuspendLayout();
             this.groupBoxKetQuaXuLy.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -147,8 +147,7 @@
             this.groupBoxCapTrenXuLy.Controls.Add(this.label12);
             this.groupBoxCapTrenXuLy.Controls.Add(this.label13);
             this.groupBoxCapTrenXuLy.Controls.Add(this.txtKetQuaCapTrenXuLy);
-            this.groupBoxCapTrenXuLy.Enabled = false;
-            this.groupBoxCapTrenXuLy.Location = new System.Drawing.Point(12, 322);
+            this.groupBoxCapTrenXuLy.Location = new System.Drawing.Point(12, 368);
             this.groupBoxCapTrenXuLy.Name = "groupBoxCapTrenXuLy";
             this.groupBoxCapTrenXuLy.Size = new System.Drawing.Size(638, 95);
             this.groupBoxCapTrenXuLy.TabIndex = 11;
@@ -167,6 +166,7 @@
             this.btnCapNhatCapTrenXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhatCapTrenXuLy.UseVisualStyleBackColor = true;
             this.btnCapNhatCapTrenXuLy.Visible = false;
+            this.btnCapNhatCapTrenXuLy.Click += new System.EventHandler(this.btnCapNhatCapTrenXuLy_Click);
             // 
             // label11
             // 
@@ -225,10 +225,9 @@
             this.groupBoxKetQuaXuLy.Controls.Add(this.label9);
             this.groupBoxKetQuaXuLy.Controls.Add(this.label8);
             this.groupBoxKetQuaXuLy.Controls.Add(this.txtKetQuaTCTBXuLy);
-            this.groupBoxKetQuaXuLy.Enabled = false;
             this.groupBoxKetQuaXuLy.Location = new System.Drawing.Point(12, 223);
             this.groupBoxKetQuaXuLy.Name = "groupBoxKetQuaXuLy";
-            this.groupBoxKetQuaXuLy.Size = new System.Drawing.Size(638, 93);
+            this.groupBoxKetQuaXuLy.Size = new System.Drawing.Size(638, 139);
             this.groupBoxKetQuaXuLy.TabIndex = 10;
             this.groupBoxKetQuaXuLy.TabStop = false;
             this.groupBoxKetQuaXuLy.Text = "Kết Quả Xử Lý";
@@ -245,12 +244,14 @@
             this.btnCapNhatTCTBXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhatTCTBXuLy.UseVisualStyleBackColor = true;
             this.btnCapNhatTCTBXuLy.Visible = false;
+            this.btnCapNhatTCTBXuLy.Click += new System.EventHandler(this.btnCapNhatTCTBXuLy_Click);
             // 
             // txtKetQuaTCTBXuLy
             // 
             this.txtKetQuaTCTBXuLy.Location = new System.Drawing.Point(99, 55);
+            this.txtKetQuaTCTBXuLy.Multiline = true;
             this.txtKetQuaTCTBXuLy.Name = "txtKetQuaTCTBXuLy";
-            this.txtKetQuaTCTBXuLy.Size = new System.Drawing.Size(386, 25);
+            this.txtKetQuaTCTBXuLy.Size = new System.Drawing.Size(386, 75);
             this.txtKetQuaTCTBXuLy.TabIndex = 3;
             // 
             // txtMaDon
@@ -390,14 +391,13 @@
             // 
             // groupBoxNguyenNhanXuLy
             // 
-            this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnLuu);
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnSua);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtSoTien);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label7);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtGhiChuXuLy);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label6);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.cmbLyDo);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label5);
-            this.groupBoxNguyenNhanXuLy.Enabled = false;
             this.groupBoxNguyenNhanXuLy.Location = new System.Drawing.Point(12, 123);
             this.groupBoxNguyenNhanXuLy.Name = "groupBoxNguyenNhanXuLy";
             this.groupBoxNguyenNhanXuLy.Size = new System.Drawing.Size(638, 94);
@@ -405,39 +405,39 @@
             this.groupBoxNguyenNhanXuLy.TabStop = false;
             this.groupBoxNguyenNhanXuLy.Text = "Nguyên Nhân Xử Lý";
             // 
-            // btnLuu
+            // btnSua
             // 
-            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(515, 45);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 6;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Visible = false;
+            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(550, 45);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(65, 35);
+            this.btnSua.TabIndex = 8;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // button1
+            // btnIn
             // 
-            this.button1.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(740, 272);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 35);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "In Thông Báo";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(740, 272);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(125, 35);
+            this.btnIn.TabIndex = 16;
+            this.btnIn.Text = "In Thông Báo";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // frmShowCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(938, 429);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(938, 477);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtMaThongBao);
             this.Controls.Add(this.groupBoxCapTrenXuLy);
             this.Controls.Add(this.groupBoxKetQuaXuLy);
@@ -469,7 +469,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSoTien;
         private System.Windows.Forms.Label label7;
@@ -504,6 +503,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbLyDo;
         private System.Windows.Forms.GroupBox groupBoxNguyenNhanXuLy;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnSua;
     }
 }

@@ -693,13 +693,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         /// <param name="e"></param>
         private void dgvDSCTCHDB_KeyDown(object sender, KeyEventArgs e)
         {
-            if (radDSCatTamDanhBo.Checked)
+            if (radDSCatTamDanhBo.Checked||radDSCatTamDanhBo_TXL.Checked)
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
                     frmShowCTDB frm = new frmShowCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
                     frm.ShowDialog();
                 }
-            if (radDSCatHuyDanhBo.Checked)
+            if (radDSCatHuyDanhBo.Checked||radDSCatHuyDanhBo_TXL.Checked)
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
                     frmShowCHDB frm = new frmShowCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
@@ -812,9 +812,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBDaDuyet_TXL().Tables["CHDB"];
                 gridControl.DataSource = DSCHDB_BS;
 
-                radDaDuyet_TXL.Checked = false;
-                radDSCatHuyDanhBo_TXL.Checked = false;
-                radDSCatTamDanhBo_TXL.Checked = false;
+                radDaDuyet.Checked = false;
+                radDSCatHuyDanhBo.Checked = false;
+                radDSCatTamDanhBo.Checked = false;
                 gridControl.Visible = true;
                 dgvDSCTCHDB.Visible = false;
                 //btnLuu.Enabled = true;
@@ -830,9 +830,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB_TXL();
                 dgvDSCTCHDB.DataSource = DSCHDB_BS;
 
-                radDaDuyet_TXL.Checked = false;
-                radDSCatHuyDanhBo_TXL.Checked = false;
-                radDSCatTamDanhBo_TXL.Checked = false;
+                radDaDuyet.Checked = false;
+                radDSCatHuyDanhBo.Checked = false;
+                radDSCatTamDanhBo.Checked = false;
                 dgvDSCTCHDB.Visible = true;
                 dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
                 dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = false;
@@ -850,9 +850,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB_TXL();
                 dgvDSCTCHDB.DataSource = DSCHDB_BS;
 
-                radDaDuyet_TXL.Checked = false;
-                radDSCatHuyDanhBo_TXL.Checked = false;
-                radDSCatTamDanhBo_TXL.Checked = false;
+                radDaDuyet.Checked = false;
+                radDSCatHuyDanhBo.Checked = false;
+                radDSCatTamDanhBo.Checked = false;
                 dgvDSCTCHDB.Visible = true;
                 dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
                 dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;

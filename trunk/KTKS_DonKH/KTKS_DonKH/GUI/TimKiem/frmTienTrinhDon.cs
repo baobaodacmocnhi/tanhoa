@@ -34,6 +34,10 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ", gridViewCHDB);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
+            ///
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh TXL", gridViewKTXM_TXL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ TXL", gridViewCHDB_TXL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời TXL", gridViewTTTTL_TXL);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -55,7 +59,10 @@ namespace KTKS_DonKH.GUI.TimKiem
                         }
                         break;
                     case "Danh Bộ":
-
+                        gridControl.DataSource = _cTimKiem.GetTienTrinhbyDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", "")).Tables["Don"];
+                        break;
+                    case "Địa Chỉ":
+                        gridControl.DataSource = _cTimKiem.GetTienTrinhbyDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
                         break;
                 }
             }

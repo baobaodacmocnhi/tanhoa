@@ -576,24 +576,33 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (_ctctdb != null && cmbLyDo.SelectedIndex != -1)
+            try
             {
-                _ctctdb.LyDo = cmbLyDo.SelectedItem.ToString();
-                _ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
-                if (txtSoTien.Text.Trim() != "")
-                    _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim());
-
-                if (_cCHDB.SuaCTCTDB(_ctctdb))
+                if (_ctctdb != null)
                 {
-                    MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Clear();
-                    if (!_direct)
+                    if (!string.IsNullOrEmpty(cmbLyDo.SelectedItem.ToString()))
+                        _ctctdb.LyDo = cmbLyDo.SelectedItem.ToString();
+                    _ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
+                    if (txtSoTien.Text.Trim() != "")
+                        _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+
+                    if (_cCHDB.SuaCTCTDB(_ctctdb))
                     {
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
+                        MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
+                        if (!_direct)
+                        {
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
     }
