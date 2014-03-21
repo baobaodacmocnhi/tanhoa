@@ -102,24 +102,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["SoHD"] = _ctdchd.SoHD;
                 ///
                 dr["TieuThuStart"] = _ctdchd.TieuThu;
-                dr["TienNuocStart"] = _ctdchd.TienNuoc_Start;
-                dr["ThueGTGTStart"] = _ctdchd.ThueGTGT_Start;
-                dr["PhiBVMTStart"] = _ctdchd.PhiBVMT_Start;
-                dr["TongCongStart"] = _ctdchd.TongCong_Start;
+                dr["TienNuocStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.TienNuoc_Start);
+                dr["ThueGTGTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.ThueGTGT_Start);
+                dr["PhiBVMTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.PhiBVMT_Start);
+                dr["TongCongStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.TongCong_Start);
                 ///
                 dr["TangGiam"] = _ctdchd.TangGiam;
                 ///
                 dr["TieuThuBD"] = _ctdchd.TieuThu_BD - _ctdchd.TieuThu;
-                dr["TienNuocBD"] = _ctdchd.TienNuoc_BD;
-                dr["ThueGTGTBD"] = _ctdchd.ThueGTGT_BD;
-                dr["PhiBVMTBD"] = _ctdchd.PhiBVMT_BD;
-                dr["TongCongBD"] = _ctdchd.TongCong_BD;
+                dr["TienNuocBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.TienNuoc_BD);
+                dr["ThueGTGTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.ThueGTGT_BD);
+                dr["PhiBVMTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.PhiBVMT_BD);
+                dr["TongCongBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.TongCong_BD);
                 ///
                 dr["TieuThuEnd"] = _ctdchd.TieuThu_BD;
-                dr["TienNuocEnd"] = _ctdchd.TienNuoc_End;
-                dr["ThueGTGTEnd"] = _ctdchd.ThueGTGT_End;
-                dr["PhiBVMTEnd"] = _ctdchd.PhiBVMT_End;
-                dr["TongCongEnd"] = _ctdchd.TongCong_End;
+                dr["TienNuocEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.TienNuoc_End);
+                dr["ThueGTGTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.ThueGTGT_End);
+                dr["PhiBVMTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.PhiBVMT_End);
+                dr["TongCongEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",_ctdchd.TongCong_End);
 
                 dr["ChucVu"] = _ctdchd.ChucVu;
                 dr["NguoiKy"] = _ctdchd.NguoiKy;

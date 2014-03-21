@@ -280,8 +280,9 @@
             // txtKetQuaTCTBXuLy
             // 
             this.txtKetQuaTCTBXuLy.Location = new System.Drawing.Point(99, 55);
+            this.txtKetQuaTCTBXuLy.Multiline = true;
             this.txtKetQuaTCTBXuLy.Name = "txtKetQuaTCTBXuLy";
-            this.txtKetQuaTCTBXuLy.Size = new System.Drawing.Size(386, 25);
+            this.txtKetQuaTCTBXuLy.Size = new System.Drawing.Size(386, 75);
             this.txtKetQuaTCTBXuLy.TabIndex = 3;
             // 
             // label8
@@ -321,7 +322,7 @@
             this.groupBoxKetQuaXuLy.Enabled = false;
             this.groupBoxKetQuaXuLy.Location = new System.Drawing.Point(12, 223);
             this.groupBoxKetQuaXuLy.Name = "groupBoxKetQuaXuLy";
-            this.groupBoxKetQuaXuLy.Size = new System.Drawing.Size(638, 93);
+            this.groupBoxKetQuaXuLy.Size = new System.Drawing.Size(638, 139);
             this.groupBoxKetQuaXuLy.TabIndex = 6;
             this.groupBoxKetQuaXuLy.TabStop = false;
             this.groupBoxKetQuaXuLy.Text = "Kết Quả Xử Lý";
@@ -349,7 +350,7 @@
             this.groupBoxCapTrenXuLy.Controls.Add(this.label13);
             this.groupBoxCapTrenXuLy.Controls.Add(this.txtKetQuaCapTrenXuLy);
             this.groupBoxCapTrenXuLy.Enabled = false;
-            this.groupBoxCapTrenXuLy.Location = new System.Drawing.Point(12, 322);
+            this.groupBoxCapTrenXuLy.Location = new System.Drawing.Point(12, 368);
             this.groupBoxCapTrenXuLy.Name = "groupBoxCapTrenXuLy";
             this.groupBoxCapTrenXuLy.Size = new System.Drawing.Size(638, 95);
             this.groupBoxCapTrenXuLy.TabIndex = 7;
@@ -443,7 +444,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(938, 429);
+            this.ClientSize = new System.Drawing.Size(938, 477);
             this.Controls.Add(this.txtMaThongBao);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.groupBoxCapTrenXuLy);

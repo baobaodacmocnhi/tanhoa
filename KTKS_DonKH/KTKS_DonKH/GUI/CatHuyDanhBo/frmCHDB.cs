@@ -95,6 +95,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             _ctchdb = null;
             _ctctdb = null;
             btnSua.Enabled = false;
+            txtHieuLucKy.ReadOnly = true;
+            btnInPhieu.Enabled = true;
         }
 
         private void frmCHDB_Load(object sender, EventArgs e)
@@ -797,8 +799,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     groupBoxKetQuaXuLy.Enabled = true;
                     groupBoxCapTrenXuLy.Enabled = true;
                     btnSua.Enabled = true;
-                    txtHieuLucKy.ReadOnly = false;
-                    btnInPhieu.Enabled = false;
+                    txtHieuLucKy.ReadOnly = true;
+                    btnInPhieu.Enabled = true;
                 }
                 else
                 {
@@ -816,24 +818,35 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (_ctchdb != null && cmbLyDo.SelectedIndex != -1)
+            try
             {
-                _ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
-                _ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
-                if (txtSoTien.Text.Trim() != "")
-                    _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
-
-                if (_cCHDB.SuaCTCHDB(_ctchdb))
+                if (_ctchdb != null)
                 {
-                    MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Clear();
-                    if (!_direct)
+                    if (!string.IsNullOrEmpty(cmbLyDo.SelectedItem.ToString()))
+                        _ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
+                    _ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
+                    if (txtSoTien.Text.Trim() != "")
+                        _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                    else
+                        _ctchdb.SoTien = null;
+
+                    if (_cCHDB.SuaCTCHDB(_ctchdb))
                     {
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
+                        MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
+                        if (!_direct)
+                        {
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
     }

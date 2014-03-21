@@ -28,6 +28,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDCBD _cDCBD = new CDCBD();
         CKTXM _cKTXM = new CKTXM();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
 
         public frmDCHD()
@@ -260,6 +261,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdchd.MaDCBD = _cDCBD.getDCBDbyMaDon(_donkh.MaDon).MaDCBD;
                     ctdchd.DanhBo = txtDanhBo.Text.Trim();
                     ctdchd.HoTen = txtHoTen.Text.Trim();
+                    ctdchd.DiaChi = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(_ttkhachhang.Quan, _ttkhachhang.Phuong);
                     //ctdchd.SoVB = txtSoVB.Text.Trim();
                     ctdchd.NgayKy = dateNgayKy.Value;
                     ctdchd.KyHD = txtKyHD.Text.Trim();

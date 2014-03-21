@@ -70,7 +70,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnIn_Click(object sender, EventArgs e)
         {
             if (_ctctdb != null)
             {
@@ -102,6 +102,74 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void frmShowCTDB_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_ctctdb != null)
+                {
+                    if (!string.IsNullOrEmpty(cmbLyDo.SelectedItem.ToString()))
+                        _ctctdb.LyDo = cmbLyDo.SelectedItem.ToString();
+                    _ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
+                    if (txtSoTien.Text.Trim() != "")
+                        _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+
+                    if (_cCHDB.SuaCTCTDB(_ctctdb))
+                    {
+                        MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void btnCapNhatTCTBXuLy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_ctctdb != null)
+                {
+                    _ctctdb.TCTBXuLy = true;
+                    _ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
+                    _ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
+                    if (_cCHDB.SuaCTCTDB(_ctctdb))
+                    {
+                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCapNhatCapTrenXuLy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_ctctdb != null)
+                {
+                    _ctctdb.CapTrenXuLy = true;
+                    _ctctdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
+                    _ctctdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
+                    _ctctdb.ThoiGianLapCatHuy = int.Parse(txtThoiGianLapCatHuy.Text.Trim());
+                    if (_cCHDB.SuaCTCTDB(_ctctdb))
+                    {
+                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

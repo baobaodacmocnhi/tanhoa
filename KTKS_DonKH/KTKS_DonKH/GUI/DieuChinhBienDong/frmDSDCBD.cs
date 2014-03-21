@@ -790,8 +790,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         b++;
                 }
-                textBox1.Text = a.ToString();
-                textBox2.Text = b.ToString();
+                txtDCTen.Text = a.ToString();
+                txtDCConLai.Text = b.ToString();
             }
         }
 
@@ -871,24 +871,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["SoHD"] = ctdchd.SoHD;
                                     ///
                                     dr["TieuThuStart"] = ctdchd.TieuThu;
-                                    dr["TienNuocStart"] = ctdchd.TienNuoc_Start;
-                                    dr["ThueGTGTStart"] = ctdchd.ThueGTGT_Start;
-                                    dr["PhiBVMTStart"] = ctdchd.PhiBVMT_Start;
-                                    dr["TongCongStart"] = ctdchd.TongCong_Start;
+                                    dr["TienNuocStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_Start);
+                                    dr["ThueGTGTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.ThueGTGT_Start);
+                                    dr["PhiBVMTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.PhiBVMT_Start);
+                                    dr["TongCongStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.TongCong_Start);
                                     ///
                                     dr["TangGiam"] = ctdchd.TangGiam;
                                     ///
                                     dr["TieuThuBD"] = ctdchd.TieuThu_BD - ctdchd.TieuThu;
-                                    dr["TienNuocBD"] = ctdchd.TienNuoc_BD;
-                                    dr["ThueGTGTBD"] = ctdchd.ThueGTGT_BD;
-                                    dr["PhiBVMTBD"] = ctdchd.PhiBVMT_BD;
-                                    dr["TongCongBD"] = ctdchd.TongCong_BD;
+                                    dr["TienNuocBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.TienNuoc_BD);
+                                    dr["ThueGTGTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.ThueGTGT_BD);
+                                    dr["PhiBVMTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.PhiBVMT_BD);
+                                    dr["TongCongBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.TongCong_BD);
                                     ///
                                     dr["TieuThuEnd"] = ctdchd.TieuThu_BD;
-                                    dr["TienNuocEnd"] = ctdchd.TienNuoc_End;
-                                    dr["ThueGTGTEnd"] = ctdchd.ThueGTGT_End;
-                                    dr["PhiBVMTEnd"] = ctdchd.PhiBVMT_End;
-                                    dr["TongCongEnd"] = ctdchd.TongCong_End;
+                                    dr["TienNuocEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.TienNuoc_End);
+                                    dr["ThueGTGTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.ThueGTGT_End);
+                                    dr["PhiBVMTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.PhiBVMT_End);
+                                    dr["TongCongEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",ctdchd.TongCong_End);
 
                                     dr["ChucVu"] = ctdchd.ChucVu;
                                     dr["NguoiKy"] = ctdchd.NguoiKy;
@@ -1116,8 +1116,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         b++;
                 }
-                textBox1.Text = a.ToString();
-                textBox2.Text = b.ToString();
+                txtDCTen.Text = a.ToString();
+                txtDCConLai.Text = b.ToString();
             }
         }
     }
