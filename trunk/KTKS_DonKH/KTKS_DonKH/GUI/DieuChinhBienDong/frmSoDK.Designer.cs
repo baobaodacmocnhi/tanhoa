@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -111,6 +112,10 @@
             this.txtHoTen_Cat_YCC5 = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.txtDiaChiKH_Cat_YCC5 = new System.Windows.Forms.TextBox();
+            this.dgvDSDanhBo = new System.Windows.Forms.DataGridView();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panel_YCCat3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -120,6 +125,7 @@
             this.groupBox4.SuspendLayout();
             this.panel_YCCat5.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -794,7 +800,7 @@
             // 
             this.panel_YCCat5.Controls.Add(this.chkYCCat5);
             this.panel_YCCat5.Controls.Add(this.groupBox5);
-            this.panel_YCCat5.Location = new System.Drawing.Point(4, 260);
+            this.panel_YCCat5.Location = new System.Drawing.Point(454, 440);
             this.panel_YCCat5.Name = "panel_YCCat5";
             this.panel_YCCat5.Size = new System.Drawing.Size(445, 210);
             this.panel_YCCat5.TabIndex = 25;
@@ -912,12 +918,54 @@
             this.txtDiaChiKH_Cat_YCC5.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChiKH_Cat_YCC5.TabIndex = 7;
             // 
+            // dgvDSDanhBo
+            // 
+            this.dgvDSDanhBo.AllowUserToAddRows = false;
+            this.dgvDSDanhBo.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDSDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDSDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DanhBo,
+            this.SoNKDangKy,
+            this.CreateDate});
+            this.dgvDSDanhBo.Location = new System.Drawing.Point(12, 261);
+            this.dgvDSDanhBo.Name = "dgvDSDanhBo";
+            this.dgvDSDanhBo.Size = new System.Drawing.Size(398, 170);
+            this.dgvDSDanhBo.TabIndex = 26;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // SoNKDangKy
+            // 
+            this.SoNKDangKy.DataPropertyName = "SoNKDangKy";
+            this.SoNKDangKy.HeaderText = "Số NK Đăng Ký";
+            this.SoNKDangKy.Name = "SoNKDangKy";
+            this.SoNKDangKy.Width = 150;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(903, 260);
+            this.ClientSize = new System.Drawing.Size(903, 440);
+            this.Controls.Add(this.dgvDSDanhBo);
             this.Controls.Add(this.panel_YCCat5);
             this.Controls.Add(this.btnYCCat);
             this.Controls.Add(this.panel_YCCat4);
@@ -968,6 +1016,7 @@
             this.panel_YCCat5.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1058,5 +1107,9 @@
         private System.Windows.Forms.TextBox txtHoTen_Cat_YCC5;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox txtDiaChiKH_Cat_YCC5;
+        private System.Windows.Forms.DataGridView dgvDSDanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoNKDangKy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
     }
 }

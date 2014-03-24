@@ -34,7 +34,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         public frmShowDonKH(Dictionary<string, string> source)
         {
             _source = source;
-            InitializeComponent();
+            InitializeComponent();  
         }
 
         private void frmShowDonKH_Load(object sender, EventArgs e)
@@ -111,6 +111,13 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     btnSua.Visible = true;
                     btnXoa.Visible = true;
+                }
+
+                if (_source["TimKiem"].ToString() == "True")
+                {
+                    btnInBienNhan.Enabled = false;
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
                 }
             }
 
@@ -632,6 +639,11 @@ namespace KTKS_DonKH.GUI.KhachHang
                         this.Close();
                     }
 
+        }
+
+        private void frmShowDonKH_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
 
        

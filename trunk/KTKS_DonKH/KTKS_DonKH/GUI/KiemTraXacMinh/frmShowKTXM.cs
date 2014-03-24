@@ -34,6 +34,17 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _MaCTKTXM = MaCTKTXM;
         }
 
+        public frmShowKTXM(decimal MaCTKTXM, bool TimKiem)
+        {
+            InitializeComponent();
+            _MaCTKTXM = MaCTKTXM;
+            if (TimKiem)
+            {
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
+        }
+
         private void frmShowKTXM_Load(object sender, EventArgs e)
         {
             this.Location = new Point(30, 70);
@@ -175,6 +186,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     this.Close();
                 }
             }
+        }
+
+        private void frmShowKTXM_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

@@ -208,7 +208,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             //    }
 
             /////Gọi hàm EndEdit để kết thúc Edit nếu không sẽ bị lỗi Value chưa cập nhật trong trường hợp chuyển Cell trong cùng 1 Row. Nếu chuyển Row thì không bị lỗi
-            //((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row.EndEdit();
+            ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row.EndEdit();
 
             /////DataRow != DataGridViewRow nên phải qua 1 loạt gán biến
             /////Tránh tình trạng trùng Danh Bộ nên xóa đi rồi add lại
@@ -217,17 +217,19 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             //DSDonKH_Edited.ImportRow(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row);
             //btnLuu.Enabled = true; 
-
-            DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(dgvDSDonKH["MaDon",e.RowIndex].ToString()));
-            donkh.Chuyen = true;
-            donkh.MaChuyen = dgvDSDonKH["MaChuyen", e.RowIndex].ToString();
-            donkh.LyDoChuyen = dgvDSDonKH["LyDoChuyen", e.RowIndex].ToString();
-            if (string.IsNullOrEmpty(dgvDSDonKH["SoLuongDiaChi", e.RowIndex].ToString()))
-                donkh.SoLuongDiaChi = null;
-            else
-                donkh.SoLuongDiaChi = int.Parse(dgvDSDonKH["SoLuongDiaChi", e.RowIndex].ToString());
-            donkh.NVKiemTra = dgvDSDonKH["NVKiemTra", e.RowIndex].ToString();
-            _cDonKH.SuaDonKH(donkh);
+            if (radDaDuyet.Checked || radAll.Checked)
+            {
+                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaDon"].ToString()));
+                donkh.Chuyen = true;
+                donkh.MaChuyen = ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["MaChuyen"].ToString();
+                donkh.LyDoChuyen = ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["LyDoChuyen"].ToString();
+                if (string.IsNullOrEmpty(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["SoLuongDiaChi"].ToString()))
+                    donkh.SoLuongDiaChi = null;
+                else
+                    donkh.SoLuongDiaChi = int.Parse(((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["SoLuongDiaChi"].ToString());
+                donkh.NVKiemTra = ((DataRowView)dgvDSDonKH.CurrentRow.DataBoundItem).Row["NVKiemTra"].ToString();
+                _cDonKH.SuaDonKH(donkh, true);
+            }
         }
 
         /// <summary>

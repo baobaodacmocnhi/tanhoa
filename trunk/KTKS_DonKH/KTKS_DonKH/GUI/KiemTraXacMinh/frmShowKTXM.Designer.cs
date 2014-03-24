@@ -531,6 +531,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmShowKTXM";
             this.Text = "Hiện Thị Kết Quả Kiểm Tra Xác Minh";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShowKTXM_FormClosing);
             this.Load += new System.EventHandler(this.frmShowKTXM_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

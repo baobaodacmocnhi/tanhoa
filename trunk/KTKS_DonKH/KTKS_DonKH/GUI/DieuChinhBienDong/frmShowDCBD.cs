@@ -31,6 +31,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _MaCTDCBD = MaCTDCBD;
         }
 
+        public frmShowDCBD(decimal MaCTDCBD,bool TimKiem)
+        {
+            InitializeComponent();
+            _MaCTDCBD = MaCTDCBD;
+            if (TimKiem)
+            {
+                btnIn.Enabled = false;
+                btnSua.Enabled = false;
+            }
+        }
+
         private void frmShowDCBD_Load(object sender, EventArgs e)
         {
             this.Location = new Point(70, 70);
@@ -45,8 +56,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDiaChi.Text = _ctdcbd.DiaChi;
                 txtDot.Text = _ctdcbd.Dot;
                 txtMSThue.Text = _ctdcbd.MSThue;
-                txtGiaBieu.Text = _ctdcbd.GiaBieu;
-                txtDinhMuc.Text = _ctdcbd.DinhMuc;
+                txtGiaBieu.Text = _ctdcbd.GiaBieu.ToString();
+                txtDinhMuc.Text = _ctdcbd.DinhMuc.ToString();
                 txtSH.Text = _ctdcbd.SH;
                 txtSX.Text = _ctdcbd.SX;
                 txtDV.Text = _ctdcbd.DV;
@@ -55,8 +66,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtHoTen_BD.Text = _ctdcbd.HoTen_BD;
                 txtDiaChi_BD.Text = _ctdcbd.DiaChi_BD;
                 txtMSThue_BD.Text = _ctdcbd.MSThue_BD;
-                txtGiaBieu_BD.Text = _ctdcbd.GiaBieu_BD;
-                txtDinhMuc_BD.Text = _ctdcbd.DinhMuc_BD;
+                txtGiaBieu_BD.Text = _ctdcbd.GiaBieu_BD.ToString();
+                txtDinhMuc_BD.Text = _ctdcbd.DinhMuc_BD.ToString();
                 txtSH_BD.Text = _ctdcbd.SH_BD;
                 txtSX_BD.Text = _ctdcbd.SX_BD;
                 txtDV_BD.Text = _ctdcbd.DV_BD;
@@ -128,8 +139,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     _ctdcbd.HoTen = txtHoTen.Text.Trim();
                     _ctdcbd.DiaChi = txtDiaChi.Text.Trim();
                     _ctdcbd.MSThue = txtMSThue.Text.Trim();
-                    _ctdcbd.GiaBieu = txtGiaBieu.Text.Trim();
-                    _ctdcbd.DinhMuc = txtDinhMuc.Text.Trim();
+                    _ctdcbd.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                    _ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     _ctdcbd.SH = txtSH.Text.Trim();
                     _ctdcbd.SX = txtSX.Text.Trim();
                     _ctdcbd.DV = txtDV.Text.Trim();
@@ -182,7 +193,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (txtGiaBieu_BD.Text.Trim() != "")
                     {
                         ThongTin += "GB. ";
-                        _ctdcbd.GiaBieu_BD = txtGiaBieu_BD.Text.Trim();
+                        _ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
                     }
                     else
                     {
@@ -193,7 +204,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (txtDinhMuc_BD.Text.Trim() != "")
                     {
                         ThongTin += "ĐM. ";
-                        _ctdcbd.DinhMuc_BD = txtDinhMuc_BD.Text.Trim();
+                        _ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
                     }
                     else
                     {

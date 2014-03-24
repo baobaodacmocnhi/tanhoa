@@ -35,6 +35,17 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             _MaCTTTTL = MaCTTTTL;
         }
 
+        public frmShowTTTL(decimal MaCTTTTL,bool TimKiem)
+        {
+            InitializeComponent();
+            _MaCTTTTL = MaCTTTTL;
+            if (TimKiem)
+            {
+                btnSua.Enabled = false;
+                btnIn.Enabled = false;
+            }
+        }
+        
         /// <summary>
         /// Nhận Entity TTKhachHang để điền vào textbox
         /// </summary>

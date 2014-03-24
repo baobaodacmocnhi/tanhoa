@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>103</ApplicationRevision>
+    <ApplicationRevision>108</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -221,6 +221,7 @@
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CapNhat\CChungTu.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDCBD.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CDuLieuKhachHang.cs" />
     <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
     <Compile Include="DAL\KhachHang\CChuyenDi.cs" />
     <Compile Include="DAL\KhachHang\CDonKH.cs" />

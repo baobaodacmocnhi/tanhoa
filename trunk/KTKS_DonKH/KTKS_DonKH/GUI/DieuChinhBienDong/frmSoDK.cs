@@ -61,6 +61,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmSoDK_Load(object sender, EventArgs e)
         {
+            dgvDSDanhBo.AutoGenerateColumns = false;
+            dgvDSDanhBo.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDanhBo.Font, FontStyle.Bold);
             try
             {
                 this.Location = new Point(70, 70);
@@ -645,11 +647,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.KeyChar == 13)
             {
                 if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim()))
-                    MessageBox.Show("Số đăng ký này đã đăng ký với danh bạ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Số đăng ký này đã đăng ký với danh bạ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     if (_cChungTu.CheckChungTu(txtMaCT.Text.Trim()))
                         MessageBox.Show("Số đăng ký này đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDiaChi.Focus();
+                dgvDSDanhBo.DataSource = _cChungTu.LoadDSCTChungTubyID(txtMaCT.Text.Trim());
             }
         }
 
@@ -762,26 +765,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (!panel_YCCat2.Visible)
             {
                 panel_YCCat2.Visible = true;
-                this.Size = new Size(1370, 356);
+                this.Size = new Size(1370, 478);
                 this.Location = new Point(10, 70);
             }
             else
                 if (!panel_YCCat3.Visible)
                 {
                     panel_YCCat3.Visible = true;
-                    this.Size = new Size(1370, 477);
+                    this.Size = new Size(1370, 478);
                 }
                 else
                     if (!panel_YCCat4.Visible)
                     {
                         panel_YCCat4.Visible = true;
-                        this.Size = new Size(1370, 477);
+                        this.Size = new Size(1370, 478);
                     }
                     else
                         if (!panel_YCCat5.Visible)
                         {
                             panel_YCCat5.Visible = true;
-                            this.Size = new Size(1370, 515);
+                            this.Size = new Size(1370, 692);
                         }
                         else
                         {
@@ -789,7 +792,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             panel_YCCat3.Visible = false;
                             panel_YCCat4.Visible = false;
                             panel_YCCat5.Visible = false;
-                            this.Size = new Size(919, 298);
+                            this.Size = new Size(919, 478);
                             this.Location = new Point(70,70);
                         }
 

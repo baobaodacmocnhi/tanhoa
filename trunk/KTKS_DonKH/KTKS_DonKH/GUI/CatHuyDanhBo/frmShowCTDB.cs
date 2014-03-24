@@ -32,6 +32,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             _MaCTCTDB = MaCTCTDB;
         }
 
+        public frmShowCTDB(decimal MaCTCTDB,bool TimKiem)
+        {
+            InitializeComponent();
+            _MaCTCTDB = MaCTCTDB;
+            if (TimKiem)
+            {
+                btnCapNhatCapTrenXuLy.Enabled = false;
+                btnCapNhatTCTBXuLy.Enabled = false;
+                btnIn.Enabled = false;
+                btnSua.Enabled = false;
+            }
+        }
+
         private void frmShowCTDB_Load(object sender, EventArgs e)
         {
             this.Location = new Point(70, 70);

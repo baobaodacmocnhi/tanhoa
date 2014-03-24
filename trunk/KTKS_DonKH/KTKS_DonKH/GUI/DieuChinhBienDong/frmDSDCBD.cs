@@ -1120,5 +1120,62 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDCConLai.Text = b.ToString();
             }
         }
+
+        private void btnCapNhatDocSo_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn chắc chắn Cập Nhật Đọc Số những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (radDSDCBD.Checked)
+                {
+                    try
+                    {
+                        CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
+                        for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                            if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                            {
+                                CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                TB_DULIEUKHACHHANG dlkh = _cDLKH.getDLKH(ctdcbd.DanhBo);
+                                if (dlkh != null)
+                                {
+                                    if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
+                                        dlkh.HOTEN = ctdcbd.HoTen_BD;
+                                    if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
+                                        dlkh.SONHA = ctdcbd.DiaChi_BD;
+                                    if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
+                                        dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
+                                    if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
+                                        dlkh.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
+                                    if (_cDLKH.SuaDLKH(dlkh))
+                                    {
+                                        if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
+                                        {
+                                            TB_GHICHU ghichu = new TB_GHICHU();
+                                            ghichu.DANHBO = dlkh.DANHBO;
+                                            ghichu.DONVI = "KTKS";
+                                            ghichu.NOIDUNG = "Điều Chỉnh Giá Biểu Từ " + ctdcbd.GiaBieu + " -> " + ctdcbd.GiaBieu_BD;
+                                            _cDLKH.ThemGhiChu(ghichu);
+                                        }
+                                        if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
+                                        {
+                                            TB_GHICHU ghichu = new TB_GHICHU();
+                                            ghichu.DANHBO = dlkh.DANHBO;
+                                            ghichu.DONVI = "KTKS";
+                                            ghichu.NOIDUNG = "Điều Chỉnh Định Mức Từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD;
+                                            _cDLKH.ThemGhiChu(ghichu);
+                                        }
+                                    }
+                                }
+                                else
+                                    MessageBox.Show("Danh Bộ: " + ctdcbd.DanhBo + " thuộc Số Phiếu: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-")
+                                        + " không có bên QLĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                 
+                }
+        }
     }
 }
