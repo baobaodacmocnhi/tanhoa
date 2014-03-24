@@ -34,7 +34,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
-        bool _flagTXL = false;
+        //bool _flagTXL = false;
   
         public frmTTTL()
         {
@@ -172,11 +172,11 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
-                        if (_cTTTL.CheckCTTTTLbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
-                        {
-                            MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        //if (_cTTTL.CheckCTTTTLbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
+                        //{
+                        //    MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return;
+                        //}
                         CTTTTL cttttl = new CTTTTL();
                         cttttl.MaTTTL = _cTTTL.getTTTLbyMaDon_TXL(_dontxl.MaDon).MaTTTL;
                         cttttl.DanhBo = txtDanhBo.Text.Trim();
@@ -276,11 +276,11 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 _cDonKH.SuaDonKH(_donkh, true);
                             }
                         }
-                        if (_cTTTL.CheckCTTTTLbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
-                        {
-                            MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        //if (_cTTTL.CheckCTTTTLbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                        //{
+                        //    MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return;
+                        //}
                         CTTTTL cttttl = new CTTTTL();
                         cttttl.MaTTTL = _cTTTL.getTTTLbyMaDon(_donkh.MaDon).MaTTTL;
                         cttttl.DanhBo = txtDanhBo.Text.Trim();

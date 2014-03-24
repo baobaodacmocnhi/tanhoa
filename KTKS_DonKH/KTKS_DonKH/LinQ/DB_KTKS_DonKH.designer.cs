@@ -5813,9 +5813,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MSThue;
 		
-		private string _GiaBieu;
+		private System.Nullable<int> _GiaBieu;
 		
-		private string _DinhMuc;
+		private System.Nullable<int> _DinhMuc;
 		
 		private string _SH;
 		
@@ -5839,9 +5839,9 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MSThue_BD;
 		
-		private string _GiaBieu_BD;
+		private System.Nullable<int> _GiaBieu_BD;
 		
-		private string _DinhMuc_BD;
+		private System.Nullable<int> _DinhMuc_BD;
 		
 		private string _SH_BD;
 		
@@ -5891,9 +5891,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaQuanPhuongChanged();
     partial void OnMSThueChanging(string value);
     partial void OnMSThueChanged();
-    partial void OnGiaBieuChanging(string value);
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
     partial void OnGiaBieuChanged();
-    partial void OnDinhMucChanging(string value);
+    partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
     partial void OnSHChanging(string value);
     partial void OnSHChanged();
@@ -5917,9 +5917,9 @@ namespace KTKS_DonKH.LinQ
     partial void OnDiaChi_BDChanged();
     partial void OnMSThue_BDChanging(string value);
     partial void OnMSThue_BDChanged();
-    partial void OnGiaBieu_BDChanging(string value);
+    partial void OnGiaBieu_BDChanging(System.Nullable<int> value);
     partial void OnGiaBieu_BDChanged();
-    partial void OnDinhMuc_BDChanging(string value);
+    partial void OnDinhMuc_BDChanging(System.Nullable<int> value);
     partial void OnDinhMuc_BDChanged();
     partial void OnSH_BDChanging(string value);
     partial void OnSH_BDChanged();
@@ -6097,8 +6097,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="NVarChar(50)")]
-		public string GiaBieu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
 		{
 			get
 			{
@@ -6117,8 +6117,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="NVarChar(50)")]
-		public string DinhMuc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
 		{
 			get
 			{
@@ -6357,8 +6357,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu_BD", DbType="NVarChar(50)")]
-		public string GiaBieu_BD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu_BD", DbType="Int")]
+		public System.Nullable<int> GiaBieu_BD
 		{
 			get
 			{
@@ -6377,8 +6377,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc_BD", DbType="NVarChar(50)")]
-		public string DinhMuc_BD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc_BD", DbType="Int")]
+		public System.Nullable<int> DinhMuc_BD
 		{
 			get
 			{

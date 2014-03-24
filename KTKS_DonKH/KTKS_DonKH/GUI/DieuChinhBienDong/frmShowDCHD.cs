@@ -33,6 +33,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _MaCTDCHD = MaCTDCHD;
         }
 
+        public frmShowDCHD(decimal MaCTDCHD, bool TimKiem)
+        {
+            InitializeComponent();
+            _MaCTDCHD = MaCTDCHD;
+            if (TimKiem)
+            {
+                btnIn.Enabled = false;
+                btnSua.Enabled = false;
+            }
+        }
+
         private void frmShowDCHD_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

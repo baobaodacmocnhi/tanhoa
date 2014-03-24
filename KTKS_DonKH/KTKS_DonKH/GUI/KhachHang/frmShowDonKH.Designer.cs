@@ -714,6 +714,7 @@
             this.Name = "frmShowDonKH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hiện Thị Đơn Khách Hàng";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShowDonKH_FormClosing);
             this.Load += new System.EventHandler(this.frmShowDonKH_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -287,7 +287,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return db.DCBDs.Single(itemDCBD => itemDCBD.MaDCBD == MaDCBD);
+                return db.DCBDs.SingleOrDefault(itemDCBD => itemDCBD.MaDCBD == MaDCBD);
             }
             catch (Exception ex)
             {
@@ -518,7 +518,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return db.CTDCBDs.Single(itemCTDCBD => itemCTDCBD.MaCTDCBD == MaCTDCBD);
+                return db.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.MaCTDCBD == MaCTDCBD);
             }
             catch (Exception ex)
             {
@@ -674,7 +674,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return db.CTDCHDs.Single(itemCTDCHD => itemCTDCHD.MaCTDCHD == MaCTDCHD);
+                return db.CTDCHDs.SingleOrDefault(itemCTDCHD => itemCTDCHD.MaCTDCHD == MaCTDCHD);
             }
             catch (Exception ex)
             {

@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewCTTTTL = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,6 +67,7 @@
             this.ThuDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaCTTTTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VeViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +104,7 @@
             this.gridViewCTTTTL.ColumnPanelRowHeight = 25;
             this.gridViewCTTTTL.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn14,
+            this.gridColumn21,
             this.gridColumn15,
             this.gridColumn16,
             this.gridColumn17,
@@ -128,6 +131,15 @@
             this.gridColumn14.VisibleIndex = 0;
             this.gridColumn14.Width = 100;
             // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "Danh Bộ";
+            this.gridColumn21.FieldName = "DanhBo";
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 1;
+            this.gridColumn21.Width = 100;
+            // 
             // gridColumn15
             // 
             this.gridColumn15.Caption = "Ngày Lập";
@@ -135,7 +147,7 @@
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 1;
+            this.gridColumn15.VisibleIndex = 2;
             this.gridColumn15.Width = 100;
             // 
             // gridColumn16
@@ -145,7 +157,7 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 2;
+            this.gridColumn16.VisibleIndex = 3;
             this.gridColumn16.Width = 250;
             // 
             // gridColumn17
@@ -155,7 +167,7 @@
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 3;
+            this.gridColumn17.VisibleIndex = 4;
             this.gridColumn17.Width = 500;
             // 
             // gridColumn20
@@ -164,7 +176,7 @@
             this.gridColumn20.FieldName = "NoiNhan";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 4;
+            this.gridColumn20.VisibleIndex = 5;
             this.gridColumn20.Width = 300;
             // 
             // gridControl
@@ -442,6 +454,7 @@
             this.ThuDuocKy,
             this.GhiChu,
             this.MaCTTTTL,
+            this.DanhBo,
             this.CreateDate,
             this.VeViec,
             this.NoiDung,
@@ -489,6 +502,12 @@
             this.MaCTTTTL.HeaderText = "Mã Thư";
             this.MaCTTTTL.Name = "MaCTTTTL";
             this.MaCTTTTL.ReadOnly = true;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
             // 
             // CreateDate
             // 
@@ -662,7 +681,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1362, 646);
+            this.ClientSize = new System.Drawing.Size(1276, 663);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkSelectAll);
@@ -742,9 +761,11 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ThuDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTTTL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn VeViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiNhan;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
     }
 }

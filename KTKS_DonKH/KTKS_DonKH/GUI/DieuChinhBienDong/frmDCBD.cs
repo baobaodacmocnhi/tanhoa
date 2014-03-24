@@ -417,8 +417,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.Nam = _ttkhachhang.Nam;
                     }
                     ctdcbd.MSThue = txtMSThue.Text.Trim();
-                    ctdcbd.GiaBieu = txtGiaBieu.Text.Trim();
-                    ctdcbd.DinhMuc = txtDinhMuc.Text.Trim();
+                    ctdcbd.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                    ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     ctdcbd.SH = txtSH.Text.Trim();
                     ctdcbd.SX = txtSX.Text.Trim();
                     ctdcbd.DV = txtDV.Text.Trim();
@@ -452,13 +452,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (txtGiaBieu_BD.Text.Trim() != "")
                     {
                         ThongTin += "GB. ";
-                        ctdcbd.GiaBieu_BD = txtGiaBieu_BD.Text.Trim();
+                        ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
                     }
                     ///Định Mức
                     if (txtDinhMuc_BD.Text.Trim() != "")
                     {
                         ThongTin += "ĐM. ";
-                        ctdcbd.DinhMuc_BD = txtDinhMuc_BD.Text.Trim();
+                        ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
                     }
                     ///SH
                     if (txtSH_BD.Text.Trim() != "")
