@@ -417,8 +417,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.Nam = _ttkhachhang.Nam;
                     }
                     ctdcbd.MSThue = txtMSThue.Text.Trim();
-                    ctdcbd.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
-                    ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
+                        ctdcbd.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                    else
+                        ctdcbd.GiaBieu = null;
+                    if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
+                        ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    else
+                        ctdcbd.DinhMuc = null;
                     ctdcbd.SH = txtSH.Text.Trim();
                     ctdcbd.SX = txtSX.Text.Trim();
                     ctdcbd.DV = txtDV.Text.Trim();

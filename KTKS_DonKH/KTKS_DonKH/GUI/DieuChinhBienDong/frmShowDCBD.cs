@@ -139,8 +139,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     _ctdcbd.HoTen = txtHoTen.Text.Trim();
                     _ctdcbd.DiaChi = txtDiaChi.Text.Trim();
                     _ctdcbd.MSThue = txtMSThue.Text.Trim();
-                    _ctdcbd.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
-                    _ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
+                        _ctdcbd.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                    else
+                        _ctdcbd.GiaBieu = null;
+                    if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
+                        _ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                    else
+                        _ctdcbd.DinhMuc = null;
                     _ctdcbd.SH = txtSH.Text.Trim();
                     _ctdcbd.SX = txtSX.Text.Trim();
                     _ctdcbd.DV = txtDV.Text.Trim();
