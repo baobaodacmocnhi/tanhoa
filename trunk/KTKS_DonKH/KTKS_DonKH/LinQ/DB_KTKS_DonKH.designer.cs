@@ -5863,6 +5863,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _PhieuDuocKy;
 		
+		private bool _ChuyenDocSo;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -5941,6 +5943,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnChucVuChanged();
     partial void OnPhieuDuocKyChanging(bool value);
     partial void OnPhieuDuocKyChanged();
+    partial void OnChuyenDocSoChanging(bool value);
+    partial void OnChuyenDocSoChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -6597,6 +6601,26 @@ namespace KTKS_DonKH.LinQ
 					this._PhieuDuocKy = value;
 					this.SendPropertyChanged("PhieuDuocKy");
 					this.OnPhieuDuocKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenDocSo", DbType="Bit NOT NULL")]
+		public bool ChuyenDocSo
+		{
+			get
+			{
+				return this._ChuyenDocSo;
+			}
+			set
+			{
+				if ((this._ChuyenDocSo != value))
+				{
+					this.OnChuyenDocSoChanging(value);
+					this.SendPropertyChanging();
+					this._ChuyenDocSo = value;
+					this.SendPropertyChanged("ChuyenDocSo");
+					this.OnChuyenDocSoChanged();
 				}
 			}
 		}
