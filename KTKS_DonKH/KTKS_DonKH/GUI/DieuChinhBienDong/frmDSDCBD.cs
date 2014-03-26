@@ -129,6 +129,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBD();
                 dgvDSDCBD.DataSource = DSDCBD_BS;
 
+                dgvDSDCBD.Columns["ChuyenDocSo"].Visible = true;
                 dgvDSDCBD.Columns["HoTen"].Visible = true;
                 dgvDSDCBD.Columns["HoTen_BD"].Visible = true;
                 dgvDSDCBD.Columns["DiaChi"].Visible = true;
@@ -162,6 +163,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DSDCBD_BS.DataSource = _cDCBD.LoadDSDCHD();
                 dgvDSDCBD.DataSource = DSDCBD_BS;
 
+                dgvDSDCBD.Columns["ChuyenDocSo"].Visible = false;
                 dgvDSDCBD.Columns["HoTen"].Visible = false;
                 dgvDSDCBD.Columns["HoTen_BD"].Visible = false;
                 dgvDSDCBD.Columns["DiaChi"].Visible = false;
@@ -1162,6 +1164,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ghichu.NOIDUNG = "Điều Chỉnh Định Mức Từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD;
                                             _cDLKH.ThemGhiChu(ghichu);
                                         }
+                                        ctdcbd.ChuyenDocSo = true;
+                                        _cDCBD.SuaCTDCBD(ctdcbd);
                                     }
                                 }
                                 else
@@ -1169,6 +1173,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         + " không có bên QLĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBD();
                     }
                     catch (Exception ex)
                     {

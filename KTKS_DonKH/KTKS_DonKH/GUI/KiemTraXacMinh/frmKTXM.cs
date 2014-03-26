@@ -123,6 +123,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
                         MessageBox.Show("Mã Đơn TXL này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtDanhBo.Focus();
                     }
                     else
                     {
@@ -152,6 +153,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         //}
                         dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon, CTaiKhoan.MaUser);
                         MessageBox.Show("Mã Đơn KH này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtDanhBo.Focus();
                     }
                     else
                     {
