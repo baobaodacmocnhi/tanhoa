@@ -230,17 +230,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             KTXM ktxm = new KTXM();
                             ktxm.ToXuLy = true;
                             ktxm.MaDonTXL = _dontxl.MaDon;
-                            //string MaNoiChuyenDen, NoiChuyenDen, LyDoChuyenDen;
-                            //_cKTXM.GetInfobyMaDon(_donkh.MaDon, out MaNoiChuyenDen, out NoiChuyenDen, out LyDoChuyenDen);
-                            //ktxm.MaNoiChuyenDen = decimal.Parse(MaNoiChuyenDen);
-                            //ktxm.NoiChuyenDen = NoiChuyenDen;
-                            //ktxm.LyDoChuyenDen = LyDoChuyenDen;
+
                             if (_cKTXM.ThemKTXM(ktxm))
                             {
-                                ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(MaNoiChuyenDen));
-                                //donkh.Chuyen = true;
-                                //donkh.MaChuyen = "KTXM";
                                 if (string.IsNullOrEmpty(_dontxl.TienTrinh))
                                     _dontxl.TienTrinh = "KTXM";
                                 else
@@ -292,8 +284,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     else
                         MessageBox.Show("Đơn này không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                ///Nếu đơn thuộc Tổ Khách Hàng
                 else
-                    ///Nếu đơn thuộc Tổ Khách Hàng
                     if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
                     //if (_donkh != null && txtNoiDungKiemTra.Text.Trim() != "")
                     {
