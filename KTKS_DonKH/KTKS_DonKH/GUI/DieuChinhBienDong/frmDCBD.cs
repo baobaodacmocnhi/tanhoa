@@ -14,12 +14,14 @@ using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.ToXuLy;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmDCBD : Form
     {
         DonKH _donkh = null;
+        DonTXL _dontxl = null;
         TTKhachHang _ttkhachhang = null;
         CLoaiChungTu _cLoaiChungTu = new CLoaiChungTu();
         CChungTu _cChungTu = new CChungTu();
@@ -27,6 +29,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDCBD _cDCBD = new CDCBD();
         Dictionary<string, string> _source = new Dictionary<string, string>();
         CDonKH _cDonKH = new CDonKH();
+        CDonTXL _cDonTXL = new CDonTXL();
         CKTXM _cKTXM = new CKTXM();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
@@ -296,28 +299,56 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
-                if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
+                ///Đơn Tổ Xử Lý
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                    txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
-                    if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                    if (_cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) != null)
                     {
-                        _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
-                        LoadTTKH(_ttkhachhang);
-                        txtDanhBo.Focus();
+                        _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
+                        txtMaDon.Text = "TXL"+_dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
+                        if (_cTTKH.getTTKHbyID(_dontxl.DanhBo) != null)
+                        {
+                            _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
+                            LoadTTKH(_ttkhachhang);
+                            txtDanhBo.Focus();
+                        }
+                        else
+                        {
+                            //dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(txtDanhBo.Text.Trim());
+                            //dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(txtDanhBo.Text.Trim());
+                            txtDanhBo.Focus();
+                        }
                     }
                     else
                     {
-                        //dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(txtDanhBo.Text.Trim());
-                        //dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(txtDanhBo.Text.Trim());
-                        txtDanhBo.Focus();
+                        _dontxl = null;
+                        MessageBox.Show("Mã Đơn TXL này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                ///Đơn Tổ Khách Hàng
                 else
-                {
-                    _donkh = null;
-                    MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
+                    {
+                        _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
+                        txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                        if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                        {
+                            _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
+                            LoadTTKH(_ttkhachhang);
+                            txtDanhBo.Focus();
+                        }
+                        else
+                        {
+                            //dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(txtDanhBo.Text.Trim());
+                            //dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(txtDanhBo.Text.Trim());
+                            txtDanhBo.Focus();
+                        }
+                    }
+                    else
+                    {
+                        _donkh = null;
+                        MessageBox.Show("Mã Đơn KH này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
         }
 
@@ -345,6 +376,161 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
+                ///Nếu đơn thuộc Tổ Xử Lý
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                {
+                    if (_dontxl != null && txtHieuLucKy.Text.Trim() != "")
+                    {
+                        ///Nếu DCBD chưa có thì thêm vào
+                        if (!_cDCBD.CheckDCBDbyMaDon_TXL(_dontxl.MaDon))
+                        {
+                            DCBD dcbd = new DCBD();
+                            dcbd.ToXuLy = true;
+                            dcbd.MaDonTXL = _dontxl.MaDon;
+                            if (_direct)
+                            {
+                                if (!_source.ContainsKey("NoiChuyenDen"))
+                                    _source.Add("NoiChuyenDen", "");
+                            }
+                            else
+                            {
+                                dcbd.MaNoiChuyenDen = decimal.Parse(_source["MaNoiChuyenDen"]);
+                                dcbd.NoiChuyenDen = _source["NoiChuyenDen"];
+                                dcbd.LyDoChuyenDen = _source["LyDoChuyenDen"];
+                            }
+                            if (_cDCBD.ThemDCBD(dcbd))
+                            {
+                                switch (_source["NoiChuyenDen"])
+                                {
+                                    case "Khách Hàng":
+                                        ///Báo cho bảng DonTXL là đơn này đã được nơi nhận xử lý
+                                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
+                                        dontxl.Nhan = true;
+                                        _cDonTXL.SuaDonTXL(dontxl, true);
+                                        break;
+                                    case "Kiểm Tra Xác Minh":
+                                        ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
+                                        ktxm.Nhan = true;
+                                        _cKTXM.SuaKTXM(ktxm, true);
+                                        break;
+                                }
+                                if (string.IsNullOrEmpty(_dontxl.TienTrinh))
+                                    _dontxl.TienTrinh = "DCBD";
+                                else
+                                    _dontxl.TienTrinh += ",DCBD";
+                                _dontxl.Nhan = true;
+                                _cDonTXL.SuaDonTXL(_dontxl, true);
+                            }
+                        }
+                        if (_cDCBD.CheckCTDCBDbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
+                        {
+                            MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
+                        string ThongTin = "";
+                        ///Thêm CTDCBD
+                        CTDCBD ctdcbd = new CTDCBD();
+                        ctdcbd.MaDCBD = _cDCBD.getDCBDbyMaDon_TXL(_dontxl.MaDon).MaDCBD;
+                        ctdcbd.DanhBo = txtDanhBo.Text.Trim();
+                        ctdcbd.HopDong = txtHopDong.Text.Trim();
+                        ctdcbd.HoTen = txtHoTen.Text.Trim();
+                        ctdcbd.DiaChi = txtDiaChi.Text.Trim();
+                        if (_ttkhachhang != null)
+                        {
+                            ctdcbd.MaQuanPhuong = _ttkhachhang.Quan + " " + _ttkhachhang.Phuong;
+                            ctdcbd.Ky = _ttkhachhang.Ky;
+                            ctdcbd.Nam = _ttkhachhang.Nam;
+                        }
+                        ctdcbd.MSThue = txtMSThue.Text.Trim();
+                        if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
+                            ctdcbd.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                        else
+                            ctdcbd.GiaBieu = null;
+                        if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
+                            ctdcbd.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                        else
+                            ctdcbd.DinhMuc = null;
+                        ctdcbd.SH = txtSH.Text.Trim();
+                        ctdcbd.SX = txtSX.Text.Trim();
+                        ctdcbd.DV = txtDV.Text.Trim();
+                        ctdcbd.HCSN = txtHCSN.Text.Trim();
+                        ctdcbd.Dot = txtDot.Text.Trim();
+
+                        ///Họ Tên
+                        if (txtHoTen_BD.Text.Trim() != "")
+                        {
+                            ThongTin += "Họ Tên. ";
+                            ctdcbd.HoTen_BD = txtHoTen_BD.Text.Trim();
+                        }
+                        ///Địa Chỉ
+                        if (txtDiaChi_BD.Text.Trim() != "")
+                        {
+                            ThongTin += "Địa Chỉ. ";
+                            ctdcbd.DiaChi_BD = txtDiaChi_BD.Text.Trim();
+                        }
+                        ///Mã Số Thuế
+                        if (txtMSThue_BD.Text.Trim() != "")
+                        {
+                            ThongTin += "MST. ";
+                            ctdcbd.MSThue_BD = txtMSThue_BD.Text.Trim();
+                        }
+                        if (chkCatMSThue.Checked)
+                        {
+                            ThongTin += "MST. ";
+                            ctdcbd.CatMSThue = true;
+                        }
+                        ///Giá Biểu
+                        if (txtGiaBieu_BD.Text.Trim() != "")
+                        {
+                            ThongTin += "GB. ";
+                            ctdcbd.GiaBieu_BD = int.Parse(txtGiaBieu_BD.Text.Trim());
+                        }
+                        ///Định Mức
+                        if (txtDinhMuc_BD.Text.Trim() != "")
+                        {
+                            ThongTin += "ĐM. ";
+                            ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
+                        }
+                        ///SH
+                        if (txtSH_BD.Text.Trim() != "")
+                            ctdcbd.SH_BD = txtSH_BD.Text.Trim();
+                        ///SX
+                        if (txtSX_BD.Text.Trim() != "")
+                            ctdcbd.SX_BD = txtSX_BD.Text.Trim();
+                        ///DV
+                        if (txtDV_BD.Text.Trim() != "")
+                            ctdcbd.DV_BD = txtDV_BD.Text.Trim();
+                        ///HCSN
+                        if (txtHCSN_BD.Text.Trim() != "")
+                            ctdcbd.HCSN_BD = txtHCSN_BD.Text.Trim();
+
+                        ctdcbd.ThongTin = ThongTin;
+                        ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
+
+                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            ctdcbd.ChucVu = "GIÁM ĐỐC";
+                        else
+                            ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        ctdcbd.PhieuDuocKy = true;
+
+                        if (_cDCBD.ThemCTDCBD(ctdcbd))
+                        {
+                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
+                            txtMaDon.Focus();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Chưa có Mã Đơn/Danh Bộ/Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                ///Nếu đơn thuộc Tổ Khách Hàng
+                else
                 if (_donkh != null && txtHieuLucKy.Text.Trim() != "")
                 {
                     ///Nếu DCBD chưa có thì thêm vào

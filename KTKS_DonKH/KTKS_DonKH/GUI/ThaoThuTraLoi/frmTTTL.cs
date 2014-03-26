@@ -148,22 +148,22 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                             }
                             if (_cTTTL.ThemTTTL(tttl))
                             {
-                                //switch (_source["NoiChuyenDen"])
-                                //{
-                                //    case "Khách Hàng":
-                                //        ///Báo cho bảng DonKH là đơn này đã được nơi nhận xử lý
-                                //        DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                //        donkh.Nhan = true;
-                                //        _cDonKH.SuaDonKH(donkh, true);
-                                //        break;
-                                //    case "Kiểm Tra Xác Minh":
-                                //        ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
-                                //        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
-                                //        ktxm.Nhan = true;
-                                //        _cKTXM.SuaKTXM(ktxm, true);
-                                //        break;
-                                //}
-                                //_source.Add("MaTTTL", _cTTTL.getMaxMaTTTL().ToString());
+                                switch (_source["NoiChuyenDen"])
+                                {
+                                    case "Khách Hàng":
+                                        ///Báo cho bảng DonTXL là đơn này đã được nơi nhận xử lý
+                                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
+                                        dontxl.Nhan = true;
+                                        _cDonTXL.SuaDonTXL(dontxl, true);
+                                        break;
+                                    case "Kiểm Tra Xác Minh":
+                                        ///Báo cho bảng KTXM là đơn này đã được nơi nhận xử lý
+                                        KTXM ktxm = _cKTXM.getKTXMbyID(decimal.Parse(_source["MaNoiChuyenDen"]));
+                                        ktxm.Nhan = true;
+                                        _cKTXM.SuaKTXM(ktxm, true);
+                                        break;
+                                }
+                                _source.Add("MaTTTL", _cTTTL.getMaxMaTTTL().ToString());
                                 if (string.IsNullOrEmpty(_donkh.TienTrinh))
                                     _dontxl.TienTrinh = "TTTL";
                                 else

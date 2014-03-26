@@ -373,7 +373,28 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         }
 
         /// <summary>
-        /// Lấy DCBD bằng MaDon
+        /// Kiểm tra Đơn TXL có được DCBD xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <returns>true/có</returns>
+        public bool CheckDCBDbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (db.DCBDs.Any(itemDCBD => itemDCBD.MaDonTXL == MaDonTXL))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy DCBD bằng MaDon KH
         /// </summary>
         /// <param name="MaDon"></param>
         /// <returns></returns>
@@ -382,6 +403,24 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 return db.DCBDs.SingleOrDefault(itemDCBD => itemDCBD.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy DCBD bằng MaDon TXL
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <returns></returns>
+        public DCBD getDCBDbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                return db.DCBDs.SingleOrDefault(itemDCBD => itemDCBD.MaDonTXL == MaDonTXL);
             }
             catch (Exception ex)
             {
@@ -528,7 +567,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         }
 
         /// <summary>
-        /// Kiểm tra CTDCBD đã được tạo cho Mã Đơn và Danh Bộ này chưa
+        /// Kiểm tra CTDCBD đã được tạo cho Mã Đơn KH và Danh Bộ này chưa
         /// </summary>
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
@@ -538,6 +577,25 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 return db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == MaDon && itemCTDCBD.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra CTDCBD đã được tạo cho Mã Đơn TXL và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTDCBDbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        {
+            try
+            {
+                return db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDonTXL == MaDonTXL && itemCTDCBD.DanhBo == DanhBo);
             }
             catch (Exception ex)
             {
@@ -680,6 +738,44 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra CTDCHD đã được tạo cho Mã Đơn KH và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTDCHDbyMaDonDanhBo(decimal MaDon, string DanhBo)
+        {
+            try
+            {
+                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDon == MaDon && itemCTDCHD.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra CTDCHD đã được tạo cho Mã Đơn TXL và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTDCHDbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        {
+            try
+            {
+                return db.CTDCHDs.Any(itemCTDCHD => itemCTDCHD.DCBD.MaDonTXL == MaDonTXL && itemCTDCHD.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
