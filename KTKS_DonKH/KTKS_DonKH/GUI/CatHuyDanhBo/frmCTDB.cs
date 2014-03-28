@@ -189,6 +189,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (!_cCHDB.CheckCHDBbyMaDon_TXL(_dontxl.MaDon))
                         {
                             CHDB chdb = new CHDB();
+                            chdb.ToXuLy = true;
                             chdb.MaDonTXL = _dontxl.MaDon;
                             if (_direct)
                             {
@@ -254,6 +255,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                             ctctdb.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                         ctctdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        ctctdb.ThongBaoDuocKy = true;
 
                         if (_cCHDB.ThemCTCTDB(ctctdb))
                         {

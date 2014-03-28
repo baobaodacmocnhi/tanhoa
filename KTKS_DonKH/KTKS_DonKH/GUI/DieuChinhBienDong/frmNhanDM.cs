@@ -104,7 +104,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.ThoiHan = null;
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        if (bool.Parse(_source["TXL"]) == true)
+                        {
+                            lichsuchungtu.ToXuLy = true;
+                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                        }
+                        else
+                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                         lichsuchungtu.NhanDM = true;
                         lichsuchungtu.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();

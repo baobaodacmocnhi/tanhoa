@@ -194,7 +194,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.ThoiHan = null;
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        if (bool.Parse(_source["TXL"]) == true)
+                        {
+                            lichsuchungtu.ToXuLy = true;
+                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                        }
+                        else
+                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         if (chkYCCat1.Checked)
@@ -431,7 +437,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.ThoiHan = null;
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        if (bool.Parse(_source["TXL"]) == true)
+                        {
+                            lichsuchungtu.ToXuLy = true;
+                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                        }
+                        else
+                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         if (chkYCCat1.Checked)

@@ -23,19 +23,44 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 {
                     DataSet ds = new DataSet();
                     ///Table TTTL
-                    var queryTTTL = from itemTTTL in db.TTTLs
-                                    join itemDonKH in db.DonKHs on itemTTTL.MaDon equals itemDonKH.MaDon
-                                    join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                    where itemTTTL.MaDon!=null
+                    var queryTTTL_DonKH = from itemTTTL in db.TTTLs
+                                    //join itemDonKH in db.DonKHs on itemTTTL.MaDon equals itemDonKH.MaDon
+                                    //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                    where itemTTTL.ToXuLy==false
                                     select new
                                     {
-                                        itemDonKH.MaDon,
-                                        itemLoaiDon.TenLD,
-                                        itemDonKH.CreateDate,
-                                        itemDonKH.DanhBo,
-                                        itemDonKH.HoTen,
-                                        itemDonKH.DiaChi,
-                                        itemDonKH.NoiDung,
+                                        itemTTTL.ToXuLy,
+                                        itemTTTL.MaDon,
+                                        itemTTTL.DonKH.LoaiDon.TenLD,
+                                        itemTTTL.DonKH.CreateDate,
+                                        itemTTTL.DonKH.DanhBo,
+                                        itemTTTL.DonKH.HoTen,
+                                        itemTTTL.DonKH.DiaChi,
+                                        itemTTTL.DonKH.NoiDung,
+                                        MaNoiChuyenDen = itemTTTL.MaNoiChuyenDen,
+                                        NoiChuyenDen = itemTTTL.NoiChuyenDen,
+                                        LyDoChuyenDen = itemTTTL.LyDoChuyenDen,
+                                        itemTTTL.MaTTTL,
+                                        NgayXuLy = itemTTTL.CreateDate,
+                                        itemTTTL.KetQua,
+                                        itemTTTL.MaChuyen,
+                                        LyDoChuyenDi = itemTTTL.LyDoChuyen
+                                    };
+
+                    var queryTTTL_DonTXL = from itemTTTL in db.TTTLs
+                                    //join itemDonKH in db.DonKHs on itemTTTL.MaDon equals itemDonKH.MaDon
+                                    //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                    where itemTTTL.ToXuLy == true
+                                    select new
+                                    {
+                                        itemTTTL.ToXuLy,
+                                        itemTTTL.MaDonTXL,
+                                        itemTTTL.DonTXL.LoaiDonTXL.TenLD,
+                                        itemTTTL.DonTXL.CreateDate,
+                                        itemTTTL.DonTXL.DanhBo,
+                                        itemTTTL.DonTXL.HoTen,
+                                        itemTTTL.DonTXL.DiaChi,
+                                        itemTTTL.DonTXL.NoiDung,
                                         MaNoiChuyenDen = itemTTTL.MaNoiChuyenDen,
                                         NoiChuyenDen = itemTTTL.NoiChuyenDen,
                                         LyDoChuyenDen = itemTTTL.LyDoChuyenDen,
@@ -46,13 +71,14 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                         LyDoChuyenDi = itemTTTL.LyDoChuyen
                                     };
                     DataTable dtTTTL = new DataTable();
-                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL);
+                    dtTTTL = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonKH);
+                    dtTTTL.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryTTTL_DonTXL));
                     dtTTTL.TableName = "TTTL";
                     ds.Tables.Add(dtTTTL);
 
                     ///Table CTTTTL
                     var queryCTTTTL = from itemCTTTTL in db.CTTTTLs
-                                      where itemCTTTTL.TTTL.MaDon!=null
+                                      //where itemCTTTTL.TTTL.MaDon!=null
                                       select itemCTTTTL;
 
                     DataTable dtCTTTTL = new DataTable();
@@ -482,7 +508,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
                 {
                     var query = from itemCTTTTL in db.CTTTTLs
-                                where itemCTTTTL.TTTL.MaDon!=null
+                                //where itemCTTTTL.TTTL.MaDon!=null
                                 select new
                                 {
                                     In = false,

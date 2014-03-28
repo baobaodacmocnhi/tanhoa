@@ -23,19 +23,20 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     DataSet ds = new DataSet();
                     ///Table CHDB
-                    var queryCHDB = from itemCHDB in db.CHDBs
-                                    join itemDonKH in db.DonKHs on itemCHDB.MaDon equals itemDonKH.MaDon
-                                    join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                    where itemCHDB.MaDon!=null
+                    var queryCHDB_DonKH = from itemCHDB in db.CHDBs
+                                    //join itemDonKH in db.DonKHs on itemCHDB.MaDon equals itemDonKH.MaDon
+                                    //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                    where itemCHDB.ToXuLy==false
                                     select new
                                     {
-                                        itemDonKH.MaDon,
-                                        itemLoaiDon.TenLD,
-                                        itemDonKH.CreateDate,
-                                        itemDonKH.DanhBo,
-                                        itemDonKH.HoTen,
-                                        itemDonKH.DiaChi,
-                                        itemDonKH.NoiDung,
+                                        itemCHDB.ToXuLy,
+                                        itemCHDB.MaDon,
+                                        itemCHDB.DonKH.LoaiDon.TenLD,
+                                        itemCHDB.DonKH.CreateDate,
+                                        itemCHDB.DonKH.DanhBo,
+                                        itemCHDB.DonKH.HoTen,
+                                        itemCHDB.DonKH.DiaChi,
+                                        itemCHDB.DonKH.NoiDung,
                                         MaNoiChuyenDen = itemCHDB.MaNoiChuyenDen,
                                         NoiChuyenDen = itemCHDB.NoiChuyenDen,
                                         LyDoChuyenDen = itemCHDB.LyDoChuyenDen,
@@ -45,14 +46,39 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                         itemCHDB.MaChuyen,
                                         LyDoChuyenDi = itemCHDB.LyDoChuyen
                                     };
+
+                    var queryCHDB_DonTXL = from itemCHDB in db.CHDBs
+                                          //join itemDonKH in db.DonKHs on itemCHDB.MaDon equals itemDonKH.MaDon
+                                          //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                          where itemCHDB.ToXuLy == true
+                                          select new
+                                          {
+                                              itemCHDB.ToXuLy,
+                                              MaDon=itemCHDB.MaDonTXL,
+                                              itemCHDB.DonTXL.LoaiDonTXL.TenLD,
+                                              itemCHDB.DonTXL.CreateDate,
+                                              itemCHDB.DonTXL.DanhBo,
+                                              itemCHDB.DonTXL.HoTen,
+                                              itemCHDB.DonTXL.DiaChi,
+                                              itemCHDB.DonTXL.NoiDung,
+                                              MaNoiChuyenDen = itemCHDB.MaNoiChuyenDen,
+                                              NoiChuyenDen = itemCHDB.NoiChuyenDen,
+                                              LyDoChuyenDen = itemCHDB.LyDoChuyenDen,
+                                              itemCHDB.MaCHDB,
+                                              NgayXuLy = itemCHDB.CreateDate,
+                                              itemCHDB.KetQua,
+                                              itemCHDB.MaChuyen,
+                                              LyDoChuyenDi = itemCHDB.LyDoChuyen
+                                          };
                     DataTable dtCHDB = new DataTable();
-                    dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCHDB);
+                    dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCHDB_DonKH);
+                    dtCHDB.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCHDB_DonTXL));
                     dtCHDB.TableName = "CHDB";
                     ds.Tables.Add(dtCHDB);
 
                     ///Table CTCTDB
                     var queryCTCTDB = from itemCTCTDB in db.CTCTDBs
-                                      where itemCTCTDB.CHDB.MaDon!=null
+                                      //where itemCTCTDB.CHDB.MaDon!=null
                                       select itemCTCTDB;
 
                     DataTable dtCTCTDB = new DataTable();
@@ -62,7 +88,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
                     ///Table CTCHDB
                     var queryCTCHDB = from itemCTCHDB in db.CTCHDBs
-                                      where itemCTCHDB.CHDB.MaDon != null
+                                      //where itemCTCHDB.CHDB.MaDon != null
                                       select itemCTCHDB;
 
                     DataTable dtCTCHDB = new DataTable();
@@ -510,7 +536,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB_Xem||CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemCTCTDB in db.CTCTDBs
-                                where itemCTCTDB.CHDB.MaDon!=null
+                                //where itemCTCTDB.CHDB.MaDon!=null
                                 select new
                                 {
                                     In=false,
@@ -699,7 +725,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemCTCHDB in db.CTCHDBs
-                                where itemCTCHDB.CHDB.MaDon!=null
+                                //where itemCTCHDB.CHDB.MaDon!=null
                                 select new
                                 {
                                     In = false,

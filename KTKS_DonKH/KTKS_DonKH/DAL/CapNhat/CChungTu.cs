@@ -672,7 +672,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ctchungtu.YeuCauCat2)
                         {
                             LichSuChungTu lichsuchungtu2 = new LichSuChungTu();
-                            lichsuchungtu2.MaDon = lichsuchungtu.MaDon;
+                            if (lichsuchungtu.ToXuLy)
+                            {
+                                lichsuchungtu2.ToXuLy = true;
+                                lichsuchungtu2.MaDonTXL = lichsuchungtu.MaDonTXL;
+                            }
+                            else
+                                lichsuchungtu2.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtu2.MaCT = ctchungtu.MaCT;
                             lichsuchungtu2.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu2.SoNKTong = chungtuCN.SoNKTong;
@@ -710,7 +716,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ctchungtu.YeuCauCat3)
                         {
                             LichSuChungTu lichsuchungtu3 = new LichSuChungTu();
-                            lichsuchungtu3.MaDon = lichsuchungtu.MaDon;
+                            if (lichsuchungtu.ToXuLy)
+                            {
+                                lichsuchungtu3.ToXuLy = true;
+                                lichsuchungtu3.MaDonTXL = lichsuchungtu.MaDonTXL;
+                            }
+                            else
+                                lichsuchungtu3.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtu3.MaCT = ctchungtu.MaCT;
                             lichsuchungtu3.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu3.SoNKTong = chungtuCN.SoNKTong;
@@ -748,7 +760,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ctchungtu.YeuCauCat4)
                         {
                             LichSuChungTu lichsuchungtu4 = new LichSuChungTu();
-                            lichsuchungtu4.MaDon = lichsuchungtu.MaDon;
+                            if (lichsuchungtu.ToXuLy)
+                            {
+                                lichsuchungtu4.ToXuLy = true;
+                                lichsuchungtu4.MaDonTXL = lichsuchungtu.MaDonTXL;
+                            }
+                            else
+                                lichsuchungtu4.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtu4.MaCT = ctchungtu.MaCT;
                             lichsuchungtu4.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu4.SoNKTong = chungtuCN.SoNKTong;
@@ -786,7 +804,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ctchungtu.YeuCauCat5)
                         {
                             LichSuChungTu lichsuchungtu5 = new LichSuChungTu();
-                            lichsuchungtu5.MaDon = lichsuchungtu.MaDon;
+                            if (lichsuchungtu.ToXuLy)
+                            {
+                                lichsuchungtu5.ToXuLy = true;
+                                lichsuchungtu5.MaDonTXL = lichsuchungtu.MaDonTXL;
+                            }
+                            else
+                                lichsuchungtu5.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtu5.MaCT = ctchungtu.MaCT;
                             lichsuchungtu5.DanhBo = ctchungtu.DanhBo;
                             lichsuchungtu5.SoNKTong = chungtuCN.SoNKTong;
@@ -1700,7 +1724,13 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                             ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Nhận
                             LichSuChungTu lichsuchungtuNhan = new LichSuChungTu();
-                            lichsuchungtuNhan.MaDon = lichsuchungtu.MaDon;
+                            if (lichsuchungtu.ToXuLy)
+                            {
+                                lichsuchungtuNhan.ToXuLy = true;
+                                lichsuchungtuNhan.MaDonTXL = lichsuchungtu.MaDonTXL;
+                            }
+                            else
+                                lichsuchungtuNhan.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtuNhan.MaCT = ctchungtuNhan.MaCT;
                             lichsuchungtuNhan.DanhBo = ctchungtuNhan.DanhBo;
                             lichsuchungtuNhan.SoNKTong = chungtuCN.SoNKTong;
@@ -1760,7 +1790,13 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                             ///Cập nhật LichSuChungTu, Chứng Từ & Danh Bộ Nhận
                             LichSuChungTu lichsuchungtuNhan = new LichSuChungTu();
-                            lichsuchungtuNhan.MaDon = lichsuchungtu.MaDon;
+                            if (lichsuchungtu.ToXuLy)
+                            {
+                                lichsuchungtuNhan.ToXuLy = true;
+                                lichsuchungtuNhan.MaDonTXL = lichsuchungtu.MaDonTXL;
+                            }
+                            else
+                                lichsuchungtuNhan.MaDon = lichsuchungtu.MaDon;
                             lichsuchungtuNhan.MaCT = ctchungtuNhan.MaCT;
                             lichsuchungtuNhan.DanhBo = ctchungtuNhan.DanhBo;
                             lichsuchungtuNhan.SoNKTong = chungtuCN.SoNKTong;

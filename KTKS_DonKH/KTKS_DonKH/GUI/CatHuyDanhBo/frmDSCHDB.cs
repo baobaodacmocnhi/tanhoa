@@ -17,6 +17,7 @@ using KTKS_DonKH.DAL.KiemTraXacMinh;
 using System.Globalization;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
+using KTKS_DonKH.GUI.ToXuLy;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -351,12 +352,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (gridViewCHDB.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("Action", "View");
-                source.Add("MaDon", ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"].ToString());
-                frmShowDonKH frm = new frmShowDonKH(source);
-                //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"].ToString())));
-                frm.ShowDialog();
+                if (((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
+                {
+                    Dictionary<string, string> source = new Dictionary<string, string>();
+                    source.Add("Action", "View");
+                    source.Add("MaDon", ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmShowDonTXL frm = new frmShowDonTXL(source);
+                    //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"].ToString())));
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    Dictionary<string, string> source = new Dictionary<string, string>();
+                    source.Add("Action", "View");
+                    source.Add("MaDon", ((DataRowView)gridViewCHDB.GetRow(gridViewCHDB.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmShowDonKH frm = new frmShowDonKH(source);
+                    frm.ShowDialog();
+                }
             }
         }
 
@@ -398,7 +410,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.Column.FieldName == "MaDon" && e.Value != null)
             {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 

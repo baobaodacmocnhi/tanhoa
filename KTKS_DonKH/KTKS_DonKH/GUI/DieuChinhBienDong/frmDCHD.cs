@@ -259,11 +259,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
-                        if (_cDCBD.CheckCTDCHDbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
-                        {
-                            MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        //if (_cDCBD.CheckCTDCHDbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
+                        //{
+                        //    MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return;
+                        //}
                         CTDCHD ctdchd = new CTDCHD();
                         ctdchd.MaDCBD = _cDCBD.getDCBDbyMaDon_TXL(_dontxl.MaDon).MaDCBD;
                         ctdchd.DanhBo = txtDanhBo.Text.Trim();
@@ -386,11 +386,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _cDonKH.SuaDonKH(_donkh, true);
                         }
                     }
-                    if (_cDCBD.CheckCTDCHDbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
-                    {
-                        MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    //if (_cDCBD.CheckCTDCHDbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                    //{
+                    //    MessageBox.Show("Danh Bộ này đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    return;
+                    //}
                     CTDCHD ctdchd = new CTDCHD();
                     ctdchd.MaDCBD = _cDCBD.getDCBDbyMaDon(_donkh.MaDon).MaDCBD;
                     ctdchd.DanhBo = txtDanhBo.Text.Trim();
@@ -528,8 +528,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                             txtDanhBo.Text = _ttkhachhang.DanhBo;
                             txtHoTen.Text = _ttkhachhang.HoTen;
-                            txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
-                            txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                            if (!string.IsNullOrEmpty(_ttkhachhang.GB))
+                                txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
+                            else
+                                txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = "0";
+                            if (!string.IsNullOrEmpty(_ttkhachhang.TGDM))
+                                txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                            else
+                                txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = "0";
                             dateNgayKy.Focus();
                         }
                     }
@@ -551,8 +557,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         txtDanhBo.Text = _ttkhachhang.DanhBo;
                         txtHoTen.Text = _ttkhachhang.HoTen;
-                        txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
-                        txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                        if (!string.IsNullOrEmpty(_ttkhachhang.GB))
+                            txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = _ttkhachhang.GB;
+                        else
+                            txtGiaBieu_Cu.Text = txtGiaBieu_Moi.Text = "0";
+                        if (!string.IsNullOrEmpty(_ttkhachhang.TGDM))
+                            txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = _ttkhachhang.TGDM;
+                        else
+                            txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = "0";
                         dateNgayKy.Focus();
                     }
                 }

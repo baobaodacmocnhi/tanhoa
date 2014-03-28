@@ -152,8 +152,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                 if (txtKyHieuLDTXL.Text.Trim() != "" && txtTenLDTXL.Text.Trim() != "")
                 {
                     LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLD", _selectedindexTXL].Value.ToString()));
-                    loaidontxl.KyHieuLD = txtKyHieuLD.Text.Trim();
-                    loaidontxl.TenLD = txtTenLD.Text.Trim();
+                    loaidontxl.KyHieuLD = txtKyHieuLDTXL.Text.Trim();
+                    loaidontxl.TenLD = txtTenLDTXL.Text.Trim();
 
                     if (_cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl))
                         Clear();

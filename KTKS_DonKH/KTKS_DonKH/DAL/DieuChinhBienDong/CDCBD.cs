@@ -23,12 +23,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     DataSet ds = new DataSet();
                     ///Table DCBD
-                    var queryDCBD = from itemDCBD in db.DCBDs
+                    var queryDCBD_DonKH = from itemDCBD in db.DCBDs
                                 //join itemDonKH in db.DonKHs on itemDCBD.MaDon equals itemDonKH.MaDon
                                 //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                where itemDCBD.ToXuLy==false
                                 select new
                                 {
-                                    itemDCBD.DonKH.MaDon,
+                                    itemDCBD.ToXuLy,
+                                    itemDCBD.MaDon,
                                     itemDCBD.DonKH.LoaiDon.TenLD,
                                     itemDCBD.DonKH.CreateDate,
                                     itemDCBD.DonKH.DanhBo,
@@ -44,8 +46,33 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemDCBD.MaChuyen,
                                     LyDoChuyenDi = itemDCBD.LyDoChuyen
                                 };
+
+                    var queryDCBD_DonTXL = from itemDCBD in db.DCBDs
+                                          //join itemDonKH in db.DonKHs on itemDCBD.MaDon equals itemDonKH.MaDon
+                                          //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                          where itemDCBD.ToXuLy == true
+                                          select new
+                                          {
+                                              itemDCBD.ToXuLy,
+                                              MaDon=itemDCBD.MaDonTXL,
+                                              itemDCBD.DonTXL.LoaiDonTXL.TenLD,
+                                              itemDCBD.DonTXL.CreateDate,
+                                              itemDCBD.DonTXL.DanhBo,
+                                              itemDCBD.DonTXL.HoTen,
+                                              itemDCBD.DonTXL.DiaChi,
+                                              itemDCBD.DonTXL.NoiDung,
+                                              MaNoiChuyenDen = itemDCBD.MaNoiChuyenDen,
+                                              NoiChuyenDen = itemDCBD.NoiChuyenDen,
+                                              LyDoChuyenDen = itemDCBD.LyDoChuyenDen,
+                                              itemDCBD.MaDCBD,
+                                              NgayXuLy = itemDCBD.CreateDate,
+                                              itemDCBD.KetQua,
+                                              itemDCBD.MaChuyen,
+                                              LyDoChuyenDi = itemDCBD.LyDoChuyen
+                                          };
                     DataTable dtDCBD = new DataTable();
-                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD);
+                    dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonKH);
+                    dtDCBD.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDCBD_DonTXL));
                     dtDCBD.TableName = "DCBD";
                     ds.Tables.Add(dtDCBD);
 

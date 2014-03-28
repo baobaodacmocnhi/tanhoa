@@ -208,7 +208,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
-            source.Add("MaDon", _donkh.MaDon.ToString());
+            ///Đơn Tổ Xử Lý
+            if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+            {
+                source.Add("TXL", "True");
+                source.Add("MaDon", _dontxl.MaDon.ToString());
+            }
+            ///Đơn Tổ Khách Hàng
+            else
+            {
+                source.Add("TXL", "False");
+                source.Add("MaDon", _donkh.MaDon.ToString());
+            }
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTenKH", txtHoTen.Text.Trim());
             source.Add("DiaChiKH", txtDiaChi.Text.Trim());
@@ -227,7 +238,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
-            source.Add("MaDon", _donkh.MaDon.ToString());
+            ///Đơn Tổ Xử Lý
+            if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+            {
+                source.Add("TXL", "True");
+                source.Add("MaDon", _dontxl.MaDon.ToString());
+            }
+            ///Đơn Tổ Khách Hàng
+            else
+            {
+                source.Add("TXL", "False");
+                source.Add("MaDon", _donkh.MaDon.ToString());
+            }
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("TenLCT", dgvDSSoDangKy.CurrentRow.Cells["TenLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
@@ -245,7 +267,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void cắtChuyểnĐịnhMứcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
-            source.Add("MaDon", _donkh.MaDon.ToString());
+            ///Đơn Tổ Xử Lý
+            if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+            {
+                source.Add("TXL", "True");
+                source.Add("MaDon", _dontxl.MaDon.ToString());
+            }
+            ///Đơn Tổ Khách Hàng
+            else
+            {
+                source.Add("TXL", "False");
+                source.Add("MaDon", _donkh.MaDon.ToString());
+            }
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTen", txtHoTen.Text.Trim());
             source.Add("DiaChi", txtDiaChi.Text.Trim());
@@ -260,7 +293,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
-            source.Add("MaDon", _donkh.MaDon.ToString());
+            ///Đơn Tổ Xử Lý
+            if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+            {
+                source.Add("TXL", "True");
+                source.Add("MaDon", _dontxl.MaDon.ToString());
+            }
+            ///Đơn Tổ Khách Hàng
+            else
+            {
+                source.Add("TXL", "False");
+                source.Add("MaDon", _donkh.MaDon.ToString());
+            }
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTen", txtHoTen.Text.Trim());
             source.Add("DiaChi", txtDiaChi.Text.Trim());
@@ -849,10 +893,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.Control && e.KeyCode == Keys.Add)
                 btnLuu.PerformClick();
-            if (_donkh!=null && e.Control && e.KeyCode == Keys.D1)
+            if ((_donkh!=null||_dontxl!=null) && e.Control && e.KeyCode == Keys.D1)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("MaDon", _donkh.MaDon.ToString());
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                {
+                    source.Add("TXL", "True");
+                    source.Add("MaDon", _dontxl.MaDon.ToString());
+                }
+                ///Đơn Tổ Khách Hàng
+                else
+                {
+                    source.Add("TXL", "False");
+                    source.Add("MaDon", _donkh.MaDon.ToString());
+                }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 source.Add("HoTenKH", txtHoTen.Text.Trim());
                 source.Add("DiaChiKH", txtDiaChi.Text.Trim());
@@ -866,17 +920,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 frmSoDK frm = new frmSoDK("Thêm", source);
                 if (frm.ShowDialog() == DialogResult.OK)
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                //thêmToolStripMenuItem.PerformClick();
             }
-            if (_donkh != null && e.Control && e.KeyCode == Keys.D2)
+            if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D2)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("MaDon", _donkh.MaDon.ToString());
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                {
+                    source.Add("TXL", "True");
+                    source.Add("MaDon", _dontxl.MaDon.ToString());
+                }
+                ///Đơn Tổ Khách Hàng
+                else
+                {
+                    source.Add("TXL", "False");
+                    source.Add("MaDon", _donkh.MaDon.ToString());
+                }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 source.Add("HoTen", txtHoTen.Text.Trim());
                 source.Add("DiaChi", txtDiaChi.Text.Trim());
                 frmNhanDM frm = new frmNhanDM(source);
                 if (frm.ShowDialog() == DialogResult.OK)
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                //nhậnĐịnhMứctoolStripMenuItem.PerformClick();
             }
         }
 

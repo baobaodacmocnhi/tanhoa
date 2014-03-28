@@ -196,6 +196,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                where itemDonTXL.MaDon == MaDonTXL
                                select new
                                {
+                                   ToXuLy=true,
                                    itemDonTXL.MaDon,
                                    itemDonTXL.LoaiDonTXL.TenLD,
                                    itemDonTXL.CreateDate,
@@ -399,6 +400,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTDCBD.DCBD.MaDon,
+                                      itemCTDCBD.DCBD.ToXuLy,
+                                      itemCTDCBD.DCBD.MaDonTXL,
                                       MaDC = itemCTDCBD.MaCTDCBD,
                                       DieuChinh = "Biến Động",
                                       itemCTDCBD.CreateDate,
@@ -422,6 +425,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTDCHD.DCBD.MaDon,
+                                      itemCTDCHD.DCBD.ToXuLy,
+                                      itemCTDCHD.DCBD.MaDonTXL,
                                       MaDC = itemCTDCHD.MaCTDCHD,
                                       DieuChinh = "Hóa Đơn",
                                       itemCTDCHD.CreateDate,
@@ -517,7 +522,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                where itemCTKTXM.DanhBo == DanhBo
                                select new
                                {
-                                   TXL=false,
+                                   ToXuLy=false,
                                    itemDon.MaDon,
                                    itemDon.LoaiDon.TenLD,
                                    itemDon.CreateDate,
@@ -535,7 +540,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTDCBD.DanhBo == DanhBo
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -552,7 +557,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTDCHD.DanhBo == DanhBo
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -569,7 +574,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTCTDB.DanhBo == DanhBo
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -586,7 +591,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTCHDB.DanhBo == DanhBo
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -603,7 +608,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTTTTL.DanhBo == DanhBo
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -625,7 +630,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemCTKTXM.DanhBo == DanhBo
                                   select new
                                   {
-                                      TXL=true,
+                                      ToXuLy = true,
                                       itemDonTXL.MaDon,
                                       itemDonTXL.LoaiDonTXL.TenLD,
                                       itemDonTXL.CreateDate,
@@ -638,30 +643,30 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table DonTXL 2
                 var queryDonTXL2 = from itemDonTXL in db.DonTXLs
-                                  //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                  join itemCTCTDB in db.CTCTDBs on itemDonTXL.MaDon equals itemCTCTDB.CHDB.MaDonTXL
-                                   where itemCTCTDB.DanhBo == DanhBo
-                                  select new
-                                  {
-                                      TXL = true,
-                                      itemDonTXL.MaDon,
-                                      itemDonTXL.LoaiDonTXL.TenLD,
-                                      itemDonTXL.CreateDate,
-                                      itemDonTXL.DanhBo,
-                                      itemDonTXL.HoTen,
-                                      itemDonTXL.DiaChi,
-                                      itemDonTXL.NoiDung,
-                                  };
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemCTDCBD in db.CTDCBDs on itemDonTXL.MaDon equals itemCTDCBD.DCBD.MaDonTXL
+                                   where itemCTDCBD.DanhBo == DanhBo
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.NoiDung,
+                                   };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL2));
 
                 ///Table DonTXL 3
                 var queryDonTXL3 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemCTCHDB in db.CTCHDBs on itemDonTXL.MaDon equals itemCTCHDB.CHDB.MaDonTXL
-                                   where itemCTCHDB.DanhBo == DanhBo
+                                   join itemCTDCHD in db.CTDCHDs on itemDonTXL.MaDon equals itemCTDCHD.DCBD.MaDonTXL
+                                   where itemCTDCHD.DanhBo == DanhBo
                                    select new
                                    {
-                                       TXL = true,
+                                       ToXuLy = true,
                                        itemDonTXL.MaDon,
                                        itemDonTXL.LoaiDonTXL.TenLD,
                                        itemDonTXL.CreateDate,
@@ -674,12 +679,30 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table DonTXL 4
                 var queryDonTXL4 = from itemDonTXL in db.DonTXLs
+                                  //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                  join itemCTCTDB in db.CTCTDBs on itemDonTXL.MaDon equals itemCTCTDB.CHDB.MaDonTXL
+                                   where itemCTCTDB.DanhBo == DanhBo
+                                  select new
+                                  {
+                                      ToXuLy = true,
+                                      itemDonTXL.MaDon,
+                                      itemDonTXL.LoaiDonTXL.TenLD,
+                                      itemDonTXL.CreateDate,
+                                      itemDonTXL.DanhBo,
+                                      itemDonTXL.HoTen,
+                                      itemDonTXL.DiaChi,
+                                      itemDonTXL.NoiDung,
+                                  };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL4));
+
+                ///Table DonTXL 5
+                var queryDonTXL5 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemCTTTTL in db.CTTTTLs on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
-                                   where itemCTTTTL.DanhBo == DanhBo
+                                   join itemCTCHDB in db.CTCHDBs on itemDonTXL.MaDon equals itemCTCHDB.CHDB.MaDonTXL
+                                   where itemCTCHDB.DanhBo == DanhBo
                                    select new
                                    {
-                                       TXL = true,
+                                       ToXuLy = true,
                                        itemDonTXL.MaDon,
                                        itemDonTXL.LoaiDonTXL.TenLD,
                                        itemDonTXL.CreateDate,
@@ -688,12 +711,32 @@ namespace KTKS_DonKH.DAL.TimKiem
                                        itemDonTXL.DiaChi,
                                        itemDonTXL.NoiDung,
                                    };
-                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL4));
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL5));
+
+                ///Table DonTXL 6
+                var queryDonTXL6 = from itemDonTXL in db.DonTXLs
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemCTTTTL in db.CTTTTLs on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
+                                   where itemCTTTTL.DanhBo == DanhBo
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.NoiDung,
+                                   };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
+
+                
 
                 #endregion
 
                 DataTable dtDon = new DataTable();
-                dtDon.Columns.Add("TXL", typeof(bool));
+                dtDon.Columns.Add("ToXuLy", typeof(bool));
                 dtDon.Columns.Add("MaDon", typeof(decimal));
                 dtDon.Columns.Add("TenLD", typeof(string));
                 dtDon.Columns.Add("CreateDate", typeof(string));
@@ -716,8 +759,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Kiểm Tra Xác Minh TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["KTXM"].Columns["MaDonTXL"]);
                 }
 
-                if (dtDon.Rows.Count > 0 && dtDCBD.Rows.Count > 0)  
+                if (dtDon.Rows.Count > 0 && dtDCBD.Rows.Count > 0)
+                {
                     ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động", ds.Tables["Don"].Columns["MaDon"], ds.Tables["DCBD"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["DCBD"].Columns["MaDonTXL"]);
+                }
 
                 if (dtDon.Rows.Count > 0 && dtCHDB.Rows.Count > 0)
                 {
@@ -774,6 +820,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTDCBD.DCBD.MaDon,
+                                      itemCTDCBD.DCBD.ToXuLy,
+                                      itemCTDCBD.DCBD.MaDonTXL,
                                       MaDC = itemCTDCBD.MaCTDCBD,
                                       DieuChinh = "Biến Động",
                                       itemCTDCBD.CreateDate,
@@ -797,6 +845,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTDCHD.DCBD.MaDon,
+                                      itemCTDCHD.DCBD.ToXuLy,
+                                      itemCTDCHD.DCBD.MaDonTXL,
                                       MaDC = itemCTDCHD.MaCTDCHD,
                                       DieuChinh = "Hóa Đơn",
                                       itemCTDCHD.CreateDate,
@@ -892,7 +942,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                where itemCTKTXM.HoTen.Contains(HoTen)
                                select new
                                {
-                                   TXL = false,
+                                   ToXuLy = false,
                                    itemDon.MaDon,
                                    itemDon.LoaiDon.TenLD,
                                    itemDon.CreateDate,
@@ -910,7 +960,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTDCBD.HoTen.Contains(HoTen)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -927,7 +977,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTDCHD.HoTen.Contains(HoTen)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -944,7 +994,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTCTDB.HoTen.Contains(HoTen)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -961,7 +1011,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTCHDB.HoTen.Contains(HoTen)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -978,7 +1028,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTTTTL.HoTen.Contains(HoTen)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -1000,7 +1050,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemCTKTXM.HoTen.Contains(HoTen)
                                   select new
                                   {
-                                      TXL = true,
+                                      ToXuLy = true,
                                       itemDonTXL.MaDon,
                                       itemDonTXL.LoaiDonTXL.TenLD,
                                       itemDonTXL.CreateDate,
@@ -1013,48 +1063,48 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table DonTXL 2
                 var queryDonTXL2 = from itemDonTXL in db.DonTXLs
-                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemCTCTDB in db.CTCTDBs on itemDonTXL.MaDon equals itemCTCTDB.CHDB.MaDonTXL
-                                   where itemCTCTDB.HoTen.Contains(HoTen)
-                                   select new
-                                   {
-                                       TXL = true,
-                                       itemDonTXL.MaDon,
-                                       itemDonTXL.LoaiDonTXL.TenLD,
-                                       itemDonTXL.CreateDate,
-                                       itemDonTXL.DanhBo,
-                                       itemDonTXL.HoTen,
-                                       itemDonTXL.DiaChi,
-                                       itemDonTXL.NoiDung,
-                                   };
+                                  //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemCTDCDB in db.CTDCBDs on itemDonTXL.MaDon equals itemCTDCDB.DCBD.MaDonTXL
+                                   where itemCTDCDB.HoTen.Contains(HoTen)
+                                  select new
+                                  {
+                                      ToXuLy = true,
+                                      itemDonTXL.MaDon,
+                                      itemDonTXL.LoaiDonTXL.TenLD,
+                                      itemDonTXL.CreateDate,
+                                      itemDonTXL.DanhBo,
+                                      itemDonTXL.HoTen,
+                                      itemDonTXL.DiaChi,
+                                      itemDonTXL.NoiDung,
+                                  };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL2));
 
                 ///Table DonTXL 3
                 var queryDonTXL3 = from itemDonTXL in db.DonTXLs
-                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemCTCHDB in db.CTCHDBs on itemDonTXL.MaDon equals itemCTCHDB.CHDB.MaDonTXL
-                                   where itemCTCHDB.HoTen.Contains(HoTen)
-                                   select new
-                                   {
-                                       TXL = true,
-                                       itemDonTXL.MaDon,
-                                       itemDonTXL.LoaiDonTXL.TenLD,
-                                       itemDonTXL.CreateDate,
-                                       itemDonTXL.DanhBo,
-                                       itemDonTXL.HoTen,
-                                       itemDonTXL.DiaChi,
-                                       itemDonTXL.NoiDung,
-                                   };
+                                  //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                  join itemCTDCHD in db.CTDCHDs on itemDonTXL.MaDon equals itemCTDCHD.DCBD.MaDonTXL
+                                   where itemCTDCHD.HoTen.Contains(HoTen)
+                                  select new
+                                  {
+                                      ToXuLy = true,
+                                      itemDonTXL.MaDon,
+                                      itemDonTXL.LoaiDonTXL.TenLD,
+                                      itemDonTXL.CreateDate,
+                                      itemDonTXL.DanhBo,
+                                      itemDonTXL.HoTen,
+                                      itemDonTXL.DiaChi,
+                                      itemDonTXL.NoiDung,
+                                  };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL3));
 
                 ///Table DonTXL 4
                 var queryDonTXL4 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemCTTTTL in db.CTTTTLs on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
-                                   where itemCTTTTL.HoTen.Contains(HoTen)
+                                   join itemCTCTDB in db.CTCTDBs on itemDonTXL.MaDon equals itemCTCTDB.CHDB.MaDonTXL
+                                   where itemCTCTDB.HoTen.Contains(HoTen)
                                    select new
                                    {
-                                       TXL = true,
+                                       ToXuLy = true,
                                        itemDonTXL.MaDon,
                                        itemDonTXL.LoaiDonTXL.TenLD,
                                        itemDonTXL.CreateDate,
@@ -1065,10 +1115,46 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL4));
 
+                ///Table DonTXL 5
+                var queryDonTXL5 = from itemDonTXL in db.DonTXLs
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemCTCHDB in db.CTCHDBs on itemDonTXL.MaDon equals itemCTCHDB.CHDB.MaDonTXL
+                                   where itemCTCHDB.HoTen.Contains(HoTen)
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.NoiDung,
+                                   };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL5));
+
+                ///Table DonTXL 6
+                var queryDonTXL6 = from itemDonTXL in db.DonTXLs
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemCTTTTL in db.CTTTTLs on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
+                                   where itemCTTTTL.HoTen.Contains(HoTen)
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.NoiDung,
+                                   };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
+
                 #endregion
 
                 DataTable dtDon = new DataTable();
-                dtDon.Columns.Add("TXL", typeof(bool));
+                dtDon.Columns.Add("ToXuLy", typeof(bool));
                 dtDon.Columns.Add("MaDon", typeof(decimal));
                 dtDon.Columns.Add("TenLD", typeof(string));
                 dtDon.Columns.Add("CreateDate", typeof(string));
@@ -1092,7 +1178,10 @@ namespace KTKS_DonKH.DAL.TimKiem
                 }
 
                 if (dtDon.Rows.Count > 0 && dtDCBD.Rows.Count > 0)
+                {
                     ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động", ds.Tables["Don"].Columns["MaDon"], ds.Tables["DCBD"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["DCBD"].Columns["MaDonTXL"]);
+                }
 
                 if (dtDon.Rows.Count > 0 && dtCHDB.Rows.Count > 0)
                 {
@@ -1149,6 +1238,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTDCBD.DCBD.MaDon,
+                                      itemCTDCBD.DCBD.ToXuLy,
+                                      itemCTDCBD.DCBD.MaDonTXL,
                                       MaDC = itemCTDCBD.MaCTDCBD,
                                       DieuChinh = "Biến Động",
                                       itemCTDCBD.CreateDate,
@@ -1172,6 +1263,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   select new
                                   {
                                       itemCTDCHD.DCBD.MaDon,
+                                      itemCTDCHD.DCBD.ToXuLy,
+                                      itemCTDCHD.DCBD.MaDonTXL,
                                       MaDC = itemCTDCHD.MaCTDCHD,
                                       DieuChinh = "Hóa Đơn",
                                       itemCTDCHD.CreateDate,
@@ -1267,7 +1360,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                where itemCTKTXM.DiaChi.Contains(DiaChi)
                                select new
                                {
-                                   TXL = false,
+                                   ToXuLy = false,
                                    itemDon.MaDon,
                                    itemDon.LoaiDon.TenLD,
                                    itemDon.CreateDate,
@@ -1285,7 +1378,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTDCBD.DiaChi.Contains(DiaChi)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -1302,7 +1395,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTDCHD.DiaChi.Contains(DiaChi)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -1319,7 +1412,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTCTDB.DiaChi.Contains(DiaChi)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -1336,7 +1429,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTCHDB.DiaChi.Contains(DiaChi)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -1353,7 +1446,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 where itemCTTTTL.DiaChi.Contains(DiaChi)
                                 select new
                                 {
-                                    TXL = false,
+                                    ToXuLy = false,
                                     itemDon.MaDon,
                                     itemDon.LoaiDon.TenLD,
                                     itemDon.CreateDate,
@@ -1375,7 +1468,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   where itemCTKTXM.DiaChi.Contains(DiaChi)
                                   select new
                                   {
-                                      TXL = true,
+                                      ToXuLy = true,
                                       itemDonTXL.MaDon,
                                       itemDonTXL.LoaiDonTXL.TenLD,
                                       itemDonTXL.CreateDate,
@@ -1388,48 +1481,48 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table DonTXL 2
                 var queryDonTXL2 = from itemDonTXL in db.DonTXLs
-                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemCTCTDB in db.CTCTDBs on itemDonTXL.MaDon equals itemCTCTDB.CHDB.MaDonTXL
-                                   where itemCTCTDB.DiaChi.Contains(DiaChi)
-                                   select new
-                                   {
-                                       TXL = true,
-                                       itemDonTXL.MaDon,
-                                       itemDonTXL.LoaiDonTXL.TenLD,
-                                       itemDonTXL.CreateDate,
-                                       itemDonTXL.DanhBo,
-                                       itemDonTXL.HoTen,
-                                       itemDonTXL.DiaChi,
-                                       itemDonTXL.NoiDung,
-                                   };
+                                  //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                  join itemCTDCBD in db.CTDCBDs on itemDonTXL.MaDon equals itemCTDCBD.DCBD.MaDonTXL
+                                   where itemCTDCBD.DiaChi.Contains(DiaChi)
+                                  select new
+                                  {
+                                      ToXuLy = true,
+                                      itemDonTXL.MaDon,
+                                      itemDonTXL.LoaiDonTXL.TenLD,
+                                      itemDonTXL.CreateDate,
+                                      itemDonTXL.DanhBo,
+                                      itemDonTXL.HoTen,
+                                      itemDonTXL.DiaChi,
+                                      itemDonTXL.NoiDung,
+                                  };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL2));
 
                 ///Table DonTXL 3
                 var queryDonTXL3 = from itemDonTXL in db.DonTXLs
-                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemCTCHDB in db.CTCHDBs on itemDonTXL.MaDon equals itemCTCHDB.CHDB.MaDonTXL
-                                   where itemCTCHDB.DiaChi.Contains(DiaChi)
-                                   select new
-                                   {
-                                       TXL = true,
-                                       itemDonTXL.MaDon,
-                                       itemDonTXL.LoaiDonTXL.TenLD,
-                                       itemDonTXL.CreateDate,
-                                       itemDonTXL.DanhBo,
-                                       itemDonTXL.HoTen,
-                                       itemDonTXL.DiaChi,
-                                       itemDonTXL.NoiDung,
-                                   };
+                                  //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemCTDCHD in db.CTDCHDs on itemDonTXL.MaDon equals itemCTDCHD.DCBD.MaDonTXL
+                                   where itemCTDCHD.DiaChi.Contains(DiaChi)
+                                  select new
+                                  {
+                                      ToXuLy = true,
+                                      itemDonTXL.MaDon,
+                                      itemDonTXL.LoaiDonTXL.TenLD,
+                                      itemDonTXL.CreateDate,
+                                      itemDonTXL.DanhBo,
+                                      itemDonTXL.HoTen,
+                                      itemDonTXL.DiaChi,
+                                      itemDonTXL.NoiDung,
+                                  };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL3));
 
                 ///Table DonTXL 4
                 var queryDonTXL4 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
-                                   join itemCTTTTL in db.CTTTTLs on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
-                                   where itemCTTTTL.DiaChi.Contains(DiaChi)
+                                   join itemCTCTDB in db.CTCTDBs on itemDonTXL.MaDon equals itemCTCTDB.CHDB.MaDonTXL
+                                   where itemCTCTDB.DiaChi.Contains(DiaChi)
                                    select new
                                    {
-                                       TXL = true,
+                                       ToXuLy = true,
                                        itemDonTXL.MaDon,
                                        itemDonTXL.LoaiDonTXL.TenLD,
                                        itemDonTXL.CreateDate,
@@ -1440,10 +1533,46 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL4));
 
+                ///Table DonTXL 5
+                var queryDonTXL5 = from itemDonTXL in db.DonTXLs
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemCTCHDB in db.CTCHDBs on itemDonTXL.MaDon equals itemCTCHDB.CHDB.MaDonTXL
+                                   where itemCTCHDB.DiaChi.Contains(DiaChi)
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.NoiDung,
+                                   };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL5));
+
+                ///Table DonTXL 6
+                var queryDonTXL6 = from itemDonTXL in db.DonTXLs
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemCTTTTL in db.CTTTTLs on itemDonTXL.MaDon equals itemCTTTTL.TTTL.MaDonTXL
+                                   where itemCTTTTL.DiaChi.Contains(DiaChi)
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.NoiDung,
+                                   };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
+
                 #endregion
 
                 DataTable dtDon = new DataTable();
-                dtDon.Columns.Add("TXL", typeof(bool));
+                dtDon.Columns.Add("ToXuLy", typeof(bool));
                 dtDon.Columns.Add("MaDon", typeof(decimal));
                 dtDon.Columns.Add("TenLD", typeof(string));
                 dtDon.Columns.Add("CreateDate", typeof(string));
@@ -1467,7 +1596,10 @@ namespace KTKS_DonKH.DAL.TimKiem
                 }
 
                 if (dtDon.Rows.Count > 0 && dtDCBD.Rows.Count > 0)
+                {
                     ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động", ds.Tables["Don"].Columns["MaDon"], ds.Tables["DCBD"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Điều Chỉnh Biến Động TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["DCBD"].Columns["MaDonTXL"]);
+                }
 
                 if (dtDon.Rows.Count > 0 && dtCHDB.Rows.Count > 0)
                 {

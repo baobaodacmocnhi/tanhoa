@@ -219,6 +219,7 @@
             this.gridViewKTXM.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewKTXM_CellValueChanged);
             this.gridViewKTXM.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewKTXM_CellValueChanging);
             this.gridViewKTXM.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewKTXM_CustomColumnDisplayText);
+            this.gridViewKTXM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewKTXM_KeyDown);
             // 
             // gridColumn19
             // 
@@ -449,7 +450,7 @@
             this.ToXuLy.DataPropertyName = "ToXuLy";
             this.ToXuLy.HeaderText = "TXL";
             this.ToXuLy.Name = "ToXuLy";
-            this.ToXuLy.Visible = false;
+            this.ToXuLy.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ToXuLy.Width = 50;
             // 
             // MaDon
@@ -592,7 +593,6 @@
             this.groupBox1.Size = new System.Drawing.Size(245, 65);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tổ Khách Hàng";
             // 
             // groupBox2
             // 
@@ -605,6 +605,7 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tổ Xử Lý";
+            this.groupBox2.Visible = false;
             // 
             // radDaDuyet_TXL
             // 
