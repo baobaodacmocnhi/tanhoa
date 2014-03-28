@@ -48,7 +48,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_cDCBD.getCTDCBDbyID(_MaCTDCBD) != null)
             {
                 _ctdcbd = _cDCBD.getCTDCBDbyID(_MaCTDCBD);
-                txtMaDon.Text = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+                if (_ctdcbd.DCBD.ToXuLy)
+                    txtMaDon.Text = "TXL" + _ctdcbd.DCBD.MaDonTXL.ToString().Insert(_ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                else
+                    txtMaDon.Text = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                 txtHieuLucKy.Text = _ctdcbd.HieuLucKy;
                 txtDanhBo.Text = _ctdcbd.DanhBo;
                 txtHopDong.Text = _ctdcbd.HopDong;

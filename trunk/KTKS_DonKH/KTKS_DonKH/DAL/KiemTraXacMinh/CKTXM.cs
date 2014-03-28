@@ -196,38 +196,66 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 {
                     DataSet ds = new DataSet();
                     ///Table KTXM
-                    var queryKTXM = from itemKTXM in db.KTXMs
-                                    join itemDonKH in db.DonKHs on itemKTXM.MaDon equals itemDonKH.MaDon
-                                    join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                    where itemKTXM.MaDon != null
-                                    orderby itemDonKH.MaDon ascending
-                                    select new
-                                    {
-                                        itemDonKH.MaDon,
-                                        itemLoaiDon.TenLD,
-                                        itemDonKH.CreateDate,
-                                        itemDonKH.DanhBo,
-                                        itemDonKH.HoTen,
-                                        itemDonKH.DiaChi,
-                                        itemDonKH.NoiDung,
-                                        MaNoiChuyenDen = itemKTXM.MaNoiChuyenDen,
-                                        NoiChuyenDen = itemKTXM.NoiChuyenDen,
-                                        LyDoChuyenDen = itemKTXM.LyDoChuyenDen,
-                                        itemKTXM.MaKTXM,
-                                        NgayXuLy = itemKTXM.CreateDate,
-                                        itemKTXM.KetQua,
-                                        itemKTXM.MaChuyen,
-                                        LyDoChuyenDi = itemKTXM.LyDoChuyen
-                                    };
+                    var queryKTXM_DonKH = from itemKTXM in db.KTXMs
+                                          //join itemDonKH in db.DonKHs on itemKTXM.MaDon equals itemDonKH.MaDon
+                                          //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                          where itemKTXM.ToXuLy == false
+                                          orderby itemKTXM.MaDon ascending
+                                          select new
+                                          {
+                                              itemKTXM.ToXuLy,
+                                              itemKTXM.MaDon,
+                                              itemKTXM.DonKH.LoaiDon.TenLD,
+                                              itemKTXM.DonKH.CreateDate,
+                                              itemKTXM.DonKH.DanhBo,
+                                              itemKTXM.DonKH.HoTen,
+                                              itemKTXM.DonKH.DiaChi,
+                                              itemKTXM.DonKH.NoiDung,
+                                              MaNoiChuyenDen = itemKTXM.MaNoiChuyenDen,
+                                              NoiChuyenDen = itemKTXM.NoiChuyenDen,
+                                              LyDoChuyenDen = itemKTXM.LyDoChuyenDen,
+                                              itemKTXM.MaKTXM,
+                                              NgayXuLy = itemKTXM.CreateDate,
+                                              itemKTXM.KetQua,
+                                              itemKTXM.MaChuyen,
+                                              LyDoChuyenDi = itemKTXM.LyDoChuyen
+                                          };
+
+                    var queryKTXM_DonTXL = from itemKTXM in db.KTXMs
+                                           //join itemDonKH in db.DonKHs on itemKTXM.MaDon equals itemDonKH.MaDon
+                                           //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                           where itemKTXM.ToXuLy == true
+                                           orderby itemKTXM.MaDon ascending
+                                           select new
+                                           {
+                                               itemKTXM.ToXuLy,
+                                               MaDon = itemKTXM.MaDonTXL,
+                                               itemKTXM.DonTXL.LoaiDonTXL.TenLD,
+                                               itemKTXM.DonTXL.CreateDate,
+                                               itemKTXM.DonTXL.DanhBo,
+                                               itemKTXM.DonTXL.HoTen,
+                                               itemKTXM.DonTXL.DiaChi,
+                                               itemKTXM.DonTXL.NoiDung,
+                                               MaNoiChuyenDen = itemKTXM.MaNoiChuyenDen,
+                                               NoiChuyenDen = itemKTXM.NoiChuyenDen,
+                                               LyDoChuyenDen = itemKTXM.LyDoChuyenDen,
+                                               itemKTXM.MaKTXM,
+                                               NgayXuLy = itemKTXM.CreateDate,
+                                               itemKTXM.KetQua,
+                                               itemKTXM.MaChuyen,
+                                               LyDoChuyenDi = itemKTXM.LyDoChuyen
+                                           };
+
                     DataTable dtKTXM = new DataTable();
-                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM);
+                    dtKTXM = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonKH);
+                    dtKTXM.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryKTXM_DonTXL));
                     dtKTXM.TableName = "KTXM";
                     ds.Tables.Add(dtKTXM);
 
                     ///Table CTKTXM
                     var queryCTKTXM = from itemCTKTXM in db.CTKTXMs
                                       join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                      where itemCTKTXM.KTXM.MaDon != null
+                                      //where itemCTKTXM.KTXM.MaDon != null
                                       select new
                                       {
                                           itemCTKTXM.MaKTXM,
@@ -528,12 +556,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                 if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
                 {
-                    var query = from itemCTKTXM in db.CTKTXMs
+                    var query_DonKH = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                where itemCTKTXM.KTXM.MaDon != null
+                                where itemCTKTXM.KTXM.ToXuLy==false
                                 orderby itemCTKTXM.KTXM.MaDon ascending
                                 select new
                                 {
+                                    itemCTKTXM.KTXM.ToXuLy,
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.DanhBo,
@@ -543,7 +572,26 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+
+                    var query_DonTXL = from itemCTKTXM in db.CTKTXMs
+                                      join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                      where itemCTKTXM.KTXM.ToXuLy == true
+                                      orderby itemCTKTXM.KTXM.MaDon ascending
+                                      select new
+                                      {
+                                          itemCTKTXM.KTXM.ToXuLy,
+                                          itemCTKTXM.MaCTKTXM,
+                                          MaDon=itemCTKTXM.KTXM.MaDonTXL,
+                                          itemCTKTXM.DanhBo,
+                                          itemCTKTXM.HoTen,
+                                          itemCTKTXM.DiaChi,
+                                          itemCTKTXM.NoiDungKiemTra,
+                                          itemCTKTXM.NgayKTXM,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+                    DataTable dt= KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH);
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL));
+                    return dt;
                 }
                 else
                 {
@@ -642,12 +690,13 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             {
                 if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
                 {
-                    var query = from itemCTKTXM in db.CTKTXMs
+                    var query_DonKH = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                where itemCTKTXM.KTXM.MaDon != null && itemCTKTXM.CreateBy == MaUser
+                                where itemCTKTXM.KTXM.ToXuLy == false && itemCTKTXM.CreateBy == MaUser
                                 orderby itemCTKTXM.KTXM.MaDon ascending
                                 select new
                                 {
+                                    itemCTKTXM.KTXM.ToXuLy,
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.DanhBo,
@@ -657,7 +706,26 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NgayKTXM,
                                     CreateBy = itemUser.HoTen,
                                 };
-                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+
+                    var query_DonTXL = from itemCTKTXM in db.CTKTXMs
+                                join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                where itemCTKTXM.KTXM.ToXuLy == true && itemCTKTXM.CreateBy == MaUser
+                                orderby itemCTKTXM.KTXM.MaDon ascending
+                                select new
+                                {
+                                    itemCTKTXM.KTXM.ToXuLy,
+                                    itemCTKTXM.MaCTKTXM,
+                                    MaDon=itemCTKTXM.KTXM.MaDonTXL,
+                                    itemCTKTXM.DanhBo,
+                                    itemCTKTXM.HoTen,
+                                    itemCTKTXM.DiaChi,
+                                    itemCTKTXM.NoiDungKiemTra,
+                                    itemCTKTXM.NgayKTXM,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    DataTable dt= KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH);
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL));
+                    return dt;
                 }
                 else
                 {

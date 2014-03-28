@@ -15,6 +15,7 @@ using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.GUI.ToXuLy;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -389,6 +390,43 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 }
         }
 
+        private void radDaDuyet_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDaDuyet_TXL.Checked)
+            {
+                radDaDuyet.Checked = false;
+                radDSKTXM.Checked = false;
+
+                DSDonKH_BS = new BindingSource();
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_TXL().Tables["KTXM"];
+                //cmbTimTheo.SelectedIndex = 0;
+                gridControl.DataSource = DSDonKH_BS;
+                dgvDSCTKTXM.Visible = false;
+                gridControl.Visible = true;
+            }
+        }
+
+        private void radDSKTXM_TXL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSKTXM_TXL.Checked)
+            {
+                radDaDuyet.Checked = false;
+                radDSKTXM.Checked = false;
+
+                DSDonKH_BS = new BindingSource();
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL();
+                else
+                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL(CTaiKhoan.MaUser);
+                dgvDSCTKTXM.DataSource = DSDonKH_BS;
+                dgvDSCTKTXM.Visible = true;
+                gridControl.Visible = false;
+            }
+        }
+
+        #region girdViewKTXM
+
         private void gridViewKTXM_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator)
@@ -404,11 +442,24 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
         }
 
-        private void gridViewCTKTXM_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        private void gridViewKTXM_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Column.FieldName == "MaCTKTXM" && e.Value != null)
+            if (((DataRowView)gridViewKTXM.GetRow(gridViewKTXM.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
             {
-                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("Action", "View");
+                source.Add("MaDon", ((DataRowView)gridViewKTXM.GetRow(gridViewKTXM.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                frmShowDonTXL frm = new frmShowDonTXL(source);
+                frm.ShowDialog();
+            }
+            else
+            {
+                Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("Action", "View");
+                source.Add("MaDon", ((DataRowView)gridViewKTXM.GetRow(gridViewKTXM.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                frmShowDonKH frm = new frmShowDonKH(source);
+                //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString())));
+                frm.ShowDialog();
             }
         }
 
@@ -447,6 +498,18 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             _cKTXM.SuaKTXM(ktxm);
         }
 
+        #endregion
+
+        #region girdViewCTKTXM
+
+        private void gridViewCTKTXM_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTKTXM" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
         private void gridViewCTKTXM_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
@@ -466,40 +529,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
-        private void radDaDuyet_TXL_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radDaDuyet_TXL.Checked)
-            {
-                radDaDuyet.Checked = false;
-                radDSKTXM.Checked = false;
-
-                DSDonKH_BS = new BindingSource();
-                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_TXL().Tables["KTXM"];
-                //cmbTimTheo.SelectedIndex = 0;
-                gridControl.DataSource = DSDonKH_BS;
-                dgvDSCTKTXM.Visible = false;
-                gridControl.Visible = true;
-            }
-        }
-
-        private void radDSKTXM_TXL_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radDSKTXM_TXL.Checked)
-            {
-                radDaDuyet.Checked = false;
-                radDSKTXM.Checked = false;
-
-                DSDonKH_BS = new BindingSource();
-                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL();
-                else
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL(CTaiKhoan.MaUser);
-                dgvDSCTKTXM.DataSource = DSDonKH_BS;
-                dgvDSCTKTXM.Visible = true;
-                gridControl.Visible = false;
-            }
-        }
+        #endregion
 
         
 

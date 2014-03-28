@@ -207,7 +207,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 23:
                     case 33:
                     case 43:///DV thuần túy
-                        if (DieuChinhGia)
+                        if (!DieuChinhGia)
                         {
                             TongTien = TieuThu * lstGiaNuoc[5].DonGia.Value;
                             _chiTiet = TieuThu + " x " + lstGiaNuoc[5].DonGia.Value;

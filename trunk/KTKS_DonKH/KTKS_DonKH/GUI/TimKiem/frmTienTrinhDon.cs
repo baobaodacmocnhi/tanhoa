@@ -43,6 +43,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
             ///Tổ Xử Lý
             gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh TXL", gridViewKTXM_TXL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động TXL", gridViewDCBD_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ TXL", gridViewCHDB_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời TXL", gridViewTTTTL_TXL);
         }
@@ -411,5 +412,89 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
+        #region gridViewDCBD_TXL
+
+        private void gridViewDCBD_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaDC" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (e.Column.FieldName == "TongCong_Start" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (e.Column.FieldName == "TongCong_End" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (e.Column.FieldName == "TongCong_BD" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void gridViewDCBD_TXL_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            DevExpress.XtraGrid.Views.Grid.GridView view = (DevExpress.XtraGrid.Views.Grid.GridView)sender;
+            if (view.GetRowCellDisplayText(0, "DieuChinh") == "Biến Động")
+            {
+                view.Columns["HoTen_BD"].Visible = true;
+                //view.Columns["DiaChi"].Visible = true;
+                view.Columns["DiaChi_BD"].Visible = true;
+                view.Columns["MSThue"].Visible = true;
+                view.Columns["MSThue_BD"].Visible = true;
+
+                view.Columns["HoTen_BD"].VisibleIndex = 5;
+                view.Columns["DiaChi"].VisibleIndex = 6;
+                view.Columns["DiaChi_BD"].VisibleIndex = 7;
+                view.Columns["MSThue"].VisibleIndex = 8;
+                view.Columns["MSThue_BD"].VisibleIndex = 9;
+                view.Columns["GiaBieu"].VisibleIndex = 10;
+                view.Columns["GiaBieu_BD"].VisibleIndex = 11;
+                view.Columns["DinhMuc"].VisibleIndex = 12;
+                view.Columns["DinhMuc_BD"].VisibleIndex = 13;
+            }
+            if (view.GetRowCellDisplayText(0, "DieuChinh") == "Hóa Đơn")
+            {
+                view.Columns["TieuThu"].Visible = true;
+                view.Columns["TieuThu_BD"].Visible = true;
+                view.Columns["TongCong_Start"].Visible = true;
+                view.Columns["TongCong_End"].Visible = true;
+                view.Columns["TangGiam"].Visible = true;
+                view.Columns["TongCong_BD"].Visible = true;
+                view.Columns["ThongTin"].Visible = false;
+            }
+        }
+
+        private void gridViewDCBD_TXL_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewDCBD_TXL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động")
+            {
+                frmShowDCBD frm = new frmShowDCBD(decimal.Parse(_CTRow.Row["MaDC"].ToString()), true);
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                {
+                    _CTRow = null;
+                }
+            }
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Hóa Đơn")
+            {
+                frmShowDCHD frm = new frmShowDCHD(decimal.Parse(_CTRow.Row["MaDC"].ToString()), true);
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                {
+                    _CTRow = null;
+                }
+            }
+        }
+
+        #endregion
+
+        
     }
 }

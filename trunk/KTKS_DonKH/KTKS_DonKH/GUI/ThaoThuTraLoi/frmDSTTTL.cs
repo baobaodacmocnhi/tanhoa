@@ -16,6 +16,7 @@ using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
 using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.GUI.ToXuLy;
 
 namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 {
@@ -61,7 +62,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radDSThu.Checked = true;
+            radDaDuyet.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewCTTTTL);
 
@@ -191,12 +192,23 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (gridViewTTTL.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("Action", "View");
-                source.Add("MaDon", ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString());
-                frmShowDonKH frm = new frmShowDonKH(source);
-                //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString())));
-                frm.ShowDialog();
+                if (((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
+                {
+                    Dictionary<string, string> source = new Dictionary<string, string>();
+                    source.Add("Action", "View");
+                    source.Add("MaDon", ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmShowDonTXL frm = new frmShowDonTXL(source);
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    Dictionary<string, string> source = new Dictionary<string, string>();
+                    source.Add("Action", "View");
+                    source.Add("MaDon", ((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmShowDonKH frm = new frmShowDonKH(source);
+                    //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewTTTL.GetRow(gridViewTTTL.GetSelectedRows()[0])).Row["MaDon"].ToString())));
+                    frm.ShowDialog();
+                }
             }
         }
 

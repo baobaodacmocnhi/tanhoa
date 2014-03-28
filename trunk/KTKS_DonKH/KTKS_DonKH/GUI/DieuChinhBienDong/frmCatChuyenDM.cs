@@ -116,7 +116,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         int SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        if (bool.Parse(_source["TXL"]) == true)
+                        {
+                            lichsuchungtu.ToXuLy = true;
+                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                        }
+                        else
+                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                         lichsuchungtu.CatDM = true;
                         lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
