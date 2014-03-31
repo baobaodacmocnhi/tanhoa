@@ -46,6 +46,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -84,7 +85,6 @@
             this.radDaDuyet_TXL = new System.Windows.Forms.RadioButton();
             this.radDSThu_TXL = new System.Windows.Forms.RadioButton();
             this.radChuaDuyet_TXL = new System.Windows.Forms.RadioButton();
-            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTTTTL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTTTL)).BeginInit();
@@ -279,6 +279,16 @@
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 250;
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "TXL";
+            this.gridColumn22.FieldName = "ToXuLy";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.OptionsColumn.AllowEdit = false;
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 5;
+            this.gridColumn22.Width = 50;
             // 
             // gridColumn5
             // 
@@ -613,9 +623,9 @@
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIn.Location = new System.Drawing.Point(1039, 12);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(92, 35);
+            this.btnIn.Size = new System.Drawing.Size(83, 35);
             this.btnIn.TabIndex = 7;
-            this.btnIn.Text = "In Phiếu";
+            this.btnIn.Text = "In Thư";
             this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
@@ -630,7 +640,6 @@
             this.groupBox1.Size = new System.Drawing.Size(222, 65);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tổ Khách Hàng";
             // 
             // groupBox2
             // 
@@ -677,16 +686,6 @@
             this.radChuaDuyet_TXL.Text = "Chưa Duyệt";
             this.radChuaDuyet_TXL.UseVisualStyleBackColor = true;
             this.radChuaDuyet_TXL.Visible = false;
-            // 
-            // gridColumn22
-            // 
-            this.gridColumn22.Caption = "TXL";
-            this.gridColumn22.FieldName = "ToXuLy";
-            this.gridColumn22.Name = "gridColumn22";
-            this.gridColumn22.OptionsColumn.AllowEdit = false;
-            this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 5;
-            this.gridColumn22.Width = 50;
             // 
             // frmDSTTTL
             // 

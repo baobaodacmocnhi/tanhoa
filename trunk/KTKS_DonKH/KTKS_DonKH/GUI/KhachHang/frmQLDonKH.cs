@@ -304,13 +304,13 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
             DSDonKH_BS.Filter = expression;
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
             DSDonKH_BS.Filter = expression;
             _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
             _denNgay = "";
@@ -318,7 +318,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
             DSDonKH_BS.Filter = expression;
             _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
         }
@@ -355,7 +355,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["ChiTiet"] += "Định Mức, ";
                 if (donkh.LoaiKhac)
                     dr["ChiTiet"] += donkh.LyDoLoaiKhac + ", ";
-                dr["DanhBo"] = itemRow["DanhBo"];
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
                 dr["NoiDung"] = itemRow["NoiDung"];

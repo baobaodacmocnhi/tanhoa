@@ -17,7 +17,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
     public partial class frmKTXM : Form
     {
-        Dictionary<string, string> _source = new Dictionary<string, string>();
+        //Dictionary<string, string> _source = new Dictionary<string, string>();
         DonKH _donkh = null;
         DonTXL _dontxl = null;
         TTKhachHang _ttkhachhang = null;

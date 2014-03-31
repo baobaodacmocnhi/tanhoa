@@ -337,7 +337,6 @@
             this.btnCapNhatTCTBXuLy.Text = "Cập Nhật";
             this.btnCapNhatTCTBXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhatTCTBXuLy.UseVisualStyleBackColor = true;
-            this.btnCapNhatTCTBXuLy.Visible = false;
             this.btnCapNhatTCTBXuLy.Click += new System.EventHandler(this.btnCapNhatTCTBXuLy_Click);
             // 
             // groupBoxKetQuaXuLy
@@ -391,7 +390,6 @@
             this.btnCapNhatCapTrenXuLy.Text = "Cập Nhật";
             this.btnCapNhatCapTrenXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhatCapTrenXuLy.UseVisualStyleBackColor = true;
-            this.btnCapNhatCapTrenXuLy.Visible = false;
             this.btnCapNhatCapTrenXuLy.Click += new System.EventHandler(this.btnCapNhatCapTrenXuLy_Click);
             // 
             // label11

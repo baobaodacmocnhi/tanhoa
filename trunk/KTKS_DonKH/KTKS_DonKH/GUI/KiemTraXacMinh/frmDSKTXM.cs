@@ -16,6 +16,9 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 using KTKS_DonKH.DAL.HeThong;
 using KTKS_DonKH.GUI.ToXuLy;
+using KTKS_DonKH.BaoCao.KiemTraXacMinh;
+using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.BaoCao;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -26,8 +29,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CDonKH _cDonKH = new CDonKH();
         DataTable DSKTXM_Edited = new DataTable();
         CDCBD _cDCBD = new CDCBD();
-        BindingSource DSDonKH_BS;
+        BindingSource DSDon_BS;
         DataRowView _CTRow = null;
+        string _tuNgay = "", _denNgay = "";
 
         public frmDSKTXM()
         {
@@ -52,7 +56,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //cmbColumn.DisplayMember = "NoiChuyenDi";
             //cmbColumn.ValueMember = "MaChuyen";
 
-            //dgvDSCTKTXM.DataSource = DSDonKH_BS;
+            //dgvDSCTKTXM.DataSource = DSDon_BS;
             if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
             {
                 radDaDuyet.Checked = true;
@@ -89,10 +93,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radChuaDuyet.Checked)
             {
-                DSDonKH_BS = new BindingSource();
-                DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                DSDon_BS = new BindingSource();
+                DSDon_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
                 //cmbTimTheo.SelectedIndex = 0;
-                gridControl.DataSource = DSDonKH_BS;
+                gridControl.DataSource = DSDon_BS;
                 dgvDSCTKTXM.Visible = false;
                 gridControl.Visible = true;
             }
@@ -105,11 +109,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 radDaDuyet_TXL.Checked = false;
                 radDSKTXM_TXL.Checked = false;
 
-                DSDonKH_BS = new BindingSource();
+                DSDon_BS = new BindingSource();
                 if (CTaiKhoan.RoleQLKTXM_Xem||CTaiKhoan.RoleQLKTXM_CapNhat)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
+                    DSDon_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
                 //cmbTimTheo.SelectedIndex = 0;
-                gridControl.DataSource = DSDonKH_BS;
+                gridControl.DataSource = DSDon_BS;
                 dgvDSCTKTXM.Visible = false;
                 gridControl.Visible = true;
             }
@@ -122,12 +126,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 radDaDuyet_TXL.Checked = false;
                 radDSKTXM_TXL.Checked = false;
 
-                DSDonKH_BS = new BindingSource();
+                DSDon_BS = new BindingSource();
                 if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
+                    DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM();
                 else
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
-                dgvDSCTKTXM.DataSource = DSDonKH_BS;
+                    DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
+                dgvDSCTKTXM.DataSource = DSDon_BS;
                 dgvDSCTKTXM.Visible = true;
                 gridControl.Visible = false;
             }
@@ -217,11 +221,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     DSKTXM_Edited.Clear();
 
                     if (radDaDuyet.Checked)
-                        DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
+                        DSDon_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
                     if (radChuaDuyet.Checked)
-                        DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
+                        DSDon_BS.DataSource = _cKTXM.LoadDSKTXMChuaDuyet();
                     if (radDSKTXM.Checked)
-                        DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
+                        DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM();
                 }
             }
             catch (Exception ex)
@@ -265,9 +269,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                        DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM();
+                        DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM();
                     else
-                        DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
+                        DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser);
                 }
 
             }
@@ -331,15 +335,23 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày Lập":
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = true;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Khoảng Thời Gian":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = false;
-                    DSDonKH_BS.RemoveFilter();
+                    panel_KhoangThoiGian.Visible = false;
+                    DSDon_BS.RemoveFilter();
                     break;
             }
         }
@@ -363,10 +375,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                     }
-                    DSDonKH_BS.Filter = expression;
+                    DSDon_BS.Filter = expression;
                 }
                 else
-                    DSDonKH_BS.RemoveFilter();
+                    DSDon_BS.RemoveFilter();
             }
             catch (Exception)
             {
@@ -379,14 +391,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radDaDuyet.Checked)
             {
-                string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-                DSDonKH_BS.Filter = expression;
+                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+                DSDon_BS.Filter = expression;
             }
             else
                 if (radDSKTXM.Checked)
                 {
-                    string expression = String.Format("NgayKTXM >= #{0:yyyy-MM-dd} 00:00:00# and NgayKTXM < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-                    DSDonKH_BS.Filter = expression;
+                    string expression = String.Format("NgayKTXM >= #{0:yyyy-MM-dd} 00:00:00# and NgayKTXM <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+                    DSDon_BS.Filter = expression;
                 }
         }
 
@@ -397,11 +409,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 radDaDuyet.Checked = false;
                 radDSKTXM.Checked = false;
 
-                DSDonKH_BS = new BindingSource();
+                DSDon_BS = new BindingSource();
                 if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_TXL().Tables["KTXM"];
+                    DSDon_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet_TXL().Tables["KTXM"];
                 //cmbTimTheo.SelectedIndex = 0;
-                gridControl.DataSource = DSDonKH_BS;
+                gridControl.DataSource = DSDon_BS;
                 dgvDSCTKTXM.Visible = false;
                 gridControl.Visible = true;
             }
@@ -414,12 +426,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 radDaDuyet.Checked = false;
                 radDSKTXM.Checked = false;
 
-                DSDonKH_BS = new BindingSource();
+                DSDon_BS = new BindingSource();
                 if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL();
+                    DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL();
                 else
-                    DSDonKH_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL(CTaiKhoan.MaUser);
-                dgvDSCTKTXM.DataSource = DSDonKH_BS;
+                    DSDon_BS.DataSource = _cKTXM.LoadDSCTKTXM_TXL(CTaiKhoan.MaUser);
+                dgvDSCTKTXM.DataSource = DSDon_BS;
                 dgvDSCTKTXM.Visible = true;
                 gridControl.Visible = false;
             }
@@ -472,7 +484,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             /////Khai báo các cột tương ứng trong Datagridview
             //if (DSKTXM_Edited.Columns.Count == 0)
-            //    foreach (DataColumn itemCol in ((DataTable)DSDonKH_BS.DataSource).Columns)
+            //    foreach (DataColumn itemCol in ((DataTable)DSDon_BS.DataSource).Columns)
             //    {
             //        DSKTXM_Edited.Columns.Add(itemCol.ColumnName, itemCol.DataType);
             //    }
@@ -524,12 +536,84 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                        DSDonKH_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
+                        DSDon_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
                 }
             }
         }
 
         #endregion
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (radDSKTXM.Checked)
+            {
+                DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSKTXM"].NewRow();
+
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["TenLD"] = itemRow["TenLD"];
+                    //dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                    //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                    if (itemRow["ToXuLy"].ToString() == "True")
+                        dr["MaDon"] = "TXL"+itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    else
+                        dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
+                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                    dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
+                }
+
+                rptDSKTXM rpt = new rptDSKTXM();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+        }
+
+        private void dateTu_ValueChanged(object sender, EventArgs e)
+        {
+            if (radDaDuyet.Checked)
+            {
+                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                DSDon_BS.Filter = expression;
+                _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+                _denNgay = "";
+            }
+            else
+                if (radDSKTXM.Checked)
+                {
+                    string expression = String.Format("NgayKTXM >= #{0:yyyy-MM-dd} 00:00:00# and NgayKTXM <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                    DSDon_BS.Filter = expression;
+                    _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+                    _denNgay = "";
+                }
+        }
+
+        private void dateDen_ValueChanged(object sender, EventArgs e)
+        {
+            if (radDaDuyet.Checked)
+            {
+                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                DSDon_BS.Filter = expression;
+                _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+            }
+            else
+                if (radDSKTXM.Checked)
+                {
+                    string expression = String.Format("NgayKTXM >= #{0:yyyy-MM-dd} 00:00:00# and NgayKTXM <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                    DSDon_BS.Filter = expression;
+                    _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+                }
+        }
 
         
 
