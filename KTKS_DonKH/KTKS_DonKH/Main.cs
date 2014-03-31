@@ -16,6 +16,7 @@ using KTKS_DonKH.GUI.CatHuyDanhBo;
 using KTKS_DonKH.GUI.ThaoThuTraLoi;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.TimKiem;
+using KTKS_DonKH.GUI.BamChi;
 
 namespace KTKS_DonKH
 {
@@ -318,6 +319,26 @@ namespace KTKS_DonKH
             foreach (Form item in this.MdiChildren)
                 item.Close();
             Form frm = new frmTienTrinhDon();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnDSBamChi_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmDSBamChi();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnNhapBamChi_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmNhapBamChi();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

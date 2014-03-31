@@ -737,7 +737,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn In những Thư trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn chắc chắn In những Thông Báo trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 PrintDialog printDialog = new PrintDialog();
                 if (printDialog.ShowDialog() == DialogResult.OK)
@@ -753,9 +753,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctctdb.HoTen;
                                 dr["DiaChi"] = ctctdb.DiaChi;
-                                dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctctdb.HopDong;
-                                dr["LyDo"] = ctctdb.LyDo + ". ";
+                                if (ctctdb.LyDo != "Vấn Đề Khác")
+                                    dr["LyDo"] = ctctdb.LyDo + ". ";
                                 if (ctctdb.GhiChuLyDo != "")
                                     dr["LyDo"] += ctctdb.GhiChuLyDo + ". ";
                                 if (ctctdb.SoTien.ToString() != "")
@@ -788,9 +789,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctchdb.HoTen;
                                 dr["DiaChi"] = ctchdb.DiaChi;
-                                dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctchdb.HopDong;
-                                dr["LyDo"] = ctchdb.LyDo + ". ";
+                                if (ctchdb.LyDo != "Vấn Đề Khác")
+                                    dr["LyDo"] = ctchdb.LyDo + ". ";
                                 if (ctchdb.GhiChuLyDo != "")
                                     dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
                                 if (ctchdb.SoTien.ToString() != "")

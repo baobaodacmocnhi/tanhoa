@@ -1185,7 +1185,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
-                            if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true)
+                            if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
                             {
                                 CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                 TB_DULIEUKHACHHANG dlkh = _cDLKH.getDLKH(ctdcbd.DanhBo);
@@ -1204,13 +1204,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         TB_GHICHU ghichu = new TB_GHICHU();
                                         ghichu.DANHBO = dlkh.DANHBO;
                                         ghichu.DONVI = "KTKS";
-                                        ghichu.NOIDUNG = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                                        ghichu.NOIDUNG = "PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                                         ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - " + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy") + " - Điều Chỉnh";
-                                        if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD.ToString()))
+                                        if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                         {
                                             ghichu.NOIDUNG += " Tên: " + ctdcbd.HoTen_BD + ",";
                                         }
-                                        if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD.ToString()))
+                                        if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                         {
                                             ghichu.NOIDUNG += " Địa Chỉ: " + ctdcbd.DiaChi_BD + ",";
                                         }

@@ -546,7 +546,7 @@
             this.radDaDuyet.AutoSize = true;
             this.radDaDuyet.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
+            this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
             this.radDaDuyet.TabIndex = 0;
             this.radDaDuyet.Text = "Đã Duyệt";
             this.radDaDuyet.UseVisualStyleBackColor = true;
@@ -571,7 +571,7 @@
             this.radChuaDuyet.AutoSize = true;
             this.radChuaDuyet.Location = new System.Drawing.Point(6, 42);
             this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
+            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
             this.radChuaDuyet.TabIndex = 1;
             this.radChuaDuyet.Text = "Chưa Duyệt";
             this.radChuaDuyet.UseVisualStyleBackColor = true;
@@ -625,7 +625,7 @@
             this.radDSCatTamDanhBo.AutoSize = true;
             this.radDSCatTamDanhBo.Location = new System.Drawing.Point(107, 18);
             this.radDSCatTamDanhBo.Name = "radDSCatTamDanhBo";
-            this.radDSCatTamDanhBo.Size = new System.Drawing.Size(122, 17);
+            this.radDSCatTamDanhBo.Size = new System.Drawing.Size(147, 21);
             this.radDSCatTamDanhBo.TabIndex = 2;
             this.radDSCatTamDanhBo.Text = "Danh Sách Cắt Tạm";
             this.radDSCatTamDanhBo.UseVisualStyleBackColor = true;
@@ -636,7 +636,7 @@
             this.radDSCatHuyDanhBo.AutoSize = true;
             this.radDSCatHuyDanhBo.Location = new System.Drawing.Point(107, 42);
             this.radDSCatHuyDanhBo.Name = "radDSCatHuyDanhBo";
-            this.radDSCatHuyDanhBo.Size = new System.Drawing.Size(120, 17);
+            this.radDSCatHuyDanhBo.Size = new System.Drawing.Size(145, 21);
             this.radDSCatHuyDanhBo.TabIndex = 3;
             this.radDSCatHuyDanhBo.Text = "Danh Sách Cắt Hủy";
             this.radDSCatHuyDanhBo.UseVisualStyleBackColor = true;
@@ -855,7 +855,7 @@
             this.radDSCatTamDanhBo_TXL.AutoSize = true;
             this.radDSCatTamDanhBo_TXL.Location = new System.Drawing.Point(107, 18);
             this.radDSCatTamDanhBo_TXL.Name = "radDSCatTamDanhBo_TXL";
-            this.radDSCatTamDanhBo_TXL.Size = new System.Drawing.Size(122, 17);
+            this.radDSCatTamDanhBo_TXL.Size = new System.Drawing.Size(147, 21);
             this.radDSCatTamDanhBo_TXL.TabIndex = 2;
             this.radDSCatTamDanhBo_TXL.Text = "Danh Sách Cắt Tạm";
             this.radDSCatTamDanhBo_TXL.UseVisualStyleBackColor = true;
@@ -866,7 +866,7 @@
             this.radChuaDuyet_TXL.AutoSize = true;
             this.radChuaDuyet_TXL.Location = new System.Drawing.Point(6, 42);
             this.radChuaDuyet_TXL.Name = "radChuaDuyet_TXL";
-            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(81, 17);
+            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(98, 21);
             this.radChuaDuyet_TXL.TabIndex = 1;
             this.radChuaDuyet_TXL.Text = "Chưa Duyệt";
             this.radChuaDuyet_TXL.UseVisualStyleBackColor = true;
@@ -877,7 +877,7 @@
             this.radDaDuyet_TXL.AutoSize = true;
             this.radDaDuyet_TXL.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet_TXL.Name = "radDaDuyet_TXL";
-            this.radDaDuyet_TXL.Size = new System.Drawing.Size(70, 17);
+            this.radDaDuyet_TXL.Size = new System.Drawing.Size(84, 21);
             this.radDaDuyet_TXL.TabIndex = 0;
             this.radDaDuyet_TXL.Text = "Đã Duyệt";
             this.radDaDuyet_TXL.UseVisualStyleBackColor = true;
@@ -888,7 +888,7 @@
             this.radDSCatHuyDanhBo_TXL.AutoSize = true;
             this.radDSCatHuyDanhBo_TXL.Location = new System.Drawing.Point(107, 42);
             this.radDSCatHuyDanhBo_TXL.Name = "radDSCatHuyDanhBo_TXL";
-            this.radDSCatHuyDanhBo_TXL.Size = new System.Drawing.Size(120, 17);
+            this.radDSCatHuyDanhBo_TXL.Size = new System.Drawing.Size(145, 21);
             this.radDSCatHuyDanhBo_TXL.TabIndex = 3;
             this.radDSCatHuyDanhBo_TXL.Text = "Danh Sách Cắt Hủy";
             this.radDSCatHuyDanhBo_TXL.UseVisualStyleBackColor = true;
@@ -913,7 +913,7 @@
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIn.Location = new System.Drawing.Point(1106, 9);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(92, 35);
+            this.btnIn.Size = new System.Drawing.Size(123, 35);
             this.btnIn.TabIndex = 8;
             this.btnIn.Text = "In Thông Báo";
             this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -927,8 +927,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1362, 620);
-            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.chkSelectAll);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dateTimKiem);

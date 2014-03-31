@@ -549,6 +549,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 select new
                                 {
                                     In = false,
+                                    itemCTDCBD.ChuyenDocSo,
                                     SoPhieu = itemCTDCBD.MaCTDCBD,
                                     DieuChinh="Biến Động",
                                     itemCTDCBD.CreateDate,

@@ -35,8 +35,7 @@ namespace KTKS_DonKH.GUI.HeThong
             dgvDSTaiKhoan.DataSource = _cTaiKhoan.LoadDSTaiKhoan();
 
             dgvPhanQuyen.AutoGenerateColumns = false;
-            dgvPhanQuyen.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSTaiKhoan.Font, FontStyle.Bold);
-            dgvPhanQuyen.DataSource = _cTaiKhoan.LoadDSTaiKhoan();
+            dgvPhanQuyen.ColumnHeadersDefaultCellStyle.Font = new Font(dgvPhanQuyen.Font, FontStyle.Bold);
         }
 
         private void Clear()

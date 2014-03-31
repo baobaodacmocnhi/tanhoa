@@ -67,7 +67,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 ///
                 cmbLyDo.SelectedText = _ctchdb.LyDo;
                 txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;
-                txtSoTien.Text = _ctchdb.SoTien.Value.ToString();
+                txtSoTien.Text = _ctchdb.SoTien.ToString();
                 ///
                 ///phải có if ở đây vì dateTCTBXuLy không nhận giá trị null
                 if (_ctchdb.TCTBXuLy)
@@ -105,7 +105,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["DiaChi"] = _ctchdb.DiaChi;
                 dr["DanhBo"] = _ctchdb.DanhBo;
                 dr["HopDong"] = _ctchdb.HopDong;
-                dr["LyDo"] = _ctchdb.LyDo + ". ";
+                if (_ctchdb.LyDo != "Vấn Đề Khác")
+                    dr["LyDo"] = _ctchdb.LyDo + ". ";
                 if (_ctchdb.GhiChuLyDo != "")
                     dr["LyDo"] += _ctchdb.GhiChuLyDo + ". ";
                 if (_ctchdb.SoTien.ToString() != "")

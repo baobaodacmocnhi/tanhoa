@@ -86,6 +86,20 @@ namespace KTKS_DonKH.DAL.HeThong
             get { return CTaiKhoan._roleTTTL_Xem; }
             set { CTaiKhoan._roleTTTL_Xem = value; }
         }
+        private static bool _roleBC_Xem = false;
+
+        public static bool RoleBC_Xem
+        {
+            get { return CTaiKhoan._roleBC_Xem; }
+            set { CTaiKhoan._roleBC_Xem = value; }
+        }
+        private static bool _roleQLBC_Xem = false;
+
+        public static bool RoleQLBC_Xem
+        {
+            get { return CTaiKhoan._roleQLBC_Xem; }
+            set { CTaiKhoan._roleQLBC_Xem = value; }
+        }
         ///
         private static bool _roleTaiKhoan_CapNhat = false;
 
@@ -149,6 +163,20 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             get { return CTaiKhoan._roleTTTL_CapNhat; }
             set { CTaiKhoan._roleTTTL_CapNhat = value; }
+        }
+        private static bool _roleBC_CapNhat = false;
+
+        public static bool RoleBC_CapNhat
+        {
+            get { return CTaiKhoan._roleBC_CapNhat; }
+            set { CTaiKhoan._roleBC_CapNhat = value; }
+        }
+        private static bool _roleQLBC_CapNhat = false;
+
+        public static bool RoleQLBC_CapNhat
+        {
+            get { return CTaiKhoan._roleQLBC_CapNhat; }
+            set { CTaiKhoan._roleQLBC_CapNhat = value; }
         }
         ///
         public static int MaUser
@@ -274,7 +302,26 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleTTTL_CapNhat = true;
                     else
                         _roleTTTL_CapNhat = false;
+                    ///Mã Role Bấm Chì là 10
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 10).QuyenXem == true)
+                        _roleBC_Xem = true;
+                    else
+                        _roleBC_Xem = false;
 
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 10).QuyenCapNhat == true)
+                        _roleBC_CapNhat = true;
+                    else
+                        _roleBC_CapNhat = false;
+                    ///Mã Role Quản Lý Bấm Chì là 11
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 11).QuyenXem == true)
+                        _roleQLBC_Xem = true;
+                    else
+                        _roleQLBC_Xem = false;
+
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 11).QuyenCapNhat == true)
+                        _roleQLBC_CapNhat = true;
+                    else
+                        _roleQLBC_CapNhat = false;
                     //db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     //db.SubmitChanges();
                     return true;
@@ -311,6 +358,8 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleDCBD_Xem = false;
             _roleCHDB_Xem = false;
             _roleTTTL_Xem = false;
+            _roleBC_Xem = false;
+            _roleQLBC_Xem = false;
             ///
             _roleTaiKhoan_CapNhat = false;
             _roleCapNhat_CapNhat = false;
@@ -321,6 +370,8 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleDCBD_CapNhat = false;
             _roleCHDB_CapNhat = false;
             _roleTTTL_CapNhat = false;
+            _roleBC_CapNhat = false;
+            _roleQLBC_CapNhat = false;
             ///
             db.Connection.Close();
         }
@@ -479,7 +530,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         db.Users.InsertOnSubmit(nguoidung);
                         ///Cấp quyền mặc định = False
                         ///i tương ứng với số quyền trong bảng DetailRole
-                        for (int i = 1; i <= 9; i++)
+                        for (int i = 1; i <= 11; i++)
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;
