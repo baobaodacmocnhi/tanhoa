@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -50,12 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvDSKetQuaKiemTra = new System.Windows.Forms.DataGridView();
-            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtHoTenKHKy = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -76,6 +70,12 @@
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
+            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -266,22 +266,22 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
+            this.ToXuLy,
             this.MaDon,
             this.DanhBo,
             this.NoiDungKiemTra,
-            this.NguoiDi,
-            this.ToXuLy});
+            this.NguoiDi});
             this.dgvDSKetQuaKiemTra.Location = new System.Drawing.Point(12, 310);
             this.dgvDSKetQuaKiemTra.Name = "dgvDSKetQuaKiemTra";
             this.dgvDSKetQuaKiemTra.Size = new System.Drawing.Size(760, 134);
@@ -289,52 +289,6 @@
             this.dgvDSKetQuaKiemTra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKetQuaKiemTra_CellContentClick);
             this.dgvDSKetQuaKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKetQuaKiemTra_CellFormatting);
             this.dgvDSKetQuaKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSKetQuaKiemTra_RowPostPaint);
-            // 
-            // MaCTKTXM
-            // 
-            this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
-            this.MaCTKTXM.HeaderText = "MaCTKTXM";
-            this.MaCTKTXM.Name = "MaCTKTXM";
-            this.MaCTKTXM.Visible = false;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // NoiDungKiemTra
-            // 
-            this.NoiDungKiemTra.DataPropertyName = "NoiDungKiemTra";
-            this.NoiDungKiemTra.HeaderText = "Kết Qủa";
-            this.NoiDungKiemTra.Name = "NoiDungKiemTra";
-            this.NoiDungKiemTra.ReadOnly = true;
-            this.NoiDungKiemTra.Width = 250;
-            // 
-            // NguoiDi
-            // 
-            this.NguoiDi.DataPropertyName = "CreateBy";
-            this.NguoiDi.HeaderText = "Người Đi";
-            this.NguoiDi.Name = "NguoiDi";
-            this.NguoiDi.ReadOnly = true;
-            this.NguoiDi.Width = 200;
-            // 
-            // ToXuLy
-            // 
-            this.ToXuLy.DataPropertyName = "ToXuLy";
-            this.ToXuLy.HeaderText = "TXL";
-            this.ToXuLy.Name = "ToXuLy";
-            this.ToXuLy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ToXuLy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ToXuLy.Width = 50;
             // 
             // groupBox2
             // 
@@ -455,6 +409,7 @@
             this.txtCo.Name = "txtCo";
             this.txtCo.Size = new System.Drawing.Size(97, 25);
             this.txtCo.TabIndex = 17;
+            this.txtCo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCo_KeyPress);
             // 
             // label12
             // 
@@ -525,6 +480,52 @@
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // MaCTKTXM
+            // 
+            this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
+            this.MaCTKTXM.HeaderText = "MaCTKTXM";
+            this.MaCTKTXM.Name = "MaCTKTXM";
+            this.MaCTKTXM.Visible = false;
+            // 
+            // ToXuLy
+            // 
+            this.ToXuLy.DataPropertyName = "ToXuLy";
+            this.ToXuLy.HeaderText = "TXL";
+            this.ToXuLy.Name = "ToXuLy";
+            this.ToXuLy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToXuLy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ToXuLy.Width = 50;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // NoiDungKiemTra
+            // 
+            this.NoiDungKiemTra.DataPropertyName = "NoiDungKiemTra";
+            this.NoiDungKiemTra.HeaderText = "Kết Qủa";
+            this.NoiDungKiemTra.Name = "NoiDungKiemTra";
+            this.NoiDungKiemTra.ReadOnly = true;
+            this.NoiDungKiemTra.Width = 250;
+            // 
+            // NguoiDi
+            // 
+            this.NguoiDi.DataPropertyName = "CreateBy";
+            this.NguoiDi.HeaderText = "Người Đi";
+            this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.ReadOnly = true;
+            this.NguoiDi.Width = 200;
             // 
             // frmKTXM
             // 
@@ -598,10 +599,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTKTXM;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
     }
 }

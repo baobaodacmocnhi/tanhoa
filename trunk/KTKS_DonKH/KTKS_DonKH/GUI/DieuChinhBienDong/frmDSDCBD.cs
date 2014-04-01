@@ -54,7 +54,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmDSDCBD_Load(object sender, EventArgs e)
         {
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
-            txtNoiDungTimKiem2.Location = new Point(780, 35);
+            txtNoiDungTimKiem2.Location = new Point(746, 35);
+            panel_KhoangThoiGian.Location = new Point(746, 1);
+
             ///Tạo đối tượng LookUpEdit
             RepositoryItemLookUpEdit myLookUpEdit = new RepositoryItemLookUpEdit();
             ///Tạo đối tượng Column

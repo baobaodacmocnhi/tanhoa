@@ -56,6 +56,7 @@ namespace KTKS_DonKH.GUI.HeThong
                 nguoidung.HoTen = txtHoTen.Text.Trim();
                 nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                 nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
 
                 _cTaiKhoan.ThemTaiKhoan(nguoidung);
 
@@ -87,6 +88,8 @@ namespace KTKS_DonKH.GUI.HeThong
                     User nguoidung = _cTaiKhoan.getUserbyID(int.Parse(dgvDSTaiKhoan["MaU", selectedindex].Value.ToString()));
                     nguoidung.HoTen = txtHoTen.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
+
                     if (nguoidung.TaiKhoan != txtTaiKhoan.Text.Trim())
                     {
                         nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
@@ -109,6 +112,7 @@ namespace KTKS_DonKH.GUI.HeThong
                 txtHoTen.Text = dgvDSTaiKhoan["HoTen", e.RowIndex].Value.ToString();
                 txtTaiKhoan.Text = dgvDSTaiKhoan["TaiKhoan", e.RowIndex].Value.ToString();
                 txtMatKhau.Text = dgvDSTaiKhoan["MatKhau", e.RowIndex].Value.ToString();
+                txtMaKiemBamChi.Text = dgvDSTaiKhoan["MaKiemBamChi", e.RowIndex].Value.ToString();
                 dgvPhanQuyen.DataSource = _cTaiKhoan.LoadDSRolebyUser(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
             }
             catch (Exception)

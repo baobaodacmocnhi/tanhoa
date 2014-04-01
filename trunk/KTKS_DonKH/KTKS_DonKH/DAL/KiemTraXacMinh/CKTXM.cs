@@ -472,7 +472,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         /// <summary>
         /// Kiểm tra Đơn Tổ Xử Lý có được KTXM xử lý hay chưa
         /// </summary>
-        /// <param name="MaDon"></param>
+        /// <param name="MaDonTXL"></param>
         /// <returns>true/có</returns>
         public bool CheckKTMXbyMaDon_TXL(decimal MaDonTXL)
         {
@@ -511,7 +511,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         /// <summary>
         /// Lấy KTXM bằng MaDon Tổ Xử Lý
         /// </summary>
-        /// <param name="MaDon"></param>
+        /// <param name="MaDonTXL"></param>
         /// <returns></returns>
         public KTXM getKTXMbyMaDon_TXL(decimal MaDonTXL)
         {
@@ -864,6 +864,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 select new
                                 {
                                     itemCTKTXM.MaCTKTXM,
+                                    itemCTKTXM.KTXM.ToXuLy,
                                     MaDon = itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.HoTen,
@@ -871,7 +872,6 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.NoiDungKiemTra,
                                     itemCTKTXM.CreateDate,
                                     CreateBy = itemUser.HoTen,
-                                    itemCTKTXM.KTXM.ToXuLy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -885,14 +885,14 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     select new
                                     {
                                         itemCTKTXM.MaCTKTXM,
-                                        itemCTKTXM.KTXM.MaDonTXL,
+                                        itemCTKTXM.KTXM.ToXuLy,
+                                        MaDon = itemCTKTXM.KTXM.MaDonTXL,
                                         itemCTKTXM.DanhBo,
                                         itemCTKTXM.HoTen,
                                         itemCTKTXM.DiaChi,
                                         itemCTKTXM.NoiDungKiemTra,
                                         itemCTKTXM.CreateDate,
-                                        CreateBy = itemUser.HoTen,
-                                        itemCTKTXM.KTXM.ToXuLy,
+                                        CreateBy = itemUser.HoTen, 
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                     }
@@ -1045,7 +1045,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         /// <summary>
         /// Kiểm tra CTKTXM đã được tạo cho Mã Đơn Tổ Xử Lý, Danh Bộ, Cùng Ngày chưa
         /// </summary>
-        /// <param name="MaDon"></param>
+        /// <param name="MaDonTXL"></param>
         /// <param name="DanhBo"></param>
         /// <param name="NgayKTXM"></param>
         /// <returns></returns>

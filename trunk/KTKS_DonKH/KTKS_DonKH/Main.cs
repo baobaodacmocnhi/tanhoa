@@ -41,6 +41,29 @@ namespace KTKS_DonKH
                 ribbtnDoiMatKhau.Enabled = true;
                 StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng: " + CTaiKhoan.TaiKhoan;
                 StripStatus_Version.Text += ". V"+Application.ProductVersion.ToString();
+                ///Hạn chế Hiện Thị
+                if (CTaiKhoan.TaiKhoan == "thutien" && CTaiKhoan.MaUser == 22)
+                {
+                    ribbonTab2.Visible = false;
+                    ribbonTab3.Visible = false;
+                    ribbonTab4.Visible = false;
+                    ribbonTab5.Visible = false;
+                    ribbonTab6.Visible = false;
+                    ribbonTab7.Visible = false;
+                    ribbonTab9.Visible = false;
+                    ribbtnTaiKhoan.Visible = false;
+                }
+                else
+                {
+                    ribbonTab2.Visible = true;
+                    ribbonTab3.Visible = true;
+                    ribbonTab4.Visible = true;
+                    ribbonTab5.Visible = true;
+                    ribbonTab6.Visible = true;
+                    ribbonTab7.Visible = true;
+                    ribbonTab9.Visible = true;
+                    ribbtnTaiKhoan.Visible = true;
+                }
             }
         }
 
