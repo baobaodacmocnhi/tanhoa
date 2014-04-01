@@ -11,13 +11,19 @@ using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.KhachHang;
 using DevExpress.XtraGrid.Views.Grid;
 using KTKS_DonKH.DAL.HeThong;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraEditors.Controls;
+using KTKS_DonKH.DAL.KhachHang;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
     public partial class frmDSBamChi : Form
     {
+        CChuyenDi _cChuyenDi = new CChuyenDi();
         CBamChi _cBamChi = new CBamChi();
         DataRowView _CTRow = null;
+        BindingSource DSDon_BS;
+        string _tuNgay = "", _denNgay = "";
 
         public frmDSBamChi()
         {
@@ -34,17 +40,74 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void frmDSBamChi_Load(object sender, EventArgs e)
         {
+            dgvDSCTBamChi.Location = gridControl.Location;
+            dgvDSCTBamChi.AutoGenerateColumns = false;
+            dgvDSCTBamChi.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSCTBamChi.Font, FontStyle.Bold);
+            //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSCTKTXM.Columns["MaChuyen"];
+            //cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
+            //cmbColumn.DisplayMember = "NoiChuyenDi";
+            //cmbColumn.ValueMember = "MaChuyen";
 
+            //dgvDSCTKTXM.DataSource = DSDon_BS;
+            if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+            {
+                radDaDuyet.Checked = true;
+                //btnLuu.Visible = true;
+            }
+            else
+                if (CTaiKhoan.RoleBamChi_Xem || CTaiKhoan.RoleBamChi_CapNhat)
+                    radDSBamChi.Checked = true;
+
+            dateTimKiem.Location = txtNoiDungTimKiem.Location;
+
+            ///GridControl
+            ///Tạo đối tượng LookUpEdit
+            RepositoryItemLookUpEdit myLookUpEdit = new RepositoryItemLookUpEdit();
+            ///Tạo đối tượng Column
+            LookUpColumnInfo column = new LookUpColumnInfo();
+            column.FieldName = "NoiChuyenDi";
+            column.Caption = "Nơi Chuyển Đi";
+            column.Width = 70;
+            myLookUpEdit.AppearanceDropDown.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            myLookUpEdit.AppearanceDropDownHeader.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            myLookUpEdit.Columns.Add(column);
+            ///Load dữ liệu
+            myLookUpEdit.DataSource = _cChuyenDi.LoadDSChuyenDi("KTXM");
+            myLookUpEdit.DisplayMember = "NoiChuyenDi";
+            myLookUpEdit.ValueMember = "MaChuyen";
+            ///Add LookUpEdit vào GridControl
+            ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
+
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewCTBamChi);
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (radDaDuyet.Checked)
+            {
+                DSDon_BS = new BindingSource();
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                    DSDon_BS.DataSource = _cBamChi.LoadDSBamChiDaDuyet().Tables["BamChi"];
+                //cmbTimTheo.SelectedIndex = 0;
+                gridControl.DataSource = DSDon_BS;
+                dgvDSCTBamChi.Visible = false;
+                gridControl.Visible = true;
+            }
         }
 
         private void radDSBamChi_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (radDSBamChi.Checked)
+            {
+                DSDon_BS = new BindingSource();
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                    DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi();
+                else
+                    DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi(CTaiKhoan.MaUser);
+                dgvDSCTBamChi.DataSource = DSDon_BS;
+                dgvDSCTBamChi.Visible = true;
+                gridControl.Visible = false;
+            }
         }
 
         #region gridViewBamChi
@@ -115,15 +178,129 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (e.Control && e.KeyCode == Keys.F)
             {
-                frmShowNhapBamChi frm = new frmShowNhapBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                        DSDon_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
-                }
+                //frmShowNhapBamChi frm = new frmShowNhapBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
+                //if (frm.ShowDialog() == DialogResult.OK)
+                //{
+                //    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                //        DSDon_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
+                //}
             }
         }
 
         #endregion
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Mã Đơn":
+                case "Danh Bộ":
+                    txtNoiDungTimKiem.Visible = true;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Ngày Lập":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = true;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Khoảng Thời Gian":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
+                    DSDon_BS.RemoveFilter();
+                    break;
+            }
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtNoiDungTimKiem.Text.Trim() != "")
+                {
+                    string expression = "";
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                        case "Danh Bộ":
+                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                    }
+                    DSDon_BS.Filter = expression;
+                }
+                else
+                    DSDon_BS.RemoveFilter();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            if (radDaDuyet.Checked)
+            {
+                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+                DSDon_BS.Filter = expression;
+                _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
+            }
+            else
+                if (radDSBamChi.Checked)
+                {
+                    string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+                    DSDon_BS.Filter = expression;
+                    _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
+                }
+        }
+
+        private void dateTu_ValueChanged(object sender, EventArgs e)
+        {
+            if (radDaDuyet.Checked)
+            {
+                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                DSDon_BS.Filter = expression;
+                _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+                _denNgay = "";
+            }
+            else
+                if (radDSBamChi.Checked)
+                {
+                    string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                    DSDon_BS.Filter = expression;
+                    _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+                    _denNgay = "";
+                }
+        }
+
+        private void dateDen_ValueChanged(object sender, EventArgs e)
+        {
+            if (radDaDuyet.Checked)
+            {
+                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                DSDon_BS.Filter = expression;
+                _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+            }
+            else
+                if (radDSBamChi.Checked)
+                {
+                    string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                    DSDon_BS.Filter = expression;
+                    _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+                }
+        }
     }
 }

@@ -144,6 +144,7 @@
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).BeginInit();
@@ -1457,6 +1458,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nội Dung:";
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
+            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimKiem.Location = new System.Drawing.Point(591, 2);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(101, 35);
+            this.btnTimKiem.TabIndex = 5;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
             // frmTienTrinhDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1464,6 +1478,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1362, 573);
+            this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTimTheo);
@@ -1599,5 +1614,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn92;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn93;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn94;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }

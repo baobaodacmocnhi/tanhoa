@@ -150,7 +150,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             txtHoTen.Text = _ctchdb.HoTen;
                             txtDiaChi.Text = _ctchdb.DiaChi;
                             ///Nguyên Nhân Xử Lý
-                            cmbLyDo.SelectedText = _ctchdb.LyDo;
+                            cmbLyDo.SelectedItem = _ctchdb.LyDo;
                             txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;
                             txtSoTien.Text = _ctchdb.SoTien.ToString();
                             ///Kết Quả Xử Lý
@@ -781,7 +781,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ///
                     LoadTTKH(_cTTKH.getTTKHbyID(_ctchdb.DanhBo));
                     ///Nguyên Nhân Xử Lý
-                    cmbLyDo.SelectedText = _ctchdb.LyDo;
+                    cmbLyDo.SelectedItem = _ctchdb.LyDo;
                     txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;
                     txtSoTien.Text = _ctchdb.SoTien.ToString();
                     ///Kết Quả Xử Lý

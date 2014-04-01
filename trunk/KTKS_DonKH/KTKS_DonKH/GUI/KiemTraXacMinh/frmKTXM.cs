@@ -401,6 +401,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             if (_cKTXM.SuaCTKTXM(ctktxm))
                             {
+                                MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
                                 Clear();
                             }
@@ -414,6 +415,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         {
                             if (_cKTXM.SuaCTKTXM(ctktxm))
                             {
+                                MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(_donkh.MaDon, CTaiKhoan.MaUser);
                                 Clear();
                             }

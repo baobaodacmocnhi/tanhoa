@@ -1196,7 +1196,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                         dlkh.HOTEN = ctdcbd.HoTen_BD;
                                     if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
-                                        dlkh.SONHA = ctdcbd.DiaChi_BD;
+                                    {
+                                        dlkh.SONHA = ctdcbd.DiaChi_BD.Substring(0,ctdcbd.DiaChi_BD.IndexOf(" "));
+                                        dlkh.TENDUONG = ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1);
+                                    }
                                     if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                         dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
                                     if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))

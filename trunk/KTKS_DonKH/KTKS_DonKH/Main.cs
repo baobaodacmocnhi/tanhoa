@@ -40,7 +40,7 @@ namespace KTKS_DonKH
                 ribbtnDangXuat.Enabled = true;
                 ribbtnDoiMatKhau.Enabled = true;
                 StripStatus_TaiKhoan.Text = "Tài Khoản đang dùng: " + CTaiKhoan.TaiKhoan;
-                StripStatus_Version.Text += ". V"+Application.ProductVersion.ToString();
+                StripStatus_Version.Text += ". V" + Application.ProductVersion.ToString();
                 ///Hạn chế Hiện Thị
                 if (CTaiKhoan.TaiKhoan == "thutien" && CTaiKhoan.MaUser == 22)
                 {
@@ -361,7 +361,7 @@ namespace KTKS_DonKH
         {
             foreach (Form item in this.MdiChildren)
                 item.Close();
-            Form frm = new frmNhapBamChi();
+            Form frm = new frmBamChi();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

@@ -89,8 +89,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                 if (_source["Action"] == "Cập Nhật")
                 {
-                    btnSua.Visible = true;
-                    btnXoa.Visible = true;
+                    btnSua.Enabled = true;
+                    btnXoa.Enabled = true;
+                }
+
+                if (_source["Action"].ToString() == "Tìm Kiếm")
+                {
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
                 }
             }
         }

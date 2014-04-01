@@ -109,11 +109,11 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 if (_source["Action"] == "Cập Nhật")
                 {
-                    btnSua.Visible = true;
-                    btnXoa.Visible = true;
+                    btnSua.Enabled = true;
+                    btnXoa.Enabled = true;
                 }
 
-                if (_source["TimKiem"].ToString() == "True")
+                if (_source["Action"].ToString() == "Tìm Kiếm")
                 {
                     btnInBienNhan.Enabled = false;
                     btnSua.Enabled = false;

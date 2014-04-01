@@ -17,7 +17,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
     public partial class frmShowKTXM : Form
     {
         decimal _MaCTKTXM = 0;
-        CTKTXM _ctktxm = new CTKTXM();
+        CTKTXM _ctktxm = null;
         CKTXM _cKTXM = new CKTXM();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         TTKhachHang _ttkhachhang = null;
@@ -142,50 +142,54 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            _ctktxm.DanhBo = txtDanhBo.Text.Trim();
-            _ctktxm.HopDong = txtHopDong.Text.Trim();
-            _ctktxm.HoTen = txtHoTen.Text.Trim();
-            _ctktxm.DiaChi = txtDiaChi.Text.Trim();
-            _ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
-            _ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
-            if (_ttkhachhang != null)
+            if (_ctktxm != null)
             {
-                _ctktxm.Dot = _ttkhachhang.Dot;
-                _ctktxm.Ky = _ttkhachhang.Ky;
-                _ctktxm.Nam = _ttkhachhang.Nam;
-            }
-            ///
-            _ctktxm.NgayKTXM = dateKTXM.Value;
-            _ctktxm.Hieu = txtHieu.Text.Trim();
-            _ctktxm.Co = txtCo.Text.Trim();
-            _ctktxm.SoThan = txtSoThan.Text.Trim();
-            _ctktxm.ChiSo = txtChiSo.Text.Trim();
-            _ctktxm.ChiMatSo = txtChiMatSo.Text.Trim();
-            _ctktxm.ChiKhoaGoc = txtChiKhoaGoc.Text.Trim();
-            _ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
-            _ctktxm.DienThoai = txtDienThoai.Text.Trim();
-            _ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
-            _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
+                _ctktxm.DanhBo = txtDanhBo.Text.Trim();
+                _ctktxm.HopDong = txtHopDong.Text.Trim();
+                _ctktxm.HoTen = txtHoTen.Text.Trim();
+                _ctktxm.DiaChi = txtDiaChi.Text.Trim();
+                _ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
+                _ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
+                if (_ttkhachhang != null)
+                {
+                    _ctktxm.Dot = _ttkhachhang.Dot;
+                    _ctktxm.Ky = _ttkhachhang.Ky;
+                    _ctktxm.Nam = _ttkhachhang.Nam;
+                }
+                ///
+                _ctktxm.NgayKTXM = dateKTXM.Value;
+                _ctktxm.Hieu = txtHieu.Text.Trim();
+                _ctktxm.Co = txtCo.Text.Trim();
+                _ctktxm.SoThan = txtSoThan.Text.Trim();
+                _ctktxm.ChiSo = txtChiSo.Text.Trim();
+                _ctktxm.ChiMatSo = txtChiMatSo.Text.Trim();
+                _ctktxm.ChiKhoaGoc = txtChiKhoaGoc.Text.Trim();
+                _ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
+                _ctktxm.DienThoai = txtDienThoai.Text.Trim();
+                _ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
+                _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
 
-            if (_cKTXM.SuaCTKTXM(_ctktxm))
-            {
-                MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (_cKTXM.SuaCTKTXM(_ctktxm))
+                {
+                    MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (_cKTXM.XoaCTKTXM(_ctktxm))
+            if (_ctktxm != null)
+                if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (_cKTXM.XoaCTKTXM(_ctktxm))
+                    {
+                        MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
-            }
         }
 
         private void frmShowKTXM_FormClosing(object sender, FormClosingEventArgs e)

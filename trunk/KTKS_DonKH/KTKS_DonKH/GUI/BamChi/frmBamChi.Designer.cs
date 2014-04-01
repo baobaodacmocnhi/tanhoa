@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.BamChi
 {
-    partial class frmNhapBamChi
+    partial class frmBamChi
     {
         /// <summary>
         /// Required designer variable.
