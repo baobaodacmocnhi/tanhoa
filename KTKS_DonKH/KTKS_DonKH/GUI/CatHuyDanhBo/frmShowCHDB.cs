@@ -65,7 +65,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtHoTen.Text = _ctchdb.HoTen;
                 txtDiaChi.Text = _ctchdb.DiaChi;
                 ///
-                cmbLyDo.SelectedText = _ctchdb.LyDo;
+                cmbLyDo.SelectedItem = _ctchdb.LyDo;
                 txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;
                 txtSoTien.Text = _ctchdb.SoTien.ToString();
                 ///
@@ -225,6 +225,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN"))
+                txtSoTien.ReadOnly = false;
+            else
+                txtSoTien.ReadOnly = true;
         }
     }
 }

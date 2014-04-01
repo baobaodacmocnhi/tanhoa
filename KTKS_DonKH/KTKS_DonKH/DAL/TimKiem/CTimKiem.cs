@@ -19,6 +19,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                  where itemDon.MaDon == MaDon
                                  select new
                                  {
+                                     ToXuLy = false,
                                      itemDon.MaDon,
                                      itemDon.LoaiDon.TenLD,
                                      itemDon.CreateDate,

@@ -325,6 +325,7 @@
             this.cmbLyDo.Name = "cmbLyDo";
             this.cmbLyDo.Size = new System.Drawing.Size(240, 25);
             this.cmbLyDo.TabIndex = 1;
+            this.cmbLyDo.SelectedIndexChanged += new System.EventHandler(this.cmbLyDo_SelectedIndexChanged);
             // 
             // btnCapNhatTCTBXuLy
             // 

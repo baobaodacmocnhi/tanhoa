@@ -23,7 +23,7 @@
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>true</UpdateRequired>
+    <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\192.168.90.9\cntt\BaoBao\KTKS_DonKH\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
@@ -32,8 +32,8 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>126</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -123,6 +123,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\BamChi\rptDSBamChi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDSBamChi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuYCNhanDMx2.cs">
       <DependentUpon>rptPhieuYCNhanDMx2.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -251,17 +257,17 @@
     <Compile Include="GUI\BamChi\frmDSBamChi.Designer.cs">
       <DependentUpon>frmDSBamChi.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\BamChi\frmNhapBamChi.cs">
+    <Compile Include="GUI\BamChi\frmBamChi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\BamChi\frmNhapBamChi.Designer.cs">
-      <DependentUpon>frmNhapBamChi.cs</DependentUpon>
+    <Compile Include="GUI\BamChi\frmBamChi.Designer.cs">
+      <DependentUpon>frmBamChi.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\BamChi\frmShowNhapBamChi.cs">
+    <Compile Include="GUI\BamChi\frmShowBamChi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\BamChi\frmShowNhapBamChi.Designer.cs">
-      <DependentUpon>frmShowNhapBamChi.cs</DependentUpon>
+    <Compile Include="GUI\BamChi\frmShowBamChi.Designer.cs">
+      <DependentUpon>frmShowBamChi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\BaoCao\frmBaoCao.cs">
       <SubType>Form</SubType>
@@ -547,6 +553,10 @@
     <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
       <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="BaoCao\BamChi\rptDSBamChi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSBamChi.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuYCNhanDMx2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuYCNhanDMx2.cs</LastGenOutput>
@@ -609,11 +619,11 @@
     <EmbeddedResource Include="GUI\BamChi\frmDSBamChi.resx">
       <DependentUpon>frmDSBamChi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\BamChi\frmNhapBamChi.resx">
-      <DependentUpon>frmNhapBamChi.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\BamChi\frmBamChi.resx">
+      <DependentUpon>frmBamChi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\BamChi\frmShowNhapBamChi.resx">
-      <DependentUpon>frmShowNhapBamChi.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\BamChi\frmShowBamChi.resx">
+      <DependentUpon>frmShowBamChi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BaoCao\frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
@@ -842,6 +852,7 @@
     <None Include="Resources\forms 48x48 b.jpg" />
     <None Include="Resources\my documents 48x48 b.jpg" />
     <None Include="Resources\find.png" />
+    <None Include="Resources\find 24x24.png" />
     <Content Include="Sources\DevComponents.DotNetBar2.dll" />
     <Content Include="Sources\System.Windows.Forms.Ribbon35.dll" />
   </ItemGroup>

@@ -62,7 +62,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtHoTen.Text = _ctctdb.HoTen;
                 txtDiaChi.Text = _ctctdb.DiaChi;
                 ///
-                cmbLyDo.SelectedText = _ctctdb.LyDo;
+                cmbLyDo.SelectedItem = _ctctdb.LyDo;
                 txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
                 txtSoTien.Text = _ctctdb.SoTien.ToString();
                 ///

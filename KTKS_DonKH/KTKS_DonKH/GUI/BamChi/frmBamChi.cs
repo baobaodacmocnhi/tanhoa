@@ -15,7 +15,7 @@ using KTKS_DonKH.DAL.BamChi;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
-    public partial class frmNhapBamChi : Form
+    public partial class frmBamChi : Form
     {
         DonKH _donkh = null;
         DonTXL _dontxl = null;
@@ -26,7 +26,7 @@ namespace KTKS_DonKH.GUI.BamChi
         CBamChi _cBamChi = new CBamChi();
         int selectedindex = -1;
 
-        public frmNhapBamChi()
+        public frmBamChi()
         {
             InitializeComponent();
         }
@@ -338,6 +338,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             if (_cBamChi.SuaCTBamChi(ctbamchi))
                             {
+                                MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
                                 Clear();
                             }
@@ -351,6 +352,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         {
                             if (_cBamChi.SuaCTBamChi(ctbamchi))
                             {
+                                MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi(_donkh.MaDon, CTaiKhoan.MaUser);
                                 Clear();
                             }

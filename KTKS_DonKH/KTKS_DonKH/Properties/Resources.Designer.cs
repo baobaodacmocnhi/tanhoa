@@ -137,6 +137,13 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap find_24x24 {
+            get {
+                object obj = ResourceManager.GetObject("find_24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap folder_document_48x48 {
             get {
                 object obj = ResourceManager.GetObject("folder_document_48x48", resourceCulture);

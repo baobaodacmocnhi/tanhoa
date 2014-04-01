@@ -13,6 +13,7 @@ using KTKS_DonKH.GUI.KiemTraXacMinh;
 using KTKS_DonKH.GUI.ThaoThuTraLoi;
 using KTKS_DonKH.GUI.DieuChinhBienDong;
 using KTKS_DonKH.GUI.CatHuyDanhBo;
+using KTKS_DonKH.GUI.ToXuLy;
 
 namespace KTKS_DonKH.GUI.TimKiem
 {
@@ -57,37 +58,42 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.KeyChar == 13)
             {
-                try
-                {
-                    switch (cmbTimTheo.SelectedItem.ToString())
-                    {
-                        case "Mã Đơn":
-                            ///Nếu Đơn thuộc Tổ Xử Lý
-                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                            {
-                                gridControl.DataSource = _cTimKiem.GetTienTrinhbyMaDon_TXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
-                            }
-                            ///Nếu Đơn thuộc Tổ Khách Hàng
-                            else
-                            {
-                                gridControl.DataSource = _cTimKiem.GetTienTrinhbyMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["Don"];
-                            }
-                            break;
-                        case "Danh Bộ":
-                            gridControl.DataSource = _cTimKiem.GetTienTrinhbyDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
-                            break;
-                        case "Họ Tên":
-                            gridControl.DataSource = _cTimKiem.GetTienTrinhbyHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
-                            break;
-                        case "Địa Chỉ":
-                            gridControl.DataSource = _cTimKiem.GetTienTrinhbyDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
-                            break;
-                    }
-                }
-                catch (Exception)
-                {
+                btnTimKiem.PerformClick();
+            }
+        }
 
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        ///Nếu Đơn thuộc Tổ Xử Lý
+                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                        {
+                            gridControl.DataSource = _cTimKiem.GetTienTrinhbyMaDon_TXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["Don"];
+                        }
+                        ///Nếu Đơn thuộc Tổ Khách Hàng
+                        else
+                        {
+                            gridControl.DataSource = _cTimKiem.GetTienTrinhbyMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["Don"];
+                        }
+                        break;
+                    case "Danh Bộ":
+                        gridControl.DataSource = _cTimKiem.GetTienTrinhbyDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
+                        break;
+                    case "Họ Tên":
+                        gridControl.DataSource = _cTimKiem.GetTienTrinhbyHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
+                        break;
+                    case "Địa Chỉ":
+                        gridControl.DataSource = _cTimKiem.GetTienTrinhbyDiaChi(txtNoiDungTimKiem.Text.Trim()).Tables["Don"];
+                        break;
                 }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -105,13 +111,23 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (gridViewDon.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("Action", "View");
-                source.Add("TimKiem", "True");
-                source.Add("MaDon", ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
-                frmShowDonKH frm = new frmShowDonKH(source);
-                //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"].ToString())));
-                frm.ShowDialog();
+                if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
+                {
+                    Dictionary<string, string> source = new Dictionary<string, string>();
+                    source.Add("Action", "Tìm Kiếm");
+                    source.Add("MaDon", ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmShowDonTXL frm = new frmShowDonTXL(source);
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    Dictionary<string, string> source = new Dictionary<string, string>();
+                    source.Add("Action", "Tìm Kiếm");
+                    source.Add("MaDon", ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmShowDonKH frm = new frmShowDonKH(source);
+                    //frmShowDonKH frm = new frmShowDonKH(_cDonKH.getDonKHbyID(decimal.Parse(((DataRowView)gridViewDCBD.GetRow(gridViewDCBD.GetSelectedRows()[0])).Row["MaDon"].ToString())));
+                    frm.ShowDialog();
+                }
             }
         }
 
@@ -494,6 +510,8 @@ namespace KTKS_DonKH.GUI.TimKiem
         }
 
         #endregion
+
+        
 
         
     }

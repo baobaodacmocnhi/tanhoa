@@ -393,12 +393,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
                 DSDon_BS.Filter = expression;
+                _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
             }
             else
                 if (radDSKTXM.Checked)
                 {
                     string expression = String.Format("NgayKTXM >= #{0:yyyy-MM-dd} 00:00:00# and NgayKTXM <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
                     DSDon_BS.Filter = expression;
+                    _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
                 }
         }
 
