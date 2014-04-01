@@ -1015,6 +1015,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MatKhau;
 		
+		private string _MaKiemBamChi;
+		
 		private bool _Login;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -1039,6 +1041,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTaiKhoanChanged();
     partial void OnMatKhauChanging(string value);
     partial void OnMatKhauChanged();
+    partial void OnMaKiemBamChiChanging(string value);
+    partial void OnMaKiemBamChiChanged();
     partial void OnLoginChanging(bool value);
     partial void OnLoginChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -1133,6 +1137,26 @@ namespace KTKS_DonKH.LinQ
 					this._MatKhau = value;
 					this.SendPropertyChanged("MatKhau");
 					this.OnMatKhauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKiemBamChi", DbType="NVarChar(50)")]
+		public string MaKiemBamChi
+		{
+			get
+			{
+				return this._MaKiemBamChi;
+			}
+			set
+			{
+				if ((this._MaKiemBamChi != value))
+				{
+					this.OnMaKiemBamChiChanging(value);
+					this.SendPropertyChanging();
+					this._MaKiemBamChi = value;
+					this.SendPropertyChanged("MaKiemBamChi");
+					this.OnMaKiemBamChiChanged();
 				}
 			}
 		}
@@ -3579,17 +3603,23 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DiaChi;
 		
+		private System.Nullable<int> _GiaBieu;
+		
+		private System.Nullable<int> _DinhMuc;
+		
 		private string _Dot;
 		
 		private string _Ky;
 		
 		private string _Nam;
 		
+		private System.Nullable<System.DateTime> _NgayBC;
+		
 		private string _Hieu;
 		
-		private string _Co;
+		private System.Nullable<int> _Co;
 		
-		private System.Nullable<int> _ChiSo;
+		private string _ChiSo;
 		
 		private System.Nullable<int> _VienChi;
 		
@@ -3627,17 +3657,23 @@ namespace KTKS_DonKH.LinQ
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
     partial void OnDiaChiChanged();
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
+    partial void OnGiaBieuChanged();
+    partial void OnDinhMucChanging(System.Nullable<int> value);
+    partial void OnDinhMucChanged();
     partial void OnDotChanging(string value);
     partial void OnDotChanged();
     partial void OnKyChanging(string value);
     partial void OnKyChanged();
     partial void OnNamChanging(string value);
     partial void OnNamChanged();
+    partial void OnNgayBCChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayBCChanged();
     partial void OnHieuChanging(string value);
     partial void OnHieuChanged();
-    partial void OnCoChanging(string value);
+    partial void OnCoChanging(System.Nullable<int> value);
     partial void OnCoChanged();
-    partial void OnChiSoChanging(System.Nullable<int> value);
+    partial void OnChiSoChanging(string value);
     partial void OnChiSoChanged();
     partial void OnVienChiChanging(System.Nullable<int> value);
     partial void OnVienChiChanged();
@@ -3767,6 +3803,46 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
+		{
+			get
+			{
+				return this._GiaBieu;
+			}
+			set
+			{
+				if ((this._GiaBieu != value))
+				{
+					this.OnGiaBieuChanging(value);
+					this.SendPropertyChanging();
+					this._GiaBieu = value;
+					this.SendPropertyChanged("GiaBieu");
+					this.OnGiaBieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
+		{
+			get
+			{
+				return this._DinhMuc;
+			}
+			set
+			{
+				if ((this._DinhMuc != value))
+				{
+					this.OnDinhMucChanging(value);
+					this.SendPropertyChanging();
+					this._DinhMuc = value;
+					this.SendPropertyChanged("DinhMuc");
+					this.OnDinhMucChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dot", DbType="NVarChar(50)")]
 		public string Dot
 		{
@@ -3827,6 +3903,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayBC", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayBC
+		{
+			get
+			{
+				return this._NgayBC;
+			}
+			set
+			{
+				if ((this._NgayBC != value))
+				{
+					this.OnNgayBCChanging(value);
+					this.SendPropertyChanging();
+					this._NgayBC = value;
+					this.SendPropertyChanged("NgayBC");
+					this.OnNgayBCChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hieu", DbType="NVarChar(50)")]
 		public string Hieu
 		{
@@ -3847,8 +3943,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Co", DbType="NVarChar(50)")]
-		public string Co
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Co", DbType="Int")]
+		public System.Nullable<int> Co
 		{
 			get
 			{
@@ -3867,8 +3963,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSo", DbType="Int")]
-		public System.Nullable<int> ChiSo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChiSo", DbType="NVarChar(50)")]
+		public string ChiSo
 		{
 			get
 			{

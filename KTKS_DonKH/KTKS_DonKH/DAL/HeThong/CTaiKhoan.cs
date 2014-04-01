@@ -23,6 +23,15 @@ namespace KTKS_DonKH.DAL.HeThong
         private static int _maUser = -1;
         private static string _taiKhoan = "";
         private static string _hoTen = "";
+        private static string _MaKiemBamChi = "";
+
+        public static string MaKiemBamChi
+        {
+            get { return CTaiKhoan._MaKiemBamChi; }
+            set { CTaiKhoan._MaKiemBamChi = value; }
+        }
+
+
         private static bool _roleTaiKhoan_Xem = false;
 
         public static bool RoleTaiKhoan_Xem
@@ -86,19 +95,19 @@ namespace KTKS_DonKH.DAL.HeThong
             get { return CTaiKhoan._roleTTTL_Xem; }
             set { CTaiKhoan._roleTTTL_Xem = value; }
         }
-        private static bool _roleBC_Xem = false;
+        private static bool _roleBamChi_Xem = false;
 
-        public static bool RoleBC_Xem
+        public static bool RoleBamChi_Xem
         {
-            get { return CTaiKhoan._roleBC_Xem; }
-            set { CTaiKhoan._roleBC_Xem = value; }
+            get { return CTaiKhoan._roleBamChi_Xem; }
+            set { CTaiKhoan._roleBamChi_Xem = value; }
         }
-        private static bool _roleQLBC_Xem = false;
+        private static bool _roleQLBamChi_Xem = false;
 
-        public static bool RoleQLBC_Xem
+        public static bool RoleQLBamChi_Xem
         {
-            get { return CTaiKhoan._roleQLBC_Xem; }
-            set { CTaiKhoan._roleQLBC_Xem = value; }
+            get { return CTaiKhoan._roleQLBamChi_Xem; }
+            set { CTaiKhoan._roleQLBamChi_Xem = value; }
         }
         ///
         private static bool _roleTaiKhoan_CapNhat = false;
@@ -164,19 +173,19 @@ namespace KTKS_DonKH.DAL.HeThong
             get { return CTaiKhoan._roleTTTL_CapNhat; }
             set { CTaiKhoan._roleTTTL_CapNhat = value; }
         }
-        private static bool _roleBC_CapNhat = false;
+        private static bool _roleBamChi_CapNhat = false;
 
-        public static bool RoleBC_CapNhat
+        public static bool RoleBamChi_CapNhat
         {
-            get { return CTaiKhoan._roleBC_CapNhat; }
-            set { CTaiKhoan._roleBC_CapNhat = value; }
+            get { return CTaiKhoan._roleBamChi_CapNhat; }
+            set { CTaiKhoan._roleBamChi_CapNhat = value; }
         }
-        private static bool _roleQLBC_CapNhat = false;
+        private static bool _roleQLBamChi_CapNhat = false;
 
-        public static bool RoleQLBC_CapNhat
+        public static bool RoleQLBamChi_CapNhat
         {
-            get { return CTaiKhoan._roleQLBC_CapNhat; }
-            set { CTaiKhoan._roleQLBC_CapNhat = value; }
+            get { return CTaiKhoan._roleQLBamChi_CapNhat; }
+            set { CTaiKhoan._roleQLBamChi_CapNhat = value; }
         }
         ///
         public static int MaUser
@@ -212,6 +221,8 @@ namespace KTKS_DonKH.DAL.HeThong
                     _maUser = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).MaU;
                     _taiKhoan = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).TaiKhoan;
                     _hoTen = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).HoTen;
+                    _MaKiemBamChi = db.Users.SingleOrDefault(item => item.TaiKhoan == taikhoan).MaKiemBamChi;
+
                     ///Mã Role Tài Khoản là 1
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 1).QuyenXem == true)
                         _roleTaiKhoan_Xem = true;
@@ -304,24 +315,24 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleTTTL_CapNhat = false;
                     ///Mã Role Bấm Chì là 10
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 10).QuyenXem == true)
-                        _roleBC_Xem = true;
+                        _roleBamChi_Xem = true;
                     else
-                        _roleBC_Xem = false;
+                        _roleBamChi_Xem = false;
 
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 10).QuyenCapNhat == true)
-                        _roleBC_CapNhat = true;
+                        _roleBamChi_CapNhat = true;
                     else
-                        _roleBC_CapNhat = false;
+                        _roleBamChi_CapNhat = false;
                     ///Mã Role Quản Lý Bấm Chì là 11
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 11).QuyenXem == true)
-                        _roleQLBC_Xem = true;
+                        _roleQLBamChi_Xem = true;
                     else
-                        _roleQLBC_Xem = false;
+                        _roleQLBamChi_Xem = false;
 
                     if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 11).QuyenCapNhat == true)
-                        _roleQLBC_CapNhat = true;
+                        _roleQLBamChi_CapNhat = true;
                     else
-                        _roleQLBC_CapNhat = false;
+                        _roleQLBamChi_CapNhat = false;
                     //db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     //db.SubmitChanges();
                     return true;
@@ -349,6 +360,7 @@ namespace KTKS_DonKH.DAL.HeThong
             _maUser = -1;
             _taiKhoan = "";
             _hoTen = "";
+            _MaKiemBamChi = "";
             _roleTaiKhoan_Xem = false;
             _roleCapNhat_Xem = false;
             _roleNhanDonKH_Xem = false;
@@ -358,8 +370,8 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleDCBD_Xem = false;
             _roleCHDB_Xem = false;
             _roleTTTL_Xem = false;
-            _roleBC_Xem = false;
-            _roleQLBC_Xem = false;
+            _roleBamChi_Xem = false;
+            _roleQLBamChi_Xem = false;
             ///
             _roleTaiKhoan_CapNhat = false;
             _roleCapNhat_CapNhat = false;
@@ -370,8 +382,8 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleDCBD_CapNhat = false;
             _roleCHDB_CapNhat = false;
             _roleTTTL_CapNhat = false;
-            _roleBC_CapNhat = false;
-            _roleQLBC_CapNhat = false;
+            _roleBamChi_CapNhat = false;
+            _roleQLBamChi_CapNhat = false;
             ///
             db.Connection.Close();
         }
