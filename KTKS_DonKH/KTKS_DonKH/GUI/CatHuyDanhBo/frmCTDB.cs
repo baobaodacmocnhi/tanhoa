@@ -229,7 +229,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
-                        if (_cCHDB.CheckCTCHDBbyMaDonDanhBo_TXL(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                        if (_cCHDB.CheckCTCTDBbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Cắt Tạm Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -341,7 +341,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _cDonKH.SuaDonKH(_donkh, true);
                         }
                     }
-                    if (_cCHDB.CheckCTCHDBbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                    if (_cCHDB.CheckCTCTDBbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
                     {
                         MessageBox.Show("Danh Bộ này đã được Lập Cắt Tạm Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
