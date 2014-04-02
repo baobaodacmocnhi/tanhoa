@@ -604,7 +604,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         /// <summary>
-        /// Kiểm tra CTCTDB đã được tạo cho Mã Đơn và Danh Bộ này chưa
+        /// Kiểm tra CTCTDB đã được tạo cho Mã Đơn KH và Danh Bộ này chưa
         /// </summary>
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
@@ -614,6 +614,25 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                 return db.CTCTDBs.Any(itemCTCTDB => itemCTCTDB.CHDB.MaDon == MaDon && itemCTCTDB.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra CTCTDB đã được tạo cho Mã Đơn TXL và Danh Bộ này chưa
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public bool CheckCTCTDBbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        {
+            try
+            {
+                return db.CTCTDBs.Any(itemCTCTDB => itemCTCTDB.CHDB.MaDonTXL == MaDonTXL && itemCTCTDB.DanhBo == DanhBo);
             }
             catch (Exception ex)
             {
