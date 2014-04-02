@@ -34,6 +34,11 @@ namespace KTKS_ChungCu
             cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
             cmbLoaiCT.DisplayMember = "TenLCT";
             cmbLoaiCT.ValueMember = "MaLCT";
+
+            DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvKhachHangChungCu.Columns["MaLCT"];
+            cmbColumn.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu(true);
+            cmbColumn.DisplayMember = "TenLCT";
+            cmbColumn.ValueMember = "MaLCT";
         }
 
         public void LoadTTKH(TTKhachHang ttkhachhang)
@@ -185,7 +190,7 @@ namespace KTKS_ChungCu
             txtHoTenKH.Text = dgvKhachHangChungCu["HoTen", e.RowIndex].Value.ToString();
             txtLo.Text = dgvKhachHangChungCu["Lo", e.RowIndex].Value.ToString();
             txtPhong.Text = dgvKhachHangChungCu["Phong", e.RowIndex].Value.ToString();
-            cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["Lo", e.RowIndex].Value.ToString());
+            cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["MaLCT", e.RowIndex].Value.ToString());
             txtMaCT.Text = dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString();
             txtSoNK.Text = dgvKhachHangChungCu["SoNK", e.RowIndex].Value.ToString();
             txtThoiHan.Text = dgvKhachHangChungCu["ThoiHan", e.RowIndex].Value.ToString();
