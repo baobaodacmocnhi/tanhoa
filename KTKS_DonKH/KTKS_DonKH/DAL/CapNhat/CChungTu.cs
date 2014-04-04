@@ -38,6 +38,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 itemCTCT.ThoiHan,
                                 itemCTCT.DienThoai,
                                 itemCTCT.Cat,
+                                itemCTCT.GhiChu,
                             };
                 return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
             }
@@ -1871,6 +1872,92 @@ namespace KTKS_DonKH.DAL.CapNhat
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
                 return false;
+            }
+        }
+
+        #endregion
+
+        #region Báo Cáo
+
+        /// <summary>
+        /// Lấy Danh Sách Cấp Định Mức cho Giấy Xác Nhận Tạm Trú theo Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCapDinhMuc(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTChungTu in db.CTChungTus
+                                join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
+                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 7 && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
+                                select new
+                                {
+                                    itemCTChungTu.DanhBo,
+                                    itemTTKH.HoTen,
+                                    DiaChi = itemTTKH.DC1 + itemTTKH.DC2,
+                                    itemCTChungTu.SoNKDangKy,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                    itemCTChungTu.DienThoai,
+                                    itemCTChungTu.NgayHetHan,
+                                    itemCTChungTu.CreateDate,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Cấp Định Mức cho Giấy Xác Nhận Tạm Trú theo Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCapDinhMuc(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTChungTu in db.CTChungTus
+                                join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
+                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 7 && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
+                                select new
+                                {
+                                    itemCTChungTu.DanhBo,
+                                    itemTTKH.HoTen,
+                                    DiaChi = itemTTKH.DC1 + itemTTKH.DC2,
+                                    itemCTChungTu.SoNKDangKy,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                    itemCTChungTu.DienThoai,
+                                    itemCTChungTu.NgayHetHan,
+                                    itemCTChungTu.CreateDate,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 

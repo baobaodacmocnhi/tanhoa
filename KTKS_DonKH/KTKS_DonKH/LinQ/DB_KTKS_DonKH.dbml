@@ -224,6 +224,7 @@
       <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThoiHan" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayHetHan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Cat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoLuongDC_YCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="YeuCauCat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
