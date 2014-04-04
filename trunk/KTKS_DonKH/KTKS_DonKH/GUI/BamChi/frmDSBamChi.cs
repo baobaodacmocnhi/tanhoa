@@ -14,6 +14,9 @@ using KTKS_DonKH.DAL.HeThong;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
 using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.BamChi;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -191,7 +194,39 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            if (radDSBamChi.Checked)
+            {
+                DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
 
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HopDong"] = itemRow["HopDong"];
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["Hieu"] = itemRow["Hieu"];
+                    dr["Co"] = itemRow["Co"];
+                    dr["ChiSo"] = itemRow["ChiSo"];
+                    dr["TrangThai"] = itemRow["TrangThai"];
+                    dr["VienChi"] = itemRow["VienChi"];
+                    dr["DayChi"] = itemRow["DayChi"];
+                    dr["MaSoBC"] = itemRow["MaSoBC"];
+                    dr["TheoYeuCau"] = itemRow["TheoYeuCau"];
+                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                    dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
+                }
+
+                rptDSBamChi rpt = new rptDSBamChi();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)

@@ -76,10 +76,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 cmbLoaiCT.SelectedValue = _cLoaiChungTu.getMaLCTbyTenLCT(_source["TenLCT"]);
                 txtMaCT.Text = _source["MaCT"];
                 if (_action == "Sửa")
+                {
                     txtDiaChi.Text = _source["DiaChiKH"];
+                    txtGhiChu.Text = _source["GhiChu"];
+                }
                 txtSoNKTong.Text = _source["SoNKTong"];
                 txtSoNKDangKy.Text = _source["SoNKDangKy"];
                 txtThoiHan.Text = _source["ThoiHan"];
+                
 
                 cmbChiNhanh_YCC1.DataSource = _cChiNhanh.LoadDSChiNhanh(true, "Tân Hòa");
                 cmbChiNhanh_YCC1.DisplayMember = "TenCN";
@@ -192,6 +196,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                         else
                             ctchungtu.ThoiHan = null;
+                        ctchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
                         if (bool.Parse(_source["TXL"]) == true)
@@ -435,6 +440,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                         else
                             ctchungtu.ThoiHan = null;
+                        ctchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
                         if (bool.Parse(_source["TXL"]) == true)

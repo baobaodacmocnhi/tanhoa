@@ -92,6 +92,8 @@
             this.ribbtnDSBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel18 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnCapDinhMuc = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -385,6 +387,7 @@
             // 
             this.ribbonTab5.Panels.Add(this.ribbonPanel6);
             this.ribbonTab5.Panels.Add(this.ribbonPanel7);
+            this.ribbonTab5.Panels.Add(this.ribbonPanel18);
             this.ribbonTab5.Text = "Điều Chỉnh Biến Động";
             // 
             // ribbonPanel6
@@ -596,6 +599,20 @@
             this.ribbtnNhapBamChi.Text = "Nhập Bấm Chì";
             this.ribbtnNhapBamChi.Click += new System.EventHandler(this.ribbtnNhapBamChi_Click);
             // 
+            // ribbonPanel18
+            // 
+            this.ribbonPanel18.ButtonMoreEnabled = false;
+            this.ribbonPanel18.ButtonMoreVisible = false;
+            this.ribbonPanel18.Items.Add(this.ribbtnCapDinhMuc);
+            this.ribbonPanel18.Text = "Báo Cáo";
+            // 
+            // ribbtnCapDinhMuc
+            // 
+            this.ribbtnCapDinhMuc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnCapDinhMuc.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnCapDinhMuc.Text = "Cấp Định Mức";
+            this.ribbtnCapDinhMuc.Click += new System.EventHandler(this.ribbtnCapDinhMuc_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -683,6 +700,8 @@
         private System.Windows.Forms.RibbonButton ribbtnDSBamChi;
         private System.Windows.Forms.RibbonPanel ribbonPanel17;
         private System.Windows.Forms.RibbonButton ribbtnNhapBamChi;
+        private System.Windows.Forms.RibbonPanel ribbonPanel18;
+        private System.Windows.Forms.RibbonButton ribbtnCapDinhMuc;
     }
 }
 

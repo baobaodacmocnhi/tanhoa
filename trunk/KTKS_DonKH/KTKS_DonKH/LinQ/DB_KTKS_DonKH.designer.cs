@@ -5205,6 +5205,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayHetHan;
 		
+		private string _GhiChu;
+		
 		private bool _Cat;
 		
 		private System.Nullable<int> _SoLuongDC_YCC;
@@ -5307,6 +5309,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnThoiHanChanged();
     partial void OnNgayHetHanChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayHetHanChanged();
+    partial void OnGhiChuChanging(string value);
+    partial void OnGhiChuChanged();
     partial void OnCatChanging(bool value);
     partial void OnCatChanged();
     partial void OnSoLuongDC_YCCChanging(System.Nullable<int> value);
@@ -5537,6 +5541,26 @@ namespace KTKS_DonKH.LinQ
 					this._NgayHetHan = value;
 					this.SendPropertyChanged("NgayHetHan");
 					this.OnNgayHetHanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(MAX)")]
+		public string GhiChu
+		{
+			get
+			{
+				return this._GhiChu;
+			}
+			set
+			{
+				if ((this._GhiChu != value))
+				{
+					this.OnGhiChuChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChu = value;
+					this.SendPropertyChanged("GhiChu");
+					this.OnGhiChuChanged();
 				}
 			}
 		}

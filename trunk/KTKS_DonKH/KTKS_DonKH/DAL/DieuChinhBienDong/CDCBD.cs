@@ -632,6 +632,44 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        /// <summary>
+        /// Kiểm tra MaCTDCBD có hay không theo Danh Bộ & Ngày Tạo
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <param name="CreateDate"></param>
+        /// <returns></returns>
+        public bool checkCTDCBDbyDanhBoCreateDate(string DanhBo, DateTime CreateDate)
+        {
+            try
+            {
+                return db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date == CreateDate.Date);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy MaCTDCBD theo Danh Bộ & Ngày Tạo
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <param name="CreateDate"></param>
+        /// <returns></returns>
+        public decimal getCTDCBDbyDanhBoCreateDate(string DanhBo,DateTime CreateDate)
+        {
+            try
+            {
+                return db.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date == CreateDate.Date).MaCTDCBD;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         #endregion
 
         #region CTDCHD (Chi Tiết Điều Chỉnh Hóa Đơn)
