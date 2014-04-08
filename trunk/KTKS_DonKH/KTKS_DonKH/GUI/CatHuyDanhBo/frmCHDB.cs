@@ -640,7 +640,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             dr["Dot"] = _ctchdb.DotLapPhieu;
                             dr["HoTen"] = _ctchdb.HoTen;
                             dr["DiaChi"] = _ctchdb.DiaChi;
-                            dr["DanhBo"] = _ctchdb.DanhBo;
+                            dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["HopDong"] = _ctchdb.HopDong;
                             dr["LyDo"] = _ctchdb.LyDo + ". ";
                             if (_ctchdb.GhiChuLyDo != "")
@@ -653,8 +653,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                             dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
-                            rptPhieuCHDB rpt = new rptPhieuCHDB();
-                            rpt.SetDataSource(dsBaoCao);
+                            rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
+                            for (int j = 0; j < rpt.Subreports.Count; j++)
+                            {
+                                rpt.Subreports[j].SetDataSource(dsBaoCao);
+                            }
                             frmBaoCao frm = new frmBaoCao(rpt);
                             frm.ShowDialog();
 
@@ -676,7 +679,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["Dot"] = _ctchdb.DotLapPhieu;
                     dr["HoTen"] = _ctchdb.HoTen;
                     dr["DiaChi"] = _ctchdb.DiaChi;
-                    dr["DanhBo"] = _ctchdb.DanhBo;
+                    dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HopDong"] = _ctchdb.HopDong;
                     dr["LyDo"] = _ctchdb.LyDo + ". ";
                     if (_ctchdb.GhiChuLyDo != "")
@@ -689,8 +692,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
-                    rptPhieuCHDB rpt = new rptPhieuCHDB();
-                    rpt.SetDataSource(dsBaoCao);
+                    rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
+                    for (int j = 0; j < rpt.Subreports.Count; j++)
+                    {
+                        rpt.Subreports[j].SetDataSource(dsBaoCao);
+                    }
                     frmBaoCao frm = new frmBaoCao(rpt);
                     frm.ShowDialog();
 
@@ -797,11 +803,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         txtKetQuaCapTrenXuLy.Text = _ctchdb.KetQuaCapTrenXuLy;
                         txtThoiGianLapPhieu.Text = _ctchdb.ThoiGianLapPhieu.ToString();
                     }
+                    txtHieuLucKy.Text = _ctchdb.HieuLucKy;
+
                     groupBoxNguyenNhanXuLy.Enabled = true;
                     groupBoxKetQuaXuLy.Enabled = true;
                     groupBoxCapTrenXuLy.Enabled = true;
                     btnSua.Enabled = true;
-                    txtHieuLucKy.ReadOnly = true;
+                    txtHieuLucKy.ReadOnly = false;
                     btnInPhieu.Enabled = true;
                 }
                 else

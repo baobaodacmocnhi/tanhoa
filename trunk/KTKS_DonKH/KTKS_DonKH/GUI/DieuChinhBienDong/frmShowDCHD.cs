@@ -65,6 +65,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtSoHD.Text = _ctdchd.SoHD;
                 txtDanhBo.Text = _ctdchd.DanhBo;
                 txtHoTen.Text = _ctdchd.HoTen;
+                txtDiaChi.Text = _ctdchd.DiaChi;
                 ///
                 txtGiaBieu_Cu.Text = _ctdchd.GiaBieu.Value.ToString();
                 txtDinhMuc_Cu.Text = _ctdchd.DinhMuc.Value.ToString();
@@ -194,6 +195,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     _ctdchd.DanhBo = txtDanhBo.Text.Trim();
                     _ctdchd.HoTen = txtHoTen.Text.Trim();
+                    _ctdchd.DiaChi = txtDiaChi.Text.Trim();
                     _ctdchd.SoVB = txtSoVB.Text.Trim();
                     _ctdchd.NgayKy = dateNgayKy.Value;
                     _ctdchd.KyHD = txtKyHD.Text.Trim();
