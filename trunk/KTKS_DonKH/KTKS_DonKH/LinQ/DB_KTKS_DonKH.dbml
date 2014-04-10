@@ -225,6 +225,8 @@
       <Column Name="ThoiHan" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayHetHan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Lo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Cat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoLuongDC_YCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="YeuCauCat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -365,6 +367,8 @@
       <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DieuChinhGia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="GiaDieuChinh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KhauTru" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SoTienKhauTru" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />

@@ -231,6 +231,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("NgayHetHan", "");
             source.Add("ThoiHan", "");
             source.Add("GhiChu", "");
+            source.Add("Lo", "");
+            source.Add("Phong", "");
             frmSoDK frm = new frmSoDK("Thêm", source);
             if (frm.ShowDialog() == DialogResult.OK)
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
@@ -261,6 +263,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("NgayHetHan", dgvDSSoDangKy.CurrentRow.Cells["NgayHetHan"].Value.ToString());
             source.Add("ThoiHan", dgvDSSoDangKy.CurrentRow.Cells["ThoiHan"].Value.ToString());
             source.Add("GhiChu", dgvDSSoDangKy.CurrentRow.Cells["GhiChu"].Value.ToString());
+            source.Add("Lo", dgvDSSoDangKy.CurrentRow.Cells["Lo"].Value.ToString());
+            source.Add("Phong", dgvDSSoDangKy.CurrentRow.Cells["Phong"].Value.ToString());
             frmSoDK frm = new frmSoDK("Sửa", source);
             if (frm.ShowDialog() == DialogResult.OK)
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);

@@ -73,6 +73,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtTieuThu_Moi = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.dateNgayKy = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.txtKyHD = new System.Windows.Forms.TextBox();
@@ -86,8 +88,8 @@
             this.label21 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.chkKhauTru = new System.Windows.Forms.CheckBox();
+            this.txtSoTienKhauTru = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -289,6 +291,7 @@
             this.txtTongCong_BD.Size = new System.Drawing.Size(100, 25);
             this.txtTongCong_BD.TabIndex = 16;
             this.txtTongCong_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTongCong_BD.TextChanged += new System.EventHandler(this.txtTongCong_BD_TextChanged);
             // 
             // txtTongCong_Start
             // 
@@ -308,6 +311,7 @@
             this.txtPhiBVMT_BD.Size = new System.Drawing.Size(100, 25);
             this.txtPhiBVMT_BD.TabIndex = 15;
             this.txtPhiBVMT_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPhiBVMT_BD.TextChanged += new System.EventHandler(this.txtPhiBVMT_BD_TextChanged);
             // 
             // label16
             // 
@@ -328,6 +332,7 @@
             this.txtThueGTGT_BD.Size = new System.Drawing.Size(100, 25);
             this.txtThueGTGT_BD.TabIndex = 14;
             this.txtThueGTGT_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtThueGTGT_BD.TextChanged += new System.EventHandler(this.txtThueGTGT_BD_TextChanged);
             // 
             // lbTangGiam
             // 
@@ -347,6 +352,7 @@
             this.txtTienNuoc_BD.Size = new System.Drawing.Size(100, 25);
             this.txtTienNuoc_BD.TabIndex = 13;
             this.txtTienNuoc_BD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTienNuoc_BD.TextChanged += new System.EventHandler(this.txtTienNuoc_BD_TextChanged);
             // 
             // txtTieuThu_BD
             // 
@@ -571,6 +577,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(8, 151);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(56, 17);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "Địa Chỉ:";
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(96, 148);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(290, 25);
+            this.txtDiaChi.TabIndex = 13;
+            // 
             // dateNgayKy
             // 
             this.dateNgayKy.CustomFormat = "dd/MM/yyyy";
@@ -691,21 +713,24 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // label17
+            // chkKhauTru
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(8, 151);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(56, 17);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "Địa Chỉ:";
+            this.chkKhauTru.AutoSize = true;
+            this.chkKhauTru.Location = new System.Drawing.Point(415, 204);
+            this.chkKhauTru.Name = "chkKhauTru";
+            this.chkKhauTru.Size = new System.Drawing.Size(87, 21);
+            this.chkKhauTru.TabIndex = 18;
+            this.chkKhauTru.Text = "Khấu Trừ:";
+            this.chkKhauTru.UseVisualStyleBackColor = true;
             // 
-            // txtDiaChi
+            // txtSoTienKhauTru
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(96, 148);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(290, 25);
-            this.txtDiaChi.TabIndex = 13;
+            this.txtSoTienKhauTru.Location = new System.Drawing.Point(508, 200);
+            this.txtSoTienKhauTru.Name = "txtSoTienKhauTru";
+            this.txtSoTienKhauTru.ReadOnly = true;
+            this.txtSoTienKhauTru.Size = new System.Drawing.Size(84, 25);
+            this.txtSoTienKhauTru.TabIndex = 19;
+            this.txtSoTienKhauTru.Text = "0";
             // 
             // frmShowDCHD
             // 
@@ -713,6 +738,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(969, 388);
+            this.Controls.Add(this.chkKhauTru);
+            this.Controls.Add(this.txtSoTienKhauTru);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtMaDon);
@@ -801,5 +828,7 @@
         private System.Windows.Forms.TextBox txtTieuThu_Moi;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.CheckBox chkKhauTru;
+        private System.Windows.Forms.TextBox txtSoTienKhauTru;
     }
 }
