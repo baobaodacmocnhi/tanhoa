@@ -86,6 +86,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtGiaDieuChinh.Text = _ctdchd.GiaDieuChinh.ToString();
                 }
                 ///
+                if (_ctdchd.KhauTru)
+                {
+                    chkKhauTru.Checked = true;
+                    txtSoTienKhauTru.Text = _ctdchd.SoTienKhauTru.ToString();
+                }
+                ///
                 lbTangGiam.Text = _ctdchd.TangGiam;
                 txtTieuThu_BD.Text = (_ctdchd.TieuThu_BD - _ctdchd.TieuThu).Value.ToString();
                 txtTienNuoc_BD.Text = _ctdchd.TienNuoc_BD.Value.ToString();
@@ -218,6 +224,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         _ctdchd.DieuChinhGia = true;
                         _ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim());
+                    }
+                    else
+                    {
+                        _ctdchd.DieuChinhGia = false;
+                        _ctdchd.GiaDieuChinh = null;
+                    }
+                    ///
+                    if (chkKhauTru.Checked)
+                    {
+                        _ctdchd.KhauTru = true;
+                        _ctdchd.SoTienKhauTru = int.Parse(txtSoTienKhauTru.Text.Trim());
+                    }
+                    else
+                    {
+                        _ctdchd.KhauTru = false;
+                        _ctdchd.SoTienKhauTru = null;
                     }
                     ///
                     _ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim());
@@ -427,6 +449,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     lbTangGiam.Text = "Tăng:";
                 else
                     lbTangGiam.Text = "Giảm:";
+        }
+
+        private void txtTienNuoc_BD_TextChanged(object sender, EventArgs e)
+        {
+            if (chkKhauTru.Checked)
+                txtTienNuoc_End.Text = (int.Parse(txtTienNuoc_Start.Text.Trim()) + int.Parse(txtTienNuoc_BD.Text.Trim())).ToString();
+        }
+
+        private void txtThueGTGT_BD_TextChanged(object sender, EventArgs e)
+        {
+            if (chkKhauTru.Checked)
+                txtThueGTGT_End.Text = (int.Parse(txtThueGTGT_Start.Text.Trim()) + int.Parse(txtThueGTGT_BD.Text.Trim())).ToString();
+        }
+
+        private void txtPhiBVMT_BD_TextChanged(object sender, EventArgs e)
+        {
+            if (chkKhauTru.Checked)
+                txtPhiBVMT_End.Text = (int.Parse(txtPhiBVMT_Start.Text.Trim()) + int.Parse(txtPhiBVMT_BD.Text.Trim())).ToString();
+        }
+
+        private void txtTongCong_BD_TextChanged(object sender, EventArgs e)
+        {
+            if (chkKhauTru.Checked)
+                txtTongCong_End.Text = (int.Parse(txtTongCong_Start.Text.Trim()) + int.Parse(txtTongCong_BD.Text.Trim())).ToString();
         }
 
         

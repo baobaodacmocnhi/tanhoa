@@ -75,15 +75,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDanhBo.Text = _source["DanhBo"];
                 cmbLoaiCT.SelectedValue = _cLoaiChungTu.getMaLCTbyTenLCT(_source["TenLCT"]);
                 txtMaCT.Text = _source["MaCT"];
-                if (_action == "Sửa")
-                {
-                    txtDiaChi.Text = _source["DiaChiKH"];
-                    txtGhiChu.Text = _source["GhiChu"];
-                }
+                txtDiaChi.Text = _source["DiaChiKH"];
+                txtGhiChu.Text = _source["GhiChu"];
                 txtSoNKTong.Text = _source["SoNKTong"];
                 txtSoNKDangKy.Text = _source["SoNKDangKy"];
                 txtThoiHan.Text = _source["ThoiHan"];
-                
+                txtLo.Text = _source["Lo"];
+                txtPhong.Text = _source["Phong"];
 
                 cmbChiNhanh_YCC1.DataSource = _cChiNhanh.LoadDSChiNhanh(true, "Tân Hòa");
                 cmbChiNhanh_YCC1.DisplayMember = "TenCN";
@@ -197,6 +195,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             ctchungtu.ThoiHan = null;
                         ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                        ctchungtu.Lo = txtLo.Text.Trim();
+                        ctchungtu.Phong = txtPhong.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
                         if (bool.Parse(_source["TXL"]) == true)
@@ -424,7 +424,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "")
+                if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
                         ChungTu chungtu = new ChungTu();
@@ -441,6 +441,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             ctchungtu.ThoiHan = null;
                         ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                        ctchungtu.Lo = txtLo.Text.Trim();
+                        ctchungtu.Phong = txtPhong.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
                         if (bool.Parse(_source["TXL"]) == true)
