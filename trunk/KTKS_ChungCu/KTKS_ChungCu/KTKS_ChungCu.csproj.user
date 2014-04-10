@@ -4,10 +4,13 @@
     <PublishUrlHistory>\\192.168.90.9\cntt\BaoBao\KTKS_ChungCu\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory />
-    <BootstrapperUrlHistory />
+    <UpdateUrlHistory>\\192.168.90.9\cntt\BaoBao\KTKS_ChungCu\</UpdateUrlHistory>
+    <BootstrapperUrlHistory>\\192.168.90.9\cntt\BaoBao\KTKS_ChungCu\</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
   </PropertyGroup>
 </Project>

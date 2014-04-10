@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.625" name="DB_KTKS_DonKH">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.875, 18.125" name="DB_KTKS_DonKH">
   <DataContextMoniker Name="/DB_KTKS_DonKHDataContext" />
   <nestedChildShapes>
     <classShape Id="bb98574c-d9e0-45fd-b80b-6c7d7aba73ff" absoluteBounds="1.125, 1, 2, 11.385968424479165">
@@ -14,10 +14,36 @@
         <elementListCompartment Id="7e45e622-9e5a-4d29-ae77-17e687f44624" absoluteBounds="6.14, 1.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8c9d4af7-4b62-44e9-ad35-f455033d3d0f" absoluteBounds="4.375, 4.75, 2, 3.5016097005208326">
-      <DataClassMoniker Name="/DB_KTKS_DonKHDataContext/ChungCu" />
+    <classShape Id="16a3858f-a02e-44d6-befe-8fe7ad40a6af" absoluteBounds="8.875, 10.375, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/DB_KTKS_DonKHDataContext/ChungTu" />
       <nestedChildShapes>
-        <elementListCompartment Id="f6aaa97d-ec29-4bab-b236-e93659176375" absoluteBounds="4.39, 5.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="648bd8de-2e13-450f-a17c-11c7ae59dd15" absoluteBounds="8.89, 10.835, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="84f97f11-c4ff-40f7-838b-4b6dd52b12eb" absoluteBounds="11.625, 7.25, 2, 10.616762695312502">
+      <DataClassMoniker Name="/DB_KTKS_DonKHDataContext/CTChungTu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b3523505-7b60-47a5-aeeb-1f0d3b8421d9" absoluteBounds="11.64, 7.71, 1.9700000000000002, 10.0567626953125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.34375 : 3.22280110677083); (7.34375 : 12.7154768880208); (8.875 : 12.7154768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DB_KTKS_DonKHDataContext/LoaiChungTu/LoaiChungTu_ChungTu" />
+      <nodes>
+        <classShapeMoniker Id="05cd08e3-3e1d-4813-81c4-0a73da65bba3" />
+        <classShapeMoniker Id="16a3858f-a02e-44d6-befe-8fe7ad40a6af" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.875 : 14.1529768880208); (11.625 : 14.1529768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DB_KTKS_DonKHDataContext/ChungTu/ChungTu_CTChungTu" />
+      <nodes>
+        <classShapeMoniker Id="16a3858f-a02e-44d6-befe-8fe7ad40a6af" />
+        <classShapeMoniker Id="84f97f11-c4ff-40f7-838b-4b6dd52b12eb" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="3651276c-6632-4e1b-aa1a-ca2b9912d149" absoluteBounds="4.25, 3.5, 2, 7.1553369140625">
+      <DataClassMoniker Name="/DB_KTKS_DonKHDataContext/LichSuChungTu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="75ed4743-d458-4ef6-a795-68863eba0e91" absoluteBounds="4.2650000000000006, 3.96, 1.9700000000000002, 6.5953369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
