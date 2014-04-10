@@ -73,5 +73,12 @@ namespace KTKS_ChungCu.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap print_24x24 {
+            get {
+                object obj = ResourceManager.GetObject("print_24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -73,9 +73,9 @@ namespace KTKS_ChungCu.DAL
         {
             try
             {
-                if (db.ChungCus.Any(itemCC => itemCC.MaCT.Substring(0, 4) == "XNTT"))
+                if (db.ChungTus.Any(itemCC => itemCC.MaCT.Substring(0, 4) == "XNTT"))
                 {
-                    string MaxID = db.ChungCus.Where(itemCC => itemCC.MaCT.Substring(0, 4) == "XNTT").Max(itemCC => itemCC.MaCT).ToString();
+                    string MaxID = db.ChungTus.Where(itemCC => itemCC.MaCT.Substring(0, 4) == "XNTT").Max(itemCC => itemCC.MaCT).ToString();
                     string stt = MaxID.Substring(4);
                     return "XNTT" + (stt + 1);
                 }
