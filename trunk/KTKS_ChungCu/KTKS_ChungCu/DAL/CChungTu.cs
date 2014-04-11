@@ -280,9 +280,12 @@ namespace KTKS_ChungCu.DAL
                         return false;
                     }
                 ///Kiểm tra Địa Chỉ có thay đổi hay không
-                if (chungtuCN.DiaChi != chungtu.DiaChi)
+                if (chungtuCN.DiaChi != chungtu.DiaChi || chungtuCN.MaLCT != chungtu.MaLCT)
                 {
-                    chungtuCN.DiaChi = chungtu.DiaChi;
+                    if (chungtuCN.DiaChi != chungtu.DiaChi)
+                        chungtuCN.DiaChi = chungtu.DiaChi;
+                    if (chungtuCN.MaLCT != chungtu.MaLCT)
+                        chungtuCN.MaLCT = chungtu.MaLCT;
                     chungtuCN.ModifyDate = DateTime.Now;
                 }
 
@@ -314,14 +317,21 @@ namespace KTKS_ChungCu.DAL
                         MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
-                if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
+                if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan || ctchungtuCN.Lo != ctchungtu.Lo || ctchungtuCN.Phong != ctchungtu.Phong)
                 {
-                    ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
-                    if (ctchungtu.ThoiHan != null)
-                        ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
-                        ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
-                    else
-                        ctchungtuCN.NgayHetHan = null;
+                    if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
+                    {
+                        ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+                        if (ctchungtu.ThoiHan != null)
+                            ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                            ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                        else
+                            ctchungtuCN.NgayHetHan = null;
+                    }
+                    if (ctchungtuCN.Lo != ctchungtu.Lo)
+                        ctchungtuCN.Lo = ctchungtu.Lo;
+                    if (ctchungtuCN.Phong != ctchungtu.Phong)
+                        ctchungtuCN.Phong = ctchungtu.Phong;
                     ctchungtuCN.ModifyDate = DateTime.Now;
                     flagEdited = true;
                 }
