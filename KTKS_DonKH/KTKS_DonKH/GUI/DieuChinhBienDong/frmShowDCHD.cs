@@ -115,7 +115,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
                 dr["SoPhieu"] = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
-                dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                dr["DanhBo"] = _ctdchd.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = _ctdchd.HoTen;
                 if (_ctdchd.DCBD.ToXuLy)
                     dr["SoDon"] = "TXL" + _ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(_ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");

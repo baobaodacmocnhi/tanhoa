@@ -1114,9 +1114,12 @@ namespace KTKS_DonKH.DAL.CapNhat
                         return false;
                     }
                 ///Kiểm tra Địa Chỉ có thay đổi hay không
-                if (chungtuCN.DiaChi != chungtu.DiaChi)
+                if (chungtuCN.DiaChi != chungtu.DiaChi||chungtuCN.MaLCT!=chungtu.MaLCT)
                 {
-                    chungtuCN.DiaChi = chungtu.DiaChi;
+                    if (chungtuCN.DiaChi != chungtu.DiaChi)
+                        chungtuCN.DiaChi = chungtu.DiaChi;
+                    if (chungtuCN.MaLCT != chungtu.MaLCT)
+                        chungtuCN.MaLCT = chungtu.MaLCT;
                     chungtuCN.ModifyDate = DateTime.Now;
                     chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                 }

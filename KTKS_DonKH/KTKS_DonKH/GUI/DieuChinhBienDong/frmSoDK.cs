@@ -49,6 +49,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
                 if (action == "Sửa")
                 {
+                    cmbLoaiCT.Enabled = true;
                     txtDiaChi.ReadOnly = false;
                     txtSoNKTong.ReadOnly = false;
                     txtSoNKDangKy.ReadOnly = false;
@@ -75,7 +76,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtDanhBo.Text = _source["DanhBo"];
                 cmbLoaiCT.SelectedValue = _cLoaiChungTu.getMaLCTbyTenLCT(_source["TenLCT"]);
                 txtMaCT.Text = _source["MaCT"];
-                txtDiaChi.Text = _source["DiaChiKH"];
+                txtDiaChi.Text = _source["DiaChi"];
                 txtGhiChu.Text = _source["GhiChu"];
                 txtSoNKTong.Text = _source["SoNKTong"];
                 txtSoNKDangKy.Text = _source["SoNKDangKy"];
@@ -431,6 +432,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         chungtu.MaCT = txtMaCT.Text.Trim();
                         chungtu.DiaChi = txtDiaChi.Text.Trim();
                         chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                        chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                         CTChungTu ctchungtu = new CTChungTu();
                         ctchungtu.DanhBo = txtDanhBo.Text.Trim();
