@@ -106,7 +106,7 @@ namespace KTKS_ChungCu
                     {
                         ChungTu chungtu = new ChungTu();
                         chungtu.MaCT = txtMaCT.Text.Trim();
-                        chungtu.DiaChi = txtDiaChi.Text.Trim();
+                        chungtu.DiaChi = txtDiaChiCT.Text.Trim();
                         chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                         chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
@@ -119,6 +119,8 @@ namespace KTKS_ChungCu
                         else
                             ctchungtu.ThoiHan = null;
                         ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                        ctchungtu.Lo = txtLo.Text.Trim();
+                        ctchungtu.Phong = txtPhong.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
@@ -150,7 +152,7 @@ namespace KTKS_ChungCu
                         {
                             ChungTu chungtu = new ChungTu();
                             chungtu.MaCT = txtMaCT.Text.Trim();
-                            chungtu.DiaChi = txtDiaChi.Text.Trim();
+                            chungtu.DiaChi = txtDiaChiCT.Text.Trim();
                             chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
 
                             CTChungTu ctchungtu = new CTChungTu();
@@ -162,6 +164,8 @@ namespace KTKS_ChungCu
                             else
                                 ctchungtu.ThoiHan = null;
                             ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                            ctchungtu.Lo = txtLo.Text.Trim();
+                            ctchungtu.Phong = txtPhong.Text.Trim();
 
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
                             lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
@@ -248,7 +252,7 @@ namespace KTKS_ChungCu
                     dsBaoCao.Tables["DSChungTu"].Rows.Add(dr);
                 }
                 rptDSChungTu rpt = new rptDSChungTu();
-                //rpt.SetDataSource(dsBaoCao);
+                rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
 
