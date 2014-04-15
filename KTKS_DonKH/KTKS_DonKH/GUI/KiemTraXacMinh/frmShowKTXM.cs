@@ -86,15 +86,18 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = ctktxm.DinhMuc;
             ///
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
+            cmbTinhTrangKiemTra.SelectedItem = ctktxm.TinhTrangKiemTra;
             txtHieu.Text = ctktxm.Hieu;
             txtCo.Text = ctktxm.Co;
             txtSoThan.Text = ctktxm.SoThan;
             txtChiSo.Text = ctktxm.ChiSo;
-            txtChiMatSo.Text = ctktxm.ChiMatSo;
-            txtChiKhoaGoc.Text = ctktxm.ChiKhoaGoc;
+            cmbTinhTrangChiSo.SelectedItem = ctktxm.TinhTrangChiSo;
+            cmbChiMatSo.SelectedItem = ctktxm.ChiMatSo;
+            cmbChiKhoaGoc.SelectedItem = ctktxm.ChiKhoaGoc;
             txtMucDichSuDung.Text = ctktxm.MucDichSuDung;
             txtDienThoai.Text = ctktxm.DienThoai;
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
+            cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
         }
 
@@ -130,6 +133,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
+                    cmbChiMatSo.SelectedIndex = 0;
+                    cmbChiKhoaGoc.SelectedIndex = 0;
                 }
                 else
                 {
@@ -158,15 +163,18 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 }
                 ///
                 _ctktxm.NgayKTXM = dateKTXM.Value;
+                _ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedText;
                 _ctktxm.Hieu = txtHieu.Text.Trim();
                 _ctktxm.Co = txtCo.Text.Trim();
                 _ctktxm.SoThan = txtSoThan.Text.Trim();
                 _ctktxm.ChiSo = txtChiSo.Text.Trim();
-                _ctktxm.ChiMatSo = txtChiMatSo.Text.Trim();
-                _ctktxm.ChiKhoaGoc = txtChiKhoaGoc.Text.Trim();
+                _ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedText;
+                _ctktxm.ChiMatSo = cmbChiMatSo.SelectedText;
+                _ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedText;
                 _ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                 _ctktxm.DienThoai = txtDienThoai.Text.Trim();
                 _ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
+                _ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedText;
                 _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
 
                 if (_cKTXM.SuaCTKTXM(_ctktxm))
@@ -195,6 +203,78 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmShowKTXM_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void txtChiSo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtCo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void cmbTinhTrangKiemTra_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTinhTrangKiemTra.SelectedItem.ToString())
+            {
+                case "Nhà đóng cửa":
+                    txtChiSo.Enabled = false;
+                    cmbTinhTrangChiSo.Enabled = false;
+                    cmbChiMatSo.Enabled = false;
+                    cmbChiKhoaGoc.Enabled = false;
+                    txtHieu.Enabled = false;
+                    txtCo.Enabled = false;
+                    txtSoThan.Enabled = false;
+                    txtMucDichSuDung.Enabled = false;
+                    txtDienThoai.Enabled = false;
+                    txtHoTenKHKy.Enabled = false;
+                    ///
+                    txtChiSo.Text = "";
+                    cmbTinhTrangChiSo.SelectedIndex = -1;
+                    cmbChiMatSo.SelectedIndex = -1;
+                    cmbChiKhoaGoc.SelectedIndex = -1;
+                    txtHieu.Text = "";
+                    txtCo.Text = "";
+                    txtSoThan.Text = "";
+                    txtMucDichSuDung.Text = "";
+                    txtDienThoai.Text = "";
+                    txtHoTenKHKy.Text = "";
+                    break;
+                case "BB mất ĐHN bồi thường":
+                case "BB mất ĐHN không bồi thường":
+                    txtChiSo.Enabled = false;
+                    cmbTinhTrangChiSo.Enabled = false;
+                    cmbChiMatSo.Enabled = false;
+                    cmbChiKhoaGoc.Enabled = false;
+                    txtHieu.Enabled = false;
+                    txtCo.Enabled = false;
+                    txtSoThan.Enabled = false;
+                    ///
+                    txtChiSo.Text = "";
+                    cmbTinhTrangChiSo.SelectedIndex = -1;
+                    cmbChiMatSo.SelectedIndex = -1;
+                    cmbChiKhoaGoc.SelectedIndex = -1;
+                    txtHieu.Text = "";
+                    txtCo.Text = "";
+                    txtSoThan.Text = "";
+                    break;
+                default:
+                    txtChiSo.Enabled = true;
+                    cmbTinhTrangChiSo.Enabled = true;
+                    cmbChiMatSo.Enabled = true;
+                    cmbChiKhoaGoc.Enabled = true;
+                    txtHieu.Enabled = true;
+                    txtCo.Enabled = true;
+                    txtSoThan.Enabled = true;
+                    txtMucDichSuDung.Enabled = true;
+                    txtDienThoai.Enabled = true;
+                    txtHoTenKHKy.Enabled = true;
+                    break;
+            }
         }
     }
 }

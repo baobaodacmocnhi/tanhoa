@@ -72,6 +72,10 @@
             this.ribbonPanel7 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnDCBD = new System.Windows.Forms.RibbonButton();
             this.ribbtnDCHD = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel18 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnCapDinhMuc = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel19 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnChungCu = new System.Windows.Forms.RibbonButton();
             this.ribbonTab6 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel8 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnDSDonCHDB = new System.Windows.Forms.RibbonButton();
@@ -92,8 +96,6 @@
             this.ribbtnDSBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
-            this.ribbonPanel18 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnCapDinhMuc = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -388,6 +390,7 @@
             this.ribbonTab5.Panels.Add(this.ribbonPanel6);
             this.ribbonTab5.Panels.Add(this.ribbonPanel7);
             this.ribbonTab5.Panels.Add(this.ribbonPanel18);
+            this.ribbonTab5.Panels.Add(this.ribbonPanel19);
             this.ribbonTab5.Text = "Điều Chỉnh Biến Động";
             // 
             // ribbonPanel6
@@ -428,6 +431,36 @@
             this.ribbtnDCHD.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDCHD.SmallImage")));
             this.ribbtnDCHD.Text = "Hóa Đơn";
             this.ribbtnDCHD.Click += new System.EventHandler(this.ribbtnDCHD_Click);
+            // 
+            // ribbonPanel18
+            // 
+            this.ribbonPanel18.ButtonMoreEnabled = false;
+            this.ribbonPanel18.ButtonMoreVisible = false;
+            this.ribbonPanel18.Items.Add(this.ribbtnCapDinhMuc);
+            this.ribbonPanel18.Text = "Báo Cáo";
+            // 
+            // ribbtnCapDinhMuc
+            // 
+            this.ribbtnCapDinhMuc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnCapDinhMuc.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnCapDinhMuc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnCapDinhMuc.SmallImage")));
+            this.ribbtnCapDinhMuc.Text = "Cấp Định Mức";
+            this.ribbtnCapDinhMuc.Click += new System.EventHandler(this.ribbtnCapDinhMuc_Click);
+            // 
+            // ribbonPanel19
+            // 
+            this.ribbonPanel19.ButtonMoreEnabled = false;
+            this.ribbonPanel19.ButtonMoreVisible = false;
+            this.ribbonPanel19.Items.Add(this.ribbtnChungCu);
+            this.ribbonPanel19.Text = "Chung Cư";
+            // 
+            // ribbtnChungCu
+            // 
+            this.ribbtnChungCu.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnChungCu.MinimumSize = new System.Drawing.Size(100, 0);
+            this.ribbtnChungCu.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnChungCu.SmallImage")));
+            this.ribbtnChungCu.Text = "Nhập Định Mức";
+            this.ribbtnChungCu.Click += new System.EventHandler(this.ribbtnChungCu_Click);
             // 
             // ribbonTab6
             // 
@@ -599,20 +632,6 @@
             this.ribbtnNhapBamChi.Text = "Nhập Bấm Chì";
             this.ribbtnNhapBamChi.Click += new System.EventHandler(this.ribbtnNhapBamChi_Click);
             // 
-            // ribbonPanel18
-            // 
-            this.ribbonPanel18.ButtonMoreEnabled = false;
-            this.ribbonPanel18.ButtonMoreVisible = false;
-            this.ribbonPanel18.Items.Add(this.ribbtnCapDinhMuc);
-            this.ribbonPanel18.Text = "Báo Cáo";
-            // 
-            // ribbtnCapDinhMuc
-            // 
-            this.ribbtnCapDinhMuc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnCapDinhMuc.MinimumSize = new System.Drawing.Size(90, 0);
-            this.ribbtnCapDinhMuc.Text = "Cấp Định Mức";
-            this.ribbtnCapDinhMuc.Click += new System.EventHandler(this.ribbtnCapDinhMuc_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -702,6 +721,8 @@
         private System.Windows.Forms.RibbonButton ribbtnNhapBamChi;
         private System.Windows.Forms.RibbonPanel ribbonPanel18;
         private System.Windows.Forms.RibbonButton ribbtnCapDinhMuc;
+        private System.Windows.Forms.RibbonPanel ribbonPanel19;
+        private System.Windows.Forms.RibbonButton ribbtnChungCu;
     }
 }
 

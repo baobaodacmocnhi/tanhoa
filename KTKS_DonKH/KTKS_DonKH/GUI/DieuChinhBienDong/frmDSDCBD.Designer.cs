@@ -1255,7 +1255,7 @@
             // 
             this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
             this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(746, 35);
+            this.dateTimKiem.Location = new System.Drawing.Point(746, 39);
             this.dateTimKiem.Name = "dateTimKiem";
             this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
             this.dateTimKiem.TabIndex = 9;
@@ -1289,7 +1289,7 @@
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(746, 7);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(746, 11);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem.TabIndex = 8;
@@ -1333,7 +1333,7 @@
             // 
             // txtNoiDungTimKiem2
             // 
-            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(746, 35);
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(746, 39);
             this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
             this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem2.TabIndex = 10;
@@ -1443,18 +1443,18 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1276, 628);
-            this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.btnCapNhatDocSo);
+            this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.txtDCConLai);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtDCTen);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.chkSelectAll);
+            this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.btnIn);
-            this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDSCatChuyenDM);

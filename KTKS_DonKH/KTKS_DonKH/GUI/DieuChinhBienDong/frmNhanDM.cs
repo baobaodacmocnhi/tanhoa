@@ -102,15 +102,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                         else
                             ctchungtu.ThoiHan = null;
+                        ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                        ctchungtu.Lo = txtLo.Text.Trim();
+                        ctchungtu.Phong = txtPhong.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        if (bool.Parse(_source["TXL"]) == true)
-                        {
-                            lichsuchungtu.ToXuLy = true;
-                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
-                        }
-                        else
-                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        if (bool.Parse(_source["ChungCu"]) == false)
+                            if (bool.Parse(_source["TXL"]) == true)
+                            {
+                                lichsuchungtu.ToXuLy = true;
+                                lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                            }
+                            else
+                                lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                         lichsuchungtu.NhanDM = true;
                         lichsuchungtu.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();
@@ -221,6 +225,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.KeyChar == 13)
                 btnLuu.Focus();
         }
+
 
     }
 }

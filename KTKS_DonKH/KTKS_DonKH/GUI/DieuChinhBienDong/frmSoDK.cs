@@ -44,6 +44,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtSoNKDangKy.ReadOnly = false;
                 txtThoiHan.ReadOnly = false;
                 txtGhiChu.ReadOnly = false;
+                txtLo.ReadOnly = false;
+                txtPhong.ReadOnly = false;
                 btnThem.Enabled = true;
             }
             else
@@ -55,6 +57,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtSoNKDangKy.ReadOnly = false;
                     txtThoiHan.ReadOnly = false;
                     txtGhiChu.ReadOnly = false;
+                    txtLo.ReadOnly = false;
+                    txtPhong.ReadOnly = false;
                     btnSua.Enabled = true;
                 }
             
@@ -200,13 +204,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctchungtu.Phong = txtPhong.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        if (bool.Parse(_source["TXL"]) == true)
-                        {
-                            lichsuchungtu.ToXuLy = true;
-                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
-                        }
-                        else
-                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        if (bool.Parse(_source["ChungCu"]) == false)
+                            if (bool.Parse(_source["TXL"]) == true)
+                            {
+                                lichsuchungtu.ToXuLy = true;
+                                lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                            }
+                            else
+                                lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         if (chkYCCat1.Checked)
@@ -371,10 +376,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu, lstLichSuChungTu))
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-
+                            if (bool.Parse(_source["ChungCu"]) == false)
+                            {
+                                this.DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
                         }
 
                         //if (!chkYCCat2.Checked)
@@ -447,13 +453,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctchungtu.Phong = txtPhong.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                        if (bool.Parse(_source["TXL"]) == true)
-                        {
-                            lichsuchungtu.ToXuLy = true;
-                            lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
-                        }
-                        else
-                            lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
+                        if (bool.Parse(_source["ChungCu"]) == false)
+                            if (bool.Parse(_source["TXL"]) == true)
+                            {
+                                lichsuchungtu.ToXuLy = true;
+                                lichsuchungtu.MaDonTXL = decimal.Parse(_source["MaDon"]);
+                            }
+                            else
+                                lichsuchungtu.MaDon = decimal.Parse(_source["MaDon"]);
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         if (chkYCCat1.Checked)
@@ -818,6 +825,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             this.Location = new Point(70,70);
                         }
 
+        }
+
+        private void frmSoDK_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
 
         

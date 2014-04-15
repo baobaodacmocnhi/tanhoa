@@ -60,6 +60,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.txtPhong = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txtLo = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -190,6 +194,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtPhong);
+            this.groupBox2.Controls.Add(this.label35);
+            this.groupBox2.Controls.Add(this.txtLo);
+            this.groupBox2.Controls.Add(this.label34);
             this.groupBox2.Controls.Add(this.txtGhiChu);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtThoiHan);
@@ -214,7 +222,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(447, 14);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(430, 311);
+            this.groupBox2.Size = new System.Drawing.Size(430, 370);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nơi Cắt/Chuyển:";
@@ -344,7 +352,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(786, 331);
+            this.btnIn.Location = new System.Drawing.Point(785, 390);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(92, 35);
             this.btnIn.TabIndex = 5;
@@ -357,7 +365,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(652, 331);
+            this.btnSua.Location = new System.Drawing.Point(651, 390);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(128, 35);
             this.btnSua.TabIndex = 85;
@@ -367,12 +375,44 @@
             this.btnSua.Visible = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // txtPhong
+            // 
+            this.txtPhong.Location = new System.Drawing.Point(127, 334);
+            this.txtPhong.Name = "txtPhong";
+            this.txtPhong.Size = new System.Drawing.Size(194, 25);
+            this.txtPhong.TabIndex = 38;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(14, 337);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(48, 17);
+            this.label35.TabIndex = 37;
+            this.label35.Text = "Phòng:";
+            // 
+            // txtLo
+            // 
+            this.txtLo.Location = new System.Drawing.Point(127, 303);
+            this.txtLo.Name = "txtLo";
+            this.txtLo.Size = new System.Drawing.Size(194, 25);
+            this.txtLo.TabIndex = 36;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(14, 306);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(27, 17);
+            this.label34.TabIndex = 35;
+            this.label34.Text = "Lô:";
+            // 
             // frmShowNhanDM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(890, 378);
+            this.ClientSize = new System.Drawing.Size(890, 435);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -424,5 +464,9 @@
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.TextBox txtPhong;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox txtLo;
+        private System.Windows.Forms.Label label34;
     }
 }
