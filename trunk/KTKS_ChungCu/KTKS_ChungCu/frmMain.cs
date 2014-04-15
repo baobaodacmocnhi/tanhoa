@@ -121,6 +121,7 @@ namespace KTKS_ChungCu
                         ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                         ctchungtu.Lo = txtLo.Text.Trim();
                         ctchungtu.Phong = txtPhong.Text.Trim();
+                        ctchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                         LichSuChungTu lichsuchungtu = new LichSuChungTu();
                         lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
@@ -129,6 +130,17 @@ namespace KTKS_ChungCu
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+
+                            txtLo.Text = "";
+                            txtPhong.Text = "";
+                            cmbLoaiCT.SelectedIndex = 0;
+                            txtMaCT.Text = "";
+                            txtDiaChiCT.Text = "";
+                            txtSoNKTong.Text = "";
+                            txtSoNKDangKy.Text = "";
+                            txtThoiHan.Text = "";
+                            txtGhiChu.Text = "";
+                            _selectedindex = -1;
                         }
 
                     }
@@ -154,6 +166,7 @@ namespace KTKS_ChungCu
                             chungtu.MaCT = txtMaCT.Text.Trim();
                             chungtu.DiaChi = txtDiaChiCT.Text.Trim();
                             chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                            chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                             CTChungTu ctchungtu = new CTChungTu();
                             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
@@ -166,6 +179,7 @@ namespace KTKS_ChungCu
                             ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                             ctchungtu.Lo = txtLo.Text.Trim();
                             ctchungtu.Phong = txtPhong.Text.Trim();
+                            ctchungtu.GhiChu = txtGhiChu.Text.Trim();
 
                             LichSuChungTu lichsuchungtu = new LichSuChungTu();
                             lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
@@ -174,6 +188,17 @@ namespace KTKS_ChungCu
                             {
                                 MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+
+                                txtLo.Text = "";
+                                txtPhong.Text = "";
+                                cmbLoaiCT.SelectedIndex = 0;
+                                txtMaCT.Text = "";
+                                txtDiaChiCT.Text = "";
+                                txtSoNKTong.Text = "";
+                                txtSoNKDangKy.Text = "";
+                                txtThoiHan.Text = "";
+                                txtGhiChu.Text = "";
+                                _selectedindex = -1;
                             }
                         }
                         else
@@ -238,9 +263,13 @@ namespace KTKS_ChungCu
                 {
                     DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
 
-                    dr["DanhBo"] = txtDanhBo.Text.Trim();
+                    dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7," ").Insert(4," ");
                     dr["HoTen"] = txtHoTen.Text.Trim();
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
+                    dr["HopDong"] = _ttkhachhang.GiaoUoc;
+                    dr["GiaBieu"] = _ttkhachhang.GB;
+                    dr["DinhMuc"] = _ttkhachhang.TGDM;
+                    dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
                     dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
                     dr["SoNKTong"] = dgvKhachHangChungCu["SoNKTong", i].Value.ToString();
@@ -257,6 +286,11 @@ namespace KTKS_ChungCu
                 frm.ShowDialog();
 
             }
+        }
+
+        private void frmMain_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
         
     }
