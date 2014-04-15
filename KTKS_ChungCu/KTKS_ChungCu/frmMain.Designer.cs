@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPhong = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -108,6 +110,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1035, 87);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Visible = false;
             // 
             // txtPhong
             // 
@@ -370,7 +373,7 @@
             this.GhiChu});
             this.dgvKhachHangChungCu.Location = new System.Drawing.Point(12, 191);
             this.dgvKhachHangChungCu.Name = "dgvKhachHangChungCu";
-            this.dgvKhachHangChungCu.Size = new System.Drawing.Size(1285, 485);
+            this.dgvKhachHangChungCu.Size = new System.Drawing.Size(1345, 485);
             this.dgvKhachHangChungCu.TabIndex = 4;
             this.dgvKhachHangChungCu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHangChungCu_CellContentClick);
             this.dgvKhachHangChungCu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKhachHangChungTu_RowPostPaint);
@@ -388,7 +391,7 @@
             this.Lo.HeaderText = "Lô";
             this.Lo.Name = "Lo";
             this.Lo.ReadOnly = true;
-            this.Lo.Width = 60;
+            this.Lo.Width = 130;
             // 
             // Phong
             // 
@@ -396,7 +399,7 @@
             this.Phong.HeaderText = "Phòng";
             this.Phong.Name = "Phong";
             this.Phong.ReadOnly = true;
-            this.Phong.Width = 60;
+            this.Phong.Width = 130;
             // 
             // TenLCT
             // 
@@ -432,6 +435,8 @@
             // SoNKTong
             // 
             this.SoNKTong.DataPropertyName = "SoNKTong";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SoNKTong.DefaultCellStyle = dataGridViewCellStyle2;
             this.SoNKTong.HeaderText = "Tổng NK";
             this.SoNKTong.Name = "SoNKTong";
             this.SoNKTong.ReadOnly = true;
@@ -440,9 +445,12 @@
             // SoNKDangKy
             // 
             this.SoNKDangKy.DataPropertyName = "SoNKDangKy";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SoNKDangKy.DefaultCellStyle = dataGridViewCellStyle3;
             this.SoNKDangKy.HeaderText = "Số NK Đăng Ký";
             this.SoNKDangKy.Name = "SoNKDangKy";
             this.SoNKDangKy.ReadOnly = true;
+            this.SoNKDangKy.Width = 90;
             // 
             // ThoiHan
             // 
@@ -528,6 +536,7 @@
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Visible = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
@@ -541,6 +550,7 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Visible = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // frmMain
@@ -559,11 +569,13 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.Text = "Quản Lý Định Mức Chung Cư";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMain_KeyPress);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

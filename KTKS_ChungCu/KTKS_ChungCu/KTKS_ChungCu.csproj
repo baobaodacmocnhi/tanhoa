@@ -18,7 +18,7 @@
     <PublishUrl>\\192.168.90.9\cntt\BaoBao\KTKS_ChungCu\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -97,6 +97,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\DataSetBaoCao.cs">
+      <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\DataSetBaoCao.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +129,18 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Function\CLinQToDataTable.cs" />
+    <Compile Include="GUI\ChungTu\frmNhanDM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChungTu\frmNhanDM.Designer.cs">
+      <DependentUpon>frmNhanDM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChungTu\frmSoDK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChungTu\frmSoDK.Designer.cs">
+      <DependentUpon>frmSoDK.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\DB_KTKS_DonKH.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +173,12 @@
     <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
       <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\ChungTu\frmNhanDM.resx">
+      <DependentUpon>frmNhanDM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChungTu\frmSoDK.resx">
+      <DependentUpon>frmSoDK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
