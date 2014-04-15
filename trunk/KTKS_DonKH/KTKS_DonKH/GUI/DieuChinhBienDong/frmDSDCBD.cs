@@ -723,9 +723,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 case "Mã Đơn":
                 case "Số Phiếu":
-                case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
                     txtNoiDungTimKiem2.Visible = true;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Danh Bộ":
+                    txtNoiDungTimKiem.Visible = true;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
@@ -1209,8 +1214,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         TB_GHICHU ghichu = new TB_GHICHU();
                                         ghichu.DANHBO = dlkh.DANHBO;
                                         ghichu.DONVI = "KTKS";
-                                        ghichu.NOIDUNG = "PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
-                                        ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - " + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy") + " - Điều Chỉnh";
+                                        ghichu.NOIDUNG = "PYCĐC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                                        ghichu.NOIDUNG = " ngày " + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
+                                        ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - Điều Chỉnh";
                                         if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                         {
                                             ghichu.NOIDUNG += " Tên: " + ctdcbd.HoTen_BD + ",";

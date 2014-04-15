@@ -39,6 +39,11 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.dgvDSTaiKhoan = new System.Windows.Forms.DataGridView();
+            this.MaU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaKiemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvPhanQuyen = new System.Windows.Forms.DataGridView();
             this.MaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,11 +52,6 @@
             this.QuyenCapNhat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtMaKiemBamChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.MaU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaKiemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhanQuyen)).BeginInit();
             this.SuspendLayout();
@@ -169,6 +169,43 @@
             this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
             this.dgvDSTaiKhoan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTaiKhoan_RowPostPaint);
             // 
+            // MaU
+            // 
+            this.MaU.DataPropertyName = "MaU";
+            this.MaU.HeaderText = "Mã Tài Khoản";
+            this.MaU.Name = "MaU";
+            this.MaU.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 200;
+            // 
+            // TaiKhoan
+            // 
+            this.TaiKhoan.DataPropertyName = "TaiKhoan";
+            this.TaiKhoan.HeaderText = "Tài Khoản";
+            this.TaiKhoan.Name = "TaiKhoan";
+            this.TaiKhoan.ReadOnly = true;
+            this.TaiKhoan.Width = 110;
+            // 
+            // MatKhau
+            // 
+            this.MatKhau.DataPropertyName = "MatKhau";
+            this.MatKhau.HeaderText = "Mật Khẩu";
+            this.MatKhau.Name = "MatKhau";
+            this.MatKhau.Visible = false;
+            // 
+            // MaKiemBamChi
+            // 
+            this.MaKiemBamChi.DataPropertyName = "MaKiemBamChi";
+            this.MaKiemBamChi.HeaderText = "Mã Kiềm BC";
+            this.MaKiemBamChi.Name = "MaKiemBamChi";
+            this.MaKiemBamChi.Width = 120;
+            // 
             // btnThem
             // 
             this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
@@ -242,7 +279,6 @@
             this.txtMaKiemBamChi.Location = new System.Drawing.Point(160, 113);
             this.txtMaKiemBamChi.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaKiemBamChi.Name = "txtMaKiemBamChi";
-            this.txtMaKiemBamChi.PasswordChar = '*';
             this.txtMaKiemBamChi.Size = new System.Drawing.Size(200, 25);
             this.txtMaKiemBamChi.TabIndex = 12;
             // 
@@ -256,49 +292,12 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Mã Kiềm BC:";
             // 
-            // MaU
-            // 
-            this.MaU.DataPropertyName = "MaU";
-            this.MaU.HeaderText = "Mã Tài Khoản";
-            this.MaU.Name = "MaU";
-            this.MaU.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 200;
-            // 
-            // TaiKhoan
-            // 
-            this.TaiKhoan.DataPropertyName = "TaiKhoan";
-            this.TaiKhoan.HeaderText = "Tài Khoản";
-            this.TaiKhoan.Name = "TaiKhoan";
-            this.TaiKhoan.ReadOnly = true;
-            this.TaiKhoan.Width = 110;
-            // 
-            // MatKhau
-            // 
-            this.MatKhau.DataPropertyName = "MatKhau";
-            this.MatKhau.HeaderText = "Mật Khẩu";
-            this.MatKhau.Name = "MatKhau";
-            this.MatKhau.Visible = false;
-            // 
-            // MaKiemBamChi
-            // 
-            this.MaKiemBamChi.DataPropertyName = "MaKiemBamChi";
-            this.MaKiemBamChi.HeaderText = "Mã Kiềm BC";
-            this.MaKiemBamChi.Name = "MaKiemBamChi";
-            this.MaKiemBamChi.Width = 120;
-            // 
             // frmTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 547);
+            this.ClientSize = new System.Drawing.Size(1276, 547);
             this.Controls.Add(this.txtMaKiemBamChi);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dgvPhanQuyen);

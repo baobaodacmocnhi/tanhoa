@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDCBD_Load(object sender, EventArgs e)
         {
-            this.KeyPreview = true;
+            ///this.KeyPreview = true;
             ///Hàm Properties không có nên phải add code
             ///Dùng để bôi đen Text
             txtMaDon.GotFocus += new EventHandler(txtMaDon_GotFocus);
@@ -208,6 +208,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("ChungCu", "False");
             ///Đơn Tổ Xử Lý
             if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
             {
@@ -241,6 +242,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("ChungCu", "False");
             ///Đơn Tổ Xử Lý
             if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
             {
@@ -257,6 +259,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("TenLCT", dgvDSSoDangKy.CurrentRow.Cells["TenLCT"].Value.ToString());
             source.Add("MaCT", dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString());
             source.Add("HoTenKH", txtHoTen.Text.Trim());
+            source.Add("DiaChiKH", txtDiaChi.Text.Trim());
             source.Add("DiaChi", dgvDSSoDangKy.CurrentRow.Cells["DiaChi"].Value.ToString());
             source.Add("SoNKTong", dgvDSSoDangKy.CurrentRow.Cells["SoNKTong"].Value.ToString());
             source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
@@ -299,6 +302,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             Dictionary<string, string> source = new Dictionary<string, string>();
+            source.Add("ChungCu", "False");
             ///Đơn Tổ Xử Lý
             if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
             {
@@ -902,6 +906,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if ((_donkh!=null||_dontxl!=null) && e.Control && e.KeyCode == Keys.D1)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("ChungCu", "False");
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
                     source.Add("TXL", "True");
@@ -934,6 +939,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D2)
             {
                 Dictionary<string, string> source = new Dictionary<string, string>();
+                source.Add("ChungCu", "False");
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
                     source.Add("TXL", "True");

@@ -201,6 +201,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                                     else
                                         ctchungtu.ThoiHan = null;
+                                    ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                                    ctchungtu.Lo = txtLo.Text.Trim();
+                                    ctchungtu.Phong = txtPhong.Text.Trim();
 
                                     _lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
                                     _lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
@@ -233,5 +236,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
             }
         }
+
+
     }
 }

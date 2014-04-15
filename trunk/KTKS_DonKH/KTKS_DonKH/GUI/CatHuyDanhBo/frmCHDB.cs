@@ -785,7 +785,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (!string.IsNullOrEmpty(_ctchdb.MaCTCTDB.ToString()))
                         txtMaThongBaoCT.Text = _ctchdb.MaCTCTDB.ToString().Insert(_ctchdb.MaCTCTDB.ToString().Length - 2, "-");
                     ///
-                    LoadTTKH(_cTTKH.getTTKHbyID(_ctchdb.DanhBo));
+                    //LoadTTKH(_cTTKH.getTTKHbyID(_ctchdb.DanhBo));
+                    txtDanhBo.Text = _ctchdb.DanhBo;
+                    txtHopDong.Text = _ctchdb.HopDong;
+                    txtHoTen.Text = _ctchdb.HoTen;
+                    txtDiaChi.Text = _ctchdb.DiaChi;
                     ///Nguyên Nhân Xử Lý
                     cmbLyDo.SelectedItem = _ctchdb.LyDo;
                     txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;

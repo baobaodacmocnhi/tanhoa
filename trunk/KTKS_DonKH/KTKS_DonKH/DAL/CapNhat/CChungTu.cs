@@ -23,9 +23,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
                             join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                             where itemCTCT.DanhBo == DanhBo
+                            orderby itemCTCT.CreateDate descending
                             select new
                             {
                                 itemCTCT.DanhBo,
+                                itemCT.MaLCT,
                                 itemLCT.TenLCT,
                                 itemCTCT.MaCT,
                                 itemCT.DiaChi,
@@ -42,6 +44,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 itemCTCT.Lo,
                                 itemCTCT.Phong,
                             };
+                
                 return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
             }
             catch (Exception ex)
@@ -312,7 +315,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     var query = from itemLSCT in db.LichSuChungTus
                                 //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null
-                                //where itemLSCT.SoPhieu == 32814
+                                //where itemLSCT.MaLSCT == 126114
                                 orderby itemLSCT.SoPhieu ascending
                                 select new
                                 {
@@ -367,8 +370,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                             Row["In"] = false;
                             Row["MaLSCT"] = itemRow["MaLSCT"];
                             Row["SoPhieu"] = itemRow["SoPhieu"];
-                            if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
-                                Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                            if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                                if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                                    Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                                else
+                                    Row["SoPhieuDCBD"] = "";
                             else
                                 Row["SoPhieuDCBD"] = "";
                             Row["CreateDate"] = itemRow["CreateDate"];
@@ -1154,7 +1160,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
-                if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan || ctchungtuCN.Lo != ctchungtu.Lo || ctchungtuCN.Phong != ctchungtu.Phong)
+                if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan || ctchungtuCN.Lo != ctchungtu.Lo || ctchungtuCN.Phong != ctchungtu.Phong || ctchungtuCN.GhiChu != ctchungtu.GhiChu)
                 {
                     if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
                     {
@@ -1164,14 +1170,17 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
                         else
                             ctchungtuCN.NgayHetHan = null;
+                        flagEdited = true;
                     }
                     if (ctchungtuCN.Lo != ctchungtu.Lo)
                         ctchungtuCN.Lo = ctchungtu.Lo;
                     if (ctchungtuCN.Phong != ctchungtu.Phong)
                         ctchungtuCN.Phong = ctchungtu.Phong;
+                    if (ctchungtuCN.GhiChu != ctchungtu.GhiChu)
+                        ctchungtuCN.GhiChu = ctchungtu.GhiChu;
                     ctchungtuCN.ModifyDate = DateTime.Now;
                     ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                    flagEdited = true;
+                    
                 }
                 if (ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
                     if (ctchungtu.YeuCauCat)
@@ -1526,6 +1535,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ctchungtuCN.NgayHetHan = null;
                         ctchungtuCN.ModifyDate = DateTime.Now;
                         ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
+
                     }
                     else
                     {
