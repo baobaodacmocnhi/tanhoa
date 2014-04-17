@@ -76,7 +76,7 @@ namespace KTKS_DonKH.GUI.BamChi
             cmbTinhTrangChiSo.SelectedItem = ctbamchi.TinhTrangChiSo;
             txtVienChi.Text = ctbamchi.VienChi.ToString();
             txtDayChi.Text = ctbamchi.DayChi.ToString();
-            cmbTrangThai.SelectedText = ctbamchi.TrangThai;
+            cmbTrangThai.SelectedItem = ctbamchi.TrangThai;
             txtMaSoBC.Text = ctbamchi.MaSoBC;
             txtTheoYeuCau.Text = ctbamchi.TheoYeuCau;
         }
@@ -228,23 +228,42 @@ namespace KTKS_DonKH.GUI.BamChi
                         }
                         ///
                         ctbamchi.NgayBC = dateBamChi.Value;
-                        ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedText;
+
+                        if (cmbTinhTrangKiemTra.SelectedItem != null)
+                        ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+
                         ctbamchi.Hieu = txtHieu.Text.Trim();
+
                         if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                             ctbamchi.Co = int.Parse(txtCo.Text.Trim());
+
                         ctbamchi.SoThan = txtSoThan.Text.Trim();
+
                         if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                             ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
-                        ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedText;
-                        ctbamchi.ChiMatSo = cmbChiMatSo.SelectedText;
-                        ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedText;
+
+                        if (cmbTinhTrangChiSo.SelectedItem != null)
+                        ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                        if (cmbChiMatSo.SelectedItem != null)
+                        ctbamchi.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                        if (cmbChiKhoaGoc.SelectedItem != null)
+                        ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
                         ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
-                        ctbamchi.TrangThai = cmbTrangThai.SelectedText;
+
+                        if (cmbTrangThai.SelectedItem != null)
+                        ctbamchi.TrangThai = cmbTrangThai.SelectedItem.ToString();
+
                         ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
+
                         if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
                             ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
+
                         if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                            ctbamchi.DayChi = double.Parse(txtVienChi.Text.Trim());
+                            ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim());
+
                         ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
 
                         if (_cBamChi.ThemCTBamChi(ctbamchi))
@@ -300,23 +319,42 @@ namespace KTKS_DonKH.GUI.BamChi
                         }
                         ///
                         ctbamchi.NgayBC = dateBamChi.Value;
-                        ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedText;
+
+                        if (cmbTinhTrangKiemTra.SelectedItem != null)
+                        ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+
                         ctbamchi.Hieu = txtHieu.Text.Trim();
+
                         if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                             ctbamchi.Co = int.Parse(txtCo.Text.Trim());
+
                         ctbamchi.SoThan = txtSoThan.Text.Trim();
+
                         if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                             ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
-                        ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedText;
-                        ctbamchi.ChiMatSo = cmbChiMatSo.SelectedText;
-                        ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedText;
+
+                        if (cmbTinhTrangChiSo.SelectedItem != null)
+                        ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                        if (cmbChiMatSo.SelectedItem != null)
+                        ctbamchi.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                        if (cmbChiKhoaGoc.SelectedItem != null)
+                        ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
                         ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
-                        ctbamchi.TrangThai = cmbTrangThai.SelectedText;
+
+                        if (cmbTrangThai.SelectedItem != null)
+                        ctbamchi.TrangThai = cmbTrangThai.SelectedItem.ToString();
+
                         ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
+
                         if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
                             ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
+
                         if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                            ctbamchi.DayChi = double.Parse(txtVienChi.Text.Trim());
+                            ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim(), System.Globalization.NumberStyles.Float);
+
                         ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
 
                         if (_cBamChi.ThemCTBamChi(ctbamchi))
@@ -360,23 +398,42 @@ namespace KTKS_DonKH.GUI.BamChi
                     }
                     ///
                     ctbamchi.NgayBC = dateBamChi.Value;
-                    ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedText;
+
+                    if (cmbTinhTrangKiemTra.SelectedItem != null)
+                    ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+
                     ctbamchi.Hieu = txtHieu.Text.Trim();
+
                     if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                         ctbamchi.Co = int.Parse(txtCo.Text.Trim());
+
                     ctbamchi.SoThan = txtSoThan.Text.Trim();
+
                     if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                         ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
-                    ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedText;
-                    ctbamchi.ChiMatSo = cmbChiMatSo.SelectedText;
-                    ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedText;
+
+                    if (cmbTinhTrangChiSo.SelectedItem != null)
+                    ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                    if (cmbChiMatSo.SelectedItem != null)
+                    ctbamchi.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                    if (cmbChiKhoaGoc.SelectedItem != null)
+                    ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
                     ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
-                    ctbamchi.TrangThai = cmbTrangThai.SelectedText;
+
+                    if (cmbTrangThai.SelectedItem != null)
+                    ctbamchi.TrangThai = cmbTrangThai.SelectedItem.ToString();
+
                     ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
+
                     if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
                         ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
+
                     if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
-                        ctbamchi.DayChi = double.Parse(txtVienChi.Text.Trim());
+                        ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim());
+
                     ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
 
                     ///Nếu Đơn thuộc Tổ Xử Lý
@@ -451,7 +508,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void txtDayChi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar) && e.KeyChar != Char.Parse("."))
                 e.Handled = true;
         }
 

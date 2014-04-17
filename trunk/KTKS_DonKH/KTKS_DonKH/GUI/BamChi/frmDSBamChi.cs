@@ -181,12 +181,12 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (e.Control && e.KeyCode == Keys.F)
             {
-                //frmShowNhapBamChi frm = new frmShowNhapBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
-                //if (frm.ShowDialog() == DialogResult.OK)
-                //{
-                //    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                //        DSDon_BS.DataSource = _cKTXM.LoadDSKTXMDaDuyet().Tables["KTXM"];
-                //}
+                frmShowBamChi frm = new frmShowBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                        DSDon_BS.DataSource = _cBamChi.LoadDSBamChiDaDuyet().Tables["BamChi"];
+                }
             }
         }
 
@@ -216,7 +216,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     dr["VienChi"] = itemRow["VienChi"];
                     dr["DayChi"] = itemRow["DayChi"];
                     dr["MaSoBC"] = itemRow["MaSoBC"];
-                    dr["TheoYeuCau"] = itemRow["TheoYeuCau"];
+                    dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
                     dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                     dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
@@ -336,6 +336,22 @@ namespace KTKS_DonKH.GUI.BamChi
                     DSDon_BS.Filter = expression;
                     _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
                 }
+        }
+
+        private void dgvDSCTBamChi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDSCTBamChi.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowBamChi frm = new frmShowBamChi(decimal.Parse(dgvDSCTBamChi["MaCTBC", dgvDSCTBamChi.CurrentRow.Index].Value.ToString()));
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                        DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi();
+                    else
+                        DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi(CTaiKhoan.MaUser);
+                }
+
+            }
         }
     }
 }

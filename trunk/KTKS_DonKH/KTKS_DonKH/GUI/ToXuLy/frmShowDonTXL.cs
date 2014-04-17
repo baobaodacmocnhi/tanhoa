@@ -66,6 +66,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (_cDonTXL.getDonTXLbyID(decimal.Parse(_source["MaDon"])) != null)
             {
+                this.Location = new Point(70, 70);
                 cmbLD.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL(true);
                 cmbLD.DisplayMember = "TenLD";
                 cmbLD.ValueMember = "MaLD";

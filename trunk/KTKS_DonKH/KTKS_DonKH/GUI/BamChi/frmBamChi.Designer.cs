@@ -282,6 +282,7 @@
             // 
             // cmbChiKhoaGoc
             // 
+            this.cmbChiKhoaGoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChiKhoaGoc.FormattingEnabled = true;
             this.cmbChiKhoaGoc.Items.AddRange(new object[] {
             "Còn",
@@ -290,6 +291,7 @@
             "Mục đứt",
             "Đứt"});
             this.cmbChiKhoaGoc.Location = new System.Drawing.Point(857, 41);
+            this.cmbChiKhoaGoc.MaxDropDownItems = 50;
             this.cmbChiKhoaGoc.Name = "cmbChiKhoaGoc";
             this.cmbChiKhoaGoc.Size = new System.Drawing.Size(70, 25);
             this.cmbChiKhoaGoc.TabIndex = 17;
@@ -312,6 +314,7 @@
             // 
             // cmbChiMatSo
             // 
+            this.cmbChiMatSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChiMatSo.FormattingEnabled = true;
             this.cmbChiMatSo.Items.AddRange(new object[] {
             "Còn",
@@ -320,6 +323,7 @@
             "Mục đứt",
             "Đứt"});
             this.cmbChiMatSo.Location = new System.Drawing.Point(781, 41);
+            this.cmbChiMatSo.MaxDropDownItems = 50;
             this.cmbChiMatSo.Name = "cmbChiMatSo";
             this.cmbChiMatSo.Size = new System.Drawing.Size(70, 25);
             this.cmbChiMatSo.TabIndex = 15;
@@ -368,6 +372,7 @@
             // 
             // cmbTinhTrangChiSo
             // 
+            this.cmbTinhTrangChiSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangChiSo.FormattingEnabled = true;
             this.cmbTinhTrangChiSo.Items.AddRange(new object[] {
             "Chạy",
@@ -379,6 +384,7 @@
             "Không nước",
             "Kiếng mờ"});
             this.cmbTinhTrangChiSo.Location = new System.Drawing.Point(356, 42);
+            this.cmbTinhTrangChiSo.MaxDropDownItems = 50;
             this.cmbTinhTrangChiSo.Name = "cmbTinhTrangChiSo";
             this.cmbTinhTrangChiSo.Size = new System.Drawing.Size(165, 25);
             this.cmbTinhTrangChiSo.TabIndex = 7;
@@ -411,6 +417,7 @@
             // 
             // cmbTinhTrangKiemTra
             // 
+            this.cmbTinhTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangKiemTra.FormattingEnabled = true;
             this.cmbTinhTrangKiemTra.Items.AddRange(new object[] {
             "Nhà đóng cửa",
@@ -425,6 +432,7 @@
             "BB gian lận ĐHN",
             "BB phối hợp gian lận nước"});
             this.cmbTinhTrangKiemTra.Location = new System.Drawing.Point(106, 42);
+            this.cmbTinhTrangKiemTra.MaxDropDownItems = 50;
             this.cmbTinhTrangKiemTra.Name = "cmbTinhTrangKiemTra";
             this.cmbTinhTrangKiemTra.Size = new System.Drawing.Size(188, 25);
             this.cmbTinhTrangKiemTra.TabIndex = 3;
@@ -450,6 +458,7 @@
             // 
             // cmbTrangThai
             // 
+            this.cmbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTrangThai.FormattingEnabled = true;
             this.cmbTrangThai.Items.AddRange(new object[] {
             "Bấm Chì Góc - COUDE",
@@ -462,6 +471,7 @@
             "Hầm Sâu",
             "Trở Ngại Khác"});
             this.cmbTrangThai.Location = new System.Drawing.Point(229, 90);
+            this.cmbTrangThai.MaxDropDownItems = 50;
             this.cmbTrangThai.Name = "cmbTrangThai";
             this.cmbTrangThai.Size = new System.Drawing.Size(161, 25);
             this.cmbTrangThai.TabIndex = 21;
@@ -618,7 +628,7 @@
             // MaCTBC
             // 
             this.MaCTBC.DataPropertyName = "MaCTBC";
-            this.MaCTBC.HeaderText = "MaCTKTXM";
+            this.MaCTBC.HeaderText = "MaCTBC";
             this.MaCTBC.Name = "MaCTBC";
             this.MaCTBC.Visible = false;
             // 
@@ -735,13 +745,6 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvDSNhapBamChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTBC;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.ComboBox cmbTinhTrangKiemTra;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cmbTinhTrangChiSo;
@@ -754,5 +757,12 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtMucDichSuDung;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCTBC;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
     }
 }
