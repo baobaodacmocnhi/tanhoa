@@ -21,6 +21,7 @@ using KTKS_DonKH.BaoCao;
 using CrystalDecisions.CrystalReports.Engine;
 using System.Drawing.Printing;
 using KTKS_DonKH.GUI.ToXuLy;
+using System.Threading;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -871,7 +872,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                 //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
                                 rpt.PrintToPrinter(1, false, 1, 1);
-
+                                Thread.Sleep(31000);
                             }
                     }
                     else
@@ -967,6 +968,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
                                     rpt.PrintToPrinter(1, false, 1, 1);
+                                    Thread.Sleep(31000);
                                 }
                         }
                         else

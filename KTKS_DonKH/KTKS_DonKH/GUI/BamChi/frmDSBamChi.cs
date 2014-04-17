@@ -353,5 +353,35 @@ namespace KTKS_DonKH.GUI.BamChi
 
             }
         }
+
+        private void btnInQuetToanVatTu_Click(object sender, EventArgs e)
+        {
+            if (radDSBamChi.Checked)
+            {
+                DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["QuyetToanVatTu"].NewRow();
+
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["Co"] = itemRow["Co"];
+                    dr["VienChi"] = itemRow["VienChi"];
+                    dr["DayChi"] = itemRow["DayChi"];
+                    dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
+                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                    dsBaoCao.Tables["QuyetToanVatTu"].Rows.Add(dr);
+                }
+
+                rptQuyetToanVatTu rpt = new rptQuyetToanVatTu();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+        }
     }
 }

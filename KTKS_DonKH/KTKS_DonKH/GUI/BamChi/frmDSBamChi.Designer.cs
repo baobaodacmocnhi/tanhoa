@@ -90,6 +90,7 @@
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnInQuetToanVatTu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTBamChi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBamChi)).BeginInit();
@@ -619,7 +620,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(835, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(719, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
             this.panel_KhoangThoiGian.TabIndex = 23;
@@ -647,7 +648,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(1067, 12);
+            this.btnIn.Location = new System.Drawing.Point(917, 6);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(123, 35);
             this.btnIn.TabIndex = 22;
@@ -660,7 +661,7 @@
             // 
             this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
             this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(836, 39);
+            this.dateTimKiem.Location = new System.Drawing.Point(720, 39);
             this.dateTimKiem.Name = "dateTimKiem";
             this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
             this.dateTimKiem.TabIndex = 18;
@@ -670,7 +671,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(562, 19);
+            this.label2.Location = new System.Drawing.Point(446, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 14;
@@ -698,7 +699,7 @@
             "Ngày Lập",
             "Khoảng Thời Gian",
             "Danh Bộ"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(636, 16);
+            this.cmbTimTheo.Location = new System.Drawing.Point(520, 16);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
             this.cmbTimTheo.TabIndex = 15;
@@ -706,7 +707,7 @@
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(836, 16);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(720, 16);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem.TabIndex = 17;
@@ -716,11 +717,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(762, 19);
+            this.label1.Location = new System.Drawing.Point(646, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 16;
             this.label1.Text = "Nội Dung:";
+            // 
+            // btnInQuetToanVatTu
+            // 
+            this.btnInQuetToanVatTu.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInQuetToanVatTu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInQuetToanVatTu.Location = new System.Drawing.Point(1046, 6);
+            this.btnInQuetToanVatTu.Name = "btnInQuetToanVatTu";
+            this.btnInQuetToanVatTu.Size = new System.Drawing.Size(128, 35);
+            this.btnInQuetToanVatTu.TabIndex = 24;
+            this.btnInQuetToanVatTu.Text = "In Quyết Toán";
+            this.btnInQuetToanVatTu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInQuetToanVatTu.UseVisualStyleBackColor = true;
+            this.btnInQuetToanVatTu.Click += new System.EventHandler(this.btnInQuetToanVatTu_Click);
             // 
             // frmDSBamChi
             // 
@@ -728,6 +742,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1276, 596);
+            this.Controls.Add(this.btnInQuetToanVatTu);
             this.Controls.Add(this.radDaDuyet);
             this.Controls.Add(this.dgvDSCTBamChi);
             this.Controls.Add(this.radDSBamChi);
@@ -817,5 +832,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSoBC;
         private System.Windows.Forms.DataGridViewTextBoxColumn TheoYeuCau;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.Button btnInQuetToanVatTu;
     }
 }
