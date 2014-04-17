@@ -17,7 +17,7 @@
     <Shape ID="DesignTable:DSKTXM" ZOrder="4" X="671" Y="412" Height="200" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
     <Shape ID="DesignTable:DSBamChi" ZOrder="3" X="1087" Y="377" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:DSCapDinhMuc" ZOrder="2" X="69" Y="621" Height="238" Width="156" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
-    <Shape ID="DesignTable:DSChungTu" ZOrder="1" X="295" Y="624" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:DSChungTu" ZOrder="1" X="295" Y="624" Height="256" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

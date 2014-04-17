@@ -99,6 +99,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
             cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+            if (ctktxm.DongTienBoiThuong)
+            {
+                dateDongTien.Value = ctktxm.NgayDongTien.Value;
+                txtSoTien.Text = ctktxm.SoTien.ToString();
+            }
         }
 
         public void Clear()
@@ -163,19 +168,45 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 }
                 ///
                 _ctktxm.NgayKTXM = dateKTXM.Value;
-                _ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedText;
+
+                if (cmbTinhTrangKiemTra.SelectedItem != null)
+                _ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+
                 _ctktxm.Hieu = txtHieu.Text.Trim();
                 _ctktxm.Co = txtCo.Text.Trim();
                 _ctktxm.SoThan = txtSoThan.Text.Trim();
                 _ctktxm.ChiSo = txtChiSo.Text.Trim();
-                _ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedText;
-                _ctktxm.ChiMatSo = cmbChiMatSo.SelectedText;
-                _ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedText;
+
+                if (cmbTinhTrangChiSo.SelectedItem != null)
+                _ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                if (cmbChiMatSo.SelectedItem != null)
+                _ctktxm.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                if (cmbChiKhoaGoc.SelectedItem != null)
+                _ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
                 _ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                 _ctktxm.DienThoai = txtDienThoai.Text.Trim();
                 _ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
-                _ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedText;
+
+                if (cmbTinhTrangDHN.SelectedItem != null)
+                _ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedItem.ToString();
+
                 _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
+                if (chkDongTienBoiThuong.Checked)
+                {
+                    _ctktxm.DongTienBoiThuong = true;
+                    _ctktxm.NgayDongTien = dateDongTien.Value;
+                    if (!string.IsNullOrEmpty(txtSoTien.Text.Trim()))
+                        _ctktxm.SoTien = int.Parse(txtSoTien.Text.Trim());
+                }
+                else
+                {
+                    _ctktxm.DongTienBoiThuong = false;
+                    _ctktxm.NgayDongTien = null;
+                    _ctktxm.SoTien = null;
+                }
 
                 if (_cKTXM.SuaCTKTXM(_ctktxm))
                 {
@@ -275,6 +306,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     txtHoTenKHKy.Enabled = true;
                     break;
             }
+        }
+
+        private void chkDongTienBoiThuong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDongTienBoiThuong.Checked)
+                groupDongTienBoiThuong.Enabled = true;
+            else
+                groupDongTienBoiThuong.Enabled = false;
         }
     }
 }

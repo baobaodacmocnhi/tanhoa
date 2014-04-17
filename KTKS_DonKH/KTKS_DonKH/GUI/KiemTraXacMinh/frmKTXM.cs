@@ -265,18 +265,31 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
                         ///
                         ctktxm.NgayKTXM = dateKTXM.Value;
-                        ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedText;
+
+                        if (cmbTinhTrangKiemTra.SelectedItem != null)
+                            ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+
                         ctktxm.Hieu = txtHieu.Text.Trim();
                         ctktxm.Co = txtCo.Text.Trim();
                         ctktxm.SoThan = txtSoThan.Text.Trim();
                         ctktxm.ChiSo = txtChiSo.Text.Trim();
-                        ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedText;
-                        ctktxm.ChiMatSo = cmbChiMatSo.SelectedText;
-                        ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedText;
+
+                        if (cmbTinhTrangChiSo.SelectedItem != null)
+                        ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                        if (cmbChiMatSo.SelectedItem != null)
+                        ctktxm.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                        if (cmbChiKhoaGoc.SelectedItem != null)
+                        ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
                         ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                         ctktxm.DienThoai = txtDienThoai.Text.Trim();
                         ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
-                        ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedText;
+
+                        if (cmbTinhTrangDHN.SelectedItem != null)
+                        ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedItem.ToString();
+
                         ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
 
                         if (_cKTXM.ThemCTKTXM(ctktxm))
@@ -339,18 +352,31 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         }
                         ///
                         ctktxm.NgayKTXM = dateKTXM.Value;
-                        ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedText;
+
+                        if (cmbTinhTrangKiemTra.SelectedItem != null)
+                        ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+
                         ctktxm.Hieu = txtHieu.Text.Trim();
                         ctktxm.Co = txtCo.Text.Trim();
                         ctktxm.SoThan = txtSoThan.Text.Trim();
                         ctktxm.ChiSo = txtChiSo.Text.Trim();
-                        ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedText;
-                        ctktxm.ChiMatSo = cmbChiMatSo.SelectedText;
-                        ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedText;
+
+                        if (cmbTinhTrangChiSo.SelectedItem != null)
+                        ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                        if (cmbChiMatSo.SelectedItem != null)
+                        ctktxm.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                        if (cmbChiKhoaGoc.SelectedItem != null)
+                        ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
                         ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                         ctktxm.DienThoai = txtDienThoai.Text.Trim();
                         ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
-                        ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedText;
+
+                        if (cmbTinhTrangDHN.SelectedItem != null)
+                        ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedItem.ToString();
+
                         ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
 
                         if (_cKTXM.ThemCTKTXM(ctktxm))
@@ -392,18 +418,31 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     }
                     ///
                     ctktxm.NgayKTXM = dateKTXM.Value;
-                    ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedText;
+
+                    if (cmbTinhTrangKiemTra.SelectedItem != null)
+                    ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+
                     ctktxm.Hieu = txtHieu.Text.Trim();
                     ctktxm.Co = txtCo.Text.Trim();
                     ctktxm.SoThan = txtSoThan.Text.Trim();
                     ctktxm.ChiSo = txtChiSo.Text.Trim();
-                    ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedText;
-                    ctktxm.ChiMatSo = cmbChiMatSo.SelectedText;
-                    ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedText;
+
+                    if (cmbTinhTrangChiSo.SelectedItem != null)
+                    ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
+
+                    if (cmbChiMatSo.SelectedItem != null)
+                    ctktxm.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
+
+                    if (cmbChiKhoaGoc.SelectedItem != null)
+                    ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
+
                     ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                     ctktxm.DienThoai = txtDienThoai.Text.Trim();
                     ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
-                    ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedText;
+
+                    if (cmbTinhTrangDHN.SelectedItem != null)
+                    ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedItem.ToString();
+
                     ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
 
                     ///Nếu Đơn thuộc Tổ Xử Lý

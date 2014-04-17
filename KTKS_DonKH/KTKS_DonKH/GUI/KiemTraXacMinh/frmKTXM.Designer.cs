@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -272,14 +272,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -381,6 +381,7 @@
             // 
             // cmbTinhTrangDHN
             // 
+            this.cmbTinhTrangDHN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangDHN.FormattingEnabled = true;
             this.cmbTinhTrangDHN.Items.AddRange(new object[] {
             "Còn",
@@ -396,6 +397,7 @@
             "Đóng nước",
             "Cắt ống bên ngoài"});
             this.cmbTinhTrangDHN.Location = new System.Drawing.Point(310, 41);
+            this.cmbTinhTrangDHN.MaxDropDownItems = 50;
             this.cmbTinhTrangDHN.Name = "cmbTinhTrangDHN";
             this.cmbTinhTrangDHN.Size = new System.Drawing.Size(165, 25);
             this.cmbTinhTrangDHN.TabIndex = 5;
@@ -411,6 +413,7 @@
             // 
             // cmbChiKhoaGoc
             // 
+            this.cmbChiKhoaGoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChiKhoaGoc.FormattingEnabled = true;
             this.cmbChiKhoaGoc.Items.AddRange(new object[] {
             "Còn",
@@ -419,12 +422,14 @@
             "Mục đứt",
             "Đứt"});
             this.cmbChiKhoaGoc.Location = new System.Drawing.Point(308, 104);
+            this.cmbChiKhoaGoc.MaxDropDownItems = 50;
             this.cmbChiKhoaGoc.Name = "cmbChiKhoaGoc";
             this.cmbChiKhoaGoc.Size = new System.Drawing.Size(70, 25);
             this.cmbChiKhoaGoc.TabIndex = 19;
             // 
             // cmbChiMatSo
             // 
+            this.cmbChiMatSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChiMatSo.FormattingEnabled = true;
             this.cmbChiMatSo.Items.AddRange(new object[] {
             "Còn",
@@ -433,12 +438,14 @@
             "Mục đứt",
             "Đứt"});
             this.cmbChiMatSo.Location = new System.Drawing.Point(308, 73);
+            this.cmbChiMatSo.MaxDropDownItems = 50;
             this.cmbChiMatSo.Name = "cmbChiMatSo";
             this.cmbChiMatSo.Size = new System.Drawing.Size(70, 25);
             this.cmbChiMatSo.TabIndex = 17;
             // 
             // cmbTinhTrangChiSo
             // 
+            this.cmbTinhTrangChiSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangChiSo.FormattingEnabled = true;
             this.cmbTinhTrangChiSo.Items.AddRange(new object[] {
             "Chạy",
@@ -450,6 +457,7 @@
             "Không nước",
             "Kiếng mờ"});
             this.cmbTinhTrangChiSo.Location = new System.Drawing.Point(540, 42);
+            this.cmbTinhTrangChiSo.MaxDropDownItems = 50;
             this.cmbTinhTrangChiSo.Name = "cmbTinhTrangChiSo";
             this.cmbTinhTrangChiSo.Size = new System.Drawing.Size(165, 25);
             this.cmbTinhTrangChiSo.TabIndex = 9;
@@ -465,11 +473,13 @@
             // 
             // cmbTinhTrangKiemTra
             // 
+            this.cmbTinhTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangKiemTra.FormattingEnabled = true;
             this.cmbTinhTrangKiemTra.Items.AddRange(new object[] {
             "Nhà đóng cửa",
             "Nhà có tang, trẻ em, người già",
             "Chỉ số nước bất thường",
+            "Hóa Đơn = 0",
             "Điều chỉnh biến động KH",
             "Gắn lại ĐHN do thu hồi",
             "BB chạy ngược",
@@ -481,6 +491,7 @@
             "BB gian lận ĐHN",
             "BB phối hợp gian lận nước"});
             this.cmbTinhTrangKiemTra.Location = new System.Drawing.Point(114, 42);
+            this.cmbTinhTrangKiemTra.MaxDropDownItems = 50;
             this.cmbTinhTrangKiemTra.Name = "cmbTinhTrangKiemTra";
             this.cmbTinhTrangKiemTra.Size = new System.Drawing.Size(188, 25);
             this.cmbTinhTrangKiemTra.TabIndex = 3;

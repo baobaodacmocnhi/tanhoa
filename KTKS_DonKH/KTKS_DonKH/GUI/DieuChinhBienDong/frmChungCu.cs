@@ -114,6 +114,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
                     dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
+                    dr["DiaChiCT"] = dgvKhachHangChungCu["DiaChi", i].Value.ToString();
                     dr["SoNKTong"] = dgvKhachHangChungCu["SoNKTong", i].Value.ToString();
                     dr["SoNKDangKy"] = dgvKhachHangChungCu["SoNKDangKy", i].Value.ToString();
                     dr["GhiChu"] = dgvKhachHangChungCu["GhiChu", i].Value.ToString();

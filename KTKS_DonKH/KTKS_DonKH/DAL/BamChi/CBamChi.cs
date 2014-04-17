@@ -399,7 +399,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 orderby itemCTBamChi.BamChi.MaDon ascending
                                 select new
                                 {
-                                    itemCTBamChi.MaBC,
+                                    itemCTBamChi.MaCTBC,
                                     itemCTBamChi.BamChi.MaDon,
                                     itemCTBamChi.DanhBo,
                                     itemCTBamChi.HoTen,
@@ -418,7 +418,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     orderby itemCTBamChi.BamChi.MaDon ascending
                                     select new
                                     {
-                                        itemCTBamChi.MaBC,
+                                        itemCTBamChi.MaCTBC,
                                         itemCTBamChi.BamChi.MaDon,
                                         itemCTBamChi.DanhBo,
                                         itemCTBamChi.HoTen,
@@ -460,8 +460,9 @@ namespace KTKS_DonKH.DAL.BamChi
                                 orderby itemCTBamChi.BamChi.MaDonTXL ascending
                                 select new
                                 {
-                                    itemCTBamChi.MaBC,
-                                    itemCTBamChi.BamChi.MaDonTXL,
+                                    itemCTBamChi.MaCTBC,
+                                    MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                    itemCTBamChi.BamChi.ToXuLy,
                                     itemCTBamChi.DanhBo,
                                     itemCTBamChi.HoTen,
                                     itemCTBamChi.DiaChi,
@@ -479,7 +480,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     orderby itemCTBamChi.BamChi.MaDonTXL ascending
                                     select new
                                     {
-                                        itemCTBamChi.MaBC,
+                                        itemCTBamChi.MaCTBC,
                                         MaDon=itemCTBamChi.BamChi.MaDonTXL,
                                         itemCTBamChi.DanhBo,
                                         itemCTBamChi.HoTen,
