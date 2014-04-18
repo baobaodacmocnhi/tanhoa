@@ -205,7 +205,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
-                        if (_cBamChi.CheckCTBamChibyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
+                        if (_cBamChi.CheckCTBamChibyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(),dateBamChi.Value))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -272,6 +272,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
                             _ttkhachhang = null;
                             txtChiSo.Text = "";
+                            cmbTinhTrangChiSo.SelectedIndex = -1;
                         }
                     }
                     else
@@ -296,7 +297,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 _cDonKH.SuaDonKH(_donkh, true);
                             }
                         }
-                        if (_cBamChi.CheckCTBamChibyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                        if (_cBamChi.CheckCTBamChibyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim(),dateBamChi.Value))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -363,6 +364,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_donkh.MaDon, CTaiKhoan.MaUser);
                             _ttkhachhang = null;
                             txtChiSo.Text = "";
+                            cmbTinhTrangChiSo.SelectedIndex = -1;
                         }
                     }
                     else
@@ -526,7 +528,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void cmbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbTrangThai.SelectedText)
+            switch (cmbTrangThai.SelectedItem.ToString())
             {
                 case "Bấm Chì Thân":
                 case "Đóng Cửa":

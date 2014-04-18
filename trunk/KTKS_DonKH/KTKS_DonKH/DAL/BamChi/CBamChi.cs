@@ -509,11 +509,11 @@ namespace KTKS_DonKH.DAL.BamChi
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTBamChibyMaDonDanhBo(decimal MaDon, string DanhBo)
+        public bool CheckCTBamChibyMaDonDanhBo(decimal MaDon, string DanhBo, DateTime NgayBC)
         {
             try
             {
-                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.DanhBo == DanhBo);
+                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.DanhBo == DanhBo && itemCTBamChi.NgayBC == NgayBC);
             }
             catch (Exception ex)
             {
@@ -528,11 +528,11 @@ namespace KTKS_DonKH.DAL.BamChi
         /// <param name="MaDonTXL"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTBamChibyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        public bool CheckCTBamChibyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo,DateTime NgayBC)
         {
             try
             {
-                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.DanhBo == DanhBo);
+                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.DanhBo == DanhBo && itemCTBamChi.NgayBC == NgayBC);
             }
             catch (Exception ex)
             {
@@ -637,8 +637,17 @@ namespace KTKS_DonKH.DAL.BamChi
                                           itemCTBamChi.BamChi.MaDon,
                                           itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
                                           itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
                                           itemCTBamChi.HoTen,
                                           itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThai,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
                                           itemCTBamChi.NgayBC,
                                           CreateBy = itemUser.HoTen,
                                       };
@@ -654,8 +663,17 @@ namespace KTKS_DonKH.DAL.BamChi
                                            MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                            itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
                                            itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
                                            itemCTBamChi.HoTen,
                                            itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThai,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
                                            itemCTBamChi.NgayBC,
                                            CreateBy = itemUser.HoTen,
                                        };

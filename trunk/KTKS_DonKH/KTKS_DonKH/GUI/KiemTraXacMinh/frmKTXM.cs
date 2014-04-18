@@ -99,14 +99,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtNoiDungKiemTra.Text = "";
             ///
             dateKTXM.Value = DateTime.Now;
-            cmbTinhTrangKiemTra.SelectedIndex = -1;
+            //cmbTinhTrangKiemTra.SelectedIndex = -1;
             txtHieu.Text = "";
             txtCo.Text = "";
             txtSoThan.Text = "";
             txtChiSo.Text = "";
-            //cmbTinhTrangChiSo.SelectedIndex = -1;
-            cmbChiMatSo.SelectedIndex = -1;
-            cmbChiKhoaGoc.SelectedIndex = -1;
+            cmbTinhTrangChiSo.SelectedIndex = -1;
+            //cmbChiMatSo.SelectedIndex = -1;
+            //cmbChiKhoaGoc.SelectedIndex = -1;
             txtMucDichSuDung.Text = "";
             txtDienThoai.Text = "";
             txtHoTenKHKy.Text = "";

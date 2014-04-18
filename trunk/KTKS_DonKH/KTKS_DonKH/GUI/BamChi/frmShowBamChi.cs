@@ -318,6 +318,26 @@ namespace KTKS_DonKH.GUI.BamChi
             }
         }
 
+        private void cmbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTrangThai.SelectedItem.ToString())
+            {
+                case "Bấm Chì Thân":
+                case "Đóng Cửa":
+                case "Lấp Chừa Mặt Số":
+                case "Còn Chì":
+                case "Hầm Sâu":
+                case "Trở Ngại Khác":
+                    txtVienChi.Text = "";
+                    txtDayChi.Text = "";
+                    break;
+                default:
+                    txtVienChi.Text = "1";
+                    txtDayChi.Text = "0.6";
+                    break;
+            }
+        }
+
         
     }
 }

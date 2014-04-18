@@ -574,7 +574,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(904, 92);
+            this.btnSua.Location = new System.Drawing.Point(975, 180);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(65, 35);
             this.btnSua.TabIndex = 5;
@@ -587,7 +587,7 @@
             // 
             this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(658, 92);
+            this.btnThem.Location = new System.Drawing.Point(975, 248);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(77, 35);
             this.btnThem.TabIndex = 4;
@@ -619,7 +619,7 @@
             this.NguoiDi});
             this.dgvDSNhapBamChi.Location = new System.Drawing.Point(12, 289);
             this.dgvDSNhapBamChi.Name = "dgvDSNhapBamChi";
-            this.dgvDSNhapBamChi.Size = new System.Drawing.Size(1013, 254);
+            this.dgvDSNhapBamChi.Size = new System.Drawing.Size(1013, 266);
             this.dgvDSNhapBamChi.TabIndex = 6;
             this.dgvDSNhapBamChi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSNhapBamChi_CellContentClick);
             this.dgvDSNhapBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSNhapBamChi_CellFormatting);
@@ -683,7 +683,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1038, 552);
+            this.ClientSize = new System.Drawing.Size(1143, 567);
             this.Controls.Add(this.dgvDSNhapBamChi);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
