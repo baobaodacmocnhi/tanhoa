@@ -343,6 +343,7 @@
             this.cmbTrangThai.Name = "cmbTrangThai";
             this.cmbTrangThai.Size = new System.Drawing.Size(161, 25);
             this.cmbTrangThai.TabIndex = 51;
+            this.cmbTrangThai.SelectedIndexChanged += new System.EventHandler(this.cmbTrangThai_SelectedIndexChanged);
             // 
             // label12
             // 
