@@ -20,6 +20,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         TTKhachHang _ttkhachhang = new TTKhachHang();
         CChungTu _cChungTu = new CChungTu();
         BindingSource DSKHCC_BS = new BindingSource();
+        CChiNhanh _cChiNhanh = new CChiNhanh();
 
         public frmChungCu()
         {
@@ -247,6 +248,40 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void btnInDSCatChuyen_Click(object sender, EventArgs e)
+        {
+            if (_ttkhachhang != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                List<LichSuChungTu> lstLSCT = _cChungTu.getLichSuChungTubyDanhBo(txtDanhBo.Text.Trim());
+
+                foreach (LichSuChungTu itemLSCT in lstLSCT)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSCatChuyen"].NewRow();
+
+                    dr["Lo"] = _cChungTu.getCTChungTubyID(itemLSCT.DanhBo, itemLSCT.MaCT).Lo;
+                    dr["Phong"] = _cChungTu.getCTChungTubyID(itemLSCT.DanhBo, itemLSCT.MaCT).Phong;
+                    dr["DanhBo_Nhan"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+                    dr["MaCT"] = itemLSCT.MaCT;
+                    dr["DiaChiNoiCat"] = itemLSCT.CatNK_DiaChi;
+                    dr["TongNK"] = itemLSCT.SoNKTong;
+                    dr["SoNKCat"] = itemLSCT.SoNKNhan;
+                    dr["NoiCat"] = _cChiNhanh.getTenChiNhanhbyID(itemLSCT.CatNK_MaCN.Value);
+                    if (!string.IsNullOrEmpty(itemLSCT.CatNK_DanhBo))
+                        dr["DanhBo_Cat"] = itemLSCT.CatNK_DanhBo.Insert(7, " ").Insert(4, " ");
+                    else
+                        dr["DanhBo_Cat"] = "";
+
+                    dsBaoCao.Tables["DSCatChuyen"].Rows.Add(dr);
+                }
+                rptDSCatChuyen rpt = new rptDSCatChuyen();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+
             }
         }
     }

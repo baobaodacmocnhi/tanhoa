@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>36</ApplicationRevision>
+    <ApplicationRevision>39</ApplicationRevision>
     <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -140,6 +140,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPhieuCHDBx2.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptThongKeDCBD.cs">
+      <DependentUpon>rptThongKeDCBD.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\DieuChinhBienDong\rptDSCapDinhMuc.cs">
       <AutoGen>True</AutoGen>
@@ -390,11 +396,11 @@
     <Compile Include="GUI\CatHuyDanhBo\frmShowCTDB.Designer.cs">
       <DependentUpon>frmShowCTDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmBCCapDinhMuc.cs">
+    <Compile Include="GUI\DieuChinhBienDong\frmBaoCaoDCBD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmBCCapDinhMuc.Designer.cs">
-      <DependentUpon>frmBCCapDinhMuc.cs</DependentUpon>
+    <Compile Include="GUI\DieuChinhBienDong\frmBaoCaoDCBD.Designer.cs">
+      <DependentUpon>frmBaoCaoDCBD.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmCatChuyenDM.cs">
       <SubType>Form</SubType>
@@ -626,6 +632,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuCHDBx2.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptThongKeDCBD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongKeDCBD.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptDSCapDinhMuc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSCapDinhMuc.cs</LastGenOutput>
@@ -753,8 +763,8 @@
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmShowCTDB.resx">
       <DependentUpon>frmShowCTDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmBCCapDinhMuc.resx">
-      <DependentUpon>frmBCCapDinhMuc.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmBaoCaoDCBD.resx">
+      <DependentUpon>frmBaoCaoDCBD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmCatChuyenDM.resx">
       <DependentUpon>frmCatChuyenDM.cs</DependentUpon>

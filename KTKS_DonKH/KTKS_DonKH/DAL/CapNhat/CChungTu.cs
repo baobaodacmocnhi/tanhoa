@@ -489,6 +489,24 @@ namespace KTKS_DonKH.DAL.CapNhat
         }
 
         /// <summary>
+        /// Lấy LichSuChungTu dự theo Số Phiếu!=null & Danh Bộ
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public List<LichSuChungTu> getLichSuChungTubyDanhBo(string DanhBo)
+        {
+            try
+            {
+                return db.LichSuChungTus.Where(itemLSCT => itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo).OrderBy(itemLSCT=>itemLSCT.CreateDate).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Kiểm tra lichsuchungtu có số phiếu chưa
         /// </summary>
         /// <param name="SoPhieu"></param>

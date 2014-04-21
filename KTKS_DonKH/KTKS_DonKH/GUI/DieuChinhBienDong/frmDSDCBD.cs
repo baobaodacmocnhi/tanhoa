@@ -130,7 +130,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (radDSDCBD.Checked)
             {
                 DSDCBD_BS = new BindingSource();
-                DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBD();
+                DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                 dgvDSDCBD.DataSource = DSDCBD_BS;
 
                 dgvDSDCBD.Columns["ChuyenDocSo"].Visible = true;
@@ -872,7 +872,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                 //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
                                 rpt.PrintToPrinter(1, false, 1, 1);
-                                Thread.Sleep(31000);
+                                //Thread.Sleep(31000);
                             }
                     }
                     else
@@ -968,7 +968,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
                                     rpt.PrintToPrinter(1, false, 1, 1);
-                                    Thread.Sleep(31000);
+                                    //Thread.Sleep(31000);
                                 }
                         }
                         else
@@ -1245,7 +1245,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         + " không có bên QLĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBD();
+                        DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                     }
                     catch (Exception ex)
                     {
