@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -159,6 +159,7 @@
             this.cmbTinhTrangDHN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangDHN.FormattingEnabled = true;
             this.cmbTinhTrangDHN.Items.AddRange(new object[] {
+            "",
             "Còn",
             "Mất",
             "Không ĐHN",
@@ -170,7 +171,8 @@
             "Chất đồ",
             "Gắn ngược",
             "Đóng nước",
-            "Cắt ống bên ngoài"});
+            "Cắt ống bên ngoài",
+            "Kẹt khóa"});
             this.cmbTinhTrangDHN.Location = new System.Drawing.Point(310, 41);
             this.cmbTinhTrangDHN.MaxDropDownItems = 50;
             this.cmbTinhTrangDHN.Name = "cmbTinhTrangDHN";
@@ -182,15 +184,16 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(307, 21);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(109, 17);
+            this.label20.Size = new System.Drawing.Size(122, 17);
             this.label20.TabIndex = 32;
-            this.label20.Text = "Tình Trạng ĐHN";
+            this.label20.Text = "ĐHN lúc Kiểm Tra";
             // 
             // cmbChiKhoaGoc
             // 
             this.cmbChiKhoaGoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChiKhoaGoc.FormattingEnabled = true;
             this.cmbChiKhoaGoc.Items.AddRange(new object[] {
+            "",
             "Còn",
             "Không",
             "Lấp",
@@ -207,6 +210,7 @@
             this.cmbChiMatSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChiMatSo.FormattingEnabled = true;
             this.cmbChiMatSo.Items.AddRange(new object[] {
+            "",
             "Còn",
             "Không",
             "Lấp",
@@ -223,6 +227,7 @@
             this.cmbTinhTrangChiSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangChiSo.FormattingEnabled = true;
             this.cmbTinhTrangChiSo.Items.AddRange(new object[] {
+            "",
             "Chạy",
             "NCN",
             "Chạy lết",
@@ -242,15 +247,16 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(537, 22);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(115, 17);
+            this.label19.Size = new System.Drawing.Size(128, 17);
             this.label19.TabIndex = 36;
-            this.label19.Text = "Tình Trạng Chỉ Số";
+            this.label19.Text = "Chỉ Số lúc Kiểm Tra";
             // 
             // cmbTinhTrangKiemTra
             // 
             this.cmbTinhTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangKiemTra.FormattingEnabled = true;
             this.cmbTinhTrangKiemTra.Items.AddRange(new object[] {
+            "",
             "Nhà đóng cửa",
             "Nhà có tang, trẻ em, người già",
             "Chỉ số nước bất thường",
@@ -278,9 +284,9 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(111, 22);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(132, 17);
+            this.label18.Size = new System.Drawing.Size(120, 17);
             this.label18.TabIndex = 30;
-            this.label18.Text = "Tình Trạng Kiểm Tra";
+            this.label18.Text = "Hiện Tra Kiểm Tra";
             // 
             // txtHoTenKHKy
             // 
@@ -594,14 +600,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,

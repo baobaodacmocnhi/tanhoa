@@ -73,7 +73,7 @@
             this.ribbtnDCBD = new System.Windows.Forms.RibbonButton();
             this.ribbtnDCHD = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel18 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnCapDinhMuc = new System.Windows.Forms.RibbonButton();
+            this.ribbtnBaoCao = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel19 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnChungCu = new System.Windows.Forms.RibbonButton();
             this.ribbonTab6 = new System.Windows.Forms.RibbonTab();
@@ -436,16 +436,16 @@
             // 
             this.ribbonPanel18.ButtonMoreEnabled = false;
             this.ribbonPanel18.ButtonMoreVisible = false;
-            this.ribbonPanel18.Items.Add(this.ribbtnCapDinhMuc);
+            this.ribbonPanel18.Items.Add(this.ribbtnBaoCao);
             this.ribbonPanel18.Text = "Báo Cáo";
             // 
-            // ribbtnCapDinhMuc
+            // ribbtnBaoCao
             // 
-            this.ribbtnCapDinhMuc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnCapDinhMuc.MinimumSize = new System.Drawing.Size(90, 0);
-            this.ribbtnCapDinhMuc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnCapDinhMuc.SmallImage")));
-            this.ribbtnCapDinhMuc.Text = "Cấp Định Mức";
-            this.ribbtnCapDinhMuc.Click += new System.EventHandler(this.ribbtnCapDinhMuc_Click);
+            this.ribbtnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnBaoCao.MinimumSize = new System.Drawing.Size(110, 0);
+            this.ribbtnBaoCao.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnBaoCao.SmallImage")));
+            this.ribbtnBaoCao.Text = "Các Loại Báo Cáo";
+            this.ribbtnBaoCao.Click += new System.EventHandler(this.ribbtnBaoCao_Click);
             // 
             // ribbonPanel19
             // 
@@ -720,7 +720,7 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel17;
         private System.Windows.Forms.RibbonButton ribbtnNhapBamChi;
         private System.Windows.Forms.RibbonPanel ribbonPanel18;
-        private System.Windows.Forms.RibbonButton ribbtnCapDinhMuc;
+        private System.Windows.Forms.RibbonButton ribbtnBaoCao;
         private System.Windows.Forms.RibbonPanel ribbonPanel19;
         private System.Windows.Forms.RibbonButton ribbtnChungCu;
     }

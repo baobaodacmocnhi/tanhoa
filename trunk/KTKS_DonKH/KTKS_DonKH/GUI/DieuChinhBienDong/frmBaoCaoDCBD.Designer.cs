@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
-    partial class frmBCCapDinhMuc
+    partial class frmBaoCaoDCBD
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBaoCao = new System.Windows.Forms.Button();
+            this.radThongKeDMCap = new System.Windows.Forms.RadioButton();
+            this.radThongKeDCBD = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +67,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(194, 1);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
             this.panel_KhoangThoiGian.TabIndex = 18;
@@ -112,7 +114,7 @@
             // 
             this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
             this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.Location = new System.Drawing.Point(392, 1);
+            this.btnBaoCao.Location = new System.Drawing.Point(733, 2);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
             this.btnBaoCao.TabIndex = 19;
@@ -121,24 +123,49 @@
             this.btnBaoCao.UseVisualStyleBackColor = true;
             this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
             // 
-            // frmBCCapDinhMuc
+            // radThongKeDMCap
+            // 
+            this.radThongKeDMCap.AutoSize = true;
+            this.radThongKeDMCap.Location = new System.Drawing.Point(71, 7);
+            this.radThongKeDMCap.Name = "radThongKeDMCap";
+            this.radThongKeDMCap.Size = new System.Drawing.Size(177, 21);
+            this.radThongKeDMCap.TabIndex = 20;
+            this.radThongKeDMCap.TabStop = true;
+            this.radThongKeDMCap.Text = "Thống Kê Định Mức Cấp";
+            this.radThongKeDMCap.UseVisualStyleBackColor = true;
+            // 
+            // radThongKeDCBD
+            // 
+            this.radThongKeDCBD.AutoSize = true;
+            this.radThongKeDCBD.Location = new System.Drawing.Point(71, 34);
+            this.radThongKeDCBD.Name = "radThongKeDCBD";
+            this.radThongKeDCBD.Size = new System.Drawing.Size(131, 21);
+            this.radThongKeDCBD.TabIndex = 21;
+            this.radThongKeDCBD.TabStop = true;
+            this.radThongKeDCBD.Text = "Thống Kê ĐCBD";
+            this.radThongKeDCBD.UseVisualStyleBackColor = true;
+            // 
+            // frmBaoCao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.radThongKeDCBD);
+            this.Controls.Add(this.radThongKeDMCap);
             this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmBCCapDinhMuc";
+            this.Name = "frmBaoCao";
             this.Text = "Báo Cáo Cấp Định Mức (ĐCBD)";
             this.Load += new System.EventHandler(this.frmBCCapDinhMuc_Load);
             this.panel1.ResumeLayout(false);
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -152,5 +179,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBaoCao;
+        private System.Windows.Forms.RadioButton radThongKeDMCap;
+        private System.Windows.Forms.RadioButton radThongKeDCBD;
     }
 }

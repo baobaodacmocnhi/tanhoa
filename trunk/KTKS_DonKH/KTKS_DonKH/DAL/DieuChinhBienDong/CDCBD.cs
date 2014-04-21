@@ -536,10 +536,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         }
 
         /// <summary>
-        /// Lấy Danh Sách Điều Chỉnh Biến Động
+        /// Lấy Danh Sách Tất cả Điều Chỉnh Biến Động
         /// </summary>
         /// <returns></returns>
-        public DataTable LoadDSDCBD()
+        public DataTable LoadDSCTDCBD()
         {
             try
             {
@@ -565,6 +565,111 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc,
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Điều Chỉnh Biến Động trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTDCBD(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateDate.Value.Date==TuNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.SH_BD,
+                                    itemCTDCBD.SX_BD,
+                                    itemCTDCBD.DV_BD,
+                                    itemCTDCBD.HCSN_BD,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Điều Chỉnh Biến Động trong Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTDCBD(DateTime TuNgay,DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateDate.Value.Date>=TuNgay.Date && itemCTDCBD.CreateDate.Value.Date<=DenNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.SH_BD,
+                                    itemCTDCBD.SX_BD,
+                                    itemCTDCBD.DV_BD,
+                                    itemCTDCBD.HCSN_BD,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

@@ -285,6 +285,7 @@
             this.cmbChiKhoaGoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChiKhoaGoc.FormattingEnabled = true;
             this.cmbChiKhoaGoc.Items.AddRange(new object[] {
+            "",
             "Còn",
             "Không",
             "Lấp",
@@ -317,6 +318,7 @@
             this.cmbChiMatSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChiMatSo.FormattingEnabled = true;
             this.cmbChiMatSo.Items.AddRange(new object[] {
+            "",
             "Còn",
             "Không",
             "Lấp",
@@ -375,6 +377,7 @@
             this.cmbTinhTrangChiSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangChiSo.FormattingEnabled = true;
             this.cmbTinhTrangChiSo.Items.AddRange(new object[] {
+            "",
             "Chạy",
             "NCN",
             "Chạy lết",
@@ -394,9 +397,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(353, 22);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(115, 17);
+            this.label19.Size = new System.Drawing.Size(128, 17);
             this.label19.TabIndex = 6;
-            this.label19.Text = "Tình Trạng Chỉ Số";
+            this.label19.Text = "Chỉ Số lúc Kiểm Tra";
             // 
             // label13
             // 
@@ -420,6 +423,7 @@
             this.cmbTinhTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTinhTrangKiemTra.FormattingEnabled = true;
             this.cmbTinhTrangKiemTra.Items.AddRange(new object[] {
+            "",
             "Nhà đóng cửa",
             "Nhà có tang, trẻ em, người già",
             "Bấm chì ĐHN",
@@ -452,15 +456,16 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(103, 22);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(132, 17);
+            this.label18.Size = new System.Drawing.Size(134, 17);
             this.label18.TabIndex = 2;
-            this.label18.Text = "Tình Trạng Kiểm Tra";
+            this.label18.Text = "Hiện Trạng Kiểm Tra";
             // 
             // cmbTrangThai
             // 
             this.cmbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTrangThai.FormattingEnabled = true;
             this.cmbTrangThai.Items.AddRange(new object[] {
+            "",
             "Bấm Chì Góc - COUDE",
             "Bấm Chì Thân",
             "Đóng Cửa",
@@ -549,9 +554,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(226, 70);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 17);
+            this.label5.Size = new System.Drawing.Size(128, 17);
             this.label5.TabIndex = 20;
-            this.label5.Text = "Trạng Thái";
+            this.label5.Text = "Trạng Thái Bấm Chì";
             // 
             // txtChiSo
             // 

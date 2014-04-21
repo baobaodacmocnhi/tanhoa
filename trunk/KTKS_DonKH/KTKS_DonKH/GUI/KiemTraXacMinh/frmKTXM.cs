@@ -98,7 +98,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = "";
             txtNoiDungKiemTra.Text = "";
             ///
-            dateKTXM.Value = DateTime.Now;
+            //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
             txtHieu.Text = "";
             txtCo.Text = "";

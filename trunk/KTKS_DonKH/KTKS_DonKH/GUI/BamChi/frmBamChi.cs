@@ -271,6 +271,13 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
                             _ttkhachhang = null;
+                            txtDanhBo.Text = "";
+                            txtHopDong.Text = "";
+                            txtHoTen.Text = "";
+                            txtDiaChi.Text = "";
+                            txtGiaBieu.Text = "";
+                            txtDinhMuc.Text = "";
+                            ///
                             txtChiSo.Text = "";
                             cmbTinhTrangChiSo.SelectedIndex = -1;
                         }
@@ -363,6 +370,13 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_donkh.MaDon, CTaiKhoan.MaUser);
                             _ttkhachhang = null;
+                            txtDanhBo.Text = "";
+                            txtHopDong.Text = "";
+                            txtHoTen.Text = "";
+                            txtDiaChi.Text = "";
+                            txtGiaBieu.Text = "";
+                            txtDinhMuc.Text = "";
+                            ///
                             txtChiSo.Text = "";
                             cmbTinhTrangChiSo.SelectedIndex = -1;
                         }
