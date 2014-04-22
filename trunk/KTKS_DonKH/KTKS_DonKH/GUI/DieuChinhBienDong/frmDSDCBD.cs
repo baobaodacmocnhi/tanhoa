@@ -780,7 +780,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
                             break;
                         case "Danh Bộ":
-                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDSCatChuyenDM.Checked)
+                                expression = String.Format("NhanNK_DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            else
+
+                                expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                     }
                     DSDCBD_BS.Filter = expression;
@@ -1217,7 +1221,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ghichu.DANHBO = dlkh.DANHBO;
                                         ghichu.DONVI = "KTKS";
                                         ghichu.NOIDUNG = "PYCĐC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
-                                        ghichu.NOIDUNG = " ngày " + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
+                                        ghichu.NOIDUNG += " ngày " + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
                                         ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - Điều Chỉnh";
                                         if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                         {

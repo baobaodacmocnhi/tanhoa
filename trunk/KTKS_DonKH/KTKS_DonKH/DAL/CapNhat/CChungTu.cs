@@ -1120,6 +1120,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 bool flagEdited = false;
+                bool flagGiam = false;
                 ///Cập Nhật bảng ChungTu khi thay đổi Tổng Nhân Khẩu (frmSoDK)
                 ChungTu chungtuCN = getChungTubyID(chungtu.MaCT);
                 ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
@@ -1134,8 +1135,14 @@ namespace KTKS_DonKH.DAL.CapNhat
                     }
                     else
                     {
-                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                        chungtuCN.SoNKConLai = chungtu.SoNKTong;
+                        chungtuCN.SoNKTong = chungtu.SoNKTong;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                        flagEdited = true;
+                        flagGiam = true;
+                        //MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //return false;
                     }
                 ///Kiểm tra Địa Chỉ có thay đổi hay không
                 if (chungtuCN.DiaChi != chungtu.DiaChi||chungtuCN.MaLCT!=chungtu.MaLCT)
@@ -1152,32 +1159,46 @@ namespace KTKS_DonKH.DAL.CapNhat
                 CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
                 ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
                 if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
-                    if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
+                    if (flagGiam)
                     {
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
                         chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         ///Cập nhật bảng CTChungTu
                         ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
-
-                        //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
-                        //if (ctchungtu.ThoiHan != null)
-                        //    ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
-                        //    ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
-                        //else
-                        //    ctchungtuCN.NgayHetHan = null;
-
                         ctchungtuCN.ModifyDate = DateTime.Now;
                         ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         flagEdited = true;
                     }
                     else
-                    {
-                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
+                        if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
+                        {
+                            ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
+                            chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
+                            chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                            chungtuCN.ModifyDate = DateTime.Now;
+                            chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                            ///Cập nhật bảng CTChungTu
+                            ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
+
+                            //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+                            //if (ctchungtu.ThoiHan != null)
+                            //    ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                            //    ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                            //else
+                            //    ctchungtuCN.NgayHetHan = null;
+
+                            ctchungtuCN.ModifyDate = DateTime.Now;
+                            ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                            flagEdited = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
                 if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan || ctchungtuCN.Lo != ctchungtu.Lo || ctchungtuCN.Phong != ctchungtu.Phong || ctchungtuCN.GhiChu != ctchungtu.GhiChu)
                 {
                     if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
@@ -1920,7 +1941,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         #region Báo Cáo
 
         /// <summary>
-        /// Lấy Danh Sách Cấp Định Mức cho Giấy Xác Nhận Tạm Trú theo Khoảng Thời Gian
+        /// Lấy Danh Sách Cấp Định Mức theo Khoảng Thời Gian
         /// </summary>
         /// <param name="TuNgay"></param>
         /// <returns></returns>
@@ -1933,6 +1954,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
                                 where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 7 && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
+                                orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 {
                                     itemCTChungTu.DanhBo,
@@ -1941,9 +1963,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemCTChungTu.SoNKDangKy,
                                     itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
                                     itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                    itemCTChungTu.MaCT,
                                     itemCTChungTu.DienThoai,
                                     itemCTChungTu.NgayHetHan,
                                     itemCTChungTu.CreateDate,
+                                    itemCTChungTu.GhiChu,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1961,11 +1985,11 @@ namespace KTKS_DonKH.DAL.CapNhat
         }
 
         /// <summary>
-        /// Lấy Danh Sách Cấp Định Mức cho Giấy Xác Nhận Tạm Trú theo Khoảng Thời Gian
+        /// Lấy Danh Sách Cấp Định Mức theo Khoảng Thời Gian
         /// </summary>
         /// <param name="TuNgay"></param>
         /// <returns></returns>
-        public DataTable LoadDSCapDinhMuc(DateTime TuNgay, DateTime DenNgay)
+        public DataTable  LoadDSCapDinhMuc(DateTime TuNgay, DateTime DenNgay)
         {
             try
             {
@@ -1974,6 +1998,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
                                 where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 7 && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
+                                orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 {
                                     itemCTChungTu.DanhBo,
@@ -1982,9 +2007,54 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemCTChungTu.SoNKDangKy,
                                     itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
                                     itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                    itemCTChungTu.MaCT,
                                     itemCTChungTu.DienThoai,
                                     itemCTChungTu.NgayHetHan,
                                     itemCTChungTu.CreateDate,
+                                    itemCTChungTu.GhiChu,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Cấp Định Mức sắp Hết Hạn (trước 15ngày)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCapDinhMucHetHan()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTChungTu in db.CTChungTus
+                                join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
+                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 7
+                                orderby itemCTChungTu.NgayHetHan ascending
+                                select new
+                                {
+                                    itemCTChungTu.DanhBo,
+                                    itemTTKH.HoTen,
+                                    DiaChi = itemTTKH.DC1 + itemTTKH.DC2,
+                                    itemCTChungTu.SoNKDangKy,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                    itemCTChungTu.MaCT,
+                                    itemCTChungTu.DienThoai,
+                                    itemCTChungTu.NgayHetHan,
+                                    itemCTChungTu.CreateDate,
+                                    itemCTChungTu.GhiChu,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

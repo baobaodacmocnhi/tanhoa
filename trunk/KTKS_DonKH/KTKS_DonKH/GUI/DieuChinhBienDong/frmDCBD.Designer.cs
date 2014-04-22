@@ -132,6 +132,7 @@
             this.GhiChuLSCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDot = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.lbDSHetHan = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1065,6 +1066,15 @@
             this.label23.TabIndex = 12;
             this.label23.Text = "Đợt:";
             // 
+            // lbDSHetHan
+            // 
+            this.lbDSHetHan.AutoSize = true;
+            this.lbDSHetHan.ForeColor = System.Drawing.Color.Red;
+            this.lbDSHetHan.Location = new System.Drawing.Point(1268, 24);
+            this.lbDSHetHan.Name = "lbDSHetHan";
+            this.lbDSHetHan.Size = new System.Drawing.Size(0, 17);
+            this.lbDSHetHan.TabIndex = 14;
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1072,6 +1082,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1359, 726);
+            this.Controls.Add(this.lbDSHetHan);
             this.Controls.Add(this.txtDot);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.dgvDSDieuChinh);
@@ -1209,6 +1220,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phong;
+        private System.Windows.Forms.Label lbDSHetHan;
         
     }
 }
