@@ -100,6 +100,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
+
+            //lbDSHetHan.Text = _cChungTu.LoadDSCapDinhMucHetHan().Rows.Count.ToString();
         }
 
         void txtMaDon_GotFocus(object sender, EventArgs e)
