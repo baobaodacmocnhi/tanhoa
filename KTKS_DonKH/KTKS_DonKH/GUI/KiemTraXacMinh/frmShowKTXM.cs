@@ -48,6 +48,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmShowKTXM_Load(object sender, EventArgs e)
         {
             this.Location = new Point(30, 70);
+            if (CTaiKhoan.RoleQLBamChi_CapNhat || CTaiKhoan.RoleBamChi_CapNhat || CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleBamChi_Xem)
+            {
+                lbTheoYeuCau.Visible = true;
+                txtTheoYeuCau.Visible = true;
+            }
             if (_cKTXM.CheckCTKTXMbyID(_MaCTKTXM))
             {
                 _ctktxm = _cKTXM.getCTKTXMbyID(_MaCTKTXM);
@@ -99,6 +104,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
             cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+            txtTheoYeuCau.Text = _ctktxm.TheoYeuCau;
             if (ctktxm.DongTienBoiThuong)
             {
                 dateDongTien.Value = ctktxm.NgayDongTien.Value;
@@ -156,8 +162,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 _ctktxm.DanhBo = txtDanhBo.Text.Trim();
                 _ctktxm.HopDong = txtHopDong.Text.Trim();
-                _ctktxm.HoTen = txtHoTen.Text.Trim();
-                _ctktxm.DiaChi = txtDiaChi.Text.Trim();
+                _ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();
+                _ctktxm.DiaChi = txtDiaChi.Text.Trim().ToUpper();
                 _ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
                 _ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
                 if (_ttkhachhang != null)
@@ -188,12 +194,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 _ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                 _ctktxm.DienThoai = txtDienThoai.Text.Trim();
-                _ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
+                _ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim().ToUpper();
 
                 if (cmbTinhTrangDHN.SelectedItem != null)
                 _ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedItem.ToString();
 
                 _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
+                _ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
+
                 if (chkDongTienBoiThuong.Checked)
                 {
                     _ctktxm.DongTienBoiThuong = true;

@@ -1654,6 +1654,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
+                bool flagGiam = false;
                 ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
                 CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
 
@@ -1668,8 +1669,13 @@ namespace KTKS_DonKH.DAL.CapNhat
                     }
                     else
                     {
-                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                        chungtuCN.SoNKConLai = chungtu.SoNKTong;
+                        chungtuCN.SoNKTong = chungtu.SoNKTong;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                        flagGiam = true;
+                        //MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //return false;
                     }
                 ///Kiểm tra Địa Chỉ có thay đổi hay không
                 if (chungtuCN.DiaChi != chungtu.DiaChi)
@@ -1681,6 +1687,19 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                 ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
                 if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
+                    if (flagGiam)
+                    {
+                        ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.ModifyDate = DateTime.Now;
+                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                        ///Cập nhật bảng CTChungTu
+                        ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
+                        ctchungtuCN.ModifyDate = DateTime.Now;
+                        ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                    }
+                    else
                     if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
                     {
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
@@ -1953,7 +1972,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 {
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
-                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 7 && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
+                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8 && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 {
@@ -1997,7 +2016,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 {
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
-                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 7 && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
+                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8 && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 {

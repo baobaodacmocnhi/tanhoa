@@ -128,8 +128,8 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 _ctbamchi.DanhBo = txtDanhBo.Text.Trim();
                 _ctbamchi.HopDong = txtHopDong.Text.Trim();
-                _ctbamchi.HoTen = txtHoTen.Text.Trim();
-                _ctbamchi.DiaChi = txtDiaChi.Text.Trim();
+                _ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();
+                _ctbamchi.DiaChi = txtDiaChi.Text.Trim().ToUpper();
                 if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
                     _ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                 if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
@@ -176,7 +176,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
                     _ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim());
 
-                _ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
+                _ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
                 if (_cBamChi.SuaCTBamChi(_ctbamchi))
                 {
