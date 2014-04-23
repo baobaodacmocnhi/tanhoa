@@ -33,6 +33,8 @@
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbTheoYeuCau = new System.Windows.Forms.Label();
+            this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
             this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.cmbChiKhoaGoc = new System.Windows.Forms.ComboBox();
@@ -119,6 +121,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbTheoYeuCau);
+            this.groupBox2.Controls.Add(this.txtTheoYeuCau);
             this.groupBox2.Controls.Add(this.cmbTinhTrangDHN);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.cmbChiKhoaGoc);
@@ -153,6 +157,24 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
+            // 
+            // lbTheoYeuCau
+            // 
+            this.lbTheoYeuCau.AutoSize = true;
+            this.lbTheoYeuCau.Location = new System.Drawing.Point(583, 138);
+            this.lbTheoYeuCau.Name = "lbTheoYeuCau";
+            this.lbTheoYeuCau.Size = new System.Drawing.Size(164, 17);
+            this.lbTheoYeuCau.TabIndex = 56;
+            this.lbTheoYeuCau.Text = "Thực Hiện Theo Yêu Cầu:";
+            this.lbTheoYeuCau.Visible = false;
+            // 
+            // txtTheoYeuCau
+            // 
+            this.txtTheoYeuCau.Location = new System.Drawing.Point(753, 135);
+            this.txtTheoYeuCau.Name = "txtTheoYeuCau";
+            this.txtTheoYeuCau.Size = new System.Drawing.Size(281, 25);
+            this.txtTheoYeuCau.TabIndex = 57;
+            this.txtTheoYeuCau.Visible = false;
             // 
             // cmbTinhTrangDHN
             // 
@@ -268,9 +290,13 @@
             "BB mất ĐHN không bồi thường",
             "BB đứt chì MS bồi thường",
             "BB đứt chì MS không bồi thường",
-            "BB sai kỹ thuật",
-            "BB gian lận ĐHN",
+            "BB sai kỹ thuật bồi thường",
+            "BB gian lận ĐHN bồi thường",
             "BB phối hợp gian lận nước",
+            "BB tái lập Danh Bộ",
+            "BB bồi thường ĐHN hư hỏng",
+            "BB hủy Danh Bộ",
+            "BB thu hồi ĐHN",
             "Vấn đề khác"});
             this.cmbTinhTrangKiemTra.Location = new System.Drawing.Point(114, 42);
             this.cmbTinhTrangKiemTra.MaxDropDownItems = 50;
@@ -325,7 +351,7 @@
             this.txtNoiDungKiemTra.Location = new System.Drawing.Point(753, 42);
             this.txtNoiDungKiemTra.Multiline = true;
             this.txtNoiDungKiemTra.Name = "txtNoiDungKiemTra";
-            this.txtNoiDungKiemTra.Size = new System.Drawing.Size(375, 102);
+            this.txtNoiDungKiemTra.Size = new System.Drawing.Size(375, 87);
             this.txtNoiDungKiemTra.TabIndex = 55;
             // 
             // label11
@@ -806,5 +832,7 @@
         private System.Windows.Forms.DateTimePicker dateDongTien;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.CheckBox chkDongTienBoiThuong;
+        private System.Windows.Forms.Label lbTheoYeuCau;
+        private System.Windows.Forms.TextBox txtTheoYeuCau;
     }
 }

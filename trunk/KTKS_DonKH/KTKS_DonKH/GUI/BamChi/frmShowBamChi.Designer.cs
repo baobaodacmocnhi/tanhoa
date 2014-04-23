@@ -294,20 +294,13 @@
             "",
             "Nhà đóng cửa",
             "Nhà có tang, trẻ em, người già",
-            "Bấm chì ĐHN",
-            "BB chạy ngược",
-            "BB mất ĐHN bồi thường",
-            "BB mất ĐHN không bồi thường",
-            "BB đứt chì MS bồi thường",
-            "BB đứt chì MS không bồi thường",
-            "BB sai kỹ thuật",
-            "BB gian lận ĐHN",
-            "BB phối hợp gian lận nước"});
+            "Bấm chì ĐHN"});
             this.cmbTinhTrangKiemTra.Location = new System.Drawing.Point(106, 42);
             this.cmbTinhTrangKiemTra.MaxDropDownItems = 50;
             this.cmbTinhTrangKiemTra.Name = "cmbTinhTrangKiemTra";
             this.cmbTinhTrangKiemTra.Size = new System.Drawing.Size(188, 25);
             this.cmbTinhTrangKiemTra.TabIndex = 33;
+            this.cmbTinhTrangKiemTra.Visible = false;
             this.cmbTinhTrangKiemTra.SelectedIndexChanged += new System.EventHandler(this.cmbTinhTrangKiemTra_SelectedIndexChanged);
             // 
             // label20
@@ -327,6 +320,7 @@
             this.label18.Size = new System.Drawing.Size(134, 17);
             this.label18.TabIndex = 32;
             this.label18.Text = "Hiện Trạng Kiểm Tra";
+            this.label18.Visible = false;
             // 
             // cmbTrangThai
             // 
@@ -336,13 +330,8 @@
             "",
             "Bấm Chì Góc - COUDE",
             "Bấm Chì Thân",
-            "Đóng Cửa",
-            "Lấp Chừa Mặt Số",
-            "Còn Chì",
             "Đóng Nước",
-            "Mở Nước",
-            "Hầm Sâu",
-            "Trở Ngại Khác"});
+            "Mở Nước"});
             this.cmbTrangThai.Location = new System.Drawing.Point(229, 90);
             this.cmbTrangThai.MaxDropDownItems = 50;
             this.cmbTrangThai.Name = "cmbTrangThai";

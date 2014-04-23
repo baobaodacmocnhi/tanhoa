@@ -45,6 +45,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             dgvDSKetQuaKiemTra.AutoGenerateColumns = false;
             dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSKetQuaKiemTra.Font, FontStyle.Bold);
+
+            if (CTaiKhoan.RoleQLBamChi_CapNhat || CTaiKhoan.RoleBamChi_CapNhat)
+            {
+                lbTheoYeuCau.Visible = true;
+                txtTheoYeuCau.Visible = true;
+            }
         }
 
         public void LoadTTKH(TTKhachHang ttkhachhang)
@@ -253,8 +259,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         ctktxm.MaKTXM = _cKTXM.getKTXMbyMaDon_TXL(_dontxl.MaDon).MaKTXM;
                         ctktxm.DanhBo = txtDanhBo.Text.Trim();
                         ctktxm.HopDong = txtHopDong.Text.Trim();
-                        ctktxm.HoTen = txtHoTen.Text.Trim();
-                        ctktxm.DiaChi = txtDiaChi.Text.Trim();
+                        ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();
+                        ctktxm.DiaChi = txtDiaChi.Text.Trim().ToUpper();
                         ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
                         ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
                         if (_ttkhachhang != null)
@@ -285,12 +291,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                         ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                         ctktxm.DienThoai = txtDienThoai.Text.Trim();
-                        ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
+                        ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim().ToUpper();
 
                         if (cmbTinhTrangDHN.SelectedItem != null)
                         ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedItem.ToString();
 
                         ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
+                        ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
                         if (_cKTXM.ThemCTKTXM(ctktxm))
                         {
@@ -340,8 +347,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         ctktxm.MaKTXM = _cKTXM.getKTXMbyMaDon(_donkh.MaDon).MaKTXM;
                         ctktxm.DanhBo = txtDanhBo.Text.Trim();
                         ctktxm.HopDong = txtHopDong.Text.Trim();
-                        ctktxm.HoTen = txtHoTen.Text.Trim();
-                        ctktxm.DiaChi = txtDiaChi.Text.Trim();
+                        ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();
+                        ctktxm.DiaChi = txtDiaChi.Text.Trim().ToUpper();
                         ctktxm.GiaBieu = txtGiaBieu.Text.Trim();
                         ctktxm.DinhMuc = txtDinhMuc.Text.Trim();
                         if (_ttkhachhang != null)
@@ -372,12 +379,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                         ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                         ctktxm.DienThoai = txtDienThoai.Text.Trim();
-                        ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
+                        ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim().ToUpper();
 
                         if (cmbTinhTrangDHN.SelectedItem != null)
                         ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedItem.ToString();
 
                         ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
+                        ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
                         if (_cKTXM.ThemCTKTXM(ctktxm))
                         {
@@ -444,6 +452,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ctktxm.TinhTrangDHN = cmbTinhTrangDHN.SelectedItem.ToString();
 
                     ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
+                    ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
                     ///Nếu Đơn thuộc Tổ Xử Lý
                     if (ctktxm.KTXM.ToXuLy)

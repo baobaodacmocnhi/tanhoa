@@ -14,6 +14,7 @@ using KTKS_DonKH.GUI.ThaoThuTraLoi;
 using KTKS_DonKH.GUI.DieuChinhBienDong;
 using KTKS_DonKH.GUI.CatHuyDanhBo;
 using KTKS_DonKH.GUI.ToXuLy;
+using KTKS_DonKH.GUI.BamChi;
 
 namespace KTKS_DonKH.GUI.TimKiem
 {
@@ -42,11 +43,13 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ", gridViewCHDB);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
             ///Tổ Xử Lý
             gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh TXL", gridViewKTXM_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động TXL", gridViewDCBD_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ TXL", gridViewCHDB_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời TXL", gridViewTTTTL_TXL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì TXL", gridViewBamChi_TXL);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -332,6 +335,34 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
+        #region gridViewBamChi
+
+        private void gridViewBamChi_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTBC" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void gridViewBamChi_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewBamChi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmShowBamChi frm = new frmShowBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()), true);
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
+            }
+        }
+
+        #endregion
+
         #region gridViewKTXM_TXL
 
         private void gridViewKTXM_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
@@ -511,8 +542,34 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
-        
+        #region gridViewBamChi_TXL
 
-        
+        private void gridViewBamChi_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTBC" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void gridViewBamChi_TXL_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewBamChi_TXL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmShowBamChi frm = new frmShowBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()), true);
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
+            }
+        }
+
+        #endregion
+
+
     }
 }

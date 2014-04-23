@@ -214,8 +214,8 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.MaBC = _cBamChi.getBamChibyMaDon_TXL(_dontxl.MaDon).MaBC;
                         ctbamchi.DanhBo = txtDanhBo.Text.Trim();
                         ctbamchi.HopDong = txtHopDong.Text.Trim();
-                        ctbamchi.HoTen = txtHoTen.Text.Trim();
-                        ctbamchi.DiaChi = txtDiaChi.Text.Trim();
+                        ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();
+                        ctbamchi.DiaChi = txtDiaChi.Text.Trim().ToUpper();
                         if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
                             ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                         if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
@@ -264,7 +264,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
                             ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim());
 
-                        ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
+                        ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
                         if (_cBamChi.ThemCTBamChi(ctbamchi))
                         {
@@ -313,8 +313,8 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.MaBC = _cBamChi.getBamChibyMaDon_TXL(_dontxl.MaDon).MaBC;
                         ctbamchi.DanhBo = txtDanhBo.Text.Trim();
                         ctbamchi.HopDong = txtHopDong.Text.Trim();
-                        ctbamchi.HoTen = txtHoTen.Text.Trim();
-                        ctbamchi.DiaChi = txtDiaChi.Text.Trim();
+                        ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();
+                        ctbamchi.DiaChi = txtDiaChi.Text.Trim().ToUpper();
                         if (!string.IsNullOrEmpty(txtGiaBieu.Text.Trim()))
                             ctbamchi.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                         if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
@@ -363,7 +363,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
                             ctbamchi.DayChi = double.Parse(txtDayChi.Text.Trim(), System.Globalization.NumberStyles.Float);
 
-                        ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim();
+                        ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
                         if (_cBamChi.ThemCTBamChi(ctbamchi))
                         {
