@@ -284,6 +284,13 @@ namespace KTKS_DonKH.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap report_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("report_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap save_24x24 {
             get {
                 object obj = ResourceManager.GetObject("save_24x24", resourceCulture);
