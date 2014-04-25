@@ -63,7 +63,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             ///Add LookUpEdit vào GridControl
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
-            radDaDuyet.Checked = true;
+            radDSCatTamDanhBo.Checked = true;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm Danh Bộ", gridViewCTCTDB);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ", gridViewCTCHDB);
@@ -120,8 +120,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 radDSCatHuyDanhBo_TXL.Checked = false;
                 radDSCatTamDanhBo_TXL.Checked = false;
                 dgvDSCTCHDB.Visible = true;
-                dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
-                dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = false;
+                //dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
+                //dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = false;
                 gridControl.Visible = false;
                 //btnLuu.Enabled = false;
                 chkSelectAll.Visible = true;
@@ -140,8 +140,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 radDSCatHuyDanhBo_TXL.Checked = false;
                 radDSCatTamDanhBo_TXL.Checked = false;
                 dgvDSCTCHDB.Visible = true;
-                dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
-                dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
+                //dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
+                //dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
                 gridControl.Visible = false;
                 //btnLuu.Enabled = false;
                 chkSelectAll.Visible = true;
@@ -681,6 +681,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ctctdb.ThongBaoDuocKy = bool.Parse(dgvDSCTCHDB.CurrentCell.Value.ToString());
                     _cCHDB.SuaCTCTDB(ctctdb);
                 }
+                if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString()) != ctctdb.PhieuDuocKy)
+                {
+                    ctctdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
+                    _cCHDB.SuaCTCTDB(ctctdb);
+                    YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCTDB(ctctdb.MaCTCTDB);
+                    ycchdb.PhieuDuocKy = ctctdb.PhieuDuocKy;
+                    _cCHDB.SuaYeuCauCHDB(ycchdb);
+                }
             }
             if (radDSCatHuyDanhBo.Checked)
             {
@@ -694,6 +702,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     ctchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
                     _cCHDB.SuaCTCHDB(ctchdb);
+                    YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(ctchdb.MaCTCHDB);
+                    ycchdb.PhieuDuocKy = ctchdb.PhieuDuocKy;
+                    _cCHDB.SuaYeuCauCHDB(ycchdb);
                 }
             }
         }

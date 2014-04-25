@@ -12,6 +12,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Globalization;
+using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -20,6 +21,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         decimal _MaCTCHDB = 0;
         CCHDB _cCHDB = new CCHDB();
         CTCHDB _ctchdb = null;
+        CTTKH _cTTKH = new CTTKH();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
 
         public frmShowCHDB()
         {
@@ -42,6 +45,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 btnCapNhatTCTBXuLy.Enabled = false;
                 btnIn.Enabled = false;
                 btnInPhieu.Enabled = false;
+                txtHieuLucKy.ReadOnly = true;
                 btnSua.Enabled = false;
             }
         }
@@ -84,7 +88,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtThoiGianLapPhieu.Text = _ctchdb.ThoiGianLapPhieu.Value.ToString();
                 }
                 ///
-                txtHieuLucKy.Text = _ctchdb.HieuLucKy;
+                if (_cCHDB.CheckYeuCauCHDBbyMaCTCHDB(_ctchdb.MaCTCHDB))
+                {
+                    txtHieuLucKy.Text = _ctchdb.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == _ctchdb.MaCTCHDB).HieuLucKy;
+                }
             }
         }
 
@@ -126,26 +133,100 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
             if (_ctchdb != null)
-                if (_cCHDB.CheckDaLapPhieuCHDB(_ctchdb.MaCTCHDB))
+            {
+                ///Nếu Chưa Lập Phiếu
+                if (!_cCHDB.CheckYeuCauCHDBbyMaCTCHDB(_ctchdb.MaCTCHDB))
                 {
+                    if (txtHieuLucKy.Text.Trim() != "")
+                    {
+                        YeuCauCHDB ycchdb = new YeuCauCHDB();
+                        ycchdb.TBCHDB = true;
+                        ycchdb.MaCTCHDB = _ctchdb.MaCTCHDB;
+                        ycchdb.DanhBo = _ctchdb.DanhBo;
+                        ycchdb.HopDong = _ctchdb.HopDong;
+                        ycchdb.HoTen = _ctchdb.HoTen;
+                        ycchdb.DiaChi = _ctchdb.DiaChi;
+                        ycchdb.LyDo = _ctchdb.LyDo;
+                        ycchdb.GhiChuLyDo = _ctchdb.GhiChuLyDo;
+                        ycchdb.SoTien = _ctchdb.SoTien;
+                        TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(_ctchdb.DanhBo);
+                        if (ttkhachhang != null)
+                        {
+                            ycchdb.Dot = ttkhachhang.Dot;
+                            ycchdb.Ky = ttkhachhang.Ky;
+                            ycchdb.Nam = ttkhachhang.Nam;
+                        }
+                        ///Ký Tên
+                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            ycchdb.ChucVu = "GIÁM ĐỐC";
+                        else
+                            ycchdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        ycchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        ycchdb.PhieuDuocKy = true;
+
+                        if (_cCHDB.ThemYeuCauCHDB(ycchdb))
+                        {
+                            _ctchdb.DaLapPhieu = true;
+                            _ctchdb.PhieuDuocKy = true;
+                            _cCHDB.SuaCTCHDB(_ctchdb);
+
+                            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                            DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
+
+                            dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
+                            dr["HieuLucKy"] = ycchdb.HieuLucKy;
+                            dr["Dot"] = ycchdb.Dot;
+                            dr["HoTen"] = ycchdb.HoTen;
+                            dr["DiaChi"] = ycchdb.DiaChi;
+                            dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["HopDong"] = ycchdb.HopDong;
+                            dr["LyDo"] = ycchdb.LyDo + ". ";
+                            if (ycchdb.GhiChuLyDo != "")
+                                dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
+                            if (ycchdb.SoTien.ToString() != "")
+                                dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ycchdb.SoTien);
+
+                            dr["ChucVu"] = ycchdb.ChucVu;
+                            dr["NguoiKy"] = ycchdb.NguoiKy;
+
+                            dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
+
+                            rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
+                            for (int j = 0; j < rpt.Subreports.Count; j++)
+                            {
+                                rpt.Subreports[j].SetDataSource(dsBaoCao);
+                            }
+                            frmBaoCao frm = new frmBaoCao(rpt);
+                            frm.ShowDialog();
+                        }
+
+                    }
+                    else
+                        MessageBox.Show("Chưa có Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                ///Nếu Đã Lập Phiếu
+                else
+                {
+                    YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(_ctchdb.MaCTCHDB);
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
 
-                    dr["SoPhieu"] = _ctchdb.SoPhieu.ToString().Insert(_ctchdb.SoPhieu.ToString().Length-2, "-");
-                    dr["HieuLucKy"] = _ctchdb.HieuLucKy;
-                    dr["Dot"] = _ctchdb.DotLapPhieu;
-                    dr["HoTen"] = _ctchdb.HoTen;
-                    dr["DiaChi"] = _ctchdb.DiaChi;
-                    dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
-                    dr["HopDong"] = _ctchdb.HopDong;
-                    dr["LyDo"] = _ctchdb.LyDo + ". ";
-                    if (_ctchdb.GhiChuLyDo != "")
-                        dr["LyDo"] += _ctchdb.GhiChuLyDo + ". ";
-                    if (_ctchdb.SoTien.ToString() != "")
-                        dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctchdb.SoTien);
+                    dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
+                    dr["HieuLucKy"] = ycchdb.HieuLucKy;
+                    dr["Dot"] = ycchdb.Dot;
+                    dr["HoTen"] = ycchdb.HoTen;
+                    dr["DiaChi"] = ycchdb.DiaChi;
+                    dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["HopDong"] = ycchdb.HopDong;
+                    dr["LyDo"] = ycchdb.LyDo + ". ";
+                    if (ycchdb.GhiChuLyDo != "")
+                        dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
+                    if (ycchdb.SoTien.ToString() != "")
+                        dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ycchdb.SoTien);
 
-                    dr["ChucVu"] = _ctchdb.ChucVuLapPhieu;
-                    dr["NguoiKy"] = _ctchdb.NguoiKyLapPhieu;
+                    dr["ChucVu"] = ycchdb.ChucVu;
+                    dr["NguoiKy"] = ycchdb.NguoiKy;
 
                     dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
@@ -157,8 +238,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     frmBaoCao frm = new frmBaoCao(rpt);
                     frm.ShowDialog();
                 }
-                else
-                    MessageBox.Show("Chưa lập Phiếu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+                MessageBox.Show("Chưa lập Phiếu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -167,6 +250,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctchdb != null)
                 {
+                    if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
+                        _ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
+
                     if (!string.IsNullOrEmpty(cmbLyDo.SelectedItem.ToString()))
                         _ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                     _ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
@@ -174,6 +260,44 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
                     else
                         _ctchdb.SoTien = null;
+
+                    if (chkKetQuaTCTBXuLy.Checked)
+                    {
+                        _ctchdb.TCTBXuLy = true;
+                        _ctchdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
+                        if (chkTroNgai.Checked)
+                            _ctchdb.TroNgai = true;
+                        else
+                            _ctchdb.TroNgai = false;
+                        if (chkCatTam.Checked)
+                            _ctchdb.CatTam = true;
+                        else
+                            _ctchdb.CatTam = false;
+                        _ctchdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
+                    }
+                    else
+                    {
+                        _ctchdb.TCTBXuLy = false;
+                        _ctchdb.NgayTCTBXuLy = null;
+                        _ctchdb.TroNgai = false;
+                        _ctchdb.CatTam = false;
+                        _ctchdb.KetQuaTCTBXuLy = null;
+                    }
+
+                    if (chkKetQuaCapTrenXuLy.Checked)
+                    {
+                        _ctchdb.CapTrenXuLy = true;
+                        _ctchdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
+                        _ctchdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
+                        _ctchdb.ThoiGianLapPhieu = int.Parse(txtThoiGianLapPhieu.Text.Trim());
+                    }
+                    else
+                    {
+                        _ctchdb.CapTrenXuLy = false;
+                        _ctchdb.NgayCapTrenXuLy = null;
+                        _ctchdb.KetQuaCapTrenXuLy = null;
+                        _ctchdb.ThoiGianLapPhieu = null;
+                    }
 
                     if (_cCHDB.SuaCTCHDB(_ctchdb))
                     {
@@ -236,6 +360,22 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtSoTien.ReadOnly = false;
             else
                 txtSoTien.ReadOnly = true;
+        }
+
+        private void chkKetQuaTCTBXuLy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkKetQuaTCTBXuLy.Checked)
+                groupBoxKetQuaTCTBXuLy.Enabled = true;
+            else
+                groupBoxKetQuaTCTBXuLy.Enabled = false;
+        }
+
+        private void chkKetQuaCapTrenXuLy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkKetQuaCapTrenXuLy.Checked)
+                groupBoxKetQuaCapTrenXuLy.Enabled = true;
+            else
+                groupBoxKetQuaCapTrenXuLy.Enabled = false;
         }
     }
 }
