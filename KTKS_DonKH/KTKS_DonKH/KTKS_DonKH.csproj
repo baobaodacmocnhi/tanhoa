@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>46</ApplicationRevision>
+    <ApplicationRevision>47</ApplicationRevision>
     <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -199,6 +199,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSDonKH.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\KhachHang\rptThongKeDonKH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptThongKeDonKH.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\KiemTraXacMinh\rptDSKTXM.cs">
@@ -683,6 +689,10 @@
     <EmbeddedResource Include="BaoCao\KhachHang\rptDSDonKH.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDonKH.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\KhachHang\rptThongKeDonKH.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongKeDonKH.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\KiemTraXacMinh\rptDSKTXM.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
