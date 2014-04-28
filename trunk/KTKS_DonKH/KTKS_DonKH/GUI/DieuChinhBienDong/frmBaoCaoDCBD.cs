@@ -95,15 +95,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 crystalReportViewer1.ReportSource = rpt;
                 
             }
-            if (radThongKeDCBD.Checked)
+            if (radThongKeDC.Checked)
             {
-                DataTable dt = new DataTable();
+                DataTable dtDCBD = new DataTable();
+                DataTable dtDCHD = new DataTable();
                 if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
-                    dt = _cDCBD.LoadDSCTDCBD(dateTu.Value, dateDen.Value);
+                {
+                    dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value, dateDen.Value);
+                    dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value, dateDen.Value);
+                }
                 else
                     if (!string.IsNullOrEmpty(_tuNgay))
-                        dt = _cDCBD.LoadDSCTDCBD(dateTu.Value);
-                
+                    {
+                        dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value);
+                        dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value);
+                    }
 
                 int DanhBoTangDM = 0;
                 int DanhBoGiamDM = 0;
@@ -111,7 +117,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 int DinhMucGiam = 0;
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (DataRow itemRow in dt.Rows)
+                foreach (DataRow itemRow in dtDCBD.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["ThongKeDCBD"].NewRow();
 
@@ -152,9 +158,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     dsBaoCao.Tables["ThongKeDCBD"].Rows.Add(dr);
                 }
+
+                foreach (DataRow itemRow in dtDCHD.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["ThongKeDCHD"].NewRow();
+                    dr["DanhBo"] = itemRow["DanhBo"];
+                    dr["TangGiam"] = itemRow["TangGiam"];
+                    dr["SoTien"] = itemRow["TongCong_BD"];
+
+                    dsBaoCao.Tables["ThongKeDCHD"].Rows.Add(dr);
+                }
+
                 _tuNgay = _denNgay = "";
                 rptThongKeDCBD rpt = new rptThongKeDCBD();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 rpt.SetParameterValue(0, DanhBoTangDM);
                 rpt.SetParameterValue(1, DinhMucTang);
                 rpt.SetParameterValue(2, DanhBoGiamDM);

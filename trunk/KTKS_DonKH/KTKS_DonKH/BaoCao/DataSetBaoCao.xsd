@@ -319,6 +319,15 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="ThongKeDCHD" msprop:Generator_TableClassName="ThongKeDCHDDataTable" msprop:Generator_TableVarName="tableThongKeDCHD" msprop:Generator_TablePropName="ThongKeDCHD" msprop:Generator_RowDeletingName="ThongKeDCHDRowDeleting" msprop:Generator_UserTableName="ThongKeDCHD" msprop:Generator_RowChangingName="ThongKeDCHDRowChanging" msprop:Generator_RowEvHandlerName="ThongKeDCHDRowChangeEventHandler" msprop:Generator_RowDeletedName="ThongKeDCHDRowDeleted" msprop:Generator_RowEvArgName="ThongKeDCHDRowChangeEvent" msprop:Generator_RowChangedName="ThongKeDCHDRowChanged" msprop:Generator_RowClassName="ThongKeDCHDRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DanhBo" msprop:Generator_ColumnVarNameInTable="columnDanhBo" msprop:Generator_ColumnPropNameInRow="DanhBo" msprop:Generator_ColumnPropNameInTable="DanhBoColumn" msprop:Generator_UserColumnName="DanhBo" type="xs:string" minOccurs="0" />
+              <xs:element name="TangGiam" msprop:Generator_ColumnVarNameInTable="columnTangGiam" msprop:Generator_ColumnPropNameInRow="TangGiam" msprop:Generator_ColumnPropNameInTable="TangGiamColumn" msprop:Generator_UserColumnName="TangGiam" type="xs:string" minOccurs="0" />
+              <xs:element name="SoTien" msprop:Generator_ColumnVarNameInTable="columnSoTien" msprop:Generator_ColumnPropNameInRow="SoTien" msprop:Generator_ColumnPropNameInTable="SoTienColumn" msprop:Generator_UserColumnName="SoTien" type="xs:long" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

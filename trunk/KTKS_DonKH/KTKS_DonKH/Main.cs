@@ -387,6 +387,16 @@ namespace KTKS_DonKH
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
+        private void btnBaoCaoDonKH_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmBaoCaoDonKH();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
               
     }
 }

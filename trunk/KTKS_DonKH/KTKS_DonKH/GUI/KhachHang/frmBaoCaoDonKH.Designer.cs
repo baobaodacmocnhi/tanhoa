@@ -1,6 +1,6 @@
-﻿namespace KTKS_DonKH.GUI.DieuChinhBienDong
+﻿namespace KTKS_DonKH.GUI.KhachHang
 {
-    partial class frmBaoCaoDCBD
+    partial class frmBaoCaoDonKH
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.btnBaoCao = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnBaoCao = new System.Windows.Forms.Button();
-            this.radThongKeDMCap = new System.Windows.Forms.RadioButton();
-            this.radThongKeDC = new System.Windows.Forms.RadioButton();
-            this.panel1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel_KhoangThoiGian.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // btnBaoCao
             // 
-            this.panel1.Controls.Add(this.crystalReportViewer1);
-            this.panel1.Location = new System.Drawing.Point(13, 67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1265, 504);
-            this.panel1.TabIndex = 0;
-            // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 3);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1259, 498);
-            this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
+            this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoCao.Location = new System.Drawing.Point(733, 2);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
+            this.btnBaoCao.TabIndex = 21;
+            this.btnBaoCao.Text = "Báo Cáo";
+            this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBaoCao.UseVisualStyleBackColor = true;
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
             // 
             // panel_KhoangThoiGian
             // 
@@ -70,7 +62,7 @@
             this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
-            this.panel_KhoangThoiGian.TabIndex = 18;
+            this.panel_KhoangThoiGian.TabIndex = 20;
             // 
             // dateTu
             // 
@@ -110,76 +102,54 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Đến Ngày:";
             // 
-            // btnBaoCao
+            // panel1
             // 
-            this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
-            this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.Location = new System.Drawing.Point(733, 2);
-            this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
-            this.btnBaoCao.TabIndex = 19;
-            this.btnBaoCao.Text = "Báo Cáo";
-            this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBaoCao.UseVisualStyleBackColor = true;
-            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+            this.panel1.Controls.Add(this.crystalReportViewer1);
+            this.panel1.Location = new System.Drawing.Point(13, 67);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1265, 504);
+            this.panel1.TabIndex = 22;
             // 
-            // radThongKeDMCap
+            // crystalReportViewer1
             // 
-            this.radThongKeDMCap.AutoSize = true;
-            this.radThongKeDMCap.Location = new System.Drawing.Point(71, 7);
-            this.radThongKeDMCap.Name = "radThongKeDMCap";
-            this.radThongKeDMCap.Size = new System.Drawing.Size(177, 21);
-            this.radThongKeDMCap.TabIndex = 20;
-            this.radThongKeDMCap.TabStop = true;
-            this.radThongKeDMCap.Text = "Thống Kê Định Mức Cấp";
-            this.radThongKeDMCap.UseVisualStyleBackColor = true;
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 3);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1259, 498);
+            this.crystalReportViewer1.TabIndex = 0;
+            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
-            // radThongKeDC
-            // 
-            this.radThongKeDC.AutoSize = true;
-            this.radThongKeDC.Location = new System.Drawing.Point(71, 34);
-            this.radThongKeDC.Name = "radThongKeDC";
-            this.radThongKeDC.Size = new System.Drawing.Size(155, 21);
-            this.radThongKeDC.TabIndex = 21;
-            this.radThongKeDC.TabStop = true;
-            this.radThongKeDC.Text = "Thống Kê Điều Chỉnh";
-            this.radThongKeDC.UseVisualStyleBackColor = true;
-            // 
-            // frmBaoCaoDCBD
+            // frmBaoCaoDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
-            this.Controls.Add(this.radThongKeDC);
-            this.Controls.Add(this.radThongKeDMCap);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.panel_KhoangThoiGian);
-            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmBaoCaoDCBD";
-            this.Text = "Các Loại Báo Cáo Điều Chỉnh";
-            this.Load += new System.EventHandler(this.frmBCCapDinhMuc_Load);
-            this.panel1.ResumeLayout(false);
+            this.Name = "frmBaoCaoDonKH";
+            this.Text = "Các Loại Báo Cáo Đơn Khách Hàng";
             this.panel_KhoangThoiGian.ResumeLayout(false);
             this.panel_KhoangThoiGian.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.Button btnBaoCao;
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
         private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.DateTimePicker dateDen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnBaoCao;
-        private System.Windows.Forms.RadioButton radThongKeDMCap;
-        private System.Windows.Forms.RadioButton radThongKeDC;
+        private System.Windows.Forms.Panel panel1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

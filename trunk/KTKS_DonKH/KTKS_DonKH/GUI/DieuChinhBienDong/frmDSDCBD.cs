@@ -164,7 +164,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (radDSDCHD.Checked)
             {
                 DSDCBD_BS = new BindingSource();
-                DSDCBD_BS.DataSource = _cDCBD.LoadDSDCHD();
+                DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCHD();
                 dgvDSDCBD.DataSource = DSDCBD_BS;
 
                 dgvDSDCBD.Columns["ChuyenDocSo"].Visible = false;

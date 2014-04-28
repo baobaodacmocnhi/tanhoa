@@ -65,6 +65,7 @@
             this.ribbonTab9 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel16 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonPanel20 = new System.Windows.Forms.RibbonPanel();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbtnDangNhap = new System.Windows.Forms.RibbonButton();
             this.ribbtnDangXuat = new System.Windows.Forms.RibbonButton();
@@ -81,6 +82,7 @@
             this.ribbtnQLDonKH = new System.Windows.Forms.RibbonButton();
             this.ribbtnNhanDonTXL = new System.Windows.Forms.RibbonButton();
             this.ribbtnQLDonTXL = new System.Windows.Forms.RibbonButton();
+            this.btnBaoCaoDonKH = new System.Windows.Forms.RibbonButton();
             this.ribbtnDSDonKTXM = new System.Windows.Forms.RibbonButton();
             this.ribbtnNhapKetQua = new System.Windows.Forms.RibbonButton();
             this.ribbtnDSDonDCBD = new System.Windows.Forms.RibbonButton();
@@ -150,6 +152,7 @@
             // 
             this.ribbonTab3.Panels.Add(this.ribbonPanel4);
             this.ribbonTab3.Panels.Add(this.ribbonPanel14);
+            this.ribbonTab3.Panels.Add(this.ribbonPanel20);
             this.ribbonTab3.Text = "Đơn Từ";
             // 
             // ribbonPanel4
@@ -356,6 +359,13 @@
             this.ribbonPanel17.Items.Add(this.ribbtnNhapBamChi);
             this.ribbonPanel17.Text = "Xử Lý";
             // 
+            // ribbonPanel20
+            // 
+            this.ribbonPanel20.ButtonMoreEnabled = false;
+            this.ribbonPanel20.ButtonMoreVisible = false;
+            this.ribbonPanel20.Items.Add(this.btnBaoCaoDonKH);
+            this.ribbonPanel20.Text = "Báo Cáo";
+            // 
             // ribbon1
             // 
             this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -511,6 +521,14 @@
             this.ribbtnQLDonTXL.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonTXL.SmallImage")));
             this.ribbtnQLDonTXL.Text = "Quản Lý";
             this.ribbtnQLDonTXL.Click += new System.EventHandler(this.ribbtnQLDonTXL_Click);
+            // 
+            // btnBaoCaoDonKH
+            // 
+            this.btnBaoCaoDonKH.Image = global::KTKS_DonKH.Properties.Resources.report_48x48;
+            this.btnBaoCaoDonKH.MinimumSize = new System.Drawing.Size(110, 0);
+            this.btnBaoCaoDonKH.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnBaoCaoDonKH.SmallImage")));
+            this.btnBaoCaoDonKH.Text = "Các Loại Báo Cáo";
+            this.btnBaoCaoDonKH.Click += new System.EventHandler(this.btnBaoCaoDonKH_Click);
             // 
             // ribbtnDSDonKTXM
             // 
@@ -723,6 +741,8 @@
         private System.Windows.Forms.RibbonButton ribbtnBaoCao;
         private System.Windows.Forms.RibbonPanel ribbonPanel19;
         private System.Windows.Forms.RibbonButton ribbtnChungCu;
+        private System.Windows.Forms.RibbonPanel ribbonPanel20;
+        private System.Windows.Forms.RibbonButton btnBaoCaoDonKH;
     }
 }
 
