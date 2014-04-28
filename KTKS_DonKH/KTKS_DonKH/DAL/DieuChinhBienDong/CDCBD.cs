@@ -858,13 +858,105 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         /// Lấy Danh Sách Điều Chỉnh Hóa Đơn
         /// </summary>
         /// <returns></returns>
-        public DataTable LoadDSDCHD()
+        public DataTable LoadDSCTDCHD()
         {
             try
             {
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Điều Chỉnh Hóa Đơn trong Ngày
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCTDCHD(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateDate.Value.Date==TuNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Điều Chỉnh Hóa Đơn trong Khoảng Thời Gian
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCTDCHD(DateTime TuNgay,DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCHD.CreateDate.Value.Date<=DenNgay.Date
                                 select new
                                 {
                                     In = false,

@@ -177,6 +177,12 @@
       <DependentUpon>rptPhieuYCCatDMx2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptThongKeDCHD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptThongKeDCHD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\DongNuoc\rptThongBaoMN.cs">
       <DependentUpon>rptThongBaoMN.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -498,6 +504,12 @@
     <Compile Include="GUI\HeThong\frmTaiKhoan.Designer.cs">
       <DependentUpon>frmTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KhachHang\frmBaoCaoDonKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmBaoCaoDonKH.Designer.cs">
+      <DependentUpon>frmBaoCaoDonKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KhachHang\frmNhanDonKH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -656,6 +668,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuYCCatDMx2.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptThongKeDCHD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongKeDCHD.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DongNuoc\rptThongBaoMN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongBaoMN.cs</LastGenOutput>
@@ -813,6 +829,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmTaiKhoan.resx">
       <DependentUpon>frmTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\frmBaoCaoDonKH.resx">
+      <DependentUpon>frmBaoCaoDonKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmNhanDonKH.resx">
       <DependentUpon>frmNhanDonKH.cs</DependentUpon>

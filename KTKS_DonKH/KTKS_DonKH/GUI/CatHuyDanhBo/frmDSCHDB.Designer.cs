@@ -100,6 +100,7 @@
             this.DaLapPhieu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ThongBaoDuocKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaTB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -662,6 +663,7 @@
             this.DaLapPhieu,
             this.ThongBaoDuocKy,
             this.MaTB,
+            this.CreateDate,
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
@@ -878,6 +880,14 @@
             this.MaTB.Name = "MaTB";
             this.MaTB.ReadOnly = true;
             // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 90;
+            // 
             // DanhBo
             // 
             this.DanhBo.DataPropertyName = "DanhBo";
@@ -1034,6 +1044,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn DaLapPhieu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ThongBaoDuocKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
