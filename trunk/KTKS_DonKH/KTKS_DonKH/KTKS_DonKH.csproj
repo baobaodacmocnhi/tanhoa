@@ -141,7 +141,7 @@
       <DependentUpon>rptQuyetToanVatTu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\BamChi\rptSLDHNVienChi1.cs">
+    <Compile Include="BaoCao\BamChi\rptSLDHNVienChi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptSLDHNVienChi.rpt</DependentUpon>
@@ -664,7 +664,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\BamChi\rptSLDHNVienChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSLDHNVienChi1.cs</LastGenOutput>
+      <LastGenOutput>rptSLDHNVienChi.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptPhieuCHDBx2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
