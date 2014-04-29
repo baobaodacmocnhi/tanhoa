@@ -50,6 +50,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (!string.IsNullOrEmpty(_tuNgay))
                     dt = _cDonKH.LoadDSDonKH(dateTu.Value);
 
+            int SLDaXuLy = 0;
+            int SLChuaXuLy = 0;
+
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow itemRow in dt.Rows)
             {
@@ -59,12 +62,20 @@ namespace KTKS_DonKH.GUI.KhachHang
                 dr["MaLD"] = itemRow["MaLD"];
                 dr["TenLD"] = itemRow["TenLD"];
                 dr["MaDon"] = itemRow["MaDon"];
+                dr["DanhBo"] = itemRow["DanhBo"];
+                dr["TienTrinh"] = itemRow["TienTrinh"];
+                if (string.IsNullOrEmpty(itemRow["TienTrinh"].ToString()))
+                    SLChuaXuLy++;
+                else
+                    SLDaXuLy++;
 
                 dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
             }
             _tuNgay = _denNgay = "";
             rptThongKeDonKH rpt = new rptThongKeDonKH();
             rpt.SetDataSource(dsBaoCao);
+            rpt.SetParameterValue(0, SLChuaXuLy);
+            rpt.SetParameterValue(1, SLDaXuLy);
 
             crystalReportViewer1.ReportSource = rpt;
         }

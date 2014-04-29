@@ -149,6 +149,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ycchdb.LyDo = _ctchdb.LyDo;
                         ycchdb.GhiChuLyDo = _ctchdb.GhiChuLyDo;
                         ycchdb.SoTien = _ctchdb.SoTien;
+                        ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
                         TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(_ctchdb.DanhBo);
                         if (ttkhachhang != null)
                         {

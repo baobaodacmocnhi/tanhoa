@@ -308,9 +308,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _cCHDB.ThemCHDB(chdb);
                             {
                                 if (string.IsNullOrEmpty(_donkh.TienTrinh))
-                                    _donkh.TienTrinh = "CTCHDB";
+                                    _donkh.TienTrinh = "CHDB";
                                 else
-                                    _donkh.TienTrinh += ",CTCHDB";
+                                    _donkh.TienTrinh += ",CHDB";
                                 _donkh.Nhan = true;
                                 _cDonKH.SuaDonKH(_donkh, true);
                             }
@@ -416,9 +416,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 }
                                 _source.Add("MaCHDB", _cCHDB.getMaxMaCHDB().ToString());
                                 if (string.IsNullOrEmpty(_donkh.TienTrinh))
-                                    _donkh.TienTrinh = "CTCHDB";
+                                    _donkh.TienTrinh = "CHDB";
                                 else
-                                    _donkh.TienTrinh += ",CTCHDB";
+                                    _donkh.TienTrinh += ",CHDB";
                                 _donkh.Nhan = true;
                                 _cDonKH.SuaDonKH(_donkh, true);
                             }
@@ -631,6 +631,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         ycchdb.LyDo = _ctchdb.LyDo;
                         ycchdb.GhiChuLyDo = _ctchdb.GhiChuLyDo;
                         ycchdb.SoTien = _ctchdb.SoTien;
+                        ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
                         TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(_ctchdb.DanhBo);
                         if (ttkhachhang != null)
                         {

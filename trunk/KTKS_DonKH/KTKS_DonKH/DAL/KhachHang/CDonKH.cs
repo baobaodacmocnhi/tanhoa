@@ -238,6 +238,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.LyDoChuyen,
                                     itemDonKH.SoLuongDiaChi,
                                     itemDonKH.NVKiemTra,
+                                    itemDonKH.TienTrinh,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -278,6 +279,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.LyDoChuyen,
                                     itemDonKH.SoLuongDiaChi,
                                     itemDonKH.NVKiemTra,
+                                    itemDonKH.TienTrinh,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

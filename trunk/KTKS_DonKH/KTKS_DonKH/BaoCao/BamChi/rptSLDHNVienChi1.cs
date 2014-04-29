@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.KhachHang {
+namespace KTKS_DonKH.BaoCao.BamChi {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptThongKeDonKH : ReportClass {
+    public class rptSLDHNVienChi : ReportClass {
         
-        public rptThongKeDonKH() {
+        public rptSLDHNVienChi() {
         }
         
         public override string ResourceName {
             get {
-                return "rptThongKeDonKH.rpt";
+                return "rptSLDHNVienChi.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.KhachHang.rptThongKeDonKH.rpt";
+                return "KTKS_DonKH.BaoCao.BamChi.rptSLDHNVienChi.rpt";
             }
             set {
                 // Do nothing
@@ -103,28 +103,12 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
                 return this.ReportDefinition.Sections[6];
             }
         }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SLChuaXuLy {
-            get {
-                return this.DataDefinition.ParameterFields[0];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SLDaXuLy {
-            get {
-                return this.DataDefinition.ParameterFields[1];
-            }
-        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptThongKeDonKH : Component, ICachedReport {
+    public class CachedrptSLDHNVienChi : Component, ICachedReport {
         
-        public CachedrptThongKeDonKH() {
+        public CachedrptSLDHNVienChi() {
         }
         
         [Browsable(false)]
@@ -161,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptThongKeDonKH rpt = new rptThongKeDonKH();
+            rptSLDHNVienChi rpt = new rptSLDHNVienChi();
             rpt.Site = this.Site;
             return rpt;
         }
