@@ -255,9 +255,9 @@
             this.cmbTimTheo.Items.AddRange(new object[] {
             "",
             "Mã Đơn",
+            "Danh Bộ",
             "Ngày Lập",
-            "Khoảng Thời Gian",
-            "Danh Bộ"});
+            "Khoảng Thời Gian"});
             this.cmbTimTheo.Location = new System.Drawing.Point(372, 12);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(141, 25);

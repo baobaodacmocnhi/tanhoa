@@ -379,6 +379,12 @@ namespace KTKS_DonKH.GUI.BamChi
 
                 rptQuyetToanVatTu rpt = new rptQuyetToanVatTu();
                 rpt.SetDataSource(dsBaoCao);
+                ///report 0 là header
+                for (int j = 1; j < rpt.Subreports.Count; j++)
+                {
+                    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                }
+
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }
