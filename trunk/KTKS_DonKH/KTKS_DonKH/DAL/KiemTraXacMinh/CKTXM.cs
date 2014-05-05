@@ -550,6 +550,10 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
 
         #region CTKTXM (Chi Tiết Kiểm Tra Xác Minh)
 
+        /// <summary>
+        /// Lấy Danh Sách Tất Cả CTKTXM chỉ có quyền quản lý được dùng hàm này
+        /// </summary>
+        /// <returns></returns>
         public DataTable LoadDSCTKTXM()
         {
             try
@@ -645,6 +649,11 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách CTKTXM theo MaDon
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns></returns>
         public DataTable LoadDSCTKTXM(decimal MaDon)
         {
             try
@@ -782,8 +791,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         }
 
         /// <summary>
-        /// Lấy Danh Sách CTKTXM theo Mã Đơn Khách Hàng & User
-        /// Nếu User có quyền quản lý KTXM thì được xem hết CTKTXM của Mã Đơn
+        /// Lấy Danh Sách CTKTXM theo Mã Đơn Khách Hàng & User. Nếu User có quyền quản lý KTXM thì được xem hết CTKTXM của Mã Đơn
         /// </summary>
         /// <param name="MaDon"></param>
         /// <param name="MaUser"></param>
@@ -893,6 +901,134 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.NoiDungKiemTra,
                                         itemCTKTXM.CreateDate,
                                         CreateBy = itemUser.HoTen, 
+                                    };
+                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return null;
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách CTKTXM theo Ngày Xử Lý & User. Hàm này phục vụ cho Thống Kê Biên Bản KTXM
+        /// </summary>
+        /// <param name="MaUser"></param>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTKTXM(int MaUser, DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                {
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date
+                                        && ((itemCTKTXM.TinhTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.TinhTrangKiemTra.Contains("không"))
+                                        || itemCTKTXM.TinhTrangKiemTra.Contains("gian lận")
+                                        || itemCTKTXM.TinhTrangKiemTra=="BB chạy ngược"
+                                        || itemCTKTXM.TinhTrangKiemTra == "BB tái lập Danh Bộ"
+                                        || itemCTKTXM.TinhTrangKiemTra == "BB hủy Danh Bộ"
+                                        )
+                                //orderby itemCTKTXM.KTXM.MaDon ascending
+                                select new
+                                {
+                                    LoaiBienBan=itemCTKTXM.TinhTrangKiemTra,
+                                    itemCTKTXM.DanhBo,
+                                    //CreateBy = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                    if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
+                    {
+                        var query = from itemCTKTXM in db.CTKTXMs
+                                    //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                    where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date && itemCTKTXM.CreateBy == MaUser
+                                            && ((itemCTKTXM.TinhTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.TinhTrangKiemTra.Contains("không"))
+                                            || itemCTKTXM.TinhTrangKiemTra.Contains("gian lận")
+                                            || itemCTKTXM.TinhTrangKiemTra == "BB chạy ngược"
+                                            || itemCTKTXM.TinhTrangKiemTra == "BB tái lập Danh Bộ"
+                                            || itemCTKTXM.TinhTrangKiemTra == "BB hủy Danh Bộ"
+                                            )
+                                    //orderby itemCTKTXM.KTXM.MaDon ascending
+                                    select new
+                                    {
+                                        LoaiBienBan = itemCTKTXM.TinhTrangKiemTra,
+                                        itemCTKTXM.DanhBo,
+                                        //CreateBy = itemUser.HoTen,
+                                    };
+                        return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return null;
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách CTKTXM theo Khoảng Thời Gian Xử Lý & User. Hàm này phục vụ cho Thống Kê Biên Bản KTXM
+        /// </summary>
+        /// <param name="MaUser"></param>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTKTXM(int MaUser, DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                {
+                    var query = from itemCTKTXM in db.CTKTXMs
+                                //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value.Date <= DenNgay.Date
+                                        && ((itemCTKTXM.TinhTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.TinhTrangKiemTra.Contains("không"))
+                                        || itemCTKTXM.TinhTrangKiemTra.Contains("gian lận")
+                                        || itemCTKTXM.TinhTrangKiemTra == "BB chạy ngược"
+                                        || itemCTKTXM.TinhTrangKiemTra == "BB tái lập Danh Bộ"
+                                        || itemCTKTXM.TinhTrangKiemTra == "BB hủy Danh Bộ"
+                                        )
+                                //orderby itemCTKTXM.KTXM.MaDon ascending
+                                select new
+                                {
+                                    LoaiBienBan=itemCTKTXM.TinhTrangKiemTra,
+                                    itemCTKTXM.DanhBo,
+                                    //CreateBy = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                    if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
+                    {
+                        var query = from itemCTKTXM in db.CTKTXMs
+                                    //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                    where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value <= DenNgay.Date && itemCTKTXM.CreateBy == MaUser
+                                            && ((itemCTKTXM.TinhTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.TinhTrangKiemTra.Contains("không"))
+                                            || itemCTKTXM.TinhTrangKiemTra.Contains("gian lận")
+                                            || itemCTKTXM.TinhTrangKiemTra == "BB chạy ngược"
+                                            || itemCTKTXM.TinhTrangKiemTra == "BB tái lập Danh Bộ"
+                                            || itemCTKTXM.TinhTrangKiemTra == "BB hủy Danh Bộ"
+                                            )
+                                    //orderby itemCTKTXM.KTXM.MaDon ascending
+                                    select new
+                                    {
+                                        LoaiBienBan = itemCTKTXM.TinhTrangKiemTra,
+                                        itemCTKTXM.DanhBo,
+                                        //CreateBy = itemUser.HoTen,
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                     }
