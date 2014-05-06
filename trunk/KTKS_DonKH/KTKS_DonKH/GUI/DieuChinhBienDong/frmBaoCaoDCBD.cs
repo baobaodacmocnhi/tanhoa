@@ -89,7 +89,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                     }
                 }
+
+                dateTu.Value = DateTime.Now;
+                dateDen.Value = DateTime.Now;
                 _tuNgay = _denNgay = "";
+
                 rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
                 rpt.SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;
@@ -169,7 +173,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dsBaoCao.Tables["ThongKeDCHD"].Rows.Add(dr);
                 }
 
+                dateTu.Value = DateTime.Now;
+                dateDen.Value = DateTime.Now;
                 _tuNgay = _denNgay = "";
+
                 rptThongKeDCBD rpt = new rptThongKeDCBD();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);

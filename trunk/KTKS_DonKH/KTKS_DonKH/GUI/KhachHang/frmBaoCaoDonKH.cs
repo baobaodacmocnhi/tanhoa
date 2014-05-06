@@ -71,7 +71,11 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
             }
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
             _tuNgay = _denNgay = "";
+
             rptThongKeDonKH rpt = new rptThongKeDonKH();
             rpt.SetDataSource(dsBaoCao);
             rpt.SetParameterValue(0, SLChuaXuLy);

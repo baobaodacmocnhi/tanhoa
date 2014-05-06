@@ -943,6 +943,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 {
                                     LoaiBienBan=itemCTKTXM.TinhTrangKiemTra,
                                     itemCTKTXM.DanhBo,
+                                    itemCTKTXM.KTXM.MaDon,
+                                    itemCTKTXM.KTXM.MaDonTXL,
+                                    itemCTKTXM.DongTienBoiThuong,
                                     //CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -964,6 +967,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     {
                                         LoaiBienBan = itemCTKTXM.TinhTrangKiemTra,
                                         itemCTKTXM.DanhBo,
+                                        itemCTKTXM.KTXM.MaDon,
+                                        itemCTKTXM.KTXM.MaDonTXL,
+                                        itemCTKTXM.DongTienBoiThuong,
                                         //CreateBy = itemUser.HoTen,
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -1007,6 +1013,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                 {
                                     LoaiBienBan=itemCTKTXM.TinhTrangKiemTra,
                                     itemCTKTXM.DanhBo,
+                                    itemCTKTXM.KTXM.MaDon,
+                                    itemCTKTXM.KTXM.MaDonTXL,
+                                    itemCTKTXM.DongTienBoiThuong,
                                     //CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -1028,6 +1037,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     {
                                         LoaiBienBan = itemCTKTXM.TinhTrangKiemTra,
                                         itemCTKTXM.DanhBo,
+                                        itemCTKTXM.KTXM.MaDon,
+                                        itemCTKTXM.KTXM.MaDonTXL,
+                                        itemCTKTXM.DongTienBoiThuong,
                                         //CreateBy = itemUser.HoTen,
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
