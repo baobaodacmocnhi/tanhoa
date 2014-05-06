@@ -11,7 +11,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 {
     class CCHDB : CDAL
     {
-        ///Chứa hàm truy xuất dữ liệu từ bảng CHDB & CTCTDB & CTCHDB
+        ///Chứa hàm truy xuất dữ liệu từ bảng CHDB & CTCTDB & CTCHDB & YeuCauCHDB
 
         #region CHDB (Cắt Hủy Danh Bộ)
 
@@ -539,7 +539,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ Tổ Khách Hàng
+        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ
         /// </summary>
         /// <returns></returns>
         public DataTable LoadDSCTCTDB()
@@ -564,6 +564,97 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.LyDo,
                                     itemCTCTDB.GhiChuLyDo,
                                     itemCTCTDB.SoTien,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTCTDB(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.CreateDate.Value.Date == TuNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemCTCTDB.PhieuDuocKy,
+                                    itemCTCTDB.DaLapPhieu,
+                                    itemCTCTDB.ThongBaoDuocKy,
+                                    MaTB = itemCTCTDB.MaCTCTDB,
+                                    itemCTCTDB.CreateDate,
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
+                                    itemCTCTDB.SoTien,
+                                    itemCTCTDB.TCTBXuLy,
+                                    itemCTCTDB.TroNgai,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ trong Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTCTDB(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value.Date <= DenNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemCTCTDB.PhieuDuocKy,
+                                    itemCTCTDB.DaLapPhieu,
+                                    itemCTCTDB.ThongBaoDuocKy,
+                                    MaTB = itemCTCTDB.MaCTCTDB,
+                                    itemCTCTDB.CreateDate,
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
+                                    itemCTCTDB.SoTien,
+                                    itemCTCTDB.TCTBXuLy,
+                                    itemCTCTDB.TroNgai,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -750,7 +841,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         /// <summary>
-        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ Tổ Khách Hàng
+        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ
         /// </summary>
         /// <returns></returns>
         public DataTable LoadDSCTCHDB()
@@ -775,6 +866,97 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.LyDo,
                                     itemCTCHDB.GhiChuLyDo,
                                     itemCTCHDB.SoTien,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTCHDB(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCHDB in db.CTCHDBs
+                                where itemCTCHDB.CreateDate.Value.Date == TuNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemCTCHDB.PhieuDuocKy,
+                                    itemCTCHDB.DaLapPhieu,
+                                    itemCTCHDB.ThongBaoDuocKy,
+                                    MaTB = itemCTCHDB.MaCTCHDB,
+                                    itemCTCHDB.CreateDate,
+                                    itemCTCHDB.DanhBo,
+                                    itemCTCHDB.HoTen,
+                                    itemCTCHDB.DiaChi,
+                                    itemCTCHDB.LyDo,
+                                    itemCTCHDB.GhiChuLyDo,
+                                    itemCTCHDB.SoTien,
+                                    itemCTCHDB.TCTBXuLy,
+                                    itemCTCHDB.TroNgai,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Cắt Hủy Danh Bộ trong Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTCHDB(DateTime TuNgay,DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCHDB in db.CTCHDBs
+                                where itemCTCHDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCHDB.CreateDate.Value.Date <= DenNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemCTCHDB.PhieuDuocKy,
+                                    itemCTCHDB.DaLapPhieu,
+                                    itemCTCHDB.ThongBaoDuocKy,
+                                    MaTB = itemCTCHDB.MaCTCHDB,
+                                    itemCTCHDB.CreateDate,
+                                    itemCTCHDB.DanhBo,
+                                    itemCTCHDB.HoTen,
+                                    itemCTCHDB.DiaChi,
+                                    itemCTCHDB.LyDo,
+                                    itemCTCHDB.GhiChuLyDo,
+                                    itemCTCHDB.SoTien,
+                                    itemCTCHDB.TCTBXuLy,
+                                    itemCTCHDB.TroNgai,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -832,6 +1014,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
 
         }
+
         /// <summary>
         /// Kiểm tra Cắt Hủy đã được lập trước đó chưa, trong record Cắt Hủy có column Mã Chi Tiết Cắt Tạm
         /// </summary>
@@ -1060,5 +1243,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         #endregion
+
     }
 }
