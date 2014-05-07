@@ -102,7 +102,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
 
-            lbDSHetHan.Text = _cChungTu.LoadDSCapDinhMucHetHan().Rows.Count.ToString()+" DB sắp hết hạn";
+            lbDSHetHan.Text = _cChungTu.LoadDSCapDinhMucHetHan().Rows.Count.ToString()+" Sổ sắp hết hạn";
         }
 
         void txtMaDon_GotFocus(object sender, EventArgs e)
@@ -962,7 +962,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
                 //nhậnĐịnhMứctoolStripMenuItem.PerformClick();
             }
-            if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D3)
+            if (e.Control && e.KeyCode == Keys.D3)
             {
                 if (!_flagCtrl3)
                 {
