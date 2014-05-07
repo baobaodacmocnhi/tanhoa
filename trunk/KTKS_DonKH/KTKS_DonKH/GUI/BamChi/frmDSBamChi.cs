@@ -224,6 +224,7 @@ namespace KTKS_DonKH.GUI.BamChi
 
                 rptDSBamChi rpt = new rptDSBamChi();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }

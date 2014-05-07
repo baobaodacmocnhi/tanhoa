@@ -75,6 +75,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         else
                             dr["SoPhieu"] = "";
+
+
+                        if (_cChungTu.CheckMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString()))
+                        {
+                            decimal MaDon = _cChungTu.getMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString());
+                            dr["MaDon"] = MaDon.ToString().Insert(MaDon.ToString().Length - 2, "-");
+                        }
+                        else
+                            dr["MaDon"] = "";
+
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["HoTen"] = itemRow["HoTen"];
