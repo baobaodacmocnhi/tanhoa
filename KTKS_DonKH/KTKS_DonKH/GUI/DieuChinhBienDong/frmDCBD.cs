@@ -35,6 +35,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         bool flagFirst = true;///Lần đầu Load Form (trường hợp 1 đơn nhiều Danh Bộ)
         bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
+        bool _flagCtrl3 = false;
 
         public frmDCBD()
         {
@@ -101,7 +102,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
 
-            //lbDSHetHan.Text = _cChungTu.LoadDSCapDinhMucHetHan().Rows.Count.ToString();
+            lbDSHetHan.Text = _cChungTu.LoadDSCapDinhMucHetHan().Rows.Count.ToString()+" DB sắp hết hạn";
         }
 
         void txtMaDon_GotFocus(object sender, EventArgs e)
@@ -961,6 +962,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
                 //nhậnĐịnhMứctoolStripMenuItem.PerformClick();
             }
+            if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D3)
+            {
+                if (!_flagCtrl3)
+                {
+                    _flagCtrl3 = true;
+                    groupBox_DSSoDangKy.Height = 358;
+                    dgvDSSoDangKy.Height = 330;
+                    panel_LichSuDieuChinh.Location = new Point(0, 560);
+                }
+                else
+                {
+                    _flagCtrl3 = false;
+                    groupBox_DSSoDangKy.Height = 188;
+                    dgvDSSoDangKy.Height = 158;
+                    panel_LichSuDieuChinh.Location = new Point(0, 386);
+                }
+            }
         }
 
         private void dgvDSDieuChinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -973,6 +991,58 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+        }
+
+        private void lbDSHetHan_DoubleClick(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt = _cChungTu.LoadDSCapDinhMucHetHan();
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                if (!string.IsNullOrEmpty(itemRow["NgayHetHan"].ToString()))
+                {
+                    DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                    dr["TuNgay"] = "";
+                    dr["DenNgay"] = "";
+                    if (_cDCBD.checkCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
+                    {
+                        string a = _cDCBD.getCTDCBDbyDanhBoCreateDate(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())).ToString();
+                        dr["SoPhieu"] = a.Insert(a.Length - 2, "-");
+                    }
+                    else
+                        dr["SoPhieu"] = "";
+
+
+                    if (_cChungTu.CheckMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString()))
+                    {
+                        decimal MaDon = _cChungTu.getMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString());
+                        dr["MaDon"] = MaDon.ToString().Insert(MaDon.ToString().Length - 2, "-");
+                    }
+                    else
+                        dr["MaDon"] = "";
+
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["MaLCT"] = itemRow["MaLCT"];
+                    dr["TenLCT"] = itemRow["TenLCT"];
+                    dr["MaCT"] = itemRow["MaCT"];
+                    dr["DinhMucCap"] = (int.Parse(itemRow["SoNKDangKy"].ToString()) * 4).ToString();
+                    dr["NgayHetHan"] = itemRow["NgayHetHan"];
+                    dr["DienThoai"] = itemRow["DienThoai"];
+                    dr["GhiChu"] = itemRow["GhiChu"];
+                    dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                }
+            }
+
+            rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
     }

@@ -524,6 +524,38 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        public bool CheckMaDonbyDanhBoChungTu(string DanhBo, string MaCT)
+        {
+            try
+            {
+                return db.LichSuChungTus.Any(itemLSCT => itemLSCT.DanhBo == DanhBo && itemLSCT.MaCT == MaCT && itemLSCT.MaDon != null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Mã Đơn với Danh Bộ và Chứng Từ
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <param name="MaCT"></param>
+        /// <returns></returns>
+        public decimal getMaDonbyDanhBoChungTu(string DanhBo, string MaCT)
+        {
+            try
+            {
+                return db.LichSuChungTus.FirstOrDefault(itemLSCT => itemLSCT.DanhBo == DanhBo && itemLSCT.MaCT == MaCT&&itemLSCT.MaDon!=null).MaDon.Value;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         #endregion
 
         #region Method
@@ -2019,7 +2051,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8 && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
-                                {
+                                { 
                                     itemCTChungTu.DanhBo,
                                     itemTTKH.HoTen,
                                     DiaChi = itemTTKH.DC1 + itemTTKH.DC2,
@@ -2059,7 +2091,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 {
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
-                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 7
+                                where itemCTChungTu.ThoiHan != null && itemCTChungTu.NgayHetHan <= DateTime.Now.AddDays(15)
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 {

@@ -87,7 +87,7 @@
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Location = new System.Drawing.Point(3, 3);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1259, 498);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1259, 484);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -119,7 +119,7 @@
             this.panel1.Controls.Add(this.crystalReportViewer1);
             this.panel1.Location = new System.Drawing.Point(13, 67);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1265, 504);
+            this.panel1.Size = new System.Drawing.Size(1265, 490);
             this.panel1.TabIndex = 26;
             // 
             // panel_KhoangThoiGian

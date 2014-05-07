@@ -385,7 +385,18 @@
             "Kẹt số",
             "Tuôn số",
             "Không nước",
-            "Kiếng mờ"});
+            "Kiếng mờ",
+            "Không ĐHN",
+            "Lấp mất",
+            "Bể kiếng",
+            "Mất mặt số",
+            "Chủ gỡ",
+            "Hầm sâu",
+            "Chất đồ",
+            "Gắn ngược",
+            "Đóng nước",
+            "Cắt ống bên ngoài",
+            "Kẹt khóa"});
             this.cmbTinhTrangChiSo.Location = new System.Drawing.Point(356, 42);
             this.cmbTinhTrangChiSo.MaxDropDownItems = 50;
             this.cmbTinhTrangChiSo.Name = "cmbTinhTrangChiSo";
@@ -463,7 +474,11 @@
             "Bấm Chì Góc - COUDE",
             "Bấm Chì Thân",
             "Đóng Nước",
-            "Mở Nước"});
+            "Mở Nước",
+            "Đóng Cửa",
+            "Lấp Chừa MS",
+            "Hầm Sâu",
+            "Trở Ngại Khác"});
             this.cmbTrangThai.Location = new System.Drawing.Point(229, 90);
             this.cmbTrangThai.MaxDropDownItems = 50;
             this.cmbTrangThai.Name = "cmbTrangThai";

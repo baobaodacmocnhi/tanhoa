@@ -724,7 +724,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             dr["DiaChi"] = ycchdb.DiaChi;
                             dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["HopDong"] = ycchdb.HopDong;
+
+                            if (ycchdb.LyDo == "Vấn Đề Khác")
+                                dr["LyDo"] = "";
+                            else
                             dr["LyDo"] = ycchdb.LyDo + ". ";
+
                             if (ycchdb.GhiChuLyDo != "")
                                 dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
                             if (ycchdb.SoTien.ToString() != "")
@@ -767,7 +772,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["DiaChi"] = ycchdb.DiaChi;
                     dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HopDong"] = ycchdb.HopDong;
+
+                    if (ycchdb.LyDo == "Vấn Đề Khác")
+                        dr["LyDo"] = "";
+                    else
                     dr["LyDo"] = ycchdb.LyDo + ". ";
+
                     if (ycchdb.GhiChuLyDo != "")
                         dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
                     if (ycchdb.SoTien.ToString() != "")
