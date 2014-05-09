@@ -352,6 +352,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             contextMenuStrip1.Enabled = true;
         }
 
+        private void dgvDSSoDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dgvDSChungTu.DataSource = _cChungTu.LoadDSCTChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
+                dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
@@ -800,6 +813,34 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void dgvDSDieuChinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSDieuChinh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSDieuChinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDC" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void dgvLichSuChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvLichSuChungTu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
         private void dgvDSChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvDSChungTu.RowHeadersDefaultCellStyle.ForeColor))
@@ -808,18 +849,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void dgvDSSoDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                dgvDSChungTu.DataSource = _cChungTu.LoadDSCTChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
-                dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
-            }
-            catch (Exception)
-            {
-
-            }
-        }
+        
 
         #region Configure TextBox
 
@@ -981,18 +1011,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void dgvDSDieuChinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDC" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
-            }
-        }
-
         private void lbDSHetHan_DoubleClick(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
@@ -1044,6 +1062,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
+
+        
 
     }
 }
