@@ -485,6 +485,7 @@
             "Tuôn số",
             "Không nước",
             "Kiếng mờ",
+            "Mất ĐHN",
             "Không ĐHN",
             "Lấp mất",
             "Bể kiếng",
