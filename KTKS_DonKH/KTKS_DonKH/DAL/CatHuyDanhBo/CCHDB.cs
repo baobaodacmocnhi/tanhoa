@@ -1116,7 +1116,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         #endregion
 
-        #region YeuCauCHDB
+        #region YeuCauCHDB (Phiếu Yêu Cầu Cắt Hủy Danh Bộ)
 
         /// <summary>
         /// Kiểm tra Thông Báo CTDB có được lấp Phiếu Yếu Cầu CHDB không
@@ -1216,6 +1216,19 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public YeuCauCHDB getYeuCauCHDbyID(decimal MaYCCHDB)
+        {
+            try
+            {
+                return db.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaYCCHDB == MaYCCHDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public YeuCauCHDB getYeuCauCHDBbyMaCTCTDB(decimal MaCTCTDB)
         {
             try
@@ -1234,6 +1247,90 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             try
             {
                 return db.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra Đơn Khách Hàng có được YCCHDB xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns>true/có</returns>
+        public bool CheckYCCHDBbyMaDonDanhBo(decimal MaDon,string DanhBo)
+        {
+            try
+            {
+                if (db.YeuCauCHDBs.Any(itemYCCHDB => itemYCCHDB.MaDon == MaDon&& itemYCCHDB.DanhBo==DanhBo))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra Đơn Tổ Xử Lý có được YCCHDB xử lý hay chưa
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns>true/có</returns>
+        public bool CheckYCCHDBbyMaDonDanhBo_TXL(decimal MaDonTXL,string DanhBo)
+        {
+            try
+            {
+                if (db.YeuCauCHDBs.Any(itemYCCHDB => itemYCCHDB.MaDonTXL == MaDonTXL&&itemYCCHDB.DanhBo==DanhBo))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Yêu Cầu Cắt Hủy Danh Bộ trực tiếp không qua Thông Báo
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSYCCHDB()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                                where itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null
+                                select new
+                                {
+                                    In = false,
+                                    itemYCCHDB.PhieuDuocKy,
+                                    itemYCCHDB.MaYCCHDB,
+                                    itemYCCHDB.CreateDate,
+                                    itemYCCHDB.DanhBo,
+                                    itemYCCHDB.HoTen,
+                                    itemYCCHDB.DiaChi,
+                                    itemYCCHDB.LyDo,
+                                    itemYCCHDB.GhiChuLyDo,
+                                    itemYCCHDB.SoTien,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
             }
             catch (Exception ex)
             {

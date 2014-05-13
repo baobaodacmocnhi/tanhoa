@@ -73,6 +73,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvDSCTCHDB.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSCTCHDB.Font, FontStyle.Bold);
             dgvDSCTCHDB.Location = gridControl.Location;
 
+            dgvDSYCCHDB.AutoGenerateColumns = false;
+            dgvDSYCCHDB.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSYCCHDB.Font, FontStyle.Bold);
+            dgvDSYCCHDB.Location = gridControl.Location;
+
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
@@ -89,6 +93,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 radDSCatTamDanhBo_TXL.Checked = false;
                 gridControl.Visible = true;
                 dgvDSCTCHDB.Visible = false;
+                dgvDSYCCHDB.Visible = false;
                 //btnLuu.Enabled = true;
                 chkSelectAll.Visible = false;
             }
@@ -124,6 +129,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = false;
                 //dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = false;
                 gridControl.Visible = false;
+                dgvDSYCCHDB.Visible = false;
                 //btnLuu.Enabled = false;
                 chkSelectAll.Visible = true;
             }
@@ -144,10 +150,32 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
                 //dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
                 gridControl.Visible = false;
+                dgvDSYCCHDB.Visible = false;
                 //btnLuu.Enabled = false;
                 chkSelectAll.Visible = true;
             }
-        } 
+        }
+
+        private void radDSYCCHDB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSYCCHDB.Checked)
+            {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cCHDB.LoadDSYCCHDB();
+                dgvDSYCCHDB.DataSource = DSCHDB_BS;
+
+                radDaDuyet_TXL.Checked = false;
+                radDSCatHuyDanhBo_TXL.Checked = false;
+                radDSCatTamDanhBo_TXL.Checked = false;
+                dgvDSYCCHDB.Visible = true;
+                dgvDSCTCHDB.Visible = false;
+                //dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
+                //dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
+                gridControl.Visible = false;
+                //btnLuu.Enabled = false;
+                chkSelectAll.Visible = false;
+            }
+        }
 
         private void cắtTạmDanhBộtoolStripMenuItem_Click(object sender, System.EventArgs e)
         {
@@ -733,6 +761,40 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         #endregion
 
+        #region dgvDSYCCHDB (Danh Sách Phiếu Yêu Cầu Cắt Hủy Danh Bộ)
+
+        private void dgvDSYCCHDB_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSYCCHDB.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSYCCHDB_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSYCCHDB.Columns[e.ColumnIndex].Name == "MaYCCHDB" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvDSYCCHDB.Columns[e.ColumnIndex].Name == "YC_SoTien" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvDSYCCHDB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (radDSYCCHDB.Checked)
+                if (dgvDSYCCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+                {
+                    frmShowYCCHDB frm = new frmShowYCCHDB(decimal.Parse(dgvDSYCCHDB["MaYCCHDB", dgvDSYCCHDB.CurrentRow.Index].Value.ToString()));
+                    frm.ShowDialog();
+                }
+        }
+
+        #endregion
+
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSelectAll.Checked)
@@ -988,6 +1050,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
                 }
         }
+
+        
+
+        
+
+        
 
     }
 }

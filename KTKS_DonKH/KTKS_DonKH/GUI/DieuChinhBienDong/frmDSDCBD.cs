@@ -1220,9 +1220,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         TB_GHICHU ghichu = new TB_GHICHU();
                                         ghichu.DANHBO = dlkh.DANHBO;
                                         ghichu.DONVI = "KTKS";
-                                        ghichu.NOIDUNG = "PYCĐC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
-                                        ghichu.NOIDUNG += " ngày " + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
-                                        ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - Điều Chỉnh";
+                                        ghichu.NOIDUNG = " PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                                        ghichu.NOIDUNG += " ," + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
+                                        ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - ĐC";
                                         if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                         {
                                             ghichu.NOIDUNG += " Tên: " + ctdcbd.HoTen_BD + ",";

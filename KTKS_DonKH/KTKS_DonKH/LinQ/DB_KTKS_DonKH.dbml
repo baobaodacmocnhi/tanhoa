@@ -46,12 +46,17 @@
       <Column Name="MaCTCTDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="TBCHDB" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaCTCHDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ToXyLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="CTCHDB_YeuCauCHDB" Member="CTCHDB" ThisKey="MaCTCHDB" OtherKey="MaCTCHDB" Type="CTCHDB" IsForeignKey="true" />
       <Association Name="CTCTDB_YeuCauCHDB" Member="CTCTDB" ThisKey="MaCTCTDB" OtherKey="MaCTCTDB" Type="CTCTDB" IsForeignKey="true" />
+      <Association Name="DonKH_YeuCauCHDB" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonTXL_YeuCauCHDB" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.BanGiamDoc" Member="BanGiamDocs">
@@ -615,6 +620,7 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonKH_BamChi" Member="BamChis" ThisKey="MaDon" OtherKey="MaDon" Type="BamChi" />
+      <Association Name="DonKH_YeuCauCHDB" Member="YeuCauCHDBs" ThisKey="MaDon" OtherKey="MaDon" Type="YeuCauCHDB" />
       <Association Name="DonKH_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDon" Type="CHDB" />
       <Association Name="DonKH_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDon" Type="DCBD" />
       <Association Name="DonKH_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDon" Type="DongNuoc" />
@@ -654,6 +660,7 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonTXL_BamChi" Member="BamChis" ThisKey="MaDon" OtherKey="MaDonTXL" Type="BamChi" />
+      <Association Name="DonTXL_YeuCauCHDB" Member="YeuCauCHDBs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="YeuCauCHDB" />
       <Association Name="DonTXL_CHDB" Member="CHDBs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="CHDB" />
       <Association Name="DonTXL_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="DCBD" />
       <Association Name="DonTXL_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="DongNuoc" />
