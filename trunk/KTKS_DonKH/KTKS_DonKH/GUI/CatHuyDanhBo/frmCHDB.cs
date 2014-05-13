@@ -238,7 +238,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 CHDB chdb = new CHDB();
                                 chdb.ToXuLy = true;
                                 chdb.MaDonTXL = _dontxl.MaDon;
-                                _cCHDB.ThemCHDB(chdb);
+                                if (_cCHDB.ThemCHDB(chdb))
                                 {
                                     if (string.IsNullOrEmpty(_dontxl.TienTrinh))
                                         _dontxl.TienTrinh = "CHDB";
@@ -305,7 +305,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             CHDB chdb = new CHDB();
                             chdb.MaDon = _donkh.MaDon;
-                            _cCHDB.ThemCHDB(chdb);
+                            if (_cCHDB.ThemCHDB(chdb))
                             {
                                 if (string.IsNullOrEmpty(_donkh.TienTrinh))
                                     _donkh.TienTrinh = "CHDB";

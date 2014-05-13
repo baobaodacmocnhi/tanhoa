@@ -1067,6 +1067,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _MaCTCHDB;
 		
+		private System.Nullable<decimal> _MaDon;
+		
+		private bool _ToXyLy;
+		
+		private System.Nullable<decimal> _MaDonTXL;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -1078,6 +1084,10 @@ namespace KTKS_DonKH.LinQ
 		private EntityRef<CTCHDB> _CTCHDB;
 		
 		private EntityRef<CTCTDB> _CTCTDB;
+		
+		private EntityRef<DonKH> _DonKH;
+		
+		private EntityRef<DonTXL> _DonTXL;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1121,6 +1131,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnTBCHDBChanged();
     partial void OnMaCTCHDBChanging(System.Nullable<decimal> value);
     partial void OnMaCTCHDBChanged();
+    partial void OnMaDonChanging(System.Nullable<decimal> value);
+    partial void OnMaDonChanged();
+    partial void OnToXyLyChanging(bool value);
+    partial void OnToXyLyChanged();
+    partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
+    partial void OnMaDonTXLChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -1135,6 +1151,8 @@ namespace KTKS_DonKH.LinQ
 		{
 			this._CTCHDB = default(EntityRef<CTCHDB>);
 			this._CTCTDB = default(EntityRef<CTCTDB>);
+			this._DonKH = default(EntityRef<DonKH>);
+			this._DonTXL = default(EntityRef<DonTXL>);
 			OnCreated();
 		}
 		
@@ -1526,6 +1544,74 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDon
+		{
+			get
+			{
+				return this._MaDon;
+			}
+			set
+			{
+				if ((this._MaDon != value))
+				{
+					if (this._DonKH.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDonChanging(value);
+					this.SendPropertyChanging();
+					this._MaDon = value;
+					this.SendPropertyChanged("MaDon");
+					this.OnMaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToXyLy", DbType="Bit NOT NULL")]
+		public bool ToXyLy
+		{
+			get
+			{
+				return this._ToXyLy;
+			}
+			set
+			{
+				if ((this._ToXyLy != value))
+				{
+					this.OnToXyLyChanging(value);
+					this.SendPropertyChanging();
+					this._ToXyLy = value;
+					this.SendPropertyChanged("ToXyLy");
+					this.OnToXyLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTXL", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDonTXL
+		{
+			get
+			{
+				return this._MaDonTXL;
+			}
+			set
+			{
+				if ((this._MaDonTXL != value))
+				{
+					if (this._DonTXL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDonTXLChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonTXL = value;
+					this.SendPropertyChanged("MaDonTXL");
+					this.OnMaDonTXLChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateDate
 		{
@@ -1670,6 +1756,74 @@ namespace KTKS_DonKH.LinQ
 						this._MaCTCTDB = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("CTCTDB");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_YeuCauCHDB", Storage="_DonKH", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
+		public DonKH DonKH
+		{
+			get
+			{
+				return this._DonKH.Entity;
+			}
+			set
+			{
+				DonKH previousValue = this._DonKH.Entity;
+				if (((previousValue != value) 
+							|| (this._DonKH.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonKH.Entity = null;
+						previousValue.YeuCauCHDBs.Remove(this);
+					}
+					this._DonKH.Entity = value;
+					if ((value != null))
+					{
+						value.YeuCauCHDBs.Add(this);
+						this._MaDon = value.MaDon;
+					}
+					else
+					{
+						this._MaDon = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonKH");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_YeuCauCHDB", Storage="_DonTXL", ThisKey="MaDonTXL", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTXL DonTXL
+		{
+			get
+			{
+				return this._DonTXL.Entity;
+			}
+			set
+			{
+				DonTXL previousValue = this._DonTXL.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTXL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTXL.Entity = null;
+						previousValue.YeuCauCHDBs.Remove(this);
+					}
+					this._DonTXL.Entity = value;
+					if ((value != null))
+					{
+						value.YeuCauCHDBs.Add(this);
+						this._MaDonTXL = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTXL = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTXL");
 				}
 			}
 		}
@@ -13408,6 +13562,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<BamChi> _BamChis;
 		
+		private EntitySet<YeuCauCHDB> _YeuCauCHDBs;
+		
 		private EntitySet<CHDB> _CHDBs;
 		
 		private EntitySet<DCBD> _DCBDs;
@@ -13533,6 +13689,7 @@ namespace KTKS_DonKH.LinQ
 		public DonKH()
 		{
 			this._BamChis = new EntitySet<BamChi>(new Action<BamChi>(this.attach_BamChis), new Action<BamChi>(this.detach_BamChis));
+			this._YeuCauCHDBs = new EntitySet<YeuCauCHDB>(new Action<YeuCauCHDB>(this.attach_YeuCauCHDBs), new Action<YeuCauCHDB>(this.detach_YeuCauCHDBs));
 			this._CHDBs = new EntitySet<CHDB>(new Action<CHDB>(this.attach_CHDBs), new Action<CHDB>(this.detach_CHDBs));
 			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
 			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
@@ -14584,6 +14741,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_YeuCauCHDB", Storage="_YeuCauCHDBs", ThisKey="MaDon", OtherKey="MaDon")]
+		public EntitySet<YeuCauCHDB> YeuCauCHDBs
+		{
+			get
+			{
+				return this._YeuCauCHDBs;
+			}
+			set
+			{
+				this._YeuCauCHDBs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonKH_CHDB", Storage="_CHDBs", ThisKey="MaDon", OtherKey="MaDon")]
 		public EntitySet<CHDB> CHDBs
 		{
@@ -14749,6 +14919,18 @@ namespace KTKS_DonKH.LinQ
 			entity.DonKH = null;
 		}
 		
+		private void attach_YeuCauCHDBs(YeuCauCHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = this;
+		}
+		
+		private void detach_YeuCauCHDBs(YeuCauCHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonKH = null;
+		}
+		
 		private void attach_CHDBs(CHDB entity)
 		{
 			this.SendPropertyChanging();
@@ -14872,6 +15054,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<BamChi> _BamChis;
 		
+		private EntitySet<YeuCauCHDB> _YeuCauCHDBs;
+		
 		private EntitySet<CHDB> _CHDBs;
 		
 		private EntitySet<DCBD> _DCBDs;
@@ -14949,6 +15133,7 @@ namespace KTKS_DonKH.LinQ
 		public DonTXL()
 		{
 			this._BamChis = new EntitySet<BamChi>(new Action<BamChi>(this.attach_BamChis), new Action<BamChi>(this.detach_BamChis));
+			this._YeuCauCHDBs = new EntitySet<YeuCauCHDB>(new Action<YeuCauCHDB>(this.attach_YeuCauCHDBs), new Action<YeuCauCHDB>(this.detach_YeuCauCHDBs));
 			this._CHDBs = new EntitySet<CHDB>(new Action<CHDB>(this.attach_CHDBs), new Action<CHDB>(this.detach_CHDBs));
 			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
 			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
@@ -15520,6 +15705,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_YeuCauCHDB", Storage="_YeuCauCHDBs", ThisKey="MaDon", OtherKey="MaDonTXL")]
+		public EntitySet<YeuCauCHDB> YeuCauCHDBs
+		{
+			get
+			{
+				return this._YeuCauCHDBs;
+			}
+			set
+			{
+				this._YeuCauCHDBs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_CHDB", Storage="_CHDBs", ThisKey="MaDon", OtherKey="MaDonTXL")]
 		public EntitySet<CHDB> CHDBs
 		{
@@ -15680,6 +15878,18 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_BamChis(BamChi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = null;
+		}
+		
+		private void attach_YeuCauCHDBs(YeuCauCHDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = this;
+		}
+		
+		private void detach_YeuCauCHDBs(YeuCauCHDB entity)
 		{
 			this.SendPropertyChanging();
 			entity.DonTXL = null;

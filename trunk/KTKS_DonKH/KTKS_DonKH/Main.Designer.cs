@@ -86,6 +86,8 @@
             this.ribbonPanel12 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnCTDB = new System.Windows.Forms.RibbonButton();
             this.ribbtnCHDB = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel22 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnBaoCaoCHDB = new System.Windows.Forms.RibbonButton();
             this.ribbonTab7 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel10 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnDSDonTTTL = new System.Windows.Forms.RibbonButton();
@@ -100,8 +102,7 @@
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbonPanel22 = new System.Windows.Forms.RibbonPanel();
-            this.ribbtnBaoCaoCHDB = new System.Windows.Forms.RibbonButton();
+            this.ribbtnLapPhieuCatHuyDB = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -528,6 +529,7 @@
             this.ribbonPanel12.ButtonMoreVisible = false;
             this.ribbonPanel12.Items.Add(this.ribbtnCTDB);
             this.ribbonPanel12.Items.Add(this.ribbtnCHDB);
+            this.ribbonPanel12.Items.Add(this.ribbtnLapPhieuCatHuyDB);
             this.ribbonPanel12.Text = "Xử Lý";
             // 
             // ribbtnCTDB
@@ -535,7 +537,7 @@
             this.ribbtnCTDB.Image = global::KTKS_DonKH.Properties.Resources.cut_48x48;
             this.ribbtnCTDB.MinimumSize = new System.Drawing.Size(110, 0);
             this.ribbtnCTDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnCTDB.SmallImage")));
-            this.ribbtnCTDB.Text = "Cắt Tạm Danh Bộ";
+            this.ribbtnCTDB.Text = "TB Cắt Tạm DB";
             this.ribbtnCTDB.Click += new System.EventHandler(this.ribbtnCTDB_Click);
             // 
             // ribbtnCHDB
@@ -543,8 +545,23 @@
             this.ribbtnCHDB.Image = global::KTKS_DonKH.Properties.Resources.Close_48x48;
             this.ribbtnCHDB.MinimumSize = new System.Drawing.Size(110, 0);
             this.ribbtnCHDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnCHDB.SmallImage")));
-            this.ribbtnCHDB.Text = "Cắt Hủy Danh Bộ";
+            this.ribbtnCHDB.Text = "TB Cắt Hủy DB";
             this.ribbtnCHDB.Click += new System.EventHandler(this.ribbtnCHDB_Click);
+            // 
+            // ribbonPanel22
+            // 
+            this.ribbonPanel22.ButtonMoreEnabled = false;
+            this.ribbonPanel22.ButtonMoreVisible = false;
+            this.ribbonPanel22.Items.Add(this.ribbtnBaoCaoCHDB);
+            this.ribbonPanel22.Text = "Báo Cáo";
+            // 
+            // ribbtnBaoCaoCHDB
+            // 
+            this.ribbtnBaoCaoCHDB.Image = global::KTKS_DonKH.Properties.Resources.report_48x48;
+            this.ribbtnBaoCaoCHDB.MinimumSize = new System.Drawing.Size(110, 0);
+            this.ribbtnBaoCaoCHDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnBaoCaoCHDB.SmallImage")));
+            this.ribbtnBaoCaoCHDB.Text = "Các Loại Báo Cáo";
+            this.ribbtnBaoCaoCHDB.Click += new System.EventHandler(this.ribbtnBaoCaoCHDB_Click);
             // 
             // ribbonTab7
             // 
@@ -671,20 +688,13 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbonPanel22
+            // ribbtnLapPhieuCatHuyDB
             // 
-            this.ribbonPanel22.ButtonMoreEnabled = false;
-            this.ribbonPanel22.ButtonMoreVisible = false;
-            this.ribbonPanel22.Items.Add(this.ribbtnBaoCaoCHDB);
-            this.ribbonPanel22.Text = "Báo Cáo";
-            // 
-            // ribbtnBaoCaoCHDB
-            // 
-            this.ribbtnBaoCaoCHDB.Image = global::KTKS_DonKH.Properties.Resources.report_48x48;
-            this.ribbtnBaoCaoCHDB.MinimumSize = new System.Drawing.Size(110, 0);
-            this.ribbtnBaoCaoCHDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnBaoCaoCHDB.SmallImage")));
-            this.ribbtnBaoCaoCHDB.Text = "Các Loại Báo Cáo";
-            this.ribbtnBaoCaoCHDB.Click += new System.EventHandler(this.ribbtnBaoCaoCHDB_Click);
+            this.ribbtnLapPhieuCatHuyDB.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnLapPhieuCatHuyDB.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbtnLapPhieuCatHuyDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnLapPhieuCatHuyDB.SmallImage")));
+            this.ribbtnLapPhieuCatHuyDB.Text = "Lập Phiếu Cắt Hủy DB";
+            this.ribbtnLapPhieuCatHuyDB.Click += new System.EventHandler(this.ribbtnLapPhieuCatHuyDB_Click);
             // 
             // Main
             // 
@@ -783,6 +793,7 @@
         private System.Windows.Forms.RibbonButton ribbtnBaoCaoKTXM;
         private System.Windows.Forms.RibbonPanel ribbonPanel22;
         private System.Windows.Forms.RibbonButton ribbtnBaoCaoCHDB;
+        private System.Windows.Forms.RibbonButton ribbtnLapPhieuCatHuyDB;
     }
 }
 
