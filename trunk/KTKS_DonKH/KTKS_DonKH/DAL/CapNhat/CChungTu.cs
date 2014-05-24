@@ -1253,7 +1253,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                     
                 }
-                if (ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
+                //if (ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
                     if (ctchungtu.YeuCauCat)
                     {
                         //chungtuCN.YeuCauCat = true;
@@ -1316,7 +1316,7 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                 #region Yêu Cầu Cắt 2,3,4,5
 
-                if (ctchungtu.YeuCauCat2 != ctchungtuCN.YeuCauCat2)
+                //if (ctchungtu.YeuCauCat2 != ctchungtuCN.YeuCauCat2)
                     if (ctchungtu.YeuCauCat2)
                     {
                         ctchungtuCN.YeuCauCat2 = true;
@@ -1370,7 +1370,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ctchungtuCN.YeuCauCat2 = false;
                     }
 
-                if (ctchungtu.YeuCauCat3 != ctchungtuCN.YeuCauCat3)
+                //if (ctchungtu.YeuCauCat3 != ctchungtuCN.YeuCauCat3)
                     if (ctchungtu.YeuCauCat3)
                     {
                         ctchungtuCN.YeuCauCat3 = true;
@@ -1424,7 +1424,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ctchungtuCN.YeuCauCat3 = false;
                     }
 
-                if (ctchungtu.YeuCauCat4 != ctchungtuCN.YeuCauCat4)
+                //if (ctchungtu.YeuCauCat4 != ctchungtuCN.YeuCauCat4)
                     if (ctchungtu.YeuCauCat4)
                     {
                         ctchungtuCN.YeuCauCat4 = true;
@@ -1478,7 +1478,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ctchungtuCN.YeuCauCat4 = false;
                     }
 
-                if (ctchungtu.YeuCauCat5 != ctchungtuCN.YeuCauCat5)
+                //if (ctchungtu.YeuCauCat5 != ctchungtuCN.YeuCauCat5)
                     if (ctchungtu.YeuCauCat5)
                     {
                         ctchungtuCN.YeuCauCat5 = true;
