@@ -43,6 +43,10 @@
             this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtPhong = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txtLo = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDiaChiCT_Cat = new System.Windows.Forms.TextBox();
@@ -60,10 +64,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.txtPhong = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.txtLo = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -227,6 +227,38 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nơi Cắt/Chuyển:";
             // 
+            // txtPhong
+            // 
+            this.txtPhong.Location = new System.Drawing.Point(127, 334);
+            this.txtPhong.Name = "txtPhong";
+            this.txtPhong.Size = new System.Drawing.Size(194, 25);
+            this.txtPhong.TabIndex = 38;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(14, 337);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(48, 17);
+            this.label35.TabIndex = 37;
+            this.label35.Text = "Phòng:";
+            // 
+            // txtLo
+            // 
+            this.txtLo.Location = new System.Drawing.Point(127, 303);
+            this.txtLo.Name = "txtLo";
+            this.txtLo.Size = new System.Drawing.Size(194, 25);
+            this.txtLo.TabIndex = 36;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(14, 306);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(27, 17);
+            this.label34.TabIndex = 35;
+            this.label34.Text = "Lô:";
+            // 
             // txtGhiChu
             // 
             this.txtGhiChu.Location = new System.Drawing.Point(127, 272);
@@ -374,38 +406,6 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Visible = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // txtPhong
-            // 
-            this.txtPhong.Location = new System.Drawing.Point(127, 334);
-            this.txtPhong.Name = "txtPhong";
-            this.txtPhong.Size = new System.Drawing.Size(194, 25);
-            this.txtPhong.TabIndex = 38;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(14, 337);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(48, 17);
-            this.label35.TabIndex = 37;
-            this.label35.Text = "Phòng:";
-            // 
-            // txtLo
-            // 
-            this.txtLo.Location = new System.Drawing.Point(127, 303);
-            this.txtLo.Name = "txtLo";
-            this.txtLo.Size = new System.Drawing.Size(194, 25);
-            this.txtLo.TabIndex = 36;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(14, 306);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(27, 17);
-            this.label34.TabIndex = 35;
-            this.label34.Text = "Lô:";
             // 
             // frmShowNhanDM
             // 

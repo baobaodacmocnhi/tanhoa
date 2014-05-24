@@ -214,7 +214,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                     if (_cChungTu.SuaNhanChungTu(chungtu, ctchungtu, _lichsuchungtu))
                                     {
-                                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                 }
                                 else
