@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -60,10 +60,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtVienChi = new System.Windows.Forms.TextBox();
-            this.cmbTinhTrangKiemTra = new System.Windows.Forms.ComboBox();
+            this.cmbHienTrangKiemTra = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.cmbTrangThai = new System.Windows.Forms.ComboBox();
+            this.cmbTrangThaiBC = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.txtCo = new System.Windows.Forms.TextBox();
@@ -242,10 +242,10 @@
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.txtVienChi);
-            this.groupBox2.Controls.Add(this.cmbTinhTrangKiemTra);
+            this.groupBox2.Controls.Add(this.cmbHienTrangKiemTra);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.cmbTrangThai);
+            this.groupBox2.Controls.Add(this.cmbTrangThaiBC);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.txtHieu);
             this.groupBox2.Controls.Add(this.txtCo);
@@ -430,22 +430,22 @@
             this.txtVienChi.TabIndex = 25;
             this.txtVienChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVienChi_KeyPress);
             // 
-            // cmbTinhTrangKiemTra
+            // cmbHienTrangKiemTra
             // 
-            this.cmbTinhTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTinhTrangKiemTra.FormattingEnabled = true;
-            this.cmbTinhTrangKiemTra.Items.AddRange(new object[] {
+            this.cmbHienTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHienTrangKiemTra.FormattingEnabled = true;
+            this.cmbHienTrangKiemTra.Items.AddRange(new object[] {
             "",
             "Nhà đóng cửa",
             "Nhà có tang, trẻ em, người già",
             "Bấm chì ĐHN"});
-            this.cmbTinhTrangKiemTra.Location = new System.Drawing.Point(106, 42);
-            this.cmbTinhTrangKiemTra.MaxDropDownItems = 50;
-            this.cmbTinhTrangKiemTra.Name = "cmbTinhTrangKiemTra";
-            this.cmbTinhTrangKiemTra.Size = new System.Drawing.Size(188, 25);
-            this.cmbTinhTrangKiemTra.TabIndex = 3;
-            this.cmbTinhTrangKiemTra.Visible = false;
-            this.cmbTinhTrangKiemTra.SelectedIndexChanged += new System.EventHandler(this.cmbTinhTrangKiemTra_SelectedIndexChanged);
+            this.cmbHienTrangKiemTra.Location = new System.Drawing.Point(106, 42);
+            this.cmbHienTrangKiemTra.MaxDropDownItems = 50;
+            this.cmbHienTrangKiemTra.Name = "cmbHienTrangKiemTra";
+            this.cmbHienTrangKiemTra.Size = new System.Drawing.Size(188, 25);
+            this.cmbHienTrangKiemTra.TabIndex = 3;
+            this.cmbHienTrangKiemTra.Visible = false;
+            this.cmbHienTrangKiemTra.SelectedIndexChanged += new System.EventHandler(this.cmbTinhTrangKiemTra_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -466,11 +466,11 @@
             this.label18.Text = "Hiện Trạng Kiểm Tra";
             this.label18.Visible = false;
             // 
-            // cmbTrangThai
+            // cmbTrangThaiBC
             // 
-            this.cmbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTrangThai.FormattingEnabled = true;
-            this.cmbTrangThai.Items.AddRange(new object[] {
+            this.cmbTrangThaiBC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTrangThaiBC.FormattingEnabled = true;
+            this.cmbTrangThaiBC.Items.AddRange(new object[] {
             "",
             "Bấm Chì Góc - COUDE",
             "Bấm Chì Thân",
@@ -480,12 +480,12 @@
             "Lấp Chừa MS",
             "Hầm Sâu",
             "Trở Ngại Khác"});
-            this.cmbTrangThai.Location = new System.Drawing.Point(229, 90);
-            this.cmbTrangThai.MaxDropDownItems = 50;
-            this.cmbTrangThai.Name = "cmbTrangThai";
-            this.cmbTrangThai.Size = new System.Drawing.Size(161, 25);
-            this.cmbTrangThai.TabIndex = 21;
-            this.cmbTrangThai.SelectedIndexChanged += new System.EventHandler(this.cmbTrangThai_SelectedIndexChanged);
+            this.cmbTrangThaiBC.Location = new System.Drawing.Point(229, 90);
+            this.cmbTrangThaiBC.MaxDropDownItems = 50;
+            this.cmbTrangThaiBC.Name = "cmbTrangThaiBC";
+            this.cmbTrangThaiBC.Size = new System.Drawing.Size(161, 25);
+            this.cmbTrangThaiBC.TabIndex = 21;
+            this.cmbTrangThaiBC.SelectedIndexChanged += new System.EventHandler(this.cmbTrangThai_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -610,14 +610,14 @@
             // 
             this.dgvDSNhapBamChi.AllowUserToAddRows = false;
             this.dgvDSNhapBamChi.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSNhapBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSNhapBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSNhapBamChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSNhapBamChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTBC,
@@ -751,11 +751,11 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtHieu;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox cmbTrangThai;
+        private System.Windows.Forms.ComboBox cmbTrangThaiBC;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvDSNhapBamChi;
-        private System.Windows.Forms.ComboBox cmbTinhTrangKiemTra;
+        private System.Windows.Forms.ComboBox cmbHienTrangKiemTra;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cmbTinhTrangChiSo;
         private System.Windows.Forms.Label label19;

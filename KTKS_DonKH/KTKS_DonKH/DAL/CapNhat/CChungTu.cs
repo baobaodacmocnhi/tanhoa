@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Data;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.Function;
 
 namespace KTKS_DonKH.DAL.CapNhat
 {
@@ -419,6 +420,84 @@ namespace KTKS_DonKH.DAL.CapNhat
                     }
                     else
                         return null;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Phiếu Cắt Chuyển Định Mức trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCatChuyenDM(DateTime TuNgay)
+        {
+            //string a = "";
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                where itemLSCT.CreateDate.Value.Date == TuNgay.Date && itemLSCT.SoPhieu != null
+                                orderby itemLSCT.SoPhieu ascending
+                                select new
+                                {
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.NhanDM,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Phiếu Cắt Chuyển Định Mức trong Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCatChuyenDM(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                where itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date && itemLSCT.SoPhieu != null
+                                orderby itemLSCT.SoPhieu ascending
+                                select new
+                                {
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.NhanDM,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
                 {

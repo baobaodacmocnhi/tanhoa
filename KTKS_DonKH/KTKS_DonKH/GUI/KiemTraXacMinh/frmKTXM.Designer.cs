@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -65,7 +65,7 @@
             this.cmbChiMatSo = new System.Windows.Forms.ComboBox();
             this.cmbTinhTrangChiSo = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.cmbTinhTrangKiemTra = new System.Windows.Forms.ComboBox();
+            this.cmbHienTrangKiemTra = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtHoTenKHKy = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -274,14 +274,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -354,7 +354,7 @@
             this.groupBox2.Controls.Add(this.cmbChiMatSo);
             this.groupBox2.Controls.Add(this.cmbTinhTrangChiSo);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.cmbTinhTrangKiemTra);
+            this.groupBox2.Controls.Add(this.cmbHienTrangKiemTra);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.txtHoTenKHKy);
             this.groupBox2.Controls.Add(this.label17);
@@ -512,37 +512,16 @@
             this.label19.TabIndex = 8;
             this.label19.Text = "Chỉ Số lúc Kiểm Tra";
             // 
-            // cmbTinhTrangKiemTra
+            // cmbHienTrangKiemTra
             // 
-            this.cmbTinhTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTinhTrangKiemTra.FormattingEnabled = true;
-            this.cmbTinhTrangKiemTra.Items.AddRange(new object[] {
-            "",
-            "Nhà đóng cửa",
-            "Nhà có tang, trẻ em, người già",
-            "Chỉ số nước bất thường",
-            "Hóa Đơn = 0",
-            "Điều chỉnh biến động KH",
-            "Gắn lại ĐHN do thu hồi",
-            "BB chạy ngược",
-            "BB mất ĐHN bồi thường",
-            "BB mất ĐHN không bồi thường",
-            "BB đứt chì MS bồi thường",
-            "BB đứt chì MS không bồi thường",
-            "BB sai kỹ thuật bồi thường",
-            "BB gian lận ĐHN bồi thường",
-            "BB phối hợp gian lận nước",
-            "BB tái lập Danh Bộ",
-            "BB bồi thường ĐHN hư hỏng",
-            "BB hủy Danh Bộ",
-            "BB thu hồi ĐHN",
-            "Vấn đề khác"});
-            this.cmbTinhTrangKiemTra.Location = new System.Drawing.Point(114, 42);
-            this.cmbTinhTrangKiemTra.MaxDropDownItems = 50;
-            this.cmbTinhTrangKiemTra.Name = "cmbTinhTrangKiemTra";
-            this.cmbTinhTrangKiemTra.Size = new System.Drawing.Size(188, 25);
-            this.cmbTinhTrangKiemTra.TabIndex = 3;
-            this.cmbTinhTrangKiemTra.SelectedIndexChanged += new System.EventHandler(this.cmbTinhTrangKiemTra_SelectedIndexChanged);
+            this.cmbHienTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHienTrangKiemTra.FormattingEnabled = true;
+            this.cmbHienTrangKiemTra.Location = new System.Drawing.Point(114, 42);
+            this.cmbHienTrangKiemTra.MaxDropDownItems = 50;
+            this.cmbHienTrangKiemTra.Name = "cmbHienTrangKiemTra";
+            this.cmbHienTrangKiemTra.Size = new System.Drawing.Size(188, 25);
+            this.cmbHienTrangKiemTra.TabIndex = 3;
+            this.cmbHienTrangKiemTra.SelectedIndexChanged += new System.EventHandler(this.cmbTinhTrangKiemTra_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -781,7 +760,7 @@
         private System.Windows.Forms.ComboBox cmbChiMatSo;
         private System.Windows.Forms.ComboBox cmbTinhTrangChiSo;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox cmbTinhTrangKiemTra;
+        private System.Windows.Forms.ComboBox cmbHienTrangKiemTra;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label lbTheoYeuCau;
         private System.Windows.Forms.TextBox txtTheoYeuCau;

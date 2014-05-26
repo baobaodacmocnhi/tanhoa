@@ -119,7 +119,11 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 _dontxl.NoiDung = txtNoiDung.Text.Trim();
 
                 if (_cDonTXL.SuaDonTXL(_dontxl))
+                {
                     MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
 

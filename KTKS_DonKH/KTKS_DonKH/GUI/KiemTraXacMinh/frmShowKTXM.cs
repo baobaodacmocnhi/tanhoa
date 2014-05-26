@@ -22,6 +22,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         TTKhachHang _ttkhachhang = null;
         CTTKH _cTTKH = new CTTKH();
+        CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
+        bool _flagFirst = true; 
 
         public frmShowKTXM()
         {
@@ -48,6 +50,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void frmShowKTXM_Load(object sender, EventArgs e)
         {
             this.Location = new Point(30, 70);
+            cmbHienTrangKiemTra.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra(true);
+            cmbHienTrangKiemTra.DisplayMember = "TenHTKT";
+            cmbHienTrangKiemTra.ValueMember = "TenHTKT";
+            cmbHienTrangKiemTra.SelectedIndex = -1;
+            _flagFirst = false;
+
             if (CTaiKhoan.RoleQLBamChi_CapNhat || CTaiKhoan.RoleBamChi_CapNhat || CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleBamChi_Xem)
             {
                 lbTheoYeuCau.Visible = true;
@@ -91,7 +99,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = ctktxm.DinhMuc;
             ///
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
-            cmbTinhTrangKiemTra.SelectedItem = ctktxm.TinhTrangKiemTra;
+            cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
             txtHieu.Text = ctktxm.Hieu;
             txtCo.Text = ctktxm.Co;
             txtSoThan.Text = ctktxm.SoThan;
@@ -175,8 +183,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 ///
                 _ctktxm.NgayKTXM = dateKTXM.Value;
 
-                if (cmbTinhTrangKiemTra.SelectedItem != null)
-                _ctktxm.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+                if (cmbHienTrangKiemTra.SelectedValue != null)
+                    _ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
 
                 _ctktxm.Hieu = txtHieu.Text.Trim();
                 _ctktxm.Co = txtCo.Text.Trim();
@@ -258,62 +266,68 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void cmbTinhTrangKiemTra_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbTinhTrangKiemTra.SelectedItem.ToString())
+            if (_flagFirst)
             {
-                case "Nhà đóng cửa":
-                    txtChiSo.Enabled = false;
-                    cmbTinhTrangChiSo.Enabled = false;
-                    cmbChiMatSo.Enabled = false;
-                    cmbChiKhoaGoc.Enabled = false;
-                    txtHieu.Enabled = false;
-                    txtCo.Enabled = false;
-                    txtSoThan.Enabled = false;
-                    txtMucDichSuDung.Enabled = false;
-                    txtDienThoai.Enabled = false;
-                    txtHoTenKHKy.Enabled = false;
-                    ///
-                    txtChiSo.Text = "";
-                    cmbTinhTrangChiSo.SelectedIndex = -1;
-                    cmbChiMatSo.SelectedIndex = -1;
-                    cmbChiKhoaGoc.SelectedIndex = -1;
-                    txtHieu.Text = "";
-                    txtCo.Text = "";
-                    txtSoThan.Text = "";
-                    txtMucDichSuDung.Text = "";
-                    txtDienThoai.Text = "";
-                    txtHoTenKHKy.Text = "";
-                    break;
-                case "BB mất ĐHN bồi thường":
-                case "BB mất ĐHN không bồi thường":
-                    txtChiSo.Enabled = false;
-                    cmbTinhTrangChiSo.Enabled = false;
-                    cmbChiMatSo.Enabled = false;
-                    cmbChiKhoaGoc.Enabled = false;
-                    txtHieu.Enabled = false;
-                    txtCo.Enabled = false;
-                    txtSoThan.Enabled = false;
-                    ///
-                    txtChiSo.Text = "";
-                    cmbTinhTrangChiSo.SelectedIndex = -1;
-                    cmbChiMatSo.SelectedIndex = -1;
-                    cmbChiKhoaGoc.SelectedIndex = -1;
-                    txtHieu.Text = "";
-                    txtCo.Text = "";
-                    txtSoThan.Text = "";
-                    break;
-                default:
-                    txtChiSo.Enabled = true;
-                    cmbTinhTrangChiSo.Enabled = true;
-                    cmbChiMatSo.Enabled = true;
-                    cmbChiKhoaGoc.Enabled = true;
-                    txtHieu.Enabled = true;
-                    txtCo.Enabled = true;
-                    txtSoThan.Enabled = true;
-                    txtMucDichSuDung.Enabled = true;
-                    txtDienThoai.Enabled = true;
-                    txtHoTenKHKy.Enabled = true;
-                    break;
+
             }
+            else
+                switch (((HienTrangKiemTra)cmbHienTrangKiemTra.SelectedItem).TenHTKT)
+                {
+                    case "Nhà đóng cửa":
+                        txtChiSo.Enabled = false;
+                        cmbTinhTrangChiSo.Enabled = false;
+                        cmbChiMatSo.Enabled = false;
+                        cmbChiKhoaGoc.Enabled = false;
+                        txtHieu.Enabled = false;
+                        txtCo.Enabled = false;
+                        txtSoThan.Enabled = false;
+                        txtMucDichSuDung.Enabled = false;
+                        txtDienThoai.Enabled = false;
+                        txtHoTenKHKy.Enabled = false;
+                        ///
+                        txtChiSo.Text = "";
+                        cmbTinhTrangChiSo.SelectedIndex = -1;
+                        cmbChiMatSo.SelectedIndex = -1;
+                        cmbChiKhoaGoc.SelectedIndex = -1;
+                        txtHieu.Text = "";
+                        txtCo.Text = "";
+                        txtSoThan.Text = "";
+                        txtMucDichSuDung.Text = "";
+                        txtDienThoai.Text = "";
+                        txtHoTenKHKy.Text = "";
+                        break;
+                    case "BB mất ĐHN bồi thường":
+                    case "BB mất ĐHN không bồi thường":
+                        txtChiSo.Enabled = false;
+                        cmbTinhTrangChiSo.Enabled = false;
+                        cmbChiMatSo.Enabled = false;
+                        cmbChiKhoaGoc.Enabled = false;
+                        txtHieu.Enabled = false;
+                        txtCo.Enabled = false;
+                        txtSoThan.Enabled = false;
+                        ///
+                        txtChiSo.Text = "";
+                        cmbTinhTrangChiSo.SelectedIndex = -1;
+                        cmbChiMatSo.SelectedIndex = -1;
+                        cmbChiKhoaGoc.SelectedIndex = -1;
+                        txtHieu.Text = "";
+                        txtCo.Text = "";
+                        txtSoThan.Text = "";
+                        break;
+                    default:
+                        txtChiSo.Enabled = true;
+                        cmbTinhTrangChiSo.Enabled = true;
+                        cmbChiMatSo.Enabled = true;
+                        cmbChiKhoaGoc.Enabled = true;
+                        txtHieu.Enabled = true;
+                        txtCo.Enabled = true;
+                        txtSoThan.Enabled = true;
+                        txtMucDichSuDung.Enabled = true;
+                        txtDienThoai.Enabled = true;
+                        txtHoTenKHKy.Enabled = true;
+                        break;
+                }
+            
         }
 
         private void chkDongTienBoiThuong_CheckedChanged(object sender, EventArgs e)

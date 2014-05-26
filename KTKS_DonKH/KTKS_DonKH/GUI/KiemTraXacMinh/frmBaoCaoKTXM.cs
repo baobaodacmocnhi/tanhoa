@@ -83,9 +83,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 get { return _dongTienBoiThuong; }
                 set { _dongTienBoiThuong = value; }
             }
+
+            int _chuaDongTienBoiThuong = 0;
+            public int ChuaDongTienBoiThuong
+            {
+                get { return _chuaDongTienBoiThuong; }
+                set { _chuaDongTienBoiThuong = value; }
+            }
         };
 
-        ThongKeBienBan[] a = new ThongKeBienBan[5];
+        ThongKeBienBan[] a = new ThongKeBienBan[6];
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
@@ -98,7 +105,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     if (!string.IsNullOrEmpty(_tuNgay))
                         dt = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser, dateTu.Value);
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                 {
                     a[i] = new ThongKeBienBan();
                 }
@@ -107,43 +114,62 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 {
                     if (itemRow["LoaiBienBan"].ToString().Contains("bồi thường") && !itemRow["LoaiBienBan"].ToString().Contains("không"))
                     {
-                        a[0].LoaiBienBan = "BB bồi thường";
-                        a[0].TongDanhBo++;
-                        if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
-                            a[0].ToKH++;
-                        if (!string.IsNullOrEmpty(itemRow["MaDonTXL"].ToString()))
-                            a[0].ToXuLy++;
-                        if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
-                            a[0].DongTienBoiThuong++;
+                        if (itemRow["LoaiBienBan"].ToString().Equals("BB mất ĐHN bồi thường"))
+                        {
+                            a[0].LoaiBienBan = "BB mất ĐHN bồi thường";
+                            a[0].TongDanhBo++;
+                            if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                                a[0].ToKH++;
+                            if (!string.IsNullOrEmpty(itemRow["MaDonTXL"].ToString()))
+                                a[0].ToXuLy++;
+                            if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
+                                a[0].DongTienBoiThuong++;
+                            else
+                                a[0].ChuaDongTienBoiThuong++;
+                        }
+                        else
+                            if (itemRow["LoaiBienBan"].ToString().Equals("BB đứt chì MS bồi thường"))
+                            {
+                                a[1].LoaiBienBan = "BB đứt chì MS bồi thường";
+                                a[1].TongDanhBo++;
+                                if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                                    a[1].ToKH++;
+                                if (!string.IsNullOrEmpty(itemRow["MaDonTXL"].ToString()))
+                                    a[1].ToXuLy++;
+                                if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
+                                    a[1].DongTienBoiThuong++;
+                                else
+                                    a[1].ChuaDongTienBoiThuong++;
+                            }
                     }
                     else
                         if (itemRow["LoaiBienBan"].ToString().Contains("gian lận"))
                         {
-                            a[1].LoaiBienBan = "BB gian lận";
-                            a[1].TongDanhBo++;
+                            a[2].LoaiBienBan = "BB gian lận";
+                            a[2].TongDanhBo++;
                         }
                         else
                             if (itemRow["LoaiBienBan"].ToString() == "BB chạy ngược")
                             {
-                                a[2].LoaiBienBan = "BB chạy ngược";
-                                a[2].TongDanhBo++;
+                                a[3].LoaiBienBan = "BB chạy ngược";
+                                a[3].TongDanhBo++;
                             }
                             else
                                 if (itemRow["LoaiBienBan"].ToString() == "BB tái lập Danh Bộ")
                                 {
-                                    a[3].LoaiBienBan = "BB tái lập Danh Bộ";
-                                    a[3].TongDanhBo++;
+                                    a[4].LoaiBienBan = "BB tái lập Danh Bộ";
+                                    a[4].TongDanhBo++;
                                 }
                                 else
                                     if (itemRow["LoaiBienBan"].ToString() == "BB hủy Danh Bộ")
                                     {
-                                        a[4].LoaiBienBan = "BB hủy Danh Bộ";
-                                        a[4].TongDanhBo++;
+                                        a[5].LoaiBienBan = "BB hủy Danh Bộ";
+                                        a[5].TongDanhBo++;
                                     }
                 }
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                     ///nếu không có if thì sẽ in ra hết 5 loaibienban (có những cái sẽ không có)
                     if (!string.IsNullOrEmpty(a[i].LoaiBienBan))
                     {
@@ -168,6 +194,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             dr["DongTienBoiThuong"] = "";
                         else
                             dr["DongTienBoiThuong"] = a[i].DongTienBoiThuong;
+
+                        if (a[i].ChuaDongTienBoiThuong == 0)
+                            dr["ChuaDongTienBoiThuong"] = "";
+                        else
+                            dr["ChuaDongTienBoiThuong"] = a[i].ChuaDongTienBoiThuong;
 
                         dsBaoCao.Tables["ThongKeBienBanKTXM"].Rows.Add(dr);
                     }

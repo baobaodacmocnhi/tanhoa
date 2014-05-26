@@ -26,6 +26,8 @@ namespace KTKS_DonKH.GUI.BamChi
         CBamChi _cBamChi = new CBamChi();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         int selectedindex = -1;
+        CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
+        bool _flagFirst = true;
 
         public frmBamChi()
         {
@@ -65,7 +67,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtDinhMuc.Text = ctbamchi.DinhMuc.ToString();
             ///
             dateBamChi.Value = ctbamchi.NgayBC.Value;
-            cmbTinhTrangKiemTra.SelectedItem = ctbamchi.TinhTrangKiemTra;
+            cmbHienTrangKiemTra.SelectedItem = ctbamchi.HienTrangKiemTra;
             txtHieu.Text = ctbamchi.Hieu;
             txtCo.Text = ctbamchi.Co.ToString();
             txtSoThan.Text = ctbamchi.SoThan;
@@ -76,7 +78,7 @@ namespace KTKS_DonKH.GUI.BamChi
             cmbTinhTrangChiSo.SelectedItem = ctbamchi.TinhTrangChiSo;
             txtVienChi.Text = ctbamchi.VienChi.ToString();
             txtDayChi.Text = ctbamchi.DayChi.ToString();
-            cmbTrangThai.SelectedItem = ctbamchi.TrangThai;
+            cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
             txtMaSoBC.Text = ctbamchi.MaSoBC;
             txtTheoYeuCau.Text = ctbamchi.TheoYeuCau;
         }
@@ -91,7 +93,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtDinhMuc.Text = "";
             ///
             dateBamChi.Value = DateTime.Now;
-            cmbTinhTrangKiemTra.SelectedIndex = -1;
+            cmbHienTrangKiemTra.SelectedIndex = -1;
             txtHieu.Text = "";
             txtCo.Text = "";
             txtSoThan.Text = "";
@@ -102,7 +104,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtMucDichSuDung.Text = "";
             txtVienChi.Text = "";
             txtDayChi.Text = "";
-            cmbTrangThai.SelectedIndex = -1;
+            cmbTrangThaiBC.SelectedIndex = -1;
             txtMaSoBC.Text = "";
             txtTheoYeuCau.Text = "";
 
@@ -113,6 +115,12 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             dgvDSNhapBamChi.AutoGenerateColumns = false;
             dgvDSNhapBamChi.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSNhapBamChi.Font, FontStyle.Bold);
+
+            cmbTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi(true);
+            cmbTrangThaiBC.DisplayMember = "TenTTBC";
+            cmbTrangThaiBC.ValueMember = "TenTTBC";
+            cmbTrangThaiBC.SelectedIndex = -1;
+            _flagFirst = false;
 
             txtMaSoBC.Text = CTaiKhoan.MaKiemBamChi;
         }
@@ -229,8 +237,8 @@ namespace KTKS_DonKH.GUI.BamChi
                         ///
                         ctbamchi.NgayBC = dateBamChi.Value;
 
-                        if (cmbTinhTrangKiemTra.SelectedItem != null)
-                        ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+                        if (cmbHienTrangKiemTra.SelectedItem != null)
+                            ctbamchi.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedItem.ToString();
 
                         ctbamchi.Hieu = txtHieu.Text.Trim();
 
@@ -253,8 +261,8 @@ namespace KTKS_DonKH.GUI.BamChi
 
                         ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
 
-                        if (cmbTrangThai.SelectedItem != null)
-                        ctbamchi.TrangThai = cmbTrangThai.SelectedItem.ToString();
+                        if (cmbTrangThaiBC.SelectedValue != null)
+                            ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
 
                         ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
 
@@ -328,8 +336,8 @@ namespace KTKS_DonKH.GUI.BamChi
                         ///
                         ctbamchi.NgayBC = dateBamChi.Value;
 
-                        if (cmbTinhTrangKiemTra.SelectedItem != null)
-                        ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+                        if (cmbHienTrangKiemTra.SelectedItem != null)
+                            ctbamchi.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedItem.ToString();
 
                         ctbamchi.Hieu = txtHieu.Text.Trim();
 
@@ -352,8 +360,8 @@ namespace KTKS_DonKH.GUI.BamChi
 
                         ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
 
-                        if (cmbTrangThai.SelectedItem != null)
-                        ctbamchi.TrangThai = cmbTrangThai.SelectedItem.ToString();
+                        if (cmbTrangThaiBC.SelectedValue != null)
+                            ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
 
                         ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
 
@@ -415,8 +423,8 @@ namespace KTKS_DonKH.GUI.BamChi
                     ///
                     ctbamchi.NgayBC = dateBamChi.Value;
 
-                    if (cmbTinhTrangKiemTra.SelectedItem != null)
-                    ctbamchi.TinhTrangKiemTra = cmbTinhTrangKiemTra.SelectedItem.ToString();
+                    if (cmbHienTrangKiemTra.SelectedItem != null)
+                        ctbamchi.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedItem.ToString();
 
                     ctbamchi.Hieu = txtHieu.Text.Trim();
 
@@ -439,8 +447,8 @@ namespace KTKS_DonKH.GUI.BamChi
 
                     ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
 
-                    if (cmbTrangThai.SelectedItem != null)
-                    ctbamchi.TrangThai = cmbTrangThai.SelectedItem.ToString();
+                    if (cmbTrangThaiBC.SelectedValue != null)
+                        ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
 
                     ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
 
@@ -542,27 +550,32 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void cmbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbTrangThai.SelectedItem.ToString())
+            if (_flagFirst)
             {
-                case "Bấm Chì Thân":
-                case "Đóng Cửa":
-                case "Lấp Chừa Mặt Số":
-                case "Còn Chì":
-                case "Hầm Sâu":
-                case "Trở Ngại Khác":
-                    txtVienChi.Text = "";
-                    txtDayChi.Text = "";
-                    break;
-                default:
-                    txtVienChi.Text = "1";
-                    txtDayChi.Text = "0.6";
-                    break;
+
             }
+            else
+                switch (((TrangThaiBamChi)cmbTrangThaiBC.SelectedItem).TenTTBC)
+                {
+                    case "Bấm Chì Thân":
+                    case "Đóng Cửa":
+                    case "Lấp Chừa MS":
+                    case "Còn Chì":
+                    case "Hầm Sâu":
+                    case "Trở Ngại Khác":
+                        txtVienChi.Text = "";
+                        txtDayChi.Text = "";
+                        break;
+                    default:
+                        txtVienChi.Text = "1";
+                        txtDayChi.Text = "0.6";
+                        break;
+                }
         }
 
         private void cmbTinhTrangKiemTra_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbTinhTrangKiemTra.SelectedItem.ToString())
+            switch (cmbHienTrangKiemTra.SelectedItem.ToString())
             {
                 case "Nhà đóng cửa":
                     txtChiSo.Enabled = false;
@@ -575,7 +588,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     txtMucDichSuDung.Enabled = false;
                     txtVienChi.Enabled = false;
                     txtDayChi.Enabled = false;
-                    cmbTrangThai.Enabled = false;
+                    cmbTrangThaiBC.Enabled = false;
                     txtMaSoBC.Enabled = false;
                     txtTheoYeuCau.Enabled = false;
                     ///
@@ -589,7 +602,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     txtMucDichSuDung.Text = "";
                     txtVienChi.Text = "";
                     txtDayChi.Text = "";
-                    cmbTrangThai.SelectedIndex = -1;
+                    cmbTrangThaiBC.SelectedIndex = -1;
                     txtMaSoBC.Text = "";
                     txtTheoYeuCau.Text = "";
                     break;
@@ -605,7 +618,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     txtMucDichSuDung.Enabled = false;
                     txtVienChi.Enabled = false;
                     txtDayChi.Enabled = false;
-                    cmbTrangThai.Enabled = false;
+                    cmbTrangThaiBC.Enabled = false;
                     ///
                     txtChiSo.Text = "";
                     cmbTinhTrangChiSo.SelectedIndex = -1;
@@ -617,7 +630,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     txtMucDichSuDung.Text = "";
                     txtVienChi.Text = "";
                     txtDayChi.Text = "";
-                    cmbTrangThai.SelectedIndex = -1;
+                    cmbTrangThaiBC.SelectedIndex = -1;
                     break;
                 default:
                     txtChiSo.Enabled = true;
@@ -630,7 +643,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     txtMucDichSuDung.Enabled = true;
                     txtVienChi.Enabled = true;
                     txtDayChi.Enabled = true;
-                    cmbTrangThai.Enabled = true;
+                    cmbTrangThaiBC.Enabled = true;
                     txtMaSoBC.Enabled = true;
                     txtTheoYeuCau.Enabled = true;
                     break;
