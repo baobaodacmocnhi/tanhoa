@@ -55,6 +55,29 @@ namespace KTKS_DonKH.GUI.CapNhat
             dgvDSLoaiDonTXL.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
         }
 
+        #region Tổ Khách Hàng
+
+        private void dgvDSLoaiDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _selectedindex = e.RowIndex;
+                txtKyHieuLD.Text = dgvDSLoaiDon["KyHieuLD", e.RowIndex].Value.ToString();
+                txtTenLD.Text = dgvDSLoaiDon["TenLD", e.RowIndex].Value.ToString();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void dgvDSLoaiDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSLoaiDon.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (txtKyHieuLD.Text.Trim() != "" && txtTenLD.Text.Trim() != "")
@@ -88,26 +111,9 @@ namespace KTKS_DonKH.GUI.CapNhat
             }
         }
 
-        private void dgvDSLoaiDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                _selectedindex = e.RowIndex;
-                txtKyHieuLD.Text = dgvDSLoaiDon["KyHieuLD", e.RowIndex].Value.ToString();
-                txtTenLD.Text = dgvDSLoaiDon["TenLD", e.RowIndex].Value.ToString();
-            }
-            catch (Exception)
-            {
-            }
-        }
+        #endregion
 
-        private void dgvDSLoaiDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDSLoaiDon.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
+        #region Tổ Xử Lý
 
         private void dgvDSLoaiDonTXL_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -163,6 +169,6 @@ namespace KTKS_DonKH.GUI.CapNhat
             }
         }
 
-
+        #endregion
     }
 }

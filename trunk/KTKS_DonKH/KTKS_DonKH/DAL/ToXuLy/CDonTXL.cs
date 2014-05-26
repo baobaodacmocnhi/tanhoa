@@ -83,7 +83,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonTXLs);
                     return false;
                 }
             }
@@ -217,13 +217,13 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     dontxl.ModifyDate = DateTime.Now;
                     dontxl.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonTXLs);
                     return false;
                 }
             }
@@ -244,12 +244,12 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     dontxl.ModifyDate = DateTime.Now;
                     dontxl.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    //MessageBox.Show("Thành công Sửa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
                 {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonTXLs);
                     return false;
                 }
             }
@@ -269,12 +269,12 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 {
                     db.DonTXLs.DeleteOnSubmit(dontxl);
                     db.SubmitChanges();
-                    //MessageBox.Show("Thành công Xóa DonKH", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Xóa DonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
                 {
-                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonKHs);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DonTXLs);
                     return false;
                 }
             }

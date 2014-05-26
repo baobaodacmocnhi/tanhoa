@@ -66,7 +66,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTBamChi.DanhBo,
                                       itemCTBamChi.HoTen,
                                       itemCTBamChi.DiaChi,
-                                      itemCTBamChi.TrangThai,
+                                      itemCTBamChi.TrangThaiBC,
                                       itemCTBamChi.TheoYeuCau,
                                       CreateBy = itemUser.HoTen,
                                   };
@@ -269,7 +269,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTBamChi.DanhBo,
                                     itemCTBamChi.HoTen,
                                     itemCTBamChi.DiaChi,
-                                    itemCTBamChi.TrangThai,
+                                    itemCTBamChi.TrangThaiBC,
                                     itemCTBamChi.TheoYeuCau,
                                     CreateBy = itemUser.HoTen,
                                 };
@@ -459,7 +459,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTBamChi.DanhBo,
                                       itemCTBamChi.HoTen,
                                       itemCTBamChi.DiaChi,
-                                      itemCTBamChi.TrangThai,
+                                      itemCTBamChi.TrangThaiBC,
                                       itemCTBamChi.TheoYeuCau,
                                       CreateBy = itemUser.HoTen,
                                   };
@@ -944,7 +944,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTBamChi.DanhBo,
                                       itemCTBamChi.HoTen,
                                       itemCTBamChi.DiaChi,
-                                      itemCTBamChi.TrangThai,
+                                      itemCTBamChi.TrangThaiBC,
                                       itemCTBamChi.TheoYeuCau,
                                       CreateBy = itemUser.HoTen,
                                   };
@@ -1427,7 +1427,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTBamChi.DanhBo,
                                       itemCTBamChi.HoTen,
                                       itemCTBamChi.DiaChi,
-                                      itemCTBamChi.TrangThai,
+                                      itemCTBamChi.TrangThaiBC,
                                       itemCTBamChi.TheoYeuCau,
                                       CreateBy = itemUser.HoTen,
                                   };

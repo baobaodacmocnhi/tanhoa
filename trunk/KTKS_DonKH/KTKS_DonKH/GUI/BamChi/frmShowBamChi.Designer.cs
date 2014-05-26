@@ -45,10 +45,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtVienChi = new System.Windows.Forms.TextBox();
-            this.cmbTinhTrangKiemTra = new System.Windows.Forms.ComboBox();
+            this.cmbHienTrangKiemTra = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.cmbTrangThai = new System.Windows.Forms.ComboBox();
+            this.cmbTrangThaiBC = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.txtCo = new System.Windows.Forms.TextBox();
@@ -110,10 +110,10 @@
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.txtVienChi);
-            this.groupBox2.Controls.Add(this.cmbTinhTrangKiemTra);
+            this.groupBox2.Controls.Add(this.cmbHienTrangKiemTra);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.cmbTrangThai);
+            this.groupBox2.Controls.Add(this.cmbTrangThaiBC);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.txtHieu);
             this.groupBox2.Controls.Add(this.txtCo);
@@ -298,22 +298,22 @@
             this.txtVienChi.TabIndex = 55;
             this.txtVienChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVienChi_KeyPress);
             // 
-            // cmbTinhTrangKiemTra
+            // cmbHienTrangKiemTra
             // 
-            this.cmbTinhTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTinhTrangKiemTra.FormattingEnabled = true;
-            this.cmbTinhTrangKiemTra.Items.AddRange(new object[] {
+            this.cmbHienTrangKiemTra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHienTrangKiemTra.FormattingEnabled = true;
+            this.cmbHienTrangKiemTra.Items.AddRange(new object[] {
             "",
             "Nhà đóng cửa",
             "Nhà có tang, trẻ em, người già",
             "Bấm chì ĐHN"});
-            this.cmbTinhTrangKiemTra.Location = new System.Drawing.Point(106, 42);
-            this.cmbTinhTrangKiemTra.MaxDropDownItems = 50;
-            this.cmbTinhTrangKiemTra.Name = "cmbTinhTrangKiemTra";
-            this.cmbTinhTrangKiemTra.Size = new System.Drawing.Size(188, 25);
-            this.cmbTinhTrangKiemTra.TabIndex = 33;
-            this.cmbTinhTrangKiemTra.Visible = false;
-            this.cmbTinhTrangKiemTra.SelectedIndexChanged += new System.EventHandler(this.cmbTinhTrangKiemTra_SelectedIndexChanged);
+            this.cmbHienTrangKiemTra.Location = new System.Drawing.Point(106, 42);
+            this.cmbHienTrangKiemTra.MaxDropDownItems = 50;
+            this.cmbHienTrangKiemTra.Name = "cmbHienTrangKiemTra";
+            this.cmbHienTrangKiemTra.Size = new System.Drawing.Size(188, 25);
+            this.cmbHienTrangKiemTra.TabIndex = 33;
+            this.cmbHienTrangKiemTra.Visible = false;
+            this.cmbHienTrangKiemTra.SelectedIndexChanged += new System.EventHandler(this.cmbTinhTrangKiemTra_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -334,11 +334,11 @@
             this.label18.Text = "Hiện Trạng Kiểm Tra";
             this.label18.Visible = false;
             // 
-            // cmbTrangThai
+            // cmbTrangThaiBC
             // 
-            this.cmbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTrangThai.FormattingEnabled = true;
-            this.cmbTrangThai.Items.AddRange(new object[] {
+            this.cmbTrangThaiBC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTrangThaiBC.FormattingEnabled = true;
+            this.cmbTrangThaiBC.Items.AddRange(new object[] {
             "",
             "Bấm Chì Góc - COUDE",
             "Bấm Chì Thân",
@@ -348,12 +348,12 @@
             "Lấp Chừa MS",
             "Hầm Sâu",
             "Trở Ngại Khác"});
-            this.cmbTrangThai.Location = new System.Drawing.Point(229, 90);
-            this.cmbTrangThai.MaxDropDownItems = 50;
-            this.cmbTrangThai.Name = "cmbTrangThai";
-            this.cmbTrangThai.Size = new System.Drawing.Size(161, 25);
-            this.cmbTrangThai.TabIndex = 51;
-            this.cmbTrangThai.SelectedIndexChanged += new System.EventHandler(this.cmbTrangThai_SelectedIndexChanged);
+            this.cmbTrangThaiBC.Location = new System.Drawing.Point(229, 90);
+            this.cmbTrangThaiBC.MaxDropDownItems = 50;
+            this.cmbTrangThaiBC.Name = "cmbTrangThaiBC";
+            this.cmbTrangThaiBC.Size = new System.Drawing.Size(161, 25);
+            this.cmbTrangThaiBC.TabIndex = 51;
+            this.cmbTrangThaiBC.SelectedIndexChanged += new System.EventHandler(this.cmbTrangThai_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -658,10 +658,10 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtVienChi;
-        private System.Windows.Forms.ComboBox cmbTinhTrangKiemTra;
+        private System.Windows.Forms.ComboBox cmbHienTrangKiemTra;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox cmbTrangThai;
+        private System.Windows.Forms.ComboBox cmbTrangThaiBC;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtHieu;
         private System.Windows.Forms.TextBox txtCo;

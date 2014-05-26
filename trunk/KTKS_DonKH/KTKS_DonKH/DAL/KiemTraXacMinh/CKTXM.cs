@@ -932,16 +932,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query = from itemCTKTXM in db.CTKTXMs
                                 //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date
-                                        && ((itemCTKTXM.TinhTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.TinhTrangKiemTra.Contains("không"))
-                                        || itemCTKTXM.TinhTrangKiemTra.Contains("gian lận")
-                                        || itemCTKTXM.TinhTrangKiemTra=="BB chạy ngược"
-                                        || itemCTKTXM.TinhTrangKiemTra == "BB tái lập Danh Bộ"
-                                        || itemCTKTXM.TinhTrangKiemTra == "BB hủy Danh Bộ"
+                                        && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
+                                        || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
+                                        || itemCTKTXM.HienTrangKiemTra=="BB chạy ngược"
+                                        || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
+                                        || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
                                         )
                                 //orderby itemCTKTXM.KTXM.MaDon ascending
                                 select new
                                 {
-                                    LoaiBienBan=itemCTKTXM.TinhTrangKiemTra,
+                                    LoaiBienBan=itemCTKTXM.HienTrangKiemTra,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.KTXM.MaDonTXL,
@@ -956,16 +956,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         var query = from itemCTKTXM in db.CTKTXMs
                                     //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                     where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date && itemCTKTXM.CreateBy == MaUser
-                                            && ((itemCTKTXM.TinhTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.TinhTrangKiemTra.Contains("không"))
-                                            || itemCTKTXM.TinhTrangKiemTra.Contains("gian lận")
-                                            || itemCTKTXM.TinhTrangKiemTra == "BB chạy ngược"
-                                            || itemCTKTXM.TinhTrangKiemTra == "BB tái lập Danh Bộ"
-                                            || itemCTKTXM.TinhTrangKiemTra == "BB hủy Danh Bộ"
+                                            && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
+                                            || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
+                                            || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
+                                            || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
+                                            || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
                                             )
                                     //orderby itemCTKTXM.KTXM.MaDon ascending
                                     select new
                                     {
-                                        LoaiBienBan = itemCTKTXM.TinhTrangKiemTra,
+                                        LoaiBienBan = itemCTKTXM.HienTrangKiemTra,
                                         itemCTKTXM.DanhBo,
                                         itemCTKTXM.KTXM.MaDon,
                                         itemCTKTXM.KTXM.MaDonTXL,
@@ -1002,16 +1002,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query = from itemCTKTXM in db.CTKTXMs
                                 //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value.Date <= DenNgay.Date
-                                        && ((itemCTKTXM.TinhTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.TinhTrangKiemTra.Contains("không"))
-                                        || itemCTKTXM.TinhTrangKiemTra.Contains("gian lận")
-                                        || itemCTKTXM.TinhTrangKiemTra == "BB chạy ngược"
-                                        || itemCTKTXM.TinhTrangKiemTra == "BB tái lập Danh Bộ"
-                                        || itemCTKTXM.TinhTrangKiemTra == "BB hủy Danh Bộ"
+                                        && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
+                                        || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
+                                        || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
+                                        || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
+                                        || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
                                         )
                                 //orderby itemCTKTXM.KTXM.MaDon ascending
                                 select new
                                 {
-                                    LoaiBienBan=itemCTKTXM.TinhTrangKiemTra,
+                                    LoaiBienBan=itemCTKTXM.HienTrangKiemTra,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.KTXM.MaDonTXL,
@@ -1026,16 +1026,16 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         var query = from itemCTKTXM in db.CTKTXMs
                                     //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                     where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value <= DenNgay.Date && itemCTKTXM.CreateBy == MaUser
-                                            && ((itemCTKTXM.TinhTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.TinhTrangKiemTra.Contains("không"))
-                                            || itemCTKTXM.TinhTrangKiemTra.Contains("gian lận")
-                                            || itemCTKTXM.TinhTrangKiemTra == "BB chạy ngược"
-                                            || itemCTKTXM.TinhTrangKiemTra == "BB tái lập Danh Bộ"
-                                            || itemCTKTXM.TinhTrangKiemTra == "BB hủy Danh Bộ"
+                                            && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
+                                            || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
+                                            || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
+                                            || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
+                                            || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
                                             )
                                     //orderby itemCTKTXM.KTXM.MaDon ascending
                                     select new
                                     {
-                                        LoaiBienBan = itemCTKTXM.TinhTrangKiemTra,
+                                        LoaiBienBan = itemCTKTXM.HienTrangKiemTra,
                                         itemCTKTXM.DanhBo,
                                         itemCTKTXM.KTXM.MaDon,
                                         itemCTKTXM.KTXM.MaDonTXL,

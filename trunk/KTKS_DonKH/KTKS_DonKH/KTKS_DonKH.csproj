@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -161,6 +161,12 @@
     </Compile>
     <Compile Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.cs">
       <DependentUpon>rptThongKeCHDB.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptThongKeCatChuyenDM.cs">
+      <DependentUpon>rptThongKeCatChuyenDM.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -316,14 +322,17 @@
     <Compile Include="DAL\CapNhat\CBanGiamDoc.cs" />
     <Compile Include="DAL\CapNhat\CChiNhanh.cs" />
     <Compile Include="DAL\CapNhat\CGiaNuoc.cs" />
+    <Compile Include="DAL\CapNhat\CHienTrangKiemTra.cs" />
     <Compile Include="DAL\CapNhat\CLoaiChungTu.cs" />
     <Compile Include="DAL\CapNhat\CLoaiDon.cs" />
     <Compile Include="DAL\CapNhat\CNhanVien.cs" />
     <Compile Include="DAL\CapNhat\CLoaiDonTXL.cs" />
+    <Compile Include="DAL\CapNhat\CTrangThaiBamChi.cs" />
     <Compile Include="DAL\CapNhat\CTTKH.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CCHDB.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CapNhat\CChungTu.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CCatChuyenDM.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDCBD.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDuLieuKhachHang.cs" />
     <Compile Include="DAL\DongNuoc\CDongNuoc.cs" />
@@ -401,6 +410,12 @@
     </Compile>
     <Compile Include="GUI\CapNhat\frmNVKiemTra.Designer.cs">
       <DependentUpon>frmNVKiemTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmThongTin_KT_BC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CapNhat\frmThongTin_KT_BC.Designer.cs">
+      <DependentUpon>frmThongTin_KT_BC.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CapNhat\frmTTKH.cs">
       <SubType>Form</SubType>
@@ -726,6 +741,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeCHDB.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptThongKeCatChuyenDM.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongKeCatChuyenDM.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptThongKeDCBD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDCBD.cs</LastGenOutput>
@@ -850,6 +869,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CapNhat\frmNVKiemTra.resx">
       <DependentUpon>frmNVKiemTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CapNhat\frmThongTin_KT_BC.resx">
+      <DependentUpon>frmThongTin_KT_BC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CapNhat\frmTTKH.resx">
       <DependentUpon>frmTTKH.cs</DependentUpon>

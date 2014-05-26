@@ -113,16 +113,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 DataTable dtDCBD = new DataTable();
                 DataTable dtDCHD = new DataTable();
+                DataTable dtCatChuyenDM = new DataTable();
+
                 if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
                 {
                     dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value, dateDen.Value);
                     dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value, dateDen.Value);
+                    dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
                 }
                 else
                     if (!string.IsNullOrEmpty(_tuNgay))
                     {
                         dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value);
                         dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value);
+                        dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu.Value);
                     }
 
                 int DanhBoTangDM = 0;
@@ -183,6 +187,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dsBaoCao.Tables["ThongKeDCHD"].Rows.Add(dr);
                 }
 
+                foreach (DataRow itemRow in dtCatChuyenDM.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["ThongKeCatChuyenDM"].NewRow();
+                    dr["SoPhieu"] = itemRow["SoPhieu"];
+                    if (itemRow["CatDM"].ToString() != "")
+                    {
+                        if (bool.Parse(itemRow["CatDM"].ToString()))
+                            dr["LoaiCatChuyen"] = "Cắt Chuyển đến Công ty khác";
+                    }
+                    else
+                        if (itemRow["YeuCauCat"].ToString() != "")
+                        {
+                            if (bool.Parse(itemRow["YeuCauCat"].ToString()))
+                                dr["LoaiCatChuyen"] = "Yêu Cầu Công ty khác Cắt";
+                        }
+                        else
+                            if (itemRow["NhanDM"].ToString() != "")
+                                if (bool.Parse(itemRow["NhanDM"].ToString()))
+                                    dr["LoaiCatChuyen"] = "Nhận từ Công ty khác";
+
+                    dsBaoCao.Tables["ThongKeCatChuyenDM"].Rows.Add(dr);
+                }
+
                 dateTu.Value = DateTime.Now;
                 dateDen.Value = DateTime.Now;
                 _tuNgay = _denNgay = "";
@@ -190,6 +217,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rptThongKeDCBD rpt = new rptThongKeDCBD();
                 rpt.SetDataSource(dsBaoCao);
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
+                rpt.Subreports[1].SetDataSource(dsBaoCao);
+
                 rpt.SetParameterValue(0, DanhBoTangDM);
                 rpt.SetParameterValue(1, DinhMucTang);
                 rpt.SetParameterValue(2, DanhBoGiamDM);

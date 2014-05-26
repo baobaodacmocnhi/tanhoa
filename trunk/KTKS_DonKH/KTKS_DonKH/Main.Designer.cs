@@ -86,6 +86,7 @@
             this.ribbonPanel12 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnCTDB = new System.Windows.Forms.RibbonButton();
             this.ribbtnCHDB = new System.Windows.Forms.RibbonButton();
+            this.ribbtnLapPhieuCatHuyDB = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel22 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnBaoCaoCHDB = new System.Windows.Forms.RibbonButton();
             this.ribbonTab7 = new System.Windows.Forms.RibbonTab();
@@ -102,7 +103,7 @@
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbtnLapPhieuCatHuyDB = new System.Windows.Forms.RibbonButton();
+            this.ribbtnKiemTrang_BamChi = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -178,6 +179,7 @@
             this.ribbonPanel3.Items.Add(this.ribbtnChiNhanh);
             this.ribbonPanel3.Items.Add(this.ribbtnGiaNuoc);
             this.ribbonPanel3.Items.Add(this.ribbtnNVKiemTra);
+            this.ribbonPanel3.Items.Add(this.ribbtnKiemTrang_BamChi);
             this.ribbonPanel3.Text = "Thông Tin";
             // 
             // ribbtnLoaiDonThu
@@ -548,6 +550,14 @@
             this.ribbtnCHDB.Text = "TB Cắt Hủy DB";
             this.ribbtnCHDB.Click += new System.EventHandler(this.ribbtnCHDB_Click);
             // 
+            // ribbtnLapPhieuCatHuyDB
+            // 
+            this.ribbtnLapPhieuCatHuyDB.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnLapPhieuCatHuyDB.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbtnLapPhieuCatHuyDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnLapPhieuCatHuyDB.SmallImage")));
+            this.ribbtnLapPhieuCatHuyDB.Text = "Lập Phiếu Cắt Hủy DB";
+            this.ribbtnLapPhieuCatHuyDB.Click += new System.EventHandler(this.ribbtnLapPhieuCatHuyDB_Click);
+            // 
             // ribbonPanel22
             // 
             this.ribbonPanel22.ButtonMoreEnabled = false;
@@ -688,13 +698,13 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbtnLapPhieuCatHuyDB
+            // ribbtnKiemTrang_BamChi
             // 
-            this.ribbtnLapPhieuCatHuyDB.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnLapPhieuCatHuyDB.MinimumSize = new System.Drawing.Size(120, 0);
-            this.ribbtnLapPhieuCatHuyDB.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnLapPhieuCatHuyDB.SmallImage")));
-            this.ribbtnLapPhieuCatHuyDB.Text = "Lập Phiếu Cắt Hủy DB";
-            this.ribbtnLapPhieuCatHuyDB.Click += new System.EventHandler(this.ribbtnLapPhieuCatHuyDB_Click);
+            this.ribbtnKiemTrang_BamChi.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnKiemTrang_BamChi.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbtnKiemTrang_BamChi.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnKiemTrang_BamChi.SmallImage")));
+            this.ribbtnKiemTrang_BamChi.Text = "Kiểm Tra - Bấm Chì";
+            this.ribbtnKiemTrang_BamChi.Click += new System.EventHandler(this.ribbtnKiemTrang_BamChi_Click);
             // 
             // Main
             // 
@@ -794,6 +804,7 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel22;
         private System.Windows.Forms.RibbonButton ribbtnBaoCaoCHDB;
         private System.Windows.Forms.RibbonButton ribbtnLapPhieuCatHuyDB;
+        private System.Windows.Forms.RibbonButton ribbtnKiemTrang_BamChi;
     }
 }
 

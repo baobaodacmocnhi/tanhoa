@@ -160,7 +160,7 @@
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NgayBC" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TinhTrangKiemTra" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HienTrangKiemTra" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="Hieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -171,7 +171,7 @@
       <Column Name="MucDichSuDung" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="VienChi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DayChi" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TrangThai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TrangThaiBC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MaSoBC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TheoYeuCau" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MaBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
@@ -448,7 +448,7 @@
       <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NgayKTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TinhTrangKiemTra" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HienTrangKiemTra" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="Hieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Co" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -681,6 +681,16 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.HienTrangKiemTra" Member="HienTrangKiemTras">
+    <Type Name="HienTrangKiemTra">
+      <Column Name="MaHTKT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenHTKT" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.KTXM" Member="KTXMs">
     <Type Name="KTXM">
       <Column Name="MaKTXM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -795,6 +805,16 @@
       <Column Name="MaR" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Role_DetailRole" Member="DetailRoles" ThisKey="MaR" OtherKey="MaR" Type="DetailRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrangThaiBamChi" Member="TrangThaiBamChis">
+    <Type Name="TrangThaiBamChi">
+      <Column Name="MaTTBC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenTTBC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TTKhachHang" Member="TTKhachHangs">
