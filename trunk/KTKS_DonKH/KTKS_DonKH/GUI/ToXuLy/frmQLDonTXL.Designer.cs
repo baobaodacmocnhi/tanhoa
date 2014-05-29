@@ -44,6 +44,7 @@
             this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.dgvDSDonTXL = new System.Windows.Forms.DataGridView();
+            this.btnInDSDonKH = new System.Windows.Forms.Button();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +56,7 @@
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnInDSDonKH = new System.Windows.Forms.Button();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTXL)).BeginInit();
             this.SuspendLayout();
@@ -219,7 +220,8 @@
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
-            this.NoiDung});
+            this.NoiDung,
+            this.CreateBy});
             this.dgvDSDonTXL.Location = new System.Drawing.Point(0, 67);
             this.dgvDSDonTXL.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSDonTXL.MultiSelect = false;
@@ -231,6 +233,19 @@
             this.dgvDSDonTXL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTXL_CellFormatting);
             this.dgvDSDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTXL_RowPostPaint);
             this.dgvDSDonTXL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTXL_KeyDown);
+            // 
+            // btnInDSDonKH
+            // 
+            this.btnInDSDonKH.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInDSDonKH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInDSDonKH.Location = new System.Drawing.Point(844, 12);
+            this.btnInDSDonKH.Name = "btnInDSDonKH";
+            this.btnInDSDonKH.Size = new System.Drawing.Size(125, 35);
+            this.btnInDSDonKH.TabIndex = 29;
+            this.btnInDSDonKH.Text = "In Danh Sách";
+            this.btnInDSDonKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInDSDonKH.UseVisualStyleBackColor = true;
+            this.btnInDSDonKH.Visible = false;
             // 
             // MaChuyen
             // 
@@ -320,18 +335,13 @@
             this.NoiDung.ReadOnly = true;
             this.NoiDung.Width = 245;
             // 
-            // btnInDSDonKH
+            // CreateBy
             // 
-            this.btnInDSDonKH.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnInDSDonKH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDSDonKH.Location = new System.Drawing.Point(844, 12);
-            this.btnInDSDonKH.Name = "btnInDSDonKH";
-            this.btnInDSDonKH.Size = new System.Drawing.Size(125, 35);
-            this.btnInDSDonKH.TabIndex = 29;
-            this.btnInDSDonKH.Text = "In Danh Sách";
-            this.btnInDSDonKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInDSDonKH.UseVisualStyleBackColor = true;
-            this.btnInDSDonKH.Visible = false;
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Nhận";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.ReadOnly = true;
+            this.CreateBy.Width = 200;
             // 
             // frmQLDonTXL
             // 
@@ -392,5 +402,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
     }
 }

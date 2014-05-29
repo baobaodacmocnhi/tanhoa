@@ -33,160 +33,175 @@ namespace KTKS_DonKH.DAL.HeThong
 
 
         private static bool _roleTaiKhoan_Xem = false;
-
         public static bool RoleTaiKhoan_Xem
         {
             get { return CTaiKhoan._roleTaiKhoan_Xem; }
             set { CTaiKhoan._roleTaiKhoan_Xem = value; }
         }
-        private static bool _roleCapNhat_Xem = false;
 
+        private static bool _roleCapNhat_Xem = false;
         public static bool RoleCapNhat_Xem
         {
             get { return CTaiKhoan._roleCapNhat_Xem; }
             set { CTaiKhoan._roleCapNhat_Xem = value; }
         }
-        private static bool _roleNhanDonKH_Xem = false;
 
+        private static bool _roleNhanDonKH_Xem = false;
         public static bool RoleNhanDonKH_Xem
         {
             get { return CTaiKhoan._roleNhanDonKH_Xem; }
             set { CTaiKhoan._roleNhanDonKH_Xem = value; }
         }
-        private static bool _roleQLDonKH_Xem = false;
 
+        private static bool _roleQLDonKH_Xem = false;
         public static bool RoleQLDonKH_Xem
         {
             get { return CTaiKhoan._roleQLDonKH_Xem; }
             set { CTaiKhoan._roleQLDonKH_Xem = value; }
         }
-        private static bool _roleKTXM_Xem = false;
 
+        private static bool _roleKTXM_Xem = false;
         public static bool RoleKTXM_Xem
         {
             get { return CTaiKhoan._roleKTXM_Xem; }
             set { CTaiKhoan._roleKTXM_Xem = value; }
         }
-        private static bool _roleQLKTXM_Xem = false;
 
+        private static bool _roleQLKTXM_Xem = false;
         public static bool RoleQLKTXM_Xem
         {
             get { return CTaiKhoan._roleQLKTXM_Xem; }
             set { CTaiKhoan._roleQLKTXM_Xem = value; }
         }
-        private static bool _roleDCBD_Xem = false;
 
+        private static bool _roleDCBD_Xem = false;
         public static bool RoleDCBD_Xem
         {
             get { return CTaiKhoan._roleDCBD_Xem; }
             set { CTaiKhoan._roleDCBD_Xem = value; }
         }
-        private static bool _roleCHDB_Xem = false;
 
+        private static bool _roleCHDB_Xem = false;
         public static bool RoleCHDB_Xem
         {
             get { return CTaiKhoan._roleCHDB_Xem; }
             set { CTaiKhoan._roleCHDB_Xem = value; }
         }
-        private static bool _roleTTTL_Xem = false;
 
+        private static bool _roleTTTL_Xem = false;
         public static bool RoleTTTL_Xem
         {
             get { return CTaiKhoan._roleTTTL_Xem; }
             set { CTaiKhoan._roleTTTL_Xem = value; }
         }
-        private static bool _roleBamChi_Xem = false;
 
+        private static bool _roleBamChi_Xem = false;
         public static bool RoleBamChi_Xem
         {
             get { return CTaiKhoan._roleBamChi_Xem; }
             set { CTaiKhoan._roleBamChi_Xem = value; }
         }
-        private static bool _roleQLBamChi_Xem = false;
 
+        private static bool _roleQLBamChi_Xem = false;
         public static bool RoleQLBamChi_Xem
         {
             get { return CTaiKhoan._roleQLBamChi_Xem; }
             set { CTaiKhoan._roleQLBamChi_Xem = value; }
         }
-        ///
-        private static bool _roleTaiKhoan_CapNhat = false;
 
+        private static bool _roleDongNuoc_Xem = false;
+        public static bool RoleDongNuoc_Xem
+        {
+            get { return CTaiKhoan._roleDongNuoc_Xem; }
+            set { CTaiKhoan._roleDongNuoc_Xem = value; }
+        }
+
+        ///
+
+        private static bool _roleTaiKhoan_CapNhat = false;
         public static bool RoleTaiKhoan_CapNhat
         {
             get { return CTaiKhoan._roleTaiKhoan_CapNhat; }
             set { CTaiKhoan._roleTaiKhoan_CapNhat = value; }
         }
-        private static bool _roleCapNhat_CapNhat = false;
 
+        private static bool _roleCapNhat_CapNhat = false;
         public static bool RoleCapNhat_CapNhat
         {
             get { return CTaiKhoan._roleCapNhat_CapNhat; }
             set { CTaiKhoan._roleCapNhat_CapNhat = value; }
         }
-        private static bool _roleNhanDonKH_CapNhat = false;
 
+        private static bool _roleNhanDonKH_CapNhat = false;
         public static bool RoleNhanDonKH_CapNhat
         {
             get { return CTaiKhoan._roleNhanDonKH_CapNhat; }
             set { CTaiKhoan._roleNhanDonKH_CapNhat = value; }
         }
-        private static bool _roleQLDonKH_CapNhat = false;
 
+        private static bool _roleQLDonKH_CapNhat = false;
         public static bool RoleQLDonKH_CapNhat
         {
             get { return CTaiKhoan._roleQLDonKH_CapNhat; }
             set { CTaiKhoan._roleQLDonKH_CapNhat = value; }
         }
-        private static bool _roleKTXM_CapNhat = false;
 
+        private static bool _roleKTXM_CapNhat = false;
         public static bool RoleKTXM_CapNhat
         {
             get { return CTaiKhoan._roleKTXM_CapNhat; }
             set { CTaiKhoan._roleKTXM_CapNhat = value; }
         }
-        private static bool _roleQLKTXM_CapNhat = false;
 
+        private static bool _roleQLKTXM_CapNhat = false;
         public static bool RoleQLKTXM_CapNhat
         {
             get { return CTaiKhoan._roleQLKTXM_CapNhat; }
             set { CTaiKhoan._roleQLKTXM_CapNhat = value; }
         }
-        private static bool _roleDCBD_CapNhat = false;
 
+        private static bool _roleDCBD_CapNhat = false;
         public static bool RoleDCBD_CapNhat
         {
             get { return CTaiKhoan._roleDCBD_CapNhat; }
             set { CTaiKhoan._roleDCBD_CapNhat = value; }
         }
-        private static bool _roleCHDB_CapNhat = false;
 
+        private static bool _roleCHDB_CapNhat = false;
         public static bool RoleCHDB_CapNhat
         {
             get { return CTaiKhoan._roleCHDB_CapNhat; }
             set { CTaiKhoan._roleCHDB_CapNhat = value; }
         }
-        private static bool _roleTTTL_CapNhat = false;
 
+        private static bool _roleTTTL_CapNhat = false;
         public static bool RoleTTTL_CapNhat
         {
             get { return CTaiKhoan._roleTTTL_CapNhat; }
             set { CTaiKhoan._roleTTTL_CapNhat = value; }
         }
-        private static bool _roleBamChi_CapNhat = false;
 
+        private static bool _roleBamChi_CapNhat = false;
         public static bool RoleBamChi_CapNhat
         {
             get { return CTaiKhoan._roleBamChi_CapNhat; }
             set { CTaiKhoan._roleBamChi_CapNhat = value; }
         }
-        private static bool _roleQLBamChi_CapNhat = false;
 
+        private static bool _roleQLBamChi_CapNhat = false;
         public static bool RoleQLBamChi_CapNhat
         {
             get { return CTaiKhoan._roleQLBamChi_CapNhat; }
             set { CTaiKhoan._roleQLBamChi_CapNhat = value; }
         }
+
+        private static bool _roleDongNuoc_CapNhat = false;
+        public static bool RoleDongNuoc_CapNhat
+        {
+            get { return CTaiKhoan._roleDongNuoc_CapNhat; }
+            set { CTaiKhoan._roleDongNuoc_CapNhat = value; }
+        }
+
         ///
         public static int MaUser
         {
@@ -333,6 +348,16 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleQLBamChi_CapNhat = true;
                     else
                         _roleQLBamChi_CapNhat = false;
+                    ///Mã Role Đóng Nước là 12
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 12).QuyenXem == true)
+                        _roleDongNuoc_Xem = true;
+                    else
+                        _roleDongNuoc_Xem = false;
+
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 12).QuyenCapNhat == true)
+                        _roleDongNuoc_CapNhat = true;
+                    else
+                        _roleDongNuoc_CapNhat = false;
                     //db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     //db.SubmitChanges();
                     return true;
@@ -372,6 +397,7 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleTTTL_Xem = false;
             _roleBamChi_Xem = false;
             _roleQLBamChi_Xem = false;
+            _roleDongNuoc_Xem = false;
             ///
             _roleTaiKhoan_CapNhat = false;
             _roleCapNhat_CapNhat = false;
@@ -384,6 +410,7 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleTTTL_CapNhat = false;
             _roleBamChi_CapNhat = false;
             _roleQLBamChi_CapNhat = false;
+            _roleDongNuoc_CapNhat = false;
             ///
             db.Connection.Close();
         }
@@ -542,7 +569,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         db.Users.InsertOnSubmit(nguoidung);
                         ///Cấp quyền mặc định = False
                         ///i tương ứng với số quyền trong bảng DetailRole
-                        for (int i = 1; i <= 11; i++)
+                        for (int i = 1; i <= 12; i++)
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;

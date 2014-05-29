@@ -103,6 +103,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 {
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -116,6 +117,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.MaChuyen,
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
+                                    CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -140,6 +142,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 {
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.Nhan == false
                                 orderby itemDonTXL.MaDon ascending
                                 select new
@@ -154,6 +157,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.MaChuyen,
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
+                                    CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -178,6 +182,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 {
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.Nhan == true
                                 orderby itemDonTXL.MaDon ascending
                                 select new
@@ -192,6 +197,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.MaChuyen,
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
+                                    CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
