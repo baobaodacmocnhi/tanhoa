@@ -565,6 +565,7 @@
             this.txtMaDon.Size = new System.Drawing.Size(83, 25);
             this.txtMaDon.TabIndex = 5;
             this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaDon.Visible = false;
             // 
             // label3
             // 
