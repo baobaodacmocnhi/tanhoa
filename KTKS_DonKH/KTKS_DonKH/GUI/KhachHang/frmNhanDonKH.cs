@@ -259,7 +259,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                         DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                        dr["MaDon"] = txtMaDon.Text.Trim() + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString())); ;
+                        dr["MaDon"] = donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length-2,"-")  + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString())); ;
                         //dr["MaXepDon"] = _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
                         dr["TenLD"] = cmbLD.Text;
                         dr["KhachHang"] = txtHoTen.Text.Trim();

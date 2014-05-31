@@ -10,6 +10,9 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.KhachHang;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -119,6 +122,25 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     if (_cDonTXL.ThemDonTXL(dontxl))
                     {
                         MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                        DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                        dr["MaDon"] = dontxl.MaDon.ToString().Insert(dontxl.MaDon.ToString().Length - 2, "-");// +"/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
+                        //dr["MaXepDon"] = _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
+                        dr["TenLD"] = cmbLD.Text;
+                        dr["KhachHang"] = txtHoTen.Text.Trim();
+                        if (txtDanhBo.Text.Trim() != "")
+                            dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, ".").Insert(4, ".");
+                        dr["DiaChi"] = txtDiaChi.Text.Trim();
+                        dr["HopDong"] = txtHopDong.Text.Trim();
+                        dr["DienThoai"] = txtDienThoai.Text.Trim();
+
+                        dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
+                        rptBienNhanDonKH rpt = new rptBienNhanDonKH();
+                        rpt.SetDataSource(dsBaoCao);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.ShowDialog();
+
                         Clear();
                     }
                 }
