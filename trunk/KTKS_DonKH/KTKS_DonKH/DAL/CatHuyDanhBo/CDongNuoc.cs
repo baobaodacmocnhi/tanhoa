@@ -119,6 +119,42 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
+        /// <summary>
+        /// Lấy DongNuoc bằng MaDon
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <returns></returns>
+        public LinQ.DongNuoc getDongNuocbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                return db.DongNuocs.SingleOrDefault(itemDongNuoc => itemDongNuoc.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy DongNuoc bằng MaDon Tổ Xử Lý
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <returns></returns>
+        public LinQ.DongNuoc getDongNuocbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                return db.DongNuocs.SingleOrDefault(itemDongNuoc => itemDongNuoc.MaDonTXL == MaDonTXL);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region CTDongNuoc
@@ -220,6 +256,44 @@ namespace KTKS_DonKH.DAL.DongNuoc
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Mã Mở Nước kế tiếp cho Thông Báo Đóng Nước
+        /// </summary>
+        /// <returns></returns>
+        public decimal getMaxNextMaMN()
+        {
+            try
+            {
+                if (db.CTDongNuocs.Count() > 0)
+                {
+                    if (db.CTDongNuocs.Max(itemCTDN => itemCTDN.MaMN) == null)
+                        return decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                    else
+                        return getMaxNextIDTable(db.CTDongNuocs.Max(itemCTDN => itemCTDN.MaMN).Value);
+                }
+                else
+                    return decimal.Parse("1" + DateTime.Now.ToString("yy"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        public CTDongNuoc getCTDongNuocbyID(decimal MaCTDN)
+        {
+            try
+            {
+                return db.CTDongNuocs.SingleOrDefault(itemCTDN => itemCTDN.MaCTDN == MaCTDN);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 

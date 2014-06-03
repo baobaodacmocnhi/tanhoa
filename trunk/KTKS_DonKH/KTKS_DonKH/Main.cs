@@ -17,6 +17,7 @@ using KTKS_DonKH.GUI.ThaoThuTraLoi;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.GUI.TimKiem;
 using KTKS_DonKH.GUI.BamChi;
+using KTKS_DonKH.GUI.DongNuoc;
 
 namespace KTKS_DonKH
 {
@@ -265,6 +266,7 @@ namespace KTKS_DonKH
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            //MessageBox.Show("Tính năng đang được Chỉnh Sửa, Vui lòng chờ...", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ribbtnDCHD_Click(object sender, EventArgs e)
@@ -385,6 +387,7 @@ namespace KTKS_DonKH
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            //MessageBox.Show("Tính năng đang được Chỉnh Sửa, Vui lòng chờ...", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnBaoCaoDonKH_Click(object sender, EventArgs e)
@@ -432,6 +435,16 @@ namespace KTKS_DonKH
             foreach (Form item in this.MdiChildren)
                 item.Close();
             Form frm = new frmThongTin_KT_BC();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbtnDongNuoc_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmDongNuoc();
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;

@@ -35,6 +35,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CChungTu _cChungTu = new CChungTu();
+        CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
         DataRowView _CTRow = null;
         BindingSource DSDCBD_BS;
 
@@ -196,7 +197,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void radDSCatChuyenDM_CheckedChanged(object sender, EventArgs e)
         {
             DSDCBD_BS = new BindingSource();
-            DSDCBD_BS.DataSource = _cChungTu.LoadDSCatChuyenDM();
+            DSDCBD_BS.DataSource = _cCatChuyenDM.LoadDSCatChuyenDM();
             dgvDSCatChuyenDM.DataSource = DSDCBD_BS;
 
             dgvDSCatChuyenDM.Visible = true;

@@ -242,7 +242,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtu.NhanNK_DanhBo = txtDanhBo.Text.Trim();
                                 lichsuchungtu.NhanNK_HoTen = _source["HoTenKH"];
                                 lichsuchungtu.NhanNK_DiaChi = _source["DiaChiKH"];
-                                lichsuchungtu.PhieuDuocKy = true;
+                                //lichsuchungtu.PhieuDuocKy = true;
+
                                 //lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
                                 //lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
                                 //lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
@@ -431,7 +432,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0")
+                if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
                         ChungTu chungtu = new ChungTu();
