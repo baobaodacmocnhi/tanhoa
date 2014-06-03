@@ -44,6 +44,7 @@
             this.ribbtnChiNhanh = new System.Windows.Forms.RibbonButton();
             this.ribbtnGiaNuoc = new System.Windows.Forms.RibbonButton();
             this.ribbtnNVKiemTra = new System.Windows.Forms.RibbonButton();
+            this.ribbtnKiemTrang_BamChi = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel9 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnBanGiamDoc = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
@@ -103,7 +104,7 @@
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbtnKiemTrang_BamChi = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDongNuoc = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -230,6 +231,14 @@
             this.ribbtnNVKiemTra.Text = "NV Kiểm Tra";
             this.ribbtnNVKiemTra.Visible = false;
             this.ribbtnNVKiemTra.Click += new System.EventHandler(this.ribbtnNVKiemTra_Click);
+            // 
+            // ribbtnKiemTrang_BamChi
+            // 
+            this.ribbtnKiemTrang_BamChi.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnKiemTrang_BamChi.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbtnKiemTrang_BamChi.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnKiemTrang_BamChi.SmallImage")));
+            this.ribbtnKiemTrang_BamChi.Text = "Kiểm Tra - Bấm Chì";
+            this.ribbtnKiemTrang_BamChi.Click += new System.EventHandler(this.ribbtnKiemTrang_BamChi_Click);
             // 
             // ribbonPanel9
             // 
@@ -532,6 +541,7 @@
             this.ribbonPanel12.Items.Add(this.ribbtnCTDB);
             this.ribbonPanel12.Items.Add(this.ribbtnCHDB);
             this.ribbonPanel12.Items.Add(this.ribbtnLapPhieuCatHuyDB);
+            this.ribbonPanel12.Items.Add(this.ribbtnDongNuoc);
             this.ribbonPanel12.Text = "Xử Lý";
             // 
             // ribbtnCTDB
@@ -698,13 +708,13 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbtnKiemTrang_BamChi
+            // ribbtnDongNuoc
             // 
-            this.ribbtnKiemTrang_BamChi.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnKiemTrang_BamChi.MinimumSize = new System.Drawing.Size(120, 0);
-            this.ribbtnKiemTrang_BamChi.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnKiemTrang_BamChi.SmallImage")));
-            this.ribbtnKiemTrang_BamChi.Text = "Kiểm Tra - Bấm Chì";
-            this.ribbtnKiemTrang_BamChi.Click += new System.EventHandler(this.ribbtnKiemTrang_BamChi_Click);
+            this.ribbtnDongNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDongNuoc.MinimumSize = new System.Drawing.Size(80, 0);
+            this.ribbtnDongNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDongNuoc.SmallImage")));
+            this.ribbtnDongNuoc.Text = "Đóng Nước";
+            this.ribbtnDongNuoc.Click += new System.EventHandler(this.ribbtnDongNuoc_Click);
             // 
             // Main
             // 
@@ -805,6 +815,7 @@
         private System.Windows.Forms.RibbonButton ribbtnBaoCaoCHDB;
         private System.Windows.Forms.RibbonButton ribbtnLapPhieuCatHuyDB;
         private System.Windows.Forms.RibbonButton ribbtnKiemTrang_BamChi;
+        private System.Windows.Forms.RibbonButton ribbtnDongNuoc;
     }
 }
 

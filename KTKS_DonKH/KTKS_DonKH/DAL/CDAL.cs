@@ -10,11 +10,11 @@ namespace KTKS_DonKH.DAL
     {
         protected static DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
-        ///// <summary>
-        ///// Lấy mã tiếp theo, theo định dạng năm-stt (2013-1)
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns></returns>
+        /// <summary>
+        /// Lấy mã tiếp theo, theo định dạng năm-stt (2013-1)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         //public string getMaxNextIDTable(string id)
         //{
         //    string[] id_Sub = id.Split('-');
@@ -52,6 +52,43 @@ namespace KTKS_DonKH.DAL
                 nam = DateTime.Now.ToString("yy");
             }
             return decimal.Parse(stt + nam);
+        }
+
+        /// <summary>
+        /// Chuyển đổi dữ liệu từ LichSuChungTu sang CatChuyenDM
+        /// </summary>
+        /// <param name="lichsuchungtu"></param>
+        /// <param name="catchuyendm"></param>
+        public void LSCTtoCCDM(LichSuChungTu lichsuchungtu,ref CatChuyenDM catchuyendm)
+        {
+            catchuyendm.SoPhieu = lichsuchungtu.SoPhieu.Value;
+            catchuyendm.DanhBo = lichsuchungtu.DanhBo;
+            catchuyendm.MaCT = lichsuchungtu.MaCT;
+            catchuyendm.SoNKTong = lichsuchungtu.SoNKTong;
+            catchuyendm.SoNKDangKy = lichsuchungtu.SoNKDangKy;
+            catchuyendm.SoNKConLai = lichsuchungtu.SoNKConLai;
+            catchuyendm.ThoiHan = lichsuchungtu.ThoiHan;
+            catchuyendm.NgayHetHan = lichsuchungtu.NgayHetHan;
+            catchuyendm.CatDM = lichsuchungtu.CatDM;
+            catchuyendm.SoNKCat = lichsuchungtu.SoNKCat;
+            catchuyendm.NhanNK_MaCN = lichsuchungtu.NhanNK_MaCN;
+            catchuyendm.NhanNK_DanhBo = lichsuchungtu.NhanNK_DanhBo;
+            catchuyendm.NhanNK_HoTen = lichsuchungtu.NhanNK_HoTen;
+            catchuyendm.NhanNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
+            catchuyendm.NhanDM = lichsuchungtu.NhanDM;
+            catchuyendm.YeuCauCat = lichsuchungtu.YeuCauCat;
+            catchuyendm.SoNKNhan = lichsuchungtu.SoNKNhan;
+            catchuyendm.CatNK_MaCN = lichsuchungtu.CatNK_MaCN;
+            catchuyendm.CatNK_DanhBo = lichsuchungtu.CatNK_DanhBo;
+            catchuyendm.CatNK_HoTen = lichsuchungtu.CatNK_HoTen;
+            catchuyendm.CatNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
+            catchuyendm.GhiChu = lichsuchungtu.GhiChu;
+            catchuyendm.MaDon = lichsuchungtu.MaDon;
+            catchuyendm.ToXuLy = lichsuchungtu.ToXuLy;
+            catchuyendm.MaDonTXL = lichsuchungtu.MaDonTXL;
+            catchuyendm.NguoiKy = lichsuchungtu.NguoiKy;
+            catchuyendm.ChucVu = lichsuchungtu.ChucVu;
+            //catchuyendm.PhieuDuocKy = lichsuchungtu.PhieuDuocKy;
         }
     }
 }
