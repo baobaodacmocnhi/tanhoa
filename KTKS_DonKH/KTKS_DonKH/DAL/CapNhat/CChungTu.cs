@@ -278,6 +278,23 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        public bool XoaLichSuChungTu(LichSuChungTu lichsuchungtu)
+        {
+            try
+            {
+                db.LichSuChungTus.DeleteOnSubmit(lichsuchungtu);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         /// <summary>
         /// Lấy Số Phiếu kế tiếp cho Cắt Chuyển Định Mức
         /// </summary>
@@ -601,7 +618,7 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                             
                         }
-                        if (ThemLichSuChungTu(lichsuchungtu))
+                        if (ThemLichSuChungTu(lichsuchungtu) && ctchungtu.YeuCauCat)
                         {
                             CatChuyenDM catchuyendm = new CatChuyenDM();
                             LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
@@ -1169,7 +1186,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ctchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
                         ctchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
                         ctchungtuCN.CatNK_SoNKCat = ctchungtu.CatNK_SoNKCat;
-                        ///
+                        ///Nếu phiếu đã có
                         if (ctchungtuCN.SoPhieu.HasValue)
                         {
                             LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu.Value);
@@ -1190,6 +1207,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 _cCatChuyenDM.SuaCatChuyemDM(catchuyendm);
                             }
                         }
+                        ///Nếu chưa có phiếu
                         else
                         {
                             lichsuchungtu.MaCT = ctchungtu.MaCT;
@@ -1227,6 +1245,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                     {
                         ctchungtuCN.YeuCauCat = false;
+                        if (ctchungtuCN.SoPhieu.HasValue)
+                        {
+                            LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu.Value);
+                            XoaLichSuChungTu(lichsuchungtuCN);
+                        }
                     }
 
                 #region Yêu Cầu Cắt 2,3,4,5
@@ -1298,6 +1321,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                     {
                         ctchungtuCN.YeuCauCat2 = false;
+                        if (ctchungtuCN.SoPhieu2.HasValue)
+                        {
+                            LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu2.Value);
+                            XoaLichSuChungTu(lichsuchungtuCN);
+                        }
                     }
 
                 //if (ctchungtu.YeuCauCat3 != ctchungtuCN.YeuCauCat3)
@@ -1367,6 +1395,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                     {
                         ctchungtuCN.YeuCauCat3 = false;
+                        if (ctchungtuCN.SoPhieu3.HasValue)
+                        {
+                            LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu3.Value);
+                            XoaLichSuChungTu(lichsuchungtuCN);
+                        }
                     }
 
                 //if (ctchungtu.YeuCauCat4 != ctchungtuCN.YeuCauCat4)
@@ -1436,6 +1469,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                     {
                         ctchungtuCN.YeuCauCat4 = false;
+                        if (ctchungtuCN.SoPhieu4.HasValue)
+                        {
+                            LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu4.Value);
+                            XoaLichSuChungTu(lichsuchungtuCN);
+                        }
                     }
 
                 //if (ctchungtu.YeuCauCat5 != ctchungtuCN.YeuCauCat5)
@@ -1505,6 +1543,11 @@ namespace KTKS_DonKH.DAL.CapNhat
                     else
                     {
                         ctchungtuCN.YeuCauCat5 = false;
+                        if (ctchungtuCN.SoPhieu5.HasValue)
+                        {
+                            LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu5.Value);
+                            XoaLichSuChungTu(lichsuchungtuCN);
+                        }
                     }
 
                 #endregion
