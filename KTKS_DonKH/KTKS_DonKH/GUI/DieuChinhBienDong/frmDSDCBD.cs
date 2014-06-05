@@ -197,7 +197,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void radDSCatChuyenDM_CheckedChanged(object sender, EventArgs e)
         {
             DSDCBD_BS = new BindingSource();
-            DSDCBD_BS.DataSource = _cCatChuyenDM.LoadDSCatChuyenDM();
+            DSDCBD_BS.DataSource = _cChungTu.LoadDSCatChuyenDM();
             dgvDSCatChuyenDM.DataSource = DSDCBD_BS;
 
             dgvDSCatChuyenDM.Visible = true;
