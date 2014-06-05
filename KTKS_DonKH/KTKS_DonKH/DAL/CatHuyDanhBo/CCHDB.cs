@@ -1315,7 +1315,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                 {
                                     In = false,
                                     itemYCCHDB.PhieuDuocKy,
-                                    itemYCCHDB.MaYCCHDB,
+                                    SoPhieu=itemYCCHDB.MaYCCHDB,
                                     itemYCCHDB.CreateDate,
                                     itemYCCHDB.DanhBo,
                                     itemYCCHDB.HoTen,
