@@ -11,6 +11,9 @@ using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.DongNuoc;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.DongNuoc;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.DongNuoc
 {
@@ -336,12 +339,73 @@ namespace KTKS_DonKH.GUI.DongNuoc
 
         private void btnInTBDN_Click(object sender, EventArgs e)
         {
+            if (_ctdongnuoc != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["ThongBaoDongNuoc"].NewRow();
 
+                dr["SoPhieu"] = _ctdongnuoc.MaCTDN.ToString().Insert(_ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
+                dr["HoTen"] = _ctdongnuoc.HoTen;
+                dr["DiaChi"] = _ctdongnuoc.DiaChi;
+                dr["DanhBo"] = _ctdongnuoc.DanhBo;
+                dr["HopDong"] = _ctdongnuoc.HopDong;
+                dr["DiaChiDHN"] = _ctdongnuoc.DiaChiDHN;
+                ///
+                dr["NgayXuLy"] = _ctdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy");
+                dr["SoCongVan"] = _ctdongnuoc.SoCongVan_DN;
+                dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_DN;
+                dr["Phuong"] = _ctdongnuoc.Phuong;
+                dr["Quan"] = _ctdongnuoc.Quan;
+                ///
+                dr["ChucVu"] = _ctdongnuoc.ChucVu_DN;
+                dr["NguoiKy"] = _ctdongnuoc.NguoiKy_DN;
+
+                dsBaoCao.Tables["ThongBaoDongNuoc"].Rows.Add(dr);
+
+                rptThongBaoDN rpt = new rptThongBaoDN();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+            else
+                MessageBox.Show("Chưa có Thông Báo Đóng Nước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnInTBMN_Click(object sender, EventArgs e)
         {
+            if (_ctdongnuoc != null && _ctdongnuoc.MoNuoc == false)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["ThongBaoDongNuoc"].NewRow();
 
+                dr["SoPhieu"] = _ctdongnuoc.MaMN.ToString().Insert(_ctdongnuoc.MaMN.ToString().Length - 2, "-");
+                dr["HoTen"] = _ctdongnuoc.HoTen;
+                dr["DiaChi"] = _ctdongnuoc.DiaChi;
+                dr["DanhBo"] = _ctdongnuoc.DanhBo;
+                dr["HopDong"] = _ctdongnuoc.HopDong;
+                dr["DiaChiDHN"] = _ctdongnuoc.DiaChiDHN;
+                ///
+                dr["NgayXuLy"] = _ctdongnuoc.NgayMN.Value.ToString("dd/MM/yyyy");
+                dr["SoCongVan"] = _ctdongnuoc.SoCongVan_MN;
+                dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_MN;
+                dr["Phuong"] = _ctdongnuoc.Phuong;
+                dr["Quan"] = _ctdongnuoc.Quan;
+                dr["LyDo"] = _ctdongnuoc.LyDo_DN;
+                dr["HinhThuc"] = _ctdongnuoc.HinhThuc_DN;
+                dr["SoPhieuDN"] = _ctdongnuoc.MaCTDN.ToString().Insert(_ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
+                ///
+                dr["ChucVu"] = _ctdongnuoc.ChucVu_MN;
+                dr["NguoiKy"] = _ctdongnuoc.NguoiKy_MN;
+
+                dsBaoCao.Tables["ThongBaoDongNuoc"].Rows.Add(dr);
+
+                rptThongBaoMN rpt = new rptThongBaoMN();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+            else
+                MessageBox.Show("Chưa có Thông Báo Đóng Nước/Nội Dung Mở Nước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void txtMaThongBao_DN_KeyPress(object sender, KeyPressEventArgs e)

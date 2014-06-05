@@ -18,6 +18,7 @@ using System.Globalization;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.ToXuLy;
+using KTKS_DonKH.DAL.DongNuoc;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -27,6 +28,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CCHDB _cCHDB = new CCHDB();
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
         DataTable DSCHDB_Edited = new DataTable();
         DataRowView _CTRow = null;
         BindingSource DSCHDB_BS;
@@ -169,8 +171,35 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 radDSCatTamDanhBo_TXL.Checked = false;
                 dgvDSYCCHDB.Visible = true;
                 dgvDSCTCHDB.Visible = false;
-                //dgvDSCTCHDB.Columns["DaLapPhieu"].Visible = true;
-                //dgvDSCTCHDB.Columns["PhieuDuocKy"].Visible = true;
+                //
+                dgvDSYCCHDB.Columns["YC_LyDo"].Visible = true;
+                dgvDSYCCHDB.Columns["YC_GhiChuLyDo"].Visible = true;
+                dgvDSYCCHDB.Columns["YC_SoTien"].Visible = true;
+                //
+                gridControl.Visible = false;
+                //btnLuu.Enabled = false;
+                chkSelectAll.Visible = false;
+            }
+        }
+
+        private void radDSDongNuoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDSDongNuoc.Checked)
+            {
+                DSCHDB_BS = new BindingSource();
+                DSCHDB_BS.DataSource = _cDongNuoc.LoadDSCTDongNuoc();
+                dgvDSYCCHDB.DataSource = DSCHDB_BS;
+
+                radDaDuyet_TXL.Checked = false;
+                radDSCatHuyDanhBo_TXL.Checked = false;
+                radDSCatTamDanhBo_TXL.Checked = false;
+                dgvDSYCCHDB.Visible = true;
+                dgvDSCTCHDB.Visible = false;
+                //
+                dgvDSYCCHDB.Columns["YC_LyDo"].Visible = false;
+                dgvDSYCCHDB.Columns["YC_GhiChuLyDo"].Visible = false;
+                dgvDSYCCHDB.Columns["YC_SoTien"].Visible = false;
+                //
                 gridControl.Visible = false;
                 //btnLuu.Enabled = false;
                 chkSelectAll.Visible = false;
@@ -1050,12 +1079,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
                 }
         }
-
-        
-
-        
-
-        
 
     }
 }

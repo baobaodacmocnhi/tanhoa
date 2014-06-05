@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.HeThong;
+using System.Data;
 
 namespace KTKS_DonKH.DAL.DongNuoc
 {
@@ -289,6 +290,38 @@ namespace KTKS_DonKH.DAL.DongNuoc
             try
             {
                 return db.CTDongNuocs.SingleOrDefault(itemCTDN => itemCTDN.MaCTDN == MaCTDN);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDongNuoc()
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTDongNuoc in db.CTDongNuocs
+                                select new
+                                {
+                                    In = false,
+                                    PhieuDuocKy=itemCTDongNuoc.ThongBaoDuocKy_DN,
+                                    SoPhieu = itemCTDongNuoc.MaCTDN,
+                                    itemCTDongNuoc.CreateDate,
+                                    itemCTDongNuoc.DanhBo,
+                                    itemCTDongNuoc.HoTen,
+                                    itemCTDongNuoc.DiaChi,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
             }
             catch (Exception ex)
             {
