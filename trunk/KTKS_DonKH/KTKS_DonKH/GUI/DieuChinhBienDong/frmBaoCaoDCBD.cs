@@ -120,14 +120,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value, dateDen.Value);
                     dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value, dateDen.Value);
-                    dtCatChuyenDM = _cCatChuyenDM.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
+                    dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu.Value, dateDen.Value);
                 }
                 else
                     if (!string.IsNullOrEmpty(_tuNgay))
                     {
                         dtDCBD = _cDCBD.LoadDSCTDCBD(dateTu.Value);
                         dtDCHD = _cDCBD.LoadDSCTDCHD(dateTu.Value);
-                        dtCatChuyenDM = _cCatChuyenDM.LoadDSCatChuyenDM(dateTu.Value);
+                        dtCatChuyenDM = _cChungTu.LoadDSCatChuyenDM(dateTu.Value);
                     }
 
                 int DanhBoTangDM = 0;
