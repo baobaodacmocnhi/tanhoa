@@ -84,6 +84,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtMaXepDon = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.chkKhongInBienNhan = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -642,6 +643,16 @@
             this.label17.Text = "     Số Xếp Đơn     ";
             this.label17.Visible = false;
             // 
+            // chkKhongInBienNhan
+            // 
+            this.chkKhongInBienNhan.AutoSize = true;
+            this.chkKhongInBienNhan.Location = new System.Drawing.Point(796, 398);
+            this.chkKhongInBienNhan.Name = "chkKhongInBienNhan";
+            this.chkKhongInBienNhan.Size = new System.Drawing.Size(149, 21);
+            this.chkKhongInBienNhan.TabIndex = 58;
+            this.chkKhongInBienNhan.Text = "Không In Biên Nhận";
+            this.chkKhongInBienNhan.UseVisualStyleBackColor = true;
+            // 
             // frmNhanDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -649,6 +660,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(957, 492);
+            this.Controls.Add(this.chkKhongInBienNhan);
             this.Controls.Add(this.txtMaXepDon);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtSoCongVan);
@@ -751,6 +763,7 @@
         private System.Windows.Forms.ComboBox cmbNVKiemTra;
         private System.Windows.Forms.TextBox txtMaXepDon;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox chkKhongInBienNhan;
 
 
 
