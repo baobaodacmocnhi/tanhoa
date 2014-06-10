@@ -699,6 +699,32 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public CTDCBD getCTDCBDbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                return db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public bool checkCTDCBDbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                return db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         /// <summary>
         /// Kiểm tra CTDCBD đã được tạo cho Mã Đơn KH và Danh Bộ này chưa
         /// </summary>
