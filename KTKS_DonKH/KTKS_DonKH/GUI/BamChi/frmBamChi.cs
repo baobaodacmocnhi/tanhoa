@@ -318,7 +318,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             return;
                         }
                         CTBamChi ctbamchi = new CTBamChi();
-                        ctbamchi.MaBC = _cBamChi.getBamChibyMaDon_TXL(_dontxl.MaDon).MaBC;
+                        ctbamchi.MaBC = _cBamChi.getBamChibyMaDon(_donkh.MaDon).MaBC;
                         ctbamchi.DanhBo = txtDanhBo.Text.Trim();
                         ctbamchi.HopDong = txtHopDong.Text.Trim();
                         ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();
@@ -376,7 +376,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (_cBamChi.ThemCTBamChi(ctbamchi))
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_donkh.MaDon, CTaiKhoan.MaUser);
+                            dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi(_donkh.MaDon, CTaiKhoan.MaUser);
                             _ttkhachhang = null;
                             txtDanhBo.Text = "";
                             txtHopDong.Text = "";
