@@ -84,7 +84,7 @@
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhapBamChi)).BeginInit();
@@ -626,7 +626,7 @@
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
-            this.NguoiDi});
+            this.CreateBy});
             this.dgvDSNhapBamChi.Location = new System.Drawing.Point(12, 289);
             this.dgvDSNhapBamChi.Name = "dgvDSNhapBamChi";
             this.dgvDSNhapBamChi.Size = new System.Drawing.Size(1013, 266);
@@ -680,13 +680,13 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Width = 300;
             // 
-            // NguoiDi
+            // CreateBy
             // 
-            this.NguoiDi.DataPropertyName = "CreateBy";
-            this.NguoiDi.HeaderText = "Người Đi";
-            this.NguoiDi.Name = "NguoiDi";
-            this.NguoiDi.ReadOnly = true;
-            this.NguoiDi.Width = 200;
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Thực Hiện";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.ReadOnly = true;
+            this.CreateBy.Width = 200;
             // 
             // frmBamChi
             // 
@@ -773,6 +773,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
     }
 }
