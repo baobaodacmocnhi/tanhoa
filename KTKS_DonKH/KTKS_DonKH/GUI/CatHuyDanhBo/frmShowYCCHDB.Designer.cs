@@ -104,6 +104,7 @@
             "Theo Yêu Cầu Công Ty",
             "Nợ Tiền Nước",
             "Nợ Tiền Bồi Thường ĐHN",
+            "Không Thanh Toán Tiền Bồi Thường ĐHN",
             "Nợ Tiền Gian Lận Nước",
             "Vấn Đề Khác"});
             this.cmbLyDo.Location = new System.Drawing.Point(73, 24);
