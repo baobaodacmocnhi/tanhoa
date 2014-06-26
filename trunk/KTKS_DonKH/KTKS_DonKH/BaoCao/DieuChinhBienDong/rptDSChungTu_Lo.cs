@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptDSChungTu : ReportClass {
+    public class rptDSChungTu_Lo : ReportClass {
         
-        public rptDSChungTu() {
+        public rptDSChungTu_Lo() {
         }
         
         public override string ResourceName {
             get {
-                return "rptDSChungTu.rpt";
+                return "rptDSChungTu_Lo.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.DieuChinhBienDong.rptDSChungTu.rpt";
+                return "KTKS_DonKH.BaoCao.DieuChinhBienDong.rptDSChungTu_Lo.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +106,9 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptDSChungTu : Component, ICachedReport {
+    public class CachedrptDSChungTu_Lo : Component, ICachedReport {
         
-        public CachedrptDSChungTu() {
+        public CachedrptDSChungTu_Lo() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptDSChungTu rpt = new rptDSChungTu();
+            rptDSChungTu_Lo rpt = new rptDSChungTu_Lo();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -866,6 +866,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (radDSDCBD.Checked)
                     {
+                        try
+                        {
+
+                        
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
                             {
@@ -913,6 +917,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 rpt.PrintToPrinter(1, false, 1, 1);
                                 //Thread.Sleep(31000);
                             }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                         if (radDSDCHD.Checked)

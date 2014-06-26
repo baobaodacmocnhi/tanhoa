@@ -579,6 +579,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }
+            MessageBox.Show("Chưa chọn Danh Sách KTXM", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
