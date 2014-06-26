@@ -212,7 +212,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     dr["Hieu"] = itemRow["Hieu"];
                     dr["Co"] = itemRow["Co"];
                     dr["ChiSo"] = itemRow["ChiSo"];
-                    dr["TrangThai"] = itemRow["TrangThai"];
+                    dr["TrangThai"] = itemRow["TrangThaiBC"];
                     dr["VienChi"] = itemRow["VienChi"];
                     dr["DayChi"] = itemRow["DayChi"];
                     dr["MaSoBC"] = itemRow["MaSoBC"];
@@ -228,6 +228,46 @@ namespace KTKS_DonKH.GUI.BamChi
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }
+            else
+                MessageBox.Show("Chưa chọn Danh Sách Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnInQuetToanVatTu_Click(object sender, EventArgs e)
+        {
+            if (radDSBamChi.Checked)
+            {
+                DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["QuyetToanVatTu"].NewRow();
+
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["Co"] = itemRow["Co"];
+                    dr["VienChi"] = itemRow["VienChi"];
+                    dr["DayChi"] = itemRow["DayChi"];
+                    dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
+                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                    dsBaoCao.Tables["QuyetToanVatTu"].Rows.Add(dr);
+                }
+
+                rptQuyetToanVatTu rpt = new rptQuyetToanVatTu();
+                rpt.SetDataSource(dsBaoCao);
+                ///report 0 là header
+                for (int j = 1; j < rpt.Subreports.Count; j++)
+                {
+                    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                }
+
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+            else
+                MessageBox.Show("Chưa chọn Danh Sách Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -352,42 +392,6 @@ namespace KTKS_DonKH.GUI.BamChi
                         DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi(CTaiKhoan.MaUser);
                 }
 
-            }
-        }
-
-        private void btnInQuetToanVatTu_Click(object sender, EventArgs e)
-        {
-            if (radDSBamChi.Checked)
-            {
-                DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (DataRow itemRow in dt.Rows)
-                {
-                    DataRow dr = dsBaoCao.Tables["QuyetToanVatTu"].NewRow();
-
-                    dr["TuNgay"] = _tuNgay;
-                    dr["DenNgay"] = _denNgay;
-                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["Co"] = itemRow["Co"];
-                    dr["VienChi"] = itemRow["VienChi"];
-                    dr["DayChi"] = itemRow["DayChi"];
-                    dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                    dr["NguoiLap"] = CTaiKhoan.HoTen;
-
-                    dsBaoCao.Tables["QuyetToanVatTu"].Rows.Add(dr);
-                }
-
-                rptQuyetToanVatTu rpt = new rptQuyetToanVatTu();
-                rpt.SetDataSource(dsBaoCao);
-                ///report 0 là header
-                for (int j = 1; j < rpt.Subreports.Count; j++)
-                {
-                    rpt.Subreports[j].SetDataSource(dsBaoCao);
-                }
-
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
             }
         }
 

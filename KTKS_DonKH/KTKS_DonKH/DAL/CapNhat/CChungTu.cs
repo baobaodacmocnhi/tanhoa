@@ -25,7 +25,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
                             join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                             where itemCTCT.DanhBo == DanhBo
-                            orderby itemCTCT.CreateDate descending
+                            orderby itemCTCT.CreateDate ascending
                             select new
                             {
                                 itemCTCT.DanhBo,
@@ -45,6 +45,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 itemCTCT.GhiChu,
                                 itemCTCT.Lo,
                                 itemCTCT.Phong,
+                                itemCTCT.CreateDate,
                             };
                 
                 return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);

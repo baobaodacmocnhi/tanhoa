@@ -21,6 +21,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         BindingSource DSKHCC_BS = new BindingSource();
         CChiNhanh _cChiNhanh = new CChiNhanh();
+        string _tuNgay = "", _denNgay = "";
 
         public frmChungCu()
         {
@@ -40,6 +41,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvKhachHangChungCu.AutoGenerateColumns = false;
             dgvKhachHangChungCu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvKhachHangChungCu.Font, FontStyle.Bold);
             dgvKhachHangChungCu.DataSource = DSKHCC_BS;
+            dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
         public void LoadTTKH(TTKhachHang ttkhachhang)
@@ -86,17 +88,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void txtMaCT_TimKiem_TextChanged(object sender, EventArgs e)
-        {
-            if (txtMaCT_TimKiem.Text.Trim() != "")
-            {
-                string expression = String.Format("MaCT like '{0}%'", txtMaCT_TimKiem.Text.Trim());
-                DSKHCC_BS.Filter = expression;
-            }
-            else
-                DSKHCC_BS.RemoveFilter();
-        }
-
         private void btnIn_Click(object sender, EventArgs e)
         {
             if (_ttkhachhang != null)
@@ -106,6 +97,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
 
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = txtHoTen.Text.Trim();
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
@@ -124,11 +117,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     dsBaoCao.Tables["DSChungTu"].Rows.Add(dr);
                 }
-                rptDSChungTu rpt = new rptDSChungTu();
-                rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
-
+                if (radLo.Checked)
+                {
+                    rptDSChungTu_Lo rpt = new rptDSChungTu_Lo();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+                }
+                if (radThuTuNhap.Checked)
+                {
+                    rptDSChungTu_ThuTuNhap rpt = new rptDSChungTu_ThuTuNhap();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+                }
             }
         }
 
@@ -261,7 +263,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 foreach (LichSuChungTu itemLSCT in lstLSCT)
                 {
                     DataRow dr = dsBaoCao.Tables["DSCatChuyen"].NewRow();
-
+                    
                     dr["Lo"] = _cChungTu.getCTChungTubyID(itemLSCT.DanhBo, itemLSCT.MaCT).Lo;
                     dr["Phong"] = _cChungTu.getCTChungTubyID(itemLSCT.DanhBo, itemLSCT.MaCT).Phong;
                     dr["DanhBo_Nhan"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
@@ -283,6 +285,76 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 frm.ShowDialog();
 
             }
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Số Chứng Từ":
+                    txtNoiDungTimKiem.Visible = true;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Ngày Lập":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = true;
+                    panel_KhoangThoiGian.Visible = false;
+                    break;
+                case "Khoảng Thời Gian":
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = true;
+                    break;
+                default:
+                    txtNoiDungTimKiem.Visible = false;
+                    dateTimKiem.Visible = false;
+                    panel_KhoangThoiGian.Visible = false;
+                    DSKHCC_BS.RemoveFilter();
+                    break;
+            }
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtNoiDungTimKiem.Text.Trim() != "")
+                {
+                    string expression = String.Format("MaCT like '{0}%'", txtNoiDungTimKiem.Text.Trim());
+                    DSKHCC_BS.Filter = expression;
+                    DSKHCC_BS.Filter = expression;
+                }
+                else
+                    DSKHCC_BS.RemoveFilter();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dateTimKiem_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            DSKHCC_BS.Filter = expression;
+            _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
+            _denNgay = "";
+        }
+
+        private void dateTu_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+            DSKHCC_BS.Filter = expression;
+            _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+            _denNgay = "";
+        }
+
+        private void dateDen_ValueChanged(object sender, EventArgs e)
+        {
+            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+            DSKHCC_BS.Filter = expression;
+            _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
         }
     }
 }
