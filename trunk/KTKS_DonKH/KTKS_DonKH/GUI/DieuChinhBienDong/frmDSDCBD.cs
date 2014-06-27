@@ -668,8 +668,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     ischecked = false;
                 LichSuChungTu lichsuchungtu = _cChungTu.getLSCTbyID(decimal.Parse(dgvDSCatChuyenDM.CurrentRow.Cells["MaLSCT"].Value.ToString()));
-                lichsuchungtu.PhieuDuocKy = ischecked;
-                _cChungTu.SuaLichSuChungTu(lichsuchungtu);
+                if(lichsuchungtu.PhieuDuocKy != ischecked)
+                    _cChungTu.SuaLichSuChungTu(lichsuchungtu);
             }
         }
 

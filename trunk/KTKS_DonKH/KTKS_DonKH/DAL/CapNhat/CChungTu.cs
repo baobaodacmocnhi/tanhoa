@@ -830,6 +830,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         }
                         if (ThemLichSuChungTu(lichsuchungtu) && ctchungtu.YeuCauCat)
                         {
+                            ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
                             //CatChuyenDM catchuyendm = new CatChuyenDM();
                             //LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
                             //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
@@ -878,6 +879,7 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                             if (ThemLichSuChungTu(lichsuchungtu2))
                             {
+                                ctchungtu.SoPhieu2 = lichsuchungtu2.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu2, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
@@ -927,6 +929,7 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                             if (ThemLichSuChungTu(lichsuchungtu3))
                             {
+                                ctchungtu.SoPhieu3 = lichsuchungtu3.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu3, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
@@ -976,6 +979,7 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                             if (ThemLichSuChungTu(lichsuchungtu4))
                             {
+                                ctchungtu.SoPhieu4 = lichsuchungtu4.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu4, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
@@ -1025,12 +1029,13 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                             if (ThemLichSuChungTu(lichsuchungtu5))
                             {
+                                ctchungtu.SoPhieu5 = lichsuchungtu5.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu5, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
                             }
                         }
-
+                        db.SubmitChanges();
 
                         //for (int i = 0; i < lstLichSuChungTu.Count; i++)
                         //{
@@ -1429,7 +1434,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                             ///
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                            ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
+                            ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
                             lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
@@ -1446,6 +1451,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             if (ThemLichSuChungTu(lichsuchungtu))
                             {
+                                ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
@@ -1505,7 +1511,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                             ///
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                            ctchungtu.SoPhieu2 = lichsuchungtu.SoPhieu;
+                            ctchungtuCN.SoPhieu2 = lichsuchungtu.SoPhieu;
                             lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN2;
@@ -1522,6 +1528,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             if (ThemLichSuChungTu(lichsuchungtu))
                             {
+                                ctchungtuCN.SoPhieu2 = lichsuchungtu.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
@@ -1579,7 +1586,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                             ///
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                            ctchungtu.SoPhieu3 = lichsuchungtu.SoPhieu;
+                            ctchungtuCN.SoPhieu3 = lichsuchungtu.SoPhieu;
                             lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN3;
@@ -1596,6 +1603,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             if (ThemLichSuChungTu(lichsuchungtu))
                             {
+                                ctchungtuCN.SoPhieu3 = lichsuchungtu.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
@@ -1653,7 +1661,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                             ///
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                            ctchungtu.SoPhieu4 = lichsuchungtu.SoPhieu;
+                            ctchungtuCN.SoPhieu4 = lichsuchungtu.SoPhieu;
                             lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN4;
@@ -1670,6 +1678,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             if (ThemLichSuChungTu(lichsuchungtu))
                             {
+                                ctchungtuCN.SoPhieu4 = lichsuchungtu.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
@@ -1727,7 +1736,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                             ///
                             lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                            ctchungtu.SoPhieu5 = lichsuchungtu.SoPhieu;
+                            ctchungtuCN.SoPhieu5 = lichsuchungtu.SoPhieu;
                             lichsuchungtu.YeuCauCat = true;
 
                             lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN5;
@@ -1744,6 +1753,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             if (ThemLichSuChungTu(lichsuchungtu))
                             {
+                                ctchungtuCN.SoPhieu5 = lichsuchungtu.SoPhieu;
                                 //CatChuyenDM catchuyendm = new CatChuyenDM();
                                 //LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
                                 //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
