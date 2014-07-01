@@ -342,6 +342,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     In=false,
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
                                     //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
                                     itemLSCT.CreateDate,
                                     itemLSCT.MaCT,
@@ -349,7 +350,9 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemLSCT.SoNKCat,
                                     itemLSCT.NhanNK_MaCN,
                                     itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
                                     itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
                                     itemLSCT.NhanNK_DiaChi,
                                     itemLSCT.NhanDM,
                                     itemLSCT.YeuCauCat,
@@ -360,6 +363,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemLSCT.CatNK_DiaChi,
                                     itemLSCT.PhieuDuocKy,
                                     itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
                                 };
                     if (query.Count() > 0)
                     {
@@ -469,11 +473,16 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemLSCT in db.LichSuChungTus
-                                where itemLSCT.CreateDate.Value.Date == TuNgay.Date //&& itemLSCT.SoPhieu != null
+                                where itemLSCT.CreateDate.Value.Date == TuNgay.Date && itemLSCT.SoPhieu != null
                                 //orderby itemLSCT.SoPhieu ascending
                                 select new
                                 {
+                                    In=false,
                                     itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NguoiKy,
                                     itemLSCT.CatDM,
                                     itemLSCT.YeuCauCat,
                                     itemLSCT.NhanDM,
@@ -507,11 +516,16 @@ namespace KTKS_DonKH.DAL.CapNhat
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemLSCT in db.LichSuChungTus
-                                where itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date //&& itemLSCT.SoPhieu != null
+                                where itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date && itemLSCT.SoPhieu != null
                                 //orderby itemLSCT.SoPhieu ascending
                                 select new
                                 {
+                                    In = false,
                                     itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NguoiKy,
                                     itemLSCT.CatDM,
                                     itemLSCT.YeuCauCat,
                                     itemLSCT.NhanDM,

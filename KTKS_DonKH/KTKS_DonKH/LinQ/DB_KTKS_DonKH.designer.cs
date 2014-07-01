@@ -13848,11 +13848,11 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
-		private string _CreateBy;
+		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
-		private string _ModifyBy;
+		private System.Nullable<int> _ModifyBy;
 		
 		private EntitySet<CTDongNuoc> _CTDongNuocs;
 		
@@ -13894,11 +13894,11 @@ namespace KTKS_DonKH.LinQ
     partial void OnXepDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
-    partial void OnCreateByChanging(string value);
+    partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
     partial void OnModifyDateChanged();
-    partial void OnModifyByChanging(string value);
+    partial void OnModifyByChanging(System.Nullable<int> value);
     partial void OnModifyByChanged();
     #endregion
 		
@@ -14203,8 +14203,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="NVarChar(50)")]
-		public string CreateBy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
 		{
 			get
 			{
@@ -14243,8 +14243,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="NVarChar(50)")]
-		public string ModifyBy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
 		{
 			get
 			{

@@ -58,7 +58,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
             txtDanhBo.Text = ttkhachhang.DanhBo;
             txtHopDong.Text = ttkhachhang.GiaoUoc;
             txtHoTen.Text = ttkhachhang.HoTen;
-            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
+            txtDiaChiDHN.Text = txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
         }
 
         public void Clear()
@@ -69,6 +69,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
             txtHopDong.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
+            txtDiaChiDHN.Text = "";
             ///
             dateDongNuoc.Value = DateTime.Now;
             txtSoCongVan_DN.Text = "";
@@ -102,7 +103,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         {
                             _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
                             LoadTTKH(_ttkhachhang);
-
                         }
                         else
                         {
@@ -127,7 +127,6 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         {
                             _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
                             LoadTTKH(_ttkhachhang);
-
                         }
                         else
                         {

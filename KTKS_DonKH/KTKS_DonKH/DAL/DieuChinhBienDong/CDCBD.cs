@@ -565,6 +565,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc,
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -599,6 +600,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     In = false,
                                     itemCTDCBD.ChuyenDocSo,
                                     SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    Ma = itemCTDCBD.MaCTDCBD,
                                     DieuChinh = "Biến Động",
                                     itemCTDCBD.CreateDate,
                                     itemCTDCBD.DanhBo,
@@ -617,6 +619,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.SX_BD,
                                     itemCTDCBD.DV_BD,
                                     itemCTDCBD.HCSN_BD,
+                                    itemCTDCBD.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -652,6 +655,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     In = false,
                                     itemCTDCBD.ChuyenDocSo,
                                     SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    Ma = itemCTDCBD.MaCTDCBD,
                                     DieuChinh = "Biến Động",
                                     itemCTDCBD.CreateDate,
                                     itemCTDCBD.DanhBo,
@@ -670,6 +674,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.SX_BD,
                                     itemCTDCBD.DV_BD,
                                     itemCTDCBD.HCSN_BD,
+                                    itemCTDCBD.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -909,6 +914,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TongCong_BD,
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -941,9 +947,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 {
                                     In = false,
                                     SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    Ma = itemCTDCHD.MaCTDCHD,
                                     DieuChinh = "Hóa Đơn",
                                     itemCTDCHD.CreateDate,
                                     itemCTDCHD.DanhBo,
+                                    itemCTDCHD.HoTen,
                                     itemCTDCHD.GiaBieu,
                                     itemCTDCHD.GiaBieu_BD,
                                     itemCTDCHD.DinhMuc,
@@ -955,6 +963,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TongCong_BD,
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -987,9 +996,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 {
                                     In = false,
                                     SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    Ma = itemCTDCHD.MaCTDCHD,
                                     DieuChinh = "Hóa Đơn",
                                     itemCTDCHD.CreateDate,
                                     itemCTDCHD.DanhBo,
+                                    itemCTDCHD.HoTen,
                                     itemCTDCHD.GiaBieu,
                                     itemCTDCHD.GiaBieu_BD,
                                     itemCTDCHD.DinhMuc,
@@ -1001,6 +1012,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TongCong_BD,
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
