@@ -498,7 +498,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         }
 
         /// <summary>
-        /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời Tổ Khách Hàng
+        /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời
         /// </summary>
         /// <returns></returns>
         public DataTable LoadDSCTTTTL()
@@ -513,6 +513,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                 {
                                     In = false,
                                     itemCTTTTL.MaCTTTTL,
+                                    Ma = itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.ThuDuocKy,
                                     itemCTTTTL.DanhBo,
                                     itemCTTTTL.GhiChu,
@@ -520,6 +521,92 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     itemCTTTTL.VeViec,
                                     itemCTTTTL.NoiDung,
                                     itemCTTTTL.NoiNhan,
+                                    itemCTTTTL.NguoiKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTTTTL(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    var query = from itemCTTTTL in db.CTTTTLs
+                                where itemCTTTTL.CreateDate.Value.Date==TuNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemCTTTTL.MaCTTTTL,
+                                    Ma = itemCTTTTL.MaCTTTTL,
+                                    itemCTTTTL.ThuDuocKy,
+                                    itemCTTTTL.DanhBo,
+                                    itemCTTTTL.GhiChu,
+                                    itemCTTTTL.CreateDate,
+                                    itemCTTTTL.VeViec,
+                                    itemCTTTTL.NoiDung,
+                                    itemCTTTTL.NoiNhan,
+                                    itemCTTTTL.NguoiKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chi Tiết Thảo Thư Trả Lời trong Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTTTTL(DateTime TuNgay,DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    var query = from itemCTTTTL in db.CTTTTLs
+                                where itemCTTTTL.CreateDate.Value.Date >= TuNgay.Date && itemCTTTTL.CreateDate.Value.Date <= DenNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemCTTTTL.MaCTTTTL,
+                                    Ma = itemCTTTTL.MaCTTTTL,
+                                    itemCTTTTL.ThuDuocKy,
+                                    itemCTTTTL.DanhBo,
+                                    itemCTTTTL.GhiChu,
+                                    itemCTTTTL.CreateDate,
+                                    itemCTTTTL.VeViec,
+                                    itemCTTTTL.NoiDung,
+                                    itemCTTTTL.NoiNhan,
+                                    itemCTTTTL.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

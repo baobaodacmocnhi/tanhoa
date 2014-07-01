@@ -1069,6 +1069,7 @@
             this.dgvDSYCCHDB.Size = new System.Drawing.Size(1362, 470);
             this.dgvDSYCCHDB.TabIndex = 25;
             this.dgvDSYCCHDB.Visible = false;
+            this.dgvDSYCCHDB.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSYCCHDB_CellEndEdit);
             this.dgvDSYCCHDB.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSYCCHDB_CellFormatting);
             this.dgvDSYCCHDB.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSYCCHDB_RowPostPaint);
             this.dgvDSYCCHDB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSYCCHDB_KeyDown);
@@ -1078,7 +1079,6 @@
             this.YC_In.DataPropertyName = "In";
             this.YC_In.HeaderText = "In";
             this.YC_In.Name = "YC_In";
-            this.YC_In.Visible = false;
             this.YC_In.Width = 30;
             // 
             // YC_PhieuDuocKy

@@ -557,6 +557,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.DaLapPhieu,
                                     itemCTCTDB.ThongBaoDuocKy,
                                     MaTB = itemCTCTDB.MaCTCTDB,
+                                    Ma = itemCTCTDB.MaCTCTDB,
                                     itemCTCTDB.CreateDate,
                                     itemCTCTDB.DanhBo,
                                     itemCTCTDB.HoTen,
@@ -564,6 +565,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.LyDo,
                                     itemCTCTDB.GhiChuLyDo,
                                     itemCTCTDB.SoTien,
+                                    itemCTCTDB.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -600,6 +602,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.DaLapPhieu,
                                     itemCTCTDB.ThongBaoDuocKy,
                                     MaTB = itemCTCTDB.MaCTCTDB,
+                                    Ma = itemCTCTDB.MaCTCTDB,
                                     itemCTCTDB.CreateDate,
                                     itemCTCTDB.DanhBo,
                                     itemCTCTDB.HoTen,
@@ -609,6 +612,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.SoTien,
                                     itemCTCTDB.TCTBXuLy,
                                     itemCTCTDB.TroNgai,
+                                    itemCTCTDB.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -646,6 +650,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.DaLapPhieu,
                                     itemCTCTDB.ThongBaoDuocKy,
                                     MaTB = itemCTCTDB.MaCTCTDB,
+                                    Ma = itemCTCTDB.MaCTCTDB,
                                     itemCTCTDB.CreateDate,
                                     itemCTCTDB.DanhBo,
                                     itemCTCTDB.HoTen,
@@ -655,6 +660,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.SoTien,
                                     itemCTCTDB.TCTBXuLy,
                                     itemCTCTDB.TroNgai,
+                                    itemCTCTDB.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -859,6 +865,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.DaLapPhieu,
                                     itemCTCHDB.ThongBaoDuocKy,
                                     MaTB = itemCTCHDB.MaCTCHDB,
+                                    Ma = itemCTCHDB.MaCTCHDB,
                                     itemCTCHDB.CreateDate,
                                     itemCTCHDB.DanhBo,
                                     itemCTCHDB.HoTen,
@@ -866,6 +873,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.LyDo,
                                     itemCTCHDB.GhiChuLyDo,
                                     itemCTCHDB.SoTien,
+                                    itemCTCHDB.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -902,6 +910,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.DaLapPhieu,
                                     itemCTCHDB.ThongBaoDuocKy,
                                     MaTB = itemCTCHDB.MaCTCHDB,
+                                    Ma = itemCTCHDB.MaCTCHDB,
                                     itemCTCHDB.CreateDate,
                                     itemCTCHDB.DanhBo,
                                     itemCTCHDB.HoTen,
@@ -911,6 +920,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.SoTien,
                                     itemCTCHDB.TCTBXuLy,
                                     itemCTCHDB.TroNgai,
+                                    itemCTCHDB.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -948,6 +958,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.DaLapPhieu,
                                     itemCTCHDB.ThongBaoDuocKy,
                                     MaTB = itemCTCHDB.MaCTCHDB,
+                                    Ma = itemCTCHDB.MaCTCHDB,
                                     itemCTCHDB.CreateDate,
                                     itemCTCHDB.DanhBo,
                                     itemCTCHDB.HoTen,
@@ -957,6 +968,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.SoTien,
                                     itemCTCHDB.TCTBXuLy,
                                     itemCTCHDB.TroNgai,
+                                    itemCTCHDB.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1316,6 +1328,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     In = false,
                                     itemYCCHDB.PhieuDuocKy,
                                     SoPhieu=itemYCCHDB.MaYCCHDB,
+                                    Ma = itemYCCHDB.MaYCCHDB,
                                     itemYCCHDB.CreateDate,
                                     itemYCCHDB.DanhBo,
                                     itemYCCHDB.HoTen,
@@ -1323,6 +1336,94 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemYCCHDB.LyDo,
                                     itemYCCHDB.GhiChuLyDo,
                                     itemYCCHDB.SoTien,
+                                    itemYCCHDB.NguoiKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Yêu Cầu Cắt Hủy Danh Bộ trực tiếp không qua Thông Báo trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSYCCHDB(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                                where itemYCCHDB.CreateDate.Value.Date==TuNgay.Date && itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null
+                                select new
+                                {
+                                    In = false,
+                                    itemYCCHDB.PhieuDuocKy,
+                                    SoPhieu = itemYCCHDB.MaYCCHDB,
+                                    Ma = itemYCCHDB.MaYCCHDB,
+                                    itemYCCHDB.CreateDate,
+                                    itemYCCHDB.DanhBo,
+                                    itemYCCHDB.HoTen,
+                                    itemYCCHDB.DiaChi,
+                                    itemYCCHDB.LyDo,
+                                    itemYCCHDB.GhiChuLyDo,
+                                    itemYCCHDB.SoTien,
+                                    itemYCCHDB.NguoiKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Yêu Cầu Cắt Hủy Danh Bộ trực tiếp không qua Thông Báo trong Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSYCCHDB(DateTime TuNgay,DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                                where itemYCCHDB.CreateDate.Value.Date >= TuNgay.Date && itemYCCHDB.CreateDate.Value.Date <= DenNgay.Date && itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null
+                                select new
+                                {
+                                    In = false,
+                                    itemYCCHDB.PhieuDuocKy,
+                                    SoPhieu = itemYCCHDB.MaYCCHDB,
+                                    Ma = itemYCCHDB.MaYCCHDB,
+                                    itemYCCHDB.CreateDate,
+                                    itemYCCHDB.DanhBo,
+                                    itemYCCHDB.HoTen,
+                                    itemYCCHDB.DiaChi,
+                                    itemYCCHDB.LyDo,
+                                    itemYCCHDB.GhiChuLyDo,
+                                    itemYCCHDB.SoTien,
+                                    itemYCCHDB.NguoiKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

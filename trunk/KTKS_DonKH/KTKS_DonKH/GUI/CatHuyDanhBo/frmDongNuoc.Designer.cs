@@ -44,6 +44,9 @@
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBoxXuLyDongNuoc = new System.Windows.Forms.GroupBox();
+            this.dateDongNuoc = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.txtQuan_DN = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.dateCongVan_DN = new System.Windows.Forms.DateTimePicker();
@@ -53,6 +56,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBoxXuLyMoNuoc = new System.Windows.Forms.GroupBox();
+            this.dateMoNuoc = new System.Windows.Forms.DateTimePicker();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnCapNhatMoNuoc = new System.Windows.Forms.Button();
             this.txtHinhThucDN = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtLyDoDN = new System.Windows.Forms.TextBox();
@@ -69,13 +75,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnInTBMN = new System.Windows.Forms.Button();
-            this.btnCapNhatMoNuoc = new System.Windows.Forms.Button();
             this.btnInTBDN = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.dateDongNuoc = new System.Windows.Forms.DateTimePicker();
-            this.label18 = new System.Windows.Forms.Label();
-            this.dateMoNuoc = new System.Windows.Forms.DateTimePicker();
-            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxXuLyDongNuoc.SuspendLayout();
             this.groupBoxXuLyMoNuoc.SuspendLayout();
@@ -238,9 +238,40 @@
             this.groupBoxXuLyDongNuoc.TabStop = false;
             this.groupBoxXuLyDongNuoc.Text = "Xử Lý Đóng Nước";
             // 
+            // dateDongNuoc
+            // 
+            this.dateDongNuoc.CustomFormat = "dd/MM/yyyy";
+            this.dateDongNuoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDongNuoc.Location = new System.Drawing.Point(131, 24);
+            this.dateDongNuoc.Name = "dateDongNuoc";
+            this.dateDongNuoc.Size = new System.Drawing.Size(86, 25);
+            this.dateDongNuoc.TabIndex = 10;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(8, 30);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(117, 17);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Ngày Đóng Nước:";
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(835, 49);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(70, 35);
+            this.btnLuu.TabIndex = 8;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
             // txtQuan_DN
             // 
-            this.txtQuan_DN.Location = new System.Drawing.Point(631, 55);
+            this.txtQuan_DN.Location = new System.Drawing.Point(693, 55);
             this.txtQuan_DN.Name = "txtQuan_DN";
             this.txtQuan_DN.Size = new System.Drawing.Size(100, 25);
             this.txtQuan_DN.TabIndex = 7;
@@ -248,7 +279,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(582, 61);
+            this.label11.Location = new System.Drawing.Point(644, 61);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 17);
             this.label11.TabIndex = 6;
@@ -258,7 +289,7 @@
             // 
             this.dateCongVan_DN.CustomFormat = "dd/MM/yyyy";
             this.dateCongVan_DN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateCongVan_DN.Location = new System.Drawing.Point(321, 56);
+            this.dateCongVan_DN.Location = new System.Drawing.Point(383, 56);
             this.dateCongVan_DN.Name = "dateCongVan_DN";
             this.dateCongVan_DN.Size = new System.Drawing.Size(86, 25);
             this.dateCongVan_DN.TabIndex = 3;
@@ -266,7 +297,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(207, 58);
+            this.label9.Location = new System.Drawing.Point(269, 58);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 17);
             this.label9.TabIndex = 2;
@@ -276,12 +307,12 @@
             // 
             this.txtSoCongVan_DN.Location = new System.Drawing.Point(131, 55);
             this.txtSoCongVan_DN.Name = "txtSoCongVan_DN";
-            this.txtSoCongVan_DN.Size = new System.Drawing.Size(70, 25);
+            this.txtSoCongVan_DN.Size = new System.Drawing.Size(132, 25);
             this.txtSoCongVan_DN.TabIndex = 1;
             // 
             // txtPhuong_DN
             // 
-            this.txtPhuong_DN.Location = new System.Drawing.Point(476, 55);
+            this.txtPhuong_DN.Location = new System.Drawing.Point(538, 55);
             this.txtPhuong_DN.Name = "txtPhuong_DN";
             this.txtPhuong_DN.Size = new System.Drawing.Size(100, 25);
             this.txtPhuong_DN.TabIndex = 5;
@@ -289,7 +320,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(413, 61);
+            this.label7.Location = new System.Drawing.Point(475, 61);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 17);
             this.label7.TabIndex = 4;
@@ -328,6 +359,37 @@
             this.groupBoxXuLyMoNuoc.TabStop = false;
             this.groupBoxXuLyMoNuoc.Text = "Xử Lý Mở Nước";
             // 
+            // dateMoNuoc
+            // 
+            this.dateMoNuoc.CustomFormat = "dd/MM/yyyy";
+            this.dateMoNuoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateMoNuoc.Location = new System.Drawing.Point(153, 24);
+            this.dateMoNuoc.Name = "dateMoNuoc";
+            this.dateMoNuoc.Size = new System.Drawing.Size(86, 25);
+            this.dateMoNuoc.TabIndex = 14;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(107, 17);
+            this.label19.TabIndex = 13;
+            this.label19.Text = "Ngày Công Văn:";
+            // 
+            // btnCapNhatMoNuoc
+            // 
+            this.btnCapNhatMoNuoc.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
+            this.btnCapNhatMoNuoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCapNhatMoNuoc.Location = new System.Drawing.Point(752, 86);
+            this.btnCapNhatMoNuoc.Name = "btnCapNhatMoNuoc";
+            this.btnCapNhatMoNuoc.Size = new System.Drawing.Size(153, 35);
+            this.btnCapNhatMoNuoc.TabIndex = 12;
+            this.btnCapNhatMoNuoc.Text = "Lập TB Mở Nước";
+            this.btnCapNhatMoNuoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCapNhatMoNuoc.UseVisualStyleBackColor = true;
+            this.btnCapNhatMoNuoc.Click += new System.EventHandler(this.btnCapNhatMoNuoc_Click);
+            // 
             // txtHinhThucDN
             // 
             this.txtHinhThucDN.Location = new System.Drawing.Point(153, 117);
@@ -362,7 +424,7 @@
             // 
             // txtQuan_MN
             // 
-            this.txtQuan_MN.Location = new System.Drawing.Point(653, 55);
+            this.txtQuan_MN.Location = new System.Drawing.Point(693, 55);
             this.txtQuan_MN.Name = "txtQuan_MN";
             this.txtQuan_MN.Size = new System.Drawing.Size(100, 25);
             this.txtQuan_MN.TabIndex = 7;
@@ -371,7 +433,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(604, 61);
+            this.label6.Location = new System.Drawing.Point(644, 61);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 17);
             this.label6.TabIndex = 6;
@@ -382,7 +444,7 @@
             // 
             this.dateCongVan_MN.CustomFormat = "dd/MM/yyyy";
             this.dateCongVan_MN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateCongVan_MN.Location = new System.Drawing.Point(343, 56);
+            this.dateCongVan_MN.Location = new System.Drawing.Point(383, 56);
             this.dateCongVan_MN.Name = "dateCongVan_MN";
             this.dateCongVan_MN.Size = new System.Drawing.Size(86, 25);
             this.dateCongVan_MN.TabIndex = 3;
@@ -390,7 +452,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(229, 58);
+            this.label12.Location = new System.Drawing.Point(269, 58);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(107, 17);
             this.label12.TabIndex = 2;
@@ -400,12 +462,12 @@
             // 
             this.txtSoCongVan_MN.Location = new System.Drawing.Point(153, 55);
             this.txtSoCongVan_MN.Name = "txtSoCongVan_MN";
-            this.txtSoCongVan_MN.Size = new System.Drawing.Size(70, 25);
+            this.txtSoCongVan_MN.Size = new System.Drawing.Size(110, 25);
             this.txtSoCongVan_MN.TabIndex = 1;
             // 
             // txtPhuong_MN
             // 
-            this.txtPhuong_MN.Location = new System.Drawing.Point(498, 55);
+            this.txtPhuong_MN.Location = new System.Drawing.Point(538, 55);
             this.txtPhuong_MN.Name = "txtPhuong_MN";
             this.txtPhuong_MN.Size = new System.Drawing.Size(100, 25);
             this.txtPhuong_MN.TabIndex = 5;
@@ -414,7 +476,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(435, 61);
+            this.label13.Location = new System.Drawing.Point(475, 61);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 17);
             this.label13.TabIndex = 4;
@@ -474,19 +536,6 @@
             this.btnInTBMN.Visible = false;
             this.btnInTBMN.Click += new System.EventHandler(this.btnInTBMN_Click);
             // 
-            // btnCapNhatMoNuoc
-            // 
-            this.btnCapNhatMoNuoc.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnCapNhatMoNuoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCapNhatMoNuoc.Location = new System.Drawing.Point(752, 86);
-            this.btnCapNhatMoNuoc.Name = "btnCapNhatMoNuoc";
-            this.btnCapNhatMoNuoc.Size = new System.Drawing.Size(153, 35);
-            this.btnCapNhatMoNuoc.TabIndex = 12;
-            this.btnCapNhatMoNuoc.Text = "Lập TB Mở Nước";
-            this.btnCapNhatMoNuoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCapNhatMoNuoc.UseVisualStyleBackColor = true;
-            this.btnCapNhatMoNuoc.Click += new System.EventHandler(this.btnCapNhatMoNuoc_Click);
-            // 
             // btnInTBDN
             // 
             this.btnInTBDN.Enabled = false;
@@ -501,55 +550,6 @@
             this.btnInTBDN.UseVisualStyleBackColor = true;
             this.btnInTBDN.Visible = false;
             this.btnInTBDN.Click += new System.EventHandler(this.btnInTBDN_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(773, 49);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(70, 35);
-            this.btnLuu.TabIndex = 8;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // dateDongNuoc
-            // 
-            this.dateDongNuoc.CustomFormat = "dd/MM/yyyy";
-            this.dateDongNuoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDongNuoc.Location = new System.Drawing.Point(131, 24);
-            this.dateDongNuoc.Name = "dateDongNuoc";
-            this.dateDongNuoc.Size = new System.Drawing.Size(86, 25);
-            this.dateDongNuoc.TabIndex = 10;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(8, 30);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(117, 17);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "Ngày Đóng Nước:";
-            // 
-            // dateMoNuoc
-            // 
-            this.dateMoNuoc.CustomFormat = "dd/MM/yyyy";
-            this.dateMoNuoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateMoNuoc.Location = new System.Drawing.Point(153, 24);
-            this.dateMoNuoc.Name = "dateMoNuoc";
-            this.dateMoNuoc.Size = new System.Drawing.Size(86, 25);
-            this.dateMoNuoc.TabIndex = 14;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(8, 30);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(107, 17);
-            this.label19.TabIndex = 13;
-            this.label19.Text = "Ngày Công Văn:";
             // 
             // frmDongNuoc
             // 
