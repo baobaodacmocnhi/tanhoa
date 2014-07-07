@@ -1,0 +1,16 @@
+C:\Users\PM1\AppData\Local\Temporary Projects\NguyenNgocQuocBao\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\PM1\AppData\Local\Temporary Projects\NguyenNgocQuocBao\bin\Debug\NguyenNgocQuocBao.dll
+C:\Users\PM1\AppData\Local\Temporary Projects\NguyenNgocQuocBao\bin\Debug\NguyenNgocQuocBao.pdb
+C:\Users\PM1\AppData\Local\Temporary Projects\NguyenNgocQuocBao\bin\Debug\NguyenNgocQuocBao.tlb
+C:\Users\PM1\AppData\Local\Temporary Projects\NguyenNgocQuocBao\obj\Debug\NguyenNgocQuocBao.dll
+C:\Users\PM1\AppData\Local\Temporary Projects\NguyenNgocQuocBao\obj\Debug\NguyenNgocQuocBao.pdb
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\obj\Debug\ResolveAssemblyReference.cache
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\obj\Debug\NguyenNgocQuocBao.frmOngNganh.resources
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\obj\Debug\NguyenNgocQuocBao.frmTimKiemOngNganh.resources
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\bin\Debug\NguyenNgocQuocBao.dll
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\bin\Debug\NguyenNgocQuocBao.pdb
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\bin\Debug\NguyenNgocQuocBao.tlb
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\obj\Debug\NguyenNgocQuocBao.dll
+D:\BaiKiemTraLapTrinhGIS\NguyenNgocQuocBao\NguyenNgocQuocBao\NguyenNgocQuocBao\obj\Debug\NguyenNgocQuocBao.pdb
