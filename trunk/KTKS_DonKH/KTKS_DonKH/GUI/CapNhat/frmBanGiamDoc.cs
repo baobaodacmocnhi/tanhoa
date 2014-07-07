@@ -173,122 +173,132 @@ namespace KTKS_DonKH.GUI.CapNhat
             {
                 case "Điều Chỉnh Biến Động":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
-                        
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ctdcbd.ChucVu = "GIÁM ĐỐC";
-                        else
-                            ctdcbd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        _cDCBD.SuaCTDCBD(ctdcbd);
-                    }
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                ctdcbd.ChucVu = "GIÁM ĐỐC";
+                            else
+                                ctdcbd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _cDCBD.SuaCTDCBD(ctdcbd);
+                        }
                     break;
                 case "Điều Chỉnh Hóa Đơn":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ctdchd.ChucVu = "GIÁM ĐỐC";
-                        else
-                            ctdchd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        _cDCBD.SuaCTDCHD(ctdchd);
-                    }
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                ctdchd.ChucVu = "GIÁM ĐỐC";
+                            else
+                                ctdchd.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _cDCBD.SuaCTDCHD(ctdchd);
+                        }
                     break;
                 case "Cắt Chuyển":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            lichsuchungtu.ChucVu = "GIÁM ĐỐC";
-                        else
-                            lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        _cChungTu.SuaLichSuChungTu(lichsuchungtu);
-                    }
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                            else
+                                lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _cChungTu.SuaLichSuChungTu(lichsuchungtu);
+                        }
                     break;
                 case "Cắt Tạm Danh Bộ":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ctctdb.ChucVu = "GIÁM ĐỐC";
-                        else
-                            ctctdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ctctdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        _cCHDB.SuaCTCTDB(ctctdb);
-                    }
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                ctctdb.ChucVu = "GIÁM ĐỐC";
+                            else
+                                ctctdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            ctctdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _cCHDB.SuaCTCTDB(ctctdb);
+                        }
                     break;
                 case "Cắt Hủy Danh Bộ":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ctchdb.ChucVu = "GIÁM ĐỐC";
-                        else
-                            ctchdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ctchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        _cCHDB.SuaCTCHDB(ctchdb);
-                    }
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                ctchdb.ChucVu = "GIÁM ĐỐC";
+                            else
+                                ctchdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            ctchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _cCHDB.SuaCTCHDB(ctchdb);
+                        }
                     break;
                 case "Yêu Cầu Cắt Hủy Danh Bộ":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ycchdb.ChucVu = "GIÁM ĐỐC";
-                        else
-                            ycchdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ycchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        _cCHDB.SuaYeuCauCHDB(ycchdb);
-                    }
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                ycchdb.ChucVu = "GIÁM ĐỐC";
+                            else
+                                ycchdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            ycchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _cCHDB.SuaYeuCauCHDB(ycchdb);
+                        }
                     break;
                 case "Đóng Nước":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        CTDongNuoc ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            CTDongNuoc ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ctdongnuoc.ChucVu_DN = "GIÁM ĐỐC";
-                        else
-                            ctdongnuoc.ChucVu_DN = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ctdongnuoc.NguoiKy_DN = bangiamdoc.HoTen.ToUpper();
-                        _cDongNuoc.SuaCTDongNuoc(ctdongnuoc);
-                    }
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                ctdongnuoc.ChucVu_DN = "GIÁM ĐỐC";
+                            else
+                                ctdongnuoc.ChucVu_DN = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            ctdongnuoc.NguoiKy_DN = bangiamdoc.HoTen.ToUpper();
+                            _cDongNuoc.SuaCTDongNuoc(ctdongnuoc);
+                        }
                     break;
                 case "Mở Nước":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        CTDongNuoc ctdongnuoc = _cDongNuoc.getCTMoNuocbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            CTDongNuoc ctdongnuoc = _cDongNuoc.getCTMoNuocbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ctdongnuoc.ChucVu_MN = "GIÁM ĐỐC";
-                        else
-                            ctdongnuoc.ChucVu_MN = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ctdongnuoc.NguoiKy_MN = bangiamdoc.HoTen.ToUpper();
-                        _cDongNuoc.SuaCTDongNuoc(ctdongnuoc);
-                    }
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                ctdongnuoc.ChucVu_MN = "GIÁM ĐỐC";
+                            else
+                                ctdongnuoc.ChucVu_MN = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            ctdongnuoc.NguoiKy_MN = bangiamdoc.HoTen.ToUpper();
+                            _cDongNuoc.SuaCTDongNuoc(ctdongnuoc);
+                        }
                     break;
                 case "Thảo Thư Trả Lời":
                     for (int i = 0; i < dgvDanhSach.RowCount; i++)
-                    {
-                        CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
+                        if (bool.Parse(dgvDanhSach["CapNhat", i].Value.ToString()) == true)
+                        {
+                            CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDanhSach["Ma", i].Value.ToString()));
 
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            cttttl.ChucVu = "GIÁM ĐỐC";
-                        else
-                            cttttl.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        cttttl.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        _cTTTL.SuaCTTTTL(cttttl);
-                    }
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                cttttl.ChucVu = "GIÁM ĐỐC";
+                            else
+                                cttttl.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            cttttl.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _cTTTL.SuaCTTTTL(cttttl);
+                        }
                     break;
             }
+            btnTimKiem.PerformClick();
         }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)

@@ -835,7 +835,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSYCCHDB.Checked)
             {
-                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["Ma"].Value.ToString()));
+                YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ycchdb.PhieuDuocKy)
                 {
                     ycchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
@@ -844,7 +844,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
             if (radDSDongNuoc.Checked)
             {
-                CTDongNuoc ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["Ma"].Value.ToString()));
+                CTDongNuoc ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ctdongnuoc.ThongBaoDuocKy_DN)
                 {
                     ctdongnuoc.ThongBaoDuocKy_DN = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
