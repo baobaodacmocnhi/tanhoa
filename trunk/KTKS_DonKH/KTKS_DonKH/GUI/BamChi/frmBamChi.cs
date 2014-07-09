@@ -79,6 +79,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtVienChi.Text = ctbamchi.VienChi.ToString();
             txtDayChi.Text = ctbamchi.DayChi.ToString();
             cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
+            txtGhiChu.Text = ctbamchi.GhiChu;
             txtMaSoBC.Text = ctbamchi.MaSoBC;
             txtTheoYeuCau.Text = ctbamchi.TheoYeuCau;
         }
@@ -264,6 +265,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (cmbTrangThaiBC.SelectedValue != null)
                             ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
 
+                        ctbamchi.GhiChu = txtGhiChu.Text.Trim();
                         ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
 
                         if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
@@ -363,6 +365,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         if (cmbTrangThaiBC.SelectedValue != null)
                             ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
 
+                        ctbamchi.GhiChu = txtGhiChu.Text.Trim();
                         ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
 
                         if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
@@ -450,6 +453,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     if (cmbTrangThaiBC.SelectedValue != null)
                         ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
 
+                    ctbamchi.GhiChu = txtGhiChu.Text.Trim();
                     ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
 
                     if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))

@@ -14,6 +14,7 @@ using KTKS_DonKH.DAL.DongNuoc;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DongNuoc;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.BamChi;
 
 namespace KTKS_DonKH.GUI.DongNuoc
 {
@@ -29,7 +30,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDongNuoc _cDongNuoc = new CDongNuoc();
-
+        CBamChi _cBamChi = new CBamChi();
 
         public frmDongNuoc()
         {
@@ -372,7 +373,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
 
         private void btnInTBMN_Click(object sender, EventArgs e)
         {
-            if (_ctdongnuoc != null && _ctdongnuoc.MoNuoc == false)
+            if (_ctdongnuoc != null && _ctdongnuoc.MoNuoc == true)
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoDongNuoc"].NewRow();
@@ -415,10 +416,16 @@ namespace KTKS_DonKH.GUI.DongNuoc
                 {
                     _ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(txtMaThongBao_DN.Text.Trim().Replace("-", "")));
                     if (!string.IsNullOrEmpty(_ctdongnuoc.DongNuoc.MaDonTXL.ToString()))
+                    {
                         txtMaDon.Text = "TXL" + _ctdongnuoc.DongNuoc.MaDonTXL.ToString().Insert(_ctdongnuoc.DongNuoc.MaDonTXL.ToString().Length - 2, "-");
+                        dgvDSBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_ctdongnuoc.DongNuoc.MaDonTXL.Value, _ctdongnuoc.DanhBo);
+                    }
                     else
                         if (!string.IsNullOrEmpty(_ctdongnuoc.DongNuoc.MaDon.ToString()))
+                        {
                             txtMaDon.Text = _ctdongnuoc.DongNuoc.MaDon.ToString().Insert(_ctdongnuoc.DongNuoc.MaDon.ToString().Length - 2, "-");
+                            dgvDSBamChi.DataSource = _cBamChi.LoadDSCTBamChi(_ctdongnuoc.DongNuoc.MaDon.Value, _ctdongnuoc.DanhBo);
+                        }
 
                     txtMaThongBao_DN.Text = _ctdongnuoc.MaCTDN.ToString().Insert(_ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
 
@@ -445,6 +452,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         txtLyDoDN.Text = _ctdongnuoc.LyDo_DN;
                         txtHinhThucDN.Text = _ctdongnuoc.HinhThuc_DN;
                     }
+                    
                 }
                 else
                 {

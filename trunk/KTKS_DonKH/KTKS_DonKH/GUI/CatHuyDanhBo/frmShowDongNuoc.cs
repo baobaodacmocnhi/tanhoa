@@ -12,6 +12,7 @@ using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DongNuoc;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.BamChi;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -21,6 +22,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CTDongNuoc _ctdongnuoc = null;
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        CBamChi _cBamChi = new CBamChi();
 
         public frmShowDongNuoc()
         {
@@ -53,10 +55,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 _ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(_MaCTDN);
                 if (!string.IsNullOrEmpty(_ctdongnuoc.DongNuoc.MaDonTXL.ToString()))
+                {
                     txtMaDon.Text = "TXL" + _ctdongnuoc.DongNuoc.MaDonTXL.ToString().Insert(_ctdongnuoc.DongNuoc.MaDonTXL.ToString().Length - 2, "-");
+                    dgvDSBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_ctdongnuoc.DongNuoc.MaDonTXL.Value, _ctdongnuoc.DanhBo);
+                }
                 else
                     if (!string.IsNullOrEmpty(_ctdongnuoc.DongNuoc.MaDon.ToString()))
+                    {
                         txtMaDon.Text = _ctdongnuoc.DongNuoc.MaDon.ToString().Insert(_ctdongnuoc.DongNuoc.MaDon.ToString().Length - 2, "-");
+                        dgvDSBamChi.DataSource = _cBamChi.LoadDSCTBamChi(_ctdongnuoc.DongNuoc.MaDon.Value, _ctdongnuoc.DanhBo);
+                    }
 
                 txtMaThongBao_DN.Text = _ctdongnuoc.MaCTDN.ToString().Insert(_ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
 
@@ -188,7 +196,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnInTBMN_Click(object sender, EventArgs e)
         {
-            if (_ctdongnuoc != null && _ctdongnuoc.MoNuoc == false)
+            if (_ctdongnuoc != null && _ctdongnuoc.MoNuoc == true)
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoDongNuoc"].NewRow();

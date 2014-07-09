@@ -4674,6 +4674,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TrangThaiBC;
 		
+		private string _GhiChu;
+		
 		private string _MaSoBC;
 		
 		private string _TheoYeuCau;
@@ -4740,6 +4742,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDayChiChanged();
     partial void OnTrangThaiBCChanging(string value);
     partial void OnTrangThaiBCChanged();
+    partial void OnGhiChuChanging(string value);
+    partial void OnGhiChuChanged();
     partial void OnMaSoBCChanging(string value);
     partial void OnMaSoBCChanged();
     partial void OnTheoYeuCauChanging(string value);
@@ -5218,6 +5222,26 @@ namespace KTKS_DonKH.LinQ
 					this._TrangThaiBC = value;
 					this.SendPropertyChanged("TrangThaiBC");
 					this.OnTrangThaiBCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(MAX)")]
+		public string GhiChu
+		{
+			get
+			{
+				return this._GhiChu;
+			}
+			set
+			{
+				if ((this._GhiChu != value))
+				{
+					this.OnGhiChuChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChu = value;
+					this.SendPropertyChanged("GhiChu");
+					this.OnGhiChuChanged();
 				}
 			}
 		}

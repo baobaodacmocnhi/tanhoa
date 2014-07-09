@@ -85,6 +85,8 @@
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhapBamChi)).BeginInit();
@@ -227,6 +229,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.txtGhiChu);
             this.groupBox2.Controls.Add(this.txtMucDichSuDung);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.cmbChiKhoaGoc);
@@ -259,7 +263,7 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Location = new System.Drawing.Point(12, 158);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(957, 125);
+            this.groupBox2.Size = new System.Drawing.Size(957, 150);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
@@ -627,9 +631,9 @@
             this.HoTen,
             this.DiaChi,
             this.CreateBy});
-            this.dgvDSNhapBamChi.Location = new System.Drawing.Point(12, 289);
+            this.dgvDSNhapBamChi.Location = new System.Drawing.Point(12, 314);
             this.dgvDSNhapBamChi.Name = "dgvDSNhapBamChi";
-            this.dgvDSNhapBamChi.Size = new System.Drawing.Size(1013, 266);
+            this.dgvDSNhapBamChi.Size = new System.Drawing.Size(1013, 241);
             this.dgvDSNhapBamChi.TabIndex = 6;
             this.dgvDSNhapBamChi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSNhapBamChi_CellContentClick);
             this.dgvDSNhapBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSNhapBamChi_CellFormatting);
@@ -687,6 +691,22 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.ReadOnly = true;
             this.CreateBy.Width = 200;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(331, 124);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(59, 17);
+            this.label23.TabIndex = 30;
+            this.label23.Text = "Ghi Chú:";
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(396, 121);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(531, 25);
+            this.txtGhiChu.TabIndex = 31;
             // 
             // frmBamChi
             // 
@@ -774,5 +794,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtGhiChu;
     }
 }
