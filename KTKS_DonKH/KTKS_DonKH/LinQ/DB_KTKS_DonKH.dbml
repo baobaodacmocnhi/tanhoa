@@ -208,6 +208,7 @@
       <Column Name="VienChi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DayChi" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="TrangThaiBC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MaSoBC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TheoYeuCau" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MaBC" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />

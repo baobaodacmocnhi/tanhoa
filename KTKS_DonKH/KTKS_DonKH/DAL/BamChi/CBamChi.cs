@@ -381,8 +381,7 @@ namespace KTKS_DonKH.DAL.BamChi
         }
 
         /// <summary>
-        /// Lấy Danh Sách CTBamChi theo Mã Đơn Khách Hàng & User
-        /// Nếu User có quyền quản lý BamChi thì được xem hết CTBamChi của Mã Đơn
+        /// Lấy Danh Sách CTBamChi theo Mã Đơn Khách Hàng & User. Nếu User có quyền quản lý BamChi thì được xem hết CTBamChi của Mã Đơn
         /// </summary>
         /// <param name="MaDon"></param>
         /// <param name="MaUser"></param>
@@ -442,8 +441,38 @@ namespace KTKS_DonKH.DAL.BamChi
         }
 
         /// <summary>
-        /// Lấy Danh Sách CTBamChi theo Mã Đơn Khách Hàng & User
-        /// Nếu User có quyền quản lý BamChi thì được xem hết CTBamChi của Mã Đơn
+        /// Lấy Danh Sách CTBamChi theo Mã Đơn Tổ Khách Hàng & Danh Bộ. Dùng cho hiện thị Đóng Nước
+        /// </summary>
+        /// <param name="MaDon"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTBamChi(decimal MaDon, string DanhBo)
+        {
+            try
+            {
+                var query = from itemCTBamChi in db.CTBamChis
+                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                            where itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.DanhBo==DanhBo
+                            orderby itemCTBamChi.CreateDate ascending
+                            select new
+                            {
+                                itemCTBamChi.MaCTBC,
+                                itemCTBamChi.NgayBC,
+                                itemCTBamChi.GhiChu,
+                                CreateBy = itemUser.HoTen,
+                            };
+                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách CTBamChi theo Mã Đơn Tổ Xử Lý & User. Nếu User có quyền quản lý BamChi thì được xem hết CTBamChi của Mã Đơn
         /// </summary>
         /// <param name="MaDonTXL"></param>
         /// <param name="MaUser"></param>
@@ -495,6 +524,37 @@ namespace KTKS_DonKH.DAL.BamChi
                         MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return null;
                     }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách CTBamChi theo Mã Đơn Tổ Xử Lý & Danh Bộ. Dùng cho hiện thị Đóng Nước
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTBamChi_TXL(decimal MaDonTXL, string DanhBo)
+        {
+            try
+            {
+                var query = from itemCTBamChi in db.CTBamChis
+                            join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                            where itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.DanhBo == DanhBo
+                            orderby itemCTBamChi.CreateDate ascending
+                            select new
+                            {
+                                itemCTBamChi.MaCTBC,
+                                itemCTBamChi.NgayBC,
+                                itemCTBamChi.GhiChu,
+                                CreateBy = itemUser.HoTen,
+                            };
+                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+
             }
             catch (Exception ex)
             {
