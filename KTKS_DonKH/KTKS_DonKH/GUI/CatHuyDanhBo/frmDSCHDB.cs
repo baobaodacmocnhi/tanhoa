@@ -653,6 +653,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         /// <param name="e"></param>
         private void dgvDSCTCHDB_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "SoPhieuYCCHDB" && dgvDSCTCHDB["SoPhieuYCCHDB",e.RowIndex].Value.ToString()!="")
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
             if (dgvDSCTCHDB.Columns[e.ColumnIndex].Name == "MaTB" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");

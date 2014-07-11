@@ -290,6 +290,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (_cCHDB.ThemYeuCauCHDB(ycchdb))
                         {
                             _ctctdb.DaLapPhieu = true;
+                            _ctctdb.SoPhieu = ycchdb.MaYCCHDB;
                             _ctctdb.PhieuDuocKy = true;
                             _cCHDB.SuaCTCTDB(_ctctdb);
 

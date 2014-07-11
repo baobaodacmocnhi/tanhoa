@@ -11,6 +11,8 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.CapNhat;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -19,6 +21,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         decimal _MaCTDCBD = 0;
         CDCBD _cDCBD = new CDCBD();
         CTDCBD _ctdcbd = null;
+        TTKhachHang _ttkhachhang = null;
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CTTKH _cTTKH = new CTTKH();
 
         public frmShowDCBD()
         {
@@ -155,6 +160,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     _ctdcbd.DV = txtDV.Text.Trim();
                     _ctdcbd.HCSN = txtHCSN.Text.Trim();
                     _ctdcbd.Dot = txtDot.Text.Trim();
+
+                    if (_ttkhachhang != null)
+                    {
+                        _ctdcbd.MaQuanPhuong = _ttkhachhang.Quan + " " + _ttkhachhang.Phuong;
+                        _ctdcbd.Ky = _ttkhachhang.Ky;
+                        _ctdcbd.Nam = _ttkhachhang.Nam;
+                    }
+
                     ///Họ Tên
                     if (txtHoTen_BD.Text.Trim() != "")
                     {
@@ -255,6 +268,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             
         }
 
+        #region Configure TextBox
+
         private void txtHieuLucKy_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -321,7 +336,59 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 btnSua.Focus();
         }
 
-        
+        #endregion
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                    LoadTTKH(_ttkhachhang);
+                    //txtHieuLucKy.Focus();
+                }
+                else
+                {
+                    Clear();
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void LoadTTKH(TTKhachHang ttkhachhang)
+        {
+            txtDanhBo.Text = ttkhachhang.DanhBo;
+            txtHopDong.Text = ttkhachhang.GiaoUoc;
+            txtHoTen.Text = ttkhachhang.HoTen;
+            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
+            txtMSThue.Text = ttkhachhang.MSThue;
+            txtGiaBieu.Text = ttkhachhang.GB;
+            txtDinhMuc.Text = ttkhachhang.TGDM;
+            txtSH.Text = ttkhachhang.SH;
+            txtSX.Text = ttkhachhang.SX;
+            txtDV.Text = ttkhachhang.DV;
+            txtHCSN.Text = ttkhachhang.HCSN;
+            txtDot.Text = ttkhachhang.Dot;
+        }
+
+        public void Clear()
+        {
+            txtDanhBo.Text = "";
+            txtHopDong.Text = "";
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtMSThue.Text = "";
+            txtGiaBieu.Text = "";
+            txtDinhMuc.Text = "";
+            txtSH.Text = "";
+            txtSX.Text = "";
+            txtDV.Text = "";
+            txtHCSN.Text = "";
+            txtDot.Text = "";
+
+            _ttkhachhang = null;
+        }
 
     }
 }
