@@ -142,6 +142,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCTDB.LyDo,
                                       itemCTCTDB.GhiChuLyDo,
                                       itemCTCTDB.CHDB.MaDon,
+                                      itemCTCTDB.DaLapPhieu,
+                                      itemCTCTDB.SoPhieu,
                                   };
 
 
@@ -159,6 +161,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCHDB.LyDo,
                                       itemCTCHDB.GhiChuLyDo,
                                       itemCTCHDB.CHDB.MaDon,
+                                      itemCTCHDB.DaLapPhieu,
+                                      itemCTCHDB.SoPhieu,
                                   };
 
                 DataTable dtCHDB = new DataTable();
@@ -345,6 +349,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCTDB.LyDo,
                                       itemCTCTDB.GhiChuLyDo,
                                       MaDon=itemCTCTDB.CHDB.MaDonTXL,
+                                      itemCTCTDB.DaLapPhieu,
+                                      itemCTCTDB.SoPhieu,
                                   };
 
 
@@ -362,6 +368,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCHDB.LyDo,
                                       itemCTCHDB.GhiChuLyDo,
                                       MaDon = itemCTCHDB.CHDB.MaDonTXL,
+                                      itemCTCHDB.DaLapPhieu,
+                                      itemCTCHDB.SoPhieu,
                                   };
 
                 DataTable dtCHDB = new DataTable();
@@ -541,6 +549,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCTDB.DiaChi,
                                       itemCTCTDB.LyDo,
                                       itemCTCTDB.GhiChuLyDo,
+                                      itemCTCTDB.DaLapPhieu,
+                                      itemCTCTDB.SoPhieu,
                                   };
 
                 ///Table CTCHDB
@@ -558,7 +568,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCHDB.HoTen,
                                       itemCTCHDB.DiaChi,
                                       itemCTCHDB.LyDo,
-                                      itemCTCHDB.GhiChuLyDo, 
+                                      itemCTCHDB.GhiChuLyDo,
+                                      itemCTCHDB.DaLapPhieu,
+                                      itemCTCHDB.SoPhieu,
                                   };
                 DataTable dtCHDB = new DataTable();
                 dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);
@@ -1026,6 +1038,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCTDB.DiaChi,
                                       itemCTCTDB.LyDo,
                                       itemCTCTDB.GhiChuLyDo,
+                                      itemCTCTDB.DaLapPhieu,
+                                      itemCTCTDB.SoPhieu,
                                   };
 
                 ///Table CTCHDB
@@ -1044,6 +1058,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCHDB.DiaChi,
                                       itemCTCHDB.LyDo,
                                       itemCTCHDB.GhiChuLyDo,
+                                      itemCTCHDB.DaLapPhieu,
+                                      itemCTCHDB.SoPhieu,
                                   };
                 DataTable dtCHDB = new DataTable();
                 dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);
@@ -1509,6 +1525,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCTDB.DiaChi,
                                       itemCTCTDB.LyDo,
                                       itemCTCTDB.GhiChuLyDo,
+                                      itemCTCTDB.DaLapPhieu,
+                                      itemCTCTDB.SoPhieu,
                                   };
 
                 ///Table CTCHDB
@@ -1527,6 +1545,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTCHDB.DiaChi,
                                       itemCTCHDB.LyDo,
                                       itemCTCHDB.GhiChuLyDo,
+                                      itemCTCHDB.DaLapPhieu,
+                                      itemCTCHDB.SoPhieu,
                                   };
                 DataTable dtCHDB = new DataTable();
                 dtCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTCTDB);

@@ -849,8 +849,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        
-
         #region Configure TextBox
 
         private void txtDanhBo_Leave(object sender, EventArgs e)
@@ -1062,8 +1060,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
-
-        
 
     }
 }
