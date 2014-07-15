@@ -259,7 +259,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
 
                         #region Yêu Cầu Cắt 2,3,4,5
-                        List<LichSuChungTu> lstLichSuChungTu = new List<LichSuChungTu>();
+
                         if (chkYCCat2.Checked)
                         {
                             //List<LichSuChungTu> lstLichSuChungTu = new List<LichSuChungTu>();
@@ -374,7 +374,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         #endregion
 
-                        if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu, lstLichSuChungTu))
+                        if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu))
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (bool.Parse(_source["ChungCu"]) == false)
@@ -432,6 +432,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
+                ///Vì Số Chứng Từ là Khóa Chính mà lại cho sửa Khóa Chính nên phải xét riêng có thay đổi hay không
+                if (txtMaCT.Text.Trim() != _ctchungtu.MaCT)
+                {
+                    if(_cChungTu.SuaSoChungTu(txtDanhBo.Text.Trim(),_ctchungtu.MaCT,txtMaCT.Text.Trim()))
+                        MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
                 if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
@@ -501,7 +508,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
 
                         #region Yêu Cầu Cắt 2,3,4,5
-                        List<LichSuChungTu> lstLichSuChungTu = new List<LichSuChungTu>();
+
                         if (chkYCCat2.Checked)   
                             if (txtSoNKCat_YCC2.Text.Trim() == "")
                             {
@@ -526,7 +533,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtu2.NhanNK_DiaChi = _source["DiaChiKH"];
                                 lichsuchungtu2.PhieuDuocKy = true;
                                 ///
-                                lstLichSuChungTu.Add(lichsuchungtu2);
                             }
                         else
                         {
@@ -557,7 +563,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     lichsuchungtu3.NhanNK_DiaChi = _source["DiaChiKH"];
                                     lichsuchungtu3.PhieuDuocKy = true;
                                     ///
-                                    lstLichSuChungTu.Add(lichsuchungtu3);
                                 }
                             else
                             {
@@ -588,7 +593,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     lichsuchungtu4.NhanNK_DiaChi = _source["DiaChiKH"];
                                     lichsuchungtu4.PhieuDuocKy = true;
                                     ///
-                                    lstLichSuChungTu.Add(lichsuchungtu4);
                                 }
                             else
                             {
@@ -619,7 +623,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     lichsuchungtu5.NhanNK_DiaChi = _source["DiaChiKH"];
                                     lichsuchungtu5.PhieuDuocKy = true;
                                     ///
-                                    lstLichSuChungTu.Add(lichsuchungtu5);
 
                                 }
                             else
@@ -629,7 +632,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         #endregion
 
-                        if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu, lstLichSuChungTu))
+                        if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
                         {
                             MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
