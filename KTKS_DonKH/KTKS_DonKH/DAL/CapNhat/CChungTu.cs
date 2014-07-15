@@ -674,101 +674,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
 
         /// <summary>
-        /// Dùng cho Form Cập Nhật Sổ Đăng Ký
-        /// </summary>
-        /// <param name="chungtu"></param>
-        /// <param name="ctchungtu"></param>
-        /// <param name="lichsuchungtu"></param>
-        /// <returns>true/false</returns>
-        public bool ThemChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
-        {
-            try
-            {
-                ///Kiểm tra nếu ChungTu(sổ đăng ký) chưa có thì thêm vào
-                if (!CheckChungTu(chungtu.MaCT))
-                {
-                    chungtu.SoNKConLai = chungtu.SoNKTong;
-                    ////chungtu.CreateDate = DateTime.Now;
-                    ////chungtu.CreateBy = CTaiKhoan.TaiKhoan;
-                    ////db.ChungTus.InsertOnSubmit(chungtu);
-                    ////db.SubmitChanges();
-                    ThemChungTu(chungtu);
-                }
-                ///Kiểm tra nếu CTChungTu(danh bộ, sổ đăng ký) chưa có thì thêm vào
-                if (!CheckCTChungTu(ctchungtu.DanhBo, ctchungtu.MaCT))
-                {
-                    ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
-                    ///Kiểm tra Số Nhân Khẩu còn có thể cấp
-                    if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy)
-                    {
-                        ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
-                        if (ctchungtu.ThoiHan != null)
-                            ctchungtu.NgayHetHan = DateTime.Now.AddMonths(ctchungtu.ThoiHan.Value);
-                        else
-                            ctchungtu.NgayHetHan = null;
-                        //ctchungtu.CreateDate = DateTime.Now;
-                        //ctchungtu.CreateBy = CTaiKhoan.TaiKhoan;
-                        //db.CTChungTus.InsertOnSubmit(ctchungtu);
-                        ThemCTChungTu(ctchungtu);
-
-                        ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
-                        db.SubmitChanges();
-
-                        ///Cập nhật bảng LichSuChungTu
-                        lichsuchungtu.MaCT = ctchungtu.MaCT;
-                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
-                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
-                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                        lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                        if (ctchungtu.YeuCauCat)
-                        {
-                            lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                            ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
-                            lichsuchungtu.YeuCauCat = true;
-
-                            lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
-                            lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
-                            lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen;
-                            lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
-                            lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat;
-                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                lichsuchungtu.ChucVu = "GIÁM ĐỐC";
-                            else
-                                lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                            lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        }
-                        ThemLichSuChungTu(lichsuchungtu);
-              
-                        //MessageBox.Show("Thành công Thêm ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Sổ này đã được đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Dùng cho Form Cập Nhật Sổ Đăng Ký, khi có >2 yêu cầu cắt nhân khẩu
         /// </summary>
         /// <param name="chungtu"></param>
@@ -776,7 +681,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// <param name="lichsuchungtu"></param>
         /// <param name="lstLichSuChungTu"></param>
         /// <returns></returns>
-        public bool ThemChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu, List<LichSuChungTu> lstLichSuChungTu)
+        public bool ThemChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
         {
             try
             {
@@ -1121,171 +1026,6 @@ namespace KTKS_DonKH.DAL.CapNhat
         }
 
         /// <summary>
-        /// Dùng cho Form Cập Nhật Sổ Đăng Ký
-        /// </summary>
-        /// <param name="chungtu"></param>
-        /// <param name="ctchungtu"></param>
-        /// <param name="lichsuchungtu"></param>
-        /// <returns></returns>
-        public bool SuaChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
-        {
-            try
-            {
-                bool flagEdited = false;
-                ///Cập Nhật bảng ChungTu khi thay đổi Tổng Nhân Khẩu (frmSoDK)
-                ChungTu chungtuCN = getChungTubyID(chungtu.MaCT);
-                ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
-                if (chungtuCN.SoNKTong != chungtu.SoNKTong)
-                    if (chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai >= 0)
-                    {
-                        chungtuCN.SoNKConLai = chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai;
-                        chungtuCN.SoNKTong = chungtu.SoNKTong;
-                        chungtuCN.ModifyDate = DateTime.Now;
-                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                        flagEdited = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-                /////Kiểm tra Địa Chỉ có thay đổi hay không
-                //if (chungtuCN.DiaChi != chungtu.DiaChi)
-                //{
-                //    chungtuCN.DiaChi = chungtu.DiaChi;
-                //    chungtuCN.ModifyDate = DateTime.Now;
-                //    chungtuCN.ModifyBy = CTaiKhoan.TaiKhoan;
-                //}
-
-                ///Cập Nhật bảng CTChungTu khi thay đổi Số Nhân Khẩu đăng ký (frmSoDK)
-                CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
-                ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
-                if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
-                    if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
-                    {
-                        ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.ModifyDate = DateTime.Now;
-                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                        ///Cập nhật bảng CTChungTu
-                        ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
-                        ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
-                        if (ctchungtu.ThoiHan != null)
-                            ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
-                            ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
-                        else
-                            ctchungtuCN.NgayHetHan = null;
-                        ctchungtuCN.ModifyDate = DateTime.Now;
-                        ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                        flagEdited = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-                if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
-                {
-                    ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
-                    if (ctchungtu.ThoiHan != null)
-                        ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
-                        ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
-                    else
-                        ctchungtuCN.NgayHetHan = null;
-                    ctchungtuCN.ModifyDate = DateTime.Now;
-                    ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                    flagEdited = true;
-                }
-                if (ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
-                    if (ctchungtu.YeuCauCat)
-                    {
-                        //chungtuCN.YeuCauCat = true;
-                        //chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
-                        //chungtuCN.CatNK_DanhBo = chungtu.CatNK_DanhBo;
-                        //chungtuCN.CatNK_HoTen = chungtu.CatNK_HoTen;
-                        //chungtuCN.CatNK_DiaChi = chungtu.CatNK_DiaChi;
-                        //chungtuCN.CatNK_SoNKCat = chungtu.CatNK_SoNKCat;
-                        ///
-                        ctchungtuCN.YeuCauCat = true;
-                        ctchungtuCN.CatNK_MaCN = ctchungtu.CatNK_MaCN;
-                        ctchungtuCN.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
-                        ctchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
-                        ctchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
-                        ctchungtuCN.CatNK_SoNKCat = ctchungtu.CatNK_SoNKCat;
-                        ///
-                        if (ctchungtuCN.SoPhieu.HasValue)
-                        {
-                            LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu.Value);
-                            lichsuchungtuCN.CatNK_MaCN = ctchungtu.CatNK_MaCN;
-                            lichsuchungtuCN.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
-                            lichsuchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
-                            lichsuchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
-                            lichsuchungtuCN.SoNKNhan = ctchungtu.CatNK_SoNKCat;
-                            SuaLichSuChungTu(lichsuchungtuCN);
-                        }
-                        else
-                        {
-                            lichsuchungtu.MaCT = ctchungtu.MaCT;
-                            lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                            lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
-                            lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                            lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
-                            lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                            lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                            ///
-                            lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                            ctchungtu.SoPhieu = lichsuchungtu.SoPhieu;
-                            lichsuchungtu.YeuCauCat = true;
-
-                            lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
-                            lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
-                            lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen;
-                            lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
-                            lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat;
-                            CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                lichsuchungtu.ChucVu = "GIÁM ĐỐC";
-                            else
-                                lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                            lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                            ThemLichSuChungTu(lichsuchungtu);
-                        }
-                    }
-                    else
-                    {
-                        chungtuCN.YeuCauCat = false;
-                        ctchungtuCN.YeuCauCat = false;
-                    }
-                ///Thêm LichSuChungTu
-                if (flagEdited)
-                {
-                    lichsuchungtu.MaCT = chungtuCN.MaCT;
-                    lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
-                    lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
-                    lichsuchungtu.DanhBo = ctchungtuCN.DanhBo;
-                    lichsuchungtu.SoNKDangKy = ctchungtuCN.SoNKDangKy;
-                    lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
-                    lichsuchungtu.ThoiHan = ctchungtuCN.ThoiHan;
-                    lichsuchungtu.NgayHetHan = ctchungtuCN.NgayHetHan;
-
-                    ThemLichSuChungTu(lichsuchungtu);
-                    flagEdited = false;
-                }
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công Sửa ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Dùng cho Form Cập Nhật Sổ Đăng Ký, khi có >2 yêu cầu cắt nhân khẩu
         /// </summary>
         /// <param name="chungtu"></param>
@@ -1293,7 +1033,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// <param name="lichsuchungtu"></param>
         /// <param name="lstLichSuChungTu"></param>
         /// <returns></returns>
-        public bool SuaChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu, List<LichSuChungTu> lstLichSuChungTu)
+        public bool SuaChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
         {
             try
             {
@@ -1809,6 +1549,20 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaSoChungTu(string DanhBo, string MaCT_Cu, string MaCT_Moi)
+        {
+            try
+            {
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
