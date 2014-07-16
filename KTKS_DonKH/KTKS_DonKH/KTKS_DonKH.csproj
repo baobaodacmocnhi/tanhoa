@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>44</ApplicationRevision>
+    <ApplicationRevision>45</ApplicationRevision>
     <ApplicationVersion>1.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -573,6 +573,12 @@
     <Compile Include="GUI\CatHuyDanhBo\frmDongNuoc.Designer.cs">
       <DependentUpon>frmDongNuoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmTimKiemChungTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmTimKiemChungTu.Designer.cs">
+      <DependentUpon>frmTimKiemChungTu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\HeThong\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -963,6 +969,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmDongNuoc.resx">
       <DependentUpon>frmDongNuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmTimKiemChungTu.resx">
+      <DependentUpon>frmTimKiemChungTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>

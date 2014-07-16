@@ -49,6 +49,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbLoaiCT.ValueMember = "MaLCT";
         }
 
+        #region Configure TextBox
+
         private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
@@ -80,6 +82,50 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.KeyChar == 13)
                 txtGhiChu.Focus();
         }
+
+        private void cmbChiNhanh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDanhBo_Cat.Focus();
+        }
+
+        private void txtDanhBo_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_Cat.Focus();
+        }
+
+        private void txtHoTen_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChi_Cat.Focus();
+        }
+
+        private void txtDiaChi_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                cmbLoaiCT.Focus();
+        }
+
+        private void cmbLoaiCT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtMaCT.Focus();
+        }
+
+        private void txtDiaChiCT_Cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSoNKTong.Focus();
+        }
+
+        private void txtGhiChu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnLuu.Focus();
+        }
+
+        #endregion
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -184,48 +230,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void cmbChiNhanh_KeyPress(object sender, KeyPressEventArgs e)
+        private void frmNhanDM_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.KeyChar == 13)
-                txtDanhBo_Cat.Focus();
+            this.DialogResult = DialogResult.OK;
         }
-
-        private void txtDanhBo_Cat_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                txtHoTen_Cat.Focus();
-        }
-
-        private void txtHoTen_Cat_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                txtDiaChi_Cat.Focus();
-        }
-
-        private void txtDiaChi_Cat_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                cmbLoaiCT.Focus();
-        }
-
-        private void cmbLoaiCT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                txtMaCT.Focus();
-        }
-
-        private void txtDiaChiCT_Cat_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                txtSoNKTong.Focus();
-        }
-
-        private void txtGhiChu_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                btnLuu.Focus();
-        }
-
 
     }
 }

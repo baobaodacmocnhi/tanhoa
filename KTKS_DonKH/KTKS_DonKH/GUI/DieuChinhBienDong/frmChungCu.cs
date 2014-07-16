@@ -69,7 +69,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
                 }
                 else
                 {
@@ -155,7 +155,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("Phong", "");
                 frmSoDK frm = new frmSoDK("Thêm", source);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    dgvKhachHangChungCu.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                    dgvKhachHangChungCu.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
             }
             if (_ttkhachhang != null && e.Control && e.KeyCode == Keys.D2)
             {
@@ -166,7 +166,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("DiaChi", txtDiaChi.Text.Trim());
                 frmNhanDM frm = new frmNhanDM(source);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    dgvKhachHangChungCu.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                    dgvKhachHangChungCu.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
             }
         }
 
@@ -189,7 +189,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("Phong", "");
             frmSoDK frm = new frmSoDK("Thêm", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
         }
 
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,7 +211,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("Phong", dgvKhachHangChungCu.CurrentRow.Cells["Phong"].Value.ToString());
             frmSoDK frm = new frmSoDK("Sửa", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
         }
 
         private void nhậnĐịnhMứcKhácĐịaBànToolStripMenuItem_Click(object sender, EventArgs e)
@@ -223,7 +223,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DiaChi", txtDiaChi.Text.Trim());
             frmNhanDM frm = new frmNhanDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
-                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
         }
 
         private void dgvKhachHangChungCu_MouseClick(object sender, MouseEventArgs e)

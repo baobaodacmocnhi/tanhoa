@@ -17,7 +17,7 @@ namespace KTKS_DonKH.DAL.CapNhat
 
         #region ChungTu
 
-        public DataTable LoadDSChungTu(string DanhBo)
+        public DataTable LoadDSChungTubyDanhBo(string DanhBo)
         {
             try
             {
@@ -218,7 +218,7 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// </summary>
         /// <param name="MaCT"></param>
         /// <returns></returns>
-        public List<CTChungTu> LoadDSCTChungTubyID(string MaCT)
+        public List<CTChungTu> LoadDSCTChungTubyMaCT(string MaCT)
         {
             try
             {

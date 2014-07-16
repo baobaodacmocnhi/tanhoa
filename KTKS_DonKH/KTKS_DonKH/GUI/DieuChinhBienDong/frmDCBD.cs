@@ -129,7 +129,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN.Text = ttkhachhang.HCSN;
             txtDot.Text = ttkhachhang.Dot;
 
-            dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(ttkhachhang.DanhBo);
+            dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(ttkhachhang.DanhBo);
             dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(ttkhachhang.DanhBo);
 
         }
@@ -239,7 +239,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("Phong", "");
             frmSoDK frm = new frmSoDK("Thêm", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
         }
 
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -273,7 +273,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("Phong", dgvDSSoDangKy.CurrentRow.Cells["Phong"].Value.ToString());
             frmSoDK frm = new frmSoDK("Sửa", source);
             if (frm.ShowDialog() == DialogResult.OK)
-                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
         }
 
         private void cắtChuyểnĐịnhMứcToolStripMenuItem_Click(object sender, EventArgs e)
@@ -299,7 +299,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
             frmCatChuyenDM frm = new frmCatChuyenDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
-                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
         }
 
         private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -323,7 +323,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DiaChi", txtDiaChi.Text.Trim());
             frmNhanDM frm = new frmNhanDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
-                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
         }
 
         private void dgvDSSoDangKy_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -356,7 +356,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                dgvDSChungTu.DataSource = _cChungTu.LoadDSCTChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
+                dgvDSChungTu.DataSource = _cChungTu.LoadDSCTChungTubyMaCT(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
                 dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
             }
             catch (Exception)
@@ -436,7 +436,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     Clear();
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(txtDanhBo.Text.Trim());
+                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
                     dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(txtDanhBo.Text.Trim());
                 }
             }
@@ -964,7 +964,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("Phong", "");
                 frmSoDK frm = new frmSoDK("Thêm", source);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
                 //thêmToolStripMenuItem.PerformClick();
             }
             if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D2)
@@ -987,7 +987,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("DiaChi", txtDiaChi.Text.Trim());
                 frmNhanDM frm = new frmNhanDM(source);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
                 //nhậnĐịnhMứctoolStripMenuItem.PerformClick();
             }
             if (e.Control && e.KeyCode == Keys.D3)
@@ -1006,6 +1006,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dgvDSSoDangKy.Height = 158;
                     panel_LichSuDieuChinh.Location = new Point(0, 386);
                 }
+            }
+            if (e.Control && e.KeyCode == Keys.D4)
+            {
+                frmTimKiemChungTu frm = new frmTimKiemChungTu();
+                frm.ShowDialog();
             }
         }
 
