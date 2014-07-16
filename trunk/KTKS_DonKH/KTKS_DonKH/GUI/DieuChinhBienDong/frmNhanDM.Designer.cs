@@ -416,6 +416,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmNhanDM";
             this.Text = "Tiếp Nhận Định Mức";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmNhanDM_FormClosing);
             this.Load += new System.EventHandler(this.frmNhanDM_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

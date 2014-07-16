@@ -685,7 +685,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_cChungTu.CheckChungTu(txtMaCT.Text.Trim()))
                         MessageBox.Show("Số đăng ký này đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDiaChi.Focus();
-                dgvDSDanhBo.DataSource = _cChungTu.LoadDSCTChungTubyID(txtMaCT.Text.Trim());
+                dgvDSDanhBo.DataSource = _cChungTu.LoadDSCTChungTubyMaCT(txtMaCT.Text.Trim());
             }
         }
 
