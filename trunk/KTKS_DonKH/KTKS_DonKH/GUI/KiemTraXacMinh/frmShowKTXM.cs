@@ -99,7 +99,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = ctktxm.DinhMuc;
             ///
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
-            cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+                
             txtHieu.Text = ctktxm.Hieu;
             txtCo.Text = ctktxm.Co;
             txtSoThan.Text = ctktxm.SoThan;
@@ -115,9 +115,18 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtTheoYeuCau.Text = _ctktxm.TheoYeuCau;
             if (ctktxm.DongTienBoiThuong)
             {
+                chkDongTienBoiThuong.Checked = true;
                 dateDongTien.Value = ctktxm.NgayDongTien.Value;
                 txtSoTien.Text = ctktxm.SoTien.ToString();
             }
+            try
+            {
+                cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+            }
+            catch (Exception)
+            {
+            }
+            
         }
 
         public void Clear()
@@ -141,7 +150,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //txtDienThoai.Text = "";
             //txtHoTenKHKy.Text = "";
             //txtNoiDungKiemTra.Text = "";
-
+            chkDongTienBoiThuong.Checked = false;
+            dateDongTien.Value = DateTime.Now;
+            txtSoTien.Text = "";
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -336,6 +347,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 groupDongTienBoiThuong.Enabled = true;
             else
                 groupDongTienBoiThuong.Enabled = false;
+        }
+
+        private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

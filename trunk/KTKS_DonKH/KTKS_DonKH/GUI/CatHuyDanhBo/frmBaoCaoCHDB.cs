@@ -51,16 +51,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 DataTable dtCTDB = new DataTable();
                 DataTable dtCHDB = new DataTable();
+                DataTable dtYCCHDB = new DataTable();
+
                 if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
                 {
                     dtCTDB = _cCHDB.LoadDSCTCTDB(dateTu.Value, dateDen.Value);
                     dtCHDB = _cCHDB.LoadDSCTCHDB(dateTu.Value, dateDen.Value);
+                    dtYCCHDB = _cCHDB.LoadDSYCCHDB(dateTu.Value, dateDen.Value);
                 }
                 else
                     if (!string.IsNullOrEmpty(_tuNgay))
                     {
                         dtCTDB = _cCHDB.LoadDSCTCTDB(dateTu.Value);
                         dtCHDB = _cCHDB.LoadDSCTCHDB(dateTu.Value);
+                        dtYCCHDB = _cCHDB.LoadDSYCCHDB(dateTu.Value);
                     }
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -117,6 +121,18 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["ConLai"] = ConLai;
                     dr["TroNgai"] = TroNgai;
                     dr["LapPhieu"] = DaLapPhieu;
+
+                    dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
+                }
+
+                foreach (DataRow itemRow in dtYCCHDB.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["LoaiCat"] = "Lập Phiếu Yêu Cầu Cắt Hủy";
+                    dr["LyDo"] = itemRow["LyDo"];
+                    dr["DanhBo"] = itemRow["DanhBo"];
 
                     dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
                 }

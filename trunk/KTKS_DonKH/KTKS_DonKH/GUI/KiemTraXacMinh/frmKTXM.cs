@@ -87,7 +87,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = ctktxm.DinhMuc;
             ///
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
-            cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+            
             txtHieu.Text = ctktxm.Hieu;
             txtCo.Text = ctktxm.Co;
             txtSoThan.Text = ctktxm.SoThan;
@@ -100,6 +100,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
             cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+
+            cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
         }
 
         public void Clear()

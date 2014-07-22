@@ -6478,7 +6478,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _SoChinh;
 		
-		private System.Nullable<int> _SoNKDangKy;
+		private int _SoNKDangKy;
 		
 		private System.Nullable<int> _ThoiHan;
 		
@@ -6586,7 +6586,7 @@ namespace KTKS_DonKH.LinQ
     partial void OnDienThoaiChanged();
     partial void OnSoChinhChanging(bool value);
     partial void OnSoChinhChanged();
-    partial void OnSoNKDangKyChanging(System.Nullable<int> value);
+    partial void OnSoNKDangKyChanging(int value);
     partial void OnSoNKDangKyChanged();
     partial void OnThoiHanChanging(System.Nullable<int> value);
     partial void OnThoiHanChanged();
@@ -6772,8 +6772,8 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoNKDangKy", DbType="Int")]
-		public System.Nullable<int> SoNKDangKy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoNKDangKy", DbType="Int NOT NULL")]
+		public int SoNKDangKy
 		{
 			get
 			{

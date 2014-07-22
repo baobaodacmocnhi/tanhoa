@@ -176,7 +176,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 ///
                 dr["NgayXuLy"] = _ctdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy");
                 dr["SoCongVan"] = _ctdongnuoc.SoCongVan_DN;
-                dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_DN;
+                dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_DN.Value.ToString("dd/MM/yyyy");
                 dr["Phuong"] = _ctdongnuoc.Phuong;
                 dr["Quan"] = _ctdongnuoc.Quan;
                 ///
@@ -210,7 +210,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 ///
                 dr["NgayXuLy"] = _ctdongnuoc.NgayMN.Value.ToString("dd/MM/yyyy");
                 dr["SoCongVan"] = _ctdongnuoc.SoCongVan_MN;
-                dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_MN;
+                dr["NgayCongVan"] = _ctdongnuoc.NgayCongVan_MN.Value.ToString("dd/MM/yyyy");
                 dr["Phuong"] = _ctdongnuoc.Phuong;
                 dr["Quan"] = _ctdongnuoc.Quan;
                 dr["LyDo"] = _ctdongnuoc.LyDo_DN;

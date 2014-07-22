@@ -713,8 +713,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ThemCTChungTu(ctchungtu);
 
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy;
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
                         db.SubmitChanges();
 
                         ///Cập nhật bảng LichSuChungTu
@@ -1080,8 +1080,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                     if (flagGiam)
                     {
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy;
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         ///Cập nhật bảng CTChungTu
@@ -1094,8 +1094,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
                         {
                             ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                            chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
-                            chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                            chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy);
+                            chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
                             chungtuCN.ModifyDate = DateTime.Now;
                             chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                             ///Cập nhật bảng CTChungTu
@@ -1596,8 +1596,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                     chungtuCN.SoNKTong = chungtu.SoNKTong;
                     if (chungtuCN.SoNKTong >= chungtuCN.SoNKNhan + ctchungtu.SoNKDangKy)
                     {
-                        chungtuCN.SoNKNhan += ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.SoNKDaCap += ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKNhan += ctchungtu.SoNKDangKy;
+                        chungtuCN.SoNKDaCap += ctchungtu.SoNKDangKy;
                         chungtuCN.SoNKConLai = chungtuCN.SoNKNhan - chungtuCN.SoNKDaCap;
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.MaUser;
@@ -1626,8 +1626,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                     ///Nếu lần đầu thêm ChungTu, cái này dễ nhất ChungTu này chưa có nhận cho DanhBo nào hết nên ta thêm trực tiếp vào
                     if (flagAddCT)
                     {
-                        chungtuCN.SoNKNhan = ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKNhan = ctchungtu.SoNKDangKy;
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
                         chungtuCN.SoNKConLai = chungtuCN.SoNKNhan - chungtuCN.SoNKDaCap;
                     }
                     ///ChungTu đã có trước đó, ta xét số Nhân Khẩu nhận thêm có vượt quá Tổng số Nhân Khẩu hay không
@@ -1636,8 +1636,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                         chungtuCN.SoNKTong = chungtu.SoNKTong;
                         if (chungtuCN.SoNKTong >= chungtuCN.SoNKNhan + ctchungtu.SoNKDangKy)
                         {
-                            chungtuCN.SoNKNhan += ctchungtu.SoNKDangKy.Value;
-                            chungtuCN.SoNKDaCap += ctchungtu.SoNKDangKy.Value;
+                            chungtuCN.SoNKNhan += ctchungtu.SoNKDangKy;
+                            chungtuCN.SoNKDaCap += ctchungtu.SoNKDangKy;
                             chungtuCN.SoNKConLai = chungtuCN.SoNKNhan - chungtuCN.SoNKDaCap;
                             chungtuCN.ModifyDate = DateTime.Now;
                             chungtuCN.ModifyBy = CTaiKhoan.MaUser;
@@ -1693,33 +1693,153 @@ namespace KTKS_DonKH.DAL.CapNhat
         /// <param name="ctchungtu"></param>
         /// <param name="lichsuchungtu"></param>
         /// <returns></returns>
+        //public bool SuaNhanChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
+        //{
+        //    try
+        //    {
+        //        bool flagGiam = false;
+        //        ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
+        //        CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
+
+        //        ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
+        //        if (chungtuCN.SoNKTong != chungtu.SoNKTong)
+        //            if (chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai >= 0)
+        //            {
+        //                chungtuCN.SoNKConLai = chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai;
+        //                chungtuCN.SoNKTong = chungtu.SoNKTong;
+        //                chungtuCN.ModifyDate = DateTime.Now;
+        //                chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+        //            }
+        //            else
+        //            {
+        //                chungtuCN.SoNKConLai = chungtu.SoNKTong;
+        //                chungtuCN.SoNKTong = chungtu.SoNKTong;
+        //                chungtuCN.ModifyDate = DateTime.Now;
+        //                chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+        //                flagGiam = true;
+        //                //MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                //return false;
+        //            }
+        //        ///Kiểm tra Địa Chỉ có thay đổi hay không
+        //        if (chungtuCN.DiaChi != chungtu.DiaChi)
+        //        {
+        //            chungtuCN.DiaChi = chungtu.DiaChi;
+        //            chungtuCN.ModifyDate = DateTime.Now;
+        //            chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+        //        }
+
+        //        ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
+        //        if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
+        //            if (flagGiam)
+        //            {
+        //                ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
+        //                chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
+        //                chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+        //                chungtuCN.ModifyDate = DateTime.Now;
+        //                chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+        //                ///Cập nhật bảng CTChungTu
+        //                ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
+        //                ctchungtuCN.ModifyDate = DateTime.Now;
+        //                ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
+        //            }
+        //            else
+        //                if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
+        //                {
+        //                    ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
+        //                    chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
+        //                    chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+        //                    chungtuCN.ModifyDate = DateTime.Now;
+        //                    chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+        //                    ///Cập nhật bảng CTChungTu
+        //                    ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
+
+        //                    //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+        //                    //if (ctchungtu.ThoiHan != null)
+        //                    //    ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+        //                    //    ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+        //                    //else
+        //                    //    ctchungtuCN.NgayHetHan = null;
+
+        //                    ctchungtuCN.ModifyDate = DateTime.Now;
+        //                    ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
+        //                }
+        //                else
+        //                {
+        //                    MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                    return false;
+        //                }
+        //        if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
+        //        {
+        //            ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
+        //            if (ctchungtu.ThoiHan != null)
+        //                ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+        //                ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+        //            else
+        //                ctchungtuCN.NgayHetHan = null;
+        //            ctchungtuCN.ModifyDate = DateTime.Now;
+        //            ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
+        //        }
+
+        //        if (SuaLichSuChungTu(lichsuchungtu))
+        //        {
+        //            //CatChuyenDM catchuyendm = _cCatChuyenDM.getCatChuyenDMbySoPhieu(lichsuchungtu.SoPhieu.Value);
+        //            //catchuyendm.CatNK_MaCN = lichsuchungtu.CatNK_MaCN;
+        //            //catchuyendm.CatNK_DanhBo = lichsuchungtu.CatNK_DanhBo;
+        //            //catchuyendm.CatNK_HoTen = lichsuchungtu.CatNK_HoTen;
+        //            //catchuyendm.CatNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
+        //            //catchuyendm.SoNKNhan = lichsuchungtu.SoNKNhan;
+        //            //catchuyendm.GhiChu = lichsuchungtu.GhiChu;
+        //        }
+
+        //        db.SubmitChanges();
+        //        //MessageBox.Show("Sửa công Thêm SuaNhanChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        db = new DB_KTKS_DonKHDataContext();
+        //        return false;
+        //    }
+        //}
+
+        /// <summary>
+        /// Hàm được dùng cho frmShowNhanDM, khi khách hàng yêu cầu nhập định mức từ địa phương khác
+        /// </summary>
+        /// <param name="chungtu"></param>
+        /// <param name="ctchungtu"></param>
+        /// <param name="lichsuchungtu"></param>
+        /// <returns></returns>
         public bool SuaNhanChungTu(ChungTu chungtu, CTChungTu ctchungtu, LichSuChungTu lichsuchungtu)
         {
             try
             {
-                bool flagGiam = false;
                 ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
                 CTChungTu ctchungtuCN = getCTChungTubyID(ctchungtu.DanhBo, ctchungtu.MaCT);
 
                 ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
                 if (chungtuCN.SoNKTong != chungtu.SoNKTong)
-                    if (chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai >= 0)
+                    if (chungtu.SoNKTong > chungtuCN.SoNKTong)
                     {
-                        chungtuCN.SoNKConLai = chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai;
+                        chungtuCN.SoNKConLai += chungtu.SoNKTong - chungtuCN.SoNKTong;
                         chungtuCN.SoNKTong = chungtu.SoNKTong;
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                     }
                     else
-                    {
-                        chungtuCN.SoNKConLai = chungtu.SoNKTong;
-                        chungtuCN.SoNKTong = chungtu.SoNKTong;
-                        chungtuCN.ModifyDate = DateTime.Now;
-                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                        flagGiam = true;
-                        //MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //return false;
-                    }
+                        if (chungtuCN.SoNKTong - chungtu.SoNKTong <= chungtuCN.SoNKConLai)
+                        {
+                            chungtuCN.SoNKConLai -= chungtuCN.SoNKTong - chungtu.SoNKTong;
+                            chungtuCN.SoNKTong = chungtu.SoNKTong;
+                            chungtuCN.ModifyDate = DateTime.Now;
+                            chungtuCN.ModifyBy = CTaiKhoan.MaUser;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sổ đã cấp vượt định mức không thể giảm Tổng Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+
                 ///Kiểm tra Địa Chỉ có thay đổi hay không
                 if (chungtuCN.DiaChi != chungtu.DiaChi)
                 {
@@ -1730,36 +1850,16 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                 ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
                 if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
-                    if (flagGiam)
+                    if (ctchungtu.SoNKDangKy <= chungtuCN.SoNKConLai)
                     {
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKConLai -= ctchungtu.SoNKDangKy;
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy + (ctchungtuCN.SoNKDangKy - chungtuCN.SoNKDaCap);
+                        chungtuCN.SoNKNhan += ctchungtu.SoNKDangKy + (ctchungtuCN.SoNKDangKy - chungtuCN.SoNKNhan);
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         ///Cập nhật bảng CTChungTu
                         ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
-                        ctchungtuCN.ModifyDate = DateTime.Now;
-                        ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                    }
-                    else
-                    if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
-                    {
-                        ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.ModifyDate = DateTime.Now;
-                        chungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                        ///Cập nhật bảng CTChungTu
-                        ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;
-
-                        //ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
-                        //if (ctchungtu.ThoiHan != null)
-                        //    ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
-                        //    ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
-                        //else
-                        //    ctchungtuCN.NgayHetHan = null;
-
                         ctchungtuCN.ModifyDate = DateTime.Now;
                         ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                     }
@@ -1768,6 +1868,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                         MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
+
+                ///Kiểm tra Thời Hạn có thay đổi hay không
                 if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
                 {
                     ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
