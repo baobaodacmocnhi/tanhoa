@@ -88,6 +88,7 @@
             this.ribbtnCTDB = new System.Windows.Forms.RibbonButton();
             this.ribbtnCHDB = new System.Windows.Forms.RibbonButton();
             this.ribbtnLapPhieuCatHuyDB = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDongNuoc = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel22 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnBaoCaoCHDB = new System.Windows.Forms.RibbonButton();
             this.ribbonTab7 = new System.Windows.Forms.RibbonTab();
@@ -104,7 +105,7 @@
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbtnDongNuoc = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDongTienBoiThuong = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -410,6 +411,7 @@
             this.ribbonPanel11.ButtonMoreEnabled = false;
             this.ribbonPanel11.ButtonMoreVisible = false;
             this.ribbonPanel11.Items.Add(this.ribbtnNhapKetQua);
+            this.ribbonPanel11.Items.Add(this.ribbtnDongTienBoiThuong);
             this.ribbonPanel11.Text = "Xử Lý";
             // 
             // ribbtnNhapKetQua
@@ -568,6 +570,14 @@
             this.ribbtnLapPhieuCatHuyDB.Text = "Lập Phiếu Cắt Hủy DB";
             this.ribbtnLapPhieuCatHuyDB.Click += new System.EventHandler(this.ribbtnLapPhieuCatHuyDB_Click);
             // 
+            // ribbtnDongNuoc
+            // 
+            this.ribbtnDongNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDongNuoc.MinimumSize = new System.Drawing.Size(80, 0);
+            this.ribbtnDongNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDongNuoc.SmallImage")));
+            this.ribbtnDongNuoc.Text = "Đóng Nước";
+            this.ribbtnDongNuoc.Click += new System.EventHandler(this.ribbtnDongNuoc_Click);
+            // 
             // ribbonPanel22
             // 
             this.ribbonPanel22.ButtonMoreEnabled = false;
@@ -708,13 +718,13 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbtnDongNuoc
+            // ribbtnDongTienBoiThuong
             // 
-            this.ribbtnDongNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnDongNuoc.MinimumSize = new System.Drawing.Size(80, 0);
-            this.ribbtnDongNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDongNuoc.SmallImage")));
-            this.ribbtnDongNuoc.Text = "Đóng Nước";
-            this.ribbtnDongNuoc.Click += new System.EventHandler(this.ribbtnDongNuoc_Click);
+            this.ribbtnDongTienBoiThuong.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDongTienBoiThuong.MinimumSize = new System.Drawing.Size(140, 0);
+            this.ribbtnDongTienBoiThuong.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDongTienBoiThuong.SmallImage")));
+            this.ribbtnDongTienBoiThuong.Text = "Đóng Tiền Bồi Thường";
+            this.ribbtnDongTienBoiThuong.Click += new System.EventHandler(this.ribbtnDongTienBoiThuong_Click);
             // 
             // Main
             // 
@@ -816,6 +826,7 @@
         private System.Windows.Forms.RibbonButton ribbtnLapPhieuCatHuyDB;
         private System.Windows.Forms.RibbonButton ribbtnKiemTrang_BamChi;
         private System.Windows.Forms.RibbonButton ribbtnDongNuoc;
+        private System.Windows.Forms.RibbonButton ribbtnDongTienBoiThuong;
     }
 }
 
