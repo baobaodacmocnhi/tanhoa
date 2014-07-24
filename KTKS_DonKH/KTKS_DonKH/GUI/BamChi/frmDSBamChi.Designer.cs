@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode4 = new DevExpress.XtraGrid.GridLevelNode();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewCTBamChi = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -132,7 +132,6 @@
             this.gridColumn14.FieldName = "MaCTBC";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
-            this.gridColumn14.OptionsColumn.ReadOnly = true;
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 0;
             this.gridColumn14.Width = 120;
@@ -143,7 +142,6 @@
             this.gridColumn15.FieldName = "NgayBC";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
-            this.gridColumn15.OptionsColumn.ReadOnly = true;
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 1;
             this.gridColumn15.Width = 100;
@@ -154,7 +152,6 @@
             this.gridColumn16.FieldName = "DanhBo";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
-            this.gridColumn16.OptionsColumn.ReadOnly = true;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 2;
             this.gridColumn16.Width = 90;
@@ -165,7 +162,6 @@
             this.gridColumn17.FieldName = "HoTen";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.OptionsColumn.AllowEdit = false;
-            this.gridColumn17.OptionsColumn.ReadOnly = true;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 3;
             this.gridColumn17.Width = 200;
@@ -176,7 +172,6 @@
             this.gridColumn23.FieldName = "DiaChi";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.AllowEdit = false;
-            this.gridColumn23.OptionsColumn.ReadOnly = true;
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 4;
             this.gridColumn23.Width = 300;
@@ -187,19 +182,18 @@
             this.gridColumn20.FieldName = "CreateBy";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.OptionsColumn.AllowEdit = false;
-            this.gridColumn20.OptionsColumn.ReadOnly = true;
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 5;
             this.gridColumn20.Width = 300;
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTBamChi;
-            gridLevelNode1.RelationName = "Level1";
-            gridLevelNode2.RelationName = "Level2";
+            gridLevelNode3.LevelTemplate = this.gridViewCTBamChi;
+            gridLevelNode3.RelationName = "Level1";
+            gridLevelNode4.RelationName = "Level2";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1,
-            gridLevelNode2});
+            gridLevelNode3,
+            gridLevelNode4});
             this.gridControl.Location = new System.Drawing.Point(0, 68);
             this.gridControl.MainView = this.gridViewBamChi;
             this.gridControl.Name = "gridControl";
@@ -307,7 +301,6 @@
             this.gridColumn22.FieldName = "ToXuLy";
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.AllowEdit = false;
-            this.gridColumn22.OptionsColumn.ReadOnly = true;
             this.gridColumn22.Visible = true;
             this.gridColumn22.VisibleIndex = 4;
             this.gridColumn22.Width = 50;
@@ -318,7 +311,6 @@
             this.gridColumn6.FieldName = "MaDon";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
-            this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 90;
@@ -329,7 +321,6 @@
             this.gridColumn7.FieldName = "TenLD";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
-            this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
             this.gridColumn7.Width = 130;
@@ -340,7 +331,6 @@
             this.gridColumn8.FieldName = "CreateDate";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
-            this.gridColumn8.OptionsColumn.ReadOnly = true;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
             this.gridColumn8.Width = 110;
@@ -351,7 +341,6 @@
             this.gridColumn9.FieldName = "DanhBo";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
-            this.gridColumn9.OptionsColumn.ReadOnly = true;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 8;
             this.gridColumn9.Width = 90;
@@ -362,7 +351,6 @@
             this.gridColumn10.FieldName = "HoTen";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
-            this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 9;
             this.gridColumn10.Width = 250;
@@ -373,7 +361,6 @@
             this.gridColumn11.FieldName = "DiaChi";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
-            this.gridColumn11.OptionsColumn.ReadOnly = true;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 10;
             this.gridColumn11.Width = 250;
@@ -384,7 +371,6 @@
             this.gridColumn12.FieldName = "NoiDung";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
-            this.gridColumn12.OptionsColumn.ReadOnly = true;
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 11;
             this.gridColumn12.Width = 250;
@@ -401,7 +387,6 @@
             this.gridColumn13.FieldName = "NoiChuyenDen";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
-            this.gridColumn13.OptionsColumn.ReadOnly = true;
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 12;
             this.gridColumn13.Width = 200;
@@ -412,7 +397,6 @@
             this.gridColumn18.FieldName = "LyDoChuyenDen";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
-            this.gridColumn18.OptionsColumn.ReadOnly = true;
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 13;
             this.gridColumn18.Width = 250;
@@ -443,14 +427,14 @@
             // 
             this.dgvDSCTBamChi.AllowUserToAddRows = false;
             this.dgvDSCTBamChi.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSCTBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSCTBamChi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSCTBamChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCTBamChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTBC,

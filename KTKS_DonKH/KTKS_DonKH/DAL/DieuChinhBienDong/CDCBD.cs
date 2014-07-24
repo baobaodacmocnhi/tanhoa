@@ -341,6 +341,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                       {
                                           MaDC = itemCTDCBD.MaCTDCBD,
                                           DieuChinh = "Biến Động",
+                                          itemCTDCBD.HieuLucKy,
                                           itemCTDCBD.CreateDate,
                                           itemCTDCBD.ThongTin,
                                           itemCTDCBD.HoTen_BD,

@@ -11479,11 +11479,19 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TheoYeuCau;
 		
+		private bool _LapBangGia;
+		
+		private System.Nullable<System.DateTime> _NgayLapBangGia;
+		
 		private bool _DongTienBoiThuong;
 		
 		private System.Nullable<System.DateTime> _NgayDongTien;
 		
 		private System.Nullable<int> _SoTien;
+		
+		private bool _ChuyenLapTBCat;
+		
+		private System.Nullable<System.DateTime> _NgayChuyenLapTBCat;
 		
 		private System.Nullable<decimal> _MaKTXM;
 		
@@ -11551,12 +11559,20 @@ namespace KTKS_DonKH.LinQ
     partial void OnHoTenKHKyChanged();
     partial void OnTheoYeuCauChanging(string value);
     partial void OnTheoYeuCauChanged();
+    partial void OnLapBangGiaChanging(bool value);
+    partial void OnLapBangGiaChanged();
+    partial void OnNgayLapBangGiaChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayLapBangGiaChanged();
     partial void OnDongTienBoiThuongChanging(bool value);
     partial void OnDongTienBoiThuongChanged();
     partial void OnNgayDongTienChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayDongTienChanged();
     partial void OnSoTienChanging(System.Nullable<int> value);
     partial void OnSoTienChanged();
+    partial void OnChuyenLapTBCatChanging(bool value);
+    partial void OnChuyenLapTBCatChanged();
+    partial void OnNgayChuyenLapTBCatChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyenLapTBCatChanged();
     partial void OnMaKTXMChanging(System.Nullable<decimal> value);
     partial void OnMaKTXMChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -12075,6 +12091,46 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LapBangGia", DbType="Bit NOT NULL")]
+		public bool LapBangGia
+		{
+			get
+			{
+				return this._LapBangGia;
+			}
+			set
+			{
+				if ((this._LapBangGia != value))
+				{
+					this.OnLapBangGiaChanging(value);
+					this.SendPropertyChanging();
+					this._LapBangGia = value;
+					this.SendPropertyChanged("LapBangGia");
+					this.OnLapBangGiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayLapBangGia", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayLapBangGia
+		{
+			get
+			{
+				return this._NgayLapBangGia;
+			}
+			set
+			{
+				if ((this._NgayLapBangGia != value))
+				{
+					this.OnNgayLapBangGiaChanging(value);
+					this.SendPropertyChanging();
+					this._NgayLapBangGia = value;
+					this.SendPropertyChanged("NgayLapBangGia");
+					this.OnNgayLapBangGiaChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DongTienBoiThuong", DbType="Bit NOT NULL")]
 		public bool DongTienBoiThuong
 		{
@@ -12131,6 +12187,46 @@ namespace KTKS_DonKH.LinQ
 					this._SoTien = value;
 					this.SendPropertyChanged("SoTien");
 					this.OnSoTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenLapTBCat", DbType="Bit NOT NULL")]
+		public bool ChuyenLapTBCat
+		{
+			get
+			{
+				return this._ChuyenLapTBCat;
+			}
+			set
+			{
+				if ((this._ChuyenLapTBCat != value))
+				{
+					this.OnChuyenLapTBCatChanging(value);
+					this.SendPropertyChanging();
+					this._ChuyenLapTBCat = value;
+					this.SendPropertyChanged("ChuyenLapTBCat");
+					this.OnChuyenLapTBCatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenLapTBCat", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChuyenLapTBCat
+		{
+			get
+			{
+				return this._NgayChuyenLapTBCat;
+			}
+			set
+			{
+				if ((this._NgayChuyenLapTBCat != value))
+				{
+					this.OnNgayChuyenLapTBCatChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChuyenLapTBCat = value;
+					this.SendPropertyChanged("NgayChuyenLapTBCat");
+					this.OnNgayChuyenLapTBCatChanged();
 				}
 			}
 		}

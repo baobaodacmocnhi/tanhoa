@@ -140,7 +140,7 @@ namespace KTKS_DonKH.DAL.BamChi
         {
             try
             {
-                return db.BamChis.SingleOrDefault(itemBamChi => itemBamChi.MaDon == MaDon);
+                return db.BamChis.FirstOrDefault(itemBamChi => itemBamChi.MaDon == MaDon);
             }
             catch (Exception ex)
             {
@@ -158,7 +158,7 @@ namespace KTKS_DonKH.DAL.BamChi
         {
             try
             {
-                return db.BamChis.SingleOrDefault(itemBamChi => itemBamChi.MaDonTXL == MaDonTXL);
+                return db.BamChis.FirstOrDefault(itemBamChi => itemBamChi.MaDonTXL == MaDonTXL);
             }
             catch (Exception ex)
             {

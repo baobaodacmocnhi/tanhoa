@@ -126,6 +126,7 @@
             // radThongKeDMCap
             // 
             this.radThongKeDMCap.AutoSize = true;
+            this.radThongKeDMCap.Checked = true;
             this.radThongKeDMCap.Location = new System.Drawing.Point(71, 7);
             this.radThongKeDMCap.Name = "radThongKeDMCap";
             this.radThongKeDMCap.Size = new System.Drawing.Size(256, 21);
@@ -141,7 +142,6 @@
             this.radThongKeDC.Name = "radThongKeDC";
             this.radThongKeDC.Size = new System.Drawing.Size(155, 21);
             this.radThongKeDC.TabIndex = 21;
-            this.radThongKeDC.TabStop = true;
             this.radThongKeDC.Text = "Thống Kê Điều Chỉnh";
             this.radThongKeDC.UseVisualStyleBackColor = true;
             // 

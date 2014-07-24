@@ -59,19 +59,50 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
             cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+
+            if (ctktxm.LapBangGia)
+            {
+                chkLapBangGia.Checked = true;
+                dateLapBangGia.Value = ctktxm.NgayLapBangGia.Value;
+            }
+            else
+            {
+                chkLapBangGia.Checked = false;
+                dateLapBangGia.Value = DateTime.Now;
+            }
+
             if (ctktxm.DongTienBoiThuong)
             {
                 chkDongTienBoiThuong.Checked = true;
                 dateDongTien.Value = ctktxm.NgayDongTien.Value;
                 txtSoTien.Text = ctktxm.SoTien.ToString();
             }
+            else
+            {
+                chkDongTienBoiThuong.Checked = false;
+                dateDongTien.Value = DateTime.Now;
+                txtSoTien.Text = "";
+            }
+
+            if (ctktxm.ChuyenLapTBCat)
+            {
+                chkChuyenCatHuy.Checked = true;
+                dateChuyenCatHuy.Value = ctktxm.NgayChuyenLapTBCat.Value;
+            }
+            else
+            {
+                chkChuyenCatHuy.Checked = false;
+                dateChuyenCatHuy.Value = DateTime.Now;
+            }
             cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
         }
 
         public void Clear()
         {
-            txtNoiDungKiemTra.Text = "";
-            ///
+            try
+            {
+
+            
             //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
             txtHieu.Text = "";
@@ -86,16 +117,29 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtHoTenKHKy.Text = "";
             //cmbTinhTrangDHN.SelectedIndex = -1;
             txtNoiDungKiemTra.Text = "";
+            ///
+            chkLapBangGia.Checked = false;
+            dateLapBangGia.Value = DateTime.Now;
+            ///
             chkDongTienBoiThuong.Checked = false;
             dateDongTien.Value = DateTime.Now;
             txtSoTien.Text = "";
+            ///
+            chkChuyenCatHuy.Checked = false;
+            dateChuyenCatHuy.Value = DateTime.Now;
             selectedindex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
             {
+                Clear();
                 dgvDSKetQuaKiemTra.DataSource = _cKTXM.LoadDSCTKTXM(txtDanhBo.Text.Trim(), CTaiKhoan.MaUser);
             }
         }
@@ -119,19 +163,46 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 if (_cKTXM.CheckCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", selectedindex].Value.ToString())))
                 {
                     CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", selectedindex].Value.ToString()));
-                    if (chkDongTienBoiThuong.Checked)
-                    {
-                        ctktxm.DongTienBoiThuong = true;
-                        ctktxm.NgayDongTien = dateDongTien.Value;
-                        if (!string.IsNullOrEmpty(txtSoTien.Text.Trim()))
-                            ctktxm.SoTien = int.Parse(txtSoTien.Text.Trim());
-                    }
-                    else
-                    {
-                        ctktxm.DongTienBoiThuong = false;
-                        ctktxm.NgayDongTien = null;
-                        ctktxm.SoTien = null;
-                    }
+
+                    if (ctktxm.LapBangGia != chkLapBangGia.Checked)
+                        if (chkLapBangGia.Checked)
+                        {
+                            ctktxm.LapBangGia = true;
+                            ctktxm.NgayLapBangGia = dateLapBangGia.Value;
+                        }
+                        else
+                        {
+                            ctktxm.LapBangGia = false;
+                            ctktxm.NgayLapBangGia = null;
+                        }
+                    
+                    if (ctktxm.DongTienBoiThuong != chkDongTienBoiThuong.Checked)
+                        if (chkDongTienBoiThuong.Checked)
+                        {
+                            ctktxm.DongTienBoiThuong = true;
+                            ctktxm.NgayDongTien = dateDongTien.Value;
+                            if (!string.IsNullOrEmpty(txtSoTien.Text.Trim()))
+                                ctktxm.SoTien = int.Parse(txtSoTien.Text.Trim());
+                        }
+                        else
+                        {
+                            ctktxm.DongTienBoiThuong = false;
+                            ctktxm.NgayDongTien = null;
+                            ctktxm.SoTien = null;
+                        }
+
+                    if (ctktxm.ChuyenLapTBCat != chkChuyenCatHuy.Checked)
+                        if (chkChuyenCatHuy.Checked)
+                        {
+                            ctktxm.ChuyenLapTBCat = true;
+                            ctktxm.NgayChuyenLapTBCat = dateChuyenCatHuy.Value;
+                        }
+                        else
+                        {
+                            ctktxm.ChuyenLapTBCat = false;
+                            ctktxm.NgayChuyenLapTBCat = null;
+                        }
+
                     if (_cKTXM.SuaCTKTXM(ctktxm))
                     {
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -140,7 +211,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     }
                 }
             }
-            MessageBox.Show("Chưa chọn Biên Bản Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show("Chưa chọn Biên Bản Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void chkLapBangGia_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkLapBangGia.Checked)
+                groupLapBangGia.Enabled = true;
+            else
+                groupLapBangGia.Enabled = false;
         }
 
         private void chkDongTienBoiThuong_CheckedChanged(object sender, EventArgs e)
@@ -149,6 +229,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 groupDongTienBoiThuong.Enabled = true;
             else
                 groupDongTienBoiThuong.Enabled = false;
+        }
+
+        private void chkChuyenCatHuy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkChuyenCatHuy.Checked)
+                groupChuyenCatHuy.Enabled = true;
+            else
+                groupChuyenCatHuy.Enabled = false;
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
@@ -172,5 +260,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
+        
     }
 }

@@ -54,6 +54,7 @@
             // radThongKeSoLuong
             // 
             this.radThongKeSoLuong.AutoSize = true;
+            this.radThongKeSoLuong.Checked = true;
             this.radThongKeSoLuong.Location = new System.Drawing.Point(71, 7);
             this.radThongKeSoLuong.Name = "radThongKeSoLuong";
             this.radThongKeSoLuong.Size = new System.Drawing.Size(147, 21);

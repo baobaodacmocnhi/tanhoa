@@ -50,6 +50,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvDSKetQuaKiemTra = new System.Windows.Forms.DataGridView();
+            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
@@ -78,12 +84,7 @@
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
-            this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -297,6 +298,52 @@
             this.dgvDSKetQuaKiemTra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSKetQuaKiemTra_CellContentClick);
             this.dgvDSKetQuaKiemTra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSKetQuaKiemTra_CellFormatting);
             this.dgvDSKetQuaKiemTra.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSKetQuaKiemTra_RowPostPaint);
+            // 
+            // MaCTKTXM
+            // 
+            this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
+            this.MaCTKTXM.HeaderText = "MaCTKTXM";
+            this.MaCTKTXM.Name = "MaCTKTXM";
+            this.MaCTKTXM.Visible = false;
+            // 
+            // ToXuLy
+            // 
+            this.ToXuLy.DataPropertyName = "ToXuLy";
+            this.ToXuLy.HeaderText = "TXL";
+            this.ToXuLy.Name = "ToXuLy";
+            this.ToXuLy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToXuLy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ToXuLy.Width = 50;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // NoiDungKiemTra
+            // 
+            this.NoiDungKiemTra.DataPropertyName = "NoiDungKiemTra";
+            this.NoiDungKiemTra.HeaderText = "Kết Qủa";
+            this.NoiDungKiemTra.Name = "NoiDungKiemTra";
+            this.NoiDungKiemTra.ReadOnly = true;
+            this.NoiDungKiemTra.Width = 250;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Thực Hiện";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.ReadOnly = true;
+            this.CreateBy.Width = 200;
             // 
             // groupBox2
             // 
@@ -633,51 +680,15 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // MaCTKTXM
+            // label22
             // 
-            this.MaCTKTXM.DataPropertyName = "MaCTKTXM";
-            this.MaCTKTXM.HeaderText = "MaCTKTXM";
-            this.MaCTKTXM.Name = "MaCTKTXM";
-            this.MaCTKTXM.Visible = false;
-            // 
-            // ToXuLy
-            // 
-            this.ToXuLy.DataPropertyName = "ToXuLy";
-            this.ToXuLy.HeaderText = "TXL";
-            this.ToXuLy.Name = "ToXuLy";
-            this.ToXuLy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ToXuLy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ToXuLy.Width = 50;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // NoiDungKiemTra
-            // 
-            this.NoiDungKiemTra.DataPropertyName = "NoiDungKiemTra";
-            this.NoiDungKiemTra.HeaderText = "Kết Qủa";
-            this.NoiDungKiemTra.Name = "NoiDungKiemTra";
-            this.NoiDungKiemTra.ReadOnly = true;
-            this.NoiDungKiemTra.Width = 250;
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "Người Thực Hiện";
-            this.CreateBy.Name = "CreateBy";
-            this.CreateBy.ReadOnly = true;
-            this.CreateBy.Width = 200;
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(458, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(445, 17);
+            this.label22.TabIndex = 7;
+            this.label22.Text = "Gắn mới Danh Bộ nhập theo dạng: GM-Mã Đơn (GM1-14 / GMTXL1-14)";
             // 
             // frmKTXM
             // 
@@ -685,6 +696,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1154, 493);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvDSKetQuaKiemTra);
@@ -764,5 +776,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.Label label22;
     }
 }

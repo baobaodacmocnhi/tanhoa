@@ -945,7 +945,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.KTXM.MaDonTXL,
+                                    itemCTKTXM.LapBangGia,
                                     itemCTKTXM.DongTienBoiThuong,
+                                    itemCTKTXM.ChuyenLapTBCat,
                                     //CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -969,7 +971,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.DanhBo,
                                         itemCTKTXM.KTXM.MaDon,
                                         itemCTKTXM.KTXM.MaDonTXL,
+                                        itemCTKTXM.LapBangGia,
                                         itemCTKTXM.DongTienBoiThuong,
+                                        itemCTKTXM.ChuyenLapTBCat,
                                         //CreateBy = itemUser.HoTen,
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -1015,7 +1019,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.KTXM.MaDonTXL,
+                                    itemCTKTXM.LapBangGia,
                                     itemCTKTXM.DongTienBoiThuong,
+                                    itemCTKTXM.ChuyenLapTBCat,
                                     //CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -1039,7 +1045,9 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                         itemCTKTXM.DanhBo,
                                         itemCTKTXM.KTXM.MaDon,
                                         itemCTKTXM.KTXM.MaDonTXL,
+                                        itemCTKTXM.LapBangGia,
                                         itemCTKTXM.DongTienBoiThuong,
+                                        itemCTKTXM.ChuyenLapTBCat,
                                         //CreateBy = itemUser.HoTen,
                                     };
                         return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);

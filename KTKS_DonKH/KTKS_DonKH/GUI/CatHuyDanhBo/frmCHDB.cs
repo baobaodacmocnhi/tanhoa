@@ -902,42 +902,51 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         _ctchdb.SoTien = null;
 
-                    if (chkKetQuaTCTBXuLy.Checked)
-                    {
-                        _ctchdb.TCTBXuLy = true;
-                        _ctchdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
-                        if (chkTroNgai.Checked)
-                            _ctchdb.TroNgai = true;
+                    if (_ctchdb.TCTBXuLy != chkKetQuaTCTBXuLy.Checked)
+                        if (chkKetQuaTCTBXuLy.Checked)
+                        {
+                            _ctchdb.TCTBXuLy = true;
+                            _ctchdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
+                            if (chkTroNgai.Checked)
+                                _ctchdb.TroNgai = true;
+                            else
+                                _ctchdb.TroNgai = false;
+                            if (chkCatTam.Checked)
+                                _ctchdb.CatTam = true;
+                            else
+                                _ctchdb.CatTam = false;
+                            _ctchdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
+                        }
                         else
+                        {
+                            _ctchdb.TCTBXuLy = false;
+                            _ctchdb.NgayTCTBXuLy = null;
                             _ctchdb.TroNgai = false;
-                        if (chkCatTam.Checked)
-                            _ctchdb.CatTam = true;
-                        else
                             _ctchdb.CatTam = false;
-                        _ctchdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
-                    }
-                    else
-                    {
-                        _ctchdb.TCTBXuLy = false;
-                        _ctchdb.NgayTCTBXuLy = null;
-                        _ctchdb.TroNgai = false;
-                        _ctchdb.CatTam = false;
-                        _ctchdb.KetQuaTCTBXuLy = null;
-                    }
+                            _ctchdb.KetQuaTCTBXuLy = null;
+                        }
 
-                    if (chkKetQuaCapTrenXuLy.Checked)
+                    if (_ctchdb.CapTrenXuLy != chkKetQuaCapTrenXuLy.Checked)
+                        if (chkKetQuaCapTrenXuLy.Checked)
+                        {
+                            _ctchdb.CapTrenXuLy = true;
+                            _ctchdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
+                            _ctchdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
+                            _ctchdb.ThoiGianLapPhieu = int.Parse(txtThoiGianLapPhieu.Text.Trim());
+                        }
+                        else
+                        {
+                            _ctchdb.CapTrenXuLy = false;
+                            _ctchdb.NgayCapTrenXuLy = null;
+                            _ctchdb.KetQuaCapTrenXuLy = null;
+                            _ctchdb.ThoiGianLapPhieu = null;
+                        }
+
+                    if (_ctchdb.DaLapPhieu && _ctchdb.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == _ctchdb.MaCTCHDB).HieuLucKy != txtHieuLucKy.Text.Trim())
                     {
-                        _ctchdb.CapTrenXuLy = true;
-                        _ctchdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
-                        _ctchdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
-                        _ctchdb.ThoiGianLapPhieu = int.Parse(txtThoiGianLapPhieu.Text.Trim());
-                    }
-                    else
-                    {
-                        _ctchdb.CapTrenXuLy = false;
-                        _ctchdb.NgayCapTrenXuLy = null;
-                        _ctchdb.KetQuaCapTrenXuLy = null;
-                        _ctchdb.ThoiGianLapPhieu = null;
+                        YeuCauCHDB ycchdb = _ctchdb.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == _ctchdb.MaCTCHDB);
+                        ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                        _cCHDB.SuaYeuCauCHDB(ycchdb);
                     }
 
                     if (_cCHDB.SuaCTCHDB(_ctchdb))

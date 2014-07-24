@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
             this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
@@ -76,9 +76,19 @@
             this.label23 = new System.Windows.Forms.Label();
             this.dateDongTien = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
+            this.chkChuyenCatHuy = new System.Windows.Forms.CheckBox();
+            this.groupChuyenCatHuy = new System.Windows.Forms.GroupBox();
+            this.dateChuyenCatHuy = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chkLapBangGia = new System.Windows.Forms.CheckBox();
+            this.groupLapBangGia = new System.Windows.Forms.GroupBox();
+            this.dateLapBangGia = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupDongTienBoiThuong.SuspendLayout();
+            this.groupChuyenCatHuy.SuspendLayout();
+            this.groupLapBangGia.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbTheoYeuCau
@@ -454,14 +464,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -528,7 +538,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(1023, 287);
+            this.btnSua.Location = new System.Drawing.Point(1040, 347);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(100, 35);
             this.btnSua.TabIndex = 12;
@@ -540,7 +550,7 @@
             // chkDongTienBoiThuong
             // 
             this.chkDongTienBoiThuong.AutoSize = true;
-            this.chkDongTienBoiThuong.Location = new System.Drawing.Point(778, 213);
+            this.chkDongTienBoiThuong.Location = new System.Drawing.Point(778, 304);
             this.chkDongTienBoiThuong.Name = "chkDongTienBoiThuong";
             this.chkDongTienBoiThuong.Size = new System.Drawing.Size(162, 21);
             this.chkDongTienBoiThuong.TabIndex = 42;
@@ -555,15 +565,15 @@
             this.groupDongTienBoiThuong.Controls.Add(this.dateDongTien);
             this.groupDongTienBoiThuong.Controls.Add(this.label22);
             this.groupDongTienBoiThuong.Enabled = false;
-            this.groupDongTienBoiThuong.Location = new System.Drawing.Point(778, 228);
+            this.groupDongTienBoiThuong.Location = new System.Drawing.Point(778, 319);
             this.groupDongTienBoiThuong.Name = "groupDongTienBoiThuong";
-            this.groupDongTienBoiThuong.Size = new System.Drawing.Size(239, 94);
+            this.groupDongTienBoiThuong.Size = new System.Drawing.Size(239, 70);
             this.groupDongTienBoiThuong.TabIndex = 41;
             this.groupDongTienBoiThuong.TabStop = false;
             // 
             // txtSoTien
             // 
-            this.txtSoTien.Location = new System.Drawing.Point(118, 45);
+            this.txtSoTien.Location = new System.Drawing.Point(119, 38);
             this.txtSoTien.Name = "txtSoTien";
             this.txtSoTien.Size = new System.Drawing.Size(97, 25);
             this.txtSoTien.TabIndex = 57;
@@ -572,7 +582,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(117, 25);
+            this.label23.Location = new System.Drawing.Point(118, 18);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(52, 17);
             this.label23.TabIndex = 56;
@@ -582,7 +592,7 @@
             // 
             this.dateDongTien.CustomFormat = "dd/MM/yyyy";
             this.dateDongTien.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDongTien.Location = new System.Drawing.Point(9, 45);
+            this.dateDongTien.Location = new System.Drawing.Point(10, 38);
             this.dateDongTien.Name = "dateDongTien";
             this.dateDongTien.Size = new System.Drawing.Size(97, 25);
             this.dateDongTien.TabIndex = 57;
@@ -590,11 +600,91 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 25);
+            this.label22.Location = new System.Drawing.Point(7, 18);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(105, 17);
             this.label22.TabIndex = 56;
             this.label22.Text = "Ngày Đóng Tiền";
+            // 
+            // chkChuyenCatHuy
+            // 
+            this.chkChuyenCatHuy.AutoSize = true;
+            this.chkChuyenCatHuy.Location = new System.Drawing.Point(996, 213);
+            this.chkChuyenCatHuy.Name = "chkChuyenCatHuy";
+            this.chkChuyenCatHuy.Size = new System.Drawing.Size(147, 21);
+            this.chkChuyenCatHuy.TabIndex = 44;
+            this.chkChuyenCatHuy.Text = "Chuyển Lập TB Cắt";
+            this.chkChuyenCatHuy.UseVisualStyleBackColor = true;
+            this.chkChuyenCatHuy.CheckedChanged += new System.EventHandler(this.chkChuyenCatHuy_CheckedChanged);
+            // 
+            // groupChuyenCatHuy
+            // 
+            this.groupChuyenCatHuy.Controls.Add(this.dateChuyenCatHuy);
+            this.groupChuyenCatHuy.Controls.Add(this.label6);
+            this.groupChuyenCatHuy.Enabled = false;
+            this.groupChuyenCatHuy.Location = new System.Drawing.Point(996, 228);
+            this.groupChuyenCatHuy.Name = "groupChuyenCatHuy";
+            this.groupChuyenCatHuy.Size = new System.Drawing.Size(153, 70);
+            this.groupChuyenCatHuy.TabIndex = 43;
+            this.groupChuyenCatHuy.TabStop = false;
+            // 
+            // dateChuyenCatHuy
+            // 
+            this.dateChuyenCatHuy.CustomFormat = "dd/MM/yyyy";
+            this.dateChuyenCatHuy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateChuyenCatHuy.Location = new System.Drawing.Point(10, 38);
+            this.dateChuyenCatHuy.Name = "dateChuyenCatHuy";
+            this.dateChuyenCatHuy.Size = new System.Drawing.Size(97, 25);
+            this.dateChuyenCatHuy.TabIndex = 57;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 17);
+            this.label6.TabIndex = 56;
+            this.label6.Text = "Ngày Chuyển";
+            // 
+            // chkLapBangGia
+            // 
+            this.chkLapBangGia.AutoSize = true;
+            this.chkLapBangGia.Location = new System.Drawing.Point(778, 213);
+            this.chkLapBangGia.Name = "chkLapBangGia";
+            this.chkLapBangGia.Size = new System.Drawing.Size(109, 21);
+            this.chkLapBangGia.TabIndex = 46;
+            this.chkLapBangGia.Text = "Lập Bảng Giá";
+            this.chkLapBangGia.UseVisualStyleBackColor = true;
+            this.chkLapBangGia.CheckedChanged += new System.EventHandler(this.chkLapBangGia_CheckedChanged);
+            // 
+            // groupLapBangGia
+            // 
+            this.groupLapBangGia.Controls.Add(this.dateLapBangGia);
+            this.groupLapBangGia.Controls.Add(this.label2);
+            this.groupLapBangGia.Enabled = false;
+            this.groupLapBangGia.Location = new System.Drawing.Point(778, 228);
+            this.groupLapBangGia.Name = "groupLapBangGia";
+            this.groupLapBangGia.Size = new System.Drawing.Size(153, 70);
+            this.groupLapBangGia.TabIndex = 45;
+            this.groupLapBangGia.TabStop = false;
+            // 
+            // dateLapBangGia
+            // 
+            this.dateLapBangGia.CustomFormat = "dd/MM/yyyy";
+            this.dateLapBangGia.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateLapBangGia.Location = new System.Drawing.Point(10, 38);
+            this.dateLapBangGia.Name = "dateLapBangGia";
+            this.dateLapBangGia.Size = new System.Drawing.Size(97, 25);
+            this.dateLapBangGia.TabIndex = 57;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 17);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "Ngày Lập";
             // 
             // frmDongTienBoiThuong
             // 
@@ -602,6 +692,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1154, 493);
+            this.Controls.Add(this.chkLapBangGia);
+            this.Controls.Add(this.groupLapBangGia);
+            this.Controls.Add(this.chkChuyenCatHuy);
+            this.Controls.Add(this.groupChuyenCatHuy);
             this.Controls.Add(this.chkDongTienBoiThuong);
             this.Controls.Add(this.groupDongTienBoiThuong);
             this.Controls.Add(this.btnSua);
@@ -619,6 +713,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).EndInit();
             this.groupDongTienBoiThuong.ResumeLayout(false);
             this.groupDongTienBoiThuong.PerformLayout();
+            this.groupChuyenCatHuy.ResumeLayout(false);
+            this.groupChuyenCatHuy.PerformLayout();
+            this.groupLapBangGia.ResumeLayout(false);
+            this.groupLapBangGia.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -673,5 +771,13 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DateTimePicker dateDongTien;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox chkChuyenCatHuy;
+        private System.Windows.Forms.GroupBox groupChuyenCatHuy;
+        private System.Windows.Forms.DateTimePicker dateChuyenCatHuy;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chkLapBangGia;
+        private System.Windows.Forms.GroupBox groupLapBangGia;
+        private System.Windows.Forms.DateTimePicker dateLapBangGia;
+        private System.Windows.Forms.Label label2;
     }
 }

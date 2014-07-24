@@ -112,7 +112,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
-            txtNoiDungKiemTra.Text = "";
             ///
             //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
