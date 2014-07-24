@@ -113,12 +113,26 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
             txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
             txtTheoYeuCau.Text = _ctktxm.TheoYeuCau;
+
+            if (ctktxm.LapBangGia)
+            {
+                chkLapBangGia.Checked = true;
+                dateLapBangGia.Value = ctktxm.NgayLapBangGia.Value;
+            }
+
             if (ctktxm.DongTienBoiThuong)
             {
                 chkDongTienBoiThuong.Checked = true;
                 dateDongTien.Value = ctktxm.NgayDongTien.Value;
                 txtSoTien.Text = ctktxm.SoTien.ToString();
             }
+
+            if (ctktxm.ChuyenLapTBCat)
+            {
+                chkChuyenCatHuy.Checked = true;
+                dateChuyenCatHuy.Value = ctktxm.NgayChuyenLapTBCat.Value;
+            }
+
             try
             {
                 cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
@@ -137,7 +151,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDiaChi.Text = "";
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
-            //txtNoiDungKiemTra.Text = "";
             ///
             //dateKTXM.Value = DateTime.Now;
             txtHieu.Text = "";
@@ -150,9 +163,15 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //txtDienThoai.Text = "";
             //txtHoTenKHKy.Text = "";
             //txtNoiDungKiemTra.Text = "";
+            chkLapBangGia.Checked = false;
+            dateLapBangGia.Value = DateTime.Now;
+            ///
             chkDongTienBoiThuong.Checked = false;
             dateDongTien.Value = DateTime.Now;
             txtSoTien.Text = "";
+            ///
+            chkChuyenCatHuy.Checked = false;
+            dateChuyenCatHuy.Value = DateTime.Now;
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -221,19 +240,44 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                 _ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
 
-                if (chkDongTienBoiThuong.Checked)
-                {
-                    _ctktxm.DongTienBoiThuong = true;
-                    _ctktxm.NgayDongTien = dateDongTien.Value;
-                    if (!string.IsNullOrEmpty(txtSoTien.Text.Trim()))
-                        _ctktxm.SoTien = int.Parse(txtSoTien.Text.Trim());
-                }
-                else
-                {
-                    _ctktxm.DongTienBoiThuong = false;
-                    _ctktxm.NgayDongTien = null;
-                    _ctktxm.SoTien = null;
-                }
+                if (_ctktxm.LapBangGia != chkLapBangGia.Checked)
+                    if (chkLapBangGia.Checked)
+                    {
+                        _ctktxm.LapBangGia = true;
+                        _ctktxm.NgayLapBangGia = dateLapBangGia.Value;
+                    }
+                    else
+                    {
+                        _ctktxm.LapBangGia = false;
+                        _ctktxm.NgayLapBangGia = null;
+                    }
+
+                if(_ctktxm.DongTienBoiThuong!=chkDongTienBoiThuong.Checked)
+                    if (chkDongTienBoiThuong.Checked)
+                    {
+                        _ctktxm.DongTienBoiThuong = true;
+                        _ctktxm.NgayDongTien = dateDongTien.Value;
+                        if (!string.IsNullOrEmpty(txtSoTien.Text.Trim()))
+                            _ctktxm.SoTien = int.Parse(txtSoTien.Text.Trim());
+                    }
+                    else
+                    {
+                        _ctktxm.DongTienBoiThuong = false;
+                        _ctktxm.NgayDongTien = null;
+                        _ctktxm.SoTien = null;
+                    }
+
+                if (_ctktxm.ChuyenLapTBCat != chkChuyenCatHuy.Checked)
+                    if (chkChuyenCatHuy.Checked)
+                    {
+                        _ctktxm.ChuyenLapTBCat = true;
+                        _ctktxm.NgayChuyenLapTBCat = dateChuyenCatHuy.Value;
+                    }
+                    else
+                    {
+                        _ctktxm.ChuyenLapTBCat = false;
+                        _ctktxm.NgayChuyenLapTBCat = null;
+                    }
 
                 if (_cKTXM.SuaCTKTXM(_ctktxm))
                 {
@@ -270,6 +314,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         }
 
         private void txtCo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
@@ -341,6 +391,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkLapBangGia.Checked)
+                groupLapBangGia.Enabled = true;
+            else
+                groupLapBangGia.Enabled = false;
+        }
+
         private void chkDongTienBoiThuong_CheckedChanged(object sender, EventArgs e)
         {
             if (chkDongTienBoiThuong.Checked)
@@ -349,10 +407,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 groupDongTienBoiThuong.Enabled = false;
         }
 
-        private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
+        private void chkChuyenCatHuy_CheckedChanged(object sender, EventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
+            if (chkChuyenCatHuy.Checked)
+                groupChuyenCatHuy.Enabled = true;
+            else
+                groupChuyenCatHuy.Enabled = false;
         }
+
+       
     }
 }

@@ -89,10 +89,21 @@
             this.dateDongTien = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
             this.chkDongTienBoiThuong = new System.Windows.Forms.CheckBox();
+            this.chkChuyenCatHuy = new System.Windows.Forms.CheckBox();
+            this.groupChuyenCatHuy = new System.Windows.Forms.GroupBox();
+            this.dateChuyenCatHuy = new System.Windows.Forms.DateTimePicker();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.chkLapBangGia = new System.Windows.Forms.CheckBox();
+            this.groupLapBangGia = new System.Windows.Forms.GroupBox();
+            this.dateLapBangGia = new System.Windows.Forms.DateTimePicker();
+            this.label26 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
             this.groupDongTienBoiThuong.SuspendLayout();
+            this.groupChuyenCatHuy.SuspendLayout();
+            this.groupLapBangGia.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMaDon
@@ -681,9 +692,9 @@
             this.groupDongTienBoiThuong.Controls.Add(this.dateDongTien);
             this.groupDongTienBoiThuong.Controls.Add(this.label22);
             this.groupDongTienBoiThuong.Enabled = false;
-            this.groupDongTienBoiThuong.Location = new System.Drawing.Point(647, 58);
+            this.groupDongTienBoiThuong.Location = new System.Drawing.Point(800, 58);
             this.groupDongTienBoiThuong.Name = "groupDongTienBoiThuong";
-            this.groupDongTienBoiThuong.Size = new System.Drawing.Size(502, 94);
+            this.groupDongTienBoiThuong.Size = new System.Drawing.Size(220, 94);
             this.groupDongTienBoiThuong.TabIndex = 39;
             this.groupDongTienBoiThuong.TabStop = false;
             // 
@@ -725,7 +736,7 @@
             // chkDongTienBoiThuong
             // 
             this.chkDongTienBoiThuong.AutoSize = true;
-            this.chkDongTienBoiThuong.Location = new System.Drawing.Point(647, 43);
+            this.chkDongTienBoiThuong.Location = new System.Drawing.Point(800, 43);
             this.chkDongTienBoiThuong.Name = "chkDongTienBoiThuong";
             this.chkDongTienBoiThuong.Size = new System.Drawing.Size(162, 21);
             this.chkDongTienBoiThuong.TabIndex = 40;
@@ -733,13 +744,108 @@
             this.chkDongTienBoiThuong.UseVisualStyleBackColor = true;
             this.chkDongTienBoiThuong.CheckedChanged += new System.EventHandler(this.chkDongTienBoiThuong_CheckedChanged);
             // 
+            // chkChuyenCatHuy
+            // 
+            this.chkChuyenCatHuy.AutoSize = true;
+            this.chkChuyenCatHuy.Location = new System.Drawing.Point(1026, 43);
+            this.chkChuyenCatHuy.Name = "chkChuyenCatHuy";
+            this.chkChuyenCatHuy.Size = new System.Drawing.Size(147, 21);
+            this.chkChuyenCatHuy.TabIndex = 59;
+            this.chkChuyenCatHuy.Text = "Chuyển Lập TB Cắt";
+            this.chkChuyenCatHuy.UseVisualStyleBackColor = true;
+            this.chkChuyenCatHuy.CheckedChanged += new System.EventHandler(this.chkChuyenCatHuy_CheckedChanged);
+            // 
+            // groupChuyenCatHuy
+            // 
+            this.groupChuyenCatHuy.Controls.Add(this.dateChuyenCatHuy);
+            this.groupChuyenCatHuy.Controls.Add(this.label24);
+            this.groupChuyenCatHuy.Enabled = false;
+            this.groupChuyenCatHuy.Location = new System.Drawing.Point(1026, 58);
+            this.groupChuyenCatHuy.Name = "groupChuyenCatHuy";
+            this.groupChuyenCatHuy.Size = new System.Drawing.Size(147, 94);
+            this.groupChuyenCatHuy.TabIndex = 58;
+            this.groupChuyenCatHuy.TabStop = false;
+            // 
+            // dateChuyenCatHuy
+            // 
+            this.dateChuyenCatHuy.CustomFormat = "dd/MM/yyyy";
+            this.dateChuyenCatHuy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateChuyenCatHuy.Location = new System.Drawing.Point(9, 45);
+            this.dateChuyenCatHuy.Name = "dateChuyenCatHuy";
+            this.dateChuyenCatHuy.Size = new System.Drawing.Size(97, 25);
+            this.dateChuyenCatHuy.TabIndex = 57;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 25);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(89, 17);
+            this.label24.TabIndex = 56;
+            this.label24.Text = "Ngày Chuyển";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(458, 9);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(445, 17);
+            this.label25.TabIndex = 58;
+            this.label25.Text = "Gắn mới Danh Bộ nhập theo dạng: GM-Mã Đơn (GM1-14 / GMTXL1-14)";
+            // 
+            // chkLapBangGia
+            // 
+            this.chkLapBangGia.AutoSize = true;
+            this.chkLapBangGia.Location = new System.Drawing.Point(647, 43);
+            this.chkLapBangGia.Name = "chkLapBangGia";
+            this.chkLapBangGia.Size = new System.Drawing.Size(109, 21);
+            this.chkLapBangGia.TabIndex = 61;
+            this.chkLapBangGia.Text = "Lập Bảng Giá";
+            this.chkLapBangGia.UseVisualStyleBackColor = true;
+            this.chkLapBangGia.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // groupLapBangGia
+            // 
+            this.groupLapBangGia.Controls.Add(this.dateLapBangGia);
+            this.groupLapBangGia.Controls.Add(this.label26);
+            this.groupLapBangGia.Enabled = false;
+            this.groupLapBangGia.Location = new System.Drawing.Point(647, 58);
+            this.groupLapBangGia.Name = "groupLapBangGia";
+            this.groupLapBangGia.Size = new System.Drawing.Size(147, 94);
+            this.groupLapBangGia.TabIndex = 60;
+            this.groupLapBangGia.TabStop = false;
+            // 
+            // dateLapBangGia
+            // 
+            this.dateLapBangGia.CustomFormat = "dd/MM/yyyy";
+            this.dateLapBangGia.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateLapBangGia.Location = new System.Drawing.Point(9, 45);
+            this.dateLapBangGia.Name = "dateLapBangGia";
+            this.dateLapBangGia.Size = new System.Drawing.Size(97, 25);
+            this.dateLapBangGia.TabIndex = 57;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 25);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(67, 17);
+            this.label26.TabIndex = 56;
+            this.label26.Text = "Ngày Lập";
+            // 
             // frmShowKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1154, 378);
+            this.ClientSize = new System.Drawing.Size(1184, 378);
+            this.Controls.Add(this.chkLapBangGia);
+            this.Controls.Add(this.groupLapBangGia);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.chkChuyenCatHuy);
             this.Controls.Add(this.chkDongTienBoiThuong);
+            this.Controls.Add(this.groupChuyenCatHuy);
             this.Controls.Add(this.groupDongTienBoiThuong);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.txtMaDon);
@@ -761,6 +867,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).EndInit();
             this.groupDongTienBoiThuong.ResumeLayout(false);
             this.groupDongTienBoiThuong.PerformLayout();
+            this.groupChuyenCatHuy.ResumeLayout(false);
+            this.groupChuyenCatHuy.PerformLayout();
+            this.groupLapBangGia.ResumeLayout(false);
+            this.groupLapBangGia.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -828,5 +938,14 @@
         private System.Windows.Forms.CheckBox chkDongTienBoiThuong;
         private System.Windows.Forms.Label lbTheoYeuCau;
         private System.Windows.Forms.TextBox txtTheoYeuCau;
+        private System.Windows.Forms.CheckBox chkChuyenCatHuy;
+        private System.Windows.Forms.GroupBox groupChuyenCatHuy;
+        private System.Windows.Forms.DateTimePicker dateChuyenCatHuy;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.CheckBox chkLapBangGia;
+        private System.Windows.Forms.GroupBox groupLapBangGia;
+        private System.Windows.Forms.DateTimePicker dateLapBangGia;
+        private System.Windows.Forms.Label label26;
     }
 }

@@ -1324,7 +1324,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemYCCHDB in db.YeuCauCHDBs
-                                where itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null
                                 select new
                                 {
                                     In = false,

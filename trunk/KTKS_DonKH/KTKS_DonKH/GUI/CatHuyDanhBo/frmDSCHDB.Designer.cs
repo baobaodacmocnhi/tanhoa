@@ -738,6 +738,8 @@
             "",
             "Mã Đơn",
             "Danh Bộ",
+            "Số Thông Báo",
+            "Số Phiếu",
             "Ngày Lập",
             "Khoảng Thời Gian"});
             this.cmbTimTheo.Location = new System.Drawing.Point(634, 16);
@@ -1119,7 +1121,7 @@
             this.ThongBaoDuocKy.DefaultCellStyle = dataGridViewCellStyle4;
             this.ThongBaoDuocKy.HeaderText = "TB Được Ký";
             this.ThongBaoDuocKy.Name = "ThongBaoDuocKy";
-            this.ThongBaoDuocKy.Width = 70;
+            this.ThongBaoDuocKy.Width = 80;
             // 
             // MaTB
             // 

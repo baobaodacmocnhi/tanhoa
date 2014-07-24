@@ -82,6 +82,8 @@ namespace KTKS_DonKH.GUI.BamChi
             ((GridView)gridControl.MainView).Columns["MaChuyen"].ColumnEdit = myLookUpEdit;
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewCTBamChi);
+
+            gridViewBamChi.Columns.View.OptionsBehavior.Editable = true;
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
@@ -141,22 +143,23 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void gridViewBamChi_KeyDown(object sender, KeyEventArgs e)
         {
-            if (((DataRowView)gridViewBamChi.GetRow(gridViewBamChi.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
-            {
-                Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("Action", "View");
-                source.Add("MaDon", ((DataRowView)gridViewBamChi.GetRow(gridViewBamChi.GetSelectedRows()[0])).Row["MaDon"].ToString());
-                frmShowDonTXL frm = new frmShowDonTXL(source);
-                frm.ShowDialog();
-            }
-            else
-            {
-                Dictionary<string, string> source = new Dictionary<string, string>();
-                source.Add("Action", "View");
-                source.Add("MaDon", ((DataRowView)gridViewBamChi.GetRow(gridViewBamChi.GetSelectedRows()[0])).Row["MaDon"].ToString());
-                frmShowDonKH frm = new frmShowDonKH(source);
-                frm.ShowDialog();
-            }
+            if (gridViewBamChi.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
+                if (((DataRowView)gridViewBamChi.GetRow(gridViewBamChi.GetSelectedRows()[0])).Row["ToXuLy"].ToString() == "True")
+                {
+                    Dictionary<string, string> source = new Dictionary<string, string>();
+                    source.Add("Action", "View");
+                    source.Add("MaDon", ((DataRowView)gridViewBamChi.GetRow(gridViewBamChi.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmShowDonTXL frm = new frmShowDonTXL(source);
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    Dictionary<string, string> source = new Dictionary<string, string>();
+                    source.Add("Action", "View");
+                    source.Add("MaDon", ((DataRowView)gridViewBamChi.GetRow(gridViewBamChi.GetSelectedRows()[0])).Row["MaDon"].ToString());
+                    frmShowDonKH frm = new frmShowDonKH(source);
+                    frm.ShowDialog();
+                }
         }
 
         #endregion

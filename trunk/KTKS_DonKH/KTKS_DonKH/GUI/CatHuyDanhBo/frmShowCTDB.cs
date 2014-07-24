@@ -146,37 +146,46 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtSoTien.Text.Trim() != "")
                         _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim());
 
-                    if (chkKetQuaTCTBXuLy.Checked)
-                    {
-                        _ctctdb.TCTBXuLy = true;
-                        _ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
-                        if (chkTroNgai.Checked)
-                            _ctctdb.TroNgai = true;
+                    if (_ctctdb.TCTBXuLy != chkKetQuaTCTBXuLy.Checked)
+                        if (chkKetQuaTCTBXuLy.Checked)
+                        {
+                            _ctctdb.TCTBXuLy = true;
+                            _ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
+                            if (chkTroNgai.Checked)
+                                _ctctdb.TroNgai = true;
+                            else
+                                _ctctdb.TroNgai = false;
+                            _ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
+                        }
                         else
+                        {
+                            _ctctdb.TCTBXuLy = false;
+                            _ctctdb.NgayTCTBXuLy = null;
                             _ctctdb.TroNgai = false;
-                        _ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
-                    }
-                    else
-                    {
-                        _ctctdb.TCTBXuLy = false;
-                        _ctctdb.NgayTCTBXuLy = null;
-                        _ctctdb.TroNgai = false;
-                        _ctctdb.KetQuaTCTBXuLy = null;
-                    }
+                            _ctctdb.KetQuaTCTBXuLy = null;
+                        }
 
-                    if (chkKetQuaCapTrenXuLy.Checked)
+                    if (_ctctdb.CapTrenXuLy != chkKetQuaCapTrenXuLy.Checked)
+                        if (chkKetQuaCapTrenXuLy.Checked)
+                        {
+                            _ctctdb.CapTrenXuLy = true;
+                            _ctctdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
+                            _ctctdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
+                            _ctctdb.ThoiGianLapCatHuy = int.Parse(txtThoiGianLapCatHuy.Text.Trim());
+                        }
+                        else
+                        {
+                            _ctctdb.CapTrenXuLy = false;
+                            _ctctdb.NgayCapTrenXuLy = null;
+                            _ctctdb.KetQuaCapTrenXuLy = null;
+                            _ctctdb.ThoiGianLapCatHuy = null;
+                        }
+
+                    if (_ctctdb.DaLapPhieu && _ctctdb.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCTDB == _ctctdb.MaCTCTDB).HieuLucKy != txtHieuLucKy.Text.Trim())
                     {
-                        _ctctdb.CapTrenXuLy = true;
-                        _ctctdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
-                        _ctctdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
-                        _ctctdb.ThoiGianLapCatHuy = int.Parse(txtThoiGianLapCatHuy.Text.Trim());
-                    }
-                    else
-                    {
-                        _ctctdb.CapTrenXuLy = false;
-                        _ctctdb.NgayCapTrenXuLy = null;
-                        _ctctdb.KetQuaCapTrenXuLy = null;
-                        _ctctdb.ThoiGianLapCatHuy = null;
+                        YeuCauCHDB ycchdb = _ctctdb.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCTDB == _ctctdb.MaCTCTDB);
+                        ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                        _cCHDB.SuaYeuCauCHDB(ycchdb);
                     }
 
                     if (_cCHDB.SuaCTCTDB(_ctctdb))

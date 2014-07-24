@@ -749,10 +749,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString()) != ctctdb.PhieuDuocKy)
                 {
                     ctctdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
-                    _cCHDB.SuaCTCTDB(ctctdb);
-                    YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCTDB(ctctdb.MaCTCTDB);
-                    ycchdb.PhieuDuocKy = ctctdb.PhieuDuocKy;
-                    _cCHDB.SuaYeuCauCHDB(ycchdb);
+                    if (_cCHDB.SuaCTCTDB(ctctdb))
+                    {
+                        YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCTDB(ctctdb.MaCTCTDB);
+                        ycchdb.PhieuDuocKy = ctctdb.PhieuDuocKy;
+                        _cCHDB.SuaYeuCauCHDB(ycchdb);
+                    }
                 }
             }
             if (radDSCatHuyDanhBo.Checked)
@@ -766,10 +768,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString()) != ctchdb.PhieuDuocKy)
                 {
                     ctchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["PhieuDuocKy"].Value.ToString());
-                    _cCHDB.SuaCTCHDB(ctchdb);
-                    YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(ctchdb.MaCTCHDB);
-                    ycchdb.PhieuDuocKy = ctchdb.PhieuDuocKy;
-                    _cCHDB.SuaYeuCauCHDB(ycchdb);
+                    if (_cCHDB.SuaCTCHDB(ctchdb))
+                    {
+                        YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDBbyMaCTCHDB(ctchdb.MaCTCHDB);
+                        ycchdb.PhieuDuocKy = ctchdb.PhieuDuocKy;
+                        _cCHDB.SuaYeuCauCHDB(ycchdb);
+                    }
                 }
             }
         }
@@ -843,7 +847,22 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ycchdb.PhieuDuocKy)
                 {
                     ycchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
-                    _cCHDB.SuaYeuCauCHDB(ycchdb);
+                    if (_cCHDB.SuaYeuCauCHDB(ycchdb))
+                    {
+                        if (ycchdb.TBCTDB)
+                        {
+                            CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(ycchdb.MaCTCTDB.Value);
+                            ctctdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+                            _cCHDB.SuaCTCTDB(ctctdb);
+                        }
+                        else
+                            if (ycchdb.TBCHDB)
+                            {
+                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(ycchdb.MaCTCHDB.Value);
+                                ctchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+                                _cCHDB.SuaCTCHDB(ctchdb);
+                            }
+                    }
                 }
             }
             if (radDSDongNuoc.Checked)
@@ -1030,7 +1049,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ///
                                 dr["NgayXuLy"] = ctdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy");
                                 dr["SoCongVan"] = ctdongnuoc.SoCongVan_DN;
-                                dr["NgayCongVan"] = ctdongnuoc.NgayCongVan_DN;
+                                dr["NgayCongVan"] = ctdongnuoc.NgayCongVan_DN.Value.ToString("dd/MM/yyyy");
                                 dr["Phuong"] = ctdongnuoc.Phuong;
                                 dr["Quan"] = ctdongnuoc.Quan;
                                 ///
@@ -1119,6 +1138,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 case "Mã Đơn":
                 case "Danh Bộ":
+                case "Số Phiếu":
+                case "Số Thông Báo":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
@@ -1154,11 +1175,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         case "Mã Đơn":
                             if (radDaDuyet.Checked || radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
                                 expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            if (radDaDuyet_TXL.Checked || radDSCatTamDanhBo_TXL.Checked || radDSCatHuyDanhBo_TXL.Checked)
-                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
+                            //if (radDaDuyet_TXL.Checked || radDSCatTamDanhBo_TXL.Checked || radDSCatHuyDanhBo_TXL.Checked)
+                            //    expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
                             break;
                         case "Danh Bộ":
                             expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                        case "Số Phiếu":
+                            if (radDSYCCHDB.Checked)
+                                expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                        case "Số Thông Báo":
+                            if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
+                                expression = String.Format("MaTB = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                     }
                     DSCHDB_BS.Filter = expression;

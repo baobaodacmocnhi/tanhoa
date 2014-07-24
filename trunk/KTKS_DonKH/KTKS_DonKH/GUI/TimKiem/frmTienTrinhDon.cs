@@ -162,6 +162,10 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+            if (e.Column.FieldName == "SoTien" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
         }
 
         private void gridViewKTXM_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -370,6 +374,10 @@ namespace KTKS_DonKH.GUI.TimKiem
             if (e.Column.FieldName == "MaCTKTXM" && e.Value != null)
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (e.Column.FieldName == "SoTien" && e.Value != null)
+            {
+                e.DisplayText = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 

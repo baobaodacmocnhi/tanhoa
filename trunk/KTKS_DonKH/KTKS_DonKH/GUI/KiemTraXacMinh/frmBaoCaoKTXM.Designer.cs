@@ -44,6 +44,7 @@
             // radThongKeBienBan
             // 
             this.radThongKeBienBan.AutoSize = true;
+            this.radThongKeBienBan.Checked = true;
             this.radThongKeBienBan.Location = new System.Drawing.Point(71, 7);
             this.radThongKeBienBan.Name = "radThongKeBienBan";
             this.radThongKeBienBan.Size = new System.Drawing.Size(144, 21);

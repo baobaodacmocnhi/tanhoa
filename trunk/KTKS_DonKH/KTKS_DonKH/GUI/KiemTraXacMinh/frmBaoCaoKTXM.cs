@@ -17,6 +17,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
     {
         string _tuNgay = "", _denNgay = "";
         CKTXM _cKTXM = new CKTXM();
+        int soLapBangGia = 0;
+        int soDongTien = 0;
+        int soChuyenLapTBCat = 0;
 
         public frmBaoCaoKTXM()
         {
@@ -77,6 +80,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 set { _toXuLy = value; }
             }
 
+            int _lapBangGia = 0;
+            public int LapBangGia
+            {
+                get { return _lapBangGia; }
+                set { _lapBangGia = value; }
+            }
+
             int _dongTienBoiThuong = 0;
             public int DongTienBoiThuong
             {
@@ -89,6 +99,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 get { return _chuaDongTienBoiThuong; }
                 set { _chuaDongTienBoiThuong = value; }
+            }
+
+            int _chuyenLapTBCat = 0;
+            public int ChuyenLapTBCat
+            {
+                get { return _chuyenLapTBCat; }
+                set { _chuyenLapTBCat = value; }
             }
         };
 
@@ -122,10 +139,23 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 a[0].ToKH++;
                             if (!string.IsNullOrEmpty(itemRow["MaDonTXL"].ToString()))
                                 a[0].ToXuLy++;
+                            if (bool.Parse(itemRow["LapBangGia"].ToString()))
+                            {
+                                a[0].LapBangGia++;
+                                soLapBangGia++;
+                            }
                             if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
+                            {
                                 a[0].DongTienBoiThuong++;
+                                soDongTien++;
+                            }
                             else
                                 a[0].ChuaDongTienBoiThuong++;
+                            if (bool.Parse(itemRow["ChuyenLapTBCat"].ToString()))
+                            {
+                                a[0].ChuyenLapTBCat++;
+                                soChuyenLapTBCat++;
+                            }
                         }
                         else
                             if (itemRow["LoaiBienBan"].ToString().Equals("BB đứt chì MS bồi thường"))
@@ -136,10 +166,23 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                     a[1].ToKH++;
                                 if (!string.IsNullOrEmpty(itemRow["MaDonTXL"].ToString()))
                                     a[1].ToXuLy++;
+                                if (bool.Parse(itemRow["LapBangGia"].ToString()))
+                                {
+                                    a[1].LapBangGia++;
+                                    soLapBangGia++;
+                                }
                                 if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
+                                {
                                     a[1].DongTienBoiThuong++;
+                                    soDongTien++;
+                                }
                                 else
                                     a[1].ChuaDongTienBoiThuong++;
+                                if (bool.Parse(itemRow["ChuyenLapTBCat"].ToString()))
+                                {
+                                    a[1].ChuyenLapTBCat++;
+                                    soChuyenLapTBCat++;
+                                }
                             }
                     }
                     else
@@ -190,6 +233,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         else
                             dr["ToXuLy"] = a[i].ToXuLy;
 
+                        //if (soLapBangGia == 0)
+                        //    dr["LapBangGia"] = "";
+                        //else
+                            dr["LapBangGia"] = soLapBangGia;
+
                         if (a[i].DongTienBoiThuong == 0)
                             dr["DongTienBoiThuong"] = "";
                         else
@@ -199,6 +247,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             dr["ChuaDongTienBoiThuong"] = "";
                         else
                             dr["ChuaDongTienBoiThuong"] = a[i].ChuaDongTienBoiThuong;
+
+                        //if (soChuyenLapTBCat == 0)
+                        //    dr["ChuyenLapTBCat"] = "";
+                        //else
+                            dr["ChuyenLapTBCat"] = soChuyenLapTBCat;
+
+                        //if (soDongTien == 0)
+                        //    dr["DongTien"] = "";
+                        //else
+                            dr["DongTien"] = soDongTien;
 
                         dsBaoCao.Tables["ThongKeBienBanKTXM"].Rows.Add(dr);
                     }
