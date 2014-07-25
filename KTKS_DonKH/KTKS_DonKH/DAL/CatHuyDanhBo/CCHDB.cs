@@ -1381,6 +1381,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemYCCHDB.GhiChuLyDo,
                                     itemYCCHDB.SoTien,
                                     itemYCCHDB.NguoiKy,
+                                    itemYCCHDB.HieuLucKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1425,6 +1426,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemYCCHDB.GhiChuLyDo,
                                     itemYCCHDB.SoTien,
                                     itemYCCHDB.NguoiKy,
+                                    itemYCCHDB.HieuLucKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
