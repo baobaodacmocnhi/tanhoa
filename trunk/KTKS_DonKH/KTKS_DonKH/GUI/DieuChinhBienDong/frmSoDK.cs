@@ -660,10 +660,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void cmbLoaiCT_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_action == "Thêm" && cmbLoaiCT.SelectedIndex != -1)
-            {
+            //if (_action == "Thêm" && cmbLoaiCT.SelectedIndex != -1)
+            //{
                 txtThoiHan.Text = ((LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
-            }
+            //}
+            if (cmbLoaiCT.SelectedValue.ToString() == "7")
+                txtGhiChu.Text = "DINH MUC NHAP CU";
+            else
+                txtGhiChu.Text = "";
         }  
 
         #region Configure TextBox

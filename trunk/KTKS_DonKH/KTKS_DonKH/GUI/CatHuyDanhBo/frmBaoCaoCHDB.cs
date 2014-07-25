@@ -145,6 +145,50 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 rpt.SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;
             }
+            ///
+            if (radDSYCCHDB.Checked)
+            {
+                DataTable dtYCCHDB = new DataTable();
+
+                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
+                {
+                    dtYCCHDB = _cCHDB.LoadDSYCCHDB(dateTu.Value, dateDen.Value);
+                }
+                else
+                    if (!string.IsNullOrEmpty(_tuNgay))
+                    {
+                        dtYCCHDB = _cCHDB.LoadDSYCCHDB(dateTu.Value);
+                    }
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+                foreach (DataRow itemRow in dtYCCHDB.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length-2,"-");
+                    dr["NgayLap"] = itemRow["CreateDate"];
+                    dr["HieuLucKy"] = itemRow["HieuLucKy"];
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    if (itemRow["LyDo"].ToString() == "Vấn Đề Khác")
+                        dr["LyDo"] = itemRow["GhiChuLyDo"];
+                    else
+                        dr["LyDo"] = itemRow["LyDo"] + " " + itemRow["GhiChuLyDo"];
+
+                    dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                }
+
+                dateTu.Value = DateTime.Now;
+                dateDen.Value = DateTime.Now;
+                _tuNgay = _denNgay = "";
+
+                rptDSYCCHDB rpt = new rptDSYCCHDB();
+                rpt.SetDataSource(dsBaoCao);
+                crystalReportViewer1.ReportSource = rpt;
+            }
         }
 
         
