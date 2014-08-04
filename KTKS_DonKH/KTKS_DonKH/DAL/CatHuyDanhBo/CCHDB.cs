@@ -1359,7 +1359,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         /// </summary>
         /// <param name="TuNgay"></param>
         /// <returns></returns>
-        public DataTable LoadDSYCCHDB(DateTime TuNgay)
+        public DataTable LoadDSYCCHDB_Don(DateTime TuNgay)
         {
             try
             {
@@ -1404,7 +1404,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         /// <param name="TuNgay"></param>
         /// <param name="DenNgay"></param>
         /// <returns></returns>
-        public DataTable LoadDSYCCHDB(DateTime TuNgay,DateTime DenNgay)
+        public DataTable LoadDSYCCHDB_Don(DateTime TuNgay,DateTime DenNgay)
         {
             try
             {
@@ -1412,6 +1412,95 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemYCCHDB in db.YeuCauCHDBs
                                 where itemYCCHDB.CreateDate.Value.Date >= TuNgay.Date && itemYCCHDB.CreateDate.Value.Date <= DenNgay.Date && itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null
+                                select new
+                                {
+                                    In = false,
+                                    itemYCCHDB.PhieuDuocKy,
+                                    SoPhieu = itemYCCHDB.MaYCCHDB,
+                                    Ma = itemYCCHDB.MaYCCHDB,
+                                    itemYCCHDB.CreateDate,
+                                    itemYCCHDB.DanhBo,
+                                    itemYCCHDB.HoTen,
+                                    itemYCCHDB.DiaChi,
+                                    itemYCCHDB.LyDo,
+                                    itemYCCHDB.GhiChuLyDo,
+                                    itemYCCHDB.SoTien,
+                                    itemYCCHDB.NguoiKy,
+                                    itemYCCHDB.HieuLucKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Yêu Cầu Cắt Hủy Danh Bộ bao gồm qua Thông Báo trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSYCCHDB(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                                where itemYCCHDB.CreateDate.Value.Date == TuNgay.Date
+                                select new
+                                {
+                                    In = false,
+                                    itemYCCHDB.PhieuDuocKy,
+                                    SoPhieu = itemYCCHDB.MaYCCHDB,
+                                    Ma = itemYCCHDB.MaYCCHDB,
+                                    itemYCCHDB.CreateDate,
+                                    itemYCCHDB.DanhBo,
+                                    itemYCCHDB.HoTen,
+                                    itemYCCHDB.DiaChi,
+                                    itemYCCHDB.LyDo,
+                                    itemYCCHDB.GhiChuLyDo,
+                                    itemYCCHDB.SoTien,
+                                    itemYCCHDB.NguoiKy,
+                                    itemYCCHDB.HieuLucKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Yêu Cầu Cắt Hủy Danh Bộ bao gồm qua Thông Báo trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSYCCHDB(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                                where itemYCCHDB.CreateDate.Value.Date >= TuNgay.Date && itemYCCHDB.CreateDate.Value.Date <= DenNgay.Date
                                 select new
                                 {
                                     In = false,

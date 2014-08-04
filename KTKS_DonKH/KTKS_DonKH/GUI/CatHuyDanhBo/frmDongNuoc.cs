@@ -47,7 +47,8 @@ namespace KTKS_DonKH.GUI.DongNuoc
 
         private void frmDongNuoc_Load(object sender, EventArgs e)
         {
-
+            dgvDSBamChi.AutoGenerateColumns = false;
+            dgvDSBamChi.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSBamChi.Font, FontStyle.Bold);
         }
 
         /// <summary>
@@ -314,6 +315,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                     _ctdongnuoc.MaCTDN = decimal.Parse(txtMaThongBao_DN.Text.Trim().Replace("-", ""));
 
                 _ctdongnuoc.MoNuoc = true;
+                _ctdongnuoc.MaCTMN = _cDongNuoc.getMaxNextMaCTMN();
                 _ctdongnuoc.NgayMN = dateMoNuoc.Value;
                 _ctdongnuoc.SoCongVan_MN = txtSoCongVan_MN.Text.Trim();
                 _ctdongnuoc.NgayCongVan_MN = dateCongVan_MN.Value;
@@ -378,7 +380,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoDongNuoc"].NewRow();
 
-                dr["SoPhieu"] = _ctdongnuoc.MaMN.ToString().Insert(_ctdongnuoc.MaMN.ToString().Length - 2, "-");
+                dr["SoPhieu"] = _ctdongnuoc.MaCTMN.ToString().Insert(_ctdongnuoc.MaCTMN.ToString().Length - 2, "-");
                 dr["HoTen"] = _ctdongnuoc.HoTen;
                 dr["DiaChi"] = _ctdongnuoc.DiaChi;
                 dr["DanhBo"] = _ctdongnuoc.DanhBo;
@@ -429,8 +431,8 @@ namespace KTKS_DonKH.GUI.DongNuoc
 
                     txtMaThongBao_DN.Text = _ctdongnuoc.MaCTDN.ToString().Insert(_ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
 
-                    if (!string.IsNullOrEmpty(_ctdongnuoc.MaMN.ToString()))
-                        txtMaThongBao_MN.Text = _ctdongnuoc.MaMN.ToString().Insert(_ctdongnuoc.MaMN.ToString().Length - 2, "-");
+                    if (!string.IsNullOrEmpty(_ctdongnuoc.MaCTMN.ToString()))
+                        txtMaThongBao_MN.Text = _ctdongnuoc.MaCTMN.ToString().Insert(_ctdongnuoc.MaCTMN.ToString().Length - 2, "-");
                     ///
                     txtDanhBo.Text = _ctdongnuoc.DanhBo;
                     txtHopDong.Text = _ctdongnuoc.HopDong;
@@ -451,8 +453,17 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         dateCongVan_MN.Value = _ctdongnuoc.NgayCongVan_MN.Value;
                         txtLyDoDN.Text = _ctdongnuoc.LyDo_DN;
                         txtHinhThucDN.Text = _ctdongnuoc.HinhThuc_DN;
+                        btnCapNhatMoNuoc.Enabled = false;
                     }
-                    
+                    else
+                    {
+                        dateMoNuoc.Value = DateTime.Now;
+                        txtSoCongVan_MN.Text = "";
+                        dateCongVan_MN.Value = DateTime.Now;
+                        txtLyDoDN.Text = "";
+                        txtHinhThucDN.Text = "";
+                        btnCapNhatMoNuoc.Enabled = true;
+                    }
                 }
                 else
                 {

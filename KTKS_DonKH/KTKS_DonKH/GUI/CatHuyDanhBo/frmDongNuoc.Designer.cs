@@ -381,9 +381,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(8, 30);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(107, 17);
+            this.label19.Size = new System.Drawing.Size(106, 17);
             this.label19.TabIndex = 13;
-            this.label19.Text = "Ngày Công Văn:";
+            this.label19.Text = "Ngày Mở Nước:";
             // 
             // btnCapNhatMoNuoc
             // 
@@ -567,6 +567,8 @@
             // 
             // dgvDSBamChi
             // 
+            this.dgvDSBamChi.AllowUserToAddRows = false;
+            this.dgvDSBamChi.AllowUserToDeleteRows = false;
             this.dgvDSBamChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSBamChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NgayBC,

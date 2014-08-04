@@ -152,7 +152,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                     dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDB(dateTimKiem.Value);
                     break;
                 case "Yêu Cầu Cắt Hủy Danh Bộ":
-                    dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB(dateTimKiem.Value);
+                    dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTimKiem.Value);
                     break;
                 case "Đóng Nước":
                     dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTDongNuoc(dateTimKiem.Value);
