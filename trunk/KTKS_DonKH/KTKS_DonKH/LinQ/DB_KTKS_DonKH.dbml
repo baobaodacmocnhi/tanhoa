@@ -461,7 +461,7 @@
       <Column Name="ChucVu_DN" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ThongBaoDuocKy_DN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MoNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MaMN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaCTMN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NgayMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="LyDo_DN" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="HinhThuc_DN" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />

@@ -553,6 +553,8 @@
             // 
             // dgvDSBamChi
             // 
+            this.dgvDSBamChi.AllowUserToAddRows = false;
+            this.dgvDSBamChi.AllowUserToDeleteRows = false;
             this.dgvDSBamChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSBamChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NgayBC,

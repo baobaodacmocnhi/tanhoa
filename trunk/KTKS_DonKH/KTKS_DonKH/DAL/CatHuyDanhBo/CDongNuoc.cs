@@ -264,16 +264,16 @@ namespace KTKS_DonKH.DAL.DongNuoc
         /// Lấy Mã Mở Nước kế tiếp cho Thông Báo Đóng Nước
         /// </summary>
         /// <returns></returns>
-        public decimal getMaxNextMaMN()
+        public decimal getMaxNextMaCTMN()
         {
             try
             {
                 if (db.CTDongNuocs.Count() > 0)
                 {
-                    if (db.CTDongNuocs.Max(itemCTDN => itemCTDN.MaMN) == null)
+                    if (db.CTDongNuocs.Max(itemCTDN => itemCTDN.MaCTMN) == null)
                         return decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     else
-                        return getMaxNextIDTable(db.CTDongNuocs.Max(itemCTDN => itemCTDN.MaMN).Value);
+                        return getMaxNextIDTable(db.CTDongNuocs.Max(itemCTDN => itemCTDN.MaCTMN).Value);
                 }
                 else
                     return decimal.Parse("1" + DateTime.Now.ToString("yy"));
@@ -298,11 +298,11 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
-        public CTDongNuoc getCTMoNuocbyID(decimal MaMN)
+        public CTDongNuoc getCTMoNuocbyID(decimal MaCTMN)
         {
             try
             {
-                return db.CTDongNuocs.SingleOrDefault(itemCTDN => itemCTDN.MaMN == MaMN);
+                return db.CTDongNuocs.SingleOrDefault(itemCTDN => itemCTDN.MaCTMN == MaCTMN);
             }
             catch (Exception ex)
             {
@@ -427,8 +427,8 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                 {
                                     In = false,
                                     PhieuDuocKy = itemCTDongNuoc.ThongBaoDuocKy_MN,
-                                    SoPhieu = itemCTDongNuoc.MaMN,
-                                    Ma = itemCTDongNuoc.MaMN,
+                                    SoPhieu = itemCTDongNuoc.MaCTMN,
+                                    Ma = itemCTDongNuoc.MaCTMN,
                                     itemCTDongNuoc.CreateDate,
                                     itemCTDongNuoc.DanhBo,
                                     itemCTDongNuoc.HoTen,
@@ -462,8 +462,8 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                 {
                                     In = false,
                                     PhieuDuocKy = itemCTDongNuoc.ThongBaoDuocKy_MN,
-                                    SoPhieu = itemCTDongNuoc.MaMN,
-                                    Ma = itemCTDongNuoc.MaMN,
+                                    SoPhieu = itemCTDongNuoc.MaCTMN,
+                                    Ma = itemCTDongNuoc.MaCTMN,
                                     itemCTDongNuoc.CreateDate,
                                     itemCTDongNuoc.DanhBo,
                                     itemCTDongNuoc.HoTen,
@@ -497,8 +497,8 @@ namespace KTKS_DonKH.DAL.DongNuoc
                                 {
                                     In = false,
                                     PhieuDuocKy = itemCTDongNuoc.ThongBaoDuocKy_MN,
-                                    SoPhieu = itemCTDongNuoc.MaMN,
-                                    Ma = itemCTDongNuoc.MaMN,
+                                    SoPhieu = itemCTDongNuoc.MaCTMN,
+                                    Ma = itemCTDongNuoc.MaCTMN,
                                     itemCTDongNuoc.CreateDate,
                                     itemCTDongNuoc.DanhBo,
                                     itemCTDongNuoc.HoTen,

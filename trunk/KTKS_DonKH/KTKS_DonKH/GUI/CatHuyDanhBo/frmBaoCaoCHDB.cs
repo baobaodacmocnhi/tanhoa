@@ -57,14 +57,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     dtCTDB = _cCHDB.LoadDSCTCTDB(dateTu.Value, dateDen.Value);
                     dtCHDB = _cCHDB.LoadDSCTCHDB(dateTu.Value, dateDen.Value);
-                    dtYCCHDB = _cCHDB.LoadDSYCCHDB(dateTu.Value, dateDen.Value);
+                    dtYCCHDB = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value, dateDen.Value);
                 }
                 else
                     if (!string.IsNullOrEmpty(_tuNgay))
                     {
                         dtCTDB = _cCHDB.LoadDSCTCTDB(dateTu.Value);
                         dtCHDB = _cCHDB.LoadDSCTCHDB(dateTu.Value);
-                        dtYCCHDB = _cCHDB.LoadDSYCCHDB(dateTu.Value);
+                        dtYCCHDB = _cCHDB.LoadDSYCCHDB_Don(dateTu.Value);
                     }
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();

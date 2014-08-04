@@ -10618,7 +10618,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _MoNuoc;
 		
-		private System.Nullable<decimal> _MaMN;
+		private System.Nullable<decimal> _MaCTMN;
 		
 		private System.Nullable<System.DateTime> _NgayMN;
 		
@@ -10688,8 +10688,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnThongBaoDuocKy_DNChanged();
     partial void OnMoNuocChanging(bool value);
     partial void OnMoNuocChanged();
-    partial void OnMaMNChanging(System.Nullable<decimal> value);
-    partial void OnMaMNChanged();
+    partial void OnMaCTMNChanging(System.Nullable<decimal> value);
+    partial void OnMaCTMNChanged();
     partial void OnNgayMNChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayMNChanged();
     partial void OnLyDo_DNChanging(string value);
@@ -11084,22 +11084,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaMN", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> MaMN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCTMN", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaCTMN
 		{
 			get
 			{
-				return this._MaMN;
+				return this._MaCTMN;
 			}
 			set
 			{
-				if ((this._MaMN != value))
+				if ((this._MaCTMN != value))
 				{
-					this.OnMaMNChanging(value);
+					this.OnMaCTMNChanging(value);
 					this.SendPropertyChanging();
-					this._MaMN = value;
-					this.SendPropertyChanged("MaMN");
-					this.OnMaMNChanged();
+					this._MaCTMN = value;
+					this.SendPropertyChanged("MaCTMN");
+					this.OnMaCTMNChanged();
 				}
 			}
 		}

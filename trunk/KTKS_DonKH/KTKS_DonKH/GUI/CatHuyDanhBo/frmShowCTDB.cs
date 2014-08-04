@@ -146,7 +146,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtSoTien.Text.Trim() != "")
                         _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim());
 
-                    if (_ctctdb.TCTBXuLy != chkKetQuaTCTBXuLy.Checked)
+                    //if (_ctctdb.TCTBXuLy != chkKetQuaTCTBXuLy.Checked)
                         if (chkKetQuaTCTBXuLy.Checked)
                         {
                             _ctctdb.TCTBXuLy = true;
@@ -165,7 +165,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctctdb.KetQuaTCTBXuLy = null;
                         }
 
-                    if (_ctctdb.CapTrenXuLy != chkKetQuaCapTrenXuLy.Checked)
+                    //if (_ctctdb.CapTrenXuLy != chkKetQuaCapTrenXuLy.Checked)
                         if (chkKetQuaCapTrenXuLy.Checked)
                         {
                             _ctctdb.CapTrenXuLy = true;

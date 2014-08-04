@@ -902,7 +902,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         _ctchdb.SoTien = null;
 
-                    if (_ctchdb.TCTBXuLy != chkKetQuaTCTBXuLy.Checked)
+                    //if (_ctchdb.TCTBXuLy != chkKetQuaTCTBXuLy.Checked)
                         if (chkKetQuaTCTBXuLy.Checked)
                         {
                             _ctchdb.TCTBXuLy = true;
@@ -926,7 +926,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctchdb.KetQuaTCTBXuLy = null;
                         }
 
-                    if (_ctchdb.CapTrenXuLy != chkKetQuaCapTrenXuLy.Checked)
+                    //if (_ctchdb.CapTrenXuLy != chkKetQuaCapTrenXuLy.Checked)
                         if (chkKetQuaCapTrenXuLy.Checked)
                         {
                             _ctchdb.CapTrenXuLy = true;
