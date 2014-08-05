@@ -83,27 +83,27 @@
             this.MaCTKTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.groupDongTienBoiThuong = new System.Windows.Forms.GroupBox();
+            this.groupBoxDongTienBoiThuong = new System.Windows.Forms.GroupBox();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.dateDongTien = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
             this.chkDongTienBoiThuong = new System.Windows.Forms.CheckBox();
             this.chkChuyenCatHuy = new System.Windows.Forms.CheckBox();
-            this.groupChuyenCatHuy = new System.Windows.Forms.GroupBox();
+            this.groupBoxChuyenCatHuy = new System.Windows.Forms.GroupBox();
             this.dateChuyenCatHuy = new System.Windows.Forms.DateTimePicker();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.chkLapBangGia = new System.Windows.Forms.CheckBox();
-            this.groupLapBangGia = new System.Windows.Forms.GroupBox();
+            this.groupBoxLapBangGia = new System.Windows.Forms.GroupBox();
             this.dateLapBangGia = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
-            this.groupDongTienBoiThuong.SuspendLayout();
-            this.groupChuyenCatHuy.SuspendLayout();
-            this.groupLapBangGia.SuspendLayout();
+            this.groupBoxDongTienBoiThuong.SuspendLayout();
+            this.groupBoxChuyenCatHuy.SuspendLayout();
+            this.groupBoxLapBangGia.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMaDon
@@ -685,18 +685,18 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // groupDongTienBoiThuong
+            // groupBoxDongTienBoiThuong
             // 
-            this.groupDongTienBoiThuong.Controls.Add(this.txtSoTien);
-            this.groupDongTienBoiThuong.Controls.Add(this.label23);
-            this.groupDongTienBoiThuong.Controls.Add(this.dateDongTien);
-            this.groupDongTienBoiThuong.Controls.Add(this.label22);
-            this.groupDongTienBoiThuong.Enabled = false;
-            this.groupDongTienBoiThuong.Location = new System.Drawing.Point(800, 58);
-            this.groupDongTienBoiThuong.Name = "groupDongTienBoiThuong";
-            this.groupDongTienBoiThuong.Size = new System.Drawing.Size(220, 94);
-            this.groupDongTienBoiThuong.TabIndex = 39;
-            this.groupDongTienBoiThuong.TabStop = false;
+            this.groupBoxDongTienBoiThuong.Controls.Add(this.txtSoTien);
+            this.groupBoxDongTienBoiThuong.Controls.Add(this.label23);
+            this.groupBoxDongTienBoiThuong.Controls.Add(this.dateDongTien);
+            this.groupBoxDongTienBoiThuong.Controls.Add(this.label22);
+            this.groupBoxDongTienBoiThuong.Enabled = false;
+            this.groupBoxDongTienBoiThuong.Location = new System.Drawing.Point(800, 58);
+            this.groupBoxDongTienBoiThuong.Name = "groupBoxDongTienBoiThuong";
+            this.groupBoxDongTienBoiThuong.Size = new System.Drawing.Size(220, 94);
+            this.groupBoxDongTienBoiThuong.TabIndex = 39;
+            this.groupBoxDongTienBoiThuong.TabStop = false;
             // 
             // txtSoTien
             // 
@@ -755,16 +755,16 @@
             this.chkChuyenCatHuy.UseVisualStyleBackColor = true;
             this.chkChuyenCatHuy.CheckedChanged += new System.EventHandler(this.chkChuyenCatHuy_CheckedChanged);
             // 
-            // groupChuyenCatHuy
+            // groupBoxChuyenCatHuy
             // 
-            this.groupChuyenCatHuy.Controls.Add(this.dateChuyenCatHuy);
-            this.groupChuyenCatHuy.Controls.Add(this.label24);
-            this.groupChuyenCatHuy.Enabled = false;
-            this.groupChuyenCatHuy.Location = new System.Drawing.Point(1026, 58);
-            this.groupChuyenCatHuy.Name = "groupChuyenCatHuy";
-            this.groupChuyenCatHuy.Size = new System.Drawing.Size(147, 94);
-            this.groupChuyenCatHuy.TabIndex = 58;
-            this.groupChuyenCatHuy.TabStop = false;
+            this.groupBoxChuyenCatHuy.Controls.Add(this.dateChuyenCatHuy);
+            this.groupBoxChuyenCatHuy.Controls.Add(this.label24);
+            this.groupBoxChuyenCatHuy.Enabled = false;
+            this.groupBoxChuyenCatHuy.Location = new System.Drawing.Point(1026, 58);
+            this.groupBoxChuyenCatHuy.Name = "groupBoxChuyenCatHuy";
+            this.groupBoxChuyenCatHuy.Size = new System.Drawing.Size(147, 94);
+            this.groupBoxChuyenCatHuy.TabIndex = 58;
+            this.groupBoxChuyenCatHuy.TabStop = false;
             // 
             // dateChuyenCatHuy
             // 
@@ -805,16 +805,16 @@
             this.chkLapBangGia.UseVisualStyleBackColor = true;
             this.chkLapBangGia.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // groupLapBangGia
+            // groupBoxLapBangGia
             // 
-            this.groupLapBangGia.Controls.Add(this.dateLapBangGia);
-            this.groupLapBangGia.Controls.Add(this.label26);
-            this.groupLapBangGia.Enabled = false;
-            this.groupLapBangGia.Location = new System.Drawing.Point(647, 58);
-            this.groupLapBangGia.Name = "groupLapBangGia";
-            this.groupLapBangGia.Size = new System.Drawing.Size(147, 94);
-            this.groupLapBangGia.TabIndex = 60;
-            this.groupLapBangGia.TabStop = false;
+            this.groupBoxLapBangGia.Controls.Add(this.dateLapBangGia);
+            this.groupBoxLapBangGia.Controls.Add(this.label26);
+            this.groupBoxLapBangGia.Enabled = false;
+            this.groupBoxLapBangGia.Location = new System.Drawing.Point(647, 58);
+            this.groupBoxLapBangGia.Name = "groupBoxLapBangGia";
+            this.groupBoxLapBangGia.Size = new System.Drawing.Size(147, 94);
+            this.groupBoxLapBangGia.TabIndex = 60;
+            this.groupBoxLapBangGia.TabStop = false;
             // 
             // dateLapBangGia
             // 
@@ -841,12 +841,12 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1184, 378);
             this.Controls.Add(this.chkLapBangGia);
-            this.Controls.Add(this.groupLapBangGia);
+            this.Controls.Add(this.groupBoxLapBangGia);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.chkChuyenCatHuy);
             this.Controls.Add(this.chkDongTienBoiThuong);
-            this.Controls.Add(this.groupChuyenCatHuy);
-            this.Controls.Add(this.groupDongTienBoiThuong);
+            this.Controls.Add(this.groupBoxChuyenCatHuy);
+            this.Controls.Add(this.groupBoxDongTienBoiThuong);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.txtMaDon);
             this.Controls.Add(this.groupBox2);
@@ -865,12 +865,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).EndInit();
-            this.groupDongTienBoiThuong.ResumeLayout(false);
-            this.groupDongTienBoiThuong.PerformLayout();
-            this.groupChuyenCatHuy.ResumeLayout(false);
-            this.groupChuyenCatHuy.PerformLayout();
-            this.groupLapBangGia.ResumeLayout(false);
-            this.groupLapBangGia.PerformLayout();
+            this.groupBoxDongTienBoiThuong.ResumeLayout(false);
+            this.groupBoxDongTienBoiThuong.PerformLayout();
+            this.groupBoxChuyenCatHuy.ResumeLayout(false);
+            this.groupBoxChuyenCatHuy.PerformLayout();
+            this.groupBoxLapBangGia.ResumeLayout(false);
+            this.groupBoxLapBangGia.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -930,7 +930,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtHieu;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.GroupBox groupDongTienBoiThuong;
+        private System.Windows.Forms.GroupBox groupBoxDongTienBoiThuong;
         private System.Windows.Forms.TextBox txtSoTien;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DateTimePicker dateDongTien;
@@ -939,12 +939,12 @@
         private System.Windows.Forms.Label lbTheoYeuCau;
         private System.Windows.Forms.TextBox txtTheoYeuCau;
         private System.Windows.Forms.CheckBox chkChuyenCatHuy;
-        private System.Windows.Forms.GroupBox groupChuyenCatHuy;
+        private System.Windows.Forms.GroupBox groupBoxChuyenCatHuy;
         private System.Windows.Forms.DateTimePicker dateChuyenCatHuy;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.CheckBox chkLapBangGia;
-        private System.Windows.Forms.GroupBox groupLapBangGia;
+        private System.Windows.Forms.GroupBox groupBoxLapBangGia;
         private System.Windows.Forms.DateTimePicker dateLapBangGia;
         private System.Windows.Forms.Label label26;
     }

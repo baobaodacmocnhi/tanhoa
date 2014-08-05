@@ -131,7 +131,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
             dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(ttkhachhang.DanhBo);
             dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(ttkhachhang.DanhBo);
-
+            LoadTongNK();
         }
 
         public void Clear()
@@ -160,6 +160,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtSX_BD.Text = "";
             txtDV_BD.Text = "";
             txtHCSN_BD.Text = "";
+            lbTongNK.Text = "";
 
             _ttkhachhang = null;
             dgvDSSoDangKy.DataSource = null;
@@ -167,6 +168,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvLichSuChungTu.DataSource = null;
             dgvDSChungTu.DataSource = null;
             flagFirst = true;
+        }
+
+        /// <summary>
+        /// Hiện thị Tổng số NK Đăng Ký của Danh Bộ
+        /// </summary>
+        public void LoadTongNK()
+        {
+            int TongNK = 0;
+            foreach (DataRow itemRow in ((DataTable)dgvDSSoDangKy.DataSource).Rows)
+            {
+                TongNK += int.Parse(itemRow["SoNKDangKy"].ToString());
+            }
+            lbTongNK.Text = "Tổng NK: " + TongNK;
         }
 
         private void dgvDSSoDangKy_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -239,7 +253,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("Phong", "");
             frmSoDK frm = new frmSoDK("Thêm", source);
             if (frm.ShowDialog() == DialogResult.OK)
+            {
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                LoadTongNK();
+            }
         }
 
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -273,7 +290,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("Phong", dgvDSSoDangKy.CurrentRow.Cells["Phong"].Value.ToString());
             frmSoDK frm = new frmSoDK("Sửa", source);
             if (frm.ShowDialog() == DialogResult.OK)
+            {
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                LoadTongNK();
+            }
         }
 
         private void cắtChuyểnĐịnhMứcToolStripMenuItem_Click(object sender, EventArgs e)
@@ -299,7 +319,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("SoNKDangKy", dgvDSSoDangKy.CurrentRow.Cells["SoNKDangKy"].Value.ToString());
             frmCatChuyenDM frm = new frmCatChuyenDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
+            {
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                LoadTongNK();
+            }
         }
 
         private void nhậnĐịnhMứctoolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -323,7 +346,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             source.Add("DiaChi", txtDiaChi.Text.Trim());
             frmNhanDM frm = new frmNhanDM(source);
             if (frm.ShowDialog() == DialogResult.OK)
+            {
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                LoadTongNK();
+            }
         }
 
         private void dgvDSSoDangKy_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -438,6 +464,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
                     dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(txtDanhBo.Text.Trim());
+                    LoadTongNK();
                 }
             }
         }
