@@ -9448,6 +9448,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnLyDo;
             
+            private global::System.Data.DataColumn columnNgayCatTamNutBit;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DSYCCHDBDataTable() {
@@ -9555,6 +9557,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NgayCatTamNutBitColumn {
+                get {
+                    return this.columnNgayCatTamNutBit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -9590,7 +9600,7 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DSYCCHDBRow AddDSYCCHDBRow(string TuNgay, string DenNgay, string SoPhieu, string DanhBo, string HoTen, string DiaChi, string HieuLucKy, string NgayLap, string LyDo) {
+            public DSYCCHDBRow AddDSYCCHDBRow(string TuNgay, string DenNgay, string SoPhieu, string DanhBo, string HoTen, string DiaChi, string HieuLucKy, string NgayLap, string LyDo, string NgayCatTamNutBit) {
                 DSYCCHDBRow rowDSYCCHDBRow = ((DSYCCHDBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TuNgay,
@@ -9601,7 +9611,8 @@ namespace KTKS_DonKH.BaoCao {
                         DiaChi,
                         HieuLucKy,
                         NgayLap,
-                        LyDo};
+                        LyDo,
+                        NgayCatTamNutBit};
                 rowDSYCCHDBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDSYCCHDBRow);
                 return rowDSYCCHDBRow;
@@ -9633,6 +9644,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnHieuLucKy = base.Columns["HieuLucKy"];
                 this.columnNgayLap = base.Columns["NgayLap"];
                 this.columnLyDo = base.Columns["LyDo"];
+                this.columnNgayCatTamNutBit = base.Columns["NgayCatTamNutBit"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9656,6 +9668,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnNgayLap);
                 this.columnLyDo = new global::System.Data.DataColumn("LyDo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLyDo);
+                this.columnNgayCatTamNutBit = new global::System.Data.DataColumn("NgayCatTamNutBit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNgayCatTamNutBit);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17580,6 +17594,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NgayCatTamNutBit {
+                get {
+                    try {
+                        return ((string)(this[this.tableDSYCCHDB.NgayCatTamNutBitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NgayCatTamNutBit\' in table \'DSYCCHDB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSYCCHDB.NgayCatTamNutBitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTuNgayNull() {
                 return this.IsNull(this.tableDSYCCHDB.TuNgayColumn);
             }
@@ -17684,6 +17714,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetLyDoNull() {
                 this[this.tableDSYCCHDB.LyDoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNgayCatTamNutBitNull() {
+                return this.IsNull(this.tableDSYCCHDB.NgayCatTamNutBitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNgayCatTamNutBitNull() {
+                this[this.tableDSYCCHDB.NgayCatTamNutBitColumn] = global::System.Convert.DBNull;
             }
         }
         

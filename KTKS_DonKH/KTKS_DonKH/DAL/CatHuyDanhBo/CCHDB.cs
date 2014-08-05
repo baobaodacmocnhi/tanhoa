@@ -1338,6 +1338,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemYCCHDB.GhiChuLyDo,
                                     itemYCCHDB.SoTien,
                                     itemYCCHDB.NguoiKy,
+                                    itemYCCHDB.NgayCatTamNutBit,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

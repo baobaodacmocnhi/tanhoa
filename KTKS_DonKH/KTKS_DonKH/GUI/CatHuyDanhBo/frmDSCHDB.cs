@@ -176,6 +176,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvDSYCCHDB.Columns["YC_LyDo"].Visible = true;
                 dgvDSYCCHDB.Columns["YC_GhiChuLyDo"].Visible = true;
                 dgvDSYCCHDB.Columns["YC_SoTien"].Visible = true;
+                dgvDSYCCHDB.Columns["YC_NgayCatTamNutBit"].Visible = true;
                 dgvDSYCCHDB.Columns["YC_PhieuDuocKy"].HeaderText = "Phiếu Được Ký";
                 //
                 gridControl.Visible = false;
@@ -201,6 +202,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvDSYCCHDB.Columns["YC_LyDo"].Visible = false;
                 dgvDSYCCHDB.Columns["YC_GhiChuLyDo"].Visible = false;
                 dgvDSYCCHDB.Columns["YC_SoTien"].Visible = false;
+                dgvDSYCCHDB.Columns["YC_NgayCatTamNutBit"].Visible = false;
                 dgvDSYCCHDB.Columns["YC_PhieuDuocKy"].HeaderText = "TB Được Ký";
                 //
                 gridControl.Visible = false;

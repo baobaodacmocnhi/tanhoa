@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
             this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
@@ -71,24 +71,24 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.btnSua = new System.Windows.Forms.Button();
             this.chkDongTienBoiThuong = new System.Windows.Forms.CheckBox();
-            this.groupDongTienBoiThuong = new System.Windows.Forms.GroupBox();
+            this.groupBoxDongTienBoiThuong = new System.Windows.Forms.GroupBox();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.dateDongTien = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
             this.chkChuyenCatHuy = new System.Windows.Forms.CheckBox();
-            this.groupChuyenCatHuy = new System.Windows.Forms.GroupBox();
+            this.groupBoxChuyenCatHuy = new System.Windows.Forms.GroupBox();
             this.dateChuyenCatHuy = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.chkLapBangGia = new System.Windows.Forms.CheckBox();
-            this.groupLapBangGia = new System.Windows.Forms.GroupBox();
+            this.groupBoxLapBangGia = new System.Windows.Forms.GroupBox();
             this.dateLapBangGia = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).BeginInit();
-            this.groupDongTienBoiThuong.SuspendLayout();
-            this.groupChuyenCatHuy.SuspendLayout();
-            this.groupLapBangGia.SuspendLayout();
+            this.groupBoxDongTienBoiThuong.SuspendLayout();
+            this.groupBoxChuyenCatHuy.SuspendLayout();
+            this.groupBoxLapBangGia.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbTheoYeuCau
@@ -464,14 +464,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -558,18 +558,18 @@
             this.chkDongTienBoiThuong.UseVisualStyleBackColor = true;
             this.chkDongTienBoiThuong.CheckedChanged += new System.EventHandler(this.chkDongTienBoiThuong_CheckedChanged);
             // 
-            // groupDongTienBoiThuong
+            // groupBoxDongTienBoiThuong
             // 
-            this.groupDongTienBoiThuong.Controls.Add(this.txtSoTien);
-            this.groupDongTienBoiThuong.Controls.Add(this.label23);
-            this.groupDongTienBoiThuong.Controls.Add(this.dateDongTien);
-            this.groupDongTienBoiThuong.Controls.Add(this.label22);
-            this.groupDongTienBoiThuong.Enabled = false;
-            this.groupDongTienBoiThuong.Location = new System.Drawing.Point(778, 319);
-            this.groupDongTienBoiThuong.Name = "groupDongTienBoiThuong";
-            this.groupDongTienBoiThuong.Size = new System.Drawing.Size(239, 70);
-            this.groupDongTienBoiThuong.TabIndex = 41;
-            this.groupDongTienBoiThuong.TabStop = false;
+            this.groupBoxDongTienBoiThuong.Controls.Add(this.txtSoTien);
+            this.groupBoxDongTienBoiThuong.Controls.Add(this.label23);
+            this.groupBoxDongTienBoiThuong.Controls.Add(this.dateDongTien);
+            this.groupBoxDongTienBoiThuong.Controls.Add(this.label22);
+            this.groupBoxDongTienBoiThuong.Enabled = false;
+            this.groupBoxDongTienBoiThuong.Location = new System.Drawing.Point(778, 319);
+            this.groupBoxDongTienBoiThuong.Name = "groupBoxDongTienBoiThuong";
+            this.groupBoxDongTienBoiThuong.Size = new System.Drawing.Size(239, 70);
+            this.groupBoxDongTienBoiThuong.TabIndex = 41;
+            this.groupBoxDongTienBoiThuong.TabStop = false;
             // 
             // txtSoTien
             // 
@@ -617,16 +617,16 @@
             this.chkChuyenCatHuy.UseVisualStyleBackColor = true;
             this.chkChuyenCatHuy.CheckedChanged += new System.EventHandler(this.chkChuyenCatHuy_CheckedChanged);
             // 
-            // groupChuyenCatHuy
+            // groupBoxChuyenCatHuy
             // 
-            this.groupChuyenCatHuy.Controls.Add(this.dateChuyenCatHuy);
-            this.groupChuyenCatHuy.Controls.Add(this.label6);
-            this.groupChuyenCatHuy.Enabled = false;
-            this.groupChuyenCatHuy.Location = new System.Drawing.Point(996, 228);
-            this.groupChuyenCatHuy.Name = "groupChuyenCatHuy";
-            this.groupChuyenCatHuy.Size = new System.Drawing.Size(153, 70);
-            this.groupChuyenCatHuy.TabIndex = 43;
-            this.groupChuyenCatHuy.TabStop = false;
+            this.groupBoxChuyenCatHuy.Controls.Add(this.dateChuyenCatHuy);
+            this.groupBoxChuyenCatHuy.Controls.Add(this.label6);
+            this.groupBoxChuyenCatHuy.Enabled = false;
+            this.groupBoxChuyenCatHuy.Location = new System.Drawing.Point(996, 228);
+            this.groupBoxChuyenCatHuy.Name = "groupBoxChuyenCatHuy";
+            this.groupBoxChuyenCatHuy.Size = new System.Drawing.Size(153, 70);
+            this.groupBoxChuyenCatHuy.TabIndex = 43;
+            this.groupBoxChuyenCatHuy.TabStop = false;
             // 
             // dateChuyenCatHuy
             // 
@@ -657,16 +657,16 @@
             this.chkLapBangGia.UseVisualStyleBackColor = true;
             this.chkLapBangGia.CheckedChanged += new System.EventHandler(this.chkLapBangGia_CheckedChanged);
             // 
-            // groupLapBangGia
+            // groupBoxLapBangGia
             // 
-            this.groupLapBangGia.Controls.Add(this.dateLapBangGia);
-            this.groupLapBangGia.Controls.Add(this.label2);
-            this.groupLapBangGia.Enabled = false;
-            this.groupLapBangGia.Location = new System.Drawing.Point(778, 228);
-            this.groupLapBangGia.Name = "groupLapBangGia";
-            this.groupLapBangGia.Size = new System.Drawing.Size(153, 70);
-            this.groupLapBangGia.TabIndex = 45;
-            this.groupLapBangGia.TabStop = false;
+            this.groupBoxLapBangGia.Controls.Add(this.dateLapBangGia);
+            this.groupBoxLapBangGia.Controls.Add(this.label2);
+            this.groupBoxLapBangGia.Enabled = false;
+            this.groupBoxLapBangGia.Location = new System.Drawing.Point(778, 228);
+            this.groupBoxLapBangGia.Name = "groupBoxLapBangGia";
+            this.groupBoxLapBangGia.Size = new System.Drawing.Size(153, 70);
+            this.groupBoxLapBangGia.TabIndex = 45;
+            this.groupBoxLapBangGia.TabStop = false;
             // 
             // dateLapBangGia
             // 
@@ -693,11 +693,11 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1154, 493);
             this.Controls.Add(this.chkLapBangGia);
-            this.Controls.Add(this.groupLapBangGia);
+            this.Controls.Add(this.groupBoxLapBangGia);
             this.Controls.Add(this.chkChuyenCatHuy);
-            this.Controls.Add(this.groupChuyenCatHuy);
+            this.Controls.Add(this.groupBoxChuyenCatHuy);
             this.Controls.Add(this.chkDongTienBoiThuong);
-            this.Controls.Add(this.groupDongTienBoiThuong);
+            this.Controls.Add(this.groupBoxDongTienBoiThuong);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label21);
@@ -711,12 +711,12 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSKetQuaKiemTra)).EndInit();
-            this.groupDongTienBoiThuong.ResumeLayout(false);
-            this.groupDongTienBoiThuong.PerformLayout();
-            this.groupChuyenCatHuy.ResumeLayout(false);
-            this.groupChuyenCatHuy.PerformLayout();
-            this.groupLapBangGia.ResumeLayout(false);
-            this.groupLapBangGia.PerformLayout();
+            this.groupBoxDongTienBoiThuong.ResumeLayout(false);
+            this.groupBoxDongTienBoiThuong.PerformLayout();
+            this.groupBoxChuyenCatHuy.ResumeLayout(false);
+            this.groupBoxChuyenCatHuy.PerformLayout();
+            this.groupBoxLapBangGia.ResumeLayout(false);
+            this.groupBoxLapBangGia.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -766,17 +766,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.CheckBox chkDongTienBoiThuong;
-        private System.Windows.Forms.GroupBox groupDongTienBoiThuong;
+        private System.Windows.Forms.GroupBox groupBoxDongTienBoiThuong;
         private System.Windows.Forms.TextBox txtSoTien;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DateTimePicker dateDongTien;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.CheckBox chkChuyenCatHuy;
-        private System.Windows.Forms.GroupBox groupChuyenCatHuy;
+        private System.Windows.Forms.GroupBox groupBoxChuyenCatHuy;
         private System.Windows.Forms.DateTimePicker dateChuyenCatHuy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkLapBangGia;
-        private System.Windows.Forms.GroupBox groupLapBangGia;
+        private System.Windows.Forms.GroupBox groupBoxLapBangGia;
         private System.Windows.Forms.DateTimePicker dateLapBangGia;
         private System.Windows.Forms.Label label2;
     }

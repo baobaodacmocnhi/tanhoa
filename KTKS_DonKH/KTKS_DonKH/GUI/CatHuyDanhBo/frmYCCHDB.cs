@@ -29,6 +29,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB _cCHDB = new CCHDB();
+        YeuCauCHDB _ycchdb = null;
 
         public frmYCCHDB()
         {
@@ -71,6 +72,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             _ttkhachhang = null;
             _donkh = null;
             _dontxl = null;
+            _ycchdb = null;
         }
 
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -97,7 +99,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     }
                     else
                     {
-                        _dontxl = null;
+                        //_dontxl = null;
                         Clear();
                         MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -121,7 +123,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
                 else
                 {
-                    _donkh = null;
+                    //_donkh = null;
                     Clear();
                     MessageBox.Show("Mã Đơn này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -314,6 +316,92 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void MaYCCHDB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtMaYCCHDB.Text.Trim() != "")
+            {
+                if (_cCHDB.getYeuCauCHDbyID(decimal.Parse(txtMaYCCHDB.Text.Trim().Replace("-", ""))) != null)
+                {
+                    _ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(txtMaYCCHDB.Text.Trim().Replace("-", "")));
+                    if (!string.IsNullOrEmpty(_ycchdb.MaDonTXL.ToString()))
+                        txtMaDon.Text = "TXL" + _ycchdb.MaDonTXL.ToString().Insert(_ycchdb.MaDonTXL.ToString().Length - 2, "-");
+                    else
+                        if (!string.IsNullOrEmpty(_ycchdb.MaDon.ToString()))
+                            txtMaDon.Text = _ycchdb.MaDon.ToString().Insert(_ycchdb.MaDon.ToString().Length - 2, "-");
+
+                    txtMaYCCHDB.Text = _ycchdb.MaYCCHDB.ToString().Insert(_ycchdb.MaYCCHDB.ToString().Length - 2, "-");
+                    ///
+                    txtDanhBo.Text = _ycchdb.DanhBo;
+                    txtHopDong.Text = _ycchdb.HopDong;
+                    txtHoTen.Text = _ycchdb.HoTen;
+                    txtDiaChi.Text = _ycchdb.DiaChi;
+                    ///
+                    cmbLyDo.SelectedItem = _ycchdb.LyDo;
+                    txtSoTien.Text = _ycchdb.SoTien.ToString();
+                    txtHieuLucKy.Text = _ycchdb.HieuLucKy;
+                    txtGhiChuXuLy.Text = _ycchdb.GhiChuLyDo;
+                    ///
+                    if (_ycchdb.CatTamNutBit)
+                    {
+                        chkCatTamNutBit.Checked = true;
+                        dateCatTamNutBit.Value = _ycchdb.NgayCatTamNutBit.Value;
+                    }
+                    else
+                    {
+                        chkCatTamNutBit.Checked = false;
+                        dateCatTamNutBit.Value = DateTime.Now;
+                    }
+                }
+                else
+                {
+                    //_ycchdb = null;
+                    Clear();
+                    MessageBox.Show("Số Phiếu này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void chkCatTamNutBit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCatTamNutBit.Checked)
+            {
+                groupBoxCatTamNutBit.Enabled = true;
+            }
+            else
+            {
+                groupBoxCatTamNutBit.Enabled = false;
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (_ycchdb != null)
+            {
+                _ycchdb.LyDo = cmbLyDo.SelectedItem.ToString();
+                _ycchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
+                if (txtSoTien.Text.Trim() != "")
+                    _ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                _ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                if (chkCatTamNutBit.Checked)
+                {
+                    _ycchdb.CatTamNutBit = true;
+                    _ycchdb.NgayCatTamNutBit = dateCatTamNutBit.Value;
+                }
+                else
+                {
+                    _ycchdb.CatTamNutBit = false;
+                    _ycchdb.NgayCatTamNutBit = null;
+                }
+                if (_cCHDB.SuaYeuCauCHDB(_ycchdb))
+                {
+                    Clear();
+                    MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+                MessageBox.Show("Chưa chọn Phiếu YCCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         
     }

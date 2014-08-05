@@ -50,8 +50,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnInPhieu = new System.Windows.Forms.Button();
+            this.txtMaYCCHDB = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.chkCatTamNutBit = new System.Windows.Forms.CheckBox();
+            this.dateCatTamNutBit = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBoxCatTamNutBit = new System.Windows.Forms.GroupBox();
+            this.btnSua = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
+            this.groupBoxCatTamNutBit.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMaDon
@@ -253,7 +261,7 @@
             // 
             this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(717, 181);
+            this.btnLuu.Location = new System.Drawing.Point(600, 223);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
             this.btnLuu.TabIndex = 6;
@@ -266,7 +274,7 @@
             // 
             this.btnInPhieu.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnInPhieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInPhieu.Location = new System.Drawing.Point(793, 181);
+            this.btnInPhieu.Location = new System.Drawing.Point(455, 223);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(135, 35);
             this.btnInPhieu.TabIndex = 18;
@@ -276,12 +284,87 @@
             this.btnInPhieu.Visible = false;
             this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
             // 
+            // txtMaYCCHDB
+            // 
+            this.txtMaYCCHDB.Location = new System.Drawing.Point(519, 6);
+            this.txtMaYCCHDB.Name = "txtMaYCCHDB";
+            this.txtMaYCCHDB.Size = new System.Drawing.Size(100, 25);
+            this.txtMaYCCHDB.TabIndex = 20;
+            this.txtMaYCCHDB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MaYCCHDB_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(452, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 17);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Số Phiếu:";
+            // 
+            // chkCatTamNutBit
+            // 
+            this.chkCatTamNutBit.AutoSize = true;
+            this.chkCatTamNutBit.Location = new System.Drawing.Point(676, 129);
+            this.chkCatTamNutBit.Name = "chkCatTamNutBit";
+            this.chkCatTamNutBit.Size = new System.Drawing.Size(126, 21);
+            this.chkCatTamNutBit.TabIndex = 21;
+            this.chkCatTamNutBit.Text = "Cắt Tạm Nút Bít";
+            this.chkCatTamNutBit.UseVisualStyleBackColor = true;
+            this.chkCatTamNutBit.CheckedChanged += new System.EventHandler(this.chkCatTamNutBit_CheckedChanged);
+            // 
+            // dateCatTamNutBit
+            // 
+            this.dateCatTamNutBit.CustomFormat = "dd/MM/yyyy";
+            this.dateCatTamNutBit.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateCatTamNutBit.Location = new System.Drawing.Point(8, 40);
+            this.dateCatTamNutBit.Name = "dateCatTamNutBit";
+            this.dateCatTamNutBit.Size = new System.Drawing.Size(109, 25);
+            this.dateCatTamNutBit.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(10, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 17);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Ngày Cắt";
+            // 
+            // groupBoxCatTamNutBit
+            // 
+            this.groupBoxCatTamNutBit.Controls.Add(this.dateCatTamNutBit);
+            this.groupBoxCatTamNutBit.Controls.Add(this.label9);
+            this.groupBoxCatTamNutBit.Enabled = false;
+            this.groupBoxCatTamNutBit.Location = new System.Drawing.Point(676, 145);
+            this.groupBoxCatTamNutBit.Name = "groupBoxCatTamNutBit";
+            this.groupBoxCatTamNutBit.Size = new System.Drawing.Size(126, 72);
+            this.groupBoxCatTamNutBit.TabIndex = 24;
+            this.groupBoxCatTamNutBit.TabStop = false;
+            // 
+            // btnSua
+            // 
+            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(737, 223);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(65, 35);
+            this.btnSua.TabIndex = 17;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // frmYCCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(938, 228);
+            this.ClientSize = new System.Drawing.Size(938, 279);
+            this.Controls.Add(this.btnSua);
+            this.Controls.Add(this.groupBoxCatTamNutBit);
+            this.Controls.Add(this.chkCatTamNutBit);
+            this.Controls.Add(this.txtMaYCCHDB);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.groupBoxNguyenNhanXuLy);
             this.Controls.Add(this.groupBox1);
@@ -296,6 +379,8 @@
             this.groupBox1.PerformLayout();
             this.groupBoxNguyenNhanXuLy.ResumeLayout(false);
             this.groupBoxNguyenNhanXuLy.PerformLayout();
+            this.groupBoxCatTamNutBit.ResumeLayout(false);
+            this.groupBoxCatTamNutBit.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,5 +410,12 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtHieuLucKy;
         private System.Windows.Forms.Button btnInPhieu;
+        private System.Windows.Forms.TextBox txtMaYCCHDB;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chkCatTamNutBit;
+        private System.Windows.Forms.DateTimePicker dateCatTamNutBit;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBoxCatTamNutBit;
+        private System.Windows.Forms.Button btnSua;
     }
 }

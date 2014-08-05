@@ -218,25 +218,25 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void chkLapBangGia_CheckedChanged(object sender, EventArgs e)
         {
             if (chkLapBangGia.Checked)
-                groupLapBangGia.Enabled = true;
+                groupBoxLapBangGia.Enabled = true;
             else
-                groupLapBangGia.Enabled = false;
+                groupBoxLapBangGia.Enabled = false;
         }
 
         private void chkDongTienBoiThuong_CheckedChanged(object sender, EventArgs e)
         {
             if (chkDongTienBoiThuong.Checked)
-                groupDongTienBoiThuong.Enabled = true;
+                groupBoxDongTienBoiThuong.Enabled = true;
             else
-                groupDongTienBoiThuong.Enabled = false;
+                groupBoxDongTienBoiThuong.Enabled = false;
         }
 
         private void chkChuyenCatHuy_CheckedChanged(object sender, EventArgs e)
         {
             if (chkChuyenCatHuy.Checked)
-                groupChuyenCatHuy.Enabled = true;
+                groupBoxChuyenCatHuy.Enabled = true;
             else
-                groupChuyenCatHuy.Enabled = false;
+                groupBoxChuyenCatHuy.Enabled = false;
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
