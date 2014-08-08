@@ -38,6 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.radDSYCCHDB = new System.Windows.Forms.RadioButton();
+            this.radDSYCCHDBNutBit = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             this.radThongKeSoLuong.Name = "radThongKeSoLuong";
             this.radThongKeSoLuong.Size = new System.Drawing.Size(147, 21);
             this.radThongKeSoLuong.TabIndex = 29;
+            this.radThongKeSoLuong.TabStop = true;
             this.radThongKeSoLuong.Text = "Thống Kê Số Lượng";
             this.radThongKeSoLuong.UseVisualStyleBackColor = true;
             // 
@@ -144,12 +146,23 @@
             this.radDSYCCHDB.Text = "Danh Sách Yêu Cầu CHDB";
             this.radDSYCCHDB.UseVisualStyleBackColor = true;
             // 
+            // radDSYCCHDBNutBit
+            // 
+            this.radDSYCCHDBNutBit.AutoSize = true;
+            this.radDSYCCHDBNutBit.Location = new System.Drawing.Point(224, 7);
+            this.radDSYCCHDBNutBit.Name = "radDSYCCHDBNutBit";
+            this.radDSYCCHDBNutBit.Size = new System.Drawing.Size(250, 21);
+            this.radDSYCCHDBNutBit.TabIndex = 31;
+            this.radDSYCCHDBNutBit.Text = "Danh Sách Yêu Cầu CHDB (Nút Bít)";
+            this.radDSYCCHDBNutBit.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.radDSYCCHDBNutBit);
             this.Controls.Add(this.radDSYCCHDB);
             this.Controls.Add(this.radThongKeSoLuong);
             this.Controls.Add(this.btnBaoCao);
@@ -180,6 +193,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
         private System.Windows.Forms.RadioButton radDSYCCHDB;
+        private System.Windows.Forms.RadioButton radDSYCCHDBNutBit;
 
     }
 }
