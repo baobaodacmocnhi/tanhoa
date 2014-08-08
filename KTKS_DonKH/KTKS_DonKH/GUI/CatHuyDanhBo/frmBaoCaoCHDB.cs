@@ -146,7 +146,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 crystalReportViewer1.ReportSource = rpt;
             }
             ///
-            if (radDSYCCHDB.Checked)
+            if (radDSYCCHDB.Checked||radDSYCCHDBNutBit.Checked)
             {
                 DataTable dtYCCHDB = new DataTable();
 
@@ -162,32 +162,67 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
-                foreach (DataRow itemRow in dtYCCHDB.Rows)
+                if (radDSYCCHDB.Checked)
                 {
-                    DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
-                    dr["TuNgay"] = _tuNgay;
-                    dr["DenNgay"] = _denNgay;
-                    dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length-2,"-");
-                    dr["NgayLap"] = itemRow["CreateDate"];
-                    dr["HieuLucKy"] = itemRow["HieuLucKy"];
-                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["HoTen"] = itemRow["HoTen"];
-                    dr["DiaChi"] = itemRow["DiaChi"];
-                    if (itemRow["LyDo"].ToString() == "Vấn Đề Khác")
-                        dr["LyDo"] = itemRow["GhiChuLyDo"];
-                    else
-                        dr["LyDo"] = itemRow["LyDo"] + " " + itemRow["GhiChuLyDo"];
+                    foreach (DataRow itemRow in dtYCCHDB.Rows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                        dr["TuNgay"] = _tuNgay;
+                        dr["DenNgay"] = _denNgay;
+                        dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
+                        dr["NgayLap"] = itemRow["CreateDate"];
+                        dr["HieuLucKy"] = itemRow["HieuLucKy"];
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = itemRow["HoTen"];
+                        dr["DiaChi"] = itemRow["DiaChi"];
+                        if (itemRow["LyDo"].ToString() == "Vấn Đề Khác")
+                            dr["LyDo"] = itemRow["GhiChuLyDo"];
+                        else
+                            dr["LyDo"] = itemRow["LyDo"] + " " + itemRow["GhiChuLyDo"];
 
-                    dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                        dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                    }
+
+                    dateTu.Value = DateTime.Now;
+                    dateDen.Value = DateTime.Now;
+                    _tuNgay = _denNgay = "";
+
+                    rptDSYCCHDB rpt = new rptDSYCCHDB();
+                    rpt.SetDataSource(dsBaoCao);
+                    crystalReportViewer1.ReportSource = rpt;
                 }
+                else
+                if (radDSYCCHDBNutBit.Checked)
+                {
+                    foreach (DataRow itemRow in dtYCCHDB.Rows)
+                        if (!string.IsNullOrEmpty(itemRow["NgayCatTamNutBit"].ToString()))
+                        {
+                            DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                            dr["TuNgay"] = _tuNgay;
+                            dr["DenNgay"] = _denNgay;
+                            dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
+                            dr["NgayLap"] = itemRow["CreateDate"];
+                            dr["HieuLucKy"] = itemRow["HieuLucKy"];
+                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            dr["HoTen"] = itemRow["HoTen"];
+                            dr["DiaChi"] = itemRow["DiaChi"];
+                            if (itemRow["LyDo"].ToString() == "Vấn Đề Khác")
+                                dr["LyDo"] = itemRow["GhiChuLyDo"];
+                            else
+                                dr["LyDo"] = itemRow["LyDo"] + " " + itemRow["GhiChuLyDo"];
 
-                dateTu.Value = DateTime.Now;
-                dateDen.Value = DateTime.Now;
-                _tuNgay = _denNgay = "";
+                            dr["NgayCatTamNutBit"] = itemRow["NgayCatTamNutBit"];
+                            dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                        }
 
-                rptDSYCCHDB rpt = new rptDSYCCHDB();
-                rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
+                    dateTu.Value = DateTime.Now;
+                    dateDen.Value = DateTime.Now;
+                    _tuNgay = _denNgay = "";
+
+                    rptDSCatTamNutBit rpt = new rptDSCatTamNutBit();
+                    rpt.SetDataSource(dsBaoCao);
+                    crystalReportViewer1.ReportSource = rpt;
+                }
             }
         }
 

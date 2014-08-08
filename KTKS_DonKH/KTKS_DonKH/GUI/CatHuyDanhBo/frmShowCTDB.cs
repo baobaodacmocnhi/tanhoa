@@ -109,7 +109,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                 dr["HoTen"] = _ctctdb.HoTen;
                 dr["DiaChi"] = _ctctdb.DiaChi;
-                dr["DanhBo"] = _ctctdb.DanhBo;
+                dr["DanhBo"] = _ctctdb.DanhBo.Insert(7, " ").Insert(4, " "); ;
                 dr["HopDong"] = _ctctdb.HopDong;
                 if (_ctctdb.LyDo != "Vấn Đề Khác")
                     dr["LyDo"] = _ctctdb.LyDo + ". ";
