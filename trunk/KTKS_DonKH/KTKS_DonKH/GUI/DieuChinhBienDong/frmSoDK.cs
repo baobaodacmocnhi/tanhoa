@@ -81,6 +81,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 cmbLoaiCT.SelectedValue = _cLoaiChungTu.getMaLCTbyTenLCT(_source["TenLCT"]);
                 txtMaCT.Text = _source["MaCT"];
                 txtDiaChi.Text = _source["DiaChi"];
+                if (_action == "Thêm")
+                    txtDiaChi.Text = _source["DiaChiKH"];
                 txtGhiChu.Text = _source["GhiChu"];
                 txtSoNKTong.Text = _source["SoNKTong"];
                 txtSoNKDangKy.Text = _source["SoNKDangKy"];

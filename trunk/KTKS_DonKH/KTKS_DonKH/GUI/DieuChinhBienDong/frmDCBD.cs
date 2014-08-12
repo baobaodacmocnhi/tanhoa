@@ -991,7 +991,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("Phong", "");
                 frmSoDK frm = new frmSoDK("Thêm", source);
                 if (frm.ShowDialog() == DialogResult.OK)
+                {
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                    LoadTongNK();
+                }
                 //thêmToolStripMenuItem.PerformClick();
             }
             if ((_donkh != null || _dontxl != null) && e.Control && e.KeyCode == Keys.D2)
@@ -1014,7 +1017,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 source.Add("DiaChi", txtDiaChi.Text.Trim());
                 frmNhanDM frm = new frmNhanDM(source);
                 if (frm.ShowDialog() == DialogResult.OK)
+                {
                     dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(_ttkhachhang.DanhBo);
+                    LoadTongNK();
+                }
                 //nhậnĐịnhMứctoolStripMenuItem.PerformClick();
             }
             if (e.Control && e.KeyCode == Keys.D3)

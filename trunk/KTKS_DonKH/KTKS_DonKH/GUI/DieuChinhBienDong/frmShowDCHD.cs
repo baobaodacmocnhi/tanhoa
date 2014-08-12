@@ -475,6 +475,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtTongCong_End.Text = (int.Parse(txtTongCong_Start.Text.Trim()) + int.Parse(txtTongCong_BD.Text.Trim())).ToString();
         }
 
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (_ctdchd != null)
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_cDCBD.XoaCTDCHD(_ctdchd))
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+        }
+
         
     }
 }

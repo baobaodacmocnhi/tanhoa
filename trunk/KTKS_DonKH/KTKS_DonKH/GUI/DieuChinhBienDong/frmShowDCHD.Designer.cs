@@ -90,6 +90,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.chkKhauTru = new System.Windows.Forms.CheckBox();
             this.txtSoTienKhauTru = new System.Windows.Forms.TextBox();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -732,12 +733,26 @@
             this.txtSoTienKhauTru.TabIndex = 19;
             this.txtSoTienKhauTru.Text = "0";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(890, 342);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(67, 35);
+            this.btnXoa.TabIndex = 85;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(969, 388);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.chkKhauTru);
             this.Controls.Add(this.txtSoTienKhauTru);
             this.Controls.Add(this.btnSua);
@@ -830,5 +845,6 @@
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.CheckBox chkKhauTru;
         private System.Windows.Forms.TextBox txtSoTienKhauTru;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
