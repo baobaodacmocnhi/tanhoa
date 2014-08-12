@@ -390,5 +390,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _ttkhachhang = null;
         }
 
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (_ctdcbd != null)
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_cDCBD.XoaCTDCBD(_ctdcbd))
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+        }
+
     }
 }
