@@ -240,7 +240,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             source.Add("DanhBo", txtDanhBo.Text.Trim());
             source.Add("HoTenKH", txtHoTen.Text.Trim());
-            source.Add("DiaChiKH", txtDiaChi.Text.Trim());
+            source.Add("DiaChiKH", txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(",")));
             source.Add("TenLCT", "Hộ Khẩu");
             source.Add("MaCT", "");
             source.Add("DiaChi", "");
@@ -978,7 +978,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 source.Add("DanhBo", txtDanhBo.Text.Trim());
                 source.Add("HoTenKH", txtHoTen.Text.Trim());
-                source.Add("DiaChiKH", txtDiaChi.Text.Trim());
+                source.Add("DiaChiKH", txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(",")));
                 source.Add("TenLCT", "Hộ Khẩu");
                 source.Add("MaCT", "");
                 source.Add("DiaChi", "");
