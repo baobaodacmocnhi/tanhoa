@@ -73,6 +73,7 @@
             this.btnIn = new System.Windows.Forms.Button();
             this.chkKetQuaTCTBXuLy = new System.Windows.Forms.CheckBox();
             this.chkKetQuaCapTrenXuLy = new System.Windows.Forms.CheckBox();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
@@ -531,12 +532,26 @@
             this.chkKetQuaCapTrenXuLy.UseVisualStyleBackColor = true;
             this.chkKetQuaCapTrenXuLy.CheckedChanged += new System.EventHandler(this.chkKetQuaCapTrenXuLy_CheckedChanged);
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(856, 248);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(67, 35);
+            this.btnXoa.TabIndex = 85;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmShowCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 500);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.chkKetQuaCapTrenXuLy);
             this.Controls.Add(this.chkKetQuaTCTBXuLy);
             this.Controls.Add(this.btnSua);
@@ -622,5 +637,6 @@
         private System.Windows.Forms.CheckBox chkKetQuaCapTrenXuLy;
         private System.Windows.Forms.CheckBox chkCatTam;
         private System.Windows.Forms.CheckBox chkTroNgai;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

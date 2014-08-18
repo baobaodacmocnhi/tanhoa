@@ -70,6 +70,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.txtHieuLucKy = new System.Windows.Forms.TextBox();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBoxKetQuaCapTrenXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -500,12 +501,26 @@
             this.txtHieuLucKy.Size = new System.Drawing.Size(58, 25);
             this.txtHieuLucKy.TabIndex = 13;
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(856, 248);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(67, 35);
+            this.btnXoa.TabIndex = 86;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmShowCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 500);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.txtHieuLucKy);
@@ -586,5 +601,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnInPhieu;
         private System.Windows.Forms.TextBox txtHieuLucKy;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
