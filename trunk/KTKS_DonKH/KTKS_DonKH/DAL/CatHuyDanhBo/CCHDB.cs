@@ -499,6 +499,32 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public bool XoaCTCHDB(CTCTDB ctctdb)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    db.CTCTDBs.DeleteOnSubmit(ctctdb);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Xóa CTCTDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTCTDBs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         public bool CheckCTCTDBbyID(decimal MaCTCTDB)
         {
             try
@@ -804,6 +830,32 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     ctchdb.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTCHDBs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaCTCHDB(CTCHDB ctchdb)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    db.CTCHDBs.DeleteOnSubmit(ctchdb);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Xóa CTCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

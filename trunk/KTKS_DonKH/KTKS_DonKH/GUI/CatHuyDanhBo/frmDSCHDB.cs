@@ -580,6 +580,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCTCTDB"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
+                else
+                    if (frm.ShowDialog() == DialogResult.OK)
+                        Invalidate();
             }
         }
 
@@ -641,6 +644,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCTCHDB"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
+                else
+                    if (frm.ShowDialog() == DialogResult.OK)
+                        Invalidate();
             }
         }
 
@@ -791,13 +797,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
                     frmShowCTDB frm = new frmShowCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
-                    frm.ShowDialog();
+                    if (frm.ShowDialog() == DialogResult.OK)
+                        Invalidate();
                 }
             if (radDSCatHuyDanhBo.Checked || radDSCatHuyDanhBo_TXL.Checked)
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
                     frmShowCHDB frm = new frmShowCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
-                    frm.ShowDialog();
+                    if (frm.ShowDialog() == DialogResult.OK)
+                        Invalidate();
                 }
         }
 
