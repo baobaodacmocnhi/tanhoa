@@ -22,6 +22,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmTimKiemChungTu_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(70, 70);
             dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
         }

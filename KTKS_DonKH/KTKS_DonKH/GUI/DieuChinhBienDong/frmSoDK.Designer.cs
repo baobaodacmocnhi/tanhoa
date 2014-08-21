@@ -167,6 +167,7 @@
             this.cmbLoaiCT.Size = new System.Drawing.Size(200, 25);
             this.cmbLoaiCT.TabIndex = 17;
             this.cmbLoaiCT.SelectedIndexChanged += new System.EventHandler(this.cmbLoaiCT_SelectedIndexChanged);
+            this.cmbLoaiCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbLoaiCT_KeyPress);
             // 
             // label3
             // 

@@ -344,6 +344,7 @@
             this.txtDiaChi_Cat.Name = "txtDiaChi_Cat";
             this.txtDiaChi_Cat.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChi_Cat.TabIndex = 7;
+            this.txtDiaChi_Cat.TextChanged += new System.EventHandler(this.txtDiaChi_Cat_TextChanged);
             // 
             // label6
             // 

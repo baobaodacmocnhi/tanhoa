@@ -144,6 +144,7 @@
             this.txtDiaChi_Cat.Name = "txtDiaChi_Cat";
             this.txtDiaChi_Cat.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChi_Cat.TabIndex = 7;
+            this.txtDiaChi_Cat.TextChanged += new System.EventHandler(this.txtDiaChi_Cat_TextChanged);
             this.txtDiaChi_Cat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_Cat_KeyPress);
             // 
             // label3
