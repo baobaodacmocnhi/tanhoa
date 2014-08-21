@@ -618,6 +618,8 @@
             this.Controls.Add(this.label21);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmShowDongNuoc";
             this.Text = "Hiển Thị Đóng Nước";
             this.Load += new System.EventHandler(this.frmShowDongNuoc_Load);

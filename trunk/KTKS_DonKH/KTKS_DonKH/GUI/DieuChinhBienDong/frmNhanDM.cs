@@ -235,5 +235,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             this.DialogResult = DialogResult.OK;
         }
 
+        private void txtDiaChi_Cat_TextChanged(object sender, EventArgs e)
+        {
+            txtDiaChiCT_Cat.Text = txtDiaChi_Cat.Text.Trim();
+        }
+
     }
 }

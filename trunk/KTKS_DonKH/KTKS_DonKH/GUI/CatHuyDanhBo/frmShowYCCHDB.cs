@@ -43,6 +43,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 else
                     if (!string.IsNullOrEmpty(_ycchdb.MaDon.ToString()))
                         txtMaDon.Text = _ycchdb.MaDon.Value.ToString().Insert(_ycchdb.MaDon.Value.ToString().Length - 2, "-");
+
+                txtMaYCCHDB.Text = _ycchdb.MaYCCHDB.ToString().Insert(_ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                 txtDanhBo.Text = _ycchdb.DanhBo;
                 txtHopDong.Text = _ycchdb.HopDong;
                 txtHoTen.Text = _ycchdb.HoTen;
@@ -74,6 +76,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtSoTien.Text.Trim() != "")
                         _ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
                     _ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                    if (chkCatTamNutBit.Checked)
+                    {
+                        _ycchdb.CatTamNutBit = true;
+                        _ycchdb.NgayCatTamNutBit = dateCatTamNutBit.Value;
+                    }
+                    else
+                    {
+                        _ycchdb.CatTamNutBit = false;
+                        _ycchdb.NgayCatTamNutBit = null;
+                    }
                     if (_cCHDB.SuaYeuCauCHDB(_ycchdb))
                     {
                         MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -121,6 +133,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     rpt.Subreports[j].SetDataSource(dsBaoCao);
                 }
+                //rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }

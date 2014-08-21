@@ -674,6 +674,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         #region Configure TextBox
 
+        private void cmbLoaiCT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtMaCT.Focus();
+        }
+
         private void txtMaCT_Leave(object sender, EventArgs e)
         {
             
@@ -841,6 +847,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             this.DialogResult = DialogResult.OK;
         }
+
+        
 
         
     }

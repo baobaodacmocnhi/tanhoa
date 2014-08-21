@@ -181,6 +181,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 TongNK += int.Parse(itemRow["SoNKDangKy"].ToString());
             }
             lbTongNK.Text = "Tổng NK: " + TongNK;
+            lbTongDM.Text = "Tổng ĐM: " + TongNK * 4;
         }
 
         private void dgvDSSoDangKy_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
