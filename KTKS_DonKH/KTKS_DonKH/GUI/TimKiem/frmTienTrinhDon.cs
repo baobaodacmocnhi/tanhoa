@@ -41,13 +41,13 @@ namespace KTKS_DonKH.GUI.TimKiem
             cmbTimTheo.SelectedIndex = 0;
             gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh", gridViewKTXM);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động", gridViewDCBD);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ", gridViewCHDB);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", gridViewCHDB);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
             ///Tổ Xử Lý
             gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh TXL", gridViewKTXM_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động TXL", gridViewDCBD_TXL);
-            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Hủy Danh Bộ TXL", gridViewCHDB_TXL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ TXL", gridViewCHDB_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời TXL", gridViewTTTTL_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì TXL", gridViewBamChi_TXL);
         }
@@ -291,7 +291,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Hủy")
             {
-                frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
+                frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -299,7 +299,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Tạm")
             {
-                frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
+                frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -421,7 +421,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Hủy")
             {
-                frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
+                frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
@@ -429,7 +429,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Tạm")
             {
-                frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
+                frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()), true);
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;

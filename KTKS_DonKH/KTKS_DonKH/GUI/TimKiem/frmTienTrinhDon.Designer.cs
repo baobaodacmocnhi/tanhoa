@@ -175,6 +175,8 @@
             this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
+            this.gridColumn119 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn120 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDCBD)).BeginInit();
@@ -623,7 +625,8 @@
             this.gridColumn39,
             this.gridColumn40,
             this.gridColumn111,
-            this.gridColumn112});
+            this.gridColumn112,
+            this.gridColumn119});
             this.gridViewCHDB.GridControl = this.gridControl;
             this.gridViewCHDB.IndicatorWidth = 41;
             this.gridViewCHDB.Name = "gridViewCHDB";
@@ -986,7 +989,8 @@
             this.gridColumn60,
             this.gridColumn61,
             this.gridColumn113,
-            this.gridColumn114});
+            this.gridColumn114,
+            this.gridColumn120});
             this.gridViewCHDB_TXL.GridControl = this.gridControl;
             this.gridViewCHDB_TXL.IndicatorWidth = 41;
             this.gridViewCHDB_TXL.Name = "gridViewCHDB_TXL";
@@ -1825,13 +1829,29 @@
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
+            // gridColumn119
+            // 
+            this.gridColumn119.Caption = "Ngày Lập Phiếu";
+            this.gridColumn119.FieldName = "CreateDatePhieu";
+            this.gridColumn119.Name = "gridColumn119";
+            this.gridColumn119.Visible = true;
+            this.gridColumn119.VisibleIndex = 10;
+            // 
+            // gridColumn120
+            // 
+            this.gridColumn120.Caption = "Ngày Lập Phiếu";
+            this.gridColumn120.FieldName = "CreateDatePhieu";
+            this.gridColumn120.Name = "gridColumn120";
+            this.gridColumn120.Visible = true;
+            this.gridColumn120.VisibleIndex = 10;
+            // 
             // frmTienTrinhDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1276, 573);
+            this.ClientSize = new System.Drawing.Size(1276, 590);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.label2);
@@ -2001,5 +2021,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn116;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn117;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn118;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn120;
     }
 }

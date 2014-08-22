@@ -47,6 +47,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 btnInPhieu.Enabled = false;
                 txtHieuLucKy.ReadOnly = true;
                 btnSua.Enabled = false;
+                btnXoa.Enabled = false;
             }
         }
 
@@ -170,6 +171,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             _ctchdb.DaLapPhieu = true;
                             _ctchdb.SoPhieu = ycchdb.MaYCCHDB;
+                            _ctchdb.NgayLapPhieu = ycchdb.CreateDate;
                             _ctchdb.PhieuDuocKy = true;
                             _cCHDB.SuaCTCHDB(_ctchdb);
 
