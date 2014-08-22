@@ -5539,9 +5539,13 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ThoiGianLapPhieu;
 		
+		private bool _DaLapPhieu;
+		
 		private System.Nullable<decimal> _SoPhieu;
 		
 		private System.Nullable<System.DateTime> _NgayLapPhieu;
+		
+		private bool _PhieuDuocKy;
 		
 		private string _HieuLucKy;
 		
@@ -5562,10 +5566,6 @@ namespace KTKS_DonKH.LinQ
 		private string _ChucVu;
 		
 		private bool _ThongBaoDuocKy;
-		
-		private bool _DaLapPhieu;
-		
-		private bool _PhieuDuocKy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -5623,10 +5623,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnKetQuaCapTrenXuLyChanged();
     partial void OnThoiGianLapPhieuChanging(System.Nullable<int> value);
     partial void OnThoiGianLapPhieuChanged();
+    partial void OnDaLapPhieuChanging(bool value);
+    partial void OnDaLapPhieuChanged();
     partial void OnSoPhieuChanging(System.Nullable<decimal> value);
     partial void OnSoPhieuChanged();
     partial void OnNgayLapPhieuChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayLapPhieuChanged();
+    partial void OnPhieuDuocKyChanging(bool value);
+    partial void OnPhieuDuocKyChanged();
     partial void OnHieuLucKyChanging(string value);
     partial void OnHieuLucKyChanged();
     partial void OnDotLapPhieuChanging(string value);
@@ -5647,10 +5651,6 @@ namespace KTKS_DonKH.LinQ
     partial void OnChucVuChanged();
     partial void OnThongBaoDuocKyChanging(bool value);
     partial void OnThongBaoDuocKyChanged();
-    partial void OnDaLapPhieuChanging(bool value);
-    partial void OnDaLapPhieuChanged();
-    partial void OnPhieuDuocKyChanging(bool value);
-    partial void OnPhieuDuocKyChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -6068,6 +6068,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaLapPhieu", DbType="Bit NOT NULL")]
+		public bool DaLapPhieu
+		{
+			get
+			{
+				return this._DaLapPhieu;
+			}
+			set
+			{
+				if ((this._DaLapPhieu != value))
+				{
+					this.OnDaLapPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._DaLapPhieu = value;
+					this.SendPropertyChanged("DaLapPhieu");
+					this.OnDaLapPhieuChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu", DbType="Decimal(18,0)")]
 		public System.Nullable<decimal> SoPhieu
 		{
@@ -6104,6 +6124,26 @@ namespace KTKS_DonKH.LinQ
 					this._NgayLapPhieu = value;
 					this.SendPropertyChanged("NgayLapPhieu");
 					this.OnNgayLapPhieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhieuDuocKy", DbType="Bit NOT NULL")]
+		public bool PhieuDuocKy
+		{
+			get
+			{
+				return this._PhieuDuocKy;
+			}
+			set
+			{
+				if ((this._PhieuDuocKy != value))
+				{
+					this.OnPhieuDuocKyChanging(value);
+					this.SendPropertyChanging();
+					this._PhieuDuocKy = value;
+					this.SendPropertyChanged("PhieuDuocKy");
+					this.OnPhieuDuocKyChanged();
 				}
 			}
 		}
@@ -6308,46 +6348,6 @@ namespace KTKS_DonKH.LinQ
 					this._ThongBaoDuocKy = value;
 					this.SendPropertyChanged("ThongBaoDuocKy");
 					this.OnThongBaoDuocKyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaLapPhieu", DbType="Bit NOT NULL")]
-		public bool DaLapPhieu
-		{
-			get
-			{
-				return this._DaLapPhieu;
-			}
-			set
-			{
-				if ((this._DaLapPhieu != value))
-				{
-					this.OnDaLapPhieuChanging(value);
-					this.SendPropertyChanging();
-					this._DaLapPhieu = value;
-					this.SendPropertyChanged("DaLapPhieu");
-					this.OnDaLapPhieuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhieuDuocKy", DbType="Bit NOT NULL")]
-		public bool PhieuDuocKy
-		{
-			get
-			{
-				return this._PhieuDuocKy;
-			}
-			set
-			{
-				if ((this._PhieuDuocKy != value))
-				{
-					this.OnPhieuDuocKyChanging(value);
-					this.SendPropertyChanging();
-					this._PhieuDuocKy = value;
-					this.SendPropertyChanged("PhieuDuocKy");
-					this.OnPhieuDuocKyChanged();
 				}
 			}
 		}
@@ -7871,6 +7871,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _SoPhieu;
 		
+		private System.Nullable<System.DateTime> _NgayLapPhieu;
+		
 		private bool _PhieuDuocKy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -7939,6 +7941,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDaLapPhieuChanged();
     partial void OnSoPhieuChanging(System.Nullable<decimal> value);
     partial void OnSoPhieuChanged();
+    partial void OnNgayLapPhieuChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayLapPhieuChanged();
     partial void OnPhieuDuocKyChanging(bool value);
     partial void OnPhieuDuocKyChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -8458,6 +8462,26 @@ namespace KTKS_DonKH.LinQ
 					this._SoPhieu = value;
 					this.SendPropertyChanged("SoPhieu");
 					this.OnSoPhieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayLapPhieu", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayLapPhieu
+		{
+			get
+			{
+				return this._NgayLapPhieu;
+			}
+			set
+			{
+				if ((this._NgayLapPhieu != value))
+				{
+					this.OnNgayLapPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._NgayLapPhieu = value;
+					this.SendPropertyChanged("NgayLapPhieu");
+					this.OnNgayLapPhieuChanged();
 				}
 			}
 		}

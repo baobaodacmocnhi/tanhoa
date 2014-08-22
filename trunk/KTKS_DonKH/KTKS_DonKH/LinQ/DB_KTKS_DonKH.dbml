@@ -243,8 +243,10 @@
       <Column Name="NgayCapTrenXuLy" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="KetQuaCapTrenXuLy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ThoiGianLapPhieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DaLapPhieu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoPhieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="NgayLapPhieu" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DotLapPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NguoiKyLapPhieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -255,8 +257,6 @@
       <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ThongBaoDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="DaLapPhieu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -348,6 +348,7 @@
       <Column Name="ThongBaoDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DaLapPhieu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoPhieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NgayLapPhieu" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

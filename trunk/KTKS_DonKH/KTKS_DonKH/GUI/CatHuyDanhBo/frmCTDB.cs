@@ -721,6 +721,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             _ctctdb.DaLapPhieu = true;
                             _ctctdb.SoPhieu = ycchdb.MaYCCHDB;
+                            _ctctdb.NgayLapPhieu = ycchdb.CreateDate;
                             _ctctdb.PhieuDuocKy = true;
                             _cCHDB.SuaCTCTDB(_ctctdb);
 
