@@ -873,7 +873,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtDon.Columns.Add("ToXuLy", typeof(bool));
                 dtDon.Columns.Add("MaDon", typeof(decimal));
                 dtDon.Columns.Add("TenLD", typeof(string));
-                dtDon.Columns.Add("CreateDate", typeof(string));
+                dtDon.Columns.Add("CreateDate", typeof(DateTime));
                 dtDon.Columns.Add("DanhBo", typeof(string));
                 dtDon.Columns.Add("HoTen", typeof(string));
                 dtDon.Columns.Add("DiaChi", typeof(string));
@@ -885,7 +885,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                         dtDon.ImportRow(itemRow);
                 }
 
-                ds.Tables.Add(dtDon);
+                dtDon.DefaultView.Sort = "CreateDate ASC";
+                ds.Tables.Add(dtDon.DefaultView.ToTable());
 
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                 {
@@ -1376,7 +1377,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                         dtDon.ImportRow(itemRow);
                 }
 
-                ds.Tables.Add(dtDon);
+                dtDon.DefaultView.Sort = "CreateDate ASC";
+                ds.Tables.Add(dtDon.DefaultView.ToTable());
 
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                 {
@@ -1867,7 +1869,8 @@ namespace KTKS_DonKH.DAL.TimKiem
                         dtDon.ImportRow(itemRow);
                 }
 
-                ds.Tables.Add(dtDon);
+                dtDon.DefaultView.Sort = "CreateDate ASC";
+                ds.Tables.Add(dtDon.DefaultView.ToTable());
 
                 if (dtDon.Rows.Count > 0 && dtKTXM.Rows.Count > 0)
                 {
