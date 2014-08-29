@@ -428,6 +428,9 @@
               <xs:element name="DiaChiXuLy" msprop:Generator_ColumnVarNameInTable="columnDiaChiXuLy" msprop:Generator_ColumnPropNameInRow="DiaChiXuLy" msprop:Generator_ColumnPropNameInTable="DiaChiXuLyColumn" msprop:Generator_UserColumnName="DiaChiXuLy" type="xs:string" minOccurs="0" />
               <xs:element name="NoiDungXuLy" msprop:Generator_ColumnVarNameInTable="columnNoiDungXuLy" msprop:Generator_ColumnPropNameInRow="NoiDungXuLy" msprop:Generator_ColumnPropNameInTable="NoiDungXuLyColumn" msprop:Generator_UserColumnName="NoiDungXuLy" type="xs:string" minOccurs="0" />
               <xs:element name="NguoiLapXuLy" msprop:Generator_ColumnVarNameInTable="columnNguoiLapXuLy" msprop:Generator_ColumnPropNameInRow="NguoiLapXuLy" msprop:Generator_ColumnPropNameInTable="NguoiLapXuLyColumn" msprop:Generator_UserColumnName="NguoiLapXuLy" type="xs:string" minOccurs="0" />
+              <xs:element name="LoaiChiTietXuLy" msprop:Generator_ColumnVarNameInTable="columnLoaiChiTietXuLy" msprop:Generator_ColumnPropNameInRow="LoaiChiTietXuLy" msprop:Generator_ColumnPropNameInTable="LoaiChiTietXuLyColumn" msprop:Generator_UserColumnName="LoaiChiTietXuLy" type="xs:string" minOccurs="0" />
+              <xs:element name="Ma" msprop:Generator_ColumnVarNameInTable="columnMa" msprop:Generator_ColumnPropNameInRow="Ma" msprop:Generator_ColumnPropNameInTable="MaColumn" msprop:Generator_UserColumnName="Ma" type="xs:string" minOccurs="0" />
+              <xs:element name="HieuLucKy" msprop:Generator_ColumnVarNameInTable="columnHieuLucKy" msprop:Generator_ColumnPropNameInRow="HieuLucKy" msprop:Generator_ColumnPropNameInTable="HieuLucKyColumn" msprop:Generator_UserColumnName="HieuLucKy" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

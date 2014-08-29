@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode11 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode12 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode13 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode14 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode15 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode16 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode17 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode18 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode19 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode20 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode4 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode5 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode6 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode7 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode8 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode9 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode10 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewKTXM = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -237,8 +237,8 @@
             // 
             // gridColumn8
             // 
-            this.gridColumn8.Caption = "Ngày Lập";
-            this.gridColumn8.FieldName = "CreateDate";
+            this.gridColumn8.Caption = "Ngày KTXM";
+            this.gridColumn8.FieldName = "NgayKTXM";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
@@ -316,37 +316,37 @@
             // 
             // gridControl
             // 
-            gridLevelNode11.LevelTemplate = this.gridViewKTXM;
-            gridLevelNode11.RelationName = "Level1";
-            gridLevelNode12.LevelTemplate = this.gridViewDCBD;
-            gridLevelNode12.RelationName = "Level2";
-            gridLevelNode13.LevelTemplate = this.gridViewCHDB;
-            gridLevelNode13.RelationName = "Level3";
-            gridLevelNode14.LevelTemplate = this.gridViewTTTL;
-            gridLevelNode14.RelationName = "Level4";
-            gridLevelNode15.LevelTemplate = this.gridViewKTXM_TXL;
-            gridLevelNode15.RelationName = "Level5";
-            gridLevelNode16.LevelTemplate = this.gridViewCHDB_TXL;
-            gridLevelNode16.RelationName = "Level6";
-            gridLevelNode17.LevelTemplate = this.gridViewTTTTL_TXL;
-            gridLevelNode17.RelationName = "Level7";
-            gridLevelNode18.LevelTemplate = this.gridViewDCBD_TXL;
-            gridLevelNode18.RelationName = "Level8";
-            gridLevelNode19.LevelTemplate = this.gridViewBamChi;
-            gridLevelNode19.RelationName = "Level9";
-            gridLevelNode20.LevelTemplate = this.gridViewBamChi_TXL;
-            gridLevelNode20.RelationName = "Level10";
+            gridLevelNode1.LevelTemplate = this.gridViewKTXM;
+            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewDCBD;
+            gridLevelNode2.RelationName = "Level2";
+            gridLevelNode3.LevelTemplate = this.gridViewCHDB;
+            gridLevelNode3.RelationName = "Level3";
+            gridLevelNode4.LevelTemplate = this.gridViewTTTL;
+            gridLevelNode4.RelationName = "Level4";
+            gridLevelNode5.LevelTemplate = this.gridViewKTXM_TXL;
+            gridLevelNode5.RelationName = "Level5";
+            gridLevelNode6.LevelTemplate = this.gridViewCHDB_TXL;
+            gridLevelNode6.RelationName = "Level6";
+            gridLevelNode7.LevelTemplate = this.gridViewTTTTL_TXL;
+            gridLevelNode7.RelationName = "Level7";
+            gridLevelNode8.LevelTemplate = this.gridViewDCBD_TXL;
+            gridLevelNode8.RelationName = "Level8";
+            gridLevelNode9.LevelTemplate = this.gridViewBamChi;
+            gridLevelNode9.RelationName = "Level9";
+            gridLevelNode10.LevelTemplate = this.gridViewBamChi_TXL;
+            gridLevelNode10.RelationName = "Level10";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode11,
-            gridLevelNode12,
-            gridLevelNode13,
-            gridLevelNode14,
-            gridLevelNode15,
-            gridLevelNode16,
-            gridLevelNode17,
-            gridLevelNode18,
-            gridLevelNode19,
-            gridLevelNode20});
+            gridLevelNode1,
+            gridLevelNode2,
+            gridLevelNode3,
+            gridLevelNode4,
+            gridLevelNode5,
+            gridLevelNode6,
+            gridLevelNode7,
+            gridLevelNode8,
+            gridLevelNode9,
+            gridLevelNode10});
             this.gridControl.Location = new System.Drawing.Point(0, 43);
             this.gridControl.MainView = this.gridViewDon;
             this.gridControl.Name = "gridControl";
@@ -902,8 +902,8 @@
             // 
             // gridColumn50
             // 
-            this.gridColumn50.Caption = "Ngày Lập";
-            this.gridColumn50.FieldName = "CreateDate";
+            this.gridColumn50.Caption = "Ngày KTXM";
+            this.gridColumn50.FieldName = "NgayKTXM";
             this.gridColumn50.Name = "gridColumn50";
             this.gridColumn50.OptionsColumn.AllowEdit = false;
             this.gridColumn50.Visible = true;
@@ -1508,7 +1508,8 @@
             // 
             // gridColumn109
             // 
-            this.gridColumn109.Caption = "Ngày Lập";
+            this.gridColumn109.Caption = "Ngày BC";
+            this.gridColumn109.FieldName = "NgayBC";
             this.gridColumn109.Name = "gridColumn109";
             this.gridColumn109.OptionsColumn.AllowEdit = false;
             this.gridColumn109.Visible = true;
@@ -1615,8 +1616,8 @@
             // 
             // gridColumn110
             // 
-            this.gridColumn110.Caption = "Ngày Lập";
-            this.gridColumn110.FieldName = "CreateDate";
+            this.gridColumn110.Caption = "Ngày BC";
+            this.gridColumn110.FieldName = "NgayBC";
             this.gridColumn110.Name = "gridColumn110";
             this.gridColumn110.OptionsColumn.AllowEdit = false;
             this.gridColumn110.Visible = true;
@@ -1865,7 +1866,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1276, 590);
+            this.ClientSize = new System.Drawing.Size(1276, 607);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.gridControl);
