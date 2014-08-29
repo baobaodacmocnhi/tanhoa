@@ -41,7 +41,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 {
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.MaCTKTXM,
-                                    itemCTKTXM.CreateDate,
+                                    itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.HoTen,
                                     itemCTKTXM.DiaChi,
@@ -64,12 +64,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   {
                                       itemCTBamChi.BamChi.MaDon,
                                       itemCTBamChi.MaCTBC,
-                                      itemCTBamChi.CreateDate,
+                                      itemCTBamChi.NgayBC,
                                       itemCTBamChi.DanhBo,
                                       itemCTBamChi.HoTen,
                                       itemCTBamChi.DiaChi,
                                       itemCTBamChi.TrangThaiBC,
                                       itemCTBamChi.TheoYeuCau,
+                                      itemCTBamChi.MaSoBC,
                                       CreateBy = itemUser.HoTen,
                                   };
 
@@ -252,7 +253,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 {
                                     MaDon = itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.MaCTKTXM,
-                                    itemCTKTXM.CreateDate,
+                                    itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.HoTen,
                                     itemCTKTXM.DiaChi,
@@ -275,12 +276,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 {
                                     MaDon = itemCTBamChi.BamChi.MaDonTXL,
                                     itemCTBamChi.MaCTBC,
-                                    itemCTBamChi.CreateDate,
+                                    itemCTBamChi.NgayBC,
                                     itemCTBamChi.DanhBo,
                                     itemCTBamChi.HoTen,
                                     itemCTBamChi.DiaChi,
                                     itemCTBamChi.TrangThaiBC,
                                     itemCTBamChi.TheoYeuCau,
+                                    itemCTBamChi.MaSoBC,
                                     CreateBy = itemUser.HoTen,
                                 };
 
@@ -449,7 +451,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.KTXM.ToXuLy,
                                     itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.MaCTKTXM,
-                                    itemCTKTXM.CreateDate,
+                                    itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.HoTen,
                                     itemCTKTXM.DiaChi,
@@ -473,12 +475,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.BamChi.MaDonTXL,
                                       itemCTBamChi.MaCTBC,
-                                      itemCTBamChi.CreateDate,
+                                      itemCTBamChi.NgayBC,
                                       itemCTBamChi.DanhBo,
                                       itemCTBamChi.HoTen,
                                       itemCTBamChi.DiaChi,
                                       itemCTBamChi.TrangThaiBC,
                                       itemCTBamChi.TheoYeuCau,
+                                      itemCTBamChi.MaSoBC,
                                       CreateBy = itemUser.HoTen,
                                   };
 
@@ -943,7 +946,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.KTXM.ToXuLy,
                                     itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.MaCTKTXM,
-                                    itemCTKTXM.CreateDate,
+                                    itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.HoTen,
                                     itemCTKTXM.DiaChi,
@@ -967,12 +970,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.BamChi.MaDonTXL,
                                       itemCTBamChi.MaCTBC,
-                                      itemCTBamChi.CreateDate,
+                                      itemCTBamChi.NgayBC,
                                       itemCTBamChi.DanhBo,
                                       itemCTBamChi.HoTen,
                                       itemCTBamChi.DiaChi,
                                       itemCTBamChi.TrangThaiBC,
                                       itemCTBamChi.TheoYeuCau,
+                                      itemCTBamChi.MaSoBC,
                                       CreateBy = itemUser.HoTen,
                                   };
 
@@ -1435,7 +1439,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.KTXM.ToXuLy,
                                     itemCTKTXM.KTXM.MaDonTXL,
                                     itemCTKTXM.MaCTKTXM,
-                                    itemCTKTXM.CreateDate,
+                                    itemCTKTXM.NgayKTXM,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.HoTen,
                                     itemCTKTXM.DiaChi,
@@ -1459,12 +1463,13 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTBamChi.BamChi.ToXuLy,
                                       itemCTBamChi.BamChi.MaDonTXL,
                                       itemCTBamChi.MaCTBC,
-                                      itemCTBamChi.CreateDate,
+                                      itemCTBamChi.NgayBC,
                                       itemCTBamChi.DanhBo,
                                       itemCTBamChi.HoTen,
                                       itemCTBamChi.DiaChi,
                                       itemCTBamChi.TrangThaiBC,
                                       itemCTBamChi.TheoYeuCau,
+                                      itemCTBamChi.MaSoBC,
                                       CreateBy = itemUser.HoTen,
                                   };
 
