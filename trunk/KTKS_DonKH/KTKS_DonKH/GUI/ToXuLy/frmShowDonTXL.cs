@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -22,6 +23,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CDonTXL _cDonTXL = new CDonTXL();
         CTTKH _cTTKH = new CTTKH();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
         public frmShowDonTXL()
         {
@@ -72,13 +74,18 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 cmbLD.ValueMember = "MaLD";
                 cmbLD.SelectedIndex = -1;
 
+                cmbNguoiDi.DataSource = _cTaiKhoan.LoadDSTaiKhoanTXL();
+                cmbNguoiDi.DisplayMember = "HoTen";
+                cmbNguoiDi.ValueMember = "MaU";
+                cmbNguoiDi.SelectedIndex = -1;
+
                 _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(_source["MaDon"]));
                 cmbLD.SelectedValue = _dontxl.MaLD.Value;
                 txtSoCongVan.Text = _dontxl.SoCongVan;
-                txtMaDon.Text = "TXL"+_dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
+                txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                 txtNgayNhan.Text = _dontxl.CreateDate.Value.ToString("dd/MM/yyyy");
                 txtNoiDung.Text = _dontxl.NoiDung;
-                ///
+
                 txtDanhBo.Text = _dontxl.DanhBo;
                 txtHopDong.Text = _dontxl.HopDong;
                 txtDienThoai.Text = _dontxl.DienThoai;
@@ -87,6 +94,31 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 txtMSThue.Text = _dontxl.MSThue;
                 txtGiaBieu.Text = _dontxl.GiaBieu;
                 txtDinhMuc.Text = _dontxl.DinhMuc;
+
+                if (_dontxl.ChuyenKTXM)
+                {
+                    chkChuyenKTXM.Checked = true;
+                    dateChuyenKTXM.Value = _dontxl.NgayChuyenKTXM.Value;
+                    cmbNguoiDi.SelectedValue = _dontxl.NguoiDi;
+                }
+                if (_dontxl.ChuyenBanDoiKhac)
+                {
+                    chkChuyenBanDoiKhac.Checked = true;
+                    dateChuyenBanDoiKhac.Value = _dontxl.NgayChuyenBanDoiKhac.Value;
+                    txtGhiChuChuyenBanDoiKhac.Text = _dontxl.GhiChuChuyenBanDoiKhac;
+                }
+                if (_dontxl.ChuyenToKhachHang)
+                {
+                    chkChuyenToKhachHang.Checked = true;
+                    dateChuyenToKhachHang.Value = _dontxl.NgayChuyenToKhachHang.Value;
+                    txtGhiChuChuyenToKhachHang.Text = _dontxl.GhiChuChuyenToKhachHang;
+                }
+                if (_dontxl.ChuyenKhac)
+                {
+                    chkChuyenKhac.Checked = true;
+                    dateChuyenKhac.Value = _dontxl.NgayChuyenKhac.Value;
+                    txtGhiChuChuyenKhac.Text = _dontxl.GhiChuChuyenKhac;
+                }
 
                 if (_source["Action"] == "Cập Nhật")
                 {
@@ -108,6 +140,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
             {
                 _dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                 _dontxl.SoCongVan = txtSoCongVan.Text.Trim();
+                if (_ttkhachhang != null && _dontxl.DanhBo != txtDanhBo.Text.Trim())
+                {
+                    _dontxl.Dot = _ttkhachhang.Dot;
+                    _dontxl.Ky = _ttkhachhang.Ky;
+                    _dontxl.Nam = _ttkhachhang.Nam;
+                }
                 _dontxl.DanhBo = txtDanhBo.Text.Trim();
                 _dontxl.HopDong = txtHopDong.Text.Trim();
                 _dontxl.HoTen = txtHoTen.Text.Trim();
@@ -117,6 +155,59 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 _dontxl.GiaBieu = txtGiaBieu.Text.Trim();
                 _dontxl.DinhMuc = txtDinhMuc.Text.Trim();
                 _dontxl.NoiDung = txtNoiDung.Text.Trim();
+
+                if (chkChuyenKTXM.Checked)
+                {
+                    _dontxl.ChuyenKTXM = true;
+                    _dontxl.NgayChuyenKTXM = dateChuyenKTXM.Value;
+                    if (cmbNguoiDi.SelectedIndex != -1)
+                        _dontxl.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
+                }
+                else
+                {
+                    _dontxl.ChuyenKTXM = false;
+                    _dontxl.NgayChuyenKTXM = null;
+                    _dontxl.NguoiDi = null;
+                }
+
+                if (chkChuyenBanDoiKhac.Checked)
+                {
+                    _dontxl.ChuyenBanDoiKhac = true;
+                    _dontxl.NgayChuyenBanDoiKhac = dateChuyenBanDoiKhac.Value;
+                    _dontxl.GhiChuChuyenBanDoiKhac = txtGhiChuChuyenBanDoiKhac.Text.Trim();
+                }
+                else
+                {
+                    _dontxl.ChuyenBanDoiKhac = false;
+                    _dontxl.NgayChuyenBanDoiKhac = null;
+                    _dontxl.GhiChuChuyenBanDoiKhac = null;
+                }
+
+                if (chkChuyenToKhachHang.Checked)
+                {
+                    _dontxl.ChuyenToKhachHang = true;
+                    _dontxl.NgayChuyenToKhachHang = dateChuyenToKhachHang.Value;
+                    _dontxl.GhiChuChuyenToKhachHang = txtGhiChuChuyenToKhachHang.Text.Trim();
+                }
+                else
+                {
+                    _dontxl.ChuyenToKhachHang = false;
+                    _dontxl.NgayChuyenToKhachHang = null;
+                    _dontxl.GhiChuChuyenToKhachHang = null;
+                }
+
+                if (chkChuyenKhac.Checked)
+                {
+                    _dontxl.ChuyenKhac = true;
+                    _dontxl.NgayChuyenKhac = dateChuyenKhac.Value;
+                    _dontxl.GhiChuChuyenKhac = txtGhiChuChuyenKhac.Text.Trim();
+                }
+                else
+                {
+                    _dontxl.ChuyenKhac = false;
+                    _dontxl.NgayChuyenKhac = null;
+                    _dontxl.GhiChuChuyenKhac = null;
+                }
 
                 if (_cDonTXL.SuaDonTXL(_dontxl))
                 {
@@ -152,6 +243,54 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Clear();
                 }
+            }
+        }
+
+        private void chkChuyenKTXM_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkChuyenKTXM.Checked)
+            {
+                groupBoxChuyenKTXM.Enabled = true;
+            }
+            else
+            {
+                groupBoxChuyenKTXM.Enabled = false;
+            }
+        }
+
+        private void chkChuyenBanDoiKhac_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkChuyenBanDoiKhac.Checked)
+            {
+                groupBoxChuyenBanDoiKhac.Enabled = true;
+            }
+            else
+            {
+                groupBoxChuyenBanDoiKhac.Enabled = false;
+            }
+        }
+
+        private void chkChuyenToKhachHang_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkChuyenToKhachHang.Checked)
+            {
+                groupBoxChuyenToKhachHang.Enabled = true;
+            }
+            else
+            {
+                groupBoxChuyenToKhachHang.Enabled = false;
+            }
+        }
+
+        private void chkChuyenKhac_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkChuyenKhac.Checked)
+            {
+                groupBoxChuyenKhac.Enabled = true;
+            }
+            else
+            {
+                groupBoxChuyenKhac.Enabled = false;
             }
         }
     }

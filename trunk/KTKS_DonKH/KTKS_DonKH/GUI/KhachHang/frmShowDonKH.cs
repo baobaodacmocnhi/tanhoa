@@ -25,6 +25,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         CTTKH _cTTKH=new CTTKH();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CNhanVien _cNhanVien = new CNhanVien();
+        string Dot = "", Ky = "", Nam = "";
 
         public frmShowDonKH()
         {
@@ -141,9 +142,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                     //SX = ttkhachhang.SX;
                     //DV = ttkhachhang.DV;
                     //HCSN = ttkhachhang.HCSN;
-                    //Dot = ttkhachhang.Dot;
-                    //Ky = ttkhachhang.Ky;
-                    //Nam = ttkhachhang.Nam;
+                    Dot = ttkhachhang.Dot;
+                    Ky = ttkhachhang.Ky;
+                    Nam = ttkhachhang.Nam;
                 }
                 else
                 {
@@ -156,6 +157,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     txtGiaBieu.Text = "";
                     txtDinhMuc.Text = "";
                     txtMSThue.Text = "";
+                    Dot = Ky = Nam = "";
                 }
             }
         }
@@ -367,6 +369,12 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 _donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                 _donkh.SoCongVan = txtSoCongVan.Text.Trim();
+                if (_donkh.DanhBo != txtDanhBo.Text.Trim())
+                {
+                    _donkh.Dot = Dot;
+                    _donkh.Ky = Ky;
+                    _donkh.Nam = Nam;
+                }
                 _donkh.DanhBo = txtDanhBo.Text.Trim();
                 _donkh.HopDong = txtHopDong.Text.Trim();
                 _donkh.HoTen = txtHoTen.Text.Trim();
@@ -379,9 +387,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 //donkh.SX = SX;
                 //donkh.DV = DV;
                 //donkh.HCSN = HCSN;
-                //donkh.Dot = Dot;
-                //donkh.Ky = Ky;
-                //donkh.Nam = Nam;
+                
                 _donkh.NoiDung = txtNoiDung.Text.Trim();
                 //_donkh.GhiChuNguoiDi = cmbNVKiemTra.SelectedValue.ToString();
                 _donkh.DinhMucSau = txtDinhMucSau.Text.Trim();

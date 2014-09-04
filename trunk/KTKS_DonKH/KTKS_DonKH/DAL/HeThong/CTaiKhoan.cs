@@ -517,6 +517,23 @@ namespace KTKS_DonKH.DAL.HeThong
         }
 
         /// <summary>
+        /// Lấy Danh Sách User thuộc Tổ Xử Lý
+        /// </summary>
+        /// <returns></returns>
+        public List<User> LoadDSTaiKhoanTXL()
+        {
+            try
+            {
+                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToXuLy == true).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Lấy tài khoản
         /// </summary>
         /// <param name="MaU">int</param>
@@ -645,7 +662,7 @@ namespace KTKS_DonKH.DAL.HeThong
                             nguoidung.ModifyDate = DateTime.Now;
                             nguoidung.ModifyBy = CTaiKhoan.MaUser;
                             db.SubmitChanges();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return true;
                         }
                         else
@@ -659,7 +676,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         nguoidung.ModifyDate = DateTime.Now;
                         nguoidung.ModifyBy = CTaiKhoan.MaUser;
                         db.SubmitChanges();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
                 }
