@@ -58,7 +58,8 @@ namespace KTKS_DonKH.GUI.HeThong
                 nguoidung.MatKhau = txtMatKhau.Text.Trim();
                 nguoidung.MaKiemBamChi = txtMaKiemBamChi.Text.Trim();
 
-                _cTaiKhoan.ThemTaiKhoan(nguoidung);
+                if(_cTaiKhoan.ThemTaiKhoan(nguoidung))
+                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Clear();
             }
@@ -93,10 +94,12 @@ namespace KTKS_DonKH.GUI.HeThong
                     if (nguoidung.TaiKhoan != txtTaiKhoan.Text.Trim())
                     {
                         nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
-                        _cTaiKhoan.SuaTaiKhoan(nguoidung, true);
+                        if(_cTaiKhoan.SuaTaiKhoan(nguoidung, true))
+                            MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
-                        _cTaiKhoan.SuaTaiKhoan(nguoidung, false);
+                        if(_cTaiKhoan.SuaTaiKhoan(nguoidung, false))
+                            MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Clear();
                 }
@@ -164,6 +167,15 @@ namespace KTKS_DonKH.GUI.HeThong
             //        ischecked = false;
             //    _cTaiKhoan.SuaQuyen(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()), MaR, ischecked);
             //}
+
+            bool ischecked = false;
+            if (bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+                ischecked = true;
+            else
+                ischecked = false;
+            User taikhoan = _cTaiKhoan.getUserbyID(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
+            taikhoan.ToXuLy = ischecked;
+            _cTaiKhoan.SuaTaiKhoan(taikhoan, false);
         }
 
         private void dgvDSTaiKhoan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
