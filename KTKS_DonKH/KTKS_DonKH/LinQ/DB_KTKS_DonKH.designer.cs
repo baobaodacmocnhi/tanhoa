@@ -108,6 +108,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertLichSuChungTu(LichSuChungTu instance);
     partial void UpdateLichSuChungTu(LichSuChungTu instance);
     partial void DeleteLichSuChungTu(LichSuChungTu instance);
+    partial void InsertLichSuChuyenKT(LichSuChuyenKT instance);
+    partial void UpdateLichSuChuyenKT(LichSuChuyenKT instance);
+    partial void DeleteLichSuChuyenKT(LichSuChuyenKT instance);
     partial void InsertLoaiChungTu(LoaiChungTu instance);
     partial void UpdateLoaiChungTu(LoaiChungTu instance);
     partial void DeleteLoaiChungTu(LoaiChungTu instance);
@@ -375,6 +378,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<LichSuChungTu>();
+			}
+		}
+		
+		public System.Data.Linq.Table<LichSuChuyenKT> LichSuChuyenKTs
+		{
+			get
+			{
+				return this.GetTable<LichSuChuyenKT>();
 			}
 		}
 		
@@ -16191,11 +16202,13 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _MaLD;
 		
-		private bool _ChuyenKTXM;
+		private bool _ChuyenKT;
 		
-		private System.Nullable<System.DateTime> _NgayChuyenKTXM;
+		private System.Nullable<System.DateTime> _NgayChuyenKT;
 		
 		private System.Nullable<int> _NguoiDi;
+		
+		private string _GhiChuChuyenKT;
 		
 		private bool _ChuyenBanDoiKhac;
 		
@@ -16234,6 +16247,8 @@ namespace KTKS_DonKH.LinQ
 		private EntitySet<DongNuoc> _DongNuocs;
 		
 		private EntitySet<KTXM> _KTXMs;
+		
+		private EntitySet<LichSuChuyenKT> _LichSuChuyenKTs;
 		
 		private EntitySet<TTTL> _TTTLs;
 		
@@ -16289,12 +16304,14 @@ namespace KTKS_DonKH.LinQ
     partial void OnNhanChanged();
     partial void OnMaLDChanging(System.Nullable<int> value);
     partial void OnMaLDChanged();
-    partial void OnChuyenKTXMChanging(bool value);
-    partial void OnChuyenKTXMChanged();
-    partial void OnNgayChuyenKTXMChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayChuyenKTXMChanged();
+    partial void OnChuyenKTChanging(bool value);
+    partial void OnChuyenKTChanged();
+    partial void OnNgayChuyenKTChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyenKTChanged();
     partial void OnNguoiDiChanging(System.Nullable<int> value);
     partial void OnNguoiDiChanged();
+    partial void OnGhiChuChuyenKTChanging(string value);
+    partial void OnGhiChuChuyenKTChanged();
     partial void OnChuyenBanDoiKhacChanging(bool value);
     partial void OnChuyenBanDoiKhacChanged();
     partial void OnNgayChuyenBanDoiKhacChanging(System.Nullable<System.DateTime> value);
@@ -16331,6 +16348,7 @@ namespace KTKS_DonKH.LinQ
 			this._DCBDs = new EntitySet<DCBD>(new Action<DCBD>(this.attach_DCBDs), new Action<DCBD>(this.detach_DCBDs));
 			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
 			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
+			this._LichSuChuyenKTs = new EntitySet<LichSuChuyenKT>(new Action<LichSuChuyenKT>(this.attach_LichSuChuyenKTs), new Action<LichSuChuyenKT>(this.detach_LichSuChuyenKTs));
 			this._TTTLs = new EntitySet<TTTL>(new Action<TTTL>(this.attach_TTTLs), new Action<TTTL>(this.detach_TTTLs));
 			this._LoaiDonTXL = default(EntityRef<LoaiDonTXL>);
 			OnCreated();
@@ -16800,42 +16818,42 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenKTXM", DbType="Bit NOT NULL")]
-		public bool ChuyenKTXM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenKT", DbType="Bit NOT NULL")]
+		public bool ChuyenKT
 		{
 			get
 			{
-				return this._ChuyenKTXM;
+				return this._ChuyenKT;
 			}
 			set
 			{
-				if ((this._ChuyenKTXM != value))
+				if ((this._ChuyenKT != value))
 				{
-					this.OnChuyenKTXMChanging(value);
+					this.OnChuyenKTChanging(value);
 					this.SendPropertyChanging();
-					this._ChuyenKTXM = value;
-					this.SendPropertyChanged("ChuyenKTXM");
-					this.OnChuyenKTXMChanged();
+					this._ChuyenKT = value;
+					this.SendPropertyChanged("ChuyenKT");
+					this.OnChuyenKTChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenKTXM", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NgayChuyenKTXM
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenKT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChuyenKT
 		{
 			get
 			{
-				return this._NgayChuyenKTXM;
+				return this._NgayChuyenKT;
 			}
 			set
 			{
-				if ((this._NgayChuyenKTXM != value))
+				if ((this._NgayChuyenKT != value))
 				{
-					this.OnNgayChuyenKTXMChanging(value);
+					this.OnNgayChuyenKTChanging(value);
 					this.SendPropertyChanging();
-					this._NgayChuyenKTXM = value;
-					this.SendPropertyChanged("NgayChuyenKTXM");
-					this.OnNgayChuyenKTXMChanged();
+					this._NgayChuyenKT = value;
+					this.SendPropertyChanged("NgayChuyenKT");
+					this.OnNgayChuyenKTChanged();
 				}
 			}
 		}
@@ -16856,6 +16874,26 @@ namespace KTKS_DonKH.LinQ
 					this._NguoiDi = value;
 					this.SendPropertyChanged("NguoiDi");
 					this.OnNguoiDiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChuChuyenKT", DbType="NVarChar(MAX)")]
+		public string GhiChuChuyenKT
+		{
+			get
+			{
+				return this._GhiChuChuyenKT;
+			}
+			set
+			{
+				if ((this._GhiChuChuyenKT != value))
+				{
+					this.OnGhiChuChuyenKTChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChuChuyenKT = value;
+					this.SendPropertyChanged("GhiChuChuyenKT");
+					this.OnGhiChuChuyenKTChanged();
 				}
 			}
 		}
@@ -17198,6 +17236,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_LichSuChuyenKT", Storage="_LichSuChuyenKTs", ThisKey="MaDon", OtherKey="MaDonTXL")]
+		public EntitySet<LichSuChuyenKT> LichSuChuyenKTs
+		{
+			get
+			{
+				return this._LichSuChuyenKTs;
+			}
+			set
+			{
+				this._LichSuChuyenKTs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_TTTL", Storage="_TTTLs", ThisKey="MaDon", OtherKey="MaDonTXL")]
 		public EntitySet<TTTL> TTTLs
 		{
@@ -17332,6 +17383,18 @@ namespace KTKS_DonKH.LinQ
 		}
 		
 		private void detach_KTXMs(KTXM entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = null;
+		}
+		
+		private void attach_LichSuChuyenKTs(LichSuChuyenKT entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTXL = this;
+		}
+		
+		private void detach_LichSuChuyenKTs(LichSuChuyenKT entity)
 		{
 			this.SendPropertyChanging();
 			entity.DonTXL = null;
@@ -19140,6 +19203,301 @@ namespace KTKS_DonKH.LinQ
 					this._ModifyBy = value;
 					this.SendPropertyChanged("ModifyBy");
 					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LichSuChuyenKT")]
+	public partial class LichSuChuyenKT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _MaLSChuyenKT;
+		
+		private System.Nullable<System.DateTime> _NgayChuyenKT;
+		
+		private System.Nullable<int> _NguoiDi;
+		
+		private string _GhiChuChuyenKT;
+		
+		private System.Nullable<decimal> _MaDonTXL;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private EntityRef<DonTXL> _DonTXL;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaLSChuyenKTChanging(decimal value);
+    partial void OnMaLSChuyenKTChanged();
+    partial void OnNgayChuyenKTChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyenKTChanged();
+    partial void OnNguoiDiChanging(System.Nullable<int> value);
+    partial void OnNguoiDiChanged();
+    partial void OnGhiChuChuyenKTChanging(string value);
+    partial void OnGhiChuChuyenKTChanged();
+    partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
+    partial void OnMaDonTXLChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    #endregion
+		
+		public LichSuChuyenKT()
+		{
+			this._DonTXL = default(EntityRef<DonTXL>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLSChuyenKT", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaLSChuyenKT
+		{
+			get
+			{
+				return this._MaLSChuyenKT;
+			}
+			set
+			{
+				if ((this._MaLSChuyenKT != value))
+				{
+					this.OnMaLSChuyenKTChanging(value);
+					this.SendPropertyChanging();
+					this._MaLSChuyenKT = value;
+					this.SendPropertyChanged("MaLSChuyenKT");
+					this.OnMaLSChuyenKTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenKT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChuyenKT
+		{
+			get
+			{
+				return this._NgayChuyenKT;
+			}
+			set
+			{
+				if ((this._NgayChuyenKT != value))
+				{
+					this.OnNgayChuyenKTChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChuyenKT = value;
+					this.SendPropertyChanged("NgayChuyenKT");
+					this.OnNgayChuyenKTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiDi", DbType="Int")]
+		public System.Nullable<int> NguoiDi
+		{
+			get
+			{
+				return this._NguoiDi;
+			}
+			set
+			{
+				if ((this._NguoiDi != value))
+				{
+					this.OnNguoiDiChanging(value);
+					this.SendPropertyChanging();
+					this._NguoiDi = value;
+					this.SendPropertyChanged("NguoiDi");
+					this.OnNguoiDiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChuChuyenKT", DbType="NVarChar(MAX)")]
+		public string GhiChuChuyenKT
+		{
+			get
+			{
+				return this._GhiChuChuyenKT;
+			}
+			set
+			{
+				if ((this._GhiChuChuyenKT != value))
+				{
+					this.OnGhiChuChuyenKTChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChuChuyenKT = value;
+					this.SendPropertyChanged("GhiChuChuyenKT");
+					this.OnGhiChuChuyenKTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonTXL", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaDonTXL
+		{
+			get
+			{
+				return this._MaDonTXL;
+			}
+			set
+			{
+				if ((this._MaDonTXL != value))
+				{
+					if (this._DonTXL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDonTXLChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonTXL = value;
+					this.SendPropertyChanged("MaDonTXL");
+					this.OnMaDonTXLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTXL_LichSuChuyenKT", Storage="_DonTXL", ThisKey="MaDonTXL", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTXL DonTXL
+		{
+			get
+			{
+				return this._DonTXL.Entity;
+			}
+			set
+			{
+				DonTXL previousValue = this._DonTXL.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTXL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTXL.Entity = null;
+						previousValue.LichSuChuyenKTs.Remove(this);
+					}
+					this._DonTXL.Entity = value;
+					if ((value != null))
+					{
+						value.LichSuChuyenKTs.Add(this);
+						this._MaDonTXL = value.MaDon;
+					}
+					else
+					{
+						this._MaDonTXL = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("DonTXL");
 				}
 			}
 		}
