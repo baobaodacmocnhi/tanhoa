@@ -11,6 +11,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
 {
     class CDonTXL : CDAL
     {
+        ///Chứa hàm truy xuất dữ liệu từ bảng CDonTXL & LichSuChuyenKT
+
+        #region CDonTXL
+
         /// <summary>
         /// Lấy Mã Đơn kế tiếp
         /// </summary>
@@ -71,7 +75,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
                 {
                     dontxl.CreateDate = DateTime.Now;
                     dontxl.CreateBy = CTaiKhoan.MaUser;
@@ -99,7 +103,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
@@ -118,6 +122,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
+                                    itemDonTXL.NguoiDi,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -134,16 +139,16 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        public DataTable LoadDSDonTXLChuaDuyet()
+        public DataTable LoadDSDonTXLChuaChuyen()
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemDonTXL.Nhan == false
+                                where itemDonTXL.ChuyenKT == false
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -158,6 +163,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
+                                    itemDonTXL.NguoiDi,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -174,16 +180,16 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
-        public DataTable LoadDSDonTXLDaDuyet()
+        public DataTable LoadDSDonTXLDaChuyen()
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemDonTXL.Nhan == true
+                                where itemDonTXL.ChuyenKT == true
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -198,6 +204,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
+                                    itemDonTXL.NguoiDi,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -218,7 +225,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
                 {
                     dontxl.ModifyDate = DateTime.Now;
                     dontxl.ModifyBy = CTaiKhoan.MaUser;
@@ -271,7 +278,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
                 {
                     db.DonTXLs.DeleteOnSubmit(dontxl);
                     db.SubmitChanges();
@@ -350,5 +357,98 @@ namespace KTKS_DonKH.DAL.ToXuLy
             //    LyDoChuyenDen = db.KTXMs.SingleOrDefault(itemKTXM => itemKTXM.MaDon == MaDon && itemKTXM.Nhan == false && itemKTXM.MaChuyen == MaChuyen).LyDoChuyen;
             //}
         }
+
+        #endregion
+
+        #region LichSuChuyenKT
+
+        public bool ThemLichSuChuyenKT(LichSuChuyenKT lichsuchuyenkt)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    if (db.LichSuChuyenKTs.Count() > 0)
+                    {
+                        decimal MaLSChuyenKT = db.LichSuChuyenKTs.Max(itemLSCKT => itemLSCKT.MaLSChuyenKT);
+                        lichsuchuyenkt.MaLSChuyenKT = getMaxNextIDTable(MaLSChuyenKT);
+                    }
+                    else
+                        lichsuchuyenkt.MaLSChuyenKT = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                    lichsuchuyenkt.CreateDate = DateTime.Now;
+                    lichsuchuyenkt.CreateBy = CTaiKhoan.MaUser;
+                    db.LichSuChuyenKTs.InsertOnSubmit(lichsuchuyenkt);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKTs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaLichSuChuyenKT(LichSuChuyenKT lichsuchuyenkt)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+
+                    lichsuchuyenkt.ModifyDate = DateTime.Now;
+                    lichsuchuyenkt.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKTs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chuyển Kiểm Tra theo Mã Đơn TXL
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <returns></returns>
+        public List<LichSuChuyenKT> LoadDSLichSuChuyenKTbyMaDonTXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
+                    return db.LichSuChuyenKTs.Where(itemLSCKT => itemLSCKT.MaDonTXL == MaDonTXL).ToList();
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        #endregion
     }
 }

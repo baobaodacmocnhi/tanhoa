@@ -49,18 +49,18 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
-            if (radDaDuyet.Checked)
+            if (radDaChuyen.Checked)
             {
-                DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaDuyet();
+                DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaChuyen();
                 cmbTimTheo.SelectedIndex = 0;
             }
         }
 
         private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
-            if (radChuaDuyet.Checked)
+            if (radChuaChuyen.Checked)
             {
-                DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaDuyet();
+                DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaChuyen();
                 cmbTimTheo.SelectedIndex = 0;
             }
         }
@@ -91,11 +91,11 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 source.Add("MaDon", dgvDSDonTXL["MaDon", dgvDSDonTXL.CurrentRow.Index].Value.ToString());
                 frmShowDonTXL frm = new frmShowDonTXL(source);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    if (radChuaDuyet.Checked)
-                        DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaDuyet();
+                    if (radChuaChuyen.Checked)
+                        DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaChuyen();
                     else
-                        if (radDaDuyet.Checked)
-                            DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaDuyet();
+                        if (radDaChuyen.Checked)
+                            DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaChuyen();
                         else
                             if (radAll.Checked)
                                 DSDonKH_BS.DataSource = _cDonTXL.LoadDSAllDonTXL();
@@ -185,6 +185,11 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
             DSDonKH_BS.Filter = expression;
+        }
+
+        private void btnInDSDonKH_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

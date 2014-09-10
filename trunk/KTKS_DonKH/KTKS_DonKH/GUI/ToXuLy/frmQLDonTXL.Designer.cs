@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
@@ -41,8 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.radAll = new System.Windows.Forms.RadioButton();
             this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
-            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
-            this.radDaDuyet = new System.Windows.Forms.RadioButton();
+            this.radChuaChuyen = new System.Windows.Forms.RadioButton();
+            this.radDaChuyen = new System.Windows.Forms.RadioButton();
             this.dgvDSDonTXL = new System.Windows.Forms.DataGridView();
             this.btnInDSDonKH = new System.Windows.Forms.Button();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -57,6 +57,7 @@
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTXL)).BeginInit();
             this.SuspendLayout();
@@ -174,40 +175,40 @@
             this.dateTimKiem.Visible = false;
             this.dateTimKiem.ValueChanged += new System.EventHandler(this.dateTimKiem_ValueChanged);
             // 
-            // radChuaDuyet
+            // radChuaChuyen
             // 
-            this.radChuaDuyet.AutoSize = true;
-            this.radChuaDuyet.Location = new System.Drawing.Point(12, 39);
-            this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
-            this.radChuaDuyet.TabIndex = 21;
-            this.radChuaDuyet.Text = "Chưa Duyệt";
-            this.radChuaDuyet.UseVisualStyleBackColor = true;
-            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
+            this.radChuaChuyen.AutoSize = true;
+            this.radChuaChuyen.Location = new System.Drawing.Point(12, 39);
+            this.radChuaChuyen.Name = "radChuaChuyen";
+            this.radChuaChuyen.Size = new System.Drawing.Size(107, 21);
+            this.radChuaChuyen.TabIndex = 21;
+            this.radChuaChuyen.Text = "Chưa Chuyển";
+            this.radChuaChuyen.UseVisualStyleBackColor = true;
+            this.radChuaChuyen.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
             // 
-            // radDaDuyet
+            // radDaChuyen
             // 
-            this.radDaDuyet.AutoSize = true;
-            this.radDaDuyet.Location = new System.Drawing.Point(12, 12);
-            this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
-            this.radDaDuyet.TabIndex = 20;
-            this.radDaDuyet.Text = "Đã Duyệt";
-            this.radDaDuyet.UseVisualStyleBackColor = true;
-            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
+            this.radDaChuyen.AutoSize = true;
+            this.radDaChuyen.Location = new System.Drawing.Point(12, 12);
+            this.radDaChuyen.Name = "radDaChuyen";
+            this.radDaChuyen.Size = new System.Drawing.Size(93, 21);
+            this.radDaChuyen.TabIndex = 20;
+            this.radDaChuyen.Text = "Đã Chuyển";
+            this.radDaChuyen.UseVisualStyleBackColor = true;
+            this.radDaChuyen.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
             // 
             // dgvDSDonTXL
             // 
             this.dgvDSDonTXL.AllowUserToAddRows = false;
             this.dgvDSDonTXL.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDonTXL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDonTXL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvDSDonTXL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDonTXL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaChuyen,
@@ -221,7 +222,8 @@
             this.HoTen,
             this.DiaChi,
             this.NoiDung,
-            this.CreateBy});
+            this.CreateBy,
+            this.NguoiDi});
             this.dgvDSDonTXL.Location = new System.Drawing.Point(0, 67);
             this.dgvDSDonTXL.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSDonTXL.MultiSelect = false;
@@ -245,7 +247,7 @@
             this.btnInDSDonKH.Text = "In Danh Sách";
             this.btnInDSDonKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInDSDonKH.UseVisualStyleBackColor = true;
-            this.btnInDSDonKH.Visible = false;
+            this.btnInDSDonKH.Click += new System.EventHandler(this.btnInDSDonKH_Click);
             // 
             // MaChuyen
             // 
@@ -280,8 +282,8 @@
             // MaDon
             // 
             this.MaDon.DataPropertyName = "MaDon";
-            dataGridViewCellStyle2.NullValue = null;
-            this.MaDon.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.NullValue = null;
+            this.MaDon.DefaultCellStyle = dataGridViewCellStyle8;
             this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             this.MaDon.ReadOnly = true;
@@ -343,6 +345,13 @@
             this.CreateBy.ReadOnly = true;
             this.CreateBy.Width = 200;
             // 
+            // NguoiDi
+            // 
+            this.NguoiDi.DataPropertyName = "NguoiDi";
+            this.NguoiDi.HeaderText = "Người Được Giao";
+            this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.Width = 200;
+            // 
             // frmQLDonTXL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -358,8 +367,8 @@
             this.Controls.Add(this.radAll);
             this.Controls.Add(this.btnInDSDonKH);
             this.Controls.Add(this.dateTimKiem);
-            this.Controls.Add(this.radChuaDuyet);
-            this.Controls.Add(this.radDaDuyet);
+            this.Controls.Add(this.radChuaChuyen);
+            this.Controls.Add(this.radDaChuyen);
             this.Controls.Add(this.dgvDSDonTXL);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -388,8 +397,8 @@
         private System.Windows.Forms.RadioButton radAll;
         private System.Windows.Forms.Button btnInDSDonKH;
         private System.Windows.Forms.DateTimePicker dateTimKiem;
-        private System.Windows.Forms.RadioButton radChuaDuyet;
-        private System.Windows.Forms.RadioButton radDaDuyet;
+        private System.Windows.Forms.RadioButton radChuaChuyen;
+        private System.Windows.Forms.RadioButton radDaChuyen;
         private System.Windows.Forms.DataGridView dgvDSDonTXL;
         private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyen;
@@ -403,5 +412,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
     }
 }
