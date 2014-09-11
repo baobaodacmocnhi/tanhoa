@@ -449,6 +449,7 @@
               <xs:element name="NoiDung" msprop:Generator_ColumnVarNameInTable="columnNoiDung" msprop:Generator_ColumnPropNameInRow="NoiDung" msprop:Generator_ColumnPropNameInTable="NoiDungColumn" msprop:Generator_UserColumnName="NoiDung" type="xs:string" minOccurs="0" />
               <xs:element name="MaLD" msprop:Generator_ColumnVarNameInTable="columnMaLD" msprop:Generator_ColumnPropNameInRow="MaLD" msprop:Generator_ColumnPropNameInTable="MaLDColumn" msprop:Generator_UserColumnName="MaLD" type="xs:string" minOccurs="0" />
               <xs:element name="NguoiDi" msdata:Caption="TienTrinh" msprop:Generator_ColumnVarNameInTable="columnNguoiDi" msprop:Generator_ColumnPropNameInRow="NguoiDi" msprop:Generator_ColumnPropNameInTable="NguoiDiColumn" msprop:Generator_UserColumnName="NguoiDi" type="xs:string" minOccurs="0" />
+              <xs:element name="DaGiaiQuyet" msprop:Generator_ColumnVarNameInTable="columnDaGiaiQuyet" msprop:Generator_ColumnPropNameInRow="DaGiaiQuyet" msprop:Generator_ColumnPropNameInTable="DaGiaiQuyetColumn" msprop:Generator_UserColumnName="DaGiaiQuyet" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

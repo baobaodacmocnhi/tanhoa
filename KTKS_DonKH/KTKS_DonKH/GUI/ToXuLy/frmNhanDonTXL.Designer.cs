@@ -60,6 +60,8 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.chkChuyenKT = new System.Windows.Forms.CheckBox();
             this.groupBoxChuyenKTXM = new System.Windows.Forms.GroupBox();
+            this.txtGhiChuChuyenKT = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.cmbNguoiDi = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dateChuyenKT = new System.Windows.Forms.DateTimePicker();
@@ -82,8 +84,6 @@
             this.dateChuyenKhac = new System.Windows.Forms.DateTimePicker();
             this.label21 = new System.Windows.Forms.Label();
             this.chkChuyenKhac = new System.Windows.Forms.CheckBox();
-            this.txtGhiChuChuyenKT = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLichSuChuyenKT = new System.Windows.Forms.DataGridView();
             this.MaLSCKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -418,6 +418,22 @@
             this.groupBoxChuyenKTXM.TabIndex = 12;
             this.groupBoxChuyenKTXM.TabStop = false;
             // 
+            // txtGhiChuChuyenKT
+            // 
+            this.txtGhiChuChuyenKT.Location = new System.Drawing.Point(568, 15);
+            this.txtGhiChuChuyenKT.Name = "txtGhiChuChuyenKT";
+            this.txtGhiChuChuyenKT.Size = new System.Drawing.Size(230, 25);
+            this.txtGhiChuChuyenKT.TabIndex = 6;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(503, 21);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(59, 17);
+            this.label22.TabIndex = 5;
+            this.label22.Text = "Ghi Chú:";
+            // 
             // cmbNguoiDi
             // 
             this.cmbNguoiDi.FormattingEnabled = true;
@@ -627,22 +643,6 @@
             this.chkChuyenKhac.UseVisualStyleBackColor = true;
             this.chkChuyenKhac.CheckedChanged += new System.EventHandler(this.chkChuyenKhac_CheckedChanged);
             // 
-            // txtGhiChuChuyenKT
-            // 
-            this.txtGhiChuChuyenKT.Location = new System.Drawing.Point(568, 15);
-            this.txtGhiChuChuyenKT.Name = "txtGhiChuChuyenKT";
-            this.txtGhiChuChuyenKT.Size = new System.Drawing.Size(230, 25);
-            this.txtGhiChuChuyenKT.TabIndex = 6;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(503, 21);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(59, 17);
-            this.label22.TabIndex = 5;
-            this.label22.Text = "Ghi Chú:";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvLichSuChuyenKT);
@@ -680,19 +680,20 @@
             this.NgayChuyenKT.DataPropertyName = "NgayChuyenKT";
             this.NgayChuyenKT.HeaderText = "Ngày Chuyển";
             this.NgayChuyenKT.Name = "NgayChuyenKT";
+            this.NgayChuyenKT.Width = 120;
             // 
             // NguoiDi
             // 
             this.NguoiDi.DataPropertyName = "NguoiDi";
             this.NguoiDi.HeaderText = "Nhân Viên";
             this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.Width = 200;
             // 
             // GhiChuChuyenKT
             // 
             this.GhiChuChuyenKT.DataPropertyName = "GhiChuChuyenKT";
             this.GhiChuChuyenKT.HeaderText = "Ghi Chú";
             this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
-            this.GhiChuChuyenKT.Width = 150;
             // 
             // frmNhanDonTXL
             // 

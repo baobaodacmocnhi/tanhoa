@@ -180,9 +180,12 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         ctdongnuoc.HopDong = txtHopDong.Text.Trim();
                         ctdongnuoc.HoTen = txtHoTen.Text.Trim();
                         ctdongnuoc.DiaChi = txtDiaChi.Text.Trim();
-                        ctdongnuoc.Dot = _ttkhachhang.Dot;
-                        ctdongnuoc.Ky = _ttkhachhang.Ky;
-                        ctdongnuoc.Nam = _ttkhachhang.Nam;
+                        if (_ttkhachhang != null)
+                        {
+                            ctdongnuoc.Dot = _ttkhachhang.Dot;
+                            ctdongnuoc.Ky = _ttkhachhang.Ky;
+                            ctdongnuoc.Nam = _ttkhachhang.Nam;
+                        }
                         ctdongnuoc.DiaChiDHN = txtDiaChiDHN.Text.Trim();
                         ctdongnuoc.NgayDN = dateDongNuoc.Value;
                         ctdongnuoc.SoCongVan_DN = txtSoCongVan_DN.Text.Trim();
@@ -236,9 +239,12 @@ namespace KTKS_DonKH.GUI.DongNuoc
                         ctdongnuoc.HopDong = txtHopDong.Text.Trim();
                         ctdongnuoc.HoTen = txtHoTen.Text.Trim();
                         ctdongnuoc.DiaChi = txtDiaChi.Text.Trim();
-                        ctdongnuoc.Dot = _ttkhachhang.Dot;
-                        ctdongnuoc.Ky = _ttkhachhang.Ky;
-                        ctdongnuoc.Nam = _ttkhachhang.Nam;
+                        if (_ttkhachhang != null)
+                        {
+                            ctdongnuoc.Dot = _ttkhachhang.Dot;
+                            ctdongnuoc.Ky = _ttkhachhang.Ky;
+                            ctdongnuoc.Nam = _ttkhachhang.Nam;
+                        }
                         ctdongnuoc.DiaChiDHN = txtDiaChiDHN.Text.Trim();
                         ctdongnuoc.NgayDN = dateDongNuoc.Value;
                         ctdongnuoc.SoCongVan_DN = txtSoCongVan_DN.Text.Trim();

@@ -186,6 +186,12 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         cttttl.DiaChi = txtDiaChi.Text.Trim();
                         cttttl.GiaBieu = txtGiaBieu.Text.Trim();
                         cttttl.DinhMuc = txtDinhMuc.Text.Trim();
+                        if (_ttkhachhang != null)
+                        {
+                            cttttl.Dot = _ttkhachhang.Dot;
+                            cttttl.Ky = _ttkhachhang.Ky;
+                            cttttl.Nam = _ttkhachhang.Nam;
+                        }
                         cttttl.VeViec = txtVeViec.Text.Trim();
                         cttttl.NoiDung = txtNoiDung.Text;
                         cttttl.NoiNhan = txtNoiNhan.Text.Trim();
@@ -290,6 +296,12 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         cttttl.DiaChi = txtDiaChi.Text.Trim();
                         cttttl.GiaBieu = txtGiaBieu.Text.Trim();
                         cttttl.DinhMuc = txtDinhMuc.Text.Trim();
+                        if (_ttkhachhang != null)
+                        {
+                            cttttl.Dot = _ttkhachhang.Dot;
+                            cttttl.Ky = _ttkhachhang.Ky;
+                            cttttl.Nam = _ttkhachhang.Nam;
+                        }
                         cttttl.VeViec = txtVeViec.Text.Trim();
                         cttttl.NoiDung = txtNoiDung.Text;
                         cttttl.NoiNhan = txtNoiNhan.Text.Trim();

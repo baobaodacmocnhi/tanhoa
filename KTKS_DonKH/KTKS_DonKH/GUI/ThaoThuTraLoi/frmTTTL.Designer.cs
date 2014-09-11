@@ -109,7 +109,6 @@
             // 
             this.txtLoTrinh.Location = new System.Drawing.Point(428, 24);
             this.txtLoTrinh.Name = "txtLoTrinh";
-            this.txtLoTrinh.ReadOnly = true;
             this.txtLoTrinh.Size = new System.Drawing.Size(100, 25);
             this.txtLoTrinh.TabIndex = 15;
             // 
@@ -126,7 +125,6 @@
             // 
             this.txtDinhMuc.Location = new System.Drawing.Point(720, 24);
             this.txtDinhMuc.Name = "txtDinhMuc";
-            this.txtDinhMuc.ReadOnly = true;
             this.txtDinhMuc.Size = new System.Drawing.Size(35, 25);
             this.txtDinhMuc.TabIndex = 13;
             // 
@@ -143,7 +141,6 @@
             // 
             this.txtGiaBieu.Location = new System.Drawing.Point(602, 24);
             this.txtGiaBieu.Name = "txtGiaBieu";
-            this.txtGiaBieu.ReadOnly = true;
             this.txtGiaBieu.Size = new System.Drawing.Size(35, 25);
             this.txtGiaBieu.TabIndex = 11;
             // 
@@ -160,7 +157,6 @@
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(423, 55);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.ReadOnly = true;
             this.txtDiaChi.Size = new System.Drawing.Size(558, 25);
             this.txtDiaChi.TabIndex = 7;
             // 
@@ -177,7 +173,6 @@
             // 
             this.txtHoTen.Location = new System.Drawing.Point(98, 55);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.ReadOnly = true;
             this.txtHoTen.Size = new System.Drawing.Size(260, 25);
             this.txtHoTen.TabIndex = 5;
             // 
@@ -194,7 +189,6 @@
             // 
             this.txtHopDong.Location = new System.Drawing.Point(258, 24);
             this.txtHopDong.Name = "txtHopDong";
-            this.txtHopDong.ReadOnly = true;
             this.txtHopDong.Size = new System.Drawing.Size(100, 25);
             this.txtHopDong.TabIndex = 3;
             // 

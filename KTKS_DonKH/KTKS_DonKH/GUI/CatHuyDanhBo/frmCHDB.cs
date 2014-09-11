@@ -259,9 +259,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.HopDong = txtHopDong.Text.Trim();
                             ctchdb.HoTen = txtHoTen.Text.Trim();
                             ctchdb.DiaChi = txtDiaChi.Text.Trim();
-                            ctchdb.Dot = _ttkhachhang.Dot;
-                            ctchdb.Ky = _ttkhachhang.Ky;
-                            ctchdb.Nam = _ttkhachhang.Nam;
+                            if (_ttkhachhang != null)
+                            {
+                                ctchdb.Dot = _ttkhachhang.Dot;
+                                ctchdb.Ky = _ttkhachhang.Ky;
+                                ctchdb.Nam = _ttkhachhang.Nam;
+                            }
                             ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
@@ -326,9 +329,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.HopDong = txtHopDong.Text.Trim();
                             ctchdb.HoTen = txtHoTen.Text.Trim();
                             ctchdb.DiaChi = txtDiaChi.Text.Trim();
-                            ctchdb.Dot = _ttkhachhang.Dot;
-                            ctchdb.Ky = _ttkhachhang.Ky;
-                            ctchdb.Nam = _ttkhachhang.Nam;
+                            if (_ttkhachhang != null)
+                            {
+                                ctchdb.Dot = _ttkhachhang.Dot;
+                                ctchdb.Ky = _ttkhachhang.Ky;
+                                ctchdb.Nam = _ttkhachhang.Nam;
+                            }
                             ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
