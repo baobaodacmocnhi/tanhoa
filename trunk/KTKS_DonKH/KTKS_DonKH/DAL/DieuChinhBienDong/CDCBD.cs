@@ -364,7 +364,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     DataTable tableCTDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
                     DataTable tableCTDCHD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCHD);
                     tableCTDCBD.Merge(tableCTDCHD);
-                    tableCTDCBD.DefaultView.Sort = "CreateDate DESC";
+                    if (tableCTDCBD.Rows.Count > 0)
+                        tableCTDCBD.DefaultView.Sort = "CreateDate DESC";
 
                     return tableCTDCBD.DefaultView.ToTable();
                 }

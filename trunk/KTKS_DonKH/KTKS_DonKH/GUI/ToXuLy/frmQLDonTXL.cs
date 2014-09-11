@@ -9,6 +9,10 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.DAL.ToXuLy;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.ToXuLy;
+using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -17,6 +21,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
         BindingSource DSDonKH_BS = new BindingSource();
         CChuyenDi _cChuyenDi = new CChuyenDi();
         CDonTXL _cDonTXL = new CDonTXL();
+        string _tuNgay = "", _denNgay = "";
+        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
 
         public frmQLDonTXL()
         {
@@ -122,6 +128,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
             {
                 e.Value = "TXL"+e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+            if (dgvDSDonTXL.Columns[e.ColumnIndex].Name == "NguoiDi" && !string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                e.Value = _cTaiKhoan.getHoTenUserbyID(int.Parse(e.Value.ToString()));
+            }
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,7 +170,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
                     case "Mã Đơn":
-                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("TXL",""));
                         break;
                 }
                 DSDonKH_BS.Filter = expression;
@@ -173,23 +183,70 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
             DSDonKH_BS.Filter = expression;
+            _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
+            _denNgay = "";
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
         {
             string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
             DSDonKH_BS.Filter = expression;
+            _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+            _denNgay = "";
         }
 
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
             string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
             DSDonKH_BS.Filter = expression;
+            _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
         }
 
         private void btnInDSDonKH_Click(object sender, EventArgs e)
         {
+            DataTable dt = new DataTable();
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Ngày Lập":
+                    dt = _cDonTXL.LoadDSDonTXLDaChuyen(dateTimKiem.Value);
+                    break;
+                case "Khoảng Thời Gian":
+                    dt = _cDonTXL.LoadDSDonTXLDaChuyen(dateTu.Value, dateDen.Value);
+                    break;
+            }
+            
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
+                dr["TuNgay"] = _tuNgay;
+                dr["DenNgay"] = _denNgay;
+                //dr["MaLD"] = itemRow["MaLD"];
+                dr["TenLD"] = itemRow["TenLD"];
+                dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                dr["TenLD"] = dontxl.LoaiDonTXL.TenLD;
+
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = itemRow["HoTen"];
+                dr["DiaChi"] = itemRow["DiaChi"];
+                dr["NoiDung"] = itemRow["NoiDung"];
+                if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
+                {
+                    dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
+                    dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon).ToString();
+                }
+
+                dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+            }
+
+            rptDSDonTXL rpt = new rptDSDonTXL();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

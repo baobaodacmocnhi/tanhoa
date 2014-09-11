@@ -679,26 +679,27 @@
             this.NgayChuyenKT.DataPropertyName = "NgayChuyenKT";
             this.NgayChuyenKT.HeaderText = "Ngày Chuyển";
             this.NgayChuyenKT.Name = "NgayChuyenKT";
+            this.NgayChuyenKT.Width = 120;
             // 
             // NguoiDi
             // 
             this.NguoiDi.DataPropertyName = "NguoiDi";
             this.NguoiDi.HeaderText = "Nhân Viên";
             this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.Width = 200;
             // 
             // GhiChuChuyenKT
             // 
             this.GhiChuChuyenKT.DataPropertyName = "GhiChuChuyenKT";
             this.GhiChuChuyenKT.HeaderText = "Ghi Chú";
             this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
-            this.GhiChuChuyenKT.Width = 150;
             // 
             // frmShowDonTXL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1362, 525);
+            this.ClientSize = new System.Drawing.Size(1330, 525);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxChuyenKhac);
             this.Controls.Add(this.chkChuyenKhac);

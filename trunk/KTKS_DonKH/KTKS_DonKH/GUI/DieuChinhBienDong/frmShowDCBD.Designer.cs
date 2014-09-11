@@ -289,16 +289,16 @@
             // 
             // txtHoTen_BD
             // 
-            this.txtHoTen_BD.Location = new System.Drawing.Point(224, 43);
+            this.txtHoTen_BD.Location = new System.Drawing.Point(12, 43);
             this.txtHoTen_BD.Name = "txtHoTen_BD";
-            this.txtHoTen_BD.Size = new System.Drawing.Size(200, 25);
+            this.txtHoTen_BD.Size = new System.Drawing.Size(412, 25);
             this.txtHoTen_BD.TabIndex = 5;
             this.txtHoTen_BD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_BD_KeyPress);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(221, 23);
+            this.label20.Location = new System.Drawing.Point(9, 23);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(83, 17);
             this.label20.TabIndex = 4;

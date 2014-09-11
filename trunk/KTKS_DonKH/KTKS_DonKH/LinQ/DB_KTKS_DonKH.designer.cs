@@ -12467,6 +12467,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DinhMuc;
 		
+		private string _Dot;
+		
+		private string _Ky;
+		
+		private string _Nam;
+		
 		private string _VeViec;
 		
 		private string _NoiDung;
@@ -12527,6 +12533,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnGiaBieuChanged();
     partial void OnDinhMucChanging(string value);
     partial void OnDinhMucChanged();
+    partial void OnDotChanging(string value);
+    partial void OnDotChanged();
+    partial void OnKyChanging(string value);
+    partial void OnKyChanged();
+    partial void OnNamChanging(string value);
+    partial void OnNamChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
     partial void OnNoiDungChanging(string value);
@@ -12729,6 +12741,66 @@ namespace KTKS_DonKH.LinQ
 					this._DinhMuc = value;
 					this.SendPropertyChanged("DinhMuc");
 					this.OnDinhMucChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dot", DbType="NVarChar(50)")]
+		public string Dot
+		{
+			get
+			{
+				return this._Dot;
+			}
+			set
+			{
+				if ((this._Dot != value))
+				{
+					this.OnDotChanging(value);
+					this.SendPropertyChanging();
+					this._Dot = value;
+					this.SendPropertyChanged("Dot");
+					this.OnDotChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ky", DbType="NVarChar(50)")]
+		public string Ky
+		{
+			get
+			{
+				return this._Ky;
+			}
+			set
+			{
+				if ((this._Ky != value))
+				{
+					this.OnKyChanging(value);
+					this.SendPropertyChanging();
+					this._Ky = value;
+					this.SendPropertyChanged("Ky");
+					this.OnKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="NVarChar(50)")]
+		public string Nam
+		{
+			get
+			{
+				return this._Nam;
+			}
+			set
+			{
+				if ((this._Nam != value))
+				{
+					this.OnNamChanging(value);
+					this.SendPropertyChanging();
+					this._Nam = value;
+					this.SendPropertyChanged("Nam");
+					this.OnNamChanged();
 				}
 			}
 		}
