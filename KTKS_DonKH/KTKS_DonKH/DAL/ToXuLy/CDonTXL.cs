@@ -242,6 +242,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 {
                                     itemDonTXL.MaDon,
                                     itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
                                     itemDonTXL.DanhBo,
                                     itemDonTXL.HoTen,
@@ -289,6 +290,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 {
                                     itemDonTXL.MaDon,
                                     itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
                                     itemDonTXL.DanhBo,
                                     itemDonTXL.HoTen,
@@ -497,9 +499,34 @@ namespace KTKS_DonKH.DAL.ToXuLy
             {
                 if (CTaiKhoan.RoleNhanDonKH_CapNhat)
                 {
-
                     lichsuchuyenkt.ModifyDate = DateTime.Now;
                     lichsuchuyenkt.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKTs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaLichSuChuyenKT(LichSuChuyenKT lichsuchuyenkt)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    db.LichSuChuyenKTs.DeleteOnSubmit(lichsuchuyenkt);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -564,6 +591,19 @@ namespace KTKS_DonKH.DAL.ToXuLy
         public bool CheckGiaiQuyetbyUser(int MaU, decimal MaDonTXL)
         {
             return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU);
+        }
+
+        public LichSuChuyenKT getLichSuChuyenKTbyID(decimal MaLSChuyenKT)
+        {
+            try
+            {
+                return db.LichSuChuyenKTs.SingleOrDefault(itemLSCKT => itemLSCKT.MaLSChuyenKT == MaLSChuyenKT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         #endregion

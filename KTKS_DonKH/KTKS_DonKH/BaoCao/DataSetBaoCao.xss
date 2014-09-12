@@ -28,7 +28,7 @@
     <Shape ID="DesignTable:ThongBaoDongNuoc" ZOrder="4" X="69" Y="835" Height="257" Width="188" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:DSYCCHDB" ZOrder="3" X="317" Y="906" Height="219" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="215" />
     <Shape ID="DesignTable:KetQuaTimKiem" ZOrder="2" X="582" Y="758" Height="257" Width="160" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
-    <Shape ID="DesignTable:DSDonTXL" ZOrder="1" X="756" Y="761" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:DSDonTXL" ZOrder="1" X="756" Y="761" Height="256" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="252" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
