@@ -176,13 +176,15 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                     if (_cDonTXL.ThemDonTXL(dontxl))
                     {
-                        LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
-                        lichsuchuyenkt.NgayChuyenKT = dontxl.NgayChuyenKT;
-                        lichsuchuyenkt.NguoiDi = dontxl.NguoiDi;
-                        lichsuchuyenkt.GhiChuChuyenKT = dontxl.GhiChuChuyenKT;
-                        lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
-                        _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
-
+                        if (chkChuyenKT.Checked)
+                        {
+                            LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
+                            lichsuchuyenkt.NgayChuyenKT = dontxl.NgayChuyenKT;
+                            lichsuchuyenkt.NguoiDi = dontxl.NguoiDi;
+                            lichsuchuyenkt.GhiChuChuyenKT = dontxl.GhiChuChuyenKT;
+                            lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
+                            _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
+                        }
                         MessageBox.Show("Thêm Thành công/n Mã Đơn: TXL" + dontxl.MaDon.ToString().Insert(dontxl.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
