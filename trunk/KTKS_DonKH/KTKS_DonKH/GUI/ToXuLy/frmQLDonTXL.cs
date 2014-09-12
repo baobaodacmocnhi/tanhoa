@@ -224,6 +224,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dr["DenNgay"] = _denNgay;
                 //dr["MaLD"] = itemRow["MaLD"];
                 dr["TenLD"] = itemRow["TenLD"];
+                dr["SoCongVan"] = itemRow["SoCongVan"];
                 dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
                 DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
                 dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");

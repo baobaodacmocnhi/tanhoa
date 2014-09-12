@@ -231,7 +231,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ///Nếu đơn thuộc Tổ Xử Lý
                     if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                     {
-                        if (((_dontxl != null && _ttkhachhang != null) || _ctchdb != null) && cmbLyDo.SelectedIndex != -1)
+                        if ((_dontxl != null || _ctchdb != null) && cmbLyDo.SelectedIndex != -1)
                         {
                             if (!_cCHDB.CheckCHDBbyMaDon_TXL(_dontxl.MaDon))
                             {
@@ -302,7 +302,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     }
                     ///Nếu đơn thuộc Tổ Khách Hàng
                     else
-                        if (((_donkh != null && _ttkhachhang != null) || _ctchdb != null) && cmbLyDo.SelectedIndex != -1)
+                        if ((_donkh != null || _ctchdb != null) && cmbLyDo.SelectedIndex != -1)
                         {
                             if (!_cCHDB.CheckCHDBbyMaDon(_donkh.MaDon))
                             {

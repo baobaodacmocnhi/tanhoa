@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNgayNhan = new System.Windows.Forms.TextBox();
@@ -86,10 +87,13 @@
             this.chkChuyenKhac = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLichSuChuyenKT = new System.Windows.Forms.DataGridView();
-            this.MaLSCKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLSChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChuChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.groupBoxChuyenKTXM.SuspendLayout();
@@ -98,6 +102,7 @@
             this.groupBoxChuyenKhac.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuChuyenKT)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNoiDung
@@ -659,7 +664,7 @@
             this.dgvLichSuChuyenKT.AllowUserToDeleteRows = false;
             this.dgvLichSuChuyenKT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLichSuChuyenKT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaLSCKT,
+            this.MaLSChuyenKT,
             this.NgayChuyenKT,
             this.NguoiDi,
             this.GhiChuChuyenKT});
@@ -667,13 +672,15 @@
             this.dgvLichSuChuyenKT.Name = "dgvLichSuChuyenKT";
             this.dgvLichSuChuyenKT.Size = new System.Drawing.Size(484, 210);
             this.dgvLichSuChuyenKT.TabIndex = 0;
+            this.dgvLichSuChuyenKT.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuChuyenKT_CellMouseClick);
+            this.dgvLichSuChuyenKT.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuChuyenKT_MouseClick);
             // 
-            // MaLSCKT
+            // MaLSChuyenKT
             // 
-            this.MaLSCKT.DataPropertyName = "MaLSCKT";
-            this.MaLSCKT.HeaderText = "MaLSCKT";
-            this.MaLSCKT.Name = "MaLSCKT";
-            this.MaLSCKT.Visible = false;
+            this.MaLSChuyenKT.DataPropertyName = "MaLSChuyenKT";
+            this.MaLSChuyenKT.HeaderText = "MaLSCKT";
+            this.MaLSChuyenKT.Name = "MaLSChuyenKT";
+            this.MaLSChuyenKT.Visible = false;
             // 
             // NgayChuyenKT
             // 
@@ -695,6 +702,31 @@
             this.GhiChuChuyenKT.HeaderText = "Ghi Chú";
             this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(102, 26);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(1039, 219);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(250, 17);
+            this.label24.TabIndex = 22;
+            this.label24.Text = "Chuột Phải để XÓA Lịch Sử Chuyển KT";
+            // 
             // frmNhanDonTXL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -702,6 +734,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1362, 525);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxChuyenKhac);
             this.Controls.Add(this.chkChuyenKhac);
@@ -742,6 +775,7 @@
             this.groupBoxChuyenKhac.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuChuyenKT)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -807,10 +841,13 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvLichSuChuyenKT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaLSCKT;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLSChuyenKT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenKT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuChuyenKT;
+        private System.Windows.Forms.Label label24;
 
     }
 }
