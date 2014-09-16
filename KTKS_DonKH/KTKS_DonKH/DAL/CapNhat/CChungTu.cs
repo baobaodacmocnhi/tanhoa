@@ -1557,7 +1557,27 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-
+                if (db.CTChungTus.Count(itemCTCT => itemCTCT.MaCT == MaCT_Cu) > 1)
+                {
+                    MessageBox.Show("Sổ đăng ký trên 1 danh bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                List<CTChungTu> lstCTCT = db.CTChungTus.Where(itemCTCT => itemCTCT.DanhBo == DanhBo && itemCTCT.MaCT == MaCT_Cu).ToList();
+                //foreach (CTChungTu itemCTCT in lstCTCT)
+                //{
+                //    itemCTCT.MaCT = "bb";
+                //}
+                db.ChungTus.FirstOrDefault(itemCT => itemCT.MaCT == MaCT_Cu).MaCT = MaCT_Moi;
+                foreach (CTChungTu itemCTCT in lstCTCT)
+                {
+                    itemCTCT.MaCT = MaCT_Moi;
+                }
+                List<LichSuChungTu> lstLSCT = db.LichSuChungTus.Where(itemLSCT => itemLSCT.DanhBo == DanhBo && itemLSCT.MaCT == MaCT_Cu).ToList();
+                foreach (LichSuChungTu itemLSCT in lstLSCT)
+                {
+                    itemLSCT.MaCT = MaCT_Moi;
+                }
+                db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
