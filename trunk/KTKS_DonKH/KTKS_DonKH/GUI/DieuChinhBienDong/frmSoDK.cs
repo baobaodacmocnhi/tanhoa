@@ -11,6 +11,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -60,6 +61,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtLo.ReadOnly = false;
                     txtPhong.ReadOnly = false;
                     btnSua.Enabled = true;
+                    if (CTaiKhoan.MaUser == 0)
+                        txtMaCT.ReadOnly = false;
                 }
             
         }
@@ -438,9 +441,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (txtMaCT.Text.Trim() != _ctchungtu.MaCT)
                 {
                     if(_cChungTu.SuaSoChungTu(txtDanhBo.Text.Trim(),_ctchungtu.MaCT,txtMaCT.Text.Trim()))
-                        MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Sửa Số Sổ Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                
                 if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
