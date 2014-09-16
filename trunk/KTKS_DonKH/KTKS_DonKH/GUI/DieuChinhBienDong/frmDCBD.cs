@@ -865,6 +865,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void dgvDSDieuChinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void dgvLichSuChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvLichSuChungTu.RowHeadersDefaultCellStyle.ForeColor))
@@ -1105,7 +1110,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
-        }
+        } 
 
     }
 }
