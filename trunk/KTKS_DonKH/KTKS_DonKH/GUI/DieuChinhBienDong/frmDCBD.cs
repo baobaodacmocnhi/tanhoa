@@ -867,7 +867,56 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSDieuChinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Biến Động")
+            {  
+                if (dgvDSSoDangKy.RowCount > 0)
+                {
+                    CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
+                    DataTable dt = (DataTable)dgvDSSoDangKy.DataSource;
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    foreach (DataRow itemRow in dt.Rows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
 
+                        dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                        dr["ThongTin"] = ctdcbd.ThongTin;
+                        dr["HieuLucKy"] = ctdcbd.HieuLucKy;
+                        dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
+
+                        if (ctdcbd.DCBD.ToXuLy)
+                            dr["MaDon"] = ctdcbd.DCBD.MaDonTXL.Value.ToString().Insert(ctdcbd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                        else
+                            dr["MaDon"] = ctdcbd.DCBD.MaDon.Value.ToString().Insert(ctdcbd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+
+                        dr["HoTen"] = ctdcbd.HoTen;
+                        dr["DiaChi"] = ctdcbd.DiaChi;
+                        dr["GiaBieu"] = ctdcbd.GiaBieu;
+                        dr["DinhMuc"] = ctdcbd.DinhMuc;
+                        dr["MSThue"] = ctdcbd.MSThue;
+                        ///Biến Động
+                        dr["HoTenBD"] = ctdcbd.HoTen_BD;
+                        dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
+                        dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
+                        dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                        dr["MSThueBD"] = ctdcbd.MSThue_BD;
+
+                        dr["TenLCT"] = itemRow["TenLCT"].ToString();
+                        dr["MaCT"] = itemRow["MaCT"].ToString();
+                        dr["DiaChiCT"] = itemRow["DiaChi"].ToString();
+                        dr["SoNKTong"] = itemRow["SoNKTong"].ToString();
+                        dr["SoNKDangKy"] = itemRow["SoNKDangKy"].ToString();
+
+                        dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
+                    }
+                    rptChiTietDieuChinh rpt = new rptChiTietDieuChinh();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+                }
+            }
+            else
+                if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Hóa Đơn")
+                    MessageBox.Show("Tính năng này chưa được xây dựng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dgvLichSuChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -1110,7 +1159,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
-        } 
+        }
 
     }
 }
