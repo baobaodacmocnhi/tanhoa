@@ -548,10 +548,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                  dr["HopDong"] = cttttl.HopDong;
                                  dr["GiaBieu"] = cttttl.GiaBieu;
                                  dr["DinhMuc"] = cttttl.DinhMuc;
-                                 if (radDSThu.Checked)
-                                     dr["NgayNhanDon"] = cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
-                                 if (radDSThu_TXL.Checked)
+                                 if (cttttl.TTTL.ToXuLy)
                                      dr["NgayNhanDon"] = cttttl.TTTL.DonTXL.CreateDate.Value.ToString("dd/MM/yyyy");
+                                 else
+                                     dr["NgayNhanDon"] = cttttl.TTTL.DonKH.CreateDate.Value.ToString("dd/MM/yyyy");
                                  dr["VeViec"] = cttttl.VeViec;
                                  dr["NoiDung"] = cttttl.NoiDung;
                                  dr["NoiNhan"] = cttttl.NoiNhan;

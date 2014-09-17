@@ -11142,7 +11142,7 @@ namespace KTKS_DonKH.BaoCao {
                         string MaCT, 
                         string DiaChiCT, 
                         string SoNKTong, 
-                        string SoNKDangKy) {
+                        int SoNKDangKy) {
                 ChiTietDieuChinhRow rowChiTietDieuChinhRow = ((ChiTietDieuChinhRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SoPhieu,
@@ -11254,7 +11254,7 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnDiaChiCT);
                 this.columnSoNKTong = new global::System.Data.DataColumn("SoNKTong", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSoNKTong);
-                this.columnSoNKDangKy = new global::System.Data.DataColumn("SoNKDangKy", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSoNKDangKy = new global::System.Data.DataColumn("SoNKDangKy", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSoNKDangKy);
             }
             
@@ -20577,10 +20577,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SoNKDangKy {
+            public int SoNKDangKy {
                 get {
                     try {
-                        return ((string)(this[this.tableChiTietDieuChinh.SoNKDangKyColumn]));
+                        return ((int)(this[this.tableChiTietDieuChinh.SoNKDangKyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'SoNKDangKy\' in table \'ChiTietDieuChinh\' is DBNull.", e);
