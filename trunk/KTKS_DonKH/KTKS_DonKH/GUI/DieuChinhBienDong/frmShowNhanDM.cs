@@ -107,6 +107,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                         DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                        if (!string.IsNullOrEmpty(_lichsuchungtu.MaDon.ToString()) || !string.IsNullOrEmpty(_lichsuchungtu.MaDonTXL.ToString()))
+                            if (_lichsuchungtu.ToXuLy)
+                                dr["MaDon"] = "TXL" + _lichsuchungtu.MaDonTXL.ToString().Insert(_lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                            else
+                                dr["MaDon"] = _lichsuchungtu.MaDon.ToString().Insert(_lichsuchungtu.MaDon.ToString().Length - 2, "-");
+
                         dr["SoPhieu"] = _lichsuchungtu.SoPhieu.ToString().Insert(_lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                         dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(_lichsuchungtu.CatNK_MaCN.Value);
                         if (!string.IsNullOrEmpty(_lichsuchungtu.NhanNK_DanhBo))
@@ -143,6 +149,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                            if (!string.IsNullOrEmpty(_lichsuchungtu.MaDon.ToString()) || !string.IsNullOrEmpty(_lichsuchungtu.MaDonTXL.ToString()))
+                                if (_lichsuchungtu.ToXuLy)
+                                    dr["MaDon"] = "TXL" + _lichsuchungtu.MaDonTXL.ToString().Insert(_lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                                else
+
+                                    dr["MaDon"] = _lichsuchungtu.MaDon.ToString().Insert(_lichsuchungtu.MaDon.ToString().Length - 2, "-");
                             dr["SoPhieu"] = _lichsuchungtu.SoPhieu.ToString().Insert(_lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                             dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(_lichsuchungtu.CatNK_MaCN.Value);
                             if (!string.IsNullOrEmpty(_lichsuchungtu.NhanNK_DanhBo))

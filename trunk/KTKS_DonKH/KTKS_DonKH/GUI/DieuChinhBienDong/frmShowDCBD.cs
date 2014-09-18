@@ -94,6 +94,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
+                if (_ctdcbd.DCBD.ToXuLy)
+                    dr["MaDon"] = "TXL"+_ctdcbd.DCBD.MaDonTXL.ToString().Insert(_ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                else
+                    dr["MaDon"] = _ctdcbd.DCBD.MaDon.ToString().Insert(_ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
                 dr["SoPhieu"] = _ctdcbd.MaCTDCBD.ToString().Insert(_ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                 dr["ThongTin"] = _ctdcbd.ThongTin;
                 dr["HieuLucKy"] = _ctdcbd.HieuLucKy;
