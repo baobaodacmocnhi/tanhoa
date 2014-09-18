@@ -868,55 +868,57 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         try
                         {
+                            for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                                if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                                {
+                                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                    DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
-                        
-                        for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
-                            if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
-                            {
-                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                                DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
+                                    CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                    if (ctdcbd.DCBD.ToXuLy)
+                                        dr["MaDon"] = "TXL"+ctdcbd.DCBD.MaDonTXL.ToString().Insert(ctdcbd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                                    else
+                                        dr["MaDon"] = ctdcbd.DCBD.MaDon.ToString().Insert(ctdcbd.DCBD.MaDon.ToString().Length - 2, "-");
+                                    dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                                    dr["ThongTin"] = ctdcbd.ThongTin;
+                                    dr["HieuLucKy"] = ctdcbd.HieuLucKy;
+                                    dr["Dot"] = ctdcbd.Dot;
+                                    ///Hiện tại xử lý mã số thuế như vậy
+                                    if (ctdcbd.CatMSThue)
+                                        dr["MSThue"] = "MST: Cắt MST";
+                                    if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
+                                        dr["MSThue"] = "MST: " + ctdcbd.MSThue_BD;
+                                    dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
+                                    dr["HopDong"] = ctdcbd.HopDong;
+                                    dr["HoTen"] = ctdcbd.HoTen;
+                                    dr["DiaChi"] = ctdcbd.DiaChi;
+                                    dr["MaQuanPhuong"] = ctdcbd.MaQuanPhuong;
+                                    dr["GiaBieu"] = ctdcbd.GiaBieu;
+                                    dr["DinhMuc"] = ctdcbd.DinhMuc;
+                                    ///Biến Động
+                                    dr["HoTenBD"] = ctdcbd.HoTen_BD;
+                                    dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
+                                    dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
+                                    dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                                    ///Ký Tên
+                                    dr["ChucVu"] = ctdcbd.ChucVu;
+                                    dr["NguoiKy"] = ctdcbd.NguoiKy;
 
-                                CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
-                                dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
-                                dr["ThongTin"] = ctdcbd.ThongTin;
-                                dr["HieuLucKy"] = ctdcbd.HieuLucKy;
-                                dr["Dot"] = ctdcbd.Dot;
-                                ///Hiện tại xử lý mã số thuế như vậy
-                                if (ctdcbd.CatMSThue)
-                                    dr["MSThue"] = "MST: Cắt MST";
-                                if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
-                                    dr["MSThue"] = "MST: " + ctdcbd.MSThue_BD;
-                                dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
-                                dr["HopDong"] = ctdcbd.HopDong;
-                                dr["HoTen"] = ctdcbd.HoTen;
-                                dr["DiaChi"] = ctdcbd.DiaChi;
-                                dr["MaQuanPhuong"] = ctdcbd.MaQuanPhuong;
-                                dr["GiaBieu"] = ctdcbd.GiaBieu;
-                                dr["DinhMuc"] = ctdcbd.DinhMuc;
-                                ///Biến Động
-                                dr["HoTenBD"] = ctdcbd.HoTen_BD;
-                                dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
-                                dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
-                                dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
-                                ///Ký Tên
-                                dr["ChucVu"] = ctdcbd.ChucVu;
-                                dr["NguoiKy"] = ctdcbd.NguoiKy;
+                                    dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
-                                dsBaoCao.Tables["DCBD"].Rows.Add(dr);
+                                    rptPhieuDCBD rpt = new rptPhieuDCBD();
+                                    rpt.SetDataSource(dsBaoCao);
 
-                                rptPhieuDCBD rpt = new rptPhieuDCBD();
-                                rpt.SetDataSource(dsBaoCao);
+                                    printDialog.AllowSomePages = true;
+                                    printDialog.ShowHelp = true;
 
-                                printDialog.AllowSomePages = true;
-                                printDialog.ShowHelp = true;
-
-                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                                //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
-                                rpt.PrintToPrinter(1, false, 1, 1);
-                                //Thread.Sleep(31000);
-                            }
+                                    rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                    rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                    //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
+                                    rpt.PrintToPrinter(1, false, 1, 1);
+                                    //Thread.Sleep(31000);
+                                }
                         }
                         catch (Exception ex)
                         {
@@ -1034,6 +1036,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                                 DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                                                if(!string.IsNullOrEmpty(lichsuchungtu.MaDon.ToString())||!string.IsNullOrEmpty(lichsuchungtu.MaDonTXL.ToString()))
+                                                    if (lichsuchungtu.ToXuLy)
+                                                        dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                                                else
+                                                        dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
+
                                                 dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                                                 dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(lichsuchungtu.CatNK_MaCN.Value);
                                                 if (!string.IsNullOrEmpty(lichsuchungtu.NhanNK_DanhBo))
@@ -1075,6 +1083,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                                     DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
 
+                                                    if (!string.IsNullOrEmpty(lichsuchungtu.MaDon.ToString()) || !string.IsNullOrEmpty(lichsuchungtu.MaDonTXL.ToString()))
+                                                        if (lichsuchungtu.ToXuLy)
+                                                            dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                                                        else
+                                                            dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
+
                                                     dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                                                     dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(lichsuchungtu.NhanNK_MaCN.Value);
                                                     if (!string.IsNullOrEmpty(lichsuchungtu.NhanNK_DanhBo))
@@ -1114,6 +1128,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     {
                                                         DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                                         DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
+
+                                                        if (!string.IsNullOrEmpty(lichsuchungtu.MaDon.ToString()) || !string.IsNullOrEmpty(lichsuchungtu.MaDonTXL.ToString()))
+                                                            if (lichsuchungtu.ToXuLy)
+                                                                dr["MaDon"] = "TXL" + lichsuchungtu.MaDonTXL.ToString().Insert(lichsuchungtu.MaDonTXL.ToString().Length - 2, "-");
+                                                            else
+                                                                dr["MaDon"] = lichsuchungtu.MaDon.ToString().Insert(lichsuchungtu.MaDon.ToString().Length - 2, "-");
 
                                                         dr["SoPhieu"] = lichsuchungtu.SoPhieu.ToString().Insert(lichsuchungtu.SoPhieu.ToString().Length - 2, "-");
                                                         dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(lichsuchungtu.CatNK_MaCN.Value);
