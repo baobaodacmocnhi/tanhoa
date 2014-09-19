@@ -855,11 +855,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSDieuChinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDC" && e.Value != null)
+            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDC" && !string.IsNullOrEmpty(e.Value.ToString()))
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            if (dgvDSDieuChinh.Columns[e.ColumnIndex].Name == "MaDon" && !string.IsNullOrEmpty(e.Value.ToString()))
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
