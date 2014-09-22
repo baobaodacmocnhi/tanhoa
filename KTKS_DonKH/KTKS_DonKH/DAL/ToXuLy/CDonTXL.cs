@@ -590,7 +590,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
         /// <returns></returns>
         public bool CheckGiaiQuyetbyUser(int MaU, decimal MaDonTXL)
         {
-            return db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU);
+            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU))
+                return true;
+            else
+                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.CreateBy == MaU);
         }
 
         public LichSuChuyenKT getLichSuChuyenKTbyID(decimal MaLSChuyenKT)
