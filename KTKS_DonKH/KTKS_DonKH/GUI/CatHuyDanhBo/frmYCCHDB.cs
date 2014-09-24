@@ -94,7 +94,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                         {
                             Clear();
-                            MessageBox.Show("Danh Bộ không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -118,7 +118,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                     {
                         Clear();
-                        MessageBox.Show("Danh Bộ không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -145,7 +145,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 ///Nếu đơn thuộc Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (_dontxl != null && _ttkhachhang != null && cmbLyDo.SelectedIndex != -1)
+                    if (_dontxl != null && cmbLyDo.SelectedIndex != -1)
                     {
                         if (!_cCHDB.CheckYCCHDBbyMaDonDanhBo_TXL(_dontxl.MaDon, _dontxl.DanhBo))
                         {
@@ -156,9 +156,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.HopDong = txtHopDong.Text.Trim();
                             ycchdb.HoTen = txtHoTen.Text.Trim();
                             ycchdb.DiaChi = txtDiaChi.Text.Trim();
-                            ycchdb.Dot = _ttkhachhang.Dot;
-                            ycchdb.Ky = _ttkhachhang.Ky;
-                            ycchdb.Nam = _ttkhachhang.Nam;
+                            if (_ttkhachhang != null)
+                            {
+                                ycchdb.Dot = _ttkhachhang.Dot;
+                                ycchdb.Ky = _ttkhachhang.Ky;
+                                ycchdb.Nam = _ttkhachhang.Nam;
+                            }
                             ycchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ycchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
@@ -227,7 +230,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
                 ///Nếu đơn thuộc Tổ Khách Hàng
                     else
-                    if (_donkh != null && _ttkhachhang != null && cmbLyDo.SelectedIndex != -1)
+                    if (_donkh != null && cmbLyDo.SelectedIndex != -1)
                     {
                         if (!_cCHDB.CheckYCCHDBbyMaDonDanhBo(_donkh.MaDon, _donkh.DanhBo))
                         {
@@ -237,9 +240,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.HopDong = txtHopDong.Text.Trim();
                             ycchdb.HoTen = txtHoTen.Text.Trim();
                             ycchdb.DiaChi = txtDiaChi.Text.Trim();
-                            ycchdb.Dot = _ttkhachhang.Dot;
-                            ycchdb.Ky = _ttkhachhang.Ky;
-                            ycchdb.Nam = _ttkhachhang.Nam;
+                            if (_ttkhachhang != null)
+                            {
+                                ycchdb.Dot = _ttkhachhang.Dot;
+                                ycchdb.Ky = _ttkhachhang.Ky;
+                                ycchdb.Nam = _ttkhachhang.Nam;
+                            }
                             ycchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ycchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")

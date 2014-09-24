@@ -87,13 +87,13 @@
             this.chkChuyenKT = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLichSuChuyenKT = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label24 = new System.Windows.Forms.Label();
             this.MaLSChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChuChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label24 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBoxChuyenKhac.SuspendLayout();
@@ -674,33 +674,6 @@
             this.dgvLichSuChuyenKT.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuChuyenKT_CellMouseClick);
             this.dgvLichSuChuyenKT.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuChuyenKT_MouseClick);
             // 
-            // MaLSChuyenKT
-            // 
-            this.MaLSChuyenKT.DataPropertyName = "MaLSChuyenKT";
-            this.MaLSChuyenKT.HeaderText = "MaLSCKT";
-            this.MaLSChuyenKT.Name = "MaLSChuyenKT";
-            this.MaLSChuyenKT.Visible = false;
-            // 
-            // NgayChuyenKT
-            // 
-            this.NgayChuyenKT.DataPropertyName = "NgayChuyenKT";
-            this.NgayChuyenKT.HeaderText = "Ngày Chuyển";
-            this.NgayChuyenKT.Name = "NgayChuyenKT";
-            this.NgayChuyenKT.Width = 120;
-            // 
-            // NguoiDi
-            // 
-            this.NguoiDi.DataPropertyName = "NguoiDi";
-            this.NguoiDi.HeaderText = "Nhân Viên";
-            this.NguoiDi.Name = "NguoiDi";
-            this.NguoiDi.Width = 200;
-            // 
-            // GhiChuChuyenKT
-            // 
-            this.GhiChuChuyenKT.DataPropertyName = "GhiChuChuyenKT";
-            this.GhiChuChuyenKT.HeaderText = "Ghi Chú";
-            this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -725,6 +698,33 @@
             this.label24.Size = new System.Drawing.Size(250, 17);
             this.label24.TabIndex = 23;
             this.label24.Text = "Chuột Phải để XÓA Lịch Sử Chuyển KT";
+            // 
+            // MaLSChuyenKT
+            // 
+            this.MaLSChuyenKT.DataPropertyName = "MaLSChuyenKT";
+            this.MaLSChuyenKT.HeaderText = "MaLSChuyenKT";
+            this.MaLSChuyenKT.Name = "MaLSChuyenKT";
+            this.MaLSChuyenKT.Visible = false;
+            // 
+            // NgayChuyenKT
+            // 
+            this.NgayChuyenKT.DataPropertyName = "NgayChuyenKT";
+            this.NgayChuyenKT.HeaderText = "Ngày Chuyển";
+            this.NgayChuyenKT.Name = "NgayChuyenKT";
+            this.NgayChuyenKT.Width = 120;
+            // 
+            // NguoiDi
+            // 
+            this.NguoiDi.DataPropertyName = "NguoiDi";
+            this.NguoiDi.HeaderText = "Nhân Viên";
+            this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.Width = 200;
+            // 
+            // GhiChuChuyenKT
+            // 
+            this.GhiChuChuyenKT.DataPropertyName = "GhiChuChuyenKT";
+            this.GhiChuChuyenKT.HeaderText = "Ghi Chú";
+            this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
             // 
             // frmShowDonTXL
             // 
@@ -841,12 +841,12 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvLichSuChuyenKT;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLSChuyenKT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenKT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuChuyenKT;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
-        private System.Windows.Forms.Label label24;
     }
 }

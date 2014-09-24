@@ -503,7 +503,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                         {
                             Clear();
-                            MessageBox.Show("Danh Bộ không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -530,7 +530,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         else
                         {
                             Clear();
-                            MessageBox.Show("Danh Bộ không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
