@@ -15,7 +15,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
     public partial class frmDongTienBoiThuong : Form
     {
-        int selectedindex = -1;
+        int _selectedindex = -1;
         CHienTrangKiemTra _cHienTrangKiemTra = new CHienTrangKiemTra();
         CKTXM _cKTXM = new CKTXM();
 
@@ -127,7 +127,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             ///
             chkChuyenCatHuy.Checked = false;
             dateChuyenCatHuy.Value = DateTime.Now;
-            selectedindex = -1;
+            _selectedindex = -1;
             }
             catch (Exception ex)
             {
@@ -144,25 +144,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             }
         }
 
-        private void dgvDSKetQuaKiemTra_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                selectedindex = e.RowIndex;
-                LoadCTKTXM(_cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", e.RowIndex].Value.ToString())));
-            }
-            catch (Exception)
-            {
-            }
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (selectedindex != -1)
+            if (_selectedindex != -1)
             {
-                if (_cKTXM.CheckCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", selectedindex].Value.ToString())))
+                if (_cKTXM.CheckCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString())))
                 {
-                    CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", selectedindex].Value.ToString()));
+                    CTKTXM ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", _selectedindex].Value.ToString()));
 
                     if (ctktxm.LapBangGia != chkLapBangGia.Checked)
                         if (chkLapBangGia.Checked)
@@ -260,6 +248,17 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
-        
+
+        private void dgvDSKetQuaKiemTra_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _selectedindex = e.RowIndex;
+                LoadCTKTXM(_cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", e.RowIndex].Value.ToString())));
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }

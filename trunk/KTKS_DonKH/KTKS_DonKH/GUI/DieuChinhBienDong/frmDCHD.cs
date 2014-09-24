@@ -545,6 +545,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = "0";
                             dateNgayKy.Focus();
                         }
+                        else
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -575,6 +577,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 txtDinhMuc_Cu.Text = txtDinhMuc_Moi.Text = "0";
                             dateNgayKy.Focus();
                         }
+                        else
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {

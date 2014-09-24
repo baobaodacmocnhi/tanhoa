@@ -417,6 +417,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             //dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(txtDanhBo.Text.Trim());
                             //dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(txtDanhBo.Text.Trim());
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtDanhBo.Focus();
                         }
                     }
@@ -442,6 +443,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             //dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTu(txtDanhBo.Text.Trim());
                             //dgvDSDieuChinh.DataSource = _cDCBD.LoadDSDCbyDanhBo(txtDanhBo.Text.Trim());
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtDanhBo.Focus();
                         }
                     }
