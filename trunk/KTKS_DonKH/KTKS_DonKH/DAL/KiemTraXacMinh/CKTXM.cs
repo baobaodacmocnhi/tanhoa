@@ -923,6 +923,73 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         /// <param name="MaUser"></param>
         /// <param name="TuNgay"></param>
         /// <returns></returns>
+        //public DataTable LoadDSCTKTXM(int MaUser, DateTime TuNgay)
+        //{
+        //    try
+        //    {
+        //        if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+        //        {
+        //            var query = from itemCTKTXM in db.CTKTXMs
+        //                        //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+        //                        where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date
+        //                                && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
+        //                                || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
+        //                                || itemCTKTXM.HienTrangKiemTra=="BB chạy ngược"
+        //                                || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
+        //                                || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
+        //                                )
+        //                        //orderby itemCTKTXM.KTXM.MaDon ascending
+        //                        select new
+        //                        {
+        //                            LoaiBienBan=itemCTKTXM.HienTrangKiemTra,
+        //                            itemCTKTXM.DanhBo,
+        //                            itemCTKTXM.KTXM.MaDon,
+        //                            itemCTKTXM.KTXM.MaDonTXL,
+        //                            itemCTKTXM.LapBangGia,
+        //                            itemCTKTXM.DongTienBoiThuong,
+        //                            itemCTKTXM.ChuyenLapTBCat,
+        //                            //CreateBy = itemUser.HoTen,
+        //                        };
+        //            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //        }
+        //        else
+        //            if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
+        //            {
+        //                var query = from itemCTKTXM in db.CTKTXMs
+        //                            //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+        //                            where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date && itemCTKTXM.CreateBy == MaUser
+        //                                    && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
+        //                                    || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
+        //                                    || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
+        //                                    || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
+        //                                    || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
+        //                                    )
+        //                            //orderby itemCTKTXM.KTXM.MaDon ascending
+        //                            select new
+        //                            {
+        //                                LoaiBienBan = itemCTKTXM.HienTrangKiemTra,
+        //                                itemCTKTXM.DanhBo,
+        //                                itemCTKTXM.KTXM.MaDon,
+        //                                itemCTKTXM.KTXM.MaDonTXL,
+        //                                itemCTKTXM.LapBangGia,
+        //                                itemCTKTXM.DongTienBoiThuong,
+        //                                itemCTKTXM.ChuyenLapTBCat,
+        //                                //CreateBy = itemUser.HoTen,
+        //                            };
+        //                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                return null;
+        //            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return null;
+        //    }
+        //}
         public DataTable LoadDSCTKTXM(int MaUser, DateTime TuNgay)
         {
             try
@@ -932,16 +999,10 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query = from itemCTKTXM in db.CTKTXMs
                                 //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date
-                                        && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
-                                        || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
-                                        || itemCTKTXM.HienTrangKiemTra=="BB chạy ngược"
-                                        || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
-                                        || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
-                                        )
                                 //orderby itemCTKTXM.KTXM.MaDon ascending
                                 select new
                                 {
-                                    LoaiBienBan=itemCTKTXM.HienTrangKiemTra,
+                                    LoaiBienBan = itemCTKTXM.HienTrangKiemTra,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.KTXM.MaDonTXL,
@@ -958,12 +1019,6 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         var query = from itemCTKTXM in db.CTKTXMs
                                     //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                     where itemCTKTXM.NgayKTXM.Value.Date == TuNgay.Date && itemCTKTXM.CreateBy == MaUser
-                                            && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
-                                            || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
-                                            || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
-                                            || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
-                                            || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
-                                            )
                                     //orderby itemCTKTXM.KTXM.MaDon ascending
                                     select new
                                     {
@@ -997,6 +1052,73 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         /// <param name="MaUser"></param>
         /// <param name="TuNgay"></param>
         /// <returns></returns>
+        //public DataTable LoadDSCTKTXM(int MaUser, DateTime TuNgay, DateTime DenNgay)
+        //{
+        //    try
+        //    {
+        //        if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+        //        {
+        //            var query = from itemCTKTXM in db.CTKTXMs
+        //                        //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+        //                        where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value.Date <= DenNgay.Date
+        //                                && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
+        //                                || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
+        //                                || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
+        //                                || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
+        //                                || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
+        //                                )
+        //                        //orderby itemCTKTXM.KTXM.MaDon ascending
+        //                        select new
+        //                        {
+        //                            LoaiBienBan=itemCTKTXM.HienTrangKiemTra,
+        //                            itemCTKTXM.DanhBo,
+        //                            itemCTKTXM.KTXM.MaDon,
+        //                            itemCTKTXM.KTXM.MaDonTXL,
+        //                            itemCTKTXM.LapBangGia,
+        //                            itemCTKTXM.DongTienBoiThuong,
+        //                            itemCTKTXM.ChuyenLapTBCat,
+        //                            //CreateBy = itemUser.HoTen,
+        //                        };
+        //            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //        }
+        //        else
+        //            if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
+        //            {
+        //                var query = from itemCTKTXM in db.CTKTXMs
+        //                            //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+        //                            where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value <= DenNgay.Date && itemCTKTXM.CreateBy == MaUser
+        //                                    && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
+        //                                    || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
+        //                                    || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
+        //                                    || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
+        //                                    || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
+        //                                    )
+        //                            //orderby itemCTKTXM.KTXM.MaDon ascending
+        //                            select new
+        //                            {
+        //                                LoaiBienBan = itemCTKTXM.HienTrangKiemTra,
+        //                                itemCTKTXM.DanhBo,
+        //                                itemCTKTXM.KTXM.MaDon,
+        //                                itemCTKTXM.KTXM.MaDonTXL,
+        //                                itemCTKTXM.LapBangGia,
+        //                                itemCTKTXM.DongTienBoiThuong,
+        //                                itemCTKTXM.ChuyenLapTBCat,
+        //                                //CreateBy = itemUser.HoTen,
+        //                            };
+        //                return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                return null;
+        //            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return null;
+        //    }
+        //}
         public DataTable LoadDSCTKTXM(int MaUser, DateTime TuNgay, DateTime DenNgay)
         {
             try
@@ -1006,16 +1128,10 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query = from itemCTKTXM in db.CTKTXMs
                                 //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value.Date <= DenNgay.Date
-                                        && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
-                                        || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
-                                        || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
-                                        || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
-                                        || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
-                                        )
                                 //orderby itemCTKTXM.KTXM.MaDon ascending
                                 select new
                                 {
-                                    LoaiBienBan=itemCTKTXM.HienTrangKiemTra,
+                                    LoaiBienBan = itemCTKTXM.HienTrangKiemTra,
                                     itemCTKTXM.DanhBo,
                                     itemCTKTXM.KTXM.MaDon,
                                     itemCTKTXM.KTXM.MaDonTXL,
@@ -1032,12 +1148,6 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                         var query = from itemCTKTXM in db.CTKTXMs
                                     //join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                     where itemCTKTXM.NgayKTXM.Value.Date >= TuNgay.Date && itemCTKTXM.NgayKTXM.Value <= DenNgay.Date && itemCTKTXM.CreateBy == MaUser
-                                            && ((itemCTKTXM.HienTrangKiemTra.Contains("bồi thường") && !itemCTKTXM.HienTrangKiemTra.Contains("không"))
-                                            || itemCTKTXM.HienTrangKiemTra.Contains("gian lận")
-                                            || itemCTKTXM.HienTrangKiemTra == "BB chạy ngược"
-                                            || itemCTKTXM.HienTrangKiemTra == "BB tái lập Danh Bộ"
-                                            || itemCTKTXM.HienTrangKiemTra == "BB hủy Danh Bộ"
-                                            )
                                     //orderby itemCTKTXM.KTXM.MaDon ascending
                                     select new
                                     {
@@ -1064,6 +1174,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 return null;
             }
         }
+
 
         /// <summary>
         /// Lấy Danh Sách CTKTXM theo Danh Bộ & User. Hàm này phục vụ cho Cập Nhật Đóng Tiền Bồi Thường KTXM
