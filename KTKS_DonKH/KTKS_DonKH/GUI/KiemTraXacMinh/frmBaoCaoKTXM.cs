@@ -209,6 +209,17 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                         a[5].LoaiBienBan = "BB hủy Danh Bộ";
                                         a[5].TongDanhBo++;
                                     }
+                                    else
+                                    {
+                                        if (bool.Parse(itemRow["LapBangGia"].ToString()))
+                                        {
+                                            soLapBangGia++;
+                                        }
+                                        if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
+                                        {
+                                            soDongTien++;
+                                        }
+                                    }
                 }
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
