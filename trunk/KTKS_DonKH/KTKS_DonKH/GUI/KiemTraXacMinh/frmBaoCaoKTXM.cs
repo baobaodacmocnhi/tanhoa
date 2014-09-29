@@ -20,6 +20,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         int soLapBangGia = 0;
         int soDongTien = 0;
         int soChuyenLapTBCat = 0;
+        int soMatDHN_LapBangGia = 0;
+        int soDCMS_LapBangGia = 0;
+        int soKhac_LapBangGia = 0;
 
         public frmBaoCaoKTXM()
         {
@@ -143,6 +146,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             {
                                 a[0].LapBangGia++;
                                 soLapBangGia++;
+                                soMatDHN_LapBangGia++;
                             }
                             if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
                             {
@@ -170,6 +174,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 {
                                     a[1].LapBangGia++;
                                     soLapBangGia++;
+                                    soDCMS_LapBangGia++;
                                 }
                                 if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
                                 {
@@ -214,6 +219,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                         if (bool.Parse(itemRow["LapBangGia"].ToString()))
                                         {
                                             soLapBangGia++;
+                                            soKhac_LapBangGia++;
                                         }
                                         if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
                                         {
@@ -247,7 +253,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         //if (soLapBangGia == 0)
                         //    dr["LapBangGia"] = "";
                         //else
-                            dr["LapBangGia"] = soLapBangGia;
+                        dr["LapBangGia"] = soLapBangGia;
 
                         if (a[i].DongTienBoiThuong == 0)
                             dr["DongTienBoiThuong"] = "";
@@ -262,12 +268,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         //if (soChuyenLapTBCat == 0)
                         //    dr["ChuyenLapTBCat"] = "";
                         //else
-                            dr["ChuyenLapTBCat"] = soChuyenLapTBCat;
+                        dr["ChuyenLapTBCat"] = soChuyenLapTBCat;
 
                         //if (soDongTien == 0)
                         //    dr["DongTien"] = "";
                         //else
-                            dr["DongTien"] = soDongTien;
+                        dr["DongTien"] = soDongTien;
+
+                        dr["soMatDHN_LapBangGia"] = soMatDHN_LapBangGia;
+                        dr["soDCMS_LapBangGia"] = soDCMS_LapBangGia;
+                        dr["soKhac_LapBangGia"] = soKhac_LapBangGia;
 
                         dsBaoCao.Tables["ThongKeBienBanKTXM"].Rows.Add(dr);
                     }
