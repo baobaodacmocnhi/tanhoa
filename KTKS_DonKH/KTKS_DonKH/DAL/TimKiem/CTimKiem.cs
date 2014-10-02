@@ -81,6 +81,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table CTDCBD
                 var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
+                                  join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                   where itemCTDCBD.DCBD.MaDon == MaDon
                                   select new
                                   {
@@ -100,9 +101,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
                                       itemCTDCBD.DCBD.MaDon,
+                                      CreateBy = itemUser.HoTen,
                                   };
                 ///Bảng CTDCHD
                 var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                                  join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
                                   where itemCTDCHD.DCBD.MaDon == MaDon
                                   select new
                                   {
@@ -123,6 +126,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.TangGiam,
                                       itemCTDCHD.TongCong_BD,
                                       itemCTDCHD.DCBD.MaDon,
+                                      CreateBy = itemUser.HoTen,
                                   };
 
                 DataTable dtDCBD = new DataTable();
@@ -293,6 +297,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table CTDCBD
                 var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
+                                  join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                   where itemCTDCBD.DCBD.MaDonTXL == MaDonTXL
                                   select new
                                   {
@@ -312,9 +317,11 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
                                       MaDon=itemCTDCBD.DCBD.MaDonTXL,
+                                      CreateBy=itemUser.HoTen,
                                   };
                 ///Bảng CTDCHD
                 var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                                  join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
                                   where itemCTDCHD.DCBD.MaDonTXL == MaDonTXL
                                   select new
                                   {
@@ -335,6 +342,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.TangGiam,
                                       itemCTDCHD.TongCong_BD,
                                       MaDon=itemCTDCHD.DCBD.MaDonTXL,
+                                      CreateBy = itemUser.HoTen,
                                   };
 
                 DataTable dtDCBD = new DataTable();
@@ -492,6 +500,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table CTDCBD
                 var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
+                                  join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                   where itemCTDCBD.DanhBo == DanhBo
                                   select new
                                   {
@@ -513,10 +522,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.MSThue,
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
+                                      CreateBy = itemUser.HoTen,
                                   };
 
                 ///Bảng CTDCHD
                 var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                                  join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
                                   where itemCTDCHD.DanhBo == DanhBo
                                   select new
                                   {
@@ -539,6 +550,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.TongCong_End,
                                       itemCTDCHD.TangGiam,
                                       itemCTDCHD.TongCong_BD,
+                                      CreateBy = itemUser.HoTen,
                                   };
                 DataTable dtDCBD = new DataTable();
                 dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
@@ -987,6 +999,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table CTDCBD
                 var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
+                                  join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                   where itemCTDCBD.HoTen.Contains(HoTen)
                                   select new
                                   {
@@ -1008,10 +1021,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.MSThue,
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
+                                      CreateBy=itemUser.HoTen,
                                   };
 
                 ///Bảng CTDCHD
                 var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                                  join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
                                   where itemCTDCHD.HoTen.Contains(HoTen)
                                   select new
                                   {
@@ -1034,6 +1049,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.TongCong_End,
                                       itemCTDCHD.TangGiam,
                                       itemCTDCHD.TongCong_BD,
+                                      CreateBy = itemUser.HoTen,
                                   };
                 DataTable dtDCBD = new DataTable();
                 dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);
@@ -1480,6 +1496,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 ///Table CTDCBD
                 var queryCTDCBD = from itemCTDCBD in db.CTDCBDs
+                                  join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                   where itemCTDCBD.DiaChi.Contains(DiaChi)
                                   select new
                                   {
@@ -1501,10 +1518,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCBD.MSThue,
                                       itemCTDCBD.GiaBieu,
                                       itemCTDCBD.DinhMuc,
+                                      CreateBy = itemUser.HoTen,
                                   };
 
                 ///Bảng CTDCHD
                 var queryCTDCHD = from itemCTDCHD in db.CTDCHDs
+                                  join itemUser in db.Users on itemCTDCHD.CreateBy equals itemUser.MaU
                                   where itemCTDCHD.DiaChi.Contains(DiaChi)
                                   select new
                                   {
@@ -1527,6 +1546,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                       itemCTDCHD.TongCong_End,
                                       itemCTDCHD.TangGiam,
                                       itemCTDCHD.TongCong_BD,
+                                      CreateBy=itemUser.HoTen,
                                   };
                 DataTable dtDCBD = new DataTable();
                 dtDCBD = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDCBD);

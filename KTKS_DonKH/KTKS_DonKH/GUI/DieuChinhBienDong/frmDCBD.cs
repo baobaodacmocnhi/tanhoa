@@ -202,11 +202,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     sửaToolStripMenuItem.Enabled = true;
                     cắtChuyểnĐịnhMứcToolStripMenuItem.Enabled = true;
+                    xóaToolStripMenuItem.Enabled = true;
                 }
                 else
                 {
                     sửaToolStripMenuItem.Enabled = false;
                     cắtChuyểnĐịnhMứcToolStripMenuItem.Enabled = false;
+                    xóaToolStripMenuItem.Enabled = false;
                 }
                 ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
                 dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -354,6 +356,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
                 LoadTongNK();
             }
+        }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (_cChungTu.XoaSoChungTu(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString()))
+                {
+                    MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvDSSoDangKy.DataSource = _cChungTu.LoadDSChungTubyDanhBo(txtDanhBo.Text.Trim());
+                    LoadTongNK();
+                }
         }
 
         private void dgvDSSoDangKy_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -870,12 +883,39 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void dgvDSDieuChinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Biến Động")
-            {  
-                if (dgvDSSoDangKy.RowCount > 0)
+            {
+                CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
+                DataTable dt = (DataTable)dgvDSSoDangKy.DataSource;
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                if (dt.Rows.Count == 0)
                 {
-                    CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDieuChinh["MaDC", e.RowIndex].Value.ToString()));
-                    DataTable dt = (DataTable)dgvDSSoDangKy.DataSource;
-                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
+
+                    dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                    dr["ThongTin"] = ctdcbd.ThongTin;
+                    dr["HieuLucKy"] = ctdcbd.HieuLucKy;
+                    dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
+
+                    if (ctdcbd.DCBD.ToXuLy)
+                        dr["MaDon"] = ctdcbd.DCBD.MaDonTXL.Value.ToString().Insert(ctdcbd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                    else
+                        dr["MaDon"] = ctdcbd.DCBD.MaDon.Value.ToString().Insert(ctdcbd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+
+                    dr["HoTen"] = ctdcbd.HoTen;
+                    dr["DiaChi"] = ctdcbd.DiaChi;
+                    dr["GiaBieu"] = ctdcbd.GiaBieu;
+                    dr["DinhMuc"] = ctdcbd.DinhMuc;
+                    dr["MSThue"] = ctdcbd.MSThue;
+                    ///Biến Động
+                    dr["HoTenBD"] = ctdcbd.HoTen_BD;
+                    dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
+                    dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
+                    dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                    dr["MSThueBD"] = ctdcbd.MSThue_BD;
+
+                    dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
+                }
+                else
                     foreach (DataRow itemRow in dt.Rows)
                     {
                         DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
@@ -910,11 +950,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
                     }
-                    rptChiTietDieuChinh rpt = new rptChiTietDieuChinh();
-                    rpt.SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.ShowDialog();
-                }
+                rptChiTietDieuChinh rpt = new rptChiTietDieuChinh();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+
             }
             else
                 if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Hóa Đơn")
@@ -1162,6 +1202,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
+
+        
 
     }
 }

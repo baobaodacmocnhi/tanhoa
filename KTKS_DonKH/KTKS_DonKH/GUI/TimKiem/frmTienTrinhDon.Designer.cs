@@ -70,6 +70,7 @@
             this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn121 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridViewCHDB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -145,6 +146,7 @@
             this.gridColumn92 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn93 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn94 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn122 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridViewBamChi = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn95 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn109 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -397,7 +399,8 @@
             this.gridColumn29,
             this.gridColumn30,
             this.gridColumn31,
-            this.gridColumn32});
+            this.gridColumn32,
+            this.gridColumn121});
             this.gridViewDCBD.GridControl = this.gridControl;
             this.gridViewDCBD.IndicatorWidth = 41;
             this.gridViewDCBD.Name = "gridViewDCBD";
@@ -606,6 +609,16 @@
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.OptionsColumn.AllowEdit = false;
             this.gridColumn32.Width = 90;
+            // 
+            // gridColumn121
+            // 
+            this.gridColumn121.Caption = "Người Lập";
+            this.gridColumn121.FieldName = "CreateBy";
+            this.gridColumn121.Name = "gridColumn121";
+            this.gridColumn121.OptionsColumn.AllowEdit = false;
+            this.gridColumn121.Visible = true;
+            this.gridColumn121.VisibleIndex = 10;
+            this.gridColumn121.Width = 200;
             // 
             // gridViewCHDB
             // 
@@ -1259,7 +1272,8 @@
             this.gridColumn91,
             this.gridColumn92,
             this.gridColumn93,
-            this.gridColumn94});
+            this.gridColumn94,
+            this.gridColumn122});
             this.gridViewDCBD_TXL.GridControl = this.gridControl;
             this.gridViewDCBD_TXL.Name = "gridViewDCBD_TXL";
             this.gridViewDCBD_TXL.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1467,6 +1481,16 @@
             this.gridColumn94.Name = "gridColumn94";
             this.gridColumn94.OptionsColumn.AllowEdit = false;
             this.gridColumn94.Width = 90;
+            // 
+            // gridColumn122
+            // 
+            this.gridColumn122.Caption = "Người Lập";
+            this.gridColumn122.FieldName = "CreateBy";
+            this.gridColumn122.Name = "gridColumn122";
+            this.gridColumn122.OptionsColumn.AllowEdit = false;
+            this.gridColumn122.Visible = true;
+            this.gridColumn122.VisibleIndex = 10;
+            this.gridColumn122.Width = 200;
             // 
             // gridViewBamChi
             // 
@@ -2040,5 +2064,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn120;
         private System.Windows.Forms.Button btnIn;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn121;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn122;
     }
 }

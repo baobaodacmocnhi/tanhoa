@@ -143,6 +143,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -741,9 +742,10 @@
             this.thêmToolStripMenuItem,
             this.sửaToolStripMenuItem,
             this.cắtChuyểnĐịnhMứcToolStripMenuItem,
-            this.nhậnĐịnhMứctoolStripMenuItem});
+            this.nhậnĐịnhMứctoolStripMenuItem,
+            this.xóaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(272, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(272, 136);
             // 
             // thêmToolStripMenuItem
             // 
@@ -1195,6 +1197,14 @@
             this.label28.TabIndex = 20;
             this.label28.Text = "Ctrl++: Lưu DCBD";
             // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Enabled = false;
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1355,6 +1365,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_BD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         
     }
 }

@@ -83,12 +83,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 set { _toXuLy = value; }
             }
 
-            int _lapBangGia = 0;
-            public int LapBangGia
-            {
-                get { return _lapBangGia; }
-                set { _lapBangGia = value; }
-            }
+            //int _lapBangGia = 0;
+            //public int LapBangGia
+            //{
+            //    get { return _lapBangGia; }
+            //    set { _lapBangGia = value; }
+            //}
 
             int _dongTienBoiThuong = 0;
             public int DongTienBoiThuong
@@ -104,12 +104,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 set { _chuaDongTienBoiThuong = value; }
             }
 
-            int _chuyenLapTBCat = 0;
-            public int ChuyenLapTBCat
-            {
-                get { return _chuyenLapTBCat; }
-                set { _chuyenLapTBCat = value; }
-            }
+            //int _chuyenLapTBCat = 0;
+            //public int ChuyenLapTBCat
+            //{
+            //    get { return _chuyenLapTBCat; }
+            //    set { _chuyenLapTBCat = value; }
+            //}
         };
 
         ThongKeBienBan[] a = new ThongKeBienBan[6];
@@ -119,11 +119,22 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (radThongKeBienBan.Checked)
             {
                 DataTable dt = new DataTable();
+                DataTable dt2 = new DataTable();
                 if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
+                {
                     dt = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                    dt2 = _cKTXM.LoadDSCTKTXMbyNgayLapBangGia(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                    soDongTien = _cKTXM.countCTKTXMbyNgayDongTien(dateTu.Value, dateDen.Value);
+                    soChuyenLapTBCat = _cKTXM.countCTKTXMbyNgayChuyenLapTBCat(dateTu.Value, dateDen.Value);
+                }
                 else
                     if (!string.IsNullOrEmpty(_tuNgay))
+                    {
                         dt = _cKTXM.LoadDSCTKTXM(CTaiKhoan.MaUser, dateTu.Value);
+                        dt2 = _cKTXM.LoadDSCTKTXMbyNgayLapBangGia(CTaiKhoan.MaUser, dateTu.Value);
+                        soDongTien = _cKTXM.countCTKTXMbyNgayDongTien(dateTu.Value);
+                        soChuyenLapTBCat = _cKTXM.countCTKTXMbyNgayChuyenLapTBCat(dateTu.Value);
+                    }
 
                 for (int i = 0; i < 6; i++)
                 {
@@ -144,21 +155,21 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 a[0].ToXuLy++;
                             if (bool.Parse(itemRow["LapBangGia"].ToString()))
                             {
-                                a[0].LapBangGia++;
-                                soLapBangGia++;
-                                soMatDHN_LapBangGia++;
+                                //a[0].LapBangGia++;
+                                //soLapBangGia++;
+                                //soMatDHN_LapBangGia++;
                             }
                             if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
                             {
                                 a[0].DongTienBoiThuong++;
-                                soDongTien++;
+                                //soDongTien++;
                             }
                             else
                                 a[0].ChuaDongTienBoiThuong++;
                             if (bool.Parse(itemRow["ChuyenLapTBCat"].ToString()))
                             {
-                                a[0].ChuyenLapTBCat++;
-                                soChuyenLapTBCat++;
+                                //a[0].ChuyenLapTBCat++;
+                                //soChuyenLapTBCat++;
                             }
                         }
                         else
@@ -172,21 +183,21 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                     a[1].ToXuLy++;
                                 if (bool.Parse(itemRow["LapBangGia"].ToString()))
                                 {
-                                    a[1].LapBangGia++;
-                                    soLapBangGia++;
-                                    soDCMS_LapBangGia++;
+                                    //a[1].LapBangGia++;
+                                    //soLapBangGia++;
+                                    //soDCMS_LapBangGia++;
                                 }
                                 if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
                                 {
                                     a[1].DongTienBoiThuong++;
-                                    soDongTien++;
+                                    //soDongTien++;
                                 }
                                 else
                                     a[1].ChuaDongTienBoiThuong++;
                                 if (bool.Parse(itemRow["ChuyenLapTBCat"].ToString()))
                                 {
-                                    a[1].ChuyenLapTBCat++;
-                                    soChuyenLapTBCat++;
+                                    //a[1].ChuyenLapTBCat++;
+                                    //soChuyenLapTBCat++;
                                 }
                             }
                     }
@@ -214,19 +225,49 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                         a[5].LoaiBienBan = "BB hủy Danh Bộ";
                                         a[5].TongDanhBo++;
                                     }
-                                    else
-                                    {
-                                        if (bool.Parse(itemRow["LapBangGia"].ToString()))
-                                        {
-                                            soLapBangGia++;
-                                            soKhac_LapBangGia++;
-                                        }
-                                        if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
-                                        {
-                                            soDongTien++;
-                                        }
-                                    }
+                                    //else
+                                    //{
+                                    //    if (bool.Parse(itemRow["LapBangGia"].ToString()))
+                                    //    {
+                                    //        soLapBangGia++;
+                                    //        soKhac_LapBangGia++;
+                                    //    }
+                                    //    if (bool.Parse(itemRow["DongTienBoiThuong"].ToString()))
+                                    //    {
+                                    //        soDongTien++;
+                                    //    }
+                                    //}
                 }
+
+                foreach (DataRow itemRow in dt2.Rows)
+                {
+                    if (itemRow["LoaiBienBan"].ToString().Equals("BB mất ĐHN bồi thường"))
+                    {
+                        if (bool.Parse(itemRow["LapBangGia"].ToString()))
+                        {
+                            soLapBangGia++;
+                            soMatDHN_LapBangGia++;
+                        }
+                    }
+                    else
+                        if (itemRow["LoaiBienBan"].ToString().Equals("BB đứt chì MS bồi thường"))
+                        {
+                            if (bool.Parse(itemRow["LapBangGia"].ToString()))
+                            {
+                                soLapBangGia++;
+                                soDCMS_LapBangGia++;
+                            }
+                        }
+                        else
+                        {
+                            if (bool.Parse(itemRow["LapBangGia"].ToString()))
+                            {
+                                soLapBangGia++;
+                                soKhac_LapBangGia++;
+                            }
+                        }
+                }
+
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
                 for (int i = 0; i < 6; i++)

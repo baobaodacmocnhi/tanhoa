@@ -880,7 +880,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 CTDongNuoc ctdongnuoc = _cDongNuoc.getCTDongNuocbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ctdongnuoc.ThongBaoDuocKy_DN)
                 {
-                    ctdongnuoc.ThongBaoDuocKy_DN = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+                    ctdongnuoc.ThongBaoDuocKy_DN = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
                     _cDongNuoc.SuaCTDongNuoc(ctdongnuoc);
                 }
             }

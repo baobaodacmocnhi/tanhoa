@@ -74,7 +74,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     trangthaibamchi.CreateBy = CTaiKhoan.MaUser;
                     db.TrangThaiBamChis.InsertOnSubmit(trangthaibamchi);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Thêm TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -101,7 +101,33 @@ namespace KTKS_DonKH.DAL.CapNhat
                     trangthaibamchi.ModifyDate = DateTime.Now;
                     trangthaibamchi.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TrangThaiBamChis);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaTrangThaiBamChi(TrangThaiBamChi trangthaibamchi)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
+                {
+                    db.TrangThaiBamChis.DeleteOnSubmit(trangthaibamchi);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

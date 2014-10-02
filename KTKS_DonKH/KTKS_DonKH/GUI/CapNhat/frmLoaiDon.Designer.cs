@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtKyHieuLD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,7 +41,9 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnXoaTXL = new System.Windows.Forms.Button();
             this.txtKyHieuLDTXL = new System.Windows.Forms.TextBox();
             this.btnSuaTXL = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -98,14 +100,14 @@
             // 
             this.dgvDSLoaiDon.AllowUserToAddRows = false;
             this.dgvDSLoaiDon.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSLoaiDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSLoaiDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSLoaiDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSLoaiDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLD,
@@ -149,7 +151,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(268, 93);
+            this.btnSua.Location = new System.Drawing.Point(256, 93);
             this.btnSua.Margin = new System.Windows.Forms.Padding(5);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(66, 35);
@@ -163,7 +165,7 @@
             // 
             this.btnThem.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(181, 93);
+            this.btnThem.Location = new System.Drawing.Point(169, 93);
             this.btnThem.Margin = new System.Windows.Forms.Padding(5);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(77, 35);
@@ -175,6 +177,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.txtKyHieuLD);
             this.groupBox1.Controls.Add(this.btnSua);
             this.groupBox1.Controls.Add(this.label1);
@@ -189,8 +192,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tổ Khách Hàng";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(336, 93);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(67, 35);
+            this.btnXoa.TabIndex = 86;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnXoaTXL);
             this.groupBox2.Controls.Add(this.txtKyHieuLDTXL);
             this.groupBox2.Controls.Add(this.btnSuaTXL);
             this.groupBox2.Controls.Add(this.label3);
@@ -205,6 +222,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tổ Xử Lý";
             // 
+            // btnXoaTXL
+            // 
+            this.btnXoaTXL.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoaTXL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoaTXL.Location = new System.Drawing.Point(336, 93);
+            this.btnXoaTXL.Name = "btnXoaTXL";
+            this.btnXoaTXL.Size = new System.Drawing.Size(67, 35);
+            this.btnXoaTXL.TabIndex = 87;
+            this.btnXoaTXL.Text = "Xóa";
+            this.btnXoaTXL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoaTXL.UseVisualStyleBackColor = true;
+            this.btnXoaTXL.Click += new System.EventHandler(this.btnXoaTXL_Click);
+            // 
             // txtKyHieuLDTXL
             // 
             this.txtKyHieuLDTXL.Location = new System.Drawing.Point(169, 25);
@@ -217,7 +247,7 @@
             // 
             this.btnSuaTXL.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSuaTXL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSuaTXL.Location = new System.Drawing.Point(268, 93);
+            this.btnSuaTXL.Location = new System.Drawing.Point(256, 93);
             this.btnSuaTXL.Margin = new System.Windows.Forms.Padding(5);
             this.btnSuaTXL.Name = "btnSuaTXL";
             this.btnSuaTXL.Size = new System.Drawing.Size(66, 35);
@@ -241,7 +271,7 @@
             // 
             this.btnThemTXL.Image = global::KTKS_DonKH.Properties.Resources.add_24x24;
             this.btnThemTXL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThemTXL.Location = new System.Drawing.Point(181, 93);
+            this.btnThemTXL.Location = new System.Drawing.Point(169, 93);
             this.btnThemTXL.Margin = new System.Windows.Forms.Padding(5);
             this.btnThemTXL.Name = "btnThemTXL";
             this.btnThemTXL.Size = new System.Drawing.Size(77, 35);
@@ -265,14 +295,14 @@
             // 
             this.dgvDSLoaiDonTXL.AllowUserToAddRows = false;
             this.dgvDSLoaiDonTXL.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSLoaiDonTXL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSLoaiDonTXL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -367,5 +397,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.TextBox txtTenLDTXL;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnXoaTXL;
     }
 }
