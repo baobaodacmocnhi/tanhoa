@@ -2134,6 +2134,31 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        public bool XoaSoChungTu(string DanhBo, string MaCT)
+        {
+            try
+            {
+                if (db.CTChungTus.Count(itemCTCT => itemCTCT.MaCT == MaCT) == 1)
+                {
+                    db.CTChungTus.DeleteOnSubmit(getCTChungTubyID(DanhBo, MaCT));
+                    db.ChungTus.DeleteOnSubmit(getChungTubyID(MaCT));
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Số Chứng Từ này có đăng ký với 1 Danh Bộ khác nữa/nLiên hệ P.CNTT để xây dựng cho chức năng này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         #endregion
 
         #region Báo Cáo

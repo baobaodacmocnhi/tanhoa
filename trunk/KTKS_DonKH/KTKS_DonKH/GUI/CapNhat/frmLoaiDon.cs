@@ -111,6 +111,15 @@ namespace KTKS_DonKH.GUI.CapNhat
             }
         }
 
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (_selectedindex != -1)
+            {
+                if (_cLoaiDon.XoaLoaiDon(_cLoaiDon.getLoaiDonbyID(int.Parse(dgvDSLoaiDon["MaLD", _selectedindex].Value.ToString()))))
+                    Clear();
+            }
+        }
+
         #endregion
 
         #region Tổ Xử Lý
@@ -169,6 +178,16 @@ namespace KTKS_DonKH.GUI.CapNhat
             }
         }
 
+        private void btnXoaTXL_Click(object sender, EventArgs e)
+        {
+            if (_selectedindexTXL != -1)
+            {
+                if (_cLoaiDonTXL.XoaLoaiDonTXL(_cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLD", _selectedindexTXL].Value.ToString()))))
+                    Clear();
+            }
+        }
+
         #endregion
+
     }
 }

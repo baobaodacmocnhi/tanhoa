@@ -342,9 +342,12 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             else
                 ischecked = false;
             CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", e.RowIndex].Value.ToString()));
-            cttttl.ThuDuocKy = ischecked;
-            cttttl.GhiChu = dgvDSThu["GhiChu", e.RowIndex].Value.ToString();
-            _cTTTL.SuaCTTTTL(cttttl);
+            if (cttttl.ThuDuocKy != ischecked || cttttl.GhiChu != dgvDSThu["GhiChu", e.RowIndex].Value.ToString())
+            {
+                cttttl.ThuDuocKy = ischecked;
+                cttttl.GhiChu = dgvDSThu["GhiChu", e.RowIndex].Value.ToString();
+                _cTTTL.SuaCTTTTL(cttttl);
+            }
         }
 
         #endregion

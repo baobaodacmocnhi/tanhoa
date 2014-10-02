@@ -100,6 +100,17 @@ namespace KTKS_DonKH.GUI.CapNhat
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void btnXoaHienTrangKT_Click(object sender, EventArgs e)
+        {
+            if (_selectedindexHTKT != -1)
+                if (_cHienTrangKiemTra.XoaHienTrangKiemTra(_cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", _selectedindexHTKT].Value.ToString()))))
+                {
+                    txtHienTrangKT.Text = "";
+                    _selectedindexHTKT = -1;
+                    dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+                }
+        }
+
         #endregion
 
         #region Trạng Thái Bấm Chì
@@ -160,6 +171,18 @@ namespace KTKS_DonKH.GUI.CapNhat
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void btnXoaTrangThaiBC_Click(object sender, EventArgs e)
+        {
+            if (_selectedindexTTBC != -1)
+                if (_cTrangThaiBamChi.XoaTrangThaiBamChi(_cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", _selectedindexTTBC].Value.ToString()))))
+                {
+                    txtTrangThaiBC.Text = "";
+                    _selectedindexTTBC = -1;
+                    dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+                }
+        }
+
         #endregion
+  
     }
 }

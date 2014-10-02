@@ -121,7 +121,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     loaidon.CreateBy = CTaiKhoan.MaUser;
                     db.LoaiDons.InsertOnSubmit(loaidon);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Thêm LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -148,7 +148,33 @@ namespace KTKS_DonKH.DAL.CapNhat
                     loaidon.ModifyDate = DateTime.Now;
                     loaidon.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiDons);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaLoaiDon(LoaiDon loaidon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
+                {
+                    db.LoaiDons.DeleteOnSubmit(loaidon);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa LoaiDon", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDSHienTrangKT = new System.Windows.Forms.DataGridView();
             this.MaHTKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +46,8 @@
             this.btnThemTrangThaiBC = new System.Windows.Forms.Button();
             this.txtTrangThaiBC = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnXoaHienTrangKT = new System.Windows.Forms.Button();
+            this.btnXoaTrangThaiBC = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSHienTrangKT)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -54,6 +56,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnXoaHienTrangKT);
             this.groupBox1.Controls.Add(this.dgvDSHienTrangKT);
             this.groupBox1.Controls.Add(this.btnSuaHienTrangKT);
             this.groupBox1.Controls.Add(this.btnThemHienTrangKT);
@@ -70,14 +73,14 @@
             // 
             this.dgvDSHienTrangKT.AllowUserToAddRows = false;
             this.dgvDSHienTrangKT.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSHienTrangKT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSHienTrangKT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSHienTrangKT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSHienTrangKT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHTKT,
@@ -148,6 +151,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnXoaTrangThaiBC);
             this.groupBox2.Controls.Add(this.dgvDSTrangThaiBC);
             this.groupBox2.Controls.Add(this.btnSuaTrangThaiBC);
             this.groupBox2.Controls.Add(this.btnThemTrangThaiBC);
@@ -164,14 +168,14 @@
             // 
             this.dgvDSTrangThaiBC.AllowUserToAddRows = false;
             this.dgvDSTrangThaiBC.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSTrangThaiBC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSTrangThaiBC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDSTrangThaiBC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSTrangThaiBC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTTBC,
@@ -240,6 +244,32 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Trạng Thái Bấm Chì:";
             // 
+            // btnXoaHienTrangKT
+            // 
+            this.btnXoaHienTrangKT.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoaHienTrangKT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoaHienTrangKT.Location = new System.Drawing.Point(378, 53);
+            this.btnXoaHienTrangKT.Name = "btnXoaHienTrangKT";
+            this.btnXoaHienTrangKT.Size = new System.Drawing.Size(67, 35);
+            this.btnXoaHienTrangKT.TabIndex = 87;
+            this.btnXoaHienTrangKT.Text = "Xóa";
+            this.btnXoaHienTrangKT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoaHienTrangKT.UseVisualStyleBackColor = true;
+            this.btnXoaHienTrangKT.Click += new System.EventHandler(this.btnXoaHienTrangKT_Click);
+            // 
+            // btnXoaTrangThaiBC
+            // 
+            this.btnXoaTrangThaiBC.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoaTrangThaiBC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoaTrangThaiBC.Location = new System.Drawing.Point(378, 53);
+            this.btnXoaTrangThaiBC.Name = "btnXoaTrangThaiBC";
+            this.btnXoaTrangThaiBC.Size = new System.Drawing.Size(67, 35);
+            this.btnXoaTrangThaiBC.TabIndex = 88;
+            this.btnXoaTrangThaiBC.Text = "Xóa";
+            this.btnXoaTrangThaiBC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoaTrangThaiBC.UseVisualStyleBackColor = true;
+            this.btnXoaTrangThaiBC.Click += new System.EventHandler(this.btnXoaTrangThaiBC_Click);
+            // 
             // frmThongTin_KT_BC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -281,5 +311,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenHTKT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTTBC;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTTBC;
+        private System.Windows.Forms.Button btnXoaHienTrangKT;
+        private System.Windows.Forms.Button btnXoaTrangThaiBC;
     }
 }

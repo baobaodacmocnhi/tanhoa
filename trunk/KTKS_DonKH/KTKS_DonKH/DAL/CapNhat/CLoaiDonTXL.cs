@@ -119,7 +119,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     loaidontxl.CreateBy = CTaiKhoan.MaUser;
                     db.LoaiDonTXLs.InsertOnSubmit(loaidontxl);
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Thêm LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Thêm LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -146,7 +146,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     loaidontxl.ModifyDate = DateTime.Now;
                     loaidontxl.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
-                    MessageBox.Show("Thành công Sửa LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thành công Sửa LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -163,5 +163,32 @@ namespace KTKS_DonKH.DAL.CapNhat
                 return false;
             }
         }
+
+        public bool XoaLoaiDonTXL(LoaiDonTXL loaidontxl)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
+                {
+                    db.LoaiDonTXLs.DeleteOnSubmit(loaidontxl);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa LoaiDonTXL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LoaiDons);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
     }
 }
