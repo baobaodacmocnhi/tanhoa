@@ -253,10 +253,11 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                     #endregion
 
+                    _cDonKH.beginTransaction();
                     if (_cDonKH.ThemDonKH(donkh))
                     {
                         MessageBox.Show("Thêm Thành công/n Mã Đơn:" + donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        _cDonKH.commitTransaction();
                         if (!chkKhongInBienNhan.Checked)
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -443,6 +444,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _cDonKH.rollback();
             }
 
         }

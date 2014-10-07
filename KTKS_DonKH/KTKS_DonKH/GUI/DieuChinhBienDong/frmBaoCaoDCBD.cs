@@ -107,9 +107,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
                 rpt.SetDataSource(dsBaoCao);
-                crystalReportViewer1.ReportSource = rpt;
-                
+                crystalReportViewer1.ReportSource = rpt;  
             }
+
             if (radThongKeDC.Checked)
             {
                 DataTable dtDCBD = new DataTable();
@@ -226,7 +226,41 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rpt.SetParameterValue(3, DinhMucGiam);
 
                 crystalReportViewer1.ReportSource = rpt;
+            }
+
+            if (radDSChuyenDocSo.Checked)
+            {
+                DataTable dt = new DataTable();
+                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
+                    dt = _cDCBD.LoadDSCTDCBDbyNgayChuyenDocSo(dateTu.Value, dateDen.Value);
+                else
+                    if (!string.IsNullOrEmpty(_tuNgay))
+                        dt = _cDCBD.LoadDSCTDCBDbyNgayChuyenDocSo(dateTu.Value);
                 
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
+
+                    dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
+                    dr["ThongTin"] = itemRow["ThongTin"];
+                    dr["HieuLucKy"] = itemRow["HieuLucKy"];
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["GiaBieu"] = itemRow["GiaBieu"];
+                    dr["DinhMuc"] = itemRow["DinhMuc"];
+
+                    dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
+                }
+
+                dateTu.Value = DateTime.Now;
+                dateDen.Value = DateTime.Now;
+                _tuNgay = _denNgay = "";
+
+                rptDSChuyenDocSo rpt = new rptDSChuyenDocSo();
+                rpt.SetDataSource(dsBaoCao);
+                crystalReportViewer1.ReportSource = rpt;  
             }
         }
     }

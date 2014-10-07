@@ -596,6 +596,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc_BD,
                                     itemCTDCBD.PhieuDuocKy,
                                     itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.CreateBy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -705,6 +706,85 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DV_BD,
                                     itemCTDCBD.HCSN_BD,
                                     itemCTDCBD.NguoiKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách CTDCBD theo ngày Chuyển Đọc Số
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTDCBDbyNgayChuyenDocSo(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.ChuyenDocSo==true && itemCTDCBD.NgayChuyenDocSo.Value.Date == TuNgay.Date
+                                select new
+                                {
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.ThongTin,
+                                    itemCTDCBD.HieuLucKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách CTDCBD theo khoảng thời gian Chuyển Đọc Số
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCTDCBDbyNgayChuyenDocSo(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.ChuyenDocSo == true && itemCTDCBD.NgayChuyenDocSo.Value.Date >= TuNgay.Date && itemCTDCBD.NgayChuyenDocSo.Value.Date <= DenNgay.Date
+                                select new
+                                {
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.ThongTin,
+                                    itemCTDCBD.HieuLucKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -971,6 +1051,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCHD.TangGiam,
                                     itemCTDCHD.PhieuDuocKy,
                                     itemCTDCHD.NguoiKy,
+                                    itemCTDCHD.CreateBy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

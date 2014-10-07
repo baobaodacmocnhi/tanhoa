@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.TimKiem {
+namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.TimKiem {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptKetQuaTimKiembyMaDon : ReportClass {
+    public class rptDSChuyenDocSo : ReportClass {
         
-        public rptKetQuaTimKiembyMaDon() {
+        public rptDSChuyenDocSo() {
         }
         
         public override string ResourceName {
             get {
-                return "rptKetQuaTimKiembyMaDon.rpt";
+                return "rptDSChuyenDocSo.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.TimKiem {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.TimKiem.rptKetQuaTimKiembyMaDon.rpt";
+                return "KTKS_DonKH.BaoCao.DieuChinhBienDong.rptDSChuyenDocSo.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.BaoCao.TimKiem {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.TimKiem {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,33 +82,17 @@ namespace KTKS_DonKH.BaoCao.TimKiem {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[6];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptKetQuaTimKiembyMaDon : Component, ICachedReport {
+    public class CachedrptDSChuyenDocSo : Component, ICachedReport {
         
-        public CachedrptKetQuaTimKiembyMaDon() {
+        public CachedrptDSChuyenDocSo() {
         }
         
         [Browsable(false)]
@@ -145,7 +129,7 @@ namespace KTKS_DonKH.BaoCao.TimKiem {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptKetQuaTimKiembyMaDon rpt = new rptKetQuaTimKiembyMaDon();
+            rptDSChuyenDocSo rpt = new rptDSChuyenDocSo();
             rpt.Site = this.Site;
             return rpt;
         }
