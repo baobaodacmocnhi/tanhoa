@@ -771,15 +771,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
                             LoadTTKH(_ttkhachhang);
-                            groupBoxNguyenNhanXuLy.Enabled = true;
-                            groupBoxKetQuaTCTBXuLy.Enabled = false;
-                            groupBoxKetQuaCapTrenXuLy.Enabled = false;
+                            
                         }
                         else
                         {
                             Clear();
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        groupBoxNguyenNhanXuLy.Enabled = true;
+                        groupBoxKetQuaTCTBXuLy.Enabled = false;
+                        groupBoxKetQuaCapTrenXuLy.Enabled = false;
                     }
                     else
                     {
@@ -798,15 +799,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
                         LoadTTKH(_ttkhachhang);
-                        groupBoxNguyenNhanXuLy.Enabled = true;
-                        groupBoxKetQuaTCTBXuLy.Enabled = false;
-                        groupBoxKetQuaCapTrenXuLy.Enabled = false;
+                        
                     }
                     else
                     {
                         Clear();
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    groupBoxNguyenNhanXuLy.Enabled = true;
+                    groupBoxKetQuaTCTBXuLy.Enabled = false;
+                    groupBoxKetQuaCapTrenXuLy.Enabled = false;
                 }
                 else
                 {

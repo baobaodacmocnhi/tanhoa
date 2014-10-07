@@ -60,7 +60,7 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtNoiDungTimKiem_KeyPress(object sender, KeyPressEventArgs e)
@@ -195,7 +195,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                     _CTRow = null;
                 }
             }
-        } 
+        }
 
         #endregion
 
@@ -251,6 +251,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["TangGiam"].Visible = true;
                 view.Columns["TongCong_BD"].Visible = true;
                 view.Columns["ThongTin"].Visible = false;
+                view.Columns["CreateBy"].VisibleIndex = 16;
             }
         }
 
@@ -530,6 +531,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["TangGiam"].Visible = true;
                 view.Columns["TongCong_BD"].Visible = true;
                 view.Columns["ThongTin"].Visible = false;
+                view.Columns["CreateBy"].VisibleIndex = 16;
             }
         }
 
@@ -595,110 +597,111 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow[] childRows;
+
+
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    foreach (DataRelation itemRelation in dt.ChildRelations)
+                    {
+                        childRows = itemRow.GetChildRows(itemRelation);
+                        if (childRows.Count() > 0)
+                            foreach (DataRow itemChildRow in childRows)
+                            {
+                                DataRow dr = dsBaoCao.Tables["KetQuaTimKiem"].NewRow();
+                                dr["ToXuLy"] = itemRow["ToXuLy"];
+                                dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                                dr["LoaiDon"] = itemRow["TenLD"];
+                                dr["NgayNhan"] = itemRow["CreateDate"];
+                                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                dr["HoTen"] = itemRow["HoTen"];
+                                dr["DiaChi"] = itemRow["DiaChi"];
+                                dr["NoiDung"] = itemRow["NoiDung"];
+                                dr["LoaiXuLy"] = itemRelation.RelationName;
+
+                                dr["DanhBoXuLy"] = itemChildRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                dr["HoTenXuLy"] = itemChildRow["HoTen"];
+                                dr["DiaChiXuLy"] = itemChildRow["DiaChi"];
+                                if (itemRelation.RelationName.Contains("Kiểm Tra"))
+                                {
+                                    dr["NgayLapXuLy"] = itemChildRow["NgayKTXM"];
+                                    dr["NoiDungXuLy"] = itemChildRow["NoiDungKiemTra"];
+                                    dr["NguoiLapXuLy"] = itemChildRow["CreateBy"];
+                                }
+                                if (itemRelation.RelationName.Contains("Bấm Chì"))
+                                {
+                                    dr["NgayLapXuLy"] = itemChildRow["NgayBC"];
+                                    dr["NoiDungXuLy"] = "Mã Chì: " + itemChildRow["MaSoBC"] + ", Thực Hiện: " + itemChildRow["TheoYeuCau"];
+                                    dr["NguoiLapXuLy"] = itemChildRow["CreateBy"];
+                                }
+                                if (itemRelation.RelationName.Contains("Tạm/Hủy"))
+                                {
+                                    dr["LoaiChiTietXuLy"] = itemChildRow["LoaiCat"];
+                                    dr["Ma"] = itemChildRow["MaCH"].ToString().Insert(itemChildRow["MaCH"].ToString().Length - 2, "-");
+                                    dr["NgayLapXuLy"] = itemChildRow["CreateDate"];
+                                    dr["NoiDungXuLy"] = itemChildRow["LyDo"] + ", " + itemChildRow["GhiChuLyDo"];
+                                    if (itemChildRow["DaLapPhieu"].ToString() == "True")
+                                    {
+                                        CCHDB cCHDB = new CCHDB();
+                                        YeuCauCHDB ycchdb = cCHDB.getYeuCauCHDbyID(decimal.Parse(itemChildRow["SoPhieu"].ToString()));
+                                        dr["NoiDungXuLy"] += ", Đã Lập Phiếu YCCH số: " + itemChildRow["SoPhieu"].ToString().Insert(itemChildRow["SoPhieu"].ToString().Length - 2, "-") + ", Ngày Lập: " + itemChildRow["NgayLapPhieu"] + ", Hiệu Lực Kỳ: " + ycchdb.HieuLucKy;
+                                    }
+                                }
+                                if (itemRelation.RelationName.Contains("Thảo Thư"))
+                                {
+                                    dr["Ma"] = itemChildRow["MaCTTTTL"].ToString().Insert(itemChildRow["MaCTTTTL"].ToString().Length - 2, "-");
+                                    dr["NgayLapXuLy"] = itemChildRow["CreateDate"];
+                                    dr["NoiDungXuLy"] = itemChildRow["VeViec"];
+                                }
+                                if (itemRelation.RelationName.Contains("Điều Chỉnh"))
+                                {
+                                    dr["LoaiChiTietXuLy"] = itemChildRow["DieuChinh"];
+                                    dr["Ma"] = itemChildRow["MaDC"].ToString().Insert(itemChildRow["MaDC"].ToString().Length - 2, "-");
+                                    dr["NgayLapXuLy"] = itemChildRow["CreateDate"];
+                                    dr["NguoiLapXuLy"] = itemChildRow["CreateBy"];
+
+                                    if (itemChildRow["DieuChinh"].ToString() == "Biến Động")
+                                    {
+                                        string s = "";
+                                        if (!string.IsNullOrEmpty(itemChildRow["HoTen_BD"].ToString()))
+                                            s += "Khách Hàng: " + itemChildRow["HoTen_BD"];
+                                        if (!string.IsNullOrEmpty(itemChildRow["DiaChi_BD"].ToString()))
+                                            s += ", Địa Chỉ: " + itemChildRow["DiaChi_BD"];
+                                        if (!string.IsNullOrEmpty(itemChildRow["MSThue_BD"].ToString()))
+                                            s += ", MST: " + itemChildRow["MSThue_BD"];
+                                        if (!string.IsNullOrEmpty(itemChildRow["GiaBieu_BD"].ToString()))
+                                            s += ", GB: " + itemChildRow["GiaBieu_BD"];
+                                        if (!string.IsNullOrEmpty(itemChildRow["DinhMuc_BD"].ToString()))
+                                            s += ", ĐM: " + itemChildRow["DinhMuc_BD"];
+                                        dr["NoiDungXuLy"] = s;
+                                    }
+                                    else
+                                    {
+                                        dr["NoiDungXuLy"] = itemChildRow["TangGiam"] + " " + itemChildRow["TongCong_BD"];
+                                    }
+                                }
+                                dsBaoCao.Tables["KetQuaTimKiem"].Rows.Add(dr);
+                            }
+                    }
+                }
                 if (cmbTimTheo.SelectedItem.ToString() == "Mã Đơn")
                 {
-                    MessageBox.Show("Đang xây dựng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                if (cmbTimTheo.SelectedItem.ToString() == "Danh Bộ")
-                {
-                    foreach (DataRow itemRow in dt.Rows)
-                    {
-                        foreach (DataRelation itemRelation in dt.ChildRelations)
-                        {
-                            childRows = itemRow.GetChildRows(itemRelation);
-                            if (childRows.Count() > 0)
-                                foreach (DataRow itemChildRow in childRows)
-                                {
-                                    DataRow dr = dsBaoCao.Tables["KetQuaTimKiem"].NewRow();
-                                    dr["ToXuLy"] = itemRow["ToXuLy"];
-                                    dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
-                                    dr["LoaiDon"] = itemRow["TenLD"];
-                                    dr["NgayNhan"] = itemRow["CreateDate"];
-                                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["HoTen"] = itemRow["HoTen"];
-                                    dr["DiaChi"] = itemRow["DiaChi"];
-                                    dr["NoiDung"] = itemRow["NoiDung"];
-                                    dr["LoaiXuLy"] = itemRelation.RelationName;
-
-                                    dr["DanhBoXuLy"] = itemChildRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                    dr["HoTenXuLy"] = itemChildRow["HoTen"];
-                                    dr["DiaChiXuLy"] = itemChildRow["DiaChi"];
-                                    if (itemRelation.RelationName.Contains("Kiểm Tra"))
-                                    {
-                                        dr["NgayLapXuLy"] = itemChildRow["NgayKTXM"];
-                                        dr["NoiDungXuLy"] = itemChildRow["NoiDungKiemTra"];
-                                        dr["NguoiLapXuLy"] = itemChildRow["CreateBy"];
-                                    }
-                                    if (itemRelation.RelationName.Contains("Bấm Chì"))
-                                    {
-                                        dr["NgayLapXuLy"] = itemChildRow["NgayBC"];
-                                        dr["NoiDungXuLy"] = "Mã Chì: " + itemChildRow["MaSoBC"] + ", Thực Hiện: " + itemChildRow["TheoYeuCau"];
-                                        dr["NguoiLapXuLy"] = itemChildRow["CreateBy"];
-                                    }
-                                    if (itemRelation.RelationName.Contains("Tạm/Hủy"))
-                                    {
-                                        dr["LoaiChiTietXuLy"] = itemChildRow["LoaiCat"];
-                                        dr["Ma"] = itemChildRow["MaCH"].ToString().Insert(itemChildRow["MaCH"].ToString().Length - 2, "-");
-                                        dr["NgayLapXuLy"] = itemChildRow["CreateDate"];
-                                        dr["NoiDungXuLy"] = itemChildRow["LyDo"] + ", " + itemChildRow["GhiChuLyDo"];
-                                        if (itemChildRow["DaLapPhieu"].ToString() == "True")
-                                        {
-                                            CCHDB cCHDB = new CCHDB();
-                                            YeuCauCHDB ycchdb = cCHDB.getYeuCauCHDbyID(decimal.Parse(itemChildRow["SoPhieu"].ToString()));
-                                            dr["NoiDungXuLy"] += ", Đã Lập Phiếu YCCH số: " + itemChildRow["SoPhieu"].ToString().Insert(itemChildRow["SoPhieu"].ToString().Length - 2, "-") + ", Ngày Lập: " + itemChildRow["NgayLapPhieu"] + ", Hiệu Lực Kỳ: " + ycchdb.HieuLucKy;
-                                        }
-                                    }
-                                    if (itemRelation.RelationName.Contains("Thảo Thư"))
-                                    {
-                                        dr["Ma"] = itemChildRow["MaCTTTTL"].ToString().Insert(itemChildRow["MaCTTTTL"].ToString().Length - 2, "-");
-                                        dr["NgayLapXuLy"] = itemChildRow["CreateDate"];
-                                        dr["NoiDungXuLy"] = itemChildRow["VeViec"];
-                                    }
-                                    if (itemRelation.RelationName.Contains("Điều Chỉnh"))
-                                    {
-                                        dr["LoaiChiTietXuLy"] = itemChildRow["DieuChinh"];
-                                        dr["Ma"] = itemChildRow["MaDC"].ToString().Insert(itemChildRow["MaDC"].ToString().Length - 2, "-");
-                                        dr["NgayLapXuLy"] = itemChildRow["CreateDate"];
-                                        dr["NguoiLapXuLy"] = itemChildRow["CreateBy"];
-
-                                        if (itemChildRow["DieuChinh"].ToString() == "Biến Động")
-                                        {
-                                            string s = "";
-                                            if (!string.IsNullOrEmpty(itemChildRow["HoTen_BD"].ToString()))
-                                                s += "Khách Hàng: " + itemChildRow["HoTen_BD"];
-                                            if (!string.IsNullOrEmpty(itemChildRow["DiaChi_BD"].ToString()))
-                                                s += ", Địa Chỉ: " + itemChildRow["DiaChi_BD"];
-                                            if (!string.IsNullOrEmpty(itemChildRow["MSThue_BD"].ToString()))
-                                                s += ", MST: " + itemChildRow["MSThue_BD"];
-                                            if (!string.IsNullOrEmpty(itemChildRow["GiaBieu_BD"].ToString()))
-                                                s += ", GB: " + itemChildRow["GiaBieu_BD"];
-                                            if (!string.IsNullOrEmpty(itemChildRow["DinhMuc_BD"].ToString()))
-                                                s += ", ĐM: " + itemChildRow["DinhMuc_BD"];
-                                            dr["NoiDungXuLy"] = s;
-                                        }
-                                        else
-                                        {
-                                            dr["NoiDungXuLy"] = itemChildRow["TangGiam"] + " " + itemChildRow["TongCong_BD"];
-                                        }
-                                    }
-                                    dsBaoCao.Tables["KetQuaTimKiem"].Rows.Add(dr);
-                                }
-                        }
-                    }
-                    rptKetQuaTimKiembyDanhBo rpt = new rptKetQuaTimKiembyDanhBo();
+                    rptKetQuaTimKiembyMaDon rpt = new rptKetQuaTimKiembyMaDon();
                     rpt.SetDataSource(dsBaoCao);
                     frmBaoCao frm = new frmBaoCao(rpt);
                     frm.ShowDialog();
                 }
                 else
-                    MessageBox.Show("Chưa xây dựng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (cmbTimTheo.SelectedItem.ToString() == "Danh Bộ")
+                    {
+                        rptKetQuaTimKiembyDanhBo rpt = new rptKetQuaTimKiembyDanhBo();
+                        rpt.SetDataSource(dsBaoCao);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.ShowDialog();
+                    }
             }
             else
                 MessageBox.Show("Không có đơn nào", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        
     }
 
 }

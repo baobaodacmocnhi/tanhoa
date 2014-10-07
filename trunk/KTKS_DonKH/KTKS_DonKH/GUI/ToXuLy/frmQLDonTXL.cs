@@ -208,10 +208,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Ngày Lập":
-                    dt = _cDonTXL.LoadDSDonTXLDaChuyen(dateTimKiem.Value);
+                    dt = _cDonTXL.LoadDSDonTXLDaChuyenKT(dateTimKiem.Value);
                     break;
                 case "Khoảng Thời Gian":
-                    dt = _cDonTXL.LoadDSDonTXLDaChuyen(dateTu.Value, dateDen.Value);
+                    dt = _cDonTXL.LoadDSDonTXLDaChuyenKT(dateTu.Value, dateDen.Value);
                     break;
             }
             

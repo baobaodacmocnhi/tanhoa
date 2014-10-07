@@ -22,6 +22,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using System.Drawing.Printing;
 using KTKS_DonKH.GUI.ToXuLy;
 using System.Threading;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -828,6 +829,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                     }
+                    if (chkLocUser.Checked)
+                        expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
                     DSDCBD_BS.Filter = expression;
                 }
                 else
@@ -843,24 +846,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
             string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            if (chkLocUser.Checked)
+                expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
             DSDCBD_BS.Filter = expression;
-            if (radDSDCBD.Checked)
-            {
-                int a = 0;
-                int b = 0;
-                DataTable dt = ((DataTable)DSDCBD_BS.DataSource).DefaultView.ToTable();
-                foreach (DataRow itemRow in dt.Rows)
-                {
-                    if (!string.IsNullOrEmpty(itemRow["HoTen_BD"].ToString()))
-                    {
-                        a++;
-                    }
-                    else
-                        b++;
-                }
-                txtDCTen.Text = a.ToString();
-                txtDCConLai.Text = b.ToString();
-            }
+            //if (radDSDCBD.Checked)
+            //{
+            //    int a = 0;
+            //    int b = 0;
+            //    DataTable dt = ((DataTable)DSDCBD_BS.DataSource).DefaultView.ToTable();
+            //    foreach (DataRow itemRow in dt.Rows)
+            //    {
+            //        if (!string.IsNullOrEmpty(itemRow["HoTen_BD"].ToString()))
+            //        {
+            //            a++;
+            //        }
+            //        else
+            //            b++;
+            //    }
+            //    txtDCTen.Text = a.ToString();
+            //    txtDCConLai.Text = b.ToString();
+            //}
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -1224,6 +1229,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
                         break;
                 }
+                if (chkLocUser.Checked)
+                    expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
                 DSDCBD_BS.Filter = expression;
             }
             else
@@ -1238,24 +1245,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
             string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+            if (chkLocUser.Checked)
+                expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
             DSDCBD_BS.Filter = expression;
-            if (radDSDCBD.Checked)
-            {
-                int a = 0;
-                int b = 0;
-                DataTable dt = ((DataTable)DSDCBD_BS.DataSource).DefaultView.ToTable();
-                foreach (DataRow itemRow in dt.Rows)
-                {
-                    if (!string.IsNullOrEmpty(itemRow["HoTen_BD"].ToString()))
-                    {
-                        a++;
-                    }
-                    else
-                        b++;
-                }
-                txtDCTen.Text = a.ToString();
-                txtDCConLai.Text = b.ToString();
-            }
+            //if (radDSDCBD.Checked)
+            //{
+            //    int a = 0;
+            //    int b = 0;
+            //    DataTable dt = ((DataTable)DSDCBD_BS.DataSource).DefaultView.ToTable();
+            //    foreach (DataRow itemRow in dt.Rows)
+            //    {
+            //        if (!string.IsNullOrEmpty(itemRow["HoTen_BD"].ToString()))
+            //        {
+            //            a++;
+            //        }
+            //        else
+            //            b++;
+            //    }
+            //    txtDCTen.Text = a.ToString();
+            //    txtDCConLai.Text = b.ToString();
+            //}
         }
 
         private void btnCapNhatDocSo_Click(object sender, EventArgs e)
@@ -1266,6 +1275,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     try
                     {
+                        _cDCBD.beginTransaction();
                         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
@@ -1311,6 +1321,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         }
                                         _cDLKH.ThemGhiChu(ghichu);
                                         ctdcbd.ChuyenDocSo = true;
+                                        ctdcbd.NgayChuyenDocSo = DateTime.Now;
                                         _cDCBD.SuaCTDCBD(ctdcbd);
                                     }
                                 }
@@ -1320,13 +1331,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
+                        _cDCBD.commitTransaction();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        _cDCBD.rollback();
                     }
 
                 }
         }
+
     }
 }

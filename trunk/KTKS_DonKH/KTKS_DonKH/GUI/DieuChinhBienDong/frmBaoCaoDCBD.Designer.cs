@@ -38,6 +38,7 @@
             this.btnBaoCao = new System.Windows.Forms.Button();
             this.radThongKeDMCap = new System.Windows.Forms.RadioButton();
             this.radThongKeDC = new System.Windows.Forms.RadioButton();
+            this.radDSChuyenDocSo = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -145,12 +146,23 @@
             this.radThongKeDC.Text = "Thống Kê Điều Chỉnh";
             this.radThongKeDC.UseVisualStyleBackColor = true;
             // 
+            // radDSChuyenDocSo
+            // 
+            this.radDSChuyenDocSo.AutoSize = true;
+            this.radDSChuyenDocSo.Location = new System.Drawing.Point(232, 34);
+            this.radDSChuyenDocSo.Name = "radDSChuyenDocSo";
+            this.radDSChuyenDocSo.Size = new System.Drawing.Size(188, 21);
+            this.radDSChuyenDocSo.TabIndex = 22;
+            this.radDSChuyenDocSo.Text = "Danh Sách Chuyển Đọc Số";
+            this.radDSChuyenDocSo.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.radDSChuyenDocSo);
             this.Controls.Add(this.radThongKeDC);
             this.Controls.Add(this.radThongKeDMCap);
             this.Controls.Add(this.btnBaoCao);
@@ -181,5 +193,6 @@
         private System.Windows.Forms.Button btnBaoCao;
         private System.Windows.Forms.RadioButton radThongKeDMCap;
         private System.Windows.Forms.RadioButton radThongKeDC;
+        private System.Windows.Forms.RadioButton radDSChuyenDocSo;
     }
 }

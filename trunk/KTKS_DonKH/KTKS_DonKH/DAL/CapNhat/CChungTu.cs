@@ -364,6 +364,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemLSCT.PhieuDuocKy,
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
                                 };
                     if (query.Count() > 0)
                     {

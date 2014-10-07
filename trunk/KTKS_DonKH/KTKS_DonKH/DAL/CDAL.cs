@@ -90,5 +90,22 @@ namespace KTKS_DonKH.DAL
             catchuyendm.ChucVu = lichsuchungtu.ChucVu;
             //catchuyendm.PhieuDuocKy = lichsuchungtu.PhieuDuocKy;
         }
+
+        public void beginTransaction()
+        {
+            if (db.Connection.State == System.Data.ConnectionState.Closed)
+                db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction();
+        }
+
+        public void commitTransaction()
+        {
+            db.Transaction.Commit();
+        }
+
+        public void rollback()
+        {
+            db.Transaction.Rollback();
+        }
     }
 }

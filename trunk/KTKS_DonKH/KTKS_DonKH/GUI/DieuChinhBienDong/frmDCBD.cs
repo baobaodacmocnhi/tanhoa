@@ -880,7 +880,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void dgvDSDieuChinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSDieuChinh_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Biến Động")
             {
@@ -958,7 +958,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             else
                 if (dgvDSDieuChinh["DieuChinh", e.RowIndex].Value.ToString() == "Hóa Đơn")
-                    MessageBox.Show("Tính năng này chưa được xây dựng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Tính năng Hóa Đơn chưa được xây dựng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dgvLichSuChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -1202,6 +1202,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
+
+        
 
         
 

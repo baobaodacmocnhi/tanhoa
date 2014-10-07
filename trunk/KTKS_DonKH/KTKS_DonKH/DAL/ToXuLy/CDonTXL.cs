@@ -226,7 +226,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         /// </summary>
         /// <param name="TuNgay"></param>
         /// <returns></returns>
-        public DataTable LoadDSDonTXLDaChuyen(DateTime TuNgay)
+        public DataTable LoadDSDonTXLDaChuyenKT(DateTime TuNgay)
         {
             try
             {
@@ -236,7 +236,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemDonTXL.CreateDate.Value.Date==TuNgay.Date
+                                where itemLSCKT.NgayChuyenKT.Value.Date == TuNgay.Date
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -274,7 +274,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         /// </summary>
         /// <param name="TuNgay"></param>
         /// <returns></returns>
-        public DataTable LoadDSDonTXLDaChuyen(DateTime TuNgay,DateTime DenNgay)
+        public DataTable LoadDSDonTXLDaChuyenKT(DateTime TuNgay,DateTime DenNgay)
         {
             try
             {
@@ -284,7 +284,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemDonTXL.CreateDate.Value.Date >= TuNgay.Date && itemDonTXL.CreateDate.Value.Date<=DenNgay.Date
+                                where itemLSCKT.NgayChuyenKT.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyenKT.Value.Date <= DenNgay.Date
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {

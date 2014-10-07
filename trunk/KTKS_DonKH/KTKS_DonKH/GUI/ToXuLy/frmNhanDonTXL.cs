@@ -174,6 +174,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dontxl.GhiChuChuyenKhac = txtGhiChuChuyenKhac.Text.Trim();
                     }
 
+                    _cDonTXL.beginTransaction();
                     if (_cDonTXL.ThemDonTXL(dontxl))
                     {
                         if (chkChuyenKT.Checked)
@@ -186,7 +187,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
                         }
                         MessageBox.Show("Thêm Thành công/n Mã Đơn: TXL" + dontxl.MaDon.ToString().Insert(dontxl.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        _cDonTXL.commitTransaction();
                         //DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                         //DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                         //dr["MaDon"] = dontxl.MaDon.ToString().Insert(dontxl.MaDon.ToString().Length - 2, "-");// +"/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
@@ -212,6 +213,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _cDonTXL.rollback();
             }
         }
 
