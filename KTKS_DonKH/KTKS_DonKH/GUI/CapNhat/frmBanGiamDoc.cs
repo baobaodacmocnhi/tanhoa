@@ -56,27 +56,6 @@ namespace KTKS_DonKH.GUI.CapNhat
             dgvDanhSach.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDanhSach.Font, FontStyle.Bold);
         }
 
-        private void dgvDSBanGiamDoc_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDSBanGiamDoc.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvDSBanGiamDoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                selectedindex = e.RowIndex;
-                txtChucVu.Text = dgvDSBanGiamDoc["ChucVu", e.RowIndex].Value.ToString();
-                txtHoTen.Text = dgvDSBanGiamDoc["HoTen", e.RowIndex].Value.ToString();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (txtChucVu.Text.Trim() != "" && txtHoTen.Text.Trim() != "")
@@ -108,14 +87,35 @@ namespace KTKS_DonKH.GUI.CapNhat
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void dgvDSBanGiamDoc_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSBanGiamDoc.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDSBanGiamDoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                selectedindex = e.RowIndex;
+                txtChucVu.Text = dgvDSBanGiamDoc["ChucVu", e.RowIndex].Value.ToString();
+                txtHoTen.Text = dgvDSBanGiamDoc["HoTen", e.RowIndex].Value.ToString();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         private void dgvDSBanGiamDoc_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBanGiamDocbyID(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
-            if (bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString()) == true)
-                bangiamdoc.KyTen = true;
-            else
-                bangiamdoc.KyTen = false;
-            _cBanGiamDoc.SuaBanGiamDoc(bangiamdoc);
+            if (bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString()) != bangiamdoc.KyTen)
+            {
+                bangiamdoc.KyTen = bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString());
+                _cBanGiamDoc.SuaBanGiamDoc(bangiamdoc);
+            }
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -319,7 +319,6 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             dgvDanhSach.DataSource = null;
         }
-
 
     }
 }

@@ -10,6 +10,7 @@ using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.BamChi;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -224,7 +225,14 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chưa xây dựng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (_ctbamchi != null)
+                if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (_cBamChi.XoaCTBamChi(_ctbamchi, CTaiKhoan.MaUser))
+                    {
+                        MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
         }
 
         private void txtCo_KeyPress(object sender, KeyPressEventArgs e)

@@ -1345,7 +1345,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
-        public bool XoaCTKTXM(CTKTXM ctktxm)
+        public bool XoaCTKTXM(CTKTXM ctktxm,int MaU)
         {
             try
             {
@@ -1356,7 +1356,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     return true;
                 }
                 else
-                    if (CTaiKhoan.RoleKTXM_CapNhat && ctktxm.CreateBy == CTaiKhoan.MaUser)
+                    if (CTaiKhoan.RoleKTXM_CapNhat && ctktxm.CreateBy == MaU)
                     {
                         db.CTKTXMs.DeleteOnSubmit(ctktxm);
                         db.SubmitChanges();
