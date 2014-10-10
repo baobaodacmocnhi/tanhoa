@@ -292,14 +292,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (_ctktxm != null)
                 if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    if (_cKTXM.XoaCTKTXM(_ctktxm))
+                    if (_cKTXM.XoaCTKTXM(_ctktxm, CTaiKhoan.MaUser))
                     {
                         MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
-                }
         }
 
         private void frmShowKTXM_FormClosing(object sender, FormClosingEventArgs e)

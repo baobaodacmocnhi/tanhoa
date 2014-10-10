@@ -335,7 +335,7 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public bool XoaCTBamChi(CTBamChi ctbamchi)
+        public bool XoaCTBamChi(CTBamChi ctbamchi,int MaU)
         {
             try
             {
@@ -346,7 +346,7 @@ namespace KTKS_DonKH.DAL.BamChi
                     return true;
                 }
                 else
-                    if (CTaiKhoan.RoleBamChi_CapNhat && ctbamchi.CreateBy == CTaiKhoan.MaUser)
+                    if (CTaiKhoan.RoleBamChi_CapNhat && ctbamchi.CreateBy == MaU)
                     {
                         db.CTBamChis.DeleteOnSubmit(ctbamchi);
                         db.SubmitChanges();

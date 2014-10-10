@@ -242,6 +242,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
 
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
                     dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
                     dr["ThongTin"] = itemRow["ThongTin"];
                     dr["HieuLucKy"] = itemRow["HieuLucKy"];

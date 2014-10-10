@@ -45,16 +45,16 @@
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.btnSuaNguoiKy = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbLoai = new System.Windows.Forms.ComboBox();
             this.CapNhat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbLoai = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSBanGiamDoc)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -241,6 +241,43 @@
             this.dgvDanhSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhSach_CellFormatting);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
+            // CapNhat
+            // 
+            this.CapNhat.DataPropertyName = "In";
+            this.CapNhat.HeaderText = "Cập Nhật";
+            this.CapNhat.Name = "CapNhat";
+            this.CapNhat.Width = 80;
+            // 
+            // Ma
+            // 
+            this.Ma.DataPropertyName = "Ma";
+            this.Ma.HeaderText = "Mã Số";
+            this.Ma.Name = "Ma";
+            this.Ma.ReadOnly = true;
+            this.Ma.Width = 80;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // KhachHang
+            // 
+            this.KhachHang.DataPropertyName = "HoTen";
+            this.KhachHang.HeaderText = "Khách Hàng";
+            this.KhachHang.Name = "KhachHang";
+            this.KhachHang.ReadOnly = true;
+            this.KhachHang.Width = 200;
+            // 
+            // NguoiKy
+            // 
+            this.NguoiKy.DataPropertyName = "NguoiKy";
+            this.NguoiKy.HeaderText = "Người Ký";
+            this.NguoiKy.Name = "NguoiKy";
+            this.NguoiKy.Width = 140;
+            // 
             // btnTimKiem
             // 
             this.btnTimKiem.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
@@ -299,43 +336,6 @@
             this.cmbLoai.Size = new System.Drawing.Size(192, 25);
             this.cmbLoai.TabIndex = 0;
             this.cmbLoai.SelectedIndexChanged += new System.EventHandler(this.cmbLoai_SelectedIndexChanged);
-            // 
-            // CapNhat
-            // 
-            this.CapNhat.DataPropertyName = "In";
-            this.CapNhat.HeaderText = "Cập Nhật";
-            this.CapNhat.Name = "CapNhat";
-            this.CapNhat.Width = 80;
-            // 
-            // Ma
-            // 
-            this.Ma.DataPropertyName = "Ma";
-            this.Ma.HeaderText = "Mã Số";
-            this.Ma.Name = "Ma";
-            this.Ma.ReadOnly = true;
-            this.Ma.Width = 80;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // KhachHang
-            // 
-            this.KhachHang.DataPropertyName = "HoTen";
-            this.KhachHang.HeaderText = "Khách Hàng";
-            this.KhachHang.Name = "KhachHang";
-            this.KhachHang.ReadOnly = true;
-            this.KhachHang.Width = 200;
-            // 
-            // NguoiKy
-            // 
-            this.NguoiKy.DataPropertyName = "NguoiKy";
-            this.NguoiKy.HeaderText = "Người Ký";
-            this.NguoiKy.Name = "NguoiKy";
-            this.NguoiKy.Width = 140;
             // 
             // frmBanGiamDoc
             // 
