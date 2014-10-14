@@ -139,6 +139,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
+                case "Số Công Văn":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
@@ -171,6 +172,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 {
                     case "Mã Đơn":
                         expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("TXL",""));
+                        break;
+                    case "Số Công Văn":
+                        expression = String.Format("SoCongVan like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("TXL", ""));
                         break;
                 }
                 DSDonKH_BS.Filter = expression;

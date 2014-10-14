@@ -199,37 +199,75 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (radDSBamChi.Checked)
             {
-                DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
-                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (DataRow itemRow in dt.Rows)
+                if (chkInBamChiThan_BBDCMS.Checked)
                 {
-                    DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
+                    DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    foreach (DataRow itemRow in dt.Rows)
+                        if (itemRow["TrangThaiBC"].ToString() == "Bấm Chì Thân" || itemRow["TrangThaiBC"].ToString() == "BB đứt chì MS")
+                        {
+                            DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
 
-                    dr["TuNgay"] = _tuNgay;
-                    dr["DenNgay"] = _denNgay;
-                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["HopDong"] = itemRow["HopDong"];
-                    dr["HoTen"] = itemRow["HoTen"];
-                    dr["DiaChi"] = itemRow["DiaChi"];
-                    dr["Hieu"] = itemRow["Hieu"];
-                    dr["Co"] = itemRow["Co"];
-                    dr["ChiSo"] = itemRow["ChiSo"];
-                    dr["TrangThai"] = itemRow["TrangThaiBC"];
-                    dr["VienChi"] = itemRow["VienChi"];
-                    dr["DayChi"] = itemRow["DayChi"];
-                    dr["MaSoBC"] = itemRow["MaSoBC"];
-                    dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+                            dr["TuNgay"] = _tuNgay;
+                            dr["DenNgay"] = _denNgay;
+                            if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            dr["HopDong"] = itemRow["HopDong"];
+                            dr["HoTen"] = itemRow["HoTen"];
+                            dr["DiaChi"] = itemRow["DiaChi"];
+                            dr["Hieu"] = itemRow["Hieu"];
+                            dr["Co"] = itemRow["Co"];
+                            dr["ChiSo"] = itemRow["ChiSo"];
+                            dr["TrangThai"] = itemRow["TrangThaiBC"];
+                            dr["VienChi"] = itemRow["VienChi"];
+                            dr["DayChi"] = itemRow["DayChi"];
+                            dr["MaSoBC"] = itemRow["MaSoBC"];
+                            dr["NguoiBC"] = itemRow["CreateBy"];
+                            dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
+                            dr["NguoiLap"] = CTaiKhoan.HoTen;
 
-                    dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
+                            dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
+                        }
+
+                    rptDSBamChi_ChiThan_BBDCMS rpt = new rptDSBamChi_ChiThan_BBDCMS();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
                 }
+                else
+                {
+                    DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    foreach (DataRow itemRow in dt.Rows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
 
-                rptDSBamChi rpt = new rptDSBamChi();
-                rpt.SetDataSource(dsBaoCao);
-                rpt.Subreports[0].SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                        dr["TuNgay"] = _tuNgay;
+                        dr["DenNgay"] = _denNgay;
+                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["HopDong"] = itemRow["HopDong"];
+                        dr["HoTen"] = itemRow["HoTen"];
+                        dr["DiaChi"] = itemRow["DiaChi"];
+                        dr["Hieu"] = itemRow["Hieu"];
+                        dr["Co"] = itemRow["Co"];
+                        dr["ChiSo"] = itemRow["ChiSo"];
+                        dr["TrangThai"] = itemRow["TrangThaiBC"];
+                        dr["VienChi"] = itemRow["VienChi"];
+                        dr["DayChi"] = itemRow["DayChi"];
+                        dr["MaSoBC"] = itemRow["MaSoBC"];
+                        dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
+                        dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                        dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
+                    }
+
+                    rptDSBamChi rpt = new rptDSBamChi();
+                    rpt.SetDataSource(dsBaoCao);
+                    rpt.Subreports[0].SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+                }
             }
             else
                 MessageBox.Show("Chưa chọn Danh Sách Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
