@@ -113,6 +113,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 {
                                     itemDonTXL.MaDon,
                                     itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
                                     itemDonTXL.DanhBo,
                                     itemDonTXL.HoTen,
@@ -154,6 +155,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 {
                                     itemDonTXL.MaDon,
                                     itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
                                     itemDonTXL.DanhBo,
                                     itemDonTXL.HoTen,
@@ -195,6 +197,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 {
                                     itemDonTXL.MaDon,
                                     itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
                                     itemDonTXL.CreateDate,
                                     itemDonTXL.DanhBo,
                                     itemDonTXL.HoTen,

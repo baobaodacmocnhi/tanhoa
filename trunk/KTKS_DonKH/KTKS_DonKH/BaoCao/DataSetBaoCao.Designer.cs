@@ -5341,6 +5341,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnMaSoBC;
             
+            private global::System.Data.DataColumn columnNguoiBC;
+            
             private global::System.Data.DataColumn columnTheoYeuCau;
             
             private global::System.Data.DataColumn columnNguoiLap;
@@ -5484,6 +5486,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NguoiBCColumn {
+                get {
+                    return this.columnNguoiBC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn TheoYeuCauColumn {
                 get {
                     return this.columnTheoYeuCau;
@@ -5535,7 +5545,23 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DSBamChiRow AddDSBamChiRow(string TuNgay, string DenNgay, string DanhBo, string HopDong, string HoTen, string DiaChi, string Hieu, string Co, string ChiSo, string TrangThai, string VienChi, string DayChi, string MaSoBC, string TheoYeuCau, string NguoiLap) {
+            public DSBamChiRow AddDSBamChiRow(
+                        string TuNgay, 
+                        string DenNgay, 
+                        string DanhBo, 
+                        string HopDong, 
+                        string HoTen, 
+                        string DiaChi, 
+                        string Hieu, 
+                        string Co, 
+                        string ChiSo, 
+                        string TrangThai, 
+                        string VienChi, 
+                        string DayChi, 
+                        string MaSoBC, 
+                        string NguoiBC, 
+                        string TheoYeuCau, 
+                        string NguoiLap) {
                 DSBamChiRow rowDSBamChiRow = ((DSBamChiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TuNgay,
@@ -5551,6 +5577,7 @@ namespace KTKS_DonKH.BaoCao {
                         VienChi,
                         DayChi,
                         MaSoBC,
+                        NguoiBC,
                         TheoYeuCau,
                         NguoiLap};
                 rowDSBamChiRow.ItemArray = columnValuesArray;
@@ -5588,6 +5615,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnVienChi = base.Columns["VienChi"];
                 this.columnDayChi = base.Columns["DayChi"];
                 this.columnMaSoBC = base.Columns["MaSoBC"];
+                this.columnNguoiBC = base.Columns["NguoiBC"];
                 this.columnTheoYeuCau = base.Columns["TheoYeuCau"];
                 this.columnNguoiLap = base.Columns["NguoiLap"];
             }
@@ -5621,6 +5649,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnDayChi);
                 this.columnMaSoBC = new global::System.Data.DataColumn("MaSoBC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaSoBC);
+                this.columnNguoiBC = new global::System.Data.DataColumn("NguoiBC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNguoiBC);
                 this.columnTheoYeuCau = new global::System.Data.DataColumn("TheoYeuCau", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTheoYeuCau);
                 this.columnNguoiLap = new global::System.Data.DataColumn("NguoiLap", typeof(string), null, global::System.Data.MappingType.Element);
@@ -15930,6 +15960,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NguoiBC {
+                get {
+                    try {
+                        return ((string)(this[this.tableDSBamChi.NguoiBCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NguoiBC\' in table \'DSBamChi\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSBamChi.NguoiBCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string TheoYeuCau {
                 get {
                     try {
@@ -16114,6 +16160,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMaSoBCNull() {
                 this[this.tableDSBamChi.MaSoBCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNguoiBCNull() {
+                return this.IsNull(this.tableDSBamChi.NguoiBCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNguoiBCNull() {
+                this[this.tableDSBamChi.NguoiBCColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
