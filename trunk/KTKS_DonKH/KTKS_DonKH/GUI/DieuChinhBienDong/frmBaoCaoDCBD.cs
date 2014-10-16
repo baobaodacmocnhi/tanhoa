@@ -264,6 +264,45 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rpt.SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;  
             }
+
+            if (radDSChuyenDocSo_LocUser.Checked)
+            {
+                DataTable dt = new DataTable();
+                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
+                    dt = _cDCBD.LoadDSCTDCBDbyNgayChuyenDocSo(dateTu.Value, dateDen.Value);
+                else
+                    if (!string.IsNullOrEmpty(_tuNgay))
+                        dt = _cDCBD.LoadDSCTDCBDbyNgayChuyenDocSo(dateTu.Value);
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
+
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
+                    dr["ThongTin"] = itemRow["ThongTin"];
+                    dr["HieuLucKy"] = itemRow["HieuLucKy"];
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["GiaBieu"] = itemRow["GiaBieu"];
+                    dr["DinhMuc"] = itemRow["DinhMuc"];
+                    dr["CreateBy"] = itemRow["CreateBy"];
+
+                    dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
+                }
+
+                dateTu.Value = DateTime.Now;
+                dateDen.Value = DateTime.Now;
+                _tuNgay = _denNgay = "";
+
+                rptDSChuyenDocSo_LocUser rpt = new rptDSChuyenDocSo_LocUser();
+                rpt.SetDataSource(dsBaoCao);
+                crystalReportViewer1.ReportSource = rpt;
+            }
+
         }
     }
 }

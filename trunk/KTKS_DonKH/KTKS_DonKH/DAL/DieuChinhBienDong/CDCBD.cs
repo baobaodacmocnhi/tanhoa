@@ -734,6 +734,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                 where itemCTDCBD.ChuyenDocSo==true && itemCTDCBD.NgayChuyenDocSo.Value.Date == TuNgay.Date
                                 select new
                                 {
@@ -745,6 +746,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc,
                                     itemCTDCBD.ThongTin,
                                     itemCTDCBD.HieuLucKy,
+                                    CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -774,6 +776,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                join itemUser in db.Users on itemCTDCBD.CreateBy equals itemUser.MaU
                                 where itemCTDCBD.ChuyenDocSo == true && itemCTDCBD.NgayChuyenDocSo.Value.Date >= TuNgay.Date && itemCTDCBD.NgayChuyenDocSo.Value.Date <= DenNgay.Date
                                 select new
                                 {
@@ -785,6 +788,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DinhMuc,
                                     itemCTDCBD.ThongTin,
                                     itemCTDCBD.HieuLucKy,
+                                    CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
