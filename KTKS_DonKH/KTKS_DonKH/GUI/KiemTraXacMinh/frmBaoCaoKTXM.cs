@@ -118,6 +118,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (radThongKeBienBan.Checked)
             {
+                soLapBangGia = 0;
+                soDongTien = 0;
+                soChuyenLapTBCat = 0;
+                soMatDHN_LapBangGia = 0;
+                soDCMS_LapBangGia = 0;
+                soKhac_LapBangGia = 0;
+
                 DataTable dt = new DataTable();
                 DataTable dt2 = new DataTable();
                 if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))

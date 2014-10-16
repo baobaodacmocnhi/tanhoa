@@ -232,15 +232,16 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["MSThue"].Visible = true;
                 view.Columns["MSThue_BD"].Visible = true;
 
-                view.Columns["HoTen_BD"].VisibleIndex = 5;
-                view.Columns["DiaChi"].VisibleIndex = 6;
+                view.Columns["HoTen_BD"].VisibleIndex = 6;
+                //view.Columns["DiaChi"].VisibleIndex = 6;
                 view.Columns["DiaChi_BD"].VisibleIndex = 7;
-                view.Columns["MSThue"].VisibleIndex = 8;
-                view.Columns["MSThue_BD"].VisibleIndex = 9;
-                view.Columns["GiaBieu"].VisibleIndex = 10;
-                view.Columns["GiaBieu_BD"].VisibleIndex = 11;
-                view.Columns["DinhMuc"].VisibleIndex = 12;
-                view.Columns["DinhMuc_BD"].VisibleIndex = 13;
+                //view.Columns["MSThue"].VisibleIndex = 8;
+                view.Columns["MSThue_BD"].VisibleIndex = 8;
+                //view.Columns["GiaBieu"].VisibleIndex = 10;
+                view.Columns["GiaBieu_BD"].VisibleIndex = 9;
+                //view.Columns["DinhMuc"].VisibleIndex = 12;
+                view.Columns["DinhMuc_BD"].VisibleIndex = 10;
+                view.Columns["CreateBy"].VisibleIndex = 11;
             }
             if (view.GetRowCellDisplayText(0, "DieuChinh") == "Hóa Đơn")
             {
@@ -251,7 +252,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["TangGiam"].Visible = true;
                 view.Columns["TongCong_BD"].Visible = true;
                 view.Columns["ThongTin"].Visible = false;
-                view.Columns["CreateBy"].VisibleIndex = 16;
+                view.Columns["CreateBy"].VisibleIndex = 14;
             }
         }
 
@@ -512,15 +513,16 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["MSThue"].Visible = true;
                 view.Columns["MSThue_BD"].Visible = true;
 
-                view.Columns["HoTen_BD"].VisibleIndex = 5;
-                view.Columns["DiaChi"].VisibleIndex = 6;
+                view.Columns["HoTen_BD"].VisibleIndex = 6;
+                //view.Columns["DiaChi"].VisibleIndex = 6;
                 view.Columns["DiaChi_BD"].VisibleIndex = 7;
-                view.Columns["MSThue"].VisibleIndex = 8;
-                view.Columns["MSThue_BD"].VisibleIndex = 9;
-                view.Columns["GiaBieu"].VisibleIndex = 10;
-                view.Columns["GiaBieu_BD"].VisibleIndex = 11;
-                view.Columns["DinhMuc"].VisibleIndex = 12;
-                view.Columns["DinhMuc_BD"].VisibleIndex = 13;
+                //view.Columns["MSThue"].VisibleIndex = 8;
+                view.Columns["MSThue_BD"].VisibleIndex = 8;
+                //view.Columns["GiaBieu"].VisibleIndex = 10;
+                view.Columns["GiaBieu_BD"].VisibleIndex = 9;
+                //view.Columns["DinhMuc"].VisibleIndex = 12;
+                view.Columns["DinhMuc_BD"].VisibleIndex = 10;
+                view.Columns["CreateBy"].VisibleIndex = 11;
             }
             if (view.GetRowCellDisplayText(0, "DieuChinh") == "Hóa Đơn")
             {
@@ -531,7 +533,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 view.Columns["TangGiam"].Visible = true;
                 view.Columns["TongCong_BD"].Visible = true;
                 view.Columns["ThongTin"].Visible = false;
-                view.Columns["CreateBy"].VisibleIndex = 16;
+                view.Columns["CreateBy"].VisibleIndex = 14;
             }
         }
 

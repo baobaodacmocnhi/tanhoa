@@ -39,6 +39,7 @@
             this.radThongKeDMCap = new System.Windows.Forms.RadioButton();
             this.radThongKeDC = new System.Windows.Forms.RadioButton();
             this.radDSChuyenDocSo = new System.Windows.Forms.RadioButton();
+            this.radDSChuyenDocSo_LocUser = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(737, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
             this.panel_KhoangThoiGian.TabIndex = 18;
@@ -115,7 +116,7 @@
             // 
             this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
             this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.Location = new System.Drawing.Point(733, 2);
+            this.btnBaoCao.Location = new System.Drawing.Point(935, 2);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
             this.btnBaoCao.TabIndex = 19;
@@ -149,12 +150,22 @@
             // radDSChuyenDocSo
             // 
             this.radDSChuyenDocSo.AutoSize = true;
-            this.radDSChuyenDocSo.Location = new System.Drawing.Point(232, 34);
+            this.radDSChuyenDocSo.Location = new System.Drawing.Point(333, 7);
             this.radDSChuyenDocSo.Name = "radDSChuyenDocSo";
             this.radDSChuyenDocSo.Size = new System.Drawing.Size(188, 21);
             this.radDSChuyenDocSo.TabIndex = 22;
             this.radDSChuyenDocSo.Text = "Danh Sách Chuyển Đọc Số";
             this.radDSChuyenDocSo.UseVisualStyleBackColor = true;
+            // 
+            // radDSChuyenDocSo_LocUser
+            // 
+            this.radDSChuyenDocSo_LocUser.AutoSize = true;
+            this.radDSChuyenDocSo_LocUser.Location = new System.Drawing.Point(333, 34);
+            this.radDSChuyenDocSo_LocUser.Name = "radDSChuyenDocSo_LocUser";
+            this.radDSChuyenDocSo_LocUser.Size = new System.Drawing.Size(231, 21);
+            this.radDSChuyenDocSo_LocUser.TabIndex = 23;
+            this.radDSChuyenDocSo_LocUser.Text = "Danh Sách Chuyển Đọc Số (User)";
+            this.radDSChuyenDocSo_LocUser.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoDCBD
             // 
@@ -162,6 +173,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.radDSChuyenDocSo_LocUser);
             this.Controls.Add(this.radDSChuyenDocSo);
             this.Controls.Add(this.radThongKeDC);
             this.Controls.Add(this.radThongKeDMCap);
@@ -194,5 +206,6 @@
         private System.Windows.Forms.RadioButton radThongKeDMCap;
         private System.Windows.Forms.RadioButton radThongKeDC;
         private System.Windows.Forms.RadioButton radDSChuyenDocSo;
+        private System.Windows.Forms.RadioButton radDSChuyenDocSo_LocUser;
     }
 }

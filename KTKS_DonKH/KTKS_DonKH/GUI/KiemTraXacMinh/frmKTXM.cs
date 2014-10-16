@@ -541,6 +541,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         txtHieu.Enabled = false;
                         txtCo.Enabled = false;
                         txtSoThan.Enabled = false;
+                        txtDienThoai.Enabled = true;
+                        txtHoTenKHKy.Enabled = true;
                         ///
                         txtChiSo.Text = "";
                         cmbTinhTrangChiSo.SelectedIndex = -1;
@@ -549,6 +551,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         txtHieu.Text = "";
                         txtCo.Text = "";
                         txtSoThan.Text = "";
+                        txtMucDichSuDung.Text = "";
+                        txtDienThoai.Text = "";
+                        txtHoTenKHKy.Text = "";
                         break;
                     default:
                         txtChiSo.Enabled = true;
@@ -561,6 +566,17 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         txtMucDichSuDung.Enabled = true;
                         txtDienThoai.Enabled = true;
                         txtHoTenKHKy.Enabled = true;
+                        ///
+                        txtChiSo.Text = "";
+                        cmbTinhTrangChiSo.SelectedIndex = -1;
+                        cmbChiMatSo.SelectedIndex = -1;
+                        cmbChiKhoaGoc.SelectedIndex = -1;
+                        txtHieu.Text = "";
+                        txtCo.Text = "";
+                        txtSoThan.Text = "";
+                        txtMucDichSuDung.Text = "";
+                        txtDienThoai.Text = "";
+                        txtHoTenKHKy.Text = "";
                         break;
                 }
 
