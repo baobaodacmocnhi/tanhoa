@@ -900,6 +900,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctchdb != null)
                 {
+                    if (_ctchdb.DanhBo != txtDanhBo.Text.Trim())
+                    {
+                        _ctchdb.DanhBo = txtDanhBo.Text.Trim();
+                        _ctchdb.HopDong = txtHopDong.Text.Trim();
+                        _ctchdb.HoTen = txtHoTen.Text.Trim();
+                        _ctchdb.DiaChi = txtDiaChi.Text.Trim();
+                        if (_ttkhachhang != null)
+                        {
+                            _ctchdb.Dot = _ttkhachhang.Dot;
+                            _ctchdb.Ky = _ttkhachhang.Ky;
+                            _ctchdb.Nam = _ttkhachhang.Nam;
+                        }
+                    }
+
                     if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
                         _ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
 
@@ -991,6 +1005,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 groupBoxKetQuaCapTrenXuLy.Enabled = true;
             else
                 groupBoxKetQuaCapTrenXuLy.Enabled = false;
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                    LoadTTKH(_ttkhachhang);
+                }
+                else
+                {
+                    txtDanhBo.Text = "";
+                    txtHopDong.Text = "";
+                    txtHoTen.Text = "";
+                    txtDiaChi.Text = "";
+                    _ttkhachhang = null;
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
     }

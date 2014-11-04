@@ -48,7 +48,6 @@
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NVKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoCongVan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,7 +215,6 @@
             this.MaChuyen,
             this.LyDoChuyen,
             this.SoLuongDiaChi,
-            this.NVKiemTra,
             this.MaDon,
             this.TenLD,
             this.SoCongVan,
@@ -273,14 +271,6 @@
             this.SoLuongDiaChi.Name = "SoLuongDiaChi";
             this.SoLuongDiaChi.Visible = false;
             this.SoLuongDiaChi.Width = 110;
-            // 
-            // NVKiemTra
-            // 
-            this.NVKiemTra.DataPropertyName = "NVKiemTra";
-            this.NVKiemTra.HeaderText = "NV Kiểm Tra";
-            this.NVKiemTra.Name = "NVKiemTra";
-            this.NVKiemTra.Visible = false;
-            this.NVKiemTra.Width = 120;
             // 
             // MaDon
             // 
@@ -413,7 +403,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongDiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NVKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoCongVan;

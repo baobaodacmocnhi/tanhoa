@@ -558,7 +558,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
                     txtMaThongBao.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                     ///
-                    LoadTTKH(_cTTKH.getTTKHbyID(_ctctdb.DanhBo));
+                    //LoadTTKH(_cTTKH.getTTKHbyID(_ctctdb.DanhBo));
+                    txtDanhBo.Text = _ctctdb.DanhBo;
+                    txtHopDong.Text = _ctctdb.HopDong;
+                    txtHoTen.Text = _ctctdb.HoTen;
+                    txtDiaChi.Text = _ctctdb.DiaChi;
                     ///Nguyên Nhân Xử Lý
                     cmbLyDo.SelectedItem = _ctctdb.LyDo;
                     txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
@@ -606,6 +610,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctctdb != null)
                 {
+                    if (_ctctdb.DanhBo != txtDanhBo.Text.Trim())
+                    {
+                        _ctctdb.DanhBo = txtDanhBo.Text.Trim();
+                        _ctctdb.HopDong = txtHopDong.Text.Trim();
+                        _ctctdb.HoTen = txtHoTen.Text.Trim();
+                        _ctctdb.DiaChi = txtDiaChi.Text.Trim();
+                        if (_ttkhachhang != null)
+                        {
+                            _ctctdb.Dot = _ttkhachhang.Dot;
+                            _ctctdb.Ky = _ttkhachhang.Ky;
+                            _ctctdb.Nam = _ttkhachhang.Nam;
+                        }
+                    }
+
                     if (!string.IsNullOrEmpty(cmbLyDo.SelectedItem.ToString()))
                         _ctctdb.LyDo = cmbLyDo.SelectedItem.ToString();
                     _ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
@@ -820,6 +838,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
+                }
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                    LoadTTKH(_ttkhachhang);
+                }
+                else
+                {
+                    txtDanhBo.Text = "";
+                    txtHopDong.Text = "";
+                    txtHoTen.Text = "";
+                    txtDiaChi.Text = "";
+                    _ttkhachhang = null;
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

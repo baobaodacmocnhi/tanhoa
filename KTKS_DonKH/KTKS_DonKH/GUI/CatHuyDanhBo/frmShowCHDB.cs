@@ -13,6 +13,7 @@ using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Globalization;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.DAL.KhachHang;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -23,6 +24,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CTCHDB _ctchdb = null;
         CTTKH _cTTKH = new CTTKH();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        TTKhachHang _ttkhachhang = null;
 
         public frmShowCHDB()
         {
@@ -49,6 +52,18 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
             }
+        }
+
+        /// <summary>
+        /// Nhận Entity TTKhachHang để điền vào textbox
+        /// </summary>
+        /// <param name="ttkhachhang"></param>
+        public void LoadTTKH(TTKhachHang ttkhachhang)
+        {
+            txtDanhBo.Text = ttkhachhang.DanhBo;
+            txtHopDong.Text = ttkhachhang.GiaoUoc;
+            txtHoTen.Text = ttkhachhang.HoTen;
+            txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
         }
 
         private void frmShowCHDB_Load(object sender, EventArgs e)
@@ -264,6 +279,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctchdb != null)
                 {
+                    if (_ctchdb.DanhBo != txtDanhBo.Text.Trim())
+                    {
+                        _ctchdb.DanhBo = txtDanhBo.Text.Trim();
+                        _ctchdb.HopDong = txtHopDong.Text.Trim();
+                        _ctchdb.HoTen = txtHoTen.Text.Trim();
+                        _ctchdb.DiaChi = txtDiaChi.Text.Trim();
+                        if (_ttkhachhang != null)
+                        {
+                            _ctchdb.Dot = _ttkhachhang.Dot;
+                            _ctchdb.Ky = _ttkhachhang.Ky;
+                            _ctchdb.Nam = _ttkhachhang.Nam;
+                        }
+                    }
+
                     if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
                         _ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
 
@@ -424,6 +453,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                    LoadTTKH(_ttkhachhang);
+                }
+                else
+                {
+                    txtDanhBo.Text = "";
+                    txtHopDong.Text = "";
+                    txtHoTen.Text = "";
+                    txtDiaChi.Text = "";
+                    _ttkhachhang = null;
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

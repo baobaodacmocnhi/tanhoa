@@ -320,6 +320,53 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Thông Kê Đơn được chuyển cho những ai theo Số Công Văn
+        /// </summary>
+        /// <param name="SoCongVan"></param>
+        /// <returns></returns>
+        public DataTable LoadDSDonTXLbySoCongVan(string SoCongVan)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemDonTXL in db.DonTXLs 
+                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
+                                where itemDonTXL.SoCongVan==SoCongVan
+                                orderby itemDonTXL.MaDon ascending
+                                select new
+                                {
+                                    itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
+                                    itemDonTXL.CreateDate,
+                                    itemDonTXL.DanhBo,
+                                    itemDonTXL.HoTen,
+                                    itemDonTXL.DiaChi,
+                                    itemDonTXL.NoiDung,
+                                    itemDonTXL.MaChuyen,
+                                    itemDonTXL.LyDoChuyen,
+                                    itemDonTXL.SoLuongDiaChi,
+                                    CreateBy = itemUser.HoTen,
+                                    NguoiDi="",
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public bool SuaDonTXL(DonTXL dontxl)
         {
             try

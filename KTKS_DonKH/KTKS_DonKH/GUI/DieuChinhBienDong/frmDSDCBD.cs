@@ -1273,10 +1273,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (MessageBox.Show("Bạn chắc chắn Cập Nhật Đọc Số những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 if (radDSDCBD.Checked)
                 {
+                    CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
                     try
                     {
+                        _cDLKH.beginTransaction();
                         _cDCBD.beginTransaction();
-                        CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
                             {
@@ -1291,6 +1292,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     //    dlkh.SONHA = ctdcbd.DiaChi_BD.Substring(0,ctdcbd.DiaChi_BD.IndexOf(" "));
                                     //    dlkh.TENDUONG = ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1);
                                     //}
+                                    if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD.ToString()))
+                                        dlkh.MSTHUE = ctdcbd.MSThue_BD.ToString();
                                     if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                         dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
                                     if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
@@ -1311,6 +1314,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         {
                                             ghichu.NOIDUNG += " Địa Chỉ: " + ctdcbd.DiaChi_BD + ",";
                                         }
+                                        if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
+                                        {
+                                            ghichu.NOIDUNG += " MST: " + ctdcbd.MSThue_BD + ",";
+                                        }
                                         if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                         {
                                             ghichu.NOIDUNG += " Giá Biểu Từ " + ctdcbd.GiaBieu + " -> " + ctdcbd.GiaBieu_BD + ",";
@@ -1322,6 +1329,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         _cDLKH.ThemGhiChu(ghichu);
                                         ctdcbd.ChuyenDocSo = true;
                                         ctdcbd.NgayChuyenDocSo = DateTime.Now;
+                                        ctdcbd.NguoiChuyenDocSo = CTaiKhoan.MaUser;
                                         _cDCBD.SuaCTDCBD(ctdcbd);
                                     }
                                 }
@@ -1332,11 +1340,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                         _cDCBD.commitTransaction();
+                        _cDLKH.commitTransaction();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         _cDCBD.rollback();
+                        _cDLKH.rollback();
                     }
 
                 }
