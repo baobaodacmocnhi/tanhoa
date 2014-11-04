@@ -58,6 +58,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public void beginTransaction()
+        {
+            if (db.Connection.State == System.Data.ConnectionState.Closed)
+                db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction();
+        }
 
+        public void commitTransaction()
+        {
+            db.Transaction.Commit();
+        }
+
+        public void rollback()
+        {
+            db.Transaction.Rollback();
+        }
     }
 }

@@ -110,15 +110,18 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void dgvDSDonTXL_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(dgvDSDonTXL["MaDon", e.RowIndex].ToString()));
+            DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(dgvDSDonTXL["MaDon", e.RowIndex].Value.ToString()));
             dontxl.Chuyen = true;
-            dontxl.MaChuyen = dgvDSDonTXL["MaChuyen", e.RowIndex].ToString();
-            dontxl.LyDoChuyen = dgvDSDonTXL["LyDoChuyen", e.RowIndex].ToString();
+            if (string.IsNullOrEmpty(dgvDSDonTXL["MaChuyen", e.RowIndex].Value.ToString()))
+                dontxl.MaChuyen = "NONE";
+            else
+                dontxl.MaChuyen = dgvDSDonTXL["MaChuyen", e.RowIndex].Value.ToString();
+            dontxl.LyDoChuyen = dgvDSDonTXL["LyDoChuyen", e.RowIndex].Value.ToString();
             //if (string.IsNullOrEmpty(dgvDSDonTXL["SoLuongDiaChi", e.RowIndex].ToString()))
             //    dontxl.SoLuongDiaChi = null;
             //else
             //    dontxl.SoLuongDiaChi = int.Parse(dgvDSDonTXL["SoLuongDiaChi", e.RowIndex].ToString());
-            dontxl.NVKiemTra = dgvDSDonTXL["NVKiemTra", e.RowIndex].ToString();
+            //dontxl.NVKiemTra = dgvDSDonTXL["NVKiemTra", e.RowIndex].ToString();
             _cDonTXL.SuaDonTXL(dontxl);
         }
 
@@ -174,7 +177,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("TXL",""));
                         break;
                     case "Số Công Văn":
-                        expression = String.Format("SoCongVan like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("TXL", ""));
+                        expression = String.Format("SoCongVan like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
                         break;
                 }
                 DSDonKH_BS.Filter = expression;
@@ -208,7 +211,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void btnInDSDonKH_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            DataTable dt = ((DataTable)DSDonKH_BS.DataSource).DefaultView.ToTable();
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Ngày Lập":
@@ -216,6 +219,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     break;
                 case "Khoảng Thời Gian":
                     dt = _cDonTXL.LoadDSDonTXLDaChuyenKT(dateTu.Value, dateDen.Value);
+                    break;
+                case "Số Công Văn":
+                    dt = _cDonTXL.LoadDSDonTXLbySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
             }
             
