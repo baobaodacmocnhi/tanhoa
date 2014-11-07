@@ -146,6 +146,9 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.dateHetHan = new System.Windows.Forms.DateTimePicker();
+            this.chkSuaNgayHetHan = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel_YCCat3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -433,7 +436,7 @@
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(125, 230);
+            this.txtGhiChu.Location = new System.Drawing.Point(125, 261);
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.ReadOnly = true;
             this.txtGhiChu.Size = new System.Drawing.Size(285, 25);
@@ -443,7 +446,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 233);
+            this.label9.Location = new System.Drawing.Point(9, 264);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 17);
             this.label9.TabIndex = 10;
@@ -967,7 +970,7 @@
             this.DanhBo,
             this.SoNKDangKy,
             this.CreateDate});
-            this.dgvDSDanhBo.Location = new System.Drawing.Point(12, 261);
+            this.dgvDSDanhBo.Location = new System.Drawing.Point(12, 292);
             this.dgvDSDanhBo.Name = "dgvDSDanhBo";
             this.dgvDSDanhBo.Size = new System.Drawing.Size(398, 170);
             this.dgvDSDanhBo.TabIndex = 26;
@@ -1294,12 +1297,44 @@
             this.label36.TabIndex = 0;
             this.label36.Text = "Sổ KT3 && Tạm Trú nhập lấy";
             // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(10, 236);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(98, 17);
+            this.label57.TabIndex = 32;
+            this.label57.Text = "Ngày Hết Hạn:";
+            // 
+            // dateHetHan
+            // 
+            this.dateHetHan.CustomFormat = "dd/MM/yyyy";
+            this.dateHetHan.Enabled = false;
+            this.dateHetHan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateHetHan.Location = new System.Drawing.Point(125, 230);
+            this.dateHetHan.Name = "dateHetHan";
+            this.dateHetHan.Size = new System.Drawing.Size(97, 25);
+            this.dateHetHan.TabIndex = 33;
+            // 
+            // chkSuaNgayHetHan
+            // 
+            this.chkSuaNgayHetHan.AutoSize = true;
+            this.chkSuaNgayHetHan.Location = new System.Drawing.Point(228, 236);
+            this.chkSuaNgayHetHan.Name = "chkSuaNgayHetHan";
+            this.chkSuaNgayHetHan.Size = new System.Drawing.Size(141, 21);
+            this.chkSuaNgayHetHan.TabIndex = 34;
+            this.chkSuaNgayHetHan.Text = "Sửa Ngày Hết Hạn";
+            this.chkSuaNgayHetHan.UseVisualStyleBackColor = true;
+            // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(903, 440);
+            this.ClientSize = new System.Drawing.Size(903, 472);
+            this.Controls.Add(this.chkSuaNgayHetHan);
+            this.Controls.Add(this.dateHetHan);
+            this.Controls.Add(this.label57);
             this.Controls.Add(this.txtPhong);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.txtLo);
@@ -1484,5 +1519,8 @@
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.DateTimePicker dateHetHan;
+        private System.Windows.Forms.CheckBox chkSuaNgayHetHan;
     }
 }
