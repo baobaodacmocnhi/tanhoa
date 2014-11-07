@@ -1130,6 +1130,9 @@ namespace KTKS_DonKH.DAL.CapNhat
                             ctchungtuCN.NgayHetHan = null;
                         flagEdited = true;
                     }
+                    if (ctchungtu.NgayHetHan.Value != null)
+                        ctchungtuCN.NgayHetHan = ctchungtu.NgayHetHan;
+
                     if (ctchungtuCN.Lo != ctchungtu.Lo)
                         ctchungtuCN.Lo = ctchungtu.Lo;
                     if (ctchungtuCN.Phong != ctchungtu.Phong)

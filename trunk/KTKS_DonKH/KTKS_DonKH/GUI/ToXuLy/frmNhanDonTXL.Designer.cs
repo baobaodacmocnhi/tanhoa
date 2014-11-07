@@ -231,6 +231,8 @@
             // 
             // cmbLD
             // 
+            this.cmbLD.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbLD.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbLD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbLD.FormattingEnabled = true;
             this.cmbLD.Location = new System.Drawing.Point(12, 28);
@@ -733,7 +735,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1362, 525);
+            this.ClientSize = new System.Drawing.Size(1360, 525);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxChuyenKhac);

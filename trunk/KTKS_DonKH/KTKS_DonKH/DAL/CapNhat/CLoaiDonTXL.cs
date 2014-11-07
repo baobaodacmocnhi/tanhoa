@@ -20,7 +20,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
                 {
-                    return db.LoaiDonTXLs.ToList();
+                    return db.LoaiDonTXLs.OrderBy(itemLD => itemLD.TenLD).ToList();
                 }
                 else
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -44,7 +44,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (inheritance)
                 {
-                    return db.LoaiDonTXLs.ToList();
+                    return db.LoaiDonTXLs.OrderBy(itemLD => itemLD.TenLD).ToList();
                 }
                 else
                     return null;

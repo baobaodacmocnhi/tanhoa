@@ -51,7 +51,7 @@ namespace KTKS_DonKH.GUI.CapNhat
             dgvDSLoaiDon.DataSource = _cLoaiDon.LoadDSLoaiDon();
 
             dgvDSLoaiDonTXL.AutoGenerateColumns = false;
-            dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSLoaiDon.Font, FontStyle.Bold);
+            dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSLoaiDonTXL.Font, FontStyle.Bold);
             dgvDSLoaiDonTXL.DataSource = _cLoaiDonTXL.LoadDSLoaiDonTXL();
         }
 
@@ -129,8 +129,8 @@ namespace KTKS_DonKH.GUI.CapNhat
             try
             {
                 _selectedindexTXL = e.RowIndex;
-                txtKyHieuLDTXL.Text = dgvDSLoaiDonTXL["KyHieuLD", e.RowIndex].Value.ToString();
-                txtTenLDTXL.Text = dgvDSLoaiDonTXL["TenLD", e.RowIndex].Value.ToString();
+                txtKyHieuLDTXL.Text = dgvDSLoaiDonTXL["KyHieuLDTXL", e.RowIndex].Value.ToString();
+                txtTenLDTXL.Text = dgvDSLoaiDonTXL["TenLDTXL", e.RowIndex].Value.ToString();
             }
             catch (Exception)
             {
@@ -166,7 +166,7 @@ namespace KTKS_DonKH.GUI.CapNhat
             {
                 if (txtKyHieuLDTXL.Text.Trim() != "" && txtTenLDTXL.Text.Trim() != "")
                 {
-                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLD", _selectedindexTXL].Value.ToString()));
+                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", _selectedindexTXL].Value.ToString()));
                     loaidontxl.KyHieuLD = txtKyHieuLDTXL.Text.Trim();
                     loaidontxl.TenLD = txtTenLDTXL.Text.Trim();
 

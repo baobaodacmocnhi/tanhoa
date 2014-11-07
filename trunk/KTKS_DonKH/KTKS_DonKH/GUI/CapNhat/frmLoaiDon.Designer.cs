@@ -50,10 +50,10 @@
             this.btnThemTXL = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvDSLoaiDonTXL = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTenLDTXL = new System.Windows.Forms.TextBox();
+            this.MaLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KyHieuLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSLoaiDon)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -118,7 +118,7 @@
             this.dgvDSLoaiDon.MultiSelect = false;
             this.dgvDSLoaiDon.Name = "dgvDSLoaiDon";
             this.dgvDSLoaiDon.ReadOnly = true;
-            this.dgvDSLoaiDon.Size = new System.Drawing.Size(395, 408);
+            this.dgvDSLoaiDon.Size = new System.Drawing.Size(418, 408);
             this.dgvDSLoaiDon.TabIndex = 6;
             this.dgvDSLoaiDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDon_CellContentClick);
             this.dgvDSLoaiDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSLoaiDon_RowPostPaint);
@@ -187,7 +187,7 @@
             this.groupBox1.Controls.Add(this.txtTenLD);
             this.groupBox1.Location = new System.Drawing.Point(44, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(409, 552);
+            this.groupBox1.Size = new System.Drawing.Size(434, 552);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tổ Khách Hàng";
@@ -203,6 +203,7 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Visible = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // groupBox2
@@ -217,7 +218,7 @@
             this.groupBox2.Controls.Add(this.txtTenLDTXL);
             this.groupBox2.Location = new System.Drawing.Point(500, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(409, 552);
+            this.groupBox2.Size = new System.Drawing.Size(480, 552);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tổ Xử Lý";
@@ -233,6 +234,7 @@
             this.btnXoaTXL.Text = "Xóa";
             this.btnXoaTXL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoaTXL.UseVisualStyleBackColor = true;
+            this.btnXoaTXL.Visible = false;
             this.btnXoaTXL.Click += new System.EventHandler(this.btnXoaTXL_Click);
             // 
             // txtKyHieuLDTXL
@@ -305,42 +307,18 @@
             this.dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSLoaiDonTXL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSLoaiDonTXL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.MaLDTXL,
+            this.KyHieuLDTXL,
+            this.TenLDTXL});
             this.dgvDSLoaiDonTXL.Location = new System.Drawing.Point(7, 137);
             this.dgvDSLoaiDonTXL.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSLoaiDonTXL.MultiSelect = false;
             this.dgvDSLoaiDonTXL.Name = "dgvDSLoaiDonTXL";
             this.dgvDSLoaiDonTXL.ReadOnly = true;
-            this.dgvDSLoaiDonTXL.Size = new System.Drawing.Size(395, 408);
+            this.dgvDSLoaiDonTXL.Size = new System.Drawing.Size(467, 408);
             this.dgvDSLoaiDonTXL.TabIndex = 6;
             this.dgvDSLoaiDonTXL.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDonTXL_CellContentClick);
             this.dgvDSLoaiDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSLoaiDonTXL_RowPostPaint);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "MaLD";
-            this.dataGridViewTextBoxColumn1.HeaderText = "MaLD";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "KyHieuLD";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Ký Hiệu Loại Đơn";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "TenLD";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tên Loại Đơn";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 200;
             // 
             // txtTenLDTXL
             // 
@@ -350,12 +328,36 @@
             this.txtTenLDTXL.Size = new System.Drawing.Size(165, 25);
             this.txtTenLDTXL.TabIndex = 3;
             // 
+            // MaLDTXL
+            // 
+            this.MaLDTXL.DataPropertyName = "MaLD";
+            this.MaLDTXL.HeaderText = "MaLD";
+            this.MaLDTXL.Name = "MaLDTXL";
+            this.MaLDTXL.ReadOnly = true;
+            this.MaLDTXL.Visible = false;
+            // 
+            // KyHieuLDTXL
+            // 
+            this.KyHieuLDTXL.DataPropertyName = "KyHieuLD";
+            this.KyHieuLDTXL.HeaderText = "Ký Hiệu Loại Đơn";
+            this.KyHieuLDTXL.Name = "KyHieuLDTXL";
+            this.KyHieuLDTXL.ReadOnly = true;
+            this.KyHieuLDTXL.Width = 150;
+            // 
+            // TenLDTXL
+            // 
+            this.TenLDTXL.DataPropertyName = "TenLD";
+            this.TenLDTXL.HeaderText = "Tên Loại Đơn";
+            this.TenLDTXL.Name = "TenLDTXL";
+            this.TenLDTXL.ReadOnly = true;
+            this.TenLDTXL.Width = 250;
+            // 
             // frmLoaiDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(919, 564);
+            this.ClientSize = new System.Drawing.Size(992, 564);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -393,11 +395,11 @@
         private System.Windows.Forms.Button btnThemTXL;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvDSLoaiDonTXL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.TextBox txtTenLDTXL;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnXoaTXL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLDTXL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KyHieuLDTXL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenLDTXL;
     }
 }
