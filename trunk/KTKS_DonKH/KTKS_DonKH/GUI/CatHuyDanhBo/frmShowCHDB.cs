@@ -439,7 +439,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         if (!_ctchdb.DaLapPhieu)
                         {
-                            if (_cCHDB.SuaCTCHDB(_ctchdb))
+                            if (_cCHDB.XoaCTCHDB(_ctchdb))
                             {
                                 MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = DialogResult.OK;
