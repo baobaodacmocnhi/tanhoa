@@ -499,7 +499,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
-        public bool XoaCTCHDB(CTCTDB ctctdb)
+        public bool XoaCTCTDB(CTCTDB ctctdb)
         {
             try
             {
