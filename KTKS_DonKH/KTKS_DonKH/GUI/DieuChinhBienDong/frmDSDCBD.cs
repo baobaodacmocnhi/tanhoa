@@ -638,12 +638,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (radDSDCBD.Checked)
                 {
                     frmShowDCBD frm = new frmShowDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
-                    frm.ShowDialog();
+                    if(frm.ShowDialog()==DialogResult.OK)
+                        DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                 }
                 if (radDSDCHD.Checked)
                 {
                     frmShowDCHD frm = new frmShowDCHD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
-                    frm.ShowDialog();
+                    if(frm.ShowDialog()==DialogResult.OK)
+                        DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCHD();
                 }
             }
         }

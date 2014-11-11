@@ -194,6 +194,7 @@
               <xs:element name="NoiDung" msprop:Generator_ColumnVarNameInTable="columnNoiDung" msprop:Generator_ColumnPropNameInRow="NoiDung" msprop:Generator_ColumnPropNameInTable="NoiDungColumn" msprop:Generator_UserColumnName="NoiDung" type="xs:string" minOccurs="0" />
               <xs:element name="MaLD" msprop:Generator_ColumnVarNameInTable="columnMaLD" msprop:Generator_ColumnPropNameInRow="MaLD" msprop:Generator_ColumnPropNameInTable="MaLDColumn" msprop:Generator_UserColumnName="MaLD" type="xs:string" minOccurs="0" />
               <xs:element name="TienTrinh" msprop:Generator_ColumnVarNameInTable="columnTienTrinh" msprop:Generator_ColumnPropNameInRow="TienTrinh" msprop:Generator_ColumnPropNameInTable="TienTrinhColumn" msprop:Generator_UserColumnName="TienTrinh" type="xs:string" minOccurs="0" />
+              <xs:element name="SoDanhBo" msprop:Generator_ColumnVarNameInTable="columnSoDanhBo" msprop:Generator_ColumnPropNameInRow="SoDanhBo" msprop:Generator_ColumnPropNameInTable="SoDanhBoColumn" msprop:Generator_UserColumnName="SoDanhBo" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -578,11 +578,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (_CTRow != null && e.Control && e.KeyCode == Keys.F)
             {
                 frmShowCTDB frm = new frmShowCTDB(decimal.Parse(_CTRow.Row["MaCTCTDB"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
+                //if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
-                else
+                //else
                     if (frm.ShowDialog() == DialogResult.OK)
-                        Invalidate();
+                        DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
             }
         }
 
@@ -642,11 +642,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (_CTRow != null && e.Control && e.KeyCode == Keys.F)
             {
                 frmShowCHDB frm = new frmShowCHDB(decimal.Parse(_CTRow.Row["MaCTCHDB"].ToString()));
-                if (frm.ShowDialog() == DialogResult.Cancel)
+                //if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
-                else
+                //else
                     if (frm.ShowDialog() == DialogResult.OK)
-                        Invalidate();
+                        DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
+                
             }
         }
 
@@ -798,14 +799,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     frmShowCTDB frm = new frmShowCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
                     if (frm.ShowDialog() == DialogResult.OK)
-                        Invalidate();
+                        DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
                 }
             if (radDSCatHuyDanhBo.Checked || radDSCatHuyDanhBo_TXL.Checked)
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
                     frmShowCHDB frm = new frmShowCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
                     if (frm.ShowDialog() == DialogResult.OK)
-                        Invalidate();
+                        DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
                 }
         }
 

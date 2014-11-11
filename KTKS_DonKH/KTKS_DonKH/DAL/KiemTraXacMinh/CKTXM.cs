@@ -1633,6 +1633,19 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public int countCTKTXMbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                return db.CTKTXMs.Count(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         #endregion
     }
 }

@@ -234,7 +234,7 @@ namespace KTKS_DonKH.GUI.DongNuoc
                             return;
                         }
                         CTDongNuoc ctdongnuoc = new CTDongNuoc();
-                        ctdongnuoc.MaDN = _cDongNuoc.getDongNuocbyMaDon_TXL(_dontxl.MaDon).MaDN;
+                        ctdongnuoc.MaDN = _cDongNuoc.getDongNuocbyMaDon(_donkh.MaDon).MaDN;
                         ctdongnuoc.DanhBo = txtDanhBo.Text.Trim();
                         ctdongnuoc.HopDong = txtHopDong.Text.Trim();
                         ctdongnuoc.HoTen = txtHoTen.Text.Trim();

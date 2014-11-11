@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.KhachHang;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -16,6 +17,7 @@ namespace KTKS_DonKH.GUI.KhachHang
     {
         string _tuNgay = "", _denNgay = "";
         CDonKH _cDonKH = new CDonKH();
+        CKTXM _cKTXM = new CKTXM();
 
         public frmBaoCaoDonKH()
         {
@@ -68,7 +70,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     SLChuaXuLy++;
                 else
                     SLDaXuLy++;
-
+                //dr["SoDanhBo"] = _cKTXM.countCTKTXMbyMaDon(decimal.Parse(itemRow["MaDon"].ToString()));
                 dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
             }
 
