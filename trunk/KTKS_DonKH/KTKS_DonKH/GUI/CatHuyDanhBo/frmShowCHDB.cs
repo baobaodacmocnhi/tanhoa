@@ -113,7 +113,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmShowCHDB_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            //this.DialogResult = DialogResult.Cancel;
         }
 
         private void btnIn_Click(object sender, EventArgs e)

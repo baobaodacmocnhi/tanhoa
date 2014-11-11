@@ -147,7 +147,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmShowCTDB_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            //this.DialogResult = DialogResult.Cancel;
         }
 
         private void btnSua_Click(object sender, EventArgs e)

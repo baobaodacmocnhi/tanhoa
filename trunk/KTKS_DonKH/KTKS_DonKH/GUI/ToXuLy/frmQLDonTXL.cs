@@ -143,6 +143,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             {
                 case "Mã Đơn":
                 case "Số Công Văn":
+                case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
@@ -178,6 +179,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         break;
                     case "Số Công Văn":
                         expression = String.Format("SoCongVan like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        break;
+                    case "Danh Bộ":
+                        expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
                         break;
                 }
                 DSDonKH_BS.Filter = expression;

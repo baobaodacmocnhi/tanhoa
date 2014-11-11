@@ -44,7 +44,6 @@
             this.radChuaChuyen = new System.Windows.Forms.RadioButton();
             this.radDaChuyen = new System.Windows.Forms.RadioButton();
             this.dgvDSDonTXL = new System.Windows.Forms.DataGridView();
-            this.btnInDSDonKH = new System.Windows.Forms.Button();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +57,7 @@
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInDSDonKH = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTXL)).BeginInit();
             this.SuspendLayout();
@@ -118,9 +118,10 @@
             this.cmbTimTheo.Items.AddRange(new object[] {
             "",
             "Mã Đơn",
+            "Danh Bộ",
+            "Số Công Văn",
             "Ngày Lập",
-            "Khoảng Thời Gian",
-            "Số Công Văn"});
+            "Khoảng Thời Gian"});
             this.cmbTimTheo.Location = new System.Drawing.Point(372, 12);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(141, 25);
@@ -237,19 +238,6 @@
             this.dgvDSDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTXL_RowPostPaint);
             this.dgvDSDonTXL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTXL_KeyDown);
             // 
-            // btnInDSDonKH
-            // 
-            this.btnInDSDonKH.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnInDSDonKH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDSDonKH.Location = new System.Drawing.Point(844, 12);
-            this.btnInDSDonKH.Name = "btnInDSDonKH";
-            this.btnInDSDonKH.Size = new System.Drawing.Size(202, 35);
-            this.btnInDSDonKH.TabIndex = 29;
-            this.btnInDSDonKH.Text = "In Danh Sách (Ngày Giao)";
-            this.btnInDSDonKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInDSDonKH.UseVisualStyleBackColor = true;
-            this.btnInDSDonKH.Click += new System.EventHandler(this.btnInDSDonKH_Click);
-            // 
             // MaChuyen
             // 
             this.MaChuyen.DataPropertyName = "MaChuyen";
@@ -351,6 +339,19 @@
             this.NguoiDi.HeaderText = "Người Được Giao";
             this.NguoiDi.Name = "NguoiDi";
             this.NguoiDi.Width = 200;
+            // 
+            // btnInDSDonKH
+            // 
+            this.btnInDSDonKH.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInDSDonKH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInDSDonKH.Location = new System.Drawing.Point(844, 12);
+            this.btnInDSDonKH.Name = "btnInDSDonKH";
+            this.btnInDSDonKH.Size = new System.Drawing.Size(202, 35);
+            this.btnInDSDonKH.TabIndex = 29;
+            this.btnInDSDonKH.Text = "In Danh Sách (Ngày Giao)";
+            this.btnInDSDonKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInDSDonKH.UseVisualStyleBackColor = true;
+            this.btnInDSDonKH.Click += new System.EventHandler(this.btnInDSDonKH_Click);
             // 
             // frmQLDonTXL
             // 
