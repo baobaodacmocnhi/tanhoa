@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             dgvDSDonTXL.DataSource = DSDonKH_BS;
             radAll.Checked = true;
 
-            cmbTimTheo.SelectedIndex = 3;
+            cmbTimTheo.SelectedIndex = 6;
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
@@ -142,8 +142,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Mã Đơn":
-                case "Số Công Văn":
                 case "Danh Bộ":
+                case "Địa Chỉ":
+                case "Số Công Văn":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
@@ -182,6 +183,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         break;
                     case "Danh Bộ":
                         expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        break;
+                    case "Địa Chỉ":
+                        expression = String.Format("DiaChi like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
                         break;
                 }
                 DSDonKH_BS.Filter = expression;

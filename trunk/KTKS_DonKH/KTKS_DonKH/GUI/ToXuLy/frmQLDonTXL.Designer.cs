@@ -119,6 +119,7 @@
             "",
             "Mã Đơn",
             "Danh Bộ",
+            "Địa Chỉ",
             "Số Công Văn",
             "Ngày Lập",
             "Khoảng Thời Gian"});
@@ -359,7 +360,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 562);
+            this.ClientSize = new System.Drawing.Size(1362, 562);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.txtNoiDungTimKiem);
