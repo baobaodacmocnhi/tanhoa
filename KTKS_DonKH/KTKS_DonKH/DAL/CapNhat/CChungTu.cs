@@ -1118,7 +1118,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return false;
                         }
-                if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan || ctchungtuCN.Lo != ctchungtu.Lo || ctchungtuCN.Phong != ctchungtu.Phong || ctchungtuCN.GhiChu != ctchungtu.GhiChu)
+                if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan || ctchungtuCN.Lo != ctchungtu.Lo || ctchungtuCN.Phong != ctchungtu.Phong || ctchungtuCN.GhiChu != ctchungtu.GhiChu || (ctchungtuCN.NgayHetHan != ctchungtu.NgayHetHan && ctchungtu.NgayHetHan != null))
                 {
                     if (ctchungtuCN.ThoiHan != ctchungtu.ThoiHan)
                     {
@@ -1141,7 +1141,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ctchungtuCN.GhiChu = ctchungtu.GhiChu;
                     ctchungtuCN.ModifyDate = DateTime.Now;
                     ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
-                    
+
                 }
                 //if (ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
                     if (ctchungtu.YeuCauCat)
