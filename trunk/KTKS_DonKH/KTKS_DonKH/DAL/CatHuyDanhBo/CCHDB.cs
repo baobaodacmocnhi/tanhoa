@@ -1419,7 +1419,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemYCCHDB in db.YeuCauCHDBs
-                                where itemYCCHDB.CreateDate.Value.Date==TuNgay.Date && itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null
+                                where itemYCCHDB.CreateDate.Value.Date==TuNgay.Date //&& (itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null)
                                 select new
                                 {
                                     In = false,
@@ -1464,7 +1464,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemYCCHDB in db.YeuCauCHDBs
-                                where itemYCCHDB.CreateDate.Value.Date >= TuNgay.Date && itemYCCHDB.CreateDate.Value.Date <= DenNgay.Date && itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null
+                                where itemYCCHDB.CreateDate.Value.Date >= TuNgay.Date && itemYCCHDB.CreateDate.Value.Date <= DenNgay.Date //&& (itemYCCHDB.MaDon != null || itemYCCHDB.MaDonTXL != null)
                                 select new
                                 {
                                     In = false,

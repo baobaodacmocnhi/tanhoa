@@ -628,6 +628,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtHieuLucKy.Text.Trim() != "")
                     {
                         YeuCauCHDB ycchdb = new YeuCauCHDB();
+                        if (_ctchdb.CHDB.ToXuLy)
+                        {
+                            ycchdb.ToXyLy = true;
+                            ycchdb.MaDonTXL = _ctchdb.CHDB.MaDonTXL;
+                        }
+                        else
+                            ycchdb.MaDon = _ctchdb.CHDB.MaDon;
                         ycchdb.TBCHDB = true;
                         ycchdb.MaCTCHDB = _ctchdb.MaCTCHDB;
                         ycchdb.DanhBo = _ctchdb.DanhBo;

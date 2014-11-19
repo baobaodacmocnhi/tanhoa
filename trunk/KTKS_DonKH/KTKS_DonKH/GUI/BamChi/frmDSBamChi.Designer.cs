@@ -700,7 +700,7 @@
             "",
             "Mã Đơn",
             "Danh Bộ",
-            "Ngày Lập",
+            "Ngày",
             "Khoảng Thời Gian"});
             this.cmbTimTheo.Location = new System.Drawing.Point(520, 16);
             this.cmbTimTheo.Name = "cmbTimTheo";
