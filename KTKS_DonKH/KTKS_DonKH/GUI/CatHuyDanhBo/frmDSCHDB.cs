@@ -1155,7 +1155,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
-                case "Ngày Lập":
+                case "Ngày":
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;
@@ -1172,6 +1172,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DSCHDB_BS.RemoveFilter();
                     break;
             }
+            txtNoiDungTimKiem.Text = "";
+            dateTimKiem.Value = DateTime.Now;
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
+            DSCHDB_BS.RemoveFilter();
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -1220,38 +1225,38 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
         {
-            if (radDaDuyet.Checked)
-            {
+            //if (radDaDuyet.Checked)
+            //{
                 string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
                 DSCHDB_BS.Filter = expression;
                 _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
                 _denNgay = "";
-            }
-            else
-                if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
-                {
-                    string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
-                    DSCHDB_BS.Filter = expression;
-                    _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
-                    _denNgay = "";
-                }
+            //}
+            //else
+            //    if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
+            //    {
+            //        string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+            //        DSCHDB_BS.Filter = expression;
+            //        _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+            //        _denNgay = "";
+            //    }
         }
 
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
-            if (radDaDuyet.Checked)
-            {
+            //if (radDaDuyet.Checked)
+            //{
                 string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
                 DSCHDB_BS.Filter = expression;
                 _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
-            }
-            else
-                if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
-                {
-                    string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
-                    DSCHDB_BS.Filter = expression;
-                    _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
-                }
+        //    }
+        //    else
+        //        if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
+        //        {
+        //            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+        //            DSCHDB_BS.Filter = expression;
+        //            _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+        //        }
         }
 
         

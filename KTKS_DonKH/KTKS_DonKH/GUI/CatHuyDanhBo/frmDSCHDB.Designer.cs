@@ -851,7 +851,7 @@
             "Danh Bộ",
             "Số Thông Báo",
             "Số Phiếu",
-            "Ngày Lập",
+            "Ngày",
             "Khoảng Thời Gian"});
             this.cmbTimTheo.Location = new System.Drawing.Point(634, 16);
             this.cmbTimTheo.Name = "cmbTimTheo";

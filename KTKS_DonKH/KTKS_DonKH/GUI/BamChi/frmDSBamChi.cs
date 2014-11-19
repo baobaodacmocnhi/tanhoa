@@ -321,7 +321,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
-                case "Ngày Lập":
+                case "Ngày":
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;

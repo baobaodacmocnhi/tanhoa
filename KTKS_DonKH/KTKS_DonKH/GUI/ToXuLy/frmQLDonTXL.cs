@@ -135,6 +135,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
             {
                 e.Value = _cTaiKhoan.getHoTenUserbyID(int.Parse(e.Value.ToString()));
             }
+            if (dgvDSDonTXL.Columns[e.ColumnIndex].Name == "GiaiQuyet" && !string.IsNullOrEmpty(dgvDSDonTXL["NguoiDi", e.RowIndex].Value.ToString()))
+            {
+                e.Value = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(dgvDSDonTXL["NguoiDi", e.RowIndex].Value.ToString()), decimal.Parse(dgvDSDonTXL["MaDon", e.RowIndex].Value.ToString()));
+            }
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -149,7 +153,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
-                case "Ngày Lập":
+                case "Ngày":
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;
@@ -222,7 +226,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             DataTable dt = ((DataTable)DSDonKH_BS.DataSource).DefaultView.ToTable();
             switch (cmbTimTheo.SelectedItem.ToString())
             {
-                case "Ngày Lập":
+                case "Ngày":
                     dt = _cDonTXL.LoadDSDonTXLDaChuyenKT(dateTimKiem.Value);
                     break;
                 case "Khoảng Thời Gian":
