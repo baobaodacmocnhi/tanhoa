@@ -44,7 +44,6 @@
             this.radChuaChuyen = new System.Windows.Forms.RadioButton();
             this.radDaChuyen = new System.Windows.Forms.RadioButton();
             this.dgvDSDonTXL = new System.Windows.Forms.DataGridView();
-            this.btnInDSDonKH = new System.Windows.Forms.Button();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,8 @@
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaiQuyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnInDSDonTXL = new System.Windows.Forms.Button();
+            this.chkChuaKT = new System.Windows.Forms.CheckBox();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTXL)).BeginInit();
             this.SuspendLayout();
@@ -241,19 +242,6 @@
             this.dgvDSDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTXL_RowPostPaint);
             this.dgvDSDonTXL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTXL_KeyDown);
             // 
-            // btnInDSDonKH
-            // 
-            this.btnInDSDonKH.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnInDSDonKH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDSDonKH.Location = new System.Drawing.Point(844, 12);
-            this.btnInDSDonKH.Name = "btnInDSDonKH";
-            this.btnInDSDonKH.Size = new System.Drawing.Size(202, 35);
-            this.btnInDSDonKH.TabIndex = 29;
-            this.btnInDSDonKH.Text = "In Danh Sách (Ngày Giao)";
-            this.btnInDSDonKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInDSDonKH.UseVisualStyleBackColor = true;
-            this.btnInDSDonKH.Click += new System.EventHandler(this.btnInDSDonKH_Click);
-            // 
             // MaChuyen
             // 
             this.MaChuyen.DataPropertyName = "MaChuyen";
@@ -361,6 +349,29 @@
             this.GiaiQuyet.HeaderText = "Giải Quyết";
             this.GiaiQuyet.Name = "GiaiQuyet";
             // 
+            // btnInDSDonTXL
+            // 
+            this.btnInDSDonTXL.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInDSDonTXL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInDSDonTXL.Location = new System.Drawing.Point(844, 4);
+            this.btnInDSDonTXL.Name = "btnInDSDonTXL";
+            this.btnInDSDonTXL.Size = new System.Drawing.Size(132, 35);
+            this.btnInDSDonTXL.TabIndex = 29;
+            this.btnInDSDonTXL.Text = "In (Ngày Giao)";
+            this.btnInDSDonTXL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInDSDonTXL.UseVisualStyleBackColor = true;
+            this.btnInDSDonTXL.Click += new System.EventHandler(this.btnInDSDonKH_Click);
+            // 
+            // chkChuaKT
+            // 
+            this.chkChuaKT.AutoSize = true;
+            this.chkChuaKT.Location = new System.Drawing.Point(844, 43);
+            this.chkChuaKT.Name = "chkChuaKT";
+            this.chkChuaKT.Size = new System.Drawing.Size(83, 21);
+            this.chkChuaKT.TabIndex = 32;
+            this.chkChuaKT.Text = "Chưa KT";
+            this.chkChuaKT.UseVisualStyleBackColor = true;
+            // 
             // frmQLDonTXL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -368,13 +379,14 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1362, 562);
+            this.Controls.Add(this.chkChuaKT);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.radAll);
-            this.Controls.Add(this.btnInDSDonKH);
+            this.Controls.Add(this.btnInDSDonTXL);
             this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.radChuaChuyen);
             this.Controls.Add(this.radDaChuyen);
@@ -404,7 +416,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radAll;
-        private System.Windows.Forms.Button btnInDSDonKH;
+        private System.Windows.Forms.Button btnInDSDonTXL;
         private System.Windows.Forms.DateTimePicker dateTimKiem;
         private System.Windows.Forms.RadioButton radChuaChuyen;
         private System.Windows.Forms.RadioButton radDaChuyen;
@@ -423,5 +435,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn GiaiQuyet;
+        private System.Windows.Forms.CheckBox chkChuaKT;
     }
 }

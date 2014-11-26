@@ -215,6 +215,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             dr["HopDong"] = itemRow["HopDong"];
                             dr["HoTen"] = itemRow["HoTen"];
                             dr["DiaChi"] = itemRow["DiaChi"];
+                            dr["NgayBC"] = itemRow["NgayBC"];
                             dr["Hieu"] = itemRow["Hieu"];
                             dr["Co"] = itemRow["Co"];
                             dr["ChiSo"] = itemRow["ChiSo"];
@@ -249,6 +250,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         dr["HopDong"] = itemRow["HopDong"];
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
+                        dr["NgayBC"] = itemRow["NgayBC"];
                         dr["Hieu"] = itemRow["Hieu"];
                         dr["Co"] = itemRow["Co"];
                         dr["ChiSo"] = itemRow["ChiSo"];
