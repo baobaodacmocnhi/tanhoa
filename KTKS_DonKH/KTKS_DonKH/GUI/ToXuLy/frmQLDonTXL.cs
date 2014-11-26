@@ -238,6 +238,38 @@ namespace KTKS_DonKH.GUI.ToXuLy
             }
             
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            if(chkChuaKT.Checked)
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    if (!_cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString())))
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                        dr["TuNgay"] = _tuNgay;
+                        dr["DenNgay"] = _denNgay;
+                        //dr["MaLD"] = itemRow["MaLD"];
+                        dr["TenLD"] = itemRow["TenLD"];
+                        dr["SoCongVan"] = itemRow["SoCongVan"];
+                        dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                        dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                        dr["TenLD"] = dontxl.LoaiDonTXL.TenLD;
+
+                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = itemRow["HoTen"];
+                        dr["DiaChi"] = itemRow["DiaChi"];
+                        dr["NoiDung"] = itemRow["NoiDung"];
+                        if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
+                        {
+                            dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
+                            //dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon).ToString();
+                        }
+
+                        dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+                    }
+                }
+            else
             foreach (DataRow itemRow in dt.Rows)
             {
                 DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
