@@ -496,7 +496,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
                             LoadTTKH(_ttkhachhang);
-                            
+                            string ThongTin;
+                            if (_cCHDB.CheckCHDBbyDanhBo(_ttkhachhang.DanhBo, out ThongTin))
+                                MessageBox.Show("Danh Bộ này đã lập " + ThongTin, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -524,7 +526,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         {
                             _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
                             LoadTTKH(_ttkhachhang);
-                            
+                            string ThongTin;
+                            if (_cCHDB.CheckCHDBbyDanhBo(_ttkhachhang.DanhBo, out ThongTin))
+                                MessageBox.Show("Danh Bộ này đã lập " + ThongTin, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -857,6 +861,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
+                    string ThongTin;
+                    if (_cCHDB.CheckCHDBbyDanhBo(_ttkhachhang.DanhBo, out ThongTin))
+                        MessageBox.Show("Danh Bộ này đã lập " + ThongTin, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
