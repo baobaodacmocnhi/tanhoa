@@ -433,6 +433,38 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        /// <summary>
+        /// Kiểm tra Danh Bộ đã lập cắt tạm/cắt hủy nào trước đó chưa
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <param name="ThongTin"></param>
+        /// <returns></returns>
+        public bool CheckCHDBbyDanhBo(string DanhBo,out string ThongTin)
+        {
+            ThongTin = "";
+            try
+            {
+                if (db.CTCTDBs.Any(itemCTCTDB => itemCTCTDB.DanhBo == DanhBo))
+                {
+                    ThongTin = "Cắt Tạm với Số Phiếu: " + db.CTCTDBs.Where(itemCTCTDB => itemCTCTDB.DanhBo == DanhBo).ToList().LastOrDefault().MaCTCTDB.ToString().Insert(db.CTCTDBs.Where(itemCTCTDB => itemCTCTDB.DanhBo == DanhBo).ToList().LastOrDefault().MaCTCTDB.ToString().Length - 2, "-");
+                    return true;
+                }
+                else
+                    if (db.CTCHDBs.Any(itemCTCHDB => itemCTCHDB.DanhBo == DanhBo))
+                    {
+                        ThongTin = "Cắt Hủy với Số Phiếu: " + db.CTCHDBs.Where(itemCTCHDB => itemCTCHDB.DanhBo == DanhBo).ToList().LastOrDefault().MaCTCHDB.ToString().Insert(db.CTCHDBs.Where(itemCTCHDB => itemCTCHDB.DanhBo == DanhBo).ToList().LastOrDefault().MaCTCHDB.ToString().Length - 2, "-");
+                        return true;
+                    }
+                    else
+                        return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         #endregion
 
         #region CTCTDB (Chi Tiết Cắt Tạm Danh Bộ)
@@ -1589,5 +1621,6 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         #endregion
 
+        
     }
 }

@@ -250,6 +250,32 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     txtDinhMuc.Text = _dontxl.DinhMuc;
                     ///
                     dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTXL(_dontxl.MaDon);
+                    ///
+                    if (_dontxl.ChuyenKT)
+                    {
+                        chkChuyenKT.Checked = true;
+                        dateChuyenKT.Value = _dontxl.NgayChuyenKT.Value;
+                        cmbNguoiDi.SelectedValue = _dontxl.NguoiDi;
+                        txtGhiChuChuyenKT.Text = _dontxl.GhiChuChuyenKT;
+                    }
+                    if (_dontxl.ChuyenBanDoiKhac)
+                    {
+                        chkChuyenBanDoiKhac.Checked = true;
+                        dateChuyenBanDoiKhac.Value = _dontxl.NgayChuyenBanDoiKhac.Value;
+                        txtGhiChuChuyenBanDoiKhac.Text = _dontxl.GhiChuChuyenBanDoiKhac;
+                    }
+                    if (_dontxl.ChuyenToKhachHang)
+                    {
+                        chkChuyenToKhachHang.Checked = true;
+                        dateChuyenToKhachHang.Value = _dontxl.NgayChuyenToKhachHang.Value;
+                        txtGhiChuChuyenToKhachHang.Text = _dontxl.GhiChuChuyenToKhachHang;
+                    }
+                    if (_dontxl.ChuyenKhac)
+                    {
+                        chkChuyenKhac.Checked = true;
+                        dateChuyenKhac.Value = _dontxl.NgayChuyenKhac.Value;
+                        txtGhiChuChuyenKhac.Text = _dontxl.GhiChuChuyenKhac;
+                    }
                 }
                 else
                 {
