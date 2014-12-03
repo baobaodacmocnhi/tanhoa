@@ -1278,6 +1278,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
                     try
                     {
+                        System.IO.StreamWriter log = System.IO.File.AppendText("\\192.168.90.9\\cntt\\BaoBao\\KTKS_DonKH\\log.txt");
+                        log.WriteLine("Danh Sách chuyển Đọc số ngày" + DateTime.Now);
                         _cDLKH.beginTransaction();
                         _cDCBD.beginTransaction();
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
@@ -1288,22 +1290,35 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (dlkh != null && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                 {
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
+                                    {
                                         dlkh.HOTEN = ctdcbd.HoTen_BD;
+                                        log.Write("Họ Tên: " + dlkh.HOTEN + "; ");
+                                    }
                                     //if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                     //{
                                     //    dlkh.SONHA = ctdcbd.DiaChi_BD.Substring(0,ctdcbd.DiaChi_BD.IndexOf(" "));
                                     //    dlkh.TENDUONG = ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1);
                                     //}
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
+                                    {
                                         dlkh.MSTHUE = ctdcbd.MSThue_BD;
+                                        log.Write("MST: " + dlkh.MSTHUE + "; ");
+                                    }
                                     if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
+                                    {
                                         dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
+                                        log.Write("GB: " + dlkh.GIABIEU + "; ");
+                                    }
                                     if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
+                                    {
                                         dlkh.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
+                                        log.WriteLine("ĐM: " + dlkh.DINHMUC + "; ");
+                                    }
+                                    
                                     if (_cDLKH.SuaDLKH(dlkh))
                                     {
                                         TB_GHICHU ghichu = new TB_GHICHU();
-                                        ghichu.DANHBO = dlkh.DANHBO;
+                                        ghichu.DANHBO = ctdcbd.DanhBo;
                                         ghichu.DONVI = "KTKS";
                                         ghichu.NOIDUNG = " PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                                         ghichu.NOIDUNG += " ," + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
@@ -1343,6 +1358,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                         _cDCBD.commitTransaction();
                         _cDLKH.commitTransaction();
+                        log.Close();
+                        log.Dispose();
                     }
                     catch (Exception ex)
                     {

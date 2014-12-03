@@ -857,20 +857,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 YeuCauCHDB ycchdb = _cCHDB.getYeuCauCHDbyID(decimal.Parse(dgvDSYCCHDB.CurrentRow.Cells["SoPhieu"].Value.ToString()));
                 if (bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString()) != ycchdb.PhieuDuocKy)
                 {
-                    ycchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+                    ycchdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
                     if (_cCHDB.SuaYeuCauCHDB(ycchdb))
                     {
                         if (ycchdb.TBCTDB)
                         {
                             CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(ycchdb.MaCTCTDB.Value);
-                            ctctdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+                            ctctdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
                             _cCHDB.SuaCTCTDB(ctctdb);
                         }
                         else
                             if (ycchdb.TBCHDB)
                             {
                                 CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(ycchdb.MaCTCHDB.Value);
-                                ctchdb.PhieuDuocKy = bool.Parse(dgvDSCTCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
+                                ctchdb.PhieuDuocKy = bool.Parse(dgvDSYCCHDB.CurrentRow.Cells["YC_PhieuDuocKy"].Value.ToString());
                                 _cCHDB.SuaCTCHDB(ctchdb);
                             }
                     }
