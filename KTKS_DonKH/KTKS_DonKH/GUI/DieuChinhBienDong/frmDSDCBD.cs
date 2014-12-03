@@ -1278,15 +1278,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
                     try
                     {
-                        System.IO.StreamWriter log = System.IO.File.AppendText("\\192.168.90.9\\cntt\\BaoBao\\KTKS_DonKH\\log.txt");
-                        log.WriteLine("Danh Sách chuyển Đọc số ngày" + DateTime.Now);
+                        int k = 1;
                         _cDLKH.beginTransaction();
                         _cDCBD.beginTransaction();
+                        System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\cntt\\BaoBao\\KTKS_DonKH\\log.txt");
+                        log.WriteLine("Danh Sách chuyển Đọc số ngày " + DateTime.Now);
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
                             {
                                 CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                 TB_DULIEUKHACHHANG dlkh = _cDLKH.getDLKH(ctdcbd.DanhBo);
+                                log.Write(k.ToString() + "/ " + ctdcbd.MaCTDCBD + "; " + ctdcbd.ThongTin + "; " + ctdcbd.DanhBo + "; ");
                                 if (dlkh != null && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                 {
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
@@ -1358,6 +1360,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                         _cDCBD.commitTransaction();
                         _cDLKH.commitTransaction();
+                        log.WriteLine("=============================================");
                         log.Close();
                         log.Dispose();
                     }

@@ -2144,18 +2144,22 @@ namespace KTKS_DonKH.DAL.CapNhat
         {
             try
             {
-                if (db.CTChungTus.Count(itemCTCT => itemCTCT.MaCT == MaCT) == 1)
-                {
-                    db.CTChungTus.DeleteOnSubmit(getCTChungTubyID(DanhBo, MaCT));
-                    db.ChungTus.DeleteOnSubmit(getChungTubyID(MaCT));
-                    db.SubmitChanges();
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Số Chứng Từ này có đăng ký với 1 Danh Bộ khác nữa/nLiên hệ P.CNTT để xây dựng cho chức năng này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+                //if (db.CTChungTus.Count(itemCTCT => itemCTCT.MaCT == MaCT) == 1)
+                //{
+
+                //db.ChungTus.DeleteOnSubmit(getChungTubyID(MaCT));
+                ChungTu chungtu = getChungTubyID(MaCT);
+                CTChungTu ctchungtu = getCTChungTubyID(DanhBo, MaCT);
+                chungtu.SoNKConLai += ctchungtu.SoNKDangKy;
+                db.CTChungTus.DeleteOnSubmit(ctchungtu);
+                db.SubmitChanges();
+                return true;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Số Chứng Từ này có đăng ký với 1 Danh Bộ khác nữa/nLiên hệ P.CNTT để xây dựng cho chức năng này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return false;
+                //}
                 
             }
             catch (Exception ex)
