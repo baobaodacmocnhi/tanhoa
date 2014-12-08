@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
@@ -69,6 +70,7 @@
             this.ribbtnDSDonKTXM = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel11 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapKetQua = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDongTienBoiThuong = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel21 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnBaoCaoKTXM = new System.Windows.Forms.RibbonButton();
             this.ribbonTab5 = new System.Windows.Forms.RibbonTab();
@@ -105,7 +107,7 @@
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbtnDongTienBoiThuong = new System.Windows.Forms.RibbonButton();
+            this.IdleTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -422,6 +424,14 @@
             this.ribbtnNhapKetQua.Text = "Nhập Kết Quả";
             this.ribbtnNhapKetQua.Click += new System.EventHandler(this.ribbtnNhapKetQua_Click);
             // 
+            // ribbtnDongTienBoiThuong
+            // 
+            this.ribbtnDongTienBoiThuong.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDongTienBoiThuong.MinimumSize = new System.Drawing.Size(140, 0);
+            this.ribbtnDongTienBoiThuong.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDongTienBoiThuong.SmallImage")));
+            this.ribbtnDongTienBoiThuong.Text = "Đóng Tiền Bồi Thường";
+            this.ribbtnDongTienBoiThuong.Click += new System.EventHandler(this.ribbtnDongTienBoiThuong_Click);
+            // 
             // ribbonPanel21
             // 
             this.ribbonPanel21.ButtonMoreEnabled = false;
@@ -717,14 +727,8 @@
             this.ribbon1.Tabs.Add(this.ribbonTab8);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
-            // 
-            // ribbtnDongTienBoiThuong
-            // 
-            this.ribbtnDongTienBoiThuong.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnDongTienBoiThuong.MinimumSize = new System.Drawing.Size(140, 0);
-            this.ribbtnDongTienBoiThuong.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDongTienBoiThuong.SmallImage")));
-            this.ribbtnDongTienBoiThuong.Text = "Đóng Tiền Bồi Thường";
-            this.ribbtnDongTienBoiThuong.Click += new System.EventHandler(this.ribbtnDongTienBoiThuong_Click);
+            this.ribbon1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ribbon1_KeyPress);
+            this.ribbon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
             // 
             // Main
             // 
@@ -735,12 +739,14 @@
             this.Controls.Add(this.ribbon1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(800, 700);
             this.Name = "Main";
             this.Text = "Chương trình Quản Lý Đơn Từ Khách Hàng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -827,6 +833,7 @@
         private System.Windows.Forms.RibbonButton ribbtnKiemTrang_BamChi;
         private System.Windows.Forms.RibbonButton ribbtnDongNuoc;
         private System.Windows.Forms.RibbonButton ribbtnDongTienBoiThuong;
+        private System.Windows.Forms.Timer IdleTimer;
     }
 }
 

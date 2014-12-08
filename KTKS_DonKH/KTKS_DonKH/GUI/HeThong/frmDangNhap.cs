@@ -25,6 +25,7 @@ namespace KTKS_DonKH.GUI.HeThong
             CTaiKhoan _CTaiKhoan = new CTaiKhoan();
             if (_CTaiKhoan.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
+                DisableTimer();
                 this.Hide();
                 GetLoginResult(true);
             }
@@ -39,6 +40,41 @@ namespace KTKS_DonKH.GUI.HeThong
         {
             if (e.KeyChar == (char)13)
                 btnDangNhap.PerformClick();
+        }
+
+        private void frmDangNhap_Load(object sender, EventArgs e)
+        {
+            //Application.Idle += new EventHandler(Application_Idle);
+        }
+
+        void Application_Idle(object sender, EventArgs e)
+        {
+            IdleTimer.Interval = 10000;
+            IdleTimer.Enabled = true;
+            IdleTimer.Start();
+            IdleTimer.Tick += new EventHandler(IdleTimer_Tick);
+        }
+
+        void IdleTimer_Tick(object sender, EventArgs e)
+        {
+            IdleTimer.Enabled = false;
+            Application.Exit();
+        }
+
+        private void DisableTimer()
+        {
+            IdleTimer.Enabled = false;
+            IdleTimer.Stop();
+        }
+
+        private void frmDangNhap_MouseMove(object sender, MouseEventArgs e)
+        {
+            DisableTimer();
+        }
+
+        private void frmDangNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            DisableTimer();
         }
 
     }
