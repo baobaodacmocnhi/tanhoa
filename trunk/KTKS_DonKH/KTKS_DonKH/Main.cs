@@ -30,7 +30,10 @@ namespace KTKS_DonKH
 
         private void Main_Load(object sender, EventArgs e)
         {
+            Application.Idle += new EventHandler(Application_Idle);
+            this.MouseMove += new MouseEventHandler(Main_MouseMove);
             ribbtnDangNhap_Click(sender, e);
+            
         }
 
         public void GetLoginResult(bool result)
@@ -65,7 +68,29 @@ namespace KTKS_DonKH
                     ribbonTab9.Visible = true;
                     ribbtnTaiKhoan.Visible = true;
                 }
+                
             }
+        }
+
+        void Application_Idle(object sender, EventArgs e)
+        {
+            ///thời gian Idle để tắt chương trình
+            IdleTimer.Interval = 60000*20;
+            IdleTimer.Enabled = true;
+            IdleTimer.Start();
+            IdleTimer.Tick += new EventHandler(IdleTimer_Tick);
+        }
+
+        void IdleTimer_Tick(object sender, EventArgs e)
+        {
+            IdleTimer.Enabled = false;
+            Application.Exit();
+        }
+
+        private void DisableTimer()
+        {
+            IdleTimer.Enabled = false;
+            IdleTimer.Stop();
         }
 
         private void ribbtnDangNhap_Click(object sender, EventArgs e)
@@ -458,6 +483,26 @@ namespace KTKS_DonKH
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void Main_MouseMove(object sender, MouseEventArgs e)
+        {
+            DisableTimer();
+        }
+
+        private void Main_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            DisableTimer();
+        }
+
+        private void ribbon1_MouseMove(object sender, MouseEventArgs e)
+        {
+            DisableTimer();
+        }
+
+        private void ribbon1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            DisableTimer();
         }
 
               
