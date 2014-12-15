@@ -23,6 +23,8 @@ namespace KTKS_DonKH
 {
     public partial class Main : RibbonForm
     {
+        bool _flagAutoExit = false;
+
         public Main()
         {
             InitializeComponent();  
@@ -33,13 +35,14 @@ namespace KTKS_DonKH
             Application.Idle += new EventHandler(Application_Idle);
             this.MouseMove += new MouseEventHandler(Main_MouseMove);
             ribbtnDangNhap_Click(sender, e);
-            
         }
 
         public void GetLoginResult(bool result)
         {
             if (result)
             {
+                if (CTaiKhoan.MaUser != 2)
+                    _flagAutoExit = true;
                 ribbtnDangNhap.Enabled = false;
                 ribbtnDangXuat.Enabled = true;
                 ribbtnDoiMatKhau.Enabled = true;
@@ -74,11 +77,14 @@ namespace KTKS_DonKH
 
         void Application_Idle(object sender, EventArgs e)
         {
-            ///thời gian Idle để tắt chương trình
-            IdleTimer.Interval = 60000*20;
-            IdleTimer.Enabled = true;
-            IdleTimer.Start();
-            IdleTimer.Tick += new EventHandler(IdleTimer_Tick);
+            if (_flagAutoExit)
+            {
+                ///thời gian Idle để tắt chương trình
+                IdleTimer.Interval = 60000 * 30;
+                IdleTimer.Enabled = true;
+                IdleTimer.Start();
+                IdleTimer.Tick += new EventHandler(IdleTimer_Tick);
+            }
         }
 
         void IdleTimer_Tick(object sender, EventArgs e)
@@ -105,6 +111,7 @@ namespace KTKS_DonKH
             CTaiKhoan _CTaiKhoan = new CTaiKhoan();
             _CTaiKhoan.DangXuat();
 
+            _flagAutoExit = false;
             ribbtnDangNhap.Enabled = true;
             ribbtnDangXuat.Enabled = false;
             ribbtnDoiMatKhau.Enabled = false;
