@@ -496,7 +496,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ///Nếu đơn thuộc Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (_dontxl != null && txtHieuLucKy.Text.Trim() != "")
+                    if (_dontxl != null && txtHieuLucKy.Text.Trim() != "" && (
+                        !string.IsNullOrEmpty(txtHoTen_BD.Text.Trim())
+                        || !string.IsNullOrEmpty(txtDiaChi_BD.Text.Trim())
+                        || !string.IsNullOrEmpty(txtMSThue_BD.Text.Trim())
+                        || !string.IsNullOrEmpty(txtGiaBieu_BD.Text.Trim())
+                        || !string.IsNullOrEmpty(txtDinhMuc_BD.Text.Trim())
+                        ))
                     {
                         ///Nếu DCBD chưa có thì thêm vào
                         if (!_cDCBD.CheckDCBDbyMaDon_TXL(_dontxl.MaDon))
@@ -643,12 +649,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                     {
-                        MessageBox.Show("Chưa có Mã Đơn/Danh Bộ/Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Chưa có Mã Đơn/Hiệu Lực Kỳ \nHoặc không có biến động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 ///Nếu đơn thuộc Tổ Khách Hàng
                 else
-                if (_donkh != null && txtHieuLucKy.Text.Trim() != "")
+                if (_donkh != null && txtHieuLucKy.Text.Trim() != "" && (
+                        !string.IsNullOrEmpty(txtHoTen_BD.Text.Trim())
+                        || !string.IsNullOrEmpty(txtDiaChi_BD.Text.Trim())
+                        || !string.IsNullOrEmpty(txtMSThue_BD.Text.Trim())
+                        || !string.IsNullOrEmpty(txtGiaBieu_BD.Text.Trim())
+                        || !string.IsNullOrEmpty(txtDinhMuc_BD.Text.Trim())
+                        ))
                 {
                     ///Nếu DCBD chưa có thì thêm vào
                     if (!_cDCBD.CheckDCBDbyMaDon(_donkh.MaDon))
@@ -837,7 +849,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                 {
-                    MessageBox.Show("Chưa có Mã Đơn/Danh Bộ/Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Chưa có Mã Đơn/Hiệu Lực Kỳ \nHoặc không có biến động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

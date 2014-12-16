@@ -241,6 +241,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
             if(chkChuaKT.Checked)
                 foreach (DataRow itemRow in dt.Rows)
                 {
+                    string a=itemRow["NguoiDi"].ToString();
+                    string b=itemRow["MaDon"].ToString();
                     if (!_cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString())))
                     {
                         DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();

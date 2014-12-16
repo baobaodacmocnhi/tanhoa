@@ -709,8 +709,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim()))
                     MessageBox.Show("Số đăng ký này đã đăng ký với danh bạ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                    if (_cChungTu.CheckChungTu(txtMaCT.Text.Trim()))
-                        MessageBox.Show("Số đăng ký này đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (_cChungTu.CheckCTChungTubyMaCT(txtMaCT.Text.Trim()))
+                        MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDiaChi.Focus();
                 dgvDSDanhBo.DataSource = _cChungTu.LoadDSCTChungTubyMaCT(txtMaCT.Text.Trim());
             }

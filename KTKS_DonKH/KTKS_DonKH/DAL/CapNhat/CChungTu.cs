@@ -163,6 +163,19 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        public bool CheckCTChungTubyMaCT(string MaCT)
+        {
+            try
+            {
+                return db.CTChungTus.Any(itemCT => itemCT.MaCT == MaCT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public CTChungTu getCTChungTubyID(string DanhBo, string MaCT)
         {
             try
