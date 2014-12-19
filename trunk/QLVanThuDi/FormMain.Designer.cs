@@ -352,7 +352,8 @@
             "Đội TCXL",
             "GNKDT",
             "CNTT",
-            "Tổ Giúp Việc"});
+            "Tổ Giúp Việc",
+            "-QLDA"});
             this.cmbPhongBanDoi.Location = new System.Drawing.Point(641, 59);
             this.cmbPhongBanDoi.Name = "cmbPhongBanDoi";
             this.cmbPhongBanDoi.Size = new System.Drawing.Size(121, 27);
