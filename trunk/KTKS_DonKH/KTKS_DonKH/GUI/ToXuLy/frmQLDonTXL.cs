@@ -180,7 +180,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
                     case "Mã Đơn":
-                        expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("TXL",""));
+                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL") && txtNoiDungTimKiem.Text.Trim().Length > 3)
+                            expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("TXL", "").Replace("-", ""));
                         break;
                     case "Số Công Văn":
                         expression = String.Format("SoCongVan like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
