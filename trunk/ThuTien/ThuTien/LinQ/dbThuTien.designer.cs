@@ -139,7 +139,11 @@ namespace ThuTien.LinQ
 		
 		private string _TenMenu;
 		
+		private string _TextMenu;
+		
 		private string _TenMenuCha;
+		
+		private string _TextMenuCha;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -161,8 +165,12 @@ namespace ThuTien.LinQ
     partial void OnMaMenuChanged();
     partial void OnTenMenuChanging(string value);
     partial void OnTenMenuChanged();
+    partial void OnTextMenuChanging(string value);
+    partial void OnTextMenuChanged();
     partial void OnTenMenuChaChanging(string value);
     partial void OnTenMenuChaChanged();
+    partial void OnTextMenuChaChanging(string value);
+    partial void OnTextMenuChaChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -220,6 +228,26 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextMenu", DbType="NVarChar(50)")]
+		public string TextMenu
+		{
+			get
+			{
+				return this._TextMenu;
+			}
+			set
+			{
+				if ((this._TextMenu != value))
+				{
+					this.OnTextMenuChanging(value);
+					this.SendPropertyChanging();
+					this._TextMenu = value;
+					this.SendPropertyChanged("TextMenu");
+					this.OnTextMenuChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenMenuCha", DbType="VarChar(50)")]
 		public string TenMenuCha
 		{
@@ -236,6 +264,26 @@ namespace ThuTien.LinQ
 					this._TenMenuCha = value;
 					this.SendPropertyChanged("TenMenuCha");
 					this.OnTenMenuChaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextMenuCha", DbType="NVarChar(50)")]
+		public string TextMenuCha
+		{
+			get
+			{
+				return this._TextMenuCha;
+			}
+			set
+			{
+				if ((this._TextMenuCha != value))
+				{
+					this.OnTextMenuChaChanging(value);
+					this.SendPropertyChanging();
+					this._TextMenuCha = value;
+					this.SendPropertyChanged("TextMenuCha");
+					this.OnTextMenuChaChanged();
 				}
 			}
 		}
