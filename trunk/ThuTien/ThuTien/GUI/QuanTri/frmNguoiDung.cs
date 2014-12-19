@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using ThuTien.DAL.QuanTri;
+using ThuTien.LinQ;
+
+namespace ThuTien.GUI.QuanTri
+{
+    public partial class frmNguoiDung : Form
+    {
+        CTo _cTo = new CTo();
+        CNhom _cNhom = new CNhom();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
+        CMenu _cMenu = new CMenu();
+        CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
+        int _selectedindex = -1;
+
+        public frmNguoiDung()
+        {
+            InitializeComponent();
+        }
+
+        public void Clear()
+        {
+            _selectedindex = -1;
+            txtHoTen.Text = "";
+            txtTaiKhoan.Text = "";
+            txtMatKhau.Text = "";
+            dgvNguoiDung.DataSource = _cNguoiDung.GetDSNguoiDung();
+        }
+
+        private void frmNguoiDung_Load(object sender, EventArgs e)
+        {
+            cmbTo.DataSource = _cTo.GetDSTo();
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "MaTo";
+            //cmbTo.SelectedIndex = -1;
+
+            cmbNhom.DataSource = _cNhom.GetDSNhom();
+            cmbNhom.DisplayMember = "TenNhom";
+            cmbNhom.ValueMember = "MaNhom";
+            //cmbNhom.SelectedIndex = -1;
+
+            dgvNguoiDung.AutoGenerateColumns = false;
+            dgvNguoiDung.DataSource = _cNguoiDung.GetDSNguoiDung();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (txtHoTen.Text.Trim() != ""&&txtTaiKhoan.Text.Trim() != ""&&txtMatKhau.Text.Trim() != "")
+            {
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.HoTen = txtHoTen.Text.Trim();
+                nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
+                nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                nguoidung.MaTo = (int)cmbTo.SelectedValue;
+                nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                ///tự động thêm quyền cho nhóm mới
+                foreach (var item in _cMenu.GetDSMenu())
+                {
+                    TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
+                    phanquyennguoidung.MaMenu = item.MaMenu;
+                    phanquyennguoidung.MaND = nguoidung.MaND;
+                    nguoidung.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                }
+                _cNguoiDung.Them(nguoidung);
+                Clear();
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (_selectedindex != -1)
+            {
+                TT_NguoiDung nguoidung = _cNguoiDung.getNguoiDungbyMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
+                nguoidung.HoTen = txtHoTen.Text.Trim();
+                nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
+                nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                nguoidung.MaTo = (int)cmbTo.SelectedValue;
+                nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                _cNguoiDung.Sua(nguoidung);
+                Clear();
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (_selectedindex != -1)
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    TT_NguoiDung nguoidung = _cNguoiDung.getNguoiDungbyMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
+                    ///xóa quan hệ 1 nhiều
+                    _cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
+                    _cNguoiDung.Xoa(nguoidung);
+                    Clear();
+                }
+        }
+
+        private void dgvNguoiDung_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvNguoiDung_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvNguoiDung.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvNguoiDung_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenTo")
+                e.Value = _cTo.getTenTobyMaTo(int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString()));
+            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenNhom")
+                e.Value = _cNhom.getTenNhombyMaNhom(int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString()));
+        }
+    }
+}
