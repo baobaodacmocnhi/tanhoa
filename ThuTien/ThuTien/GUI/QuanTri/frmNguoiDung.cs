@@ -39,12 +39,12 @@ namespace ThuTien.GUI.QuanTri
             cmbTo.DataSource = _cTo.GetDSTo();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
-            //cmbTo.SelectedIndex = -1;
+            cmbTo.SelectedIndex = -1;
 
             cmbNhom.DataSource = _cNhom.GetDSNhom();
             cmbNhom.DisplayMember = "TenNhom";
             cmbNhom.ValueMember = "MaNhom";
-            //cmbNhom.SelectedIndex = -1;
+            cmbNhom.SelectedIndex = -1;
 
             dgvNguoiDung.AutoGenerateColumns = false;
             dgvNguoiDung.DataSource = _cNguoiDung.GetDSNguoiDung();
@@ -58,8 +58,10 @@ namespace ThuTien.GUI.QuanTri
                 nguoidung.HoTen = txtHoTen.Text.Trim();
                 nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                 nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                nguoidung.MaTo = (int)cmbTo.SelectedValue;
-                nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                if (cmbTo.SelectedIndex != -1)
+                    nguoidung.MaTo = (int)cmbTo.SelectedValue;
+                if (cmbNhom.SelectedIndex != -1)
+                    nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                 ///tự động thêm quyền cho nhóm mới
                 foreach (var item in _cMenu.GetDSMenu())
                 {
@@ -77,7 +79,7 @@ namespace ThuTien.GUI.QuanTri
         {
             if (_selectedindex != -1)
             {
-                TT_NguoiDung nguoidung = _cNguoiDung.getNguoiDungbyMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
+                TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
                 nguoidung.HoTen = txtHoTen.Text.Trim();
                 nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                 nguoidung.MatKhau = txtMatKhau.Text.Trim();
@@ -93,7 +95,7 @@ namespace ThuTien.GUI.QuanTri
             if (_selectedindex != -1)
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    TT_NguoiDung nguoidung = _cNguoiDung.getNguoiDungbyMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
+                    TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
                     ///xóa quan hệ 1 nhiều
                     _cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
                     _cNguoiDung.Xoa(nguoidung);
@@ -116,10 +118,10 @@ namespace ThuTien.GUI.QuanTri
 
         private void dgvNguoiDung_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenTo")
-                e.Value = _cTo.getTenTobyMaTo(int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString()));
-            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenNhom")
-                e.Value = _cNhom.getTenNhombyMaNhom(int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString()));
+            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenTo" && dgvNguoiDung["MaTo", e.RowIndex].Value!=null)
+                e.Value = _cTo.GetTenToByMaTo(int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString()));
+            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenNhom" && dgvNguoiDung["MaNhom", e.RowIndex].Value!=null)
+                e.Value = _cNhom.GetTenNhomByMaNhom(int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString()));
         }
     }
 }

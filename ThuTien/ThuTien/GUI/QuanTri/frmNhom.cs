@@ -28,12 +28,14 @@ namespace ThuTien.GUI.QuanTri
             _selectedindex = -1;
             txtTenNhom.Text = "";
             dgvNhom.DataSource = _cNhom.GetDSNhom();
+            gridControl.DataSource = null;
         }
 
         private void frmNhom_Load(object sender, EventArgs e)
         {
             dgvNhom.AutoGenerateColumns = false;
             dgvNhom.DataSource = _cNhom.GetDSNhom();
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -59,9 +61,23 @@ namespace ThuTien.GUI.QuanTri
         {
             if (_selectedindex != -1)
             {
-                TT_Nhom nhom = _cNhom.getNhombyMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                TT_Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
                 nhom.TenNhom = txtTenNhom.Text.Trim();
                 _cNhom.Sua(nhom);
+                DataTable dt = ((DataView)gridView.DataSource).Table;
+                foreach (DataRow item in dt.Rows)
+                {
+                    TT_PhanQuyenNhom phanquyennhom = _cPhanQuyenNhom.GetPhanQuyenNhomByMaMenuMaNhom(int.Parse(item["MaMenu"].ToString()), nhom.MaNhom);
+                    if (phanquyennhom.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennhom.Them != bool.Parse(item["Them"].ToString()) ||
+                        phanquyennhom.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennhom.Xoa != bool.Parse(item["Xoa"].ToString()))
+                    {
+                        phanquyennhom.Xem = bool.Parse(item["Xem"].ToString());
+                        phanquyennhom.Them = bool.Parse(item["Them"].ToString());
+                        phanquyennhom.Sua = bool.Parse(item["Sua"].ToString());
+                        phanquyennhom.Xoa = bool.Parse(item["Xoa"].ToString());
+                        _cPhanQuyenNhom.Sua(phanquyennhom);
+                    }
+                }
                 Clear();
             }
         }
@@ -71,7 +87,7 @@ namespace ThuTien.GUI.QuanTri
             if (_selectedindex != -1)
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    TT_Nhom nhom = _cNhom.getNhombyMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                    TT_Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
                     ///xóa quan hệ 1 nhiều
                     _cPhanQuyenNhom.Xoa(nhom.TT_PhanQuyenNhoms.ToList());
                     _cNhom.Xoa(nhom);
@@ -83,7 +99,7 @@ namespace ThuTien.GUI.QuanTri
         {
             _selectedindex = e.RowIndex;
             txtTenNhom.Text = dgvNhom["TenNhom", e.RowIndex].Value.ToString();
-            
+            gridControl.DataSource = _cPhanQuyenNhom.GetDSPhanQuyenNhomByMaNhom(int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
         }
 
         private void dgvNhom_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -93,5 +109,30 @@ namespace ThuTien.GUI.QuanTri
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
+
+        private void gridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            MessageBox.Show(e.CellValue.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void gridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.Name == "ToanQuyen")
+                if (bool.Parse(e.Value.ToString()))
+                {
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xem"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Them"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "True");
+                }
+                else
+                {
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xem"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Them"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "False");
+                }
+        }
+
     }
 }

@@ -19,6 +19,16 @@ namespace ThuTien.GUI.QuanTri
         public frmTo()
         {
             InitializeComponent();
+            if (CNguoiDung.CheckQuyen("mnuTao", "Xem"))
+            {
+                dgvTo.AutoGenerateColumns = false;
+                dgvTo.DataSource = _cTo.GetDSTo();
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền mở form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         public void Clear()
@@ -30,8 +40,7 @@ namespace ThuTien.GUI.QuanTri
 
         private void frmTo_Load(object sender, EventArgs e)
         {
-            dgvTo.AutoGenerateColumns = false;
-            dgvTo.DataSource = _cTo.GetDSTo();
+            
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -49,7 +58,7 @@ namespace ThuTien.GUI.QuanTri
         {
             if (_selectedindex != -1)
             {
-                TT_To to = _cTo.getTobyMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                TT_To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                 to.TenTo = txtTenTo.Text.Trim();
                 _cTo.Sua(to);
                 Clear();
@@ -61,7 +70,7 @@ namespace ThuTien.GUI.QuanTri
             if (_selectedindex != -1)
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    TT_To to = _cTo.getTobyMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                    TT_To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                     _cTo.Xoa(to);
                     Clear();
                 }

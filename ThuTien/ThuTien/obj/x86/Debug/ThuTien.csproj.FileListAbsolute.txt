@@ -12,3 +12,6 @@ D:\Projects\ThuTien\ThuTien\obj\x86\Debug\ThuTien.GUI.HeThong.frmAdmin.resources
 D:\Projects\ThuTien\ThuTien\obj\x86\Debug\ThuTien.GUI.QuanTri.frmTo.resources
 D:\Projects\ThuTien\ThuTien\obj\x86\Debug\ThuTien.GUI.QuanTri.frmNhom.resources
 D:\Projects\ThuTien\ThuTien\obj\x86\Debug\ThuTien.GUI.QuanTri.frmNguoiDung.resources
+D:\Projects\ThuTien\ThuTien\obj\x86\Debug\ThuTien.exe.licenses
+D:\Projects\ThuTien\ThuTien\obj\x86\Debug\ThuTien.GUI.HeThong.frmDangNhap.resources
+D:\Projects\ThuTien\ThuTien\obj\x86\Debug\ThuTien.GUI.HeThong.frmDoiMatKhau.resources

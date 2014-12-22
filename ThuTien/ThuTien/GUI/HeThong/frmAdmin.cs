@@ -34,6 +34,7 @@ namespace ThuTien.GUI.HeThong
             frmMain frm = new frmMain();
             foreach (ToolStripMenuItem itemParent in frm.MainMenuStrip.Items)
             {
+                int STT = 1;
                 if (itemParent.Name == "mnuHeThong")
                     continue;
                 foreach (ToolStripMenuItem itemChild in itemParent.DropDownItems)
@@ -41,13 +42,16 @@ namespace ThuTien.GUI.HeThong
                     if (!_cMenu.CheckExistByTenMenu(itemChild.Name))
                     {
                         TT_Menu menu = new TT_Menu();
+                        menu.STT = STT++;
                         menu.TenMenu = itemChild.Name;
+                        menu.TextMenu = itemChild.Text;
                         menu.TenMenuCha = itemParent.Name;
+                        menu.TextMenuCha = itemParent.Text;
                         foreach (var item in _cNhom.GetDSNhom())
                         {
-                            TT_PhanQuyenNhom phanquyennhom=new TT_PhanQuyenNhom();
-                            phanquyennhom.MaMenu=menu.MaMenu;
-                            phanquyennhom.MaNhom=item.MaNhom;
+                            TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
+                            phanquyennhom.MaMenu = menu.MaMenu;
+                            phanquyennhom.MaNhom = item.MaNhom;
                             menu.TT_PhanQuyenNhoms.Add(phanquyennhom);
                         }
                         foreach (var item in _cNguoiDung.GetDSNguoiDung())
@@ -58,6 +62,12 @@ namespace ThuTien.GUI.HeThong
                             menu.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                         }
                         _cMenu.Them(menu);
+                    }
+                    else
+                    {
+                        TT_Menu menu = _cMenu.GetMenuByTenMenu(itemChild.Name);
+                        menu.STT = STT++;
+                        _cMenu.Sua(menu);
                     }
                 }
                      
@@ -71,7 +81,7 @@ namespace ThuTien.GUI.HeThong
             {
                 foreach (var itemNhom in _cNhom.GetDSNhom())
                 {
-                    if (!_cPhanQuyenNhom.CheckPhanQuyenNhombyMaMenuMaNhom(itemMenu.MaMenu, itemNhom.MaNhom))
+                    if (!_cPhanQuyenNhom.CheckPhanQuyenNhomByMaMenuMaNhom(itemMenu.MaMenu, itemNhom.MaNhom))
                     {
                         TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
                         phanquyennhom.MaMenu = itemMenu.MaMenu;
@@ -88,7 +98,7 @@ namespace ThuTien.GUI.HeThong
             {
                 foreach (var itemND in _cNguoiDung.GetDSNguoiDung())
                 {
-                    if (!_cPhanQuyenNguoiDung.CheckPhanQuyenNguoiDungbyMaMenuMaND(itemMenu.MaMenu, itemND.MaND))
+                    if (!_cPhanQuyenNguoiDung.CheckPhanQuyenNguoiDungByMaMenuMaND(itemMenu.MaMenu, itemND.MaND))
                     {
                         TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
                         phanquyennguoidung.MaMenu = itemMenu.MaMenu;

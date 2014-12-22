@@ -36,8 +36,30 @@
             this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTenNhom = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.TextMenuCha = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaMenu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TextMenu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ToanQuyen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Xem = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.Them = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.Sua = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.Xoa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             this.SuspendLayout();
             // 
             // btnXoa
@@ -80,6 +102,7 @@
             this.TenNhom});
             this.dgvNhom.Location = new System.Drawing.Point(12, 38);
             this.dgvNhom.Name = "dgvNhom";
+            this.dgvNhom.ReadOnly = true;
             this.dgvNhom.Size = new System.Drawing.Size(170, 200);
             this.dgvNhom.TabIndex = 8;
             this.dgvNhom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhom_CellContentClick);
@@ -90,6 +113,7 @@
             this.MaNhom.DataPropertyName = "MaNhom";
             this.MaNhom.HeaderText = "MaNhom";
             this.MaNhom.Name = "MaNhom";
+            this.MaNhom.ReadOnly = true;
             this.MaNhom.Visible = false;
             // 
             // TenNhom
@@ -97,6 +121,7 @@
             this.TenNhom.DataPropertyName = "TenNhom";
             this.TenNhom.HeaderText = "Tên Nhóm";
             this.TenNhom.Name = "TenNhom";
+            this.TenNhom.ReadOnly = true;
             // 
             // txtTenNhom
             // 
@@ -114,19 +139,158 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Tên Nhóm:";
             // 
-            // treeView1
+            // gridControl
             // 
-            this.treeView1.Location = new System.Drawing.Point(287, 12);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(293, 323);
-            this.treeView1.TabIndex = 12;
+            this.gridControl.Location = new System.Drawing.Point(282, 12);
+            this.gridControl.MainView = this.gridView;
+            this.gridControl.Name = "gridControl";
+            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemCheckEdit2,
+            this.repositoryItemCheckEdit3,
+            this.repositoryItemCheckEdit4,
+            this.repositoryItemCheckEdit5});
+            this.gridControl.Size = new System.Drawing.Size(572, 304);
+            this.gridControl.TabIndex = 12;
+            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView});
+            // 
+            // gridView
+            // 
+            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.TextMenuCha,
+            this.STT,
+            this.MaMenu,
+            this.TextMenu,
+            this.Xem,
+            this.Them,
+            this.Sua,
+            this.Xoa,
+            this.ToanQuyen});
+            this.gridView.GridControl = this.gridControl;
+            this.gridView.GroupCount = 1;
+            this.gridView.Name = "gridView";
+            this.gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridView.OptionsFind.AllowFindPanel = false;
+            this.gridView.OptionsMenu.ShowGroupSummaryEditorItem = true;
+            this.gridView.OptionsView.ColumnAutoWidth = false;
+            this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TextMenuCha, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.STT, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_RowCellClick);
+            this.gridView.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView_CellValueChanging);
+            // 
+            // TextMenuCha
+            // 
+            this.TextMenuCha.Caption = "Menu";
+            this.TextMenuCha.FieldName = "TextMenuCha";
+            this.TextMenuCha.Name = "TextMenuCha";
+            // 
+            // STT
+            // 
+            this.STT.Caption = "STT";
+            this.STT.FieldName = "STT";
+            this.STT.Name = "STT";
+            // 
+            // MaMenu
+            // 
+            this.MaMenu.Caption = "gridColumn1";
+            this.MaMenu.FieldName = "MaMenu";
+            this.MaMenu.Name = "MaMenu";
+            // 
+            // TextMenu
+            // 
+            this.TextMenu.Caption = "Tên Menu";
+            this.TextMenu.FieldName = "TextMenu";
+            this.TextMenu.Name = "TextMenu";
+            this.TextMenu.Visible = true;
+            this.TextMenu.VisibleIndex = 0;
+            this.TextMenu.Width = 150;
+            // 
+            // ToanQuyen
+            // 
+            this.ToanQuyen.Caption = "Toàn Quyền";
+            this.ToanQuyen.ColumnEdit = this.repositoryItemCheckEdit5;
+            this.ToanQuyen.FieldName = "ToanQuyen";
+            this.ToanQuyen.Name = "ToanQuyen";
+            this.ToanQuyen.Visible = true;
+            this.ToanQuyen.VisibleIndex = 5;
+            // 
+            // Xem
+            // 
+            this.Xem.Caption = "Xem";
+            this.Xem.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.Xem.FieldName = "Xem";
+            this.Xem.Name = "Xem";
+            this.Xem.Visible = true;
+            this.Xem.VisibleIndex = 1;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Caption = "Check";
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // Them
+            // 
+            this.Them.Caption = "Thêm";
+            this.Them.ColumnEdit = this.repositoryItemCheckEdit2;
+            this.Them.FieldName = "Them";
+            this.Them.Name = "Them";
+            this.Them.Visible = true;
+            this.Them.VisibleIndex = 2;
+            // 
+            // repositoryItemCheckEdit2
+            // 
+            this.repositoryItemCheckEdit2.AutoHeight = false;
+            this.repositoryItemCheckEdit2.Caption = "Check";
+            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            // 
+            // Sua
+            // 
+            this.Sua.Caption = "Sửa";
+            this.Sua.ColumnEdit = this.repositoryItemCheckEdit3;
+            this.Sua.FieldName = "Sua";
+            this.Sua.Name = "Sua";
+            this.Sua.Visible = true;
+            this.Sua.VisibleIndex = 3;
+            // 
+            // repositoryItemCheckEdit3
+            // 
+            this.repositoryItemCheckEdit3.AutoHeight = false;
+            this.repositoryItemCheckEdit3.Caption = "Check";
+            this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
+            // 
+            // Xoa
+            // 
+            this.Xoa.Caption = "Xóa";
+            this.Xoa.ColumnEdit = this.repositoryItemCheckEdit4;
+            this.Xoa.FieldName = "Xoa";
+            this.Xoa.Name = "Xoa";
+            this.Xoa.Visible = true;
+            this.Xoa.VisibleIndex = 4;
+            // 
+            // repositoryItemCheckEdit4
+            // 
+            this.repositoryItemCheckEdit4.AutoHeight = false;
+            this.repositoryItemCheckEdit4.Caption = "Check";
+            this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
+            // 
+            // repositoryItemCheckEdit5
+            // 
+            this.repositoryItemCheckEdit5.AutoHeight = false;
+            this.repositoryItemCheckEdit5.Caption = "Check";
+            this.repositoryItemCheckEdit5.Name = "repositoryItemCheckEdit5";
             // 
             // frmNhom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 350);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(916, 328);
+            this.Controls.Add(this.gridControl);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -137,6 +301,13 @@
             this.Text = "Nhóm";
             this.Load += new System.EventHandler(this.frmNhom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,6 +323,21 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNhom;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNhom;
-        private System.Windows.Forms.TreeView treeView1;
+        private DevExpress.XtraGrid.GridControl gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView;
+        private DevExpress.XtraGrid.Columns.GridColumn TextMenuCha;
+        private DevExpress.XtraGrid.Columns.GridColumn MaMenu;
+        private DevExpress.XtraGrid.Columns.GridColumn TextMenu;
+        private DevExpress.XtraGrid.Columns.GridColumn ToanQuyen;
+        private DevExpress.XtraGrid.Columns.GridColumn Xem;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn Them;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn Sua;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
+        private DevExpress.XtraGrid.Columns.GridColumn Xoa;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
+        private DevExpress.XtraGrid.Columns.GridColumn STT;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
     }
 }
