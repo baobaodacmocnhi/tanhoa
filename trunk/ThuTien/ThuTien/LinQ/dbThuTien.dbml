@@ -3,6 +3,7 @@
   <Table Name="dbo.TT_Menu" Member="TT_Menus">
     <Type Name="TT_Menu">
       <Column Name="MaMenu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TenMenu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="TextMenu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="TenMenuCha" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />

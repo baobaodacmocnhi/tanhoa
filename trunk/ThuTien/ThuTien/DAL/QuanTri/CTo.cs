@@ -62,12 +62,12 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_Tos.ToList();
         }
 
-        public TT_To getTobyMaTo(int MaTo)
+        public TT_To GetToByMaTo(int MaTo)
         {
             return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTo);
         }
 
-        public string getTenTobyMaTo(int MaTo)
+        public string GetTenToByMaTo(int MaTo)
         {
             return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTo).TenTo;
         }

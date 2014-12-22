@@ -137,6 +137,8 @@ namespace ThuTien.LinQ
 		
 		private int _MaMenu;
 		
+		private System.Nullable<int> _STT;
+		
 		private string _TenMenu;
 		
 		private string _TextMenu;
@@ -163,6 +165,8 @@ namespace ThuTien.LinQ
     partial void OnCreated();
     partial void OnMaMenuChanging(int value);
     partial void OnMaMenuChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnTenMenuChanging(string value);
     partial void OnTenMenuChanged();
     partial void OnTextMenuChanging(string value);
@@ -204,6 +208,26 @@ namespace ThuTien.LinQ
 					this._MaMenu = value;
 					this.SendPropertyChanged("MaMenu");
 					this.OnMaMenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}

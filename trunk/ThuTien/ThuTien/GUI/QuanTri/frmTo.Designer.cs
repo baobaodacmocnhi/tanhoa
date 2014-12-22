@@ -31,11 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTenTo = new System.Windows.Forms.TextBox();
             this.dgvTo = new System.Windows.Forms.DataGridView();
+            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,10 +65,26 @@
             this.TenTo});
             this.dgvTo.Location = new System.Drawing.Point(12, 38);
             this.dgvTo.Name = "dgvTo";
+            this.dgvTo.ReadOnly = true;
             this.dgvTo.Size = new System.Drawing.Size(170, 200);
             this.dgvTo.TabIndex = 2;
             this.dgvTo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTo_CellContentClick);
             this.dgvTo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTo_RowPostPaint);
+            // 
+            // MaTo
+            // 
+            this.MaTo.DataPropertyName = "MaTo";
+            this.MaTo.HeaderText = "MaTo";
+            this.MaTo.Name = "MaTo";
+            this.MaTo.ReadOnly = true;
+            this.MaTo.Visible = false;
+            // 
+            // TenTo
+            // 
+            this.TenTo.DataPropertyName = "TenTo";
+            this.TenTo.HeaderText = "Tên Tổ";
+            this.TenTo.Name = "TenTo";
+            this.TenTo.ReadOnly = true;
             // 
             // btnThem
             // 
@@ -99,19 +115,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // MaTo
-            // 
-            this.MaTo.DataPropertyName = "MaTo";
-            this.MaTo.HeaderText = "MaTo";
-            this.MaTo.Name = "MaTo";
-            this.MaTo.Visible = false;
-            // 
-            // TenTo
-            // 
-            this.TenTo.DataPropertyName = "TenTo";
-            this.TenTo.HeaderText = "Tên Tổ";
-            this.TenTo.Name = "TenTo";
             // 
             // frmTo
             // 

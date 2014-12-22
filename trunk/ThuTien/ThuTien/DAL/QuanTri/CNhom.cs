@@ -22,8 +22,9 @@ namespace ThuTien.DAL.QuanTri
                 _db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -37,8 +38,9 @@ namespace ThuTien.DAL.QuanTri
                 _db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -51,8 +53,9 @@ namespace ThuTien.DAL.QuanTri
                 _db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -62,12 +65,12 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_Nhoms.ToList();
         }
 
-        public TT_Nhom getNhombyMaNhom(int MaNhom)
+        public TT_Nhom GetNhomByMaNhom(int MaNhom)
         {
             return _db.TT_Nhoms.SingleOrDefault(item => item.MaNhom == MaNhom);
         }
 
-        public string getTenNhombyMaNhom(int MaNhom)
+        public string GetTenNhomByMaNhom(int MaNhom)
         {
             return _db.TT_Nhoms.SingleOrDefault(item => item.MaNhom == MaNhom).TenNhom;
         }

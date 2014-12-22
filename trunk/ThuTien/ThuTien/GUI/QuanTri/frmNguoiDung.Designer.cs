@@ -39,9 +39,6 @@
             this.cmbNhom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvNguoiDung = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +46,9 @@
             this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,11 +149,65 @@
             this.TenNhom});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
             this.dgvNguoiDung.Name = "dgvNguoiDung";
+            this.dgvNguoiDung.ReadOnly = true;
             this.dgvNguoiDung.Size = new System.Drawing.Size(375, 150);
             this.dgvNguoiDung.TabIndex = 10;
             this.dgvNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellContentClick);
             this.dgvNguoiDung.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNguoiDung_CellFormatting);
             this.dgvNguoiDung.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNguoiDung_RowPostPaint);
+            // 
+            // MaND
+            // 
+            this.MaND.DataPropertyName = "MaND";
+            this.MaND.HeaderText = "MaND";
+            this.MaND.Name = "MaND";
+            this.MaND.ReadOnly = true;
+            this.MaND.Visible = false;
+            // 
+            // TaiKhoan
+            // 
+            this.TaiKhoan.DataPropertyName = "TaiKhoan";
+            this.TaiKhoan.HeaderText = "Tài Khoản";
+            this.TaiKhoan.Name = "TaiKhoan";
+            this.TaiKhoan.ReadOnly = true;
+            // 
+            // MatKhau
+            // 
+            this.MatKhau.DataPropertyName = "MatKhau";
+            this.MatKhau.HeaderText = "MatKhau";
+            this.MatKhau.Name = "MatKhau";
+            this.MatKhau.ReadOnly = true;
+            this.MatKhau.Visible = false;
+            // 
+            // MaTo
+            // 
+            this.MaTo.DataPropertyName = "MaTo";
+            this.MaTo.HeaderText = "MaTo";
+            this.MaTo.Name = "MaTo";
+            this.MaTo.ReadOnly = true;
+            this.MaTo.Visible = false;
+            // 
+            // TenTo
+            // 
+            this.TenTo.DataPropertyName = "TenTo";
+            this.TenTo.HeaderText = "Tổ";
+            this.TenTo.Name = "TenTo";
+            this.TenTo.ReadOnly = true;
+            // 
+            // MaNhom
+            // 
+            this.MaNhom.DataPropertyName = "MaNhom";
+            this.MaNhom.HeaderText = "MaNhom";
+            this.MaNhom.Name = "MaNhom";
+            this.MaNhom.ReadOnly = true;
+            this.MaNhom.Visible = false;
+            // 
+            // TenNhom
+            // 
+            this.TenNhom.DataPropertyName = "TenNhom";
+            this.TenNhom.HeaderText = "Nhóm";
+            this.TenNhom.Name = "TenNhom";
+            this.TenNhom.ReadOnly = true;
             // 
             // btnXoa
             // 
@@ -184,52 +238,6 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // MaND
-            // 
-            this.MaND.DataPropertyName = "MaND";
-            this.MaND.HeaderText = "MaND";
-            this.MaND.Name = "MaND";
-            this.MaND.Visible = false;
-            // 
-            // TaiKhoan
-            // 
-            this.TaiKhoan.DataPropertyName = "TaiKhoan";
-            this.TaiKhoan.HeaderText = "Tài Khoản";
-            this.TaiKhoan.Name = "TaiKhoan";
-            // 
-            // MatKhau
-            // 
-            this.MatKhau.DataPropertyName = "MatKhau";
-            this.MatKhau.HeaderText = "MatKhau";
-            this.MatKhau.Name = "MatKhau";
-            this.MatKhau.Visible = false;
-            // 
-            // MaTo
-            // 
-            this.MaTo.DataPropertyName = "MaTo";
-            this.MaTo.HeaderText = "MaTo";
-            this.MaTo.Name = "MaTo";
-            this.MaTo.Visible = false;
-            // 
-            // TenTo
-            // 
-            this.TenTo.DataPropertyName = "TenTo";
-            this.TenTo.HeaderText = "Tổ";
-            this.TenTo.Name = "TenTo";
-            // 
-            // MaNhom
-            // 
-            this.MaNhom.DataPropertyName = "MaNhom";
-            this.MaNhom.HeaderText = "MaNhom";
-            this.MaNhom.Name = "MaNhom";
-            this.MaNhom.Visible = false;
-            // 
-            // TenNhom
-            // 
-            this.TenNhom.DataPropertyName = "TenNhom";
-            this.TenNhom.HeaderText = "Nhóm";
-            this.TenNhom.Name = "TenNhom";
             // 
             // frmNguoiDung
             // 

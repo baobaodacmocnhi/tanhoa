@@ -23,8 +23,9 @@ namespace ThuTien.DAL.QuanTri
                 _db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -38,8 +39,9 @@ namespace ThuTien.DAL.QuanTri
                 _db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -52,8 +54,9 @@ namespace ThuTien.DAL.QuanTri
                 _db.SubmitChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -73,6 +76,16 @@ namespace ThuTien.DAL.QuanTri
         public List<TT_Menu> GetDSMenu()
         {
             return _db.TT_Menus.ToList();
+        }
+
+        public TT_Menu GetMenuByMaMenu(int MaMenu)
+        {
+            return _db.TT_Menus.SingleOrDefault(item => item.MaMenu == MaMenu);
+        }
+
+        public TT_Menu GetMenuByTenMenu(string TenMenu)
+        {
+            return _db.TT_Menus.SingleOrDefault(item => item.TenMenu == TenMenu);
         }
     }
 }
