@@ -52,6 +52,8 @@ namespace ThuTien.GUI.HeThong
                             TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
                             phanquyennhom.MaMenu = menu.MaMenu;
                             phanquyennhom.MaNhom = item.MaNhom;
+                            phanquyennhom.CreateBy = CNguoiDung.MaND;
+                            phanquyennhom.CreateDate = DateTime.Now;
                             menu.TT_PhanQuyenNhoms.Add(phanquyennhom);
                         }
                         foreach (var item in _cNguoiDung.GetDSNguoiDung())
@@ -59,6 +61,8 @@ namespace ThuTien.GUI.HeThong
                             TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
                             phanquyennguoidung.MaMenu = menu.MaMenu;
                             phanquyennguoidung.MaND = item.MaND;
+                            phanquyennguoidung.CreateBy = CNguoiDung.MaND;
+                            phanquyennguoidung.CreateDate = DateTime.Now;
                             menu.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                         }
                         _cMenu.Them(menu);
