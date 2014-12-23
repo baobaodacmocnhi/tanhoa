@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ThuTien.LinQ;
+using System.Data;
 
 namespace ThuTien.DAL.QuanTri
 {
@@ -79,6 +80,12 @@ namespace ThuTien.DAL.QuanTri
         public bool CheckPhanQuyenNguoiDungByMaMenuMaND(int MaMenu, int MaND)
         {
             return _db.TT_PhanQuyenNguoiDungs.Any(item => item.MaMenu == MaMenu && item.MaND == MaND);
+        }
+
+        public DataTable GetDSPhanQuyenNguoiDungByMaND(int MaND)
+        {
+            return LINQToDataTable(_db.TT_PhanQuyenNguoiDungs.Where(item => item.MaND == MaND).Select(item =>
+                new { item.TT_Menu.TextMenuCha, item.TT_Menu.STT, item.MaMenu, item.TT_Menu.TenMenu, item.TT_Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa }).ToList());
         }
     }
 }

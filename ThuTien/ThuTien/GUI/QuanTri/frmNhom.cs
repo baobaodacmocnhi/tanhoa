@@ -17,6 +17,7 @@ namespace ThuTien.GUI.QuanTri
         CNhom _cNhom = new CNhom();
         CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
         CMenu _cMenu = new CMenu();
+        string _mnu = "mnuNhom";
 
         public frmNhom()
         {
@@ -40,59 +41,74 @@ namespace ThuTien.GUI.QuanTri
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtTenNhom.Text.Trim() != "")
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                TT_Nhom nhom = new TT_Nhom();
-                nhom.TenNhom = txtTenNhom.Text.Trim();
-                ///tự động thêm quyền cho nhóm mới
-                foreach (var item in _cMenu.GetDSMenu())
+                if (txtTenNhom.Text.Trim() != "")
                 {
-                    TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
-                    phanquyennhom.MaMenu = item.MaMenu;
-                    phanquyennhom.MaNhom = nhom.MaNhom;
-                    nhom.TT_PhanQuyenNhoms.Add(phanquyennhom);
+                    TT_Nhom nhom = new TT_Nhom();
+                    nhom.TenNhom = txtTenNhom.Text.Trim();
+                    ///tự động thêm quyền cho nhóm mới
+                    foreach (var item in _cMenu.GetDSMenu())
+                    {
+                        TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
+                        phanquyennhom.MaMenu = item.MaMenu;
+                        phanquyennhom.MaNhom = nhom.MaNhom;
+                        nhom.TT_PhanQuyenNhoms.Add(phanquyennhom);
+                    }
+                    _cNhom.Them(nhom);
+                    Clear();
                 }
-                _cNhom.Them(nhom);
-                Clear();
             }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (_selectedindex != -1)
+            if (CNguoiDung.CheckQuyen(_mnu, "Sửa"))
             {
-                TT_Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
-                nhom.TenNhom = txtTenNhom.Text.Trim();
-                _cNhom.Sua(nhom);
-                DataTable dt = ((DataView)gridView.DataSource).Table;
-                foreach (DataRow item in dt.Rows)
+                if (_selectedindex != -1)
                 {
-                    TT_PhanQuyenNhom phanquyennhom = _cPhanQuyenNhom.GetPhanQuyenNhomByMaMenuMaNhom(int.Parse(item["MaMenu"].ToString()), nhom.MaNhom);
-                    if (phanquyennhom.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennhom.Them != bool.Parse(item["Them"].ToString()) ||
-                        phanquyennhom.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennhom.Xoa != bool.Parse(item["Xoa"].ToString()))
+                    TT_Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                    nhom.TenNhom = txtTenNhom.Text.Trim();
+                    _cNhom.Sua(nhom);
+                    DataTable dt = ((DataView)gridView.DataSource).Table;
+                    foreach (DataRow item in dt.Rows)
                     {
-                        phanquyennhom.Xem = bool.Parse(item["Xem"].ToString());
-                        phanquyennhom.Them = bool.Parse(item["Them"].ToString());
-                        phanquyennhom.Sua = bool.Parse(item["Sua"].ToString());
-                        phanquyennhom.Xoa = bool.Parse(item["Xoa"].ToString());
-                        _cPhanQuyenNhom.Sua(phanquyennhom);
+                        TT_PhanQuyenNhom phanquyennhom = _cPhanQuyenNhom.GetPhanQuyenNhomByMaMenuMaNhom(int.Parse(item["MaMenu"].ToString()), nhom.MaNhom);
+                        if (phanquyennhom.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennhom.Them != bool.Parse(item["Them"].ToString()) ||
+                            phanquyennhom.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennhom.Xoa != bool.Parse(item["Xoa"].ToString()))
+                        {
+                            phanquyennhom.Xem = bool.Parse(item["Xem"].ToString());
+                            phanquyennhom.Them = bool.Parse(item["Them"].ToString());
+                            phanquyennhom.Sua = bool.Parse(item["Sua"].ToString());
+                            phanquyennhom.Xoa = bool.Parse(item["Xoa"].ToString());
+                            _cPhanQuyenNhom.Sua(phanquyennhom);
+                        }
                     }
+                    Clear();
                 }
-                Clear();
             }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Sửa này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (_selectedindex != -1)
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    TT_Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
-                    ///xóa quan hệ 1 nhiều
-                    _cPhanQuyenNhom.Xoa(nhom.TT_PhanQuyenNhoms.ToList());
-                    _cNhom.Xoa(nhom);
-                    Clear();
-                }
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_selectedindex != -1)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        TT_Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                        ///xóa quan hệ 1 nhiều
+                        _cPhanQuyenNhom.Xoa(nhom.TT_PhanQuyenNhoms.ToList());
+                        _cNhom.Xoa(nhom);
+                        Clear();
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvNhom_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -22,11 +22,18 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._HoTen = value; }
         }
 
-        static System.Data.DataTable _dtQuyen;
-        public static System.Data.DataTable DtQuyen
+        static System.Data.DataTable _dtQuyenNhom;
+        public static System.Data.DataTable dtQuyenNhom
         {
-            get { return CNguoiDung._dtQuyen; }
-            set { CNguoiDung._dtQuyen = value; }
+            get { return CNguoiDung._dtQuyenNhom; }
+            set { CNguoiDung._dtQuyenNhom = value; }
+        }
+
+        static System.Data.DataTable _dtQuyenNguoiDung;
+        public static System.Data.DataTable dtQuyenNguoiDung
+        {
+            get { return CNguoiDung._dtQuyenNguoiDung; }
+            set { CNguoiDung._dtQuyenNguoiDung = value; }
         }
 
         public static bool CheckQuyen(string TenMenu, string LoaiQuyen)
@@ -35,25 +42,52 @@ namespace ThuTien.DAL.QuanTri
             switch (LoaiQuyen)
             {
                 case "Xem":
-                    query = "TenMenu like '" + TenMenu + "' and Xem=1";
+                    query = "TenMenu ='" + TenMenu + "' and Xem=1";
                     break;
                 case "Them":
-                    query = "TenMenu like '" + TenMenu + "' and Them=1";
+                    query = "TenMenu ='" + TenMenu + "' and Them=1";
                     break;
                 case "Sua":
-                    query = "TenMenu like '" + TenMenu + "' and Sua=1";
+                    query = "TenMenu ='" + TenMenu + "' and Sua=1";
                     break;
                 case "Xoa":
-                    query = "TenMenu like '" + TenMenu + "' and Xoa=1";
+                    query = "TenMenu ='" + TenMenu + "' and Xoa=1";
                     break;
                 default:
                     break;
             }
-            System.Data.DataRow[] drs = _dtQuyen.Select(query);
-            if (drs.Count() > 0)
-                return true;
+            System.Data.DataRow[] drs;
+            ///Kiểm tra quyền theo Nhóm
+            if (_dtQuyenNhom != null)
+            {
+                drs = dtQuyenNhom.Select(query);
+                if (drs.Count() > 0)
+                    return true;
+                else
+                    if (dtQuyenNguoiDung != null)
+                    {
+                        ///Kiểm tra quyền theo Người Dùng
+                        drs = dtQuyenNguoiDung.Select(query);
+                        if (drs.Count() > 0)
+                            return true;
+                        else
+                            return false;
+                    }
+                    else
+                        return false;
+            }
             else
-                return false;
+                if (dtQuyenNguoiDung != null)
+                {
+                    ///Kiểm tra quyền theo Người Dùng
+                    drs = dtQuyenNguoiDung.Select(query);
+                    if (drs.Count() > 0)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return false;
         }
 
         public bool Them(TT_NguoiDung nguoidung)
@@ -111,6 +145,11 @@ namespace ThuTien.DAL.QuanTri
         public List<TT_NguoiDung> GetDSNguoiDung()
         {
             return _db.TT_NguoiDungs.ToList();
+        }
+
+        public List<TT_NguoiDung> GetDSNguoiDungExceptMaND(int MaND)
+        {
+            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).ToList();
         }
 
         public TT_NguoiDung GetNguoiDungByMaND(int MaND)

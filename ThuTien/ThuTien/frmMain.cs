@@ -26,7 +26,11 @@ namespace ThuTien
                 mnuDangNhap.Enabled = false;
                 mnuDoiMatKhau.Enabled = true;
                 mnuDangXuat.Enabled = true;
-                StripStatus_HoTen.Text = "Xin Chào: "+CNguoiDung.HoTen;
+                StripStatus_HoTen.Text = "Xin Chào: " + CNguoiDung.HoTen;
+                if (CNguoiDung.MaND == 0)
+                    mnuAdmin.Enabled = true;
+                else
+                    mnuAdmin.Enabled = false;
             }
         }
 
@@ -76,16 +80,8 @@ namespace ThuTien
 
         private void mnuAdmin_Click(object sender, EventArgs e)
         {
-            foreach (Form item in this.MdiChildren)
-            {
-                this.ActiveMdiChild.Close();
-            }
             frmAdmin frm = new frmAdmin();
-            frm.MdiParent = this;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            OpenForm(frm);
         }
 
         #endregion
@@ -94,48 +90,39 @@ namespace ThuTien
 
         private void mnuTo_Click(object sender, EventArgs e)
         {
-            foreach (Form item in this.MdiChildren)
+            if (CNguoiDung.CheckQuyen("mnuTo", "Xem"))
             {
-                this.ActiveMdiChild.Close();
+                frmTo frm = new frmTo();
+                OpenForm(frm);
             }
-            frmTo frm = new frmTo();
-            frm.MdiParent = this;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void mnuNhom_Click(object sender, EventArgs e)
         {
-            foreach (Form item in this.MdiChildren)
+            if (CNguoiDung.CheckQuyen("mnuNhom", "Xem"))
             {
-                this.ActiveMdiChild.Close();
+                frmNhom frm = new frmNhom();
+                OpenForm(frm);
             }
-            frmNhom frm = new frmNhom();
-            frm.MdiParent = this;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void mnuNguoiDung_Click(object sender, EventArgs e)
         {
-            foreach (Form item in this.MdiChildren)
+            if (CNguoiDung.CheckQuyen("mnuNguoiDung", "Xem"))
             {
-                this.ActiveMdiChild.Close();
+                frmNguoiDung frm = new frmNguoiDung();
+                OpenForm(frm);
             }
-            frmNguoiDung frm = new frmNguoiDung();
-            frm.MdiParent = this;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion
 
-        
+
     }
 }

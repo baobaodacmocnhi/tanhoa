@@ -39,16 +39,17 @@
             this.cmbNhom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvNguoiDung = new System.Windows.Forms.DataGridView();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,6 +89,7 @@
             // 
             this.txtMatKhau.Location = new System.Drawing.Point(74, 64);
             this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(121, 20);
             this.txtMatKhau.TabIndex = 5;
             // 
@@ -141,6 +143,7 @@
             this.dgvNguoiDung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNguoiDung.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaND,
+            this.HoTen,
             this.TaiKhoan,
             this.MatKhau,
             this.MaTo,
@@ -150,11 +153,41 @@
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
             this.dgvNguoiDung.Name = "dgvNguoiDung";
             this.dgvNguoiDung.ReadOnly = true;
-            this.dgvNguoiDung.Size = new System.Drawing.Size(375, 150);
+            this.dgvNguoiDung.Size = new System.Drawing.Size(474, 509);
             this.dgvNguoiDung.TabIndex = 10;
             this.dgvNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellContentClick);
             this.dgvNguoiDung.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNguoiDung_CellFormatting);
             this.dgvNguoiDung.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNguoiDung_RowPostPaint);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(404, 70);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 14;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(404, 41);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 13;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(404, 12);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 12;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // MaND
             // 
@@ -163,6 +196,13 @@
             this.MaND.Name = "MaND";
             this.MaND.ReadOnly = true;
             this.MaND.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
             // 
             // TaiKhoan
             // 
@@ -209,41 +249,11 @@
             this.TenNhom.Name = "TenNhom";
             this.TenNhom.ReadOnly = true;
             // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(404, 70);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 14;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(404, 41);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 13;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(404, 12);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 12;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 395);
+            this.ClientSize = new System.Drawing.Size(712, 682);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -284,6 +294,7 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaiKhoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MatKhau;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTo;

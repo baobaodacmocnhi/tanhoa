@@ -19,6 +19,7 @@ namespace ThuTien.GUI.QuanTri
         CMenu _cMenu = new CMenu();
         CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
         int _selectedindex = -1;
+        string _mnu = "mnuNguoiDung";
 
         public frmNguoiDung()
         {
@@ -31,7 +32,7 @@ namespace ThuTien.GUI.QuanTri
             txtHoTen.Text = "";
             txtTaiKhoan.Text = "";
             txtMatKhau.Text = "";
-            dgvNguoiDung.DataSource = _cNguoiDung.GetDSNguoiDung();
+            dgvNguoiDung.DataSource = _cNguoiDung.GetDSNguoiDungExceptMaND(CNguoiDung.MaND);
         }
 
         private void frmNguoiDung_Load(object sender, EventArgs e)
@@ -39,73 +40,92 @@ namespace ThuTien.GUI.QuanTri
             cmbTo.DataSource = _cTo.GetDSTo();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
-            cmbTo.SelectedIndex = -1;
+            //cmbTo.SelectedIndex = -1;
 
             cmbNhom.DataSource = _cNhom.GetDSNhom();
             cmbNhom.DisplayMember = "TenNhom";
             cmbNhom.ValueMember = "MaNhom";
-            cmbNhom.SelectedIndex = -1;
+            //cmbNhom.SelectedIndex = -1;
 
             dgvNguoiDung.AutoGenerateColumns = false;
-            dgvNguoiDung.DataSource = _cNguoiDung.GetDSNguoiDung();
+            dgvNguoiDung.DataSource = _cNguoiDung.GetDSNguoiDungExceptMaND(CNguoiDung.MaND);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtHoTen.Text.Trim() != ""&&txtTaiKhoan.Text.Trim() != ""&&txtMatKhau.Text.Trim() != "")
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                TT_NguoiDung nguoidung = new TT_NguoiDung();
-                nguoidung.HoTen = txtHoTen.Text.Trim();
-                nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
-                nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                if (cmbTo.SelectedIndex != -1)
-                    nguoidung.MaTo = (int)cmbTo.SelectedValue;
-                if (cmbNhom.SelectedIndex != -1)
-                    nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
-                ///tự động thêm quyền cho nhóm mới
-                foreach (var item in _cMenu.GetDSMenu())
+                if (txtHoTen.Text.Trim() != "" && txtTaiKhoan.Text.Trim() != "" && txtMatKhau.Text.Trim() != "")
                 {
-                    TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
-                    phanquyennguoidung.MaMenu = item.MaMenu;
-                    phanquyennguoidung.MaND = nguoidung.MaND;
-                    nguoidung.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                    TT_NguoiDung nguoidung = new TT_NguoiDung();
+                    nguoidung.HoTen = txtHoTen.Text.Trim();
+                    nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
+                    nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    if (cmbTo.SelectedIndex != -1)
+                        nguoidung.MaTo = (int)cmbTo.SelectedValue;
+                    if (cmbNhom.SelectedIndex != -1)
+                        nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    ///tự động thêm quyền cho nhóm mới
+                    foreach (var item in _cMenu.GetDSMenu())
+                    {
+                        TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
+                        phanquyennguoidung.MaMenu = item.MaMenu;
+                        phanquyennguoidung.MaND = nguoidung.MaND;
+                        nguoidung.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                    }
+                    _cNguoiDung.Them(nguoidung);
+                    Clear();
                 }
-                _cNguoiDung.Them(nguoidung);
-                Clear();
             }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (_selectedindex != -1)
+            if (CNguoiDung.CheckQuyen(_mnu, "Sửa"))
             {
-                TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
-                nguoidung.HoTen = txtHoTen.Text.Trim();
-                nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
-                nguoidung.MatKhau = txtMatKhau.Text.Trim();
-                nguoidung.MaTo = (int)cmbTo.SelectedValue;
-                nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
-                _cNguoiDung.Sua(nguoidung);
-                Clear();
+                if (_selectedindex != -1)
+                {
+                    TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
+                    nguoidung.HoTen = txtHoTen.Text.Trim();
+                    nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
+                    nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.MaTo = (int)cmbTo.SelectedValue;
+                    nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    _cNguoiDung.Sua(nguoidung);
+                    Clear();
+                }
             }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (_selectedindex != -1)
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
-                    ///xóa quan hệ 1 nhiều
-                    _cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
-                    _cNguoiDung.Xoa(nguoidung);
-                    Clear();
-                }
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_selectedindex != -1)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
+                        ///xóa quan hệ 1 nhiều
+                        _cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
+                        _cNguoiDung.Xoa(nguoidung);
+                        Clear();
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvNguoiDung_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            txtHoTen.Text = dgvNguoiDung["HoTen", e.RowIndex].Value.ToString();
+            txtTaiKhoan.Text = dgvNguoiDung["TaiKhoan", e.RowIndex].Value.ToString();
+            txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
+            cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
+            cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
         }
 
         private void dgvNguoiDung_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -118,9 +138,9 @@ namespace ThuTien.GUI.QuanTri
 
         private void dgvNguoiDung_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenTo" && dgvNguoiDung["MaTo", e.RowIndex].Value!=null)
+            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenTo" && dgvNguoiDung["MaTo", e.RowIndex].Value != null)
                 e.Value = _cTo.GetTenToByMaTo(int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString()));
-            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenNhom" && dgvNguoiDung["MaNhom", e.RowIndex].Value!=null)
+            if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenNhom" && dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
                 e.Value = _cNhom.GetTenNhomByMaNhom(int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString()));
         }
     }

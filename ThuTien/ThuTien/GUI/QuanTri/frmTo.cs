@@ -15,20 +15,11 @@ namespace ThuTien.GUI.QuanTri
     {
         CTo _cTo = new CTo();
         int _selectedindex = -1;
+        string _mnu = "mnuTo";
 
         public frmTo()
         {
             InitializeComponent();
-            if (CNguoiDung.CheckQuyen("mnuTao", "Xem"))
-            {
-                dgvTo.AutoGenerateColumns = false;
-                dgvTo.DataSource = _cTo.GetDSTo();
-            }
-            else
-            {
-                MessageBox.Show("Bạn không có quyền mở form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-            }
         }
 
         public void Clear()
@@ -40,40 +31,56 @@ namespace ThuTien.GUI.QuanTri
 
         private void frmTo_Load(object sender, EventArgs e)
         {
-            
+            dgvTo.AutoGenerateColumns = false;
+            dgvTo.DataSource = _cTo.GetDSTo();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtTenTo.Text.Trim() != "")
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                TT_To to = new TT_To();
-                to.TenTo = txtTenTo.Text.Trim();
-                _cTo.Them(to);
-                Clear();
+                if (txtTenTo.Text.Trim() != "")
+                {
+                    TT_To to = new TT_To();
+                    to.TenTo = txtTenTo.Text.Trim();
+                    _cTo.Them(to);
+                    Clear();
+                }
             }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (_selectedindex != -1)
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                TT_To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
-                to.TenTo = txtTenTo.Text.Trim();
-                _cTo.Sua(to);
-                Clear();
+                if (_selectedindex != -1)
+                {
+                    TT_To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                    to.TenTo = txtTenTo.Text.Trim();
+                    _cTo.Sua(to);
+                    Clear();
+                }
             }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (_selectedindex != -1)
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    TT_To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
-                    _cTo.Xoa(to);
-                    Clear();
-                }
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_selectedindex != -1)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        TT_To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                        _cTo.Xoa(to);
+                        Clear();
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvTo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -91,6 +98,6 @@ namespace ThuTien.GUI.QuanTri
 
         }
 
-        
+
     }
 }
