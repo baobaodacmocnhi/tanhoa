@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ThuTien.GUI.HeThong;
 using ThuTien.GUI.QuanTri;
 using ThuTien.DAL.QuanTri;
+using ThuTien.GUI.Doi;
 
 namespace ThuTien
 {
@@ -122,6 +123,36 @@ namespace ThuTien
         }
 
         #endregion
+
+
+        #region Đội
+
+        private void mnuLuuHoaDon_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuLuuHoaDon", "Xem"))
+            {
+                frmLuuHoaDon frm = new frmLuuHoaDon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
+        #region
+
+
+
+        #endregion
+
+        #region
+
+
+
+        #endregion
+
+        
 
 
     }

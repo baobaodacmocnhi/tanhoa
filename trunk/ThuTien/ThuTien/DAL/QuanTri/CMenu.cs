@@ -9,28 +9,28 @@ namespace ThuTien.DAL.QuanTri
     class CMenu : CDAL
     {
 
-        public bool Them(TT_Menu menu)
+        public bool Them(MenuForm menu)
         {
             try
             {
-                if (_db.TT_Menus.Count() > 0)
-                    menu.MaMenu = _db.TT_Menus.Max(item => item.MaMenu) + 1;
+                if (_db.MenuForms.Count() > 0)
+                    menu.MaMenu = _db.MenuForms.Max(item => item.MaMenu) + 1;
                 else
                     menu.MaMenu = 1;
                 menu.CreateDate = DateTime.Now;
                 menu.CreateBy = CNguoiDung.MaND;
-                _db.TT_Menus.InsertOnSubmit(menu);
+                _db.MenuForms.InsertOnSubmit(menu);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Sua(TT_Menu menu)
+        public bool Sua(MenuForm menu)
         {
             try
             {
@@ -41,22 +41,22 @@ namespace ThuTien.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Xoa(TT_Menu menu)
+        public bool Xoa(MenuForm menu)
         {
             try
             {
-                _db.TT_Menus.DeleteOnSubmit(menu);
+                _db.MenuForms.DeleteOnSubmit(menu);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -65,7 +65,7 @@ namespace ThuTien.DAL.QuanTri
         {
             try
             {
-                return _db.TT_Menus.Any(item => item.TenMenu == TenMenu);
+                return _db.MenuForms.Any(item => item.TenMenu == TenMenu);
             }
             catch (Exception)
             {
@@ -73,19 +73,19 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public List<TT_Menu> GetDSMenu()
+        public List<MenuForm> GetDSMenu()
         {
-            return _db.TT_Menus.ToList();
+            return _db.MenuForms.ToList();
         }
 
-        public TT_Menu GetMenuByMaMenu(int MaMenu)
+        public MenuForm GetMenuByMaMenu(int MaMenu)
         {
-            return _db.TT_Menus.SingleOrDefault(item => item.MaMenu == MaMenu);
+            return _db.MenuForms.SingleOrDefault(item => item.MaMenu == MaMenu);
         }
 
-        public TT_Menu GetMenuByTenMenu(string TenMenu)
+        public MenuForm GetMenuByTenMenu(string TenMenu)
         {
-            return _db.TT_Menus.SingleOrDefault(item => item.TenMenu == TenMenu);
+            return _db.MenuForms.SingleOrDefault(item => item.TenMenu == TenMenu);
         }
     }
 }

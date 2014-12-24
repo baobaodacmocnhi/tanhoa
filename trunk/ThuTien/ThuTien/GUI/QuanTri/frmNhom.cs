@@ -45,15 +45,15 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (txtTenNhom.Text.Trim() != "")
                 {
-                    TT_Nhom nhom = new TT_Nhom();
+                    Nhom nhom = new Nhom();
                     nhom.TenNhom = txtTenNhom.Text.Trim();
                     ///tự động thêm quyền cho nhóm mới
                     foreach (var item in _cMenu.GetDSMenu())
                     {
-                        TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
+                        PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
                         phanquyennhom.MaMenu = item.MaMenu;
                         phanquyennhom.MaNhom = nhom.MaNhom;
-                        nhom.TT_PhanQuyenNhoms.Add(phanquyennhom);
+                        nhom.PhanQuyenNhoms.Add(phanquyennhom);
                     }
                     _cNhom.Them(nhom);
                     Clear();
@@ -69,13 +69,13 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (_selectedindex != -1)
                 {
-                    TT_Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                    Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
                     nhom.TenNhom = txtTenNhom.Text.Trim();
                     _cNhom.Sua(nhom);
                     DataTable dt = ((DataView)gridView.DataSource).Table;
                     foreach (DataRow item in dt.Rows)
                     {
-                        TT_PhanQuyenNhom phanquyennhom = _cPhanQuyenNhom.GetPhanQuyenNhomByMaMenuMaNhom(int.Parse(item["MaMenu"].ToString()), nhom.MaNhom);
+                        PhanQuyenNhom phanquyennhom = _cPhanQuyenNhom.GetPhanQuyenNhomByMaMenuMaNhom(int.Parse(item["MaMenu"].ToString()), nhom.MaNhom);
                         if (phanquyennhom.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennhom.Them != bool.Parse(item["Them"].ToString()) ||
                             phanquyennhom.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennhom.Xoa != bool.Parse(item["Xoa"].ToString()))
                         {
@@ -100,9 +100,9 @@ namespace ThuTien.GUI.QuanTri
                 if (_selectedindex != -1)
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TT_Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                        Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
                         ///xóa quan hệ 1 nhiều
-                        _cPhanQuyenNhom.Xoa(nhom.TT_PhanQuyenNhoms.ToList());
+                        _cPhanQuyenNhom.Xoa(nhom.PhanQuyenNhoms.ToList());
                         _cNhom.Xoa(nhom);
                         Clear();
                     }

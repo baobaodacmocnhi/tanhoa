@@ -9,24 +9,24 @@ namespace ThuTien.DAL.QuanTri
 {
     class CPhanQuyenNhom:CDAL
     {
-        public bool Them(TT_PhanQuyenNhom phanquyennhom)
+        public bool Them(PhanQuyenNhom phanquyennhom)
         {
             try
             {
                 phanquyennhom.CreateDate = DateTime.Now;
                 phanquyennhom.CreateBy = CNguoiDung.MaND;
-                _db.TT_PhanQuyenNhoms.InsertOnSubmit(phanquyennhom);
+                _db.PhanQuyenNhoms.InsertOnSubmit(phanquyennhom);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Sua(TT_PhanQuyenNhom phanquyennhom)
+        public bool Sua(PhanQuyenNhom phanquyennhom)
         {
             try
             {
@@ -37,55 +37,55 @@ namespace ThuTien.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Xoa(TT_PhanQuyenNhom phanquyennhom)
+        public bool Xoa(PhanQuyenNhom phanquyennhom)
         {
             try
             {
-                _db.TT_PhanQuyenNhoms.DeleteOnSubmit(phanquyennhom);
+                _db.PhanQuyenNhoms.DeleteOnSubmit(phanquyennhom);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Xoa(List<TT_PhanQuyenNhom> lstphanquyennhom)
+        public bool Xoa(List<PhanQuyenNhom> lstphanquyennhom)
         {
             try
             {
-                _db.TT_PhanQuyenNhoms.DeleteAllOnSubmit(lstphanquyennhom);
+                _db.PhanQuyenNhoms.DeleteAllOnSubmit(lstphanquyennhom);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public TT_PhanQuyenNhom GetPhanQuyenNhomByMaMenuMaNhom(int MaMenu,int MaNhom)
+        public PhanQuyenNhom GetPhanQuyenNhomByMaMenuMaNhom(int MaMenu,int MaNhom)
         {
-            return _db.TT_PhanQuyenNhoms.SingleOrDefault(item => item.MaMenu == MaMenu && item.MaNhom == MaNhom);
+            return _db.PhanQuyenNhoms.SingleOrDefault(item => item.MaMenu == MaMenu && item.MaNhom == MaNhom);
         }
 
         public bool CheckPhanQuyenNhomByMaMenuMaNhom(int MaMenu,int MaNhom)
         {
-            return _db.TT_PhanQuyenNhoms.Any(item => item.MaMenu == MaMenu && item.MaNhom == MaNhom);
+            return _db.PhanQuyenNhoms.Any(item => item.MaMenu == MaMenu && item.MaNhom == MaNhom);
         }
 
         public DataTable GetDSPhanQuyenNhomByMaNhom(int MaNhom)
         {
-            return LINQToDataTable(_db.TT_PhanQuyenNhoms.Where(item => item.MaNhom == MaNhom).Select(item =>
-                new { item.TT_Menu.TextMenuCha, item.TT_Menu.STT, item.MaMenu, item.TT_Menu.TenMenu, item.TT_Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa }).ToList());
+            return LINQToDataTable(_db.PhanQuyenNhoms.Where(item => item.MaNhom == MaNhom).Select(item =>
+                new { item.MenuForm.TextMenuCha, item.MenuForm.STT, item.MaMenu, item.MenuForm.TenMenu, item.MenuForm.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa }).ToList());
         }
 
         //public bool GetPhanQuyenNhomBy

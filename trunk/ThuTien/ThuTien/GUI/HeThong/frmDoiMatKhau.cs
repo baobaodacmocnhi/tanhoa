@@ -32,7 +32,7 @@ namespace ThuTien.GUI.HeThong
             if (txtMatKhauCu.Text.Trim() != "" && txtMatKhauMoi.Text.Trim() != "" && txtXNMatKhauMoi.Text.Trim() != "")
                 if (txtMatKhauMoi.Text.Trim() == txtXNMatKhauMoi.Text.Trim())
                 {
-                    TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(CNguoiDung.MaND);
+                    NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(CNguoiDung.MaND);
                     nguoidung.MatKhau = txtMatKhauMoi.Text.Trim();
                     _cNguoiDung.Sua(nguoidung);
                     txtMatKhauCu.Text = "";

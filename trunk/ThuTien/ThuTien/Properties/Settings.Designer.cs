@@ -26,10 +26,10 @@ namespace ThuTien.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=HOADON_TA;User ID=sa;Password=123@tanhoa")]
-        public string HOADON_TAConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ThuTien;User ID=sa;Password=123@tanhoa")]
+        public string ThuTienConnectionString {
             get {
-                return ((string)(this["HOADON_TAConnectionString"]));
+                return ((string)(this["ThuTienConnectionString"]));
             }
         }
     }

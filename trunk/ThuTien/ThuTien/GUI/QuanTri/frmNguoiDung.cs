@@ -57,7 +57,7 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (txtHoTen.Text.Trim() != "" && txtTaiKhoan.Text.Trim() != "" && txtMatKhau.Text.Trim() != "")
                 {
-                    TT_NguoiDung nguoidung = new TT_NguoiDung();
+                    NguoiDung nguoidung = new NguoiDung();
                     nguoidung.HoTen = txtHoTen.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
@@ -68,10 +68,10 @@ namespace ThuTien.GUI.QuanTri
                     ///tự động thêm quyền cho nhóm mới
                     foreach (var item in _cMenu.GetDSMenu())
                     {
-                        TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
+                        PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
                         phanquyennguoidung.MaMenu = item.MaMenu;
                         phanquyennguoidung.MaND = nguoidung.MaND;
-                        nguoidung.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                        nguoidung.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                     }
                     _cNguoiDung.Them(nguoidung);
                     Clear();
@@ -87,13 +87,27 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (_selectedindex != -1)
                 {
-                    TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
+                    NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
                     nguoidung.HoTen = txtHoTen.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                     _cNguoiDung.Sua(nguoidung);
+                    DataTable dt = ((DataView)gridView.DataSource).Table;
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        PhanQuyenNguoiDung phanquyennguoidung = _cPhanQuyenNguoiDung.GetPhanQuyenNguoiDungByMaMenuMaND(int.Parse(item["MaMenu"].ToString()), nguoidung.MaND);
+                        if (phanquyennguoidung.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennguoidung.Them != bool.Parse(item["Them"].ToString()) ||
+                            phanquyennguoidung.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennguoidung.Xoa != bool.Parse(item["Xoa"].ToString()))
+                        {
+                            phanquyennguoidung.Xem = bool.Parse(item["Xem"].ToString());
+                            phanquyennguoidung.Them = bool.Parse(item["Them"].ToString());
+                            phanquyennguoidung.Sua = bool.Parse(item["Sua"].ToString());
+                            phanquyennguoidung.Xoa = bool.Parse(item["Xoa"].ToString());
+                            _cPhanQuyenNguoiDung.Sua(phanquyennguoidung);
+                        }
+                    }
                     Clear();
                 }
             }
@@ -108,9 +122,9 @@ namespace ThuTien.GUI.QuanTri
                 if (_selectedindex != -1)
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
+                        NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
                         ///xóa quan hệ 1 nhiều
-                        _cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
+                        _cPhanQuyenNguoiDung.Xoa(nguoidung.PhanQuyenNguoiDungs.ToList());
                         _cNguoiDung.Xoa(nguoidung);
                         Clear();
                     }
@@ -126,6 +140,7 @@ namespace ThuTien.GUI.QuanTri
             txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
             cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
             cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
+            gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSPhanQuyenNguoiDungByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
         }
 
         private void dgvNguoiDung_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
