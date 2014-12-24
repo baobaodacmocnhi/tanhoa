@@ -42,7 +42,6 @@
             this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaMenu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TextMenu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ToanQuyen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Xem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.Them = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,7 +50,9 @@
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.Xoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.ToanQuyen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -60,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnXoa
@@ -103,7 +105,7 @@
             this.dgvNhom.Location = new System.Drawing.Point(12, 38);
             this.dgvNhom.Name = "dgvNhom";
             this.dgvNhom.ReadOnly = true;
-            this.dgvNhom.Size = new System.Drawing.Size(170, 200);
+            this.dgvNhom.Size = new System.Drawing.Size(170, 309);
             this.dgvNhom.TabIndex = 8;
             this.dgvNhom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhom_CellContentClick);
             this.dgvNhom.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNhom_RowPostPaint);
@@ -141,7 +143,7 @@
             // 
             // gridControl
             // 
-            this.gridControl.Location = new System.Drawing.Point(282, 12);
+            this.gridControl.Location = new System.Drawing.Point(13, 19);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -210,15 +212,6 @@
             this.TextMenu.VisibleIndex = 0;
             this.TextMenu.Width = 150;
             // 
-            // ToanQuyen
-            // 
-            this.ToanQuyen.Caption = "Toàn Quyền";
-            this.ToanQuyen.ColumnEdit = this.repositoryItemCheckEdit5;
-            this.ToanQuyen.FieldName = "ToanQuyen";
-            this.ToanQuyen.Name = "ToanQuyen";
-            this.ToanQuyen.Visible = true;
-            this.ToanQuyen.VisibleIndex = 5;
-            // 
             // Xem
             // 
             this.Xem.Caption = "Xem";
@@ -279,18 +272,37 @@
             this.repositoryItemCheckEdit4.Caption = "Check";
             this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
             // 
+            // ToanQuyen
+            // 
+            this.ToanQuyen.Caption = "Toàn Quyền";
+            this.ToanQuyen.ColumnEdit = this.repositoryItemCheckEdit5;
+            this.ToanQuyen.FieldName = "ToanQuyen";
+            this.ToanQuyen.Name = "ToanQuyen";
+            this.ToanQuyen.Visible = true;
+            this.ToanQuyen.VisibleIndex = 5;
+            // 
             // repositoryItemCheckEdit5
             // 
             this.repositoryItemCheckEdit5.AutoHeight = false;
             this.repositoryItemCheckEdit5.Caption = "Check";
             this.repositoryItemCheckEdit5.Name = "repositoryItemCheckEdit5";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.gridControl);
+            this.groupBox1.Location = new System.Drawing.Point(269, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(599, 335);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Phân Quyền";
+            // 
             // frmNhom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(916, 328);
-            this.Controls.Add(this.gridControl);
+            this.ClientSize = new System.Drawing.Size(887, 365);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -308,6 +320,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,5 +352,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
         private DevExpress.XtraGrid.Columns.GridColumn STT;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -45,7 +45,7 @@ namespace ThuTien.GUI.HeThong
 
             if (_cNguoiDung.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
-                TT_NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByTaiKhoan(txtTaiKhoan.Text.Trim());
+                NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByTaiKhoan(txtTaiKhoan.Text.Trim());
                 CNguoiDung.MaND = nguoidung.MaND;
                 CNguoiDung.HoTen = nguoidung.HoTen;
                 if (nguoidung.MaNhom != null)

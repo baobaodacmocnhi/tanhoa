@@ -41,7 +41,7 @@ namespace ThuTien.GUI.HeThong
                 {
                     if (!_cMenu.CheckExistByTenMenu(itemChild.Name))
                     {
-                        TT_Menu menu = new TT_Menu();
+                        MenuForm menu = new MenuForm();
                         menu.STT = STT++;
                         menu.TenMenu = itemChild.Name;
                         menu.TextMenu = itemChild.Text;
@@ -49,27 +49,34 @@ namespace ThuTien.GUI.HeThong
                         menu.TextMenuCha = itemParent.Text;
                         foreach (var item in _cNhom.GetDSNhom())
                         {
-                            TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
+                            PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
                             phanquyennhom.MaMenu = menu.MaMenu;
                             phanquyennhom.MaNhom = item.MaNhom;
                             phanquyennhom.CreateBy = CNguoiDung.MaND;
                             phanquyennhom.CreateDate = DateTime.Now;
-                            menu.TT_PhanQuyenNhoms.Add(phanquyennhom);
+                            menu.PhanQuyenNhoms.Add(phanquyennhom);
                         }
                         foreach (var item in _cNguoiDung.GetDSNguoiDung())
                         {
-                            TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
+                            PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
                             phanquyennguoidung.MaMenu = menu.MaMenu;
                             phanquyennguoidung.MaND = item.MaND;
                             phanquyennguoidung.CreateBy = CNguoiDung.MaND;
                             phanquyennguoidung.CreateDate = DateTime.Now;
-                            menu.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                            if (item.MaND == 0)
+                            {
+                                phanquyennguoidung.Xem = true;
+                                phanquyennguoidung.Them = true;
+                                phanquyennguoidung.Sua = true;
+                                phanquyennguoidung.Xoa = true;
+                            }
+                            menu.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                         }
                         _cMenu.Them(menu);
                     }
                     else
                     {
-                        TT_Menu menu = _cMenu.GetMenuByTenMenu(itemChild.Name);
+                        MenuForm menu = _cMenu.GetMenuByTenMenu(itemChild.Name);
                         menu.STT = STT++;
                         _cMenu.Sua(menu);
                     }
@@ -87,7 +94,7 @@ namespace ThuTien.GUI.HeThong
                 {
                     if (!_cPhanQuyenNhom.CheckPhanQuyenNhomByMaMenuMaNhom(itemMenu.MaMenu, itemNhom.MaNhom))
                     {
-                        TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
+                        PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
                         phanquyennhom.MaMenu = itemMenu.MaMenu;
                         phanquyennhom.MaNhom = itemNhom.MaNhom;
                         _cPhanQuyenNhom.Them(phanquyennhom);
@@ -104,9 +111,16 @@ namespace ThuTien.GUI.HeThong
                 {
                     if (!_cPhanQuyenNguoiDung.CheckPhanQuyenNguoiDungByMaMenuMaND(itemMenu.MaMenu, itemND.MaND))
                     {
-                        TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
+                        PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
                         phanquyennguoidung.MaMenu = itemMenu.MaMenu;
                         phanquyennguoidung.MaND = itemND.MaND;
+                        if (phanquyennguoidung.MaND == 0)
+                        {
+                            phanquyennguoidung.Xem = true;
+                            phanquyennguoidung.Them = true;
+                            phanquyennguoidung.Sua = true;
+                            phanquyennguoidung.Xoa = true;
+                        }
                         _cPhanQuyenNguoiDung.Them(phanquyennguoidung);
                     }
                 }

@@ -90,28 +90,28 @@ namespace ThuTien.DAL.QuanTri
                     return false;
         }
 
-        public bool Them(TT_NguoiDung nguoidung)
+        public bool Them(NguoiDung nguoidung)
         {
             try
             {
-                if (_db.TT_NguoiDungs.Count() > 0)
-                    nguoidung.MaND = _db.TT_NguoiDungs.Max(item => item.MaND) + 1;
+                if (_db.NguoiDungs.Count() > 0)
+                    nguoidung.MaND = _db.NguoiDungs.Max(item => item.MaND) + 1;
                 else
                     nguoidung.MaND = 1;
                 nguoidung.CreateDate = DateTime.Now;
                 nguoidung.CreateBy = CNguoiDung.MaND;
-                _db.TT_NguoiDungs.InsertOnSubmit(nguoidung);
+                _db.NguoiDungs.InsertOnSubmit(nguoidung);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Sua(TT_NguoiDung nguoidung)
+        public bool Sua(NguoiDung nguoidung)
         {
             try
             {
@@ -122,49 +122,49 @@ namespace ThuTien.DAL.QuanTri
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool Xoa(TT_NguoiDung nguoidung)
+        public bool Xoa(NguoiDung nguoidung)
         {
             try
             {
-                _db.TT_NguoiDungs.DeleteOnSubmit(nguoidung);
+                _db.NguoiDungs.DeleteOnSubmit(nguoidung);
                 _db.SubmitChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public List<TT_NguoiDung> GetDSNguoiDung()
+        public List<NguoiDung> GetDSNguoiDung()
         {
-            return _db.TT_NguoiDungs.ToList();
+            return _db.NguoiDungs.ToList();
         }
 
-        public List<TT_NguoiDung> GetDSNguoiDungExceptMaND(int MaND)
+        public List<NguoiDung> GetDSNguoiDungExceptMaND(int MaND)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).ToList();
+            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).ToList();
         }
 
-        public TT_NguoiDung GetNguoiDungByMaND(int MaND)
+        public NguoiDung GetNguoiDungByMaND(int MaND)
         {
-            return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == MaND);
+            return _db.NguoiDungs.SingleOrDefault(item => item.MaND == MaND);
         }
 
-        public TT_NguoiDung GetNguoiDungByTaiKhoan(string TaiKhoan)
+        public NguoiDung GetNguoiDungByTaiKhoan(string TaiKhoan)
         {
-            return _db.TT_NguoiDungs.SingleOrDefault(item => item.TaiKhoan == TaiKhoan);
+            return _db.NguoiDungs.SingleOrDefault(item => item.TaiKhoan == TaiKhoan);
         }
 
         public bool DangNhap(string TaiKhoan, string MatKhau)
         {
-            return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
+            return _db.NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
         }
     }
 }

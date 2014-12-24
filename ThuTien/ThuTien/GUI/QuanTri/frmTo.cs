@@ -41,7 +41,7 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (txtTenTo.Text.Trim() != "")
                 {
-                    TT_To to = new TT_To();
+                    To to = new To();
                     to.TenTo = txtTenTo.Text.Trim();
                     _cTo.Them(to);
                     Clear();
@@ -57,7 +57,7 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (_selectedindex != -1)
                 {
-                    TT_To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                    To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                     to.TenTo = txtTenTo.Text.Trim();
                     _cTo.Sua(to);
                     Clear();
@@ -74,7 +74,7 @@ namespace ThuTien.GUI.QuanTri
                 if (_selectedindex != -1)
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        TT_To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
+                        To to = _cTo.GetToByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                         _cTo.Xoa(to);
                         Clear();
                     }
