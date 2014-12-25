@@ -374,7 +374,7 @@ namespace QLVanThu
                 }
 
                 //Thiết lập vùng điền dữ liệu
-                int rowStart = 11;
+                int rowStart = 12;
                 int columnStart = 1;
 
                 int rowEnd = rowStart + dt.Rows.Count - 1;
@@ -392,7 +392,11 @@ namespace QLVanThu
 
                 // Kẻ viền
                 range.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
-                range.AutoFilter(1, Type.Missing, Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlAnd, Type.Missing, true);
+                // Tạo filter
+                Microsoft.Office.Interop.Excel.Range c1z = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowStart - 1, columnStart];
+                Microsoft.Office.Interop.Excel.Range c2z = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowEnd, columnEnd];
+                Microsoft.Office.Interop.Excel.Range rangez = oSheetTongHop.get_Range(c1z, c2z);
+                rangez.AutoFilter(1, Type.Missing, Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlAnd, Type.Missing, true);
                 // Font tổng thể
                 Microsoft.Office.Interop.Excel.Range c3 = (Microsoft.Office.Interop.Excel.Range)oSheetTongHop.Cells[rowEnd, columnStart];
                 Microsoft.Office.Interop.Excel.Range c4 = oSheetTongHop.get_Range(c1, c3);
@@ -617,7 +621,7 @@ namespace QLVanThu
                 }
 
                 //Thiết lập vùng điền dữ liệu
-                int rowStart = 11;
+                int rowStart = 12;
                 int columnStart = 1;
 
                 int rowEnd = rowStart + dt.Rows.Count - 1;
@@ -635,7 +639,11 @@ namespace QLVanThu
 
                 // Kẻ viền
                 range.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
-                range.AutoFilter(1, Type.Missing, Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlAnd, Type.Missing, true);
+                //Tạo filter
+                Microsoft.Office.Interop.Excel.Range c1z = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart - 1, columnStart];
+                Microsoft.Office.Interop.Excel.Range c2z = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+                Microsoft.Office.Interop.Excel.Range rangez = oSheet.get_Range(c1z, c2z);
+                rangez.AutoFilter(1, Type.Missing, Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlAnd, Type.Missing, true);
                 // Font tổng thể
                 Microsoft.Office.Interop.Excel.Range c3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnStart];
                 Microsoft.Office.Interop.Excel.Range c4 = oSheet.get_Range(c1, c3);
@@ -766,9 +774,9 @@ namespace QLVanThu
                 {
                     a[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
                 }
-                
+
             }
-            
+
             for (int i = 0; i < temp.Rows.Count; i++)
             {
                 DataRow dr = temp.Rows[i];
