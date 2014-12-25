@@ -14770,6 +14770,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SoCongVan;
 		
+		private System.Nullable<int> _TongSoDanhBo;
+		
 		private string _DanhBo;
 		
 		private string _HopDong;
@@ -14894,6 +14896,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaXepDonChanged();
     partial void OnSoCongVanChanging(string value);
     partial void OnSoCongVanChanged();
+    partial void OnTongSoDanhBoChanging(System.Nullable<int> value);
+    partial void OnTongSoDanhBoChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
@@ -15062,6 +15066,26 @@ namespace KTKS_DonKH.LinQ
 					this._SoCongVan = value;
 					this.SendPropertyChanged("SoCongVan");
 					this.OnSoCongVanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongSoDanhBo", DbType="Int")]
+		public System.Nullable<int> TongSoDanhBo
+		{
+			get
+			{
+				return this._TongSoDanhBo;
+			}
+			set
+			{
+				if ((this._TongSoDanhBo != value))
+				{
+					this.OnTongSoDanhBoChanging(value);
+					this.SendPropertyChanging();
+					this._TongSoDanhBo = value;
+					this.SendPropertyChanged("TongSoDanhBo");
+					this.OnTongSoDanhBoChanged();
 				}
 			}
 		}
@@ -16310,6 +16334,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SoCongVan;
 		
+		private System.Nullable<int> _TongSoDanhBo;
+		
 		private string _DanhBo;
 		
 		private string _HopDong;
@@ -16414,6 +16440,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnMaXepDonChanged();
     partial void OnSoCongVanChanging(string value);
     partial void OnSoCongVanChanged();
+    partial void OnTongSoDanhBoChanging(System.Nullable<int> value);
+    partial void OnTongSoDanhBoChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHopDongChanging(string value);
@@ -16561,6 +16589,26 @@ namespace KTKS_DonKH.LinQ
 					this._SoCongVan = value;
 					this.SendPropertyChanged("SoCongVan");
 					this.OnSoCongVanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongSoDanhBo", DbType="Int")]
+		public System.Nullable<int> TongSoDanhBo
+		{
+			get
+			{
+				return this._TongSoDanhBo;
+			}
+			set
+			{
+				if ((this._TongSoDanhBo != value))
+				{
+					this.OnTongSoDanhBoChanging(value);
+					this.SendPropertyChanging();
+					this._TongSoDanhBo = value;
+					this.SendPropertyChanged("TongSoDanhBo");
+					this.OnTongSoDanhBoChanged();
 				}
 			}
 		}
