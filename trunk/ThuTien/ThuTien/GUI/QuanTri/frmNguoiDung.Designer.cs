@@ -176,6 +176,7 @@
             this.MaNhom,
             this.TenNhom});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
+            this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
             this.dgvNguoiDung.ReadOnly = true;
             this.dgvNguoiDung.Size = new System.Drawing.Size(474, 509);

@@ -103,6 +103,7 @@
             this.MaNhom,
             this.TenNhom});
             this.dgvNhom.Location = new System.Drawing.Point(12, 38);
+            this.dgvNhom.MultiSelect = false;
             this.dgvNhom.Name = "dgvNhom";
             this.dgvNhom.ReadOnly = true;
             this.dgvNhom.Size = new System.Drawing.Size(170, 309);

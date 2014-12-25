@@ -150,7 +150,7 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _Khu;
 		
-		private string _Dot;
+		private System.Nullable<int> _Dot;
 		
 		private string _DanhBo;
 		
@@ -238,7 +238,7 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _TongCongBuToiThieu;
 		
-		private string _SoPhatHanh;
+		private System.Nullable<int> _SoPhatHanh;
 		
 		private string _SoHoaDon;
 		
@@ -274,7 +274,7 @@ namespace ThuTien.LinQ
     partial void OnMaHDChanged();
     partial void OnKhuChanging(System.Nullable<int> value);
     partial void OnKhuChanged();
-    partial void OnDotChanging(string value);
+    partial void OnDotChanging(System.Nullable<int> value);
     partial void OnDotChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
@@ -362,7 +362,7 @@ namespace ThuTien.LinQ
     partial void OnPhiBVMTBuToiThieuChanged();
     partial void OnTongCongBuToiThieuChanging(System.Nullable<int> value);
     partial void OnTongCongBuToiThieuChanged();
-    partial void OnSoPhatHanhChanging(string value);
+    partial void OnSoPhatHanhChanging(System.Nullable<int> value);
     partial void OnSoPhatHanhChanged();
     partial void OnSoHoaDonChanging(string value);
     partial void OnSoHoaDonChanged();
@@ -437,8 +437,8 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dot", DbType="NVarChar(50)")]
-		public string Dot
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dot", DbType="Int")]
+		public System.Nullable<int> Dot
 		{
 			get
 			{
@@ -1317,8 +1317,8 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhatHanh", DbType="NVarChar(50)")]
-		public string SoPhatHanh
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhatHanh", DbType="Int")]
+		public System.Nullable<int> SoPhatHanh
 		{
 			get
 			{

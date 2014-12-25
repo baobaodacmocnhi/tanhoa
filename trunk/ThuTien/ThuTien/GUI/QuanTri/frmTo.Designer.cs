@@ -64,6 +64,7 @@
             this.MaTo,
             this.TenTo});
             this.dgvTo.Location = new System.Drawing.Point(12, 38);
+            this.dgvTo.MultiSelect = false;
             this.dgvTo.Name = "dgvTo";
             this.dgvTo.ReadOnly = true;
             this.dgvTo.Size = new System.Drawing.Size(170, 200);

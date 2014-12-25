@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ThuTien" Class="dbThuTienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=ThuTien;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="ThuTienConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SERVERG8-02\SERVER2008R2;Initial Catalog=ThuTien;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="ThuTienConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.HoaDon" Member="HoaDons">
     <Type Name="HoaDon">
       <Column Name="MaHD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Khu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dot" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CuLy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -48,7 +48,7 @@
       <Column Name="ThueGTGTBuToiThieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMTBuToiThieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCongBuToiThieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoPhatHanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoPhatHanh" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoHoaDon" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NgayPhatHanh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Quan" Type="System.Int32" DbType="Int" CanBeNull="true" />
