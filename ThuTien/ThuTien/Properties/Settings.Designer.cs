@@ -26,7 +26,8 @@ namespace ThuTien.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ThuTien;User ID=sa;Password=123@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVERG8-02\\SERVER2008R2;Initial Catalog=ThuTien;Persist Security Inf" +
+            "o=True;User ID=sa;Password=123@tanhoa")]
         public string ThuTienConnectionString {
             get {
                 return ((string)(this["ThuTienConnectionString"]));

@@ -88,6 +88,6 @@ namespace ThuTien.DAL.QuanTri
                 new { item.MenuForm.TextMenuCha, item.MenuForm.STT, item.MaMenu, item.MenuForm.TenMenu, item.MenuForm.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa }).ToList());
         }
 
-        //public bool GetPhanQuyenNhomBy
+
     }
 }
