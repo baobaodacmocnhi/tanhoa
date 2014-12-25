@@ -51,6 +51,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtNgayNhan.Text = "";
             txtNoiDung.Text = "";
             txtSoCongVan.Text = "";
+            txtTongSoDanhBo.Text = "1";
 
             chkKiemTraDHN.Checked = false;
             chkTienNuoc.Checked = false;
@@ -173,6 +174,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     donkh.MaDon = _cDonKH.getMaxNextID();
                     donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                     donkh.SoCongVan = txtSoCongVan.Text.Trim();
+                    donkh.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
                     donkh.NoiDung = txtNoiDung.Text.Trim();
                     donkh.MaXepDon = decimal.Parse(txtMaXepDon.Text.Trim().Substring(0, txtMaXepDon.Text.Trim().IndexOf("/")).Replace("-", ""));
 
@@ -447,6 +449,12 @@ namespace KTKS_DonKH.GUI.KhachHang
                 _cDonKH.rollback();
             }
 
+        }
+
+        private void txtTongSoDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
 
     }

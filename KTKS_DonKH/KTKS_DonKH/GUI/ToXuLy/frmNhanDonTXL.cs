@@ -57,6 +57,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             txtNgayNhan.Text = "";
             txtNoiDung.Text = "";
             txtSoCongVan.Text = "";
+            txtTongSoDanhBo.Text = "1";
             ///
             txtHopDong.Text = "";
             txtHoTen.Text = "";
@@ -127,6 +128,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dontxl.MaDon = _cDonTXL.getMaxNextID();
                     dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                     dontxl.SoCongVan = txtSoCongVan.Text.Trim();
+                    dontxl.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
                     dontxl.NoiDung = txtNoiDung.Text.Trim();
 
                     dontxl.DanhBo = txtDanhBo.Text.Trim();
@@ -236,6 +238,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                     cmbLD.SelectedValue = _dontxl.MaLD.Value;
                     txtSoCongVan.Text = _dontxl.SoCongVan;
+                    txtTongSoDanhBo.Text = _dontxl.TongSoDanhBo.Value.ToString();
                     txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                     txtNgayNhan.Text = _dontxl.CreateDate.Value.ToString("dd/MM/yyyy");
                     txtNoiDung.Text = _dontxl.NoiDung;
@@ -341,6 +344,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                 _dontxl.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                 _dontxl.SoCongVan = txtSoCongVan.Text.Trim();
+                _dontxl.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
                 if (_ttkhachhang != null && _dontxl.DanhBo != txtDanhBo.Text.Trim())
                 {
                     _dontxl.Dot = _ttkhachhang.Dot;
@@ -458,6 +462,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 {
                     dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTXL(_dontxl.MaDon);
                 }
+        }
+
+        private void txtTongSoDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
 
         

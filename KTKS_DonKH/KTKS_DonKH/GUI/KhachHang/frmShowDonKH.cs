@@ -54,6 +54,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 cmbLD.SelectedValue = _donkh.MaLD.Value;
                 txtSoCongVan.Text = _donkh.SoCongVan;
+                txtTongSoDanhBo.Text = _donkh.TongSoDanhBo.Value.ToString();
                 txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                 txtNgayNhan.Text = _donkh.CreateDate.Value.ToString("dd/MM/yyyy");
                 txtNoiDung.Text = _donkh.NoiDung;
@@ -369,6 +370,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 _donkh.MaLD = int.Parse(cmbLD.SelectedValue.ToString());
                 _donkh.SoCongVan = txtSoCongVan.Text.Trim();
+                _donkh.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
                 if (_donkh.DanhBo != txtDanhBo.Text.Trim())
                 {
                     _donkh.Dot = Dot;
@@ -651,6 +653,12 @@ namespace KTKS_DonKH.GUI.KhachHang
         private void frmShowDonKH_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void txtTongSoDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
 
        
