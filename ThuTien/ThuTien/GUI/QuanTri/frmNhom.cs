@@ -28,14 +28,14 @@ namespace ThuTien.GUI.QuanTri
         {
             _selectedindex = -1;
             txtTenNhom.Text = "";
-            dgvNhom.DataSource = _cNhom.GetDSNhom();
+            dgvNhom.DataSource = _cNhom.GetDS();
             gridControl.DataSource = null;
         }
 
         private void frmNhom_Load(object sender, EventArgs e)
         {
             dgvNhom.AutoGenerateColumns = false;
-            dgvNhom.DataSource = _cNhom.GetDSNhom();
+            dgvNhom.DataSource = _cNhom.GetDS();
 
         }
 
@@ -45,15 +45,15 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (txtTenNhom.Text.Trim() != "")
                 {
-                    Nhom nhom = new Nhom();
+                    TT_Nhom nhom = new TT_Nhom();
                     nhom.TenNhom = txtTenNhom.Text.Trim();
                     ///tự động thêm quyền cho nhóm mới
-                    foreach (var item in _cMenu.GetDSMenu())
+                    foreach (var item in _cMenu.GetDS())
                     {
-                        PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
+                        TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
                         phanquyennhom.MaMenu = item.MaMenu;
                         phanquyennhom.MaNhom = nhom.MaNhom;
-                        nhom.PhanQuyenNhoms.Add(phanquyennhom);
+                        nhom.TT_PhanQuyenNhoms.Add(phanquyennhom);
                     }
                     _cNhom.Them(nhom);
                     Clear();
@@ -69,13 +69,13 @@ namespace ThuTien.GUI.QuanTri
             {
                 if (_selectedindex != -1)
                 {
-                    Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                    TT_Nhom nhom = _cNhom.GetByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
                     nhom.TenNhom = txtTenNhom.Text.Trim();
                     _cNhom.Sua(nhom);
                     DataTable dt = ((DataView)gridView.DataSource).Table;
                     foreach (DataRow item in dt.Rows)
                     {
-                        PhanQuyenNhom phanquyennhom = _cPhanQuyenNhom.GetPhanQuyenNhomByMaMenuMaNhom(int.Parse(item["MaMenu"].ToString()), nhom.MaNhom);
+                        TT_PhanQuyenNhom phanquyennhom = _cPhanQuyenNhom.GetByMaMenuMaNhom(int.Parse(item["MaMenu"].ToString()), nhom.MaNhom);
                         if (phanquyennhom.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennhom.Them != bool.Parse(item["Them"].ToString()) ||
                             phanquyennhom.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennhom.Xoa != bool.Parse(item["Xoa"].ToString()))
                         {
@@ -100,9 +100,9 @@ namespace ThuTien.GUI.QuanTri
                 if (_selectedindex != -1)
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        Nhom nhom = _cNhom.GetNhomByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                        TT_Nhom nhom = _cNhom.GetByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
                         ///xóa quan hệ 1 nhiều
-                        _cPhanQuyenNhom.Xoa(nhom.PhanQuyenNhoms.ToList());
+                        _cPhanQuyenNhom.Xoa(nhom.TT_PhanQuyenNhoms.ToList());
                         _cNhom.Xoa(nhom);
                         Clear();
                     }
@@ -115,7 +115,7 @@ namespace ThuTien.GUI.QuanTri
         {
             _selectedindex = e.RowIndex;
             txtTenNhom.Text = dgvNhom["TenNhom", e.RowIndex].Value.ToString();
-            gridControl.DataSource = _cPhanQuyenNhom.GetDSPhanQuyenNhomByMaNhom(int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
+            gridControl.DataSource = _cPhanQuyenNhom.GetDSByMaNhom(int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
         }
 
         private void dgvNhom_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

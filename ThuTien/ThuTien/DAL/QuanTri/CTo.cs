@@ -8,17 +8,17 @@ namespace ThuTien.DAL.QuanTri
 {
     class CTo:CDAL
     {
-        public bool Them(To to)
+        public bool Them(TT_To to)
         {
             try
             {
-                if (_db.Tos.Count() > 0)
-                    to.MaTo = _db.Tos.Max(item => item.MaTo) + 1;
+                if (_db.TT_Tos.Count() > 0)
+                    to.MaTo = _db.TT_Tos.Max(item => item.MaTo) + 1;
                 else
                     to.MaTo = 1;
                 to.CreateDate = DateTime.Now;
                 to.CreateBy = CNguoiDung.MaND;
-                _db.Tos.InsertOnSubmit(to);
+                _db.TT_Tos.InsertOnSubmit(to);
                 _db.SubmitChanges();
                 return true;
             }
@@ -29,7 +29,7 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Sua(To to)
+        public bool Sua(TT_To to)
         {
             try
             {
@@ -45,11 +45,11 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Xoa(To to)
+        public bool Xoa(TT_To to)
         {
             try
             {
-                _db.Tos.DeleteOnSubmit(to);
+                _db.TT_Tos.DeleteOnSubmit(to);
                 _db.SubmitChanges();
                 return true;
             }
@@ -60,19 +60,19 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public List<To> GetDSTo()
+        public List<TT_To> GetDS()
         {
-            return _db.Tos.ToList();
+            return _db.TT_Tos.ToList();
         }
 
-        public To GetToByMaTo(int MaTo)
+        public TT_To GetByMaTo(int MaTT_To)
         {
-            return _db.Tos.SingleOrDefault(item => item.MaTo == MaTo);
+            return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTT_To);
         }
 
-        public string GetTenToByMaTo(int MaTo)
+        public string GetTenToByMaTo(int MaTT_To)
         {
-            return _db.Tos.SingleOrDefault(item => item.MaTo == MaTo).TenTo;
+            return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTT_To).TenTo;
         }
     }
 }

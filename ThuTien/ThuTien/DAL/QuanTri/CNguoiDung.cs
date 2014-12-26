@@ -90,17 +90,17 @@ namespace ThuTien.DAL.QuanTri
                     return false;
         }
 
-        public bool Them(NguoiDung nguoidung)
+        public bool Them(TT_NguoiDung nguoidung)
         {
             try
             {
-                if (_db.NguoiDungs.Count() > 0)
-                    nguoidung.MaND = _db.NguoiDungs.Max(item => item.MaND) + 1;
+                if (_db.TT_NguoiDungs.Count() > 0)
+                    nguoidung.MaND = _db.TT_NguoiDungs.Max(item => item.MaND) + 1;
                 else
                     nguoidung.MaND = 1;
                 nguoidung.CreateDate = DateTime.Now;
                 nguoidung.CreateBy = CNguoiDung.MaND;
-                _db.NguoiDungs.InsertOnSubmit(nguoidung);
+                _db.TT_NguoiDungs.InsertOnSubmit(nguoidung);
                 _db.SubmitChanges();
                 return true;
             }
@@ -111,7 +111,7 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Sua(NguoiDung nguoidung)
+        public bool Sua(TT_NguoiDung nguoidung)
         {
             try
             {
@@ -127,11 +127,11 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Xoa(NguoiDung nguoidung)
+        public bool Xoa(TT_NguoiDung nguoidung)
         {
             try
             {
-                _db.NguoiDungs.DeleteOnSubmit(nguoidung);
+                _db.TT_NguoiDungs.DeleteOnSubmit(nguoidung);
                 _db.SubmitChanges();
                 return true;
             }
@@ -142,29 +142,29 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public List<NguoiDung> GetDSNguoiDung()
+        public List<TT_NguoiDung> GetDS()
         {
-            return _db.NguoiDungs.ToList();
+            return _db.TT_NguoiDungs.ToList();
         }
 
-        public List<NguoiDung> GetDSNguoiDungExceptMaND(int MaND)
+        public List<TT_NguoiDung> GetDSExceptMaND(int MaND)
         {
-            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).ToList();
         }
 
-        public NguoiDung GetNguoiDungByMaND(int MaND)
+        public TT_NguoiDung GetByMaND(int MaND)
         {
-            return _db.NguoiDungs.SingleOrDefault(item => item.MaND == MaND);
+            return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == MaND);
         }
 
-        public NguoiDung GetNguoiDungByTaiKhoan(string TaiKhoan)
+        public TT_NguoiDung GetByTaiKhoan(string TaiKhoan)
         {
-            return _db.NguoiDungs.SingleOrDefault(item => item.TaiKhoan == TaiKhoan);
+            return _db.TT_NguoiDungs.SingleOrDefault(item => item.TaiKhoan == TaiKhoan);
         }
 
         public bool DangNhap(string TaiKhoan, string MatKhau)
         {
-            return _db.NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
+            return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
         }
     }
 }

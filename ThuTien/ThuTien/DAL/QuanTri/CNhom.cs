@@ -8,17 +8,17 @@ namespace ThuTien.DAL.QuanTri
 {
     class CNhom:CDAL
     {
-        public bool Them(Nhom nhom)
+        public bool Them(TT_Nhom nhom)
         {
             try
             {
-                if (_db.Nhoms.Count() > 0)
-                    nhom.MaNhom = _db.Nhoms.Max(item => item.MaNhom) + 1;
+                if (_db.TT_Nhoms.Count() > 0)
+                    nhom.MaNhom = _db.TT_Nhoms.Max(item => item.MaNhom) + 1;
                 else
                     nhom.MaNhom = 1;
                 nhom.CreateDate = DateTime.Now;
                 nhom.CreateBy = CNguoiDung.MaND;
-                _db.Nhoms.InsertOnSubmit(nhom);
+                _db.TT_Nhoms.InsertOnSubmit(nhom);
                 _db.SubmitChanges();
                 return true;
             }
@@ -29,7 +29,7 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Sua(Nhom nhom)
+        public bool Sua(TT_Nhom nhom)
         {
             try
             {
@@ -45,11 +45,11 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Xoa(Nhom nhom)
+        public bool Xoa(TT_Nhom nhom)
         {
             try
             {
-                _db.Nhoms.DeleteOnSubmit(nhom);
+                _db.TT_Nhoms.DeleteOnSubmit(nhom);
                 _db.SubmitChanges();
                 return true;
             }
@@ -60,19 +60,19 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public List<Nhom> GetDSNhom()
+        public List<TT_Nhom> GetDS()
         {
-            return _db.Nhoms.ToList();
+            return _db.TT_Nhoms.ToList();
         }
 
-        public Nhom GetNhomByMaNhom(int MaNhom)
+        public TT_Nhom GetByMaNhom(int MaTT_Nhom)
         {
-            return _db.Nhoms.SingleOrDefault(item => item.MaNhom == MaNhom);
+            return _db.TT_Nhoms.SingleOrDefault(item => item.MaNhom == MaTT_Nhom);
         }
 
-        public string GetTenNhomByMaNhom(int MaNhom)
+        public string GetTenNhomByMaNhom(int MaTT_Nhom)
         {
-            return _db.Nhoms.SingleOrDefault(item => item.MaNhom == MaNhom).TenNhom;
+            return _db.TT_Nhoms.SingleOrDefault(item => item.MaNhom == MaTT_Nhom).TenNhom;
         }
     }
 }
