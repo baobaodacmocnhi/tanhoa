@@ -63,17 +63,23 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
+    <Compile Include="GUI\ToTruong\frmGiaoHDHanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoHDHanhThu.Designer.cs">
+      <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Doi\frmLuuHoaDon.cs">
+    <Compile Include="GUI\Doi\frmLuuHD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Doi\frmLuuHoaDon.Designer.cs">
-      <DependentUpon>frmLuuHoaDon.cs</DependentUpon>
+    <Compile Include="GUI\Doi\frmLuuHD.Designer.cs">
+      <DependentUpon>frmLuuHD.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HeThong\frmAdmin.cs">
       <SubType>Form</SubType>
@@ -118,6 +124,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDHanhThu.resx">
+      <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,8 +134,8 @@
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="GUI\Doi\frmLuuHoaDon.resx">
-      <DependentUpon>frmLuuHoaDon.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Doi\frmLuuHD.resx">
+      <DependentUpon>frmLuuHD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
@@ -174,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\HeThong\" />
+    <Folder Include="DAL\ToTruong\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

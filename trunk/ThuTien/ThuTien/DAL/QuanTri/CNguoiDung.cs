@@ -22,6 +22,13 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._HoTen = value; }
         }
 
+        static int _MaTo;
+        public static int MaTo
+        {
+            get { return CNguoiDung._MaTo; }
+            set { CNguoiDung._MaTo = value; }
+        }
+
         static System.Data.DataTable _dtQuyenNhom;
         public static System.Data.DataTable dtQuyenNhom
         {
@@ -147,9 +154,24 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.ToList();
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Nhân Viên ngoài trừ Mã ND truyền vào
+        /// </summary>
+        /// <param name="MaND"></param>
+        /// <returns></returns>
         public List<TT_NguoiDung> GetDSExceptMaND(int MaND)
         {
             return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).ToList();
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Nhân Viên thuộc Tổ truyền vào
+        /// </summary>
+        /// <param name="MaTo"></param>
+        /// <returns></returns>
+        public List<TT_NguoiDung> GetDSByMaTo(int MaTo)
+        {
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo).ToList();
         }
 
         public TT_NguoiDung GetByMaND(int MaND)
@@ -166,5 +188,7 @@ namespace ThuTien.DAL.QuanTri
         {
             return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
         }
+
+
     }
 }

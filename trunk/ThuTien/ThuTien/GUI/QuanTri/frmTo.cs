@@ -26,6 +26,8 @@ namespace ThuTien.GUI.QuanTri
         {
             _selectedindex = -1;
             txtTenTo.Text = "";
+            txtTuCuonGCS.Text = "";
+            txtDenCuonGCS.Text = "";
             dgvTo.DataSource = _cTo.GetDS();
         }
 
@@ -43,6 +45,10 @@ namespace ThuTien.GUI.QuanTri
                 {
                     TT_To to = new TT_To();
                     to.TenTo = txtTenTo.Text.Trim();
+                    if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
+                        to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
+                        to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
                     _cTo.Them(to);
                     Clear();
                 }
@@ -59,6 +65,10 @@ namespace ThuTien.GUI.QuanTri
                 {
                     TT_To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                     to.TenTo = txtTenTo.Text.Trim();
+                    if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
+                        to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
+                        to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
                     _cTo.Sua(to);
                     Clear();
                 }
@@ -85,8 +95,17 @@ namespace ThuTien.GUI.QuanTri
 
         private void dgvTo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _selectedindex = e.RowIndex;
-            txtTenTo.Text = dgvTo["TenTo", e.RowIndex].Value.ToString();
+            try
+            {
+                _selectedindex = e.RowIndex;
+                txtTenTo.Text = dgvTo["TenTo", e.RowIndex].Value.ToString();
+                txtTuCuonGCS.Text = dgvTo["TuCuonGCS", e.RowIndex].Value.ToString();
+                txtDenCuonGCS.Text = dgvTo["DenCuonGCS", e.RowIndex].Value.ToString();
+            }
+            catch(Exception)
+            {
+            }
+            
         }
 
         private void dgvTo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -96,6 +115,18 @@ namespace ThuTien.GUI.QuanTri
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
 
+        }
+
+        private void txtCuonGCS_From_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtCuonGCS_To_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
 
 

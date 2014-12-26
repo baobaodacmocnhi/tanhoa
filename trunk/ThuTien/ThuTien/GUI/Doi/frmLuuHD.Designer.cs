@@ -1,6 +1,6 @@
 ﻿namespace ThuTien.GUI.Doi
 {
-    partial class frmLuuHoaDon
+    partial class frmLuuHD
     {
         /// <summary>
         /// Required designer variable.
