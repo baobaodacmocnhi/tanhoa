@@ -484,6 +484,10 @@ namespace ThuTien.LinQ
 		
 		private string _TenTo;
 		
+		private System.Nullable<int> _TuCuonGCS;
+		
+		private System.Nullable<int> _DenCuonGCS;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -502,6 +506,10 @@ namespace ThuTien.LinQ
     partial void OnMaToChanged();
     partial void OnTenToChanging(string value);
     partial void OnTenToChanged();
+    partial void OnTuCuonGCSChanging(System.Nullable<int> value);
+    partial void OnTuCuonGCSChanged();
+    partial void OnDenCuonGCSChanging(System.Nullable<int> value);
+    partial void OnDenCuonGCSChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -554,6 +562,46 @@ namespace ThuTien.LinQ
 					this._TenTo = value;
 					this.SendPropertyChanged("TenTo");
 					this.OnTenToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuCuonGCS", DbType="Int")]
+		public System.Nullable<int> TuCuonGCS
+		{
+			get
+			{
+				return this._TuCuonGCS;
+			}
+			set
+			{
+				if ((this._TuCuonGCS != value))
+				{
+					this.OnTuCuonGCSChanging(value);
+					this.SendPropertyChanging();
+					this._TuCuonGCS = value;
+					this.SendPropertyChanged("TuCuonGCS");
+					this.OnTuCuonGCSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenCuonGCS", DbType="Int")]
+		public System.Nullable<int> DenCuonGCS
+		{
+			get
+			{
+				return this._DenCuonGCS;
+			}
+			set
+			{
+				if ((this._DenCuonGCS != value))
+				{
+					this.OnDenCuonGCSChanging(value);
+					this.SendPropertyChanging();
+					this._DenCuonGCS = value;
+					this.SendPropertyChanged("DenCuonGCS");
+					this.OnDenCuonGCSChanged();
 				}
 			}
 		}

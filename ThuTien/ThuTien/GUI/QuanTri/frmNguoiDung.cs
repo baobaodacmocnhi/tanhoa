@@ -135,12 +135,20 @@ namespace ThuTien.GUI.QuanTri
 
         private void dgvNguoiDung_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtHoTen.Text = dgvNguoiDung["HoTen", e.RowIndex].Value.ToString();
-            txtTaiKhoan.Text = dgvNguoiDung["TaiKhoan", e.RowIndex].Value.ToString();
-            txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
-            cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
-            cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
-            gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
+            try
+            {
+                _selectedindex = e.RowIndex;
+                txtHoTen.Text = dgvNguoiDung["HoTen", e.RowIndex].Value.ToString();
+                txtTaiKhoan.Text = dgvNguoiDung["TaiKhoan", e.RowIndex].Value.ToString();
+                txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
+                cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
+                cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
+                gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
+            }
+            catch (Exception)
+            {
+            }
+            
         }
 
         private void dgvNguoiDung_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

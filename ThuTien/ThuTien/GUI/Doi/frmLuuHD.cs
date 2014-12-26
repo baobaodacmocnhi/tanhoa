@@ -12,14 +12,14 @@ using System.Globalization;
 
 namespace ThuTien.GUI.Doi
 {
-    public partial class frmLuuHoaDon : Form
+    public partial class frmLuuHD : Form
     {
         string _fileName = "";
-        string _mnu = "mnuLuuHoaDon";
+        string _mnu = "mnuLuuHD";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
 
-        public frmLuuHoaDon()
+        public frmLuuHD()
         {
             InitializeComponent();
         }

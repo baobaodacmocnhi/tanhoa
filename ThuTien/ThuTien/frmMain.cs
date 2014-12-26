@@ -10,6 +10,7 @@ using ThuTien.GUI.HeThong;
 using ThuTien.GUI.QuanTri;
 using ThuTien.DAL.QuanTri;
 using ThuTien.GUI.Doi;
+using ThuTien.GUI.ToTruong;
 
 namespace ThuTien
 {
@@ -124,14 +125,13 @@ namespace ThuTien
 
         #endregion
 
-
         #region Đội
 
         private void mnuLuuHoaDon_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuLuuHoaDon", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuLuuHD", "Xem"))
             {
-                frmLuuHoaDon frm = new frmLuuHoaDon();
+                frmLuuHD frm = new frmLuuHD();
                 OpenForm(frm);
             }
             else
@@ -140,9 +140,18 @@ namespace ThuTien
 
         #endregion
 
-        #region
+        #region Đội Trưởng
 
-
+        private void mnuGiaoHoaDonHanhThu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuGiaoHDHanhThu", "Xem"))
+            {
+                frmGiaoHDHanhThu frm = new frmGiaoHDHanhThu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         #endregion
 

@@ -113,9 +113,15 @@ namespace ThuTien.GUI.QuanTri
 
         private void dgvNhom_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _selectedindex = e.RowIndex;
-            txtTenNhom.Text = dgvNhom["TenNhom", e.RowIndex].Value.ToString();
-            gridControl.DataSource = _cPhanQuyenNhom.GetDSByMaNhom(int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
+            try
+            {
+                _selectedindex = e.RowIndex;
+                txtTenNhom.Text = dgvNhom["TenNhom", e.RowIndex].Value.ToString();
+                gridControl.DataSource = _cPhanQuyenNhom.GetDSByMaNhom(int.Parse(dgvNhom["MaNhom", e.RowIndex].Value.ToString()));
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void dgvNhom_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
