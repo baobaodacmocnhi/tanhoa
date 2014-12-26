@@ -527,7 +527,7 @@ namespace QLVanThu
 
                 Microsoft.Office.Interop.Excel.Range head6 = oSheet.get_Range("A6", "H6");
                 head6.MergeCells = true;
-                head6.Value2 = "DANH MỤC VĂN BẢN ĐI";
+                head6.Value2 = "DANH MỤC VĂN BẢN ĐI     (" + SheetName+")";
                 head6.Font.Bold = true;
                 head6.Font.Name = "Times New Roman";
                 head6.Font.Size = "20";
