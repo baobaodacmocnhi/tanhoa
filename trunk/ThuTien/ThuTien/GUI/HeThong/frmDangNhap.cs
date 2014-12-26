@@ -45,12 +45,12 @@ namespace ThuTien.GUI.HeThong
 
             if (_cNguoiDung.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
-                NguoiDung nguoidung = _cNguoiDung.GetNguoiDungByTaiKhoan(txtTaiKhoan.Text.Trim());
+                TT_NguoiDung nguoidung = _cNguoiDung.GetByTaiKhoan(txtTaiKhoan.Text.Trim());
                 CNguoiDung.MaND = nguoidung.MaND;
                 CNguoiDung.HoTen = nguoidung.HoTen;
                 if (nguoidung.MaNhom != null)
-                    CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSPhanQuyenNhomByMaNhom(nguoidung.MaNhom.Value);
-                CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSPhanQuyenNguoiDungByMaND(nguoidung.MaND);
+                    CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(nguoidung.MaNhom.Value);
+                CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(nguoidung.MaND);
                 GetLoginResult(true);
                 this.Hide();
             }

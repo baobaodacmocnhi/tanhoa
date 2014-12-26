@@ -9,13 +9,13 @@ namespace ThuTien.DAL.QuanTri
 {
     class CPhanQuyenNguoiDung:CDAL
     {
-        public bool Them(PhanQuyenNguoiDung phanquyennguoidung)
+        public bool Them(TT_PhanQuyenNguoiDung phanquyennguoidung)
         {
             try
             {
                 phanquyennguoidung.CreateDate = DateTime.Now;
                 phanquyennguoidung.CreateBy = CNguoiDung.MaND;
-                _db.PhanQuyenNguoiDungs.InsertOnSubmit(phanquyennguoidung);
+                _db.TT_PhanQuyenNguoiDungs.InsertOnSubmit(phanquyennguoidung);
                 _db.SubmitChanges();
                 return true;
             }
@@ -26,7 +26,7 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Sua(PhanQuyenNguoiDung phanquyennguoidung)
+        public bool Sua(TT_PhanQuyenNguoiDung phanquyennguoidung)
         {
             try
             {
@@ -42,11 +42,11 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Xoa(PhanQuyenNguoiDung phanquyennguoidung)
+        public bool Xoa(TT_PhanQuyenNguoiDung phanquyennguoidung)
         {
             try
             {
-                _db.PhanQuyenNguoiDungs.DeleteOnSubmit(phanquyennguoidung);
+                _db.TT_PhanQuyenNguoiDungs.DeleteOnSubmit(phanquyennguoidung);
                 _db.SubmitChanges();
                 return true;
             }
@@ -57,11 +57,11 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public bool Xoa(List<PhanQuyenNguoiDung> lstphanquyennguoidung)
+        public bool Xoa(List<TT_PhanQuyenNguoiDung> lstphanquyennguoidung)
         {
             try
             {
-                _db.PhanQuyenNguoiDungs.DeleteAllOnSubmit(lstphanquyennguoidung);
+                _db.TT_PhanQuyenNguoiDungs.DeleteAllOnSubmit(lstphanquyennguoidung);
                 _db.SubmitChanges();
                 return true;
             }
@@ -72,20 +72,20 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
-        public PhanQuyenNguoiDung GetPhanQuyenNguoiDungByMaMenuMaND(int MaMenu, int MaND)
+        public TT_PhanQuyenNguoiDung GetByMaMenuMaND(int MaMenu, int MaND)
         {
-            return _db.PhanQuyenNguoiDungs.SingleOrDefault(item => item.MaMenu == MaMenu && item.MaND == MaND);
+            return _db.TT_PhanQuyenNguoiDungs.SingleOrDefault(item => item.MaMenu == MaMenu && item.MaND == MaND);
         }
 
-        public bool CheckPhanQuyenNguoiDungByMaMenuMaND(int MaMenu, int MaND)
+        public bool CheckByMaMenuMaND(int MaMenu, int MaND)
         {
-            return _db.PhanQuyenNguoiDungs.Any(item => item.MaMenu == MaMenu && item.MaND == MaND);
+            return _db.TT_PhanQuyenNguoiDungs.Any(item => item.MaMenu == MaMenu && item.MaND == MaND);
         }
 
-        public DataTable GetDSPhanQuyenNguoiDungByMaND(int MaND)
+        public DataTable GetDSByMaND(int MaND)
         {
-            return LINQToDataTable(_db.PhanQuyenNguoiDungs.Where(item => item.MaND == MaND).Select(item =>
-                new { item.MenuForm.TextMenuCha, item.MenuForm.STT, item.MaMenu, item.MenuForm.TenMenu, item.MenuForm.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa }).ToList());
+            return LINQToDataTable(_db.TT_PhanQuyenNguoiDungs.Where(item => item.MaND == MaND).Select(item =>
+                new { item.TT_Menu.TextMenuCha, item.TT_Menu.STT, item.MaMenu, item.TT_Menu.TenMenu, item.TT_Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa }).ToList());
         }
     }
 }

@@ -41,24 +41,24 @@ namespace ThuTien.GUI.HeThong
                 {
                     if (!_cMenu.CheckExistByTenMenu(itemChild.Name))
                     {
-                        MenuForm menu = new MenuForm();
+                        TT_Menu menu = new TT_Menu();
                         menu.STT = STT++;
                         menu.TenMenu = itemChild.Name;
                         menu.TextMenu = itemChild.Text;
                         menu.TenMenuCha = itemParent.Name;
                         menu.TextMenuCha = itemParent.Text;
-                        foreach (var item in _cNhom.GetDSNhom())
+                        foreach (var item in _cNhom.GetDS())
                         {
-                            PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
+                            TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
                             phanquyennhom.MaMenu = menu.MaMenu;
                             phanquyennhom.MaNhom = item.MaNhom;
                             phanquyennhom.CreateBy = CNguoiDung.MaND;
                             phanquyennhom.CreateDate = DateTime.Now;
-                            menu.PhanQuyenNhoms.Add(phanquyennhom);
+                            menu.TT_PhanQuyenNhoms.Add(phanquyennhom);
                         }
-                        foreach (var item in _cNguoiDung.GetDSNguoiDung())
+                        foreach (var item in _cNguoiDung.GetDS())
                         {
-                            PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
+                            TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
                             phanquyennguoidung.MaMenu = menu.MaMenu;
                             phanquyennguoidung.MaND = item.MaND;
                             phanquyennguoidung.CreateBy = CNguoiDung.MaND;
@@ -70,13 +70,13 @@ namespace ThuTien.GUI.HeThong
                                 phanquyennguoidung.Sua = true;
                                 phanquyennguoidung.Xoa = true;
                             }
-                            menu.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
+                            menu.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                         }
                         _cMenu.Them(menu);
                     }
                     else
                     {
-                        MenuForm menu = _cMenu.GetMenuByTenMenu(itemChild.Name);
+                        TT_Menu menu = _cMenu.GetByTenMenu(itemChild.Name);
                         menu.STT = STT++;
                         _cMenu.Sua(menu);
                     }
@@ -88,13 +88,13 @@ namespace ThuTien.GUI.HeThong
 
         private void btnCapNhatPhanQuyenNhom_Click(object sender, EventArgs e)
         {
-            foreach (var itemMenu in _cMenu.GetDSMenu())
+            foreach (var itemMenu in _cMenu.GetDS())
             {
-                foreach (var itemNhom in _cNhom.GetDSNhom())
+                foreach (var itemNhom in _cNhom.GetDS())
                 {
-                    if (!_cPhanQuyenNhom.CheckPhanQuyenNhomByMaMenuMaNhom(itemMenu.MaMenu, itemNhom.MaNhom))
+                    if (!_cPhanQuyenNhom.CheckByMaMenuMaNhom(itemMenu.MaMenu, itemNhom.MaNhom))
                     {
-                        PhanQuyenNhom phanquyennhom = new PhanQuyenNhom();
+                        TT_PhanQuyenNhom phanquyennhom = new TT_PhanQuyenNhom();
                         phanquyennhom.MaMenu = itemMenu.MaMenu;
                         phanquyennhom.MaNhom = itemNhom.MaNhom;
                         _cPhanQuyenNhom.Them(phanquyennhom);
@@ -105,13 +105,13 @@ namespace ThuTien.GUI.HeThong
 
         private void btnCapNhatPhanQuyenNguoiDung_Click(object sender, EventArgs e)
         {
-            foreach (var itemMenu in _cMenu.GetDSMenu())
+            foreach (var itemMenu in _cMenu.GetDS())
             {
-                foreach (var itemND in _cNguoiDung.GetDSNguoiDung())
+                foreach (var itemND in _cNguoiDung.GetDS())
                 {
-                    if (!_cPhanQuyenNguoiDung.CheckPhanQuyenNguoiDungByMaMenuMaND(itemMenu.MaMenu, itemND.MaND))
+                    if (!_cPhanQuyenNguoiDung.CheckByMaMenuMaND(itemMenu.MaMenu, itemND.MaND))
                     {
-                        PhanQuyenNguoiDung phanquyennguoidung = new PhanQuyenNguoiDung();
+                        TT_PhanQuyenNguoiDung phanquyennguoidung = new TT_PhanQuyenNguoiDung();
                         phanquyennguoidung.MaMenu = itemMenu.MaMenu;
                         phanquyennguoidung.MaND = itemND.MaND;
                         if (phanquyennguoidung.MaND == 0)
