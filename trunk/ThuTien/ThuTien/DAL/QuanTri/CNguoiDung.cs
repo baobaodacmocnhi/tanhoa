@@ -29,6 +29,13 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._MaTo = value; }
         }
 
+        static string _TenTo;
+        public static string TenTo
+        {
+            get { return CNguoiDung._TenTo; }
+            set { CNguoiDung._TenTo = value; }
+        }
+
         static System.Data.DataTable _dtQuyenNhom;
         public static System.Data.DataTable dtQuyenNhom
         {
@@ -169,9 +176,9 @@ namespace ThuTien.DAL.QuanTri
         /// </summary>
         /// <param name="MaTo"></param>
         /// <returns></returns>
-        public List<TT_NguoiDung> GetDSByMaTo(int MaTo)
+        public List<TT_NguoiDung> GetDSHanhThuByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.TT_To.HanhThu == true).ToList();
         }
 
         public TT_NguoiDung GetByMaND(int MaND)

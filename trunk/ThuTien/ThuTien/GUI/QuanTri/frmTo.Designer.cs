@@ -40,8 +40,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TuCuonGCS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DenCuonGCS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkHanhThu = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             // 
             // txtTenTo
             // 
-            this.txtTenTo.Location = new System.Drawing.Point(98, 12);
+            this.txtTenTo.Location = new System.Drawing.Point(91, 12);
             this.txtTenTo.Name = "txtTenTo";
             this.txtTenTo.Size = new System.Drawing.Size(100, 20);
             this.txtTenTo.TabIndex = 1;
@@ -69,20 +71,21 @@
             this.dgvTo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTo,
             this.TenTo,
+            this.HanhThu,
             this.TuCuonGCS,
             this.DenCuonGCS});
-            this.dgvTo.Location = new System.Drawing.Point(15, 97);
+            this.dgvTo.Location = new System.Drawing.Point(15, 99);
             this.dgvTo.MultiSelect = false;
             this.dgvTo.Name = "dgvTo";
             this.dgvTo.ReadOnly = true;
-            this.dgvTo.Size = new System.Drawing.Size(364, 200);
+            this.dgvTo.Size = new System.Drawing.Size(467, 319);
             this.dgvTo.TabIndex = 9;
             this.dgvTo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTo_CellContentClick);
             this.dgvTo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTo_RowPostPaint);
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(204, 10);
+            this.btnThem.Location = new System.Drawing.Point(407, 12);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 6;
@@ -92,7 +95,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(204, 39);
+            this.btnSua.Location = new System.Drawing.Point(407, 41);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 7;
@@ -102,7 +105,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(204, 68);
+            this.btnXoa.Location = new System.Drawing.Point(407, 70);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 8;
@@ -112,7 +115,7 @@
             // 
             // txtTuCuonGCS
             // 
-            this.txtTuCuonGCS.Location = new System.Drawing.Point(98, 38);
+            this.txtTuCuonGCS.Location = new System.Drawing.Point(91, 61);
             this.txtTuCuonGCS.Name = "txtTuCuonGCS";
             this.txtTuCuonGCS.Size = new System.Drawing.Size(100, 20);
             this.txtTuCuonGCS.TabIndex = 3;
@@ -121,7 +124,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 41);
+            this.label2.Location = new System.Drawing.Point(12, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 2;
@@ -129,7 +132,7 @@
             // 
             // txtDenCuonGCS
             // 
-            this.txtDenCuonGCS.Location = new System.Drawing.Point(98, 64);
+            this.txtDenCuonGCS.Location = new System.Drawing.Point(283, 61);
             this.txtDenCuonGCS.Name = "txtDenCuonGCS";
             this.txtDenCuonGCS.Size = new System.Drawing.Size(100, 20);
             this.txtDenCuonGCS.TabIndex = 5;
@@ -138,7 +141,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 67);
+            this.label3.Location = new System.Drawing.Point(197, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 4;
@@ -159,6 +162,13 @@
             this.TenTo.Name = "TenTo";
             this.TenTo.ReadOnly = true;
             // 
+            // HanhThu
+            // 
+            this.HanhThu.DataPropertyName = "HanhThu";
+            this.HanhThu.HeaderText = "Hành Thu";
+            this.HanhThu.Name = "HanhThu";
+            this.HanhThu.ReadOnly = true;
+            // 
             // TuCuonGCS
             // 
             this.TuCuonGCS.DataPropertyName = "TuCuonGCS";
@@ -173,11 +183,22 @@
             this.DenCuonGCS.Name = "DenCuonGCS";
             this.DenCuonGCS.ReadOnly = true;
             // 
+            // chkHanhThu
+            // 
+            this.chkHanhThu.AutoSize = true;
+            this.chkHanhThu.Location = new System.Drawing.Point(91, 38);
+            this.chkHanhThu.Name = "chkHanhThu";
+            this.chkHanhThu.Size = new System.Drawing.Size(74, 17);
+            this.chkHanhThu.TabIndex = 10;
+            this.chkHanhThu.Text = "Hành Thu";
+            this.chkHanhThu.UseVisualStyleBackColor = true;
+            // 
             // frmTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 316);
+            this.ClientSize = new System.Drawing.Size(500, 430);
+            this.Controls.Add(this.chkHanhThu);
             this.Controls.Add(this.txtDenCuonGCS);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTuCuonGCS);
@@ -211,7 +232,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TuCuonGCS;
         private System.Windows.Forms.DataGridViewTextBoxColumn DenCuonGCS;
+        private System.Windows.Forms.CheckBox chkHanhThu;
     }
 }
