@@ -23,7 +23,7 @@ namespace ThuTien.GUI.HeThong
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            btnDangNhap_Click(sender, e);
+
         }
 
         private void frmDangNhap_FormClosed(object sender, FormClosedEventArgs e)
@@ -48,8 +48,11 @@ namespace ThuTien.GUI.HeThong
                 TT_NguoiDung nguoidung = _cNguoiDung.GetByTaiKhoan(txtTaiKhoan.Text.Trim());
                 CNguoiDung.MaND = nguoidung.MaND;
                 CNguoiDung.HoTen = nguoidung.HoTen;
-                if(nguoidung.MaTo!=null)
-                CNguoiDung.MaTo = nguoidung.MaTo.Value;
+                if (nguoidung.MaTo != null)
+                {
+                    CNguoiDung.MaTo = nguoidung.MaTo.Value;
+                    CNguoiDung.TenTo = nguoidung.TT_To.TenTo;
+                }
                 if (nguoidung.MaNhom != null)
                     CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(nguoidung.MaNhom.Value);
                 CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(nguoidung.MaND);

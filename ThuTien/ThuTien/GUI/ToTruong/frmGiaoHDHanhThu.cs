@@ -27,9 +27,11 @@ namespace ThuTien.GUI.ToTruong
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
 
-            cmbNhanVien.DataSource = _cNguoiDung.GetDSByMaTo(CNguoiDung.MaTo);
+            cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
             cmbNhanVien.DisplayMember = "HoTen";
             cmbNhanVien.ValueMember = "MaND";
+
+            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
         }
 
         private void txtTuMLT_KeyPress(object sender, KeyPressEventArgs e)
@@ -42,6 +44,11 @@ namespace ThuTien.GUI.ToTruong
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+
         }
 
         

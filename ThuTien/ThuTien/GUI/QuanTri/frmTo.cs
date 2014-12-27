@@ -26,6 +26,7 @@ namespace ThuTien.GUI.QuanTri
         {
             _selectedindex = -1;
             txtTenTo.Text = "";
+            chkHanhThu.Checked = false;
             txtTuCuonGCS.Text = "";
             txtDenCuonGCS.Text = "";
             dgvTo.DataSource = _cTo.GetDS();
@@ -45,6 +46,7 @@ namespace ThuTien.GUI.QuanTri
                 {
                     TT_To to = new TT_To();
                     to.TenTo = txtTenTo.Text.Trim();
+                    to.HanhThu = chkHanhThu.Checked;
                     if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
                         to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
@@ -65,6 +67,7 @@ namespace ThuTien.GUI.QuanTri
                 {
                     TT_To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                     to.TenTo = txtTenTo.Text.Trim();
+                    to.HanhThu = chkHanhThu.Checked;
                     if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
                         to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
@@ -99,6 +102,7 @@ namespace ThuTien.GUI.QuanTri
             {
                 _selectedindex = e.RowIndex;
                 txtTenTo.Text = dgvTo["TenTo", e.RowIndex].Value.ToString();
+                chkHanhThu.Checked = bool.Parse(dgvTo["HanhThu", e.RowIndex].Value.ToString());
                 txtTuCuonGCS.Text = dgvTo["TuCuonGCS", e.RowIndex].Value.ToString();
                 txtDenCuonGCS.Text = dgvTo["DenCuonGCS", e.RowIndex].Value.ToString();
             }

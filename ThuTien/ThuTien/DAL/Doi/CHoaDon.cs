@@ -163,7 +163,8 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetNam()
         {
-            return this.LINQToDataTable(_db.HOADONs.Select(item => new { item.NAM }).Distinct().OrderByDescending(item => item.NAM).ToList());
+            //return this.LINQToDataTable(_db.HOADONs.Select(item => new { item.NAM }).Distinct().OrderByDescending(item => item.NAM).ToList());
+            return this.LINQToDataTable(_db.ViewGetNamHDs.OrderByDescending(item=>item.Nam));
         }
 
         public DataTable GetTongHDByNamKy(int nam, int ky)
