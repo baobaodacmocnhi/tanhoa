@@ -65,7 +65,8 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cHoaDon.GetTongHDByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            if (cmbKy.SelectedIndex != -1)
+                dgvHoaDon.DataSource = _cHoaDon.GetTongHDByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
