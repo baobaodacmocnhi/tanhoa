@@ -196,6 +196,9 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
         }
 
-
+        public string GetHoTenByMaND(int MaND)
+        {
+            return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == MaND).HoTen;
+        }
     }
 }
