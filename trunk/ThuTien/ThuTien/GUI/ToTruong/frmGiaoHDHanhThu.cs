@@ -17,6 +17,8 @@ namespace ThuTien.GUI.ToTruong
     {
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        string _mnu = "mnuGiaoHDHanhThu";
+        int _selectedindex = -1;
 
         public frmGiaoHDHanhThu()
         {
@@ -36,6 +38,14 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVien.ValueMember = "MaND";
 
             lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+        }
+
+        public void Clear()
+        {
+            _selectedindex = -1;
+            cmbNhanVien.SelectedIndex = -1;
+            txtTuMLT.Text = "";
+            txtDenMLT.Text = "";
         }
 
         public void LoadDataGridView()
@@ -70,6 +80,7 @@ namespace ThuTien.GUI.ToTruong
             if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
             {
                 LoadDataGridView();
+                Clear();
             }
         }
 
@@ -131,29 +142,108 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (tabControl.SelectedTab.Name == "tabTuGia")
-                if (dgvHDTuGia.RowCount > 0 && txtTuMLT.Text.Trim() != "" && txtDenMLT.Text.Trim() != "")
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
-                    DataTable dt = (DataTable)dgvHDTuGia.DataSource;
-                    if (int.Parse(txtTuMLT.Text.Trim()) <= int.Parse(txtDenMLT.Text.Trim()))
-                        if (_cHoaDon.CheckMLTByNamKyDot(CNguoiDung.MaTo, txtTuMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
-                            && _cHoaDon.CheckMLTByNamKyDot(CNguoiDung.MaTo, txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
-                        {
-                            List<HOADON> lstHD = _cHoaDon.GetDSByMLTNamKyDot(CNguoiDung.MaTo, txtTuMLT.Text.Trim(), txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                            foreach (HOADON item in lstHD)
+                    if (dgvHDTuGia.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuMLT.Text.Trim() != "" && txtDenMLT.Text.Trim() != "")
+                    {
+                        if (int.Parse(txtTuMLT.Text.Trim()) <= int.Parse(txtDenMLT.Text.Trim()))
+                            if (_cHoaDon.CheckMLTByNamKyDot(CNguoiDung.MaTo, "TG", txtTuMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
+                                && _cHoaDon.CheckMLTByNamKyDot(CNguoiDung.MaTo, "TG", txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                             {
-                                item.MaNV_HanhThu = int.Parse(cmbNhanVien.SelectedValue.ToString());
-                                item.ModifyDate = DateTime.Now;
-                                item.ModifyBy = CNguoiDung.MaND;
+                                if (_cHoaDon.ThemChia(CNguoiDung.MaTo, "TG", txtTuMLT.Text.Trim(), txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                                {
+                                    LoadDataGridView();
+                                    Clear();
+                                }
                             }
-                            if (_cHoaDon.ThemChia(lstHD))
+                            else
+                                MessageBox.Show("Sai MLT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    if (tabControl.SelectedTab.Name == "tabCoQuan")
+                    {
+                        if (dgvHDCoQuan.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuMLT.Text.Trim() != "" && txtDenMLT.Text.Trim() != "")
+                        {
+                            if (int.Parse(txtTuMLT.Text.Trim()) <= int.Parse(txtDenMLT.Text.Trim()))
+                                if (_cHoaDon.CheckMLTByNamKyDot(CNguoiDung.MaTo, "CQ", txtTuMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
+                                    && _cHoaDon.CheckMLTByNamKyDot(CNguoiDung.MaTo, "CQ", txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                                {
+                                    if (_cHoaDon.ThemChia(CNguoiDung.MaTo, "CQ", txtTuMLT.Text.Trim(), txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                                    {
+                                        LoadDataGridView();
+                                        Clear();
+                                    }
+                                }
+                                else
+                                    MessageBox.Show("Sai MLT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_selectedindex != -1)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        if (tabControl.SelectedTab.Name == "tabTuGia")
+                        {
+                            if (_cHoaDon.XoaChia(CNguoiDung.MaTo, "TG", txtTuMLT.Text.Trim(), txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                             {
                                 LoadDataGridView();
+                                Clear();
                             }
                         }
-                        else
-                            MessageBox.Show("Sai MLT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                        if (tabControl.SelectedTab.Name == "tabCoQuan")
+                        {
+                            if (_cHoaDon.XoaChia(CNguoiDung.MaTo, "CQ", txtTuMLT.Text.Trim(), txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                            {
+                                LoadDataGridView();
+                                Clear();
+                            }
+                        }
+                    }
+                    
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvHDTuGia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _selectedindex = e.RowIndex;
+                if (dgvHDTuGia["MaNV", e.RowIndex].Value.ToString() != "")
+                    cmbNhanVien.SelectedValue = dgvHDTuGia["MaNV", e.RowIndex].Value;
+                txtTuMLT.Text = dgvHDTuGia["TuMLT", e.RowIndex].Value.ToString();
+                txtDenMLT.Text = dgvHDTuGia["DenMLT", e.RowIndex].Value.ToString();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void dgvHDCoQuan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _selectedindex = e.RowIndex;
+                if (dgvHDCoQuan["MaNV", e.RowIndex].Value.ToString() != "")
+                    cmbNhanVien.SelectedValue = dgvHDCoQuan["MaNV", e.RowIndex].Value;
+                txtTuMLT.Text = dgvHDCoQuan["TuMLT", e.RowIndex].Value.ToString();
+                txtDenMLT.Text = dgvHDCoQuan["DenMLT", e.RowIndex].Value.ToString();
+            }
+            catch (Exception)
+            {
+            }
         }
 
 

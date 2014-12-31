@@ -14,6 +14,17 @@
       <Association Name="TT_To_TT_NguoiDung" Member="TT_NguoiDungs" ThisKey="MaTo" OtherKey="MaTo" Type="TT_NguoiDung" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_LichSuGiaoHD" Member="TT_LichSuGiaoHDs">
+    <Type Name="TT_LichSuGiaoHD">
+      <Column Name="MaHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayGiaiTrach" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TT_Menu" Member="TT_Menus">
     <Type Name="TT_Menu">
       <Column Name="MaMenu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -94,26 +105,6 @@
       <Association Name="TT_Nhom_TT_PhanQuyenNhom" Member="TT_Nhom" ThisKey="MaNhom" OtherKey="MaNhom" Type="TT_Nhom" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ViewGetNamHD" Member="ViewGetNamHDs">
-    <Type Name="ViewGetNamHD">
-      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TT_LichSuGiaoHD" Member="TT_LichSuGiaoHDs">
-    <Type Name="TT_LichSuGiaoHD">
-      <Column Name="MaLSGHD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaiTrach" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayGiaiTrach" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Ton" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayTon" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.HOADON" Member="HOADONs">
     <Type Name="HOADON">
       <Column Name="ID_HOADON" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -173,10 +164,16 @@
       <Column Name="TENKH" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="SO" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="MaNV_HanhThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNV_DangNgan" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewGetNamHD" Member="ViewGetNamHDs">
+    <Type Name="ViewGetNamHD">
+      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
