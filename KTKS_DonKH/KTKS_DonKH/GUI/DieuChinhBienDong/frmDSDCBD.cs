@@ -1288,7 +1288,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                 TB_DULIEUKHACHHANG dlkh = _cDLKH.getDLKH(ctdcbd.DanhBo);
-                                log.Write(k.ToString() + "/ " + ctdcbd.MaCTDCBD + "; " + ctdcbd.ThongTin + "; " + ctdcbd.DanhBo + "; ");
+                                log.Write(k++.ToString() + "/ " + ctdcbd.MaCTDCBD + "; " + ctdcbd.ThongTin + "; " + ctdcbd.DanhBo + "; ");
                                 if (dlkh != null && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                 {
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
