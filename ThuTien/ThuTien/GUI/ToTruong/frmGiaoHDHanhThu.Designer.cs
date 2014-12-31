@@ -38,6 +38,18 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTuGia = new System.Windows.Forms.TabPage();
             this.dgvHDTuGia = new System.Windows.Forms.DataGridView();
+            this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TuMLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DenMLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TuSHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DenSHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongPhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCoQuan = new System.Windows.Forms.TabPage();
             this.dgvHDCoQuan = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,18 +73,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TuMLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DenMLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TuSHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DenSHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongGiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongPhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -218,7 +218,82 @@
             this.dgvHDTuGia.Name = "dgvHDTuGia";
             this.dgvHDTuGia.Size = new System.Drawing.Size(1071, 395);
             this.dgvHDTuGia.TabIndex = 0;
+            this.dgvHDTuGia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDTuGia_CellContentClick);
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
+            // 
+            // MaHD
+            // 
+            this.MaHD.DataPropertyName = "MaHD";
+            this.MaHD.HeaderText = "MaHD";
+            this.MaHD.Name = "MaHD";
+            this.MaHD.Visible = false;
+            // 
+            // MaNV
+            // 
+            this.MaNV.DataPropertyName = "MaNV";
+            this.MaNV.HeaderText = "MaNV";
+            this.MaNV.Name = "MaNV";
+            this.MaNV.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Nhân Viên";
+            this.HoTen.Name = "HoTen";
+            // 
+            // TuMLT
+            // 
+            this.TuMLT.DataPropertyName = "TuMLT";
+            this.TuMLT.HeaderText = "Từ MLT";
+            this.TuMLT.Name = "TuMLT";
+            // 
+            // DenMLT
+            // 
+            this.DenMLT.DataPropertyName = "DenMLT";
+            this.DenMLT.HeaderText = "Đến MLT";
+            this.DenMLT.Name = "DenMLT";
+            // 
+            // TuSHD
+            // 
+            this.TuSHD.DataPropertyName = "TuSHD";
+            this.TuSHD.HeaderText = "Từ SHĐ";
+            this.TuSHD.Name = "TuSHD";
+            // 
+            // DenSHD
+            // 
+            this.DenSHD.DataPropertyName = "DenSHD";
+            this.DenSHD.HeaderText = "Đến SHĐ";
+            this.DenSHD.Name = "DenSHD";
+            // 
+            // TongHD
+            // 
+            this.TongHD.DataPropertyName = "TongHD";
+            this.TongHD.HeaderText = "Tổng HĐ";
+            this.TongHD.Name = "TongHD";
+            // 
+            // TongGiaBan
+            // 
+            this.TongGiaBan.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan.HeaderText = "Giá Bán";
+            this.TongGiaBan.Name = "TongGiaBan";
+            // 
+            // TongThueGTGT
+            // 
+            this.TongThueGTGT.DataPropertyName = "TongThueGTGT";
+            this.TongThueGTGT.HeaderText = "Thuế GTGT";
+            this.TongThueGTGT.Name = "TongThueGTGT";
+            // 
+            // TongPhiBVMT
+            // 
+            this.TongPhiBVMT.DataPropertyName = "TongPhiBVMT";
+            this.TongPhiBVMT.HeaderText = "Phí BVMT";
+            this.TongPhiBVMT.Name = "TongPhiBVMT";
+            // 
+            // TongCong
+            // 
+            this.TongCong.DataPropertyName = "TongCong";
+            this.TongCong.HeaderText = "Tổng Cộng";
+            this.TongCong.Name = "TongCong";
             // 
             // tabCoQuan
             // 
@@ -252,6 +327,7 @@
             this.dgvHDCoQuan.Name = "dgvHDCoQuan";
             this.dgvHDCoQuan.Size = new System.Drawing.Size(1071, 395);
             this.dgvHDCoQuan.TabIndex = 1;
+            this.dgvHDCoQuan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDCoQuan_CellContentClick);
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
             // 
             // dataGridViewTextBoxColumn1
@@ -390,6 +466,7 @@
             this.btnXoa.TabIndex = 17;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -399,6 +476,7 @@
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Visible = false;
             // 
             // btnThem
             // 
@@ -409,80 +487,6 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // MaHD
-            // 
-            this.MaHD.DataPropertyName = "MaHD";
-            this.MaHD.HeaderText = "MaHD";
-            this.MaHD.Name = "MaHD";
-            this.MaHD.Visible = false;
-            // 
-            // MaNV
-            // 
-            this.MaNV.DataPropertyName = "MaNV";
-            this.MaNV.HeaderText = "MaNV";
-            this.MaNV.Name = "MaNV";
-            this.MaNV.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Nhân Viên";
-            this.HoTen.Name = "HoTen";
-            // 
-            // TuMLT
-            // 
-            this.TuMLT.DataPropertyName = "TuMLT";
-            this.TuMLT.HeaderText = "Từ MLT";
-            this.TuMLT.Name = "TuMLT";
-            // 
-            // DenMLT
-            // 
-            this.DenMLT.DataPropertyName = "DenMLT";
-            this.DenMLT.HeaderText = "Đến MLT";
-            this.DenMLT.Name = "DenMLT";
-            // 
-            // TuSHD
-            // 
-            this.TuSHD.DataPropertyName = "TuSHD";
-            this.TuSHD.HeaderText = "Từ SHĐ";
-            this.TuSHD.Name = "TuSHD";
-            // 
-            // DenSHD
-            // 
-            this.DenSHD.DataPropertyName = "DenSHD";
-            this.DenSHD.HeaderText = "Đến SHĐ";
-            this.DenSHD.Name = "DenSHD";
-            // 
-            // TongHD
-            // 
-            this.TongHD.DataPropertyName = "TongHD";
-            this.TongHD.HeaderText = "Tổng HĐ";
-            this.TongHD.Name = "TongHD";
-            // 
-            // TongGiaBan
-            // 
-            this.TongGiaBan.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan.HeaderText = "Giá Bán";
-            this.TongGiaBan.Name = "TongGiaBan";
-            // 
-            // TongThueGTGT
-            // 
-            this.TongThueGTGT.DataPropertyName = "TongThueGTGT";
-            this.TongThueGTGT.HeaderText = "Thuế GTGT";
-            this.TongThueGTGT.Name = "TongThueGTGT";
-            // 
-            // TongPhiBVMT
-            // 
-            this.TongPhiBVMT.DataPropertyName = "TongPhiBVMT";
-            this.TongPhiBVMT.HeaderText = "Phí BVMT";
-            this.TongPhiBVMT.Name = "TongPhiBVMT";
-            // 
-            // TongCong
-            // 
-            this.TongCong.DataPropertyName = "TongCong";
-            this.TongCong.HeaderText = "Tổng Cộng";
-            this.TongCong.Name = "TongCong";
             // 
             // frmGiaoHDHanhThu
             // 

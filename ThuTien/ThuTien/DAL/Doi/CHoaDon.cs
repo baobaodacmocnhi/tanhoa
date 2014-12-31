@@ -170,14 +170,23 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public bool TestThemChia(int MaTo, string tumlt, string denmlt, int nam, int ky, int dot,int MaNV)
+        public bool ThemChia(int MaTo,string loai, string tumlt, string denmlt, int nam, int ky, int dot,int MaNV)
         {
             try
             {
-                _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                if (loai == "TG")
+                    _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt) 
+                                        && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList()
+                                        .ForEach(item => { item.MaNV_HanhThu = MaNV; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                else
+                    if (loai == "CQ")
+                        _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt) && item.NAM == nam && item.KY == ky && item.DOT == dot).ToList()
-                                    .ForEach(item => item.MaNV_HanhThu = MaNV);
+                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
+                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList()
+                                    .ForEach(item => { item.MaNV_HanhThu = MaNV; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
                 _db.SubmitChanges();
 
                 return true;
@@ -194,6 +203,34 @@ namespace ThuTien.DAL.Doi
             try
             {
                 _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool XoaChia(int MaTo, string loai, string tumlt, string denmlt, int nam, int ky, int dot)
+        {
+            try
+            {
+                if(loai=="TG")
+                _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
+                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList()
+                                    .ForEach(item => { item.MaNV_HanhThu = null; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                else
+                    if(loai=="CQ")
+                        _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
+                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList()
+                                    .ForEach(item => { item.MaNV_HanhThu = null; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                _db.SubmitChanges();
+
                 return true;
             }
             catch (Exception ex)
@@ -238,15 +275,15 @@ namespace ThuTien.DAL.Doi
             if (loai == "TG")
             {
                 var query = from item in _db.HOADONs
-                            where item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB>=11 && item.GB<=20 
-                                    && Convert.ToInt32(item.MAY) >=_db.TT_Tos.SingleOrDefault(itemTo=>itemTo.MaTo==MaTo).TuCuonGCS
-                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20
                             orderby item.MALOTRINH
                             group item by item.MaNV_HanhThu into itemGroup
                             select new
                             {
                                 MaNV = itemGroup.Key,
-                                _db.TT_NguoiDungs.SingleOrDefault(itemND=>itemND.MaND==itemGroup.Key).HoTen,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
                                 TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
                                 DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
                                 TuSHD = itemGroup.Min(groupItem => groupItem.SOHOADON),
@@ -258,17 +295,21 @@ namespace ThuTien.DAL.Doi
                                 TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                 TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
                             };
-                return this.LINQToDataTable(query.OrderBy(item=>item.TuMLT));
+                return this.LINQToDataTable(query.OrderBy(item => item.TuMLT));
             }
             else
                 if (loai == "CQ")
                 {
                     var query = from item in _db.HOADONs
-                                where item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB>20
+                                where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20
+                                orderby item.MALOTRINH
                                 group item by item.MaNV_HanhThu into itemGroup
                                 select new
                                 {
-                                    Dot = itemGroup.Key,
+                                    MaNV = itemGroup.Key,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
                                     TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
                                     DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
                                     TuSHD = itemGroup.Min(groupItem => groupItem.SOHOADON),
@@ -285,18 +326,37 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public bool CheckMLTByNamKyDot(int MaTo, string mlt, int nam, int ky, int dot)
+        public bool CheckMLTByNamKyDot(int MaTo,string loai, string mlt, int nam, int ky, int dot)
         {
-            return _db.HOADONs.Any(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS 
-                                    && item.MALOTRINH == mlt && item.NAM == nam && item.KY == ky && item.DOT == dot);
+            if (loai == "TG")
+                return _db.HOADONs.Any(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && item.MALOTRINH == mlt && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20);
+            else
+                if (loai == "CQ")
+                    return _db.HOADONs.Any(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && item.MALOTRINH == mlt && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20);
+                else
+                    return false;
         }
 
-        public List<HOADON> GetDSByMLTNamKyDot(int MaTo, string tumlt, string denmlt, int nam, int ky, int dot)
+        public List<HOADON> GetDSByMLTNamKyDot(int MaTo, string loai, string tumlt, string denmlt, int nam, int ky, int dot)
         {
-            return _db.HOADONs.Where(item =>Convert.ToInt32(item.MAY) >=_db.TT_Tos.SingleOrDefault(itemTo=>itemTo.MaTo==MaTo).TuCuonGCS
+            if (loai == "TG")
+                return _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt) 
+                                        && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList();
+            else
+                if (loai == "CQ")
+                    return _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt) && item.NAM == nam && item.KY == ky && item.DOT == dot).ToList();
+                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
+                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList();
+                else
+                    return null;
+
         }
     }
 
