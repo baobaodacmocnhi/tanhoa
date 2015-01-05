@@ -27,6 +27,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     //join itemDonKH in db.DonKHs on itemTTTL.MaDon equals itemDonKH.MaDon
                                     //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                     where itemTTTL.ToXuLy==false
+                                    orderby itemTTTL.CreateDate descending
                                     select new
                                     {
                                         itemTTTL.ToXuLy,
@@ -51,6 +52,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                                     //join itemDonKH in db.DonKHs on itemTTTL.MaDon equals itemDonKH.MaDon
                                     //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                     where itemTTTL.ToXuLy == true
+                                    orderby itemTTTL.CreateDate descending
                                     select new
                                     {
                                         itemTTTL.ToXuLy,
@@ -519,6 +521,7 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 {
                     var query = from itemCTTTTL in db.CTTTTLs
                                 //where itemCTTTTL.TTTL.MaDon!=null
+                                orderby itemCTTTTL.CreateDate descending
                                 select new
                                 {
                                     In = false,
@@ -707,6 +710,35 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        public DataTable LoadLichSuTTTLbyDanhBo(string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    var query = from itemCTTTTL in db.CTTTTLs
+                                where itemCTTTTL.DanhBo==DanhBo
+                                select new
+                                {
+                                    itemCTTTTL.MaCTTTTL,
+                                    itemCTTTTL.TTTL.MaDon,
+                                    itemCTTTTL.VeViec,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
