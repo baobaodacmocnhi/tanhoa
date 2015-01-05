@@ -568,7 +568,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query_DonKH = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.KTXM.ToXuLy==false
-                                orderby itemCTKTXM.KTXM.MaDon ascending
+                                orderby itemCTKTXM.CreateDate descending
                                 select new
                                 {
                                     itemCTKTXM.KTXM.ToXuLy,
@@ -586,7 +586,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
                                       join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                       where itemCTKTXM.KTXM.ToXuLy == true
-                                       orderby itemCTKTXM.KTXM.MaDon ascending
+                                       orderby itemCTKTXM.CreateDate descending
                                       select new
                                       {
                                           itemCTKTXM.KTXM.ToXuLy,
@@ -709,7 +709,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query_DonKH = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.KTXM.ToXuLy == false && itemCTKTXM.CreateBy == MaUser
-                                orderby itemCTKTXM.KTXM.MaDon ascending
+                                orderby itemCTKTXM.CreateDate descending
                                 select new
                                 {
                                     itemCTKTXM.KTXM.ToXuLy,
@@ -727,7 +727,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
                                 join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                 where itemCTKTXM.KTXM.ToXuLy == true && itemCTKTXM.CreateBy == MaUser
-                                orderby itemCTKTXM.KTXM.MaDon ascending
+                                orderby itemCTKTXM.CreateDate descending
                                 select new
                                 {
                                     itemCTKTXM.KTXM.ToXuLy,

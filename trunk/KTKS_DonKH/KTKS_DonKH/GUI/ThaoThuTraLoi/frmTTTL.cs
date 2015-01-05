@@ -172,11 +172,11 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
-                        //if (_cTTTL.CheckCTTTTLbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
-                        //{
-                        //    MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    return;
-                        //}
+                        if (_cTTTL.CheckCTTTTLbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
+                        {
+                            MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         CTTTTL cttttl = new CTTTTL();
                         cttttl.MaTTTL = _cTTTL.getTTTLbyMaDon_TXL(_dontxl.MaDon).MaTTTL;
                         cttttl.DanhBo = txtDanhBo.Text.Trim();
@@ -282,11 +282,11 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                 _cDonKH.SuaDonKH(_donkh, true);
                             }
                         }
-                        //if (_cTTTL.CheckCTTTTLbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
-                        //{
-                        //    MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    return;
-                        //}
+                        if (_cTTTL.CheckCTTTTLbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
+                        {
+                            MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         CTTTTL cttttl = new CTTTTL();
                         cttttl.MaTTTL = _cTTTL.getTTTLbyMaDon(_donkh.MaDon).MaTTTL;
                         cttttl.DanhBo = txtDanhBo.Text.Trim();
@@ -441,6 +441,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
+                    dgvLichSuTTTL.DataSource = _cTTTL.LoadLichSuTTTLbyDanhBo(_ttkhachhang.DanhBo);
                 }
                 else
                 {
@@ -448,6 +449,18 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     Clear();
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void dgvLichSuTTTL_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaCTTTTL" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 

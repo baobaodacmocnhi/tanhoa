@@ -112,7 +112,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     var query = from itemDonTXL in db.DonTXLs
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                orderby itemDonTXL.MaDon ascending
+                                orderby itemDonTXL.CreateDate descending
                                 select new
                                 {
                                     itemDonTXL.MaDon,
@@ -196,7 +196,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.ChuyenKT == true
-                                orderby itemDonTXL.MaDon ascending
+                                orderby itemDonTXL.CreateDate descending
                                 select new
                                 {
                                     itemDonTXL.MaDon,
