@@ -267,6 +267,49 @@ namespace QLVanThuDen
             }
         }
 
+        private void cmbPhongBanDoi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string KeyWord = "";
+            switch (cmbPhanLoai.SelectedIndex)
+            {
+                case 0:
+                    KeyWord = "";
+                    break;
+                case 1:
+                    KeyWord = "TP.HCM";
+                    break;
+                case 2:
+                    KeyWord = "UBND";
+                    break;
+                case 3:
+                    KeyWord = "Q.TB";
+                    break;
+                case 4:
+                    KeyWord = "Q.TP";
+                    break;
+                case 5:
+                    KeyWord = "TCTCNSG";
+                    break;
+                default:
+                    break;
+            }
+            string expression;
+            if (cmbPhanLoai.SelectedIndex == 1)
+                expression = String.Format("(TacGiaVB like '%{0}')", KeyWord);
+            else
+                if (cmbPhanLoai.SelectedIndex == 2)
+                    expression = String.Format("(TacGiaVB like '{0}%')", KeyWord);
+                else
+                    if (cmbPhanLoai.SelectedIndex == 3)
+                        expression = String.Format("(TacGiaVB like '%{0}%' or TacGiaVB like '%Tân Bình%')", KeyWord);
+                    else
+                        if (cmbPhanLoai.SelectedIndex == 4)
+                            expression = String.Format("(TacGiaVB like '%{0}%' or TacGiaVB like '%Tân Phú%')", KeyWord);
+                        else
+                            expression = String.Format("(TacGiaVB like '%{0}%')", KeyWord);
+            vanthus.Filter = expression;
+        }
+
 
 
     }

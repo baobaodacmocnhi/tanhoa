@@ -60,6 +60,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateDenNgay = new System.Windows.Forms.DateTimePicker();
             this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbPhanLoai = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSVanThuDen)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -226,7 +228,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(556, 41);
+            this.label1.Location = new System.Drawing.Point(592, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(167, 21);
             this.label1.TabIndex = 1;
@@ -236,7 +238,7 @@
             // 
             this.txtNoiDungTimKiem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNoiDungTimKiem.ForeColor = System.Drawing.Color.Red;
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(729, 38);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(765, 12);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(300, 29);
             this.txtNoiDungTimKiem.TabIndex = 2;
@@ -359,12 +361,40 @@
             this.dateTuNgay.Size = new System.Drawing.Size(120, 29);
             this.dateTuNgay.TabIndex = 0;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Blue;
+            this.label4.Location = new System.Drawing.Point(531, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 19);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Phân Loại:";
+            // 
+            // cmbPhanLoai
+            // 
+            this.cmbPhanLoai.FormattingEnabled = true;
+            this.cmbPhanLoai.Items.AddRange(new object[] {
+            "Tổng Hợp",
+            "TP.HCM",
+            "UBND",
+            "Q.TB",
+            "Q.TP",
+            "Tổng cty CNSG"});
+            this.cmbPhanLoai.Location = new System.Drawing.Point(610, 68);
+            this.cmbPhanLoai.Name = "cmbPhanLoai";
+            this.cmbPhanLoai.Size = new System.Drawing.Size(121, 27);
+            this.cmbPhanLoai.TabIndex = 8;
+            this.cmbPhanLoai.SelectedIndexChanged += new System.EventHandler(this.cmbPhongBanDoi_SelectedIndexChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1366, 675);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmbPhanLoai);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnXuatFileExcel);
             this.Controls.Add(this.groupBox1);
@@ -420,6 +450,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVBID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVBName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PathFile;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbPhanLoai;
     }
 }
 
