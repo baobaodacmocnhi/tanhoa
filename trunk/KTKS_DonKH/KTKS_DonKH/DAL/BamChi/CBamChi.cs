@@ -23,7 +23,12 @@ namespace KTKS_DonKH.DAL.BamChi
                 {
                     if (db.BamChis.Count() > 0)
                     {
-                        decimal MaBC = db.BamChis.Max(itemBamChi => itemBamChi.MaBC);
+                        string ID = "MaBC";
+                        string Table = "BamChi";
+                        decimal MaBC = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaBC = db.BamChis.Max(itemBamChi => itemBamChi.MaBC);
                         bamchi.MaBC = getMaxNextIDTable(MaBC);
                     }
                     else
@@ -275,7 +280,12 @@ namespace KTKS_DonKH.DAL.BamChi
                 {
                     if (db.CTBamChis.Count() > 0)
                     {
-                        decimal MaCTBC = db.CTBamChis.Max(itemCTBamChi => itemCTBamChi.MaCTBC);
+                        string ID = "MaCTBC";
+                        string Table = "CTBamChi";
+                        decimal MaCTBC = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCTBC = db.CTBamChis.Max(itemCTBamChi => itemCTBamChi.MaCTBC);
                         ctbamchi.MaCTBC = getMaxNextIDTable(MaCTBC);
                     }
                     else

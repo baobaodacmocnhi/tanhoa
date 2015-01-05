@@ -215,7 +215,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     if (db.DCBDs.Count() > 0)
                     {
-                        decimal MaDCBD = db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
+                        string ID = "MaDCBD";
+                        string Table = "DCBD";
+                        decimal MaDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaDCBD = db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
                         dcbd.MaDCBD = getMaxNextIDTable(MaDCBD);
                     }
                     else
@@ -472,7 +477,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     if (db.CTDCBDs.Count() > 0)
                     {
-                        decimal MaCTDCBD = db.CTDCBDs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
+                        string ID = "MaCTDCBD";
+                        string Table = "CTDCBD";
+                        decimal MaCTDCBD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCTDCBD = db.CTDCBDs.Max(itemCTDCBD => itemCTDCBD.MaCTDCBD);
                         ctdcbd.MaCTDCBD = getMaxNextIDTable(MaCTDCBD);
                     }
                     else
@@ -932,7 +942,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     if (db.CTDCHDs.Count() > 0)
                     {
-                        decimal MaCTDCHD = db.CTDCHDs.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
+                        string ID = "MaCTDCHD";
+                        string Table = "CTDCHD";
+                        decimal MaCTDCHD = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCTDCHD = db.CTDCHDs.Max(itemCTDCHD => itemCTDCHD.MaCTDCHD);
                         ctdchd.MaCTDCHD = getMaxNextIDTable(MaCTDCHD);
                     }
                     else

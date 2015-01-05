@@ -25,7 +25,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
             {
                 if (db.DonTXLs.Count() > 0)
                 {
-                    decimal MaDon = db.DonTXLs.Max(itemDonTXL => itemDonTXL.MaDon);
+                    string ID = "MaDon";
+                    string Table = "DonTXL";
+                    decimal MaDon = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
                     return getMaxNextIDTable(MaDon);
                 }
                 else
@@ -516,7 +520,12 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 {
                     if (db.LichSuChuyenKTs.Count() > 0)
                     {
-                        decimal MaLSChuyenKT = db.LichSuChuyenKTs.Max(itemLSCKT => itemLSCKT.MaLSChuyenKT);
+                        string ID = "MaLSChuyenKT";
+                        string Table = "LichSuChuyenKT";
+                        decimal MaLSChuyenKT = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaLSChuyenKT = db.LichSuChuyenKTs.Max(itemLSCKT => itemLSCKT.MaLSChuyenKT);
                         lichsuchuyenkt.MaLSChuyenKT = getMaxNextIDTable(MaLSChuyenKT);
                     }
                     else

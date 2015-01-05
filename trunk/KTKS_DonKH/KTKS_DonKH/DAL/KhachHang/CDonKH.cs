@@ -21,7 +21,11 @@ namespace KTKS_DonKH.DAL.KhachHang
             {
                 if (db.DonKHs.Count() > 0)
                 {
-                    decimal MaDon = db.DonKHs.Max(itemDonKH => itemDonKH.MaDon);
+                    string ID = "MaDon";
+                    string Table = "DonKH";
+                    decimal MaDon = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
                     return getMaxNextIDTable(MaDon);
                 }
                 else

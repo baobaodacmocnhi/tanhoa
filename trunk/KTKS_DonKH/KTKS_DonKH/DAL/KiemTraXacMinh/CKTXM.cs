@@ -23,7 +23,12 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 {
                     if (db.KTXMs.Count() > 0)
                     {
-                        decimal MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM);
+                        string ID = "MaKTXM";
+                        string Table = "KTXM";
+                        decimal MaKTXM = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaKTXM = db.KTXMs.Max(itemKTXM => itemKTXM.MaKTXM);
                         ktxm.MaKTXM = getMaxNextIDTable(MaKTXM);
                     }
                     else
@@ -225,7 +230,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            //join itemDonKH in db.DonKHs on itemKTXM.MaDon equals itemDonKH.MaDon
                                            //join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                            where itemKTXM.ToXuLy == true
-                                           orderby itemKTXM.MaDon ascending
+                                           orderby itemKTXM.MaDonTXL ascending
                                            select new
                                            {
                                                itemKTXM.ToXuLy,
@@ -581,7 +586,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
                                       join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
                                       where itemCTKTXM.KTXM.ToXuLy == true
-                                      orderby itemCTKTXM.KTXM.MaDon ascending
+                                       orderby itemCTKTXM.KTXM.MaDon ascending
                                       select new
                                       {
                                           itemCTKTXM.KTXM.ToXuLy,
@@ -1285,7 +1290,12 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 {
                     if (db.CTKTXMs.Count() > 0)
                     {
-                        decimal MaCTKTXM = db.CTKTXMs.Max(itemCTKTXM => itemCTKTXM.MaCTKTXM);
+                        string ID = "MaCTKTXM";
+                        string Table = "CTKTXM";
+                        decimal MaCTKTXM = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCTKTXM = db.CTKTXMs.Max(itemCTKTXM => itemCTKTXM.MaCTKTXM);
                         ctktxm.MaCTKTXM = getMaxNextIDTable(MaCTKTXM);
                     }
                     else

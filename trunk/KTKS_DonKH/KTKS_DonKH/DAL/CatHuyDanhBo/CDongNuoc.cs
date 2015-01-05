@@ -65,7 +65,12 @@ namespace KTKS_DonKH.DAL.DongNuoc
                 {
                     if (db.DongNuocs.Count() > 0)
                     {
-                        decimal MaDN = db.DongNuocs.Max(itemDongNuoc => itemDongNuoc.MaDN);
+                        string ID = "MaDN";
+                        string Table = "DongNuoc";
+                        decimal MaDN = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaDN = db.DongNuocs.Max(itemDongNuoc => itemDongNuoc.MaDN);
                         dongnuoc.MaDN = getMaxNextIDTable(MaDN);
                     }
                     else
@@ -206,7 +211,12 @@ namespace KTKS_DonKH.DAL.DongNuoc
                 {
                     if (db.CTDongNuocs.Count() > 0)
                     {
-                        decimal MaCTDN = db.CTDongNuocs.Max(itemCTDongNuoc => itemCTDongNuoc.MaCTDN);
+                        string ID = "MaCTDN";
+                        string Table = "CTDongNuoc";
+                        decimal MaCTDN = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCTDN = db.CTDongNuocs.Max(itemCTDongNuoc => itemCTDongNuoc.MaCTDN);
                         ctdongnuoc.MaCTDN = getMaxNextIDTable(MaCTDN);
                     }
                     else

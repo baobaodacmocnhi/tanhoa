@@ -322,7 +322,14 @@ namespace KTKS_DonKH.DAL.CapNhat
                     if (db.LichSuChungTus.Max(itemLSCT => itemLSCT.SoPhieu) == null)
                         return decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     else
-                        return getMaxNextIDTable(db.LichSuChungTus.Max(itemLSCT => itemLSCT.SoPhieu).Value);
+                    {
+                        string ID = "SoPhieu";
+                        string Table = "LichSuChungTu";
+                        decimal SoPhieu = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        return getMaxNextIDTable(SoPhieu);
+                    }
                 }
                 else
                     return decimal.Parse("1" + DateTime.Now.ToString("yy"));
