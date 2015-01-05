@@ -254,7 +254,12 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (db.LichSuChungTus.Count() > 0)
                 {
-                    decimal MaLSCT = db.LichSuChungTus.Max(itemLSCT => itemLSCT.MaLSCT);
+                    string ID = "MaLSCT";
+                    string Table = "LichSuChungTu";
+                    decimal MaLSCT = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    //decimal MaLSCT = db.LichSuChungTus.Max(itemLSCT => itemLSCT.MaLSCT);
                     lichsuchungtu.MaLSCT = getMaxNextIDTable(MaLSCT);
                 }
                 else
