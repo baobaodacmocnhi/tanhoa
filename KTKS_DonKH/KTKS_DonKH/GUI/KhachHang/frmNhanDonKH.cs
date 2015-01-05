@@ -105,13 +105,13 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (cmbLD.SelectedIndex != -1)
             {
-                txtMaDon.Text = _cDonKH.getMaxNextID().ToString().Insert(_cDonKH.getMaxNextID().ToString().Length - 2, "-");
+                //txtMaDon.Text = _cDonKH.getMaxNextID().ToString().Insert(_cDonKH.getMaxNextID().ToString().Length - 2, "-");
                 txtNgayNhan.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 ///Thêm Số Loại Đơn đễ lưu trữ
                 try
                 {
                     ///combobox bị lỗi ở lần đầu tiên nên phải đặc trong try/catch
-                    txtMaXepDon.Text = _cDonKH.getMaXepDonNext(int.Parse(cmbLD.SelectedValue.ToString())).ToString().Insert(_cDonKH.getMaXepDonNext(int.Parse(cmbLD.SelectedValue.ToString())).ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
+                    //txtMaXepDon.Text = _cDonKH.getMaXepDonNext(int.Parse(cmbLD.SelectedValue.ToString())).ToString().Insert(_cDonKH.getMaXepDonNext(int.Parse(cmbLD.SelectedValue.ToString())).ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
                 }
                 catch (Exception)
                 {
@@ -176,7 +176,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     donkh.SoCongVan = txtSoCongVan.Text.Trim();
                     donkh.TongSoDanhBo = int.Parse(txtTongSoDanhBo.Text.Trim());
                     donkh.NoiDung = txtNoiDung.Text.Trim();
-                    donkh.MaXepDon = decimal.Parse(txtMaXepDon.Text.Trim().Substring(0, txtMaXepDon.Text.Trim().IndexOf("/")).Replace("-", ""));
+                    //donkh.MaXepDon = decimal.Parse(txtMaXepDon.Text.Trim().Substring(0, txtMaXepDon.Text.Trim().IndexOf("/")).Replace("-", ""));
 
                     donkh.DanhBo = txtDanhBo.Text.Trim();
                     donkh.HopDong = txtHopDong.Text.Trim();

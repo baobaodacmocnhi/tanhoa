@@ -270,7 +270,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     if (db.CHDBs.Count() > 0)
                     {
-                        decimal MaCHDB = db.CHDBs.Max(itemCHDB => itemCHDB.MaCHDB);
+                        string ID = "MaCHDB";
+                        string Table = "CHDB";
+                        decimal MaCHDB = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCHDB = db.CHDBs.Max(itemCHDB => itemCHDB.MaCHDB);
                         chdb.MaCHDB = getMaxNextIDTable(MaCHDB);
                     }
                     else
@@ -477,7 +482,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     if (db.CTCTDBs.Count() > 0)
                     {
-                        decimal MaCTCTDB = db.CTCTDBs.Max(itemCTCTDB => itemCTCTDB.MaCTCTDB);
+                        string ID = "MaCTCTDB";
+                        string Table = "CTCTDB";
+                        decimal MaCTCTDB = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCTCTDB = db.CTCTDBs.Max(itemCTCTDB => itemCTCTDB.MaCTCTDB);
                         ctctdb.MaCTCTDB = getMaxNextIDTable(MaCTCTDB);
                     }
                     else
@@ -825,7 +835,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     if (db.CTCHDBs.Count() > 0)
                     {
-                        decimal MaCTCHDB = db.CTCHDBs.Max(itemCTCHDB => itemCTCHDB.MaCTCHDB);
+                        string ID = "MaCTCHDB";
+                        string Table = "CTCHDB";
+                        decimal MaCTCHDB = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCTCHDB = db.CTCHDBs.Max(itemCTCHDB => itemCTCHDB.MaCTCHDB);
                         ctchdb.MaCTCHDB = getMaxNextIDTable(MaCTCHDB);
                     }
                     else
@@ -1260,7 +1275,12 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     if (db.YeuCauCHDBs.Count() > 0)
                     {
-                        decimal MaYCCHDB = db.YeuCauCHDBs.Max(itemYCCHDB => itemYCCHDB.MaYCCHDB);
+                        string ID = "MaYCCHDB";
+                        string Table = "YeuCauCHDB";
+                        decimal MaYCCHDB = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaYCCHDB = db.YeuCauCHDBs.Max(itemYCCHDB => itemYCCHDB.MaYCCHDB);
                         ycchdb.MaYCCHDB = getMaxNextIDTable(MaYCCHDB);
                     }
                     else

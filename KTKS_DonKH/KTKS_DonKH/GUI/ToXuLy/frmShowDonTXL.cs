@@ -85,6 +85,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(_source["MaDon"]));
                 cmbLD.SelectedValue = _dontxl.MaLD.Value;
                 txtSoCongVan.Text = _dontxl.SoCongVan;
+                if (_dontxl.TongSoDanhBo != null)
                 txtTongSoDanhBo.Text = _dontxl.TongSoDanhBo.Value.ToString();
                 txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                 txtNgayNhan.Text = _dontxl.CreateDate.Value.ToString("dd/MM/yyyy");

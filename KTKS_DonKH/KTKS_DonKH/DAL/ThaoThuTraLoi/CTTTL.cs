@@ -242,7 +242,12 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 {
                     if (db.TTTLs.Count() > 0)
                     {
-                        decimal MaTTTL = db.TTTLs.Max(itemTTTL => itemTTTL.MaTTTL);
+                        string ID = "MaTTTL";
+                        string Table = "TTTL";
+                        decimal MaTTTL = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaTTTL = db.TTTLs.Max(itemTTTL => itemTTTL.MaTTTL);
                         tttl.MaTTTL = getMaxNextIDTable(MaTTTL);
                     }
                     else
@@ -417,7 +422,12 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
                 {
                     if (db.CTTTTLs.Count() > 0)
                     {
-                        decimal MaCTTTTL = db.CTTTTLs.Max(itemCTTTTL => itemCTTTTL.MaCTTTTL);
+                        string ID = "MaCTTTTL";
+                        string Table = "CTTTTL";
+                        decimal MaCTTTTL = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCTTTTL = db.CTTTTLs.Max(itemCTTTTL => itemCTTTTL.MaCTTTTL);
                         cttttl.MaCTTTTL = getMaxNextIDTable(MaCTTTTL);
                     }
                     else
