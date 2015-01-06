@@ -328,6 +328,7 @@ namespace KTKS_DonKH.DAL.DongNuoc
                 if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemCTDongNuoc in db.CTDongNuocs
+                                orderby itemCTDongNuoc.CreateDate descending
                                 select new
                                 {
                                     In = false,

@@ -361,7 +361,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null
                                 //where itemLSCT.MaLSCT == 126114
-                                orderby itemLSCT.SoPhieu ascending
+                                orderby itemLSCT.CreateDate descending
                                 select new
                                 {
                                     In=false,

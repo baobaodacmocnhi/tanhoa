@@ -284,6 +284,17 @@ namespace KTKS_DonKH.GUI.DongNuoc
                     if (txtMaThongBao_DN.Text.Trim().Replace("-", "") != "")
                         _ctdongnuoc.MaCTDN = decimal.Parse(txtMaThongBao_DN.Text.Trim().Replace("-", ""));
 
+                    _ctdongnuoc.DanhBo = txtDanhBo.Text.Trim();
+                    _ctdongnuoc.HopDong = txtHopDong.Text.Trim();
+                    _ctdongnuoc.HoTen = txtHoTen.Text.Trim();
+                    _ctdongnuoc.DiaChi = txtDiaChi.Text.Trim();
+                    if (_ttkhachhang != null)
+                    {
+                        _ctdongnuoc.Dot = _ttkhachhang.Dot;
+                        _ctdongnuoc.Ky = _ttkhachhang.Ky;
+                        _ctdongnuoc.Nam = _ttkhachhang.Nam;
+                    }
+
                     _ctdongnuoc.DiaChiDHN = txtDiaChiDHN.Text.Trim();
                     _ctdongnuoc.NgayDN = dateDongNuoc.Value;
                     _ctdongnuoc.SoCongVan_DN = txtSoCongVan_DN.Text.Trim();
@@ -476,6 +487,28 @@ namespace KTKS_DonKH.GUI.DongNuoc
                     Clear();
                     _ctdongnuoc = null;
                     MessageBox.Show("Mã Thông Báo này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                    LoadTTKH(_ttkhachhang);
+                }
+                else
+                {
+                    txtDanhBo.Text = "";
+                    txtHopDong.Text = "";
+                    txtHoTen.Text = "";
+                    txtDiaChi.Text = "";
+                    txtDiaChiDHN.Text = "";
+                    _ttkhachhang = null;
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

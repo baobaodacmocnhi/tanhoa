@@ -129,7 +129,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (dgvDSDonTXL.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
-                e.Value = "TXL"+e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                e.Value = "TXL" + e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
             if (dgvDSDonTXL.Columns[e.ColumnIndex].Name == "NguoiDi" && !string.IsNullOrEmpty(e.Value.ToString()))
             {
@@ -237,13 +237,13 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dt = _cDonTXL.LoadDSDonTXLbySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
             }
-            
+
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            if(chkChuaKT.Checked)
+            if (chkChuaKT.Checked)
                 foreach (DataRow itemRow in dt.Rows)
                 {
-                    string a=itemRow["NguoiDi"].ToString();
-                    string b=itemRow["MaDon"].ToString();
+                    string a = itemRow["NguoiDi"].ToString();
+                    string b = itemRow["MaDon"].ToString();
                     if (!_cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString())))
                     {
                         DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
@@ -273,35 +273,111 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     }
                 }
             else
-            foreach (DataRow itemRow in dt.Rows)
-            {
-                DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
-
-                dr["TuNgay"] = _tuNgay;
-                dr["DenNgay"] = _denNgay;
-                //dr["MaLD"] = itemRow["MaLD"];
-                dr["TenLD"] = itemRow["TenLD"];
-                dr["SoCongVan"] = itemRow["SoCongVan"];
-                dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
-                dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
-                dr["TenLD"] = dontxl.LoaiDonTXL.TenLD;
-
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = itemRow["HoTen"];
-                dr["DiaChi"] = itemRow["DiaChi"];
-                dr["NoiDung"] = itemRow["NoiDung"];
-                if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
+                foreach (DataRow itemRow in dt.Rows)
                 {
-                    dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
-                    dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon).ToString();
+                    DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    //dr["MaLD"] = itemRow["MaLD"];
+                    dr["TenLD"] = itemRow["TenLD"];
+                    dr["SoCongVan"] = itemRow["SoCongVan"];
+                    dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                    DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                    dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    dr["TenLD"] = dontxl.LoaiDonTXL.TenLD;
+
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["NoiDung"] = itemRow["NoiDung"];
+                    if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
+                    {
+                        dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
+                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon).ToString();
+                    }
+
+                    dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
                 }
 
-                dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
-            }
-
             rptDSDonTXL rpt = new rptDSDonTXL();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void btnInChiTiet_Click(object sender, EventArgs e)
+        {
+            DataTable dt = ((DataTable)DSDonKH_BS.DataSource).DefaultView.ToTable();
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                if (dontxl.ChuyenKT)
+                {
+                    DataRow dr = dsBaoCao.Tables["ChiTietDonTXL"].NewRow();
+
+                    dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    dr["TenLD"] = itemRow["TenLD"].ToString();
+                    dr["NgayNhan"] = itemRow["CreateDate"].ToString();
+                    dr["NoiDung"] = itemRow["NoiDung"].ToString();
+                    dr["LoaiChuyen"] = "Đi Kiểm Tra";
+                    if (dontxl.NgayChuyenKT != null)
+                        dr["NgayChuyen"] = dontxl.NgayChuyenKT.Value.ToString("dd/MM/yyyy");
+                    if (dontxl.NguoiDi != null)
+                        dr["GhiChu"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(dontxl.NguoiDi.Value.ToString()));
+                    dr["GhiChu"] += ". " + dontxl.GhiChuChuyenKT;
+
+                    dsBaoCao.Tables["ChiTietDonTXL"].Rows.Add(dr);
+                }
+                if (dontxl.ChuyenBanDoiKhac)
+                {
+                    DataRow dr = dsBaoCao.Tables["ChiTietDonTXL"].NewRow();
+
+                    dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    dr["TenLD"] = itemRow["TenLD"].ToString();
+                    dr["NgayNhan"] = itemRow["CreateDate"].ToString();
+                    dr["NoiDung"] = itemRow["NoiDung"].ToString();
+                    dr["LoaiChuyen"] = "Đi Ban Đội Khác";
+                    if (dontxl.NgayChuyenBanDoiKhac != null)
+                        dr["NgayChuyen"] = dontxl.NgayChuyenBanDoiKhac.Value.ToString("dd/MM/yyyy");
+                    dr["GhiChu"] = dontxl.GhiChuChuyenBanDoiKhac;
+
+                    dsBaoCao.Tables["ChiTietDonTXL"].Rows.Add(dr);
+                }
+                if (dontxl.ChuyenToKhachHang)
+                {
+                    DataRow dr = dsBaoCao.Tables["ChiTietDonTXL"].NewRow();
+
+                    dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    dr["TenLD"] = itemRow["TenLD"].ToString();
+                    dr["NgayNhan"] = itemRow["CreateDate"].ToString();
+                    dr["NoiDung"] = itemRow["NoiDung"].ToString();
+                    dr["LoaiChuyen"] = "Đi Tổ Khách Hàng";
+                    if (dontxl.NgayChuyenToKhachHang != null)
+                        dr["NgayChuyen"] = dontxl.NgayChuyenToKhachHang.Value.ToString("dd/MM/yyyy");
+                    dr["GhiChu"] = dontxl.GhiChuChuyenToKhachHang;
+
+                    dsBaoCao.Tables["ChiTietDonTXL"].Rows.Add(dr);
+                }
+                if (dontxl.ChuyenBanDoiKhac)
+                {
+                    DataRow dr = dsBaoCao.Tables["ChiTietDonTXL"].NewRow();
+
+                    dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    dr["TenLD"] = itemRow["TenLD"].ToString();
+                    dr["NgayNhan"] = itemRow["CreateDate"].ToString();
+                    dr["NoiDung"] = itemRow["NoiDung"].ToString();
+                    dr["LoaiChuyen"] = "Đi Khác";
+                    if (dontxl.NgayChuyenKhac != null)
+                        dr["NgayChuyen"] = dontxl.NgayChuyenKhac.Value.ToString("dd/MM/yyyy");
+                    dr["GhiChu"] = dontxl.GhiChuChuyenKhac;
+
+                    dsBaoCao.Tables["ChiTietDonTXL"].Rows.Add(dr);
+                }
+            }
+            rptChiTietDonTXL rpt = new rptChiTietDonTXL();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();

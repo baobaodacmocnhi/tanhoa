@@ -175,7 +175,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         if (_cTTTL.CheckCTTTTLbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim()))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            //return;
                         }
                         CTTTTL cttttl = new CTTTTL();
                         cttttl.MaTTTL = _cTTTL.getTTTLbyMaDon_TXL(_dontxl.MaDon).MaTTTL;
@@ -285,7 +285,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                         if (_cTTTL.CheckCTTTTLbyMaDonDanhBo(_donkh.MaDon, txtDanhBo.Text.Trim()))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Thư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            //return;
                         }
                         CTTTTL cttttl = new CTTTTL();
                         cttttl.MaTTTL = _cTTTL.getTTTLbyMaDon(_donkh.MaDon).MaTTTL;

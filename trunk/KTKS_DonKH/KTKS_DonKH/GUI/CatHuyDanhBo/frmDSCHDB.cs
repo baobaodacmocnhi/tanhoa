@@ -1198,7 +1198,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                         case "Số Phiếu":
-                            if (radDSYCCHDB.Checked)
+                            if (radDSYCCHDB.Checked||radDSDongNuoc.Checked)
                                 expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                         case "Số Thông Báo":

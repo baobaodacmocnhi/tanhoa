@@ -623,6 +623,10 @@ namespace KTKS_DonKH.GUI.TimKiem
                                 dr["DanhBoXuLy"] = itemChildRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                                 dr["HoTenXuLy"] = itemChildRow["HoTen"];
                                 dr["DiaChiXuLy"] = itemChildRow["DiaChi"];
+
+                                dr["LoaiChiTietXuLy"] = "";
+                                dr["Ma"] = "";
+
                                 if (itemRelation.RelationName.Contains("Kiểm Tra"))
                                 {
                                     dr["NgayLapXuLy"] = itemChildRow["NgayKTXM"];
