@@ -256,7 +256,7 @@ namespace QLVanThu
 
                 Microsoft.Office.Interop.Excel.Range head3 = oSheetTongHop.get_Range("A3", "D3");
                 head3.MergeCells = true;
-                head3.Value2 = "CÔNG TY TNHH MTV CẤP NƯỚC TÂN HÒA";
+                head3.Value2 = "CÔNG TY CP CẤP NƯỚC TÂN HÒA";
                 head3.Font.Bold = true;
                 head3.Font.Name = "Times New Roman";
                 head3.Font.Size = "11";
@@ -503,7 +503,7 @@ namespace QLVanThu
 
                 Microsoft.Office.Interop.Excel.Range head3 = oSheet.get_Range("A3", "D3");
                 head3.MergeCells = true;
-                head3.Value2 = "CÔNG TY TNHH MTV CẤP NƯỚC TÂN HÒA";
+                head3.Value2 = "CÔNG TY CP CẤP NƯỚC TÂN HÒA";
                 head3.Font.Bold = true;
                 head3.Font.Name = "Times New Roman";
                 head3.Font.Size = "11";
