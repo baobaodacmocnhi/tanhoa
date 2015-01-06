@@ -376,11 +376,9 @@
             this.cmbPhanLoai.FormattingEnabled = true;
             this.cmbPhanLoai.Items.AddRange(new object[] {
             "Tổng Hợp",
-            "TP.HCM",
-            "UBND",
-            "Q.TB",
-            "Q.TP",
-            "Tổng cty CNSG"});
+            "TP.HCM,Quận",
+            "Tổng cty CNSG",
+            "Khác"});
             this.cmbPhanLoai.Location = new System.Drawing.Point(610, 68);
             this.cmbPhanLoai.Name = "cmbPhanLoai";
             this.cmbPhanLoai.Size = new System.Drawing.Size(121, 27);
