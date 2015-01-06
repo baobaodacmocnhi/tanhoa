@@ -586,6 +586,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
+                                orderby itemCTDCBD.CreateDate descending
                                 select new
                                 {
                                     In = false,
@@ -1051,6 +1052,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
                     var query = from itemCTDCHD in db.CTDCHDs
+                                orderby itemCTDCHD.CreateDate descending
                                 select new
                                 {
                                     In = false,

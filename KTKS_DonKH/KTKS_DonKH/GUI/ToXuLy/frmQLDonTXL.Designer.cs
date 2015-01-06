@@ -60,6 +60,7 @@
             this.GiaiQuyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnInDSDonTXL = new System.Windows.Forms.Button();
             this.chkChuaKT = new System.Windows.Forms.CheckBox();
+            this.btnInChiTiet = new System.Windows.Forms.Button();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTXL)).BeginInit();
             this.SuspendLayout();
@@ -372,6 +373,19 @@
             this.chkChuaKT.Text = "Chưa KT";
             this.chkChuaKT.UseVisualStyleBackColor = true;
             // 
+            // btnInChiTiet
+            // 
+            this.btnInChiTiet.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInChiTiet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInChiTiet.Location = new System.Drawing.Point(982, 4);
+            this.btnInChiTiet.Name = "btnInChiTiet";
+            this.btnInChiTiet.Size = new System.Drawing.Size(114, 35);
+            this.btnInChiTiet.TabIndex = 33;
+            this.btnInChiTiet.Text = "In (Chi Tiết)";
+            this.btnInChiTiet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInChiTiet.UseVisualStyleBackColor = true;
+            this.btnInChiTiet.Click += new System.EventHandler(this.btnInChiTiet_Click);
+            // 
             // frmQLDonTXL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -379,6 +393,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1362, 562);
+            this.Controls.Add(this.btnInChiTiet);
             this.Controls.Add(this.chkChuaKT);
             this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.cmbTimTheo);
@@ -436,5 +451,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn GiaiQuyet;
         private System.Windows.Forms.CheckBox chkChuaKT;
+        private System.Windows.Forms.Button btnInChiTiet;
     }
 }

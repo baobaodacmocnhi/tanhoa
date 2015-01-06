@@ -618,6 +618,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemCTCTDB in db.CTCTDBs
                                 //where itemCTCTDB.CHDB.MaDon!=null
+                                orderby itemCTCTDB.CreateDate descending
                                 select new
                                 {
                                     In=false,
@@ -958,6 +959,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemCTCHDB in db.CTCHDBs
                                 //where itemCTCHDB.CHDB.MaDon!=null
+                                orderby itemCTCHDB.CreateDate descending
                                 select new
                                 {
                                     In = false,
@@ -1428,6 +1430,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
                 {
                     var query = from itemYCCHDB in db.YeuCauCHDBs
+                                orderby itemYCCHDB.CreateDate descending
                                 select new
                                 {
                                     In = false,

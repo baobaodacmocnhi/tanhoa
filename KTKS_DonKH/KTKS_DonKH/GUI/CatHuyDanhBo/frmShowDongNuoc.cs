@@ -13,6 +13,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DongNuoc;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.BamChi;
+using KTKS_DonKH.DAL.KhachHang;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -23,6 +24,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CTDongNuoc _ctdongnuoc = null;
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CBamChi _cBamChi = new CBamChi();
+        TTKhachHang _ttkhachhang = null;
+        CTTKH _cTTKH = new CTTKH();
+        CPhuongQuan _cPhuongQuan = new CPhuongQuan();
 
         public frmShowDongNuoc()
         {
@@ -46,6 +50,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 btnInTBMN.Enabled = false;
                 btnSua.Enabled = false;
             }
+        }
+
+        public void LoadTTKH(TTKhachHang ttkhachhang)
+        {
+            txtDanhBo.Text = ttkhachhang.DanhBo;
+            txtHopDong.Text = ttkhachhang.GiaoUoc;
+            txtHoTen.Text = ttkhachhang.HoTen;
+            txtDiaChiDHN.Text = txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
         }
 
         private void frmShowDongNuoc_Load(object sender, EventArgs e)
@@ -110,6 +122,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     if (txtMaThongBao_DN.Text.Trim().Replace("-", "") != "")
                         _ctdongnuoc.MaCTDN = decimal.Parse(txtMaThongBao_DN.Text.Trim().Replace("-", ""));
+
+                    _ctdongnuoc.DanhBo = txtDanhBo.Text.Trim();
+                    _ctdongnuoc.HopDong = txtHopDong.Text.Trim();
+                    _ctdongnuoc.HoTen = txtHoTen.Text.Trim();
+                    _ctdongnuoc.DiaChi = txtDiaChi.Text.Trim();
+                    if (_ttkhachhang != null)
+                    {
+                        _ctdongnuoc.Dot = _ttkhachhang.Dot;
+                        _ctdongnuoc.Ky = _ttkhachhang.Ky;
+                        _ctdongnuoc.Nam = _ttkhachhang.Nam;
+                    }
 
                     _ctdongnuoc.DiaChiDHN = txtDiaChiDHN.Text.Trim();
                     _ctdongnuoc.NgayDN = dateDongNuoc.Value;
@@ -238,6 +261,28 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
             else
                 MessageBox.Show("Chưa có Thông Báo Đóng Nước/Nội Dung Mở Nước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (_cTTKH.getTTKHbyID(txtDanhBo.Text.Trim()) != null)
+                {
+                    _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
+                    LoadTTKH(_ttkhachhang);
+                }
+                else
+                {
+                    txtDanhBo.Text = "";
+                    txtHopDong.Text = "";
+                    txtHoTen.Text = "";
+                    txtDiaChi.Text = "";
+                    txtDiaChiDHN.Text = "";
+                    _ttkhachhang = null;
+                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
