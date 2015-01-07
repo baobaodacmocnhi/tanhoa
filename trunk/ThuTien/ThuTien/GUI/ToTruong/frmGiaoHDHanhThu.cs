@@ -144,6 +144,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
+                var startTime = System.Diagnostics.Stopwatch.StartNew();
                 if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
                     if (dgvHDTuGia.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuMLT.Text.Trim() != "" && txtDenMLT.Text.Trim() != "")
@@ -181,6 +182,8 @@ namespace ThuTien.GUI.ToTruong
                                     MessageBox.Show("Sai MLT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                startTime.Stop();
+                MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -193,6 +196,7 @@ namespace ThuTien.GUI.ToTruong
                 if (_selectedindex != -1)
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
+                        var startTime = System.Diagnostics.Stopwatch.StartNew();
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
                             if (_cHoaDon.XoaChia(CNguoiDung.MaTo, "TG", txtTuMLT.Text.Trim(), txtDenMLT.Text.Trim(), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
@@ -209,8 +213,9 @@ namespace ThuTien.GUI.ToTruong
                                 Clear();
                             }
                         }
-                    }
-                    
+                        startTime.Stop();
+                        MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }  
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -244,6 +249,11 @@ namespace ThuTien.GUI.ToTruong
             catch (Exception)
             {
             }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
         }
 
 

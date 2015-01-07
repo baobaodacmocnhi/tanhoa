@@ -175,18 +175,30 @@ namespace ThuTien.DAL.Doi
             try
             {
                 if (loai == "TG")
-                    _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                        && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt) 
-                                        && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList()
-                                        .ForEach(item => { item.MaNV_HanhThu = MaNV; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                {
+                    //_db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                    //                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                    //                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
+                    //                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList()
+                    //                    .ForEach(item => { item.MaNV_HanhThu = MaNV; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                    string sql = "update HOADON set MaNV_HanhThu=" + MaNV + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                        + "where MALOTRINH>='" + tumlt + "' and MALOTRINH<='" + denmlt + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>=11 and GB<=20 "
+                        + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
+                    ExecuteNonQuery(sql);
+                }
                 else
                     if (loai == "CQ")
-                        _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
-                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList()
-                                    .ForEach(item => { item.MaNV_HanhThu = MaNV; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                    {
+                        //_db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                        //            && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        //            && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
+                        //            && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList()
+                        //            .ForEach(item => { item.MaNV_HanhThu = MaNV; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                        string sql = "update HOADON set MaNV_HanhThu=" + MaNV + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                        + "where MALOTRINH>='" + tumlt + "' and MALOTRINH<='" + denmlt + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>20 "
+                        + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
+                        ExecuteNonQuery(sql);
+                    }
                 _db.SubmitChanges();
 
                 return true;
@@ -216,19 +228,31 @@ namespace ThuTien.DAL.Doi
         {
             try
             {
-                if(loai=="TG")
-                _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
-                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList()
-                                    .ForEach(item => { item.MaNV_HanhThu = null; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                if (loai == "TG")
+                {
+                    //_db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                    //                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                    //                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
+                    //                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList()
+                    //                    .ForEach(item => { item.MaNV_HanhThu = null; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                    string sql = "update HOADON set MaNV_HanhThu=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                        + "where MALOTRINH>='" + tumlt + "' and MALOTRINH<='" + denmlt + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>=11 and GB<=20 "
+                        + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
+                    ExecuteNonQuery(sql);
+                }
                 else
-                    if(loai=="CQ")
-                        _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
-                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList()
-                                    .ForEach(item => { item.MaNV_HanhThu = null; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                    if (loai == "CQ")
+                    {
+                        //_db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                        //            && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        //            && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
+                        //            && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList()
+                        //            .ForEach(item => { item.MaNV_HanhThu = null; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
+                        string sql = "update HOADON set MaNV_HanhThu=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                        + "where MALOTRINH>='" + tumlt + "' and MALOTRINH<='" + denmlt + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>20 "
+                        + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
+                        ExecuteNonQuery(sql);
+                    }
                 _db.SubmitChanges();
 
                 return true;
@@ -249,6 +273,7 @@ namespace ThuTien.DAL.Doi
         {
             //return this.LINQToDataTable(_db.HOADONs.Select(item => new { item.NAM }).Distinct().OrderByDescending(item => item.NAM).ToList());
             return this.LINQToDataTable(_db.ViewGetNamHDs.OrderByDescending(item=>item.Nam));
+            //return ExecuteQuery_SqlDataReader_DataTable("select * from ViewGetNamHD");
         }
 
         public DataTable GetTongHDByNamKy(int nam, int ky)
@@ -259,7 +284,7 @@ namespace ThuTien.DAL.Doi
                         group item by item.DOT into itemGroup
                         select new
                         {
-                            Dot= itemGroup.Key,
+                            Dot = itemGroup.Key,
                             TongHD = itemGroup.Count(),
                             TongLNCC = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
@@ -268,6 +293,9 @@ namespace ThuTien.DAL.Doi
                             TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
                         };
             return this.LINQToDataTable(query);
+            //string sql = "select DOT,count(ID_HoaDon) as TongHD,sum(TIEUTHU) as TongLNCC,sum(GIABAN) as TongGiaBan,sum(THUE) as TongThueGTGT,sum(PHI) as TongPhiBVMT,sum(TONGCONG) as TongCong "
+            //    + "from HOADON where NAM='" + nam + "' and KY='" + ky + "' group by DOT order by DOT asc";
+            //return ExecuteQuery_SqlDataReader_DataTable(sql);
         }
 
         public DataTable GetDSChiaByNamKyDot(int MaTo, string loai, int nam, int ky, int dot)

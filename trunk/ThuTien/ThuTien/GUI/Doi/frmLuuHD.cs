@@ -66,7 +66,12 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (cmbKy.SelectedIndex != -1)
+            {
+                //var startTime = System.Diagnostics.Stopwatch.StartNew();
                 dgvHoaDon.DataSource = _cHoaDon.GetTongHDByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                //startTime.Stop();
+                //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
