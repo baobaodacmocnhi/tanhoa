@@ -108,7 +108,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                                orderby itemDonKH.MaLD, itemDonKH.MaDon ascending
+                                orderby itemDonKH.CreateDate descending
                                 select new
                                 {
                                     itemDonKH.MaDon,

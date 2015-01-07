@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                 txtNgayNhan.Text = _donkh.CreateDate.Value.ToString("dd/MM/yyyy");
                 txtNoiDung.Text = _donkh.NoiDung;
-                txtMaXepDon.Text = _donkh.MaXepDon.ToString().Insert(_donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
+                //txtMaXepDon.Text = _donkh.MaXepDon.ToString().Insert(_donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
 
                 if (_donkh.KiemTraDHN)
                     chkKiemTraDHN.Checked = true;
