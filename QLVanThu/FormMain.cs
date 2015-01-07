@@ -203,7 +203,7 @@ namespace QLVanThuDen
             oSheet.get_Range(c3h, c4h).Font.Size = 12;
         }
 
-        private void ExportToExcelTongHop(DataTable dt)
+        private void ExportToExcelTongHop(DataTable dt,string loaiVB)
         {
             int r = 0;
             //float TuSo = 100000;
@@ -270,7 +270,7 @@ namespace QLVanThuDen
 
                 Microsoft.Office.Interop.Excel.Range head6 = oSheetTongHop.get_Range("A6", "H6");
                 head6.MergeCells = true;
-                head6.Value2 = "DANH MỤC VĂN BẢN ĐI";
+                head6.Value2 = "DANH MỤC " + loaiVB;
                 head6.Font.Bold = true;
                 head6.Font.Name = "Times New Roman";
                 head6.Font.Size = "20";
@@ -357,6 +357,10 @@ namespace QLVanThuDen
                     //}
                     arr[r, 0] = r + 1;
                     arr[r, 1] = dr["NgayDen"];
+                    //if (int.Parse(dr["SoDen"].ToString().Replace("ĐT", "")) < TuSo)
+                    //    TuSo = int.Parse(dr["SoDen"].ToString().Replace("ĐT", ""));
+                    //if (int.Parse(dr["SoDen"].ToString().Replace("ĐT", "")) > DenSo)
+                    //    DenSo = int.Parse(dr["SoDen"].ToString().Replace("ĐT", ""));
                     arr[r, 2] = dr["SoDen"];
                     arr[r, 3] = dr["TacGiaVB"];
                     arr[r, 4] = dr["SoKyHieuVB"];
@@ -474,7 +478,7 @@ namespace QLVanThuDen
             }
             catch (Exception)
             {
-                MessageBox.Show("Ký hiệu văn bản sai: " + dt.Rows[r]["SoKyHieuVB"].ToString());
+                MessageBox.Show("Ký hiệu văn bản sai: " + dt.Rows[r]["SoKyHieuVB"].ToString() + " == " + dt.Rows[r]["SoDen"].ToString());
             }
 
         }
@@ -506,7 +510,11 @@ namespace QLVanThuDen
         private void btnXuatFileExcel_Click(object sender, EventArgs e)
         {
             //ExportToExcel(((DataTable)vanthus.DataSource).DefaultView.ToTable(), "Danh sách văn thư", "DANH SÁCH VĂN THƯ");
-            ExportToExcelTongHop(((DataTable)vanthus.DataSource).DefaultView.ToTable());
+            if (chkCongVanDen.Checked)
+                ExportToExcelTongHop(((DataTable)vanthus.DataSource).DefaultView.ToTable(), "CÔNG VĂN ĐẾN");
+            else
+                if (chkDonThuDen.Checked)
+                    ExportToExcelTongHop(((DataTable)vanthus.DataSource).DefaultView.ToTable(), "ĐƠN THƯ ĐẾN");
         }
 
         private void dateDenNgay_ValueChanged(object sender, EventArgs e)
@@ -562,6 +570,11 @@ namespace QLVanThuDen
                     else
                         if (cmbPhanLoai.SelectedIndex == 3)
                             expression = "(TacGiaVB not like 'UBND%' and TacGiaVB not like '%TP.HCM' and TacGiaVB not like '%Q.TB%' and TacGiaVB not like '%Tân Bình%' and TacGiaVB not like '%Q.TP%' and TacGiaVB not like '%Tân Phú%' and TacGiaVB not like '%TCTCNSG%')";
+            if (chkCongVanDen.Checked)
+                expression = "LoaiVBGID=3 and " + expression;
+            else
+                if (chkDonThuDen.Checked)
+                    expression = "LoaiVBGID=7 and " + expression;
             vanthus.Filter = expression;
         }
 
