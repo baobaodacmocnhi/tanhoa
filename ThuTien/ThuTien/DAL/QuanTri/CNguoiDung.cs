@@ -188,12 +188,29 @@ namespace ThuTien.DAL.QuanTri
 
         public TT_NguoiDung GetByTaiKhoan(string TaiKhoan)
         {
-            return _db.TT_NguoiDungs.SingleOrDefault(item => item.TaiKhoan == TaiKhoan);
+            try
+            {
+                return _db.TT_NguoiDungs.SingleOrDefault(item => item.TaiKhoan == TaiKhoan);
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("TUI NÈ", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                return null;
+            }
+            
         }
 
         public bool DangNhap(string TaiKhoan, string MatKhau)
         {
-            return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
+            try
+            {
+                return _db.TT_NguoiDungs.Any(item => item.TaiKhoan == TaiKhoan && item.MatKhau == MatKhau);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
         }
 
         public string GetHoTenByMaND(int MaND)

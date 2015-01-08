@@ -40,24 +40,28 @@ namespace ThuTien.GUI.HeThong
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             CNguoiDung _cNguoiDung = new CNguoiDung();
-            CPhanQuyenNhom _cPhanQuyenNhom=new CPhanQuyenNhom();
-            CPhanQuyenNguoiDung _cPhanQuyenNguoiDung=new CPhanQuyenNguoiDung();
-
+            
             if (_cNguoiDung.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
                 TT_NguoiDung nguoidung = _cNguoiDung.GetByTaiKhoan(txtTaiKhoan.Text.Trim());
-                CNguoiDung.MaND = nguoidung.MaND;
-                CNguoiDung.HoTen = nguoidung.HoTen;
-                if (nguoidung.MaTo != null)
+                if (nguoidung != null)
                 {
-                    CNguoiDung.MaTo = nguoidung.MaTo.Value;
-                    CNguoiDung.TenTo = nguoidung.TT_To.TenTo;
+                    CPhanQuyenNhom _cPhanQuyenNhom = new CPhanQuyenNhom();
+                    CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
+
+                    CNguoiDung.MaND = nguoidung.MaND;
+                    CNguoiDung.HoTen = nguoidung.HoTen;
+                    if (nguoidung.MaTo != null)
+                    {
+                        CNguoiDung.MaTo = nguoidung.MaTo.Value;
+                        CNguoiDung.TenTo = nguoidung.TT_To.TenTo;
+                    }
+                    if (nguoidung.MaNhom != null)
+                        CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(nguoidung.MaNhom.Value);
+                    CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(nguoidung.MaND);
+                    GetLoginResult(true);
+                    this.Hide();
                 }
-                if (nguoidung.MaNhom != null)
-                    CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(nguoidung.MaNhom.Value);
-                CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(nguoidung.MaND);
-                GetLoginResult(true);
-                this.Hide();
             }
             else
                 MessageBox.Show("Sai Tài Khoản hoặc Mật Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

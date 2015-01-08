@@ -68,7 +68,7 @@ namespace ThuTien.GUI.Doi
             if (cmbKy.SelectedIndex != -1)
             {
                 //var startTime = System.Diagnostics.Stopwatch.StartNew();
-                dgvHoaDon.DataSource = _cHoaDon.GetTongHDByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                dgvHoaDon.DataSource = _cHoaDon.GetTongByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 //startTime.Stop();
                 //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -80,7 +80,7 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongLNCC" && e.Value != null)
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongTieuThu" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
