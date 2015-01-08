@@ -123,6 +123,7 @@ namespace ThuTien.DAL
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
+        protected SqlTransaction transaction;       // Đối tượng transaction
 
         public CDAL()
         {
@@ -131,7 +132,7 @@ namespace ThuTien.DAL
                 _connectionString = "Data Source=192.168.90.12\\server2008r2;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
                 connection = new SqlConnection(_connectionString);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -149,6 +150,39 @@ namespace ThuTien.DAL
             if (connection.State == ConnectionState.Open)
                 connection.Close();
         }
+
+        public void SqlBeginTransaction()
+        {
+            try
+            {
+                Connect();
+                transaction = connection.BeginTransaction();
+            }
+            catch (Exception) { }
+        }
+
+        public void SqlCommitTransaction()
+        {
+            try
+            {
+                transaction.Commit();
+                transaction.Dispose();
+                Disconnect();
+            }
+            catch (Exception) { }
+        }
+
+        public void SqlRollbackTransaction()
+        {
+            transaction.Rollback();
+            transaction.Dispose();
+            try
+            {
+                Disconnect();
+            }
+            catch (Exception) { }
+        }
+
 
         /// <summary>
         /// Thực thi câu truy vấn SQL không trả về dữ liệu
@@ -287,7 +321,7 @@ namespace ThuTien.DAL
                 }
                 return obj;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return obj;
