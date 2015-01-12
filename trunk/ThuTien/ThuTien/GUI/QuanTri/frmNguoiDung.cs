@@ -119,8 +119,8 @@ namespace ThuTien.GUI.QuanTri
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_selectedindex != -1)
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_selectedindex != -1)
                     {
                         TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
                         ///xóa quan hệ 1 nhiều
@@ -128,6 +128,8 @@ namespace ThuTien.GUI.QuanTri
                         _cNguoiDung.Xoa(nguoidung);
                         Clear();
                     }
+                    else
+                        MessageBox.Show("Lỗi, Vui lòng chọn Người Dùng cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

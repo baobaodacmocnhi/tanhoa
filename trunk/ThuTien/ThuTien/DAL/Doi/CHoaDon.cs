@@ -191,7 +191,6 @@ namespace ThuTien.DAL.Doi
         {
             try
             {
-                SqlBeginTransaction();
                 if (loai == "TG")
                 {
                     //_db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
@@ -202,7 +201,7 @@ namespace ThuTien.DAL.Doi
                     string sql = "update HOADON set MaNV_HanhThu=" + MaNV + ",NGAYGIAO='" + DateTime.Now + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
                         + "where SOPHATHANH>='" + tusophathanh + "' and SOPHATHANH<='" + densophathanh + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>=11 and GB<=20 "
                         + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
-                    ExecuteNonQuery(sql);
+                    ExecuteNonQuery(sql,true);
                 }
                 else
                     if (loai == "CQ")
@@ -215,15 +214,13 @@ namespace ThuTien.DAL.Doi
                         string sql = "update HOADON set MaNV_HanhThu=" + MaNV + ",NGAYGIAO='" + DateTime.Now + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
                         + "where SOPHATHANH>='" + tusophathanh + "' and SOPHATHANH<='" + densophathanh + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>20 "
                         + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
-                        ExecuteNonQuery(sql);
+                        ExecuteNonQuery(sql, true);
                     }
                 //_db.SubmitChanges();
-                SqlCommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
-                SqlRollbackTransaction();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -258,7 +255,6 @@ namespace ThuTien.DAL.Doi
         {
             try
             {
-                SqlBeginTransaction();
                 if (loai == "TG")
                 {
                     //_db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
@@ -269,7 +265,7 @@ namespace ThuTien.DAL.Doi
                     string sql = "update HOADON set MaNV_HanhThu=null,NGAYGIAO=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
                         + "where SOPHATHANH>='" + tusophathanh + "' and SOPHATHANH<='" + densophathanh + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>=11 and GB<=20 "
                         + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
-                    ExecuteNonQuery(sql);
+                    ExecuteNonQuery(sql,true);
                 }
                 else
                     if (loai == "CQ")
@@ -282,15 +278,13 @@ namespace ThuTien.DAL.Doi
                         string sql = "update HOADON set MaNV_HanhThu=null,NGAYGIAO=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
                         + "where SOPHATHANH>='" + tusophathanh + "' and SOPHATHANH<='" + densophathanh + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>20 "
                         + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
-                        ExecuteNonQuery(sql);
+                        ExecuteNonQuery(sql, true);
                     }
                 //_db.SubmitChanges();
-                SqlCommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
-                SqlRollbackTransaction();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -331,6 +325,18 @@ namespace ThuTien.DAL.Doi
                                     && item.SOPHATHANH == sophathanh && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20);
                 else
                     return false;
+        }
+
+        /// <summary>
+        /// Kiểm tra xem trong danh sách hóa đơn có cái nào đã được giao hay chưa
+        /// </summary>
+        /// <param name="tusophathanh"></param>
+        /// <param name="densophathanh"></param>
+        /// <param name="nam"></param>
+        /// <returns></returns>
+        public bool CheckGiaoByNamKyDot(decimal tusophathanh, decimal densophathanh, int nam)
+        {
+            return _db.HOADONs.Any(item => item.SOPHATHANH >= tusophathanh && item.SOPHATHANH <= densophathanh && item.NAM == nam && item.MaNV_HanhThu != null);
         }
 
         /// <summary>
@@ -393,7 +399,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetDSChiaByNamKyDot(int MaTo, string loai, int nam, int ky, int dot)
+        public DataTable GetDSGiaoByNamKyDot(int MaTo, string loai, int nam, int ky, int dot)
         {
             if (loai == "TG")
             {
@@ -484,10 +490,11 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetDSDangNganByMaNVNamKyDot(int MaNV, int nam, int ky, int dot)
+        public DataTable GetDSDangNganHanhThuByMaNVNamKyDot(int MaNV, int nam, int ky, int dot)
         {
             var query = from item in _db.HOADONs
-                        where item.NAM == nam && item.KY == ky && item.DOT == dot && item.MaNV_HanhThu==MaNV &&item.MaNV_DangNgan == MaNV
+                        where item.NAM == nam && item.KY == ky && item.DOT == dot && item.MaNV_HanhThu==MaNV && item.DangNgan_HanhThu==true && item.MaNV_DangNgan == MaNV
+                        orderby item.SOHOADON ascending
                         select new
                         {
                             item.SOHOADON,
@@ -513,6 +520,7 @@ namespace ThuTien.DAL.Doi
         {
             var query = from item in _db.HOADONs
                         where item.NAM == nam && item.KY == ky && item.DOT == dot && item.MaNV_HanhThu == MaNV && item.MaNV_DangNgan == null
+                        orderby item.SOHOADON ascending
                         select new
                         {
                             item.SOHOADON,
@@ -544,20 +552,54 @@ namespace ThuTien.DAL.Doi
 
         }
 
-        public bool DangNgan(string sohoadon, int MaNV, int nam, int ky, int dot)
+        public bool DangNgan(string loai,string sohoadon, int MaNV, int nam, int ky, int dot)
         {
             try
             {
-                string sql = "update HOADON set MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
-                        + "where SOHOADON='" + sohoadon + "' and MaNV_HanhThu=" + MaNV + " and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
-                ExecuteNonQuery(sql);
-                return true;
+                string sql = "";
+                if (loai == "HanhThu")
+                    sql = "update HOADON set DangNgan_HanhThu=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                            + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                else
+                    if (loai == "Quay")
+                        sql = "update HOADON set DangNgan_Quay=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                    else
+                        if (loai == "ChuyenKhoan")
+                            sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public bool XoaDangNgan(string loai,string sohoadon, int MaNV, int nam, int ky, int dot)
+        {
+            try
+            {
+                string sql = "";
+                if (loai == "HanhThu")
+                    sql = "update HOADON set DangNgan_HanhThu=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                           + "where SOHOADON='" + sohoadon + "' and DangNgan_HanhThu=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                else
+                    if (loai == "Quay")
+                        sql = "update HOADON set DangNgan_Quay=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                               + "where SOHOADON='" + sohoadon + "' and DangNgan_Quay=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                    else
+                        if (loai == "ChuyenKhoan")
+                            sql = "update HOADON set DangNgan_ChuyenKhoan=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                                   + "where SOHOADON='" + sohoadon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                return ExecuteNonQuery(sql, false);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            } 
         }
     }
 

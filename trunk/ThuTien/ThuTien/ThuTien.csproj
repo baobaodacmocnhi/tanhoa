@@ -69,17 +69,23 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.Designer.cs">
+      <DependentUpon>frmDangNganChuyenKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Doi\frmLuuHD.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Doi\frmLuuHD.Designer.cs">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\HanhThu\frmDangNganHD.cs">
+    <Compile Include="GUI\HanhThu\frmDangNganHanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\HanhThu\frmDangNganHD.Designer.cs">
-      <DependentUpon>frmDangNganHD.cs</DependentUpon>
+    <Compile Include="GUI\HanhThu\frmDangNganHanhThu.Designer.cs">
+      <DependentUpon>frmDangNganHanhThu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HeThong\frmAdmin.cs">
       <SubType>Form</SubType>
@@ -117,6 +123,12 @@
     <Compile Include="GUI\QuanTri\frmTo.Designer.cs">
       <DependentUpon>frmTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Quay\frmDangNganQuay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmDangNganQuay.Designer.cs">
+      <DependentUpon>frmDangNganQuay.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmGiaoHDHanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,11 +149,14 @@
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.resx">
+      <DependentUpon>frmDangNganChuyenKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmLuuHD.resx">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\HanhThu\frmDangNganHD.resx">
-      <DependentUpon>frmDangNganHD.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\HanhThu\frmDangNganHanhThu.resx">
+      <DependentUpon>frmDangNganHanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HeThong\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
@@ -160,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanTri\frmTo.resx">
       <DependentUpon>frmTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmDangNganQuay.resx">
+      <DependentUpon>frmDangNganQuay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDHanhThu.resx">
       <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
@@ -193,6 +211,8 @@
   <ItemGroup>
     <Folder Include="DAL\HeThong\" />
     <Folder Include="DAL\ToTruong\" />
+    <Folder Include="GUI\DongNuoc\" />
+    <Folder Include="GUI\TongHop\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

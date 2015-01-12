@@ -96,16 +96,18 @@ namespace ThuTien.GUI.QuanTri
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
-            {
-                if (_selectedindex != -1)
+            {      
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
-                        TT_Nhom nhom = _cNhom.GetByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
-                        ///xóa quan hệ 1 nhiều
-                        _cPhanQuyenNhom.Xoa(nhom.TT_PhanQuyenNhoms.ToList());
-                        _cNhom.Xoa(nhom);
-                        Clear();
-                    }
+                        if (_selectedindex != -1)
+                        {
+                            TT_Nhom nhom = _cNhom.GetByMaNhom(int.Parse(dgvNhom["MaNhom", _selectedindex].Value.ToString()));
+                            ///xóa quan hệ 1 nhiều
+                            _cPhanQuyenNhom.Xoa(nhom.TT_PhanQuyenNhoms.ToList());
+                            _cNhom.Xoa(nhom);
+                            Clear();
+                        }
+                        else
+                            MessageBox.Show("Lỗi, Vui lòng chọn Nhóm cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
