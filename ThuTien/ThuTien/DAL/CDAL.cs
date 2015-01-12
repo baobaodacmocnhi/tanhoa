@@ -183,25 +183,75 @@ namespace ThuTien.DAL
             catch (Exception) { }
         }
 
-
         /// <summary>
         /// Thực thi câu truy vấn SQL không trả về dữ liệu
         /// </summary>
-        /// <param name="sqlString">Câu truy vấn cần thực thi</param>
-        public void ExecuteNonQuery(string sql)
+        /// <param name="sql">Câu truy vấn cần thực thi</param>
+        /// <param name="flagTransaction">Có hoặc Không transaction</param>
+        public bool ExecuteNonQuery(string sql, bool flagTransaction)
+        {
+            if (!flagTransaction)
+                try
+                {
+                    Connect();
+                    command = new SqlCommand(sql, connection);
+                    int rowAffect = command.ExecuteNonQuery();
+                    Disconnect();
+                    if (rowAffect == 0)
+                        return false;
+                    else
+                        return true;
+                }
+                catch (Exception ex)
+                {
+                    Disconnect();
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            else
+                try
+                {
+                    Connect();
+                    transaction = connection.BeginTransaction();
+                    command = new SqlCommand(sql, connection);
+                    command.Transaction = transaction;
+                    int rowAffect = command.ExecuteNonQuery();
+                    transaction.Commit();
+                    Disconnect();
+                    if (rowAffect == 0)
+                        return false;
+                    else
+                        return true;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    Disconnect();
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+        }
+
+        /// <summary>
+        /// Thực thi câu truy vấn SQL không trả về dữ liệu. Trước đó phải mở Transaction/Kết thúc phải đóng Transaction
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public bool ExecuteNonQuery_Transaction(string sql)
         {
             try
             {
-                Connect();
                 command = new SqlCommand(sql, connection);
-                command.ExecuteNonQuery();
-                Disconnect();
+                command.Transaction = transaction;
+                if (command.ExecuteNonQuery() == 0)
+                    return false;
+                else
+                    return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Disconnect();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }   
+                return false;
+            }
         }
 
         /// <summary>

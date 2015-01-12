@@ -139,19 +139,19 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<HOADON> HOADONs
-		{
-			get
-			{
-				return this.GetTable<HOADON>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ViewGetNamHD> ViewGetNamHDs
 		{
 			get
 			{
 				return this.GetTable<ViewGetNamHD>();
+			}
+		}
+		
+		public System.Data.Linq.Table<HOADON> HOADONs
+		{
+			get
+			{
+				return this.GetTable<HOADON>();
 			}
 		}
 	}
@@ -2325,6 +2325,33 @@ namespace ThuTien.LinQ
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewGetNamHD")]
+	public partial class ViewGetNamHD
+	{
+		
+		private System.Nullable<int> _Nam;
+		
+		public ViewGetNamHD()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="Int")]
+		public System.Nullable<int> Nam
+		{
+			get
+			{
+				return this._Nam;
+			}
+			set
+			{
+				if ((this._Nam != value))
+				{
+					this._Nam = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HOADON")]
 	public partial class HOADON : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2444,6 +2471,12 @@ namespace ThuTien.LinQ
 		private string _SO;
 		
 		private System.Nullable<int> _MaNV_HanhThu;
+		
+		private bool _DangNgan_HanhThu;
+		
+		private bool _DangNgan_Quay;
+		
+		private bool _DangNgan_ChuyenKhoan;
 		
 		private System.Nullable<int> _MaNV_DangNgan;
 		
@@ -2573,6 +2606,12 @@ namespace ThuTien.LinQ
     partial void OnSOChanged();
     partial void OnMaNV_HanhThuChanging(System.Nullable<int> value);
     partial void OnMaNV_HanhThuChanged();
+    partial void OnDangNgan_HanhThuChanging(bool value);
+    partial void OnDangNgan_HanhThuChanged();
+    partial void OnDangNgan_QuayChanging(bool value);
+    partial void OnDangNgan_QuayChanged();
+    partial void OnDangNgan_ChuyenKhoanChanging(bool value);
+    partial void OnDangNgan_ChuyenKhoanChanged();
     partial void OnMaNV_DangNganChanging(System.Nullable<int> value);
     partial void OnMaNV_DangNganChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -3730,6 +3769,66 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DangNgan_HanhThu", DbType="Bit NOT NULL")]
+		public bool DangNgan_HanhThu
+		{
+			get
+			{
+				return this._DangNgan_HanhThu;
+			}
+			set
+			{
+				if ((this._DangNgan_HanhThu != value))
+				{
+					this.OnDangNgan_HanhThuChanging(value);
+					this.SendPropertyChanging();
+					this._DangNgan_HanhThu = value;
+					this.SendPropertyChanged("DangNgan_HanhThu");
+					this.OnDangNgan_HanhThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DangNgan_Quay", DbType="Bit NOT NULL")]
+		public bool DangNgan_Quay
+		{
+			get
+			{
+				return this._DangNgan_Quay;
+			}
+			set
+			{
+				if ((this._DangNgan_Quay != value))
+				{
+					this.OnDangNgan_QuayChanging(value);
+					this.SendPropertyChanging();
+					this._DangNgan_Quay = value;
+					this.SendPropertyChanged("DangNgan_Quay");
+					this.OnDangNgan_QuayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DangNgan_ChuyenKhoan", DbType="Bit NOT NULL")]
+		public bool DangNgan_ChuyenKhoan
+		{
+			get
+			{
+				return this._DangNgan_ChuyenKhoan;
+			}
+			set
+			{
+				if ((this._DangNgan_ChuyenKhoan != value))
+				{
+					this.OnDangNgan_ChuyenKhoanChanging(value);
+					this.SendPropertyChanging();
+					this._DangNgan_ChuyenKhoan = value;
+					this.SendPropertyChanged("DangNgan_ChuyenKhoan");
+					this.OnDangNgan_ChuyenKhoanChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNV_DangNgan", DbType="Int")]
 		public System.Nullable<int> MaNV_DangNgan
 		{
@@ -3847,33 +3946,6 @@ namespace ThuTien.LinQ
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewGetNamHD")]
-	public partial class ViewGetNamHD
-	{
-		
-		private System.Nullable<int> _Nam;
-		
-		public ViewGetNamHD()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nam", DbType="Int")]
-		public System.Nullable<int> Nam
-		{
-			get
-			{
-				return this._Nam;
-			}
-			set
-			{
-				if ((this._Nam != value))
-				{
-					this._Nam = value;
-				}
 			}
 		}
 	}
