@@ -311,6 +311,16 @@ namespace KTKS_DonKH
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
+        private void ribbtnTBKetQuaYCCatDM_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmTBKetQuaYCCatDM();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
         private void ribbtnNhapKetQua_Click(object sender, EventArgs e)
         {
             foreach (Form item in this.MdiChildren)
@@ -511,6 +521,8 @@ namespace KTKS_DonKH
         {
             DisableTimer();
         }
+
+        
 
               
     }

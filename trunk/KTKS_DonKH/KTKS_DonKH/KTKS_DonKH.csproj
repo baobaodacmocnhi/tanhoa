@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>19</ApplicationRevision>
+    <ApplicationRevision>21</ApplicationRevision>
     <ApplicationVersion>1.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -179,6 +179,12 @@
     </Compile>
     <Compile Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.cs">
       <DependentUpon>rptThongKeCHDB.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2.cs">
+      <DependentUpon>rptPhieuTBYCNhanDMx2.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -408,6 +414,7 @@
     <Compile Include="DAL\DieuChinhBienDong\CDCBD.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDuLieuKhachHang.cs" />
     <Compile Include="DAL\CatHuyDanhBo\CDongNuoc.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\CTBKetQuaYCCatDM.cs" />
     <Compile Include="DAL\HeThong\CTaiKhoan.cs" />
     <Compile Include="DAL\KhachHang\CChuyenDi.cs" />
     <Compile Include="DAL\KhachHang\CDonKH.cs" />
@@ -627,6 +634,12 @@
     <Compile Include="GUI\DieuChinhBienDong\frmSoDK.Designer.cs">
       <DependentUpon>frmSoDK.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmTBKetQuaYCCatDM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmTBKetQuaYCCatDM.Designer.cs">
+      <DependentUpon>frmTBKetQuaYCCatDM.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -842,6 +855,10 @@
     <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptThongKeCHDB.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeCHDB.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuTBYCNhanDMx2.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptDSChuyenDocSo_LocUser.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1079,6 +1096,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmSoDK.resx">
       <DependentUpon>frmSoDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmTBKetQuaYCCatDM.resx">
+      <DependentUpon>frmTBKetQuaYCCatDM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>

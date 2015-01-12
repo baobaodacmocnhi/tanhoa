@@ -108,6 +108,8 @@
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
+            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
+            this.ribbtnTBKetQuaYCCatDM = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -476,6 +478,7 @@
             this.ribbonPanel7.ButtonMoreVisible = false;
             this.ribbonPanel7.Items.Add(this.ribbtnDCBD);
             this.ribbonPanel7.Items.Add(this.ribbtnDCHD);
+            this.ribbonPanel7.Items.Add(this.ribbtnTBKetQuaYCCatDM);
             this.ribbonPanel7.Text = "Xử Lý";
             // 
             // ribbtnDCBD
@@ -488,6 +491,7 @@
             // 
             // ribbtnDCHD
             // 
+            this.ribbtnDCHD.DropDownItems.Add(this.ribbonButton1);
             this.ribbtnDCHD.Image = global::KTKS_DonKH.Properties.Resources.bill_48x48;
             this.ribbtnDCHD.MinimumSize = new System.Drawing.Size(70, 0);
             this.ribbtnDCHD.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDCHD.SmallImage")));
@@ -730,6 +734,20 @@
             this.ribbon1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ribbon1_KeyPress);
             this.ribbon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
             // 
+            // ribbonButton1
+            // 
+            this.ribbonButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.Image")));
+            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
+            this.ribbonButton1.Text = "ribbonButton1";
+            // 
+            // ribbtnTBKetQuaYCCatDM
+            // 
+            this.ribbtnTBKetQuaYCCatDM.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnTBKetQuaYCCatDM.MinimumSize = new System.Drawing.Size(140, 0);
+            this.ribbtnTBKetQuaYCCatDM.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnTBKetQuaYCCatDM.SmallImage")));
+            this.ribbtnTBKetQuaYCCatDM.Text = "TB Kết Quả YC Cắt ĐM";
+            this.ribbtnTBKetQuaYCCatDM.Click += new System.EventHandler(this.ribbtnTBKetQuaYCCatDM_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -834,6 +852,8 @@
         private System.Windows.Forms.RibbonButton ribbtnDongNuoc;
         private System.Windows.Forms.RibbonButton ribbtnDongTienBoiThuong;
         private System.Windows.Forms.Timer IdleTimer;
+        private System.Windows.Forms.RibbonButton ribbonButton1;
+        private System.Windows.Forms.RibbonButton ribbtnTBKetQuaYCCatDM;
     }
 }
 

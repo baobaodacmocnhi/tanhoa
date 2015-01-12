@@ -335,7 +335,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
             {
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
-                    var query = from itemDonTXL in db.DonTXLs 
+                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                                join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.SoCongVan==SoCongVan
@@ -354,7 +355,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
-                                    NguoiDi="",
+                                    itemLSCKT.NguoiDi,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
