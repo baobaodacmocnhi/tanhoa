@@ -231,7 +231,7 @@ namespace QLVanThu
                 oExcel.Visible = true;
                 oExcel.DisplayAlerts = false;
                 //khai báo số lượng sheet
-                oExcel.Application.SheetsInNewWorkbook = 14;
+                oExcel.Application.SheetsInNewWorkbook = 17;
                 oBooks = oExcel.Workbooks;
 
                 oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
@@ -752,7 +752,7 @@ namespace QLVanThu
         {
             //ExportToExcel(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), "Danh sách văn thư đi", "DANH SÁCH VĂN THƯ ĐI");
             ExportToExcelTongHop(((DataTable)vanthudis.DataSource).DefaultView.ToTable());
-            DataTable temp = ((DataTable)vanthudis.DataSource);
+            DataTable temp = (((DataTable)vanthudis.DataSource).DefaultView.ToTable());
             Microsoft.Office.Interop.Excel.Worksheet oSheetTCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
             Microsoft.Office.Interop.Excel.Worksheet oSheetKTTC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
             Microsoft.Office.Interop.Excel.Worksheet oSheetKHVTTH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
@@ -766,8 +766,11 @@ namespace QLVanThu
             Microsoft.Office.Interop.Excel.Worksheet oSheetGNKDT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
             Microsoft.Office.Interop.Excel.Worksheet oSheetCNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
             Microsoft.Office.Interop.Excel.Worksheet oSheetTGV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
-            DataTable[] a = new DataTable[13];
-            for (int i = 0; i < 13; i++)
+            Microsoft.Office.Interop.Excel.Worksheet oSheetQĐ_TCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetHĐ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
+            DataTable[] a = new DataTable[16];
+            for (int i = 0; i < 16; i++)
             {
                 a[i] = new DataTable();
                 foreach (DataColumn item in temp.Columns)
@@ -783,44 +786,38 @@ namespace QLVanThu
 
                 if (dr["SoKyHieuVB"].ToString().Contains("TCHC"))
                     a[0].ImportRow(dr);
-                else
-                    if (dr["SoKyHieuVB"].ToString().Contains("KTTC"))
-                        a[1].ImportRow(dr);
-                    else
-                        if (dr["SoKyHieuVB"].ToString().Contains("KHVTTH"))
-                            a[2].ImportRow(dr);
-                        else
-                            if (dr["SoKyHieuVB"].ToString().Contains("KTCN"))
-                                a[3].ImportRow(dr);
-                            else
-                                if (dr["SoKyHieuVB"].ToString().Contains("KTKS"))
-                                    a[4].ImportRow(dr);
-                                else
-                                    if (dr["SoKyHieuVB"].ToString().Contains("QLDA"))
-                                        a[5].ImportRow(dr);
-                                    else
-                                        if (dr["SoKyHieuVB"].ToString().Contains("QLĐHN"))
-                                            a[6].ImportRow(dr);
-                                        else
-                                            if (dr["SoKyHieuVB"].ToString().Contains("ĐTT"))
-                                                a[7].ImportRow(dr);
-                                            else
-                                                if (dr["SoKyHieuVB"].ToString().Contains("TCTB"))
-                                                    a[8].ImportRow(dr);
-                                                else
-                                                    if (dr["SoKyHieuVB"].ToString().Contains("TCXL"))
-                                                        a[9].ImportRow(dr);
-                                                    else
-                                                        if (dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
-                                                            a[10].ImportRow(dr);
-                                                        else
-                                                            if (dr["SoKyHieuVB"].ToString().Contains("CNTT"))
-                                                                a[11].ImportRow(dr);
-                                                            else
-                                                                if (dr["SoKyHieuVB"].ToString().Contains("TGV"))
-                                                                    a[12].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("KTTC"))
+                    a[1].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("KHĐT"))
+                    a[2].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("KTCN"))
+                    a[3].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("KTKS") || dr["SoKyHieuVB"].ToString().Contains("KD") && !dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
+                    a[4].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("QLDA"))
+                    a[5].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("QLĐHN"))
+                    a[6].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("ĐTT"))
+                    a[7].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("TCTB"))
+                    a[8].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("TCXL"))
+                    a[9].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
+                    a[10].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("CNTT"))
+                    a[11].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("TGV"))
+                    a[12].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("TCHC") && dr["TypeID"].ToString() == "35")
+                    a[13].ImportRow(dr);
+                if (dr["SoKyHieuVB"].ToString().Contains("HĐ") && dr["TypeID"].ToString() == "13")
+                    a[14].ImportRow(dr);
+                if (!dr["SoKyHieuVB"].ToString().Contains("QLDA") && !dr["SoKyHieuVB"].ToString().Contains("HĐ") && dr["TypeID"].ToString() != "13" && !dr["SoKyHieuVB"].ToString().Contains("QĐ") && !dr["SoKyHieuVB"].ToString().Contains("TCHC"))
+                    a[15].ImportRow(dr);
             }
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 16; i++)
             {
                 switch (i)
                 {
@@ -831,13 +828,13 @@ namespace QLVanThu
                         ExportToExcelChiTiet(a[i], oSheetKTTC, "KTTC");
                         break;
                     case 2:
-                        ExportToExcelChiTiet(a[i], oSheetKHVTTH, "KHVTTH");
+                        ExportToExcelChiTiet(a[i], oSheetKHVTTH, "KHĐT");
                         break;
                     case 3:
                         ExportToExcelChiTiet(a[i], oSheetKTCN, "KTCN");
                         break;
                     case 4:
-                        ExportToExcelChiTiet(a[i], oSheetKTKS, "KTKS");
+                        ExportToExcelChiTiet(a[i], oSheetKTKS, "KD");
                         break;
                     case 5:
                         ExportToExcelChiTiet(a[i], oSheetQLDA, "QLDA");
@@ -862,6 +859,15 @@ namespace QLVanThu
                         break;
                     case 12:
                         ExportToExcelChiTiet(a[i], oSheetTGV, "TGV");
+                        break;
+                    case 13:
+                        ExportToExcelChiTiet(a[i], oSheetQĐ_TCHC, "QĐ-TCHC");
+                        break;
+                    case 14:
+                        ExportToExcelChiTiet(a[i], oSheetHĐ, "HĐ");
+                        break;
+                    case 15:
+                        ExportToExcelChiTiet(a[i], oSheetKhac, "-QLDA");
                         break;
                     default:
                         break;
@@ -912,7 +918,7 @@ namespace QLVanThu
                     KeyWord = "KTTC";
                     break;
                 case 3:
-                    KeyWord = "KHVTTH";
+                    KeyWord = "KHĐT";
                     break;
                 case 4:
                     KeyWord = "KTCN";
@@ -945,6 +951,12 @@ namespace QLVanThu
                     KeyWord = "TGV";
                     break;
                 case 14:
+                    KeyWord = "QĐ-TCHC";
+                    break;
+                case 15:
+                    KeyWord = "HĐ";
+                    break;
+                case 16:
                     KeyWord = "-QLDA";
                     break;
                 default:
@@ -952,10 +964,22 @@ namespace QLVanThu
                     break;
             }
             string expression;
-            if (KeyWord == "-QLDA")
-                expression = String.Format("(SoKyHieuVB not like '%QLDA')");
+            if (KeyWord == "KHĐT")
+                expression = String.Format("(SoKyHieuVB like '%KHVTTH%' or SoKyHieuVB like '%{0}%')", KeyWord);
             else
-                expression = String.Format("(SoKyHieuVB like '%{0}%')", KeyWord);
+                if (KeyWord == "KD")
+                    expression = String.Format("(SoKyHieuVB like '%KTKS%' or SoKyHieuVB like '%{0}%')", KeyWord);
+                else
+                    if (KeyWord == "QĐ-TCHC")
+                        expression = "SoKyHieuVB like '%QĐ%' and SoKyHieuVB like '%TCHC%'";
+                    else
+                        if (KeyWord == "HĐ")
+                            expression = "SoKyHieuVB like '%HĐ%' and TypeID=13";
+                        else
+                            if (KeyWord == "-QLDA")
+                                expression = String.Format("(SoKyHieuVB not like '%QLDA' and SoKyHieuVB not like '%QĐ%' and SoKyHieuVB not like '%TCHC' and SoKyHieuVB not like '%HĐ%' and TypeID<>13)");
+                            else
+                                expression = String.Format("(SoKyHieuVB like '%{0}%')", KeyWord);
             vanthudis.Filter = expression;
         }
 

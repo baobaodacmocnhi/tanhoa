@@ -35,7 +35,7 @@ namespace QLVanThu.DAL
 
             DataTable table = new DataTable();
             string sql = "select convert(varchar(10),IssuedDate,103) as NgayThangVB,DocumentOrderNo as SoDi,OrganizationReceivers2 as NoiNhan,DocumentNo as SoKyHieuVB,";
-            sql += "convert(varchar(10),CreatedDate,103) as NgayNhap,t.Notation as LoaiVB,DocumentSummary as LoaiTrichYeuNoiDung,DocumentID as ID,d.BookID as LoaiVBGID,b.Name as LoaiVBGName ";
+            sql += "convert(varchar(10),CreatedDate,103) as NgayNhap,t.Notation as LoaiVB,t.TypeID,DocumentSummary as LoaiTrichYeuNoiDung,DocumentID as ID,d.BookID as LoaiVBGID,b.Name as LoaiVBGName ";
             sql += "from WF_Books b,WF_Outgoing_Docs d,WF_Doc_Types t where b.BookID=d.BookID and d.TypeID=t.TypeID order by IssuedDate desc,DocumentOrderNo desc";
             try 
             {
