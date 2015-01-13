@@ -168,6 +168,7 @@
             this.radAll.TabIndex = 30;
             this.radAll.Text = "Tất Cả";
             this.radAll.UseVisualStyleBackColor = true;
+            this.radAll.Visible = false;
             this.radAll.CheckedChanged += new System.EventHandler(this.radAll_CheckedChanged);
             // 
             // dateTimKiem
@@ -190,6 +191,7 @@
             this.radChuaChuyen.TabIndex = 21;
             this.radChuaChuyen.Text = "Chưa Chuyển";
             this.radChuaChuyen.UseVisualStyleBackColor = true;
+            this.radChuaChuyen.Visible = false;
             this.radChuaChuyen.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
             // 
             // radDaChuyen
@@ -201,6 +203,7 @@
             this.radDaChuyen.TabIndex = 20;
             this.radDaChuyen.Text = "Đã Chuyển";
             this.radDaChuyen.UseVisualStyleBackColor = true;
+            this.radDaChuyen.Visible = false;
             this.radDaChuyen.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
             // 
             // dgvDSDonTXL

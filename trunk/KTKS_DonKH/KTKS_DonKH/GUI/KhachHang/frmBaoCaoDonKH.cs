@@ -47,10 +47,10 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             DataTable dt = new DataTable();
             if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
-                dt = _cDonKH.LoadDSDonKH(dateTu.Value, dateDen.Value);
+                dt = _cDonKH.LoadBaoCaoDSDonKH(dateTu.Value, dateDen.Value);
             else
                 if (!string.IsNullOrEmpty(_tuNgay))
-                    dt = _cDonKH.LoadDSDonKH(dateTu.Value);
+                    dt = _cDonKH.LoadBaoCaoDSDonKH(dateTu.Value);
 
             int SLDaXuLy = 0;
             int SLChuaXuLy = 0;

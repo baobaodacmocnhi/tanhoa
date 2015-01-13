@@ -64,9 +64,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnLuu_Click(object sender, EventArgs e)
         {
             TBKetQuaYCCatDM tb = new TBKetQuaYCCatDM();
+            tb.SoPhieuNhan = txtSoPhieuNhan.Text.Trim();
+            tb.NgayNhan = dateNhan.Value;
             tb.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
             tb.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
             tb.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
+            tb.MaCT = txtMaCT_Cat.Text.Trim();
             tb.NhanNK_MaCN = int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString());
             tb.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();
             tb.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
@@ -94,6 +97,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             try
             {
                 _selectedindex = e.RowIndex;
+                txtDanhBo_Cat.Text = dgvDSTBKetQuaYCCatDM["CatNK_DanhBo", e.RowIndex].Value.ToString();
+                txtHoTen_Cat.Text = dgvDSTBKetQuaYCCatDM["CatNK_HoTen", e.RowIndex].Value.ToString();
+                txtDiaChi_Cat.Text = dgvDSTBKetQuaYCCatDM["CatNK_DiaChi", e.RowIndex].Value.ToString();
+                txtMaCT_Cat.Text = dgvDSTBKetQuaYCCatDM["MaCT", e.RowIndex].Value.ToString();
+                txtSoNK_Cat.Text = dgvDSTBKetQuaYCCatDM["SoNKCat", e.RowIndex].Value.ToString();
+                cmbChiNhanh_Nhan.SelectedValue = int.Parse(dgvDSTBKetQuaYCCatDM["NhanNK_MaCN", e.RowIndex].Value.ToString());
+                txtDanhBo_Nhan.Text = dgvDSTBKetQuaYCCatDM["NhanNK_DanhBo", e.RowIndex].Value.ToString();
+                txtHoTen_Nhan.Text = dgvDSTBKetQuaYCCatDM["NhanNK_HoTen", e.RowIndex].Value.ToString();
+                txtDiaChi_Nhan.Text = dgvDSTBKetQuaYCCatDM["NhanNK_DiaChi", e.RowIndex].Value.ToString();
+                txtSoPhieuNhan.Text = dgvDSTBKetQuaYCCatDM["SoPhieuNhan", e.RowIndex].Value.ToString();
+                dateNhan.Value = DateTime.Parse(dgvDSTBKetQuaYCCatDM["NgayNhan", e.RowIndex].Value.ToString());
+                txtGhiChu.Text = dgvDSTBKetQuaYCCatDM["GhiChu", e.RowIndex].Value.ToString();
             }
             catch (Exception)
             {
@@ -120,6 +135,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["DiaChiCat"] = tb.CatNK_DiaChi;
                 dr["SoNKCat"] = tb.SoNKCat + " nhân khẩu (HK: " + tb.MaCT + ")";
 
+                dr["SoPhieuNhan"] = tb.SoPhieuNhan;
+                dr["NgayNhan"] = tb.NgayNhan.Value.ToString("dd/MM/yyyy");
+
                 dr["ChucVu"] = tb.ChucVu;
                 dr["NguoiKy"] = tb.NguoiKy;
 
@@ -135,6 +153,52 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (_selectedindex != -1)
+            {
+                TBKetQuaYCCatDM tb = _cTB.GetTBKetQuaYCCatDMByID(decimal.Parse(dgvDSTBKetQuaYCCatDM["SoPhieu", _selectedindex].Value.ToString()));
+                tb.SoPhieuNhan = txtSoPhieuNhan.Text.Trim();
+                tb.NgayNhan = dateNhan.Value;
+                tb.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                tb.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
+                tb.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
+                tb.MaCT = txtMaCT_Cat.Text.Trim();
+                tb.NhanNK_MaCN = int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString());
+                tb.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();
+                tb.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
+                tb.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
+                tb.SoNKCat = int.Parse(txtSoNK_Cat.Text.Trim());
+                tb.GhiChu = txtGhiChu.Text.Trim();
+
+                if (_cTB.SuaTBKetQuaYCCatDM(tb))
+                {
+                    dgvDSTBKetQuaYCCatDM.DataSource = _cTB.LoadDSTBKetQuaYCCatDM();
+                    Clear();
+                }
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (_selectedindex != -1)
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    TBKetQuaYCCatDM tb = _cTB.GetTBKetQuaYCCatDMByID(decimal.Parse(dgvDSTBKetQuaYCCatDM["SoPhieu", _selectedindex].Value.ToString()));
+                    if (_cTB.XoaTBKetQuaYCCatDM(tb))
+                    {
+                        dgvDSTBKetQuaYCCatDM.DataSource = _cTB.LoadDSTBKetQuaYCCatDM();
+                        Clear();
+                    }
+                }
+        }
+
+        private void dgvDSTBKetQuaYCCatDM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSTBKetQuaYCCatDM.Columns[e.ColumnIndex].Name == "NhanNK_MaCN"&& e.Value!=null)
+                e.Value = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSTBKetQuaYCCatDM["NhanNK_MaCN", e.RowIndex].Value.ToString()));
         }
     }
 }
