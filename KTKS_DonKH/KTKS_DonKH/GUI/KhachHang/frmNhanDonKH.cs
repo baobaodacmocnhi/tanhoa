@@ -53,15 +53,24 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtSoCongVan.Text = "";
             txtTongSoDanhBo.Text = "1";
 
-            chkKiemTraDHN.Checked = false;
-            chkTienNuoc.Checked = false;
-            chkChiSoNuoc.Checked = false;
-            chkDonGiaNuoc.Checked = false;
-            chkSangTen.Checked = false;
-            chkDangKyDM.Checked = false;
-            chkCatChuyenDM.Checked = false;
-            chkNuocDuc.Checked = false;
+            chkDHN.Checked = false;
+            chkTinhTienNuoc.Checked = false;
+            chkGhiChiSoNuoc.Checked = false;
+            chkThayDoiGiaNuoc.Checked = false;
+            chkThayDoiTenHopDong.Checked = false;
+            chkCapDM.Checked = false;
+            chkChuyenDM.Checked = false;
+            chkGiamDM.Checked = false;
             chkLyDoKhac.Checked = false;
+            chkDCSoNha.Checked = false;
+            chkMatDHN.Checked = false;
+            chkHuHongDHN.Checked = false;
+            chkChiNiem.Checked = false;
+            chkThayDoiTenHopDong.Checked = false;
+            chkThayDoiMST.Checked = false;
+            chkThayDoiGiaNuoc.Checked = false;
+            chkTamNgung.Checked = false;
+            chkHuyHopDong.Checked = false;
 
             txtLyDoKhac.Text = "";
             txtDanhBo.Text = "";
@@ -199,29 +208,50 @@ namespace KTKS_DonKH.GUI.KhachHang
                     donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
 
                     #region CheckBox
-                    if (chkKiemTraDHN.Checked)
+                    if (chkDHN.Checked)
                         donkh.KiemTraDHN = true;
 
-                    if (chkTienNuoc.Checked)
+                    if (chkTinhTienNuoc.Checked)
                         donkh.TienNuoc = true;
 
-                    if (chkChiSoNuoc.Checked)
+                    if (chkGhiChiSoNuoc.Checked)
                         donkh.ChiSoNuoc = true;
 
-                    if (chkDonGiaNuoc.Checked)
+                    if (chkThayDoiGiaNuoc.Checked)
                         donkh.DonGiaNuoc = true;
 
-                    if (chkSangTen.Checked)
+                    if (chkThayDoiTenHopDong.Checked)
                         donkh.SangTen = true;
 
-                    if (chkDangKyDM.Checked)
+                    if (chkCapDM.Checked)
                         donkh.DangKyDM = true;
 
-                    if (chkCatChuyenDM.Checked)
+                    if (chkChuyenDM.Checked)
                         donkh.CatChuyenDM = true;
 
-                    if (chkNuocDuc.Checked)
+                    if (chkGiamDM.Checked)
                         donkh.NuocDuc = true;
+
+                    if (chkDCSoNha.Checked)
+                        donkh.DCSoNha = true;
+
+                    if (chkMatDHN.Checked)
+                        donkh.MatDHN = true;
+
+                    if (chkHuHongDHN.Checked)
+                        donkh.HuHongDHN = true;
+
+                    if (chkChiNiem.Checked)
+                        donkh.ChiNiem = true;
+
+                    if (chkThayDoiMST.Checked)
+                        donkh.ThayDoiMST = true;
+
+                    if (chkTamNgung.Checked)
+                        donkh.TamNgung = true;
+
+                    if (chkHuyHopDong.Checked)
+                        donkh.HuyHopDong = true;
 
                     if (chkLyDoKhac.Checked)
                     {
@@ -339,13 +369,76 @@ namespace KTKS_DonKH.GUI.KhachHang
                                 dr["CatChuyenDM"] = false;
                             }
 
-                            if (donkh.NuocDuc)
+                            if (donkh.GiamDM)
                             {
-                                dr["NuocDuc"] = true;
+                                dr["GiamDM"] = true;
                             }
                             else
                             {
-                                dr["NuocDuc"] = false;
+                                dr["GiamDM"] = false;
+                            }
+
+                            if (donkh.DCSoNha)
+                            {
+                                dr["DCSoNha"] = true;
+                            }
+                            else
+                            {
+                                dr["DCSoNha"] = false;
+                            }
+
+                            if (donkh.MatDHN)
+                            {
+                                dr["MatDHN"] = true;
+                            }
+                            else
+                            {
+                                dr["MatDHN"] = false;
+                            }
+
+                            if (donkh.HuHongDHN)
+                            {
+                                dr["HuHongDHN"] = true;
+                            }
+                            else
+                            {
+                                dr["HuHongDHN"] = false;
+                            }
+
+                            if (donkh.ChiNiem)
+                            {
+                                dr["ChiNiem"] = true;
+                            }
+                            else
+                            {
+                                dr["ChiNiem"] = false;
+                            }
+
+                            if (donkh.ThayDoiMST)
+                            {
+                                dr["ThayDoiMST"] = true;
+                            }
+                            else
+                            {
+                                dr["ThayDoiMST"] = false;
+                            }
+
+                            if (donkh.TamNgung)
+                            {
+                                dr["TamNgung"] = true;
+                            }
+                            else
+                            {
+                                dr["TamNgung"] = false;
+                            }
+
+                            if (donkh.HuyHopDong)
+                            {
+                                dr["HuyHopDong"] = true;
+                            }
+                            else
+                            {
+                                dr["HuyHopDong"] = false;
                             }
 
                             if (donkh.LoaiKhac)

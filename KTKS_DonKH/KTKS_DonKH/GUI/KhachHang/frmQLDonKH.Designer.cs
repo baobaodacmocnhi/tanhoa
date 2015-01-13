@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDSDonKH = new System.Windows.Forms.DataGridView();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,14 +67,14 @@
             // 
             this.dgvDSDonKH.AllowUserToAddRows = false;
             this.dgvDSDonKH.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDonKH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDonKH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSDonKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDonKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaChuyen,
@@ -135,8 +135,8 @@
             // MaDon
             // 
             this.MaDon.DataPropertyName = "MaDon";
-            dataGridViewCellStyle2.NullValue = null;
-            this.MaDon.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.NullValue = null;
+            this.MaDon.DefaultCellStyle = dataGridViewCellStyle4;
             this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             this.MaDon.ReadOnly = true;
@@ -228,6 +228,7 @@
             this.radDaDuyet.TabIndex = 1;
             this.radDaDuyet.Text = "Đã Duyệt";
             this.radDaDuyet.UseVisualStyleBackColor = true;
+            this.radDaDuyet.Visible = false;
             this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
             // 
             // radChuaDuyet
@@ -239,6 +240,7 @@
             this.radChuaDuyet.TabIndex = 0;
             this.radChuaDuyet.Text = "Chưa Duyệt";
             this.radChuaDuyet.UseVisualStyleBackColor = true;
+            this.radChuaDuyet.Visible = false;
             this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
             // 
             // label1
@@ -336,7 +338,7 @@
             // 
             this.btnInDSDonKH.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnInDSDonKH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDSDonKH.Location = new System.Drawing.Point(844, 12);
+            this.btnInDSDonKH.Location = new System.Drawing.Point(1049, 12);
             this.btnInDSDonKH.Name = "btnInDSDonKH";
             this.btnInDSDonKH.Size = new System.Drawing.Size(125, 35);
             this.btnInDSDonKH.TabIndex = 9;
@@ -354,6 +356,7 @@
             this.radAll.TabIndex = 2;
             this.radAll.Text = "Tất Cả";
             this.radAll.UseVisualStyleBackColor = true;
+            this.radAll.Visible = false;
             this.radAll.CheckedChanged += new System.EventHandler(this.radAll_CheckedChanged);
             // 
             // panel_KhoangThoiGian
@@ -362,7 +365,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(594, 1);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(734, 1);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
             this.panel_KhoangThoiGian.TabIndex = 8;

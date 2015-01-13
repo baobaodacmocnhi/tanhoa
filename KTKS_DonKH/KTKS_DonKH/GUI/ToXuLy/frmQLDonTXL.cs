@@ -18,7 +18,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 {
     public partial class frmQLDonTXL : Form
     {
-        BindingSource DSDonKH_BS = new BindingSource();
+        //BindingSource DSDonKH_BS = new BindingSource();
         CChuyenDi _cChuyenDi = new CChuyenDi();
         CDonTXL _cDonTXL = new CDonTXL();
         string _tuNgay = "", _denNgay = "";
@@ -46,8 +46,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
             cmbColumn.DisplayMember = "NoiChuyenDi";
             cmbColumn.ValueMember = "MaChuyen";
 
-            dgvDSDonTXL.DataSource = DSDonKH_BS;
-            radAll.Checked = true;
+            //dgvDSDonTXL.DataSource = DSDonKH_BS;
+            //radAll.Checked = true;
 
             cmbTimTheo.SelectedIndex = 6;
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
@@ -57,7 +57,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (radDaChuyen.Checked)
             {
-                DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaChuyen();
+                //DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaChuyen();
                 cmbTimTheo.SelectedIndex = 0;
             }
         }
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (radChuaChuyen.Checked)
             {
-                DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaChuyen();
+                //DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaChuyen();
                 cmbTimTheo.SelectedIndex = 0;
             }
         }
@@ -75,7 +75,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (radAll.Checked)
             {
-                DSDonKH_BS.DataSource = _cDonTXL.LoadDSAllDonTXL();
+                //DSDonKH_BS.DataSource = _cDonTXL.LoadDSAllDonTXL();
                 cmbTimTheo.SelectedIndex = 0;
             }
         }
@@ -96,15 +96,16 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 source.Add("Action", "Cập Nhật");
                 source.Add("MaDon", dgvDSDonTXL["MaDon", dgvDSDonTXL.CurrentRow.Index].Value.ToString());
                 frmShowDonTXL frm = new frmShowDonTXL(source);
-                if (frm.ShowDialog() == DialogResult.OK)
-                    if (radChuaChuyen.Checked)
-                        DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaChuyen();
-                    else
-                        if (radDaChuyen.Checked)
-                            DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaChuyen();
-                        else
-                            if (radAll.Checked)
-                                DSDonKH_BS.DataSource = _cDonTXL.LoadDSAllDonTXL();
+                frm.ShowDialog();
+                //if (frm.ShowDialog() == DialogResult.OK)
+                //    if (radChuaChuyen.Checked)
+                //        DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaChuyen();
+                //    else
+                //        if (radDaChuyen.Checked)
+                //            DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaChuyen();
+                //        else
+                //            if (radAll.Checked)
+                //                DSDonKH_BS.DataSource = _cDonTXL.LoadDSAllDonTXL();
             }
         }
 
@@ -167,64 +168,87 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
-                    DSDonKH_BS.RemoveFilter();
+                    //DSDonKH_BS.RemoveFilter();
                     break;
             }
+            dgvDSDonTXL.DataSource = null;
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
+            //if (txtNoiDungTimKiem.Text.Trim() != "")
+            //{
+            //    string expression = "";
+            //    switch (cmbTimTheo.SelectedItem.ToString())
+            //    {
+            //        case "Mã Đơn":
+            //            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL") && txtNoiDungTimKiem.Text.Trim().Length > 3)
+            //                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("TXL", "").Replace("-", ""));
+            //            break;
+            //        case "Số Công Văn":
+            //            expression = String.Format("SoCongVan like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
+            //            break;
+            //        case "Danh Bộ":
+            //            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
+            //            break;
+            //        case "Địa Chỉ":
+            //            expression = String.Format("DiaChi like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
+            //            break;
+            //    }
+            //    DSDonKH_BS.Filter = expression;
+            //}
+            //else
+            //    DSDonKH_BS.RemoveFilter();
             if (txtNoiDungTimKiem.Text.Trim() != "")
             {
-                string expression = "";
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
                     case "Mã Đơn":
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL") && txtNoiDungTimKiem.Text.Trim().Length > 3)
-                            expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("TXL", "").Replace("-", ""));
+                            dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("TXL", "").Replace("-", "")));
                         break;
                     case "Số Công Văn":
-                        expression = String.Format("SoCongVan like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                         break;
                     case "Danh Bộ":
-                        expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByDanhBo(txtNoiDungTimKiem.Text.Trim().ToUpper());
                         break;
                     case "Địa Chỉ":
-                        expression = String.Format("DiaChi like '{0}%'", txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByDiaChi(txtNoiDungTimKiem.Text.Trim().ToUpper());
                         break;
                 }
-                DSDonKH_BS.Filter = expression;
             }
-            else
-                DSDonKH_BS.RemoveFilter();
         }
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-            DSDonKH_BS.Filter = expression;
+            //string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            //DSDonKH_BS.Filter = expression;
             _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
             _denNgay = "";
+            dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByDate(dateTimKiem.Value);
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
-            DSDonKH_BS.Filter = expression;
+            //string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+            //DSDonKH_BS.Filter = expression;
             _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
             _denNgay = "";
+            dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByDate(dateTu.Value);
         }
 
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
-            DSDonKH_BS.Filter = expression;
+            //string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+            //DSDonKH_BS.Filter = expression;
             _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+            dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByDates(dateTu.Value,dateDen.Value);
         }
 
         private void btnInDSDonKH_Click(object sender, EventArgs e)
         {
-            DataTable dt = ((DataTable)DSDonKH_BS.DataSource).DefaultView.ToTable();
+            DataTable dt = ((DataTable)dgvDSDonTXL.DataSource).DefaultView.ToTable();
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Ngày":
@@ -234,7 +258,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dt = _cDonTXL.LoadDSDonTXLDaChuyenKT(dateTu.Value, dateDen.Value);
                     break;
                 case "Số Công Văn":
-                    dt = _cDonTXL.LoadDSDonTXLbySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                    dt = _cDonTXL.LoadDSDonTXLDaChuyenKTbySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                     break;
             }
 
@@ -309,7 +333,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void btnInChiTiet_Click(object sender, EventArgs e)
         {
-            DataTable dt = ((DataTable)DSDonKH_BS.DataSource).DefaultView.ToTable();
+            DataTable dt = ((DataTable)dgvDSDonTXL.DataSource).DefaultView.ToTable();
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow itemRow in dt.Rows)
             {

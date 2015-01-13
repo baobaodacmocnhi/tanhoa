@@ -39,7 +39,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         CCatChuyenDM _cCatChuyenDM = new CCatChuyenDM();
         DataRowView _CTRow = null;
-        BindingSource DSDCBD_BS;
+        //BindingSource DSDCBD_BS;
 
         public frmDSDCBD()
         {
@@ -102,9 +102,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radDaDuyet.Checked)
             {
-                DSDCBD_BS = new BindingSource();
-                DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
-                gridControl.DataSource = DSDCBD_BS;
+                //DSDCBD_BS = new BindingSource();
+                //DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBDDaDuyet().Tables["DCBD"];
+                //gridControl.DataSource = DSDCBD_BS;
 
                 gridControl.Visible = true;
                 dgvDSDCBD.Visible = false;
@@ -117,9 +117,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radChuaDuyet.Checked)
             {
-                DSDCBD_BS = new BindingSource();
-                DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
-                gridControl.DataSource = DSDCBD_BS;
+                //DSDCBD_BS = new BindingSource();
+                //DSDCBD_BS.DataSource = _cDCBD.LoadDSDCBDChuaDuyet();
+                //gridControl.DataSource = DSDCBD_BS;
 
                 gridControl.Visible = true;
                 dgvDSDCBD.Visible = false;
@@ -132,9 +132,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radDSDCBD.Checked)
             {
-                DSDCBD_BS = new BindingSource();
-                DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
-                dgvDSDCBD.DataSource = DSDCBD_BS;
+                //DSDCBD_BS = new BindingSource();
+                //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
+                //dgvDSDCBD.DataSource = DSDCBD_BS;
 
                 dgvDSDCBD.Columns["ChuyenDocSo"].Visible = true;
                 dgvDSDCBD.Columns["HoTen"].Visible = true;
@@ -166,9 +166,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radDSDCHD.Checked)
             {
-                DSDCBD_BS = new BindingSource();
-                DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCHD();
-                dgvDSDCBD.DataSource = DSDCBD_BS;
+                //DSDCBD_BS = new BindingSource();
+                //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCHD();
+                //dgvDSDCBD.DataSource = DSDCBD_BS;
 
                 dgvDSDCBD.Columns["ChuyenDocSo"].Visible = false;
                 dgvDSDCBD.Columns["HoTen"].Visible = false;
@@ -198,9 +198,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void radDSCatChuyenDM_CheckedChanged(object sender, EventArgs e)
         {
-            DSDCBD_BS = new BindingSource();
-            DSDCBD_BS.DataSource = _cChungTu.LoadDSCatChuyenDM();
-            dgvDSCatChuyenDM.DataSource = DSDCBD_BS;
+            //DSDCBD_BS = new BindingSource();
+            //DSDCBD_BS.DataSource = _cChungTu.LoadDSCatChuyenDM();
+            //dgvDSCatChuyenDM.DataSource = DSDCBD_BS;
 
             dgvDSCatChuyenDM.Visible = true;
             gridControl.Visible = false;
@@ -639,14 +639,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (radDSDCBD.Checked)
                 {
                     frmShowDCBD frm = new frmShowDCBD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
-                    if (frm.ShowDialog() == DialogResult.OK)
-                        DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
+                    if (frm.ShowDialog() == DialogResult.OK){}
+                        //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                 }
                 if (radDSDCHD.Checked)
                 {
                     frmShowDCHD frm = new frmShowDCHD(decimal.Parse(dgvDSDCBD["SoPhieu", dgvDSDCBD.CurrentRow.Index].Value.ToString()));
-                    if (frm.ShowDialog() == DialogResult.OK)
-                        DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCHD();
+                    if (frm.ShowDialog() == DialogResult.OK) { }
+                        //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCHD();
                 }
             }
         }
@@ -797,7 +797,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
-                    DSDCBD_BS.RemoveFilter();
+                    //DSDCBD_BS.RemoveFilter();
                     break;
             }
         }
@@ -806,38 +806,38 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (txtNoiDungTimKiem.Text.Trim() != "")
-                {
-                    string expression = "";
-                    txtNoiDungTimKiem2.Text = "";
-                    switch (cmbTimTheo.SelectedItem.ToString())
-                    {
-                        case "Mã Đơn":
-                            if (txtNoiDungTimKiem2.Text.Trim() == "")
-                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            else
-                                expression = String.Format("MaDon >= {0} and MaDon <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
-                            break;
-                        case "Số Phiếu":
-                            if (txtNoiDungTimKiem2.Text.Trim() == "")
-                                expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            else
-                                expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
-                            break;
-                        case "Danh Bộ":
-                            if (radDSCatChuyenDM.Checked)
-                                expression = String.Format("NhanNK_DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            else
+                //if (txtNoiDungTimKiem.Text.Trim() != "")
+                //{
+                //    string expression = "";
+                //    txtNoiDungTimKiem2.Text = "";
+                //    switch (cmbTimTheo.SelectedItem.ToString())
+                //    {
+                //        case "Mã Đơn":
+                //            if (txtNoiDungTimKiem2.Text.Trim() == "")
+                //                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            else
+                //                expression = String.Format("MaDon >= {0} and MaDon <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
+                //            break;
+                //        case "Số Phiếu":
+                //            if (txtNoiDungTimKiem2.Text.Trim() == "")
+                //                expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            else
+                //                expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
+                //            break;
+                //        case "Danh Bộ":
+                //            if (radDSCatChuyenDM.Checked)
+                //                expression = String.Format("NhanNK_DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            else
 
-                                expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            break;
-                    }
-                    if (chkLocUser.Checked)
-                        expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
-                    DSDCBD_BS.Filter = expression;
-                }
-                else
-                    DSDCBD_BS.RemoveFilter();
+                //                expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            break;
+                //    }
+                //    if (chkLocUser.Checked)
+                //        expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
+                //    DSDCBD_BS.Filter = expression;
+                //}
+                //else
+                //    DSDCBD_BS.RemoveFilter();
             }
             catch (Exception)
             {
@@ -848,10 +848,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-            if (chkLocUser.Checked)
-                expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
-            DSDCBD_BS.Filter = expression;
+            //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            //if (chkLocUser.Checked)
+            //    expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
+            //DSDCBD_BS.Filter = expression;
             //if (radDSDCBD.Checked)
             //{
             //    int a = 0;
@@ -1219,24 +1219,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
         {
-            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
-            {
-                string expression = "";
-                switch (cmbTimTheo.SelectedItem.ToString())
-                {
-                    case "Mã Đơn":
-                        expression = String.Format("MaDon >= {0} and MaDon <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
-                        break;
-                    case "Số Phiếu":
-                        expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
-                        break;
-                }
-                if (chkLocUser.Checked)
-                    expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
-                DSDCBD_BS.Filter = expression;
-            }
-            else
-                DSDCBD_BS.RemoveFilter();
+            //if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+            //{
+            //    string expression = "";
+            //    switch (cmbTimTheo.SelectedItem.ToString())
+            //    {
+            //        case "Mã Đơn":
+            //            expression = String.Format("MaDon >= {0} and MaDon <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
+            //            break;
+            //        case "Số Phiếu":
+            //            expression = String.Format("SoPhieu >= {0} and SoPhieu <= {1}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""), txtNoiDungTimKiem2.Text.Trim().Replace("-", ""));
+            //            break;
+            //    }
+            //    if (chkLocUser.Checked)
+            //        expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
+            //    DSDCBD_BS.Filter = expression;
+            //}
+            //else
+            //    DSDCBD_BS.RemoveFilter();
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
@@ -1246,10 +1246,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
-            if (chkLocUser.Checked)
-                expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
-            DSDCBD_BS.Filter = expression;
+            //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+            //if (chkLocUser.Checked)
+            //    expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
+            //DSDCBD_BS.Filter = expression;
             //if (radDSDCBD.Checked)
             //{
             //    int a = 0;
@@ -1357,7 +1357,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         + " không có bên QLĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
+                        //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                         _cDCBD.commitTransaction();
                         _cDLKH.commitTransaction();
                         log.WriteLine("=============================================");

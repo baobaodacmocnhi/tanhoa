@@ -268,6 +268,399 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public DataSet LoadDSBamChiDaDuyetByMaDon(decimal MaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                {
+                    DataSet ds = new DataSet();
+                    ///Table BamChi
+                    var queryBamChi_DonKH = from itemBamChi in db.BamChis
+                                            where itemBamChi.ToXuLy == false && itemBamChi.MaDon==MaDon
+                                            orderby itemBamChi.MaDon descending
+                                            select new
+                                            {
+                                                itemBamChi.ToXuLy,
+                                                itemBamChi.MaDon,
+                                                itemBamChi.DonKH.LoaiDon.TenLD,
+                                                itemBamChi.DonKH.CreateDate,
+                                                itemBamChi.DonKH.DanhBo,
+                                                itemBamChi.DonKH.HoTen,
+                                                itemBamChi.DonKH.DiaChi,
+                                                itemBamChi.DonKH.NoiDung,
+                                                MaNoiChuyenDen = itemBamChi.MaNoiChuyenDen,
+                                                NoiChuyenDen = itemBamChi.NoiChuyenDen,
+                                                LyDoChuyenDen = itemBamChi.LyDoChuyenDen,
+                                                itemBamChi.MaBC,
+                                                NgayXuLy = itemBamChi.CreateDate,
+                                                itemBamChi.KetQua,
+                                                itemBamChi.MaChuyen,
+                                                LyDoChuyenDi = itemBamChi.LyDoChuyen
+                                            };
+
+                    var queryBamChi_DonTXL = from itemBamChi in db.BamChis
+                                             where itemBamChi.ToXuLy == true && itemBamChi.MaDonTXL==MaDon
+                                             orderby itemBamChi.MaDon descending
+                                             select new
+                                             {
+                                                 itemBamChi.ToXuLy,
+                                                 MaDon = itemBamChi.MaDonTXL,
+                                                 itemBamChi.DonTXL.LoaiDonTXL.TenLD,
+                                                 itemBamChi.DonTXL.CreateDate,
+                                                 itemBamChi.DonTXL.DanhBo,
+                                                 itemBamChi.DonTXL.HoTen,
+                                                 itemBamChi.DonTXL.DiaChi,
+                                                 itemBamChi.DonTXL.NoiDung,
+                                                 MaNoiChuyenDen = itemBamChi.MaNoiChuyenDen,
+                                                 NoiChuyenDen = itemBamChi.NoiChuyenDen,
+                                                 LyDoChuyenDen = itemBamChi.LyDoChuyenDen,
+                                                 itemBamChi.MaBC,
+                                                 NgayXuLy = itemBamChi.CreateDate,
+                                                 itemBamChi.KetQua,
+                                                 itemBamChi.MaChuyen,
+                                                 LyDoChuyenDi = itemBamChi.LyDoChuyen
+                                             };
+
+                    DataTable dtBamChi = new DataTable();
+                    dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH.Distinct());
+                    dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL.Distinct()));
+                    dtBamChi.TableName = "BamChi";
+                    ds.Tables.Add(dtBamChi);
+
+                    ///Table CTBamChi
+                    var queryCTBamChi = from itemCTBamChi in db.CTBamChis
+                                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                        where itemCTBamChi.BamChi.MaDon==MaDon || itemCTBamChi.BamChi.MaDonTXL==MaDon
+                                        select new
+                                        {
+                                            itemCTBamChi.MaBC,
+                                            itemCTBamChi.MaCTBC,
+                                            itemCTBamChi.NgayBC,
+                                            itemCTBamChi.DanhBo,
+                                            itemCTBamChi.HoTen,
+                                            itemCTBamChi.DiaChi,
+                                            CreateBy = itemUser.HoTen,
+                                        };
+
+                    DataTable dtCTBamChi = new DataTable();
+                    dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                    dtCTBamChi.TableName = "CTBamChi";
+                    ds.Tables.Add(dtCTBamChi);
+
+                    if (dtBamChi.Rows.Count > 0 && dtCTBamChi.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Bấm Chì", ds.Tables["BamChi"].Columns["MaBC"], ds.Tables["CTBamChi"].Columns["MaBC"]);
+                    return ds;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataSet LoadDSBamChiDaDuyetByDanhBo(string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                {
+                    DataSet ds = new DataSet();
+                    ///Table BamChi
+                    var queryBamChi_DonKH = from itemBamChi in db.BamChis
+                                            join itemCTBamChi in db.CTBamChis on itemBamChi.MaBC equals itemCTBamChi.MaBC
+                                            where itemBamChi.ToXuLy == false &&itemCTBamChi.DanhBo==DanhBo
+                                            orderby itemCTBamChi.NgayBC descending
+                                            select new
+                                            {
+                                                itemBamChi.ToXuLy,
+                                                itemBamChi.MaDon,
+                                                itemBamChi.DonKH.LoaiDon.TenLD,
+                                                itemBamChi.DonKH.CreateDate,
+                                                itemBamChi.DonKH.DanhBo,
+                                                itemBamChi.DonKH.HoTen,
+                                                itemBamChi.DonKH.DiaChi,
+                                                itemBamChi.DonKH.NoiDung,
+                                                MaNoiChuyenDen = itemBamChi.MaNoiChuyenDen,
+                                                NoiChuyenDen = itemBamChi.NoiChuyenDen,
+                                                LyDoChuyenDen = itemBamChi.LyDoChuyenDen,
+                                                itemBamChi.MaBC,
+                                                NgayXuLy = itemBamChi.CreateDate,
+                                                itemBamChi.KetQua,
+                                                itemBamChi.MaChuyen,
+                                                LyDoChuyenDi = itemBamChi.LyDoChuyen
+                                            };
+
+                    var queryBamChi_DonTXL = from itemBamChi in db.BamChis
+                                             join itemCTBamChi in db.CTBamChis on itemBamChi.MaBC equals itemCTBamChi.MaBC
+                                             where itemBamChi.ToXuLy == true && itemCTBamChi.DanhBo==DanhBo
+                                             orderby itemCTBamChi.NgayBC descending
+                                             select new
+                                             {
+                                                 itemBamChi.ToXuLy,
+                                                 MaDon = itemBamChi.MaDonTXL,
+                                                 itemBamChi.DonTXL.LoaiDonTXL.TenLD,
+                                                 itemBamChi.DonTXL.CreateDate,
+                                                 itemBamChi.DonTXL.DanhBo,
+                                                 itemBamChi.DonTXL.HoTen,
+                                                 itemBamChi.DonTXL.DiaChi,
+                                                 itemBamChi.DonTXL.NoiDung,
+                                                 MaNoiChuyenDen = itemBamChi.MaNoiChuyenDen,
+                                                 NoiChuyenDen = itemBamChi.NoiChuyenDen,
+                                                 LyDoChuyenDen = itemBamChi.LyDoChuyenDen,
+                                                 itemBamChi.MaBC,
+                                                 NgayXuLy = itemBamChi.CreateDate,
+                                                 itemBamChi.KetQua,
+                                                 itemBamChi.MaChuyen,
+                                                 LyDoChuyenDi = itemBamChi.LyDoChuyen
+                                             };
+
+                    DataTable dtBamChi = new DataTable();
+                    dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH.Distinct());
+                    dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL.Distinct()));
+                    dtBamChi.TableName = "BamChi";
+                    ds.Tables.Add(dtBamChi);
+
+                    ///Table CTBamChi
+                    var queryCTBamChi = from itemCTBamChi in db.CTBamChis
+                                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                        where itemCTBamChi.DanhBo==DanhBo
+                                        select new
+                                        {
+                                            itemCTBamChi.MaBC,
+                                            itemCTBamChi.MaCTBC,
+                                            itemCTBamChi.NgayBC,
+                                            itemCTBamChi.DanhBo,
+                                            itemCTBamChi.HoTen,
+                                            itemCTBamChi.DiaChi,
+                                            CreateBy = itemUser.HoTen,
+                                        };
+
+                    DataTable dtCTBamChi = new DataTable();
+                    dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                    dtCTBamChi.TableName = "CTBamChi";
+                    ds.Tables.Add(dtCTBamChi);
+
+                    if (dtBamChi.Rows.Count > 0 && dtCTBamChi.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Bấm Chì", ds.Tables["BamChi"].Columns["MaBC"], ds.Tables["CTBamChi"].Columns["MaBC"]);
+                    return ds;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataSet LoadDSBamChiDaDuyetByDate(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                {
+                    DataSet ds = new DataSet();
+                    ///Table BamChi
+                    var queryBamChi_DonKH = from itemBamChi in db.BamChis
+                                            join itemCTBamChi in db.CTBamChis on itemBamChi.MaBC equals itemCTBamChi.MaBC
+                                            where itemBamChi.ToXuLy == false &&  itemCTBamChi.NgayBC.Value.Date==TuNgay.Date
+                                            orderby itemCTBamChi.NgayBC descending
+                                            select new
+                                            {
+                                                itemBamChi.ToXuLy,
+                                                itemBamChi.MaDon,
+                                                itemBamChi.DonKH.LoaiDon.TenLD,
+                                                itemBamChi.DonKH.CreateDate,
+                                                itemBamChi.DonKH.DanhBo,
+                                                itemBamChi.DonKH.HoTen,
+                                                itemBamChi.DonKH.DiaChi,
+                                                itemBamChi.DonKH.NoiDung,
+                                                MaNoiChuyenDen = itemBamChi.MaNoiChuyenDen,
+                                                NoiChuyenDen = itemBamChi.NoiChuyenDen,
+                                                LyDoChuyenDen = itemBamChi.LyDoChuyenDen,
+                                                itemBamChi.MaBC,
+                                                NgayXuLy = itemBamChi.CreateDate,
+                                                itemBamChi.KetQua,
+                                                itemBamChi.MaChuyen,
+                                                LyDoChuyenDi = itemBamChi.LyDoChuyen
+                                            };
+
+                    var queryBamChi_DonTXL = from itemBamChi in db.BamChis
+                                             join itemCTBamChi in db.CTBamChis on itemBamChi.MaBC equals itemCTBamChi.MaBC
+                                             where itemBamChi.ToXuLy == true && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
+                                             orderby itemCTBamChi.NgayBC descending
+                                             select new
+                                             {
+                                                 itemBamChi.ToXuLy,
+                                                 MaDon = itemBamChi.MaDonTXL,
+                                                 itemBamChi.DonTXL.LoaiDonTXL.TenLD,
+                                                 itemBamChi.DonTXL.CreateDate,
+                                                 itemBamChi.DonTXL.DanhBo,
+                                                 itemBamChi.DonTXL.HoTen,
+                                                 itemBamChi.DonTXL.DiaChi,
+                                                 itemBamChi.DonTXL.NoiDung,
+                                                 MaNoiChuyenDen = itemBamChi.MaNoiChuyenDen,
+                                                 NoiChuyenDen = itemBamChi.NoiChuyenDen,
+                                                 LyDoChuyenDen = itemBamChi.LyDoChuyenDen,
+                                                 itemBamChi.MaBC,
+                                                 NgayXuLy = itemBamChi.CreateDate,
+                                                 itemBamChi.KetQua,
+                                                 itemBamChi.MaChuyen,
+                                                 LyDoChuyenDi = itemBamChi.LyDoChuyen
+                                             };
+
+                    DataTable dtBamChi = new DataTable();
+                    dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH.Distinct());
+                    dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL.Distinct()));
+                    dtBamChi.TableName = "BamChi";
+                    ds.Tables.Add(dtBamChi);
+
+                    ///Table CTBamChi
+                    var queryCTBamChi = from itemCTBamChi in db.CTBamChis
+                                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                        where itemCTBamChi.NgayBC.Value.Date==TuNgay.Date
+                                        select new
+                                        {
+                                            itemCTBamChi.MaBC,
+                                            itemCTBamChi.MaCTBC,
+                                            itemCTBamChi.NgayBC,
+                                            itemCTBamChi.DanhBo,
+                                            itemCTBamChi.HoTen,
+                                            itemCTBamChi.DiaChi,
+                                            CreateBy = itemUser.HoTen,
+                                        };
+
+                    DataTable dtCTBamChi = new DataTable();
+                    dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                    dtCTBamChi.TableName = "CTBamChi";
+                    ds.Tables.Add(dtCTBamChi);
+
+                    if (dtBamChi.Rows.Count > 0 && dtCTBamChi.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Bấm Chì", ds.Tables["BamChi"].Columns["MaBC"], ds.Tables["CTBamChi"].Columns["MaBC"]);
+                    return ds;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataSet LoadDSBamChiDaDuyetByDates(DateTime TuNgay,DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                {
+                    DataSet ds = new DataSet();
+                    ///Table BamChi
+                    var queryBamChi_DonKH = from itemBamChi in db.BamChis
+                                            join itemCTBamChi in db.CTBamChis on itemBamChi.MaBC equals itemCTBamChi.MaBC
+                                            where itemBamChi.ToXuLy == false && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
+                                            orderby itemCTBamChi.NgayBC descending
+                                            select new
+                                            {
+                                                itemBamChi.ToXuLy,
+                                                itemBamChi.MaDon,
+                                                itemBamChi.DonKH.LoaiDon.TenLD,
+                                                itemBamChi.DonKH.CreateDate,
+                                                itemBamChi.DonKH.DanhBo,
+                                                itemBamChi.DonKH.HoTen,
+                                                itemBamChi.DonKH.DiaChi,
+                                                itemBamChi.DonKH.NoiDung,
+                                                MaNoiChuyenDen = itemBamChi.MaNoiChuyenDen,
+                                                NoiChuyenDen = itemBamChi.NoiChuyenDen,
+                                                LyDoChuyenDen = itemBamChi.LyDoChuyenDen,
+                                                itemBamChi.MaBC,
+                                                NgayXuLy = itemBamChi.CreateDate,
+                                                itemBamChi.KetQua,
+                                                itemBamChi.MaChuyen,
+                                                LyDoChuyenDi = itemBamChi.LyDoChuyen
+                                            };
+
+                    var queryBamChi_DonTXL = from itemBamChi in db.BamChis
+                                             join itemCTBamChi in db.CTBamChis on itemBamChi.MaBC equals itemCTBamChi.MaBC
+                                             where itemBamChi.ToXuLy == true && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
+                                             orderby itemCTBamChi.NgayBC descending
+                                             select new
+                                             {
+                                                 itemBamChi.ToXuLy,
+                                                 MaDon = itemBamChi.MaDonTXL,
+                                                 itemBamChi.DonTXL.LoaiDonTXL.TenLD,
+                                                 itemBamChi.DonTXL.CreateDate,
+                                                 itemBamChi.DonTXL.DanhBo,
+                                                 itemBamChi.DonTXL.HoTen,
+                                                 itemBamChi.DonTXL.DiaChi,
+                                                 itemBamChi.DonTXL.NoiDung,
+                                                 MaNoiChuyenDen = itemBamChi.MaNoiChuyenDen,
+                                                 NoiChuyenDen = itemBamChi.NoiChuyenDen,
+                                                 LyDoChuyenDen = itemBamChi.LyDoChuyenDen,
+                                                 itemBamChi.MaBC,
+                                                 NgayXuLy = itemBamChi.CreateDate,
+                                                 itemBamChi.KetQua,
+                                                 itemBamChi.MaChuyen,
+                                                 LyDoChuyenDi = itemBamChi.LyDoChuyen
+                                             };
+
+                    DataTable dtBamChi = new DataTable();
+                    dtBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonKH.Distinct());
+                    dtBamChi.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryBamChi_DonTXL.Distinct()));
+                    dtBamChi.TableName = "BamChi";
+                    ds.Tables.Add(dtBamChi);
+
+                    ///Table CTBamChi
+                    var queryCTBamChi = from itemCTBamChi in db.CTBamChis
+                                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                        where itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
+                                        select new
+                                        {
+                                            itemCTBamChi.MaBC,
+                                            itemCTBamChi.MaCTBC,
+                                            itemCTBamChi.NgayBC,
+                                            itemCTBamChi.DanhBo,
+                                            itemCTBamChi.HoTen,
+                                            itemCTBamChi.DiaChi,
+                                            CreateBy = itemUser.HoTen,
+                                        };
+
+                    DataTable dtCTBamChi = new DataTable();
+                    dtCTBamChi = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTBamChi);
+                    dtCTBamChi.TableName = "CTBamChi";
+                    ds.Tables.Add(dtCTBamChi);
+
+                    if (dtBamChi.Rows.Count > 0 && dtCTBamChi.Rows.Count > 0)
+                        ds.Relations.Add("Chi Tiết Bấm Chì", ds.Tables["BamChi"].Columns["MaBC"], ds.Tables["CTBamChi"].Columns["MaBC"]);
+                    return ds;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
         #endregion
 
         #region CTBamChi (Chi Tiết Bấm Chì)
@@ -685,6 +1078,302 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public DataTable LoadDSCTBamChiByMaDon(decimal MaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                {
+                    var query_DonKH = from itemCTBamChi in db.CTBamChis
+                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                      where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.BamChi.MaDon==MaDon
+                                      orderby itemCTBamChi.NgayBC descending
+                                      select new
+                                      {
+                                          itemCTBamChi.BamChi.ToXuLy,
+                                          itemCTBamChi.MaCTBC,
+                                          itemCTBamChi.BamChi.MaDon,
+                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                          itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
+                                          itemCTBamChi.HoTen,
+                                          itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThaiBC,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
+                                          itemCTBamChi.NgayBC,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
+                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                       where itemCTBamChi.BamChi.ToXuLy == true&& itemCTBamChi.BamChi.MaDonTXL==MaDon
+                                       orderby itemCTBamChi.NgayBC descending
+                                       select new
+                                       {
+                                           itemCTBamChi.BamChi.ToXuLy,
+                                           itemCTBamChi.MaCTBC,
+                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
+                                           itemCTBamChi.HoTen,
+                                           itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThaiBC,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
+                                           itemCTBamChi.NgayBC,
+                                           CreateBy = itemUser.HoTen,
+                                       };
+                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    return dt;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTBamChiByDanhBo(string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                {
+                    var query_DonKH = from itemCTBamChi in db.CTBamChis
+                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                      where itemCTBamChi.BamChi.ToXuLy == false&&itemCTBamChi.DanhBo==DanhBo
+                                      orderby itemCTBamChi.NgayBC descending
+                                      select new
+                                      {
+                                          itemCTBamChi.BamChi.ToXuLy,
+                                          itemCTBamChi.MaCTBC,
+                                          itemCTBamChi.BamChi.MaDon,
+                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                          itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
+                                          itemCTBamChi.HoTen,
+                                          itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThaiBC,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
+                                          itemCTBamChi.NgayBC,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
+                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                       where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.DanhBo == DanhBo
+                                       orderby itemCTBamChi.NgayBC descending
+                                       select new
+                                       {
+                                           itemCTBamChi.BamChi.ToXuLy,
+                                           itemCTBamChi.MaCTBC,
+                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
+                                           itemCTBamChi.HoTen,
+                                           itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThaiBC,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
+                                           itemCTBamChi.NgayBC,
+                                           CreateBy = itemUser.HoTen,
+                                       };
+                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    return dt;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTBamChiByDate(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                {
+                    var query_DonKH = from itemCTBamChi in db.CTBamChis
+                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                      where itemCTBamChi.BamChi.ToXuLy == false&&itemCTBamChi.NgayBC.Value.Date==TuNgay.Date
+                                      orderby itemCTBamChi.NgayBC descending
+                                      select new
+                                      {
+                                          itemCTBamChi.BamChi.ToXuLy,
+                                          itemCTBamChi.MaCTBC,
+                                          itemCTBamChi.BamChi.MaDon,
+                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                          itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
+                                          itemCTBamChi.HoTen,
+                                          itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThaiBC,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
+                                          itemCTBamChi.NgayBC,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
+                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                       where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
+                                       orderby itemCTBamChi.NgayBC descending
+                                       select new
+                                       {
+                                           itemCTBamChi.BamChi.ToXuLy,
+                                           itemCTBamChi.MaCTBC,
+                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
+                                           itemCTBamChi.HoTen,
+                                           itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThaiBC,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
+                                           itemCTBamChi.NgayBC,
+                                           CreateBy = itemUser.HoTen,
+                                       };
+                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    return dt;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTBamChiByDates(DateTime TuNgay,DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                {
+                    var query_DonKH = from itemCTBamChi in db.CTBamChis
+                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                      where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
+                                      orderby itemCTBamChi.NgayBC descending
+                                      select new
+                                      {
+                                          itemCTBamChi.BamChi.ToXuLy,
+                                          itemCTBamChi.MaCTBC,
+                                          itemCTBamChi.BamChi.MaDon,
+                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                          itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
+                                          itemCTBamChi.HoTen,
+                                          itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThaiBC,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
+                                          itemCTBamChi.NgayBC,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
+                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                       where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
+                                       orderby itemCTBamChi.NgayBC descending
+                                       select new
+                                       {
+                                           itemCTBamChi.BamChi.ToXuLy,
+                                           itemCTBamChi.MaCTBC,
+                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
+                                           itemCTBamChi.HoTen,
+                                           itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThaiBC,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
+                                           itemCTBamChi.NgayBC,
+                                           CreateBy = itemUser.HoTen,
+                                       };
+                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    return dt;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách CTBamChi theo User
         /// </summary>
@@ -699,7 +1388,7 @@ namespace KTKS_DonKH.DAL.BamChi
                     var query_DonKH = from itemCTBamChi in db.CTBamChis
                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                                       where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser
-                                      orderby itemCTBamChi.BamChi.MaDon ascending
+                                      orderby itemCTBamChi.NgayBC descending
                                       select new
                                       {
                                           itemCTBamChi.BamChi.ToXuLy,
@@ -725,7 +1414,7 @@ namespace KTKS_DonKH.DAL.BamChi
                     var query_DonTXL = from itemCTBamChi in db.CTBamChis
                                        join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
                                        where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser
-                                       orderby itemCTBamChi.BamChi.MaDon ascending
+                                       orderby itemCTBamChi.NgayBC descending
                                        select new
                                        {
                                            itemCTBamChi.BamChi.ToXuLy,
@@ -749,6 +1438,302 @@ namespace KTKS_DonKH.DAL.BamChi
                                        };
                     DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH);
                     dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL));
+                    return dt;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTBamChiByMaDon(int MaUser,decimal MaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat || CTaiKhoan.RoleBamChi_Xem || CTaiKhoan.RoleBamChi_CapNhat)
+                {
+                    var query_DonKH = from itemCTBamChi in db.CTBamChis
+                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                      where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.BamChi.MaDon == MaDon
+                                      orderby itemCTBamChi.NgayBC descending
+                                      select new
+                                      {
+                                          itemCTBamChi.BamChi.ToXuLy,
+                                          itemCTBamChi.MaCTBC,
+                                          itemCTBamChi.BamChi.MaDon,
+                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                          itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
+                                          itemCTBamChi.HoTen,
+                                          itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThaiBC,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
+                                          itemCTBamChi.NgayBC,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
+                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                       where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.BamChi.MaDonTXL == MaDon
+                                       orderby itemCTBamChi.NgayBC descending
+                                       select new
+                                       {
+                                           itemCTBamChi.BamChi.ToXuLy,
+                                           itemCTBamChi.MaCTBC,
+                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
+                                           itemCTBamChi.HoTen,
+                                           itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThaiBC,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
+                                           itemCTBamChi.NgayBC,
+                                           CreateBy = itemUser.HoTen,
+                                       };
+                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    return dt;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTBamChiByDanhBo(int MaUser, string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat || CTaiKhoan.RoleBamChi_Xem || CTaiKhoan.RoleBamChi_CapNhat)
+                {
+                    var query_DonKH = from itemCTBamChi in db.CTBamChis
+                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                      where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.DanhBo == DanhBo
+                                      orderby itemCTBamChi.NgayBC descending
+                                      select new
+                                      {
+                                          itemCTBamChi.BamChi.ToXuLy,
+                                          itemCTBamChi.MaCTBC,
+                                          itemCTBamChi.BamChi.MaDon,
+                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                          itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
+                                          itemCTBamChi.HoTen,
+                                          itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThaiBC,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
+                                          itemCTBamChi.NgayBC,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
+                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                       where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.DanhBo == DanhBo
+                                       orderby itemCTBamChi.NgayBC descending
+                                       select new
+                                       {
+                                           itemCTBamChi.BamChi.ToXuLy,
+                                           itemCTBamChi.MaCTBC,
+                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
+                                           itemCTBamChi.HoTen,
+                                           itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThaiBC,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
+                                           itemCTBamChi.NgayBC,
+                                           CreateBy = itemUser.HoTen,
+                                       };
+                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    return dt;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTBamChiByDate(int MaUser, DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat || CTaiKhoan.RoleBamChi_Xem || CTaiKhoan.RoleBamChi_CapNhat)
+                {
+                    var query_DonKH = from itemCTBamChi in db.CTBamChis
+                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                      where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
+                                      orderby itemCTBamChi.NgayBC descending
+                                      select new
+                                      {
+                                          itemCTBamChi.BamChi.ToXuLy,
+                                          itemCTBamChi.MaCTBC,
+                                          itemCTBamChi.BamChi.MaDon,
+                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                          itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
+                                          itemCTBamChi.HoTen,
+                                          itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThaiBC,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
+                                          itemCTBamChi.NgayBC,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
+                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                       where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date == TuNgay.Date
+                                       orderby itemCTBamChi.NgayBC descending
+                                       select new
+                                       {
+                                           itemCTBamChi.BamChi.ToXuLy,
+                                           itemCTBamChi.MaCTBC,
+                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
+                                           itemCTBamChi.HoTen,
+                                           itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThaiBC,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
+                                           itemCTBamChi.NgayBC,
+                                           CreateBy = itemUser.HoTen,
+                                       };
+                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
+                    return dt;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTBamChiByDates(int MaUser, DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat || CTaiKhoan.RoleBamChi_Xem || CTaiKhoan.RoleBamChi_CapNhat)
+                {
+                    var query_DonKH = from itemCTBamChi in db.CTBamChis
+                                      join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                      where itemCTBamChi.BamChi.ToXuLy == false && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
+                                      orderby itemCTBamChi.NgayBC descending
+                                      select new
+                                      {
+                                          itemCTBamChi.BamChi.ToXuLy,
+                                          itemCTBamChi.MaCTBC,
+                                          itemCTBamChi.BamChi.MaDon,
+                                          itemCTBamChi.BamChi.DonKH.LoaiDon.TenLD,
+                                          itemCTBamChi.DanhBo,
+                                          itemCTBamChi.HopDong,
+                                          itemCTBamChi.HoTen,
+                                          itemCTBamChi.DiaChi,
+                                          itemCTBamChi.Hieu,
+                                          itemCTBamChi.Co,
+                                          itemCTBamChi.ChiSo,
+                                          itemCTBamChi.TrangThaiBC,
+                                          itemCTBamChi.VienChi,
+                                          itemCTBamChi.DayChi,
+                                          itemCTBamChi.MaSoBC,
+                                          itemCTBamChi.TheoYeuCau,
+                                          itemCTBamChi.NgayBC,
+                                          CreateBy = itemUser.HoTen,
+                                      };
+
+                    var query_DonTXL = from itemCTBamChi in db.CTBamChis
+                                       join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
+                                       where itemCTBamChi.BamChi.ToXuLy == true && itemCTBamChi.CreateBy == MaUser && itemCTBamChi.NgayBC.Value.Date >= TuNgay.Date && itemCTBamChi.NgayBC.Value.Date <= DenNgay.Date
+                                       orderby itemCTBamChi.NgayBC descending
+                                       select new
+                                       {
+                                           itemCTBamChi.BamChi.ToXuLy,
+                                           itemCTBamChi.MaCTBC,
+                                           MaDon = itemCTBamChi.BamChi.MaDonTXL,
+                                           itemCTBamChi.BamChi.DonTXL.LoaiDonTXL.TenLD,
+                                           itemCTBamChi.DanhBo,
+                                           itemCTBamChi.HopDong,
+                                           itemCTBamChi.HoTen,
+                                           itemCTBamChi.DiaChi,
+                                           itemCTBamChi.Hieu,
+                                           itemCTBamChi.Co,
+                                           itemCTBamChi.ChiSo,
+                                           itemCTBamChi.TrangThaiBC,
+                                           itemCTBamChi.VienChi,
+                                           itemCTBamChi.DayChi,
+                                           itemCTBamChi.MaSoBC,
+                                           itemCTBamChi.TheoYeuCau,
+                                           itemCTBamChi.NgayBC,
+                                           CreateBy = itemUser.HoTen,
+                                       };
+                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
                     return dt;
                 }
                 else

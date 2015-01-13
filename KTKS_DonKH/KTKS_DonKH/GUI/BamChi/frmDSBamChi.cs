@@ -25,7 +25,7 @@ namespace KTKS_DonKH.GUI.BamChi
         CChuyenDi _cChuyenDi = new CChuyenDi();
         CBamChi _cBamChi = new CBamChi();
         DataRowView _CTRow = null;
-        BindingSource DSDon_BS;
+        //BindingSource DSDon_BS;
         string _tuNgay = "", _denNgay = "";
 
         public frmDSBamChi()
@@ -90,11 +90,11 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (radDaDuyet.Checked)
             {
-                DSDon_BS = new BindingSource();
-                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                    DSDon_BS.DataSource = _cBamChi.LoadDSBamChiDaDuyet().Tables["BamChi"];
-                //cmbTimTheo.SelectedIndex = 0;
-                gridControl.DataSource = DSDon_BS;
+                //DSDon_BS = new BindingSource();
+                //if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                //    DSDon_BS.DataSource = _cBamChi.LoadDSBamChiDaDuyet().Tables["BamChi"];
+                ////cmbTimTheo.SelectedIndex = 0;
+                //gridControl.DataSource = DSDon_BS;
                 dgvDSCTBamChi.Visible = false;
                 gridControl.Visible = true;
             }
@@ -104,12 +104,12 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (radDSBamChi.Checked)
             {
-                DSDon_BS = new BindingSource();
-                if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                    DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi();
-                else
-                    DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi(CTaiKhoan.MaUser);
-                dgvDSCTBamChi.DataSource = DSDon_BS;
+                //DSDon_BS = new BindingSource();
+                //if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                //    DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi();
+                //else
+                //    DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi(CTaiKhoan.MaUser);
+                //dgvDSCTBamChi.DataSource = DSDon_BS;
                 dgvDSCTBamChi.Visible = true;
                 gridControl.Visible = false;
             }
@@ -187,8 +187,8 @@ namespace KTKS_DonKH.GUI.BamChi
                 frmShowBamChi frm = new frmShowBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                        DSDon_BS.DataSource = _cBamChi.LoadDSBamChiDaDuyet().Tables["BamChi"];
+                    //if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                    //    DSDon_BS.DataSource = _cBamChi.LoadDSBamChiDaDuyet().Tables["BamChi"];
                 }
             }
         }
@@ -201,7 +201,7 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 if (chkInBamChiThan_BBDCMS.Checked)
                 {
-                    DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                    DataTable dt = ((DataTable)dgvDSCTBamChi.DataSource).DefaultView.ToTable();
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     foreach (DataRow itemRow in dt.Rows)
                         if (itemRow["TrangThaiBC"].ToString() == "Bấm Chì Thân" || itemRow["TrangThaiBC"].ToString() == "BB đứt chì MS")
@@ -237,7 +237,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 }
                 else
                 {
-                    DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                    DataTable dt = ((DataTable)dgvDSCTBamChi.DataSource).DefaultView.ToTable();
                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                     foreach (DataRow itemRow in dt.Rows)
                     {
@@ -279,7 +279,7 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (radDSBamChi.Checked)
             {
-                DataTable dt = ((DataTable)DSDon_BS.DataSource).DefaultView.ToTable();
+                DataTable dt = ((DataTable)dgvDSCTBamChi.DataSource).DefaultView.ToTable();
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dt.Rows)
                 {
@@ -337,31 +337,59 @@ namespace KTKS_DonKH.GUI.BamChi
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
-                    DSDon_BS.RemoveFilter();
+                    //DSDon_BS.RemoveFilter();
                     break;
             }
+            gridControl.DataSource = null;
+            dgvDSCTBamChi.DataSource = null;
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
             try
             {
+                //if (txtNoiDungTimKiem.Text.Trim() != "")
+                //{
+                //    string expression = "";
+                //    switch (cmbTimTheo.SelectedItem.ToString())
+                //    {
+                //        case "Mã Đơn":
+                //            expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            break;
+                //        case "Danh Bộ":
+                //            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            break;
+                //    }
+                //    DSDon_BS.Filter = expression;
+                //}
+                //else
+                //    DSDon_BS.RemoveFilter();
                 if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
-                    string expression = "";
                     switch (cmbTimTheo.SelectedItem.ToString())
                     {
                         case "Mã Đơn":
-                            expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDaDuyet.Checked)
+                                gridControl.DataSource = _cBamChi.LoadDSBamChiDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["BamChi"];
+                            else
+                                if (radDSBamChi.Checked)
+                                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    else
+                                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             break;
                         case "Danh Bộ":
-                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDaDuyet.Checked)
+                                gridControl.DataSource = _cBamChi.LoadDSBamChiDaDuyetByDanhBo(txtNoiDungTimKiem.Text.Trim()).Tables["BamChi"];
+                            else
+                                if (radDSBamChi.Checked)
+                                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDanhBo(txtNoiDungTimKiem.Text.Trim());
+                                    else
+                                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDanhBo(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
                             break;
                     }
-                    DSDon_BS.Filter = expression;
                 }
-                else
-                    DSDon_BS.RemoveFilter();
             }
             catch (Exception)
             {
@@ -373,16 +401,21 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (radDaDuyet.Checked)
             {
-                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-                DSDon_BS.Filter = expression;
+                //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+                //DSDon_BS.Filter = expression;
                 _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
+                gridControl.DataSource = _cBamChi.LoadDSBamChiDaDuyetByDate(dateTimKiem.Value).Tables["BamChi"];
             }
             else
                 if (radDSBamChi.Checked)
                 {
-                    string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-                    DSDon_BS.Filter = expression;
+                    //string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+                    //DSDon_BS.Filter = expression;
                     _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
+                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(dateTimKiem.Value);
+                    else
+                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(CTaiKhoan.MaUser, dateTimKiem.Value);
                 }
         }
 
@@ -390,18 +423,23 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (radDaDuyet.Checked)
             {
-                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
-                DSDon_BS.Filter = expression;
+                //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                //DSDon_BS.Filter = expression;
                 _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
                 _denNgay = "";
+                gridControl.DataSource = _cBamChi.LoadDSBamChiDaDuyetByDate(dateTimKiem.Value).Tables["BamChi"];
             }
             else
                 if (radDSBamChi.Checked)
                 {
-                    string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
-                    DSDon_BS.Filter = expression;
+                    //string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                    //DSDon_BS.Filter = expression;
                     _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
                     _denNgay = "";
+                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(dateTimKiem.Value);
+                    else
+                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDate(CTaiKhoan.MaUser, dateTimKiem.Value);
                 }
         }
 
@@ -409,16 +447,21 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (radDaDuyet.Checked)
             {
-                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
-                DSDon_BS.Filter = expression;
+                //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                //DSDon_BS.Filter = expression;
                 _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+                gridControl.DataSource = _cBamChi.LoadDSBamChiDaDuyetByDates(dateTu.Value,dateDen.Value).Tables["BamChi"];
             }
             else
                 if (radDSBamChi.Checked)
                 {
-                    string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
-                    DSDon_BS.Filter = expression;
+                    //string expression = String.Format("NgayBC >= #{0:yyyy-MM-dd} 00:00:00# and NgayBC <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                    //DSDon_BS.Filter = expression;
                     _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(dateTu.Value, dateDen.Value);
+                    else
+                        dgvDSCTBamChi.DataSource = _cBamChi.LoadDSCTBamChiByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                 }
         }
 
@@ -429,10 +472,10 @@ namespace KTKS_DonKH.GUI.BamChi
                 frmShowBamChi frm = new frmShowBamChi(decimal.Parse(dgvDSCTBamChi["MaCTBC", dgvDSCTBamChi.CurrentRow.Index].Value.ToString()));
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-                        DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi();
-                    else
-                        DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi(CTaiKhoan.MaUser);
+                    //if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+                    //    DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi();
+                    //else
+                    //    DSDon_BS.DataSource = _cBamChi.LoadDSCTBamChi(CTaiKhoan.MaUser);
                 }
 
             }
