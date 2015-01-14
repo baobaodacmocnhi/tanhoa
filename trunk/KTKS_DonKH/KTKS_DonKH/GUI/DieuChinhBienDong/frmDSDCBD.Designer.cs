@@ -1483,6 +1483,7 @@
             this.chkLocUser.TabIndex = 23;
             this.chkLocUser.Text = "Lọc theo User";
             this.chkLocUser.UseVisualStyleBackColor = true;
+            this.chkLocUser.Visible = false;
             // 
             // btnInDSPhieu
             // 

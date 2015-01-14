@@ -46,6 +46,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDanhBo_Nhan.Text = "";
             txtHoTen_Nhan.Text = "";
             txtDiaChi_Nhan.Text = "";
+            txtSoPhieuNhan.Text = "";
+            dateNhan.Value = DateTime.Now;
             txtGhiChu.Text = "";
             _selectedindex = -1;
         }

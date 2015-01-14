@@ -698,12 +698,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //{
             //    e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             //}
-            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "SoPhieuDCBD" && dgvDSCatChuyenDM["MaDon", e.RowIndex].Value.ToString() != "" && _cDCBD.getCTDCBDbyMaDon(decimal.Parse(dgvDSCatChuyenDM["MaDon", e.RowIndex].Value.ToString())) != null)
-            {
-                string a = _cDCBD.getCTDCBDbyMaDon(decimal.Parse(dgvDSCatChuyenDM["MaDon", e.RowIndex].Value.ToString())).MaCTDCBD.ToString();
-                e.Value = a.Insert(a.Length - 2, "-");
-            }
-            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "CT_NhanNK_MaCN")
+            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "SoPhieuDCBD" && dgvDSCatChuyenDM["MaDon", e.RowIndex].Value != null)
+                if (dgvDSCatChuyenDM["MaDon", e.RowIndex].Value.ToString() != "" && _cDCBD.getCTDCBDbyMaDon(decimal.Parse(dgvDSCatChuyenDM["MaDon", e.RowIndex].Value.ToString())) != null)
+                {
+                    string a = _cDCBD.getCTDCBDbyMaDon(decimal.Parse(dgvDSCatChuyenDM["MaDon", e.RowIndex].Value.ToString())).MaCTDCBD.ToString();
+                    e.Value = a.Insert(a.Length - 2, "-");
+                }
+            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "CT_NhanNK_MaCN" && dgvDSCatChuyenDM["CT_NhanNK_MaCN", e.RowIndex].Value != null)
                 if (dgvDSCatChuyenDM["CT_NhanNK_MaCN", e.RowIndex].Value.ToString() != "")
                     e.Value = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSCatChuyenDM["CT_NhanNK_MaCN", e.RowIndex].Value.ToString()));
                 else
@@ -713,25 +714,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     e.Value = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSCatChuyenDM["CT_CatNK_MaCN", e.RowIndex].Value.ToString()));
                 else
                     e.Value = _cChiNhanh.getTenChiNhanhbyID(1);
-            if (dgvDSCatChuyenDM["CatDM", e.RowIndex].Value.ToString() != "")
-                if (bool.Parse(dgvDSCatChuyenDM["CatDM", e.RowIndex].Value.ToString()))
-                {
-                    dgvDSCatChuyenDM["CT_CatNhan", e.RowIndex].Value = "Cắt";
-                    dgvDSCatChuyenDM["CT_SoNK", e.RowIndex].Value = dgvDSCatChuyenDM["SoNKCat", e.RowIndex].Value.ToString();
-                }
-            if (dgvDSCatChuyenDM["NhanDM", e.RowIndex].Value.ToString() != "")
-                if (bool.Parse(dgvDSCatChuyenDM["NhanDM", e.RowIndex].Value.ToString()))
-                {
-                    dgvDSCatChuyenDM["CT_CatNhan", e.RowIndex].Value = "Nhận";
-                    dgvDSCatChuyenDM["CT_SoNK", e.RowIndex].Value = dgvDSCatChuyenDM["SoNKNhan", e.RowIndex].Value.ToString();
-                }
-            if (dgvDSCatChuyenDM["YeuCauCat", e.RowIndex].Value.ToString() != "")
-                if (bool.Parse(dgvDSCatChuyenDM["YeuCauCat", e.RowIndex].Value.ToString()))
-                {
-                    dgvDSCatChuyenDM["CT_CatNhan", e.RowIndex].Value = "YC Cắt";
-                    dgvDSCatChuyenDM["CT_SoNK", e.RowIndex].Value = dgvDSCatChuyenDM["SoNKNhan", e.RowIndex].Value.ToString();
-                }
-
+            if (dgvDSCatChuyenDM["CatDM", e.RowIndex].Value != null)
+                if (dgvDSCatChuyenDM["CatDM", e.RowIndex].Value.ToString() != "")
+                    if (bool.Parse(dgvDSCatChuyenDM["CatDM", e.RowIndex].Value.ToString()))
+                    {
+                        dgvDSCatChuyenDM["CT_CatNhan", e.RowIndex].Value = "Cắt";
+                        dgvDSCatChuyenDM["CT_SoNK", e.RowIndex].Value = dgvDSCatChuyenDM["SoNKCat", e.RowIndex].Value.ToString();
+                    }
+            if (dgvDSCatChuyenDM["NhanDM", e.RowIndex].Value != null)
+                if (dgvDSCatChuyenDM["NhanDM", e.RowIndex].Value.ToString() != "")
+                    if (bool.Parse(dgvDSCatChuyenDM["NhanDM", e.RowIndex].Value.ToString()))
+                    {
+                        dgvDSCatChuyenDM["CT_CatNhan", e.RowIndex].Value = "Nhận";
+                        dgvDSCatChuyenDM["CT_SoNK", e.RowIndex].Value = dgvDSCatChuyenDM["SoNKNhan", e.RowIndex].Value.ToString();
+                    }
+            if (dgvDSCatChuyenDM["YeuCauCat", e.RowIndex].Value != null)
+                if (dgvDSCatChuyenDM["YeuCauCat", e.RowIndex].Value.ToString() != "")
+                    if (bool.Parse(dgvDSCatChuyenDM["YeuCauCat", e.RowIndex].Value.ToString()))
+                    {
+                        dgvDSCatChuyenDM["CT_CatNhan", e.RowIndex].Value = "YC Cắt";
+                        dgvDSCatChuyenDM["CT_SoNK", e.RowIndex].Value = dgvDSCatChuyenDM["SoNKNhan", e.RowIndex].Value.ToString();
+                    }
         }
 
         /// <summary>
@@ -800,6 +803,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     //DSDCBD_BS.RemoveFilter();
                     break;
             }
+            gridControl.DataSource = null;
+            dgvDSDCBD.DataSource = null;
+            dgvDSCatChuyenDM.DataSource = null;
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -838,12 +844,63 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //}
                 //else
                 //    DSDCBD_BS.RemoveFilter();
+                if (txtNoiDungTimKiem.Text.Trim() != "")
+                {
+                    txtNoiDungTimKiem2.Text = "";
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        case "Mã Đơn":
+                            if (radDaDuyet.Checked)
+                            {
+
+                            }
+                            else
+                                if (radDSDCBD.Checked)
+                                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                else
+                                    if (radDSDCHD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Số Phiếu":
+                            if (radDaDuyet.Checked)
+                            {
+
+                            }
+                            else
+                                if (radDSDCBD.Checked)
+                                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                else
+                                    if (radDSDCHD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Danh Bộ":
+                            if (radDaDuyet.Checked)
+                            {
+
+                            }
+                            else
+                                if (radDSDCBD.Checked)
+                                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                else
+                                    if (radDSDCHD.Checked)
+                                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                    else
+                                        if (radDSCatChuyenDM.Checked)
+                                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            break;
+                    }
+                }
             }
             catch (Exception)
             {
 
             }
-
         }
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
@@ -852,6 +909,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //if (chkLocUser.Checked)
             //    expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
             //DSDCBD_BS.Filter = expression;
+            if (radDaDuyet.Checked)
+            {
+
+            }
+            else
+                if (radDSDCBD.Checked)
+                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByDate(dateTimKiem.Value);
+                else
+                    if (radDSDCHD.Checked)
+                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByDate(dateTimKiem.Value);
+                    else
+                        if (radDSCatChuyenDM.Checked)
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDate(dateTimKiem.Value);
+
             //if (radDSDCBD.Checked)
             //{
             //    int a = 0;
@@ -1237,11 +1308,59 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //}
             //else
             //    DSDCBD_BS.RemoveFilter();
+            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem.Text.Trim().Length > 2 && txtNoiDungTimKiem2.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim().Length>2)
+            {
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        if (radDaDuyet.Checked)
+                        {
+
+                        }
+                        else
+                            if (radDSDCBD.Checked)
+                                dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                        if(radDSDCHD.Checked)
+                            dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                    else
+                        if(radDSCatChuyenDM.Checked)
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                        break;
+                    case "Số Phiếu":
+                        if (radDaDuyet.Checked)
+                        {
+
+                        }
+                        else
+                            if (radDSDCBD.Checked)
+                                dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                            else
+                        if(radDSDCHD.Checked)
+                            dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                    else
+                        if(radDSCatChuyenDM.Checked)
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                        break;
+                }
+                
+            }
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
         {
+            if (radDaDuyet.Checked)
+            {
 
+            }
+            else
+                if (radDSDCBD.Checked)
+                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByDate(dateTu.Value);
+                else
+                    if (radDSDCHD.Checked)
+                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByDate(dateTu.Value);
+                    else
+                        if (radDSCatChuyenDM.Checked)
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDate(dateTu.Value);
         }
 
         private void dateDen_ValueChanged(object sender, EventArgs e)
@@ -1250,6 +1369,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //if (chkLocUser.Checked)
             //    expression += String.Format(" and CreateBy = {0}", CTaiKhoan.MaUser);
             //DSDCBD_BS.Filter = expression;
+            if (radDaDuyet.Checked)
+            {
+
+            }
+            else
+                if (radDSDCBD.Checked)
+                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByDates(dateTu.Value,dateDen.Value);
+                else
+                    if (radDSDCHD.Checked)
+                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByDates(dateTu.Value, dateDen.Value);
+                    else
+                        if (radDSCatChuyenDM.Checked)
+                            dgvDSCatChuyenDM.DataSource = _cChungTu.LoadDSCatChuyenDMByDates(dateTu.Value, dateDen.Value);
+
             //if (radDSDCBD.Checked)
             //{
             //    int a = 0;

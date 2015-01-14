@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CDongNuoc _cDongNuoc = new CDongNuoc();
         DataTable DSCHDB_Edited = new DataTable();
         DataRowView _CTRow = null;
-        BindingSource DSCHDB_BS;
+        //BindingSource DSCHDB_BS;
         string _tuNgay = "", _denNgay = "";
 
         public frmDSCHDB()
@@ -87,9 +87,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDaDuyet.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
-                gridControl.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBDaDuyet().Tables["CHDB"];
+                //gridControl.DataSource = DSCHDB_BS;
 
                 radDaDuyet_TXL.Checked = false;
                 radDSCatHuyDanhBo_TXL.Checked = false;
@@ -106,9 +106,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radChuaDuyet.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
-                gridControl.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBChuaDuyet();
+                //gridControl.DataSource = DSCHDB_BS;
 
                 gridControl.Visible = true;
                 dgvDSCTCHDB.Visible = false;
@@ -121,9 +121,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSCatTamDanhBo.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
-                dgvDSCTCHDB.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
+                //dgvDSCTCHDB.DataSource = DSCHDB_BS;
 
                 radDaDuyet_TXL.Checked = false;
                 radDSCatHuyDanhBo_TXL.Checked = false;
@@ -142,9 +142,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSCatHuyDanhBo.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
-                dgvDSCTCHDB.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
+                //dgvDSCTCHDB.DataSource = DSCHDB_BS;
 
                 radDaDuyet_TXL.Checked = false;
                 radDSCatHuyDanhBo_TXL.Checked = false;
@@ -163,9 +163,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSYCCHDB.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cCHDB.LoadDSYCCHDB();
-                dgvDSYCCHDB.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cCHDB.LoadDSYCCHDB();
+                //dgvDSYCCHDB.DataSource = DSCHDB_BS;
 
                 radDaDuyet_TXL.Checked = false;
                 radDSCatHuyDanhBo_TXL.Checked = false;
@@ -178,6 +178,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvDSYCCHDB.Columns["YC_SoTien"].Visible = true;
                 dgvDSYCCHDB.Columns["YC_NgayCatTamNutBit"].Visible = true;
                 dgvDSYCCHDB.Columns["YC_PhieuDuocKy"].HeaderText = "Phiếu Được Ký";
+                dgvDSYCCHDB.Columns["SoPhieu"].HeaderText = "Số Phiếu";
                 //
                 gridControl.Visible = false;
                 //btnLuu.Enabled = false;
@@ -189,9 +190,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSDongNuoc.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cDongNuoc.LoadDSCTDongNuoc();
-                dgvDSYCCHDB.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cDongNuoc.LoadDSCTDongNuoc();
+                //dgvDSYCCHDB.DataSource = DSCHDB_BS;
 
                 radDaDuyet_TXL.Checked = false;
                 radDSCatHuyDanhBo_TXL.Checked = false;
@@ -204,6 +205,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dgvDSYCCHDB.Columns["YC_SoTien"].Visible = false;
                 dgvDSYCCHDB.Columns["YC_NgayCatTamNutBit"].Visible = false;
                 dgvDSYCCHDB.Columns["YC_PhieuDuocKy"].HeaderText = "TB Được Ký";
+                dgvDSYCCHDB.Columns["SoPhieu"].HeaderText = "Mã TB";
                 //
                 gridControl.Visible = false;
                 //btnLuu.Enabled = false;
@@ -581,8 +583,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
                 //else
-                    if (frm.ShowDialog() == DialogResult.OK)
-                        DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
+                    if (frm.ShowDialog() == DialogResult.OK) { }
+                        //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
             }
         }
 
@@ -645,8 +647,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
                 //else
-                    if (frm.ShowDialog() == DialogResult.OK)
-                        DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
+                    if (frm.ShowDialog() == DialogResult.OK) { }
+                        //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
                 
             }
         }
@@ -798,15 +800,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
                     frmShowCTDB frm = new frmShowCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
-                    if (frm.ShowDialog() == DialogResult.OK)
-                        DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
+                    if (frm.ShowDialog() == DialogResult.OK) { }
+                        //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB();
                 }
             if (radDSCatHuyDanhBo.Checked || radDSCatHuyDanhBo_TXL.Checked)
                 if (dgvDSCTCHDB.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
                 {
                     frmShowCHDB frm = new frmShowCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", dgvDSCTCHDB.CurrentRow.Index].Value.ToString()));
-                    if (frm.ShowDialog() == DialogResult.OK)
-                        DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
+                    if (frm.ShowDialog() == DialogResult.OK) { }
+                        //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB();
                 }
         }
 
@@ -1089,9 +1091,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDaDuyet_TXL.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBDaDuyet_TXL().Tables["CHDB"];
-                gridControl.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cCHDB.LoadDSCHDBDaDuyet_TXL().Tables["CHDB"];
+                //gridControl.DataSource = DSCHDB_BS;
 
                 radDaDuyet.Checked = false;
                 radDSCatHuyDanhBo.Checked = false;
@@ -1107,9 +1109,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSCatTamDanhBo_TXL.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB_TXL();
-                dgvDSCTCHDB.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCTDB_TXL();
+                //dgvDSCTCHDB.DataSource = DSCHDB_BS;
 
                 radDaDuyet.Checked = false;
                 radDSCatHuyDanhBo.Checked = false;
@@ -1127,9 +1129,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (radDSCatHuyDanhBo_TXL.Checked)
             {
-                DSCHDB_BS = new BindingSource();
-                DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB_TXL();
-                dgvDSCTCHDB.DataSource = DSCHDB_BS;
+                //DSCHDB_BS = new BindingSource();
+                //DSCHDB_BS.DataSource = _cCHDB.LoadDSCTCHDB_TXL();
+                //dgvDSCTCHDB.DataSource = DSCHDB_BS;
 
                 radDaDuyet.Checked = false;
                 radDSCatHuyDanhBo.Checked = false;
@@ -1169,47 +1171,103 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
-                    DSCHDB_BS.RemoveFilter();
+                    //DSCHDB_BS.RemoveFilter();
                     break;
             }
             txtNoiDungTimKiem.Text = "";
             dateTimKiem.Value = DateTime.Now;
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
-            DSCHDB_BS.RemoveFilter();
+            //DSCHDB_BS.RemoveFilter();
+            gridControl.DataSource = null;
+            dgvDSCTCHDB.DataSource = null;
+            dgvDSYCCHDB.DataSource = null;
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
             try
             {
+                //if (txtNoiDungTimKiem.Text.Trim() != "")
+                //{
+                //    string expression = "";
+                //    switch (cmbTimTheo.SelectedItem.ToString())
+                //    {
+                //        case "Mã Đơn":
+                //            if (radDaDuyet.Checked || radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
+                //                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            //if (radDaDuyet_TXL.Checked || radDSCatTamDanhBo_TXL.Checked || radDSCatHuyDanhBo_TXL.Checked)
+                //            //    expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
+                //            break;
+                //        case "Danh Bộ":
+                //            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            break;
+                //        case "Số Phiếu":
+                //            if (radDSYCCHDB.Checked||radDSDongNuoc.Checked)
+                //                expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            break;
+                //        case "Số Thông Báo":
+                //            if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
+                //                expression = String.Format("MaTB = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            break;
+                //    }
+                //    DSCHDB_BS.Filter = expression;
+                //}
+                //else
+                //    DSCHDB_BS.RemoveFilter();
                 if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
                     string expression = "";
                     switch (cmbTimTheo.SelectedItem.ToString())
                     {
                         case "Mã Đơn":
-                            if (radDaDuyet.Checked || radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
-                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            //if (radDaDuyet_TXL.Checked || radDSCatTamDanhBo_TXL.Checked || radDSCatHuyDanhBo_TXL.Checked)
-                            //    expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
+                            if (radDaDuyet.Checked)
+                                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["CHDB"];
+                            else
+                                if (radDSCatTamDanhBo.Checked)
+                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                else
+                                    if (radDSCatHuyDanhBo.Checked)
+                                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    else
+                                        if (radDSYCCHDB.Checked)
+                                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                        else
+                                            if (radDSDongNuoc.Checked)
+                                                dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             break;
                         case "Danh Bộ":
-                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDaDuyet.Checked)
+                                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyetByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", "")).Tables["CHDB"];
+                            else
+                                if (radDSCatTamDanhBo.Checked)
+                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                else
+                                    if (radDSCatHuyDanhBo.Checked)
+                                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                    else
+                                        if (radDSYCCHDB.Checked)
+                                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                                        else
+                                            if (radDSDongNuoc.Checked)
+                                                dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                         case "Số Phiếu":
-                            if (radDSYCCHDB.Checked||radDSDongNuoc.Checked)
-                                expression = String.Format("SoPhieu = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDSYCCHDB.Checked)
+                                dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieu(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             break;
                         case "Số Thông Báo":
-                            if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
-                                expression = String.Format("MaTB = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDSCatTamDanhBo.Checked)
+                                dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                            else
+                                if (radDSCatHuyDanhBo.Checked)
+                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                else
+                                    if (radDSDongNuoc.Checked)
+                                        dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             break;
                     }
-                    DSCHDB_BS.Filter = expression;
                 }
-                else
-                    DSCHDB_BS.RemoveFilter();
             }
             catch (Exception)
             {
@@ -1219,18 +1277,46 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-            DSCHDB_BS.Filter = expression;
+            //string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            //DSCHDB_BS.Filter = expression;
+            if (radDaDuyet.Checked)
+                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyetByDate(dateTimKiem.Value).Tables["CHDB"];
+            else
+                if (radDSCatTamDanhBo.Checked)
+                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByDate(dateTimKiem.Value);
+                else
+                    if (radDSCatHuyDanhBo.Checked)
+                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByDate(dateTimKiem.Value);
+                    else
+                        if (radDSYCCHDB.Checked)
+                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByDate(dateTimKiem.Value);
+                        else
+                            if (radDSDongNuoc.Checked)
+                                dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByDate(dateTimKiem.Value);
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
         {
             //if (radDaDuyet.Checked)
             //{
-                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
-                DSCHDB_BS.Filter = expression;
+                //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                //DSCHDB_BS.Filter = expression;
                 _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
                 _denNgay = "";
+                if (radDaDuyet.Checked)
+                    gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyetByDate(dateTu.Value).Tables["CHDB"];
+                else
+                    if (radDSCatTamDanhBo.Checked)
+                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByDate(dateTu.Value);
+                    else
+                        if (radDSCatHuyDanhBo.Checked)
+                            dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByDate(dateTu.Value);
+                        else
+                            if (radDSYCCHDB.Checked)
+                                dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByDate(dateTu.Value);
+                            else
+                                if (radDSDongNuoc.Checked)
+                                    dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByDate(dateTu.Value);
             //}
             //else
             //    if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)
@@ -1246,9 +1332,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             //if (radDaDuyet.Checked)
             //{
-                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
-                DSCHDB_BS.Filter = expression;
+                //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                //DSCHDB_BS.Filter = expression;
                 _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+                if (radDaDuyet.Checked)
+                    gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyetByDates(dateTu.Value,dateDen.Value).Tables["CHDB"];
+                else
+                    if (radDSCatTamDanhBo.Checked)
+                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByDates(dateTu.Value, dateDen.Value);
+                    else
+                        if (radDSCatHuyDanhBo.Checked)
+                            dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByDates(dateTu.Value, dateDen.Value);
+                        else
+                            if (radDSYCCHDB.Checked)
+                                dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByDates(dateTu.Value, dateDen.Value);
+                            else
+                                if (radDSDongNuoc.Checked)
+                                    dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByDates(dateTu.Value, dateDen.Value);
         //    }
         //    else
         //        if (radDSCatTamDanhBo.Checked || radDSCatHuyDanhBo.Checked)

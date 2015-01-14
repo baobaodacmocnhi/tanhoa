@@ -28,7 +28,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CKTXM _cKTXM = new CKTXM();
         DataTable DSTTTL_Edited = new DataTable();
         DataRowView _CTRow = null;
-        BindingSource DSTTTL_BS;
+        //BindingSource DSTTTL_BS;
         string _tuNgay = "", _denNgay = "";
 
         public frmDSTTTL()
@@ -81,9 +81,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 radDaDuyet_TXL.Checked = false;
                 radDSThu_TXL.Checked = false;
 
-                DSTTTL_BS = new BindingSource();
-                DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
-                gridControl.DataSource = DSTTTL_BS;
+                //DSTTTL_BS = new BindingSource();
+                //DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLDaDuyet().Tables["TTTL"];
+                //gridControl.DataSource = DSTTTL_BS;
 
                 gridControl.Visible = true;
                 dgvDSThu.Visible = false;
@@ -97,9 +97,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (radChuaDuyet.Checked)
             {
-                DSTTTL_BS = new BindingSource();
-                DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLChuaDuyet();
-                gridControl.DataSource = DSTTTL_BS;
+                //DSTTTL_BS = new BindingSource();
+                //DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLChuaDuyet();
+                //gridControl.DataSource = DSTTTL_BS;
 
                 gridControl.Visible = true;
                 dgvDSThu.Visible = false;
@@ -116,9 +116,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 radDaDuyet_TXL.Checked = false;
                 radDSThu_TXL.Checked = false;
 
-                DSTTTL_BS = new BindingSource();
-                DSTTTL_BS.DataSource = _cTTTL.LoadDSCTTTTL();
-                dgvDSThu.DataSource = DSTTTL_BS;
+                //DSTTTL_BS = new BindingSource();
+                //DSTTTL_BS.DataSource = _cTTTL.LoadDSCTTTTL();
+                //dgvDSThu.DataSource = DSTTTL_BS;
 
                 dgvDSThu.Visible = true;
                 gridControl.Visible = false;
@@ -469,7 +469,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     txtNoiDungTimKiem.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
-                    DSTTTL_BS.RemoveFilter();
+                    //DSTTTL_BS.RemoveFilter();
                     break;
             }
         }
@@ -478,28 +478,55 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             try
             {
+                //if (txtNoiDungTimKiem.Text.Trim() != "")
+                //{
+                //    string expression = "";
+                //    switch (cmbTimTheo.SelectedItem.ToString())
+                //    {
+                //        case "Mã Đơn":
+                //            if (radDaDuyet.Checked || radDSThu.Checked)
+                //                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            if (radDaDuyet_TXL.Checked || radDSThu_TXL.Checked)
+                //                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
+                //            break;
+                //        case "Mã Thư":
+                //            expression = String.Format("MaCTTTTL = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            break;
+                //        case "Danh Bộ":
+                //            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                //            break;
+                //    }
+                //    DSTTTL_BS.Filter = expression;
+                //}
+                //else
+                //    DSTTTL_BS.RemoveFilter();
                 if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
-                    string expression = "";
                     switch (cmbTimTheo.SelectedItem.ToString())
                     {
                         case "Mã Đơn":
-                            if (radDaDuyet.Checked || radDSThu.Checked)
-                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
-                            if (radDaDuyet_TXL.Checked || radDSThu_TXL.Checked)
-                                expression = String.Format("MaDon = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", "").Replace("TXL", ""));
+                            if (radDaDuyet.Checked)
+                                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["TTTL"];
+                            else
+                                if (radDSThu.Checked)
+                                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             break;
                         case "Mã Thư":
-                            expression = String.Format("MaCTTTTL = {0}", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDaDuyet.Checked)
+                                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyetByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["TTTL"];
+                            else
+                                if (radDSThu.Checked)
+                                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByMaTB(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
                             break;
                         case "Danh Bộ":
-                            expression = String.Format("DanhBo like '{0}%'", txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
+                            if (radDaDuyet.Checked)
+                                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyetByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", "")).Tables["TTTL"];
+                            else
+                                if (radDSThu.Checked)
+                                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                             break;
                     }
-                    DSTTTL_BS.Filter = expression;
                 }
-                else
-                    DSTTTL_BS.RemoveFilter();
             }
             catch (Exception)
             {
@@ -510,8 +537,13 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
-            string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
-            DSTTTL_BS.Filter = expression;
+            //string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
+            //DSTTTL_BS.Filter = expression;
+            if (radDaDuyet.Checked)
+                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyetByDate(dateTimKiem.Value).Tables["TTTL"];
+            else
+                if (radDSThu.Checked)
+                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByDate(dateTimKiem.Value);
         }
 
         private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
@@ -586,9 +618,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 radDaDuyet.Checked = false;
                 radDSThu.Checked = false;
 
-                DSTTTL_BS = new BindingSource();
-                DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLDaDuyet_TXL().Tables["TTTL"];
-                gridControl.DataSource = DSTTTL_BS;
+                //DSTTTL_BS = new BindingSource();
+                //DSTTTL_BS.DataSource = _cTTTL.LoadDSTTTLDaDuyet_TXL().Tables["TTTL"];
+                //gridControl.DataSource = DSTTTL_BS;
 
                 gridControl.Visible = true;
                 dgvDSThu.Visible = false;
@@ -605,9 +637,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 radDaDuyet.Checked = false;
                 radDSThu.Checked = false;
 
-                DSTTTL_BS = new BindingSource();
-                DSTTTL_BS.DataSource = _cTTTL.LoadDSCTTTTL_TXL();
-                dgvDSThu.DataSource = DSTTTL_BS;
+                //DSTTTL_BS = new BindingSource();
+                //DSTTTL_BS.DataSource = _cTTTL.LoadDSCTTTTL_TXL();
+                //dgvDSThu.DataSource = DSTTTL_BS;
 
                 dgvDSThu.Visible = true;
                 gridControl.Visible = false;
@@ -621,18 +653,20 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (radDaDuyet.Checked)
             {
-                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
-                DSTTTL_BS.Filter = expression;
+                //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                //DSTTTL_BS.Filter = expression;
                 _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
                 _denNgay = "";
+                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyetByDate(dateTu.Value).Tables["TTTL"];
             }
             else
                 if (radDSThu.Checked)
                 {
-                    string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
-                    DSTTTL_BS.Filter = expression;
+                    //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTu.Value);
+                    //DSTTTL_BS.Filter = expression;
                     _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
                     _denNgay = "";
+                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByDate(dateTu.Value);
                 }
         }
 
@@ -640,16 +674,18 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         {
             if (radDaDuyet.Checked)
             {
-                string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
-                DSTTTL_BS.Filter = expression;
+                //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                //DSTTTL_BS.Filter = expression;
                 _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyetByDates(dateTu.Value,dateDen.Value).Tables["TTTL"];
             }
             else
                 if (radDSThu.Checked)
                 {
-                    string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
-                    DSTTTL_BS.Filter = expression;
+                    //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
+                    //DSTTTL_BS.Filter = expression;
                     _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
+                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByDates(dateTu.Value,dateDen.Value);
                 }
         }
 

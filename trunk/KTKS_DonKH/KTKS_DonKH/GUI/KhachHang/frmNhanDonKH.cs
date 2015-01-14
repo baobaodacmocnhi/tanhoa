@@ -53,24 +53,15 @@ namespace KTKS_DonKH.GUI.KhachHang
             txtSoCongVan.Text = "";
             txtTongSoDanhBo.Text = "1";
 
-            chkDHN.Checked = false;
-            chkTinhTienNuoc.Checked = false;
-            chkGhiChiSoNuoc.Checked = false;
-            chkThayDoiGiaNuoc.Checked = false;
-            chkThayDoiTenHopDong.Checked = false;
-            chkCapDM.Checked = false;
-            chkChuyenDM.Checked = false;
-            chkGiamDM.Checked = false;
+            chkKiemTraDHN.Checked = false;
+            chkTienNuoc.Checked = false;
+            chkChiSoNuoc.Checked = false;
+            chkDonGiaNuoc.Checked = false;
+            chkSangTen.Checked = false;
+            chkDangKyDM.Checked = false;
+            chkCatChuyenDM.Checked = false;
+            chkNuocDuc.Checked = false;
             chkLyDoKhac.Checked = false;
-            chkDCSoNha.Checked = false;
-            chkMatDHN.Checked = false;
-            chkHuHongDHN.Checked = false;
-            chkChiNiem.Checked = false;
-            chkThayDoiTenHopDong.Checked = false;
-            chkThayDoiMST.Checked = false;
-            chkThayDoiGiaNuoc.Checked = false;
-            chkTamNgung.Checked = false;
-            chkHuyHopDong.Checked = false;
 
             txtLyDoKhac.Text = "";
             txtDanhBo.Text = "";
@@ -208,50 +199,29 @@ namespace KTKS_DonKH.GUI.KhachHang
                     donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
 
                     #region CheckBox
-                    if (chkDHN.Checked)
+                    if (chkKiemTraDHN.Checked)
                         donkh.KiemTraDHN = true;
 
-                    if (chkTinhTienNuoc.Checked)
+                    if (chkTienNuoc.Checked)
                         donkh.TienNuoc = true;
 
-                    if (chkGhiChiSoNuoc.Checked)
+                    if (chkChiSoNuoc.Checked)
                         donkh.ChiSoNuoc = true;
 
-                    if (chkThayDoiGiaNuoc.Checked)
+                    if (chkDonGiaNuoc.Checked)
                         donkh.DonGiaNuoc = true;
 
-                    if (chkThayDoiTenHopDong.Checked)
+                    if (chkSangTen.Checked)
                         donkh.SangTen = true;
 
-                    if (chkCapDM.Checked)
+                    if (chkDangKyDM.Checked)
                         donkh.DangKyDM = true;
 
-                    if (chkChuyenDM.Checked)
+                    if (chkCatChuyenDM.Checked)
                         donkh.CatChuyenDM = true;
 
-                    if (chkGiamDM.Checked)
+                    if (chkNuocDuc.Checked)
                         donkh.NuocDuc = true;
-
-                    if (chkDCSoNha.Checked)
-                        donkh.DCSoNha = true;
-
-                    if (chkMatDHN.Checked)
-                        donkh.MatDHN = true;
-
-                    if (chkHuHongDHN.Checked)
-                        donkh.HuHongDHN = true;
-
-                    if (chkChiNiem.Checked)
-                        donkh.ChiNiem = true;
-
-                    if (chkThayDoiMST.Checked)
-                        donkh.ThayDoiMST = true;
-
-                    if (chkTamNgung.Checked)
-                        donkh.TamNgung = true;
-
-                    if (chkHuyHopDong.Checked)
-                        donkh.HuyHopDong = true;
 
                     if (chkLyDoKhac.Checked)
                     {
@@ -294,8 +264,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
-                            //dr["MaDon"] = donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
-                            dr["MaDon"] = donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-");
+                            dr["MaDon"] = donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString())); ;
                             //dr["MaXepDon"] = _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
                             dr["TenLD"] = cmbLD.Text;
                             dr["KhachHang"] = txtHoTen.Text.Trim();
@@ -369,76 +338,13 @@ namespace KTKS_DonKH.GUI.KhachHang
                                 dr["CatChuyenDM"] = false;
                             }
 
-                            if (donkh.GiamDM)
+                            if (donkh.NuocDuc)
                             {
-                                dr["GiamDM"] = true;
+                                dr["NuocDuc"] = true;
                             }
                             else
                             {
-                                dr["GiamDM"] = false;
-                            }
-
-                            if (donkh.DCSoNha)
-                            {
-                                dr["DCSoNha"] = true;
-                            }
-                            else
-                            {
-                                dr["DCSoNha"] = false;
-                            }
-
-                            if (donkh.MatDHN)
-                            {
-                                dr["MatDHN"] = true;
-                            }
-                            else
-                            {
-                                dr["MatDHN"] = false;
-                            }
-
-                            if (donkh.HuHongDHN)
-                            {
-                                dr["HuHongDHN"] = true;
-                            }
-                            else
-                            {
-                                dr["HuHongDHN"] = false;
-                            }
-
-                            if (donkh.ChiNiem)
-                            {
-                                dr["ChiNiem"] = true;
-                            }
-                            else
-                            {
-                                dr["ChiNiem"] = false;
-                            }
-
-                            if (donkh.ThayDoiMST)
-                            {
-                                dr["ThayDoiMST"] = true;
-                            }
-                            else
-                            {
-                                dr["ThayDoiMST"] = false;
-                            }
-
-                            if (donkh.TamNgung)
-                            {
-                                dr["TamNgung"] = true;
-                            }
-                            else
-                            {
-                                dr["TamNgung"] = false;
-                            }
-
-                            if (donkh.HuyHopDong)
-                            {
-                                dr["HuyHopDong"] = true;
-                            }
-                            else
-                            {
-                                dr["HuyHopDong"] = false;
+                                dr["NuocDuc"] = false;
                             }
 
                             if (donkh.LoaiKhac)
