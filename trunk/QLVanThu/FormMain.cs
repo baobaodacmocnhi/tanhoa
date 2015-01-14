@@ -32,6 +32,17 @@ namespace QLVanThuDen
         private void LoadDSVanThuFilter()
         {
             string expression = String.Format("(NgayDen like '%{0}%' or SoDen like '%{0}%' or TacGiaVB like '%{0}%' or SoKyHieuVB like '%{0}%' or LoaiTrichYeuNoiDung like '%{0}%' or NguoiNhan like '%{0}%')", txtNoiDungTimKiem.Text.Trim());
+            if (cmbPhanLoai.SelectedIndex == 0)
+                expression = "TacGiaVB like '%%' and "+expression;
+            else
+                if (cmbPhanLoai.SelectedIndex == 1)
+                    expression = "(TacGiaVB like 'UBND%' or TacGiaVB like '%TP.HCM' or TacGiaVB like '%Q.TB%' or TacGiaVB like '%Tân Bình%' or TacGiaVB like '%Q.TP%' or TacGiaVB like '%Tân Phú%') and "+expression;
+                else
+                    if (cmbPhanLoai.SelectedIndex == 2)
+                        expression = "(TacGiaVB like '%TCTCNSG%' or SoKyHieuVB like '%GTTN%')";
+                    else
+                        if (cmbPhanLoai.SelectedIndex == 3)
+                            expression = "(TacGiaVB not like 'UBND%' and TacGiaVB not like '%TP.HCM' and TacGiaVB not like '%Q.TB%' and TacGiaVB not like '%Tân Bình%' and TacGiaVB not like '%Q.TP%' and TacGiaVB not like '%Tân Phú%' and TacGiaVB not like '%TCTCNSG%' and SoKyHieuVB not like '%GTTN%') and "+expression;
             if (chkCongVanDen.Checked)
                 expression = "LoaiVBGID=3 and " + expression;
             else
@@ -558,9 +569,9 @@ namespace QLVanThuDen
 
         private void cmbPhongBanDoi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string expression = "TacGiaVB like ''";
+            string expression = "";
             if (cmbPhanLoai.SelectedIndex == 0)
-                expression = "(TacGiaVB like '')";
+                expression = "(TacGiaVB like '%%')";
             else
                 if (cmbPhanLoai.SelectedIndex == 1)
                     expression = "(TacGiaVB like 'UBND%' or TacGiaVB like '%TP.HCM' or TacGiaVB like '%Q.TB%' or TacGiaVB like '%Tân Bình%' or TacGiaVB like '%Q.TP%' or TacGiaVB like '%Tân Phú%')";
