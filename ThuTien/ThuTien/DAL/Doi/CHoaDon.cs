@@ -334,7 +334,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="densophathanh"></param>
         /// <param name="nam"></param>
         /// <returns></returns>
-        public bool CheckGiaoByNamKyDot(decimal tusophathanh, decimal densophathanh, int nam)
+        public bool CheckGiaoBySoPhatHanhsNamKyDot(decimal tusophathanh, decimal densophathanh, int nam)
         {
             return _db.HOADONs.Any(item => item.SOPHATHANH >= tusophathanh && item.SOPHATHANH <= densophathanh && item.NAM == nam && item.MaNV_HanhThu != null);
         }
@@ -346,7 +346,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="densophathanh"></param>
         /// <param name="nam"></param>
         /// <returns></returns>
-        public bool CheckDangNganByNamKyDot(decimal tusophathanh, decimal densophathanh, int nam)
+        public bool CheckDangNganBySoPhatHanhsNamKyDot(decimal tusophathanh, decimal densophathanh, int nam)
         {
             return _db.HOADONs.Any(item => item.SOPHATHANH >= tusophathanh && item.SOPHATHANH <= densophathanh && item.NAM == nam && item.MaNV_DangNgan != null);
         }
@@ -534,7 +534,51 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public List<HOADON> GetDSBySoPhatHanhNamKyDot(int MaTo, string loai, decimal tusophathanh, decimal densophathanh, int nam, int ky, int dot)
+        public DataTable GetDSBySoHoaDon_Quay(string SoHoaDon)
+        {
+            var query = from item in _db.HOADONs
+                        where item.SOHOADON == SoHoaDon
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.NAM,
+                            item.KY,
+                            item.DOT,
+                            item.SOHOADON,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSBySoPhatHanh_Quay(decimal SoPhatHanh)
+        {
+            var query = from item in _db.HOADONs
+                        where item.SOPHATHANH == SoPhatHanh
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.NAM,
+                            item.KY,
+                            item.DOT,
+                            item.SOHOADON,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public List<HOADON> GetDSBySoPhatHanhNamsKyDot(int MaTo, string loai, decimal tusophathanh, decimal densophathanh, int nam, int ky, int dot)
         {
             if (loai == "TG")
                 return _db.HOADONs.Where(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
