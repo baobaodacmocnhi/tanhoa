@@ -275,7 +275,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
                                 where itemDonKH.DanhBo == DanhBo
-                                orderby itemDonKH.CreateDate descending
+                                orderby itemDonKH.CreateDate ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
@@ -317,7 +317,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
                                 where itemDonKH.CreateDate.Value.Date == Ngay.Date
-                                orderby itemDonKH.CreateDate descending
+                                orderby itemDonKH.CreateDate ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
@@ -359,7 +359,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
                                 where itemDonKH.CreateDate.Value.Date >= TuNgay.Date && itemDonKH.CreateDate.Value.Date <= DenNgay.Date
-                                orderby itemDonKH.CreateDate descending
+                                orderby itemDonKH.CreateDate ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
