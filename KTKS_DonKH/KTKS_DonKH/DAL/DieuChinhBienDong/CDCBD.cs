@@ -1148,7 +1148,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
                                 where itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon
-                                orderby itemCTDCBD.CreateDate descending
+                                orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1197,7 +1197,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 &&(itemCTDCBD.DCBD.MaDon >= TuMaDon&&itemCTDCBD.DCBD.MaDon<=DenMaDon))
                                 || ((itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2)) 
                                 && (itemCTDCBD.DCBD.MaDonTXL >= TuMaDon && itemCTDCBD.DCBD.MaDonTXL <= DenMaDon))
-                                orderby itemCTDCBD.CreateDate descending
+                                orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1243,7 +1243,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
                                 where itemCTDCBD.MaCTDCBD == SoPhieu
-                                orderby itemCTDCBD.CreateDate descending
+                                orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1291,7 +1291,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 where itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCBD.MaCTDCBD >= TuSoPhieu&&itemCTDCBD.MaCTDCBD<=DenSoPhieu
-                                orderby itemCTDCBD.CreateDate descending
+                                orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1337,7 +1337,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
                                 where itemCTDCBD.DanhBo == DanhBo
-                                orderby itemCTDCBD.CreateDate descending
+                                orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1383,7 +1383,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
                                 where itemCTDCBD.CreateDate.Value.Date == TuNgay.Date
-                                orderby itemCTDCBD.CreateDate descending
+                                orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1429,7 +1429,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
                                 where itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value <= DenNgay.Date
-                                orderby itemCTDCBD.CreateDate descending
+                                orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1940,7 +1940,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCHD in db.CTDCHDs
                                 where itemCTDCHD.DCBD.MaDon==MaDon||itemCTDCHD.DCBD.MaDonTXL==MaDon
-                                orderby itemCTDCHD.CreateDate descending
+                                orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1988,7 +1988,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 && (itemCTDCHD.DCBD.MaDon >= TuMaDon && itemCTDCHD.DCBD.MaDon <= DenMaDon))
                                 || ((itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
                                 && (itemCTDCHD.DCBD.MaDonTXL >= TuMaDon && itemCTDCHD.DCBD.MaDonTXL <= DenMaDon))
-                                orderby itemCTDCHD.CreateDate descending
+                                orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -2033,7 +2033,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCHD in db.CTDCHDs
                                 where itemCTDCHD.MaCTDCHD==SoPhieu
-                                orderby itemCTDCHD.CreateDate descending
+                                orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -2080,7 +2080,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 where itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
                                 && itemCTDCHD.MaCTDCHD >= TuSoPhieu && itemCTDCHD.MaCTDCHD <= DenSoPhieu
-                                orderby itemCTDCHD.CreateDate descending
+                                orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -2125,7 +2125,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCHD in db.CTDCHDs
                                 where itemCTDCHD.DanhBo==DanhBo
-                                orderby itemCTDCHD.CreateDate descending
+                                orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -2170,7 +2170,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCHD in db.CTDCHDs
                                 where itemCTDCHD.CreateDate.Value.Date==TuNgay.Date
-                                orderby itemCTDCHD.CreateDate descending
+                                orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -2215,7 +2215,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCHD in db.CTDCHDs
                                 where itemCTDCHD.CreateDate.Value.Date>=TuNgay.Date&&itemCTDCHD.CreateDate.Value.Date<=DenNgay.Date
-                                orderby itemCTDCHD.CreateDate descending
+                                orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
                                     In = false,

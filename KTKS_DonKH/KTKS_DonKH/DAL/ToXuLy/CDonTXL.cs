@@ -279,7 +279,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.DanhBo == DanhBo
-                                orderby itemDonTXL.CreateDate descending
+                                orderby itemDonTXL.CreateDate ascending
                                 select new
                                 {
                                     itemDonTXL.MaDon,
@@ -321,7 +321,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.DiaChi == DiaChi
-                                orderby itemDonTXL.CreateDate descending
+                                orderby itemDonTXL.CreateDate ascending
                                 select new
                                 {
                                     itemDonTXL.MaDon,
@@ -363,7 +363,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.SoCongVan == SoCongVan
-                                orderby itemDonTXL.CreateDate descending
+                                orderby itemDonTXL.CreateDate ascending
                                 select new
                                 {
                                     itemDonTXL.MaDon,
@@ -405,7 +405,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.CreateDate.Value.Date == TuNgay.Date
-                                orderby itemDonTXL.CreateDate descending
+                                orderby itemDonTXL.CreateDate ascending
                                 select new
                                 {
                                     itemDonTXL.MaDon,
@@ -447,7 +447,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
                                 where itemDonTXL.CreateDate.Value.Date >= TuNgay.Date && itemDonTXL.CreateDate.Value.Date<=DenNgay.Date
-                                orderby itemDonTXL.CreateDate descending
+                                orderby itemDonTXL.CreateDate ascending
                                 select new
                                 {
                                     itemDonTXL.MaDon,
