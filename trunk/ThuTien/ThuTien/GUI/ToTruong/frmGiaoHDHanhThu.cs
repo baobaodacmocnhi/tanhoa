@@ -188,7 +188,7 @@ namespace ThuTien.GUI.ToTruong
                     if (dgvHDTuGia.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuSoPhatHanh.Text.Trim() != "" && txtDenSoPhatHanh.Text.Trim() != "")
                     {
                         if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
-                            if (!_cHoaDon.CheckGiaoByNamKyDot(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
+                            if (!_cHoaDon.CheckGiaoBySoPhatHanhsNamKyDot(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
                                 if (_cHoaDon.CheckSoPhatHanhByNamKyDot(CNguoiDung.MaTo, "TG", decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
                                     && _cHoaDon.CheckSoPhatHanhByNamKyDot(CNguoiDung.MaTo, "TG", decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                                 {
@@ -211,7 +211,7 @@ namespace ThuTien.GUI.ToTruong
                         if (dgvHDCoQuan.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuSoPhatHanh.Text.Trim() != "" && txtDenSoPhatHanh.Text.Trim() != "")
                         {
                             if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
-                                if (!_cHoaDon.CheckGiaoByNamKyDot(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
+                                if (!_cHoaDon.CheckGiaoBySoPhatHanhsNamKyDot(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
                                     if (_cHoaDon.CheckSoPhatHanhByNamKyDot(CNguoiDung.MaTo, "CQ", decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
                                         && _cHoaDon.CheckSoPhatHanhByNamKyDot(CNguoiDung.MaTo, "CQ", decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                                     {
@@ -251,7 +251,7 @@ namespace ThuTien.GUI.ToTruong
                         //var startTime = System.Diagnostics.Stopwatch.StartNew();
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
-                            if (!_cHoaDon.CheckDangNganByNamKyDot(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
+                            if (!_cHoaDon.CheckDangNganBySoPhatHanhsNamKyDot(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
                             {
                                 if (_cHoaDon.XoaChia(CNguoiDung.MaTo, "TG", decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                                     int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
@@ -265,7 +265,7 @@ namespace ThuTien.GUI.ToTruong
                         }
                         if (tabControl.SelectedTab.Name == "tabCoQuan")
                         {
-                            if (!_cHoaDon.CheckDangNganByNamKyDot(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
+                            if (!_cHoaDon.CheckDangNganBySoPhatHanhsNamKyDot(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
                             {
                                 if (_cHoaDon.XoaChia(CNguoiDung.MaTo, "CQ", decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                                     int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
