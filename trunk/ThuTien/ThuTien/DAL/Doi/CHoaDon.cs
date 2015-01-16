@@ -578,6 +578,28 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSDangNganQuayByMaNVNgayGiaiTrachs(int MaNV,DateTime TuNgay,DateTime DenNgay)
+        {
+            var query = from item in _db.HOADONs
+                        where item.MaNV_DangNgan == MaNV && item.NGAYGIAITRACH.Value.Date >= TuNgay.Date && item.NGAYGIAITRACH.Value.Date <= DenNgay.Date
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.NAM,
+                            item.KY,
+                            item.DOT,
+                            item.SOHOADON,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public List<HOADON> GetDSBySoPhatHanhNamsKyDot(int MaTo, string loai, decimal tusophathanh, decimal densophathanh, int nam, int ky, int dot)
         {
             if (loai == "TG")
