@@ -1424,8 +1424,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 log.Write(k++.ToString() + "/ " + ctdcbd.MaCTDCBD + "; " + ctdcbd.ThongTin + "; " + ctdcbd.DanhBo + "; ");
                                 if (dlkh != null && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                 {
+                                    string sqlHoTen = "";
+                                    string sqlMSThue = "";
+                                    string sqlGiaBieu = "";
+                                    string sqlDinhMuc = "";
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                     {
+                                        sqlHoTen = "update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen_BD + "',MODIFYDATE='" + DateTime.Now + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
                                         dlkh.HOTEN = ctdcbd.HoTen_BD;
                                         log.Write("Họ Tên: " + dlkh.HOTEN + "; ");
                                     }
@@ -1436,21 +1441,48 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     //}
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                     {
+                                        sqlMSThue = "update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue_BD + "',MODIFYDATE='" + DateTime.Now + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
                                         dlkh.MSTHUE = ctdcbd.MSThue_BD;
                                         log.Write("MST: " + dlkh.MSTHUE + "; ");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                     {
+                                        sqlGiaBieu = "update TB_DULIEUKHACHHANG set GIABIEU='" + ctdcbd.GiaBieu_BD.ToString() + "',MODIFYDATE='" + DateTime.Now + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
                                         dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
                                         log.Write("GB: " + dlkh.GIABIEU + "; ");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                     {
+                                        sqlDinhMuc = "update TB_DULIEUKHACHHANG set DINHMUC='" + ctdcbd.DinhMuc_BD.ToString() + "',MODIFYDATE='" + DateTime.Now + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
                                         dlkh.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
-                                        log.WriteLine("ĐM: " + dlkh.DINHMUC + "; ");
+                                        log.Write("ĐM: " + dlkh.DINHMUC + "; ");
                                     }
-                                    
-                                    if (_cDLKH.SuaDLKH(dlkh))
+                                    log.WriteLine("");
+
+                                    bool flag = true;
+                                    if (!string.IsNullOrEmpty(sqlHoTen))
+                                    {
+                                        if (!_cDLKH.Sua(sqlHoTen))
+                                            flag = false;
+                                    }
+                                    if (!string.IsNullOrEmpty(sqlMSThue))
+                                    {
+                                        if (!_cDLKH.Sua(sqlMSThue))
+                                            flag = false;
+                                    }
+                                    if (!string.IsNullOrEmpty(sqlGiaBieu))
+                                    {
+                                        if (!_cDLKH.Sua(sqlGiaBieu))
+                                            flag = false;
+                                    }
+                                    if (!string.IsNullOrEmpty(sqlDinhMuc))
+                                    {
+                                        if (!_cDLKH.Sua(sqlDinhMuc))
+                                            flag = false;
+                                    }
+
+                                    if(flag)
+                                    //if (_cDLKH.SuaDLKH(dlkh))
                                     {
                                         TB_GHICHU ghichu = new TB_GHICHU();
                                         ghichu.DANHBO = ctdcbd.DanhBo;
@@ -1483,6 +1515,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ctdcbd.NgayChuyenDocSo = DateTime.Now;
                                         ctdcbd.NguoiChuyenDocSo = CTaiKhoan.MaUser;
                                         _cDCBD.SuaCTDCBD(ctdcbd);
+                                    }
+                                    else
+                                    {
+                                        _cDCBD.rollback();
+                                        _cDLKH.rollback();
+                                        MessageBox.Show("Lỗi, Vui lòng thực hiện lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                                 else
