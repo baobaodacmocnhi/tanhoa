@@ -56,7 +56,7 @@
             this.TongPhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPageDaThu = new System.Windows.Forms.TabPage();
+            this.tabDaThu = new System.Windows.Forms.TabPage();
             this.txtTongCong_DT = new System.Windows.Forms.TextBox();
             this.dgvHDDaThu = new System.Windows.Forms.DataGridView();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +67,7 @@
             this.ThueGTGT_DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhiBVMT_DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageChuaThu = new System.Windows.Forms.TabPage();
+            this.tabChuaThu = new System.Windows.Forms.TabPage();
             this.txtTongCong_CT = new System.Windows.Forms.TextBox();
             this.dgvHDChuaThu = new System.Windows.Forms.DataGridView();
             this.SoHoaDon_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,9 +87,9 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHD)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.tabPageDaThu.SuspendLayout();
+            this.tabDaThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThu)).BeginInit();
-            this.tabPageChuaThu.SuspendLayout();
+            this.tabChuaThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDChuaThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -333,25 +333,25 @@
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPageDaThu);
-            this.tabControl.Controls.Add(this.tabPageChuaThu);
+            this.tabControl.Controls.Add(this.tabDaThu);
+            this.tabControl.Controls.Add(this.tabChuaThu);
             this.tabControl.Location = new System.Drawing.Point(12, 187);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(789, 472);
             this.tabControl.TabIndex = 14;
             // 
-            // tabPageDaThu
+            // tabDaThu
             // 
-            this.tabPageDaThu.Controls.Add(this.txtTongCong_DT);
-            this.tabPageDaThu.Controls.Add(this.dgvHDDaThu);
-            this.tabPageDaThu.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDaThu.Name = "tabPageDaThu";
-            this.tabPageDaThu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDaThu.Size = new System.Drawing.Size(781, 446);
-            this.tabPageDaThu.TabIndex = 0;
-            this.tabPageDaThu.Text = "Đã Thu";
-            this.tabPageDaThu.UseVisualStyleBackColor = true;
+            this.tabDaThu.Controls.Add(this.txtTongCong_DT);
+            this.tabDaThu.Controls.Add(this.dgvHDDaThu);
+            this.tabDaThu.Location = new System.Drawing.Point(4, 22);
+            this.tabDaThu.Name = "tabDaThu";
+            this.tabDaThu.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDaThu.Size = new System.Drawing.Size(781, 446);
+            this.tabDaThu.TabIndex = 0;
+            this.tabDaThu.Text = "Đã Thu";
+            this.tabDaThu.UseVisualStyleBackColor = true;
             // 
             // txtTongCong_DT
             // 
@@ -452,17 +452,17 @@
             this.TongCong_DT.Name = "TongCong_DT";
             this.TongCong_DT.ReadOnly = true;
             // 
-            // tabPageChuaThu
+            // tabChuaThu
             // 
-            this.tabPageChuaThu.Controls.Add(this.txtTongCong_CT);
-            this.tabPageChuaThu.Controls.Add(this.dgvHDChuaThu);
-            this.tabPageChuaThu.Location = new System.Drawing.Point(4, 22);
-            this.tabPageChuaThu.Name = "tabPageChuaThu";
-            this.tabPageChuaThu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageChuaThu.Size = new System.Drawing.Size(781, 446);
-            this.tabPageChuaThu.TabIndex = 1;
-            this.tabPageChuaThu.Text = "Chưa Thu";
-            this.tabPageChuaThu.UseVisualStyleBackColor = true;
+            this.tabChuaThu.Controls.Add(this.txtTongCong_CT);
+            this.tabChuaThu.Controls.Add(this.dgvHDChuaThu);
+            this.tabChuaThu.Location = new System.Drawing.Point(4, 22);
+            this.tabChuaThu.Name = "tabChuaThu";
+            this.tabChuaThu.Padding = new System.Windows.Forms.Padding(3);
+            this.tabChuaThu.Size = new System.Drawing.Size(781, 446);
+            this.tabChuaThu.TabIndex = 1;
+            this.tabChuaThu.Text = "Chưa Thu";
+            this.tabChuaThu.UseVisualStyleBackColor = true;
             // 
             // txtTongCong_CT
             // 
@@ -641,11 +641,11 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHD)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.tabPageDaThu.ResumeLayout(false);
-            this.tabPageDaThu.PerformLayout();
+            this.tabDaThu.ResumeLayout(false);
+            this.tabDaThu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThu)).EndInit();
-            this.tabPageChuaThu.ResumeLayout(false);
-            this.tabPageChuaThu.PerformLayout();
+            this.tabChuaThu.ResumeLayout(false);
+            this.tabChuaThu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDChuaThu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -668,8 +668,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvTongHD;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPageDaThu;
-        private System.Windows.Forms.TabPage tabPageChuaThu;
+        private System.Windows.Forms.TabPage tabDaThu;
+        private System.Windows.Forms.TabPage tabChuaThu;
         private System.Windows.Forms.DataGridView dgvHDDaThu;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
