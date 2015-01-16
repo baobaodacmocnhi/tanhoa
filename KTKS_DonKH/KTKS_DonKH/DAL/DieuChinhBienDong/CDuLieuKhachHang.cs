@@ -10,7 +10,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CDuLieuKhachHang
     {
-        DB_CAPNUOCTANHOADataContext db = new DB_CAPNUOCTANHOADataContext();
+        private DB_CAPNUOCTANHOADataContext db = new DB_CAPNUOCTANHOADataContext();
 
         public TB_DULIEUKHACHHANG getDLKH(string DanhBo)
         {
@@ -73,6 +73,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public void rollback()
         {
             db.Transaction.Rollback();
+        }
+
+        public bool Sua(string sql)
+        {
+            if (db.ExecuteCommand(sql) > 0)
+                return true;
+            else
+                return false;
         }
     }
 }
