@@ -16,7 +16,7 @@ namespace ThuTien.GUI.HanhThu
     {
         CHoaDon _cHoaDon = new CHoaDon();
         string _mnu = "mnuDangNganHanhThu";
-        int _selectedindexDaThu = -1;
+        //int _selectedindexDaThu = -1;
 
         public frmDangNganHanhThu()
         {
@@ -287,14 +287,14 @@ namespace ThuTien.GUI.HanhThu
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if (_selectedindexDaThu != -1)
-                    {
-                        if (_cHoaDon.XoaDangNgan("HanhThu",dgvHDDaThu["SoHoaDon_DT", _selectedindexDaThu].Value.ToString(), CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
-                        {
-                            //LoadDanhSachHD();
-                            //_selectedindexDaThu = -1;
-                        }
-                    }
+                    //if (_selectedindexDaThu != -1)
+                    //{
+                    //    if (_cHoaDon.XoaDangNgan("HanhThu",dgvHDDaThu["SoHoaDon_DT", _selectedindexDaThu].Value.ToString(), CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                    //    {
+                    //        //LoadDanhSachHD();
+                    //        //_selectedindexDaThu = -1;
+                    //    }
+                    //}
                     //else
                     //    MessageBox.Show("Lỗi, Vui lòng chọn Hóa Đơn(đã thu) cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -306,7 +306,7 @@ namespace ThuTien.GUI.HanhThu
                         }
                     }
                     LoadDanhSachHD();
-                    _selectedindexDaThu = -1;
+                    //_selectedindexDaThu = -1;
                 }
             }
             else
@@ -317,7 +317,7 @@ namespace ThuTien.GUI.HanhThu
         {
             try
             {
-                _selectedindexDaThu = e.RowIndex;
+                //_selectedindexDaThu = e.RowIndex;
             }
             catch (Exception)
             {
