@@ -333,6 +333,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.SoLuongDiaChi,
                                     itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemDonKH.TienTrinh,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -375,6 +376,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.SoLuongDiaChi,
                                     itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemDonKH.TienTrinh,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -400,7 +402,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 where itemDonKH.CreateDate.Value.Date==TuNgay.Date
-                                orderby itemDonKH.MaLD, itemDonKH.MaDon ascending
+                                orderby itemDonKH.MaDon ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
@@ -441,7 +443,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 where itemDonKH.CreateDate.Value.Date >= TuNgay.Date && itemDonKH.CreateDate.Value.Date <= DenNgay.Date
-                                orderby itemDonKH.MaLD, itemDonKH.MaDon ascending
+                                orderby itemDonKH.MaDon ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
