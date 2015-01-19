@@ -421,6 +421,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemDonTXL.NguoiDi,
+                                    itemDonTXL.TienTrinh,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -463,6 +464,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemDonTXL.NguoiDi,
+                                    itemDonTXL.TienTrinh,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

@@ -36,9 +36,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.radToKH = new System.Windows.Forms.RadioButton();
-            this.radTXL = new System.Windows.Forms.RadioButton();
             this.radChiTietDon = new System.Windows.Forms.RadioButton();
+            this.chkToKH = new System.Windows.Forms.CheckBox();
+            this.chkTXL = new System.Windows.Forms.CheckBox();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -124,32 +124,11 @@
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
-            // radToKH
-            // 
-            this.radToKH.AutoSize = true;
-            this.radToKH.Location = new System.Drawing.Point(12, 12);
-            this.radToKH.Name = "radToKH";
-            this.radToKH.Size = new System.Drawing.Size(121, 21);
-            this.radToKH.TabIndex = 23;
-            this.radToKH.TabStop = true;
-            this.radToKH.Text = "Tổ Khách Hàng";
-            this.radToKH.UseVisualStyleBackColor = true;
-            // 
-            // radTXL
-            // 
-            this.radTXL.AutoSize = true;
-            this.radTXL.Location = new System.Drawing.Point(12, 39);
-            this.radTXL.Name = "radTXL";
-            this.radTXL.Size = new System.Drawing.Size(84, 21);
-            this.radTXL.TabIndex = 24;
-            this.radTXL.TabStop = true;
-            this.radTXL.Text = "Tổ Xử Lý";
-            this.radTXL.UseVisualStyleBackColor = true;
-            // 
             // radChiTietDon
             // 
             this.radChiTietDon.AutoSize = true;
-            this.radChiTietDon.Location = new System.Drawing.Point(139, 12);
+            this.radChiTietDon.Checked = true;
+            this.radChiTietDon.Location = new System.Drawing.Point(12, 12);
             this.radChiTietDon.Name = "radChiTietDon";
             this.radChiTietDon.Size = new System.Drawing.Size(102, 21);
             this.radChiTietDon.TabIndex = 25;
@@ -157,15 +136,35 @@
             this.radChiTietDon.Text = "Chi Tiết Đơn";
             this.radChiTietDon.UseVisualStyleBackColor = true;
             // 
+            // chkToKH
+            // 
+            this.chkToKH.AutoSize = true;
+            this.chkToKH.Location = new System.Drawing.Point(864, 12);
+            this.chkToKH.Name = "chkToKH";
+            this.chkToKH.Size = new System.Drawing.Size(122, 21);
+            this.chkToKH.TabIndex = 26;
+            this.chkToKH.Text = "Tổ Khách Hàng";
+            this.chkToKH.UseVisualStyleBackColor = true;
+            // 
+            // chkTXL
+            // 
+            this.chkTXL.AutoSize = true;
+            this.chkTXL.Location = new System.Drawing.Point(864, 39);
+            this.chkTXL.Name = "chkTXL";
+            this.chkTXL.Size = new System.Drawing.Size(85, 21);
+            this.chkTXL.TabIndex = 27;
+            this.chkTXL.Text = "Tổ Xử Lý";
+            this.chkTXL.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.chkTXL);
+            this.Controls.Add(this.chkToKH);
             this.Controls.Add(this.radChiTietDon);
-            this.Controls.Add(this.radTXL);
-            this.Controls.Add(this.radToKH);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.panel_KhoangThoiGian);
@@ -191,8 +190,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private System.Windows.Forms.RadioButton radToKH;
-        private System.Windows.Forms.RadioButton radTXL;
         private System.Windows.Forms.RadioButton radChiTietDon;
+        private System.Windows.Forms.CheckBox chkToKH;
+        private System.Windows.Forms.CheckBox chkTXL;
     }
 }
