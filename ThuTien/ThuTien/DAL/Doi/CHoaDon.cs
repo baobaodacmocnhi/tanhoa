@@ -353,6 +353,16 @@ namespace ThuTien.DAL.Doi
         }
 
         /// <summary>
+        /// Kiểm tra Hóa Đơn đã Đăng Ngân chưa
+        /// </summary>
+        /// <param name="SoHoaDon"></param>
+        /// <returns></returns>
+        public bool CheckDangNganBySoHoaDon(string SoHoaDon)
+        {
+            return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.MaNV_DangNgan != null);
+        }
+
+        /// <summary>
         /// Lấy danh sách năm có trong hóa đơn
         /// </summary>
         /// <returns></returns>
@@ -535,6 +545,33 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Hóa Đơn Tồn theo Danh Bộ, phục vụ cho Thu Tạm tại Quầy
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public DataTable GetDSTonByDanhBo(string DanhBo)
+        {
+            var query = from item in _db.HOADONs
+                        where item.DANHBA==DanhBo && item.MaNV_DangNgan == null
+                        orderby item.ID_HOADON descending
+                        select new
+                        {
+                            MaHD=item.ID_HOADON,
+                            item.SOHOADON,
+                            Ky=item.KY+"/"+item.NAM,
+                            DanhBo = item.DANHBA,
+                            HoTen=item.TENKH,
+                            DiaChi=item.SO+" "+item.DUONG,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSBySoHoaDon_Quay(string SoHoaDon)
         {
             var query = from item in _db.HOADONs
@@ -585,9 +622,24 @@ namespace ThuTien.DAL.Doi
                         where item.DangNgan_Quay == true && item.MaNV_DangNgan == MaNV && item.NGAYGIAITRACH.Value.Date >= TuNgay.Date && item.NGAYGIAITRACH.Value.Date <= DenNgay.Date
                         select new
                         {
-                            item.NAM,
-                            item.KY,
-                            item.DOT,
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrachs(int MaNV, DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from item in _db.HOADONs
+                        where item.DangNgan_ChuyenKhoan == true && item.MaNV_DangNgan == MaNV && item.NGAYGIAITRACH.Value.Date >= TuNgay.Date && item.NGAYGIAITRACH.Value.Date <= DenNgay.Date
+                        select new
+                        {
                             item.NGAYGIAITRACH,
                             item.SOHOADON,
                             DanhBo = item.DANHBA,
@@ -618,22 +670,22 @@ namespace ThuTien.DAL.Doi
 
         }
 
-        public bool DangNgan(string loai,string sohoadon, int MaNV, int nam, int ky, int dot)
+        public bool DangNgan(string loai,string sohoadon, int MaNV)
         {
             try
             {
                 string sql = "";
                 if (loai == "HanhThu")
                     sql = "update HOADON set DangNgan_HanhThu=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                            + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                            + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null";
                 else
                     if (loai == "Quay")
                         sql = "update HOADON set DangNgan_Quay=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null";
                     else
                         if (loai == "ChuyenKhoan")
                             sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and NGAYGIAITRACH is null";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -643,22 +695,22 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public bool XoaDangNgan(string loai,string sohoadon, int MaNV, int nam, int ky, int dot)
+        public bool XoaDangNgan(string loai,string sohoadon, int MaNV)
         {
             try
             {
                 string sql = "";
                 if (loai == "HanhThu")
                     sql = "update HOADON set DangNgan_HanhThu=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                           + "where SOHOADON='" + sohoadon + "' and DangNgan_HanhThu=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                           + "where SOHOADON='" + sohoadon + "' and DangNgan_HanhThu=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null";
                 else
                     if (loai == "Quay")
                         sql = "update HOADON set DangNgan_Quay=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                               + "where SOHOADON='" + sohoadon + "' and DangNgan_Quay=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                               + "where SOHOADON='" + sohoadon + "' and DangNgan_Quay=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null";
                     else
                         if (loai == "ChuyenKhoan")
                             sql = "update HOADON set DangNgan_ChuyenKhoan=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                   + "where SOHOADON='" + sohoadon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + "";
+                                   + "where SOHOADON='" + sohoadon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV + " and NGAYGIAITRACH is not null";
                 return ExecuteNonQuery(sql, false);
             }
             catch (Exception ex)

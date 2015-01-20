@@ -53,6 +53,7 @@ namespace ThuTien.GUI.QuanTri
                         to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
                     _cTo.Them(to);
                     Clear();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -74,6 +75,7 @@ namespace ThuTien.GUI.QuanTri
                         to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
                     _cTo.Sua(to);
                     Clear();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -90,6 +92,7 @@ namespace ThuTien.GUI.QuanTri
                         TT_To to = _cTo.GetByMaTo(int.Parse(dgvTo["MaTo", _selectedindex].Value.ToString()));
                         _cTo.Xoa(to);
                         Clear();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                         MessageBox.Show("Lỗi, Vui lòng chọn Tổ cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

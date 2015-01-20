@@ -57,6 +57,7 @@ namespace ThuTien.GUI.QuanTri
                     }
                     _cNhom.Them(nhom);
                     Clear();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -87,6 +88,7 @@ namespace ThuTien.GUI.QuanTri
                         }
                     }
                     Clear();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -105,6 +107,7 @@ namespace ThuTien.GUI.QuanTri
                             _cPhanQuyenNhom.Xoa(nhom.TT_PhanQuyenNhoms.ToList());
                             _cNhom.Xoa(nhom);
                             Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                             MessageBox.Show("Lỗi, Vui lòng chọn Nhóm cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

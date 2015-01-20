@@ -63,6 +63,7 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
+    <Compile Include="DAL\Quay\CTamThu.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +130,12 @@
     <Compile Include="GUI\Quay\frmDangNganQuay.Designer.cs">
       <DependentUpon>frmDangNganQuay.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Quay\frmTamThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmTamThu.Designer.cs">
+      <DependentUpon>frmTamThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmGiaoHDHanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmDangNganQuay.resx">
       <DependentUpon>frmDangNganQuay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmTamThu.resx">
+      <DependentUpon>frmTamThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDHanhThu.resx">
       <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>

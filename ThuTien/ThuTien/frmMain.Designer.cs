@@ -47,7 +47,9 @@
             this.mnuDangNganHanhThu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDangNganChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuQuay = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDangNganQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTongHop = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StripStatus_Version = new System.Windows.Forms.ToolStripStatusLabel();
@@ -55,8 +57,7 @@
             this.StripStatus_Form = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuDangNganChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDangNganQuay = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTamThu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -217,13 +218,28 @@
             this.mnuChuyenKhoan.Size = new System.Drawing.Size(97, 20);
             this.mnuChuyenKhoan.Text = "Chuyển Khoản";
             // 
+            // mnuDangNganChuyenKhoan
+            // 
+            this.mnuDangNganChuyenKhoan.Name = "mnuDangNganChuyenKhoan";
+            this.mnuDangNganChuyenKhoan.Size = new System.Drawing.Size(215, 22);
+            this.mnuDangNganChuyenKhoan.Text = "Đăng Ngân Chuyển Khoản";
+            this.mnuDangNganChuyenKhoan.Click += new System.EventHandler(this.mnuDangNganChuyenKhoan_Click);
+            // 
             // mnuQuay
             // 
             this.mnuQuay.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuDangNganQuay});
+            this.mnuDangNganQuay,
+            this.mnuTamThu});
             this.mnuQuay.Name = "mnuQuay";
             this.mnuQuay.Size = new System.Drawing.Size(47, 20);
             this.mnuQuay.Text = "Quầy";
+            // 
+            // mnuDangNganQuay
+            // 
+            this.mnuDangNganQuay.Name = "mnuDangNganQuay";
+            this.mnuDangNganQuay.Size = new System.Drawing.Size(165, 22);
+            this.mnuDangNganQuay.Text = "Đăng Ngân Quầy";
+            this.mnuDangNganQuay.Click += new System.EventHandler(this.mnuDangNganQuay_Click);
             // 
             // mnuTongHop
             // 
@@ -277,19 +293,12 @@
             this.StripStatus_HoTen.Text = "Xin Chào:";
             this.StripStatus_HoTen.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
-            // mnuDangNganChuyenKhoan
+            // mnuTamThu
             // 
-            this.mnuDangNganChuyenKhoan.Name = "mnuDangNganChuyenKhoan";
-            this.mnuDangNganChuyenKhoan.Size = new System.Drawing.Size(215, 22);
-            this.mnuDangNganChuyenKhoan.Text = "Đăng Ngân Chuyển Khoản";
-            this.mnuDangNganChuyenKhoan.Click += new System.EventHandler(this.mnuDangNganChuyenKhoan_Click);
-            // 
-            // mnuDangNganQuay
-            // 
-            this.mnuDangNganQuay.Name = "mnuDangNganQuay";
-            this.mnuDangNganQuay.Size = new System.Drawing.Size(165, 22);
-            this.mnuDangNganQuay.Text = "Đăng Ngân Quầy";
-            this.mnuDangNganQuay.Click += new System.EventHandler(this.mnuDangNganQuay_Click);
+            this.mnuTamThu.Name = "mnuTamThu";
+            this.mnuTamThu.Size = new System.Drawing.Size(165, 22);
+            this.mnuTamThu.Text = "Tạm Thu";
+            this.mnuTamThu.Click += new System.EventHandler(this.mnuTamThu_Click);
             // 
             // frmMain
             // 
@@ -345,6 +354,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTongHop;
         private System.Windows.Forms.ToolStripMenuItem mnuDangNganChuyenKhoan;
         private System.Windows.Forms.ToolStripMenuItem mnuDangNganQuay;
+        private System.Windows.Forms.ToolStripMenuItem mnuTamThu;
     }
 }
 

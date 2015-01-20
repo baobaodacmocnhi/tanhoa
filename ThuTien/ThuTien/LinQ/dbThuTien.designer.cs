@@ -3979,6 +3979,8 @@ namespace ThuTien.LinQ
 		
 		private string _SoHoaDon;
 		
+		private bool _ChuyenKhoan;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -4003,6 +4005,8 @@ namespace ThuTien.LinQ
     partial void OnMA_NHANVIEN_LUUChanged();
     partial void OnSoHoaDonChanging(string value);
     partial void OnSoHoaDonChanged();
+    partial void OnChuyenKhoanChanging(bool value);
+    partial void OnChuyenKhoanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -4134,6 +4138,26 @@ namespace ThuTien.LinQ
 					this._SoHoaDon = value;
 					this.SendPropertyChanged("SoHoaDon");
 					this.OnSoHoaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenKhoan", DbType="Bit NOT NULL")]
+		public bool ChuyenKhoan
+		{
+			get
+			{
+				return this._ChuyenKhoan;
+			}
+			set
+			{
+				if ((this._ChuyenKhoan != value))
+				{
+					this.OnChuyenKhoanChanging(value);
+					this.SendPropertyChanging();
+					this._ChuyenKhoan = value;
+					this.SendPropertyChanged("ChuyenKhoan");
+					this.OnChuyenKhoanChanged();
 				}
 			}
 		}

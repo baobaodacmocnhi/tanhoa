@@ -210,12 +210,14 @@
             this.TongTieuThu.DataPropertyName = "TongTieuThu";
             this.TongTieuThu.HeaderText = "Tiêu Thụ";
             this.TongTieuThu.Name = "TongTieuThu";
+            this.TongTieuThu.Width = 80;
             // 
             // TongGiaBan
             // 
             this.TongGiaBan.DataPropertyName = "TongGiaBan";
             this.TongGiaBan.HeaderText = "Giá Bán";
             this.TongGiaBan.Name = "TongGiaBan";
+            this.TongGiaBan.Width = 80;
             // 
             // TongThueGTGT
             // 
