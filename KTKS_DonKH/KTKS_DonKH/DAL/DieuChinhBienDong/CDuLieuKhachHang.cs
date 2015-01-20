@@ -53,7 +53,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -78,7 +78,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public bool Sua(string sql)
         {
             if (db.ExecuteCommand(sql) > 0)
+            {
                 return true;
+            }
             else
                 return false;
         }

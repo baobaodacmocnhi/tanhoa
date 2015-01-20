@@ -24,6 +24,7 @@ using KTKS_DonKH.GUI.ToXuLy;
 using System.Threading;
 using KTKS_DonKH.DAL.HeThong;
 using KTKS_DonKH.GUI.BaoCao;
+using System.Globalization;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -1430,7 +1431,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     string sqlDinhMuc = "";
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                     {
-                                        sqlHoTen = "update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen_BD + "',MODIFYDATE='" + DateTime.Now + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
+                                        sqlHoTen = "update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen_BD + "',MODIFYDATE='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
                                         dlkh.HOTEN = ctdcbd.HoTen_BD;
                                         log.Write("Họ Tên: " + dlkh.HOTEN + "; ");
                                     }
@@ -1441,19 +1442,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     //}
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                     {
-                                        sqlMSThue = "update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue_BD + "',MODIFYDATE='" + DateTime.Now + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
+                                        sqlMSThue = "update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue_BD + "',MODIFYDATE='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
                                         dlkh.MSTHUE = ctdcbd.MSThue_BD;
                                         log.Write("MST: " + dlkh.MSTHUE + "; ");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                     {
-                                        sqlGiaBieu = "update TB_DULIEUKHACHHANG set GIABIEU='" + ctdcbd.GiaBieu_BD.ToString() + "',MODIFYDATE='" + DateTime.Now + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
+                                        sqlGiaBieu = "update TB_DULIEUKHACHHANG set GIABIEU='" + ctdcbd.GiaBieu_BD.ToString() + "',MODIFYDATE='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
                                         dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
                                         log.Write("GB: " + dlkh.GIABIEU + "; ");
                                     }
                                     if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                     {
-                                        sqlDinhMuc = "update TB_DULIEUKHACHHANG set DINHMUC='" + ctdcbd.DinhMuc_BD.ToString() + "',MODIFYDATE='" + DateTime.Now + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
+                                        sqlDinhMuc = "update TB_DULIEUKHACHHANG set DINHMUC='" + ctdcbd.DinhMuc_BD.ToString() + "',MODIFYDATE='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "' where DANHBO='" + ctdcbd.DanhBo + "'";
                                         dlkh.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
                                         log.Write("ĐM: " + dlkh.DINHMUC + "; ");
                                     }
@@ -1520,6 +1521,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     {
                                         _cDCBD.rollback();
                                         _cDLKH.rollback();
+                                        log.WriteLine("=============================================");
+                                        log.Close();
+                                        log.Dispose();
                                         MessageBox.Show("Lỗi, Vui lòng thực hiện lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
@@ -1527,13 +1531,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     MessageBox.Show("Danh Bộ: " + ctdcbd.DanhBo + " thuộc Số Phiếu: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-")
                                         + " không có bên QLĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
                         _cDCBD.commitTransaction();
                         _cDLKH.commitTransaction();
                         log.WriteLine("=============================================");
                         log.Close();
                         log.Dispose();
+                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
