@@ -9,12 +9,14 @@ using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using System.Globalization;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.HanhThu
 {
     public partial class frmDangNganHanhThu : Form
     {
         CHoaDon _cHoaDon = new CHoaDon();
+        CTamThu _cTamThu = new CTamThu();
         string _mnu = "mnuDangNganHanhThu";
         //int _selectedindexDaThu = -1;
 
@@ -103,6 +105,10 @@ namespace ThuTien.GUI.HanhThu
 
         private void dgvHDDaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "DanhBo_DT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
             if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "TieuThu_DT" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
@@ -127,6 +133,10 @@ namespace ThuTien.GUI.HanhThu
 
         private void dgvHDChuaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "DanhBo_CT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
             if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "TieuThu_CT" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
@@ -204,18 +214,27 @@ namespace ThuTien.GUI.HanhThu
                         DataColumn[] keyColumns = new DataColumn[1];
                         keyColumns[0] = dt.Columns["SoHoaDon"];
                         dt.PrimaryKey = keyColumns;
+                        string loai;
                         foreach (var item in lstHD.Items)
+                        {
                             if (!dt.Rows.Contains(item.ToString()))
                             {
                                 MessageBox.Show("Hóa Đơn sai Hoặc đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 lstHD.SelectedItem = item;
                                 return;
                             }
+                            if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
+                            {
+                                MessageBox.Show("Hóa Đơn đã được " + loai + ": " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                lstHD.SelectedItem = item;
+                                return;
+                            }
+                        }
                         try
                         {
                             _cHoaDon.SqlBeginTransaction();
                             foreach (var item in lstHD.Items)
-                                if (!_cHoaDon.DangNgan("HanhThu", item.ToString(), CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                                if (!_cHoaDon.DangNgan("HanhThu",item.ToString(), CNguoiDung.MaND))
                                 {
                                     _cHoaDon.SqlRollbackTransaction();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -224,6 +243,7 @@ namespace ThuTien.GUI.HanhThu
                             _cHoaDon.SqlCommitTransaction();
                             LoadDanhSachHD();
                             lstHD.Items.Clear();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception)
                         {
@@ -232,7 +252,7 @@ namespace ThuTien.GUI.HanhThu
                         }
                     }
                     else
-                        ///Đăng Ngân tất cả trừ nhữnh Hóa Đơn Quét
+                        ///Đăng Ngân tất cả trừ những Hóa Đơn Quét
                         if (radChuaThu.Checked)
                         {
                             if (dgvHDDaThu.Rows.Count > 0)
@@ -244,20 +264,29 @@ namespace ThuTien.GUI.HanhThu
                             DataColumn[] keyColumns = new DataColumn[1];
                             keyColumns[0] = dt.Columns["SoHoaDon"];
                             dt.PrimaryKey = keyColumns;
+                            string loai;
                             foreach (var item in lstHD.Items)
+                            {
                                 if (!dt.Rows.Contains(item.ToString()))
                                 {
-                                    MessageBox.Show("Hóa Đơn sai" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Hóa Đơn sai:" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     lstHD.SelectedItem = item;
                                     return;
                                 }
+                                if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
+                                {
+                                    MessageBox.Show("Hóa Đơn đã được "+loai+": " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    lstHD.SelectedItem = item;
+                                    return;
+                                }
+                            }
                             try
                             {
                                 _cHoaDon.SqlBeginTransaction();
                                 foreach (DataRow item in dt.Rows)
                                     if (!lstHD.Items.Contains(item["SoHoaDon"].ToString()))
                                     {
-                                        if (!_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                                        if (!_cHoaDon.DangNgan("HanhThu",item["SoHoaDon"].ToString(), CNguoiDung.MaND))
                                         {
                                             _cHoaDon.SqlRollbackTransaction();
                                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -268,6 +297,7 @@ namespace ThuTien.GUI.HanhThu
                                 _cHoaDon.SqlCommitTransaction();
                                 LoadDanhSachHD();
                                 lstHD.Items.Clear();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             catch (Exception)
                             {
@@ -300,12 +330,13 @@ namespace ThuTien.GUI.HanhThu
 
                     foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
                     {
-                        if (_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_DT"].Value.ToString(), CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                        if (_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_DT"].Value.ToString(), CNguoiDung.MaND))
                         {
 
                         }
                     }
                     LoadDanhSachHD();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //_selectedindexDaThu = -1;
                 }
             }

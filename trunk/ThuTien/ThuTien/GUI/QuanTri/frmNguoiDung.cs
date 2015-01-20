@@ -75,6 +75,7 @@ namespace ThuTien.GUI.QuanTri
                     }
                     _cNguoiDung.Them(nguoidung);
                     Clear();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -109,6 +110,7 @@ namespace ThuTien.GUI.QuanTri
                         }
                     }
                     Clear();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -127,6 +129,7 @@ namespace ThuTien.GUI.QuanTri
                         _cPhanQuyenNguoiDung.Xoa(nguoidung.TT_PhanQuyenNguoiDungs.ToList());
                         _cNguoiDung.Xoa(nguoidung);
                         Clear();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                         MessageBox.Show("Lỗi, Vui lòng chọn Người Dùng cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
