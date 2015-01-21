@@ -76,18 +76,18 @@ namespace ThuTien.DAL.Quay
                 if (_db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).ChuyenKhoan)
                     loai = "Chuyển Khoản";
                 else
-                    loai = "Tạm Thu";
+                    loai = "Quầy";
                 return true;
             }
             else
                 return false;
         }
 
-        public DataTable GetDSByDate(int MaNV,DateTime TuNgay)
+        public DataTable GetDSByDate(bool ChuyenKhoan,int MaNV,DateTime TuNgay)
         {
             var query = from itemTT in _db.TAMTHUs
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
-                        where itemTT.CreateDate.Value.Date==TuNgay.Date && itemTT.CreateBy==MaNV
+                        where itemTT.CreateDate.Value.Date==TuNgay.Date && itemTT.CreateBy==MaNV && itemTT.ChuyenKhoan==ChuyenKhoan
                         select new
                         {
                             MaTT = itemTT.ID_TAMTHU,
@@ -106,26 +106,34 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSByDates(bool ChuyenKhoan, int MaNV, DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemTT in _db.TAMTHUs
+                        //join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
-                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.CreateBy == MaNV
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND
+                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.CreateBy == MaNV && itemTT.ChuyenKhoan == ChuyenKhoan
                         select new
                         {
                             MaTT = itemTT.ID_TAMTHU,
                             itemHD.NGAYGIAITRACH,
                             itemTT.CreateDate,
                             itemHD.SOHOADON,
-                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            itemHD.SOPHATHANH,
+                            itemHD.NAM,
+                            itemHD.KY,
+                            itemHD.DOT,
+                            MLT = itemHD.MALOTRINH,
                             DanhBo = itemHD.DANHBA,
-                            HoTen=itemHD.TENKH,
+                            HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
                             itemHD.TIEUTHU,
                             itemHD.GIABAN,
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
+                            HanhThu = itemND.TT_To.TenTo + ": " + itemND.HoTen,
+                            itemTT.MaNH,
                         };
             return LINQToDataTable(query);
         }

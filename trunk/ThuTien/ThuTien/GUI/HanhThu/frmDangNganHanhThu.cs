@@ -225,7 +225,7 @@ namespace ThuTien.GUI.HanhThu
                             }
                             if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
                             {
-                                MessageBox.Show("Hóa Đơn đã được " + loai + ": " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Hóa Đơn đã được Tạm Thu(" + loai + "): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 lstHD.SelectedItem = item;
                                 return;
                             }

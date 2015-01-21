@@ -8,27 +8,32 @@ using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.Quay;
+using System.Globalization;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
-using System.Globalization;
+using ThuTien.DAL.ChuyenKhoan;
 
-namespace ThuTien.GUI.Quay
+namespace ThuTien.GUI.ChuyenKhoan
 {
-    public partial class frmTamThu : Form
+    public partial class frmTamThuChuyenKhoan : Form
     {
-        string _mnu = "mnuTamThu";
+        string _mnu = "mnuTamThuChuyenKhoan";
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
+        CNganHang _cNganHang = new CNganHang();
 
-        public frmTamThu()
+        public frmTamThuChuyenKhoan()
         {
             InitializeComponent();
         }
 
-        private void frmTamThu_Load(object sender, EventArgs e)
+        private void frmTamThuChuyenKhoan_Load(object sender, EventArgs e)
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvTamThu.AutoGenerateColumns = false;
+            cmbNganHang.DataSource = _cNganHang.GetDS();
+            cmbNganHang.DisplayMember = "TenNH";
+            cmbNganHang.ValueMember = "MaNH";
         }
 
         public void Clear()
@@ -41,76 +46,61 @@ namespace ThuTien.GUI.Quay
         {
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
             {
-                dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
+                DataTable dt = new DataTable();
+                foreach (string item in txtDanhBo.Lines)
+                    if (item.Length == 11)
+                    {
+                        dt.Merge(_cHoaDon.GetDSTonByDanhBo(item));
+                    }
+                dgvHoaDon.DataSource = dt;
+                for (int i = 0; i < dgvHoaDon.Rows.Count; i++)
+                {
+                    dgvHoaDon["Chon", i].Value = true;
+                }
             }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            if (dgvHoaDon.RowCount > 0)
             {
-                ///Có nhiều hơn 1 hóa đơn
-                if (dgvHoaDon.RowCount > 1)
-                {
-                    ///Kiểm tra có chọn hóa đơn đăng ngân chưa
-                    int Count = 0;
-                    int index = -1;
-                    for (int i = 0; i < dgvHoaDon.RowCount; i++)
-                    {
-                        if (bool.Parse(dgvHoaDon["Chon", i].Value.ToString()))
+                _cTamThu.BeginTransaction();
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                    if (bool.Parse(item.Cells["Chon"].Value.ToString()))
+                        if (!_cTamThu.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         {
-                            Count++;
-                            index = i;
+                            TAMTHU tamthu = new TAMTHU();
+                            tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
+                            tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
+                            tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
+                            tamthu.ChuyenKhoan = true;
+                            tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
+
+                            if (!_cTamThu.Them(tamthu))
+                            {
+                                _cTamThu.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
-                    }
-                    if (Count == 0)
-                    {
-                        MessageBox.Show("Chưa chọn Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                        if (Count > 1)
+                        else
                         {
-                            MessageBox.Show("Chọn quá 1 Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            _cTamThu.Rollback();
+                            MessageBox.Show("Hóa Đơn này đã Tạm Thu: " + item.Cells["SoHoaDon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                    ///Bắt đầu đăng ngân chỉ 1 hóa đơn được chọn
-                    if (bool.Parse(dgvHoaDon["Chon", index].Value.ToString()) && !_cTamThu.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString()))
-                    {
-                        TAMTHU tamthu = new TAMTHU();
-                        tamthu.DANHBA = dgvHoaDon["DanhBo", index].Value.ToString();
-                        tamthu.FK_HOADON = int.Parse(dgvHoaDon["MaHD", index].Value.ToString());
-                        tamthu.SoHoaDon = dgvHoaDon["SoHoaDon", index].Value.ToString();
-
-                        if (_cTamThu.Them(tamthu))
-                        {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    else
-                        MessageBox.Show("Chưa Chọn Hóa Đơn \nhoặc Hóa Đơn này đã Tạm Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                    ///Có 1 hóa đơn nên set mặc định row 0
-                    if (dgvHoaDon.RowCount == 1 && !_cTamThu.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString()))
-                    {
-                        TAMTHU tamthu = new TAMTHU();
-                        tamthu.DANHBA = dgvHoaDon["DanhBo", 0].Value.ToString();
-                        tamthu.FK_HOADON = int.Parse(dgvHoaDon["MaHD", 0].Value.ToString());
-                        tamthu.SoHoaDon = dgvHoaDon["SoHoaDon", 0].Value.ToString();
-
-                        if (_cTamThu.Them(tamthu))
-                        {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    else
-                        MessageBox.Show("Chưa có thông tin Hóa Đơn \nhoặc Hóa Đơn này đã Tạm Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _cTamThu.CommitTransaction();
+                Clear();
+                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            if (dateTu.Value <= dateDen.Value)
+            {
+                dgvTamThu.DataSource = _cTamThu.GetDSByDates(true, CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+            }
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,14 +118,6 @@ namespace ThuTien.GUI.Quay
                 }
         }
 
-        private void btnXem_Click(object sender, EventArgs e)
-        {
-            if (dateTu.Value <= dateDen.Value)
-            {
-                dgvTamThu.DataSource = _cTamThu.GetDSByDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
-            }
-        }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
@@ -145,11 +127,23 @@ namespace ThuTien.GUI.Quay
                     _cTamThu.BeginTransaction();
                     foreach (DataGridViewRow item in dgvTamThu.SelectedRows)
                     {
-                        TAMTHU tamthu=_cTamThu.GetByMaTT(int.Parse(item.Cells["MaTT"].Value.ToString()));
-                        if (!_cTamThu.Xoa(tamthu))
+                        TAMTHU tamthu = _cTamThu.GetByMaTT(int.Parse(item.Cells["MaTT"].Value.ToString()));
+                        if (!_cHoaDon.CheckDangNganBySoHoaDon(tamthu.SoHoaDon))
+                        {
+                            if (!_cTamThu.Xoa(tamthu))
+                            {
+                                _cTamThu.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        else
                         {
                             _cTamThu.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvTamThu.ClearSelection();
+                            dgvTamThu.Rows[item.Index].Selected = true;
+                            MessageBox.Show("Hóa đơn đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                     }
                     _cTamThu.CommitTransaction();
@@ -215,8 +209,26 @@ namespace ThuTien.GUI.Quay
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvTamThu.Columns[e.ColumnIndex].Name == "MaNH_TT" && !string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                e.Value = _cNganHang.GetByMaNH(int.Parse(e.Value.ToString())).NGANHANG1;
+            }
         }
 
-        
+        private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvTamThu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvTamThu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
     }
 }

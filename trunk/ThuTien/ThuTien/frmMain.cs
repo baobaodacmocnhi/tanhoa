@@ -14,6 +14,7 @@ using ThuTien.GUI.ToTruong;
 using ThuTien.GUI.HanhThu;
 using ThuTien.GUI.Quay;
 using ThuTien.GUI.ChuyenKhoan;
+using ThuTien.GUI.TongHop;
 
 namespace ThuTien
 {
@@ -192,6 +193,28 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuTamThuChuyenKhoan_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTamThuChuyenKhoan", "Xem"))
+            {
+                frmTamThuChuyenKhoan frm = new frmTamThuChuyenKhoan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuNganHang_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuNganHang", "Xem"))
+            {
+                frmNganHang frm = new frmNganHang();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Quầy
@@ -209,9 +232,9 @@ namespace ThuTien
 
         private void mnuTamThu_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuTamThu", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuTamThuQuay", "Xem"))
             {
-                frmTamThu frm = new frmTamThu();
+                frmTamThuQuay frm = new frmTamThuQuay();
                 OpenForm(frm);
             }
             else
@@ -222,7 +245,16 @@ namespace ThuTien
 
         #region Tổng Hợp
 
-
+        private void mnuDCHD_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDCHD", "Xem"))
+            {
+                frmDCHD frm = new frmDCHD();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         #endregion 
 

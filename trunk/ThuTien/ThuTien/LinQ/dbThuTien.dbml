@@ -179,6 +179,17 @@
       <Association Name="TT_To_TT_NguoiDung" Member="TT_To" ThisKey="MaTo" OtherKey="MaTo" Type="TT_To" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.NGANHANG" Member="NGANHANGs">
+    <Type Name="NGANHANG">
+      <Column Name="ID_NGANHANG" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NGANHANG" Member="NGANHANG1" Type="System.String" DbType="NChar(40)" CanBeNull="true" />
+      <Column Name="MA_NH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TAMTHU" Member="TAMTHUs">
     <Type Name="TAMTHU">
       <Column Name="ID_TAMTHU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -188,6 +199,7 @@
       <Column Name="MA_NHANVIEN_LUU" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ChuyenKhoan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaNH" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
