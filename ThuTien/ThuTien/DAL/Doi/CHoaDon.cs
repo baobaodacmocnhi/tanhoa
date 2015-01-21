@@ -552,22 +552,29 @@ namespace ThuTien.DAL.Doi
         /// <returns></returns>
         public DataTable GetDSTonByDanhBo(string DanhBo)
         {
-            var query = from item in _db.HOADONs
-                        where item.DANHBA==DanhBo && item.MaNV_DangNgan == null
-                        orderby item.ID_HOADON descending
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND
+                        where itemHD.DANHBA==DanhBo && itemHD.MaNV_DangNgan == null
+                        orderby itemHD.ID_HOADON descending
                         select new
                         {
-                            MaHD=item.ID_HOADON,
-                            item.SOHOADON,
-                            Ky=item.KY+"/"+item.NAM,
-                            DanhBo = item.DANHBA,
-                            HoTen=item.TENKH,
-                            DiaChi=item.SO+" "+item.DUONG,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
+                            MaHD=itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            itemHD.NAM,
+                            itemHD.KY,
+                            itemHD.DOT,
+                            itemHD.MALOTRINH,
+                            MLT=itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen=itemHD.TENKH,
+                            DiaChi=itemHD.SO+" "+itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu=itemND.HoTen,
                         };
             return LINQToDataTable(query);
         }
