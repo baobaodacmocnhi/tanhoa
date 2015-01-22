@@ -199,7 +199,7 @@ namespace ThuTien.DAL.Doi
                     //                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
                     //                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList()
                     //                    .ForEach(item => { item.MaNV_HanhThu = MaNV; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
-                    string sql = "update HOADON set MaNV_HanhThu=" + MaNV + ",NGAYGIAO='" + DateTime.Now + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                    string sql = "update HOADON set MaNV_HanhThu=" + MaNV + ",NGAYGIAO='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
                         + "where SOPHATHANH>='" + tusophathanh + "' and SOPHATHANH<='" + densophathanh + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>=11 and GB<=20 "
                         + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
                     ExecuteNonQuery(sql,true);
@@ -212,7 +212,7 @@ namespace ThuTien.DAL.Doi
                         //            && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
                         //            && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList()
                         //            .ForEach(item => { item.MaNV_HanhThu = MaNV; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
-                        string sql = "update HOADON set MaNV_HanhThu=" + MaNV + ",NGAYGIAO='" + DateTime.Now + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                        string sql = "update HOADON set MaNV_HanhThu=" + MaNV + ",NGAYGIAO='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
                         + "where SOPHATHANH>='" + tusophathanh + "' and SOPHATHANH<='" + densophathanh + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>20 "
                         + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
                         ExecuteNonQuery(sql, true);
@@ -263,7 +263,7 @@ namespace ThuTien.DAL.Doi
                     //                    && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
                     //                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB >= 11 && item.GB <= 20).ToList()
                     //                    .ForEach(item => { item.MaNV_HanhThu = null; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
-                    string sql = "update HOADON set MaNV_HanhThu=null,NGAYGIAO=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                    string sql = "update HOADON set MaNV_HanhThu=null,NGAYGIAO=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
                         + "where SOPHATHANH>='" + tusophathanh + "' and SOPHATHANH<='" + densophathanh + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>=11 and GB<=20 "
                         + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
                     ExecuteNonQuery(sql,true);
@@ -276,7 +276,7 @@ namespace ThuTien.DAL.Doi
                         //            && Convert.ToInt32(item.MALOTRINH) >= int.Parse(tumlt) && Convert.ToInt32(item.MALOTRINH) <= int.Parse(denmlt)
                         //            && item.NAM == nam && item.KY == ky && item.DOT == dot && item.GB > 20).ToList()
                         //            .ForEach(item => { item.MaNV_HanhThu = null; item.ModifyBy = CNguoiDung.MaND; item.ModifyDate = DateTime.Now; });
-                        string sql = "update HOADON set MaNV_HanhThu=null,NGAYGIAO=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now + "' "
+                        string sql = "update HOADON set MaNV_HanhThu=null,NGAYGIAO=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
                         + "where SOPHATHANH>='" + tusophathanh + "' and SOPHATHANH<='" + densophathanh + "' and NAM=" + nam + " and KY=" + ky + " and DOT=" + dot + " and GB>20 "
                         + "and MAY>=" + ExecuteQuery_SqlDataReader_DataTable("select TuCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + " and MAY<=" + ExecuteQuery_SqlDataReader_DataTable("select DenCuonGCS from TT_To where MaTo=" + MaTo).Rows[0][0] + "";
                         ExecuteNonQuery(sql, true);
