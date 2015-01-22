@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>27</ApplicationRevision>
+    <ApplicationRevision>30</ApplicationRevision>
     <ApplicationVersion>1.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -153,11 +153,11 @@
       <DependentUpon>rptSLDHNVienChi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\BamChi\rptThongKeTinhTrangBC.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptThongKeTinhTrangBC.rpt</DependentUpon>
+    <Compile Include="BaoCao\BamChi\rptThongKeBamChi.cs">
+      <DependentUpon>rptThongKeBamChi.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="BaoCao\CatHuyDanhBo\rptDSCatTamNutBit.cs">
       <AutoGen>True</AutoGen>
@@ -436,6 +436,12 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Function\CLinQToDataTable.cs" />
+    <Compile Include="GUI\BamChi\frmBaoCaoBamChi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BamChi\frmBaoCaoBamChi.Designer.cs">
+      <DependentUpon>frmBaoCaoBamChi.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\BamChi\frmDSBamChi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -842,9 +848,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSLDHNVienChi.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\BamChi\rptThongKeTinhTrangBC.rpt">
+    <EmbeddedResource Include="BaoCao\BamChi\rptThongKeBamChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptThongKeTinhTrangBC.cs</LastGenOutput>
+      <LastGenOutput>rptThongKeBamChi.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\CatHuyDanhBo\rptDSCatTamNutBit.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1004,6 +1010,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\BamChi\frmBaoCaoBamChi.resx">
+      <DependentUpon>frmBaoCaoBamChi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BamChi\frmDSBamChi.resx">
       <DependentUpon>frmDSBamChi.cs</DependentUpon>
