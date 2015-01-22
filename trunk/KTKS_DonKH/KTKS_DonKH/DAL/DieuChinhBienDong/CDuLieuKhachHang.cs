@@ -79,6 +79,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             if (db.ExecuteCommand(sql) > 0)
             {
+                //db.SubmitChanges();
                 return true;
             }
             else

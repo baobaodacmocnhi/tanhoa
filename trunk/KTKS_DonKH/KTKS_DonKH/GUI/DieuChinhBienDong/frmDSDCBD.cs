@@ -1410,12 +1410,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (radDSDCBD.Checked)
                 {
                     CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
+                    int k = 1;
+                    System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\cntt\\BaoBao\\KTKS_DonKH\\log.txt");
                     try
                     {
-                        int k = 1;
                         _cDLKH.beginTransaction();
                         _cDCBD.beginTransaction();
-                        System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\cntt\\BaoBao\\KTKS_DonKH\\log.txt");
                         log.WriteLine("Danh Sách chuyển Đọc số ngày " + DateTime.Now);
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
@@ -1423,6 +1423,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                                 TB_DULIEUKHACHHANG dlkh = _cDLKH.getDLKH(ctdcbd.DanhBo);
                                 log.Write(k++.ToString() + "/ " + ctdcbd.MaCTDCBD + "; " + ctdcbd.ThongTin + "; " + ctdcbd.DanhBo + "; ");
+                                //if(k==8)
+                                //    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 if (dlkh != null && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                 {
                                     string sqlHoTen = "";
@@ -1511,7 +1513,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         {
                                             ghichu.NOIDUNG += " Định Mức Từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD + ",";
                                         }
-                                        _cDLKH.ThemGhiChu(ghichu);
+                                        //_cDLKH.ThemGhiChu(ghichu);
+                                        string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',N'" + CTaiKhoan.HoTen + "')";
+                                        _cDLKH.Sua(sql);
                                         ctdcbd.ChuyenDocSo = true;
                                         ctdcbd.NgayChuyenDocSo = DateTime.Now;
                                         ctdcbd.NguoiChuyenDocSo = CTaiKhoan.MaUser;
@@ -1524,7 +1528,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         log.WriteLine("=============================================");
                                         log.Close();
                                         log.Dispose();
-                                        MessageBox.Show("Lỗi, Vui lòng thực hiện lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Lỗi tại Số Phiếu: "+dgvDSDCBD["SoPhieu", i].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                                 else
@@ -1541,9 +1545,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         _cDCBD.rollback();
                         _cDLKH.rollback();
+                        log.WriteLine("=============================================");
+                        log.Close();
+                        log.Dispose();
+                        MessageBox.Show("Lỗi tại Số Phiếu: " + dgvDSDCBD["SoPhieu", k - 1].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                     }
 
                 }

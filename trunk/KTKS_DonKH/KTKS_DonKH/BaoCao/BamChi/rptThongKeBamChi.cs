@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.BamChi {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptThongKeTinhTrangBC : ReportClass {
+    public class rptThongKeBamChi : ReportClass {
         
-        public rptThongKeTinhTrangBC() {
+        public rptThongKeBamChi() {
         }
         
         public override string ResourceName {
             get {
-                return "rptThongKeTinhTrangBC.rpt";
+                return "rptThongKeBamChi.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.BamChi.rptThongKeTinhTrangBC.rpt";
+                return "KTKS_DonKH.BaoCao.BamChi.rptThongKeBamChi.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,17 +98,33 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[7];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[8];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptThongKeTinhTrangBC : Component, ICachedReport {
+    public class CachedrptThongKeBamChi : Component, ICachedReport {
         
-        public CachedrptThongKeTinhTrangBC() {
+        public CachedrptThongKeBamChi() {
         }
         
         [Browsable(false)]
@@ -145,7 +161,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptThongKeTinhTrangBC rpt = new rptThongKeTinhTrangBC();
+            rptThongKeBamChi rpt = new rptThongKeBamChi();
             rpt.Site = this.Site;
             return rpt;
         }
