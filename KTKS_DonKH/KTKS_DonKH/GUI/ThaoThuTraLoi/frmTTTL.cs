@@ -388,7 +388,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     if (_cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", ""))) != null)
                     {
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
-                        txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                        txtMaDon.Text = "TXL"+_dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         if (_cTTKH.getTTKHbyID(_dontxl.DanhBo) != null)
                         {
                             _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
@@ -412,7 +412,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     if (_cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", ""))) != null)
                     {
                         _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
-                        //txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                        txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                         if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
                         {
                             _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
