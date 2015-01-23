@@ -4557,8 +4557,6 @@ namespace ThuTien.LinQ
 		
 		private int _FK_HOADON;
 		
-		private string _SoHoaDon;
-		
 		private System.Nullable<decimal> _GIABAN_DC;
 		
 		private System.Nullable<decimal> _THUE_DC;
@@ -4597,6 +4595,28 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _TIEUTHU_BD;
 		
+		private bool _TXL;
+		
+		private System.Nullable<int> _GiaBieu;
+		
+		private System.Nullable<int> _DinhMuc;
+		
+		private System.Nullable<int> _TieuThu;
+		
+		private string _TangGiam;
+		
+		private string _SoHoaDon;
+		
+		private System.Nullable<decimal> _SoPhieu;
+		
+		private System.Nullable<decimal> _GIABAN_END;
+		
+		private System.Nullable<decimal> _THUE_END;
+		
+		private System.Nullable<decimal> _PHI_END;
+		
+		private System.Nullable<decimal> _TONGCONG_END;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -4619,8 +4639,6 @@ namespace ThuTien.LinQ
     partial void OnNGAY_VBChanged();
     partial void OnFK_HOADONChanging(int value);
     partial void OnFK_HOADONChanged();
-    partial void OnSoHoaDonChanging(string value);
-    partial void OnSoHoaDonChanged();
     partial void OnGIABAN_DCChanging(System.Nullable<decimal> value);
     partial void OnGIABAN_DCChanged();
     partial void OnTHUE_DCChanging(System.Nullable<decimal> value);
@@ -4659,6 +4677,28 @@ namespace ThuTien.LinQ
     partial void OnTONGCONG_BDChanged();
     partial void OnTIEUTHU_BDChanging(System.Nullable<int> value);
     partial void OnTIEUTHU_BDChanged();
+    partial void OnTXLChanging(bool value);
+    partial void OnTXLChanged();
+    partial void OnGiaBieuChanging(System.Nullable<int> value);
+    partial void OnGiaBieuChanged();
+    partial void OnDinhMucChanging(System.Nullable<int> value);
+    partial void OnDinhMucChanged();
+    partial void OnTieuThuChanging(System.Nullable<int> value);
+    partial void OnTieuThuChanged();
+    partial void OnTangGiamChanging(string value);
+    partial void OnTangGiamChanged();
+    partial void OnSoHoaDonChanging(string value);
+    partial void OnSoHoaDonChanged();
+    partial void OnSoPhieuChanging(System.Nullable<decimal> value);
+    partial void OnSoPhieuChanged();
+    partial void OnGIABAN_ENDChanging(System.Nullable<decimal> value);
+    partial void OnGIABAN_ENDChanged();
+    partial void OnTHUE_ENDChanging(System.Nullable<decimal> value);
+    partial void OnTHUE_ENDChanged();
+    partial void OnPHI_ENDChanging(System.Nullable<decimal> value);
+    partial void OnPHI_ENDChanged();
+    partial void OnTONGCONG_ENDChanging(System.Nullable<decimal> value);
+    partial void OnTONGCONG_ENDChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -4755,26 +4795,6 @@ namespace ThuTien.LinQ
 					this._FK_HOADON = value;
 					this.SendPropertyChanged("FK_HOADON");
 					this.OnFK_HOADONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDon", DbType="VarChar(50)")]
-		public string SoHoaDon
-		{
-			get
-			{
-				return this._SoHoaDon;
-			}
-			set
-			{
-				if ((this._SoHoaDon != value))
-				{
-					this.OnSoHoaDonChanging(value);
-					this.SendPropertyChanging();
-					this._SoHoaDon = value;
-					this.SendPropertyChanged("SoHoaDon");
-					this.OnSoHoaDonChanged();
 				}
 			}
 		}
@@ -5155,6 +5175,226 @@ namespace ThuTien.LinQ
 					this._TIEUTHU_BD = value;
 					this.SendPropertyChanged("TIEUTHU_BD");
 					this.OnTIEUTHU_BDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TXL", DbType="Bit NOT NULL")]
+		public bool TXL
+		{
+			get
+			{
+				return this._TXL;
+			}
+			set
+			{
+				if ((this._TXL != value))
+				{
+					this.OnTXLChanging(value);
+					this.SendPropertyChanging();
+					this._TXL = value;
+					this.SendPropertyChanged("TXL");
+					this.OnTXLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBieu", DbType="Int")]
+		public System.Nullable<int> GiaBieu
+		{
+			get
+			{
+				return this._GiaBieu;
+			}
+			set
+			{
+				if ((this._GiaBieu != value))
+				{
+					this.OnGiaBieuChanging(value);
+					this.SendPropertyChanging();
+					this._GiaBieu = value;
+					this.SendPropertyChanged("GiaBieu");
+					this.OnGiaBieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DinhMuc", DbType="Int")]
+		public System.Nullable<int> DinhMuc
+		{
+			get
+			{
+				return this._DinhMuc;
+			}
+			set
+			{
+				if ((this._DinhMuc != value))
+				{
+					this.OnDinhMucChanging(value);
+					this.SendPropertyChanging();
+					this._DinhMuc = value;
+					this.SendPropertyChanged("DinhMuc");
+					this.OnDinhMucChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThu", DbType="Int")]
+		public System.Nullable<int> TieuThu
+		{
+			get
+			{
+				return this._TieuThu;
+			}
+			set
+			{
+				if ((this._TieuThu != value))
+				{
+					this.OnTieuThuChanging(value);
+					this.SendPropertyChanging();
+					this._TieuThu = value;
+					this.SendPropertyChanged("TieuThu");
+					this.OnTieuThuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TangGiam", DbType="NVarChar(50)")]
+		public string TangGiam
+		{
+			get
+			{
+				return this._TangGiam;
+			}
+			set
+			{
+				if ((this._TangGiam != value))
+				{
+					this.OnTangGiamChanging(value);
+					this.SendPropertyChanging();
+					this._TangGiam = value;
+					this.SendPropertyChanged("TangGiam");
+					this.OnTangGiamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDon", DbType="VarChar(50)")]
+		public string SoHoaDon
+		{
+			get
+			{
+				return this._SoHoaDon;
+			}
+			set
+			{
+				if ((this._SoHoaDon != value))
+				{
+					this.OnSoHoaDonChanging(value);
+					this.SendPropertyChanging();
+					this._SoHoaDon = value;
+					this.SendPropertyChanged("SoHoaDon");
+					this.OnSoHoaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SoPhieu
+		{
+			get
+			{
+				return this._SoPhieu;
+			}
+			set
+			{
+				if ((this._SoPhieu != value))
+				{
+					this.OnSoPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._SoPhieu = value;
+					this.SendPropertyChanged("SoPhieu");
+					this.OnSoPhieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIABAN_END", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> GIABAN_END
+		{
+			get
+			{
+				return this._GIABAN_END;
+			}
+			set
+			{
+				if ((this._GIABAN_END != value))
+				{
+					this.OnGIABAN_ENDChanging(value);
+					this.SendPropertyChanging();
+					this._GIABAN_END = value;
+					this.SendPropertyChanged("GIABAN_END");
+					this.OnGIABAN_ENDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THUE_END", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> THUE_END
+		{
+			get
+			{
+				return this._THUE_END;
+			}
+			set
+			{
+				if ((this._THUE_END != value))
+				{
+					this.OnTHUE_ENDChanging(value);
+					this.SendPropertyChanging();
+					this._THUE_END = value;
+					this.SendPropertyChanged("THUE_END");
+					this.OnTHUE_ENDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHI_END", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> PHI_END
+		{
+			get
+			{
+				return this._PHI_END;
+			}
+			set
+			{
+				if ((this._PHI_END != value))
+				{
+					this.OnPHI_ENDChanging(value);
+					this.SendPropertyChanging();
+					this._PHI_END = value;
+					this.SendPropertyChanged("PHI_END");
+					this.OnPHI_ENDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TONGCONG_END", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> TONGCONG_END
+		{
+			get
+			{
+				return this._TONGCONG_END;
+			}
+			set
+			{
+				if ((this._TONGCONG_END != value))
+				{
+					this.OnTONGCONG_ENDChanging(value);
+					this.SendPropertyChanging();
+					this._TONGCONG_END = value;
+					this.SendPropertyChanged("TONGCONG_END");
+					this.OnTONGCONG_ENDChanged();
 				}
 			}
 		}

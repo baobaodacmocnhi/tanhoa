@@ -65,6 +65,7 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
     <Compile Include="DAL\Quay\CTamThu.cs" />
+    <Compile Include="DAL\TongHop\CDCHD.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +162,11 @@
     <Compile Include="GUI\ToTruong\frmGiaoHDHanhThu.Designer.cs">
       <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbKTKS_DonKH.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbKTKS_DonKH.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbThuTien.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,6 +178,11 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="LinQ\dbKTKS_DonKH.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbKTKS_DonKH.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\dbThuTien.dbml.layout">
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </None>
@@ -220,6 +231,9 @@
     <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDHanhThu.resx">
       <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbKTKS_DonKH.dbml.layout">
+      <DependentUpon>dbKTKS_DonKH.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

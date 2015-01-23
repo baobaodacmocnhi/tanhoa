@@ -362,6 +362,11 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.MaNV_DangNgan != null);
         }
 
+        public HOADON GetByMaHD(int MaHD)
+        {
+            return _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == MaHD);
+        }
+
         /// <summary>
         /// Lấy danh sách năm có trong hóa đơn
         /// </summary>
@@ -546,7 +551,7 @@ namespace ThuTien.DAL.Doi
         }
 
         /// <summary>
-        /// Lấy Danh Sách Hóa Đơn Tồn theo Danh Bộ, phục vụ cho Thu Tạm tại Quầy
+        /// Lấy Danh Sách Hóa Đơn Tồn theo Danh Bộ, phục vụ cho Thu Tạm tại Quầy/Chuyển Khoản
         /// </summary>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
@@ -575,6 +580,35 @@ namespace ThuTien.DAL.Doi
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
                             HanhThu=itemND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSByDanhBo(string DanhBo)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND
+                        where itemHD.DANHBA == DanhBo
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            itemHD.NAM,
+                            itemHD.KY,
+                            itemHD.DOT,
+                            itemHD.MALOTRINH,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu = itemND.HoTen,
                         };
             return LINQToDataTable(query);
         }
