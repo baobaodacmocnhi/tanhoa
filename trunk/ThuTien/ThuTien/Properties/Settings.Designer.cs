@@ -33,5 +33,16 @@ namespace ThuTien.Properties {
                 return ((string)(this["HOADON_TAConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.9;Initial Catalog=KTKS_DonKH;Persist Security Info=True;Us" +
+            "er ID=sa;Password=123@tanhoa")]
+        public string KTKS_DonKHConnectionString {
+            get {
+                return ((string)(this["KTKS_DonKHConnectionString"]));
+            }
+        }
     }
 }

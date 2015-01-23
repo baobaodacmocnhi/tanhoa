@@ -70,7 +70,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (!_cTamThu.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         {
                             TAMTHU tamthu = new TAMTHU();
-                            tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
+                            //tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
                             tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
                             tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
                             tamthu.ChuyenKhoan = true;
