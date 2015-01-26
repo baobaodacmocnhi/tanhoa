@@ -319,7 +319,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
                     {
                         dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
-                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon).ToString();
+                        string NgayGiaiQuyet;
+                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon,out NgayGiaiQuyet).ToString();
+                        dr["NgayGiaiQuyet"] = NgayGiaiQuyet;
                     }
 
                     dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
