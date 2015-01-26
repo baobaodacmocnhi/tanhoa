@@ -10,6 +10,7 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.Quay;
 using System.Globalization;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.Quay
 {
@@ -18,6 +19,7 @@ namespace ThuTien.GUI.Quay
         CHoaDon _cHoaDon = new CHoaDon();
         string _mnu = "mnuDangNganQuay";
         CTamThu _cTamThu = new CTamThu();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmDangNganQuay()
         {
@@ -65,6 +67,12 @@ namespace ThuTien.GUI.Quay
                     if (loai == "Chuyển Khoản")
                     {
                         MessageBox.Show("Hóa Đơn có Tạm Thu(Chuyển Khoản): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.SelectedItem = item;
+                        return;
+                    }
+                    if (_cDCHD.CheckBySoHoaDon(item.ToString()))
+                    {
+                        MessageBox.Show("Hóa Đơn đã Rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.SelectedItem = item;
                         return;
                     }

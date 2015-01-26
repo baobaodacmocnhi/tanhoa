@@ -12,6 +12,7 @@ using System.Globalization;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using ThuTien.DAL.ChuyenKhoan;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -21,6 +22,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
         CNganHang _cNganHang = new CNganHang();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmTamThuChuyenKhoan()
         {
@@ -69,6 +71,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (bool.Parse(item.Cells["Chon"].Value.ToString()))
                         if (!_cTamThu.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         {
+                            if (_cDCHD.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                            {
+                                _cTamThu.Rollback();
+                                MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                             TAMTHU tamthu = new TAMTHU();
                             //tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
                             tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());

@@ -11,6 +11,7 @@ using ThuTien.DAL.Quay;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using System.Globalization;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.Quay
 {
@@ -19,6 +20,7 @@ namespace ThuTien.GUI.Quay
         string _mnu = "mnuTamThuQuay";
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmTamThuQuay()
         {
@@ -77,6 +79,11 @@ namespace ThuTien.GUI.Quay
                     ///Bắt đầu đăng ngân chỉ 1 hóa đơn được chọn
                     if (bool.Parse(dgvHoaDon["Chon", index].Value.ToString()) && !_cTamThu.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString()))
                     {
+                        if(_cDCHD.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                         TAMTHU tamthu = new TAMTHU();
                         tamthu.DANHBA = dgvHoaDon["DanhBo", index].Value.ToString();
                         tamthu.FK_HOADON = int.Parse(dgvHoaDon["MaHD", index].Value.ToString());
@@ -95,6 +102,11 @@ namespace ThuTien.GUI.Quay
                     ///Có 1 hóa đơn nên set mặc định row 0
                     if (dgvHoaDon.RowCount == 1 && !_cTamThu.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString()))
                     {
+                        if (_cDCHD.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                         TAMTHU tamthu = new TAMTHU();
                         tamthu.DANHBA = dgvHoaDon["DanhBo", 0].Value.ToString();
                         tamthu.FK_HOADON = int.Parse(dgvHoaDon["MaHD", 0].Value.ToString());

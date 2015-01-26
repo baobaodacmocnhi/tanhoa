@@ -12,7 +12,7 @@ namespace ThuTien.DAL.TongHop
     {
         dbKTKS_DonKHDataContext _dbKTKS_DonKH = new dbKTKS_DonKHDataContext();
 
-        public bool Them(DIEUCHINH_HD hoadon)
+        public bool Them(DIEUCHINH_HD dchd)
         {
             try
             {
@@ -20,9 +20,9 @@ namespace ThuTien.DAL.TongHop
                 //    hoadon.ID_DIEUCHINH_HD = _db.DIEUCHINH_HDs.Max(item => item.ID_DIEUCHINH_HD) + 1;
                 //else
                 //    hoadon.ID_DIEUCHINH_HD = 1;
-                hoadon.CreateDate = DateTime.Now;
-                hoadon.CreateBy = CNguoiDung.MaND;
-                _db.DIEUCHINH_HDs.InsertOnSubmit(hoadon);
+                dchd.CreateDate = DateTime.Now;
+                dchd.CreateBy = CNguoiDung.MaND;
+                _db.DIEUCHINH_HDs.InsertOnSubmit(dchd);
                 _db.SubmitChanges();
                 return true;
             }
@@ -34,12 +34,12 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public bool Sua(DIEUCHINH_HD hoadon)
+        public bool Sua(DIEUCHINH_HD dchd)
         {
             try
             {
-                hoadon.ModifyDate = DateTime.Now;
-                hoadon.ModifyBy = CNguoiDung.MaND;
+                dchd.ModifyDate = DateTime.Now;
+                dchd.ModifyBy = CNguoiDung.MaND;
                 _db.SubmitChanges();
                 return true;
             }
@@ -50,11 +50,11 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public bool Xoa(DIEUCHINH_HD hoadon)
+        public bool Xoa(DIEUCHINH_HD dchd)
         {
             try
             {
-                _db.DIEUCHINH_HDs.DeleteOnSubmit(hoadon);
+                _db.DIEUCHINH_HDs.DeleteOnSubmit(dchd);
                 _db.SubmitChanges();
                 return true;
             }
@@ -69,7 +69,7 @@ namespace ThuTien.DAL.TongHop
         {
             try
             {
-                return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon);
+                return _db.DIEUCHINH_HDs.Any(item => item.SoHoaDon == SoHoaDon && item.TangGiam == null);
             }
             catch (Exception)
             {
@@ -80,17 +80,7 @@ namespace ThuTien.DAL.TongHop
         public List<DIEUCHINH_HD> GetDS()
         {
             return _db.DIEUCHINH_HDs.ToList();
-        }
-
-        public DonKH GetDonKHbyID(decimal MaDon)
-        {
-            return _dbKTKS_DonKH.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon);
-        }
-
-        public DonTXL GetDonTXLbyID(decimal MaDon)
-        {
-            return _dbKTKS_DonKH.DonTXLs.SingleOrDefault(itemDonTXL => itemDonTXL.MaDon == MaDon);
-        }
+        } 
 
         public DataTable GetDSChuaDCHD(int MaNV)
         {
@@ -159,6 +149,21 @@ namespace ThuTien.DAL.TongHop
         public DIEUCHINH_HD GetByMaDCHD(int MaDC)
         {
             return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.ID_DIEUCHINH_HD == MaDC);
+        }
+
+        public DonKH GetDonKHbyID(decimal MaDon)
+        {
+            return _dbKTKS_DonKH.DonKHs.SingleOrDefault(itemDonKH => itemDonKH.MaDon == MaDon);
+        }
+
+        public DonTXL GetDonTXLbyID(decimal MaDon)
+        {
+            return _dbKTKS_DonKH.DonTXLs.SingleOrDefault(itemDonTXL => itemDonTXL.MaDon == MaDon);
+        }
+
+        public CTDCHD GetCTDCHDBySoPhieu(decimal SoPhieu)
+        {
+            return _dbKTKS_DonKH.CTDCHDs.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
         }
     }
 }

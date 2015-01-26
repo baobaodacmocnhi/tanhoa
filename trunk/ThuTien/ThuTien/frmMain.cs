@@ -157,6 +157,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuDieuChinhDangNgan_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDieuChinhDangNgan", "Xem"))
+            {
+                frmDieuChinhDangNgan frm = new frmDieuChinhDangNgan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Hành Thu
@@ -257,6 +268,8 @@ namespace ThuTien
         }
 
         #endregion 
+
+        
 
         #region
 
