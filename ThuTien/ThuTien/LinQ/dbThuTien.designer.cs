@@ -4601,8 +4601,6 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _DinhMuc;
 		
-		private System.Nullable<int> _TieuThu;
-		
 		private string _TangGiam;
 		
 		private string _SoHoaDon;
@@ -4683,8 +4681,6 @@ namespace ThuTien.LinQ
     partial void OnGiaBieuChanged();
     partial void OnDinhMucChanging(System.Nullable<int> value);
     partial void OnDinhMucChanged();
-    partial void OnTieuThuChanging(System.Nullable<int> value);
-    partial void OnTieuThuChanged();
     partial void OnTangGiamChanging(string value);
     partial void OnTangGiamChanged();
     partial void OnSoHoaDonChanging(string value);
@@ -5235,26 +5231,6 @@ namespace ThuTien.LinQ
 					this._DinhMuc = value;
 					this.SendPropertyChanged("DinhMuc");
 					this.OnDinhMucChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThu", DbType="Int")]
-		public System.Nullable<int> TieuThu
-		{
-			get
-			{
-				return this._TieuThu;
-			}
-			set
-			{
-				if ((this._TieuThu != value))
-				{
-					this.OnTieuThuChanging(value);
-					this.SendPropertyChanging();
-					this._TieuThu = value;
-					this.SendPropertyChanged("TieuThu");
-					this.OnTieuThuChanged();
 				}
 			}
 		}

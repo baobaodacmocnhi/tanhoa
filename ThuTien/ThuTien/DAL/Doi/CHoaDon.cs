@@ -227,6 +227,22 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool Sua(HOADON hoadon)
+        {
+            try
+            {
+                hoadon.ModifyDate = DateTime.Now;
+                hoadon.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool XoaChia(List<HOADON> lstHD)
         {
             try
@@ -365,6 +381,11 @@ namespace ThuTien.DAL.Doi
         public HOADON GetByMaHD(int MaHD)
         {
             return _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == MaHD);
+        }
+
+        public HOADON GetBySoHoaDon(string SoHoaDon)
+        {
+            return _db.HOADONs.SingleOrDefault(item => item.SOHOADON == SoHoaDon);
         }
 
         /// <summary>
@@ -593,6 +614,7 @@ namespace ThuTien.DAL.Doi
                         select new
                         {
                             MaHD = itemHD.ID_HOADON,
+                            itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
                             itemHD.SOPHATHANH,
                             itemHD.NAM,
