@@ -901,6 +901,24 @@ namespace KTKS_DonKH.DAL.ToXuLy
         /// <param name="MaU"></param>
         /// <param name="MaDonTXL"></param>
         /// <returns></returns>
+        public bool CheckGiaiQuyetbyUser(int MaU, decimal MaDonTXL,out string NgayGiaiQuyet)
+        {
+            NgayGiaiQuyet = "";
+            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU))
+            {
+                NgayGiaiQuyet = db.CTKTXMs.FirstOrDefault(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU).NgayKTXM.Value.ToString("dd/MM/yyyy");
+                return true;
+            }
+            else
+                if (db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.CreateBy == MaU))
+                {
+                    NgayGiaiQuyet = db.CTBamChis.FirstOrDefault(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.CreateBy == MaU).NgayBC.Value.ToString("dd/MM/yyyy");
+                    return true;
+                }
+                else
+                    return false;
+        }
+
         public bool CheckGiaiQuyetbyUser(int MaU, decimal MaDonTXL)
         {
             if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU))

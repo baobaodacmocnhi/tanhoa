@@ -603,7 +603,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dr["HoTen"] = itemRow["HoTen"];
                     dr["DiaChi"] = itemRow["DiaChi"];
                     dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
-                    dr["NguoiLap"] = CTaiKhoan.HoTen;
+                    if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26)
+                        dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                     dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
                 }

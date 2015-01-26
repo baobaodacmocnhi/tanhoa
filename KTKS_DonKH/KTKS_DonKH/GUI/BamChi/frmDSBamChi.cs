@@ -225,7 +225,8 @@ namespace KTKS_DonKH.GUI.BamChi
                             dr["MaSoBC"] = itemRow["MaSoBC"];
                             dr["NguoiBC"] = itemRow["CreateBy"];
                             dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                            dr["NguoiLap"] = CTaiKhoan.HoTen;
+                            if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26)
+                                dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                             dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
                         }
@@ -259,7 +260,8 @@ namespace KTKS_DonKH.GUI.BamChi
                         dr["DayChi"] = itemRow["DayChi"];
                         dr["MaSoBC"] = itemRow["MaSoBC"];
                         dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                        dr["NguoiLap"] = CTaiKhoan.HoTen;
+                        if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26)
+                            dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                         dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
                     }
