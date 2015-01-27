@@ -272,6 +272,7 @@
             this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
+            this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
             // 
             // label7
             // 
