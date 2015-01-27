@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using System.Globalization;
+using ThuTien.DAL.Quay;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -17,6 +19,8 @@ namespace ThuTien.GUI.ToTruong
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         string _mnu = "mnuDieuChinhDangNgan";
+        CTamThu _cTamThu = new CTamThu();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmDieuChinhDangNgan()
         {
@@ -163,7 +167,55 @@ namespace ThuTien.GUI.ToTruong
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-
+                if (dgvHDChuaThu.RowCount>0&& lstHD.Items.Count > 0)
+                {
+                    DataTable dt = (DataTable)dgvHDChuaThu.DataSource;
+                    DataColumn[] keyColumns = new DataColumn[1];
+                    keyColumns[0] = dt.Columns["SoHoaDon"];
+                    dt.PrimaryKey = keyColumns;
+                    string loai;
+                    foreach (var item in lstHD.Items)
+                    {
+                        if (!dt.Rows.Contains(item.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn sai Hoặc đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.SelectedItem = item;
+                            return;
+                        }
+                        if (_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
+                        {
+                            MessageBox.Show("Hóa Đơn đã được Tạm Thu(" + loai + "): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.SelectedItem = item;
+                            return;
+                        }
+                        if (_cDCHD.CheckBySoHoaDon(item.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn đã rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.SelectedItem = item;
+                            return;
+                        }
+                    }
+                    try
+                    {
+                        _cHoaDon.SqlBeginTransaction();
+                        foreach (var item in lstHD.Items)
+                            if (!_cHoaDon.DangNgan("HanhThu", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value))
+                            {
+                                _cHoaDon.SqlRollbackTransaction();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        _cHoaDon.SqlCommitTransaction();
+                        LoadDanhSachHD();
+                        lstHD.Items.Clear();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception)
+                    {
+                        _cHoaDon.SqlRollbackTransaction();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -173,7 +225,18 @@ namespace ThuTien.GUI.ToTruong
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
+                    {
+                        if (_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_DT"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                        {
 
+                        }
+                    }
+                    LoadDanhSachHD();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

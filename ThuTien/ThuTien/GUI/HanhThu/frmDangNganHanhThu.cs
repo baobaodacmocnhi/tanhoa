@@ -11,6 +11,8 @@ using ThuTien.DAL.QuanTri;
 using System.Globalization;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.TongHop;
+using ThuTien.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.HanhThu
 {
@@ -209,7 +211,7 @@ namespace ThuTien.GUI.HanhThu
                     if (radChuaThu.Checked)
                         if (MessageBox.Show("Bạn có chắc chắn chọn " + radChuaThu.Text + "?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             flagThem = true;
-                if (dgvTongHD.RowCount > 0 && flagThem && lstHD.Items.Count > 0)
+                if (dgvHDChuaThu.RowCount > 0 && flagThem && lstHD.Items.Count > 0)
                     if (radDaThu.Checked)
                     {
                         DataTable dt = (DataTable)dgvHDChuaThu.DataSource;
@@ -366,6 +368,53 @@ namespace ThuTien.GUI.HanhThu
         private void btnSua_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabDaThu")
+            {
+                foreach (DataGridViewRow item in dgvHDDaThu.Rows)
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "ĐÃ THU";
+                    dr["DanhBo"] = item.Cells["DanhBo_DT"].Value.ToString().Insert(4," ").Insert(8," ");
+                    dr["Ky"] = item.Cells["Ky_DT"].Value;
+                    dr["MLT"] = item.Cells["MLT_DT"].Value;
+                    dr["TongCong"] = item.Cells["TongCong_DT"].Value;
+                    dr["SoPhatHanh"] = item.Cells["SoPhatHanh_DT"].Value;
+                    dr["SoHoaDon"] = item.Cells["SoHoaDon_DT"].Value;
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+                rptDSHoaDon rpt = new rptDSHoaDon();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabChuaThu")
+                {
+                    foreach (DataGridViewRow item in dgvHDChuaThu.Rows)
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "CHƯA THU";
+                        dr["DanhBo"] = item.Cells["DanhBo_CT"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item.Cells["Ky_CT"].Value;
+                        dr["MLT"] = item.Cells["MLT_CT"].Value;
+                        dr["TongCong"] = item.Cells["TongCong_CT"].Value;
+                        dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CT"].Value;
+                        dr["SoHoaDon"] = item.Cells["SoHoaDon_CT"].Value;
+                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                    rptDSHoaDon rpt = new rptDSHoaDon();
+                    rpt.SetDataSource(ds);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+                }
+            
         }
     }
 }
