@@ -463,5 +463,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
             }
         }
+
+        private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN") || cmbLyDo.SelectedItem.ToString() == "Vấn Đề Khác")
+                txtSoTien.ReadOnly = false;
+            else
+                txtSoTien.ReadOnly = true;
+        }
+
+        private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }

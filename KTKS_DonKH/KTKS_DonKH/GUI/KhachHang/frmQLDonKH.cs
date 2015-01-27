@@ -323,7 +323,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             //string expression = String.Format("CreateDate >= #{0:yyyy-MM-dd} 00:00:00# and CreateDate <= #{0:yyyy-MM-dd} 23:59:59#", dateTimKiem.Value);
             //DSDonKH_BS.Filter = expression;
-            _tuNgay = dateTu.Value.ToString("dd/MM/yyyy");
+            _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
             _denNgay = "";
             dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByDate(dateTimKiem.Value);
         }

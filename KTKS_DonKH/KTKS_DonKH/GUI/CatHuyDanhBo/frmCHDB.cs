@@ -216,7 +216,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN"))
+            if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN") || cmbLyDo.SelectedItem.ToString() == "Vấn Đề Khác")
                 txtSoTien.ReadOnly = false;
             else
                 txtSoTien.ReadOnly = true;
