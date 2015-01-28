@@ -1217,7 +1217,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //    DSCHDB_BS.RemoveFilter();
                 if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
-                    string expression = "";
                     switch (cmbTimTheo.SelectedItem.ToString())
                     {
                         case "Mã Đơn":

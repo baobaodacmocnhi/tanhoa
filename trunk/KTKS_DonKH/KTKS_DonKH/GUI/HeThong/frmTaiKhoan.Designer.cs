@@ -52,6 +52,7 @@
             this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKiemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhanQuyen)).BeginInit();
@@ -160,12 +161,13 @@
             this.TaiKhoan,
             this.MatKhau,
             this.MaKiemBamChi,
+            this.ToKH,
             this.ToXuLy});
             this.dgvDSTaiKhoan.Location = new System.Drawing.Point(13, 156);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTaiKhoan.MultiSelect = false;
             this.dgvDSTaiKhoan.Name = "dgvDSTaiKhoan";
-            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(599, 378);
+            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(700, 378);
             this.dgvDSTaiKhoan.TabIndex = 9;
             this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
             this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
@@ -203,7 +205,7 @@
             this.TenR,
             this.QuyenXem,
             this.QuyenCapNhat});
-            this.dgvPhanQuyen.Location = new System.Drawing.Point(620, 156);
+            this.dgvPhanQuyen.Location = new System.Drawing.Point(721, 156);
             this.dgvPhanQuyen.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPhanQuyen.MultiSelect = false;
             this.dgvPhanQuyen.Name = "dgvPhanQuyen";
@@ -296,6 +298,12 @@
             this.MaKiemBamChi.ReadOnly = true;
             this.MaKiemBamChi.Width = 120;
             // 
+            // ToKH
+            // 
+            this.ToKH.DataPropertyName = "ToKH";
+            this.ToKH.HeaderText = "Tổ KH";
+            this.ToKH.Name = "ToKH";
+            // 
             // ToXuLy
             // 
             this.ToXuLy.DataPropertyName = "ToXuLy";
@@ -357,6 +365,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TaiKhoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MatKhau;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKiemBamChi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToKH;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
     }
 }

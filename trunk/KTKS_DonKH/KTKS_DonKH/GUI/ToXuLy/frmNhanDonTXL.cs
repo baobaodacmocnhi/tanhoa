@@ -214,8 +214,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _cDonTXL.rollback();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -469,6 +469,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void btnNhapNhieuDB_Click(object sender, EventArgs e)
+        {
+            frmNhapNhieuDB frm = new frmNhapNhieuDB();
+            frm.ShowDialog();
         }
 
         
