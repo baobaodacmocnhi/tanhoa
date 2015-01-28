@@ -174,8 +174,18 @@ namespace KTKS_DonKH.GUI.HeThong
             else
                 ischecked = false;
             User taikhoan = _cTaiKhoan.getUserbyID(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
-            taikhoan.ToXuLy = ischecked;
-            _cTaiKhoan.SuaTaiKhoan(taikhoan, false);
+            if(dgvDSTaiKhoan.Columns[e.ColumnIndex].Name=="ToXuLy")
+                if (taikhoan.ToXuLy != bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                {
+                    taikhoan.ToXuLy = ischecked;
+                    _cTaiKhoan.SuaTaiKhoan(taikhoan, false);
+                }
+            if (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name == "ToKH")
+                if (taikhoan.ToKH != bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                {
+                    taikhoan.ToKH = ischecked;
+                    _cTaiKhoan.SuaTaiKhoan(taikhoan, false);
+                }
         }
 
         private void dgvDSTaiKhoan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

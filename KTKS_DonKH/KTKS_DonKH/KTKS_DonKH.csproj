@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>35</ApplicationRevision>
+    <ApplicationRevision>38</ApplicationRevision>
     <ApplicationVersion>1.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -778,6 +778,12 @@
     <Compile Include="GUI\ToXuLy\frmNhanDonTXL.Designer.cs">
       <DependentUpon>frmNhanDonTXL.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToXuLy\frmNhapNhieuDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmNhapNhieuDB.Designer.cs">
+      <DependentUpon>frmNhapNhieuDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToXuLy\frmQLDonTXL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1184,6 +1190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmNhanDonTXL.resx">
       <DependentUpon>frmNhanDonTXL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToXuLy\frmNhapNhieuDB.resx">
+      <DependentUpon>frmNhapNhieuDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmQLDonTXL.resx">
       <DependentUpon>frmQLDonTXL.cs</DependentUpon>

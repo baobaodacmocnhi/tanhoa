@@ -2289,7 +2289,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                return db.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCTDB == MaCTCTDB);
+                return db.YeuCauCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCTDB == MaCTCTDB).OrderBy(item=>item.CreateDate).ToList().Last();
             }
             catch (Exception ex)
             {
@@ -2302,7 +2302,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         {
             try
             {
-                return db.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB);
+                return db.YeuCauCHDBs.Where(itemYCCHDB => itemYCCHDB.MaCTCHDB == MaCTCHDB).OrderBy(item => item.CreateDate).ToList().Last();
             }
             catch (Exception ex)
             {
