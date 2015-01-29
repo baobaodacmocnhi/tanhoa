@@ -177,9 +177,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             int TongNK = 0;
             foreach (DataRow itemRow in ((DataTable)dgvDSSoDangKy.DataSource).Rows)
-            {
-                TongNK += int.Parse(itemRow["SoNKDangKy"].ToString());
-            }
+                if (!bool.Parse(itemRow["Cat"].ToString()))
+                {
+                    TongNK += int.Parse(itemRow["SoNKDangKy"].ToString());
+                }
             lbTongNK.Text = "Tổng NK: " + TongNK;
             lbTongDM.Text = "Tổng ĐM: " + TongNK * 4;
         }

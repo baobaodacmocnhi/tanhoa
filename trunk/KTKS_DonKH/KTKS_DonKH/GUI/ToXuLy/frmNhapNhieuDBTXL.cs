@@ -14,23 +14,29 @@ using KTKS_DonKH.DAL.ToXuLy;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
-    public partial class frmNhapNhieuDB : Form
+    public partial class frmNhapNhieuDBTXL : Form
     {
         CLoaiDonTXL _cLoaiDonTXL = new CLoaiDonTXL();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CTTKH _cTTKH = new CTTKH();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CDonTXL _cDonTXL = new CDonTXL();
+        private DateTimePicker cellDateTimePicker;
 
-
-        public frmNhapNhieuDB()
+        public frmNhapNhieuDBTXL()
         {
             InitializeComponent();
         }
 
         private void frmNhapNhieuDB_Load(object sender, EventArgs e)
         {
-            Location = new Point(50, 50);
+            this.cellDateTimePicker = new DateTimePicker();
+            this.cellDateTimePicker.ValueChanged += new EventHandler(cellDateTimePickerValueChanged);
+            this.cellDateTimePicker.Visible = false;
+            this.cellDateTimePicker.CustomFormat = "dd/MM/yyyy";
+            this.cellDateTimePicker.Format = DateTimePickerFormat.Custom;
+            this.dgvDanhBo.Controls.Add(cellDateTimePicker);
+            Location = new Point(20, 50);
 
             dgvDanhBo.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDanhBo.Font, FontStyle.Bold);
 
@@ -45,6 +51,12 @@ namespace KTKS_DonKH.GUI.ToXuLy
             cmbColumn.ValueMember = "MaU";
         }
 
+        void cellDateTimePickerValueChanged(object sender, EventArgs e)
+        {
+            dgvDanhBo.CurrentCell.Value = cellDateTimePicker.Value.ToString("dd/MM/yyyy");
+            cellDateTimePicker.Visible = false;
+        }
+
         private void cmbLD_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbLD.SelectedIndex != -1)
@@ -55,7 +67,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void dgvDanhBo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo")
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBo["DanhBo",e.RowIndex].Value!=null)
             {
                 if (_cTTKH.getTTKHbyID(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString()) != null)
                 {
@@ -76,13 +88,17 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 }
             }
             if (e.RowIndex > 0)
+            {
+                dgvDanhBo["NgayChuyen", e.RowIndex].Value = dgvDanhBo["NgayChuyen", e.RowIndex - 1].Value;
                 dgvDanhBo["NguoiDi", e.RowIndex].Value = dgvDanhBo["NguoiDi", e.RowIndex - 1].Value;
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
             try
             {
+                decimal min = 0, max = 0;
                 _cDonTXL.beginTransaction();
 
                 foreach (DataGridViewRow item in dgvDanhBo.Rows)
@@ -118,8 +134,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         ///
                         if (item.Cells["NguoiDi"].Value != null)
                         {
+                            string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
                             dontxl.ChuyenKT = true;
-                            dontxl.NgayChuyenKT = DateTime.Now;
+                            dontxl.NgayChuyenKT = new DateTime(int.Parse(date[2]), int.Parse(date[1]),int.Parse(date[0]));
                             dontxl.NguoiDi = int.Parse(item.Cells["NguoiDi"].Value.ToString());
                             if (item.Cells["GhiChu"].Value != null)
                                 dontxl.GhiChuChuyenKT = item.Cells["GhiChu"].Value.ToString();
@@ -127,6 +144,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         ///
                         if (_cDonTXL.ThemDonTXL(dontxl))
                         {
+                            if (min == 0)
+                                min = dontxl.MaDon;
+                            max = dontxl.MaDon;
                             if (item.Cells["NguoiDi"].Value != null)
                             {
                                 LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
@@ -140,7 +160,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     }
 
                 _cDonTXL.commitTransaction();
-                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Thành công\nSố đơn từ TXL" + min.ToString().Insert(min.ToString().Length - 2, "-") + " đến TXL" + max.ToString().Insert(max.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmbLD.SelectedIndex = -1;
                 txtMaDon.Text = "";
                 txtNgayNhan.Text = "";
@@ -164,6 +184,25 @@ namespace KTKS_DonKH.GUI.ToXuLy
             }
         }
 
+        private void dgvDanhBo_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "NgayChuyen")
+            {
+                //var index = dgvDanhBo.CurrentCell.ColumnIndex;
 
+                Rectangle tempRect = this.dgvDanhBo.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+                cellDateTimePicker.Location = tempRect.Location;
+                cellDateTimePicker.Width = tempRect.Width;
+                try
+                {
+                    cellDateTimePicker.Value = DateTime.Parse(dgvDanhBo.CurrentCell.Value.ToString());
+                }
+                catch
+                {
+                    cellDateTimePicker.Value = DateTime.Now;
+                }
+                cellDateTimePicker.Visible = true;
+            }
+        }
     }
 }

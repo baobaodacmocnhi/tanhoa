@@ -496,7 +496,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemLSCKT.NgayChuyenKT.Value.Date == TuNgay.Date
+                                where itemLSCKT.MaDonTXL!=null&&itemLSCKT.NgayChuyenKT.Value.Date == TuNgay.Date
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -544,7 +544,103 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemLSCKT.NgayChuyenKT.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyenKT.Value.Date <= DenNgay.Date
+                                where itemLSCKT.MaDonTXL != null && itemLSCKT.NgayChuyenKT.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyenKT.Value.Date <= DenNgay.Date
+                                orderby itemDonTXL.MaDon ascending
+                                select new
+                                {
+                                    itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
+                                    itemDonTXL.CreateDate,
+                                    itemDonTXL.DanhBo,
+                                    itemDonTXL.HoTen,
+                                    itemDonTXL.DiaChi,
+                                    itemDonTXL.NoiDung,
+                                    itemDonTXL.MaChuyen,
+                                    itemDonTXL.LyDoChuyen,
+                                    itemDonTXL.SoLuongDiaChi,
+                                    CreateBy = itemUser.HoTen,
+                                    itemLSCKT.NguoiDi,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Thông Kê Đơn được chuyển cho những ai
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSDonTKHDaChuyenKT(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                                join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
+                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
+                                where itemLSCKT.MaDon != null && itemLSCKT.NgayChuyenKT.Value.Date == TuNgay.Date
+                                orderby itemDonTXL.MaDon ascending
+                                select new
+                                {
+                                    itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
+                                    itemDonTXL.CreateDate,
+                                    itemDonTXL.DanhBo,
+                                    itemDonTXL.HoTen,
+                                    itemDonTXL.DiaChi,
+                                    itemDonTXL.NoiDung,
+                                    itemDonTXL.MaChuyen,
+                                    itemDonTXL.LyDoChuyen,
+                                    itemDonTXL.SoLuongDiaChi,
+                                    CreateBy = itemUser.HoTen,
+                                    itemLSCKT.NguoiDi,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Thông Kê Đơn được chuyển cho những ai
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSDonTKHDaChuyenKT(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                                join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
+                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
+                                where itemLSCKT.MaDon != null && itemLSCKT.NgayChuyenKT.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyenKT.Value.Date <= DenNgay.Date
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -592,7 +688,55 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemDonTXL.SoCongVan==SoCongVan
+                                where itemLSCKT.MaDonTXL!=null && itemDonTXL.SoCongVan==SoCongVan
+                                orderby itemDonTXL.MaDon ascending
+                                select new
+                                {
+                                    itemDonTXL.MaDon,
+                                    itemLoaiDonTXL.TenLD,
+                                    itemDonTXL.SoCongVan,
+                                    itemDonTXL.CreateDate,
+                                    itemDonTXL.DanhBo,
+                                    itemDonTXL.HoTen,
+                                    itemDonTXL.DiaChi,
+                                    itemDonTXL.NoiDung,
+                                    itemDonTXL.MaChuyen,
+                                    itemDonTXL.LyDoChuyen,
+                                    itemDonTXL.SoLuongDiaChi,
+                                    CreateBy = itemUser.HoTen,
+                                    itemLSCKT.NguoiDi,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Thông Kê Đơn được chuyển cho những ai theo Số Công Văn
+        /// </summary>
+        /// <param name="SoCongVan"></param>
+        /// <returns></returns>
+        public DataTable LoadDSDonTKHDaChuyenKTbySoCongVan(string SoCongVan)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                                join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
+                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
+                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
+                                where itemLSCKT.MaDon != null && itemDonTXL.SoCongVan == SoCongVan
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -895,13 +1039,44 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
+        public DataTable LoadDSLichSuChuyenKTbyMaDonTKH(decimal MaDonKH)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    var query = from itemLSCKT in db.LichSuChuyenKTs
+                                join itemUser in db.Users on itemLSCKT.NguoiDi equals itemUser.MaU
+                                where itemLSCKT.MaDon == MaDonKH
+                                select new
+                                {
+                                    itemLSCKT.MaLSChuyenKT,
+                                    itemLSCKT.NgayChuyenKT,
+                                    itemLSCKT.GhiChuChuyenKT,
+                                    NguoiDi = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Kiểm tra Đơn có được giải quyết bởi người được giao hay chưa
         /// </summary>
         /// <param name="MaU"></param>
         /// <param name="MaDonTXL"></param>
         /// <returns></returns>
-        public bool CheckGiaiQuyetbyUser(int MaU, decimal MaDonTXL,out string NgayGiaiQuyet)
+        public bool CheckGiaiQuyetDonTXLbyUser(int MaU, decimal MaDonTXL,out string NgayGiaiQuyet)
         {
             NgayGiaiQuyet = "";
             if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU))
@@ -919,12 +1094,38 @@ namespace KTKS_DonKH.DAL.ToXuLy
                     return false;
         }
 
-        public bool CheckGiaiQuyetbyUser(int MaU, decimal MaDonTXL)
+        public bool CheckGiaiQuyetDonTXLbyUser(int MaU, decimal MaDonTXL)
         {
             if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU))
                 return true;
             else
                 return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.CreateBy == MaU);
+        }
+
+        public bool CheckGiaiQuyetDonKHbyUser(int MaU, decimal MaDon, out string NgayGiaiQuyet)
+        {
+            NgayGiaiQuyet = "";
+            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.CreateBy == MaU))
+            {
+                NgayGiaiQuyet = db.CTKTXMs.FirstOrDefault(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.CreateBy == MaU).NgayKTXM.Value.ToString("dd/MM/yyyy");
+                return true;
+            }
+            else
+                if (db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == MaU))
+                {
+                    NgayGiaiQuyet = db.CTBamChis.FirstOrDefault(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == MaU).NgayBC.Value.ToString("dd/MM/yyyy");
+                    return true;
+                }
+                else
+                    return false;
+        }
+
+        public bool CheckGiaiQuyetDonKHbyUser(int MaU, decimal MaDon)
+        {
+            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.CreateBy == MaU))
+                return true;
+            else
+                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == MaU);
         }
 
         public LichSuChuyenKT getLichSuChuyenKTbyID(decimal MaLSChuyenKT)

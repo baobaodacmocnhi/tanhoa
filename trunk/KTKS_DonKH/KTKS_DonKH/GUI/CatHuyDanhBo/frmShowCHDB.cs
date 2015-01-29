@@ -126,7 +126,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["SoPhieu"] = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length-2, "-");
                 dr["HoTen"] = _ctchdb.HoTen;
                 dr["DiaChi"] = _ctchdb.DiaChi;
-                dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                if (!string.IsNullOrEmpty(_ctchdb.DanhBo))
+                    dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctchdb.HopDong;
                 if (_ctchdb.LyDo != "Vấn Đề Khác")
                     dr["LyDo"] = _ctchdb.LyDo + ". ";
@@ -205,6 +206,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             dr["Dot"] = ycchdb.Dot;
                             dr["HoTen"] = ycchdb.HoTen;
                             dr["DiaChi"] = ycchdb.DiaChi;
+                            if (!string.IsNullOrEmpty(ycchdb.DanhBo))
                             dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["HopDong"] = ycchdb.HopDong;
 
@@ -292,6 +294,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["Dot"] = ycchdb.Dot;
                                 dr["HoTen"] = ycchdb.HoTen;
                                 dr["DiaChi"] = ycchdb.DiaChi;
+                                if (!string.IsNullOrEmpty(ycchdb.DanhBo))
                                 dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ycchdb.HopDong;
 
@@ -334,6 +337,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["Dot"] = ycchdb.Dot;
                     dr["HoTen"] = ycchdb.HoTen;
                     dr["DiaChi"] = ycchdb.DiaChi;
+                    if (!string.IsNullOrEmpty(ycchdb.DanhBo))
                     dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HopDong"] = ycchdb.HopDong;
 

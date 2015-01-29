@@ -259,6 +259,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         chkChuyenKT.Checked = true;
                         dateChuyenKT.Value = _dontxl.NgayChuyenKT.Value;
+                        if(_dontxl.NguoiDi!=null)
                         cmbNguoiDi.SelectedValue = _dontxl.NguoiDi;
                         txtGhiChuChuyenKT.Text = _dontxl.GhiChuChuyenKT;
                     }
@@ -294,6 +295,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             if (chkChuyenKT.Checked)
             {
                 groupBoxChuyenKTXM.Enabled = true;
+                cmbNguoiDi.SelectedIndex = 0;
             }
             else
             {
@@ -473,7 +475,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void btnNhapNhieuDB_Click(object sender, EventArgs e)
         {
-            frmNhapNhieuDB frm = new frmNhapNhieuDB();
+            frmNhapNhieuDBTXL frm = new frmNhapNhieuDBTXL();
             frm.ShowDialog();
         }
 

@@ -497,7 +497,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null && (itemLSCT.MaDon==MaDon || itemLSCT.MaDonTXL==MaDon)
                                 //where itemLSCT.MaLSCT == 126114
-                                orderby itemLSCT.CreateDate descending
+                                orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -637,7 +637,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 || ((itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
                                 && (itemLSCT.MaDonTXL >= TuMaDon && itemLSCT.MaDonTXL <= DenMaDon))
                                 //where itemLSCT.MaLSCT == 126114
-                                orderby itemLSCT.CreateDate descending
+                                orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -773,7 +773,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null && itemLSCT.SoPhieu==SoPhieu
                                 //where itemLSCT.MaLSCT == 126114
-                                orderby itemLSCT.CreateDate descending
+                                orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -912,7 +912,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 && itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
                                 && itemLSCT.SoPhieu >= TuSoPhieu && itemLSCT.SoPhieu <= DenSoPhieu
                                 //where itemLSCT.MaLSCT == 126114
-                                orderby itemLSCT.CreateDate descending
+                                orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1048,7 +1048,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null&& itemLSCT.DanhBo==DanhBo
                                 //where itemLSCT.MaLSCT == 126114
-                                orderby itemLSCT.CreateDate descending
+                                orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1184,7 +1184,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null&&itemLSCT.CreateDate.Value.Date==TuNgay.Date
                                 //where itemLSCT.MaLSCT == 126114
-                                orderby itemLSCT.CreateDate descending
+                                orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -1320,7 +1320,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                                 //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
                                 where itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date>=TuNgay.Date&&itemLSCT.CreateDate.Value.Date<=DenNgay.Date
                                 //where itemLSCT.MaLSCT == 126114
-                                orderby itemLSCT.CreateDate descending
+                                orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
                                     In = false,
@@ -3170,7 +3170,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 {
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
-                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8 && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
+                                where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 {
@@ -3214,7 +3214,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 {
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
-                                where itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8 && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
+                                where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 { 

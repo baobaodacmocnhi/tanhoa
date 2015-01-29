@@ -107,6 +107,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;  
             }
 
