@@ -110,7 +110,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["Dot"] = _ycchdb.Dot;
                 dr["HoTen"] = _ycchdb.HoTen;
                 dr["DiaChi"] = _ycchdb.DiaChi;
-                dr["DanhBo"] = _ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                if (!string.IsNullOrEmpty(_ycchdb.DanhBo))
+                    dr["DanhBo"] = _ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ycchdb.HopDong;
 
                 if (_ycchdb.LyDo == "Vấn Đề Khác")

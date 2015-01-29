@@ -202,7 +202,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["SoPhieu"] = _ctdongnuoc.MaCTDN.ToString().Insert(_ctdongnuoc.MaCTDN.ToString().Length - 2, "-");
                 dr["HoTen"] = _ctdongnuoc.HoTen;
                 dr["DiaChi"] = _ctdongnuoc.DiaChi;
-                dr["DanhBo"] = _ctdongnuoc.DanhBo;
+                if (!string.IsNullOrEmpty(_ctdongnuoc.DanhBo))
+                    dr["DanhBo"] = _ctdongnuoc.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctdongnuoc.HopDong;
                 dr["DiaChiDHN"] = _ctdongnuoc.DiaChiDHN;
                 ///
@@ -236,7 +237,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["SoPhieu"] = _ctdongnuoc.MaCTMN.ToString().Insert(_ctdongnuoc.MaCTMN.ToString().Length - 2, "-");
                 dr["HoTen"] = _ctdongnuoc.HoTen;
                 dr["DiaChi"] = _ctdongnuoc.DiaChi;
-                dr["DanhBo"] = _ctdongnuoc.DanhBo;
+                if (!string.IsNullOrEmpty(_ctdongnuoc.DanhBo))
+                dr["DanhBo"] = _ctdongnuoc.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctdongnuoc.HopDong;
                 dr["DiaChiDHN"] = _ctdongnuoc.DiaChiDHN;
                 ///

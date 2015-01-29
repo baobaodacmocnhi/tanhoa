@@ -938,7 +938,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctctdb.HoTen;
                                 dr["DiaChi"] = ctctdb.DiaChi;
-                                dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                                if(!string.IsNullOrEmpty(ctctdb.DanhBo))
+                                    dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctctdb.HopDong;
                                 if (ctctdb.LyDo != "Vấn Đề Khác")
                                     dr["LyDo"] = ctctdb.LyDo + ". ";
@@ -974,7 +975,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctchdb.HoTen;
                                 dr["DiaChi"] = ctchdb.DiaChi;
-                                dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                                if (!string.IsNullOrEmpty(ctchdb.DanhBo))
+                                    dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctchdb.HopDong;
                                 if (ctchdb.LyDo != "Vấn Đề Khác")
                                     dr["LyDo"] = ctchdb.LyDo + ". ";
@@ -1012,7 +1014,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["Dot"] = ycchdb.Dot;
                                 dr["HoTen"] = ycchdb.HoTen;
                                 dr["DiaChi"] = ycchdb.DiaChi;
-                                dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                                if (!string.IsNullOrEmpty(ycchdb.DanhBo))
+                                    dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ycchdb.HopDong;
 
                                 if (ycchdb.LyDo == "Vấn Đề Khác")

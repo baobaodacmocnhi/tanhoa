@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.ToXuLy
 {
-    partial class frmNhapNhieuDB
+    partial class frmNhapNhieuDBTXL
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbLD = new System.Windows.Forms.ComboBox();
             this.dgvDanhBo = new System.Windows.Forms.DataGridView();
+            this.NgayChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -157,6 +158,7 @@
             this.txtMaDon.Size = new System.Drawing.Size(85, 25);
             this.txtMaDon.TabIndex = 19;
             this.txtMaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaDon.Visible = false;
             // 
             // label3
             // 
@@ -168,6 +170,7 @@
             this.label3.Size = new System.Drawing.Size(85, 19);
             this.label3.TabIndex = 18;
             this.label3.Text = "   Số Đơn    ";
+            this.label3.Visible = false;
             // 
             // cmbLD
             // 
@@ -185,6 +188,7 @@
             // 
             this.dgvDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NgayChuyen,
             this.NguoiDi,
             this.GhiChu,
             this.DanhBo,
@@ -199,10 +203,16 @@
             this.Nam});
             this.dgvDanhBo.Location = new System.Drawing.Point(12, 59);
             this.dgvDanhBo.Name = "dgvDanhBo";
-            this.dgvDanhBo.Size = new System.Drawing.Size(1225, 476);
+            this.dgvDanhBo.Size = new System.Drawing.Size(1282, 476);
             this.dgvDanhBo.TabIndex = 24;
+            this.dgvDanhBo.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDanhBo_CellBeginEdit);
             this.dgvDanhBo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellEndEdit);
             this.dgvDanhBo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBo_RowPostPaint);
+            // 
+            // NgayChuyen
+            // 
+            this.NgayChuyen.HeaderText = "Ngày Chuyển";
+            this.NgayChuyen.Name = "NgayChuyen";
             // 
             // NguoiDi
             // 
@@ -231,7 +241,7 @@
             // 
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 300;
+            this.DiaChi.Width = 250;
             // 
             // HopDong
             // 
@@ -288,12 +298,12 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // frmNhapNhieuDB
+            // frmNhapNhieuDBTXL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1249, 547);
+            this.ClientSize = new System.Drawing.Size(1308, 547);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.dgvDanhBo);
             this.Controls.Add(this.txtTongSoDanhBo);
@@ -312,8 +322,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmNhapNhieuDB";
-            this.Text = "Nhập Nhiều Danh Bộ";
+            this.Name = "frmNhapNhieuDBTXL";
+            this.Text = "Nhập Nhiều Danh Bộ TXL";
             this.Load += new System.EventHandler(this.frmNhapNhieuDB_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).EndInit();
             this.ResumeLayout(false);
@@ -336,6 +346,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbLD;
         private System.Windows.Forms.DataGridView dgvDanhBo;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyen;
         private System.Windows.Forms.DataGridViewComboBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
@@ -348,6 +360,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
-        private System.Windows.Forms.Button btnLuu;
     }
 }

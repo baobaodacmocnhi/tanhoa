@@ -579,6 +579,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                                  dr["LoTrinh"] = cttttl.LoTrinh;
                                  dr["HoTen"] = cttttl.HoTen;
                                  dr["DiaChi"] = cttttl.DiaChi;
+                                 if (!string.IsNullOrEmpty(cttttl.DanhBo))
                                  dr["DanhBo"] = cttttl.DanhBo.Insert(7, " ").Insert(4, " ");
                                  dr["HopDong"] = cttttl.HopDong;
                                  dr["GiaBieu"] = cttttl.GiaBieu;

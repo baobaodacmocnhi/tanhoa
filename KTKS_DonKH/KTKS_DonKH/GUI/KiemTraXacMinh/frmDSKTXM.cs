@@ -57,13 +57,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             //cmbColumn.ValueMember = "MaChuyen";
 
             //dgvDSCTKTXM.DataSource = DSDon_BS;
-            if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-            {
-                radDaDuyet.Checked = true;
-                //btnLuu.Visible = true;
-            }
-            else
-                if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
+            //if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+            //{
+            //    radDaDuyet.Checked = true;
+            //    //btnLuu.Visible = true;
+            //}
+            //else
+            //    if (CTaiKhoan.RoleKTXM_Xem || CTaiKhoan.RoleKTXM_CapNhat)
                     radDSKTXM.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
@@ -603,16 +603,26 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dr["HoTen"] = itemRow["HoTen"];
                     dr["DiaChi"] = itemRow["DiaChi"];
                     dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
-                    if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26)
-                        dr["NguoiLap"] = CTaiKhoan.HoTen;
+                    dr["NguoiLap"] = itemRow["CreateBy"];
 
                     dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
                 }
 
-                rptDSKTXM rpt = new rptDSKTXM();
-                rpt.SetDataSource(dsBaoCao);
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27)
+                {
+                    rptThongKeDSKTXM rpt = new rptThongKeDSKTXM();
+                    rpt.SetDataSource(dsBaoCao);
+                    rpt.Subreports[0].SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    rptDSKTXM rpt = new rptDSKTXM();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+                }
             }
             else
                 MessageBox.Show("Chưa chọn Danh Sách KTXM", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

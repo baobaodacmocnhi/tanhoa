@@ -138,7 +138,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             }
             if (dgvDSDonTXL.Columns[e.ColumnIndex].Name == "GiaiQuyet" && !string.IsNullOrEmpty(dgvDSDonTXL["NguoiDi", e.RowIndex].Value.ToString()))
             {
-                e.Value = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(dgvDSDonTXL["NguoiDi", e.RowIndex].Value.ToString()), decimal.Parse(dgvDSDonTXL["MaDon", e.RowIndex].Value.ToString()));
+                e.Value = _cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(dgvDSDonTXL["NguoiDi", e.RowIndex].Value.ToString()), decimal.Parse(dgvDSDonTXL["MaDon", e.RowIndex].Value.ToString()));
             }
         }
 
@@ -268,7 +268,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 {
                     string a = itemRow["NguoiDi"].ToString();
                     string b = itemRow["MaDon"].ToString();
-                    if (!_cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString())))
+                    if (!_cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString())))
                     {
                         DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
@@ -320,7 +320,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
                         string NgayGiaiQuyet;
-                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon,out NgayGiaiQuyet).ToString();
+                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon,out NgayGiaiQuyet).ToString();
                         dr["NgayGiaiQuyet"] = NgayGiaiQuyet;
                     }
 

@@ -545,7 +545,7 @@
             // 
             this.dateTimKiem.CustomFormat = "dd/MM/yyyy";
             this.dateTimKiem.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimKiem.Location = new System.Drawing.Point(836, 39);
+            this.dateTimKiem.Location = new System.Drawing.Point(785, 39);
             this.dateTimKiem.Name = "dateTimKiem";
             this.dateTimKiem.Size = new System.Drawing.Size(130, 25);
             this.dateTimKiem.TabIndex = 6;
@@ -555,7 +555,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(562, 19);
+            this.label2.Location = new System.Drawing.Point(511, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 2;
@@ -570,7 +570,7 @@
             "Danh Bộ",
             "Ngày",
             "Khoảng Thời Gian"});
-            this.cmbTimTheo.Location = new System.Drawing.Point(636, 16);
+            this.cmbTimTheo.Location = new System.Drawing.Point(585, 16);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
             this.cmbTimTheo.TabIndex = 3;
@@ -578,7 +578,7 @@
             // 
             // txtNoiDungTimKiem
             // 
-            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(836, 16);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(785, 16);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
             this.txtNoiDungTimKiem.TabIndex = 5;
@@ -588,7 +588,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(762, 19);
+            this.label1.Location = new System.Drawing.Point(711, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 4;
@@ -666,7 +666,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(1067, 12);
+            this.btnIn.Location = new System.Drawing.Point(1016, 12);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(123, 35);
             this.btnIn.TabIndex = 10;
@@ -681,7 +681,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(836, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(785, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
             this.panel_KhoangThoiGian.TabIndex = 11;
