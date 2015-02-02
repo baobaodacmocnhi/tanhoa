@@ -946,5 +946,11 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
         }
 
+        private void btnNhapNhieuDB_Click(object sender, EventArgs e)
+        {
+            frmNhapNhieuDBTKH frm = new frmNhapNhieuDBTKH();
+            frm.ShowDialog();
+        }
+
     }
 }

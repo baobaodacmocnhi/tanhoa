@@ -376,8 +376,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctchdb != null)
                 {
-                    if (_ctchdb.DanhBo != txtDanhBo.Text.Trim())
-                    {
+                    //if (_ctchdb.DanhBo != txtDanhBo.Text.Trim())
+                    //{
                         _ctchdb.DanhBo = txtDanhBo.Text.Trim();
                         _ctchdb.HopDong = txtHopDong.Text.Trim();
                         _ctchdb.HoTen = txtHoTen.Text.Trim();
@@ -388,7 +388,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctchdb.Ky = _ttkhachhang.Ky;
                             _ctchdb.Nam = _ttkhachhang.Nam;
                         }
-                    }
+                    //}
 
                     if (txtMaThongBaoCT.Text.Trim().Replace("-", "") != "")
                         _ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));

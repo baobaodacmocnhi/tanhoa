@@ -502,6 +502,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             rptDSDonTXL rpt = new rptDSDonTXL();
             rpt.SetDataSource(dsBaoCao);
+            rpt.Subreports[0].SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
