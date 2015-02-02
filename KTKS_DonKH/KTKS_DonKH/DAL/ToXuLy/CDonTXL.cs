@@ -589,24 +589,24 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemLSCKT in db.LichSuChuyenKTs
-                                join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
-                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
-                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
+                                join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
+                                join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
                                 where itemLSCKT.MaDon != null && itemLSCKT.NgayChuyenKT.Value.Date == TuNgay.Date
-                                orderby itemDonTXL.MaDon ascending
+                                orderby itemDonKH.MaDon ascending
                                 select new
                                 {
-                                    itemDonTXL.MaDon,
-                                    itemLoaiDonTXL.TenLD,
-                                    itemDonTXL.SoCongVan,
-                                    itemDonTXL.CreateDate,
-                                    itemDonTXL.DanhBo,
-                                    itemDonTXL.HoTen,
-                                    itemDonTXL.DiaChi,
-                                    itemDonTXL.NoiDung,
-                                    itemDonTXL.MaChuyen,
-                                    itemDonTXL.LyDoChuyen,
-                                    itemDonTXL.SoLuongDiaChi,
+                                    itemDonKH.MaDon,
+                                    itemLoaiDon.TenLD,
+                                    itemDonKH.SoCongVan,
+                                    itemDonKH.CreateDate,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemDonKH.NoiDung,
+                                    itemDonKH.MaChuyen,
+                                    itemDonKH.LyDoChuyen,
+                                    itemDonKH.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
                                 };
@@ -637,24 +637,24 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemLSCKT in db.LichSuChuyenKTs
-                                join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
-                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
-                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
+                                join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
+                                join itemLoaiDon in db.LoaiDonTXLs on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
                                 where itemLSCKT.MaDon != null && itemLSCKT.NgayChuyenKT.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyenKT.Value.Date <= DenNgay.Date
-                                orderby itemDonTXL.MaDon ascending
+                                orderby itemDonKH.MaDon ascending
                                 select new
                                 {
-                                    itemDonTXL.MaDon,
-                                    itemLoaiDonTXL.TenLD,
-                                    itemDonTXL.SoCongVan,
-                                    itemDonTXL.CreateDate,
-                                    itemDonTXL.DanhBo,
-                                    itemDonTXL.HoTen,
-                                    itemDonTXL.DiaChi,
-                                    itemDonTXL.NoiDung,
-                                    itemDonTXL.MaChuyen,
-                                    itemDonTXL.LyDoChuyen,
-                                    itemDonTXL.SoLuongDiaChi,
+                                    itemDonKH.MaDon,
+                                    itemLoaiDon.TenLD,
+                                    itemDonKH.SoCongVan,
+                                    itemDonKH.CreateDate,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemDonKH.NoiDung,
+                                    itemDonKH.MaChuyen,
+                                    itemDonKH.LyDoChuyen,
+                                    itemDonKH.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
                                 };
@@ -733,24 +733,24 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
                     var query = from itemLSCKT in db.LichSuChuyenKTs
-                                join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
-                                join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
-                                join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemLSCKT.MaDon != null && itemDonTXL.SoCongVan == SoCongVan
-                                orderby itemDonTXL.MaDon ascending
+                                join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
+                                join itemLoaiDon in db.LoaiDonTXLs on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
+                                where itemLSCKT.MaDon != null && itemDonKH.SoCongVan == SoCongVan
+                                orderby itemDonKH.MaDon ascending
                                 select new
                                 {
-                                    itemDonTXL.MaDon,
-                                    itemLoaiDonTXL.TenLD,
-                                    itemDonTXL.SoCongVan,
-                                    itemDonTXL.CreateDate,
-                                    itemDonTXL.DanhBo,
-                                    itemDonTXL.HoTen,
-                                    itemDonTXL.DiaChi,
-                                    itemDonTXL.NoiDung,
-                                    itemDonTXL.MaChuyen,
-                                    itemDonTXL.LyDoChuyen,
-                                    itemDonTXL.SoLuongDiaChi,
+                                    itemDonKH.MaDon,
+                                    itemLoaiDon.TenLD,
+                                    itemDonKH.SoCongVan,
+                                    itemDonKH.CreateDate,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemDonKH.NoiDung,
+                                    itemDonKH.MaChuyen,
+                                    itemDonKH.LyDoChuyen,
+                                    itemDonKH.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
                                 };

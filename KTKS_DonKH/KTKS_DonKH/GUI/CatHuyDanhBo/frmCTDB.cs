@@ -614,8 +614,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctctdb != null)
                 {
-                    if (_ctctdb.DanhBo != txtDanhBo.Text.Trim())
-                    {
+                    //if (_ctctdb.DanhBo != txtDanhBo.Text.Trim())
+                    //{
                         _ctctdb.DanhBo = txtDanhBo.Text.Trim();
                         _ctctdb.HopDong = txtHopDong.Text.Trim();
                         _ctctdb.HoTen = txtHoTen.Text.Trim();
@@ -626,7 +626,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             _ctctdb.Ky = _ttkhachhang.Ky;
                             _ctctdb.Nam = _ttkhachhang.Nam;
                         }
-                    }
+                    //}
 
                     if (!string.IsNullOrEmpty(cmbLyDo.SelectedItem.ToString()))
                         _ctctdb.LyDo = cmbLyDo.SelectedItem.ToString();
