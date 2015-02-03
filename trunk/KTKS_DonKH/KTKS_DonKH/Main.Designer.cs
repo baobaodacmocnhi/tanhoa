@@ -108,10 +108,11 @@
             this.ribbtnDSBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhapBamChi = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel23 = new System.Windows.Forms.RibbonPanel();
+            this.ribbtnBaoCaoBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
-            this.ribbonPanel23 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
+            this.ribbtnCapNhatDonKH = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -275,6 +276,7 @@
             this.ribbonPanel4.ButtonMoreVisible = false;
             this.ribbonPanel4.Items.Add(this.ribbtnNhanDon);
             this.ribbonPanel4.Items.Add(this.ribbtnQLDonKH);
+            this.ribbonPanel4.Items.Add(this.ribbtnCapNhatDonKH);
             this.ribbonPanel4.Text = "Tổ Khách Hàng";
             // 
             // ribbtnNhanDon
@@ -716,6 +718,21 @@
             this.ribbtnNhapBamChi.Text = "Nhập Bấm Chì";
             this.ribbtnNhapBamChi.Click += new System.EventHandler(this.ribbtnNhapBamChi_Click);
             // 
+            // ribbonPanel23
+            // 
+            this.ribbonPanel23.ButtonMoreEnabled = false;
+            this.ribbonPanel23.ButtonMoreVisible = false;
+            this.ribbonPanel23.Items.Add(this.ribbtnBaoCaoBamChi);
+            this.ribbonPanel23.Text = "Báo Cáo";
+            // 
+            // ribbtnBaoCaoBamChi
+            // 
+            this.ribbtnBaoCaoBamChi.Image = global::KTKS_DonKH.Properties.Resources.report_48x48;
+            this.ribbtnBaoCaoBamChi.MinimumSize = new System.Drawing.Size(110, 0);
+            this.ribbtnBaoCaoBamChi.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnBaoCaoBamChi.SmallImage")));
+            this.ribbtnBaoCaoBamChi.Text = "Các Loại Báo Cáo";
+            this.ribbtnBaoCaoBamChi.Click += new System.EventHandler(this.ribbonButton2_Click);
+            // 
             // ribbon1
             // 
             this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -751,20 +768,13 @@
             this.ribbon1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ribbon1_KeyPress);
             this.ribbon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
             // 
-            // ribbonPanel23
+            // ribbtnCapNhatDonKH
             // 
-            this.ribbonPanel23.ButtonMoreEnabled = false;
-            this.ribbonPanel23.ButtonMoreVisible = false;
-            this.ribbonPanel23.Items.Add(this.ribbonButton2);
-            this.ribbonPanel23.Text = "Báo Cáo";
-            // 
-            // ribbonButton2
-            // 
-            this.ribbonButton2.Image = global::KTKS_DonKH.Properties.Resources.report_48x48;
-            this.ribbonButton2.MinimumSize = new System.Drawing.Size(110, 0);
-            this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
-            this.ribbonButton2.Text = "Các Loại Báo Cáo";
-            this.ribbonButton2.Click += new System.EventHandler(this.ribbonButton2_Click);
+            this.ribbtnCapNhatDonKH.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnCapNhatDonKH.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnCapNhatDonKH.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnCapNhatDonKH.SmallImage")));
+            this.ribbtnCapNhatDonKH.Text = "Cập Nhật Đơn";
+            this.ribbtnCapNhatDonKH.Click += new System.EventHandler(this.ribbtnCapNhatDonKH_Click);
             // 
             // Main
             // 
@@ -873,7 +883,8 @@
         private System.Windows.Forms.RibbonButton ribbonButton1;
         private System.Windows.Forms.RibbonButton ribbtnTBKetQuaYCCatDM;
         private System.Windows.Forms.RibbonPanel ribbonPanel23;
-        private System.Windows.Forms.RibbonButton ribbonButton2;
+        private System.Windows.Forms.RibbonButton ribbtnBaoCaoBamChi;
+        private System.Windows.Forms.RibbonButton ribbtnCapNhatDonKH;
     }
 }
 

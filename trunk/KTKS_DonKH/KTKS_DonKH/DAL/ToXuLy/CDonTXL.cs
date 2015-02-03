@@ -1019,6 +1019,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 where itemLSCKT.MaDonTXL == MaDonTXL
                                 select new
                                 {
+                                    Table = "LichSuChuyenKT",
                                     itemLSCKT.MaLSChuyenKT,
                                     itemLSCKT.NgayChuyenKT,
                                     itemLSCKT.GhiChuChuyenKT,
@@ -1050,6 +1051,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 where itemLSCKT.MaDon == MaDonKH
                                 select new
                                 {
+                                    Table = "LichSuChuyenKT",
                                     itemLSCKT.MaLSChuyenKT,
                                     itemLSCKT.NgayChuyenKT,
                                     itemLSCKT.GhiChuChuyenKT,

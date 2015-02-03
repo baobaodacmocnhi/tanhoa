@@ -551,6 +551,23 @@ namespace KTKS_DonKH.DAL.HeThong
         }
 
         /// <summary>
+        /// Lấy Danh Sách User thuộc Tổ Văn Phòng
+        /// </summary>
+        /// <returns></returns>
+        public List<User> LoadDSTaiKhoanTVP()
+        {
+            try
+            {
+                return db.Users.Where(itemUser => itemUser.MaU != 0 && itemUser.ToVP == true).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Lấy tài khoản
         /// </summary>
         /// <param name="MaU">int</param>

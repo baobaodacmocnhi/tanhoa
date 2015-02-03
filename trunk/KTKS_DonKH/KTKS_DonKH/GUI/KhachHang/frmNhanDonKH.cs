@@ -248,7 +248,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         donkh.CatChuyenDM = true;
 
                     if (chkGiamDM.Checked)
-                        donkh.NuocDuc = true;
+                        donkh.GiamDM = true;
 
                     if (chkDCSoNha.Checked)
                         donkh.DCSoNha = true;
@@ -270,6 +270,9 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                     if (chkHuyHopDong.Checked)
                         donkh.HuyHopDong = true;
+
+                    if (chkMoNuoc.Checked)
+                        donkh.MoNuoc = true;
 
                     if (chkLyDoKhac.Checked)
                     {
@@ -457,6 +460,15 @@ namespace KTKS_DonKH.GUI.KhachHang
                             else
                             {
                                 dr["HuyHopDong"] = false;
+                            }
+
+                            if (donkh.MoNuoc)
+                            {
+                                dr["MoNuoc"] = true;
+                            }
+                            else
+                            {
+                                dr["MoNuoc"] = false;
                             }
 
                             if (donkh.LoaiKhac)
@@ -778,78 +790,134 @@ namespace KTKS_DonKH.GUI.KhachHang
                 #region CheckBox
                 if (chkDHN.Checked)
                     _donkh.KiemTraDHN = true;
+                else
+                    _donkh.KiemTraDHN = false;
 
                 if (chkTinhTienNuoc.Checked)
                     _donkh.TienNuoc = true;
+                else
+                    _donkh.TienNuoc = false;
 
                 if (chkGhiChiSoNuoc.Checked)
                     _donkh.ChiSoNuoc = true;
+                else
+                    _donkh.ChiSoNuoc = false;
 
                 if (chkThayDoiGiaNuoc.Checked)
                     _donkh.DonGiaNuoc = true;
+                else
+                    _donkh.DonGiaNuoc = false;
 
                 if (chkThayDoiTenHopDong.Checked)
                     _donkh.SangTen = true;
+                else
+                    _donkh.SangTen = false;
 
                 if (chkCapDM.Checked)
                     _donkh.DangKyDM = true;
+                else
+                    _donkh.DangKyDM = false;
 
                 if (chkChuyenDM.Checked)
                     _donkh.CatChuyenDM = true;
+                else
+                    _donkh.CatChuyenDM = false;
 
                 if (chkGiamDM.Checked)
-                    _donkh.NuocDuc = true;
+                    _donkh.GiamDM = true;
+                else
+                    _donkh.GiamDM = false;
 
                 if (chkDCSoNha.Checked)
                     _donkh.DCSoNha = true;
+                else
+                    _donkh.DCSoNha = false;
 
                 if (chkMatDHN.Checked)
                     _donkh.MatDHN = true;
+                else
+                    _donkh.MatDHN = false;
 
                 if (chkHuHongDHN.Checked)
                     _donkh.HuHongDHN = true;
+                else
+                    _donkh.HuHongDHN = false;
 
                 if (chkChiNiem.Checked)
                     _donkh.ChiNiem = true;
+                else
+                    _donkh.ChiNiem = false;
 
                 if (chkThayDoiMST.Checked)
                     _donkh.ThayDoiMST = true;
+                else
+                    _donkh.ThayDoiMST = false;
 
                 if (chkTamNgung.Checked)
                     _donkh.TamNgung = true;
+                else
+                    _donkh.TamNgung = false;
 
                 if (chkHuyHopDong.Checked)
                     _donkh.HuyHopDong = true;
+                else
+                    _donkh.HuyHopDong = false;
+
+                if (chkMoNuoc.Checked)
+                    _donkh.MoNuoc = true;
+                else
+                    _donkh.MoNuoc = false;
 
                 if (chkLyDoKhac.Checked)
                 {
                     _donkh.LoaiKhac = true;
                     _donkh.LyDoLoaiKhac = txtLyDoKhac.Text.Trim();
                 }
+                else
+                {
+                    _donkh.LoaiKhac = false;
+                    _donkh.LyDoLoaiKhac = null;
+                }
 
                 if (chkCT_HoaDon.Checked)
                     _donkh.CT_HoaDon = true;
+                else
+                    _donkh.CT_HoaDon = false;
 
                 if (chkCT_HK_KT3.Checked)
                     _donkh.CT_HK_KT3 = true;
+                else
+                    _donkh.CT_HK_KT3 = false;
 
                 if (chkCT_STT_GXNTT.Checked)
                     _donkh.CT_STT_GXNTT = true;
+                else
+                    _donkh.CT_STT_GXNTT = false;
 
                 if (chkCT_HDTN_CQN.Checked)
                     _donkh.CT_HDTN_CQN = true;
+                else
+                    _donkh.CT_HDTN_CQN = false;
 
                 if (chkCT_GC_SDSN.Checked)
                     _donkh.CT_GC_SDSN = true;
+                else
+                    _donkh.CT_GC_SDSN = false;
 
                 if (chkCT_GXN2SN.Checked)
                     _donkh.CT_GXN2SN = true;
+                else
+                    _donkh.CT_GXN2SN = false;
 
                 if (chkCT_GDKKD.Checked)
                     _donkh.CT_GDKKD = true;
+                else
+                    _donkh.CT_GDKKD = false;
 
                 if (chkCT_GCNDTDHN.Checked)
                     _donkh.CT_GCNDTDHN = true;
+                else
+                    _donkh.CT_GCNDTDHN = false;
 
                 #endregion
 

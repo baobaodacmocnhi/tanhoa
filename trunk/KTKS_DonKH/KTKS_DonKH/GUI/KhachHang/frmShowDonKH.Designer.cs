@@ -131,6 +131,7 @@
             this.chkChuyenKT = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkMoNuoc = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -601,7 +602,7 @@
             // txtMaXepDon
             // 
             this.txtMaXepDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaXepDon.Location = new System.Drawing.Point(653, 161);
+            this.txtMaXepDon.Location = new System.Drawing.Point(499, 161);
             this.txtMaXepDon.Name = "txtMaXepDon";
             this.txtMaXepDon.ReadOnly = true;
             this.txtMaXepDon.Size = new System.Drawing.Size(127, 25);
@@ -614,7 +615,7 @@
             this.label17.AutoSize = true;
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(653, 142);
+            this.label17.Location = new System.Drawing.Point(499, 142);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(127, 19);
             this.label17.TabIndex = 12;
@@ -820,6 +821,7 @@
             this.label28.Size = new System.Drawing.Size(250, 17);
             this.label28.TabIndex = 65;
             this.label28.Text = "Chuột Phải để XÓA Lịch Sử Chuyển KT";
+            this.label28.Visible = false;
             // 
             // groupBox2
             // 
@@ -830,6 +832,7 @@
             this.groupBox2.TabIndex = 66;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lịch Sử Chuyển KT";
+            this.groupBox2.Visible = false;
             // 
             // dgvLichSuChuyenKT
             // 
@@ -887,6 +890,7 @@
             this.groupBoxChuyenKhac.Size = new System.Drawing.Size(531, 49);
             this.groupBoxChuyenKhac.TabIndex = 64;
             this.groupBoxChuyenKhac.TabStop = false;
+            this.groupBoxChuyenKhac.Visible = false;
             // 
             // txtGhiChuChuyenKhac
             // 
@@ -931,6 +935,7 @@
             this.chkChuyenKhac.TabIndex = 63;
             this.chkChuyenKhac.Text = "Chuyển Khác";
             this.chkChuyenKhac.UseVisualStyleBackColor = true;
+            this.chkChuyenKhac.Visible = false;
             this.chkChuyenKhac.CheckedChanged += new System.EventHandler(this.chkChuyenKhac_CheckedChanged);
             // 
             // groupBoxChuyenToXuLy
@@ -945,6 +950,7 @@
             this.groupBoxChuyenToXuLy.Size = new System.Drawing.Size(531, 49);
             this.groupBoxChuyenToXuLy.TabIndex = 62;
             this.groupBoxChuyenToXuLy.TabStop = false;
+            this.groupBoxChuyenToXuLy.Visible = false;
             // 
             // txtGhiChuChuyenToXuLy
             // 
@@ -989,6 +995,7 @@
             this.chkChuyenToXuLy.TabIndex = 61;
             this.chkChuyenToXuLy.Text = "Chuyển Tổ Xử Lý";
             this.chkChuyenToXuLy.UseVisualStyleBackColor = true;
+            this.chkChuyenToXuLy.Visible = false;
             this.chkChuyenToXuLy.CheckedChanged += new System.EventHandler(this.chkChuyenToXuLy_CheckedChanged);
             // 
             // groupBoxChuyenBanDoiKhac
@@ -1003,6 +1010,7 @@
             this.groupBoxChuyenBanDoiKhac.Size = new System.Drawing.Size(531, 49);
             this.groupBoxChuyenBanDoiKhac.TabIndex = 60;
             this.groupBoxChuyenBanDoiKhac.TabStop = false;
+            this.groupBoxChuyenBanDoiKhac.Visible = false;
             // 
             // txtGhiChuChuyenBanDoiKhac
             // 
@@ -1047,6 +1055,7 @@
             this.chkChuyenBanDoiKhac.TabIndex = 59;
             this.chkChuyenBanDoiKhac.Text = "Chuyển Ban Đội Khác";
             this.chkChuyenBanDoiKhac.UseVisualStyleBackColor = true;
+            this.chkChuyenBanDoiKhac.Visible = false;
             this.chkChuyenBanDoiKhac.CheckedChanged += new System.EventHandler(this.chkChuyenBanDoiKhac_CheckedChanged);
             // 
             // groupBoxChuyenKTXM
@@ -1063,6 +1072,7 @@
             this.groupBoxChuyenKTXM.Size = new System.Drawing.Size(531, 80);
             this.groupBoxChuyenKTXM.TabIndex = 58;
             this.groupBoxChuyenKTXM.TabStop = false;
+            this.groupBoxChuyenKTXM.Visible = false;
             // 
             // txtGhiChuChuyenKT
             // 
@@ -1124,6 +1134,7 @@
             this.chkChuyenKT.TabIndex = 57;
             this.chkChuyenKT.Text = "Chuyển KT";
             this.chkChuyenKT.UseVisualStyleBackColor = true;
+            this.chkChuyenKT.Visible = false;
             this.chkChuyenKT.CheckedChanged += new System.EventHandler(this.chkChuyenKT_CheckedChanged);
             // 
             // contextMenuStrip1
@@ -1141,12 +1152,23 @@
             this.xóaToolStripMenuItem.Text = "Xóa";
             this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
+            // chkMoNuoc
+            // 
+            this.chkMoNuoc.AutoSize = true;
+            this.chkMoNuoc.Location = new System.Drawing.Point(653, 145);
+            this.chkMoNuoc.Name = "chkMoNuoc";
+            this.chkMoNuoc.Size = new System.Drawing.Size(82, 21);
+            this.chkMoNuoc.TabIndex = 67;
+            this.chkMoNuoc.Text = "Mở nước";
+            this.chkMoNuoc.UseVisualStyleBackColor = true;
+            // 
             // frmShowDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1365, 544);
+            this.Controls.Add(this.chkMoNuoc);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.chkThayDoiMST);
@@ -1176,9 +1198,9 @@
             this.Controls.Add(this.chkDHN);
             this.Controls.Add(this.txtTongSoDanhBo);
             this.Controls.Add(this.label23);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.txtMaXepDon);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.txtHieuLucTuKy);
             this.Controls.Add(this.txtSoCongVan);
@@ -1331,6 +1353,7 @@
         private System.Windows.Forms.CheckBox chkChuyenKT;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkMoNuoc;
 
 
     }
