@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>44</ApplicationRevision>
+    <ApplicationRevision>45</ApplicationRevision>
     <ApplicationVersion>1.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -718,6 +718,12 @@
     <Compile Include="GUI\KhachHang\frmBaoCaoDonKH.Designer.cs">
       <DependentUpon>frmBaoCaoDonKH.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KhachHang\frmCapNhatDonKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\frmCapNhatDonKH.Designer.cs">
+      <DependentUpon>frmCapNhatDonKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KhachHang\frmNhanDonKH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1191,6 +1197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmBaoCaoDonKH.resx">
       <DependentUpon>frmBaoCaoDonKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\frmCapNhatDonKH.resx">
+      <DependentUpon>frmCapNhatDonKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\frmNhanDonKH.resx">
       <DependentUpon>frmNhanDonKH.cs</DependentUpon>

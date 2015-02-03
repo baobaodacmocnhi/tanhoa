@@ -168,22 +168,28 @@ namespace KTKS_DonKH.GUI.HeThong
             //    _cTaiKhoan.SuaQuyen(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()), MaR, ischecked);
             //}
 
-            bool ischecked = false;
-            if (bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
-                ischecked = true;
-            else
-                ischecked = false;
+            //bool ischecked = false;
+            //if (bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+            //    ischecked = true;
+            //else
+            //    ischecked = false;
             User taikhoan = _cTaiKhoan.getUserbyID(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
             if(dgvDSTaiKhoan.Columns[e.ColumnIndex].Name=="ToXuLy")
                 if (taikhoan.ToXuLy != bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()))
                 {
-                    taikhoan.ToXuLy = ischecked;
+                    taikhoan.ToXuLy = bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString());
                     _cTaiKhoan.SuaTaiKhoan(taikhoan, false);
                 }
             if (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name == "ToKH")
                 if (taikhoan.ToKH != bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()))
                 {
-                    taikhoan.ToKH = ischecked;
+                    taikhoan.ToKH = bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString());
+                    _cTaiKhoan.SuaTaiKhoan(taikhoan, false);
+                }
+            if (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name == "ToVP")
+                if (taikhoan.ToVP != bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                {
+                    taikhoan.ToVP = bool.Parse(dgvDSTaiKhoan[e.ColumnIndex, e.RowIndex].Value.ToString());
                     _cTaiKhoan.SuaTaiKhoan(taikhoan, false);
                 }
         }

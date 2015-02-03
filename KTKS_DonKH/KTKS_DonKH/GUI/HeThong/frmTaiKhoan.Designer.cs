@@ -54,6 +54,7 @@
             this.MaKiemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ToVP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhanQuyen)).BeginInit();
             this.SuspendLayout();
@@ -162,12 +163,13 @@
             this.MatKhau,
             this.MaKiemBamChi,
             this.ToKH,
-            this.ToXuLy});
+            this.ToXuLy,
+            this.ToVP});
             this.dgvDSTaiKhoan.Location = new System.Drawing.Point(13, 156);
             this.dgvDSTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTaiKhoan.MultiSelect = false;
             this.dgvDSTaiKhoan.Name = "dgvDSTaiKhoan";
-            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(700, 378);
+            this.dgvDSTaiKhoan.Size = new System.Drawing.Size(762, 378);
             this.dgvDSTaiKhoan.TabIndex = 9;
             this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
             this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
@@ -205,7 +207,7 @@
             this.TenR,
             this.QuyenXem,
             this.QuyenCapNhat});
-            this.dgvPhanQuyen.Location = new System.Drawing.Point(721, 156);
+            this.dgvPhanQuyen.Location = new System.Drawing.Point(783, 156);
             this.dgvPhanQuyen.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPhanQuyen.MultiSelect = false;
             this.dgvPhanQuyen.Name = "dgvPhanQuyen";
@@ -303,6 +305,7 @@
             this.ToKH.DataPropertyName = "ToKH";
             this.ToKH.HeaderText = "Tổ KH";
             this.ToKH.Name = "ToKH";
+            this.ToKH.Width = 80;
             // 
             // ToXuLy
             // 
@@ -310,12 +313,19 @@
             this.ToXuLy.HeaderText = "Tổ Xử Lý";
             this.ToXuLy.Name = "ToXuLy";
             // 
+            // ToVP
+            // 
+            this.ToVP.DataPropertyName = "ToVP";
+            this.ToVP.HeaderText = "Tổ VP";
+            this.ToVP.Name = "ToVP";
+            this.ToVP.Width = 80;
+            // 
             // frmTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1276, 547);
+            this.ClientSize = new System.Drawing.Size(1352, 547);
             this.Controls.Add(this.txtMaKiemBamChi);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dgvPhanQuyen);
@@ -367,5 +377,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKiemBamChi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToKH;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ToXuLy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToVP;
     }
 }
