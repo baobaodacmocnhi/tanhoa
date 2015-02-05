@@ -75,27 +75,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.txtMaXepDon = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.txtTongSoDanhBo = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.chkThayDoiMST = new System.Windows.Forms.CheckBox();
-            this.chkHuyHopDong = new System.Windows.Forms.CheckBox();
-            this.chkTamNgung = new System.Windows.Forms.CheckBox();
-            this.chkChiNiem = new System.Windows.Forms.CheckBox();
-            this.chkMatDHN = new System.Windows.Forms.CheckBox();
-            this.chkHuHongDHN = new System.Windows.Forms.CheckBox();
-            this.chkDCSoNha = new System.Windows.Forms.CheckBox();
-            this.chkGiamDM = new System.Windows.Forms.CheckBox();
-            this.txtLyDoKhac = new System.Windows.Forms.TextBox();
-            this.chkLyDoKhac = new System.Windows.Forms.CheckBox();
-            this.chkChuyenDM = new System.Windows.Forms.CheckBox();
-            this.chkCapDM = new System.Windows.Forms.CheckBox();
-            this.chkThayDoiTenHopDong = new System.Windows.Forms.CheckBox();
-            this.chkThayDoiGiaNuoc = new System.Windows.Forms.CheckBox();
-            this.chkGhiChiSoNuoc = new System.Windows.Forms.CheckBox();
-            this.chkTinhTienNuoc = new System.Windows.Forms.CheckBox();
-            this.chkDHN = new System.Windows.Forms.CheckBox();
             this.label28 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvLichSuChuyenKT = new System.Windows.Forms.DataGridView();
@@ -132,6 +113,25 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chkMoNuoc = new System.Windows.Forms.CheckBox();
+            this.chkThayDoiMST = new System.Windows.Forms.CheckBox();
+            this.chkGiamDM = new System.Windows.Forms.CheckBox();
+            this.chkTamNgung = new System.Windows.Forms.CheckBox();
+            this.chkHuyHopDong = new System.Windows.Forms.CheckBox();
+            this.chkChiNiem = new System.Windows.Forms.CheckBox();
+            this.chkMatDHN = new System.Windows.Forms.CheckBox();
+            this.chkHuHongDHN = new System.Windows.Forms.CheckBox();
+            this.chkDieuChinhSoNha = new System.Windows.Forms.CheckBox();
+            this.txtMaXepDon = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtLyDoKhac = new System.Windows.Forms.TextBox();
+            this.chkLyDoKhac = new System.Windows.Forms.CheckBox();
+            this.chkCatChuyenDM = new System.Windows.Forms.CheckBox();
+            this.chkCapDM = new System.Windows.Forms.CheckBox();
+            this.chkThayDoiTenHopDong = new System.Windows.Forms.CheckBox();
+            this.chkThayDoiGiaNuoc = new System.Windows.Forms.CheckBox();
+            this.chkKiemTraDHN = new System.Windows.Forms.CheckBox();
+            this.chkChiSoNuoc = new System.Windows.Forms.CheckBox();
+            this.chkTienNuoc = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -184,6 +184,7 @@
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(100, 25);
             this.txtDienThoai.TabIndex = 5;
+            this.txtDienThoai.Visible = false;
             // 
             // label11
             // 
@@ -193,6 +194,7 @@
             this.label11.Size = new System.Drawing.Size(76, 17);
             this.label11.TabIndex = 4;
             this.label11.Text = "Điện Thoại:";
+            this.label11.Visible = false;
             // 
             // txtSoCongVan
             // 
@@ -599,29 +601,6 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // txtMaXepDon
-            // 
-            this.txtMaXepDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaXepDon.Location = new System.Drawing.Point(499, 161);
-            this.txtMaXepDon.Name = "txtMaXepDon";
-            this.txtMaXepDon.ReadOnly = true;
-            this.txtMaXepDon.Size = new System.Drawing.Size(127, 25);
-            this.txtMaXepDon.TabIndex = 13;
-            this.txtMaXepDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMaXepDon.Visible = false;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(499, 142);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(127, 19);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "     Số Xếp Đơn     ";
-            this.label17.Visible = false;
-            // 
             // txtTongSoDanhBo
             // 
             this.txtTongSoDanhBo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -643,174 +622,6 @@
             this.label23.Size = new System.Drawing.Size(90, 19);
             this.label23.TabIndex = 4;
             this.label23.Text = "Tổng Số DB";
-            // 
-            // chkThayDoiMST
-            // 
-            this.chkThayDoiMST.AutoSize = true;
-            this.chkThayDoiMST.Location = new System.Drawing.Point(482, 118);
-            this.chkThayDoiMST.Name = "chkThayDoiMST";
-            this.chkThayDoiMST.Size = new System.Drawing.Size(147, 21);
-            this.chkThayDoiMST.TabIndex = 56;
-            this.chkThayDoiMST.Text = "Thay đổi mã số thuế";
-            this.chkThayDoiMST.UseVisualStyleBackColor = true;
-            // 
-            // chkHuyHopDong
-            // 
-            this.chkHuyHopDong.AutoSize = true;
-            this.chkHuyHopDong.Location = new System.Drawing.Point(653, 118);
-            this.chkHuyHopDong.Name = "chkHuyHopDong";
-            this.chkHuyHopDong.Size = new System.Drawing.Size(111, 21);
-            this.chkHuyHopDong.TabIndex = 55;
-            this.chkHuyHopDong.Text = "Hủy hợp đồng";
-            this.chkHuyHopDong.UseVisualStyleBackColor = true;
-            // 
-            // chkTamNgung
-            // 
-            this.chkTamNgung.AutoSize = true;
-            this.chkTamNgung.Location = new System.Drawing.Point(653, 91);
-            this.chkTamNgung.Name = "chkTamNgung";
-            this.chkTamNgung.Size = new System.Drawing.Size(178, 21);
-            this.chkTamNgung.TabIndex = 54;
-            this.chkTamNgung.Text = "Tạm ngưng sử dụng nước";
-            this.chkTamNgung.UseVisualStyleBackColor = true;
-            // 
-            // chkChiNiem
-            // 
-            this.chkChiNiem.AutoSize = true;
-            this.chkChiNiem.Location = new System.Drawing.Point(352, 64);
-            this.chkChiNiem.Name = "chkChiNiem";
-            this.chkChiNiem.Size = new System.Drawing.Size(79, 21);
-            this.chkChiNiem.TabIndex = 53;
-            this.chkChiNiem.Text = "Chì niêm";
-            this.chkChiNiem.UseVisualStyleBackColor = true;
-            // 
-            // chkMatDHN
-            // 
-            this.chkMatDHN.AutoSize = true;
-            this.chkMatDHN.Location = new System.Drawing.Point(226, 91);
-            this.chkMatDHN.Name = "chkMatDHN";
-            this.chkMatDHN.Size = new System.Drawing.Size(88, 21);
-            this.chkMatDHN.TabIndex = 52;
-            this.chkMatDHN.Text = "Mất ĐHN";
-            this.chkMatDHN.UseVisualStyleBackColor = true;
-            // 
-            // chkHuHongDHN
-            // 
-            this.chkHuHongDHN.AutoSize = true;
-            this.chkHuHongDHN.Location = new System.Drawing.Point(226, 118);
-            this.chkHuHongDHN.Name = "chkHuHongDHN";
-            this.chkHuHongDHN.Size = new System.Drawing.Size(115, 21);
-            this.chkHuHongDHN.TabIndex = 51;
-            this.chkHuHongDHN.Text = "Hư hỏng ĐHN";
-            this.chkHuHongDHN.UseVisualStyleBackColor = true;
-            // 
-            // chkDCSoNha
-            // 
-            this.chkDCSoNha.AutoSize = true;
-            this.chkDCSoNha.Location = new System.Drawing.Point(482, 64);
-            this.chkDCSoNha.Name = "chkDCSoNha";
-            this.chkDCSoNha.Size = new System.Drawing.Size(132, 21);
-            this.chkDCSoNha.TabIndex = 50;
-            this.chkDCSoNha.Text = "Điều chỉnh số nhà";
-            this.chkDCSoNha.UseVisualStyleBackColor = true;
-            // 
-            // chkGiamDM
-            // 
-            this.chkGiamDM.AutoSize = true;
-            this.chkGiamDM.Location = new System.Drawing.Point(50, 91);
-            this.chkGiamDM.Name = "chkGiamDM";
-            this.chkGiamDM.Size = new System.Drawing.Size(151, 21);
-            this.chkGiamDM.TabIndex = 49;
-            this.chkGiamDM.Text = "Giảm định mức nước";
-            this.chkGiamDM.UseVisualStyleBackColor = true;
-            // 
-            // txtLyDoKhac
-            // 
-            this.txtLyDoKhac.Location = new System.Drawing.Point(157, 143);
-            this.txtLyDoKhac.Name = "txtLyDoKhac";
-            this.txtLyDoKhac.ReadOnly = true;
-            this.txtLyDoKhac.Size = new System.Drawing.Size(327, 25);
-            this.txtLyDoKhac.TabIndex = 48;
-            // 
-            // chkLyDoKhac
-            // 
-            this.chkLyDoKhac.AutoSize = true;
-            this.chkLyDoKhac.Location = new System.Drawing.Point(50, 145);
-            this.chkLyDoKhac.Name = "chkLyDoKhac";
-            this.chkLyDoKhac.Size = new System.Drawing.Size(101, 21);
-            this.chkLyDoKhac.TabIndex = 47;
-            this.chkLyDoKhac.Text = "Lý Do Khác";
-            this.chkLyDoKhac.UseVisualStyleBackColor = true;
-            // 
-            // chkChuyenDM
-            // 
-            this.chkChuyenDM.AutoSize = true;
-            this.chkChuyenDM.Location = new System.Drawing.Point(50, 118);
-            this.chkChuyenDM.Name = "chkChuyenDM";
-            this.chkChuyenDM.Size = new System.Drawing.Size(165, 21);
-            this.chkChuyenDM.TabIndex = 46;
-            this.chkChuyenDM.Text = "Chuyển định mức nước";
-            this.chkChuyenDM.UseVisualStyleBackColor = true;
-            // 
-            // chkCapDM
-            // 
-            this.chkCapDM.AutoSize = true;
-            this.chkCapDM.Location = new System.Drawing.Point(50, 64);
-            this.chkCapDM.Name = "chkCapDM";
-            this.chkCapDM.Size = new System.Drawing.Size(144, 21);
-            this.chkCapDM.TabIndex = 45;
-            this.chkCapDM.Text = "Cấp định mức nước";
-            this.chkCapDM.UseVisualStyleBackColor = true;
-            // 
-            // chkThayDoiTenHopDong
-            // 
-            this.chkThayDoiTenHopDong.AutoSize = true;
-            this.chkThayDoiTenHopDong.Location = new System.Drawing.Point(482, 91);
-            this.chkThayDoiTenHopDong.Name = "chkThayDoiTenHopDong";
-            this.chkThayDoiTenHopDong.Size = new System.Drawing.Size(160, 21);
-            this.chkThayDoiTenHopDong.TabIndex = 44;
-            this.chkThayDoiTenHopDong.Text = "Thay đổi tên hợp đồng";
-            this.chkThayDoiTenHopDong.UseVisualStyleBackColor = true;
-            // 
-            // chkThayDoiGiaNuoc
-            // 
-            this.chkThayDoiGiaNuoc.AutoSize = true;
-            this.chkThayDoiGiaNuoc.Location = new System.Drawing.Point(653, 64);
-            this.chkThayDoiGiaNuoc.Name = "chkThayDoiGiaNuoc";
-            this.chkThayDoiGiaNuoc.Size = new System.Drawing.Size(134, 21);
-            this.chkThayDoiGiaNuoc.TabIndex = 43;
-            this.chkThayDoiGiaNuoc.Text = "Thay đổi giá nước";
-            this.chkThayDoiGiaNuoc.UseVisualStyleBackColor = true;
-            // 
-            // chkGhiChiSoNuoc
-            // 
-            this.chkGhiChiSoNuoc.AutoSize = true;
-            this.chkGhiChiSoNuoc.Location = new System.Drawing.Point(352, 118);
-            this.chkGhiChiSoNuoc.Name = "chkGhiChiSoNuoc";
-            this.chkGhiChiSoNuoc.Size = new System.Drawing.Size(119, 21);
-            this.chkGhiChiSoNuoc.TabIndex = 42;
-            this.chkGhiChiSoNuoc.Text = "Ghi chỉ số nước";
-            this.chkGhiChiSoNuoc.UseVisualStyleBackColor = true;
-            // 
-            // chkTinhTienNuoc
-            // 
-            this.chkTinhTienNuoc.AutoSize = true;
-            this.chkTinhTienNuoc.Location = new System.Drawing.Point(352, 91);
-            this.chkTinhTienNuoc.Name = "chkTinhTienNuoc";
-            this.chkTinhTienNuoc.Size = new System.Drawing.Size(112, 21);
-            this.chkTinhTienNuoc.TabIndex = 41;
-            this.chkTinhTienNuoc.Text = "Tính tiền nước";
-            this.chkTinhTienNuoc.UseVisualStyleBackColor = true;
-            // 
-            // chkDHN
-            // 
-            this.chkDHN.AutoSize = true;
-            this.chkDHN.Location = new System.Drawing.Point(226, 64);
-            this.chkDHN.Name = "chkDHN";
-            this.chkDHN.Size = new System.Drawing.Size(60, 21);
-            this.chkDHN.TabIndex = 40;
-            this.chkDHN.Text = "ĐHN";
-            this.chkDHN.UseVisualStyleBackColor = true;
             // 
             // label28
             // 
@@ -1155,12 +966,203 @@
             // chkMoNuoc
             // 
             this.chkMoNuoc.AutoSize = true;
-            this.chkMoNuoc.Location = new System.Drawing.Point(653, 145);
+            this.chkMoNuoc.Location = new System.Drawing.Point(670, 86);
             this.chkMoNuoc.Name = "chkMoNuoc";
             this.chkMoNuoc.Size = new System.Drawing.Size(82, 21);
-            this.chkMoNuoc.TabIndex = 67;
+            this.chkMoNuoc.TabIndex = 86;
             this.chkMoNuoc.Text = "Mở nước";
             this.chkMoNuoc.UseVisualStyleBackColor = true;
+            // 
+            // chkThayDoiMST
+            // 
+            this.chkThayDoiMST.AutoSize = true;
+            this.chkThayDoiMST.Location = new System.Drawing.Point(517, 113);
+            this.chkThayDoiMST.Name = "chkThayDoiMST";
+            this.chkThayDoiMST.Size = new System.Drawing.Size(147, 21);
+            this.chkThayDoiMST.TabIndex = 85;
+            this.chkThayDoiMST.Text = "Thay đổi mã số thuế";
+            this.chkThayDoiMST.UseVisualStyleBackColor = true;
+            // 
+            // chkGiamDM
+            // 
+            this.chkGiamDM.AutoSize = true;
+            this.chkGiamDM.Location = new System.Drawing.Point(15, 86);
+            this.chkGiamDM.Name = "chkGiamDM";
+            this.chkGiamDM.Size = new System.Drawing.Size(151, 21);
+            this.chkGiamDM.TabIndex = 78;
+            this.chkGiamDM.Text = "Giảm định mức nước";
+            this.chkGiamDM.UseVisualStyleBackColor = true;
+            // 
+            // chkTamNgung
+            // 
+            this.chkTamNgung.AutoSize = true;
+            this.chkTamNgung.Location = new System.Drawing.Point(670, 59);
+            this.chkTamNgung.Name = "chkTamNgung";
+            this.chkTamNgung.Size = new System.Drawing.Size(178, 21);
+            this.chkTamNgung.TabIndex = 83;
+            this.chkTamNgung.Text = "Tạm ngưng sử dụng nước";
+            this.chkTamNgung.UseVisualStyleBackColor = true;
+            // 
+            // chkHuyHopDong
+            // 
+            this.chkHuyHopDong.AutoSize = true;
+            this.chkHuyHopDong.Location = new System.Drawing.Point(670, 113);
+            this.chkHuyHopDong.Name = "chkHuyHopDong";
+            this.chkHuyHopDong.Size = new System.Drawing.Size(111, 21);
+            this.chkHuyHopDong.TabIndex = 84;
+            this.chkHuyHopDong.Text = "Hủy hợp đồng";
+            this.chkHuyHopDong.UseVisualStyleBackColor = true;
+            // 
+            // chkChiNiem
+            // 
+            this.chkChiNiem.AutoSize = true;
+            this.chkChiNiem.Location = new System.Drawing.Point(517, 59);
+            this.chkChiNiem.Name = "chkChiNiem";
+            this.chkChiNiem.Size = new System.Drawing.Size(79, 21);
+            this.chkChiNiem.TabIndex = 82;
+            this.chkChiNiem.Text = "Chì niêm";
+            this.chkChiNiem.UseVisualStyleBackColor = true;
+            // 
+            // chkMatDHN
+            // 
+            this.chkMatDHN.AutoSize = true;
+            this.chkMatDHN.Location = new System.Drawing.Point(377, 113);
+            this.chkMatDHN.Name = "chkMatDHN";
+            this.chkMatDHN.Size = new System.Drawing.Size(88, 21);
+            this.chkMatDHN.TabIndex = 81;
+            this.chkMatDHN.Text = "Mất ĐHN";
+            this.chkMatDHN.UseVisualStyleBackColor = true;
+            // 
+            // chkHuHongDHN
+            // 
+            this.chkHuHongDHN.AutoSize = true;
+            this.chkHuHongDHN.Location = new System.Drawing.Point(670, 140);
+            this.chkHuHongDHN.Name = "chkHuHongDHN";
+            this.chkHuHongDHN.Size = new System.Drawing.Size(115, 21);
+            this.chkHuHongDHN.TabIndex = 80;
+            this.chkHuHongDHN.Text = "Hư hỏng ĐHN";
+            this.chkHuHongDHN.UseVisualStyleBackColor = true;
+            // 
+            // chkDieuChinhSoNha
+            // 
+            this.chkDieuChinhSoNha.AutoSize = true;
+            this.chkDieuChinhSoNha.Location = new System.Drawing.Point(517, 86);
+            this.chkDieuChinhSoNha.Name = "chkDieuChinhSoNha";
+            this.chkDieuChinhSoNha.Size = new System.Drawing.Size(132, 21);
+            this.chkDieuChinhSoNha.TabIndex = 79;
+            this.chkDieuChinhSoNha.Text = "Điều chỉnh số nhà";
+            this.chkDieuChinhSoNha.UseVisualStyleBackColor = true;
+            // 
+            // txtMaXepDon
+            // 
+            this.txtMaXepDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMaXepDon.Location = new System.Drawing.Point(501, 156);
+            this.txtMaXepDon.Name = "txtMaXepDon";
+            this.txtMaXepDon.ReadOnly = true;
+            this.txtMaXepDon.Size = new System.Drawing.Size(127, 25);
+            this.txtMaXepDon.TabIndex = 68;
+            this.txtMaXepDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaXepDon.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label17.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(501, 137);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(127, 19);
+            this.label17.TabIndex = 67;
+            this.label17.Text = "     Số Xếp Đơn     ";
+            this.label17.Visible = false;
+            // 
+            // txtLyDoKhac
+            // 
+            this.txtLyDoKhac.Location = new System.Drawing.Point(122, 138);
+            this.txtLyDoKhac.Name = "txtLyDoKhac";
+            this.txtLyDoKhac.ReadOnly = true;
+            this.txtLyDoKhac.Size = new System.Drawing.Size(327, 25);
+            this.txtLyDoKhac.TabIndex = 77;
+            // 
+            // chkLyDoKhac
+            // 
+            this.chkLyDoKhac.AutoSize = true;
+            this.chkLyDoKhac.Location = new System.Drawing.Point(15, 140);
+            this.chkLyDoKhac.Name = "chkLyDoKhac";
+            this.chkLyDoKhac.Size = new System.Drawing.Size(101, 21);
+            this.chkLyDoKhac.TabIndex = 76;
+            this.chkLyDoKhac.Text = "Lý Do Khác";
+            this.chkLyDoKhac.UseVisualStyleBackColor = true;
+            // 
+            // chkCatChuyenDM
+            // 
+            this.chkCatChuyenDM.AutoSize = true;
+            this.chkCatChuyenDM.Location = new System.Drawing.Point(15, 113);
+            this.chkCatChuyenDM.Name = "chkCatChuyenDM";
+            this.chkCatChuyenDM.Size = new System.Drawing.Size(190, 21);
+            this.chkCatChuyenDM.TabIndex = 75;
+            this.chkCatChuyenDM.Text = "Cắt Chuyển định mức nước";
+            this.chkCatChuyenDM.UseVisualStyleBackColor = true;
+            // 
+            // chkCapDM
+            // 
+            this.chkCapDM.AutoSize = true;
+            this.chkCapDM.Location = new System.Drawing.Point(15, 59);
+            this.chkCapDM.Name = "chkCapDM";
+            this.chkCapDM.Size = new System.Drawing.Size(144, 21);
+            this.chkCapDM.TabIndex = 74;
+            this.chkCapDM.Text = "Cấp định mức nước";
+            this.chkCapDM.UseVisualStyleBackColor = true;
+            // 
+            // chkThayDoiTenHopDong
+            // 
+            this.chkThayDoiTenHopDong.AutoSize = true;
+            this.chkThayDoiTenHopDong.Location = new System.Drawing.Point(211, 86);
+            this.chkThayDoiTenHopDong.Name = "chkThayDoiTenHopDong";
+            this.chkThayDoiTenHopDong.Size = new System.Drawing.Size(160, 21);
+            this.chkThayDoiTenHopDong.TabIndex = 73;
+            this.chkThayDoiTenHopDong.Text = "Thay đổi tên hợp đồng";
+            this.chkThayDoiTenHopDong.UseVisualStyleBackColor = true;
+            // 
+            // chkThayDoiGiaNuoc
+            // 
+            this.chkThayDoiGiaNuoc.AutoSize = true;
+            this.chkThayDoiGiaNuoc.Location = new System.Drawing.Point(377, 86);
+            this.chkThayDoiGiaNuoc.Name = "chkThayDoiGiaNuoc";
+            this.chkThayDoiGiaNuoc.Size = new System.Drawing.Size(134, 21);
+            this.chkThayDoiGiaNuoc.TabIndex = 72;
+            this.chkThayDoiGiaNuoc.Text = "Thay đổi giá nước";
+            this.chkThayDoiGiaNuoc.UseVisualStyleBackColor = true;
+            // 
+            // chkKiemTraDHN
+            // 
+            this.chkKiemTraDHN.AutoSize = true;
+            this.chkKiemTraDHN.Location = new System.Drawing.Point(211, 59);
+            this.chkKiemTraDHN.Name = "chkKiemTraDHN";
+            this.chkKiemTraDHN.Size = new System.Drawing.Size(116, 21);
+            this.chkKiemTraDHN.TabIndex = 69;
+            this.chkKiemTraDHN.Text = "Kiểm tra ĐHN";
+            this.chkKiemTraDHN.UseVisualStyleBackColor = true;
+            // 
+            // chkChiSoNuoc
+            // 
+            this.chkChiSoNuoc.AutoSize = true;
+            this.chkChiSoNuoc.Location = new System.Drawing.Point(377, 59);
+            this.chkChiSoNuoc.Name = "chkChiSoNuoc";
+            this.chkChiSoNuoc.Size = new System.Drawing.Size(98, 21);
+            this.chkChiSoNuoc.TabIndex = 71;
+            this.chkChiSoNuoc.Text = "Chỉ số nước";
+            this.chkChiSoNuoc.UseVisualStyleBackColor = true;
+            // 
+            // chkTienNuoc
+            // 
+            this.chkTienNuoc.AutoSize = true;
+            this.chkTienNuoc.Location = new System.Drawing.Point(211, 113);
+            this.chkTienNuoc.Name = "chkTienNuoc";
+            this.chkTienNuoc.Size = new System.Drawing.Size(86, 21);
+            this.chkTienNuoc.TabIndex = 70;
+            this.chkTienNuoc.Text = "Tiền nước";
+            this.chkTienNuoc.UseVisualStyleBackColor = true;
             // 
             // frmShowDonKH
             // 
@@ -1169,38 +1171,38 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1365, 544);
             this.Controls.Add(this.chkMoNuoc);
+            this.Controls.Add(this.chkThayDoiMST);
+            this.Controls.Add(this.chkGiamDM);
+            this.Controls.Add(this.chkTamNgung);
+            this.Controls.Add(this.chkHuyHopDong);
+            this.Controls.Add(this.chkChiNiem);
+            this.Controls.Add(this.chkMatDHN);
+            this.Controls.Add(this.chkHuHongDHN);
+            this.Controls.Add(this.chkDieuChinhSoNha);
+            this.Controls.Add(this.txtMaXepDon);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.txtLyDoKhac);
+            this.Controls.Add(this.chkLyDoKhac);
+            this.Controls.Add(this.chkCatChuyenDM);
+            this.Controls.Add(this.chkCapDM);
+            this.Controls.Add(this.chkThayDoiTenHopDong);
+            this.Controls.Add(this.chkThayDoiGiaNuoc);
+            this.Controls.Add(this.chkKiemTraDHN);
+            this.Controls.Add(this.chkChiSoNuoc);
+            this.Controls.Add(this.chkTienNuoc);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.chkThayDoiMST);
-            this.Controls.Add(this.chkHuyHopDong);
             this.Controls.Add(this.groupBoxChuyenKhac);
             this.Controls.Add(this.chkChuyenKhac);
             this.Controls.Add(this.groupBoxChuyenKTXM);
-            this.Controls.Add(this.chkTamNgung);
             this.Controls.Add(this.groupBoxChuyenToXuLy);
             this.Controls.Add(this.chkChuyenToXuLy);
             this.Controls.Add(this.groupBoxChuyenBanDoiKhac);
             this.Controls.Add(this.chkChuyenBanDoiKhac);
-            this.Controls.Add(this.chkChiNiem);
             this.Controls.Add(this.chkChuyenKT);
-            this.Controls.Add(this.chkMatDHN);
-            this.Controls.Add(this.chkHuHongDHN);
-            this.Controls.Add(this.chkDCSoNha);
-            this.Controls.Add(this.chkGiamDM);
-            this.Controls.Add(this.txtLyDoKhac);
-            this.Controls.Add(this.chkLyDoKhac);
-            this.Controls.Add(this.chkChuyenDM);
-            this.Controls.Add(this.chkCapDM);
-            this.Controls.Add(this.chkThayDoiTenHopDong);
-            this.Controls.Add(this.chkThayDoiGiaNuoc);
-            this.Controls.Add(this.chkGhiChiSoNuoc);
-            this.Controls.Add(this.chkTinhTienNuoc);
-            this.Controls.Add(this.chkDHN);
             this.Controls.Add(this.txtTongSoDanhBo);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.txtMaXepDon);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.txtHieuLucTuKy);
             this.Controls.Add(this.txtSoCongVan);
@@ -1297,27 +1299,8 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.ComboBox cmbNVKiemTra;
-        private System.Windows.Forms.TextBox txtMaXepDon;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtTongSoDanhBo;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.CheckBox chkThayDoiMST;
-        private System.Windows.Forms.CheckBox chkHuyHopDong;
-        private System.Windows.Forms.CheckBox chkTamNgung;
-        private System.Windows.Forms.CheckBox chkChiNiem;
-        private System.Windows.Forms.CheckBox chkMatDHN;
-        private System.Windows.Forms.CheckBox chkHuHongDHN;
-        private System.Windows.Forms.CheckBox chkDCSoNha;
-        private System.Windows.Forms.CheckBox chkGiamDM;
-        private System.Windows.Forms.TextBox txtLyDoKhac;
-        private System.Windows.Forms.CheckBox chkLyDoKhac;
-        private System.Windows.Forms.CheckBox chkChuyenDM;
-        private System.Windows.Forms.CheckBox chkCapDM;
-        private System.Windows.Forms.CheckBox chkThayDoiTenHopDong;
-        private System.Windows.Forms.CheckBox chkThayDoiGiaNuoc;
-        private System.Windows.Forms.CheckBox chkGhiChiSoNuoc;
-        private System.Windows.Forms.CheckBox chkTinhTienNuoc;
-        private System.Windows.Forms.CheckBox chkDHN;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvLichSuChuyenKT;
@@ -1354,6 +1337,25 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private System.Windows.Forms.CheckBox chkMoNuoc;
+        private System.Windows.Forms.CheckBox chkThayDoiMST;
+        private System.Windows.Forms.CheckBox chkGiamDM;
+        private System.Windows.Forms.CheckBox chkTamNgung;
+        private System.Windows.Forms.CheckBox chkHuyHopDong;
+        private System.Windows.Forms.CheckBox chkChiNiem;
+        private System.Windows.Forms.CheckBox chkMatDHN;
+        private System.Windows.Forms.CheckBox chkHuHongDHN;
+        private System.Windows.Forms.CheckBox chkDieuChinhSoNha;
+        private System.Windows.Forms.TextBox txtMaXepDon;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtLyDoKhac;
+        private System.Windows.Forms.CheckBox chkLyDoKhac;
+        private System.Windows.Forms.CheckBox chkCatChuyenDM;
+        private System.Windows.Forms.CheckBox chkCapDM;
+        private System.Windows.Forms.CheckBox chkThayDoiTenHopDong;
+        private System.Windows.Forms.CheckBox chkThayDoiGiaNuoc;
+        private System.Windows.Forms.CheckBox chkKiemTraDHN;
+        private System.Windows.Forms.CheckBox chkChiSoNuoc;
+        private System.Windows.Forms.CheckBox chkTienNuoc;
 
 
     }

@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptThongKeDonKH : ReportClass {
+    public class rptSubThongKeDonKH : ReportClass {
         
-        public rptThongKeDonKH() {
+        public rptSubThongKeDonKH() {
         }
         
         public override string ResourceName {
             get {
-                return "rptThongKeDonKH.rpt";
+                return "rptSubThongKeDonKH.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.KhachHang.rptThongKeDonKH.rpt";
+                return "KTKS_DonKH.BaoCao.KhachHang.rptSubThongKeDonKH.rpt";
             }
             set {
                 // Do nothing
@@ -98,25 +98,17 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection2 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[7];
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptThongKeDonKH : Component, ICachedReport {
+    public class CachedrptSubThongKeDonKH : Component, ICachedReport {
         
-        public CachedrptThongKeDonKH() {
+        public CachedrptSubThongKeDonKH() {
         }
         
         [Browsable(false)]
@@ -153,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptThongKeDonKH rpt = new rptThongKeDonKH();
+            rptSubThongKeDonKH rpt = new rptSubThongKeDonKH();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -259,27 +259,55 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         chkChuyenKT.Checked = true;
                         dateChuyenKT.Value = _dontxl.NgayChuyenKT.Value;
-                        if(_dontxl.NguoiDi!=null)
-                        cmbNguoiDi.SelectedValue = _dontxl.NguoiDi;
+                        if (_dontxl.NguoiDi != null)
+                            cmbNguoiDi.SelectedValue = _dontxl.NguoiDi;
                         txtGhiChuChuyenKT.Text = _dontxl.GhiChuChuyenKT;
                     }
+                    else
+                    {
+                        chkChuyenKT.Checked = false;
+                        dateChuyenKT.Value = DateTime.Now;
+                        cmbNguoiDi.SelectedIndex = -1;
+                        txtGhiChuChuyenKT.Text = "";
+                    }
+
                     if (_dontxl.ChuyenBanDoiKhac)
                     {
                         chkChuyenBanDoiKhac.Checked = true;
                         dateChuyenBanDoiKhac.Value = _dontxl.NgayChuyenBanDoiKhac.Value;
                         txtGhiChuChuyenBanDoiKhac.Text = _dontxl.GhiChuChuyenBanDoiKhac;
                     }
+                    else
+                    {
+                        chkChuyenBanDoiKhac.Checked = false;
+                        dateChuyenBanDoiKhac.Value = DateTime.Now;
+                        txtGhiChuChuyenBanDoiKhac.Text = "";
+                    }
+
                     if (_dontxl.ChuyenToKhachHang)
                     {
                         chkChuyenToKhachHang.Checked = true;
                         dateChuyenToKhachHang.Value = _dontxl.NgayChuyenToKhachHang.Value;
                         txtGhiChuChuyenToKhachHang.Text = _dontxl.GhiChuChuyenToKhachHang;
                     }
+                    else
+                    {
+                        chkChuyenToKhachHang.Checked = false;
+                        dateChuyenToKhachHang.Value = DateTime.Now;
+                        txtGhiChuChuyenToKhachHang.Text = "";
+                    }
+
                     if (_dontxl.ChuyenKhac)
                     {
                         chkChuyenKhac.Checked = true;
                         dateChuyenKhac.Value = _dontxl.NgayChuyenKhac.Value;
                         txtGhiChuChuyenKhac.Text = _dontxl.GhiChuChuyenKhac;
+                    }
+                    else
+                    {
+                        chkChuyenKhac.Checked = false;
+                        dateChuyenKhac.Value = DateTime.Now;
+                        txtGhiChuChuyenKhac.Text = "";
                     }
                 }
                 else

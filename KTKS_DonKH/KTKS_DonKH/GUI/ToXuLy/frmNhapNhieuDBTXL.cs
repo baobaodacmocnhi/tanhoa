@@ -22,6 +22,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CDonTXL _cDonTXL = new CDonTXL();
         private DateTimePicker cellDateTimePicker;
+        bool _flag = false;
 
         public frmNhapNhieuDBTXL()
         {
@@ -66,7 +67,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         }
 
         private void dgvDanhBo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
+        {  
             if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo" && dgvDanhBo["DanhBo",e.RowIndex].Value!=null)
             {
                 if (_cTTKH.getTTKHbyID(dgvDanhBo["DanhBo", e.RowIndex].Value.ToString()) != null)
@@ -85,13 +86,15 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 else
                 {
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }    
             }
-            if (e.RowIndex > 0)
+            if (e.RowIndex > 0 && dgvDanhBo.Columns[e.ColumnIndex].Name == "NguoiDi")
             {
-                dgvDanhBo["NgayChuyen", e.RowIndex].Value = dgvDanhBo["NgayChuyen", e.RowIndex - 1].Value;
-                dgvDanhBo["NguoiDi", e.RowIndex].Value = dgvDanhBo["NguoiDi", e.RowIndex - 1].Value;
+                _flag = true;
+                //dgvDanhBo["NgayChuyen", e.RowIndex].Value = dgvDanhBo["NgayChuyen", e.RowIndex - 1].Value;
+                //dgvDanhBo["NguoiDi", e.RowIndex].Value = dgvDanhBo["NguoiDi", e.RowIndex - 1].Value;
             }
+            
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -203,6 +206,18 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 }
                 cellDateTimePicker.Visible = true;
             }
+        }
+
+        private void dgvDanhBo_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+                if (!_flag)
+                {
+                    dgvDanhBo["NgayChuyen", e.RowIndex].Value = dgvDanhBo["NgayChuyen", e.RowIndex - 1].Value;
+                    dgvDanhBo["NguoiDi", e.RowIndex].Value = dgvDanhBo["NguoiDi", e.RowIndex - 1].Value;
+                }
+                else
+                    _flag = false;
         }
     }
 }

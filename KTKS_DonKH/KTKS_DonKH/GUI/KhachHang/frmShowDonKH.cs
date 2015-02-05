@@ -66,11 +66,11 @@ namespace KTKS_DonKH.GUI.KhachHang
                 //txtMaXepDon.Text = _donkh.MaXepDon.ToString().Insert(_donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));
 
                 if (_donkh.KiemTraDHN)
-                    chkDHN.Checked = true;
+                    chkKiemTraDHN.Checked = true;
                 if (_donkh.TienNuoc)
-                    chkTinhTienNuoc.Checked = true;
+                    chkTienNuoc.Checked = true;
                 if (_donkh.ChiSoNuoc)
-                    chkGhiChiSoNuoc.Checked = true;
+                    chkChiSoNuoc.Checked = true;
                 if (_donkh.DonGiaNuoc)
                     chkThayDoiGiaNuoc.Checked = true;
                 if (_donkh.SangTen)
@@ -78,11 +78,11 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (_donkh.DangKyDM)
                     chkCapDM.Checked = true;
                 if (_donkh.CatChuyenDM)
-                    chkChuyenDM.Checked = true;
+                    chkCatChuyenDM.Checked = true;
                 if (_donkh.GiamDM)
                     chkGiamDM.Checked = true;
                 if (_donkh.DCSoNha)
-                    chkDCSoNha.Checked = true;
+                    chkDieuChinhSoNha.Checked = true;
                 if (_donkh.MatDHN)
                     chkMatDHN.Checked = true;
                 if (_donkh.HuHongDHN)
@@ -213,10 +213,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void chkLyDoKhac_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkLyDoKhac.Checked)
-                txtLyDoKhac.ReadOnly = false;
-            else
-                txtLyDoKhac.ReadOnly = true;
+
         }
 
         private void btnInBienNhan_Click(object sender, EventArgs e)
@@ -517,17 +514,17 @@ namespace KTKS_DonKH.GUI.KhachHang
                 _donkh.HieuLucTuKy = txtHieuLucTuKy.Text.Trim();
 
                 #region CheckBox
-                if (chkDHN.Checked)
+                if (chkKiemTraDHN.Checked)
                     _donkh.KiemTraDHN = true;
                 else
                     _donkh.KiemTraDHN = false;
 
-                if (chkTinhTienNuoc.Checked)
+                if (chkTienNuoc.Checked)
                     _donkh.TienNuoc = true;
                 else
                     _donkh.TienNuoc = false;
 
-                if (chkGhiChiSoNuoc.Checked)
+                if (chkChiSoNuoc.Checked)
                     _donkh.ChiSoNuoc = true;
                 else
                     _donkh.ChiSoNuoc = false;
@@ -547,7 +544,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 else
                     _donkh.DangKyDM = false;
 
-                if (chkChuyenDM.Checked)
+                if (chkCatChuyenDM.Checked)
                     _donkh.CatChuyenDM = true;
                 else
                     _donkh.CatChuyenDM = false;
@@ -557,7 +554,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 else
                     _donkh.GiamDM = false;
 
-                if (chkDCSoNha.Checked)
+                if (chkDieuChinhSoNha.Checked)
                     _donkh.DCSoNha = true;
                 else
                     _donkh.DCSoNha = false;

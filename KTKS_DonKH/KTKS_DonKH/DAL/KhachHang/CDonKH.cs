@@ -307,6 +307,48 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
+        public DataTable LoadDSDonKHBySoCongVan(string SoCongVan)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from itemDonKH in db.DonKHs
+                                join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
+                                join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
+                                where itemDonKH.SoCongVan == SoCongVan
+                                //orderby itemDonKH.CreateDate ascending
+                                select new
+                                {
+                                    itemDonKH.MaDon,
+                                    itemDonKH.MaLD,
+                                    itemLoaiDon.TenLD,
+                                    itemDonKH.CreateDate,
+                                    itemDonKH.DanhBo,
+                                    itemDonKH.HoTen,
+                                    itemDonKH.DiaChi,
+                                    itemDonKH.NoiDung,
+                                    itemDonKH.MaChuyen,
+                                    itemDonKH.LyDoChuyen,
+                                    itemDonKH.SoLuongDiaChi,
+                                    itemDonKH.NVKiemTra,
+                                    CreateBy = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSDonKHByDate(DateTime Ngay)
         {
             try
@@ -401,23 +443,30 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
-                                where itemDonKH.CreateDate.Value.Date==TuNgay.Date
+                                where itemDonKH.CreateDate.Value.Date == TuNgay.Date
                                 orderby itemDonKH.MaDon ascending
                                 select new
                                 {
                                     itemDonKH.MaDon,
                                     itemDonKH.MaLD,
                                     itemLoaiDon.TenLD,
-                                    itemDonKH.CreateDate,
-                                    itemDonKH.DanhBo,
-                                    itemDonKH.HoTen,
-                                    itemDonKH.DiaChi,
-                                    itemDonKH.NoiDung,
-                                    itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen,
-                                    itemDonKH.SoLuongDiaChi,
-                                    itemDonKH.NVKiemTra,
-                                    itemDonKH.TienTrinh,
+                                    CapDM = itemDonKH.DangKyDM,
+                                    itemDonKH.GiamDM,
+                                    itemDonKH.CatChuyenDM,
+                                    itemDonKH.KiemTraDHN,
+                                    itemDonKH.MatDHN,
+                                    itemDonKH.HuHongDHN,
+                                    itemDonKH.ChiNiem,
+                                    itemDonKH.TienNuoc,
+                                    itemDonKH.ChiSoNuoc,
+                                    DieuChinhSoNha = itemDonKH.DCSoNha,
+                                    ThayDoiTenHopDong = itemDonKH.SangTen,
+                                    itemDonKH.ThayDoiMST,
+                                    ThayDoiGiaNuoc = itemDonKH.DonGiaNuoc,
+                                    itemDonKH.TamNgung,
+                                    itemDonKH.HuyHopDong,
+                                    itemDonKH.MoNuoc,
+                                    itemDonKH.LoaiKhac,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -449,16 +498,23 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.MaDon,
                                     itemDonKH.MaLD,
                                     itemLoaiDon.TenLD,
-                                    itemDonKH.CreateDate,
-                                    itemDonKH.DanhBo,
-                                    itemDonKH.HoTen,
-                                    itemDonKH.DiaChi,
-                                    itemDonKH.NoiDung,
-                                    itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen,
-                                    itemDonKH.SoLuongDiaChi,
-                                    itemDonKH.NVKiemTra,
-                                    itemDonKH.TienTrinh,
+                                    CapDM = itemDonKH.DangKyDM,
+                                    itemDonKH.GiamDM,
+                                    itemDonKH.CatChuyenDM,
+                                    itemDonKH.KiemTraDHN,
+                                    itemDonKH.MatDHN,
+                                    itemDonKH.HuHongDHN,
+                                    itemDonKH.ChiNiem,
+                                    itemDonKH.TienNuoc,
+                                    itemDonKH.ChiSoNuoc,
+                                    DieuChinhSoNha = itemDonKH.DCSoNha,
+                                    ThayDoiTenHopDong = itemDonKH.SangTen,
+                                    itemDonKH.ThayDoiMST,
+                                    ThayDoiGiaNuoc = itemDonKH.DonGiaNuoc,
+                                    itemDonKH.TamNgung,
+                                    itemDonKH.HuyHopDong,
+                                    itemDonKH.MoNuoc,
+                                    itemDonKH.LoaiKhac,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -620,7 +676,7 @@ namespace KTKS_DonKH.DAL.KhachHang
             {
                 if (CTaiKhoan.RoleNhanDonKH_CapNhat)
                 {
-                    if (db.LichSuChuyenKTs.Count() > 0)
+                    if (db.LichSuChuyenVanPhongs.Count() > 0)
                     {
                         string ID = "MaLSChuyenVanPhong";
                         string Table = "LichSuChuyenVanPhong";
@@ -725,8 +781,8 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 {
                                     Table = "LichSuChuyenVanPhong",
                                     MaLSChuyenKT=itemLSCVP.MaLSChuyenVanPhong,
-                                    itemLSCVP.NgayChuyenVanPhong,
-                                    itemLSCVP.GhiChuChuyenVanPhong,
+                                    NgayChuyenKT=itemLSCVP.NgayChuyenVanPhong,
+                                    GhiChuChuyenKT=itemLSCVP.GhiChuChuyenVanPhong,
                                     NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -757,8 +813,8 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 {
                                     Table = "LichSuChuyenVanPhong",
                                     MaLSChuyenKT=itemLSCVP.MaLSChuyenVanPhong,
-                                    itemLSCVP.NgayChuyenVanPhong,
-                                    itemLSCVP.GhiChuChuyenVanPhong,
+                                    NgayChuyenKT=itemLSCVP.NgayChuyenVanPhong,
+                                    GhiChuChuyenKT=itemLSCVP.GhiChuChuyenVanPhong,
                                     NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);

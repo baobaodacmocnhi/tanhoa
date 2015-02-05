@@ -56,8 +56,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbLD = new System.Windows.Forms.ComboBox();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabKiemTra = new System.Windows.Forms.TabPage();
+            this.tabVanPhong = new System.Windows.Forms.TabPage();
             this.dgvDanhBoChuyenVanPhong = new System.Windows.Forms.DataGridView();
             this.NgayChuyenVP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDiVP = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -74,8 +74,8 @@
             this.NamVP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBoChuyenKT)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabKiemTra.SuspendLayout();
+            this.tabVanPhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBoChuyenVanPhong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,6 +201,7 @@
             this.dgvDanhBoChuyenKT.TabIndex = 38;
             this.dgvDanhBoChuyenKT.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDanhBo_CellBeginEdit);
             this.dgvDanhBoChuyenKT.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBo_CellEndEdit);
+            this.dgvDanhBoChuyenKT.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBoChuyenKT_RowLeave);
             this.dgvDanhBoChuyenKT.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBo_RowPostPaint);
             // 
             // label23
@@ -321,35 +322,35 @@
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabKiemTra);
+            this.tabControl.Controls.Add(this.tabVanPhong);
             this.tabControl.Location = new System.Drawing.Point(1, 59);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1307, 487);
             this.tabControl.TabIndex = 40;
             // 
-            // tabPage1
+            // tabKiemTra
             // 
-            this.tabPage1.Controls.Add(this.dgvDanhBoChuyenKT);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1299, 457);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Kiểm Tra";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabKiemTra.Controls.Add(this.dgvDanhBoChuyenKT);
+            this.tabKiemTra.Location = new System.Drawing.Point(4, 26);
+            this.tabKiemTra.Name = "tabKiemTra";
+            this.tabKiemTra.Padding = new System.Windows.Forms.Padding(3);
+            this.tabKiemTra.Size = new System.Drawing.Size(1299, 457);
+            this.tabKiemTra.TabIndex = 0;
+            this.tabKiemTra.Text = "Kiểm Tra";
+            this.tabKiemTra.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tabVanPhong
             // 
-            this.tabPage2.Controls.Add(this.dgvDanhBoChuyenVanPhong);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1299, 457);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Văn Phòng";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabVanPhong.Controls.Add(this.dgvDanhBoChuyenVanPhong);
+            this.tabVanPhong.Location = new System.Drawing.Point(4, 26);
+            this.tabVanPhong.Name = "tabVanPhong";
+            this.tabVanPhong.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVanPhong.Size = new System.Drawing.Size(1299, 457);
+            this.tabVanPhong.TabIndex = 1;
+            this.tabVanPhong.Text = "Văn Phòng";
+            this.tabVanPhong.UseVisualStyleBackColor = true;
             // 
             // dgvDanhBoChuyenVanPhong
             // 
@@ -374,6 +375,7 @@
             this.dgvDanhBoChuyenVanPhong.TabIndex = 39;
             this.dgvDanhBoChuyenVanPhong.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDanhBoChuyenVanPhong_CellBeginEdit);
             this.dgvDanhBoChuyenVanPhong.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBoChuyenVanPhong_CellEndEdit);
+            this.dgvDanhBoChuyenVanPhong.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhBoChuyenVanPhong_RowLeave);
             this.dgvDanhBoChuyenVanPhong.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBoChuyenVanPhong_RowPostPaint);
             // 
             // NgayChuyenVP
@@ -457,7 +459,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1308, 547);
+            this.ClientSize = new System.Drawing.Size(1276, 547);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.txtTongSoDanhBo);
             this.Controls.Add(this.btnLuu);
@@ -481,8 +483,8 @@
             this.Load += new System.EventHandler(this.frmNhapNhieuDBTKH_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBoChuyenKT)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tabKiemTra.ResumeLayout(false);
+            this.tabVanPhong.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBoChuyenVanPhong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -519,8 +521,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbLD;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabKiemTra;
+        private System.Windows.Forms.TabPage tabVanPhong;
         private System.Windows.Forms.DataGridView dgvDanhBoChuyenVanPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenVP;
         private System.Windows.Forms.DataGridViewComboBoxColumn NguoiDiVP;

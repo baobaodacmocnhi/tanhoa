@@ -649,6 +649,7 @@
             this.GhiChuChuyenKT});
             this.dgvLichSuChuyenKT.Location = new System.Drawing.Point(6, 19);
             this.dgvLichSuChuyenKT.Name = "dgvLichSuChuyenKT";
+            this.dgvLichSuChuyenKT.ReadOnly = true;
             this.dgvLichSuChuyenKT.Size = new System.Drawing.Size(484, 210);
             this.dgvLichSuChuyenKT.TabIndex = 0;
             this.dgvLichSuChuyenKT.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuChuyenKT_CellMouseClick);
@@ -659,6 +660,7 @@
             this.MaLSChuyenKT.DataPropertyName = "MaLSChuyenKT";
             this.MaLSChuyenKT.HeaderText = "MaLSCKT";
             this.MaLSChuyenKT.Name = "MaLSChuyenKT";
+            this.MaLSChuyenKT.ReadOnly = true;
             this.MaLSChuyenKT.Visible = false;
             // 
             // NgayChuyenKT
@@ -666,6 +668,7 @@
             this.NgayChuyenKT.DataPropertyName = "NgayChuyenKT";
             this.NgayChuyenKT.HeaderText = "Ngày Chuyển";
             this.NgayChuyenKT.Name = "NgayChuyenKT";
+            this.NgayChuyenKT.ReadOnly = true;
             this.NgayChuyenKT.Width = 120;
             // 
             // NguoiDi
@@ -673,6 +676,7 @@
             this.NguoiDi.DataPropertyName = "NguoiDi";
             this.NguoiDi.HeaderText = "Nhân Viên";
             this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.ReadOnly = true;
             this.NguoiDi.Width = 200;
             // 
             // GhiChuChuyenKT
@@ -680,6 +684,7 @@
             this.GhiChuChuyenKT.DataPropertyName = "GhiChuChuyenKT";
             this.GhiChuChuyenKT.HeaderText = "Ghi Chú";
             this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
+            this.GhiChuChuyenKT.ReadOnly = true;
             // 
             // contextMenuStrip1
             // 

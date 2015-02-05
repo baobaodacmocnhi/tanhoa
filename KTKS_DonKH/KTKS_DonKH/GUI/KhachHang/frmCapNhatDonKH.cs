@@ -38,6 +38,8 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void frmCapNhatDonKH_Load(object sender, EventArgs e)
         {
+            dgvLichSuChuyenKT.AutoGenerateColumns = false;
+
             cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon(true);
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
@@ -131,6 +133,14 @@ namespace KTKS_DonKH.GUI.KhachHang
                         cmbNguoiDi.SelectedValue = _donkh.NguoiDi;
                         txtGhiChuChuyenKT.Text = _donkh.GhiChuChuyenKT;
                     }
+                    else
+                    {
+                        chkChuyenKT.Checked = false;
+                        dateChuyenKT.Value = DateTime.Now;
+                        cmbNguoiDi.SelectedIndex = -1;
+                        txtGhiChuChuyenKT.Text = "";
+                    }
+
                     if (_donkh.ChuyenVanPhong)
                     {
                         chkChuyenVanPhong.Checked = true;
@@ -138,23 +148,51 @@ namespace KTKS_DonKH.GUI.KhachHang
                         cmbVanPhong.SelectedValue = _donkh.NguoiVanPhong;
                         txtGhiChuChuyenVanPhong.Text = _donkh.GhiChuChuyenVanPhong;
                     }
+                    else
+                    {
+                        chkChuyenVanPhong.Checked = false;
+                        dateChuyenVanPhong.Value = DateTime.Now;
+                        cmbVanPhong.SelectedIndex = -1;
+                        txtGhiChuChuyenVanPhong.Text = "";
+                    }
+
                     if (_donkh.ChuyenBanDoiKhac)
                     {
                         chkChuyenBanDoiKhac.Checked = true;
                         dateChuyenBanDoiKhac.Value = _donkh.NgayChuyenBanDoiKhac.Value;
                         txtGhiChuChuyenBanDoiKhac.Text = _donkh.GhiChuChuyenBanDoiKhac;
                     }
+                    else
+                    {
+                        chkChuyenBanDoiKhac.Checked = false;
+                        dateChuyenBanDoiKhac.Value = DateTime.Now;
+                        txtGhiChuChuyenBanDoiKhac.Text = "";
+                    }
+
                     if (_donkh.ChuyenToXuLy)
                     {
                         chkChuyenToXuLy.Checked = true;
                         dateChuyenToXuLy.Value = _donkh.NgayChuyenToXuLy.Value;
                         txtGhiChuChuyenToXuLy.Text = _donkh.GhiChuChuyenToXuLy;
                     }
+                    else
+                    {
+                        chkChuyenToXuLy.Checked = false;
+                        dateChuyenToXuLy.Value = DateTime.Now;
+                        txtGhiChuChuyenToXuLy.Text = "";
+                    }
+
                     if (_donkh.ChuyenKhac)
                     {
                         chkChuyenKhac.Checked = true;
                         dateChuyenKhac.Value = _donkh.NgayChuyenKhac.Value;
                         txtGhiChuChuyenKhac.Text = _donkh.GhiChuChuyenKhac;
+                    }
+                    else
+                    {
+                        chkChuyenKhac.Checked = false;
+                        dateChuyenKhac.Value = DateTime.Now;
+                        txtGhiChuChuyenKhac.Text = "";
                     }
                 }
                 else
@@ -268,6 +306,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                         _cDonKH.ThemLichSuChuyenVanPhong(lichsuchuyenvanphong);
                         flagSuaChuyenVP = false;
                     }
+                    DataTable dt = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
+                    dt.Merge(_cDonKH.LoadDSLichSuChuyenVanPhongbyMaDonTKH(_donkh.MaDon));
+                    dgvLichSuChuyenKT.DataSource = dt;
                     MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -352,6 +393,23 @@ namespace KTKS_DonKH.GUI.KhachHang
             else
             {
                 groupBoxChuyenKhac.Enabled = false;
+            }
+        }
+
+        private void dgvLichSuChuyenKT_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvLichSuChuyenKT.CurrentCell = dgvLichSuChuyenKT.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void dgvLichSuChuyenKT_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && (_donkh != null))
+            {
+                contextMenuStrip1.Show(dgvLichSuChuyenKT, new Point(e.X, e.Y));
             }
         }
 
