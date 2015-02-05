@@ -39,6 +39,7 @@
             this.radChiTietDon = new System.Windows.Forms.RadioButton();
             this.chkToKH = new System.Windows.Forms.CheckBox();
             this.chkTXL = new System.Windows.Forms.CheckBox();
+            this.radThongKe = new System.Windows.Forms.RadioButton();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -127,12 +128,10 @@
             // radChiTietDon
             // 
             this.radChiTietDon.AutoSize = true;
-            this.radChiTietDon.Checked = true;
-            this.radChiTietDon.Location = new System.Drawing.Point(12, 12);
+            this.radChiTietDon.Location = new System.Drawing.Point(12, 33);
             this.radChiTietDon.Name = "radChiTietDon";
             this.radChiTietDon.Size = new System.Drawing.Size(102, 21);
             this.radChiTietDon.TabIndex = 25;
-            this.radChiTietDon.TabStop = true;
             this.radChiTietDon.Text = "Chi Tiết Đơn";
             this.radChiTietDon.UseVisualStyleBackColor = true;
             // 
@@ -145,6 +144,7 @@
             this.chkToKH.TabIndex = 26;
             this.chkToKH.Text = "Tổ Khách Hàng";
             this.chkToKH.UseVisualStyleBackColor = true;
+            this.chkToKH.CheckedChanged += new System.EventHandler(this.chkToKH_CheckedChanged);
             // 
             // chkTXL
             // 
@@ -155,6 +155,19 @@
             this.chkTXL.TabIndex = 27;
             this.chkTXL.Text = "Tổ Xử Lý";
             this.chkTXL.UseVisualStyleBackColor = true;
+            this.chkTXL.CheckedChanged += new System.EventHandler(this.chkTXL_CheckedChanged);
+            // 
+            // radThongKe
+            // 
+            this.radThongKe.AutoSize = true;
+            this.radThongKe.Checked = true;
+            this.radThongKe.Location = new System.Drawing.Point(12, 6);
+            this.radThongKe.Name = "radThongKe";
+            this.radThongKe.Size = new System.Drawing.Size(85, 21);
+            this.radThongKe.TabIndex = 28;
+            this.radThongKe.TabStop = true;
+            this.radThongKe.Text = "Thống Kê";
+            this.radThongKe.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoDonKH
             // 
@@ -162,6 +175,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.radThongKe);
             this.Controls.Add(this.chkTXL);
             this.Controls.Add(this.chkToKH);
             this.Controls.Add(this.radChiTietDon);
@@ -193,5 +207,6 @@
         private System.Windows.Forms.RadioButton radChiTietDon;
         private System.Windows.Forms.CheckBox chkToKH;
         private System.Windows.Forms.CheckBox chkTXL;
+        private System.Windows.Forms.RadioButton radThongKe;
     }
 }

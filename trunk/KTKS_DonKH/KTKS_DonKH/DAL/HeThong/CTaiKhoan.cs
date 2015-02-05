@@ -629,7 +629,7 @@ namespace KTKS_DonKH.DAL.HeThong
                             nguoidung.DetailRoles.Add(qTaiKhoan);
                         }
                         db.SubmitChanges();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
                     else

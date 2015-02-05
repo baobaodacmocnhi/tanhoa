@@ -52,6 +52,7 @@
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
             this.ribbtnQLDonKH = new System.Windows.Forms.RibbonButton();
+            this.ribbtnCapNhatDonKH = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel14 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhanDonTXL = new System.Windows.Forms.RibbonButton();
             this.ribbtnQLDonTXL = new System.Windows.Forms.RibbonButton();
@@ -112,7 +113,8 @@
             this.ribbtnBaoCaoBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
-            this.ribbtnCapNhatDonKH = new System.Windows.Forms.RibbonButton();
+            this.ribbtnNhanDonDT = new System.Windows.Forms.RibbonButton();
+            this.ribbtnQLDonDT = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -277,6 +279,8 @@
             this.ribbonPanel4.Items.Add(this.ribbtnNhanDon);
             this.ribbonPanel4.Items.Add(this.ribbtnQLDonKH);
             this.ribbonPanel4.Items.Add(this.ribbtnCapNhatDonKH);
+            this.ribbonPanel4.Items.Add(this.ribbtnNhanDonDT);
+            this.ribbonPanel4.Items.Add(this.ribbtnQLDonDT);
             this.ribbonPanel4.Text = "Tổ Khách Hàng";
             // 
             // ribbtnNhanDon
@@ -294,6 +298,14 @@
             this.ribbtnQLDonKH.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonKH.SmallImage")));
             this.ribbtnQLDonKH.Text = "Quản Lý";
             this.ribbtnQLDonKH.Click += new System.EventHandler(this.ribbtnQLDonKH_Click);
+            // 
+            // ribbtnCapNhatDonKH
+            // 
+            this.ribbtnCapNhatDonKH.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnCapNhatDonKH.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnCapNhatDonKH.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnCapNhatDonKH.SmallImage")));
+            this.ribbtnCapNhatDonKH.Text = "Cập Nhật Đơn";
+            this.ribbtnCapNhatDonKH.Click += new System.EventHandler(this.ribbtnCapNhatDonKH_Click);
             // 
             // ribbonPanel14
             // 
@@ -768,13 +780,21 @@
             this.ribbon1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ribbon1_KeyPress);
             this.ribbon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
             // 
-            // ribbtnCapNhatDonKH
+            // ribbtnNhanDonDT
             // 
-            this.ribbtnCapNhatDonKH.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnCapNhatDonKH.MinimumSize = new System.Drawing.Size(90, 0);
-            this.ribbtnCapNhatDonKH.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnCapNhatDonKH.SmallImage")));
-            this.ribbtnCapNhatDonKH.Text = "Cập Nhật Đơn";
-            this.ribbtnCapNhatDonKH.Click += new System.EventHandler(this.ribbtnCapNhatDonKH_Click);
+            this.ribbtnNhanDonDT.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnNhanDonDT.MinimumSize = new System.Drawing.Size(130, 0);
+            this.ribbtnNhanDonDT.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnNhanDonDT.SmallImage")));
+            this.ribbtnNhanDonDT.Text = "Nhận Đơn Điện Thoại";
+            this.ribbtnNhanDonDT.Click += new System.EventHandler(this.ribbtnNhanDonDT_Click);
+            // 
+            // ribbtnQLDonDT
+            // 
+            this.ribbtnQLDonDT.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnQLDonDT.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbtnQLDonDT.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonDT.SmallImage")));
+            this.ribbtnQLDonDT.Text = "QL Đơn Điện Thoại";
+            this.ribbtnQLDonDT.Click += new System.EventHandler(this.ribbtnQLDonDT_Click);
             // 
             // Main
             // 
@@ -885,6 +905,8 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel23;
         private System.Windows.Forms.RibbonButton ribbtnBaoCaoBamChi;
         private System.Windows.Forms.RibbonButton ribbtnCapNhatDonKH;
+        private System.Windows.Forms.RibbonButton ribbtnNhanDonDT;
+        private System.Windows.Forms.RibbonButton ribbtnQLDonDT;
     }
 }
 

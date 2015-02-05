@@ -322,6 +322,7 @@
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(100, 25);
             this.txtDienThoai.TabIndex = 5;
+            this.txtDienThoai.Visible = false;
             // 
             // label11
             // 
@@ -331,6 +332,7 @@
             this.label11.Size = new System.Drawing.Size(76, 17);
             this.label11.TabIndex = 4;
             this.label11.Text = "Điện Thoại:";
+            this.label11.Visible = false;
             // 
             // txtDinhMuc
             // 
@@ -789,14 +791,18 @@
             this.GhiChuChuyenKT});
             this.dgvLichSuChuyenKT.Location = new System.Drawing.Point(6, 19);
             this.dgvLichSuChuyenKT.Name = "dgvLichSuChuyenKT";
+            this.dgvLichSuChuyenKT.ReadOnly = true;
             this.dgvLichSuChuyenKT.Size = new System.Drawing.Size(484, 166);
             this.dgvLichSuChuyenKT.TabIndex = 0;
+            this.dgvLichSuChuyenKT.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuChuyenKT_CellMouseClick);
+            this.dgvLichSuChuyenKT.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuChuyenKT_MouseClick);
             // 
             // Table
             // 
             this.Table.DataPropertyName = "Table";
             this.Table.HeaderText = "Table";
             this.Table.Name = "Table";
+            this.Table.ReadOnly = true;
             this.Table.Visible = false;
             // 
             // MaLSChuyenKT
@@ -804,6 +810,7 @@
             this.MaLSChuyenKT.DataPropertyName = "MaLSChuyenKT";
             this.MaLSChuyenKT.HeaderText = "MaLSCKT";
             this.MaLSChuyenKT.Name = "MaLSChuyenKT";
+            this.MaLSChuyenKT.ReadOnly = true;
             this.MaLSChuyenKT.Visible = false;
             // 
             // NgayChuyenKT
@@ -811,6 +818,7 @@
             this.NgayChuyenKT.DataPropertyName = "NgayChuyenKT";
             this.NgayChuyenKT.HeaderText = "Ngày Chuyển";
             this.NgayChuyenKT.Name = "NgayChuyenKT";
+            this.NgayChuyenKT.ReadOnly = true;
             this.NgayChuyenKT.Width = 120;
             // 
             // NguoiDi
@@ -818,6 +826,7 @@
             this.NguoiDi.DataPropertyName = "NguoiDi";
             this.NguoiDi.HeaderText = "Nhân Viên";
             this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.ReadOnly = true;
             this.NguoiDi.Width = 200;
             // 
             // GhiChuChuyenKT
@@ -825,6 +834,7 @@
             this.GhiChuChuyenKT.DataPropertyName = "GhiChuChuyenKT";
             this.GhiChuChuyenKT.HeaderText = "Ghi Chú";
             this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
+            this.GhiChuChuyenKT.ReadOnly = true;
             // 
             // btnSua
             // 

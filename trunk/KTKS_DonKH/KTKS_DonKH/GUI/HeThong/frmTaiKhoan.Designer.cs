@@ -39,14 +39,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.dgvDSTaiKhoan = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.dgvPhanQuyen = new System.Windows.Forms.DataGridView();
-            this.MaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuyenXem = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.QuyenCapNhat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.txtMaKiemBamChi = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.MaU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +47,14 @@
             this.ToKH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ToVP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.dgvPhanQuyen = new System.Windows.Forms.DataGridView();
+            this.MaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuyenXem = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.QuyenCapNhat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtMaKiemBamChi = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTaiKhoan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhanQuyen)).BeginInit();
             this.SuspendLayout();
@@ -126,7 +126,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Visible = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
@@ -174,6 +173,65 @@
             this.dgvDSTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellContentClick);
             this.dgvDSTaiKhoan.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTaiKhoan_CellEndEdit);
             this.dgvDSTaiKhoan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSTaiKhoan_RowPostPaint);
+            // 
+            // MaU
+            // 
+            this.MaU.DataPropertyName = "MaU";
+            this.MaU.HeaderText = "Mã Tài Khoản";
+            this.MaU.Name = "MaU";
+            this.MaU.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 200;
+            // 
+            // TaiKhoan
+            // 
+            this.TaiKhoan.DataPropertyName = "TaiKhoan";
+            this.TaiKhoan.HeaderText = "Tài Khoản";
+            this.TaiKhoan.Name = "TaiKhoan";
+            this.TaiKhoan.ReadOnly = true;
+            this.TaiKhoan.Width = 110;
+            // 
+            // MatKhau
+            // 
+            this.MatKhau.DataPropertyName = "MatKhau";
+            this.MatKhau.HeaderText = "Mật Khẩu";
+            this.MatKhau.Name = "MatKhau";
+            this.MatKhau.ReadOnly = true;
+            this.MatKhau.Visible = false;
+            // 
+            // MaKiemBamChi
+            // 
+            this.MaKiemBamChi.DataPropertyName = "MaKiemBamChi";
+            this.MaKiemBamChi.HeaderText = "Mã Kiềm BC";
+            this.MaKiemBamChi.Name = "MaKiemBamChi";
+            this.MaKiemBamChi.ReadOnly = true;
+            this.MaKiemBamChi.Width = 120;
+            // 
+            // ToKH
+            // 
+            this.ToKH.DataPropertyName = "ToKH";
+            this.ToKH.HeaderText = "Tổ KH";
+            this.ToKH.Name = "ToKH";
+            this.ToKH.Width = 80;
+            // 
+            // ToXuLy
+            // 
+            this.ToXuLy.DataPropertyName = "ToXuLy";
+            this.ToXuLy.HeaderText = "Tổ Xử Lý";
+            this.ToXuLy.Name = "ToXuLy";
+            // 
+            // ToVP
+            // 
+            this.ToVP.DataPropertyName = "ToVP";
+            this.ToVP.HeaderText = "Tổ VP";
+            this.ToVP.Name = "ToVP";
+            this.ToVP.Width = 80;
             // 
             // btnThem
             // 
@@ -260,65 +318,6 @@
             this.label4.Size = new System.Drawing.Size(91, 17);
             this.label4.TabIndex = 11;
             this.label4.Text = "Mã Kiềm BC:";
-            // 
-            // MaU
-            // 
-            this.MaU.DataPropertyName = "MaU";
-            this.MaU.HeaderText = "Mã Tài Khoản";
-            this.MaU.Name = "MaU";
-            this.MaU.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 200;
-            // 
-            // TaiKhoan
-            // 
-            this.TaiKhoan.DataPropertyName = "TaiKhoan";
-            this.TaiKhoan.HeaderText = "Tài Khoản";
-            this.TaiKhoan.Name = "TaiKhoan";
-            this.TaiKhoan.ReadOnly = true;
-            this.TaiKhoan.Width = 110;
-            // 
-            // MatKhau
-            // 
-            this.MatKhau.DataPropertyName = "MatKhau";
-            this.MatKhau.HeaderText = "Mật Khẩu";
-            this.MatKhau.Name = "MatKhau";
-            this.MatKhau.ReadOnly = true;
-            this.MatKhau.Visible = false;
-            // 
-            // MaKiemBamChi
-            // 
-            this.MaKiemBamChi.DataPropertyName = "MaKiemBamChi";
-            this.MaKiemBamChi.HeaderText = "Mã Kiềm BC";
-            this.MaKiemBamChi.Name = "MaKiemBamChi";
-            this.MaKiemBamChi.ReadOnly = true;
-            this.MaKiemBamChi.Width = 120;
-            // 
-            // ToKH
-            // 
-            this.ToKH.DataPropertyName = "ToKH";
-            this.ToKH.HeaderText = "Tổ KH";
-            this.ToKH.Name = "ToKH";
-            this.ToKH.Width = 80;
-            // 
-            // ToXuLy
-            // 
-            this.ToXuLy.DataPropertyName = "ToXuLy";
-            this.ToXuLy.HeaderText = "Tổ Xử Lý";
-            this.ToXuLy.Name = "ToXuLy";
-            // 
-            // ToVP
-            // 
-            this.ToVP.DataPropertyName = "ToVP";
-            this.ToVP.HeaderText = "Tổ VP";
-            this.ToVP.Name = "ToVP";
-            this.ToVP.Width = 80;
             // 
             // frmTaiKhoan
             // 

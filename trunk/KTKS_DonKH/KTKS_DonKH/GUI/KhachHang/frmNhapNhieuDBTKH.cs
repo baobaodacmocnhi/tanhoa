@@ -25,6 +25,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private DateTimePicker cellDateTimePicker;
         private DateTimePicker cellDateTimePickerVP;
+        bool _flag = false;
 
         public frmNhapNhieuDBTKH()
         {
@@ -131,10 +132,11 @@ namespace KTKS_DonKH.GUI.KhachHang
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (e.RowIndex > 0)
+            if (e.RowIndex > 0 && dgvDanhBoChuyenKT.Columns[e.ColumnIndex].Name == "NguoiDi")
             {
-                dgvDanhBoChuyenKT["NgayChuyen", e.RowIndex].Value = dgvDanhBoChuyenKT["NgayChuyen", e.RowIndex - 1].Value;
-                dgvDanhBoChuyenKT["NguoiDi", e.RowIndex].Value = dgvDanhBoChuyenKT["NguoiDi", e.RowIndex - 1].Value;
+                _flag = true;
+                //dgvDanhBo["NgayChuyen", e.RowIndex].Value = dgvDanhBo["NgayChuyen", e.RowIndex - 1].Value;
+                //dgvDanhBo["NguoiDi", e.RowIndex].Value = dgvDanhBo["NguoiDi", e.RowIndex - 1].Value;
             }
         }
 
@@ -333,7 +335,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 if (_cTTKH.getTTKHbyID(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString()) != null)
                 {
-                    TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dgvDanhBoChuyenVanPhong["DanhBo", e.RowIndex].Value.ToString());
+                    TTKhachHang ttkhachhang = _cTTKH.getTTKHbyID(dgvDanhBoChuyenVanPhong["DanhBoVP", e.RowIndex].Value.ToString());
                     dgvDanhBoChuyenVanPhong["HopDongVP", e.RowIndex].Value = ttkhachhang.GiaoUoc;
                     dgvDanhBoChuyenVanPhong["HoTenVP", e.RowIndex].Value = ttkhachhang.HoTen;
                     dgvDanhBoChuyenVanPhong["DiaChiVP", e.RowIndex].Value = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
@@ -349,10 +351,11 @@ namespace KTKS_DonKH.GUI.KhachHang
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (e.RowIndex > 0)
+            if (e.RowIndex > 0 && dgvDanhBoChuyenKT.Columns[e.ColumnIndex].Name == "NguoiDiVP")
             {
-                dgvDanhBoChuyenVanPhong["NgayChuyenVP", e.RowIndex].Value = dgvDanhBoChuyenVanPhong["NgayChuyenVP", e.RowIndex - 1].Value;
-                dgvDanhBoChuyenVanPhong["NguoiDiVP", e.RowIndex].Value = dgvDanhBoChuyenVanPhong["NguoiDiVP", e.RowIndex - 1].Value;
+                _flag = true;
+                //dgvDanhBo["NgayChuyen", e.RowIndex].Value = dgvDanhBo["NgayChuyen", e.RowIndex - 1].Value;
+                //dgvDanhBo["NguoiDi", e.RowIndex].Value = dgvDanhBo["NguoiDi", e.RowIndex - 1].Value;
             }
         }
 
@@ -362,6 +365,30 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void dgvDanhBoChuyenKT_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+                if (!_flag)
+                {
+                    dgvDanhBoChuyenKT["NgayChuyen", e.RowIndex].Value = dgvDanhBoChuyenKT["NgayChuyen", e.RowIndex - 1].Value;
+                    dgvDanhBoChuyenKT["NguoiDi", e.RowIndex].Value = dgvDanhBoChuyenKT["NguoiDi", e.RowIndex - 1].Value;
+                }
+                else
+                    _flag = false;
+        }
+
+        private void dgvDanhBoChuyenVanPhong_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+                if (!_flag)
+                {
+                    dgvDanhBoChuyenVanPhong["NgayChuyenVP", e.RowIndex].Value = dgvDanhBoChuyenVanPhong["NgayChuyenVP", e.RowIndex - 1].Value;
+                    dgvDanhBoChuyenVanPhong["NguoiDiVP", e.RowIndex].Value = dgvDanhBoChuyenVanPhong["NguoiDiVP", e.RowIndex - 1].Value;
+                }
+                else
+                    _flag = false;
         }
     }
 }

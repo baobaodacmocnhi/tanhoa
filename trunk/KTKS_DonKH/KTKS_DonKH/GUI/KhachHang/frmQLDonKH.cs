@@ -258,6 +258,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 case "Mã Đơn":
                 case "Danh Bộ":
+                case "Số Công Văn":
                     txtNoiDungTimKiem.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
@@ -312,6 +313,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                             break;
                         case "Danh Bộ":
                             dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByDanhBo(txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        case "Số Công Văn":
+                            dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
                             break;
                     }
 

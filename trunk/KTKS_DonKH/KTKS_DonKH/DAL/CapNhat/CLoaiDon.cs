@@ -191,5 +191,18 @@ namespace KTKS_DonKH.DAL.CapNhat
                 return false;
             }
         }
+
+        public int GetSoLuongLoaiDon()
+        {
+            try
+            {
+                return db.LoaiDons.Count();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
     }
 }
