@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.KiemTraXacMinh {
+namespace KTKS_DonKH.BaoCao.BamChi {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.KiemTraXacMinh {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptThongKeBienBanKTXM : ReportClass {
+    public class rptThongKeDSBamChi_Sub : ReportClass {
         
-        public rptThongKeBienBanKTXM() {
+        public rptThongKeDSBamChi_Sub() {
         }
         
         public override string ResourceName {
             get {
-                return "rptThongKeBienBanKTXM.rpt";
+                return "rptThongKeDSBamChi_Sub.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.KiemTraXacMinh {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.KiemTraXacMinh.rptThongKeBienBanKTXM.rpt";
+                return "KTKS_DonKH.BaoCao.BamChi.rptThongKeDSBamChi_Sub.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.BaoCao.KiemTraXacMinh {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.KiemTraXacMinh {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,33 @@ namespace KTKS_DonKH.BaoCao.KiemTraXacMinh {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptThongKeBienBanKTXM : Component, ICachedReport {
+    public class CachedrptThongKeDSBamChi_Sub : Component, ICachedReport {
         
-        public CachedrptThongKeBienBanKTXM() {
+        public CachedrptThongKeDSBamChi_Sub() {
         }
         
         [Browsable(false)]
@@ -129,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.KiemTraXacMinh {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptThongKeBienBanKTXM rpt = new rptThongKeBienBanKTXM();
+            rptThongKeDSBamChi_Sub rpt = new rptThongKeDSBamChi_Sub();
             rpt.Site = this.Site;
             return rpt;
         }
