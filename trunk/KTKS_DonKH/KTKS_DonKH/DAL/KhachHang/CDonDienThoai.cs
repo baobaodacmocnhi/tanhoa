@@ -101,6 +101,19 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
+        public bool CheckLapDonKH(decimal MaDonDT)
+        {
+            try
+            {
+                return db.DonDienThoais.Any(item => item.MaDonDT == MaDonDT && item.MaDon != null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public DonDienThoai getDonDienThoaibyID(decimal MaDonDT)
         {
             try
@@ -133,6 +146,27 @@ namespace KTKS_DonKH.DAL.KhachHang
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }   
+        }
+
+        public List<DonDienThoai> getDSDonDienThoaiByDanhBo(string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    return db.DonDienThoais.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).ToList();
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         public List<DonDienThoai> getDSDonDienThoaiByDate(DateTime TuNgay)

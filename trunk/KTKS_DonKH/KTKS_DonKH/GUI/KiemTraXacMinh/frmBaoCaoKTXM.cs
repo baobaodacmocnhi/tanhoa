@@ -334,7 +334,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dateDen.Value = DateTime.Now;
                 _tuNgay = _denNgay = "";
 
-                rptThongKeBienBanKTXM rpt = new rptThongKeBienBanKTXM();
+                rptThongKeKTXM rpt = new rptThongKeKTXM();
                 rpt.SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;
             }

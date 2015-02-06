@@ -52,13 +52,13 @@ namespace KTKS_DonKH.GUI.BamChi
             //cmbColumn.ValueMember = "MaChuyen";
 
             //dgvDSCTKTXM.DataSource = DSDon_BS;
-            if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
-            {
-                radDaDuyet.Checked = true;
-                //btnLuu.Visible = true;
-            }
-            else
-                if (CTaiKhoan.RoleBamChi_Xem || CTaiKhoan.RoleBamChi_CapNhat)
+            //if (CTaiKhoan.RoleQLBamChi_Xem || CTaiKhoan.RoleQLBamChi_CapNhat)
+            //{
+            //    radDaDuyet.Checked = true;
+            //    //btnLuu.Visible = true;
+            //}
+            //else
+            //    if (CTaiKhoan.RoleBamChi_Xem || CTaiKhoan.RoleBamChi_CapNhat)
                     radDSBamChi.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
@@ -225,7 +225,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             dr["MaSoBC"] = itemRow["MaSoBC"];
                             dr["NguoiBC"] = itemRow["CreateBy"];
                             dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                            if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26)
+                            if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26 && CTaiKhoan.MaUser != 27)
                                 dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                             dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
@@ -259,18 +259,29 @@ namespace KTKS_DonKH.GUI.BamChi
                         dr["VienChi"] = itemRow["VienChi"];
                         dr["DayChi"] = itemRow["DayChi"];
                         dr["MaSoBC"] = itemRow["MaSoBC"];
+                        dr["NguoiBC"] = itemRow["CreateBy"];
                         dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                        if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26)
-                            dr["NguoiLap"] = CTaiKhoan.HoTen;
+                        dr["NguoiLap"] = CTaiKhoan.HoTen;
 
                         dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
                     }
 
-                    rptDSBamChi rpt = new rptDSBamChi();
-                    rpt.SetDataSource(dsBaoCao);
-                    rpt.Subreports[0].SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.ShowDialog();
+                    if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27)
+                    {
+                        rptThongKeDSBamChi rpt = new rptThongKeDSBamChi();
+                        rpt.SetDataSource(dsBaoCao);
+                        rpt.Subreports[0].SetDataSource(dsBaoCao);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.ShowDialog();
+                    }
+                    else
+                    {
+                        rptDSBamChi rpt = new rptDSBamChi();
+                        rpt.SetDataSource(dsBaoCao);
+                        rpt.Subreports[0].SetDataSource(dsBaoCao);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.ShowDialog();
+                    }
                 }
             }
             else
