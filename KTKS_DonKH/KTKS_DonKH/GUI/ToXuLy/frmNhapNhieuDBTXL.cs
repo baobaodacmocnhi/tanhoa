@@ -153,9 +153,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             if (item.Cells["NguoiDi"].Value != null)
                             {
                                 LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
-                                lichsuchuyenkt.NgayChuyenKT = dontxl.NgayChuyenKT;
+                                lichsuchuyenkt.NgayChuyen = dontxl.NgayChuyenKT;
                                 lichsuchuyenkt.NguoiDi = dontxl.NguoiDi;
-                                lichsuchuyenkt.GhiChuChuyenKT = dontxl.GhiChuChuyenKT;
+                                lichsuchuyenkt.GhiChuChuyen = dontxl.GhiChuChuyenKT;
                                 lichsuchuyenkt.MaDonTXL = dontxl.MaDon;
                                 _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
                             }

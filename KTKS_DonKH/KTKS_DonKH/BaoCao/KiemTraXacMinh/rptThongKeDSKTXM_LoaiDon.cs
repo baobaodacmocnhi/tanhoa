@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.BamChi {
+namespace KTKS_DonKH.BaoCao.KiemTraXacMinh {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.BamChi {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptThongKeDSBamChi_Sub : ReportClass {
+    public class rptThongKeDSKTXM_LoaiDon : ReportClass {
         
-        public rptThongKeDSBamChi_Sub() {
+        public rptThongKeDSKTXM_LoaiDon() {
         }
         
         public override string ResourceName {
             get {
-                return "rptThongKeDSBamChi_Sub.rpt";
+                return "rptThongKeDSKTXM_LoaiDon.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.BamChi.rptThongKeDSBamChi_Sub.rpt";
+                return "KTKS_DonKH.BaoCao.KiemTraXacMinh.rptThongKeDSKTXM_LoaiDon.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,33 +98,17 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[7];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[8];
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptThongKeDSBamChi_Sub : Component, ICachedReport {
+    public class CachedrptThongKeDSKTXM_LoaiDon : Component, ICachedReport {
         
-        public CachedrptThongKeDSBamChi_Sub() {
+        public CachedrptThongKeDSKTXM_LoaiDon() {
         }
         
         [Browsable(false)]
@@ -161,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.BamChi {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptThongKeDSBamChi_Sub rpt = new rptThongKeDSBamChi_Sub();
+            rptThongKeDSKTXM_LoaiDon rpt = new rptThongKeDSKTXM_LoaiDon();
             rpt.Site = this.Site;
             return rpt;
         }

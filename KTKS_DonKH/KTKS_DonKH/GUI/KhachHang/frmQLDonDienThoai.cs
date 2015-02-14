@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using KTKS_DonKH.DAL.KhachHang;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.CapNhat;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.KhachHang;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -41,6 +44,8 @@ namespace KTKS_DonKH.GUI.KhachHang
             cmbColumn.DataSource = _cLoaiDon.LoadDSLoaiDon(true);
             cmbColumn.DisplayMember = "TenLD";
             cmbColumn.ValueMember = "MaLD";
+
+            dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,12 +120,60 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            DataTable dt = ((DataTable)dgvDonDT.DataSource).DefaultView.ToTable();
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSDonDienThoai"].NewRow();
 
+                dr["TuNgay"] = _tuNgay;
+                dr["DenNgay"] = _denNgay;
+                //dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = itemRow["HoTen"];
+                dr["DiaChi"] = itemRow["DiaChi"];
+                dr["NoiDung"] = itemRow["NoiDung"];
+                dr["DienThoai"] = itemRow["DienThoai"];
+                dr["NguoiBao"] = itemRow["NguoiBao"];
+
+                dsBaoCao.Tables["DSDonDienThoai"].Rows.Add(dr);
+            }
+
+            rptDSDonDienThoai rpt = new rptDSDonDienThoai();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void btnInDaLapDon_Click(object sender, EventArgs e)
         {
+            DataTable dt = ((DataTable)dgvDonDT.DataSource).DefaultView.ToTable();
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow itemRow in dt.Rows)
+                if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                {
+                    DataRow dr = dsBaoCao.Tables["DSDonDienThoai"].NewRow();
 
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    //dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                    dr["MaDon"] = itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["NoiDung"] = itemRow["NoiDung"];
+                    dr["DienThoai"] = itemRow["DienThoai"];
+                    dr["NguoiBao"] = itemRow["NguoiBao"];
+
+                    dsBaoCao.Tables["DSDonDienThoai"].Rows.Add(dr);
+                }
+
+            rptDSDonDienThoai rpt = new rptDSDonDienThoai();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void btnLapDon_Click(object sender, EventArgs e)

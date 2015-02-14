@@ -44,6 +44,9 @@
             this.radChuaChuyen = new System.Windows.Forms.RadioButton();
             this.radDaChuyen = new System.Windows.Forms.RadioButton();
             this.dgvDSDonTXL = new System.Windows.Forms.DataGridView();
+            this.btnInDSDonTXL = new System.Windows.Forms.Button();
+            this.chkChuaKT = new System.Windows.Forms.CheckBox();
+            this.btnInChiTiet = new System.Windows.Forms.Button();
             this.MaChuyen = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LyDoChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,9 +61,7 @@
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaiQuyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnInDSDonTXL = new System.Windows.Forms.Button();
-            this.chkChuaKT = new System.Windows.Forms.CheckBox();
-            this.btnInChiTiet = new System.Windows.Forms.Button();
+            this.GhiChuChuyenKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDonTXL)).BeginInit();
             this.SuspendLayout();
@@ -233,7 +234,8 @@
             this.NoiDung,
             this.CreateBy,
             this.NguoiDi,
-            this.GiaiQuyet});
+            this.GiaiQuyet,
+            this.GhiChuChuyenKT});
             this.dgvDSDonTXL.Location = new System.Drawing.Point(0, 67);
             this.dgvDSDonTXL.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSDonTXL.MultiSelect = false;
@@ -245,6 +247,42 @@
             this.dgvDSDonTXL.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDonTXL_CellFormatting);
             this.dgvDSDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDonTXL_RowPostPaint);
             this.dgvDSDonTXL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSDonTXL_KeyDown);
+            // 
+            // btnInDSDonTXL
+            // 
+            this.btnInDSDonTXL.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInDSDonTXL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInDSDonTXL.Location = new System.Drawing.Point(844, 4);
+            this.btnInDSDonTXL.Name = "btnInDSDonTXL";
+            this.btnInDSDonTXL.Size = new System.Drawing.Size(132, 35);
+            this.btnInDSDonTXL.TabIndex = 29;
+            this.btnInDSDonTXL.Text = "In (Ngày Giao)";
+            this.btnInDSDonTXL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInDSDonTXL.UseVisualStyleBackColor = true;
+            this.btnInDSDonTXL.Click += new System.EventHandler(this.btnInDSDonKH_Click);
+            // 
+            // chkChuaKT
+            // 
+            this.chkChuaKT.AutoSize = true;
+            this.chkChuaKT.Location = new System.Drawing.Point(844, 43);
+            this.chkChuaKT.Name = "chkChuaKT";
+            this.chkChuaKT.Size = new System.Drawing.Size(83, 21);
+            this.chkChuaKT.TabIndex = 32;
+            this.chkChuaKT.Text = "Chưa KT";
+            this.chkChuaKT.UseVisualStyleBackColor = true;
+            // 
+            // btnInChiTiet
+            // 
+            this.btnInChiTiet.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInChiTiet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInChiTiet.Location = new System.Drawing.Point(982, 4);
+            this.btnInChiTiet.Name = "btnInChiTiet";
+            this.btnInChiTiet.Size = new System.Drawing.Size(114, 35);
+            this.btnInChiTiet.TabIndex = 33;
+            this.btnInChiTiet.Text = "In (Chi Tiết)";
+            this.btnInChiTiet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInChiTiet.UseVisualStyleBackColor = true;
+            this.btnInChiTiet.Click += new System.EventHandler(this.btnInChiTiet_Click);
             // 
             // MaChuyen
             // 
@@ -353,41 +391,12 @@
             this.GiaiQuyet.HeaderText = "Giải Quyết";
             this.GiaiQuyet.Name = "GiaiQuyet";
             // 
-            // btnInDSDonTXL
+            // GhiChuChuyenKT
             // 
-            this.btnInDSDonTXL.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnInDSDonTXL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDSDonTXL.Location = new System.Drawing.Point(844, 4);
-            this.btnInDSDonTXL.Name = "btnInDSDonTXL";
-            this.btnInDSDonTXL.Size = new System.Drawing.Size(132, 35);
-            this.btnInDSDonTXL.TabIndex = 29;
-            this.btnInDSDonTXL.Text = "In (Ngày Giao)";
-            this.btnInDSDonTXL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInDSDonTXL.UseVisualStyleBackColor = true;
-            this.btnInDSDonTXL.Click += new System.EventHandler(this.btnInDSDonKH_Click);
-            // 
-            // chkChuaKT
-            // 
-            this.chkChuaKT.AutoSize = true;
-            this.chkChuaKT.Location = new System.Drawing.Point(844, 43);
-            this.chkChuaKT.Name = "chkChuaKT";
-            this.chkChuaKT.Size = new System.Drawing.Size(83, 21);
-            this.chkChuaKT.TabIndex = 32;
-            this.chkChuaKT.Text = "Chưa KT";
-            this.chkChuaKT.UseVisualStyleBackColor = true;
-            // 
-            // btnInChiTiet
-            // 
-            this.btnInChiTiet.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnInChiTiet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInChiTiet.Location = new System.Drawing.Point(982, 4);
-            this.btnInChiTiet.Name = "btnInChiTiet";
-            this.btnInChiTiet.Size = new System.Drawing.Size(114, 35);
-            this.btnInChiTiet.TabIndex = 33;
-            this.btnInChiTiet.Text = "In (Chi Tiết)";
-            this.btnInChiTiet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInChiTiet.UseVisualStyleBackColor = true;
-            this.btnInChiTiet.Click += new System.EventHandler(this.btnInChiTiet_Click);
+            this.GhiChuChuyenKT.DataPropertyName = "GhiChuChuyenKT";
+            this.GhiChuChuyenKT.HeaderText = "GhiChuChuyenKT";
+            this.GhiChuChuyenKT.Name = "GhiChuChuyenKT";
+            this.GhiChuChuyenKT.Visible = false;
             // 
             // frmQLDonTXL
             // 
@@ -439,6 +448,8 @@
         private System.Windows.Forms.RadioButton radChuaChuyen;
         private System.Windows.Forms.RadioButton radDaChuyen;
         private System.Windows.Forms.DataGridView dgvDSDonTXL;
+        private System.Windows.Forms.CheckBox chkChuaKT;
+        private System.Windows.Forms.Button btnInChiTiet;
         private System.Windows.Forms.DataGridViewComboBoxColumn MaChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDoChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongDiaChi;
@@ -453,7 +464,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn GiaiQuyet;
-        private System.Windows.Forms.CheckBox chkChuaKT;
-        private System.Windows.Forms.Button btnInChiTiet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuChuyenKT;
     }
 }

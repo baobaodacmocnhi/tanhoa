@@ -69,7 +69,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(737, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(582, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
             this.panel_KhoangThoiGian.TabIndex = 18;
@@ -116,7 +116,7 @@
             // 
             this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
             this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.Location = new System.Drawing.Point(935, 2);
+            this.btnBaoCao.Location = new System.Drawing.Point(780, 2);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
             this.btnBaoCao.TabIndex = 19;
@@ -129,7 +129,7 @@
             // 
             this.radThongKeDMCap.AutoSize = true;
             this.radThongKeDMCap.Checked = true;
-            this.radThongKeDMCap.Location = new System.Drawing.Point(71, 7);
+            this.radThongKeDMCap.Location = new System.Drawing.Point(12, 6);
             this.radThongKeDMCap.Name = "radThongKeDMCap";
             this.radThongKeDMCap.Size = new System.Drawing.Size(256, 21);
             this.radThongKeDMCap.TabIndex = 20;
@@ -140,7 +140,7 @@
             // radThongKeDC
             // 
             this.radThongKeDC.AutoSize = true;
-            this.radThongKeDC.Location = new System.Drawing.Point(71, 34);
+            this.radThongKeDC.Location = new System.Drawing.Point(12, 33);
             this.radThongKeDC.Name = "radThongKeDC";
             this.radThongKeDC.Size = new System.Drawing.Size(155, 21);
             this.radThongKeDC.TabIndex = 21;
@@ -150,7 +150,7 @@
             // radDSChuyenDocSo
             // 
             this.radDSChuyenDocSo.AutoSize = true;
-            this.radDSChuyenDocSo.Location = new System.Drawing.Point(333, 7);
+            this.radDSChuyenDocSo.Location = new System.Drawing.Point(274, 6);
             this.radDSChuyenDocSo.Name = "radDSChuyenDocSo";
             this.radDSChuyenDocSo.Size = new System.Drawing.Size(188, 21);
             this.radDSChuyenDocSo.TabIndex = 22;
@@ -160,7 +160,7 @@
             // radDSChuyenDocSo_LocUser
             // 
             this.radDSChuyenDocSo_LocUser.AutoSize = true;
-            this.radDSChuyenDocSo_LocUser.Location = new System.Drawing.Point(333, 34);
+            this.radDSChuyenDocSo_LocUser.Location = new System.Drawing.Point(274, 33);
             this.radDSChuyenDocSo_LocUser.Name = "radDSChuyenDocSo_LocUser";
             this.radDSChuyenDocSo_LocUser.Size = new System.Drawing.Size(231, 21);
             this.radDSChuyenDocSo_LocUser.TabIndex = 23;

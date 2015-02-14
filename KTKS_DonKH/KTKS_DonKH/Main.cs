@@ -32,8 +32,8 @@ namespace KTKS_DonKH
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Application.Idle += new EventHandler(Application_Idle);
-            this.MouseMove += new MouseEventHandler(Main_MouseMove);
+            //Application.Idle += new EventHandler(Application_Idle);
+            //this.MouseMove += new MouseEventHandler(Main_MouseMove);
             ribbtnDangNhap_Click(sender, e);
         }
 

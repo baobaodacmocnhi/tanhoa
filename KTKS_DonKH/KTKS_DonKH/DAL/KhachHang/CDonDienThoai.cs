@@ -5,6 +5,8 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.HeThong;
 using KTKS_DonKH.LinQ;
+using System.Data;
+using KTKS_DonKH.Function;
 
 namespace KTKS_DonKH.DAL.KhachHang
 {
@@ -127,13 +129,13 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
-        public List<DonDienThoai> getDSDonDienThoai()
+        public DataTable getDSDonDienThoai()
         {
             try
             {
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
-                    return db.DonDienThoais.ToList();
+                    return CLinQToDataTable.LINQToDataTable(db.DonDienThoais.ToList());
                 }
                 else
                 {
@@ -148,13 +150,13 @@ namespace KTKS_DonKH.DAL.KhachHang
             }   
         }
 
-        public List<DonDienThoai> getDSDonDienThoaiByDanhBo(string DanhBo)
+        public DataTable getDSDonDienThoaiByDanhBo(string DanhBo)
         {
             try
             {
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
-                    return db.DonDienThoais.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).ToList();
+                    return CLinQToDataTable.LINQToDataTable(db.DonDienThoais.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).ToList());
                 }
                 else
                 {
@@ -169,13 +171,13 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
-        public List<DonDienThoai> getDSDonDienThoaiByDate(DateTime TuNgay)
+        public DataTable getDSDonDienThoaiByDate(DateTime TuNgay)
         {
             try
             {
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
-                    return db.DonDienThoais.Where(item => item.CreateDate.Value.Date == TuNgay.Date).ToList();
+                    return  CLinQToDataTable.LINQToDataTable(db.DonDienThoais.Where(item => item.CreateDate.Value.Date == TuNgay.Date).ToList());
                 }
                 else
                 {
@@ -190,13 +192,13 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
-        public List<DonDienThoai> getDSDonDienThoaiByDates(DateTime TuNgay,DateTime DenNgay)
+        public DataTable getDSDonDienThoaiByDates(DateTime TuNgay, DateTime DenNgay)
         {
             try
             {
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
-                    return db.DonDienThoais.Where(item=>item.CreateDate.Value.Date>=TuNgay.Date&&item.CreateDate.Value<=DenNgay.Date).ToList();
+                    return CLinQToDataTable.LINQToDataTable(db.DonDienThoais.Where(item=>item.CreateDate.Value.Date>=TuNgay.Date&&item.CreateDate.Value<=DenNgay.Date).ToList());
                 }
                 else
                 {

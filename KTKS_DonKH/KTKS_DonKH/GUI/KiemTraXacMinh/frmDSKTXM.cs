@@ -610,11 +610,22 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27)
                 {
-                    rptThongKeDSKTXM rpt = new rptThongKeDSKTXM();
-                    rpt.SetDataSource(dsBaoCao);
-                    rpt.Subreports[0].SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.ShowDialog();
+                    if (chkLoaiDon.Checked)
+                    {
+                        rptThongKeDSKTXM_LoaiDon rpt = new rptThongKeDSKTXM_LoaiDon();
+                        rpt.SetDataSource(dsBaoCao);
+                        rpt.Subreports[0].SetDataSource(dsBaoCao);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.ShowDialog();
+                    }
+                    else
+                    {
+                        rptThongKeDSKTXM rpt = new rptThongKeDSKTXM();
+                        rpt.SetDataSource(dsBaoCao);
+                        rpt.Subreports[0].SetDataSource(dsBaoCao);
+                        frmBaoCao frm = new frmBaoCao(rpt);
+                        frm.ShowDialog();
+                    }
                 }
                 else
                 {
