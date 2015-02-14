@@ -15,7 +15,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             try
             {
                 if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
-                    return db.TrangThaiBamChis.ToList();
+                    return db.TrangThaiBamChis.OrderBy(item => item.STT).ToList();
                 else
                 {
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -35,7 +35,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (inheritance)
                 {
-                    return db.TrangThaiBamChis.ToList();
+                    return db.TrangThaiBamChis.OrderBy(item => item.STT).ToList();
                 }
                 else
                     return null;
@@ -100,6 +100,33 @@ namespace KTKS_DonKH.DAL.CapNhat
                 {
                     trangthaibamchi.ModifyDate = DateTime.Now;
                     trangthaibamchi.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TrangThaiBamChis);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaTrangThaiBamChi(List<TrangThaiBamChi> lsttrangthaibamchi)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
+                {
+                    //trangthaibamchi.ModifyDate = DateTime.Now;
+                    //trangthaibamchi.ModifyBy = CTaiKhoan.MaUser;
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;

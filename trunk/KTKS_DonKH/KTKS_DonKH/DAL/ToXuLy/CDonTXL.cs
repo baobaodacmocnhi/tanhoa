@@ -496,7 +496,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemLSCKT.MaDonTXL!=null&&itemLSCKT.NgayChuyenKT.Value.Date == TuNgay.Date
+                                where itemLSCKT.MaDonTXL!=null&&itemLSCKT.NgayChuyen.Value.Date == TuNgay.Date
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -513,6 +513,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
+                                    GhiChuChuyenKT=itemLSCKT.GhiChuChuyen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -544,7 +545,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonTXL in db.DonTXLs on itemLSCKT.MaDonTXL equals itemDonTXL.MaDon
                                 join itemLoaiDonTXL in db.LoaiDonTXLs on itemDonTXL.MaLD equals itemLoaiDonTXL.MaLD
                                 join itemUser in db.Users on itemDonTXL.CreateBy equals itemUser.MaU
-                                where itemLSCKT.MaDonTXL != null && itemLSCKT.NgayChuyenKT.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyenKT.Value.Date <= DenNgay.Date
+                                where itemLSCKT.MaDonTXL != null && itemLSCKT.NgayChuyen.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyen.Value.Date <= DenNgay.Date
                                 orderby itemDonTXL.MaDon ascending
                                 select new
                                 {
@@ -561,6 +562,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
+                                    GhiChuChuyenKT = itemLSCKT.GhiChuChuyen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -592,7 +594,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                                where itemLSCKT.MaDon != null && itemLSCKT.NgayChuyenKT.Value.Date == TuNgay.Date
+                                where itemLSCKT.MaDon != null && itemLSCKT.NgayChuyen.Value.Date == TuNgay.Date
                                 orderby itemDonKH.MaDon ascending
                                 select new
                                 {
@@ -640,7 +642,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 join itemDonKH in db.DonKHs on itemLSCKT.MaDon equals itemDonKH.MaDon
                                 join itemLoaiDon in db.LoaiDonTXLs on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                                where itemLSCKT.MaDon != null && itemLSCKT.NgayChuyenKT.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyenKT.Value.Date <= DenNgay.Date
+                                where itemLSCKT.MaDon != null && itemLSCKT.NgayChuyen.Value.Date >= TuNgay.Date && itemLSCKT.NgayChuyen.Value.Date <= DenNgay.Date
                                 orderby itemDonKH.MaDon ascending
                                 select new
                                 {
@@ -705,6 +707,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.SoLuongDiaChi,
                                     CreateBy = itemUser.HoTen,
                                     itemLSCKT.NguoiDi,
+                                    GhiChuChuyenKT = itemLSCKT.GhiChuChuyen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -918,16 +921,16 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 {
                     if (db.LichSuChuyenKTs.Count() > 0)
                     {
-                        string ID = "MaLSChuyenKT";
+                        string ID = "MaLSChuyen";
                         string Table = "LichSuChuyenKT";
-                        decimal MaLSChuyenKT = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        decimal MaLSChuyen = db.ExecuteQuery<decimal>("declare @Ma int " +
                             "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                             "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
                         //decimal MaLSChuyenKT = db.LichSuChuyenKTs.Max(itemLSCKT => itemLSCKT.MaLSChuyenKT);
-                        lichsuchuyenkt.MaLSChuyenKT = getMaxNextIDTable(MaLSChuyenKT);
+                        lichsuchuyenkt.MaLSChuyen = getMaxNextIDTable(MaLSChuyen);
                     }
                     else
-                        lichsuchuyenkt.MaLSChuyenKT = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                        lichsuchuyenkt.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     lichsuchuyenkt.CreateDate = DateTime.Now;
                     lichsuchuyenkt.CreateBy = CTaiKhoan.MaUser;
                     db.LichSuChuyenKTs.InsertOnSubmit(lichsuchuyenkt);
@@ -1020,9 +1023,9 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 select new
                                 {
                                     Table = "LichSuChuyenKT",
-                                    itemLSCKT.MaLSChuyenKT,
-                                    itemLSCKT.NgayChuyenKT,
-                                    itemLSCKT.GhiChuChuyenKT,
+                                    itemLSCKT.MaLSChuyen,
+                                    itemLSCKT.NgayChuyen,
+                                    itemLSCKT.GhiChuChuyen,
                                     NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -1052,9 +1055,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                 select new
                                 {
                                     Table = "LichSuChuyenKT",
-                                    itemLSCKT.MaLSChuyenKT,
-                                    itemLSCKT.NgayChuyenKT,
-                                    itemLSCKT.GhiChuChuyenKT,
+                                    itemLSCKT.MaLSChuyen,
+                                    itemLSCKT.NgayChuyen,
+                                    LoaiChuyen="Kiểm Tra",
+                                    itemLSCKT.GhiChuChuyen,
                                     NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -1134,7 +1138,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                return db.LichSuChuyenKTs.SingleOrDefault(itemLSCKT => itemLSCKT.MaLSChuyenKT == MaLSChuyenKT);
+                return db.LichSuChuyenKTs.SingleOrDefault(itemLSCKT => itemLSCKT.MaLSChuyen == MaLSChuyenKT);
             }
             catch (Exception ex)
             {

@@ -133,7 +133,7 @@
             this.dgvDonDT.Location = new System.Drawing.Point(0, 67);
             this.dgvDonDT.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDonDT.Name = "dgvDonDT";
-            this.dgvDonDT.Size = new System.Drawing.Size(1643, 398);
+            this.dgvDonDT.Size = new System.Drawing.Size(1643, 465);
             this.dgvDonDT.TabIndex = 16;
             // 
             // btnIn
@@ -230,14 +230,13 @@
             // 
             this.LapDon.HeaderText = "Lập Đơn";
             this.LapDon.Name = "LapDon";
-            this.LapDon.ReadOnly = true;
             this.LapDon.Width = 70;
             // 
             // MaLD
             // 
+            this.MaLD.DataPropertyName = "MaLD";
             this.MaLD.HeaderText = "Tên Loại Đơn";
             this.MaLD.Name = "MaLD";
-            this.MaLD.ReadOnly = true;
             this.MaLD.Width = 150;
             // 
             // MaDonDT
@@ -349,7 +348,7 @@
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dgvDonDT);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQLDonDienThoai";
             this.Text = "Quản Lý Đơn Điện Thoại";
             this.Load += new System.EventHandler(this.frmQLDonDienThoai_Load);

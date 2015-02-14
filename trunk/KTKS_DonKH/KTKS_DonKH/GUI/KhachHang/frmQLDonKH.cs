@@ -54,7 +54,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             //dgvDSDonKH.DataSource = DSDonKH_BS;
             //radAll.Checked = true;
 
-            cmbTimTheo.SelectedIndex = 3;
+            cmbTimTheo.SelectedIndex = 4;
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
             panel_KhoangThoiGian.Location = new Point(txtNoiDungTimKiem.Location.X, panel_KhoangThoiGian.Location.Y);
         }

@@ -710,9 +710,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (flagSuaChuyenKT)
                     {
                         LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
-                        lichsuchuyenkt.NgayChuyenKT = _donkh.NgayChuyenKT;
+                        lichsuchuyenkt.NgayChuyen = _donkh.NgayChuyenKT;
                         lichsuchuyenkt.NguoiDi = _donkh.NguoiDi;
-                        lichsuchuyenkt.GhiChuChuyenKT = _donkh.GhiChuChuyenKT;
+                        lichsuchuyenkt.GhiChuChuyen = _donkh.GhiChuChuyenKT;
                         lichsuchuyenkt.MaDon = _donkh.MaDon;
                         _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
                         flagSuaChuyenKT = false;

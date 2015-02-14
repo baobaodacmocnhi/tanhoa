@@ -678,16 +678,16 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     if (db.LichSuChuyenVanPhongs.Count() > 0)
                     {
-                        string ID = "MaLSChuyenVanPhong";
+                        string ID = "MaLSChuyen";
                         string Table = "LichSuChuyenVanPhong";
-                        decimal MaLSChuyenVanPhong = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        decimal MaLSChuyen = db.ExecuteQuery<decimal>("declare @Ma int " +
                             "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
                             "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
                         //decimal MaLSChuyenKT = db.LichSuChuyenKTs.Max(itemLSCKT => itemLSCKT.MaLSChuyenKT);
-                        lichsuchuyenvanphong.MaLSChuyenVanPhong = getMaxNextIDTable(MaLSChuyenVanPhong);
+                        lichsuchuyenvanphong.MaLSChuyen = getMaxNextIDTable(MaLSChuyen);
                     }
                     else
-                        lichsuchuyenvanphong.MaLSChuyenVanPhong = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                        lichsuchuyenvanphong.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     lichsuchuyenvanphong.CreateDate = DateTime.Now;
                     lichsuchuyenvanphong.CreateBy = CTaiKhoan.MaUser;
                     db.LichSuChuyenVanPhongs.InsertOnSubmit(lichsuchuyenvanphong);
@@ -780,9 +780,9 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 select new
                                 {
                                     Table = "LichSuChuyenVanPhong",
-                                    MaLSChuyenKT=itemLSCVP.MaLSChuyenVanPhong,
-                                    NgayChuyenKT=itemLSCVP.NgayChuyenVanPhong,
-                                    GhiChuChuyenKT=itemLSCVP.GhiChuChuyenVanPhong,
+                                    itemLSCVP.MaLSChuyen,
+                                    itemLSCVP.NgayChuyen,
+                                    itemLSCVP.GhiChuChuyen,
                                     NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -812,9 +812,10 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 select new
                                 {
                                     Table = "LichSuChuyenVanPhong",
-                                    MaLSChuyenKT=itemLSCVP.MaLSChuyenVanPhong,
-                                    NgayChuyenKT=itemLSCVP.NgayChuyenVanPhong,
-                                    GhiChuChuyenKT=itemLSCVP.GhiChuChuyenVanPhong,
+                                    itemLSCVP.MaLSChuyen,
+                                    itemLSCVP.NgayChuyen,
+                                    LoaiChuyen = "Văn Phòng",
+                                    itemLSCVP.GhiChuChuyen,
                                     NguoiDi = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -832,69 +833,11 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
-        /// <summary>
-        /// Kiểm tra Đơn có được giải quyết bởi người được giao hay chưa
-        /// </summary>
-        /// <param name="MaU"></param>
-        /// <param name="MaDonTXL"></param>
-        /// <returns></returns>
-        public bool CheckGiaiQuyetDonTXLbyUser(int MaU, decimal MaDonTXL, out string NgayGiaiQuyet)
-        {
-            NgayGiaiQuyet = "";
-            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU))
-            {
-                NgayGiaiQuyet = db.CTKTXMs.FirstOrDefault(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU).NgayKTXM.Value.ToString("dd/MM/yyyy");
-                return true;
-            }
-            else
-                if (db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.CreateBy == MaU))
-                {
-                    NgayGiaiQuyet = db.CTBamChis.FirstOrDefault(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.CreateBy == MaU).NgayBC.Value.ToString("dd/MM/yyyy");
-                    return true;
-                }
-                else
-                    return false;
-        }
-
-        public bool CheckGiaiQuyetDonTXLbyUser(int MaU, decimal MaDonTXL)
-        {
-            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.CreateBy == MaU))
-                return true;
-            else
-                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDonTXL == MaDonTXL && itemCTBamChi.CreateBy == MaU);
-        }
-
-        public bool CheckGiaiQuyetDonKHbyUser(int MaU, decimal MaDon, out string NgayGiaiQuyet)
-        {
-            NgayGiaiQuyet = "";
-            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.CreateBy == MaU))
-            {
-                NgayGiaiQuyet = db.CTKTXMs.FirstOrDefault(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.CreateBy == MaU).NgayKTXM.Value.ToString("dd/MM/yyyy");
-                return true;
-            }
-            else
-                if (db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == MaU))
-                {
-                    NgayGiaiQuyet = db.CTBamChis.FirstOrDefault(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == MaU).NgayBC.Value.ToString("dd/MM/yyyy");
-                    return true;
-                }
-                else
-                    return false;
-        }
-
-        public bool CheckGiaiQuyetDonKHbyUser(int MaU, decimal MaDon)
-        {
-            if (db.CTKTXMs.Any(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon && itemCTKTXM.CreateBy == MaU))
-                return true;
-            else
-                return db.CTBamChis.Any(itemCTBamChi => itemCTBamChi.BamChi.MaDon == MaDon && itemCTBamChi.CreateBy == MaU);
-        }
-
         public LichSuChuyenVanPhong getLichSuChuyenVanPhongbyID(decimal MaLSChuyenVanPhong)
         {
             try
             {
-                return db.LichSuChuyenVanPhongs.SingleOrDefault(itemLSCVP => itemLSCVP.MaLSChuyenVanPhong == MaLSChuyenVanPhong);
+                return db.LichSuChuyenVanPhongs.SingleOrDefault(itemLSCVP => itemLSCVP.MaLSChuyen == MaLSChuyenVanPhong);
             }
             catch (Exception ex)
             {
@@ -904,5 +847,366 @@ namespace KTKS_DonKH.DAL.KhachHang
         }
 
         #endregion
+
+        #region LichSuChuyenBanDoiKhac
+
+        public bool ThemLichSuChuyenBanDoiKhac(LichSuChuyenBanDoiKhac lichsuchuyenbandoikhac)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    if (db.LichSuChuyenBanDoiKhacs.Count() > 0)
+                    {
+                        string ID = "MaLSChuyen";
+                        string Table = "LichSuChuyenBanDoiKhac";
+                        decimal MaLSChuyen = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaLSChuyenKT = db.LichSuChuyenKTs.Max(itemLSCKT => itemLSCKT.MaLSChuyenKT);
+                        lichsuchuyenbandoikhac.MaLSChuyen = getMaxNextIDTable(MaLSChuyen);
+                    }
+                    else
+                        lichsuchuyenbandoikhac.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                    lichsuchuyenbandoikhac.CreateDate = DateTime.Now;
+                    lichsuchuyenbandoikhac.CreateBy = CTaiKhoan.MaUser;
+                    db.LichSuChuyenBanDoiKhacs.InsertOnSubmit(lichsuchuyenbandoikhac);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenBanDoiKhacs);
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                db = new DB_KTKS_DonKHDataContext();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool SuaLichSuChuyenBanDoiKhac(LichSuChuyenBanDoiKhac lichsuchuyenbandoikhac)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    lichsuchuyenbandoikhac.ModifyDate = DateTime.Now;
+                    lichsuchuyenbandoikhac.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenBanDoiKhacs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaLichSuChuyenBanDoiKhac(LichSuChuyenBanDoiKhac lichsuchuyenbandoikhac)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    db.LichSuChuyenBanDoiKhacs.DeleteOnSubmit(lichsuchuyenbandoikhac);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenBanDoiKhacs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chuyển Kiểm Tra theo Mã Đơn TXL
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <returns></returns>
+        public DataTable LoadDSLichSuChuyenBanDoiKhacbyMaDonTXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    var query = from itemLSCVP in db.LichSuChuyenBanDoiKhacs
+                                //join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
+                                where itemLSCVP.MaDonTXL == MaDonTXL
+                                select new
+                                {
+                                    Table = "LichSuChuyenBanDoiKhac",
+                                    itemLSCVP.MaLSChuyen,
+                                    itemLSCVP.NgayChuyen,
+                                    itemLSCVP.GhiChuChuyen,
+                                    //NguoiDi = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSLichSuChuyenBanDoiKhacbyMaDonTKH(decimal MaDonKH)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    var query = from itemLSCVP in db.LichSuChuyenBanDoiKhacs
+                                //join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
+                                where itemLSCVP.MaDon == MaDonKH
+                                select new
+                                {
+                                    Table = "LichSuChuyenBanDoiKhac",
+                                    itemLSCVP.MaLSChuyen,
+                                    itemLSCVP.NgayChuyen,
+                                    LoaiChuyen = "Ban Đội Khác",
+                                    itemLSCVP.GhiChuChuyen,
+                                    //NguoiDi = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public LichSuChuyenBanDoiKhac getLichSuChuyenBanDoiKhacbyID(decimal MaLSChuyen)
+        {
+            try
+            {
+                return db.LichSuChuyenBanDoiKhacs.SingleOrDefault(item => item.MaLSChuyen == MaLSChuyen);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region LichSuChuyenKhac
+
+        public bool ThemLichSuChuyenKhac(LichSuChuyenKhac lichsuchuyenkhac)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    if (db.LichSuChuyenKhacs.Count() > 0)
+                    {
+                        string ID = "MaLSChuyen";
+                        string Table = "LichSuChuyenKhac";
+                        decimal MaLSChuyen = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaLSChuyenKT = db.LichSuChuyenKTs.Max(itemLSCKT => itemLSCKT.MaLSChuyenKT);
+                        lichsuchuyenkhac.MaLSChuyen = getMaxNextIDTable(MaLSChuyen);
+                    }
+                    else
+                        lichsuchuyenkhac.MaLSChuyen = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                    lichsuchuyenkhac.CreateDate = DateTime.Now;
+                    lichsuchuyenkhac.CreateBy = CTaiKhoan.MaUser;
+                    db.LichSuChuyenKhacs.InsertOnSubmit(lichsuchuyenkhac);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKhacs);
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                db = new DB_KTKS_DonKHDataContext();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool SuaLichSuChuyenKhac(LichSuChuyenKhac lichsuchuyenkhac)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    lichsuchuyenkhac.ModifyDate = DateTime.Now;
+                    lichsuchuyenkhac.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKhacs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaLichSuChuyenKhac(LichSuChuyenKhac lichsuchuyenkhac)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    db.LichSuChuyenKhacs.DeleteOnSubmit(lichsuchuyenkhac);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuChuyenKhacs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Chuyển Kiểm Tra theo Mã Đơn TXL
+        /// </summary>
+        /// <param name="MaDonTXL"></param>
+        /// <returns></returns>
+        public DataTable LoadDSLichSuChuyenKhacbyMaDonTXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    var query = from itemLSCVP in db.LichSuChuyenKhacs
+                                //join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
+                                where itemLSCVP.MaDonTXL == MaDonTXL
+                                select new
+                                {
+                                    Table = "LichSuChuyenKhac",
+                                    itemLSCVP.MaLSChuyen,
+                                    itemLSCVP.NgayChuyen,
+                                    itemLSCVP.GhiChuChuyen,
+                                    //NguoiDi = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSLichSuChuyenKhacbyMaDonTKH(decimal MaDonKH)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleNhanDonKH_Xem || CTaiKhoan.RoleNhanDonKH_CapNhat)
+                {
+                    var query = from itemLSCVP in db.LichSuChuyenKhacs
+                                //join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
+                                where itemLSCVP.MaDon == MaDonKH
+                                select new
+                                {
+                                    Table = "LichSuChuyenKhac",
+                                    itemLSCVP.MaLSChuyen,
+                                    itemLSCVP.NgayChuyen,
+                                    LoaiChuyen = "Khác",
+                                    itemLSCVP.GhiChuChuyen,
+                                    //NguoiDi = itemUser.HoTen,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public LichSuChuyenKhac getLichSuChuyenKhacbyID(decimal MaLSChuyen)
+        {
+            try
+            {
+                return db.LichSuChuyenKhacs.SingleOrDefault(item => item.MaLSChuyen == MaLSChuyen);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        #endregion
+
     }
 }

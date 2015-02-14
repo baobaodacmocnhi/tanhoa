@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.CapNhat
 {
@@ -17,6 +18,10 @@ namespace KTKS_DonKH.GUI.CapNhat
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
         int _selectedindexHTKT = -1;
         int _selectedindexTTBC = -1;
+        BindingSource bsHienTrangKT;
+        BindingSource bsTrangThaiBC;
+        bool _flagHienTrangKT = false;
+        bool _flagTrangThaiBC = false;
 
         public frmThongTin_KT_BC()
         {
@@ -35,11 +40,13 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             dgvDSHienTrangKT.AutoGenerateColumns = false;
             dgvDSHienTrangKT.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSHienTrangKT.Font, FontStyle.Bold);
-            dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+            bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
+            dgvDSHienTrangKT.DataSource = bsHienTrangKT;
 
             dgvDSTrangThaiBC.AutoGenerateColumns = false;
             dgvDSTrangThaiBC.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSTrangThaiBC.Font, FontStyle.Bold);
-            dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+            bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
+            dgvDSTrangThaiBC.DataSource = bsTrangThaiBC;
         }
 
         #region Hiện Trạng Kiểm Tra
@@ -74,7 +81,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                 if (_cHienTrangKiemTra.ThemHienTrangKiemTra(hientrangkiemtra))
                 {
                     txtHienTrangKT.Text = "";
-                    dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+                    bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
                 }
             }
             else
@@ -93,11 +100,22 @@ namespace KTKS_DonKH.GUI.CapNhat
                     {
                         txtHienTrangKT.Text = "";
                         _selectedindexHTKT = -1;
-                        dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+                        bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
                     }
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //if (_flagHienTrangKT)
+            //{
+            //    DataTable dt = ((DataTable)bsHienTrangKT.DataSource).DefaultView.Table;
+            //    for (int i = 0; i < dt.Rows.Count; i++)
+            //    {
+            //        HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dt.Rows[i]["MaHTKT"].ToString()));
+            //        hientrangkiemtra.STT = i;
+            //        _cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra);
+            //    }
+            //    _flagHienTrangKT = false;
+            //}
         }
 
         private void btnXoaHienTrangKT_Click(object sender, EventArgs e)
@@ -107,8 +125,48 @@ namespace KTKS_DonKH.GUI.CapNhat
                 {
                     txtHienTrangKT.Text = "";
                     _selectedindexHTKT = -1;
-                    dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+                    bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
                 }
+        }
+
+        private void btnUpHienTrangKT_Click(object sender, EventArgs e)
+        {
+            _flagHienTrangKT = true;
+            int position = bsHienTrangKT.Position;
+            if (position == 0) return;  // already at top
+
+            bsHienTrangKT.RaiseListChangedEvents = false;
+
+            HienTrangKiemTra current = (HienTrangKiemTra)bsHienTrangKT.Current;
+            bsHienTrangKT.Remove(current);
+
+            position--;
+
+            bsHienTrangKT.Insert(position, current);
+            bsHienTrangKT.Position = position;
+
+            bsHienTrangKT.RaiseListChangedEvents = true;
+            bsHienTrangKT.ResetBindings(false);
+        }
+
+        private void btnDownHienTrangKT_Click(object sender, EventArgs e)
+        {
+            _flagHienTrangKT = true;
+            int position = bsHienTrangKT.Position;
+            if (position == bsHienTrangKT.Count - 1) return;  // already at bottom
+
+            bsHienTrangKT.RaiseListChangedEvents = false;
+
+            HienTrangKiemTra current = (HienTrangKiemTra)bsHienTrangKT.Current;
+            bsHienTrangKT.Remove(current);
+
+            position++;
+
+            bsHienTrangKT.Insert(position, current);
+            bsHienTrangKT.Position = position;
+
+            bsHienTrangKT.RaiseListChangedEvents = true;
+            bsHienTrangKT.ResetBindings(false);
         }
 
         #endregion
@@ -145,7 +203,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                 if (_cTrangThaiBamChi.ThemTrangThaiBamChi(trangthaibamchi))
                 {
                     txtTrangThaiBC.Text = "";
-                    dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+                    bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
                 }
             }
             else
@@ -164,11 +222,25 @@ namespace KTKS_DonKH.GUI.CapNhat
                     {
                         txtTrangThaiBC.Text = "";
                         _selectedindexTTBC = -1;
-                        dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+                        bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
                     }
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //if (_flagTrangThaiBC)
+            //{
+            //    string a = "";
+            //    for (int i = 0; i < bsTrangThaiBC.List.Count; i++)
+            //    {
+            //        //a += ((TrangThaiBamChi)bsTrangThaiBC.List[i]).TenTTBC + "\n";
+            //        TrangThaiBamChi trangthaibamchi = new TrangThaiBamChi();
+            //         trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(((TrangThaiBamChi)bsTrangThaiBC.List[i]).MaTTBC);
+            //        trangthaibamchi.STT = i;
+            //        _cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi);
+            //    }
+            //    MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        _flagTrangThaiBC = false;
+            //}
         }
 
         private void btnXoaTrangThaiBC_Click(object sender, EventArgs e)
@@ -178,11 +250,51 @@ namespace KTKS_DonKH.GUI.CapNhat
                 {
                     txtTrangThaiBC.Text = "";
                     _selectedindexTTBC = -1;
-                    dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+                    bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
                 }
         }
 
+        private void btnUpTrangThaiBC_Click(object sender, EventArgs e)
+        {
+            _flagTrangThaiBC = true;
+            int position = bsTrangThaiBC.Position;
+            if (position == 0) return;  // already at top
+
+            bsTrangThaiBC.RaiseListChangedEvents = false;
+
+            TrangThaiBamChi current = (TrangThaiBamChi)bsTrangThaiBC.Current;
+            bsTrangThaiBC.Remove(current);
+
+            position--;
+
+            bsTrangThaiBC.Insert(position, current);
+            bsTrangThaiBC.Position = position;
+
+            bsTrangThaiBC.RaiseListChangedEvents = true;
+            bsTrangThaiBC.ResetBindings(false);
+        }
+
+        private void btnDownTrangThaiBC_Click(object sender, EventArgs e)
+        {
+            _flagTrangThaiBC = true;
+            int position = bsTrangThaiBC.Position;
+            if (position == bsTrangThaiBC.Count - 1) return;  // already at bottom
+
+            bsTrangThaiBC.RaiseListChangedEvents = false;
+
+            TrangThaiBamChi current = (TrangThaiBamChi)bsTrangThaiBC.Current;
+            bsTrangThaiBC.Remove(current);
+
+            position++;
+
+            bsTrangThaiBC.Insert(position, current);
+            bsTrangThaiBC.Position = position;
+
+            bsTrangThaiBC.RaiseListChangedEvents = true;
+            bsTrangThaiBC.ResetBindings(false);
+        }
+
         #endregion
-  
+
     }
 }

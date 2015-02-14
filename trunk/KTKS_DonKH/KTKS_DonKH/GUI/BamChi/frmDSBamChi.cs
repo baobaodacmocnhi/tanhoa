@@ -248,6 +248,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         dr["DenNgay"] = _denNgay;
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                             dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["TenLD"] = itemRow["TenLD"];
                         dr["HopDong"] = itemRow["HopDong"];
                         dr["HoTen"] = itemRow["HoTen"];
                         dr["DiaChi"] = itemRow["DiaChi"];
@@ -268,11 +269,22 @@ namespace KTKS_DonKH.GUI.BamChi
 
                     if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27)
                     {
-                        rptThongKeDSBamChi rpt = new rptThongKeDSBamChi();
-                        rpt.SetDataSource(dsBaoCao);
-                        rpt.Subreports[0].SetDataSource(dsBaoCao);
-                        frmBaoCao frm = new frmBaoCao(rpt);
-                        frm.ShowDialog();
+                        if (chkLoaiDon.Checked)
+                        {
+                            rptThongKeDSBamChi_LoaiDon rpt = new rptThongKeDSBamChi_LoaiDon();
+                            rpt.SetDataSource(dsBaoCao);
+                            rpt.Subreports[0].SetDataSource(dsBaoCao);
+                            frmBaoCao frm = new frmBaoCao(rpt);
+                            frm.ShowDialog();
+                        }
+                        else
+                        {
+                            rptThongKeDSBamChi rpt = new rptThongKeDSBamChi();
+                            rpt.SetDataSource(dsBaoCao);
+                            rpt.Subreports[0].SetDataSource(dsBaoCao);
+                            frmBaoCao frm = new frmBaoCao(rpt);
+                            frm.ShowDialog();
+                        }
                     }
                     else
                     {

@@ -206,9 +206,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                                 if (item.Cells["NguoiDi"].Value != null)
                                 {
                                     LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
-                                    lichsuchuyenkt.NgayChuyenKT = donkh.NgayChuyenKT;
+                                    lichsuchuyenkt.NgayChuyen = donkh.NgayChuyenKT;
                                     lichsuchuyenkt.NguoiDi = donkh.NguoiDi;
-                                    lichsuchuyenkt.GhiChuChuyenKT = donkh.GhiChuChuyenKT;
+                                    lichsuchuyenkt.GhiChuChuyen = donkh.GhiChuChuyenKT;
                                     lichsuchuyenkt.MaDon = donkh.MaDon;
                                     _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
                                 }
@@ -280,9 +280,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                                     if (item.Cells["NguoiDiVP"].Value != null)
                                     {
                                         LichSuChuyenVanPhong lichsuchuyenvanphong = new LichSuChuyenVanPhong();
-                                        lichsuchuyenvanphong.NgayChuyenVanPhong = donkh.NgayChuyenVanPhong;
+                                        lichsuchuyenvanphong.NgayChuyen = donkh.NgayChuyenVanPhong;
                                         lichsuchuyenvanphong.NguoiDi = donkh.NguoiVanPhong;
-                                        lichsuchuyenvanphong.GhiChuChuyenVanPhong = donkh.GhiChuChuyenVanPhong;
+                                        lichsuchuyenvanphong.GhiChuChuyen = donkh.GhiChuChuyenVanPhong;
                                         lichsuchuyenvanphong.MaDon = donkh.MaDon;
                                         _cDonKH.ThemLichSuChuyenVanPhong(lichsuchuyenvanphong);
                                     }
