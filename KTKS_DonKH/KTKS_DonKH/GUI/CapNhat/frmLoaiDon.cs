@@ -64,6 +64,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                 _selectedindex = e.RowIndex;
                 txtKyHieuLD.Text = dgvDSLoaiDon["KyHieuLD", e.RowIndex].Value.ToString();
                 txtTenLD.Text = dgvDSLoaiDon["TenLD", e.RowIndex].Value.ToString();
+                dgvDSLoaiDon.Rows[e.RowIndex].Selected = true;
             }
             catch (Exception)
             {
@@ -131,6 +132,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                 _selectedindexTXL = e.RowIndex;
                 txtKyHieuLDTXL.Text = dgvDSLoaiDonTXL["KyHieuLDTXL", e.RowIndex].Value.ToString();
                 txtTenLDTXL.Text = dgvDSLoaiDonTXL["TenLDTXL", e.RowIndex].Value.ToString();
+                dgvDSLoaiDonTXL.Rows[e.RowIndex].Selected = true;
             }
             catch (Exception)
             {
@@ -188,6 +190,146 @@ namespace KTKS_DonKH.GUI.CapNhat
         }
 
         #endregion
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int rowIndex = dgvDSLoaiDon.SelectedRows[0].Index; // get the index of the currently selected row
+                if (rowIndex == 0)
+                {
+                    MessageBox.Show("first line");
+                    return;
+                }
+                List<string> list = new List<string>();
+                for (int i = 0; i < dgvDSLoaiDon.Columns.Count; i++)
+                {
+                    list.Add(dgvDSLoaiDon.SelectedRows[0].Cells[i].Value.ToString());// array of data stored in the list of the currently selected row 
+                }
+                for (int j = 0; j < dgvDSLoaiDon.Columns.Count; j++)
+                {
+                    dgvDSLoaiDon.Rows[rowIndex].Cells[j].Value = dgvDSLoaiDon.Rows[rowIndex - 1].Cells[j].Value;
+                    dgvDSLoaiDon.Rows[rowIndex - 1].Cells[j].Value = list[j].ToString();
+                }
+                dgvDSLoaiDon.Rows[rowIndex - 1].Selected = true;
+                //dgvDSLoaiDon.Rows[rowIndex].Selected = false;
+                for (int i = 0; i < dgvDSLoaiDon.Rows.Count; i++)
+                {
+                    LoaiDon loaidon = _cLoaiDon.getLoaiDonbyID(int.Parse(dgvDSLoaiDon["MaLD", i].Value.ToString()));
+                    loaidon.STT = i;
+                    _cLoaiDon.SuaLoaiDon(loaidon);
+                }
+                _selectedindex = -1;
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int rowIndex = dgvDSLoaiDon.SelectedRows[0].Index; // get the index of the currently selected row
+                if (rowIndex == dgvDSLoaiDon.Rows.Count - 1)
+                {
+                    MessageBox.Show("is the last line!");
+                    return;
+                }
+                List<string> list = new List<string>();
+                for (int i = 0; i < dgvDSLoaiDon.Columns.Count; i++)
+                {
+                    list.Add(dgvDSLoaiDon.SelectedRows[0].Cells[i].Value.ToString()); // array of data stored in the list of the currently selected row 
+                }
+                for (int j = 0; j < dgvDSLoaiDon.Columns.Count; j++)
+                {
+                    dgvDSLoaiDon.Rows[rowIndex].Cells[j].Value = dgvDSLoaiDon.Rows[rowIndex + 1].Cells[j].Value;
+                    dgvDSLoaiDon.Rows[rowIndex + 1].Cells[j].Value = list[j].ToString();
+                }
+                dgvDSLoaiDon.Rows[rowIndex + 1].Selected = true;
+                //dgvDSLoaiDon.Rows[rowIndex].Selected = false;
+                for (int i = 0; i < dgvDSLoaiDon.Rows.Count; i++)
+                {
+                    LoaiDon loaidon = _cLoaiDon.getLoaiDonbyID(int.Parse(dgvDSLoaiDon["MaLD", i].Value.ToString()));
+                    loaidon.STT = i;
+                    _cLoaiDon.SuaLoaiDon(loaidon);
+                }
+                _selectedindex = -1;
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnUpTXL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int rowIndex = dgvDSLoaiDonTXL.SelectedRows[0].Index; // get the index of the currently selected row
+                if (rowIndex == 0)
+                {
+                    MessageBox.Show("first line");
+                    return;
+                }
+                List<string> list = new List<string>();
+                for (int i = 0; i < dgvDSLoaiDonTXL.Columns.Count; i++)
+                {
+                    list.Add(dgvDSLoaiDonTXL.SelectedRows[0].Cells[i].Value.ToString());// array of data stored in the list of the currently selected row 
+                }
+                for (int j = 0; j < dgvDSLoaiDonTXL.Columns.Count; j++)
+                {
+                    dgvDSLoaiDonTXL.Rows[rowIndex].Cells[j].Value = dgvDSLoaiDonTXL.Rows[rowIndex - 1].Cells[j].Value;
+                    dgvDSLoaiDonTXL.Rows[rowIndex - 1].Cells[j].Value = list[j].ToString();
+                }
+                dgvDSLoaiDonTXL.Rows[rowIndex - 1].Selected = true;
+                //dgvDSLoaiDonTXL.Rows[rowIndex].Selected = false;
+                for (int i = 0; i < dgvDSLoaiDonTXL.Rows.Count; i++)
+                {
+                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", i].Value.ToString()));
+                    loaidontxl.STT = i;
+                    _cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl);
+                }
+                _selectedindexTXL = -1;
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnDownTXL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int rowIndex = dgvDSLoaiDonTXL.SelectedRows[0].Index; // get the index of the currently selected row
+                if (rowIndex == dgvDSLoaiDonTXL.Rows.Count - 1)
+                {
+                    MessageBox.Show("is the last line!");
+                    return;
+                }
+                List<string> list = new List<string>();
+                for (int i = 0; i < dgvDSLoaiDonTXL.Columns.Count; i++)
+                {
+                    list.Add(dgvDSLoaiDonTXL.SelectedRows[0].Cells[i].Value.ToString()); // array of data stored in the list of the currently selected row 
+                }
+                for (int j = 0; j < dgvDSLoaiDonTXL.Columns.Count; j++)
+                {
+                    dgvDSLoaiDonTXL.Rows[rowIndex].Cells[j].Value = dgvDSLoaiDonTXL.Rows[rowIndex + 1].Cells[j].Value;
+                    dgvDSLoaiDonTXL.Rows[rowIndex + 1].Cells[j].Value = list[j].ToString();
+                }
+                dgvDSLoaiDonTXL.Rows[rowIndex + 1].Selected = true;
+                //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
+                for (int i = 0; i < dgvDSLoaiDonTXL.Rows.Count; i++)
+                {
+                    LoaiDonTXL loaidontxl = _cLoaiDonTXL.getLoaiDonTXLbyID(int.Parse(dgvDSLoaiDonTXL["MaLDTXL", i].Value.ToString()));
+                    loaidontxl.STT = i;
+                    _cLoaiDonTXL.SuaLoaiDonTXL(loaidontxl);
+                }
+                _selectedindexTXL = -1;
+            }
+            catch
+            {
+            }
+        }
 
     }
 }

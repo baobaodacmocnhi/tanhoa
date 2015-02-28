@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtKyHieuLD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,10 +50,14 @@
             this.btnThemTXL = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvDSLoaiDonTXL = new System.Windows.Forms.DataGridView();
-            this.txtTenLDTXL = new System.Windows.Forms.TextBox();
             this.MaLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KyHieuLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLDTXL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTenLDTXL = new System.Windows.Forms.TextBox();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.btnDownTXL = new System.Windows.Forms.Button();
+            this.btnUpTXL = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSLoaiDon)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -100,14 +104,14 @@
             // 
             this.dgvDSLoaiDon.AllowUserToAddRows = false;
             this.dgvDSLoaiDon.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSLoaiDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSLoaiDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvDSLoaiDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSLoaiDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLD,
@@ -177,6 +181,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDown);
+            this.groupBox1.Controls.Add(this.btnUp);
             this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.txtKyHieuLD);
             this.groupBox1.Controls.Add(this.btnSua);
@@ -208,6 +214,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnDownTXL);
+            this.groupBox2.Controls.Add(this.btnUpTXL);
             this.groupBox2.Controls.Add(this.btnXoaTXL);
             this.groupBox2.Controls.Add(this.txtKyHieuLDTXL);
             this.groupBox2.Controls.Add(this.btnSuaTXL);
@@ -297,14 +305,14 @@
             // 
             this.dgvDSLoaiDonTXL.AllowUserToAddRows = false;
             this.dgvDSLoaiDonTXL.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSLoaiDonTXL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvDSLoaiDonTXL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSLoaiDonTXL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLDTXL,
@@ -319,14 +327,6 @@
             this.dgvDSLoaiDonTXL.TabIndex = 6;
             this.dgvDSLoaiDonTXL.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSLoaiDonTXL_CellContentClick);
             this.dgvDSLoaiDonTXL.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSLoaiDonTXL_RowPostPaint);
-            // 
-            // txtTenLDTXL
-            // 
-            this.txtTenLDTXL.Location = new System.Drawing.Point(169, 59);
-            this.txtTenLDTXL.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTenLDTXL.Name = "txtTenLDTXL";
-            this.txtTenLDTXL.Size = new System.Drawing.Size(165, 25);
-            this.txtTenLDTXL.TabIndex = 3;
             // 
             // MaLDTXL
             // 
@@ -351,6 +351,66 @@
             this.TenLDTXL.Name = "TenLDTXL";
             this.TenLDTXL.ReadOnly = true;
             this.TenLDTXL.Width = 250;
+            // 
+            // txtTenLDTXL
+            // 
+            this.txtTenLDTXL.Location = new System.Drawing.Point(169, 59);
+            this.txtTenLDTXL.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTenLDTXL.Name = "txtTenLDTXL";
+            this.txtTenLDTXL.Size = new System.Drawing.Size(165, 25);
+            this.txtTenLDTXL.TabIndex = 3;
+            // 
+            // btnDown
+            // 
+            this.btnDown.Image = global::KTKS_DonKH.Properties.Resources.down_24x24;
+            this.btnDown.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDown.Location = new System.Drawing.Point(86, 93);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(75, 35);
+            this.btnDown.TabIndex = 91;
+            this.btnDown.Text = "Down";
+            this.btnDown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.Image = global::KTKS_DonKH.Properties.Resources.up_24x24;
+            this.btnUp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUp.Location = new System.Drawing.Point(24, 93);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(56, 35);
+            this.btnUp.TabIndex = 90;
+            this.btnUp.Text = "Up";
+            this.btnUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // btnDownTXL
+            // 
+            this.btnDownTXL.Image = global::KTKS_DonKH.Properties.Resources.down_24x24;
+            this.btnDownTXL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDownTXL.Location = new System.Drawing.Point(86, 93);
+            this.btnDownTXL.Name = "btnDownTXL";
+            this.btnDownTXL.Size = new System.Drawing.Size(75, 35);
+            this.btnDownTXL.TabIndex = 91;
+            this.btnDownTXL.Text = "Down";
+            this.btnDownTXL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDownTXL.UseVisualStyleBackColor = true;
+            this.btnDownTXL.Click += new System.EventHandler(this.btnDownTXL_Click);
+            // 
+            // btnUpTXL
+            // 
+            this.btnUpTXL.Image = global::KTKS_DonKH.Properties.Resources.up_24x24;
+            this.btnUpTXL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpTXL.Location = new System.Drawing.Point(24, 93);
+            this.btnUpTXL.Name = "btnUpTXL";
+            this.btnUpTXL.Size = new System.Drawing.Size(56, 35);
+            this.btnUpTXL.TabIndex = 90;
+            this.btnUpTXL.Text = "Up";
+            this.btnUpTXL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpTXL.UseVisualStyleBackColor = true;
+            this.btnUpTXL.Click += new System.EventHandler(this.btnUpTXL_Click);
             // 
             // frmLoaiDon
             // 
@@ -401,5 +461,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLDTXL;
         private System.Windows.Forms.DataGridViewTextBoxColumn KyHieuLDTXL;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLDTXL;
+        private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.Button btnDownTXL;
+        private System.Windows.Forms.Button btnUpTXL;
     }
 }

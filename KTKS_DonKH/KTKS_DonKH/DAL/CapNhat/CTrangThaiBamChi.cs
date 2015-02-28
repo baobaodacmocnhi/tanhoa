@@ -113,7 +113,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
                 return false;
             }
@@ -155,6 +155,30 @@ namespace KTKS_DonKH.DAL.CapNhat
                     db.TrangThaiBamChis.DeleteOnSubmit(trangthaibamchi);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa TrangThaiBamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.TrangThaiBamChis);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool UpdateSQL(string sql)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCapNhat_CapNhat)
+                {
+                    db.ExecuteCommand(sql);
                     return true;
                 }
                 else

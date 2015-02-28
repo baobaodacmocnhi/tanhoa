@@ -18,10 +18,10 @@ namespace KTKS_DonKH.GUI.CapNhat
         CTrangThaiBamChi _cTrangThaiBamChi = new CTrangThaiBamChi();
         int _selectedindexHTKT = -1;
         int _selectedindexTTBC = -1;
-        BindingSource bsHienTrangKT;
-        BindingSource bsTrangThaiBC;
-        bool _flagHienTrangKT = false;
-        bool _flagTrangThaiBC = false;
+        //BindingSource bsHienTrangKT;
+        //BindingSource bsTrangThaiBC;
+        //bool _flagHienTrangKT = false;
+        //bool _flagTrangThaiBC = false;
 
         public frmThongTin_KT_BC()
         {
@@ -40,13 +40,15 @@ namespace KTKS_DonKH.GUI.CapNhat
         {
             dgvDSHienTrangKT.AutoGenerateColumns = false;
             dgvDSHienTrangKT.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSHienTrangKT.Font, FontStyle.Bold);
-            bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
-            dgvDSHienTrangKT.DataSource = bsHienTrangKT;
+            //bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
+            //dgvDSHienTrangKT.DataSource = bsHienTrangKT;
+            dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
 
             dgvDSTrangThaiBC.AutoGenerateColumns = false;
             dgvDSTrangThaiBC.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSTrangThaiBC.Font, FontStyle.Bold);
-            bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
-            dgvDSTrangThaiBC.DataSource = bsTrangThaiBC;
+            //bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
+            //dgvDSTrangThaiBC.DataSource = bsTrangThaiBC;
+            dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
         }
 
         #region Hiện Trạng Kiểm Tra
@@ -65,6 +67,7 @@ namespace KTKS_DonKH.GUI.CapNhat
             {
                 _selectedindexHTKT = e.RowIndex;
                 txtHienTrangKT.Text = dgvDSHienTrangKT["TenHTKT", e.RowIndex].Value.ToString();
+                dgvDSHienTrangKT.Rows[e.RowIndex].Selected = true;
             }
             catch (Exception)
             {
@@ -81,7 +84,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                 if (_cHienTrangKiemTra.ThemHienTrangKiemTra(hientrangkiemtra))
                 {
                     txtHienTrangKT.Text = "";
-                    bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
+                    dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+                    //bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
                 }
             }
             else
@@ -100,22 +104,12 @@ namespace KTKS_DonKH.GUI.CapNhat
                     {
                         txtHienTrangKT.Text = "";
                         _selectedindexHTKT = -1;
-                        bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
+                        dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+                        //bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
                     }
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //if (_flagHienTrangKT)
-            //{
-            //    DataTable dt = ((DataTable)bsHienTrangKT.DataSource).DefaultView.Table;
-            //    for (int i = 0; i < dt.Rows.Count; i++)
-            //    {
-            //        HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dt.Rows[i]["MaHTKT"].ToString()));
-            //        hientrangkiemtra.STT = i;
-            //        _cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra);
-            //    }
-            //    _flagHienTrangKT = false;
-            //}
         }
 
         private void btnXoaHienTrangKT_Click(object sender, EventArgs e)
@@ -125,48 +119,79 @@ namespace KTKS_DonKH.GUI.CapNhat
                 {
                     txtHienTrangKT.Text = "";
                     _selectedindexHTKT = -1;
-                    bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
+                    dgvDSHienTrangKT.DataSource = _cHienTrangKiemTra.LoadDSHienTrangKiemTra();
+                    //bsHienTrangKT = new BindingSource(_cHienTrangKiemTra.LoadDSHienTrangKiemTra(), string.Empty);
                 }
         }
 
         private void btnUpHienTrangKT_Click(object sender, EventArgs e)
         {
-            _flagHienTrangKT = true;
-            int position = bsHienTrangKT.Position;
-            if (position == 0) return;  // already at top
-
-            bsHienTrangKT.RaiseListChangedEvents = false;
-
-            HienTrangKiemTra current = (HienTrangKiemTra)bsHienTrangKT.Current;
-            bsHienTrangKT.Remove(current);
-
-            position--;
-
-            bsHienTrangKT.Insert(position, current);
-            bsHienTrangKT.Position = position;
-
-            bsHienTrangKT.RaiseListChangedEvents = true;
-            bsHienTrangKT.ResetBindings(false);
+            try
+            {
+                int rowIndex = dgvDSHienTrangKT.SelectedRows[0].Index; // get the index of the currently selected row
+                if (rowIndex == 0)
+                {
+                    MessageBox.Show("first line");
+                    return;
+                }
+                List<string> list = new List<string>();
+                for (int i = 0; i < dgvDSHienTrangKT.Columns.Count; i++)
+                {
+                    list.Add(dgvDSHienTrangKT.SelectedRows[0].Cells[i].Value.ToString());// array of data stored in the list of the currently selected row 
+                }
+                for (int j = 0; j < dgvDSHienTrangKT.Columns.Count; j++)
+                {
+                    dgvDSHienTrangKT.Rows[rowIndex].Cells[j].Value = dgvDSHienTrangKT.Rows[rowIndex - 1].Cells[j].Value;
+                    dgvDSHienTrangKT.Rows[rowIndex - 1].Cells[j].Value = list[j].ToString();
+                }
+                dgvDSHienTrangKT.Rows[rowIndex - 1].Selected = true;
+                //dgvDSHienTrangKT.Rows[rowIndex].Selected = false;
+                for (int i = 0; i < dgvDSHienTrangKT.Rows.Count; i++)
+                {
+                    HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", i].Value.ToString()));
+                    hientrangkiemtra.STT = i;
+                    _cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra);
+                }
+                _selectedindexHTKT = -1;
+            }
+            catch
+            {
+            }
         }
 
         private void btnDownHienTrangKT_Click(object sender, EventArgs e)
         {
-            _flagHienTrangKT = true;
-            int position = bsHienTrangKT.Position;
-            if (position == bsHienTrangKT.Count - 1) return;  // already at bottom
-
-            bsHienTrangKT.RaiseListChangedEvents = false;
-
-            HienTrangKiemTra current = (HienTrangKiemTra)bsHienTrangKT.Current;
-            bsHienTrangKT.Remove(current);
-
-            position++;
-
-            bsHienTrangKT.Insert(position, current);
-            bsHienTrangKT.Position = position;
-
-            bsHienTrangKT.RaiseListChangedEvents = true;
-            bsHienTrangKT.ResetBindings(false);
+            try
+            {
+                int rowIndex = dgvDSHienTrangKT.SelectedRows[0].Index; // get the index of the currently selected row
+                if (rowIndex == dgvDSHienTrangKT.Rows.Count - 1)
+                {
+                    MessageBox.Show("is the last line!");
+                    return;
+                }
+                List<string> list = new List<string>();
+                for (int i = 0; i < dgvDSHienTrangKT.Columns.Count; i++)
+                {
+                    list.Add(dgvDSHienTrangKT.SelectedRows[0].Cells[i].Value.ToString()); // array of data stored in the list of the currently selected row 
+                }
+                for (int j = 0; j < dgvDSHienTrangKT.Columns.Count; j++)
+                {
+                    dgvDSHienTrangKT.Rows[rowIndex].Cells[j].Value = dgvDSHienTrangKT.Rows[rowIndex + 1].Cells[j].Value;
+                    dgvDSHienTrangKT.Rows[rowIndex + 1].Cells[j].Value = list[j].ToString();
+                }
+                dgvDSHienTrangKT.Rows[rowIndex + 1].Selected = true;
+                //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
+                for (int i = 0; i < dgvDSHienTrangKT.Rows.Count; i++)
+                {
+                    HienTrangKiemTra hientrangkiemtra = _cHienTrangKiemTra.getHienTrangKiemTrabyID(int.Parse(dgvDSHienTrangKT["MaHTKT", i].Value.ToString()));
+                    hientrangkiemtra.STT = i;
+                    _cHienTrangKiemTra.SuaHienTrangKiemTra(hientrangkiemtra);
+                }
+                _selectedindexHTKT = -1;
+            }
+            catch
+            {
+            }
         }
 
         #endregion
@@ -187,6 +212,7 @@ namespace KTKS_DonKH.GUI.CapNhat
             {
                 _selectedindexTTBC = e.RowIndex;
                 txtTrangThaiBC.Text = dgvDSTrangThaiBC["TenTTBC", e.RowIndex].Value.ToString();
+                dgvDSTrangThaiBC.Rows[e.RowIndex].Selected = true;
             }
             catch (Exception)
             {
@@ -203,7 +229,8 @@ namespace KTKS_DonKH.GUI.CapNhat
                 if (_cTrangThaiBamChi.ThemTrangThaiBamChi(trangthaibamchi))
                 {
                     txtTrangThaiBC.Text = "";
-                    bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
+                    dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+                    //bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
                 }
             }
             else
@@ -222,25 +249,13 @@ namespace KTKS_DonKH.GUI.CapNhat
                     {
                         txtTrangThaiBC.Text = "";
                         _selectedindexTTBC = -1;
-                        bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
+                        dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+                        //bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
                     }
                 }
                 else
                     MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //if (_flagTrangThaiBC)
-            //{
-            //    string a = "";
-            //    for (int i = 0; i < bsTrangThaiBC.List.Count; i++)
-            //    {
-            //        //a += ((TrangThaiBamChi)bsTrangThaiBC.List[i]).TenTTBC + "\n";
-            //        TrangThaiBamChi trangthaibamchi = new TrangThaiBamChi();
-            //         trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(((TrangThaiBamChi)bsTrangThaiBC.List[i]).MaTTBC);
-            //        trangthaibamchi.STT = i;
-            //        _cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi);
-            //    }
-            //    MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        _flagTrangThaiBC = false;
-            //}
+
         }
 
         private void btnXoaTrangThaiBC_Click(object sender, EventArgs e)
@@ -250,48 +265,79 @@ namespace KTKS_DonKH.GUI.CapNhat
                 {
                     txtTrangThaiBC.Text = "";
                     _selectedindexTTBC = -1;
-                    bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
+                    dgvDSTrangThaiBC.DataSource = _cTrangThaiBamChi.LoadDSTrangThaiBamChi();
+                    //bsTrangThaiBC = new BindingSource(_cTrangThaiBamChi.LoadDSTrangThaiBamChi(), string.Empty);
                 }
         }
 
         private void btnUpTrangThaiBC_Click(object sender, EventArgs e)
         {
-            _flagTrangThaiBC = true;
-            int position = bsTrangThaiBC.Position;
-            if (position == 0) return;  // already at top
-
-            bsTrangThaiBC.RaiseListChangedEvents = false;
-
-            TrangThaiBamChi current = (TrangThaiBamChi)bsTrangThaiBC.Current;
-            bsTrangThaiBC.Remove(current);
-
-            position--;
-
-            bsTrangThaiBC.Insert(position, current);
-            bsTrangThaiBC.Position = position;
-
-            bsTrangThaiBC.RaiseListChangedEvents = true;
-            bsTrangThaiBC.ResetBindings(false);
+            try
+            {
+                int rowIndex = dgvDSTrangThaiBC.SelectedRows[0].Index; // get the index of the currently selected row
+                if (rowIndex == 0)
+                {
+                    MessageBox.Show("first line");
+                    return;
+                }
+                List<string> list = new List<string>();
+                for (int i = 0; i < dgvDSTrangThaiBC.Columns.Count; i++)
+                {
+                    list.Add(dgvDSTrangThaiBC.SelectedRows[0].Cells[i].Value.ToString());// array of data stored in the list of the currently selected row 
+                }
+                for (int j = 0; j < dgvDSTrangThaiBC.Columns.Count; j++)
+                {
+                    dgvDSTrangThaiBC.Rows[rowIndex].Cells[j].Value = dgvDSTrangThaiBC.Rows[rowIndex - 1].Cells[j].Value;
+                    dgvDSTrangThaiBC.Rows[rowIndex - 1].Cells[j].Value = list[j].ToString();
+                }
+                dgvDSTrangThaiBC.Rows[rowIndex - 1].Selected = true;
+                //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
+                for (int i = 0; i < dgvDSTrangThaiBC.Rows.Count; i++)
+                {
+                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
+                    trangthaibamchi.STT = i;
+                    _cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi);
+                }
+                _selectedindexTTBC = -1;
+            }
+            catch
+            {
+            }
         }
 
         private void btnDownTrangThaiBC_Click(object sender, EventArgs e)
         {
-            _flagTrangThaiBC = true;
-            int position = bsTrangThaiBC.Position;
-            if (position == bsTrangThaiBC.Count - 1) return;  // already at bottom
-
-            bsTrangThaiBC.RaiseListChangedEvents = false;
-
-            TrangThaiBamChi current = (TrangThaiBamChi)bsTrangThaiBC.Current;
-            bsTrangThaiBC.Remove(current);
-
-            position++;
-
-            bsTrangThaiBC.Insert(position, current);
-            bsTrangThaiBC.Position = position;
-
-            bsTrangThaiBC.RaiseListChangedEvents = true;
-            bsTrangThaiBC.ResetBindings(false);
+            try
+            {
+                int rowIndex = dgvDSTrangThaiBC.SelectedRows[0].Index; // get the index of the currently selected row
+                if (rowIndex == dgvDSTrangThaiBC.Rows.Count - 1)
+                {
+                    MessageBox.Show("is the last line!");
+                    return;
+                }
+                List<string> list = new List<string>();
+                for (int i = 0; i < dgvDSTrangThaiBC.Columns.Count; i++)
+                {
+                    list.Add(dgvDSTrangThaiBC.SelectedRows[0].Cells[i].Value.ToString()); // array of data stored in the list of the currently selected row 
+                }
+                for (int j = 0; j < dgvDSTrangThaiBC.Columns.Count; j++)
+                {
+                    dgvDSTrangThaiBC.Rows[rowIndex].Cells[j].Value = dgvDSTrangThaiBC.Rows[rowIndex + 1].Cells[j].Value;
+                    dgvDSTrangThaiBC.Rows[rowIndex + 1].Cells[j].Value = list[j].ToString();
+                }
+                dgvDSTrangThaiBC.Rows[rowIndex + 1].Selected = true;
+                //dgvDSTrangThaiBC.Rows[rowIndex].Selected = false;
+                for (int i = 0; i < dgvDSTrangThaiBC.Rows.Count; i++)
+                {
+                    TrangThaiBamChi trangthaibamchi = _cTrangThaiBamChi.getTrangThaiBamChibyID(int.Parse(dgvDSTrangThaiBC["MaTTBC", i].Value.ToString()));
+                    trangthaibamchi.STT = i;
+                    _cTrangThaiBamChi.SuaTrangThaiBamChi(trangthaibamchi);
+                }
+                _selectedindexTTBC = -1;
+            }
+            catch
+            {
+            }
         }
 
         #endregion

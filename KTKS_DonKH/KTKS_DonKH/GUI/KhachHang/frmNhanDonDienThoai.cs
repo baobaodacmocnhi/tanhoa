@@ -155,7 +155,7 @@ namespace KTKS_DonKH.GUI.KhachHang
 
         private void dgvLichSuDonDT_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvLichSuDonDT.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            if (dgvLichSuDonDT.Columns[e.ColumnIndex].Name == "MaDon" && !string.IsNullOrEmpty(e.Value.ToString()))
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
         }
 
