@@ -22,7 +22,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (CTaiKhoan.RoleCapNhat_Xem || CTaiKhoan.RoleCapNhat_CapNhat)
                 {
-                    return db.LoaiDons.OrderBy(itemLD => itemLD.TenLD).ToList();
+                    return db.LoaiDons.OrderBy(item => item.STT).ToList();
                 }
                 else
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -46,7 +46,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             {
                 if (inheritance)
                 {
-                    return db.LoaiDons.OrderBy(itemLD => itemLD.TenLD).ToList();
+                    return db.LoaiDons.OrderBy(item => item.STT).ToList();
                 }
                 else
                     return null;
@@ -160,7 +160,7 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new DB_KTKS_DonKHDataContext();
                 return false;
             }

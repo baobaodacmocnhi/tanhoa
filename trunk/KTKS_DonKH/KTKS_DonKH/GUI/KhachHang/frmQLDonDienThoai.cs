@@ -46,6 +46,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             cmbColumn.ValueMember = "MaLD";
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
+            cmbTimTheo.SelectedIndex = 0;
         }
 
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
