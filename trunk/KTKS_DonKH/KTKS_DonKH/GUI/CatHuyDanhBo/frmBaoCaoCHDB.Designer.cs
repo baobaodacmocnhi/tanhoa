@@ -39,6 +39,7 @@
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
             this.radDSYCCHDB = new System.Windows.Forms.RadioButton();
             this.radDSYCCHDBNutBit = new System.Windows.Forms.RadioButton();
+            this.radDSCTDBtheocamket = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -156,12 +157,23 @@
             this.radDSYCCHDBNutBit.Text = "Danh Sách Yêu Cầu CHDB (Nút Bít)";
             this.radDSYCCHDBNutBit.UseVisualStyleBackColor = true;
             // 
+            // radDSCTDBtheocamket
+            // 
+            this.radDSCTDBtheocamket.AutoSize = true;
+            this.radDSCTDBtheocamket.Location = new System.Drawing.Point(270, 34);
+            this.radDSCTDBtheocamket.Name = "radDSCTDBtheocamket";
+            this.radDSCTDBtheocamket.Size = new System.Drawing.Size(215, 21);
+            this.radDSCTDBtheocamket.TabIndex = 32;
+            this.radDSCTDBtheocamket.Text = "Danh Sách CTDB theo cam kết";
+            this.radDSCTDBtheocamket.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.radDSCTDBtheocamket);
             this.Controls.Add(this.radDSYCCHDBNutBit);
             this.Controls.Add(this.radDSYCCHDB);
             this.Controls.Add(this.radThongKeSoLuong);
@@ -194,6 +206,7 @@
         private System.Windows.Forms.Panel panel_KhoangThoiGian;
         private System.Windows.Forms.RadioButton radDSYCCHDB;
         private System.Windows.Forms.RadioButton radDSYCCHDBNutBit;
+        private System.Windows.Forms.RadioButton radDSCTDBtheocamket;
 
     }
 }

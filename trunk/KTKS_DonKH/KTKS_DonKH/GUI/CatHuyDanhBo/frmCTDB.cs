@@ -582,6 +582,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             chkTroNgai.Checked = false;
                         txtKetQuaTCTBXuLy.Text = _ctctdb.KetQuaTCTBXuLy;
                     }
+                    else
+                    {
+                        chkKetQuaTCTBXuLy.Checked = false;
+                        dateTCTBXuLy.Value = DateTime.Now;
+                        chkTroNgai.Checked = false;
+                        txtKetQuaTCTBXuLy.Text = "";
+                    }
                     ///Cấp Trên Xử Lý
                     if (_ctctdb.CapTrenXuLy)
                     {
@@ -590,10 +597,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
                         txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.ToString();
                     }
+                    else
+                    {
+                        chkKetQuaCapTrenXuLy.Checked = false;
+                        dateCapTrenXuLy.Value = DateTime.Now;
+                        txtKetQuaCapTrenXuLy.Text = "";
+                        txtThoiGianLapCatHuy.Text = "";
+                    }
                     ///Đã lấp Phiếu Yêu Cầu CHDB
                     if (_cCHDB.CheckYeuCauCHDBbyMaCTCTDB(_ctctdb.MaCTCTDB))
                     {
                         txtHieuLucKy.Text = _ctctdb.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCTDB == _ctctdb.MaCTCTDB).HieuLucKy;
+                    }
+                    else
+                    {
+                        txtHieuLucKy.Text = "";
                     }
                     groupBoxNguyenNhanXuLy.Enabled = true;
                     btnSua.Enabled = true;

@@ -98,16 +98,22 @@
             this.label28 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvLichSuChuyenKT = new System.Windows.Forms.DataGridView();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnNhapNhieuDB = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Table = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaLSChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChuChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnNhapNhieuDB = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxXepDon = new System.Windows.Forms.GroupBox();
+            this.txtGhiChuXepDon = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dateXepDon = new System.Windows.Forms.DateTimePicker();
+            this.label31 = new System.Windows.Forms.Label();
+            this.chkXepDon = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBoxChuyenKhac.SuspendLayout();
@@ -118,6 +124,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuChuyenKT)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.groupBoxXepDon.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtTongSoDanhBo
@@ -614,7 +621,7 @@
             this.groupBoxChuyenKTXM.Controls.Add(this.dateChuyenKT);
             this.groupBoxChuyenKTXM.Controls.Add(this.label27);
             this.groupBoxChuyenKTXM.Enabled = false;
-            this.groupBoxChuyenKTXM.Location = new System.Drawing.Point(10, 307);
+            this.groupBoxChuyenKTXM.Location = new System.Drawing.Point(10, 241);
             this.groupBoxChuyenKTXM.Name = "groupBoxChuyenKTXM";
             this.groupBoxChuyenKTXM.Size = new System.Drawing.Size(531, 80);
             this.groupBoxChuyenKTXM.TabIndex = 49;
@@ -674,7 +681,7 @@
             // chkChuyenKT
             // 
             this.chkChuyenKT.AutoSize = true;
-            this.chkChuyenKT.Location = new System.Drawing.Point(12, 291);
+            this.chkChuyenKT.Location = new System.Drawing.Point(12, 225);
             this.chkChuyenKT.Name = "chkChuyenKT";
             this.chkChuyenKT.Size = new System.Drawing.Size(132, 21);
             this.chkChuyenKT.TabIndex = 48;
@@ -691,7 +698,7 @@
             this.groupBoxChuyenVanPhong.Controls.Add(this.dateChuyenVanPhong);
             this.groupBoxChuyenVanPhong.Controls.Add(this.label17);
             this.groupBoxChuyenVanPhong.Enabled = false;
-            this.groupBoxChuyenVanPhong.Location = new System.Drawing.Point(10, 410);
+            this.groupBoxChuyenVanPhong.Location = new System.Drawing.Point(10, 344);
             this.groupBoxChuyenVanPhong.Name = "groupBoxChuyenVanPhong";
             this.groupBoxChuyenVanPhong.Size = new System.Drawing.Size(531, 80);
             this.groupBoxChuyenVanPhong.TabIndex = 51;
@@ -751,7 +758,7 @@
             // chkChuyenVanPhong
             // 
             this.chkChuyenVanPhong.AutoSize = true;
-            this.chkChuyenVanPhong.Location = new System.Drawing.Point(12, 393);
+            this.chkChuyenVanPhong.Location = new System.Drawing.Point(12, 327);
             this.chkChuyenVanPhong.Name = "chkChuyenVanPhong";
             this.chkChuyenVanPhong.Size = new System.Drawing.Size(142, 21);
             this.chkChuyenVanPhong.TabIndex = 50;
@@ -798,46 +805,6 @@
             this.dgvLichSuChuyenKT.TabIndex = 0;
             this.dgvLichSuChuyenKT.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuChuyenKT_CellMouseClick);
             this.dgvLichSuChuyenKT.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuChuyenKT_MouseClick);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(545, 505);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(65, 35);
-            this.btnSua.TabIndex = 32;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnNhapNhieuDB
-            // 
-            this.btnNhapNhieuDB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNhapNhieuDB.Location = new System.Drawing.Point(10, 496);
-            this.btnNhapNhieuDB.Name = "btnNhapNhieuDB";
-            this.btnNhapNhieuDB.Size = new System.Drawing.Size(108, 35);
-            this.btnNhapNhieuDB.TabIndex = 58;
-            this.btnNhapNhieuDB.Text = "Nhập nhiều DB";
-            this.btnNhapNhieuDB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNhapNhieuDB.UseVisualStyleBackColor = true;
-            this.btnNhapNhieuDB.Click += new System.EventHandler(this.btnNhapNhieuDB_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
-            // 
-            // xóaToolStripMenuItem
-            // 
-            this.xóaToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.xóaToolStripMenuItem.Text = "Xóa";
-            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // Table
             // 
@@ -886,6 +853,104 @@
             this.GhiChuChuyen.Name = "GhiChuChuyen";
             this.GhiChuChuyen.ReadOnly = true;
             // 
+            // btnSua
+            // 
+            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(545, 505);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(65, 35);
+            this.btnSua.TabIndex = 32;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnNhapNhieuDB
+            // 
+            this.btnNhapNhieuDB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNhapNhieuDB.Location = new System.Drawing.Point(10, 505);
+            this.btnNhapNhieuDB.Name = "btnNhapNhieuDB";
+            this.btnNhapNhieuDB.Size = new System.Drawing.Size(108, 35);
+            this.btnNhapNhieuDB.TabIndex = 58;
+            this.btnNhapNhieuDB.Text = "Nhập nhiều DB";
+            this.btnNhapNhieuDB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNhapNhieuDB.UseVisualStyleBackColor = true;
+            this.btnNhapNhieuDB.Click += new System.EventHandler(this.btnNhapNhieuDB_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
+            // groupBoxXepDon
+            // 
+            this.groupBoxXepDon.Controls.Add(this.txtGhiChuXepDon);
+            this.groupBoxXepDon.Controls.Add(this.label29);
+            this.groupBoxXepDon.Controls.Add(this.dateXepDon);
+            this.groupBoxXepDon.Controls.Add(this.label31);
+            this.groupBoxXepDon.Enabled = false;
+            this.groupBoxXepDon.Location = new System.Drawing.Point(8, 447);
+            this.groupBoxXepDon.Name = "groupBoxXepDon";
+            this.groupBoxXepDon.Size = new System.Drawing.Size(531, 52);
+            this.groupBoxXepDon.TabIndex = 53;
+            this.groupBoxXepDon.TabStop = false;
+            // 
+            // txtGhiChuXepDon
+            // 
+            this.txtGhiChuXepDon.Location = new System.Drawing.Point(289, 15);
+            this.txtGhiChuXepDon.Name = "txtGhiChuXepDon";
+            this.txtGhiChuXepDon.Size = new System.Drawing.Size(230, 25);
+            this.txtGhiChuXepDon.TabIndex = 6;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(224, 21);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(59, 17);
+            this.label29.TabIndex = 5;
+            this.label29.Text = "Ghi Chú:";
+            // 
+            // dateXepDon
+            // 
+            this.dateXepDon.CustomFormat = "dd/MM/yyyy";
+            this.dateXepDon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateXepDon.Location = new System.Drawing.Point(104, 15);
+            this.dateXepDon.Name = "dateXepDon";
+            this.dateXepDon.Size = new System.Drawing.Size(97, 25);
+            this.dateXepDon.TabIndex = 2;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(6, 18);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(92, 17);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Ngày Chuyển:";
+            // 
+            // chkXepDon
+            // 
+            this.chkXepDon.AutoSize = true;
+            this.chkXepDon.Location = new System.Drawing.Point(10, 430);
+            this.chkXepDon.Name = "chkXepDon";
+            this.chkXepDon.Size = new System.Drawing.Size(81, 21);
+            this.chkXepDon.TabIndex = 52;
+            this.chkXepDon.Text = "Xếp Đơn";
+            this.chkXepDon.UseVisualStyleBackColor = true;
+            this.chkXepDon.CheckedChanged += new System.EventHandler(this.chkXepDon_CheckedChanged);
+            // 
             // frmCapNhatDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -893,21 +958,23 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1421, 544);
-            this.Controls.Add(this.btnNhapNhieuDB);
+            this.Controls.Add(this.groupBoxXepDon);
+            this.Controls.Add(this.chkXepDon);
             this.Controls.Add(this.btnSua);
+            this.Controls.Add(this.btnNhapNhieuDB);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxChuyenKhac);
             this.Controls.Add(this.groupBoxChuyenVanPhong);
             this.Controls.Add(this.chkChuyenVanPhong);
-            this.Controls.Add(this.groupBoxChuyenKhac);
             this.Controls.Add(this.chkChuyenKhac);
             this.Controls.Add(this.groupBoxChuyenToXuLy);
             this.Controls.Add(this.chkChuyenToXuLy);
             this.Controls.Add(this.groupBoxChuyenBanDoiKhac);
             this.Controls.Add(this.chkChuyenBanDoiKhac);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBoxChuyenKTXM);
             this.Controls.Add(this.chkChuyenKT);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtTongSoDanhBo);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.txtSoCongVan);
@@ -941,6 +1008,8 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuChuyenKT)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.groupBoxXepDon.ResumeLayout(false);
+            this.groupBoxXepDon.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1027,5 +1096,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuChuyen;
+        private System.Windows.Forms.GroupBox groupBoxXepDon;
+        private System.Windows.Forms.TextBox txtGhiChuXepDon;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DateTimePicker dateXepDon;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.CheckBox chkXepDon;
     }
 }
