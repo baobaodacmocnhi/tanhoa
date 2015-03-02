@@ -95,6 +95,46 @@ namespace KTKS_DonKH.GUI.KhachHang
             dt.Merge(_cDonKH.LoadDSLichSuChuyenVanPhongbyMaDonTKH(MaDon));
             dt.Merge(_cDonKH.LoadDSLichSuChuyenBanDoiKhacbyMaDonTKH(MaDon));
             dt.Merge(_cDonKH.LoadDSLichSuChuyenKhacbyMaDonTKH(MaDon));
+            if (_donkh.XepDon)
+            {
+                if (dt.Rows.Count == 0)
+                {
+                    DataColumn col = new DataColumn();
+                    col.ColumnName = "NgayChuyen";
+                    col.DataType = System.Type.GetType("System.String");
+
+                    DataColumn col2 = new DataColumn();
+                    col2.ColumnName = "LoaiChuyen";
+                    col2.DataType = System.Type.GetType("System.String");
+
+                    DataColumn col3 = new DataColumn();
+                    col3.ColumnName = "GhiChuChuyen";
+                    col3.DataType = System.Type.GetType("System.String");
+
+                    dt.Columns.Add(col);
+                    dt.Columns.Add(col2);
+                    dt.Columns.Add(col3);
+
+                    DataRow dr = dt.NewRow();
+                    dr["NgayChuyen"] = _donkh.NgayXepDon.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiChuyen"] = "Xếp Đơn";
+                    dr["GhiChuChuyen"] = _donkh.GhiChuXepDon;
+
+                    dt.Rows.Add(dr);
+                }
+                else
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["Table"] = "";
+                    dr["MaLSChuyen"] = "1";
+                    dr["NgayChuyen"] = _donkh.NgayXepDon.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiChuyen"] = "Xếp Đơn";
+                    dr["GhiChuChuyen"] = _donkh.GhiChuXepDon;
+                    dr["NguoiDi"] = "";
+
+                    dt.Rows.Add(dr);
+                }
+            }
             if (dt.Rows.Count > 0)
                 dt.DefaultView.Sort = "NgayChuyen desc";
             dgvLichSuChuyenKT.DataSource = dt;
@@ -203,6 +243,19 @@ namespace KTKS_DonKH.GUI.KhachHang
                         dateChuyenKhac.Value = DateTime.Now;
                         txtGhiChuChuyenKhac.Text = "";
                     }
+
+                    if (_donkh.XepDon)
+                    {
+                        chkXepDon.Checked = true;
+                        dateXepDon.Value = _donkh.NgayXepDon.Value;
+                        txtGhiChuXepDon.Text = _donkh.GhiChuXepDon;
+                    }
+                    else
+                    {
+                        chkXepDon.Checked = false;
+                        dateXepDon.Value = DateTime.Now;
+                        txtGhiChuXepDon.Text = "";
+                    }
                 }
                 else
                 {
@@ -299,6 +352,19 @@ namespace KTKS_DonKH.GUI.KhachHang
                     _donkh.GhiChuChuyenKhac = null;
                 }
 
+                if (chkXepDon.Checked)
+                {
+                    _donkh.XepDon = true;
+                    _donkh.NgayXepDon = dateXepDon.Value;
+                    _donkh.GhiChuXepDon = txtGhiChuXepDon.Text.Trim();
+                }
+                else
+                {
+                    _donkh.XepDon = false;
+                    _donkh.NgayXepDon = null;
+                    _donkh.GhiChuXepDon = null;
+                }
+
                 if (_cDonKH.SuaDonKH(_donkh))
                 {
                     if (flagSuaChuyenKT)
@@ -356,6 +422,16 @@ namespace KTKS_DonKH.GUI.KhachHang
                     }
                 if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenVanPhong")
                     if (_cDonKH.XoaLichSuChuyenVanPhong(_cDonKH.getLichSuChuyenVanPhongbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
+                    {
+                        LoadLichSuChuyen(_donkh.MaDon);
+                    }
+                if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenBanDoiKhac")
+                    if (_cDonKH.XoaLichSuChuyenBanDoiKhac(_cDonKH.getLichSuChuyenBanDoiKhacbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
+                    {
+                        LoadLichSuChuyen(_donkh.MaDon);
+                    }
+                if (dgvLichSuChuyenKT.CurrentRow.Cells["Table"].Value.ToString() == "LichSuChuyenKhac")
+                    if (_cDonKH.XoaLichSuChuyenKhac(_cDonKH.getLichSuChuyenKhacbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyen"].Value.ToString()))))
                     {
                         LoadLichSuChuyen(_donkh.MaDon);
                     }
@@ -437,6 +513,18 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (e.Button == MouseButtons.Right && (_donkh != null))
             {
                 contextMenuStrip1.Show(dgvLichSuChuyenKT, new Point(e.X, e.Y));
+            }
+        }
+
+        private void chkXepDon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkXepDon.Checked)
+            {
+                groupBoxXepDon.Enabled = true;
+            }
+            else
+            {
+                groupBoxXepDon.Enabled = false;
             }
         }
 

@@ -223,7 +223,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                     txtNoiDung.Text = "";
                     txtSoCongVan.Text = "";
                     txtTongSoDanhBo.Text = "1";
-                    dgvDanhBoChuyenKT.Rows.Clear();
+                    //dgvDanhBoChuyenKT.Rows.Clear();
+                    //dgvDanhBoChuyenVanPhong.Rows.Clear();
+                    this.Close();
                 }
                 else
                     if (tabControl.SelectedTab.Name == "tabVanPhong")
@@ -297,8 +299,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                         txtNoiDung.Text = "";
                         txtSoCongVan.Text = "";
                         txtTongSoDanhBo.Text = "1";
-                        dgvDanhBoChuyenKT.Rows.Clear();
-                        dgvDanhBoChuyenVanPhong.Rows.Clear();
+                        //dgvDanhBoChuyenKT.Rows.Clear();
+                        //dgvDanhBoChuyenVanPhong.Rows.Clear();
+                        this.Close();
                     }
             }
             catch (Exception ex)

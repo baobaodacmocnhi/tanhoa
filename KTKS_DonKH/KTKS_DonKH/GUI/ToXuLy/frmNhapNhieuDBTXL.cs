@@ -170,7 +170,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 txtNoiDung.Text = "";
                 txtSoCongVan.Text = "";
                 txtTongSoDanhBo.Text = "1";
-                dgvDanhBo.Rows.Clear();
+                //dgvDanhBo.Rows.Clear();
+                this.Close();
             }
             catch (Exception ex)
             {

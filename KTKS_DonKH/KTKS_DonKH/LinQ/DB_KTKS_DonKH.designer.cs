@@ -15583,6 +15583,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _GhiChuChuyenKhac;
 		
+		private bool _XepDon;
+		
+		private System.Nullable<System.DateTime> _NgayXepDon;
+		
+		private string _GhiChuXepDon;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -15771,6 +15777,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayChuyenKhacChanged();
     partial void OnGhiChuChuyenKhacChanging(string value);
     partial void OnGhiChuChuyenKhacChanged();
+    partial void OnXepDonChanging(bool value);
+    partial void OnXepDonChanged();
+    partial void OnNgayXepDonChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayXepDonChanged();
+    partial void OnGhiChuXepDonChanging(string value);
+    partial void OnGhiChuXepDonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -17303,6 +17315,66 @@ namespace KTKS_DonKH.LinQ
 					this._GhiChuChuyenKhac = value;
 					this.SendPropertyChanged("GhiChuChuyenKhac");
 					this.OnGhiChuChuyenKhacChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XepDon", DbType="Bit NOT NULL")]
+		public bool XepDon
+		{
+			get
+			{
+				return this._XepDon;
+			}
+			set
+			{
+				if ((this._XepDon != value))
+				{
+					this.OnXepDonChanging(value);
+					this.SendPropertyChanging();
+					this._XepDon = value;
+					this.SendPropertyChanged("XepDon");
+					this.OnXepDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayXepDon", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayXepDon
+		{
+			get
+			{
+				return this._NgayXepDon;
+			}
+			set
+			{
+				if ((this._NgayXepDon != value))
+				{
+					this.OnNgayXepDonChanging(value);
+					this.SendPropertyChanging();
+					this._NgayXepDon = value;
+					this.SendPropertyChanged("NgayXepDon");
+					this.OnNgayXepDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChuXepDon", DbType="NVarChar(MAX)")]
+		public string GhiChuXepDon
+		{
+			get
+			{
+				return this._GhiChuXepDon;
+			}
+			set
+			{
+				if ((this._GhiChuXepDon != value))
+				{
+					this.OnGhiChuXepDonChanging(value);
+					this.SendPropertyChanging();
+					this._GhiChuXepDon = value;
+					this.SendPropertyChanged("GhiChuXepDon");
+					this.OnGhiChuXepDonChanged();
 				}
 			}
 		}
