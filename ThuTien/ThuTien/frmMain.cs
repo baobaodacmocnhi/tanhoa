@@ -15,6 +15,7 @@ using ThuTien.GUI.HanhThu;
 using ThuTien.GUI.Quay;
 using ThuTien.GUI.ChuyenKhoan;
 using ThuTien.GUI.TongHop;
+using ThuTien.GUI.DongNuoc;
 
 namespace ThuTien
 {
@@ -187,7 +188,16 @@ namespace ThuTien
 
         #region Đóng Nước
 
-
+        private void mnuLenhDongNuoc_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuLenhDongNuoc", "Xem"))
+            {
+                frmLenhDongNuoc frm = new frmLenhDongNuoc();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         #endregion
 
@@ -268,6 +278,8 @@ namespace ThuTien
         }
 
         #endregion 
+
+        
 
         
 
