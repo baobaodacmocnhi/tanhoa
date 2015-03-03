@@ -806,7 +806,7 @@ namespace ThuTien.DAL.Doi
                         if (loai == "ChuyenKhoan")
                             sql = "update HOADON set DangNgan_ChuyenKhoan=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
                                    + "where SOHOADON='" + sohoadon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV; //+ " and NGAYGIAITRACH is not null";
-                return ExecuteNonQuery(sql, false);
+                return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
             {

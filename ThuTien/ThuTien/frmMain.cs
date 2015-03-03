@@ -190,9 +190,20 @@ namespace ThuTien
 
         private void mnuLenhDongNuoc_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuLenhDongNuoc", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuTBDongNuoc", "Xem"))
             {
-                frmLenhDongNuoc frm = new frmLenhDongNuoc();
+                frmTBDongNuoc frm = new frmTBDongNuoc();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuKQDongNuoc_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKQDongNuoc", "Xem"))
+            {
+                frmKQDongNuoc frm = new frmKQDongNuoc();
                 OpenForm(frm);
             }
             else
@@ -278,10 +289,6 @@ namespace ThuTien
         }
 
         #endregion 
-
-        
-
-        
 
         #region
 

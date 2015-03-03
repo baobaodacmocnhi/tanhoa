@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\DongNuoc\rptTBDongNuoc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTBDongNuoc.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\dsBaoCao.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,6 +75,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSHoaDon.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\rptHeader.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptHeader.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\CDAL.cs" />
@@ -119,11 +131,17 @@
     <Compile Include="GUI\Doi\frmLuuHD.Designer.cs">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DongNuoc\frmLenhDongNuoc.cs">
+    <Compile Include="GUI\DongNuoc\frmKQDongNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\DongNuoc\frmLenhDongNuoc.Designer.cs">
-      <DependentUpon>frmLenhDongNuoc.cs</DependentUpon>
+    <Compile Include="GUI\DongNuoc\frmKQDongNuoc.Designer.cs">
+      <DependentUpon>frmKQDongNuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DongNuoc\frmTBDongNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DongNuoc\frmTBDongNuoc.Designer.cs">
+      <DependentUpon>frmTBDongNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HanhThu\frmDangNganHanhThu.cs">
       <SubType>Form</SubType>
@@ -215,9 +233,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptTBDongNuoc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTBDongNuoc.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptDSHoaDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSHoaDon.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptHeader.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptHeader.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -257,8 +283,11 @@
     <EmbeddedResource Include="GUI\Doi\frmLuuHD.resx">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DongNuoc\frmLenhDongNuoc.resx">
-      <DependentUpon>frmLenhDongNuoc.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\DongNuoc\frmKQDongNuoc.resx">
+      <DependentUpon>frmKQDongNuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DongNuoc\frmTBDongNuoc.resx">
+      <DependentUpon>frmTBDongNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmDangNganHanhThu.resx">
       <DependentUpon>frmDangNganHanhThu.cs</DependentUpon>

@@ -108,15 +108,28 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (dgvHDDaThu.RowCount > 0)
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
+                        try
                         {
-                            if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon"].Value.ToString(), CNguoiDung.MaND))
+                            _cHoaDon.SqlBeginTransaction();
+                            foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
                             {
-
+                                if (!_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon"].Value.ToString(), CNguoiDung.MaND))
+                                {
+                                    _cHoaDon.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             }
+                            _cHoaDon.SqlCommitTransaction();
+                            if (dgvHDDaThu.RowCount > 0)
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        if (dgvHDDaThu.RowCount > 0)
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        catch (Exception)
+                        {
+                            _cHoaDon.SqlRollbackTransaction();
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        
                     }
             }
             else

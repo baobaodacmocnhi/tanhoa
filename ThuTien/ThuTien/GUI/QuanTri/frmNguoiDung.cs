@@ -100,12 +100,14 @@ namespace ThuTien.GUI.QuanTri
                     {
                         TT_PhanQuyenNguoiDung phanquyennguoidung = _cPhanQuyenNguoiDung.GetByMaMenuMaND(int.Parse(item["MaMenu"].ToString()), nguoidung.MaND);
                         if (phanquyennguoidung.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennguoidung.Them != bool.Parse(item["Them"].ToString()) ||
-                            phanquyennguoidung.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennguoidung.Xoa != bool.Parse(item["Xoa"].ToString()))
+                            phanquyennguoidung.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennguoidung.Xoa != bool.Parse(item["Xoa"].ToString()) ||
+                            phanquyennguoidung.QuanLy != bool.Parse(item["QuanLy"].ToString()))
                         {
                             phanquyennguoidung.Xem = bool.Parse(item["Xem"].ToString());
                             phanquyennguoidung.Them = bool.Parse(item["Them"].ToString());
                             phanquyennguoidung.Sua = bool.Parse(item["Sua"].ToString());
                             phanquyennguoidung.Xoa = bool.Parse(item["Xoa"].ToString());
+                            phanquyennguoidung.QuanLy = bool.Parse(item["QuanLy"].ToString());
                             _cPhanQuyenNguoiDung.Sua(phanquyennguoidung);
                         }
                     }
@@ -170,6 +172,25 @@ namespace ThuTien.GUI.QuanTri
                 e.Value = _cTo.GetTenToByMaTo(int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString()));
             if (dgvNguoiDung.Columns[e.ColumnIndex].Name == "TenNhom" && dgvNguoiDung["MaNhom", e.RowIndex].Value != null)
                 e.Value = _cNhom.GetTenNhomByMaNhom(int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString()));
+        }
+
+        private void gridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.Name == "ToanQuyen")
+                if (bool.Parse(e.Value.ToString()))
+                {
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xem"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Them"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "True");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "True");
+                }
+                else
+                {
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xem"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Them"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "False");
+                    gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "False");
+                }
         }
     }
 }

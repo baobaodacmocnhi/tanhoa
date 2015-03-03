@@ -338,16 +338,29 @@ namespace ThuTien.GUI.HanhThu
                     //else
                     //    MessageBox.Show("Lỗi, Vui lòng chọn Hóa Đơn(đã thu) cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
+                    try
                     {
-                        if (_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_DT"].Value.ToString(), CNguoiDung.MaND))
+                        _cHoaDon.SqlBeginTransaction();
+                        foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
                         {
-
+                            if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_DT"].Value.ToString(), CNguoiDung.MaND))
+                            {
+                                _cHoaDon.SqlRollbackTransaction();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
+                        _cHoaDon.SqlCommitTransaction();
+                        LoadDanhSachHD();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //_selectedindexDaThu = -1;
                     }
-                    LoadDanhSachHD();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //_selectedindexDaThu = -1;
+                    catch (Exception)
+                    {
+                        _cHoaDon.SqlRollbackTransaction();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
             }
             else
