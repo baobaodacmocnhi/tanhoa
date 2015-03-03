@@ -1378,6 +1378,76 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public DataTable LoadDSCTCTDBtheocamketByDate(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.CreateDate.Value.Date == TuNgay.Date && itemCTCTDB.GhiChuLyDo.Contains("theo cam kết")
+                                //orderby itemCTCTDB.CreateDate descending
+                                select new
+                                {
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
+                                    itemCTCTDB.SoTien,
+                                    itemCTCTDB.NgayTCTBXuLy,
+                                    itemCTCTDB.KetQuaTCTBXuLy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTCTDBtheocamketByDates(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value <= DenNgay.Date && itemCTCTDB.GhiChuLyDo.Contains("theo cam kết")
+                                //orderby itemCTCTDB.CreateDate descending
+                                select new
+                                {
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
+                                    itemCTCTDB.SoTien,
+                                    itemCTCTDB.NgayTCTBXuLy,
+                                    itemCTCTDB.KetQuaTCTBXuLy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ trong Ngày
         /// </summary>
