@@ -140,13 +140,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dateTu.Value = DateTime.Now;
                 dateDen.Value = DateTime.Now;
                 _tuNgay = _denNgay = "";
-                
+
                 rptThongKeCHDB rpt = new rptThongKeCHDB();
                 rpt.SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;
             }
             ///
-            if (radDSYCCHDB.Checked||radDSYCCHDBNutBit.Checked)
+            if (radDSYCCHDB.Checked || radDSYCCHDBNutBit.Checked)
             {
                 DataTable dtYCCHDB = new DataTable();
 
@@ -192,40 +192,79 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     crystalReportViewer1.ReportSource = rpt;
                 }
                 else
-                if (radDSYCCHDBNutBit.Checked)
+                    if (radDSYCCHDBNutBit.Checked)
+                    {
+                        foreach (DataRow itemRow in dtYCCHDB.Rows)
+                            if (!string.IsNullOrEmpty(itemRow["NgayCatTamNutBit"].ToString()))
+                            {
+                                DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                                dr["TuNgay"] = _tuNgay;
+                                dr["DenNgay"] = _denNgay;
+                                dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
+                                dr["NgayLap"] = itemRow["CreateDate"];
+                                dr["HieuLucKy"] = itemRow["HieuLucKy"];
+                                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                                dr["HoTen"] = itemRow["HoTen"];
+                                dr["DiaChi"] = itemRow["DiaChi"];
+                                if (itemRow["LyDo"].ToString() == "Vấn Đề Khác")
+                                    dr["LyDo"] = itemRow["GhiChuLyDo"];
+                                else
+                                    dr["LyDo"] = itemRow["LyDo"] + " " + itemRow["GhiChuLyDo"];
+
+                                dr["NgayCatTamNutBit"] = itemRow["NgayCatTamNutBit"];
+                                dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                            }
+
+                        dateTu.Value = DateTime.Now;
+                        dateDen.Value = DateTime.Now;
+                        _tuNgay = _denNgay = "";
+
+                        rptDSCatTamNutBit rpt = new rptDSCatTamNutBit();
+                        rpt.SetDataSource(dsBaoCao);
+                        crystalReportViewer1.ReportSource = rpt;
+                    }
+            }
+            ///
+            if (radDSCTDBtheocamket.Checked)
+            {
+                DataTable dt = new DataTable();
+
+                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
                 {
-                    foreach (DataRow itemRow in dtYCCHDB.Rows)
-                        if (!string.IsNullOrEmpty(itemRow["NgayCatTamNutBit"].ToString()))
-                        {
-                            DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
-                            dr["TuNgay"] = _tuNgay;
-                            dr["DenNgay"] = _denNgay;
-                            dr["SoPhieu"] = itemRow["SoPhieu"].ToString().Insert(itemRow["SoPhieu"].ToString().Length - 2, "-");
-                            dr["NgayLap"] = itemRow["CreateDate"];
-                            dr["HieuLucKy"] = itemRow["HieuLucKy"];
-                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                            dr["HoTen"] = itemRow["HoTen"];
-                            dr["DiaChi"] = itemRow["DiaChi"];
-                            if (itemRow["LyDo"].ToString() == "Vấn Đề Khác")
-                                dr["LyDo"] = itemRow["GhiChuLyDo"];
-                            else
-                                dr["LyDo"] = itemRow["LyDo"] + " " + itemRow["GhiChuLyDo"];
-
-                            dr["NgayCatTamNutBit"] = itemRow["NgayCatTamNutBit"];
-                            dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
-                        }
-
-                    dateTu.Value = DateTime.Now;
-                    dateDen.Value = DateTime.Now;
-                    _tuNgay = _denNgay = "";
-
-                    rptDSCatTamNutBit rpt = new rptDSCatTamNutBit();
-                    rpt.SetDataSource(dsBaoCao);
-                    crystalReportViewer1.ReportSource = rpt;
+                    dt = _cCHDB.LoadDSCTCTDBtheocamketByDates(dateTu.Value, dateDen.Value);
                 }
+                else
+                    if (!string.IsNullOrEmpty(_tuNgay))
+                    {
+                        dt = _cCHDB.LoadDSCTCTDBtheocamketByDate(dateTu.Value);
+                    }
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                dr["LyDo"] = itemRow["GhiChuLyDo"].ToString().Substring(30);
+                    dr["NgayLap"] = itemRow["NgayTCTBXuLy"];
+                    dr["HieuLucKy"] = itemRow["KetQuaTCTBXuLy"];
+
+                    dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                }
+
+                dateTu.Value = DateTime.Now;
+                dateDen.Value = DateTime.Now;
+                _tuNgay = _denNgay = "";
+
+                rptDSCTDBtheocamket rpt = new rptDSCTDBtheocamket();
+                rpt.SetDataSource(dsBaoCao);
+                crystalReportViewer1.ReportSource = rpt;
             }
         }
-
-        
     }
 }
