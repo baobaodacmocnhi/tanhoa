@@ -227,15 +227,28 @@ namespace ThuTien.GUI.ToTruong
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
+                    try
                     {
-                        if (_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_DT"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                        _cHoaDon.SqlBeginTransaction();
+                        foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
                         {
-
+                            if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_DT"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                            {
+                                _cHoaDon.SqlRollbackTransaction();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
+                        _cHoaDon.SqlCommitTransaction();
+                        LoadDanhSachHD();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    LoadDanhSachHD();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    catch (Exception)
+                    {
+                        _cHoaDon.SqlRollbackTransaction();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
             }
             else

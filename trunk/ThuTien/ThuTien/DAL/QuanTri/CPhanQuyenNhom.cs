@@ -86,7 +86,7 @@ namespace ThuTien.DAL.QuanTri
         public DataTable GetDSByMaNhom(int MaTT_Nhom)
         {
             return LINQToDataTable(_db.TT_PhanQuyenNhoms.Where(item => item.MaNhom == MaTT_Nhom).Select(item =>
-                new { item.TT_Menu.TextMenuCha, item.TT_Menu.STT, item.MaMenu, item.TT_Menu.TenMenu, item.TT_Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa }).ToList());
+                new { item.TT_Menu.TextMenuCha, item.TT_Menu.STT, item.MaMenu, item.TT_Menu.TenMenu, item.TT_Menu.TextMenu, item.Xem, item.Them, item.Sua, item.Xoa,item.ToanQuyen,item.QuanLy }).ToList());
         }
 
 

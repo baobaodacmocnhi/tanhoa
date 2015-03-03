@@ -52,6 +52,8 @@
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.ToanQuyen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.QuanLy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -61,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,8 +155,9 @@
             this.repositoryItemCheckEdit2,
             this.repositoryItemCheckEdit3,
             this.repositoryItemCheckEdit4,
-            this.repositoryItemCheckEdit5});
-            this.gridControl.Size = new System.Drawing.Size(572, 304);
+            this.repositoryItemCheckEdit5,
+            this.repositoryItemCheckEdit6});
+            this.gridControl.Size = new System.Drawing.Size(629, 304);
             this.gridControl.TabIndex = 12;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -169,7 +173,8 @@
             this.Them,
             this.Sua,
             this.Xoa,
-            this.ToanQuyen});
+            this.ToanQuyen,
+            this.QuanLy});
             this.gridView.GridControl = this.gridControl;
             this.gridView.GroupCount = 1;
             this.gridView.Name = "gridView";
@@ -183,7 +188,6 @@
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TextMenuCha, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.STT, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_RowCellClick);
             this.gridView.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView_CellValueChanging);
             // 
             // TextMenuCha
@@ -288,12 +292,27 @@
             this.repositoryItemCheckEdit5.Caption = "Check";
             this.repositoryItemCheckEdit5.Name = "repositoryItemCheckEdit5";
             // 
+            // QuanLy
+            // 
+            this.QuanLy.Caption = "Quản Lý";
+            this.QuanLy.ColumnEdit = this.repositoryItemCheckEdit6;
+            this.QuanLy.FieldName = "QuanLy";
+            this.QuanLy.Name = "QuanLy";
+            this.QuanLy.Visible = true;
+            this.QuanLy.VisibleIndex = 6;
+            // 
+            // repositoryItemCheckEdit6
+            // 
+            this.repositoryItemCheckEdit6.AutoHeight = false;
+            this.repositoryItemCheckEdit6.Caption = "Check";
+            this.repositoryItemCheckEdit6.Name = "repositoryItemCheckEdit6";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gridControl);
             this.groupBox1.Location = new System.Drawing.Point(269, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(599, 335);
+            this.groupBox1.Size = new System.Drawing.Size(648, 335);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phân Quyền";
@@ -302,7 +321,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 365);
+            this.ClientSize = new System.Drawing.Size(929, 365);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -321,6 +340,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -354,5 +374,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn STT;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DevExpress.XtraGrid.Columns.GridColumn QuanLy;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
     }
 }

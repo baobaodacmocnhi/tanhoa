@@ -78,12 +78,14 @@ namespace ThuTien.GUI.QuanTri
                     {
                         TT_PhanQuyenNhom phanquyennhom = _cPhanQuyenNhom.GetByMaMenuMaNhom(int.Parse(item["MaMenu"].ToString()), nhom.MaNhom);
                         if (phanquyennhom.Xem != bool.Parse(item["Xem"].ToString()) || phanquyennhom.Them != bool.Parse(item["Them"].ToString()) ||
-                            phanquyennhom.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennhom.Xoa != bool.Parse(item["Xoa"].ToString()))
+                            phanquyennhom.Sua != bool.Parse(item["Sua"].ToString()) || phanquyennhom.Xoa != bool.Parse(item["Xoa"].ToString()) ||
+                            phanquyennhom.QuanLy != bool.Parse(item["QuanLy"].ToString()))
                         {
                             phanquyennhom.Xem = bool.Parse(item["Xem"].ToString());
                             phanquyennhom.Them = bool.Parse(item["Them"].ToString());
                             phanquyennhom.Sua = bool.Parse(item["Sua"].ToString());
                             phanquyennhom.Xoa = bool.Parse(item["Xoa"].ToString());
+                            phanquyennhom.QuanLy = bool.Parse(item["QuanLy"].ToString());
                             _cPhanQuyenNhom.Sua(phanquyennhom);
                         }
                     }
@@ -135,11 +137,6 @@ namespace ThuTien.GUI.QuanTri
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
-        }
-
-        private void gridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            MessageBox.Show(e.CellValue.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void gridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)

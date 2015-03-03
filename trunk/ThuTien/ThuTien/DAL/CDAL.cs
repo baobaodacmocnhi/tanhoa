@@ -379,5 +379,26 @@ namespace ThuTien.DAL
             }
             
         }
+
+        /// <summary>
+        /// Lấy mã tiếp theo, theo định dạng sttnăm 113(12013)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public decimal getMaxNextIDTable(decimal id)
+        {
+            string nam = id.ToString().Substring(id.ToString().Length - 2, 2);
+            string stt = id.ToString().Substring(0, id.ToString().Length - 2);
+            if (decimal.Parse(nam) == decimal.Parse(DateTime.Now.ToString("yy")))
+            {
+                stt = (decimal.Parse(stt) + 1).ToString();
+            }
+            else
+            {
+                stt = "1";
+                nam = DateTime.Now.ToString("yy");
+            }
+            return decimal.Parse(stt + nam);
+        }
     }
 }
