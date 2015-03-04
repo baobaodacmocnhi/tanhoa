@@ -131,6 +131,12 @@
     <Compile Include="GUI\Doi\frmLuuHD.Designer.cs">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DongNuoc\frmGiaoTBDongNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DongNuoc\frmGiaoTBDongNuoc.Designer.cs">
+      <DependentUpon>frmGiaoTBDongNuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DongNuoc\frmKQDongNuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmLuuHD.resx">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DongNuoc\frmGiaoTBDongNuoc.resx">
+      <DependentUpon>frmGiaoTBDongNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DongNuoc\frmKQDongNuoc.resx">
       <DependentUpon>frmKQDongNuoc.cs</DependentUpon>

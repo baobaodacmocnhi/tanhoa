@@ -296,7 +296,6 @@
       <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChiSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TinhTrangChiSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChiMatSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChiKhoaGoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />

@@ -40,6 +40,45 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
+        public bool Them(TT_KQDongNuoc kqdongnuoc)
+        {
+            try
+            {
+                if (_db.TT_KQDongNuocs.Count() > 0)
+                    kqdongnuoc.MaCTDN = _db.TT_KQDongNuocs.Max(item => item.MaCTDN) + 1;
+                else
+                    kqdongnuoc.MaCTDN = 1;
+                kqdongnuoc.CreateDate = DateTime.Now;
+                kqdongnuoc.CreateBy = CNguoiDung.MaND;
+                _db.TT_KQDongNuocs.InsertOnSubmit(kqdongnuoc);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Sua(TT_KQDongNuoc kqdongnuoc)
+        {
+            try
+            {
+                kqdongnuoc.ModifyDate = DateTime.Now;
+                kqdongnuoc.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool Xoa(decimal MaDN)
         {
             try
@@ -51,6 +90,22 @@ namespace ThuTien.DAL.DongNuoc
             }
             catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Xoa(TT_KQDongNuoc kqdongnuoc)
+        {
+            try
+            {
+                _db.TT_KQDongNuocs.DeleteOnSubmit(kqdongnuoc);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -101,9 +156,29 @@ namespace ThuTien.DAL.DongNuoc
             return ds;
         }
 
+        public DataTable GetDSKQDongNuocByDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
+        {
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
+        }
+
         public bool CheckKQDongNuocByMaDN(decimal MaDN)
         {
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN);
+        }
+
+        public bool CheckKQDongNuocByMaDNNgayDN(decimal MaDN, DateTime NgayDN)
+        {
+            return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateDate.Value.Date == NgayDN.Date);
+        }
+
+        public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)
+        {
+            return _db.TT_DongNuocs.SingleOrDefault(item => item.MaDN == MaDN);
+        }
+
+        public TT_KQDongNuoc GetKQDongNuocByMaCTDN(decimal MaCTDN)
+        {
+            return _db.TT_KQDongNuocs.SingleOrDefault(item => item.MaCTDN == MaCTDN);
         }
     }
 }
