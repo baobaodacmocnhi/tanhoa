@@ -210,6 +210,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuGiaoTBDongNuoc_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuGiaoTBDongNuoc", "Xem"))
+            {
+                frmGiaoTBDongNuoc frm = new frmGiaoTBDongNuoc();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Chuyển Khoản
@@ -289,6 +300,8 @@ namespace ThuTien
         }
 
         #endregion 
+
+        
 
         #region
 

@@ -149,17 +149,17 @@
         <classShapeMoniker Id="1a48ddbd-e3a9-44fa-b3a5-894cace51379" />
       </nodes>
     </associationConnector>
-    <classShape Id="65421361-64f5-4e87-814b-4e90b358dccd" absoluteBounds="4, 12, 2, 4.8477197265625">
+    <classShape Id="4c2c7b38-bb3d-4e73-ada6-cdba6a114245" absoluteBounds="5.125, 12.25, 2, 4.6554182942708326">
       <DataClassMoniker Name="/dbThuTienDataContext/TT_KQDongNuoc" />
       <nestedChildShapes>
-        <elementListCompartment Id="3c75eb25-21da-4574-83bc-e50289a76670" absoluteBounds="4.015, 12.46, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c2d0f66d-4f72-4777-95a0-e513ed37c8dd" absoluteBounds="5.14, 12.71, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 12.9287019856771); (4 : 12.9287019856771)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 13.0537019856771); (5.125 : 13.0537019856771)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbThuTienDataContext/TT_DongNuoc/TT_DongNuoc_TT_KQDongNuoc" />
       <nodes>
         <classShapeMoniker Id="4e9ab9c2-afbe-419f-83e6-b1c6ca4302e0" />
-        <classShapeMoniker Id="65421361-64f5-4e87-814b-4e90b358dccd" />
+        <classShapeMoniker Id="4c2c7b38-bb3d-4e73-ada6-cdba6a114245" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

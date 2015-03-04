@@ -6317,8 +6317,6 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _ChiSo;
 		
-		private string _TinhTrangChiSo;
-		
 		private string _ChiMatSo;
 		
 		private string _ChiKhoaGoc;
@@ -6365,8 +6363,6 @@ namespace ThuTien.LinQ
     partial void OnSoThanChanged();
     partial void OnChiSoChanging(System.Nullable<int> value);
     partial void OnChiSoChanged();
-    partial void OnTinhTrangChiSoChanging(string value);
-    partial void OnTinhTrangChiSoChanged();
     partial void OnChiMatSoChanging(string value);
     partial void OnChiMatSoChanged();
     partial void OnChiKhoaGocChanging(string value);
@@ -6609,26 +6605,6 @@ namespace ThuTien.LinQ
 					this._ChiSo = value;
 					this.SendPropertyChanged("ChiSo");
 					this.OnChiSoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhTrangChiSo", DbType="NVarChar(50)")]
-		public string TinhTrangChiSo
-		{
-			get
-			{
-				return this._TinhTrangChiSo;
-			}
-			set
-			{
-				if ((this._TinhTrangChiSo != value))
-				{
-					this.OnTinhTrangChiSoChanging(value);
-					this.SendPropertyChanging();
-					this._TinhTrangChiSo = value;
-					this.SendPropertyChanged("TinhTrangChiSo");
-					this.OnTinhTrangChiSoChanged();
 				}
 			}
 		}

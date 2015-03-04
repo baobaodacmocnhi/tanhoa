@@ -48,6 +48,7 @@
             this.mnuDangNganHanhThu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTBDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKQDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangNganChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTamThuChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,7 @@
             this.StripStatus_Form = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuKQDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGiaoTBDongNuoc = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -169,7 +170,7 @@
             // mnuLuuHD
             // 
             this.mnuLuuHD.Name = "mnuLuuHD";
-            this.mnuLuuHD.Size = new System.Drawing.Size(144, 22);
+            this.mnuLuuHD.Size = new System.Drawing.Size(152, 22);
             this.mnuLuuHD.Text = "Lưu Hóa Đơn";
             this.mnuLuuHD.Click += new System.EventHandler(this.mnuLuuHoaDon_Click);
             // 
@@ -222,7 +223,8 @@
             // 
             this.mnuDongNuoc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTBDongNuoc,
-            this.mnuKQDongNuoc});
+            this.mnuKQDongNuoc,
+            this.mnuGiaoTBDongNuoc});
             this.mnuDongNuoc.Name = "mnuDongNuoc";
             this.mnuDongNuoc.Size = new System.Drawing.Size(80, 20);
             this.mnuDongNuoc.Text = "Đóng Nước";
@@ -230,9 +232,16 @@
             // mnuTBDongNuoc
             // 
             this.mnuTBDongNuoc.Name = "mnuTBDongNuoc";
-            this.mnuTBDongNuoc.Size = new System.Drawing.Size(196, 22);
+            this.mnuTBDongNuoc.Size = new System.Drawing.Size(223, 22);
             this.mnuTBDongNuoc.Text = "Thông Báo Đóng Nước";
             this.mnuTBDongNuoc.Click += new System.EventHandler(this.mnuLenhDongNuoc_Click);
+            // 
+            // mnuKQDongNuoc
+            // 
+            this.mnuKQDongNuoc.Name = "mnuKQDongNuoc";
+            this.mnuKQDongNuoc.Size = new System.Drawing.Size(223, 22);
+            this.mnuKQDongNuoc.Text = "Kết Quả Đóng Nước";
+            this.mnuKQDongNuoc.Click += new System.EventHandler(this.mnuKQDongNuoc_Click);
             // 
             // mnuChuyenKhoan
             // 
@@ -349,12 +358,12 @@
             this.StripStatus_HoTen.Text = "Xin Chào:";
             this.StripStatus_HoTen.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
-            // mnuKQDongNuoc
+            // mnuGiaoTBDongNuoc
             // 
-            this.mnuKQDongNuoc.Name = "mnuKQDongNuoc";
-            this.mnuKQDongNuoc.Size = new System.Drawing.Size(196, 22);
-            this.mnuKQDongNuoc.Text = "Kết Quả Đóng Nước";
-            this.mnuKQDongNuoc.Click += new System.EventHandler(this.mnuKQDongNuoc_Click);
+            this.mnuGiaoTBDongNuoc.Name = "mnuGiaoTBDongNuoc";
+            this.mnuGiaoTBDongNuoc.Size = new System.Drawing.Size(223, 22);
+            this.mnuGiaoTBDongNuoc.Text = "Giao Thông Báo Đóng Nước";
+            this.mnuGiaoTBDongNuoc.Click += new System.EventHandler(this.mnuGiaoTBDongNuoc_Click);
             // 
             // frmMain
             // 
@@ -417,6 +426,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhDangNgan;
         private System.Windows.Forms.ToolStripMenuItem mnuTBDongNuoc;
         private System.Windows.Forms.ToolStripMenuItem mnuKQDongNuoc;
+        private System.Windows.Forms.ToolStripMenuItem mnuGiaoTBDongNuoc;
     }
 }
 
