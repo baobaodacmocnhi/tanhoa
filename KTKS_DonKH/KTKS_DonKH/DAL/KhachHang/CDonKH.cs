@@ -244,10 +244,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
-                                    itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen,
-                                    itemDonKH.SoLuongDiaChi,
-                                    itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -286,10 +282,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
-                                    itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen,
-                                    itemDonKH.SoLuongDiaChi,
-                                    itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -328,10 +320,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
-                                    itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen,
-                                    itemDonKH.SoLuongDiaChi,
-                                    itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
@@ -370,10 +358,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
-                                    itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen,
-                                    itemDonKH.SoLuongDiaChi,
-                                    itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.TienTrinh,
                                 };
@@ -413,10 +397,6 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.HoTen,
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
-                                    itemDonKH.MaChuyen,
-                                    itemDonKH.LyDoChuyen,
-                                    itemDonKH.SoLuongDiaChi,
-                                    itemDonKH.NVKiemTra,
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.TienTrinh,
                                 };
