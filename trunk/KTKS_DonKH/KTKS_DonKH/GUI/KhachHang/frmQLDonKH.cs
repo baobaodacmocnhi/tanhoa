@@ -46,10 +46,10 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             dgvDSDonKH.AutoGenerateColumns = false;
             dgvDSDonKH.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDonKH.Font, FontStyle.Bold);
-            DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSDonKH.Columns["MaChuyen"];
-            cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi();
-            cmbColumn.DisplayMember = "NoiChuyenDi";
-            cmbColumn.ValueMember = "MaChuyen";
+            //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSDonKH.Columns["MaChuyen"];
+            //cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi();
+            //cmbColumn.DisplayMember = "NoiChuyenDi";
+            //cmbColumn.ValueMember = "MaChuyen";
 
             //dgvDSDonKH.DataSource = DSDonKH_BS;
             //radAll.Checked = true;
@@ -249,6 +249,10 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "NVKiemTra")
+            {
+                e.Value = _cDonTXL.GetNVKiemTraDonKHbyMaDon(decimal.Parse(dgvDSDonKH["MaDon", e.RowIndex].Value.ToString()));
             }
         }
 
@@ -507,6 +511,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             rptDSDonTXL rpt = new rptDSDonTXL();
             rpt.SetDataSource(dsBaoCao);
             rpt.Subreports[0].SetDataSource(dsBaoCao);
+            rpt.Subreports[1].SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }

@@ -1147,6 +1147,32 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
+        public string GetNVKiemTraDonKHbyMaDon(decimal MaDon)
+        {
+            string str = "";
+            DataTable dt = new DataTable();
+
+            var query = from itemLSCKT in db.LichSuChuyenKTs
+                        join itemUser in db.Users on itemLSCKT.NguoiDi equals itemUser.MaU
+                        where itemLSCKT.MaDon == MaDon
+                        select new
+                        {
+                            itemLSCKT.CreateDate,
+                            itemUser.HoTen,
+                        };
+            dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+
+            if (dt.Rows.Count > 0)
+                dt.DefaultView.Sort = "CreateDate asc";
+
+            foreach (DataRow item in dt.Rows)
+            {
+                str += item["HoTen"] + ", ";
+            }
+
+            return str;
+        }
+
         #endregion
     }
 }
