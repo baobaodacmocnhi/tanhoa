@@ -612,6 +612,28 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSGiaoTonByDates(DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND
+                        where itemHD.NGAYGIAOTON.Value.Date >= TuNgay.Date && itemHD.NGAYGIAOTON.Value.Date <= DenNgay.Date
+                        orderby itemHD.ID_HOADON ascending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            NgayGiaiTrach=itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            MaNV_GiaoTon = itemND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSByDanhBo(string DanhBo)
         {
             var query = from itemHD in _db.HOADONs
@@ -813,6 +835,36 @@ namespace ThuTien.DAL.Doi
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             } 
+        }
+
+        public bool GiaoTon(string sohoadon, int MaNV_GiaoTon)
+        {
+            try
+            {
+                string sql = "update HOADON set MaNV_GiaoTon=" + MaNV_GiaoTon + ",NGAYGIAOTON='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
+                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null";
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool XoaGiaoTon(string sohoadon)
+        {
+            try
+            {
+                string sql = "update HOADON set MaNV_GiaoTon=null,NGAYGIAOTON=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
+                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null";
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 

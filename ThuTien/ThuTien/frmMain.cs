@@ -145,7 +145,7 @@ namespace ThuTien
 
         #endregion
 
-        #region Đội Trưởng
+        #region Tổ Trưởng
 
         private void mnuGiaoHoaDonHanhThu_Click(object sender, EventArgs e)
         {
@@ -158,11 +158,33 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuGiaoHDTon_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuGiaoHDTon", "Xem"))
+            {
+                frmGiaoHDTon frm = new frmGiaoHDTon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void mnuDieuChinhDangNgan_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen("mnuDieuChinhDangNgan", "Xem"))
             {
                 frmDieuChinhDangNgan frm = new frmDieuChinhDangNgan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuGiaoTBDongNuoc_Click_1(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuGiaoTBDongNuoc", "Xem"))
+            {
+                frmGiaoTBDongNuoc frm = new frmGiaoTBDongNuoc();
                 OpenForm(frm);
             }
             else
@@ -204,17 +226,6 @@ namespace ThuTien
             if (CNguoiDung.CheckQuyen("mnuKQDongNuoc", "Xem"))
             {
                 frmKQDongNuoc frm = new frmKQDongNuoc();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void mnuGiaoTBDongNuoc_Click(object sender, EventArgs e)
-        {
-            if (CNguoiDung.CheckQuyen("mnuGiaoTBDongNuoc", "Xem"))
-            {
-                frmGiaoTBDongNuoc frm = new frmGiaoTBDongNuoc();
                 OpenForm(frm);
             }
             else
@@ -300,6 +311,10 @@ namespace ThuTien
         }
 
         #endregion 
+
+        
+
+        
 
         
 

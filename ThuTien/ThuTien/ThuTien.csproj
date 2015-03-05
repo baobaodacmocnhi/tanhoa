@@ -131,10 +131,16 @@
     <Compile Include="GUI\Doi\frmLuuHD.Designer.cs">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DongNuoc\frmGiaoTBDongNuoc.cs">
+    <Compile Include="GUI\ToTruong\frmGiaoHDTon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\DongNuoc\frmGiaoTBDongNuoc.Designer.cs">
+    <Compile Include="GUI\ToTruong\frmGiaoHDTon.Designer.cs">
+      <DependentUpon>frmGiaoHDTon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoTBDongNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmGiaoTBDongNuoc.Designer.cs">
       <DependentUpon>frmGiaoTBDongNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DongNuoc\frmKQDongNuoc.cs">
@@ -289,7 +295,10 @@
     <EmbeddedResource Include="GUI\Doi\frmLuuHD.resx">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DongNuoc\frmGiaoTBDongNuoc.resx">
+    <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDTon.resx">
+      <DependentUpon>frmGiaoHDTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmGiaoTBDongNuoc.resx">
       <DependentUpon>frmGiaoTBDongNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DongNuoc\frmKQDongNuoc.resx">

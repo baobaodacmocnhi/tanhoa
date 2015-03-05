@@ -84,10 +84,10 @@ namespace ThuTien.GUI.DongNuoc
                         ctdongnuoc.SoHoaDon = lstHDTemp[0].SOHOADON;
                         ctdongnuoc.Ky = lstHDTemp[0].KY + "/" + lstHDTemp[0].NAM;
                         ctdongnuoc.TieuThu=(int)lstHDTemp[0].TIEUTHU;
-                        ctdongnuoc.GiaBan = lstHDTemp[0].GIABAN;
-                        ctdongnuoc.ThueGTGT = lstHDTemp[0].THUE;
-                        ctdongnuoc.PhiBVMT = lstHDTemp[0].PHI;
-                        ctdongnuoc.TongCong = lstHDTemp[0].TONGCONG;
+                        ctdongnuoc.GiaBan = (int)lstHDTemp[0].GIABAN;
+                        ctdongnuoc.ThueGTGT = (int)lstHDTemp[0].THUE;
+                        ctdongnuoc.PhiBVMT = (int)lstHDTemp[0].PHI;
+                        ctdongnuoc.TongCong = (int)lstHDTemp[0].TONGCONG;
 
                         dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
 
@@ -102,14 +102,14 @@ namespace ThuTien.GUI.DongNuoc
                                 ctdongnuoc2.SoHoaDon = lstHDTemp[j].SOHOADON;
                                 ctdongnuoc2.Ky = lstHDTemp[j].KY + "/" + lstHDTemp[j].NAM;
                                 ctdongnuoc2.TieuThu = (int)lstHDTemp[j].TIEUTHU;
-                                ctdongnuoc2.GiaBan = lstHDTemp[j].GIABAN;
-                                ctdongnuoc2.ThueGTGT = lstHDTemp[j].THUE;
-                                ctdongnuoc2.PhiBVMT = lstHDTemp[j].PHI;
-                                ctdongnuoc2.TongCong = lstHDTemp[j].TONGCONG;
+                                ctdongnuoc2.GiaBan = (int)lstHDTemp[j].GIABAN;
+                                ctdongnuoc2.ThueGTGT = (int)lstHDTemp[j].THUE;
+                                ctdongnuoc2.PhiBVMT = (int)lstHDTemp[j].PHI;
+                                ctdongnuoc2.TongCong = (int)lstHDTemp[j].TONGCONG;
 
                                 dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc2);
                             }
-                        if (_cDongNuoc.Them(dongnuoc))
+                        if (_cDongNuoc.ThemDN(dongnuoc))
                         {
                             if (k != -1)
                                 lstHDTemp.RemoveAt(k);
@@ -230,6 +230,12 @@ namespace ThuTien.GUI.DongNuoc
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+        }
+
+        private void gridViewDN_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
        
