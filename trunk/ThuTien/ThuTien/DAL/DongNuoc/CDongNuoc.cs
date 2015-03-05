@@ -5,12 +5,13 @@ using System.Text;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
 using System.Data;
+using System.Globalization;
 
 namespace ThuTien.DAL.DongNuoc
 {
     class CDongNuoc : CDAL
     {
-        public bool Them(TT_DongNuoc dongnuoc)
+        public bool ThemDN(TT_DongNuoc dongnuoc)
         {
             try
             {
@@ -40,7 +41,7 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
-        public bool Them(TT_KQDongNuoc kqdongnuoc)
+        public bool ThemKQ(TT_KQDongNuoc kqdongnuoc)
         {
             try
             {
@@ -62,7 +63,7 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
-        public bool Sua(TT_KQDongNuoc kqdongnuoc)
+        public bool SuaKQ(TT_KQDongNuoc kqdongnuoc)
         {
             try
             {
@@ -74,6 +75,34 @@ namespace ThuTien.DAL.DongNuoc
             catch (Exception ex)
             {
                 _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool GiaoDongNuoc(decimal MaDN,int MaNV_DongNuoc)
+        {
+            try
+            {
+                string sql = "update TT_DongNuoc set MaNV_DongNuoc=" + MaNV_DongNuoc + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where MaDN=" + MaDN;
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool XoaGiaoDongNuoc(decimal MaDN)
+        {
+            try
+            {
+                string sql = "update TT_DongNuoc set MaNV_DongNuoc=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where MaDN=" + MaDN;
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -95,7 +124,7 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
-        public bool Xoa(TT_KQDongNuoc kqdongnuoc)
+        public bool XoaKQ(TT_KQDongNuoc kqdongnuoc)
         {
             try
             {
@@ -125,6 +154,8 @@ namespace ThuTien.DAL.DongNuoc
                                 itemDN.HoTen,
                                 itemDN.DiaChi,
                                 itemDN.MLT,
+                                itemDN.CreateBy,
+                                itemDN.MaNV_DongNuoc,
                             };
             DataTable dtDongNuoc = new DataTable();
             dtDongNuoc = LINQToDataTable(queryDN);
@@ -169,6 +200,16 @@ namespace ThuTien.DAL.DongNuoc
         public bool CheckKQDongNuocByMaDNNgayDN(decimal MaDN, DateTime NgayDN)
         {
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateDate.Value.Date == NgayDN.Date);
+        }
+
+        public bool CheckDongNuocByMaDNMaNV_DongNuoc(decimal MaDN, int MaNV_DongNuoc)
+        {
+            return _db.TT_DongNuocs.Any(item => item.MaDN == MaDN && item.MaNV_DongNuoc == MaNV_DongNuoc);
+        }
+
+        public bool CheckKQDongNuocByMaDNMaNV_DongNuoc(decimal MaDN, int MaNV_DongNuoc)
+        {
+            return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateBy == MaNV_DongNuoc);
         }
 
         public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)

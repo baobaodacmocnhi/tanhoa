@@ -103,7 +103,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(640, 10);
+            this.btnXem.Location = new System.Drawing.Point(647, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 11;
@@ -115,7 +115,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(534, 14);
+            this.dateDen.Location = new System.Drawing.Point(541, 14);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 10;
@@ -123,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(477, 20);
+            this.label4.Location = new System.Drawing.Point(477, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 9;
@@ -141,7 +141,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(314, 20);
+            this.label3.Location = new System.Drawing.Point(314, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 7;
@@ -169,7 +169,7 @@
             this.ThueGTGT,
             this.PhiBVMT,
             this.TongCong});
-            this.dgvHDDaThu.Location = new System.Drawing.Point(272, 45);
+            this.dgvHDDaThu.Location = new System.Drawing.Point(271, 39);
             this.dgvHDDaThu.Name = "dgvHDDaThu";
             this.dgvHDDaThu.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;

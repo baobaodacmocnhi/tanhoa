@@ -51,10 +51,15 @@ namespace ThuTien.GUI.DongNuoc
                 if (_cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))) != null)
                 {
                     _dongnuoc = _cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", "")));
+                    txtMaDN.Text = _dongnuoc.MaDN.ToString().Insert(_dongnuoc.MaDN.ToString().Length - 2, "-");
                     txtDanhBo.Text = _dongnuoc.DanhBo;
                     txtMLT.Text = _dongnuoc.MLT;
                     txtHoTen.Text = _dongnuoc.HoTen;
                     txtDiaChi.Text = _dongnuoc.DiaChi;
+                }
+                else
+                {
+                    Clear();
                 }
         }
 
@@ -67,6 +72,11 @@ namespace ThuTien.GUI.DongNuoc
                     if (_cDongNuoc.CheckKQDongNuocByMaDNNgayDN(_dongnuoc.MaDN, dateDongNuoc.Value))
                     {
                         MessageBox.Show("Biên Bản ngày " + dateDongNuoc.Value.ToString("dd/MM/yyyy") + " đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (!_cDongNuoc.CheckDongNuocByMaDNMaNV_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
+                    {
+                        MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -89,7 +99,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (cmbChiKhoaGoc.SelectedItem != null)
                         kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                     kqdongnuoc.LyDo = txtLyDo.Text.Trim();
-                    if (_cDongNuoc.Them(kqdongnuoc))
+                    if (_cDongNuoc.ThemKQ(kqdongnuoc))
                     {
                         Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,7 +133,7 @@ namespace ThuTien.GUI.DongNuoc
                     kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                 kqdongnuoc.LyDo = txtLyDo.Text.Trim();
 
-                if (_cDongNuoc.Sua(kqdongnuoc))
+                if (_cDongNuoc.SuaKQ(kqdongnuoc))
                 {
                     Clear();
                     dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
@@ -139,7 +149,7 @@ namespace ThuTien.GUI.DongNuoc
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
                 TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaCTDN(decimal.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaCTDN"].Value.ToString()));
-                if (_cDongNuoc.Xoa(kqdongnuoc))
+                if (_cDongNuoc.XoaKQ(kqdongnuoc))
                 {
                     Clear();
                     dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
