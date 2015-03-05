@@ -245,6 +245,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
+                                    itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -283,6 +284,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
+                                    itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -321,6 +323,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.DiaChi,
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
+                                    itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -360,6 +363,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.TienTrinh,
+                                    itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -399,6 +403,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemDonKH.NoiDung,
                                     CreateBy = itemUser.HoTen,
                                     itemDonKH.TienTrinh,
+                                    itemDonKH.NVKiemTra,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

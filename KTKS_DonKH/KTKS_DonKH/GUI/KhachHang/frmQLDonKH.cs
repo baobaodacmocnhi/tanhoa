@@ -252,7 +252,11 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
             if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "NVKiemTra")
             {
-                e.Value = _cDonTXL.GetNVKiemTraDonKHbyMaDon(decimal.Parse(dgvDSDonKH["MaDon", e.RowIndex].Value.ToString()));
+                string str = "";
+                DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(dgvDSDonKH["MaDon", e.RowIndex].Value.ToString()));
+                if (donkh.ChuyenToXuLy)
+                    str = ", TXL";
+                e.Value = _cDonTXL.GetNVKiemTraDonKHbyMaDon(decimal.Parse(dgvDSDonKH["MaDon", e.RowIndex].Value.ToString())) + str;
             }
         }
 
@@ -395,6 +399,12 @@ namespace KTKS_DonKH.GUI.KhachHang
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
                 dr["NoiDung"] = itemRow["NoiDung"];
+
+                string str = "";
+                str = _cDonTXL.GetNVKiemTraDonKHbyMaDon(donkh.MaDon);
+                if (donkh.ChuyenToXuLy)
+                    str = ", TXL";
+                dr["NVKiemTra"] = str;
 
                 dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
             }

@@ -4853,6 +4853,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnSoLuong;
             
+            private global::System.Data.DataColumn columnNVKiemTra;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DanhSachDonKHDataTable() {
@@ -5008,6 +5010,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NVKiemTraColumn {
+                get {
+                    return this.columnNVKiemTra;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5043,7 +5053,23 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DanhSachDonKHRow AddDanhSachDonKHRow(string TuNgay, string DenNgay, string TenLD, string MaDon, string NgayNhan, string ChiTiet, string DanhBo, string HoTen, string DiaChi, string NoiDung, string MaLD, string TienTrinh, int SoDanhBo, string Loai, int SoLuong) {
+            public DanhSachDonKHRow AddDanhSachDonKHRow(
+                        string TuNgay, 
+                        string DenNgay, 
+                        string TenLD, 
+                        string MaDon, 
+                        string NgayNhan, 
+                        string ChiTiet, 
+                        string DanhBo, 
+                        string HoTen, 
+                        string DiaChi, 
+                        string NoiDung, 
+                        string MaLD, 
+                        string TienTrinh, 
+                        int SoDanhBo, 
+                        string Loai, 
+                        int SoLuong, 
+                        string NVKiemTra) {
                 DanhSachDonKHRow rowDanhSachDonKHRow = ((DanhSachDonKHRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TuNgay,
@@ -5060,7 +5086,8 @@ namespace KTKS_DonKH.BaoCao {
                         TienTrinh,
                         SoDanhBo,
                         Loai,
-                        SoLuong};
+                        SoLuong,
+                        NVKiemTra};
                 rowDanhSachDonKHRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDanhSachDonKHRow);
                 return rowDanhSachDonKHRow;
@@ -5098,6 +5125,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnSoDanhBo = base.Columns["SoDanhBo"];
                 this.columnLoai = base.Columns["Loai"];
                 this.columnSoLuong = base.Columns["SoLuong"];
+                this.columnNVKiemTra = base.Columns["NVKiemTra"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5133,6 +5161,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnLoai);
                 this.columnSoLuong = new global::System.Data.DataColumn("SoLuong", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSoLuong);
+                this.columnNVKiemTra = new global::System.Data.DataColumn("NVKiemTra", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNVKiemTra);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17172,6 +17202,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NVKiemTra {
+                get {
+                    try {
+                        return ((string)(this[this.tableDanhSachDonKH.NVKiemTraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NVKiemTra\' in table \'DanhSachDonKH\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDanhSachDonKH.NVKiemTraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTuNgayNull() {
                 return this.IsNull(this.tableDanhSachDonKH.TuNgayColumn);
             }
@@ -17348,6 +17394,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSoLuongNull() {
                 this[this.tableDanhSachDonKH.SoLuongColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNVKiemTraNull() {
+                return this.IsNull(this.tableDanhSachDonKH.NVKiemTraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNVKiemTraNull() {
+                this[this.tableDanhSachDonKH.NVKiemTraColumn] = global::System.Convert.DBNull;
             }
         }
         
