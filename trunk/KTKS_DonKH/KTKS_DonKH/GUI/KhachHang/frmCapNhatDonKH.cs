@@ -78,12 +78,23 @@ namespace KTKS_DonKH.GUI.KhachHang
             chkChuyenKT.Checked = false;
             dateChuyenKT.Value = DateTime.Now;
             cmbNguoiDi.SelectedIndex = -1;
+
+            chkChuyenVanPhong.Checked = false;
+            dateChuyenVanPhong.Value = DateTime.Now;
+            cmbVanPhong.SelectedIndex = -1;
+
+            chkXepDon.Checked = false;
+            dateXepDon.Value = DateTime.Now;
+            txtGhiChuXepDon.Text = "";
+
             chkChuyenBanDoiKhac.Checked = false;
             dateChuyenBanDoiKhac.Value = DateTime.Now;
             txtGhiChuChuyenBanDoiKhac.Text = "";
+
             chkChuyenToXuLy.Checked = false;
             dateChuyenToXuLy.Value = DateTime.Now;
             txtGhiChuChuyenToXuLy.Text = "";
+
             chkChuyenKhac.Checked = false;
             dateChuyenKhac.Value = DateTime.Now;
             txtGhiChuChuyenKhac.Text = "";
@@ -95,6 +106,46 @@ namespace KTKS_DonKH.GUI.KhachHang
             dt.Merge(_cDonKH.LoadDSLichSuChuyenVanPhongbyMaDonTKH(MaDon));
             dt.Merge(_cDonKH.LoadDSLichSuChuyenBanDoiKhacbyMaDonTKH(MaDon));
             dt.Merge(_cDonKH.LoadDSLichSuChuyenKhacbyMaDonTKH(MaDon));
+            if (_donkh.ChuyenToXuLy)
+            {
+                if (dt.Rows.Count == 0)
+                {
+                    DataColumn col = new DataColumn();
+                    col.ColumnName = "NgayChuyen";
+                    col.DataType = System.Type.GetType("System.String");
+
+                    DataColumn col2 = new DataColumn();
+                    col2.ColumnName = "LoaiChuyen";
+                    col2.DataType = System.Type.GetType("System.String");
+
+                    DataColumn col3 = new DataColumn();
+                    col3.ColumnName = "GhiChuChuyen";
+                    col3.DataType = System.Type.GetType("System.String");
+
+                    dt.Columns.Add(col);
+                    dt.Columns.Add(col2);
+                    dt.Columns.Add(col3);
+
+                    DataRow dr = dt.NewRow();
+                    dr["NgayChuyen"] = _donkh.NgayChuyenToXuLy.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiChuyen"] = "TXL";
+                    dr["GhiChuChuyen"] = _donkh.GhiChuChuyenToXuLy;
+
+                    dt.Rows.Add(dr);
+                }
+                else
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["Table"] = "";
+                    dr["MaLSChuyen"] = "1";
+                    dr["NgayChuyen"] = _donkh.NgayChuyenToXuLy.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiChuyen"] = "TXL";
+                    dr["GhiChuChuyen"] = _donkh.GhiChuChuyenToXuLy;
+                    dr["NguoiDi"] = "";
+
+                    dt.Rows.Add(dr);
+                }
+            }
             if (_donkh.XepDon)
             {
                 if (dt.Rows.Count == 0)
