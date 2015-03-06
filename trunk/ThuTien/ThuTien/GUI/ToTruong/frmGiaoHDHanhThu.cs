@@ -15,9 +15,9 @@ namespace ThuTien.GUI.ToTruong
 {
     public partial class frmGiaoHDHanhThu : Form
     {
+        string _mnu = "mnuGiaoHDHanhThu";
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
-        string _mnu = "mnuGiaoHDHanhThu";
         int _selectedindex = -1;
 
         public frmGiaoHDHanhThu()
@@ -53,13 +53,13 @@ namespace ThuTien.GUI.ToTruong
             //if (tabControl.SelectedTab.Name == "tabTuGia")
             //{
 
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSGiaoByNamKyDot(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
             //}
             //else
             //    if (tabControl.SelectedTab.Name == "tabCoQuan")
             //    {
 
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSGiaoByNamKyDot(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongGiaoByNamKyDot(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                 //}
         }
 
