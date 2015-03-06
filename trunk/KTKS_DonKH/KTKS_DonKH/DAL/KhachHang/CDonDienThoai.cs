@@ -156,7 +156,66 @@ namespace KTKS_DonKH.DAL.KhachHang
             {
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
-                    return CLinQToDataTable.LINQToDataTable(db.DonDienThoais.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).ToList());
+                    var query= from item in db.DonDienThoais
+                               where item.DanhBo == DanhBo
+                               orderby item.CreateDate descending
+                               select new
+                               {
+                                   In=false,
+                                   LapDon=false,
+                                   item.MaDon,
+                                   item.CreateDate,
+                                   item.DanhBo,
+                                   item.HoTen,
+                                   item.DiaChi,
+                                   item.GiaBieu,
+                                   item.DinhMuc,
+                                   item.NoiDung,
+                                   item.GhiChu,
+                                   item.NguoiBao,
+                                   item.DienThoai,
+                               };
+                    return CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable getDSDonDienThoaiByDiaChi(string DiaChi)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from item in db.DonDienThoais
+                                where item.DiaChi.Contains(DiaChi)
+                                orderby item.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    LapDon = false,
+                                    item.MaDon,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.GiaBieu,
+                                    item.DinhMuc,
+                                    item.NoiDung,
+                                    item.GhiChu,
+                                    item.NguoiBao,
+                                    item.DienThoai,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
                 {
@@ -177,7 +236,26 @@ namespace KTKS_DonKH.DAL.KhachHang
             {
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
-                    return  CLinQToDataTable.LINQToDataTable(db.DonDienThoais.Where(item => item.CreateDate.Value.Date == TuNgay.Date).ToList());
+                    var query = from item in db.DonDienThoais
+                                where item.CreateDate.Value.Date == TuNgay.Date
+                                //orderby item.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    LapDon = false,
+                                    item.MaDon,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.GiaBieu,
+                                    item.DinhMuc,
+                                    item.NoiDung,
+                                    item.GhiChu,
+                                    item.NguoiBao,
+                                    item.DienThoai,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
                 {
@@ -198,7 +276,26 @@ namespace KTKS_DonKH.DAL.KhachHang
             {
                 if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
                 {
-                    return CLinQToDataTable.LINQToDataTable(db.DonDienThoais.Where(item=>item.CreateDate.Value.Date>=TuNgay.Date&&item.CreateDate.Value<=DenNgay.Date).ToList());
+                    var query = from item in db.DonDienThoais
+                                where item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value <= DenNgay.Date
+                                //orderby item.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    LapDon = false,
+                                    item.MaDon,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.GiaBieu,
+                                    item.DinhMuc,
+                                    item.NoiDung,
+                                    item.GhiChu,
+                                    item.NguoiBao,
+                                    item.DienThoai,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
                 }
                 else
                 {
