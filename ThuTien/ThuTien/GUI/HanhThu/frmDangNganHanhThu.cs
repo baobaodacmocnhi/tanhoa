@@ -43,18 +43,18 @@ namespace ThuTien.GUI.HanhThu
         {
             dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
             dgvHDChuaThu.DataSource = _cHoaDon.GetDSTonByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+            int TongCong = 0;
             if (dgvHDDaThu.RowCount > 0)
             {
-                int TongCong = 0;
                 foreach (DataGridViewRow item in dgvHDDaThu.Rows)
                 {
                     TongCong += int.Parse(item.Cells["TongCong_DT"].Value.ToString());
                 }
                 txtTongCong_DT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
+            TongCong = 0;
             if (dgvHDChuaThu.RowCount > 0)
             {
-                int TongCong = 0;
                 foreach (DataGridViewRow item in dgvHDChuaThu.Rows)
                 {
                     TongCong += int.Parse(item.Cells["TongCong_CT"].Value.ToString());
