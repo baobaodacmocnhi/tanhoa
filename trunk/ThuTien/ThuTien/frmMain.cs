@@ -202,6 +202,29 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuKiemTraTon_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKiemTraTon", "Xem"))
+            {
+                frmKiemTraTon frm = new frmKiemTraTon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuNangSuatThuTien_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKiemTraTon", "Xem"))
+            {
+                frmNangSuatThuTien frm = new frmNangSuatThuTien();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
         #endregion
 
         #region Hành Thu
@@ -333,8 +356,6 @@ namespace ThuTien
         }
 
         #endregion 
-
-       
 
         #region
 
