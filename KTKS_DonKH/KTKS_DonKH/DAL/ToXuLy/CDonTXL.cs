@@ -1162,6 +1162,16 @@ namespace KTKS_DonKH.DAL.ToXuLy
                         };
             dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
 
+            var queryVP = from itemLSCVP in db.LichSuChuyenVanPhongs
+                          join itemUser in db.Users on itemLSCVP.NguoiDi equals itemUser.MaU
+                          where itemLSCVP.MaDon == MaDon
+                        select new
+                        {
+                            itemLSCVP.CreateDate,
+                            itemUser.HoTen,
+                        };
+            dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryVP));
+
             if (dt.Rows.Count > 0)
                 dt.DefaultView.Sort = "CreateDate asc";
 

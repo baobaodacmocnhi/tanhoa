@@ -53,6 +53,8 @@
             this.ribbtnNhanDon = new System.Windows.Forms.RibbonButton();
             this.ribbtnQLDonKH = new System.Windows.Forms.RibbonButton();
             this.ribbtnCapNhatDonKH = new System.Windows.Forms.RibbonButton();
+            this.ribbtnNhanDonDT = new System.Windows.Forms.RibbonButton();
+            this.ribbtnQLDonDT = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel14 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhanDonTXL = new System.Windows.Forms.RibbonButton();
             this.ribbtnQLDonTXL = new System.Windows.Forms.RibbonButton();
@@ -113,8 +115,7 @@
             this.ribbtnBaoCaoBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
-            this.ribbtnNhanDonDT = new System.Windows.Forms.RibbonButton();
-            this.ribbtnQLDonDT = new System.Windows.Forms.RibbonButton();
+            this.ribbtnVeViecTTTL = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -191,6 +192,7 @@
             this.ribbonPanel3.Items.Add(this.ribbtnGiaNuoc);
             this.ribbonPanel3.Items.Add(this.ribbtnNVKiemTra);
             this.ribbonPanel3.Items.Add(this.ribbtnKiemTrang_BamChi);
+            this.ribbonPanel3.Items.Add(this.ribbtnVeViecTTTL);
             this.ribbonPanel3.Text = "Thông Tin";
             // 
             // ribbtnLoaiDonThu
@@ -307,6 +309,22 @@
             this.ribbtnCapNhatDonKH.Text = "Cập Nhật Đơn";
             this.ribbtnCapNhatDonKH.Click += new System.EventHandler(this.ribbtnCapNhatDonKH_Click);
             // 
+            // ribbtnNhanDonDT
+            // 
+            this.ribbtnNhanDonDT.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnNhanDonDT.MinimumSize = new System.Drawing.Size(130, 0);
+            this.ribbtnNhanDonDT.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnNhanDonDT.SmallImage")));
+            this.ribbtnNhanDonDT.Text = "Nhận Đơn Điện Thoại";
+            this.ribbtnNhanDonDT.Click += new System.EventHandler(this.ribbtnNhanDonDT_Click);
+            // 
+            // ribbtnQLDonDT
+            // 
+            this.ribbtnQLDonDT.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnQLDonDT.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbtnQLDonDT.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonDT.SmallImage")));
+            this.ribbtnQLDonDT.Text = "QL Đơn Điện Thoại";
+            this.ribbtnQLDonDT.Click += new System.EventHandler(this.ribbtnQLDonDT_Click);
+            // 
             // ribbonPanel14
             // 
             this.ribbonPanel14.ButtonMoreEnabled = false;
@@ -354,7 +372,7 @@
             this.StripStatus_Form,
             this.toolStripStatusLabel5,
             this.StripStatus_TaiKhoan});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 640);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 664);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1140, 22);
             this.statusStrip1.TabIndex = 2;
@@ -780,27 +798,19 @@
             this.ribbon1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ribbon1_KeyPress);
             this.ribbon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
             // 
-            // ribbtnNhanDonDT
+            // ribbtnVeViecTTTL
             // 
-            this.ribbtnNhanDonDT.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnNhanDonDT.MinimumSize = new System.Drawing.Size(130, 0);
-            this.ribbtnNhanDonDT.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnNhanDonDT.SmallImage")));
-            this.ribbtnNhanDonDT.Text = "Nhận Đơn Điện Thoại";
-            this.ribbtnNhanDonDT.Click += new System.EventHandler(this.ribbtnNhanDonDT_Click);
-            // 
-            // ribbtnQLDonDT
-            // 
-            this.ribbtnQLDonDT.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnQLDonDT.MinimumSize = new System.Drawing.Size(120, 0);
-            this.ribbtnQLDonDT.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonDT.SmallImage")));
-            this.ribbtnQLDonDT.Text = "QL Đơn Điện Thoại";
-            this.ribbtnQLDonDT.Click += new System.EventHandler(this.ribbtnQLDonDT_Click);
+            this.ribbtnVeViecTTTL.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnVeViecTTTL.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnVeViecTTTL.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnVeViecTTTL.SmallImage")));
+            this.ribbtnVeViecTTTL.Text = "Về Việc TTTL";
+            this.ribbtnVeViecTTTL.Click += new System.EventHandler(this.ribbtnVeViecTTTL_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 662);
+            this.ClientSize = new System.Drawing.Size(1140, 686);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbon1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -907,6 +917,7 @@
         private System.Windows.Forms.RibbonButton ribbtnCapNhatDonKH;
         private System.Windows.Forms.RibbonButton ribbtnNhanDonDT;
         private System.Windows.Forms.RibbonButton ribbtnQLDonDT;
+        private System.Windows.Forms.RibbonButton ribbtnVeViecTTTL;
     }
 }
 
