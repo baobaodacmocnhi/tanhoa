@@ -245,6 +245,18 @@
     <Compile Include="GUI\ToTruong\frmKiemTraDangNgan.Designer.cs">
       <DependentUpon>frmKiemTraDangNgan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmKiemTraTon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmKiemTraTon.Designer.cs">
+      <DependentUpon>frmKiemTraTon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmNangSuatThuTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmNangSuatThuTien.Designer.cs">
+      <DependentUpon>frmNangSuatThuTien.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbKTKS_DonKH.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -366,6 +378,12 @@
     </None>
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraDangNgan.resx">
       <DependentUpon>frmKiemTraDangNgan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmKiemTraTon.resx">
+      <DependentUpon>frmKiemTraTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmNangSuatThuTien.resx">
+      <DependentUpon>frmNangSuatThuTien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
