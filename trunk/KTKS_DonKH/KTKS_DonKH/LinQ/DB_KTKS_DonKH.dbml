@@ -1158,4 +1158,16 @@
       <Association Name="User_DetailRole" Member="DetailRoles" ThisKey="MaU" OtherKey="MaU" Type="DetailRole" />
     </Type>
   </Table>
+  <Table Name="dbo.VeViecTTTL" Member="VeViecTTTLs">
+    <Type Name="VeViecTTTL">
+      <Column Name="MaVV" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenVV" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
