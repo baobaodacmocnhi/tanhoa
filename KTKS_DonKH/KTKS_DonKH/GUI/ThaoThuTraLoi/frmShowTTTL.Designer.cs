@@ -61,6 +61,8 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
+            this.cmbVeViec = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -392,12 +394,32 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // cmbVeViec
+            // 
+            this.cmbVeViec.FormattingEnabled = true;
+            this.cmbVeViec.Location = new System.Drawing.Point(87, 462);
+            this.cmbVeViec.Name = "cmbVeViec";
+            this.cmbVeViec.Size = new System.Drawing.Size(269, 25);
+            this.cmbVeViec.TabIndex = 16;
+            this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 465);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 17);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Về Việc:";
+            // 
             // frmShowTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1123, 495);
+            this.Controls.Add(this.cmbVeViec);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.txtMaDon);
             this.Controls.Add(this.btnIn);
@@ -456,5 +478,7 @@
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.ComboBox cmbVeViec;
+        private System.Windows.Forms.Label label8;
     }
 }

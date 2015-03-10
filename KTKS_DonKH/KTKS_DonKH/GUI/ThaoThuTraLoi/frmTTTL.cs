@@ -33,6 +33,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CTTTL _cTTTL = new CTTTL();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+        CVeViecTTTL _cVeViecTTTL = new CVeViecTTTL();
         bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
         //bool _flagTXL = false;
   
@@ -97,6 +98,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void frmTTTL_Load(object sender, EventArgs e)
         {
+            cmbVeViec.DataSource = _cVeViecTTTL.LoadDS();
+            cmbVeViec.DisplayMember = "TenVV";
+            cmbVeViec.SelectedIndex = -1;
+
             if (_direct)
             {
                 this.ControlBox = false;
@@ -461,6 +466,17 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             if (dgvLichSuTTTL.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void cmbVeViec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbVeViec.SelectedIndex != -1)
+            {
+                VeViecTTTL vv = (VeViecTTTL)cmbVeViec.SelectedItem;
+                txtVeViec.Text = vv.TenVV;
+                txtNoiDung.Text = vv.NoiDung;
+                txtNoiNhan.Text = vv.NoiNhan;
             }
         }
 

@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>75</ApplicationRevision>
+    <ApplicationRevision>77</ApplicationRevision>
     <ApplicationVersion>1.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -213,6 +213,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2_Y.cs">
+      <DependentUpon>rptPhieuTBYCNhanDMx2_Y.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\DieuChinhBienDong\rptThongKeCapDinhMuc.cs">
       <DependentUpon>rptThongKeCapDinhMuc.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -249,10 +255,10 @@
       <DependentUpon>rptDSPhieuCatChuyen.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2.cs">
+    <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2_N.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptPhieuTBYCNhanDMx2.rpt</DependentUpon>
+      <DependentUpon>rptPhieuTBYCNhanDMx2_N.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuYCCatDM.cs">
@@ -1016,13 +1022,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeCHDB.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2_Y.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuTBYCNhanDMx2_Y.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptThongKeCapDinhMuc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeCapDinhMuc.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2.rpt">
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2_N.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptPhieuTBYCNhanDMx2.cs</LastGenOutput>
+      <LastGenOutput>rptPhieuTBYCNhanDMx2_N.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptDSChuyenDocSo_LocUser.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

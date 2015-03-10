@@ -1224,19 +1224,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         case "Mã Đơn":
                             if (radDaDuyet.Checked)
-                                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["CHDB"];
+                                gridControl.DataSource = _cCHDB.LoadDSCHDBDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", ""))).Tables["CHDB"];
                             else
                                 if (radDSCatTamDanhBo.Checked)
-                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                                 else
                                     if (radDSCatHuyDanhBo.Checked)
-                                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                                     else
                                         if (radDSYCCHDB.Checked)
-                                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                                         else
                                             if (radDSDongNuoc.Checked)
-                                                dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                                dgvDSYCCHDB.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                             break;
                         case "Danh Bộ":
                             if (radDaDuyet.Checked)

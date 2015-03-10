@@ -147,7 +147,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                 //rptPhieuYCNhanDM rpt = new rptPhieuYCNhanDM();
                 //rpt.SetDataSource(dsBaoCao);
-                rptPhieuTBYCNhanDMx2 rpt = new rptPhieuTBYCNhanDMx2();
+                rptPhieuTBYCNhanDMx2_N rpt = new rptPhieuTBYCNhanDMx2_N();
                 for (int j = 0; j < rpt.Subreports.Count; j++)
                 {
                     rpt.Subreports[j].SetDataSource(dsBaoCao);
@@ -201,6 +201,46 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDSTBKetQuaYCCatDM.Columns[e.ColumnIndex].Name == "NhanNK_MaCN"&& e.Value!=null)
                 e.Value = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSTBKetQuaYCCatDM["NhanNK_MaCN", e.RowIndex].Value.ToString()));
+        }
+
+        private void btnInDongY_Click(object sender, EventArgs e)
+        {
+            if (_selectedindex != -1)
+            {
+                TBKetQuaYCCatDM tb = _cTB.GetTBKetQuaYCCatDMByID(decimal.Parse(dgvDSTBKetQuaYCCatDM["SoPhieu", _selectedindex].Value.ToString()));
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                DataRow dr = dsBaoCao.Tables["PhieuCatChuyenDM"].NewRow();
+
+                dr["SoPhieu"] = tb.SoPhieu.ToString().Insert(tb.SoPhieu.ToString().Length - 2, "-");
+                dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(tb.NhanNK_MaCN.Value);
+                if (!string.IsNullOrEmpty(tb.NhanNK_DanhBo))
+                    dr["DanhBoNhan"] = tb.NhanNK_DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HoTenNhan"] = tb.NhanNK_HoTen;
+                dr["DiaChiNhan"] = tb.NhanNK_DiaChi;
+                if (!string.IsNullOrEmpty(tb.CatNK_DanhBo))
+                    dr["DanhBoCat"] = tb.CatNK_DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HoTenCat"] = tb.CatNK_HoTen;
+                dr["DiaChiCat"] = tb.CatNK_DiaChi;
+                dr["SoNKCat"] = tb.SoNKCat + " nhân khẩu (HK: " + tb.MaCT + ")";
+
+                dr["SoPhieuNhan"] = tb.SoPhieuNhan;
+                dr["NgayNhan"] = tb.NgayNhan.Value.ToString("dd/MM/yyyy");
+
+                dr["ChucVu"] = tb.ChucVu;
+                dr["NguoiKy"] = tb.NguoiKy;
+
+                dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
+
+                //rptPhieuYCNhanDM rpt = new rptPhieuYCNhanDM();
+                //rpt.SetDataSource(dsBaoCao);
+                rptPhieuTBYCNhanDMx2_Y rpt = new rptPhieuTBYCNhanDMx2_Y();
+                for (int j = 0; j < rpt.Subreports.Count; j++)
+                {
+                    rpt.Subreports[j].SetDataSource(dsBaoCao);
+                }
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
     }
 }
