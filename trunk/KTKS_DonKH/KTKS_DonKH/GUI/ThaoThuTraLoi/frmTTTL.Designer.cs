@@ -252,7 +252,7 @@
             this.chkThuBao.AutoSize = true;
             this.chkThuBao.Location = new System.Drawing.Point(895, 288);
             this.chkThuBao.Name = "chkThuBao";
-            this.chkThuBao.Size = new System.Drawing.Size(79, 21);
+            this.chkThuBao.Size = new System.Drawing.Size(67, 17);
             this.chkThuBao.TabIndex = 12;
             this.chkThuBao.Text = "Thư Báo";
             this.chkThuBao.UseVisualStyleBackColor = true;
@@ -262,7 +262,7 @@
             this.chkThuMoi.AutoSize = true;
             this.chkThuMoi.Location = new System.Drawing.Point(895, 261);
             this.chkThuMoi.Name = "chkThuMoi";
-            this.chkThuMoi.Size = new System.Drawing.Size(79, 21);
+            this.chkThuMoi.Size = new System.Drawing.Size(65, 17);
             this.chkThuMoi.TabIndex = 11;
             this.chkThuMoi.Text = "Thư Mời";
             this.chkThuMoi.UseVisualStyleBackColor = true;
@@ -272,7 +272,7 @@
             this.chkDieuChinh_GB_DM.AutoSize = true;
             this.chkDieuChinh_GB_DM.Location = new System.Drawing.Point(895, 192);
             this.chkDieuChinh_GB_DM.Name = "chkDieuChinh_GB_DM";
-            this.chkDieuChinh_GB_DM.Size = new System.Drawing.Size(146, 21);
+            this.chkDieuChinh_GB_DM.Size = new System.Drawing.Size(116, 17);
             this.chkDieuChinh_GB_DM.TabIndex = 10;
             this.chkDieuChinh_GB_DM.Text = "Điều Chỉnh GB-ĐM";
             this.chkDieuChinh_GB_DM.UseVisualStyleBackColor = true;
@@ -282,7 +282,7 @@
             this.chkThayDHN.AutoSize = true;
             this.chkThayDHN.Location = new System.Drawing.Point(895, 165);
             this.chkThayDHN.Name = "chkThayDHN";
-            this.chkThayDHN.Size = new System.Drawing.Size(94, 21);
+            this.chkThayDHN.Size = new System.Drawing.Size(77, 17);
             this.chkThayDHN.TabIndex = 9;
             this.chkThayDHN.Text = "Thay ĐHN";
             this.chkThayDHN.UseVisualStyleBackColor = true;
@@ -292,7 +292,7 @@
             this.chkKiemDinhDHN_Dung.AutoSize = true;
             this.chkKiemDinhDHN_Dung.Location = new System.Drawing.Point(895, 138);
             this.chkKiemDinhDHN_Dung.Name = "chkKiemDinhDHN_Dung";
-            this.chkKiemDinhDHN_Dung.Size = new System.Drawing.Size(186, 21);
+            this.chkKiemDinhDHN_Dung.Size = new System.Drawing.Size(145, 17);
             this.chkKiemDinhDHN_Dung.TabIndex = 8;
             this.chkKiemDinhDHN_Dung.Text = "Thử Kiểm Định ĐHN (sai)";
             this.chkKiemDinhDHN_Dung.UseVisualStyleBackColor = true;
@@ -302,7 +302,7 @@
             this.chkKiemDinhDHN_Sai.AutoSize = true;
             this.chkKiemDinhDHN_Sai.Location = new System.Drawing.Point(895, 111);
             this.chkKiemDinhDHN_Sai.Name = "chkKiemDinhDHN_Sai";
-            this.chkKiemDinhDHN_Sai.Size = new System.Drawing.Size(199, 21);
+            this.chkKiemDinhDHN_Sai.Size = new System.Drawing.Size(157, 17);
             this.chkKiemDinhDHN_Sai.TabIndex = 7;
             this.chkKiemDinhDHN_Sai.Text = "Thử Kiểm Định ĐHN (đúng)";
             this.chkKiemDinhDHN_Sai.UseVisualStyleBackColor = true;
@@ -312,7 +312,7 @@
             this.chkGiamNuocXaBo.AutoSize = true;
             this.chkGiamNuocXaBo.Location = new System.Drawing.Point(895, 84);
             this.chkGiamNuocXaBo.Name = "chkGiamNuocXaBo";
-            this.chkGiamNuocXaBo.Size = new System.Drawing.Size(181, 21);
+            this.chkGiamNuocXaBo.Size = new System.Drawing.Size(144, 17);
             this.chkGiamNuocXaBo.TabIndex = 6;
             this.chkGiamNuocXaBo.Text = "Giảm Lượng Nước Xả Bỏ";
             this.chkGiamNuocXaBo.UseVisualStyleBackColor = true;
@@ -430,6 +430,7 @@
             this.cmbVeViec.Name = "cmbVeViec";
             this.cmbVeViec.Size = new System.Drawing.Size(269, 25);
             this.cmbVeViec.TabIndex = 14;
+            this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
             // 
             // frmTTTL
             // 
@@ -437,7 +438,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1360, 514);
+            this.ClientSize = new System.Drawing.Size(1360, 531);
             this.Controls.Add(this.cmbVeViec);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dgvLichSuTTTL);

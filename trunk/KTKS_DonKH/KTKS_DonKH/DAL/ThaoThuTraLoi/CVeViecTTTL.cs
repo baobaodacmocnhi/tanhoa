@@ -114,6 +114,24 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
+        public List<VeViecTTTL> LoadDS(bool inheritance)
+        {
+            try
+            {
+                if (inheritance)
+                {
+                    return db.VeViecTTTLs.ToList();
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public VeViecTTTL getVeViecTTTLbyID(int MaVV)
         {
             try

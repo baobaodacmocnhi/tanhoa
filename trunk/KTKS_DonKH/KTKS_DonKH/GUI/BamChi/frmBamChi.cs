@@ -138,8 +138,21 @@ namespace KTKS_DonKH.GUI.BamChi
                         _dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(txtMaDon.Text.Trim().Substring(3).Replace("-", "")));
                         txtMaDon.Text = "TXL" + _dontxl.MaDon.ToString().Insert(_dontxl.MaDon.ToString().Length - 2, "-");
                         dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi_TXL(_dontxl.MaDon, CTaiKhoan.MaUser);
-                        MessageBox.Show("Mã Đơn TXL này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtDanhBo.Focus();
+                        if (_cTTKH.getTTKHbyID(_dontxl.DanhBo) != null)
+                        {
+                            _ttkhachhang = _cTTKH.getTTKHbyID(_dontxl.DanhBo);
+                            LoadTTKH(_ttkhachhang);
+                            cmbChiMatSo.SelectedIndex = 0;
+                            cmbChiKhoaGoc.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            _ttkhachhang = null;
+                            Clear();
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        //MessageBox.Show("Mã Đơn TXL này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //txtDanhBo.Focus();
                     }
                     else
                     {
@@ -156,8 +169,21 @@ namespace KTKS_DonKH.GUI.BamChi
                         _donkh = _cDonKH.getDonKHbyID(decimal.Parse(txtMaDon.Text.Trim().Replace("-", "")));
                         txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                         dgvDSNhapBamChi.DataSource = _cBamChi.LoadDSCTBamChi(_donkh.MaDon, CTaiKhoan.MaUser);
-                        MessageBox.Show("Mã Đơn KH này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtDanhBo.Focus();
+                        if (_cTTKH.getTTKHbyID(_donkh.DanhBo) != null)
+                        {
+                            _ttkhachhang = _cTTKH.getTTKHbyID(_donkh.DanhBo);
+                            LoadTTKH(_ttkhachhang);
+                            cmbChiMatSo.SelectedIndex = 0;
+                            cmbChiKhoaGoc.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            _ttkhachhang = null;
+                            Clear();
+                            MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        //MessageBox.Show("Mã Đơn KH này có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //txtDanhBo.Focus();
                     }
                     else
                     {

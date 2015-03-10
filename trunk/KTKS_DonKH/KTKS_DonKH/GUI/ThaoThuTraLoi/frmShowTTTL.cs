@@ -23,6 +23,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         CTTTTL _cttttl = null;
         CTTKH _cTTKH = new CTTKH();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CVeViecTTTL _cVeViecTTTL = new CVeViecTTTL();
 
         public frmShowTTTL()
         {
@@ -63,6 +64,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void frmShowTTTL_Load(object sender, EventArgs e)
         {
+            cmbVeViec.DataSource = _cVeViecTTTL.LoadDS();
+            cmbVeViec.DisplayMember = "TenVV";
+            cmbVeViec.SelectedIndex = -1;
+
             this.Location = new Point(70, 70);
             if (_cTTTL.getCTTTTLbyID(_MaCTTTTL) != null)
             {
@@ -191,6 +196,17 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 {
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void cmbVeViec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbVeViec.SelectedIndex != -1)
+            {
+                VeViecTTTL vv = (VeViecTTTL)cmbVeViec.SelectedItem;
+                txtVeViec.Text = vv.TenVV;
+                txtNoiDung.Text = vv.NoiDung;
+                txtNoiNhan.Text = vv.NoiNhan;
             }
         }
     }

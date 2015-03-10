@@ -506,10 +506,10 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     {
                         case "Mã Đơn":
                             if (radDaDuyet.Checked)
-                                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["TTTL"];
+                                gridControl.DataSource = _cTTTL.LoadDSTTTLDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", ""))).Tables["TTTL"];
                             else
                                 if (radDSThu.Checked)
-                                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                             break;
                         case "Mã Thư":
                             if (radDaDuyet.Checked)
