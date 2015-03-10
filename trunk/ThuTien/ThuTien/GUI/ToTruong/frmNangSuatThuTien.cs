@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using System.Globalization;
+using ThuTien.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.BaoCao.ToTruong;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -188,6 +191,51 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+            {
+                DataRow dr = ds.Tables["NangSuatThuTien"].NewRow();
+                dr["Nam"] = cmbNam.SelectedItem.ToString();
+                dr["Ky"] = cmbKy.SelectedItem.ToString();
+                dr["To"] = CNguoiDung.TenTo;
+                dr["Loai"] = "Tư Gia";
+                dr["TongHD"] = item.Cells["TongHD_TG"].Value;
+                dr["TongGiaBan"] = item.Cells["TongGiaBan_TG"].Value;
+                dr["TongHDThu"] = item.Cells["TongHDThu_TG"].Value;
+                dr["TongGiaBanThu"] = item.Cells["TongGiaBanThu_TG"].Value;
+                dr["TongHDTon"] = item.Cells["TongHDTon_TG"].Value;
+                dr["TongGiaBanTon"] = item.Cells["TongGiaBanTon_TG"].Value;
+                dr["NhanVien"] = item.Cells["HoTen_TG"].Value;
+                dr["TiLe"] = item.Cells["TiLe_TG"].Value;
+                ds.Tables["NangSuatThuTien"].Rows.Add(dr);
+            }
+
+            foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+            {
+                DataRow dr = ds.Tables["NangSuatThuTien"].NewRow();
+                dr["Nam"] = cmbNam.SelectedItem.ToString();
+                dr["Ky"] = cmbKy.SelectedItem.ToString();
+                dr["To"] = CNguoiDung.TenTo;
+                dr["Loai"] = "Cơ Quan";
+                dr["TongHD"] = item.Cells["TongHD_CQ"].Value;
+                dr["TongGiaBan"] = item.Cells["TongGiaBan_CQ"].Value;
+                dr["TongHDThu"] = item.Cells["TongHDThu_CQ"].Value;
+                dr["TongGiaBanThu"] = item.Cells["TongGiaBanThu_CQ"].Value;
+                dr["TongHDTon"] = item.Cells["TongHDTon_CQ"].Value;
+                dr["TongGiaBanTon"] = item.Cells["TongGiaBanTon_CQ"].Value;
+                dr["NhanVien"] = item.Cells["HoTen_CQ"].Value;
+                dr["TiLe"] = item.Cells["TiLe_CQ"].Value;
+                ds.Tables["NangSuatThuTien"].Rows.Add(dr);
+            }
+
+            rptNangSuatThuTien rpt = new rptNangSuatThuTien();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         

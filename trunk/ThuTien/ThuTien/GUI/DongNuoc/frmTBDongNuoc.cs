@@ -171,33 +171,45 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnInTB_Click(object sender, EventArgs e)
         {
-            dsBaoCao dsBaoCao = new dsBaoCao();
-            DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
-            foreach (DataRow item in dt.Rows)
-                if (bool.Parse(item["In"].ToString()))
-                {
-                    DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
-                    string Ky = "";
-                    foreach (DataRow itemChild in childRows)
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                dsBaoCao dsBaoCao = new dsBaoCao();
+                DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+                foreach (DataRow item in dt.Rows)
+                    if (bool.Parse(item["In"].ToString()))
                     {
-                        Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) +"\n";
+                        DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
+                        string Ky = "";
+                        foreach (DataRow itemChild in childRows)
+                        {
+                            Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                        }
+
+                        DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                        dr["MaDN"] = item["MaDN"];
+                        dr["HoTen"] = item["HoTen"];
+                        dr["DiaChi"] = item["DiaChi"];
+                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["MLT"] = item["MLT"];
+                        dr["Ky"] = Ky;
+                        dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+
+                        rptTBDongNuoc rpt = new rptTBDongNuoc();
+                        rpt.SetDataSource(dsBaoCao);
+                        //frmBaoCao frm = new frmBaoCao(rpt);
+                        //frm.ShowDialog();
+                        printDialog.AllowSomePages = true;
+                        printDialog.ShowHelp = true;
+
+                        rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                        rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                        rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                        rpt.PrintToPrinter(1, false, 0, 0);
                     }
-
-                    DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                    dr["MaDN"] = item["MaDN"];
-                    dr["HoTen"] = item["HoTen"];
-                    dr["DiaChi"] = item["DiaChi"];
-                    if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
-                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["MLT"] = item["MLT"];
-                    dr["Ky"] = Ky;
-                    dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
-
-                    rptTBDongNuoc rpt = new rptTBDongNuoc();
-                    rpt.SetDataSource(dsBaoCao);
-                    frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.ShowDialog();
-                }
+            }
         }
 
         private void gridViewCTDN_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)

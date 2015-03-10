@@ -890,6 +890,48 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
+        public DataTable GetTongDangNganByMaNV_DangNganNgayDangNgan(int MaNV_DangNgan, string loai, DateTime NgayDangNgan)
+        {
+            if (loai == "TG")
+            {
+                var query = from item in _db.HOADONs
+                            where item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date &&item.MaNV_DangNgan==MaNV_DangNgan&& item.GB >= 11 && item.GB <= 20
+                            orderby item.MaNV_HanhThu ascending
+                            group item by item.MaNV_HanhThu into itemGroup
+                            select new
+                            {
+                                MaNV = itemGroup.Key,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                TongHD = itemGroup.Count(),
+                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (loai == "CQ")
+                {
+                    var query = from item in _db.HOADONs
+                                where item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date &&item.MaNV_DangNgan==MaNV_DangNgan&& item.GB > 20
+                                orderby item.MaNV_HanhThu ascending
+                                group item by item.MaNV_HanhThu into itemGroup
+                                select new
+                                {
+                                    MaNV = itemGroup.Key,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                    TongHD = itemGroup.Count(),
+                                    TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                    TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                    TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                    TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
         /// <summary>
         /// Lấy Sum thông tin những hóa đơn đã chia cho từng anh/em cụ thể
         /// </summary>
@@ -925,10 +967,10 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetDSDangNganHanhThuByMaNVNamKyDot(int MaNV, int nam, int ky, int dot)
+        public DataTable GetDSDangNganHanhThuByMaNVNamKyDot(int MaNV_DangNgan, int nam, int ky, int dot)
         {
             var query = from item in _db.HOADONs
-                        where item.NAM == nam && item.KY == ky && item.DOT == dot && item.MaNV_HanhThu==MaNV && item.DangNgan_HanhThu==true && item.MaNV_DangNgan == MaNV
+                        where item.NAM == nam && item.KY == ky && item.DOT == dot && item.MaNV_HanhThu==MaNV_DangNgan && item.DangNgan_HanhThu==true && item.MaNV_DangNgan == MaNV_DangNgan
                         orderby item.SOHOADON ascending
                         select new
                         {
@@ -936,6 +978,28 @@ namespace ThuTien.DAL.Doi
                             item.SOHOADON,
                             Ky=item.KY+"/"+item.NAM,
                             MLT=item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNganHanhThuByMaNVNgayDangNgan(int MaNV_DangNgan, DateTime NgayDangNgan)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NGAYGIAITRACH.Value.Date==NgayDangNgan.Date && item.DangNgan_HanhThu == true && item.MaNV_DangNgan == MaNV_DangNgan
+                        orderby item.SOHOADON ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
                             item.SOPHATHANH,
                             DanhBo = item.DANHBA,
                             item.TIEUTHU,
