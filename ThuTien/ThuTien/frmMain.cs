@@ -251,6 +251,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuQuetTam_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuQuetTam", "Xem"))
+            {
+                frmQuetTam frm = new frmQuetTam();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Đóng Nước
@@ -356,6 +367,8 @@ namespace ThuTien
         }
 
         #endregion 
+
+        
 
         #region
 

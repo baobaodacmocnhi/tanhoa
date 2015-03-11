@@ -182,7 +182,7 @@ namespace ThuTien.GUI.HanhThu
             }
         }
 
-        private void txtDSHD_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
                 if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
@@ -485,5 +485,7 @@ namespace ThuTien.GUI.HanhThu
                 frm.ShowDialog();
             }
         }
+
+        
     }
 }
