@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>77</ApplicationRevision>
+    <ApplicationRevision>79</ApplicationRevision>
     <ApplicationVersion>1.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -214,10 +214,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\DieuChinhBienDong\rptPhieuTBYCNhanDMx2_Y.cs">
-      <DependentUpon>rptPhieuTBYCNhanDMx2_Y.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuTBYCNhanDMx2_Y.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\DieuChinhBienDong\rptThongKeCapDinhMuc.cs">
       <DependentUpon>rptThongKeCapDinhMuc.rpt</DependentUpon>

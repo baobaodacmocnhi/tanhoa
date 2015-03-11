@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLuu = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateNhan = new System.Windows.Forms.DateTimePicker();
@@ -46,7 +46,7 @@
             this.txtDanhBo_Nhan = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbLoaiCT_Cat = new System.Windows.Forms.ComboBox();
+            this.txtPYC = new System.Windows.Forms.TextBox();
             this.cmbChiNhanh_Cat = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtSoNK_Cat = new System.Windows.Forms.TextBox();
@@ -61,6 +61,10 @@
             this.txtDanhBo_Cat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDSTBKetQuaYCCatDM = new System.Windows.Forms.DataGridView();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnInDongY = new System.Windows.Forms.Button();
             this.SoPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoNKCat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,10 +78,7 @@
             this.SoPhieuNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnInDongY = new System.Windows.Forms.Button();
+            this.PYC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTBKetQuaYCCatDM)).BeginInit();
@@ -236,7 +237,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmbLoaiCT_Cat);
+            this.groupBox1.Controls.Add(this.txtPYC);
             this.groupBox1.Controls.Add(this.cmbChiNhanh_Cat);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtSoNK_Cat);
@@ -257,14 +258,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nơi Cắt/Chuyển";
             // 
-            // cmbLoaiCT_Cat
+            // txtPYC
             // 
-            this.cmbLoaiCT_Cat.FormattingEnabled = true;
-            this.cmbLoaiCT_Cat.Location = new System.Drawing.Point(143, 151);
-            this.cmbLoaiCT_Cat.Name = "cmbLoaiCT_Cat";
-            this.cmbLoaiCT_Cat.Size = new System.Drawing.Size(200, 25);
-            this.cmbLoaiCT_Cat.TabIndex = 9;
-            this.cmbLoaiCT_Cat.Visible = false;
+            this.txtPYC.Location = new System.Drawing.Point(143, 151);
+            this.txtPYC.Name = "txtPYC";
+            this.txtPYC.Size = new System.Drawing.Size(290, 25);
+            this.txtPYC.TabIndex = 14;
             // 
             // cmbChiNhanh_Cat
             // 
@@ -323,10 +322,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(11, 154);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 17);
+            this.label4.Size = new System.Drawing.Size(85, 17);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Loại Chứng Từ:";
-            this.label4.Visible = false;
+            this.label4.Text = "Số PYC-HL:";
             // 
             // txtDiaChi_Cat
             // 
@@ -380,14 +378,14 @@
             // 
             this.dgvDSTBKetQuaYCCatDM.AllowUserToAddRows = false;
             this.dgvDSTBKetQuaYCCatDM.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSTBKetQuaYCCatDM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSTBKetQuaYCCatDM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSTBKetQuaYCCatDM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSTBKetQuaYCCatDM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SoPhieu,
@@ -402,7 +400,8 @@
             this.NhanNK_DiaChi,
             this.SoPhieuNhan,
             this.NgayNhan,
-            this.GhiChu});
+            this.GhiChu,
+            this.PYC});
             this.dgvDSTBKetQuaYCCatDM.Location = new System.Drawing.Point(13, 275);
             this.dgvDSTBKetQuaYCCatDM.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTBKetQuaYCCatDM.MultiSelect = false;
@@ -412,6 +411,58 @@
             this.dgvDSTBKetQuaYCCatDM.TabIndex = 17;
             this.dgvDSTBKetQuaYCCatDM.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSTBKetQuaYCCatDM_CellContentClick);
             this.dgvDSTBKetQuaYCCatDM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSTBKetQuaYCCatDM_CellFormatting);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(1010, 233);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(146, 35);
+            this.btnIn.TabIndex = 39;
+            this.btnIn.Text = "In Không Đồng Ý";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(899, 112);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(67, 35);
+            this.btnXoa.TabIndex = 40;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(901, 153);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(65, 35);
+            this.btnSua.TabIndex = 41;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnInDongY
+            // 
+            this.btnInDongY.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInDongY.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInDongY.Location = new System.Drawing.Point(1215, 233);
+            this.btnInDongY.Name = "btnInDongY";
+            this.btnInDongY.Size = new System.Drawing.Size(104, 35);
+            this.btnInDongY.TabIndex = 42;
+            this.btnInDongY.Text = "In Đồng Ý";
+            this.btnInDongY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInDongY.UseVisualStyleBackColor = true;
+            this.btnInDongY.Click += new System.EventHandler(this.btnInDongY_Click);
             // 
             // SoPhieu
             // 
@@ -504,57 +555,12 @@
             this.GhiChu.Visible = false;
             this.GhiChu.Width = 77;
             // 
-            // btnIn
+            // PYC
             // 
-            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(1010, 233);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(146, 35);
-            this.btnIn.TabIndex = 39;
-            this.btnIn.Text = "In Không Đồng Ý";
-            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
-            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(899, 112);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(67, 35);
-            this.btnXoa.TabIndex = 40;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
-            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(901, 153);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(65, 35);
-            this.btnSua.TabIndex = 41;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnInDongY
-            // 
-            this.btnInDongY.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
-            this.btnInDongY.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInDongY.Location = new System.Drawing.Point(1215, 233);
-            this.btnInDongY.Name = "btnInDongY";
-            this.btnInDongY.Size = new System.Drawing.Size(104, 35);
-            this.btnInDongY.TabIndex = 42;
-            this.btnInDongY.Text = "In Đồng Ý";
-            this.btnInDongY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInDongY.UseVisualStyleBackColor = true;
-            this.btnInDongY.Click += new System.EventHandler(this.btnInDongY_Click);
+            this.PYC.DataPropertyName = "PYC";
+            this.PYC.HeaderText = "PYC";
+            this.PYC.Name = "PYC";
+            this.PYC.Visible = false;
             // 
             // frmTBKetQuaYCCatDM
             // 
@@ -599,7 +605,6 @@
         private System.Windows.Forms.TextBox txtDanhBo_Nhan;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbLoaiCT_Cat;
         private System.Windows.Forms.ComboBox cmbChiNhanh_Cat;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtSoNK_Cat;
@@ -621,6 +626,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnInDongY;
+        private System.Windows.Forms.TextBox txtPYC;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKCat;
@@ -634,6 +641,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieuNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
-        private System.Windows.Forms.Button btnInDongY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PYC;
     }
 }

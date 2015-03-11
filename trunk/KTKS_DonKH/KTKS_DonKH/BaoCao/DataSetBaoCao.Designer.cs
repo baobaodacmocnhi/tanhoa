@@ -2005,6 +2005,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnNgayNhan;
             
+            private global::System.Data.DataColumn columnPYC;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PhieuCatChuyenDMDataTable() {
@@ -2152,6 +2154,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PYCColumn {
+                get {
+                    return this.columnPYC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2187,7 +2197,7 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PhieuCatChuyenDMRow AddPhieuCatChuyenDMRow(string MaDon, string SoPhieu, string ChiNhanh, string HoTenCat, string DiaChiCat, string SoNKCat, string HoTenNhan, string DiaChiNhan, string DanhBoNhan, string DanhBoCat, string ChucVu, string NguoiKy, string SoPhieuNhan, string NgayNhan) {
+            public PhieuCatChuyenDMRow AddPhieuCatChuyenDMRow(string MaDon, string SoPhieu, string ChiNhanh, string HoTenCat, string DiaChiCat, string SoNKCat, string HoTenNhan, string DiaChiNhan, string DanhBoNhan, string DanhBoCat, string ChucVu, string NguoiKy, string SoPhieuNhan, string NgayNhan, string PYC) {
                 PhieuCatChuyenDMRow rowPhieuCatChuyenDMRow = ((PhieuCatChuyenDMRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MaDon,
@@ -2203,7 +2213,8 @@ namespace KTKS_DonKH.BaoCao {
                         ChucVu,
                         NguoiKy,
                         SoPhieuNhan,
-                        NgayNhan};
+                        NgayNhan,
+                        PYC};
                 rowPhieuCatChuyenDMRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPhieuCatChuyenDMRow);
                 return rowPhieuCatChuyenDMRow;
@@ -2240,6 +2251,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnNguoiKy = base.Columns["NguoiKy"];
                 this.columnSoPhieuNhan = base.Columns["SoPhieuNhan"];
                 this.columnNgayNhan = base.Columns["NgayNhan"];
+                this.columnPYC = base.Columns["PYC"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2273,6 +2285,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnSoPhieuNhan);
                 this.columnNgayNhan = new global::System.Data.DataColumn("NgayNhan", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNgayNhan);
+                this.columnPYC = new global::System.Data.DataColumn("PYC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPYC);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14324,6 +14338,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PYC {
+                get {
+                    try {
+                        return ((string)(this[this.tablePhieuCatChuyenDM.PYCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PYC\' in table \'PhieuCatChuyenDM\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePhieuCatChuyenDM.PYCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMaDonNull() {
                 return this.IsNull(this.tablePhieuCatChuyenDM.MaDonColumn);
             }
@@ -14488,6 +14518,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNgayNhanNull() {
                 this[this.tablePhieuCatChuyenDM.NgayNhanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPYCNull() {
+                return this.IsNull(this.tablePhieuCatChuyenDM.PYCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPYCNull() {
+                this[this.tablePhieuCatChuyenDM.PYCColumn] = global::System.Convert.DBNull;
             }
         }
         
