@@ -58,6 +58,12 @@ namespace ThuTien.GUI.DongNuoc
                 List<HOADON> lstHDTemp = new List<HOADON>();
                 foreach (var item in lstHD.Items)
                 {
+                    if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
+                    {
+                        MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.SelectedItem = item;
+                        return;
+                    }
                     if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

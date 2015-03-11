@@ -152,7 +152,7 @@
             this.ThueGTGT,
             this.PhiBVMT,
             this.TongCong});
-            this.dgvHDDaThu.Location = new System.Drawing.Point(272, 45);
+            this.dgvHDDaThu.Location = new System.Drawing.Point(271, 38);
             this.dgvHDDaThu.Name = "dgvHDDaThu";
             this.dgvHDDaThu.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -165,7 +165,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(647, 11);
+            this.btnXem.Location = new System.Drawing.Point(648, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 24;
@@ -177,7 +177,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(541, 15);
+            this.dateDen.Location = new System.Drawing.Point(542, 12);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 23;
@@ -185,7 +185,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(477, 16);
+            this.label4.Location = new System.Drawing.Point(478, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 22;
@@ -195,7 +195,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(371, 14);
+            this.dateTu.Location = new System.Drawing.Point(372, 12);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 21;
@@ -203,7 +203,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(314, 16);
+            this.label3.Location = new System.Drawing.Point(315, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 20;
@@ -211,7 +211,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(164, 109);
+            this.btnXoa.Location = new System.Drawing.Point(161, 109);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 19;
@@ -221,7 +221,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(164, 80);
+            this.btnSua.Location = new System.Drawing.Point(161, 80);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 18;
@@ -231,7 +231,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(164, 51);
+            this.btnThem.Location = new System.Drawing.Point(161, 51);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 17;

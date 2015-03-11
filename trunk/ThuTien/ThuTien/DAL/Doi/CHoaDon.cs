@@ -319,6 +319,11 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.NAM == nam && item.KY == ky && item.DOT == dot);
         }
 
+        public bool CheckBySoHoaDon(string SoHoaDon)
+        {
+            return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon);
+        }
+
         /// <summary>
         /// Kiểm tra số phát hành có thuộc tổ/năm/kỳ/đợt
         /// </summary>
