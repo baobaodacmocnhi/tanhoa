@@ -99,6 +99,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             try
             {
                 _selectedindex = e.RowIndex;
+                txtPYC.Text = dgvDSTBKetQuaYCCatDM["PYC", e.RowIndex].Value.ToString();
                 txtDanhBo_Cat.Text = dgvDSTBKetQuaYCCatDM["CatNK_DanhBo", e.RowIndex].Value.ToString();
                 txtHoTen_Cat.Text = dgvDSTBKetQuaYCCatDM["CatNK_HoTen", e.RowIndex].Value.ToString();
                 txtDiaChi_Cat.Text = dgvDSTBKetQuaYCCatDM["CatNK_DiaChi", e.RowIndex].Value.ToString();
@@ -199,6 +200,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSTBKetQuaYCCatDM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvDSTBKetQuaYCCatDM.Columns[e.ColumnIndex].Name == "SoPhieu" && e.Value != null)
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             if (dgvDSTBKetQuaYCCatDM.Columns[e.ColumnIndex].Name == "NhanNK_MaCN"&& e.Value!=null)
                 e.Value = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSTBKetQuaYCCatDM["NhanNK_MaCN", e.RowIndex].Value.ToString()));
         }
@@ -214,15 +217,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["SoPhieu"] = tb.SoPhieu.ToString().Insert(tb.SoPhieu.ToString().Length - 2, "-");
                 dr["ChiNhanh"] = _cChiNhanh.getTenChiNhanhbyID(tb.NhanNK_MaCN.Value);
                 if (!string.IsNullOrEmpty(tb.NhanNK_DanhBo))
-                    dr["DanhBoNhan"] = tb.NhanNK_DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["HoTenNhan"] = tb.NhanNK_HoTen;
-                dr["DiaChiNhan"] = tb.NhanNK_DiaChi;
+                    dr["DanhBoCat"] = tb.NhanNK_DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HoTenCat"] = tb.NhanNK_HoTen;
+                dr["DiaChiCat"] = tb.NhanNK_DiaChi;
                 if (!string.IsNullOrEmpty(tb.CatNK_DanhBo))
-                    dr["DanhBoCat"] = tb.CatNK_DanhBo.Insert(7, " ").Insert(4, " ");
-                dr["HoTenCat"] = tb.CatNK_HoTen;
-                dr["DiaChiCat"] = tb.CatNK_DiaChi;
+                    dr["DanhBoNhan"] = tb.CatNK_DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HoTenNhan"] = tb.CatNK_HoTen;
+                dr["DiaChiNhan"] = tb.CatNK_DiaChi;
                 dr["SoNKCat"] = tb.SoNKCat + " nhân khẩu (HK: " + tb.MaCT + ")";
 
+                dr["PYC"] = tb.PYC;
                 dr["SoPhieuNhan"] = tb.SoPhieuNhan;
                 dr["NgayNhan"] = tb.NgayNhan.Value.ToString("dd/MM/yyyy");
 

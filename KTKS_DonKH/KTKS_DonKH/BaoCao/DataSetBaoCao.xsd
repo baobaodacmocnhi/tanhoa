@@ -72,6 +72,7 @@
               <xs:element name="NguoiKy" msprop:Generator_ColumnVarNameInTable="columnNguoiKy" msprop:Generator_ColumnPropNameInRow="NguoiKy" msprop:Generator_ColumnPropNameInTable="NguoiKyColumn" msprop:Generator_UserColumnName="NguoiKy" type="xs:string" minOccurs="0" />
               <xs:element name="SoPhieuNhan" msprop:Generator_ColumnVarNameInTable="columnSoPhieuNhan" msprop:Generator_ColumnPropNameInRow="SoPhieuNhan" msprop:Generator_ColumnPropNameInTable="SoPhieuNhanColumn" msprop:Generator_UserColumnName="SoPhieuNhan" type="xs:string" minOccurs="0" />
               <xs:element name="NgayNhan" msprop:Generator_ColumnVarNameInTable="columnNgayNhan" msprop:Generator_ColumnPropNameInRow="NgayNhan" msprop:Generator_ColumnPropNameInTable="NgayNhanColumn" msprop:Generator_UserColumnName="NgayNhan" type="xs:string" minOccurs="0" />
+              <xs:element name="PYC" msprop:Generator_ColumnVarNameInTable="columnPYC" msprop:Generator_ColumnPropNameInRow="PYC" msprop:Generator_ColumnPropNameInTable="PYCColumn" msprop:Generator_UserColumnName="PYC" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -109,7 +109,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
                 {
-                    return db.TBKetQuaYCCatDMs.OrderByDescending(item=>item.CreateDate).ToList();
+                    return db.TBKetQuaYCCatDMs.ToList();
                 }
                 else
                     MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
