@@ -777,7 +777,6 @@ namespace QLVanThu
                 {
                     a[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
                 }
-
             }
 
             for (int i = 0; i < temp.Rows.Count; i++)
