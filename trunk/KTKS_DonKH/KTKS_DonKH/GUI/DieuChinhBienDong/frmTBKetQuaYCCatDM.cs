@@ -66,6 +66,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnLuu_Click(object sender, EventArgs e)
         {
             TBKetQuaYCCatDM tb = new TBKetQuaYCCatDM();
+            tb.PYC = txtPYC.Text.Trim();
             tb.SoPhieuNhan = txtSoPhieuNhan.Text.Trim();
             tb.NgayNhan = dateNhan.Value;
             tb.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
@@ -163,6 +164,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (_selectedindex != -1)
             {
                 TBKetQuaYCCatDM tb = _cTB.GetTBKetQuaYCCatDMByID(decimal.Parse(dgvDSTBKetQuaYCCatDM["SoPhieu", _selectedindex].Value.ToString()));
+                tb.PYC = txtPYC.Text.Trim();
                 tb.SoPhieuNhan = txtSoPhieuNhan.Text.Trim();
                 tb.NgayNhan = dateNhan.Value;
                 tb.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
