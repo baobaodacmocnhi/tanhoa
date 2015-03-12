@@ -159,7 +159,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(853, 456);
+            this.btnIn.Location = new System.Drawing.Point(1025, 456);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(84, 35);
             this.btnIn.TabIndex = 7;
@@ -385,7 +385,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(711, 456);
+            this.btnSua.Location = new System.Drawing.Point(896, 456);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(65, 35);
             this.btnSua.TabIndex = 10;
@@ -399,7 +399,7 @@
             this.cmbVeViec.FormattingEnabled = true;
             this.cmbVeViec.Location = new System.Drawing.Point(87, 462);
             this.cmbVeViec.Name = "cmbVeViec";
-            this.cmbVeViec.Size = new System.Drawing.Size(269, 25);
+            this.cmbVeViec.Size = new System.Drawing.Size(656, 25);
             this.cmbVeViec.TabIndex = 16;
             this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
             // 

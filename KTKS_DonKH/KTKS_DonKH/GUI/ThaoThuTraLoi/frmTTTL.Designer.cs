@@ -371,7 +371,7 @@
             // 
             this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(861, 456);
+            this.btnLuu.Location = new System.Drawing.Point(897, 456);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
             this.btnLuu.TabIndex = 4;
@@ -428,7 +428,7 @@
             this.cmbVeViec.FormattingEnabled = true;
             this.cmbVeViec.Location = new System.Drawing.Point(87, 462);
             this.cmbVeViec.Name = "cmbVeViec";
-            this.cmbVeViec.Size = new System.Drawing.Size(269, 25);
+            this.cmbVeViec.Size = new System.Drawing.Size(656, 25);
             this.cmbVeViec.TabIndex = 14;
             this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
             // 

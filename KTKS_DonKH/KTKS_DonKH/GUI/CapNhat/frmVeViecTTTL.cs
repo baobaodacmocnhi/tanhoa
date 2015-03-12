@@ -50,7 +50,7 @@ namespace KTKS_DonKH.GUI.CapNhat
             {
                 VeViecTTTL vv = new VeViecTTTL();
                 vv.TenVV = txtVeViec.Text.Trim();
-                vv.NoiDung = txtNoiDung.Text.Trim();
+                vv.NoiDung = txtNoiDung.Text;
                 vv.NoiNhan = txtNoiNhan.Text.Trim();
 
                 if (_cVeViecTTTL.Them(vv))
@@ -67,7 +67,7 @@ namespace KTKS_DonKH.GUI.CapNhat
                 {
                     VeViecTTTL vv = _cVeViecTTTL.getVeViecTTTLbyID(int.Parse(dgvDSVeViecTTTL["MaVV", selectedindex].Value.ToString()));
                     vv.TenVV = txtVeViec.Text.Trim();
-                    vv.NoiDung = txtNoiDung.Text.Trim();
+                    vv.NoiDung = txtNoiDung.Text;
                     vv.NoiNhan = txtNoiNhan.Text.Trim();
 
                     if (_cVeViecTTTL.Sua(vv))

@@ -208,6 +208,12 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 txtNoiDung.Text = vv.NoiDung;
                 txtNoiNhan.Text = vv.NoiNhan;
             }
+            else
+            {
+                txtVeViec.Text = "";
+                txtNoiDung.Text = "";
+                txtNoiNhan.Text = "";
+            }
         }
     }
 }
