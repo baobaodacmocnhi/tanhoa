@@ -947,6 +947,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["LyDo"] += ctctdb.GhiChuLyDo + ". ";
                                 if (ctctdb.SoTien.ToString() != "")
                                     dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctctdb.SoTien);
+
+                                dr["NoiNhan"] = ctctdb.NoiNhan;
+
                                 dr["ChucVu"] = ctctdb.ChucVu;
                                 dr["NguoiKy"] = ctctdb.NguoiKy;
 
@@ -984,6 +987,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
                                 if (ctchdb.SoTien.ToString() != "")
                                     dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
+
+                                dr["NoiNhan"] = ctchdb.NoiNhan;
+
                                 dr["ChucVu"] = ctchdb.ChucVu;
                                 dr["NguoiKy"] = ctchdb.NguoiKy;
 

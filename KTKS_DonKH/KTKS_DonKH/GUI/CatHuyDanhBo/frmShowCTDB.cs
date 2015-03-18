@@ -69,6 +69,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void frmShowCTDB_Load(object sender, EventArgs e)
         {
             this.Location = new Point(70, 70);
+            dgvLichSuXuLy.AutoGenerateColumns = false;
             if (_cCHDB.getCTCTDBbyID(_MaCTCTDB) != null)
             {
                 _ctctdb = _cCHDB.getCTCTDBbyID(_MaCTCTDB);
@@ -86,27 +87,31 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 cmbLyDo.SelectedItem = _ctctdb.LyDo;
                 txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
                 txtSoTien.Text = _ctctdb.SoTien.ToString();
+
+                txtNoiNhan.Text = _ctctdb.NoiNhan;
+
+                dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
                 ///
                 ///phải có if ở đây vì dateTCTBXuLy không nhận giá trị null
-                if (_ctctdb.TCTBXuLy)
-                {
-                    chkKetQuaTCTBXuLy.Checked = true;
-                    dateTCTBXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
-                    if (_ctctdb.TroNgai)
-                        chkTroNgai.Checked = true;
-                    else
-                        chkTroNgai.Checked = false;
-                    txtKetQuaTCTBXuLy.Text = _ctctdb.KetQuaTCTBXuLy;
-                }
+                //if (_ctctdb.TCTBXuLy)
+                //{
+                //    chkKetQuaTCTBXuLy.Checked = true;
+                //    dateTCTBXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
+                //    if (_ctctdb.TroNgai)
+                //        chkTroNgai.Checked = true;
+                //    else
+                //        chkTroNgai.Checked = false;
+                //    txtKetQuaTCTBXuLy.Text = _ctctdb.KetQuaTCTBXuLy;
+                //}
                 ///
                 ///phải có if ở đây vì dateCapTrenXuLy không nhận giá trị null
-                if (_ctctdb.CapTrenXuLy)
-                {
-                    chkKetQuaCapTrenXuLy.Checked = true;
-                    dateCapTrenXuLy.Value = _ctctdb.NgayCapTrenXuLy.Value;
-                    txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
-                    txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.Value.ToString();
-                }
+                //if (_ctctdb.CapTrenXuLy)
+                //{
+                //    chkKetQuaCapTrenXuLy.Checked = true;
+                //    dateCapTrenXuLy.Value = _ctctdb.NgayCapTrenXuLy.Value;
+                //    txtKetQuaCapTrenXuLy.Text = _ctctdb.KetQuaCapTrenXuLy;
+                //    txtThoiGianLapCatHuy.Text = _ctctdb.ThoiGianLapCatHuy.Value.ToString();
+                //}
                 ///
                 if (_cCHDB.CheckYeuCauCHDBbyMaCTCTDB(_ctctdb.MaCTCTDB))
                 {
@@ -134,6 +139,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["LyDo"] += _ctctdb.GhiChuLyDo + ". ";
                 if (_ctctdb.SoTien.ToString() != "")
                     dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", _ctctdb.SoTien);
+
+                dr["NoiNhan"] = _ctctdb.NoiNhan;
+
                 dr["ChucVu"] = _ctctdb.ChucVu;
                 dr["NguoiKy"] = _ctctdb.NguoiKy;
 
@@ -177,40 +185,42 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtSoTien.Text.Trim() != "")
                         _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim());
 
+                    _ctctdb.NoiNhan = txtNoiNhan.Text.Trim();
+
                     //if (_ctctdb.TCTBXuLy != chkKetQuaTCTBXuLy.Checked)
-                        if (chkKetQuaTCTBXuLy.Checked)
-                        {
-                            _ctctdb.TCTBXuLy = true;
-                            _ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
-                            if (chkTroNgai.Checked)
-                                _ctctdb.TroNgai = true;
-                            else
-                                _ctctdb.TroNgai = false;
-                            _ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
-                        }
-                        else
-                        {
-                            _ctctdb.TCTBXuLy = false;
-                            _ctctdb.NgayTCTBXuLy = null;
-                            _ctctdb.TroNgai = false;
-                            _ctctdb.KetQuaTCTBXuLy = null;
-                        }
+                        //if (chkKetQuaTCTBXuLy.Checked)
+                        //{
+                        //    _ctctdb.TCTBXuLy = true;
+                        //    _ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
+                        //    if (chkTroNgai.Checked)
+                        //        _ctctdb.TroNgai = true;
+                        //    else
+                        //        _ctctdb.TroNgai = false;
+                        //    _ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
+                        //}
+                        //else
+                        //{
+                        //    _ctctdb.TCTBXuLy = false;
+                        //    _ctctdb.NgayTCTBXuLy = null;
+                        //    _ctctdb.TroNgai = false;
+                        //    _ctctdb.KetQuaTCTBXuLy = null;
+                        //}
 
                     //if (_ctctdb.CapTrenXuLy != chkKetQuaCapTrenXuLy.Checked)
-                        if (chkKetQuaCapTrenXuLy.Checked)
-                        {
-                            _ctctdb.CapTrenXuLy = true;
-                            _ctctdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
-                            _ctctdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
-                            _ctctdb.ThoiGianLapCatHuy = int.Parse(txtThoiGianLapCatHuy.Text.Trim());
-                        }
-                        else
-                        {
-                            _ctctdb.CapTrenXuLy = false;
-                            _ctctdb.NgayCapTrenXuLy = null;
-                            _ctctdb.KetQuaCapTrenXuLy = null;
-                            _ctctdb.ThoiGianLapCatHuy = null;
-                        }
+                        //if (chkKetQuaCapTrenXuLy.Checked)
+                        //{
+                        //    _ctctdb.CapTrenXuLy = true;
+                        //    _ctctdb.NgayCapTrenXuLy = dateCapTrenXuLy.Value;
+                        //    _ctctdb.KetQuaCapTrenXuLy = txtKetQuaCapTrenXuLy.Text.Trim();
+                        //    _ctctdb.ThoiGianLapCatHuy = int.Parse(txtThoiGianLapCatHuy.Text.Trim());
+                        //}
+                        //else
+                        //{
+                        //    _ctctdb.CapTrenXuLy = false;
+                        //    _ctctdb.NgayCapTrenXuLy = null;
+                        //    _ctctdb.KetQuaCapTrenXuLy = null;
+                        //    _ctctdb.ThoiGianLapCatHuy = null;
+                        //}
 
                     if (_ctctdb.DaLapPhieu && _ctctdb.YeuCauCHDBs.SingleOrDefault(itemYCCHDB => itemYCCHDB.MaCTCTDB == _ctctdb.MaCTCTDB).HieuLucKy != txtHieuLucKy.Text.Trim())
                     {
@@ -238,11 +248,18 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctctdb != null)
                 {
-                    _ctctdb.TCTBXuLy = true;
-                    _ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
-                    _ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
-                    if (_cCHDB.SuaCTCTDB(_ctctdb))
+                    //_ctctdb.TCTBXuLy = true;
+                    //_ctctdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
+                    //_ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
+                    LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
+                    lsxl.NgayXuLy = dateXuLy.Value;
+                    lsxl.NoiDung = txtNoiDung.Text.Trim();
+                    lsxl.NoiNhan = txtNoiNhanXuLy.Text.Trim();
+                    lsxl.GhiChu = txtGhiChu.Text.Trim();
+                    lsxl.MaCTCTDB = _ctctdb.MaCTCTDB;
+                    if (_cCHDB.ThemLichSuXuLy(lsxl))
                     {
+                        dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -277,10 +294,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void chkKetQuaTCTBXuLy_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkKetQuaTCTBXuLy.Checked)
-                groupBoxKetQuaTCTBXuLy.Enabled = true;
-            else
-                groupBoxKetQuaTCTBXuLy.Enabled = false;
+            //if (chkKetQuaTCTBXuLy.Checked)
+            //    groupBoxKetQuaTCTBXuLy.Enabled = true;
+            //else
+            //    groupBoxKetQuaTCTBXuLy.Enabled = false;
         }
 
         private void chkKetQuaCapTrenXuLy_CheckedChanged(object sender, EventArgs e)
@@ -565,6 +582,42 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (_cCHDB.XoaLichSuXuLy(_cCHDB.GetLichSuXyLyByID(decimal.Parse(dgvLichSuXuLy.CurrentRow.Cells["MaLSXuLy"].Value.ToString()))))
+                {
+                    dgvLichSuXuLy.DataSource = _cCHDB.LoadDSLichSuXuLyByMaCTCTDB(_ctctdb.MaCTCTDB);
+                }
+            }
+        }
+
+        private void dgvLichSuXuLy_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvLichSuXuLy.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvLichSuXuLy_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvLichSuXuLy.CurrentCell = dgvLichSuXuLy.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void dgvLichSuXuLy_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && (_ctctdb != null))
+            {
+                contextMenuStrip1.Show(dgvLichSuXuLy, new Point(e.X, e.Y));
+            }
         }
     }
 }

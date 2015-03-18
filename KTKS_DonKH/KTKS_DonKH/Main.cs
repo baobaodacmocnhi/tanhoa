@@ -502,25 +502,25 @@ namespace KTKS_DonKH
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
-        private void Main_MouseMove(object sender, MouseEventArgs e)
-        {
-            DisableTimer();
-        }
+        //private void Main_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    DisableTimer();
+        //}
 
-        private void Main_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            DisableTimer();
-        }
+        //private void Main_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    DisableTimer();
+        //}
 
-        private void ribbon1_MouseMove(object sender, MouseEventArgs e)
-        {
-            DisableTimer();
-        }
+        //private void ribbon1_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    DisableTimer();
+        //}
 
-        private void ribbon1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            DisableTimer();
-        }
+        //private void ribbon1_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    DisableTimer();
+        //}
 
         private void ribbonButton2_Click(object sender, EventArgs e)
         {
@@ -570,6 +570,60 @@ namespace KTKS_DonKH
             frm.MdiParent = this;
             frm.Show();
             StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
+        private void ribbonTab1_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+        }
+
+        private void ribbonTab2_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+        }
+
+        private void ribbonTab3_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+        }
+
+        private void ribbonTab4_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+        }
+
+        private void ribbonTab9_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+        }
+
+        private void ribbonTab5_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+        }
+
+        private void ribbonTab6_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+        }
+
+        private void ribbonTab7_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+        }
+
+        private void ribbonTab8_ActiveChanged(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
         }
 
         

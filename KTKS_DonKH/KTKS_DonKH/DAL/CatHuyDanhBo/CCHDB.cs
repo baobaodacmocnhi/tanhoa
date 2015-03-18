@@ -797,7 +797,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                     else
                         chdb.MaCHDB = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                     chdb.CreateDate = DateTime.Now;
-                    chdb.CreateBy = CTaiKhoan.TaiKhoan;
+                    chdb.CreateBy = CTaiKhoan.MaUser.ToString();
                     db.CHDBs.InsertOnSubmit(chdb);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Thêm CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -826,7 +826,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
 
                     chdb.ModifyDate = DateTime.Now;
-                    chdb.ModifyBy = CTaiKhoan.TaiKhoan;
+                    chdb.ModifyBy = CTaiKhoan.MaUser.ToString();
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -2850,6 +2850,118 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
 
         #endregion
 
-        
+        #region LichSuXuLy (Lịch Sử Xử Lý)
+
+        public bool ThemLichSuXuLy(LichSuXuLyCTCHDB lsxl)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    if (db.LichSuXuLyCTCHDBs.Count() > 0)
+                    {
+                        string ID = "MaLSXuLy";
+                        string Table = "LichSuXuLyCTCHDB";
+                        decimal MaCHDB = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        //decimal MaCHDB = db.CHDBs.Max(itemCHDB => itemCHDB.MaCHDB);
+                        lsxl.MaLSXuLy = getMaxNextIDTable(MaCHDB);
+                    }
+                    else
+                        lsxl.MaLSXuLy = decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                    lsxl.CreateDate = DateTime.Now;
+                    lsxl.CreateBy = CTaiKhoan.MaUser;
+                    db.LichSuXuLyCTCHDBs.InsertOnSubmit(lsxl);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Thêm CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuXuLyCTCHDBs);
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaLichSuXuLy(LichSuXuLyCTCHDB lsxl)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_CapNhat)
+                {
+
+                    lsxl.ModifyDate = DateTime.Now;
+                    lsxl.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuXuLyCTCHDBs);
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaLichSuXuLy(LichSuXuLyCTCHDB lsxl)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_CapNhat)
+                {
+
+                    db.LichSuXuLyCTCHDBs.DeleteOnSubmit(lsxl);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.LichSuXuLyCTCHDBs);
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public List<LichSuXuLyCTCHDB> LoadDSLichSuXuLyByMaCTCTDB(decimal MaCTCTDB)
+        {
+            return db.LichSuXuLyCTCHDBs.Where(item => item.MaCTCTDB == MaCTCTDB).ToList();
+        }
+
+        public List<LichSuXuLyCTCHDB> LoadDSLichSuXuLyByMaCTCHDB(decimal MaCTCHDB)
+        {
+            return db.LichSuXuLyCTCHDBs.Where(item => item.MaCTCHDB == MaCTCHDB).ToList();
+        }
+
+        public LichSuXuLyCTCHDB GetLichSuXyLyByID(decimal MaLSXuLy)
+        {
+            return db.LichSuXuLyCTCHDBs.SingleOrDefault(item => item.MaLSXuLy == MaLSXuLy);
+        }
+
+        #endregion
     }
 }

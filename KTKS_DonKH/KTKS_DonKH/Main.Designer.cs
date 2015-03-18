@@ -46,6 +46,7 @@
             this.ribbtnGiaNuoc = new System.Windows.Forms.RibbonButton();
             this.ribbtnNVKiemTra = new System.Windows.Forms.RibbonButton();
             this.ribbtnKiemTrang_BamChi = new System.Windows.Forms.RibbonButton();
+            this.ribbtnVeViecTTTL = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel9 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnBanGiamDoc = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
@@ -115,7 +116,6 @@
             this.ribbtnBaoCaoBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
-            this.ribbtnVeViecTTTL = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,6 +124,7 @@
             this.ribbonTab1.Panels.Add(this.ribbonPanel1);
             this.ribbonTab1.Panels.Add(this.ribbonPanel2);
             this.ribbonTab1.Text = "Hệ Thống";
+            this.ribbonTab1.ActiveChanged += new System.EventHandler(this.ribbonTab1_ActiveChanged);
             // 
             // ribbonPanel1
             // 
@@ -180,6 +181,7 @@
             this.ribbonTab2.Panels.Add(this.ribbonPanel3);
             this.ribbonTab2.Panels.Add(this.ribbonPanel9);
             this.ribbonTab2.Text = "Cập Nhật";
+            this.ribbonTab2.ActiveChanged += new System.EventHandler(this.ribbonTab2_ActiveChanged);
             // 
             // ribbonPanel3
             // 
@@ -252,6 +254,14 @@
             this.ribbtnKiemTrang_BamChi.Text = "Kiểm Tra - Bấm Chì";
             this.ribbtnKiemTrang_BamChi.Click += new System.EventHandler(this.ribbtnKiemTrang_BamChi_Click);
             // 
+            // ribbtnVeViecTTTL
+            // 
+            this.ribbtnVeViecTTTL.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnVeViecTTTL.MinimumSize = new System.Drawing.Size(90, 0);
+            this.ribbtnVeViecTTTL.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnVeViecTTTL.SmallImage")));
+            this.ribbtnVeViecTTTL.Text = "Về Việc TTTL";
+            this.ribbtnVeViecTTTL.Click += new System.EventHandler(this.ribbtnVeViecTTTL_Click);
+            // 
             // ribbonPanel9
             // 
             this.ribbonPanel9.ButtonMoreEnabled = false;
@@ -273,6 +283,7 @@
             this.ribbonTab3.Panels.Add(this.ribbonPanel14);
             this.ribbonTab3.Panels.Add(this.ribbonPanel20);
             this.ribbonTab3.Text = "Đơn Từ";
+            this.ribbonTab3.ActiveChanged += new System.EventHandler(this.ribbonTab3_ActiveChanged);
             // 
             // ribbonPanel4
             // 
@@ -428,6 +439,7 @@
             this.ribbonTab4.Panels.Add(this.ribbonPanel11);
             this.ribbonTab4.Panels.Add(this.ribbonPanel21);
             this.ribbonTab4.Text = "Kiểm Tra Xác Minh";
+            this.ribbonTab4.ActiveChanged += new System.EventHandler(this.ribbonTab4_ActiveChanged);
             // 
             // ribbonPanel5
             // 
@@ -490,6 +502,7 @@
             this.ribbonTab5.Panels.Add(this.ribbonPanel18);
             this.ribbonTab5.Panels.Add(this.ribbonPanel19);
             this.ribbonTab5.Text = "Điều Chỉnh Biến Động";
+            this.ribbonTab5.ActiveChanged += new System.EventHandler(this.ribbonTab5_ActiveChanged);
             // 
             // ribbonPanel6
             // 
@@ -582,6 +595,7 @@
             this.ribbonTab6.Panels.Add(this.ribbonPanel12);
             this.ribbonTab6.Panels.Add(this.ribbonPanel22);
             this.ribbonTab6.Text = "Cắt Hủy Danh Bộ";
+            this.ribbonTab6.ActiveChanged += new System.EventHandler(this.ribbonTab6_ActiveChanged);
             // 
             // ribbonPanel8
             // 
@@ -660,6 +674,7 @@
             this.ribbonTab7.Panels.Add(this.ribbonPanel10);
             this.ribbonTab7.Panels.Add(this.ribbonPanel13);
             this.ribbonTab7.Text = "Thảo Thư Trả Lời";
+            this.ribbonTab7.ActiveChanged += new System.EventHandler(this.ribbonTab7_ActiveChanged);
             // 
             // ribbonPanel10
             // 
@@ -695,6 +710,7 @@
             // 
             this.ribbonTab8.Panels.Add(this.ribbonPanel15);
             this.ribbonTab8.Text = "Tìm Kiếm";
+            this.ribbonTab8.ActiveChanged += new System.EventHandler(this.ribbonTab8_ActiveChanged);
             // 
             // ribbonPanel15
             // 
@@ -717,6 +733,7 @@
             this.ribbonTab9.Panels.Add(this.ribbonPanel17);
             this.ribbonTab9.Panels.Add(this.ribbonPanel23);
             this.ribbonTab9.Text = "Bấm Chì";
+            this.ribbonTab9.ActiveChanged += new System.EventHandler(this.ribbonTab9_ActiveChanged);
             // 
             // ribbonPanel16
             // 
@@ -795,16 +812,6 @@
             this.ribbon1.Tabs.Add(this.ribbonTab8);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
-            this.ribbon1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ribbon1_KeyPress);
-            this.ribbon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ribbon1_MouseMove);
-            // 
-            // ribbtnVeViecTTTL
-            // 
-            this.ribbtnVeViecTTTL.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnVeViecTTTL.MinimumSize = new System.Drawing.Size(90, 0);
-            this.ribbtnVeViecTTTL.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnVeViecTTTL.SmallImage")));
-            this.ribbtnVeViecTTTL.Text = "Về Việc TTTL";
-            this.ribbtnVeViecTTTL.Click += new System.EventHandler(this.ribbtnVeViecTTTL_Click);
             // 
             // Main
             // 
@@ -822,7 +829,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -31,7 +31,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            //this.ControlBox = false;
+            this.ControlBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.BringToFront();
         }
@@ -238,6 +238,23 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     dgvDonDT["In", i].Value = false;
                 }
+        }
+
+        private void dgvDonDT_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvDonDT.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
+            {
+                frmShowNhanDonDienThoai frm = new frmShowNhanDonDienThoai(decimal.Parse(dgvDonDT["MaDonDT", dgvDonDT.CurrentRow.Index].Value.ToString()));
+                frm.ShowDialog();
+            }
+        }
+
+        private void dgvDonDT_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDonDT.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
         }
     }
 }

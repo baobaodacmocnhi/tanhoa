@@ -85,6 +85,11 @@
             this.chkChuyenKhac = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLichSuChuyenKT = new System.Windows.Forms.DataGridView();
+            this.MaLSChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChuChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label24 = new System.Windows.Forms.Label();
@@ -93,11 +98,8 @@
             this.btnNhapNhieuDB = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
-            this.MaLSChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoaiChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NguoiDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChuChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkDCMS = new System.Windows.Forms.CheckBox();
+            this.chkDCG = new System.Windows.Forms.CheckBox();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.groupBoxChuyenKTXM.SuspendLayout();
@@ -390,6 +392,8 @@
             // 
             // groupBoxChuyenKTXM
             // 
+            this.groupBoxChuyenKTXM.Controls.Add(this.chkDCMS);
+            this.groupBoxChuyenKTXM.Controls.Add(this.chkDCG);
             this.groupBoxChuyenKTXM.Controls.Add(this.txtGhiChuChuyenKT);
             this.groupBoxChuyenKTXM.Controls.Add(this.label22);
             this.groupBoxChuyenKTXM.Controls.Add(this.cmbNguoiDi);
@@ -407,7 +411,7 @@
             // 
             this.txtGhiChuChuyenKT.Location = new System.Drawing.Point(568, 15);
             this.txtGhiChuChuyenKT.Name = "txtGhiChuChuyenKT";
-            this.txtGhiChuChuyenKT.Size = new System.Drawing.Size(230, 25);
+            this.txtGhiChuChuyenKT.Size = new System.Drawing.Size(95, 25);
             this.txtGhiChuChuyenKT.TabIndex = 6;
             // 
             // label22
@@ -657,6 +661,45 @@
             this.dgvLichSuChuyenKT.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuChuyenKT_CellMouseClick);
             this.dgvLichSuChuyenKT.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuChuyenKT_MouseClick);
             // 
+            // MaLSChuyen
+            // 
+            this.MaLSChuyen.DataPropertyName = "MaLSChuyen";
+            this.MaLSChuyen.HeaderText = "MaLSCKT";
+            this.MaLSChuyen.Name = "MaLSChuyen";
+            this.MaLSChuyen.ReadOnly = true;
+            this.MaLSChuyen.Visible = false;
+            // 
+            // NgayChuyen
+            // 
+            this.NgayChuyen.DataPropertyName = "NgayChuyen";
+            this.NgayChuyen.HeaderText = "Ngày Chuyển";
+            this.NgayChuyen.Name = "NgayChuyen";
+            this.NgayChuyen.ReadOnly = true;
+            this.NgayChuyen.Width = 120;
+            // 
+            // LoaiChuyen
+            // 
+            this.LoaiChuyen.DataPropertyName = "LoaiChuyen";
+            this.LoaiChuyen.HeaderText = "Loại Chuyển";
+            this.LoaiChuyen.Name = "LoaiChuyen";
+            this.LoaiChuyen.ReadOnly = true;
+            this.LoaiChuyen.Width = 110;
+            // 
+            // NguoiDi
+            // 
+            this.NguoiDi.DataPropertyName = "NguoiDi";
+            this.NguoiDi.HeaderText = "Nhân Viên";
+            this.NguoiDi.Name = "NguoiDi";
+            this.NguoiDi.ReadOnly = true;
+            this.NguoiDi.Width = 170;
+            // 
+            // GhiChuChuyen
+            // 
+            this.GhiChuChuyen.DataPropertyName = "GhiChuChuyen";
+            this.GhiChuChuyen.HeaderText = "Ghi Chú";
+            this.GhiChuChuyen.Name = "GhiChuChuyen";
+            this.GhiChuChuyen.ReadOnly = true;
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -742,44 +785,25 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // MaLSChuyen
+            // chkDCMS
             // 
-            this.MaLSChuyen.DataPropertyName = "MaLSChuyen";
-            this.MaLSChuyen.HeaderText = "MaLSCKT";
-            this.MaLSChuyen.Name = "MaLSChuyen";
-            this.MaLSChuyen.ReadOnly = true;
-            this.MaLSChuyen.Visible = false;
+            this.chkDCMS.AutoSize = true;
+            this.chkDCMS.Location = new System.Drawing.Point(733, 17);
+            this.chkDCMS.Name = "chkDCMS";
+            this.chkDCMS.Size = new System.Drawing.Size(69, 21);
+            this.chkDCMS.TabIndex = 117;
+            this.chkDCMS.Text = "ĐCMS";
+            this.chkDCMS.UseVisualStyleBackColor = true;
             // 
-            // NgayChuyen
+            // chkDCG
             // 
-            this.NgayChuyen.DataPropertyName = "NgayChuyen";
-            this.NgayChuyen.HeaderText = "Ngày Chuyển";
-            this.NgayChuyen.Name = "NgayChuyen";
-            this.NgayChuyen.ReadOnly = true;
-            this.NgayChuyen.Width = 120;
-            // 
-            // LoaiChuyen
-            // 
-            this.LoaiChuyen.DataPropertyName = "LoaiChuyen";
-            this.LoaiChuyen.HeaderText = "Loại Chuyển";
-            this.LoaiChuyen.Name = "LoaiChuyen";
-            this.LoaiChuyen.ReadOnly = true;
-            this.LoaiChuyen.Width = 110;
-            // 
-            // NguoiDi
-            // 
-            this.NguoiDi.DataPropertyName = "NguoiDi";
-            this.NguoiDi.HeaderText = "Nhân Viên";
-            this.NguoiDi.Name = "NguoiDi";
-            this.NguoiDi.ReadOnly = true;
-            this.NguoiDi.Width = 170;
-            // 
-            // GhiChuChuyen
-            // 
-            this.GhiChuChuyen.DataPropertyName = "GhiChuChuyen";
-            this.GhiChuChuyen.HeaderText = "Ghi Chú";
-            this.GhiChuChuyen.Name = "GhiChuChuyen";
-            this.GhiChuChuyen.ReadOnly = true;
+            this.chkDCG.AutoSize = true;
+            this.chkDCG.Location = new System.Drawing.Point(669, 17);
+            this.chkDCG.Name = "chkDCG";
+            this.chkDCG.Size = new System.Drawing.Size(58, 21);
+            this.chkDCG.TabIndex = 116;
+            this.chkDCG.Text = "ĐCG";
+            this.chkDCG.UseVisualStyleBackColor = true;
             // 
             // frmNhanDonTXL
             // 
@@ -909,6 +933,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuChuyen;
+        private System.Windows.Forms.CheckBox chkDCMS;
+        private System.Windows.Forms.CheckBox chkDCG;
 
     }
 }

@@ -163,6 +163,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                {
                                    In=false,
                                    LapDon=false,
+                                   item.MaDonDT,
                                    item.MaDon,
                                    item.CreateDate,
                                    item.DanhBo,
@@ -203,6 +204,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 {
                                     In = false,
                                     LapDon = false,
+                                    item.MaDonDT,
                                     item.MaDon,
                                     item.CreateDate,
                                     item.DanhBo,
@@ -243,6 +245,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 {
                                     In = false,
                                     LapDon = false,
+                                    item.MaDonDT,
                                     item.MaDon,
                                     item.CreateDate,
                                     item.DanhBo,
@@ -283,6 +286,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                 {
                                     In = false,
                                     LapDon = false,
+                                    item.MaDonDT,
                                     item.MaDon,
                                     item.CreateDate,
                                     item.DanhBo,

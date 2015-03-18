@@ -89,6 +89,7 @@
             this.btnLuu = new System.Windows.Forms.Button();
             this.chkKhauTru = new System.Windows.Forms.CheckBox();
             this.txtSoTienKhauTru = new System.Windows.Forms.TextBox();
+            this.btnIn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -720,12 +721,26 @@
             this.txtSoTienKhauTru.TabIndex = 17;
             this.txtSoTienKhauTru.Text = "0";
             // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(854, 282);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(102, 35);
+            this.btnIn.TabIndex = 18;
+            this.btnIn.Text = "In Chi Tiết";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(969, 388);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.chkKhauTru);
             this.Controls.Add(this.txtSoTienKhauTru);
             this.Controls.Add(this.btnLuu);
@@ -815,5 +830,6 @@
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.CheckBox chkKhauTru;
         private System.Windows.Forms.TextBox txtSoTienKhauTru;
+        private System.Windows.Forms.Button btnIn;
     }
 }

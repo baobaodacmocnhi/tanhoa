@@ -109,6 +109,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     if (_dontxl.NguoiDi != null)
                     cmbNguoiDi.SelectedValue = _dontxl.NguoiDi;
                     txtGhiChuChuyenKT.Text = _dontxl.GhiChuChuyenKT;
+                    chkDCG.Checked = _dontxl.DCG;
+                    chkDCMS.Checked = _dontxl.DCMS;
                 }
                 if (_dontxl.ChuyenBanDoiKhac)
                 {
@@ -177,6 +179,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     if (cmbNguoiDi.SelectedIndex != -1)
                         _dontxl.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
                     _dontxl.GhiChuChuyenKT = txtGhiChuChuyenKT.Text;
+                    _dontxl.DCG = chkDCG.Checked;
+                    _dontxl.DCMS = chkDCMS.Checked;
                 }
                 else
                 {
@@ -184,6 +188,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     _dontxl.NgayChuyenKT = null;
                     _dontxl.NguoiDi = null;
                     _dontxl.GhiChuChuyenKT = null;
+                    _dontxl.DCG = false;
+                    _dontxl.DCMS = false;
                 }
 
                 if (chkChuyenBanDoiKhac.Checked)
