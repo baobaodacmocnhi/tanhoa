@@ -2962,6 +2962,16 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return db.LichSuXuLyCTCHDBs.SingleOrDefault(item => item.MaLSXuLy == MaLSXuLy);
         }
 
+        public DataTable GetDSNoiDungLichSuXyLy()
+        {
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.LichSuXuLyCTCHDBs.Select(item => new { item.NoiDung }).ToList().Distinct());
+        }
+
+        public DataTable GetDSNoiNhanLichSuXyLy()
+        {
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.LichSuXuLyCTCHDBs.Select(item => new { item.NoiNhan }).ToList().Distinct());
+        }
+
         #endregion
     }
 }

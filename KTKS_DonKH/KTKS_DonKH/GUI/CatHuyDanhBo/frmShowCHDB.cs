@@ -70,6 +70,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             this.Location = new Point(70, 70);
             dgvLichSuXuLy.AutoGenerateColumns = false;
+
+            DataTable dt1 = _cCHDB.GetDSNoiDungLichSuXyLy();
+            AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt1.Rows)
+            {
+                auto1.Add(item["NoiDung"].ToString());
+            }
+            txtNoiDung.AutoCompleteCustomSource = auto1;
+
+            DataTable dt2 = _cCHDB.GetDSNoiNhanLichSuXyLy();
+            AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
+            foreach (DataRow item in dt2.Rows)
+            {
+                auto2.Add(item["NoiNhan"].ToString());
+            }
+            txtNoiNhanXuLy.AutoCompleteCustomSource = auto2;
+
             if (_cCHDB.getCTCHDBbyID(_MaCTCHDB) != null)
             {
                 _ctchdb = _cCHDB.getCTCHDBbyID(_MaCTCHDB);

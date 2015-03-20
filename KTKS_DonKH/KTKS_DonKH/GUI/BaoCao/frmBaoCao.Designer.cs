@@ -55,6 +55,7 @@
             this.Name = "frmBaoCao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hiện Thị Dữ Liệu Để In";
+            this.Load += new System.EventHandler(this.frmBaoCao_Load);
             this.ResumeLayout(false);
 
         }

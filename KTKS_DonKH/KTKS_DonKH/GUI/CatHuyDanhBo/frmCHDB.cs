@@ -71,7 +71,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         public void Clear()
         {
-            txtMaThongBaoCH.Text = "";
+            //txtMaThongBaoCH.Text = "";
             txtMaThongBaoCT.Text = "";
             ///
             txtDanhBo.Text = "";
@@ -89,6 +89,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtNoiDung.Text = "";
             chkTroNgai.Checked = false;
             chkCatTam.Checked = false;
+            txtGhiChu.Text = "";
+            txtNoiNhanXuLy.Text = "";
+            txtNoiNhan.Text = "";
             ///
             chkKetQuaCapTrenXuLy.Checked = false;
             dateCapTrenXuLy.Value = DateTime.Now;
@@ -115,6 +118,22 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtMaThongBaoCH.ReadOnly = false;
                 txtMaThongBaoCT.ReadOnly = false;
                 dgvLichSuXuLy.AutoGenerateColumns = false;
+
+                DataTable dt1 = _cCHDB.GetDSNoiDungLichSuXyLy();
+                AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
+                foreach (DataRow item in dt1.Rows)
+                {
+                    auto1.Add(item["NoiDung"].ToString());
+                }
+                txtNoiDung.AutoCompleteCustomSource = auto1;
+
+                DataTable dt2 = _cCHDB.GetDSNoiNhanLichSuXyLy();
+                AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
+                foreach (DataRow item in dt2.Rows)
+                {
+                    auto2.Add(item["NoiNhan"].ToString());
+                }
+                txtNoiNhanXuLy.AutoCompleteCustomSource = auto2;
             }
             else
             {
@@ -870,6 +889,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
+                Clear();
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
@@ -939,6 +959,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_cCHDB.getCTCHDBbyID(decimal.Parse(txtMaThongBaoCH.Text.Trim().Replace("-", ""))) != null)
                 {
+                    Clear();
                     _ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(txtMaThongBaoCH.Text.Trim().Replace("-", "")));
                     if (!string.IsNullOrEmpty(_ctchdb.CHDB.MaDonTXL.ToString()))
                         txtMaDon.Text = "TXL"+_ctchdb.CHDB.MaDonTXL.ToString().Insert(_ctchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");

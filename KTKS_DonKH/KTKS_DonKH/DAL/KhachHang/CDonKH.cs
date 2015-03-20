@@ -979,7 +979,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     Table = "LichSuChuyenBanDoiKhac",
                                     itemLSCVP.MaLSChuyen,
                                     itemLSCVP.NgayChuyen,
-                                    LoaiChuyen = "Tiến Trình",
+                                    LoaiChuyen = "Tiến Trình Giải Quyết",
                                     itemLSCVP.GhiChuChuyen,
                                     //NguoiDi = itemUser.HoTen,
                                 };

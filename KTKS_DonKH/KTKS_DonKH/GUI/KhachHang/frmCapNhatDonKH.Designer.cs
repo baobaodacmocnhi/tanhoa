@@ -606,9 +606,9 @@
             this.chkChuyenBanDoiKhac.AutoSize = true;
             this.chkChuyenBanDoiKhac.Location = new System.Drawing.Point(547, 291);
             this.chkChuyenBanDoiKhac.Name = "chkChuyenBanDoiKhac";
-            this.chkChuyenBanDoiKhac.Size = new System.Drawing.Size(135, 21);
+            this.chkChuyenBanDoiKhac.Size = new System.Drawing.Size(153, 21);
             this.chkChuyenBanDoiKhac.TabIndex = 50;
-            this.chkChuyenBanDoiKhac.Text = "Chuyển Tiến Trình";
+            this.chkChuyenBanDoiKhac.Text = "Tiến Trình Giải Quyết";
             this.chkChuyenBanDoiKhac.UseVisualStyleBackColor = true;
             this.chkChuyenBanDoiKhac.CheckedChanged += new System.EventHandler(this.chkChuyenBanDoiKhac_CheckedChanged);
             // 

@@ -108,6 +108,8 @@
             // 
             // txtNoiDung
             // 
+            this.txtNoiDung.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtNoiDung.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtNoiDung.Location = new System.Drawing.Point(99, 55);
             this.txtNoiDung.Name = "txtNoiDung";
             this.txtNoiDung.Size = new System.Drawing.Size(386, 25);
@@ -298,6 +300,8 @@
             // 
             // txtNoiNhanXuLy
             // 
+            this.txtNoiNhanXuLy.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtNoiNhanXuLy.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtNoiNhanXuLy.Location = new System.Drawing.Point(99, 86);
             this.txtNoiNhanXuLy.Name = "txtNoiNhanXuLy";
             this.txtNoiNhanXuLy.Size = new System.Drawing.Size(386, 25);
@@ -334,7 +338,6 @@
             this.btnCapNhatTCTBXuLy.Text = "Cập Nhật";
             this.btnCapNhatTCTBXuLy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhatTCTBXuLy.UseVisualStyleBackColor = true;
-            this.btnCapNhatTCTBXuLy.Visible = false;
             this.btnCapNhatTCTBXuLy.Click += new System.EventHandler(this.btnCapNhatTCTBXuLy_Click);
             // 
             // txtMaDon

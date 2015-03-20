@@ -721,7 +721,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         private void btnIn_Click(object sender, EventArgs e)
-        { 
+        {
             try
             {
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -741,7 +741,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ///
                 dr["TangGiam"] = lbTangGiam.Text;
                 ///
-                dr["GiaBieuBD"] = int.Parse(txtGiaBieu_Moi.Text.Trim()) - int.Parse(txtGiaBieu_Cu.Text.Trim());
+                //dr["GiaBieuBD"] = int.Parse(txtGiaBieu_Moi.Text.Trim()) - int.Parse(txtGiaBieu_Cu.Text.Trim());
                 dr["DinhMucBD"] = int.Parse(txtDinhMuc_Moi.Text.Trim()) - int.Parse(txtDinhMuc_Cu.Text.Trim());
                 dr["TieuThuBD"] = txtTieuThu_BD.Text.Trim();
                 dr["TienNuocBD"] = txtTienNuoc_BD.Text.Trim();
@@ -752,10 +752,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["GiaBieuEnd"] = txtGiaBieu_Moi.Text.Trim();
                 dr["DinhMucEnd"] = txtDinhMuc_Moi.Text.Trim();
                 dr["TieuThuEnd"] = txtTieuThu_End.Text.Trim();
-                dr["TienNuocEnd"] = txtChiTietMoi.Text.Trim() + "\n=  " + txtTienNuoc_End.Text.Trim();
-                dr["ThueGTGTEnd"] = txtTienNuoc_End.Text.Trim() + " x 5% \n=  " + txtThueGTGT_End.Text.Trim();
-                dr["PhiBVMTEnd"] = txtTienNuoc_End.Text.Trim() + " x 10% \n=  " + txtPhiBVMT_End.Text.Trim();
-                dr["TongCongEnd"] = txtTongCong_End.Text.Trim();
+                if (!string.IsNullOrEmpty(txtTienNuoc_End.Text.Trim()))
+                    dr["TienNuocEnd"] = txtChiTietMoi.Text.Trim() + "\n=  " + txtTienNuoc_End.Text.Trim();
+                if (!string.IsNullOrEmpty(txtThueGTGT_End.Text.Trim()))
+                    dr["ThueGTGTEnd"] = txtTienNuoc_End.Text.Trim() + " x 5% \n=  " + txtThueGTGT_End.Text.Trim();
+                if (!string.IsNullOrEmpty(txtPhiBVMT_End.Text.Trim()))
+                    dr["PhiBVMTEnd"] = txtTienNuoc_End.Text.Trim() + " x 10% \n=  " + txtPhiBVMT_End.Text.Trim();
+                if (!string.IsNullOrEmpty(txtTongCong_End.Text.Trim()))
+                    dr["TongCongEnd"] = txtTongCong_End.Text.Trim();
                 dsBaoCao.Tables["DCHD"].Rows.Add(dr);
 
                 rptChiTietDCHD rpt = new rptChiTietDCHD();
@@ -763,7 +767,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }
-            catch(Exception ex)
+            catch (Exception)
             {
 
             }

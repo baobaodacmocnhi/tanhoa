@@ -84,6 +84,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dateXuLy.Value = DateTime.Now;
             txtNoiDung.Text = "";
             chkTroNgai.Checked = false;
+            txtGhiChu.Text = "";
+            txtNoiNhanXuLy.Text = "";
+            txtNoiNhan.Text = "";
             ///
             txtHieuLucKy.Text = "";
             chkKetQuaCapTrenXuLy.Checked=false;
@@ -99,12 +102,36 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (_direct)
             {
-                this.ControlBox = false;
-                this.WindowState = FormWindowState.Maximized;
-                this.BringToFront();
-                txtMaDon.ReadOnly = false;
-                txtMaThongBao.ReadOnly = false;
-                dgvLichSuXuLy.AutoGenerateColumns = false;
+                try
+                {
+                    this.ControlBox = false;
+                    this.WindowState = FormWindowState.Maximized;
+                    this.BringToFront();
+                    txtMaDon.ReadOnly = false;
+                    txtMaThongBao.ReadOnly = false;
+                    dgvLichSuXuLy.AutoGenerateColumns = false;
+
+                    DataTable dt1 = _cCHDB.GetDSNoiDungLichSuXyLy();
+                    AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
+                    foreach (DataRow item in dt1.Rows)
+                    {
+                        auto1.Add(item["NoiDung"].ToString());
+                    }
+                    txtNoiDung.AutoCompleteCustomSource = auto1;
+
+                    DataTable dt2 = _cCHDB.GetDSNoiNhanLichSuXyLy();
+                    AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
+                    foreach (DataRow item in dt2.Rows)
+                    {
+                        auto2.Add(item["NoiNhan"].ToString());
+                    }
+                    txtNoiNhanXuLy.AutoCompleteCustomSource = auto2;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else
             {
@@ -495,6 +522,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
+                Clear();
                 ///Đơn Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
@@ -564,6 +592,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_cCHDB.getCTCTDBbyID(decimal.Parse(txtMaThongBao.Text.Trim().Replace("-", ""))) != null)
                 {
+                    Clear();
                     _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtMaThongBao.Text.Trim().Replace("-", "")));
                     if(!string.IsNullOrEmpty(_ctctdb.CHDB.MaDonTXL.ToString()))
                     txtMaDon.Text = "TXL"+_ctctdb.CHDB.MaDonTXL.ToString().Insert(_ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");

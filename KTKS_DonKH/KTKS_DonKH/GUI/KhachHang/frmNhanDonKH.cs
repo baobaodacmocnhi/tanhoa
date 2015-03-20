@@ -309,8 +309,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                     _cDonKH.beginTransaction();
                     if (_cDonKH.ThemDonKH(donkh))
                     {
-                        MessageBox.Show("Thêm Thành công/n Mã Đơn:" + donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         _cDonKH.commitTransaction();
+                        MessageBox.Show("Thêm Thành công/n Mã Đơn:" + donkh.MaDon.ToString().Insert(donkh.MaDon.ToString().Length - 2, "-"), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (!chkKhongInBienNhan.Checked)
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
@@ -569,8 +569,8 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _cDonKH.rollback();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);       
             }
 
         }
@@ -662,33 +662,33 @@ namespace KTKS_DonKH.GUI.KhachHang
                     txtDinhMucSau.Text = _donkh.DinhMucSau;
                     txtHieuLucTuKy.Text = _donkh.HieuLucTuKy;
                     ///
-                    dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
+                    //dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
                     ///
-                    if (_donkh.ChuyenKT)
-                    {
-                        chkChuyenKT.Checked = true;
-                        dateChuyenKT.Value = _donkh.NgayChuyenKT.Value;
-                        cmbNguoiDi.SelectedValue = _donkh.NguoiDi;
-                        txtGhiChuChuyenKT.Text = _donkh.GhiChuChuyenKT;
-                    }
-                    if (_donkh.ChuyenBanDoiKhac)
-                    {
-                        chkChuyenBanDoiKhac.Checked = true;
-                        dateChuyenBanDoiKhac.Value = _donkh.NgayChuyenBanDoiKhac.Value;
-                        txtGhiChuChuyenBanDoiKhac.Text = _donkh.GhiChuChuyenBanDoiKhac;
-                    }
-                    if (_donkh.ChuyenToXuLy)
-                    {
-                        chkChuyenToXuLy.Checked = true;
-                        dateChuyenToXuLy.Value = _donkh.NgayChuyenToXuLy.Value;
-                        txtGhiChuChuyenToXuLy.Text = _donkh.GhiChuChuyenToXuLy;
-                    }
-                    if (_donkh.ChuyenKhac)
-                    {
-                        chkChuyenKhac.Checked = true;
-                        dateChuyenKhac.Value = _donkh.NgayChuyenKhac.Value;
-                        txtGhiChuChuyenKhac.Text = _donkh.GhiChuChuyenKhac;
-                    }
+                    //if (_donkh.ChuyenKT)
+                    //{
+                    //    chkChuyenKT.Checked = true;
+                    //    dateChuyenKT.Value = _donkh.NgayChuyenKT.Value;
+                    //    cmbNguoiDi.SelectedValue = _donkh.NguoiDi;
+                    //    txtGhiChuChuyenKT.Text = _donkh.GhiChuChuyenKT;
+                    //}
+                    //if (_donkh.ChuyenBanDoiKhac)
+                    //{
+                    //    chkChuyenBanDoiKhac.Checked = true;
+                    //    dateChuyenBanDoiKhac.Value = _donkh.NgayChuyenBanDoiKhac.Value;
+                    //    txtGhiChuChuyenBanDoiKhac.Text = _donkh.GhiChuChuyenBanDoiKhac;
+                    //}
+                    //if (_donkh.ChuyenToXuLy)
+                    //{
+                    //    chkChuyenToXuLy.Checked = true;
+                    //    dateChuyenToXuLy.Value = _donkh.NgayChuyenToXuLy.Value;
+                    //    txtGhiChuChuyenToXuLy.Text = _donkh.GhiChuChuyenToXuLy;
+                    //}
+                    //if (_donkh.ChuyenKhac)
+                    //{
+                    //    chkChuyenKhac.Checked = true;
+                    //    dateChuyenKhac.Value = _donkh.NgayChuyenKhac.Value;
+                    //    txtGhiChuChuyenKhac.Text = _donkh.GhiChuChuyenKhac;
+                    //}
                 }
                 else
                 {
