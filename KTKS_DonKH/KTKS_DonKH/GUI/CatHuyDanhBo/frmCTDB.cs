@@ -75,13 +75,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             ///
-            groupBoxNguyenNhanXuLy.Enabled = false;
+            //groupBoxNguyenNhanXuLy.Enabled = false;
             cmbLyDo.SelectedIndex = 0;
             txtSoTien.Text = "";
             txtGhiChuXuLy.Text = "";
+            cmbNoiDung.SelectedIndex = -1;
+            dateXuLy.Value = DateTime.Now;
             ///
             chkKetQuaTCTBXuLy.Checked = false;
-            dateXuLy.Value = DateTime.Now;
+            dateLichSuXuLy.Value = DateTime.Now;
             txtNoiDung.Text = "";
             chkTroNgai.Checked = false;
             txtGhiChu.Text = "";
@@ -119,7 +121,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     }
                     txtNoiDung.AutoCompleteCustomSource = auto1;
 
-                    DataTable dt2 = _cCHDB.GetDSNoiNhanLichSuXyLy();
+                    DataTable dt2 = _cCHDB.GetDSNoiNhanXuLyLichSuXyLy();
                     AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
                     foreach (DataRow item in dt2.Rows)
                     {
@@ -175,7 +177,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ///Kết Quả Xử Lý
                             if (_ctctdb.TCTBXuLy)
                             {
-                                dateXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
+                                dateLichSuXuLy.Value = _ctctdb.NgayTCTBXuLy.Value;
                                 txtNoiDung.Text = _ctctdb.KetQuaTCTBXuLy;
                             }
                             ///Cấp Trên Xử Lý
@@ -205,7 +207,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN") || cmbLyDo.SelectedItem.ToString() == "Vấn Đề Khác")
+            {
                 txtSoTien.ReadOnly = false;
+                if (cmbLyDo.SelectedItem.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
+                {
+                    txtNoiNhan.Text = "- Như trên\r\n- TCTB: thực hiện\r\n- Lưu.";
+                    txtSoTien.Text = "1283641";
+                }
+            }
             else
                 txtSoTien.ReadOnly = true;
         }
@@ -464,7 +473,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     //_ctctdb.NgayTCTBXuLy = dateXuLy.Value;
                     //_ctctdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
                     LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
-                    lsxl.NgayXuLy = dateXuLy.Value;
+                    lsxl.NgayXuLy = dateLichSuXuLy.Value;
                     lsxl.NoiDung = txtNoiDung.Text.Trim();
                     lsxl.NoiNhan = txtNoiNhanXuLy.Text.Trim();
                     lsxl.GhiChu = txtGhiChu.Text.Trim();
@@ -543,9 +552,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             Clear();
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        groupBoxNguyenNhanXuLy.Enabled = true;
-                        groupBoxKetQuaTCTBXuLy.Enabled = false;
-                        groupBoxKetQuaCapTrenXuLy.Enabled = false;
+                        //groupBoxNguyenNhanXuLy.Enabled = true;
+                        //groupBoxKetQuaTCTBXuLy.Enabled = false;
+                        //groupBoxKetQuaCapTrenXuLy.Enabled = false;
                     }
                     else
                     {
@@ -573,9 +582,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             Clear();
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        groupBoxNguyenNhanXuLy.Enabled = true;
-                        groupBoxKetQuaTCTBXuLy.Enabled = false;
-                        groupBoxKetQuaCapTrenXuLy.Enabled = false;
+                        //groupBoxNguyenNhanXuLy.Enabled = true;
+                        //groupBoxKetQuaTCTBXuLy.Enabled = false;
+                        //groupBoxKetQuaCapTrenXuLy.Enabled = false;
                     }
                     else
                     {
@@ -610,6 +619,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     cmbLyDo.SelectedItem = _ctctdb.LyDo;
                     txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
                     txtSoTien.Text = _ctctdb.SoTien.ToString();
+
+                    if (_ctctdb.NoiDungXuLy != null)
+                    {
+                        dateXuLy.Value = _ctctdb.NgayXuLy.Value;
+                        cmbNoiDung.SelectedItem = _ctctdb.NoiDungXuLy;
+                    }
+
                     txtNoiNhan.Text = _ctctdb.NoiNhan;
                     ///Kết Quả Xử Lý
                     //if (_ctctdb.TCTBXuLy)
@@ -692,6 +708,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     _ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                     if (txtSoTien.Text.Trim() != "")
                         _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+
+                    if (cmbNoiDung.SelectedIndex != -1)
+                    {
+                        _ctctdb.NgayXuLy = dateXuLy.Value;
+                        _ctctdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                    }
 
                     _ctctdb.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -1063,6 +1085,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 contextMenuStrip1.Show(dgvLichSuXuLy, new Point(e.X, e.Y));
             }
+        }
+
+        private void cmbNoiDung_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbNoiDung.SelectedIndex != -1)
+                dateXuLy.Enabled = true;
         }
 
     }

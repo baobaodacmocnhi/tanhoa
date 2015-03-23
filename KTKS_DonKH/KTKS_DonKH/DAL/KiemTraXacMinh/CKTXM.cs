@@ -2511,7 +2511,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
         {
             try
             {
-                return db.CTKTXMs.Count(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon);
+                return db.CTKTXMs.Where(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDon).Count();
             }
             catch (Exception ex)
             {
@@ -2519,6 +2519,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 return 0;
             }
         }
+
 
         #endregion
     }

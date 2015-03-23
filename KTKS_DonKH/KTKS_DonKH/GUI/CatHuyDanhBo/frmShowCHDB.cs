@@ -70,6 +70,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             this.Location = new Point(70, 70);
             dgvLichSuXuLy.AutoGenerateColumns = false;
+            cmbNoiDung.SelectedIndex = -1;
 
             DataTable dt1 = _cCHDB.GetDSNoiDungLichSuXyLy();
             AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
@@ -79,7 +80,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
             txtNoiDung.AutoCompleteCustomSource = auto1;
 
-            DataTable dt2 = _cCHDB.GetDSNoiNhanLichSuXyLy();
+            DataTable dt2 = _cCHDB.GetDSNoiNhanXuLyLichSuXyLy();
             AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
             foreach (DataRow item in dt2.Rows)
             {
@@ -106,6 +107,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 cmbLyDo.SelectedItem = _ctchdb.LyDo;
                 txtGhiChuXuLy.Text = _ctchdb.GhiChuLyDo;
                 txtSoTien.Text = _ctchdb.SoTien.ToString();
+
+                if (_ctchdb.NoiDungXuLy != null)
+                {
+                    dateXuLy.Value = _ctchdb.NgayXuLy.Value;
+                    cmbNoiDung.SelectedItem = _ctchdb.NoiDungXuLy;
+                }
 
                 txtNoiNhan.Text = _ctchdb.NoiNhan;
 
@@ -426,6 +433,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         _ctchdb.SoTien = null;
 
+                    if (cmbNoiDung.SelectedIndex != -1)
+                    {
+                        _ctchdb.NgayXuLy = dateXuLy.Value;
+                        _ctchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                    }
+
                     _ctchdb.NoiNhan = txtNoiNhan.Text.Trim();
 
                     //if (_ctchdb.TCTBXuLy != chkKetQuaTCTBXuLy.Checked)
@@ -497,7 +510,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     //_ctchdb.NgayTCTBXuLy = dateTCTBXuLy.Value;
                     //_ctchdb.KetQuaTCTBXuLy = txtKetQuaTCTBXuLy.Text.Trim();
                     LichSuXuLyCTCHDB lsxl = new LichSuXuLyCTCHDB();
-                    lsxl.NgayXuLy = dateXuLy.Value;
+                    lsxl.NgayXuLy = dateLichSuXuLy.Value;
                     lsxl.NoiDung = txtNoiDung.Text.Trim();
                     lsxl.NoiNhan = txtNoiNhanXuLy.Text.Trim();
                     lsxl.GhiChu = txtGhiChu.Text.Trim();
@@ -653,6 +666,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void txtMaThongBaoCT_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void cmbNoiDung_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbNoiDung.SelectedIndex != -1)
+                dateXuLy.Enabled = true;
         }
     }
 }

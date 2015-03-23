@@ -3257,7 +3257,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                 {
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
-                                where itemCTChungTu.ThoiHan != null && itemCTChungTu.NgayHetHan <= DateTime.Now.AddDays(15)
+                                where !itemCTChungTu.Cat && itemCTChungTu.ThoiHan != null && itemCTChungTu.NgayHetHan <= DateTime.Now.AddDays(15)
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 {

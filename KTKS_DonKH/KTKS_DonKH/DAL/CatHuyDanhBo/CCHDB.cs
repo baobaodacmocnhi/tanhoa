@@ -2967,7 +2967,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.LichSuXuLyCTCHDBs.Select(item => new { item.NoiDung }).ToList().Distinct());
         }
 
-        public DataTable GetDSNoiNhanLichSuXyLy()
+        public DataTable GetDSNoiNhanXuLyLichSuXyLy()
         {
             return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.LichSuXuLyCTCHDBs.Select(item => new { item.NoiNhan }).ToList().Distinct());
         }

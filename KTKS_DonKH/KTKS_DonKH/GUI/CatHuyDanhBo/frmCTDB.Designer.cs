@@ -41,6 +41,10 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxNguyenNhanXuLy = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cmbNoiDung = new System.Windows.Forms.ComboBox();
+            this.dateXuLy = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -52,7 +56,7 @@
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.dateXuLy = new System.Windows.Forms.DateTimePicker();
+            this.dateLichSuXuLy = new System.Windows.Forms.DateTimePicker();
             this.groupBoxKetQuaTCTBXuLy = new System.Windows.Forms.GroupBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
@@ -196,6 +200,10 @@
             // 
             // groupBoxNguyenNhanXuLy
             // 
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.label19);
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.cmbNoiDung);
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.dateXuLy);
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.label18);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtSoTien);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnLuu);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnSua);
@@ -204,13 +212,54 @@
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label6);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.cmbLyDo);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label5);
-            this.groupBoxNguyenNhanXuLy.Enabled = false;
             this.groupBoxNguyenNhanXuLy.Location = new System.Drawing.Point(12, 114);
             this.groupBoxNguyenNhanXuLy.Name = "groupBoxNguyenNhanXuLy";
-            this.groupBoxNguyenNhanXuLy.Size = new System.Drawing.Size(638, 84);
+            this.groupBoxNguyenNhanXuLy.Size = new System.Drawing.Size(911, 84);
             this.groupBoxNguyenNhanXuLy.TabIndex = 5;
             this.groupBoxNguyenNhanXuLy.TabStop = false;
             this.groupBoxNguyenNhanXuLy.Text = "Nguyên Nhân Xử Lý";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(637, 58);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(68, 17);
+            this.label19.TabIndex = 59;
+            this.label19.Text = "Nội Dung:";
+            // 
+            // cmbNoiDung
+            // 
+            this.cmbNoiDung.FormattingEnabled = true;
+            this.cmbNoiDung.Items.AddRange(new object[] {
+            "Khách hàng đóng tiền",
+            "Khách hàng cam kết sử dụng lại",
+            "Hủy lệnh",
+            "Đã cắt tạm bít nút"});
+            this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
+            this.cmbNoiDung.Name = "cmbNoiDung";
+            this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);
+            this.cmbNoiDung.TabIndex = 58;
+            this.cmbNoiDung.SelectedIndexChanged += new System.EventHandler(this.cmbNoiDung_SelectedIndexChanged);
+            // 
+            // dateXuLy
+            // 
+            this.dateXuLy.CustomFormat = "dd/MM/yyyy";
+            this.dateXuLy.Enabled = false;
+            this.dateXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateXuLy.Location = new System.Drawing.Point(796, 24);
+            this.dateXuLy.Name = "dateXuLy";
+            this.dateXuLy.Size = new System.Drawing.Size(109, 25);
+            this.dateXuLy.TabIndex = 16;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(705, 30);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(85, 17);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "Ngày Xử Lý:";
             // 
             // txtSoTien
             // 
@@ -326,14 +375,14 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Ngày Xử Lý:";
             // 
-            // dateXuLy
+            // dateLichSuXuLy
             // 
-            this.dateXuLy.CustomFormat = "dd/MM/yyyy";
-            this.dateXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateXuLy.Location = new System.Drawing.Point(99, 24);
-            this.dateXuLy.Name = "dateXuLy";
-            this.dateXuLy.Size = new System.Drawing.Size(109, 25);
-            this.dateXuLy.TabIndex = 1;
+            this.dateLichSuXuLy.CustomFormat = "dd/MM/yyyy";
+            this.dateLichSuXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateLichSuXuLy.Location = new System.Drawing.Point(99, 24);
+            this.dateLichSuXuLy.Name = "dateLichSuXuLy";
+            this.dateLichSuXuLy.Size = new System.Drawing.Size(109, 25);
+            this.dateLichSuXuLy.TabIndex = 1;
             // 
             // groupBoxKetQuaTCTBXuLy
             // 
@@ -343,7 +392,7 @@
             this.groupBoxKetQuaTCTBXuLy.Controls.Add(this.txtNoiNhanXuLy);
             this.groupBoxKetQuaTCTBXuLy.Controls.Add(this.chkTroNgai);
             this.groupBoxKetQuaTCTBXuLy.Controls.Add(this.btnCapNhatTCTBXuLy);
-            this.groupBoxKetQuaTCTBXuLy.Controls.Add(this.dateXuLy);
+            this.groupBoxKetQuaTCTBXuLy.Controls.Add(this.dateLichSuXuLy);
             this.groupBoxKetQuaTCTBXuLy.Controls.Add(this.label9);
             this.groupBoxKetQuaTCTBXuLy.Controls.Add(this.label8);
             this.groupBoxKetQuaTCTBXuLy.Controls.Add(this.txtNoiDung);
@@ -652,7 +701,7 @@
             // 
             // txtNoiNhan
             // 
-            this.txtNoiNhan.Location = new System.Drawing.Point(659, 134);
+            this.txtNoiNhan.Location = new System.Drawing.Point(929, 123);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
             this.txtNoiNhan.Size = new System.Drawing.Size(252, 100);
@@ -661,7 +710,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(656, 114);
+            this.label17.Location = new System.Drawing.Point(926, 103);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 17);
             this.label17.TabIndex = 11;
@@ -672,13 +721,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(941, 683);
+            this.ClientSize = new System.Drawing.Size(1186, 683);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.dgvLichSuXuLy);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.btnInPhieu);
-            this.Controls.Add(this.txtNoiNhan);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtNoiNhan);
             this.Controls.Add(this.chkKetQuaCapTrenXuLy);
             this.Controls.Add(this.txtHieuLucKy);
             this.Controls.Add(this.txtMaThongBao);
@@ -735,7 +784,7 @@
         private System.Windows.Forms.TextBox txtNoiDung;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateXuLy;
+        private System.Windows.Forms.DateTimePicker dateLichSuXuLy;
         private System.Windows.Forms.GroupBox groupBoxKetQuaTCTBXuLy;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnCapNhatTCTBXuLy;
@@ -771,5 +820,9 @@
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private System.Windows.Forms.TextBox txtNoiNhan;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cmbNoiDung;
+        private System.Windows.Forms.DateTimePicker dateXuLy;
+        private System.Windows.Forms.Label label18;
     }
 }

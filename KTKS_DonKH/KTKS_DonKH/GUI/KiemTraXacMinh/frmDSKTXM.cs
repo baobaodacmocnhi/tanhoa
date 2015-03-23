@@ -592,6 +592,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dr["TuNgay"] = _tuNgay;
                     dr["DenNgay"] = _denNgay;
                     dr["TenLD"] = itemRow["TenLD"];
+                    dr["MaCTKTXM"] = itemRow["MaCTKTXM"];
                     //dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
                     //DonKH donkh = _cDonKH.getDonKHbyID(decimal.Parse(itemRow["MaDon"].ToString()));
                     if (itemRow["ToXuLy"].ToString() == "True")
