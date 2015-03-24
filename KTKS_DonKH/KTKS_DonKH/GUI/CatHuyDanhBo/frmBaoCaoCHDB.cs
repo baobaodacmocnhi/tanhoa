@@ -69,10 +69,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
 
-                int TCTBXuLy = 0;
-                int TroNgai = 0;
-                int ConLai = 0;
-                int DaLapPhieu = 0;
+                int a = 0;
+                int b = 0;
+                int c = 0;
+                int d = 0;
                 foreach (DataRow itemRow in dtCTDB.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
@@ -81,26 +81,46 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["LoaiCat"] = "Lập Thông Báo Cắt Tạm";
                     dr["LyDo"] = itemRow["LyDo"];
                     dr["DanhBo"] = itemRow["DanhBo"];
-                    if (bool.Parse(itemRow["TCTBXuLy"].ToString()))
-                        TCTBXuLy++;
-                    else
-                        ConLai++;
-                    if (bool.Parse(itemRow["TroNgai"].ToString()))
-                        TroNgai++;
-                    if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
-                        DaLapPhieu++;
-                    dr["TCTBXuLy"] = TCTBXuLy;
-                    dr["ConLai"] = ConLai;
-                    dr["TroNgai"] = TroNgai;
-                    dr["LapPhieu"] = DaLapPhieu;
-
+                    //if (bool.Parse(itemRow["TCTBXuLy"].ToString()))
+                    //    TCTBXuLy++;
+                    //else
+                    //    ConLai++;
+                    //if (bool.Parse(itemRow["TroNgai"].ToString()))
+                    //    TroNgai++;
+                    //if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
+                    //    DaLapPhieu++;
+                    //dr["TCTBXuLy"] = TCTBXuLy;
+                    //dr["ConLai"] = ConLai;
+                    //dr["TroNgai"] = TroNgai;
+                    //dr["LapPhieu"] = DaLapPhieu;
+                    switch (itemRow["NoiDungXuLy"].ToString())
+                    {
+                        case "Khách hàng đóng tiền":
+                            a++;
+                            break;
+                        case "Khách hàng cam kết sử dụng lại":
+                            b++;
+                            break;
+                        case "Hủy lệnh":
+                            c++;
+                            break;
+                        case "Đã cắt tạm bít nút":
+                            d++;
+                            break;
+                        default:
+                            break;
+                    }
+                    dr["TCTBXuLy"] = a;
+                    dr["ConLai"] = b;
+                    dr["TroNgai"] = c;
+                    dr["LapPhieu"] = d;
                     dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
                 }
 
-                TCTBXuLy = 0;
-                TroNgai = 0;
-                ConLai = 0;
-                DaLapPhieu = 0;
+                a = 0;
+                b = 0;
+                c = 0;
+                d = 0;
                 foreach (DataRow itemRow in dtCHDB.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
@@ -109,19 +129,39 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["LoaiCat"] = "Lập Thông Báo Cắt Hủy";
                     dr["LyDo"] = itemRow["LyDo"];
                     dr["DanhBo"] = itemRow["DanhBo"];
-                    if (bool.Parse(itemRow["TCTBXuLy"].ToString()))
-                        TCTBXuLy++;
-                    else
-                        ConLai++;
-                    if (bool.Parse(itemRow["TroNgai"].ToString()))
-                        TroNgai++;
-                    if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
-                        DaLapPhieu++;
-                    dr["TCTBXuLy"] = TCTBXuLy;
-                    dr["ConLai"] = ConLai;
-                    dr["TroNgai"] = TroNgai;
-                    dr["LapPhieu"] = DaLapPhieu;
-
+                    //if (bool.Parse(itemRow["TCTBXuLy"].ToString()))
+                    //    TCTBXuLy++;
+                    //else
+                    //    ConLai++;
+                    //if (bool.Parse(itemRow["TroNgai"].ToString()))
+                    //    TroNgai++;
+                    //if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
+                    //    DaLapPhieu++;
+                    //dr["TCTBXuLy"] = TCTBXuLy;
+                    //dr["ConLai"] = ConLai;
+                    //dr["TroNgai"] = TroNgai;
+                    //dr["LapPhieu"] = DaLapPhieu;
+                    switch (itemRow["NoiDungXuLy"].ToString())
+                    {
+                        case "Khách hàng đóng tiền":
+                            a++;
+                            break;
+                        case "Khách hàng cam kết sử dụng lại":
+                            b++;
+                            break;
+                        case "Hủy lệnh":
+                            c++;
+                            break;
+                        case "Đã cắt tạm bít nút":
+                            d++;
+                            break;
+                        default:
+                            break;
+                    }
+                    dr["TCTBXuLy"] = a;
+                    dr["ConLai"] = b;
+                    dr["TroNgai"] = c;
+                    dr["LapPhieu"] = d;
                     dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
                 }
 
@@ -250,7 +290,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = itemRow["HoTen"];
                     dr["DiaChi"] = itemRow["DiaChi"];
-                dr["LyDo"] = itemRow["GhiChuLyDo"].ToString().Substring(30);
+                    dr["LyDo"] = itemRow["GhiChuLyDo"].ToString().Substring(30);
                     dr["NgayLap"] = itemRow["NgayTCTBXuLy"];
                     dr["HieuLucKy"] = itemRow["KetQuaTCTBXuLy"];
 

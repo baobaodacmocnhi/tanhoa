@@ -749,7 +749,6 @@
             this.chkInBamChiThan_BBDCMS.TabIndex = 25;
             this.chkInBamChiThan_BBDCMS.Text = "In Bấm Chì Thân && BB ĐCMS";
             this.chkInBamChiThan_BBDCMS.UseVisualStyleBackColor = true;
-            this.chkInBamChiThan_BBDCMS.Visible = false;
             // 
             // chkLoaiDon
             // 

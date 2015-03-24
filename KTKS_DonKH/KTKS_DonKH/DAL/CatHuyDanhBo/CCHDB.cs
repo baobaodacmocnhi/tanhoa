@@ -1479,6 +1479,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.TCTBXuLy,
                                     itemCTCTDB.TroNgai,
                                     itemCTCTDB.NguoiKy,
+                                    itemCTCTDB.NoiDungXuLy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1527,6 +1528,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.TCTBXuLy,
                                     itemCTCTDB.TroNgai,
                                     itemCTCTDB.NguoiKy,
+                                    itemCTCTDB.NoiDungXuLy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -2030,6 +2032,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.TCTBXuLy,
                                     itemCTCHDB.TroNgai,
                                     itemCTCHDB.NguoiKy,
+                                    itemCTCHDB.NoiDungXuLy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -2078,6 +2081,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.TCTBXuLy,
                                     itemCTCHDB.TroNgai,
                                     itemCTCHDB.NguoiKy,
+                                    itemCTCHDB.NoiDungXuLy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

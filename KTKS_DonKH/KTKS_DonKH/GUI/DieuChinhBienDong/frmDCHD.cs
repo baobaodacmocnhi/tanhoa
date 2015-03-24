@@ -292,13 +292,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (chkGiaDieuChinh.Checked)
                         {
                             ctdchd.DieuChinhGia = true;
-                            ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim());
+                            ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", ""));
                         }
                         ///
                         if (chkKhauTru.Checked)
                         {
                             ctdchd.KhauTru = true;
-                            ctdchd.SoTienKhauTru = int.Parse(txtSoTienKhauTru.Text.Trim());
+                            ctdchd.SoTienKhauTru = int.Parse(txtSoTienKhauTru.Text.Trim().Replace(".", ""));
                         }
                         ///
                         ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
@@ -409,34 +409,40 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdchd.KyHD = txtKyHD.Text.Trim();
                         ctdchd.SoHD = txtSoHD.Text.Trim();
                         ///
-                        ctdchd.GiaBieu = int.Parse(txtGiaBieu_Cu.Text.Trim());
-                        ctdchd.DinhMuc = int.Parse(txtDinhMuc_Cu.Text.Trim());
-                        ctdchd.TieuThu = int.Parse(txtTieuThu_Cu.Text.Trim());
+                        ctdchd.GiaBieu = int.Parse(txtGiaBieu_Cu.Text.Trim().Replace(".", ""));
+                        ctdchd.DinhMuc = int.Parse(txtDinhMuc_Cu.Text.Trim().Replace(".", ""));
+                        ctdchd.TieuThu = int.Parse(txtTieuThu_Cu.Text.Trim().Replace(".", ""));
                         ///
-                        ctdchd.GiaBieu_BD = int.Parse(txtGiaBieu_Moi.Text.Trim());
-                        ctdchd.DinhMuc_BD = int.Parse(txtDinhMuc_Moi.Text.Trim());
-                        ctdchd.TieuThu_BD = int.Parse(txtTieuThu_Moi.Text.Trim());
+                        ctdchd.GiaBieu_BD = int.Parse(txtGiaBieu_Moi.Text.Trim().Replace(".", ""));
+                        ctdchd.DinhMuc_BD = int.Parse(txtDinhMuc_Moi.Text.Trim().Replace(".", ""));
+                        ctdchd.TieuThu_BD = int.Parse(txtTieuThu_Moi.Text.Trim().Replace(".", ""));
                         ///
-                        ctdchd.TienNuoc_Start = int.Parse(txtTienNuoc_Start.Text.Trim());
-                        ctdchd.ThueGTGT_Start = int.Parse(txtThueGTGT_Start.Text.Trim());
-                        ctdchd.PhiBVMT_Start = int.Parse(txtPhiBVMT_Start.Text.Trim());
-                        ctdchd.TongCong_Start = int.Parse(txtTongCong_Start.Text.Trim());
+                        ctdchd.TienNuoc_Start = int.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", ""));
+                        ctdchd.ThueGTGT_Start = int.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", ""));
+                        ctdchd.PhiBVMT_Start = int.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", ""));
+                        ctdchd.TongCong_Start = int.Parse(txtTongCong_Start.Text.Trim().Replace(".", ""));
                         ///
                         if (chkGiaDieuChinh.Checked)
                         {
                             ctdchd.DieuChinhGia = true;
-                            ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim());
+                            ctdchd.GiaDieuChinh = int.Parse(txtGiaDieuChinh.Text.Trim().Replace(".", ""));
                         }
                         ///
-                        ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim());
-                        ctdchd.ThueGTGT_BD = int.Parse(txtThueGTGT_BD.Text.Trim());
-                        ctdchd.PhiBVMT_BD = int.Parse(txtPhiBVMT_BD.Text.Trim());
-                        ctdchd.TongCong_BD = int.Parse(txtTongCong_BD.Text.Trim());
+                        if (chkKhauTru.Checked)
+                        {
+                            ctdchd.KhauTru = true;
+                            ctdchd.SoTienKhauTru = int.Parse(txtSoTienKhauTru.Text.Trim().Replace(".", ""));
+                        }
                         ///
-                        ctdchd.TienNuoc_End = int.Parse(txtTienNuoc_End.Text.Trim());
-                        ctdchd.ThueGTGT_End = int.Parse(txtThueGTGT_End.Text.Trim());
-                        ctdchd.PhiBVMT_End = int.Parse(txtPhiBVMT_End.Text.Trim());
-                        ctdchd.TongCong_End = int.Parse(txtTongCong_End.Text.Trim());
+                        ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
+                        ctdchd.ThueGTGT_BD = int.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
+                        ctdchd.PhiBVMT_BD = int.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
+                        ctdchd.TongCong_BD = int.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
+                        ///
+                        ctdchd.TienNuoc_End = int.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
+                        ctdchd.ThueGTGT_End = int.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
+                        ctdchd.PhiBVMT_End = int.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
+                        ctdchd.TongCong_End = int.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
 
                         if (ctdchd.TienNuoc_End - ctdchd.TienNuoc_Start == 0)
                             ctdchd.TangGiam = "";
