@@ -73,6 +73,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnInPhieu = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabDaThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThu)).BeginInit();
@@ -481,11 +482,22 @@
             this.label3.TabIndex = 32;
             this.label3.Text = "Từ Ngày:";
             // 
+            // btnInPhieu
+            // 
+            this.btnInPhieu.Location = new System.Drawing.Point(816, 10);
+            this.btnInPhieu.Name = "btnInPhieu";
+            this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
+            this.btnInPhieu.TabIndex = 37;
+            this.btnInPhieu.Text = "In Phiếu";
+            this.btnInPhieu.UseVisualStyleBackColor = true;
+            this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
+            // 
             // frmDangNganTon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1103, 706);
+            this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dateDen);
             this.Controls.Add(this.label2);
@@ -557,5 +569,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnInPhieu;
     }
 }

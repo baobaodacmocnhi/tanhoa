@@ -12,6 +12,9 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using System.Globalization;
 using ThuTien.DAL.TongHop;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.Quay;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.Quay
 {
@@ -21,6 +24,7 @@ namespace ThuTien.GUI.Quay
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
         CDCHD _cDCHD = new CDCHD();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
 
         public frmTamThuQuay()
         {
@@ -51,75 +55,83 @@ namespace ThuTien.GUI.Quay
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                ///Có nhiều hơn 1 hóa đơn
-                if (dgvHoaDon.RowCount > 1)
-                {
-                    ///Kiểm tra có chọn hóa đơn đăng ngân chưa
-                    int Count = 0;
-                    int index = -1;
-                    for (int i = 0; i < dgvHoaDon.RowCount; i++)
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                    if (bool.Parse(item.Cells["Chon"].Value.ToString()))
                     {
-                        if (bool.Parse(dgvHoaDon["Chon", i].Value.ToString()))
+                        if (_cTamThu.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         {
-                            Count++;
-                            index = i;
-                        }
-                    }
-                    if (Count == 0)
-                    {
-                        MessageBox.Show("Chưa chọn Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                        if (Count > 1)
-                        {
-                            MessageBox.Show("Chọn quá 1 Hóa Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn này đã có Tạm Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
                             return;
                         }
-                    ///Bắt đầu đăng ngân chỉ 1 hóa đơn được chọn
-                    if (bool.Parse(dgvHoaDon["Chon", index].Value.ToString()) && !_cTamThu.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString()))
-                    {
-                        if(_cDCHD.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString()))
+
+                        if (_cDCHD.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         {
                             MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-                        TAMTHU tamthu = new TAMTHU();
-                        tamthu.DANHBA = dgvHoaDon["DanhBo", index].Value.ToString();
-                        tamthu.FK_HOADON = int.Parse(dgvHoaDon["MaHD", index].Value.ToString());
-                        tamthu.SoHoaDon = dgvHoaDon["SoHoaDon", index].Value.ToString();
-
-                        if (_cTamThu.Them(tamthu))
-                        {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            item.Selected = true;
+                            return;
                         }
                     }
-                    else
-                        MessageBox.Show("Chưa Chọn Hóa Đơn \nhoặc Hóa Đơn này đã Tạm Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                List<TAMTHU> lstTamThu = new List<TAMTHU>();
+                try
+                {
+                    _cTamThu.BeginTransaction();
+                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                        if (bool.Parse(item.Cells["Chon"].Value.ToString()))
+                        {
+                            TAMTHU tamthu = new TAMTHU();
+                            tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
+                            tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
+                            tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
+
+                            if (_cTamThu.Them(tamthu))
+                            {
+                                lstTamThu.Add(tamthu);
+                            }
+                            else
+                            {
+                                _cTamThu.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    _cTamThu.CommitTransaction();
                 }
-                else
-                    ///Có 1 hóa đơn nên set mặc định row 0
-                    if (dgvHoaDon.RowCount == 1 && !_cTamThu.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString()))
-                    {
-                        if (_cDCHD.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString()))
-                        {
-                            MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                catch (Exception)
+                {
+                    _cTamThu.Rollback();
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                        TAMTHU tamthu = new TAMTHU();
-                        tamthu.DANHBA = dgvHoaDon["DanhBo", 0].Value.ToString();
-                        tamthu.FK_HOADON = int.Parse(dgvHoaDon["MaHD", 0].Value.ToString());
-                        tamthu.SoHoaDon = dgvHoaDon["SoHoaDon", 0].Value.ToString();
+                string Ky = "";
+                Int32 TongCongSo = 0;
+                foreach (var item in lstTamThu)
+                {
+                    Ky += item.HOADON.KY + "/" + item.HOADON.NAM + ", ";
+                    TongCongSo += (Int32)item.HOADON.TONGCONG;
+                }
 
-                        if (_cTamThu.Them(tamthu))
-                        {
-                            Clear();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    else
-                        MessageBox.Show("Chưa có thông tin Hóa Đơn \nhoặc Hóa Đơn này đã Tạm Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dsBaoCao ds = new dsBaoCao();
+                DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
+                dr["DanhBo"] = lstTamThu[0].DANHBA;
+                dr["HoTen"] = lstTamThu[0].HOADON.TENKH;
+                dr["DiaChi"] = lstTamThu[0].HOADON.SO + " " + lstTamThu[0].HOADON.DUONG;
+                dr["MLT"] = lstTamThu[0].HOADON.MALOTRINH;
+                dr["GiaBieu"] = lstTamThu[0].HOADON.GB;
+                dr["DinhMuc"] = lstTamThu[0].HOADON.DM;
+                dr["Ky"] = lstTamThu[0].HOADON.KY + "/" + lstTamThu[0].HOADON.NAM;
+                dr["TongCongSo"] = TongCongSo;
+                dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
+                if (lstTamThu[0].HOADON.MaNV_HanhThu != null)
+                    dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(lstTamThu[0].HOADON.MaNV_HanhThu.Value);
+                dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                ds.Tables["PhieuTamThu"].Rows.Add(dr);
+
+                rptPhieuTamThu rpt = new rptPhieuTamThu();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -171,7 +183,7 @@ namespace ThuTien.GUI.Quay
                         {
                             _cTamThu.Rollback();
                             dgvTamThu.ClearSelection();
-                            dgvTamThu.Rows[item.Index].Selected = true;
+                            item.Selected = true;
                             MessageBox.Show("Hóa đơn đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }

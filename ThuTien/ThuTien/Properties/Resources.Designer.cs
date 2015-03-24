@@ -59,5 +59,12 @@ namespace ThuTien.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap logoctycp {
+            get {
+                object obj = ResourceManager.GetObject("logoctycp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

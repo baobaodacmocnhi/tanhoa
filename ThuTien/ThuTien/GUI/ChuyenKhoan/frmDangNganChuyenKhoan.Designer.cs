@@ -51,6 +51,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.txtSoHoaDon = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnInPhieu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -256,11 +257,22 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Số Hóa Đơn:";
             // 
+            // btnInPhieu
+            // 
+            this.btnInPhieu.Location = new System.Drawing.Point(729, 10);
+            this.btnInPhieu.Name = "btnInPhieu";
+            this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
+            this.btnInPhieu.TabIndex = 38;
+            this.btnInPhieu.Text = "In Phiếu";
+            this.btnInPhieu.UseVisualStyleBackColor = true;
+            this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
+            // 
             // frmDangNganChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1349, 666);
+            this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstHD);
             this.Controls.Add(this.dgvHDDaThu);
@@ -306,5 +318,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtSoHoaDon;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnInPhieu;
     }
 }

@@ -11,6 +11,9 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.Quay;
 using System.Globalization;
 using ThuTien.DAL.TongHop;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.NhanVien;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.Quay
 {
@@ -175,6 +178,52 @@ namespace ThuTien.GUI.Quay
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnInPhieu_Click(object sender, EventArgs e)
+        {
+            if (dateTu.Value.Date == dateDen.Value.Date)
+            {
+                dsBaoCao ds = new dsBaoCao();
+                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayDangNgans(CNguoiDung.MaND, "TG", dateTu.Value, dateDen.Value);
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
+                    dr["To"] = CNguoiDung.TenTo;
+                    dr["Loai"] = "Tư Gia";
+                    dr["NgayDangNgan"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                    dr["TongHD"] = item["TongHD"].ToString();
+                    dr["TongGiaBan"] = item["TongGiaBan"].ToString();
+                    dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                    dr["TongCong"] = item["TongCong"].ToString();
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["PhieuDangNgan"].Rows.Add(dr);
+                }
+
+                dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayDangNgans(CNguoiDung.MaND, "CQ", dateTu.Value, dateDen.Value);
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
+                    dr["To"] = CNguoiDung.TenTo;
+                    dr["Loai"] = "Cơ Quan";
+                    dr["NgayDangNgan"] = dateTu.Value.Date.ToString("dd/MM/yyyy");
+                    dr["TongHD"] = item["TongHD"].ToString();
+                    dr["TongGiaBan"] = item["TongGiaBan"].ToString();
+                    dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                    dr["TongCong"] = item["TongCong"].ToString();
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["PhieuDangNgan"].Rows.Add(dr);
+                }
+
+                rptPhieuDangNgan rpt = new rptPhieuDangNgan();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+            else
+                MessageBox.Show("Từ Ngày = Đến Ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }

@@ -847,8 +847,8 @@ namespace ThuTien.DAL.Doi
                             where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                 && item.NGAYGIAITRACH.Value.Date==NgayDangNgan.Date && item.GB >= 11 && item.GB <= 20
-                            orderby item.MaNV_HanhThu ascending
-                            group item by item.MaNV_HanhThu into itemGroup
+                            orderby item.MaNV_DangNgan ascending
+                            group item by item.MaNV_DangNgan into itemGroup
                             select new
                             {
                                 MaNV = itemGroup.Key,
@@ -873,8 +873,8 @@ namespace ThuTien.DAL.Doi
                                 where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date && item.GB > 20
-                                orderby item.MaNV_HanhThu ascending
-                                group item by item.MaNV_HanhThu into itemGroup
+                                orderby item.MaNV_DangNgan ascending
+                                group item by item.MaNV_DangNgan into itemGroup
                                 select new
                                 {
                                     MaNV = itemGroup.Key,
@@ -900,9 +900,9 @@ namespace ThuTien.DAL.Doi
             if (loai == "TG")
             {
                 var query = from item in _db.HOADONs
-                            where item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date &&item.MaNV_DangNgan==MaNV_DangNgan&& item.GB >= 11 && item.GB <= 20
-                            orderby item.MaNV_HanhThu ascending
-                            group item by item.MaNV_HanhThu into itemGroup
+                            where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date && item.GB >= 11 && item.GB <= 20
+                            orderby item.MaNV_DangNgan ascending
+                            group item by item.MaNV_DangNgan into itemGroup
                             select new
                             {
                                 MaNV = itemGroup.Key,
@@ -919,9 +919,51 @@ namespace ThuTien.DAL.Doi
                 if (loai == "CQ")
                 {
                     var query = from item in _db.HOADONs
-                                where item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date &&item.MaNV_DangNgan==MaNV_DangNgan&& item.GB > 20
-                                orderby item.MaNV_HanhThu ascending
-                                group item by item.MaNV_HanhThu into itemGroup
+                                where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date && item.GB > 20
+                                orderby item.MaNV_DangNgan ascending
+                                group item by item.MaNV_DangNgan into itemGroup
+                                select new
+                                {
+                                    MaNV = itemGroup.Key,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                    TongHD = itemGroup.Count(),
+                                    TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                    TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                    TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                    TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
+        public DataTable GetTongDangNganByMaNV_DangNganNgayDangNgans(int MaNV_DangNgan, string loai, DateTime TuNgay,DateTime DenNgay)
+        {
+            if (loai == "TG")
+            {
+                var query = from item in _db.HOADONs
+                            where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date >= TuNgay.Date && item.NGAYGIAITRACH.Value.Date <= DenNgay.Date && item.GB >= 11 && item.GB <= 20
+                            orderby item.MaNV_DangNgan ascending
+                            group item by item.MaNV_DangNgan into itemGroup
+                            select new
+                            {
+                                MaNV = itemGroup.Key,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                TongHD = itemGroup.Count(),
+                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (loai == "CQ")
+                {
+                    var query = from item in _db.HOADONs
+                                where item.MaNV_DangNgan == MaNV_DangNgan && item.NGAYGIAITRACH.Value.Date >= TuNgay.Date && item.NGAYGIAITRACH.Value.Date <= DenNgay.Date && item.GB > 20
+                                orderby item.MaNV_DangNgan ascending
+                                group item by item.MaNV_DangNgan into itemGroup
                                 select new
                                 {
                                     MaNV = itemGroup.Key,
@@ -1126,16 +1168,16 @@ namespace ThuTien.DAL.Doi
         /// <summary>
         /// Lấy danh sách hóa đơn giao tồn đã đăng ngân bởi người được giao tồn
         /// </summary>
-        /// <param name="MaNV_GiaoTon"></param>
+        /// <param name="MaNV_DangNgan"></param>
         /// <param name="TuNgay"></param>
         /// <param name="DenNgay"></param>
         /// <returns></returns>
-        public DataTable GetDSDangNganGiaoTonByMaNVDates(int MaNV_GiaoTon, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSDangNganTonByMaNVDates(int MaNV_DangNgan, DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND
-                        where itemHD.MaNV_GiaoTon == MaNV_GiaoTon && itemHD.NGAYGIAOTON.Value.Date >= TuNgay.Date && itemHD.NGAYGIAOTON.Value.Date <= DenNgay.Date
-                        && itemHD.NGAYGIAITRACH != null && itemHD.MaNV_DangNgan == MaNV_GiaoTon
+                        where itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
+                        && itemHD.DangNgan_Ton == true && itemHD.MaNV_DangNgan == MaNV_DangNgan
                         orderby itemHD.ID_HOADON ascending
                         select new
                         {
@@ -1165,7 +1207,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND
                         where itemHD.MaNV_GiaoTon == MaNV_GiaoTon && itemHD.NGAYGIAOTON.Value.Date >= TuNgay.Date && itemHD.NGAYGIAOTON.Value.Date <= DenNgay.Date
-                        && itemHD.NGAYGIAITRACH == null
+                        && itemHD.MaNV_DangNgan == null
                         orderby itemHD.ID_HOADON ascending
                         select new
                         {
@@ -1343,15 +1385,19 @@ namespace ThuTien.DAL.Doi
                 string sql = "";
                 if (loai == "HanhThu")
                     sql = "update HOADON set DangNgan_HanhThu=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                            + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null"; //" and NGAYGIAITRACH is null";
+                            + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null";
                 else
                     if (loai == "Quay")
                         sql = "update HOADON set DangNgan_Quay=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null"; //" and NGAYGIAITRACH is null";
+                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null";
                     else
                         if (loai == "ChuyenKhoan")
                             sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null"; //" and NGAYGIAITRACH is null";
+                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null";
+                        else
+                            if (loai == "Ton")
+                                sql = "update HOADON set DangNgan_Ton=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
+                                    + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -1368,15 +1414,19 @@ namespace ThuTien.DAL.Doi
                 string sql = "";
                 if (loai == "HanhThu")
                     sql = "update HOADON set DangNgan_HanhThu=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                           + "where SOHOADON='" + sohoadon + "' and DangNgan_HanhThu=1 and MaNV_DangNgan=" + MaNV; //+ " and NGAYGIAITRACH is not null";
+                           + "where SOHOADON='" + sohoadon + "' and DangNgan_HanhThu=1 and MaNV_DangNgan=" + MaNV;
                 else
                     if (loai == "Quay")
                         sql = "update HOADON set DangNgan_Quay=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                               + "where SOHOADON='" + sohoadon + "' and DangNgan_Quay=1 and MaNV_DangNgan=" + MaNV; //+ " and NGAYGIAITRACH is not null";
+                               + "where SOHOADON='" + sohoadon + "' and DangNgan_Quay=1 and MaNV_DangNgan=" + MaNV;
                     else
                         if (loai == "ChuyenKhoan")
                             sql = "update HOADON set DangNgan_ChuyenKhoan=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                   + "where SOHOADON='" + sohoadon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV; //+ " and NGAYGIAITRACH is not null";
+                                   + "where SOHOADON='" + sohoadon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV;
+                        else
+                            if (loai == "Ton")
+                                sql = "update HOADON set DangNgan_Ton=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
+                                       + "where SOHOADON='" + sohoadon + "' and DangNgan_Ton=1 and MaNV_DangNgan=" + MaNV;
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -1416,35 +1466,35 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public bool DangNganTon(string sohoadon, int MaNV)
-        {
-            try
-            {
-                string sql = "update HOADON set DangNgan_HanhThu=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null and MaNV_GiaoTon=" + MaNV; //" and NGAYGIAITRACH is null";
-                return ExecuteNonQuery_Transaction(sql);
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
-            }
-        }
+        //public bool DangNganTon(string sohoadon, int MaNV)
+        //{
+        //    try
+        //    {
+        //        string sql = "update HOADON set DangNgan_Ton=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
+        //                        + "where SOHOADON='" + sohoadon + "' and MaNV_DangNgan is null";
+        //        return ExecuteNonQuery_Transaction(sql);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
 
-        public bool XoaDangNganTon(string sohoadon, int MaNV)
-        {
-            try
-            {
-                string sql = "update HOADON set DangNgan_HanhThu=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                   + "where SOHOADON='" + sohoadon + "' and DangNgan_HanhThu=1 and MaNV_DangNgan=" + MaNV + " and MaNV_GiaoTon=" + MaNV; //+ " and NGAYGIAITRACH is not null";
-                return ExecuteNonQuery_Transaction(sql);
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
-            }
-        }
+        //public bool XoaDangNganTon(string sohoadon, int MaNV)
+        //{
+        //    try
+        //    {
+        //        string sql = "update HOADON set DangNgan_Ton=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
+        //                           + "where SOHOADON='" + sohoadon + "' and DangNgan_Ton=1 and MaNV_DangNgan=" + MaNV;
+        //        return ExecuteNonQuery_Transaction(sql);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
     }
 
 }

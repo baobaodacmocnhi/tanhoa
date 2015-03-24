@@ -14,10 +14,10 @@ namespace ThuTien.DAL.Quay
         {
             try
             {
-                //if (_db.TAMTHUs.Count() > 0)
-                //    tamthu.ID_TAMTHU = _db.TAMTHUs.Max(item => item.ID_TAMTHU) + 1;
-                //else
-                //    tamthu.ID_TAMTHU = 1;
+                if (_db.TAMTHUs.Count() > 0)
+                    tamthu.ID_TAMTHU = _db.TAMTHUs.Max(item => item.ID_TAMTHU) + 1;
+                else
+                    tamthu.ID_TAMTHU = 1;
                 tamthu.CreateDate = DateTime.Now;
                 tamthu.CreateBy = CNguoiDung.MaND;
                 _db.TAMTHUs.InsertOnSubmit(tamthu);
