@@ -44,6 +44,203 @@ namespace QLVanThu
             vanthudis.Filter = expression;
         }
 
+        private void ExportToExcelMucLuc()
+        {
+            Microsoft.Office.Interop.Excel.Worksheet oSheetMucLuc;
+
+            //Tạo mới một Excel WorkBook 
+            oExcel.Visible = true;
+            oExcel.DisplayAlerts = false;
+            //khai báo số lượng sheet
+            oExcel.Application.SheetsInNewWorkbook = 18;
+            oBooks = oExcel.Workbooks;
+
+            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+            oSheets = oBook.Worksheets;
+            oSheetMucLuc = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+            oSheetMucLuc.Name = "Mục Lục";
+
+            Microsoft.Office.Interop.Excel.Range head1 = oSheetMucLuc.get_Range("A3", "I3");
+            head1.MergeCells = true;
+            head1.Value2 = "MỤC LỤC CÔNG VĂN ĐI LƯU";
+            head1.Font.Name = "Times New Roman";
+            head1.Font.Size = "24";
+            head1.Font.Bold = true;
+            head1.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ///
+            Microsoft.Office.Interop.Excel.Range head2a = oSheetMucLuc.get_Range("B5", "B5");
+            head2a.Value2 = "1/";
+            head2a.Font.Name = "Times New Roman";
+            head2a.Font.Size = "20";
+            head2a.Font.Bold = true;
+            head2a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head2b = oSheetMucLuc.get_Range("C5", "I5");
+            head2b.MergeCells = true;
+            head2b.Value2 = "TỔNG HỢP";
+            head2b.Font.Name = "Times New Roman";
+            head2b.Font.Size = "20";
+            head2b.Font.Bold = true;
+            //head2b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ///
+            Microsoft.Office.Interop.Excel.Range head3a = oSheetMucLuc.get_Range("B6", "B6");
+            head3a.Value2 = "2/";
+            head3a.Font.Name = "Times New Roman";
+            head3a.Font.Size = "20";
+            head3a.Font.Bold = true;
+            head3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head3b = oSheetMucLuc.get_Range("C6", "I6");
+            head3b.MergeCells = true;
+            head3b.Value2 = "PHÒNG TỔ CHỨC HÀNH CHÍNH";
+            head3b.Font.Name = "Times New Roman";
+            head3b.Font.Size = "20";
+            head3b.Font.Bold = true;
+            //head3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ///
+            Microsoft.Office.Interop.Excel.Range head4a = oSheetMucLuc.get_Range("B7", "B7");
+            head4a.Value2 = "3/";
+            head4a.Font.Name = "Times New Roman";
+            head4a.Font.Size = "20";
+            head4a.Font.Bold = true;
+            head4a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head4b = oSheetMucLuc.get_Range("C7", "R7");
+            head4b.MergeCells = true;
+            head4b.Value2 = "PHÒNG KỸ THUẬT CÔNG NGHỆ";
+            head4b.Font.Name = "Times New Roman";
+            head4b.Font.Size = "20";
+            head4b.Font.Bold = true;
+            //head4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ///
+            Microsoft.Office.Interop.Excel.Range head5a = oSheetMucLuc.get_Range("B8", "B8");
+            head5a.Value2 = "4/";
+            head5a.Font.Name = "Times New Roman";
+            head5a.Font.Size = "20";
+            head5a.Font.Bold = true;
+            head5a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head5b = oSheetMucLuc.get_Range("C8", "R8");
+            head5b.MergeCells = true;
+            head5b.Value2 = "PHÒNG KẾ TOÁN TÀI CHÍNH";
+            head5b.Font.Name = "Times New Roman";
+            head5b.Font.Size = "20";
+            head5b.Font.Bold = true;
+            //head5b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ///
+            Microsoft.Office.Interop.Excel.Range head6a = oSheetMucLuc.get_Range("B9", "B9");
+            head6a.Value2 = "5/";
+            head6a.Font.Name = "Times New Roman";
+            head6a.Font.Size = "20";
+            head6a.Font.Bold = true;
+            head6a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head6b = oSheetMucLuc.get_Range("C9", "R9");
+            head6b.MergeCells = true;
+            head6b.Value2 = "PHÒNG KẾ HOẠCH ĐẦU TƯ";
+            head6b.Font.Name = "Times New Roman";
+            head6b.Font.Size = "20";
+            head6b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head7a = oSheetMucLuc.get_Range("B10", "B10");
+            head7a.Value2 = "6/";
+            head7a.Font.Name = "Times New Roman";
+            head7a.Font.Size = "20";
+            head7a.Font.Bold = true;
+            head7a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head7b = oSheetMucLuc.get_Range("C10", "R10");
+            head7b.MergeCells = true;
+            head7b.Value2 = "PHÒNG GIẢM NƯỚC KDT";
+            head7b.Font.Name = "Times New Roman";
+            head7b.Font.Size = "20";
+            head7b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head8a = oSheetMucLuc.get_Range("B11", "B11");
+            head8a.Value2 = "7/";
+            head8a.Font.Name = "Times New Roman";
+            head8a.Font.Size = "20";
+            head8a.Font.Bold = true;
+            head8a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head8b = oSheetMucLuc.get_Range("C11", "R11");
+            head8b.MergeCells = true;
+            head8b.Value2 = "PHÒNG KINH DOANH";
+            head8b.Font.Name = "Times New Roman";
+            head8b.Font.Size = "20";
+            head8b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head9a = oSheetMucLuc.get_Range("B12", "B12");
+            head9a.Value2 = "8/";
+            head9a.Font.Name = "Times New Roman";
+            head9a.Font.Size = "20";
+            head9a.Font.Bold = true;
+            head9a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head9b = oSheetMucLuc.get_Range("C12", "R12");
+            head9b.MergeCells = true;
+            head9b.Value2 = "ĐỘI QLĐHN";
+            head9b.Font.Name = "Times New Roman";
+            head9b.Font.Size = "20";
+            head9b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head10a = oSheetMucLuc.get_Range("B13", "B13");
+            head10a.Value2 = "9/";
+            head10a.Font.Name = "Times New Roman";
+            head10a.Font.Size = "20";
+            head10a.Font.Bold = true;
+            head10a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head10b = oSheetMucLuc.get_Range("C13", "R13");
+            head10b.MergeCells = true;
+            head10b.Value2 = "ĐỘI THU TIỀN";
+            head10b.Font.Name = "Times New Roman";
+            head10b.Font.Size = "20";
+            head10b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head11a = oSheetMucLuc.get_Range("B14", "B14");
+            head11a.Value2 = "10/";
+            head11a.Font.Name = "Times New Roman";
+            head11a.Font.Size = "20";
+            head11a.Font.Bold = true;
+            head11a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head11b = oSheetMucLuc.get_Range("C14", "R14");
+            head11b.MergeCells = true;
+            head11b.Value2 = "ĐỘI THI CÔNG TU BỔ";
+            head11b.Font.Name = "Times New Roman";
+            head11b.Font.Size = "20";
+            head11b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head12a = oSheetMucLuc.get_Range("B15", "B15");
+            head12a.Value2 = "11/";
+            head12a.Font.Name = "Times New Roman";
+            head12a.Font.Size = "20";
+            head12a.Font.Bold = true;
+            head12a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head12b = oSheetMucLuc.get_Range("C15", "R15");
+            head12b.MergeCells = true;
+            head12b.Value2 = "ĐỘI THI CÔNG XÂY LẮP";
+            head12b.Font.Name = "Times New Roman";
+            head12b.Font.Size = "20";
+            head12b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head13a = oSheetMucLuc.get_Range("B16", "B16");
+            head13a.Value2 = "12/";
+            head13a.Font.Name = "Times New Roman";
+            head13a.Font.Size = "20";
+            head13a.Font.Bold = true;
+            head13a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head13b = oSheetMucLuc.get_Range("C16", "R16");
+            head13b.MergeCells = true;
+            head13b.Value2 = "TỔ GIÚP VIỆC";
+            head13b.Font.Name = "Times New Roman";
+            head13b.Font.Size = "20";
+            head13b.Font.Bold = true;
+        }
+
         private void ExportToExcel(DataTable dt, string sheetName, string title)
         {
             int r=0;
@@ -213,7 +410,7 @@ namespace QLVanThu
             
         }
 
-        private void ExportToExcelTongHop(DataTable dt)
+        private void ExportToExcelTongHop(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop)
         {
             int r = 0;
             int TuSo = 100000;
@@ -225,18 +422,18 @@ namespace QLVanThu
                 //Microsoft.Office.Interop.Excel.Workbooks oBooks;
                 //Microsoft.Office.Interop.Excel.Sheets oSheets;
                 //Microsoft.Office.Interop.Excel.Workbook oBook;
-                Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop;
+                //Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop;
 
                 //Tạo mới một Excel WorkBook 
-                oExcel.Visible = true;
-                oExcel.DisplayAlerts = false;
+                //oExcel.Visible = true;
+                //oExcel.DisplayAlerts = false;
                 //khai báo số lượng sheet
-                oExcel.Application.SheetsInNewWorkbook = 17;
-                oBooks = oExcel.Workbooks;
+                //oExcel.Application.SheetsInNewWorkbook = 18;
+                //oBooks = oExcel.Workbooks;
 
-                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
-                oSheets = oBook.Worksheets;
-                oSheetTongHop = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+                //oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                //oSheets = oBook.Worksheets;
+                oSheetTongHop = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
                 oSheetTongHop.Name = "Tổng Hợp";
 
                 // Tạo phần đầu nếu muốn
@@ -751,24 +948,29 @@ namespace QLVanThu
         private void btnXuatFileExcel_Click(object sender, EventArgs e)
         {
             //ExportToExcel(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), "Danh sách văn thư đi", "DANH SÁCH VĂN THƯ ĐI");
-            ExportToExcelTongHop(((DataTable)vanthudis.DataSource).DefaultView.ToTable());
+            ExportToExcelMucLuc();
+            Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop= (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetTCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetKTTC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetKHVTTH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetKTCN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetKTKS = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(7);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetQLDA = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetQLĐHN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetĐTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetTCTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetTCXL = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetGNKDT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetCNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetTGV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetQĐ_TCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetHĐ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(18);
+
+            ExportToExcelTongHop(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), oSheetTongHop);
+
             DataTable temp = (((DataTable)vanthudis.DataSource).DefaultView.ToTable());
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKTTC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKHVTTH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKTCN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKTKS = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetQLDA = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(7);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetQLĐHN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetĐTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTCTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTCXL = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetGNKDT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetCNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTGV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetQĐ_TCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetHĐ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
+
             DataTable[] a = new DataTable[16];
             for (int i = 0; i < 16; i++)
             {
@@ -976,10 +1178,18 @@ namespace QLVanThu
                             expression = "SoKyHieuVB like '%HĐ%' and TypeID=13";
                         else
                             if (KeyWord == "-QLDA")
-                                expression = String.Format("(SoKyHieuVB not like '%QLDA' and SoKyHieuVB not like '%QĐ%' and SoKyHieuVB not like '%TCHC' and SoKyHieuVB not like '%HĐ%' and TypeID<>13)");
+                                expression = "SoKyHieuVB not like '%QLDA' and SoKyHieuVB not like '%QĐ-TH-TCHC' and TypeID<>13";
                             else
                                 expression = String.Format("(SoKyHieuVB like '%{0}%')", KeyWord);
             vanthudis.Filter = expression;
+        }
+
+        private void dgvDSVanThuDi_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSVanThuDi.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
         }
 
 
