@@ -113,10 +113,11 @@
             this.PathFile});
             this.dgvDSVanThuDen.Location = new System.Drawing.Point(12, 118);
             this.dgvDSVanThuDen.Name = "dgvDSVanThuDen";
-            this.dgvDSVanThuDen.RowHeadersWidth = 20;
+            this.dgvDSVanThuDen.RowHeadersWidth = 50;
             this.dgvDSVanThuDen.Size = new System.Drawing.Size(1342, 557);
             this.dgvDSVanThuDen.TabIndex = 0;
             this.dgvDSVanThuDen.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSVanThu_CellMouseClick);
+            this.dgvDSVanThuDen.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSVanThuDen_RowPostPaint);
             this.dgvDSVanThuDen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSVanThu_CellContentClick);
             // 
             // NgayDen
