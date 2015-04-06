@@ -1107,7 +1107,7 @@ namespace QLVanThuDen
                         Microsoft.Office.Interop.Excel.Worksheet oSheetTPHCM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
                         Microsoft.Office.Interop.Excel.Worksheet oSheetTongCty = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
                         Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             switch (i)
                             {
