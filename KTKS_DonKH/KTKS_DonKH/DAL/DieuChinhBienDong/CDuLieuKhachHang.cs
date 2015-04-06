@@ -5,6 +5,8 @@ using System.Text;
 using KTKS_DonKH.LinQ;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.HeThong;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
@@ -84,6 +86,87 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
             else
                 return false;
+        }
+
+        protected static string _connectionString;
+        protected SqlConnection connection;
+        protected SqlCommand command;
+        protected SqlTransaction transaction;
+
+        public CDuLieuKhachHang()
+        {
+            try
+            {
+                _connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
+                connection = new SqlConnection(_connectionString);
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public void Connect()
+        {
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+        }
+
+        public void Disconnect()
+        {
+            if (connection.State == ConnectionState.Open)
+                connection.Close();
+        }
+
+        public void SqlBeginTransaction()
+        {
+            try
+            {
+                Connect();
+                transaction = connection.BeginTransaction();
+            }
+            catch (Exception) { }
+        }
+
+        public void SqlCommitTransaction()
+        {
+            try
+            {
+                transaction.Commit();
+                transaction.Dispose();
+                Disconnect();
+            }
+            catch (Exception) { }
+        }
+
+        public void SqlRollbackTransaction()
+        {
+            transaction.Rollback();
+            transaction.Dispose();
+            try
+            {
+                Disconnect();
+            }
+            catch (Exception) { }
+        }
+
+        public bool ExecuteNonQuery_Transaction(string sql)
+        {
+            try
+            {
+                command = new SqlCommand(sql, connection);
+                command.Transaction = transaction;
+                if (command.ExecuteNonQuery() == 0)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }

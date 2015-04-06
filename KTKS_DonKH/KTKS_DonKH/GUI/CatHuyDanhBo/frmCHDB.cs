@@ -72,7 +72,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         public void Clear()
         {
             //txtMaThongBaoCH.Text = "";
-            txtMaThongBaoCT.Text = "";
+            //txtMaThongBaoCT.Text = "";
             ///
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
@@ -293,12 +293,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
-                                ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                                ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".",""));
 
                             ctchdb.NoiNhan = txtNoiNhan.Text.Trim();
 
                             ///Đã lập Cắt Tạm
-                            if (txtMaThongBaoCT.Text.Trim() != "")
+                            if (_ctctdb!=null)
                             {
                                 ctchdb.DaLapCatTam = true;
                                 ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
@@ -366,9 +366,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
-                                ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                                ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                             ///Đã lập Cắt Tạm
-                            if (txtMaThongBaoCT.Text.Trim() != "")
+                            if (_ctctdb!=null)
                             {
                                 ctchdb.DaLapCatTam = true;
                                 ctchdb.MaCTCTDB = decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""));
@@ -380,6 +380,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             else
                                 ctchdb.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             ctchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            ctchdb.ThongBaoDuocKy = true;
 
                             if (_cCHDB.ThemCTCHDB(ctchdb))
                             {
@@ -468,7 +469,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
-                                ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                                ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
 
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -531,7 +532,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                                 ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                                 if (txtSoTien.Text.Trim() != "")
-                                    ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                                    ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                                 ///Đã lập Cắt Tạm
                                 ctchdb.DaLapCatTam = true;
                                 ctchdb.MaCTCTDB = _ctctdb.MaCTCTDB;
@@ -1059,33 +1060,45 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void txtMaThongBaoCT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (e.KeyChar == 13)
-            //{
-            //    if (_cCHDB.getCTCTDBbyID(decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""))) != null)
-            //    {
-            //        Clear();
-            //        CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", "")));
+            if (e.KeyChar == 13)
+            {
+                if (_cCHDB.getCTCTDBbyID(decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", ""))) != null)
+                {
+                    Clear();
+                    _ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(txtMaThongBaoCT.Text.Trim().Replace("-", "")));
 
-            //        if (!string.IsNullOrEmpty(_ctchdb.CHDB.MaDonTXL.ToString()))
-            //            txtMaDon.Text = "TXL" + _ctchdb.CHDB.MaDonTXL.ToString().Insert(_ctchdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
-            //        else
-            //            if (!string.IsNullOrEmpty(_ctchdb.CHDB.MaDon.ToString()))
-            //                txtMaDon.Text = _ctchdb.CHDB.MaDon.ToString().Insert(_ctchdb.CHDB.MaDon.ToString().Length - 2, "-");
+                    if (!string.IsNullOrEmpty(_ctctdb.CHDB.MaDonTXL.ToString()))
+                    {
+                        _dontxl = _cDonTXL.getDonTXLbyID(_ctctdb.CHDB.MaDonTXL.Value);
+                        txtMaDon.Text = "TXL" + _ctctdb.CHDB.MaDonTXL.ToString().Insert(_ctctdb.CHDB.MaDonTXL.ToString().Length - 2, "-");
+                    }
+                    else
+                        if (!string.IsNullOrEmpty(_ctctdb.CHDB.MaDon.ToString()))
+                        {
+                            _donkh = _cDonKH.getDonKHbyID(_ctctdb.CHDB.MaDon.Value);
+                            txtMaDon.Text = _ctctdb.CHDB.MaDon.ToString().Insert(_ctctdb.CHDB.MaDon.ToString().Length - 2, "-");
+                        }
+                    
+                    //txtMaThongBaoCH.Text = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
 
-            //        //txtMaThongBaoCH.Text = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                    txtMaThongBaoCT.Text = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
 
-            //        txtMaThongBaoCT.Text = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                    txtDanhBo.Text = _ctctdb.DanhBo;
+                    txtHopDong.Text = _ctctdb.HopDong;
+                    txtHoTen.Text = _ctctdb.HoTen;
+                    txtDiaChi.Text = _ctctdb.DiaChi;
 
-            //        txtDanhBo.Text = ctctdb.DanhBo;
-            //        txtHopDong.Text = ctctdb.HopDong;
-            //        txtHoTen.Text = ctctdb.HoTen;
-            //        txtDiaChi.Text = ctctdb.DiaChi;
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Mã Thông Báo này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
+                    ///Nguyên Nhân Xử Lý
+                    cmbLyDo.SelectedItem = _ctctdb.LyDo;
+                    txtGhiChuXuLy.Text = _ctctdb.GhiChuLyDo;
+                    txtSoTien.Text = _ctctdb.SoTien.ToString();
+                }
+                else
+                {
+                    Clear();
+                    MessageBox.Show("Mã Thông Báo này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -1115,7 +1128,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                     _ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                     if (txtSoTien.Text.Trim() != "")
-                        _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                        _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                     else
                         _ctchdb.SoTien = null;
 
@@ -1273,6 +1286,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (cmbNoiDung.SelectedIndex != -1)
                 dateXuLy.Enabled = true;
+        }
+
+        private void txtSoTien_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtSoTien_Leave(object sender, EventArgs e)
+        {
+            if (txtSoTien.Text.Trim() != "")
+                txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
         }
 
     }

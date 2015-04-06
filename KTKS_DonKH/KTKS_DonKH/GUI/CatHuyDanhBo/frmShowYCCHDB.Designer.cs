@@ -56,6 +56,7 @@
             this.chkCatTamNutBit = new System.Windows.Forms.CheckBox();
             this.txtMaYCCHDB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxCatTamNutBit.SuspendLayout();
@@ -197,6 +198,9 @@
             this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
+            this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);
+            this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
+            this.txtSoTien.Leave += new System.EventHandler(this.txtSoTien_Leave);
             // 
             // groupBox1
             // 
@@ -339,12 +343,24 @@
             this.label8.TabIndex = 27;
             this.label8.Text = "Số Phiếu:";
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(129, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(131, 31);
+            this.label22.TabIndex = 91;
+            this.label22.Text = "Phiếu Cắt";
+            // 
             // frmShowYCCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 290);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.txtMaYCCHDB);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBoxCatTamNutBit);
@@ -403,5 +419,6 @@
         private System.Windows.Forms.CheckBox chkCatTamNutBit;
         private System.Windows.Forms.TextBox txtMaYCCHDB;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label22;
     }
 }

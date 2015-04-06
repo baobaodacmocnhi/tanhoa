@@ -230,6 +230,32 @@ namespace KTKS_DonKH.GUI.BamChi
 
                             dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
                         }
+                        else
+                        {
+                            DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
+
+                            dr["TuNgay"] = _tuNgay;
+                            dr["DenNgay"] = _denNgay;
+                            if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                                dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            dr["HopDong"] = itemRow["HopDong"];
+                            dr["HoTen"] = itemRow["HoTen"];
+                            dr["DiaChi"] = itemRow["DiaChi"];
+                            dr["NgayBC"] = itemRow["NgayBC"];
+                            dr["Hieu"] = itemRow["Hieu"];
+                            dr["Co"] = itemRow["Co"];
+                            dr["ChiSo"] = itemRow["ChiSo"];
+                            dr["TrangThai"] = "Loại Khác";
+                            dr["VienChi"] = itemRow["VienChi"];
+                            dr["DayChi"] = itemRow["DayChi"];
+                            dr["MaSoBC"] = itemRow["MaSoBC"];
+                            dr["NguoiBC"] = itemRow["CreateBy"];
+                            dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
+                            if (CTaiKhoan.MaUser != 1 && CTaiKhoan.MaUser != 26 && CTaiKhoan.MaUser != 27)
+                                dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                            dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
+                        }
 
                     rptDSBamChi_ChiThan_BBDCMS rpt = new rptDSBamChi_ChiThan_BBDCMS();
                     rpt.SetDataSource(dsBaoCao);

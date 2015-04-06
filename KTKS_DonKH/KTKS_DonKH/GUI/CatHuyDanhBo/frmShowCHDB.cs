@@ -429,7 +429,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                     _ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                     if (txtSoTien.Text.Trim() != "")
-                        _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                        _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                     else
                         _ctchdb.SoTien = null;
 
@@ -672,6 +672,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (cmbNoiDung.SelectedIndex != -1)
                 dateXuLy.Enabled = true;
+        }
+
+        private void txtSoTien_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtSoTien_Leave(object sender, EventArgs e)
+        {
+            if (txtSoTien.Text.Trim() != "")
+                txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
         }
     }
 }

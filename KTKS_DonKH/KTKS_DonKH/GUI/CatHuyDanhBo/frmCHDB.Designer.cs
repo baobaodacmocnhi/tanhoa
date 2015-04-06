@@ -93,6 +93,7 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBoxKetQuaCapTrenXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -230,7 +231,9 @@
             this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
+            this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);
             this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
+            this.txtSoTien.Leave += new System.EventHandler(this.txtSoTien_Leave);
             // 
             // dateLichSuXuLy
             // 
@@ -748,6 +751,17 @@
             this.xóaToolStripMenuItem.Text = "Xóa";
             this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(147, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(113, 31);
+            this.label22.TabIndex = 60;
+            this.label22.Text = "Cắt Hủy";
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -755,6 +769,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1220, 690);
             this.Controls.Add(this.label28);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.dgvLichSuXuLy);
             this.Controls.Add(this.chkKetQuaCapTrenXuLy);
             this.Controls.Add(this.chkKetQuaTCTBXuLy);
@@ -861,6 +876,7 @@
         private System.Windows.Forms.ComboBox cmbNoiDung;
         private System.Windows.Forms.DateTimePicker dateXuLy;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label22;
 
     }
 }

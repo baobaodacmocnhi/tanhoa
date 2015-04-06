@@ -57,6 +57,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.groupBoxCatTamNutBit = new System.Windows.Forms.GroupBox();
             this.btnSua = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxCatTamNutBit.SuspendLayout();
@@ -200,6 +201,9 @@
             this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
+            this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);
+            this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
+            this.txtSoTien.Leave += new System.EventHandler(this.txtSoTien_Leave);
             // 
             // label7
             // 
@@ -351,12 +355,24 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(129, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(131, 31);
+            this.label22.TabIndex = 90;
+            this.label22.Text = "Phiếu Cắt";
+            // 
             // frmYCCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 288);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.groupBoxCatTamNutBit);
             this.Controls.Add(this.chkCatTamNutBit);
@@ -414,5 +430,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBoxCatTamNutBit;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Label label22;
     }
 }

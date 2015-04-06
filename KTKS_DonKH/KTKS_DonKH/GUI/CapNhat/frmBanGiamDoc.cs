@@ -306,12 +306,12 @@ namespace KTKS_DonKH.GUI.CapNhat
             if (chkSelectAll.Checked)
                 for (int i = 0; i < dgvDanhSach.Rows.Count; i++)
                 {
-                    dgvDanhSach["In", i].Value = true;
+                    dgvDanhSach["CapNhat", i].Value = true;
                 }
             else
                 for (int i = 0; i < dgvDanhSach.Rows.Count; i++)
                 {
-                    dgvDanhSach["In", i].Value = false;
+                    dgvDanhSach["CapNhat", i].Value = false;
                 }
         }
 

@@ -207,7 +207,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctctdb.LyDo = cmbLyDo.SelectedItem.ToString();
                     _ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                     if (txtSoTien.Text.Trim() != "")
-                        _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                        _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
 
                     if (cmbNoiDung.SelectedIndex != -1)
                     {
@@ -603,7 +603,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN") || cmbLyDo.SelectedItem.ToString() == "Vấn Đề Khác")
+            {
                 txtSoTien.ReadOnly = false;
+                if (cmbLyDo.SelectedItem.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
+                {
+                    txtNoiNhan.Text = "- Như trên\r\n- Đội TCTB: thực hiện\r\n- Lưu.";
+                    txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
+                }
+            }
             else
                 txtSoTien.ReadOnly = true;
         }
@@ -654,6 +661,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (cmbNoiDung.SelectedIndex != -1)
                 dateXuLy.Enabled = true;
+        }
+
+        private void txtSoTien_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtSoTien_Leave(object sender, EventArgs e)
+        {
+            if (txtSoTien.Text.Trim() != "")
+                txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
         }
     }
 }

@@ -165,7 +165,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ycchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
-                                ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                                ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                             ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -249,7 +249,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                             ycchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
-                                ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                                ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                             ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
                             ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
@@ -388,7 +388,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 _ycchdb.LyDo = cmbLyDo.SelectedItem.ToString();
                 _ycchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                 if (txtSoTien.Text.Trim() != "")
-                    _ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim());
+                    _ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                 _ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
                 if (chkCatTamNutBit.Checked)
                 {
@@ -408,6 +408,23 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
             else
                 MessageBox.Show("Chưa chọn Phiếu YCCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtSoTien_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtSoTien_Leave(object sender, EventArgs e)
+        {
+            if (txtSoTien.Text.Trim() != "")
+                txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
         }
         
     }

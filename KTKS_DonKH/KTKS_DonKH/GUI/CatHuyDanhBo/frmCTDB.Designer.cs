@@ -90,6 +90,7 @@
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
@@ -266,9 +267,12 @@
             this.txtSoTien.Location = new System.Drawing.Point(385, 24);
             this.txtSoTien.Name = "txtSoTien";
             this.txtSoTien.ReadOnly = true;
+            this.txtSoTien.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
+            this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);
             this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
+            this.txtSoTien.Leave += new System.EventHandler(this.txtSoTien_Leave);
             // 
             // btnLuu
             // 
@@ -716,6 +720,17 @@
             this.label17.TabIndex = 11;
             this.label17.Text = "Nơi Nhận:";
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(142, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(118, 31);
+            this.label22.TabIndex = 61;
+            this.label22.Text = "Cắt Tạm";
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -723,6 +738,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1186, 683);
             this.Controls.Add(this.label28);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.dgvLichSuXuLy);
             this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.label17);
@@ -824,5 +840,6 @@
         private System.Windows.Forms.ComboBox cmbNoiDung;
         private System.Windows.Forms.DateTimePicker dateXuLy;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label22;
     }
 }

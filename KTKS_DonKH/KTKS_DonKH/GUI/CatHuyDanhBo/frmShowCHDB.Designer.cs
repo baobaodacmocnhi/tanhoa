@@ -94,6 +94,7 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
@@ -342,7 +343,9 @@
             this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
+            this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);
             this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
+            this.txtSoTien.Leave += new System.EventHandler(this.txtSoTien_Leave);
             // 
             // label7
             // 
@@ -607,7 +610,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(660, 299);
+            this.btnIn.Location = new System.Drawing.Point(656, 299);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(125, 35);
             this.btnIn.TabIndex = 13;
@@ -754,6 +757,17 @@
             this.xóaToolStripMenuItem.Text = "Xóa";
             this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(147, 9);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(113, 31);
+            this.label22.TabIndex = 90;
+            this.label22.Text = "Cắt Hủy";
+            // 
             // frmShowCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -761,6 +775,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1211, 696);
             this.Controls.Add(this.label28);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.dgvLichSuXuLy);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.label18);
@@ -768,9 +783,9 @@
             this.Controls.Add(this.chkKetQuaCapTrenXuLy);
             this.Controls.Add(this.chkKetQuaTCTBXuLy);
             this.Controls.Add(this.txtMaThongBaoCT);
-            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtMaThongBaoCH);
             this.Controls.Add(this.label14);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.txtHieuLucKy);
@@ -871,5 +886,6 @@
         private System.Windows.Forms.ComboBox cmbNoiDung;
         private System.Windows.Forms.DateTimePicker dateXuLy;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label22;
     }
 }

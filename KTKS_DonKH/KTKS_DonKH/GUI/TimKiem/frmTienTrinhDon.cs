@@ -292,6 +292,11 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+            if (!string.IsNullOrEmpty(e.Value.ToString()))
+                if (e.Column.FieldName == "SoPhieu" && e.Value != null)
+                {
+                    e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                }
         }
 
         private void gridViewCHDB_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -422,6 +427,11 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+            if (!string.IsNullOrEmpty(e.Value.ToString()))
+                if (e.Column.FieldName == "SoPhieu" && e.Value != null)
+                {
+                    e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                }
         }
 
         private void gridViewCHDB_TXL_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)

@@ -310,7 +310,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                     var query = from itemDonKH in db.DonKHs
                                 join itemLoaiDon in db.LoaiDons on itemDonKH.MaLD equals itemLoaiDon.MaLD
                                 join itemUser in db.Users on itemDonKH.CreateBy equals itemUser.MaU
-                                where itemDonKH.SoCongVan == SoCongVan
+                                where itemDonKH.SoCongVan.Contains(SoCongVan)
                                 //orderby itemDonKH.CreateDate ascending
                                 select new
                                 {

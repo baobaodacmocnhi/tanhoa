@@ -107,5 +107,9 @@ namespace KTKS_DonKH.DAL
         {
             db.Transaction.Rollback();
         }
+
+        
+
+        
     }
 }

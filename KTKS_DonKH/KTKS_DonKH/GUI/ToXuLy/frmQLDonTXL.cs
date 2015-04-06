@@ -308,9 +308,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dr["TenLD"] = itemRow["TenLD"];
                     dr["SoCongVan"] = itemRow["SoCongVan"];
                     dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                    DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                    //DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
                     dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
-                    dr["TenLD"] = dontxl.LoaiDonTXL.TenLD;
+                    dr["TenLD"] = itemRow["TenLD"].ToString();
 
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                         dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -322,7 +322,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
                         string NgayGiaiQuyet;
-                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon,out NgayGiaiQuyet).ToString();
+                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString()),out NgayGiaiQuyet).ToString();
                         dr["NgayGiaiQuyet"] = NgayGiaiQuyet;
                     }
 
@@ -408,6 +408,59 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 }
             }
             rptChiTietDonTXL rpt = new rptChiTietDonTXL();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void btnInGiaoToKH_Click(object sender, EventArgs e)
+        {
+            DataTable dt = ((DataTable)dgvDSDonTXL.DataSource).DefaultView.ToTable();
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Ngày":
+                    dt = _cDonTXL.LoadDSDonTXLDaChuyenTKHByDate(dateTimKiem.Value);
+                    break;
+                case "Khoảng Thời Gian":
+                    dt = _cDonTXL.LoadDSDonTXLDaChuyenTKHByDates(dateTu.Value, dateDen.Value);
+                    break;
+                case "Số Công Văn":
+                    dt = _cDonTXL.LoadDSDonTXLDaChuyenTKHBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                    break;
+            }
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataRow itemRow in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                dr["TuNgay"] = _tuNgay;
+                dr["DenNgay"] = _denNgay;
+                //dr["MaLD"] = itemRow["MaLD"];
+                dr["TenLD"] = itemRow["TenLD"];
+                dr["SoCongVan"] = itemRow["SoCongVan"];
+                dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                //DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(itemRow["MaDon"].ToString()));
+                dr["MaDon"] = "TXL" + itemRow["MaDon"].ToString().Insert(itemRow["MaDon"].ToString().Length - 2, "-");
+                dr["TenLD"] = itemRow["TenLD"].ToString();
+
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = itemRow["HoTen"];
+                dr["DiaChi"] = itemRow["DiaChi"];
+                dr["NoiDung"] = itemRow["NoiDung"];
+                dr["GhiChuChuyenKT"] = itemRow["GhiChuChuyenKT"];
+                //if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
+                //{
+                //    dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
+                //    string NgayGiaiQuyet;
+                //    dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(itemRow["NguoiDi"].ToString()), dontxl.MaDon, out NgayGiaiQuyet).ToString();
+                //    dr["NgayGiaiQuyet"] = NgayGiaiQuyet;
+                //}
+
+                dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+            }
+            rptDSDonTXLChuyenTKH rpt = new rptDSDonTXLChuyenTKH();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
