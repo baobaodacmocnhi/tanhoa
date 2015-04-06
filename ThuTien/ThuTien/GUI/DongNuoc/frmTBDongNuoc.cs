@@ -256,6 +256,16 @@ namespace ThuTien.GUI.DongNuoc
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
+        private void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAll.Checked)
+                for (int i = 0; i < gridViewDN.RowCount; i++)
+                    gridViewDN.SetRowCellValue(i, gridViewDN.Columns["In"], "True");
+            else
+                for (int i = 0; i < gridViewDN.RowCount; i++)
+                    gridViewDN.SetRowCellValue(i, gridViewDN.Columns["In"], "False");
+        }
+
        
  
     }

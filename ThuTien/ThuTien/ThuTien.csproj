@@ -101,6 +101,12 @@
       <DependentUpon>rptNangSuatThuTien.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\ToTruong\rptTongHopNo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTongHopNo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\ChuyenKhoan\CNganHang.cs" />
     <Compile Include="DAL\Doi\CHoaDon.cs" />
@@ -161,6 +167,12 @@
     </Compile>
     <Compile Include="GUI\HanhThu\frmQuetTam.Designer.cs">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TongHop\frmThu2Lan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TongHop\frmThu2Lan.Designer.cs">
+      <DependentUpon>frmThu2Lan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmGiaoHDTon.cs">
       <SubType>Form</SubType>
@@ -264,6 +276,12 @@
     <Compile Include="GUI\ToTruong\frmGiaoHDHanhThu.Designer.cs">
       <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmHDTienLon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmHDTienLon.Designer.cs">
+      <DependentUpon>frmHDTienLon.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmKiemTraDangNgan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +299,12 @@
     </Compile>
     <Compile Include="GUI\ToTruong\frmNangSuatThuTien.Designer.cs">
       <DependentUpon>frmNangSuatThuTien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmTongHopNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmTongHopNo.Designer.cs">
+      <DependentUpon>frmTongHopNo.cs</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbKTKS_DonKH.designer.cs">
       <AutoGen>True</AutoGen>
@@ -317,6 +341,10 @@
     <EmbeddedResource Include="BaoCao\ToTruong\rptNangSuatThuTien.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptNangSuatThuTien.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ToTruong\rptTongHopNo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTongHopNo.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -361,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmQuetTam.resx">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TongHop\frmThu2Lan.resx">
+      <DependentUpon>frmThu2Lan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmGiaoHDTon.resx">
       <DependentUpon>frmGiaoHDTon.cs</DependentUpon>
@@ -416,6 +447,9 @@
     <None Include="LinQ\dbKTKS_DonKH.dbml.layout">
       <DependentUpon>dbKTKS_DonKH.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\ToTruong\frmHDTienLon.resx">
+      <DependentUpon>frmHDTienLon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraDangNgan.resx">
       <DependentUpon>frmKiemTraDangNgan.cs</DependentUpon>
     </EmbeddedResource>
@@ -424,6 +458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmNangSuatThuTien.resx">
       <DependentUpon>frmNangSuatThuTien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmTongHopNo.resx">
+      <DependentUpon>frmTongHopNo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

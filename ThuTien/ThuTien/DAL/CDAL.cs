@@ -31,6 +31,12 @@ namespace ThuTien.DAL
             _db.Transaction.Rollback();
         }
 
+        public void SubmitChanges()
+        {
+            _db.SubmitChanges();
+
+        }
+
         //public void SubmitChanges()
         //{
         //    _db.SubmitChanges();

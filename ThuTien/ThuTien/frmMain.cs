@@ -224,6 +224,27 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuHDTienLon_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuHDTienLon", "Xem"))
+            {
+                frmHDTienLon frm = new frmHDTienLon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuTongHopNo_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTongHopNo", "Xem"))
+            {
+                frmTongHopNo frm = new frmTongHopNo();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         #endregion
 
@@ -366,9 +387,21 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuThu2Lan_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuThu2Lan", "Xem"))
+            {
+                frmThu2Lan frm = new frmThu2Lan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion 
 
-        
+       
+
 
         #region
 

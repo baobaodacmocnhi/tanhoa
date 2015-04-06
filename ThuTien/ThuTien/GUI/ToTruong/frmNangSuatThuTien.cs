@@ -115,8 +115,8 @@ namespace ThuTien.GUI.ToTruong
             ///chọn 1 kỳ cụ thể
             else
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNamKy(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedValue.ToString()));
-                dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNamKy(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedValue.ToString()));
+                dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNamKy(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNamKy(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 LoadDataGridView();
             }
         }

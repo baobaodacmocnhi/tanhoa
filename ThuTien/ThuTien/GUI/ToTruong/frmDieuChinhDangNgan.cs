@@ -16,9 +16,9 @@ namespace ThuTien.GUI.ToTruong
 {
     public partial class frmDieuChinhDangNgan : Form
     {
+        string _mnu = "mnuDieuChinhDangNgan";
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
-        string _mnu = "mnuDieuChinhDangNgan";
         CTamThu _cTamThu = new CTamThu();
         CDCHD _cDCHD = new CDCHD();
 
@@ -39,6 +39,8 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
             cmbNhanVien.DisplayMember = "HoTen";
             cmbNhanVien.ValueMember = "MaND";
+
+            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
         }
 
         public void LoadDanhSachHD()
@@ -199,7 +201,7 @@ namespace ThuTien.GUI.ToTruong
                     {
                         _cHoaDon.SqlBeginTransaction();
                         foreach (var item in lstHD.Items)
-                            if (!_cHoaDon.DangNgan("HanhThu", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value))
+                            if (!_cHoaDon.DangNgan("Ton", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value))
                             {
                                 _cHoaDon.SqlRollbackTransaction();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
