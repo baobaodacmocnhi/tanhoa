@@ -981,7 +981,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemLSCVP.NgayChuyen,
                                     LoaiChuyen = "Tiến Trình Giải Quyết",
                                     itemLSCVP.GhiChuChuyen,
-                                    //NguoiDi = itemUser.HoTen,
+                                    NguoiDi = "",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1161,7 +1161,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     itemLSCVP.NgayChuyen,
                                     LoaiChuyen = "Khác",
                                     itemLSCVP.GhiChuChuyen,
-                                    //NguoiDi = itemUser.HoTen,
+                                    NguoiDi = "",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

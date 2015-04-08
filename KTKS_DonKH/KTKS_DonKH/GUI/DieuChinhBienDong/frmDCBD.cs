@@ -193,6 +193,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             if (bool.Parse(dgvDSSoDangKy.Rows[e.RowIndex].Cells["Cat"].Value.ToString()) == true)
                 dgvDSSoDangKy.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightSlateGray;
+            else
+                dgvDSSoDangKy.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
         }
 
         private void dgvDSSoDangKy_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -381,7 +383,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///Hiện tại nếu check Cat mà exit bằng X thì dữ liệu không được lưu
             ///Sau khi check phải check qua chỗ khác mới lưu
             CTChungTu ctchungtu = _cChungTu.getCTChungTubyID(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString());
-            if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.SoChinh)
+            if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.Cat)
             {
                 ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
                 _cChungTu.SuaCTChungTu(ctchungtu);
