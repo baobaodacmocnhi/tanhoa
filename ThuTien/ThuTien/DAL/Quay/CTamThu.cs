@@ -120,9 +120,9 @@ namespace ThuTien.DAL.Quay
                             itemTT.CreateDate,
                             itemHD.SOHOADON,
                             itemHD.SOPHATHANH,
-                            itemHD.NAM,
-                            itemHD.KY,
-                            itemHD.DOT,
+                            //itemHD.NAM,
+                            Ky=itemHD.KY+"/"+itemHD.NAM,
+                            //itemHD.DOT,
                             MLT = itemHD.MALOTRINH,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
@@ -132,7 +132,8 @@ namespace ThuTien.DAL.Quay
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
-                            HanhThu = itemND.TT_To.TenTo + ": " + itemND.HoTen,
+                            HanhThu = itemND.HoTen,
+                            To = itemND.TT_To.TenTo,
                             itemTT.MaNH,
                         };
             return LINQToDataTable(query);
