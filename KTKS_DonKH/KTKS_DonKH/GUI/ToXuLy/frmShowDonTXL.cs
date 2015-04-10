@@ -109,6 +109,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     if (_dontxl.NguoiDi != null)
                     cmbNguoiDi.SelectedValue = _dontxl.NguoiDi;
                     txtGhiChuChuyenKT.Text = _dontxl.GhiChuChuyenKT;
+                    chkTKN.Checked = _dontxl.TKN;
                     chkDCG.Checked = _dontxl.DCG;
                     chkDCMS.Checked = _dontxl.DCMS;
                 }
@@ -179,6 +180,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     if (cmbNguoiDi.SelectedIndex != -1)
                         _dontxl.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
                     _dontxl.GhiChuChuyenKT = txtGhiChuChuyenKT.Text;
+                    _dontxl.TKN = chkTKN.Checked;
                     _dontxl.DCG = chkDCG.Checked;
                     _dontxl.DCMS = chkDCMS.Checked;
                 }
@@ -188,6 +190,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     _dontxl.NgayChuyenKT = null;
                     _dontxl.NguoiDi = null;
                     _dontxl.GhiChuChuyenKT = null;
+                    _dontxl.TKN = false;
                     _dontxl.DCG = false;
                     _dontxl.DCMS = false;
                 }

@@ -410,6 +410,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtSoTien.Text.Trim() != "")
                         ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
 
+                    ctctdb.NoiNhan = txtNoiNhan.Text.Trim();
                     ///Ký Tên
                     BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                     if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")

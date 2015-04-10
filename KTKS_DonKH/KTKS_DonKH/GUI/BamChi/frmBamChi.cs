@@ -222,7 +222,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 ///Nếu đơn thuộc Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (_dontxl != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != ""))
+                    if (_dontxl != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
                     {
                         if (!_cBamChi.CheckBamChibyMaDon_TXL(_dontxl.MaDon))
                         {
@@ -323,7 +323,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 }
                 ///Nếu đơn thuộc Tổ Khách Hàng
                 else
-                    if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != ""))
+                    if (_donkh != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
                     {
                         if (!_cBamChi.CheckBamChibyMaDon(_donkh.MaDon))
                         {
@@ -493,7 +493,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     ///Nếu Đơn thuộc Tổ Xử Lý
                     if (ctbamchi.BamChi.ToXuLy)
                     {
-                        if (_dontxl != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != ""))
+                        if (_dontxl != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
                         {
                             if (_cBamChi.SuaCTBamChi(ctbamchi))
                             {
@@ -507,7 +507,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     }
                     else
                         ///Nếu Đơn thuộc Tổ Khách Hàng
-                        if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != ""))
+                        if (_donkh != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtTheoYeuCau.Text.Trim() != "")
                         {
                             if (_cBamChi.SuaCTBamChi(ctbamchi))
                             {

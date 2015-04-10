@@ -78,6 +78,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.chkChuyenBanDoiKhac = new System.Windows.Forms.CheckBox();
             this.groupBoxChuyenKTXM = new System.Windows.Forms.GroupBox();
+            this.chkDCMS = new System.Windows.Forms.CheckBox();
+            this.chkDCG = new System.Windows.Forms.CheckBox();
             this.txtGhiChuChuyenKT = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.cmbNguoiDi = new System.Windows.Forms.ComboBox();
@@ -97,8 +99,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.txtTongSoDanhBo = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.chkDCG = new System.Windows.Forms.CheckBox();
-            this.chkDCMS = new System.Windows.Forms.CheckBox();
+            this.chkTKN = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBoxChuyenKhac.SuspendLayout();
@@ -577,6 +578,7 @@
             // 
             // groupBoxChuyenKTXM
             // 
+            this.groupBoxChuyenKTXM.Controls.Add(this.chkTKN);
             this.groupBoxChuyenKTXM.Controls.Add(this.chkDCMS);
             this.groupBoxChuyenKTXM.Controls.Add(this.chkDCG);
             this.groupBoxChuyenKTXM.Controls.Add(this.txtGhiChuChuyenKT);
@@ -592,11 +594,31 @@
             this.groupBoxChuyenKTXM.TabIndex = 14;
             this.groupBoxChuyenKTXM.TabStop = false;
             // 
+            // chkDCMS
+            // 
+            this.chkDCMS.AutoSize = true;
+            this.chkDCMS.Location = new System.Drawing.Point(733, 17);
+            this.chkDCMS.Name = "chkDCMS";
+            this.chkDCMS.Size = new System.Drawing.Size(69, 21);
+            this.chkDCMS.TabIndex = 115;
+            this.chkDCMS.Text = "ĐCMS";
+            this.chkDCMS.UseVisualStyleBackColor = true;
+            // 
+            // chkDCG
+            // 
+            this.chkDCG.AutoSize = true;
+            this.chkDCG.Location = new System.Drawing.Point(669, 17);
+            this.chkDCG.Name = "chkDCG";
+            this.chkDCG.Size = new System.Drawing.Size(58, 21);
+            this.chkDCG.TabIndex = 114;
+            this.chkDCG.Text = "ĐCG";
+            this.chkDCG.UseVisualStyleBackColor = true;
+            // 
             // txtGhiChuChuyenKT
             // 
             this.txtGhiChuChuyenKT.Location = new System.Drawing.Point(568, 15);
             this.txtGhiChuChuyenKT.Name = "txtGhiChuChuyenKT";
-            this.txtGhiChuChuyenKT.Size = new System.Drawing.Size(95, 25);
+            this.txtGhiChuChuyenKT.Size = new System.Drawing.Size(31, 25);
             this.txtGhiChuChuyenKT.TabIndex = 113;
             // 
             // label22
@@ -763,25 +785,15 @@
             this.label23.TabIndex = 4;
             this.label23.Text = "Tổng Số DB";
             // 
-            // chkDCG
+            // chkTKN
             // 
-            this.chkDCG.AutoSize = true;
-            this.chkDCG.Location = new System.Drawing.Point(669, 17);
-            this.chkDCG.Name = "chkDCG";
-            this.chkDCG.Size = new System.Drawing.Size(58, 21);
-            this.chkDCG.TabIndex = 114;
-            this.chkDCG.Text = "ĐCG";
-            this.chkDCG.UseVisualStyleBackColor = true;
-            // 
-            // chkDCMS
-            // 
-            this.chkDCMS.AutoSize = true;
-            this.chkDCMS.Location = new System.Drawing.Point(733, 17);
-            this.chkDCMS.Name = "chkDCMS";
-            this.chkDCMS.Size = new System.Drawing.Size(69, 21);
-            this.chkDCMS.TabIndex = 115;
-            this.chkDCMS.Text = "ĐCMS";
-            this.chkDCMS.UseVisualStyleBackColor = true;
+            this.chkTKN.AutoSize = true;
+            this.chkTKN.Location = new System.Drawing.Point(605, 17);
+            this.chkTKN.Name = "chkTKN";
+            this.chkTKN.Size = new System.Drawing.Size(58, 21);
+            this.chkTKN.TabIndex = 119;
+            this.chkTKN.Text = "TKN";
+            this.chkTKN.UseVisualStyleBackColor = true;
             // 
             // frmShowDonTXL
             // 
@@ -912,5 +924,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuChuyen;
         private System.Windows.Forms.CheckBox chkDCMS;
         private System.Windows.Forms.CheckBox chkDCG;
+        private System.Windows.Forms.CheckBox chkTKN;
     }
 }

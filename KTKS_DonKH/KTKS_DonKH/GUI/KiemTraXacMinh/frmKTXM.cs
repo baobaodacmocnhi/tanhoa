@@ -241,7 +241,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 ///Nếu đơn thuộc Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (_dontxl != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
+                    if (_dontxl != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtNoiDungKiemTra.Text.Trim() != "")
                     {
                         if (!_cKTXM.CheckKTMXbyMaDon_TXL(_dontxl.MaDon))
                         {
@@ -321,7 +321,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 }
                 ///Nếu đơn thuộc Tổ Khách Hàng
                 else
-                    if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
+                    if (_donkh != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtNoiDungKiemTra.Text.Trim() != "")
                     //if (_donkh != null && txtNoiDungKiemTra.Text.Trim() != "")
                     {
                         if (!_cKTXM.CheckKTMXbyMaDon(_donkh.MaDon))
@@ -466,7 +466,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     ///Nếu Đơn thuộc Tổ Xử Lý
                     if (ctktxm.KTXM.ToXuLy)
                     {
-                        if (_dontxl != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
+                        if (_dontxl != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtNoiDungKiemTra.Text.Trim() != "")
                         {
                             if (_cKTXM.SuaCTKTXM(ctktxm))
                             {
@@ -480,7 +480,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     }
                     else
                         ///Nếu Đơn thuộc Tổ Khách Hàng
-                        if (_donkh != null && (txtDanhBo.Text.Trim() != "" || txtHoTen.Text.Trim() != "" || txtDiaChi.Text.Trim() != "") && txtNoiDungKiemTra.Text.Trim() != "")
+                        if (_donkh != null && txtHoTen.Text.Trim() != "" && txtDiaChi.Text.Trim() != "" && txtNoiDungKiemTra.Text.Trim() != "")
                         {
                             if (_cKTXM.SuaCTKTXM(ctktxm))
                             {

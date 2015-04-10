@@ -59,6 +59,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.chkChuyenKT = new System.Windows.Forms.CheckBox();
             this.groupBoxChuyenKTXM = new System.Windows.Forms.GroupBox();
+            this.chkTKN = new System.Windows.Forms.CheckBox();
+            this.chkDCMS = new System.Windows.Forms.CheckBox();
+            this.chkDCG = new System.Windows.Forms.CheckBox();
             this.txtGhiChuChuyenKT = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.cmbNguoiDi = new System.Windows.Forms.ComboBox();
@@ -98,8 +101,11 @@
             this.btnNhapNhieuDB = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
-            this.chkDCMS = new System.Windows.Forms.CheckBox();
-            this.chkDCG = new System.Windows.Forms.CheckBox();
+            this.dgvLichSuDon = new System.Windows.Forms.DataGridView();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.groupBoxChuyenKTXM.SuspendLayout();
@@ -109,6 +115,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuChuyenKT)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDon)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNoiDung
@@ -392,6 +399,7 @@
             // 
             // groupBoxChuyenKTXM
             // 
+            this.groupBoxChuyenKTXM.Controls.Add(this.chkTKN);
             this.groupBoxChuyenKTXM.Controls.Add(this.chkDCMS);
             this.groupBoxChuyenKTXM.Controls.Add(this.chkDCG);
             this.groupBoxChuyenKTXM.Controls.Add(this.txtGhiChuChuyenKT);
@@ -407,11 +415,41 @@
             this.groupBoxChuyenKTXM.TabIndex = 14;
             this.groupBoxChuyenKTXM.TabStop = false;
             // 
+            // chkTKN
+            // 
+            this.chkTKN.AutoSize = true;
+            this.chkTKN.Location = new System.Drawing.Point(605, 17);
+            this.chkTKN.Name = "chkTKN";
+            this.chkTKN.Size = new System.Drawing.Size(48, 17);
+            this.chkTKN.TabIndex = 118;
+            this.chkTKN.Text = "TKN";
+            this.chkTKN.UseVisualStyleBackColor = true;
+            // 
+            // chkDCMS
+            // 
+            this.chkDCMS.AutoSize = true;
+            this.chkDCMS.Location = new System.Drawing.Point(733, 17);
+            this.chkDCMS.Name = "chkDCMS";
+            this.chkDCMS.Size = new System.Drawing.Size(57, 17);
+            this.chkDCMS.TabIndex = 117;
+            this.chkDCMS.Text = "ĐCMS";
+            this.chkDCMS.UseVisualStyleBackColor = true;
+            // 
+            // chkDCG
+            // 
+            this.chkDCG.AutoSize = true;
+            this.chkDCG.Location = new System.Drawing.Point(669, 17);
+            this.chkDCG.Name = "chkDCG";
+            this.chkDCG.Size = new System.Drawing.Size(49, 17);
+            this.chkDCG.TabIndex = 116;
+            this.chkDCG.Text = "ĐCG";
+            this.chkDCG.UseVisualStyleBackColor = true;
+            // 
             // txtGhiChuChuyenKT
             // 
             this.txtGhiChuChuyenKT.Location = new System.Drawing.Point(568, 15);
             this.txtGhiChuChuyenKT.Name = "txtGhiChuChuyenKT";
-            this.txtGhiChuChuyenKT.Size = new System.Drawing.Size(95, 25);
+            this.txtGhiChuChuyenKT.Size = new System.Drawing.Size(31, 25);
             this.txtGhiChuChuyenKT.TabIndex = 6;
             // 
             // label22
@@ -785,25 +823,52 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // chkDCMS
+            // dgvLichSuDon
             // 
-            this.chkDCMS.AutoSize = true;
-            this.chkDCMS.Location = new System.Drawing.Point(733, 17);
-            this.chkDCMS.Name = "chkDCMS";
-            this.chkDCMS.Size = new System.Drawing.Size(69, 21);
-            this.chkDCMS.TabIndex = 117;
-            this.chkDCMS.Text = "ĐCMS";
-            this.chkDCMS.UseVisualStyleBackColor = true;
+            this.dgvLichSuDon.AllowUserToAddRows = false;
+            this.dgvLichSuDon.AllowUserToDeleteRows = false;
+            this.dgvLichSuDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLichSuDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaDon,
+            this.TenLD,
+            this.CreateDate,
+            this.NoiDung});
+            this.dgvLichSuDon.Location = new System.Drawing.Point(938, 9);
+            this.dgvLichSuDon.Name = "dgvLichSuDon";
+            this.dgvLichSuDon.ReadOnly = true;
+            this.dgvLichSuDon.Size = new System.Drawing.Size(484, 200);
+            this.dgvLichSuDon.TabIndex = 55;
+            this.dgvLichSuDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLichSuDon_CellFormatting);
             // 
-            // chkDCG
+            // MaDon
             // 
-            this.chkDCG.AutoSize = true;
-            this.chkDCG.Location = new System.Drawing.Point(669, 17);
-            this.chkDCG.Name = "chkDCG";
-            this.chkDCG.Size = new System.Drawing.Size(58, 21);
-            this.chkDCG.TabIndex = 116;
-            this.chkDCG.Text = "ĐCG";
-            this.chkDCG.UseVisualStyleBackColor = true;
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            this.MaDon.Width = 90;
+            // 
+            // TenLD
+            // 
+            this.TenLD.DataPropertyName = "TenLD";
+            this.TenLD.HeaderText = "Loại Đơn";
+            this.TenLD.Name = "TenLD";
+            this.TenLD.ReadOnly = true;
+            this.TenLD.Width = 150;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Nhận";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.ReadOnly = true;
             // 
             // frmNhanDonTXL
             // 
@@ -812,6 +877,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1423, 525);
+            this.Controls.Add(this.dgvLichSuDon);
             this.Controls.Add(this.btnNhapNhieuDB);
             this.Controls.Add(this.txtTongSoDanhBo);
             this.Controls.Add(this.label23);
@@ -857,6 +923,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuChuyenKT)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -935,6 +1002,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuChuyen;
         private System.Windows.Forms.CheckBox chkDCMS;
         private System.Windows.Forms.CheckBox chkDCG;
+        private System.Windows.Forms.CheckBox chkTKN;
+        private System.Windows.Forms.DataGridView dgvLichSuDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenLD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
 
     }
 }

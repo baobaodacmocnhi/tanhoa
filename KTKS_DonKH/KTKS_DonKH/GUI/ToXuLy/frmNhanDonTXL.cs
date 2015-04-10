@@ -85,6 +85,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void frmNhanDonTXL_Load(object sender, EventArgs e)
         {
+            dgvLichSuDon.AutoGenerateColumns = false;
+
             dgvLichSuChuyenKT.AutoGenerateColumns = false;
             dgvLichSuChuyenKT.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLichSuChuyenKT.Font, FontStyle.Bold);
 
@@ -109,6 +111,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
+                    dgvLichSuDon.DataSource = _cDonTXL.LoadDSDonTXLByDanhBo(txtDanhBo.Text.Trim());
+                    if(dgvLichSuDon.RowCount>0)
+                    dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
                 }
                 else
                 {
@@ -153,6 +158,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         if (cmbNguoiDi.SelectedIndex != -1)
                             dontxl.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
                         dontxl.GhiChuChuyenKT = txtGhiChuChuyenKT.Text.Trim();
+                        dontxl.TKN = chkTKN.Checked;
                         dontxl.DCG = chkDCG.Checked;
                         dontxl.DCMS = chkDCMS.Checked;
                     }
@@ -264,6 +270,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         if (_dontxl.NguoiDi != null)
                             cmbNguoiDi.SelectedValue = _dontxl.NguoiDi;
                         txtGhiChuChuyenKT.Text = _dontxl.GhiChuChuyenKT;
+                        chkTKN.Checked = _dontxl.TKN;
                         chkDCG.Checked = _dontxl.DCG;
                         chkDCMS.Checked = _dontxl.DCMS;
                     }
@@ -273,6 +280,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dateChuyenKT.Value = DateTime.Now;
                         cmbNguoiDi.SelectedIndex = -1;
                         txtGhiChuChuyenKT.Text = "";
+                        chkTKN.Checked = false;
                         chkDCG.Checked = false;
                         chkDCMS.Checked = false;
                     }
@@ -407,6 +415,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     _dontxl.NgayChuyenKT = dateChuyenKT.Value;
                     _dontxl.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
                     _dontxl.GhiChuChuyenKT = txtGhiChuChuyenKT.Text.Trim();
+                    _dontxl.TKN = chkTKN.Checked;
                     _dontxl.DCG = chkDCG.Checked;
                     _dontxl.DCMS = chkDCMS.Checked;
                 }
@@ -416,6 +425,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     _dontxl.NgayChuyenKT = null;
                     _dontxl.NguoiDi = null;
                     _dontxl.GhiChuChuyenKT = null;
+                    _dontxl.TKN = false;
                     _dontxl.DCG = false;
                     _dontxl.DCMS = false;
                 }
@@ -515,6 +525,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             frmNhapNhieuDBTXL frm = new frmNhapNhieuDBTXL();
             frm.ShowDialog();
+        }
+
+        private void dgvLichSuDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvLichSuDon.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = "TXL"+e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
         }
 
         

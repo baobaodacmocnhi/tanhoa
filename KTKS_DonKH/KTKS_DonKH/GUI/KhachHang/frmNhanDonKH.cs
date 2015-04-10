@@ -98,32 +98,16 @@ namespace KTKS_DonKH.GUI.KhachHang
 
             txtDinhMucSau.Text = "";
             txtHieuLucTuKy.Text = "";
-
-            chkChuyenKT.Checked = false;
-            dateChuyenKT.Value = DateTime.Now;
-            cmbNguoiDi.SelectedIndex = -1;
-            chkChuyenBanDoiKhac.Checked = false;
-            dateChuyenBanDoiKhac.Value = DateTime.Now;
-            txtGhiChuChuyenBanDoiKhac.Text = "";
-            chkChuyenToXuLy.Checked = false;
-            dateChuyenToXuLy.Value = DateTime.Now;
-            txtGhiChuChuyenToXuLy.Text = "";
-            chkChuyenKhac.Checked = false;
-            dateChuyenKhac.Value = DateTime.Now;
-            txtGhiChuChuyenKhac.Text = "";
         }
 
         private void frmNhanDonKH_Load(object sender, EventArgs e)
         {
+            dgvLichSuDon.AutoGenerateColumns = false;
+
             cmbLD.DataSource = _cLoaiDon.LoadDSLoaiDon(true);
             cmbLD.DisplayMember = "TenLD";
             cmbLD.ValueMember = "MaLD";
             cmbLD.SelectedIndex = -1;
-
-            cmbNguoiDi.DataSource = _cTaiKhoan.LoadDSTaiKhoanTKH();
-            cmbNguoiDi.DisplayMember = "HoTen";
-            cmbNguoiDi.ValueMember = "MaU";
-            cmbNguoiDi.SelectedIndex = -1;
 
             Clear();
         }
@@ -175,6 +159,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                     Dot = ttkhachhang.Dot;
                     Ky = ttkhachhang.Ky;
                     Nam = ttkhachhang.Nam;
+                    dgvLichSuDon.DataSource = _cDonKH.LoadDSDonKHByDanhBo(txtDanhBo.Text.Trim());
+                    if (dgvLichSuDon.RowCount > 0)
+                    dgvLichSuDon.Sort(dgvLichSuDon.Columns["CreateDate"], ListSortDirection.Descending);
                 }
                 else
                 {
@@ -698,64 +685,6 @@ namespace KTKS_DonKH.GUI.KhachHang
             }
         }
 
-        private void chkChuyenKT_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkChuyenKT.Checked)
-            {
-                groupBoxChuyenKTXM.Enabled = true;
-                cmbNguoiDi.SelectedIndex = 0;
-            }
-            else
-            {
-                groupBoxChuyenKTXM.Enabled = false;
-            }
-        }
-
-        private void chkChuyenBanDoiKhac_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkChuyenBanDoiKhac.Checked)
-            {
-                groupBoxChuyenBanDoiKhac.Enabled = true;
-            }
-            else
-            {
-                groupBoxChuyenBanDoiKhac.Enabled = false;
-            }
-        }
-
-        private void chkChuyenToXuLy_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkChuyenToXuLy.Checked)
-            {
-                groupBoxChuyenToXuLy.Enabled = true;
-            }
-            else
-            {
-                groupBoxChuyenToXuLy.Enabled = false;
-            }
-        }
-
-        private void chkChuyenKhac_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkChuyenKhac.Checked)
-            {
-                groupBoxChuyenKhac.Enabled = true;
-            }
-            else
-            {
-                groupBoxChuyenKhac.Enabled = false;
-            }
-        }
-
-        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                if (_cDonTXL.XoaLichSuChuyenKT(_cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(dgvLichSuChuyenKT.CurrentRow.Cells["MaLSChuyenKT"].Value.ToString()))))
-                {
-                    dgvLichSuChuyenKT.DataSource = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(_donkh.MaDon);
-                }
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (_donkh != null)
@@ -921,103 +850,26 @@ namespace KTKS_DonKH.GUI.KhachHang
 
                 #endregion
 
-                bool flagSuaChuyenKT = false;
-                if (chkChuyenKT.Checked)
-                {
-                    _donkh.ChuyenKT = true;
-                    if (_donkh.NgayChuyenKT != dateChuyenKT.Value || _donkh.NguoiDi != int.Parse(cmbNguoiDi.SelectedValue.ToString()) || _donkh.GhiChuChuyenKT != txtGhiChuChuyenKT.Text.Trim())
-                        flagSuaChuyenKT = true;
-                    _donkh.NgayChuyenKT = dateChuyenKT.Value;
-                    if (cmbNguoiDi.SelectedIndex != -1)
-                        _donkh.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
-                    _donkh.GhiChuChuyenKT = txtGhiChuChuyenKT.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenKT = false;
-                    _donkh.NgayChuyenKT = null;
-                    _donkh.NguoiDi = null;
-                    _donkh.GhiChuChuyenKT = null;
-                }
-
-                if (chkChuyenBanDoiKhac.Checked)
-                {
-                    _donkh.ChuyenBanDoiKhac = true;
-                    _donkh.NgayChuyenBanDoiKhac = dateChuyenBanDoiKhac.Value;
-                    _donkh.GhiChuChuyenBanDoiKhac = txtGhiChuChuyenBanDoiKhac.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenBanDoiKhac = false;
-                    _donkh.NgayChuyenBanDoiKhac = null;
-                    _donkh.GhiChuChuyenBanDoiKhac = null;
-                }
-
-                if (chkChuyenToXuLy.Checked)
-                {
-                    _donkh.ChuyenToXuLy = true;
-                    _donkh.NgayChuyenToXuLy = dateChuyenToXuLy.Value;
-                    _donkh.GhiChuChuyenToXuLy = txtGhiChuChuyenToXuLy.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenToXuLy = false;
-                    _donkh.NgayChuyenToXuLy = null;
-                    _donkh.GhiChuChuyenToXuLy = null;
-                }
-
-                if (chkChuyenKhac.Checked)
-                {
-                    _donkh.ChuyenKhac = true;
-                    _donkh.NgayChuyenKhac = dateChuyenKhac.Value;
-                    _donkh.GhiChuChuyenKhac = txtGhiChuChuyenKhac.Text.Trim();
-                }
-                else
-                {
-                    _donkh.ChuyenKhac = false;
-                    _donkh.NgayChuyenKhac = null;
-                    _donkh.GhiChuChuyenKhac = null;
-                }
-
                 if (_cDonKH.SuaDonKH(_donkh))
                 {
-                    if (flagSuaChuyenKT)
-                    {
-                        LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
-                        lichsuchuyenkt.NgayChuyen = _donkh.NgayChuyenKT;
-                        lichsuchuyenkt.NguoiDi = _donkh.NguoiDi;
-                        lichsuchuyenkt.GhiChuChuyen = _donkh.GhiChuChuyenKT;
-                        lichsuchuyenkt.MaDon = _donkh.MaDon;
-                        _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);
-                        flagSuaChuyenKT = false;
-                    }
                     MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 
         }
 
-        private void dgvLichSuChuyenKT_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
-            {
-                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
-                dgvLichSuChuyenKT.CurrentCell = dgvLichSuChuyenKT.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            }
-        }
-
-        private void dgvLichSuChuyenKT_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right && (_donkh != null))
-            {
-                contextMenuStrip1.Show(dgvLichSuChuyenKT, new Point(e.X, e.Y));
-            }
-        }
-
         private void btnNhapNhieuDB_Click(object sender, EventArgs e)
         {
             frmNhapNhieuDBTKH frm = new frmNhapNhieuDBTKH();
             frm.ShowDialog();
+        }
+
+        private void dgvLichSuDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvLichSuDon.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
         }
 
     }
