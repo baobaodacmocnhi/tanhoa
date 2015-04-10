@@ -50,7 +50,7 @@
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(100, 20);
             this.txtTaiKhoan.TabIndex = 1;
-            this.txtTaiKhoan.Text = "t1";
+            this.txtTaiKhoan.Text = "admin";
             // 
             // txtMatKhau
             // 
@@ -59,7 +59,7 @@
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(100, 20);
             this.txtMatKhau.TabIndex = 3;
-            this.txtMatKhau.Text = "t1";
+            this.txtMatKhau.Text = "baobao";
             this.txtMatKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatKhau_KeyPress);
             // 
             // label2

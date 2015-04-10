@@ -15,7 +15,7 @@ namespace ThuTien.GUI.ToTruong
 {
     public partial class frmKiemTraTon : Form
     {
-        string _mnu = "mnuKiemTraTon";
+        //string _mnu = "mnuKiemTraTon";
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
 

@@ -121,8 +121,10 @@
     </Compile>
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\ChuyenKhoan\CNganHang.cs" />
+    <Compile Include="DAL\ChuyenKhoan\CThongTinDanhBo.cs" />
     <Compile Include="DAL\Doi\CHoaDon.cs" />
     <Compile Include="DAL\DongNuoc\CDongNuoc.cs" />
+    <Compile Include="DAL\ChuyenKhoan\Excel.cs" />
     <Compile Include="DAL\HanhThu\CQuetTam.cs" />
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNguoiDung.cs" />

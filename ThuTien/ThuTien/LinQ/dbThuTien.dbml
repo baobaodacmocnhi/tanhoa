@@ -323,4 +323,18 @@
       <Association Name="HOADON_TAMTHU" Member="TAMTHUs" ThisKey="ID_HOADON" OtherKey="FK_HOADON" Type="TAMTHU" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_ThongTinDanhBo" Member="TT_ThongTinDanhBos">
+    <Type Name="TT_ThongTinDanhBo">
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DongNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MoNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

@@ -16,6 +16,7 @@ using ThuTien.DAL.TongHop;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
 using KTKS_DonKH.GUI.BaoCao;
+using System.Data.OleDb;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -273,6 +274,62 @@ namespace ThuTien.GUI.ChuyenKhoan
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnChonFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Excel fileExcel = new Excel(dialog.FileName);
+                DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                DataTable dt = new DataTable();
+                foreach (DataRow item in dtExcel.Rows)
+                    if (item[0].ToString().Length == 11)
+                    {
+                        dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString()));
+                    }
+                dgvHoaDon.DataSource = dt;
+
+                foreach (DataRow itemExcel in dtExcel.Rows)
+                {
+                    string ChenhLech = "";
+                    int SoTien = 0;
+                    DataRow[] dr = dt.Select("DanhBo like '" + itemExcel[0].ToString() + "'");
+                    foreach (DataRow itemRow in dr)
+                    {
+                        SoTien += int.Parse(itemRow["TongCong"].ToString());
+                    }
+                    if (int.Parse(itemExcel[1].ToString()) > SoTien)
+                    {
+                        ChenhLech = "Dư: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(itemExcel[1].ToString()) - SoTien));
+                        foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
+                            if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString())
+                            {
+                                itemRow.Cells["ChenhLech"].Value = ChenhLech;
+                                itemRow.DefaultCellStyle.BackColor = Color.GreenYellow;
+                            }
+                    }
+                    else
+                        if (int.Parse(itemExcel[1].ToString()) < SoTien)
+                        {
+                            ChenhLech = "Thiếu: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",(int.Parse(itemExcel[1].ToString()) - SoTien));
+                            foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
+                                if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString())
+                                {
+                                    itemRow.Cells["ChenhLech"].Value = ChenhLech;
+                                    itemRow.DefaultCellStyle.BackColor = Color.Red;
+                                }
+                        }
+                }
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                {
+                    item.Cells["Chon"].Value = true;
+                }
+            }
         }
     }
 }
