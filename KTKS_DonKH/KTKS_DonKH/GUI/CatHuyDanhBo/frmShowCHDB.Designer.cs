@@ -395,6 +395,7 @@
             "Nợ Tiền Nước",
             "Không Thanh Toán Tiền Bồi Thường ĐHN",
             "Nợ Tiền Gian Lận Nước",
+            "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày",
             "Vấn Đề Khác"});
             this.cmbLyDo.Location = new System.Drawing.Point(73, 24);
             this.cmbLyDo.Name = "cmbLyDo";

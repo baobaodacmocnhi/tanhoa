@@ -556,6 +556,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtSoTien.ReadOnly = false;
             else
                 txtSoTien.ReadOnly = true;
+            if (cmbLyDo.SelectedItem.ToString() == "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày")
+            {
+                txtNoiNhan.Text = "- Như trên\r\n- Đội TCTB: thực hiện\r\n- Lưu.";
+            }
         }
 
         private void chkKetQuaTCTBXuLy_CheckedChanged(object sender, EventArgs e)

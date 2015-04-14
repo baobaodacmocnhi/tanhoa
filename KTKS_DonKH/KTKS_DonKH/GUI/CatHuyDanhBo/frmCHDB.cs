@@ -241,10 +241,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN") || cmbLyDo.SelectedItem.ToString() == "Vấn Đề Khác")
             {
                 txtSoTien.ReadOnly = false;
-               
             }
             else
                 txtSoTien.ReadOnly = true;
+            if (cmbLyDo.SelectedItem.ToString() == "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày")
+            {
+                txtNoiNhan.Text = "- Như trên\r\n- Đội TCTB: thực hiện\r\n- Lưu.";
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -367,6 +370,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ctchdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                             if (txtSoTien.Text.Trim() != "")
                                 ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
+
+                            ctchdb.NoiNhan = txtNoiNhan.Text.Trim();
+
                             ///Đã lập Cắt Tạm
                             if (_ctctdb!=null)
                             {
