@@ -19,9 +19,9 @@ namespace ThuTien.GUI.HanhThu
 {
     public partial class frmDangNganHanhThu : Form
     {
+        string _mnu = "mnuDangNganHanhThu";
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
-        string _mnu = "mnuDangNganHanhThu";
         CDCHD _cDCHD = new CDCHD();
         bool _flagNgayDangNgan = false;
         //int _selectedindexDaThu = -1;
