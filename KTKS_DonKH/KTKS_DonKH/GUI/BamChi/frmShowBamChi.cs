@@ -354,6 +354,10 @@ namespace KTKS_DonKH.GUI.BamChi
                         txtVienChi.Text = "";
                         txtDayChi.Text = "";
                         break;
+                    case "Bấm Chì Góc-Chì Thân":
+                        txtVienChi.Text = "2";
+                        txtDayChi.Text = "1.2";
+                        break;
                     default:
                         txtVienChi.Text = "1";
                         txtDayChi.Text = "0.6";

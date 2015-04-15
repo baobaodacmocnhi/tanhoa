@@ -45,6 +45,8 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.txtMucDichSuDung = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.cmbChiKhoaGoc = new System.Windows.Forms.ComboBox();
@@ -85,8 +87,6 @@
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhapBamChi)).BeginInit();
@@ -267,6 +267,22 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(331, 124);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(59, 17);
+            this.label23.TabIndex = 30;
+            this.label23.Text = "Ghi Chú:";
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(396, 121);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(531, 25);
+            this.txtGhiChu.TabIndex = 31;
             // 
             // txtMucDichSuDung
             // 
@@ -474,16 +490,6 @@
             // 
             this.cmbTrangThaiBC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTrangThaiBC.FormattingEnabled = true;
-            this.cmbTrangThaiBC.Items.AddRange(new object[] {
-            "",
-            "Bấm Chì Góc - COUDE",
-            "Bấm Chì Thân",
-            "Đóng Nước",
-            "Mở Nước",
-            "Đóng Cửa",
-            "Lấp Chừa MS",
-            "Hầm Sâu",
-            "Trở Ngại Khác"});
             this.cmbTrangThaiBC.Location = new System.Drawing.Point(229, 90);
             this.cmbTrangThaiBC.MaxDropDownItems = 50;
             this.cmbTrangThaiBC.Name = "cmbTrangThaiBC";
@@ -691,22 +697,6 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.ReadOnly = true;
             this.CreateBy.Width = 200;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(331, 124);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(59, 17);
-            this.label23.TabIndex = 30;
-            this.label23.Text = "Ghi Chú:";
-            // 
-            // txtGhiChu
-            // 
-            this.txtGhiChu.Location = new System.Drawing.Point(396, 121);
-            this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(531, 25);
-            this.txtGhiChu.TabIndex = 31;
             // 
             // frmBamChi
             // 

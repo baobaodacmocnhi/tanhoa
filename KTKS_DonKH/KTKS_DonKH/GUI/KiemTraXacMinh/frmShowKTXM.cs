@@ -91,55 +91,57 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         public void LoadCTKTXM(CTKTXM ctktxm)
         {
-            txtDanhBo.Text = ctktxm.DanhBo;
-            txtHopDong.Text = ctktxm.HopDong;
-            txtHoTen.Text = ctktxm.HoTen;
-            txtDiaChi.Text = ctktxm.DiaChi;
-            txtGiaBieu.Text = ctktxm.GiaBieu;
-            txtDinhMuc.Text = ctktxm.DinhMuc;
-            ///
-            dateKTXM.Value = ctktxm.NgayKTXM.Value;
-                
-            txtHieu.Text = ctktxm.Hieu;
-            txtCo.Text = ctktxm.Co;
-            txtSoThan.Text = ctktxm.SoThan;
-            txtChiSo.Text = ctktxm.ChiSo;
-            cmbTinhTrangChiSo.SelectedItem = ctktxm.TinhTrangChiSo;
-            cmbChiMatSo.SelectedItem = ctktxm.ChiMatSo;
-            cmbChiKhoaGoc.SelectedItem = ctktxm.ChiKhoaGoc;
-            txtMucDichSuDung.Text = ctktxm.MucDichSuDung;
-            txtDienThoai.Text = ctktxm.DienThoai;
-            txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
-            cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
-            txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
-            txtTheoYeuCau.Text = _ctktxm.TheoYeuCau;
-
-            if (ctktxm.LapBangGia)
-            {
-                chkLapBangGia.Checked = true;
-                dateLapBangGia.Value = ctktxm.NgayLapBangGia.Value;
-            }
-
-            if (ctktxm.DongTienBoiThuong)
-            {
-                chkDongTienBoiThuong.Checked = true;
-                dateDongTien.Value = ctktxm.NgayDongTien.Value;
-                txtSoTien.Text = ctktxm.SoTien.ToString();
-            }
-
-            if (ctktxm.ChuyenLapTBCat)
-            {
-                chkChuyenCatHuy.Checked = true;
-                dateChuyenCatHuy.Value = ctktxm.NgayChuyenLapTBCat.Value;
-            }
-
             try
             {
+                txtDanhBo.Text = ctktxm.DanhBo;
+                txtHopDong.Text = ctktxm.HopDong;
+                txtHoTen.Text = ctktxm.HoTen;
+                txtDiaChi.Text = ctktxm.DiaChi;
+                txtGiaBieu.Text = ctktxm.GiaBieu;
+                txtDinhMuc.Text = ctktxm.DinhMuc;
+                ///
+                dateKTXM.Value = ctktxm.NgayKTXM.Value;
                 cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+                txtHieu.Text = ctktxm.Hieu;
+                txtCo.Text = ctktxm.Co;
+                txtSoThan.Text = ctktxm.SoThan;
+                txtChiSo.Text = ctktxm.ChiSo;
+                cmbTinhTrangChiSo.SelectedItem = ctktxm.TinhTrangChiSo;
+                cmbChiMatSo.SelectedItem = ctktxm.ChiMatSo;
+                cmbChiKhoaGoc.SelectedItem = ctktxm.ChiKhoaGoc;
+                txtMucDichSuDung.Text = ctktxm.MucDichSuDung;
+                txtDienThoai.Text = ctktxm.DienThoai;
+                txtHoTenKHKy.Text = ctktxm.HoTenKHKy;
+                cmbTinhTrangDHN.SelectedItem = ctktxm.TinhTrangDHN;
+                txtNoiDungKiemTra.Text = ctktxm.NoiDungKiemTra;
+                txtTheoYeuCau.Text = _ctktxm.TheoYeuCau;
+
+                if (ctktxm.LapBangGia)
+                {
+                    chkLapBangGia.Checked = true;
+                    dateLapBangGia.Value = ctktxm.NgayLapBangGia.Value;
+                }
+
+                if (ctktxm.DongTienBoiThuong)
+                {
+                    chkDongTienBoiThuong.Checked = true;
+                    dateDongTien.Value = ctktxm.NgayDongTien.Value;
+                    txtSoTien.Text = ctktxm.SoTien.ToString();
+                }
+
+                if (ctktxm.ChuyenLapTBCat)
+                {
+                    chkChuyenCatHuy.Checked = true;
+                    dateChuyenCatHuy.Value = ctktxm.NgayChuyenLapTBCat.Value;
+                }
+
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             
         }
 
