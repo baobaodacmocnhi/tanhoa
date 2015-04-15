@@ -10,6 +10,7 @@ using ThuTien.DAL.Doi;
 using System.Globalization;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.ChuyenKhoan;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -45,7 +46,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     TongCong += int.Parse(item.Cells["TongCong_DT"].Value.ToString());
                 }
-                txtTongCong_DT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                if (TongCong == 0)
+                    txtTongCong_DT.Text = "0";
+                else
+                    txtTongCong_DT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
             TongCong = 0;
             if (dgvHDChuaThu.RowCount > 0)
@@ -53,8 +57,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                 foreach (DataGridViewRow item in dgvHDChuaThu.Rows)
                 {
                     TongCong += int.Parse(item.Cells["TongCong_CT"].Value.ToString());
-                }
-                txtTongCong_CT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                } 
+                if (TongCong == 0)
+                    txtTongCong_CT.Text = "0";
+                else
+                    txtTongCong_CT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
 
@@ -63,6 +70,81 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (cmbNam.SelectedIndex != -1 && cmbKy.SelectedIndex != -1)
             {
                 LoadDanhSachHD();
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _cDLKH.BeginTransaction();
+                foreach (string item in txtDanhBo.Lines)
+                    if (item.Length == 11)
+                    {
+                        TT_DuLieuKhachHang dlkh = new TT_DuLieuKhachHang();
+                        dlkh.Nam = (int)cmbNam.SelectedValue;
+                        dlkh.Ky = int.Parse(cmbKy.SelectedItem.ToString());
+                        dlkh.DanhBo = item;
+                        if (!_cDLKH.Them(dlkh))
+                        {
+                            _cDLKH.Rollback();
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                _cDLKH.CommitTransaction();
+                LoadDanhSachHD();
+                txtDanhBo.Text = "";
+                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+                _cDLKH.Rollback();
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _cDLKH.BeginTransaction();
+                if (tabControl.SelectedTab.Name == "tabDaThu")
+                {
+                    foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
+                    {
+                        TT_DuLieuKhachHang dlkh = _cDLKH.GetByNamKyDanhBo(int.Parse(item.Cells["Nam_DT"].Value.ToString()), int.Parse(item.Cells["Ky_DT"].Value.ToString()), item.Cells["DanhBo_DT"].Value.ToString());
+                        if (!_cDLKH.Xoa(dlkh))
+                        {
+                            _cDLKH.Rollback();
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                }
+                else
+                    if (tabControl.SelectedTab.Name == "tabChuaThu")
+                    {
+                        foreach (DataGridViewRow item in dgvHDChuaThu.SelectedRows)
+                        {
+                            TT_DuLieuKhachHang dlkh = _cDLKH.GetByNamKyDanhBo(int.Parse(item.Cells["Nam_CT"].Value.ToString()), int.Parse(item.Cells["Ky_CT"].Value.ToString()), item.Cells["DanhBo_CT"].Value.ToString());
+                            if (!_cDLKH.Xoa(dlkh))
+                            {
+                                _cDLKH.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    }
+                _cDLKH.CommitTransaction();
+                LoadDanhSachHD();
+                txtDanhBo.Text = "";
+                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+                _cDLKH.Rollback();
+                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

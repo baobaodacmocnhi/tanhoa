@@ -73,9 +73,10 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHangs
                         join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
-                        where itemHD.NAM==nam && itemHD.KY==ky &&itemHD.MaNV_DangNgan != null
+                        where itemDLKH.Nam == nam && itemDLKH.Ky == ky && itemHD.NAM == nam && itemHD.KY == ky && itemHD.MaNV_DangNgan != null
                         select new
                         {
+                            itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
                             itemHD.KY,
                             itemHD.NAM,
@@ -93,9 +94,10 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHangs
                         join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
-                        where itemHD.NAM == nam && itemHD.KY == ky && itemHD.MaNV_DangNgan == null
+                        where itemDLKH.Nam == nam && itemDLKH.Ky == ky && itemHD.NAM == nam && itemHD.KY == ky && itemHD.MaNV_DangNgan == null
                         select new
                         {
+                            itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
                             itemHD.KY,
                             itemHD.NAM,
