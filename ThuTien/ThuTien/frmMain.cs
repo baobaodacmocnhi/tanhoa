@@ -383,6 +383,28 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuLenhHuy_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTamThuQuay", "Xem"))
+            {
+                frmLenhHuy frm = new frmLenhHuy();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuTraGop_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTamThuQuay", "Xem"))
+            {
+                frmTraGop frm = new frmTraGop();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion 
 
         #region Tổng Hợp
@@ -412,9 +434,6 @@ namespace ThuTien
         #endregion 
 
         
-
-       
-
 
         #region
 

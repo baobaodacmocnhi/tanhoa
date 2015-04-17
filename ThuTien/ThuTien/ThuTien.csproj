@@ -189,6 +189,18 @@
     <Compile Include="GUI\HanhThu\frmQuetTam.Designer.cs">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Quay\frmLenhHuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmLenhHuy.Designer.cs">
+      <DependentUpon>frmLenhHuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Quay\frmTraGop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmTraGop.Designer.cs">
+      <DependentUpon>frmTraGop.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TongHop\frmThu2Lan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -421,6 +433,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmQuetTam.resx">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmLenhHuy.resx">
+      <DependentUpon>frmLenhHuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmTraGop.resx">
+      <DependentUpon>frmTraGop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmThu2Lan.resx">
       <DependentUpon>frmThu2Lan.cs</DependentUpon>

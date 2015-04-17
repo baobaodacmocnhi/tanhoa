@@ -37,6 +37,14 @@ namespace ThuTien.DAL
 
         }
 
+        public bool LinQExecuteNonQuery(string sql)
+        {
+            if (_db.ExecuteCommand(sql) == 0)
+                return false;
+            else
+                return true;
+        }
+
         //public void SubmitChanges()
         //{
         //    _db.SubmitChanges();
