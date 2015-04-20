@@ -1035,7 +1035,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.MaChuyen,
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
-                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenToKhachHang,
+                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenKhac,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1075,7 +1075,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.MaChuyen,
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
-                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenToKhachHang,
+                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenKhac,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1115,7 +1115,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     itemDonTXL.MaChuyen,
                                     itemDonTXL.LyDoChuyen,
                                     itemDonTXL.SoLuongDiaChi,
-                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenToKhachHang,
+                                    GhiChuChuyenKT = itemDonTXL.GhiChuChuyenKhac,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
