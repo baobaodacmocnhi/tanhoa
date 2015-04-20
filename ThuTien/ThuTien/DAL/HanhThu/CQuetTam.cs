@@ -10,32 +10,10 @@ namespace ThuTien.DAL.HanhThu
 {
     class CQuetTam:CDAL
     {
-        public DataTable GetDSByMaNVCreatedDate(int MaNV, DateTime CreatedDate)
-        {
-            var query = from itemQT in _db.TT_QuetTams
-                        join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
-                        where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV
-                        select new
-                        {
-                            itemQT.MaQT,
-                            itemQT.SoHoaDon,
-                            DanhBo=itemHD.DANHBA,
-                            Ky=itemHD.KY+"/"+itemHD.NAM,
-                            MLT=itemHD.MALOTRINH,
-                            itemHD.SOPHATHANH,
-                            itemHD.TONGCONG,
-                        };
-            return LINQToDataTable(query);
-        }
-
         public bool Them(TT_QuetTam quettam)
         {
             try
             {
-                if (_db.TT_QuetTams.Count() > 0)
-                    quettam.MaQT = _db.TT_QuetTams.Max(item => item.MaQT) + 1;
-                else
-                    quettam.MaQT = 1;
                 quettam.CreateDate = DateTime.Now;
                 quettam.CreateBy = CNguoiDung.MaND;
                 _db.TT_QuetTams.InsertOnSubmit(quettam);
@@ -65,9 +43,26 @@ namespace ThuTien.DAL.HanhThu
             }
         }
 
-        public TT_QuetTam GetByMaQT(int MaQT)
+        public TT_QuetTam GetBySoHoaDon(string SoHoaDon)
         {
-            return _db.TT_QuetTams.SingleOrDefault(item => item.MaQT == MaQT);
+            return _db.TT_QuetTams.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+        }
+
+        public DataTable GetDSByMaNVCreatedDate(int MaNV, DateTime CreatedDate)
+        {
+            var query = from itemQT in _db.TT_QuetTams
+                        join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                        where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV
+                        select new
+                        {
+                            itemQT.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                        };
+            return LINQToDataTable(query);
         }
     }
 }

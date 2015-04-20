@@ -101,7 +101,7 @@ namespace ThuTien.GUI.HanhThu
                         _cQuetTam.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHD.SelectedRows)
                         {
-                            TT_QuetTam quettam = _cQuetTam.GetByMaQT(int.Parse(item.Cells["MaQT"].Value.ToString()));
+                            TT_QuetTam quettam = _cQuetTam.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                             if (!_cQuetTam.Xoa(quettam))
                             {
                                 _cQuetTam.Rollback();

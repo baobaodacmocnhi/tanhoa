@@ -133,7 +133,9 @@
     <Compile Include="DAL\QuanTri\CPhanQuyenNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CPhanQuyenNhom.cs" />
     <Compile Include="DAL\QuanTri\CTo.cs" />
+    <Compile Include="DAL\Quay\CLenhHuy.cs" />
     <Compile Include="DAL\Quay\CTamThu.cs" />
+    <Compile Include="DAL\Quay\CTraGop.cs" />
     <Compile Include="DAL\TongHop\CDCHD.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
