@@ -76,6 +76,7 @@ namespace ThuTien.GUI.Quay
                 try
                 {
                     _cTamThu.BeginTransaction();
+                    decimal SoPhieu = _cTamThu.GetMaxSoPhieu();
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (bool.Parse(item.Cells["Chon"].Value.ToString()))
                         {
@@ -83,6 +84,7 @@ namespace ThuTien.GUI.Quay
                             tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
                             tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
                             tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
+                            tamthu.SoPhieu = SoPhieu;
 
                             if (_cTamThu.Them(tamthu))
                             {
@@ -114,6 +116,7 @@ namespace ThuTien.GUI.Quay
 
                 dsBaoCao ds = new dsBaoCao();
                 DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
+                dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
                 dr["DanhBo"] = lstTamThu[0].DANHBA;
                 dr["HoTen"] = lstTamThu[0].HOADON.TENKH;
                 dr["DiaChi"] = lstTamThu[0].HOADON.SO + " " + lstTamThu[0].HOADON.DUONG;
@@ -299,6 +302,44 @@ namespace ThuTien.GUI.Quay
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnInTamThu_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvTamThu.Rows)
+            if(bool.Parse(item.Cells["In"].Value.ToString()))
+            {
+                string Ky = "";
+                Int32 TongCongSo = 0;
+                List<TAMTHU> lstTamThu = _cTamThu.GetDSBySoPhieu(decimal.Parse(item.Cells["SoPhieu_TT"].Value.ToString()));
+                foreach (var itemTT in lstTamThu)
+                {
+                    Ky += itemTT.HOADON.KY + "/" + itemTT.HOADON.NAM + ", ";
+                    TongCongSo += (Int32)itemTT.HOADON.TONGCONG;
+                }
+
+                dsBaoCao ds = new dsBaoCao();
+                DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
+                dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
+                dr["DanhBo"] = lstTamThu[0].DANHBA;
+                dr["HoTen"] = lstTamThu[0].HOADON.TENKH;
+                dr["DiaChi"] = lstTamThu[0].HOADON.SO + " " + lstTamThu[0].HOADON.DUONG;
+                dr["MLT"] = lstTamThu[0].HOADON.MALOTRINH;
+                dr["GiaBieu"] = lstTamThu[0].HOADON.GB;
+                dr["DinhMuc"] = lstTamThu[0].HOADON.DM;
+                dr["Ky"] = Ky;
+                dr["TongCongSo"] = TongCongSo;
+                dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
+                if (lstTamThu[0].HOADON.MaNV_HanhThu != null)
+                    dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(lstTamThu[0].HOADON.MaNV_HanhThu.Value);
+                dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                ds.Tables["PhieuTamThu"].Rows.Add(dr);
+
+                rptPhieuTamThu rpt = new rptPhieuTamThu();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
 
         

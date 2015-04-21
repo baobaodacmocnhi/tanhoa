@@ -91,6 +91,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             MaTT = itemTT.ID_TAMTHU,
+                            itemTT.SoPhieu,
                             itemHD.NGAYGIAITRACH,
                             itemTT.CreateDate,
                             itemHD.SOHOADON,
@@ -115,7 +116,9 @@ namespace ThuTien.DAL.Quay
                         where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.CreateBy == MaNV && itemTT.ChuyenKhoan == ChuyenKhoan
                         select new
                         {
+                            In=false,
                             MaTT = itemTT.ID_TAMTHU,
+                            itemTT.SoPhieu,
                             itemHD.NGAYGIAITRACH,
                             itemTT.CreateDate,
                             itemHD.SOHOADON,
@@ -139,9 +142,24 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
+        public List<TAMTHU> GetDSBySoPhieu(decimal SoPhieu)
+        {
+            return _db.TAMTHUs.Where(item => item.SoPhieu == SoPhieu).ToList();
+        }
+
         public TAMTHU GetByMaTT(int MaTT)
         {
             return _db.TAMTHUs.SingleOrDefault(item => item.ID_TAMTHU == MaTT);
+        }
+
+        public decimal GetMaxSoPhieu()
+        {
+            string ID = "SoPhieu";
+            string Table = "TAMTHU";
+            decimal SoPhieu = _db.ExecuteQuery<decimal>("declare @Ma int " +
+                "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+            return getMaxNextIDTable(SoPhieu);
         }
     }
 }

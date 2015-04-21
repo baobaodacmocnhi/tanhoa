@@ -57,7 +57,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 foreach (DataGridViewRow item in dgvHDChuaThu.Rows)
                 {
                     TongCong += int.Parse(item.Cells["TongCong_CT"].Value.ToString());
-                } 
+                }
                 if (TongCong == 0)
                     txtTongCong_CT.Text = "0";
                 else
@@ -75,59 +75,52 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            try
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                _cDLKH.BeginTransaction();
-                foreach (string item in txtDanhBo.Lines)
-                    if (item.Length == 11)
-                    {
-                        TT_DuLieuKhachHang dlkh = new TT_DuLieuKhachHang();
-                        dlkh.Nam = (int)cmbNam.SelectedValue;
-                        dlkh.Ky = int.Parse(cmbKy.SelectedItem.ToString());
-                        dlkh.DanhBo = item;
-                        if (!_cDLKH.Them(dlkh))
+                try
+                {
+                    _cDLKH.BeginTransaction();
+                    foreach (string item in txtDanhBo.Lines)
+                        if (item.Length == 11)
                         {
-                            _cDLKH.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            TT_DuLieuKhachHang dlkh = new TT_DuLieuKhachHang();
+                            dlkh.Nam = (int)cmbNam.SelectedValue;
+                            dlkh.Ky = int.Parse(cmbKy.SelectedItem.ToString());
+                            dlkh.DanhBo = item;
+                            if (!_cDLKH.Them(dlkh))
+                            {
+                                _cDLKH.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
-                    }
-                _cDLKH.CommitTransaction();
-                LoadDanhSachHD();
-                txtDanhBo.Text = "";
-                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _cDLKH.CommitTransaction();
+                    LoadDanhSachHD();
+                    txtDanhBo.Text = "";
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception)
+                {
+                    _cDLKH.Rollback();
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception)
-            {
-                _cDLKH.Rollback();
-                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            try
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                _cDLKH.BeginTransaction();
-                if (tabControl.SelectedTab.Name == "tabDaThu")
+                try
                 {
-                    foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
+                    _cDLKH.BeginTransaction();
+                    if (tabControl.SelectedTab.Name == "tabDaThu")
                     {
-                        TT_DuLieuKhachHang dlkh = _cDLKH.GetByNamKyDanhBo(int.Parse(item.Cells["Nam_DT"].Value.ToString()), int.Parse(item.Cells["Ky_DT"].Value.ToString()), item.Cells["DanhBo_DT"].Value.ToString());
-                        if (!_cDLKH.Xoa(dlkh))
+                        foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
                         {
-                            _cDLKH.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
-                }
-                else
-                    if (tabControl.SelectedTab.Name == "tabChuaThu")
-                    {
-                        foreach (DataGridViewRow item in dgvHDChuaThu.SelectedRows)
-                        {
-                            TT_DuLieuKhachHang dlkh = _cDLKH.GetByNamKyDanhBo(int.Parse(item.Cells["Nam_CT"].Value.ToString()), int.Parse(item.Cells["Ky_CT"].Value.ToString()), item.Cells["DanhBo_CT"].Value.ToString());
+                            TT_DuLieuKhachHang dlkh = _cDLKH.GetByNamKyDanhBo(int.Parse(item.Cells["Nam_DT"].Value.ToString()), int.Parse(item.Cells["Ky_DT"].Value.ToString()), item.Cells["DanhBo_DT"].Value.ToString());
                             if (!_cDLKH.Xoa(dlkh))
                             {
                                 _cDLKH.Rollback();
@@ -136,16 +129,33 @@ namespace ThuTien.GUI.ChuyenKhoan
                             }
                         }
                     }
-                _cDLKH.CommitTransaction();
-                LoadDanhSachHD();
-                txtDanhBo.Text = "";
-                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        if (tabControl.SelectedTab.Name == "tabChuaThu")
+                        {
+                            foreach (DataGridViewRow item in dgvHDChuaThu.SelectedRows)
+                            {
+                                TT_DuLieuKhachHang dlkh = _cDLKH.GetByNamKyDanhBo(int.Parse(item.Cells["Nam_CT"].Value.ToString()), int.Parse(item.Cells["Ky_CT"].Value.ToString()), item.Cells["DanhBo_CT"].Value.ToString());
+                                if (!_cDLKH.Xoa(dlkh))
+                                {
+                                    _cDLKH.Rollback();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                    _cDLKH.CommitTransaction();
+                    LoadDanhSachHD();
+                    txtDanhBo.Text = "";
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception)
+                {
+                    _cDLKH.Rollback();
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception)
-            {
-                _cDLKH.Rollback();
-                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
