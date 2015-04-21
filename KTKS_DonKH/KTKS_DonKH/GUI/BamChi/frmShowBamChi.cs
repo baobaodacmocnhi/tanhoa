@@ -136,6 +136,11 @@ namespace KTKS_DonKH.GUI.BamChi
         {
             if (_ctbamchi != null)
             {
+                if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
+                {
+                    MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 _ctbamchi.DanhBo = txtDanhBo.Text.Trim();
                 _ctbamchi.HopDong = txtHopDong.Text.Trim();
                 _ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();

@@ -200,6 +200,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (_ctktxm != null)
             {
+                if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
+                {
+                    MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 _ctktxm.DanhBo = txtDanhBo.Text.Trim();
                 _ctktxm.HopDong = txtHopDong.Text.Trim();
                 _ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();

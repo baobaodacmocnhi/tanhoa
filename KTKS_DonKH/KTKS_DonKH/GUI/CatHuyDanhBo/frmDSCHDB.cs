@@ -20,6 +20,7 @@ using KTKS_DonKH.BaoCao.CatHuyDanhBo;
 using KTKS_DonKH.GUI.ToXuLy;
 using KTKS_DonKH.DAL.DongNuoc;
 using KTKS_DonKH.BaoCao.DongNuoc;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -1365,6 +1366,80 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         //            DSCHDB_BS.Filter = expression;
         //            _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
         //        }
+        }
+
+        private void btnInNhan_Click(object sender, EventArgs e)
+        {
+            if (radDSCatTamDanhBo.Checked)
+            {
+                DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
+                DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
+                bool flag=true;
+                for (int i = 0; i < dgvDSCTCHDB.Rows.Count; i++)
+                    if (bool.Parse(dgvDSCTCHDB["In", i].Value.ToString()) == true)
+                        if (flag)
+                        {
+                            DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
+
+                            CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                            dr["HoTen"] = ctctdb.HoTen;
+                            dr["DiaChi"] = ctctdb.DiaChi;
+
+                            dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            flag = false;
+                        }
+                        else
+                        {
+                            DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
+
+                            CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                            dr["HoTen"] = ctctdb.HoTen;
+                            dr["DiaChi"] = ctctdb.DiaChi;
+
+                            dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            flag = true;
+                        }
+                rptKinhGui rpt = new rptKinhGui();
+                rpt.Subreports[0].SetDataSource(dsBaoCao1);
+                rpt.Subreports[1].SetDataSource(dsBaoCao2);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+            if (radDSCatHuyDanhBo.Checked)
+            {
+                DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
+                DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
+                bool flag = true;
+                for (int i = 0; i < dgvDSCTCHDB.Rows.Count; i++)
+                    if (bool.Parse(dgvDSCTCHDB["In", i].Value.ToString()) == true)
+                        if (flag)
+                        {
+                            DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
+
+                            CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                            dr["HoTen"] = ctchdb.HoTen;
+                            dr["DiaChi"] = ctchdb.DiaChi;
+
+                            dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            flag = false;
+                        }
+                        else
+                        {
+                            DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
+
+                            CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                            dr["HoTen"] = ctchdb.HoTen;
+                            dr["DiaChi"] = ctchdb.DiaChi;
+
+                            dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            flag = true;
+                        }
+                rptKinhGui rpt = new rptKinhGui();
+                rpt.Subreports[0].SetDataSource(dsBaoCao1);
+                rpt.Subreports[1].SetDataSource(dsBaoCao2);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
 
         

@@ -17,6 +17,7 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.BaoCao.ThaoThuTraLoi;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.GUI.ToXuLy;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 {
@@ -688,6 +689,45 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                     _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
                     dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByDates(dateTu.Value,dateDen.Value);
                 }
+        }
+
+        private void btnInNhan_Click(object sender, EventArgs e)
+        {
+            if (radDSThu.Checked)
+            {
+                DataSetBaoCao dsBaoCao1 = new DataSetBaoCao();
+                DataSetBaoCao dsBaoCao2 = new DataSetBaoCao();
+                bool flag = true;
+                for (int i = 0; i < dgvDSThu.Rows.Count; i++)
+                    if (bool.Parse(dgvDSThu["In", i].Value.ToString()) == true)
+                        if (flag)
+                        {
+                            DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
+
+                            CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                            dr["HoTen"] = cttttl.HoTen;
+                            dr["DiaChi"] = cttttl.DiaChi;
+
+                            dsBaoCao1.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            flag = false;
+                        }
+                        else
+                        {
+                            DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
+
+                            CTTTTL cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(dgvDSThu["MaCTTTTL", i].Value.ToString()));
+                            dr["HoTen"] = cttttl.HoTen;
+                            dr["DiaChi"] = cttttl.DiaChi;
+
+                            dsBaoCao2.Tables["ThaoThuTraLoi"].Rows.Add(dr);
+                            flag = true;
+                        }
+                rptKinhGui rpt = new rptKinhGui();
+                rpt.Subreports[0].SetDataSource(dsBaoCao1);
+                rpt.Subreports[1].SetDataSource(dsBaoCao2);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
 
         

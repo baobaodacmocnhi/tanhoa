@@ -237,6 +237,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             try
             {
+                if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
+                {
+                    MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 ///Nếu đơn thuộc Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
@@ -418,6 +423,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 if (selectedindex != -1)
                 {
+                    if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
+                    {
+                        MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     CTKTXM ctktxm = new CTKTXM();
                     ctktxm = _cKTXM.getCTKTXMbyID(decimal.Parse(dgvDSKetQuaKiemTra["MaCTKTXM", selectedindex].Value.ToString()));
                     ctktxm.DanhBo = txtDanhBo.Text.Trim();

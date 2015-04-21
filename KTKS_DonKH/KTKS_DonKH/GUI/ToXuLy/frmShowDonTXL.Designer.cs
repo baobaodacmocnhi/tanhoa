@@ -78,6 +78,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.chkChuyenBanDoiKhac = new System.Windows.Forms.CheckBox();
             this.groupBoxChuyenKTXM = new System.Windows.Forms.GroupBox();
+            this.chkTKN = new System.Windows.Forms.CheckBox();
             this.chkDCMS = new System.Windows.Forms.CheckBox();
             this.chkDCG = new System.Windows.Forms.CheckBox();
             this.txtGhiChuChuyenKT = new System.Windows.Forms.TextBox();
@@ -99,7 +100,10 @@
             this.label24 = new System.Windows.Forms.Label();
             this.txtTongSoDanhBo = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.chkTKN = new System.Windows.Forms.CheckBox();
+            this.chkTruyThu = new System.Windows.Forms.CheckBox();
+            this.chkDieuChinh = new System.Windows.Forms.CheckBox();
+            this.chkGiuNguyen = new System.Windows.Forms.CheckBox();
+            this.chkChiBoSung = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBoxChuyenKhac.SuspendLayout();
@@ -380,7 +384,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(824, 470);
+            this.btnSua.Location = new System.Drawing.Point(916, 470);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(68, 35);
             this.btnSua.TabIndex = 22;
@@ -404,6 +408,10 @@
             // 
             // groupBoxChuyenKhac
             // 
+            this.groupBoxChuyenKhac.Controls.Add(this.chkTruyThu);
+            this.groupBoxChuyenKhac.Controls.Add(this.chkDieuChinh);
+            this.groupBoxChuyenKhac.Controls.Add(this.chkGiuNguyen);
+            this.groupBoxChuyenKhac.Controls.Add(this.chkChiBoSung);
             this.groupBoxChuyenKhac.Controls.Add(this.txtGhiChuChuyenKhac);
             this.groupBoxChuyenKhac.Controls.Add(this.label20);
             this.groupBoxChuyenKhac.Controls.Add(this.dateChuyenKhac);
@@ -411,7 +419,7 @@
             this.groupBoxChuyenKhac.Enabled = false;
             this.groupBoxChuyenKhac.Location = new System.Drawing.Point(10, 458);
             this.groupBoxChuyenKhac.Name = "groupBoxChuyenKhac";
-            this.groupBoxChuyenKhac.Size = new System.Drawing.Size(808, 49);
+            this.groupBoxChuyenKhac.Size = new System.Drawing.Size(900, 49);
             this.groupBoxChuyenKhac.TabIndex = 20;
             this.groupBoxChuyenKhac.TabStop = false;
             // 
@@ -419,7 +427,7 @@
             // 
             this.txtGhiChuChuyenKhac.Location = new System.Drawing.Point(272, 15);
             this.txtGhiChuChuyenKhac.Name = "txtGhiChuChuyenKhac";
-            this.txtGhiChuChuyenKhac.Size = new System.Drawing.Size(526, 25);
+            this.txtGhiChuChuyenKhac.Size = new System.Drawing.Size(225, 25);
             this.txtGhiChuChuyenKhac.TabIndex = 4;
             // 
             // label20
@@ -594,12 +602,22 @@
             this.groupBoxChuyenKTXM.TabIndex = 14;
             this.groupBoxChuyenKTXM.TabStop = false;
             // 
+            // chkTKN
+            // 
+            this.chkTKN.AutoSize = true;
+            this.chkTKN.Location = new System.Drawing.Point(605, 17);
+            this.chkTKN.Name = "chkTKN";
+            this.chkTKN.Size = new System.Drawing.Size(48, 17);
+            this.chkTKN.TabIndex = 119;
+            this.chkTKN.Text = "TKN";
+            this.chkTKN.UseVisualStyleBackColor = true;
+            // 
             // chkDCMS
             // 
             this.chkDCMS.AutoSize = true;
             this.chkDCMS.Location = new System.Drawing.Point(733, 17);
             this.chkDCMS.Name = "chkDCMS";
-            this.chkDCMS.Size = new System.Drawing.Size(69, 21);
+            this.chkDCMS.Size = new System.Drawing.Size(57, 17);
             this.chkDCMS.TabIndex = 115;
             this.chkDCMS.Text = "ĐCMS";
             this.chkDCMS.UseVisualStyleBackColor = true;
@@ -609,7 +627,7 @@
             this.chkDCG.AutoSize = true;
             this.chkDCG.Location = new System.Drawing.Point(669, 17);
             this.chkDCG.Name = "chkDCG";
-            this.chkDCG.Size = new System.Drawing.Size(58, 21);
+            this.chkDCG.Size = new System.Drawing.Size(49, 17);
             this.chkDCG.TabIndex = 114;
             this.chkDCG.Text = "ĐCG";
             this.chkDCG.UseVisualStyleBackColor = true;
@@ -785,15 +803,45 @@
             this.label23.TabIndex = 4;
             this.label23.Text = "Tổng Số DB";
             // 
-            // chkTKN
+            // chkTruyThu
             // 
-            this.chkTKN.AutoSize = true;
-            this.chkTKN.Location = new System.Drawing.Point(605, 17);
-            this.chkTKN.Name = "chkTKN";
-            this.chkTKN.Size = new System.Drawing.Size(58, 21);
-            this.chkTKN.TabIndex = 119;
-            this.chkTKN.Text = "TKN";
-            this.chkTKN.UseVisualStyleBackColor = true;
+            this.chkTruyThu.AutoSize = true;
+            this.chkTruyThu.Location = new System.Drawing.Point(813, 17);
+            this.chkTruyThu.Name = "chkTruyThu";
+            this.chkTruyThu.Size = new System.Drawing.Size(81, 21);
+            this.chkTruyThu.TabIndex = 126;
+            this.chkTruyThu.Text = "Truy Thu";
+            this.chkTruyThu.UseVisualStyleBackColor = true;
+            // 
+            // chkDieuChinh
+            // 
+            this.chkDieuChinh.AutoSize = true;
+            this.chkDieuChinh.Location = new System.Drawing.Point(714, 17);
+            this.chkDieuChinh.Name = "chkDieuChinh";
+            this.chkDieuChinh.Size = new System.Drawing.Size(93, 21);
+            this.chkDieuChinh.TabIndex = 125;
+            this.chkDieuChinh.Text = "Điều Chỉnh";
+            this.chkDieuChinh.UseVisualStyleBackColor = true;
+            // 
+            // chkGiuNguyen
+            // 
+            this.chkGiuNguyen.AutoSize = true;
+            this.chkGiuNguyen.Location = new System.Drawing.Point(610, 17);
+            this.chkGiuNguyen.Name = "chkGiuNguyen";
+            this.chkGiuNguyen.Size = new System.Drawing.Size(98, 21);
+            this.chkGiuNguyen.TabIndex = 124;
+            this.chkGiuNguyen.Text = "Giữ Nguyên";
+            this.chkGiuNguyen.UseVisualStyleBackColor = true;
+            // 
+            // chkChiBoSung
+            // 
+            this.chkChiBoSung.AutoSize = true;
+            this.chkChiBoSung.Location = new System.Drawing.Point(503, 17);
+            this.chkChiBoSung.Name = "chkChiBoSung";
+            this.chkChiBoSung.Size = new System.Drawing.Size(101, 21);
+            this.chkChiBoSung.TabIndex = 123;
+            this.chkChiBoSung.Text = "Chì Bổ Sung";
+            this.chkChiBoSung.UseVisualStyleBackColor = true;
             // 
             // frmShowDonTXL
             // 
@@ -925,5 +973,9 @@
         private System.Windows.Forms.CheckBox chkDCMS;
         private System.Windows.Forms.CheckBox chkDCG;
         private System.Windows.Forms.CheckBox chkTKN;
+        private System.Windows.Forms.CheckBox chkTruyThu;
+        private System.Windows.Forms.CheckBox chkDieuChinh;
+        private System.Windows.Forms.CheckBox chkGiuNguyen;
+        private System.Windows.Forms.CheckBox chkChiBoSung;
     }
 }

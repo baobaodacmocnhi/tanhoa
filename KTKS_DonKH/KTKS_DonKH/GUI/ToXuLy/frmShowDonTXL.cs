@@ -130,6 +130,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     chkChuyenKhac.Checked = true;
                     dateChuyenKhac.Value = _dontxl.NgayChuyenKhac.Value;
                     txtGhiChuChuyenKhac.Text = _dontxl.GhiChuChuyenKhac;
+                    chkChiBoSung.Checked = _dontxl.ChiBoSung;
+                    chkGiuNguyen.Checked = _dontxl.GiuNguyen;
+                    chkDieuChinh.Checked = _dontxl.DieuChinh;
+                    chkTruyThu.Checked = _dontxl.TruyThu;
                 }
 
                 if (_source["Action"] == "Cập Nhật")
@@ -226,12 +230,19 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     _dontxl.ChuyenKhac = true;
                     _dontxl.NgayChuyenKhac = dateChuyenKhac.Value;
                     _dontxl.GhiChuChuyenKhac = txtGhiChuChuyenKhac.Text.Trim();
+                    _dontxl.ChiBoSung = chkChiBoSung.Checked;
+                    _dontxl.GiuNguyen = chkGiuNguyen.Checked;
+                    _dontxl.DieuChinh = chkDieuChinh.Checked;
+                    _dontxl.TruyThu = chkTruyThu.Checked;
                 }
                 else
                 {
                     _dontxl.ChuyenKhac = false;
                     _dontxl.NgayChuyenKhac = null;
                     _dontxl.GhiChuChuyenKhac = null;
+                    _dontxl.GiuNguyen = false;
+                    _dontxl.DieuChinh = false;
+                    _dontxl.TruyThu = false;
                 }
 
                 if (_cDonTXL.SuaDonTXL(_dontxl))
