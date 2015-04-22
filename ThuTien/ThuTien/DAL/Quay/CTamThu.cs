@@ -116,7 +116,6 @@ namespace ThuTien.DAL.Quay
                         where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.CreateBy == MaNV && itemTT.ChuyenKhoan == ChuyenKhoan
                         select new
                         {
-                            In=false,
                             MaTT = itemTT.ID_TAMTHU,
                             itemTT.SoPhieu,
                             itemHD.NGAYGIAITRACH,

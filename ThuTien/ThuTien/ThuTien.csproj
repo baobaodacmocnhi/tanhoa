@@ -136,6 +136,7 @@
     <Compile Include="DAL\Quay\CLenhHuy.cs" />
     <Compile Include="DAL\Quay\CTamThu.cs" />
     <Compile Include="DAL\Quay\CTraGop.cs" />
+    <Compile Include="DAL\Quay\CXacNhanNo.cs" />
     <Compile Include="DAL\TongHop\CDCHD.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
