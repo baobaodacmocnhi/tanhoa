@@ -1164,21 +1164,25 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 case "Số Phiếu":
                 case "Số Thông Báo":
                     txtNoiDungTimKiem.Visible = true;
+                    txtNoiDungTimKiem2.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Khoảng Thời Gian":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     //DSCHDB_BS.RemoveFilter();
@@ -1227,6 +1231,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 //    DSCHDB_BS.RemoveFilter();
                 if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
+                    txtNoiDungTimKiem2.Text = "";
                     switch (cmbTimTheo.SelectedItem.ToString())
                     {
                         case "Mã Đơn":
@@ -1439,6 +1444,18 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 rpt.Subreports[1].SetDataSource(dsBaoCao2);
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
+            }
+        }
+
+        private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem.Text.Trim().Length > 2 && txtNoiDungTimKiem2.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim().Length > 2)
+            {
+                if (radDSCatTamDanhBo.Checked)
+                    dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCTDBByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                else
+                    if (radDSCatHuyDanhBo.Checked)
+                        dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
             }
         }
 

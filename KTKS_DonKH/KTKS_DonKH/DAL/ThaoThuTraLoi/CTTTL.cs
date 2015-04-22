@@ -1085,6 +1085,46 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
+        public DataTable LoadDSCTTTTLByMaTBs(decimal TuMaCTTTTL, decimal DenMaCTTTTL)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_Xem || CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    var query = from itemCTTTTL in db.CTTTTLs
+                                where itemCTTTTL.MaCTTTTL.ToString().Substring(itemCTTTTL.MaCTTTTL.ToString().Length - 2, 2) == TuMaCTTTTL.ToString().Substring(TuMaCTTTTL.ToString().Length - 2, 2)
+                                && itemCTTTTL.MaCTTTTL.ToString().Substring(itemCTTTTL.MaCTTTTL.ToString().Length - 2, 2) == DenMaCTTTTL.ToString().Substring(DenMaCTTTTL.ToString().Length - 2, 2)
+                                && itemCTTTTL.MaCTTTTL >= TuMaCTTTTL && itemCTTTTL.MaCTTTTL <= DenMaCTTTTL
+                                orderby itemCTTTTL.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTTTTL.MaCTTTTL,
+                                    Ma = itemCTTTTL.MaCTTTTL,
+                                    itemCTTTTL.ThuDuocKy,
+                                    itemCTTTTL.DanhBo,
+                                    itemCTTTTL.GhiChu,
+                                    itemCTTTTL.CreateDate,
+                                    itemCTTTTL.VeViec,
+                                    itemCTTTTL.NoiDung,
+                                    itemCTTTTL.NoiNhan,
+                                    itemCTTTTL.NguoiKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTTTTLByDanhBo(string DanhBo)
         {
             try

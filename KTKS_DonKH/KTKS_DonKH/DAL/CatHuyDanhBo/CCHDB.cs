@@ -1252,6 +1252,50 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public DataTable LoadDSCTCTDBByMaTBs(decimal TuMaTB, decimal DenMaTB)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.MaCTCTDB.ToString().Substring(itemCTCTDB.MaCTCTDB.ToString().Length - 2, 2) == TuMaTB.ToString().Substring(TuMaTB.ToString().Length - 2, 2)
+                                && itemCTCTDB.MaCTCTDB.ToString().Substring(itemCTCTDB.MaCTCTDB.ToString().Length - 2, 2) == DenMaTB.ToString().Substring(DenMaTB.ToString().Length - 2, 2)
+                                && itemCTCTDB.MaCTCTDB >= TuMaTB && itemCTCTDB.MaCTCTDB <= DenMaTB
+                                orderby itemCTCTDB.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTCTDB.PhieuDuocKy,
+                                    itemCTCTDB.DaLapPhieu,
+                                    itemCTCTDB.SoPhieu,
+                                    itemCTCTDB.ThongBaoDuocKy,
+                                    MaTB = itemCTCTDB.MaCTCTDB,
+                                    Ma = itemCTCTDB.MaCTCTDB,
+                                    itemCTCTDB.CreateDate,
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
+                                    itemCTCTDB.SoTien,
+                                    itemCTCTDB.NguoiKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTCTDBByDanhBo(string DanhBo)
         {
             try
@@ -1841,6 +1885,50 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemCTCHDB in db.CTCHDBs
                                 where itemCTCHDB.MaCTCHDB==MaTB
+                                orderby itemCTCHDB.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTCHDB.PhieuDuocKy,
+                                    itemCTCHDB.DaLapPhieu,
+                                    itemCTCHDB.SoPhieu,
+                                    itemCTCHDB.ThongBaoDuocKy,
+                                    MaTB = itemCTCHDB.MaCTCHDB,
+                                    Ma = itemCTCHDB.MaCTCHDB,
+                                    itemCTCHDB.CreateDate,
+                                    itemCTCHDB.DanhBo,
+                                    itemCTCHDB.HoTen,
+                                    itemCTCHDB.DiaChi,
+                                    itemCTCHDB.LyDo,
+                                    itemCTCHDB.GhiChuLyDo,
+                                    itemCTCHDB.SoTien,
+                                    itemCTCHDB.NguoiKy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTCHDBByMaTBs(decimal TuMaTB, decimal DenMaTB)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCHDB in db.CTCHDBs
+                                where itemCTCHDB.MaCTCHDB.ToString().Substring(itemCTCHDB.MaCTCHDB.ToString().Length - 2, 2) == TuMaTB.ToString().Substring(TuMaTB.ToString().Length - 2, 2)
+                                && itemCTCHDB.MaCTCHDB.ToString().Substring(itemCTCHDB.MaCTCHDB.ToString().Length - 2, 2) == DenMaTB.ToString().Substring(DenMaTB.ToString().Length - 2, 2)
+                                && itemCTCHDB.MaCTCHDB >= TuMaTB && itemCTCHDB.MaCTCHDB <= DenMaTB
                                 orderby itemCTCHDB.CreateDate descending
                                 select new
                                 {

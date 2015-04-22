@@ -453,21 +453,25 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 case "Mã Thư":
                 case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
+                    txtNoiDungTimKiem2.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Khoảng Thời Gian":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     //DSTTTL_BS.RemoveFilter();
@@ -503,6 +507,7 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 //    DSTTTL_BS.RemoveFilter();
                 if (txtNoiDungTimKiem.Text.Trim() != "")
                 {
+                    txtNoiDungTimKiem2.Text = "";
                     switch (cmbTimTheo.SelectedItem.ToString())
                     {
                         case "Mã Đơn":
@@ -727,6 +732,15 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 rpt.Subreports[1].SetDataSource(dsBaoCao2);
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
+            }
+        }
+
+        private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem.Text.Trim().Length > 2 && txtNoiDungTimKiem2.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim().Length > 2)
+            {
+                if (radDSThu.Checked)
+                    dgvDSThu.DataSource = _cTTTL.LoadDSCTTTTLByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
             }
         }
 
