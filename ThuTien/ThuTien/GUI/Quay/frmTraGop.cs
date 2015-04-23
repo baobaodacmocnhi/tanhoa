@@ -15,5 +15,11 @@ namespace ThuTien.GUI.Quay
         {
             InitializeComponent();
         }
+
+        private void frmTraGop_Load(object sender, EventArgs e)
+        {
+            dgvHoaDon.AutoGenerateColumns = false;
+            dgvTraGop.AutoGenerateColumns = false;
+        }
     }
 }

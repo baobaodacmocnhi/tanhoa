@@ -28,7 +28,7 @@ namespace ThuTien.GUI.HanhThu
 
         private void frmQuetTam_Load(object sender, EventArgs e)
         {
-            dgvHD.AutoGenerateColumns = false;
+            dgvHoaDon.AutoGenerateColumns = false;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -77,7 +77,7 @@ namespace ThuTien.GUI.HanhThu
                     }
                     _cQuetTam.CommitTransaction();
                     lstHD.Items.Clear();
-                    dgvHD.DataSource = _cQuetTam.GetDSByMaNVCreatedDate(CNguoiDung.MaND, dateTu.Value);
+                    dgvHoaDon.DataSource = _cQuetTam.GetDSByMaNVCreatedDate(CNguoiDung.MaND, dateTu.Value);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -99,7 +99,7 @@ namespace ThuTien.GUI.HanhThu
                     try
                     {
                         _cQuetTam.BeginTransaction();
-                        foreach (DataGridViewRow item in dgvHD.SelectedRows)
+                        foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
                             TT_QuetTam quettam = _cQuetTam.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                             if (!_cQuetTam.Xoa(quettam))
@@ -110,7 +110,7 @@ namespace ThuTien.GUI.HanhThu
                         }
                         _cQuetTam.CommitTransaction();
                         lstHD.Items.Clear();
-                        dgvHD.DataSource = _cQuetTam.GetDSByMaNVCreatedDate(CNguoiDung.MaND, dateTu.Value);
+                        dgvHoaDon.DataSource = _cQuetTam.GetDSByMaNVCreatedDate(CNguoiDung.MaND, dateTu.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
@@ -127,7 +127,7 @@ namespace ThuTien.GUI.HanhThu
         private void btnIn_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            foreach (DataGridViewRow item in dgvHD.Rows)
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {
                 DataRow dr = ds.Tables["DSHoaDon"].NewRow();
                 dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
@@ -147,24 +147,24 @@ namespace ThuTien.GUI.HanhThu
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHD.DataSource = _cQuetTam.GetDSByMaNVCreatedDate(CNguoiDung.MaND, dateTu.Value);
+            dgvHoaDon.DataSource = _cQuetTam.GetDSByMaNVCreatedDate(CNguoiDung.MaND, dateTu.Value);
         }
 
-        private void dgvHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvHD.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
-            if (dgvHD.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 
-        private void dgvHD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(dgvHD.RowHeadersDefaultCellStyle.ForeColor))
+            using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
