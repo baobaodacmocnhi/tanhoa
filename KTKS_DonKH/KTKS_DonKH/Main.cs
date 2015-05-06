@@ -626,6 +626,16 @@ namespace KTKS_DonKH
                 item.Close();
         }
 
+        private void ribbtnTruyThuTienNuoc_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in this.MdiChildren)
+                item.Close();
+            Form frm = new frmTruyThuTienNuoc();
+            frm.MdiParent = this;
+            frm.Show();
+            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+        }
+
         
 
               

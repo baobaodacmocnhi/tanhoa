@@ -116,6 +116,7 @@
             this.ribbtnBaoCaoBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
+            this.ribbtnTruyThuTienNuoc = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -342,6 +343,7 @@
             this.ribbonPanel14.ButtonMoreVisible = false;
             this.ribbonPanel14.Items.Add(this.ribbtnNhanDonTXL);
             this.ribbonPanel14.Items.Add(this.ribbtnQLDonTXL);
+            this.ribbonPanel14.Items.Add(this.ribbtnTruyThuTienNuoc);
             this.ribbonPanel14.Text = "Tổ Xử Lý";
             // 
             // ribbtnNhanDonTXL
@@ -813,6 +815,14 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
+            // ribbtnTruyThuTienNuoc
+            // 
+            this.ribbtnTruyThuTienNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnTruyThuTienNuoc.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbtnTruyThuTienNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnTruyThuTienNuoc.SmallImage")));
+            this.ribbtnTruyThuTienNuoc.Text = "Truy Thu Tiền Nước";
+            this.ribbtnTruyThuTienNuoc.Click += new System.EventHandler(this.ribbtnTruyThuTienNuoc_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -924,6 +934,7 @@
         private System.Windows.Forms.RibbonButton ribbtnNhanDonDT;
         private System.Windows.Forms.RibbonButton ribbtnQLDonDT;
         private System.Windows.Forms.RibbonButton ribbtnVeViecTTTL;
+        private System.Windows.Forms.RibbonButton ribbtnTruyThuTienNuoc;
     }
 }
 

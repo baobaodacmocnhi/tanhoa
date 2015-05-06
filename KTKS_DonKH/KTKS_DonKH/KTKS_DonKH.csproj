@@ -558,6 +558,7 @@
     <Compile Include="DAL\ThaoThuTraLoi\CVeViecTTTL.cs" />
     <Compile Include="DAL\TimKiem\CTimKiem.cs" />
     <Compile Include="DAL\ToXuLy\CDonTXL.cs" />
+    <Compile Include="DAL\ToXuLy\CTruyThuTienNuoc.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -960,6 +961,12 @@
     </Compile>
     <Compile Include="GUI\ToXuLy\frmShowDonTXL.Designer.cs">
       <DependentUpon>frmShowDonTXL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmTruyThuTienNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToXuLy\frmTruyThuTienNuoc.Designer.cs">
+      <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="LinQ\DB_CAPNUOCTANHOA.designer.cs">
       <AutoGen>True</AutoGen>
@@ -1466,6 +1473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToXuLy\frmShowDonTXL.resx">
       <DependentUpon>frmShowDonTXL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToXuLy\frmTruyThuTienNuoc.resx">
+      <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

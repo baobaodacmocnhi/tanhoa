@@ -116,6 +116,13 @@ namespace KTKS_DonKH.DAL.HeThong
             set { CTaiKhoan._roleDongNuoc_Xem = value; }
         }
 
+        private static bool _roleTruyThuTienNuoc_Xem = false;
+        public static bool RoleTruyThuTienNuoc_Xem
+        {
+            get { return CTaiKhoan._roleTruyThuTienNuoc_Xem; }
+            set { CTaiKhoan._roleTruyThuTienNuoc_Xem = value; }
+        }
+
         ///
 
         private static bool _roleTaiKhoan_CapNhat = false;
@@ -200,6 +207,13 @@ namespace KTKS_DonKH.DAL.HeThong
         {
             get { return CTaiKhoan._roleDongNuoc_CapNhat; }
             set { CTaiKhoan._roleDongNuoc_CapNhat = value; }
+        }
+
+        private static bool _roleTruyThuTienNuoc_CapNhat = false;
+        public static bool RoleTruyThuTienNuoc_CapNhat
+        {
+            get { return CTaiKhoan._roleTruyThuTienNuoc_CapNhat; }
+            set { CTaiKhoan._roleTruyThuTienNuoc_CapNhat = value; }
         }
 
         ///
@@ -358,6 +372,16 @@ namespace KTKS_DonKH.DAL.HeThong
                         _roleDongNuoc_CapNhat = true;
                     else
                         _roleDongNuoc_CapNhat = false;
+                    ///Mã Role Truy Thu Tiền Nước là 13
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 13).QuyenXem == true)
+                        _roleTruyThuTienNuoc_Xem = true;
+                    else
+                        _roleTruyThuTienNuoc_Xem = false;
+
+                    if (db.DetailRoles.FirstOrDefault(item => item.User.TaiKhoan == taikhoan && item.MaR == 13).QuyenCapNhat == true)
+                        _roleTruyThuTienNuoc_CapNhat = true;
+                    else
+                        _roleTruyThuTienNuoc_CapNhat = false;
                     //db.Users.Single(item => item.TaiKhoan == taikhoan && item.MatKhau == matkhau).Login = true;
                     //db.SubmitChanges();
                     return true;
@@ -398,6 +422,7 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleBamChi_Xem = false;
             _roleQLBamChi_Xem = false;
             _roleDongNuoc_Xem = false;
+            _roleTruyThuTienNuoc_Xem = false;
             ///
             _roleTaiKhoan_CapNhat = false;
             _roleCapNhat_CapNhat = false;
@@ -411,6 +436,7 @@ namespace KTKS_DonKH.DAL.HeThong
             _roleBamChi_CapNhat = false;
             _roleQLBamChi_CapNhat = false;
             _roleDongNuoc_CapNhat = false;
+            _roleTruyThuTienNuoc_CapNhat = false;
             ///
             db.Connection.Close();
         }
@@ -620,7 +646,7 @@ namespace KTKS_DonKH.DAL.HeThong
                         db.Users.InsertOnSubmit(nguoidung);
                         ///Cấp quyền mặc định = False
                         ///i tương ứng với số quyền trong bảng DetailRole
-                        for (int i = 1; i <= 12; i++)
+                        for (int i = 1; i <= 13; i++)
                         {
                             DetailRole qTaiKhoan = new DetailRole();
                             qTaiKhoan.MaR = i;
