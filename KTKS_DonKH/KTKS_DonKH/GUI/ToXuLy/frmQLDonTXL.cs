@@ -506,6 +506,15 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dr["DiaChi"] = itemRow["DiaChi"];
                 dr["NoiDung"] = itemRow["NoiDung"];
                 dr["GhiChuChuyenKT"] = itemRow["GhiChuChuyenKT"];
+
+                if (bool.Parse(itemRow["ChiBoSung"].ToString()))
+                    dr["ChiBoSung"] = "1";
+                if (bool.Parse(itemRow["GiuNguyen"].ToString()))
+                    dr["GiuNguyen"] = "1";
+                if (bool.Parse(itemRow["DieuChinh"].ToString()))
+                    dr["DieuChinh"] = "1";
+                if (bool.Parse(itemRow["TruyThu"].ToString()))
+                    dr["TruyThu"] = "1";
                 //if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
                 //{
                 //    dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));

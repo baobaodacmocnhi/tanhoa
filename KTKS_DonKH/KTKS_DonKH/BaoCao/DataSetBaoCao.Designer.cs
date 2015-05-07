@@ -11061,6 +11061,14 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnGhiChuChuyenKT;
             
+            private global::System.Data.DataColumn columnChiBoSung;
+            
+            private global::System.Data.DataColumn columnGiuNguyen;
+            
+            private global::System.Data.DataColumn columnDieuChinh;
+            
+            private global::System.Data.DataColumn columnTruyThu;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DSDonTXLDataTable() {
@@ -11224,6 +11232,38 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChiBoSungColumn {
+                get {
+                    return this.columnChiBoSung;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GiuNguyenColumn {
+                get {
+                    return this.columnGiuNguyen;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DieuChinhColumn {
+                get {
+                    return this.columnDieuChinh;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TruyThuColumn {
+                get {
+                    return this.columnTruyThu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -11275,7 +11315,11 @@ namespace KTKS_DonKH.BaoCao {
                         string NguoiDi, 
                         bool DaGiaiQuyet, 
                         string NgayGiaiQuyet, 
-                        string GhiChuChuyenKT) {
+                        string GhiChuChuyenKT, 
+                        string ChiBoSung, 
+                        string GiuNguyen, 
+                        string DieuChinh, 
+                        string TruyThu) {
                 DSDonTXLRow rowDSDonTXLRow = ((DSDonTXLRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TuNgay,
@@ -11293,7 +11337,11 @@ namespace KTKS_DonKH.BaoCao {
                         NguoiDi,
                         DaGiaiQuyet,
                         NgayGiaiQuyet,
-                        GhiChuChuyenKT};
+                        GhiChuChuyenKT,
+                        ChiBoSung,
+                        GiuNguyen,
+                        DieuChinh,
+                        TruyThu};
                 rowDSDonTXLRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDSDonTXLRow);
                 return rowDSDonTXLRow;
@@ -11332,6 +11380,10 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnDaGiaiQuyet = base.Columns["DaGiaiQuyet"];
                 this.columnNgayGiaiQuyet = base.Columns["NgayGiaiQuyet"];
                 this.columnGhiChuChuyenKT = base.Columns["GhiChuChuyenKT"];
+                this.columnChiBoSung = base.Columns["ChiBoSung"];
+                this.columnGiuNguyen = base.Columns["GiuNguyen"];
+                this.columnDieuChinh = base.Columns["DieuChinh"];
+                this.columnTruyThu = base.Columns["TruyThu"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11369,6 +11421,14 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnNgayGiaiQuyet);
                 this.columnGhiChuChuyenKT = new global::System.Data.DataColumn("GhiChuChuyenKT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGhiChuChuyenKT);
+                this.columnChiBoSung = new global::System.Data.DataColumn("ChiBoSung", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChiBoSung);
+                this.columnGiuNguyen = new global::System.Data.DataColumn("GiuNguyen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGiuNguyen);
+                this.columnDieuChinh = new global::System.Data.DataColumn("DieuChinh", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDieuChinh);
+                this.columnTruyThu = new global::System.Data.DataColumn("TruyThu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTruyThu);
                 this.columnNguoiDi.Caption = "TienTrinh";
             }
             
@@ -22831,6 +22891,70 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ChiBoSung {
+                get {
+                    try {
+                        return ((string)(this[this.tableDSDonTXL.ChiBoSungColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ChiBoSung\' in table \'DSDonTXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSDonTXL.ChiBoSungColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GiuNguyen {
+                get {
+                    try {
+                        return ((string)(this[this.tableDSDonTXL.GiuNguyenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GiuNguyen\' in table \'DSDonTXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSDonTXL.GiuNguyenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DieuChinh {
+                get {
+                    try {
+                        return ((string)(this[this.tableDSDonTXL.DieuChinhColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DieuChinh\' in table \'DSDonTXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSDonTXL.DieuChinhColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TruyThu {
+                get {
+                    try {
+                        return ((string)(this[this.tableDSDonTXL.TruyThuColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TruyThu\' in table \'DSDonTXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSDonTXL.TruyThuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTuNgayNull() {
                 return this.IsNull(this.tableDSDonTXL.TuNgayColumn);
             }
@@ -23019,6 +23143,54 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetGhiChuChuyenKTNull() {
                 this[this.tableDSDonTXL.GhiChuChuyenKTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsChiBoSungNull() {
+                return this.IsNull(this.tableDSDonTXL.ChiBoSungColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetChiBoSungNull() {
+                this[this.tableDSDonTXL.ChiBoSungColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGiuNguyenNull() {
+                return this.IsNull(this.tableDSDonTXL.GiuNguyenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGiuNguyenNull() {
+                this[this.tableDSDonTXL.GiuNguyenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDieuChinhNull() {
+                return this.IsNull(this.tableDSDonTXL.DieuChinhColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDieuChinhNull() {
+                this[this.tableDSDonTXL.DieuChinhColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTruyThuNull() {
+                return this.IsNull(this.tableDSDonTXL.TruyThuColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTruyThuNull() {
+                this[this.tableDSDonTXL.TruyThuColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -12857,7 +12857,7 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _TieuThuMoi;
 		
-		private System.Nullable<int> _TienNuocMoi;
+		private System.Nullable<int> _GiaBanMoi;
 		
 		private System.Nullable<int> _ThueGTGTMoi;
 		
@@ -12903,8 +12903,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDinhMucMoiChanged();
     partial void OnTieuThuMoiChanging(System.Nullable<int> value);
     partial void OnTieuThuMoiChanged();
-    partial void OnTienNuocMoiChanging(System.Nullable<int> value);
-    partial void OnTienNuocMoiChanged();
+    partial void OnGiaBanMoiChanging(System.Nullable<int> value);
+    partial void OnGiaBanMoiChanged();
     partial void OnThueGTGTMoiChanging(System.Nullable<int> value);
     partial void OnThueGTGTMoiChanged();
     partial void OnPhiBVMTMoiChanging(System.Nullable<int> value);
@@ -13131,22 +13131,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienNuocMoi", DbType="Int")]
-		public System.Nullable<int> TienNuocMoi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBanMoi", DbType="Int")]
+		public System.Nullable<int> GiaBanMoi
 		{
 			get
 			{
-				return this._TienNuocMoi;
+				return this._GiaBanMoi;
 			}
 			set
 			{
-				if ((this._TienNuocMoi != value))
+				if ((this._GiaBanMoi != value))
 				{
-					this.OnTienNuocMoiChanging(value);
+					this.OnGiaBanMoiChanging(value);
 					this.SendPropertyChanging();
-					this._TienNuocMoi = value;
-					this.SendPropertyChanged("TienNuocMoi");
-					this.OnTienNuocMoiChanged();
+					this._GiaBanMoi = value;
+					this.SendPropertyChanged("GiaBanMoi");
+					this.OnGiaBanMoiChanged();
 				}
 			}
 		}

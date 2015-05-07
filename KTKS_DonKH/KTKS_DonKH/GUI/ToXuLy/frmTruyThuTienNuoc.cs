@@ -23,6 +23,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CTTKH _cTTKH = new CTTKH();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
+        CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         private DateTimePicker cellDateTimePicker;
 
         public frmTruyThuTienNuoc()
@@ -38,6 +39,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             this.BringToFront();
 
         }
+
         private void frmTruyThuTienNuoc_Load(object sender, EventArgs e)
         {
             dgvTruyThuTienNuoc.AutoGenerateColumns = false;
@@ -242,7 +244,170 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                ///Nếu đơn thuộc Tổ Xử Lý
+                if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
+                {
+                    if (_dontxl != null && txtDanhBo.Text.Trim() != "")
+                    {
+                        if (!_cTTTN.CheckTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon))
+                        {
+                            TruyThuTienNuoc tttn = new TruyThuTienNuoc();
+                            tttn.ToXuLy = true;
+                            tttn.MaDonTXL = _dontxl.MaDon;
 
+                            tttn.DanhBo = txtDanhBo.Text.Trim();
+                            tttn.HopDong = txtHopDong.Text.Trim();
+                            tttn.LoTrinh = txtLoTrinh.Text.Trim();
+                            tttn.HoTen = txtHoTen.Text.Trim();
+                            tttn.DiaChi = txtDiaChi.Text.Trim();
+                            tttn.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                            tttn.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                            tttn.NoiDung = txtNoiDung.Text.Trim();
+                            tttn.DienThoai = txtDienThoai.Text.Trim();
+
+                            if (_ttkhachhang != null)
+                            {
+                                tttn.Dot = _ttkhachhang.Dot;
+                                tttn.Ky = _ttkhachhang.Ky;
+                                tttn.Nam = _ttkhachhang.Nam;
+                            }
+
+                            if (_cTTTN.ThemTruyThuTienNuoc(tttn))
+                            {
+                                if (string.IsNullOrEmpty(_dontxl.TienTrinh))
+                                    _dontxl.TienTrinh = "TTTN";
+                                else
+                                    _dontxl.TienTrinh += ",TTTN";
+                                _dontxl.Nhan = true;
+                                _cDonTXL.SuaDonTXL(_dontxl, true);
+                            }
+                        }
+
+                        foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                        {
+                            CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
+                            cttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon).MaTTTN;
+                            cttttn.Ky = item.Cells["Ky"].Value.ToString();
+                            cttttn.Nam = item.Cells["Nam"].Value.ToString();
+                            cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
+                            cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
+                            cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                            cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
+                            ///
+                            cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
+                            cttttn.DinhMucMoi = int.Parse(item.Cells["DinhMuc_Moi"].Value.ToString());
+                            cttttn.TieuThuMoi = int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
+                            cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
+                            cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
+                            cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
+                            cttttn.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
+                            cttttn.TangGiam = item.Cells["TangGiam"].Value.ToString();
+
+                            _cTTTN.ThemCTTruyThuTienNuoc(cttttn);
+                        }
+
+                        foreach (DataGridViewRow item in dgvThanhToanTruyThuTienNuoc.Rows)
+                        {
+                            ThanhToanTruyThuTienNuoc tttttn = new ThanhToanTruyThuTienNuoc();
+
+                            tttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon).MaTTTN;
+                            string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
+                            tttttn.NgayDong = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                            tttttn.SoTien = int.Parse(item.Cells["SoTien"].Value.ToString());
+
+                            _cTTTN.ThemThanhToanTruyThuTienNuoc(tttttn);
+                        }
+                        Clear();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtMaDon.Focus();
+                    }
+                    else
+                        MessageBox.Show("Chưa có Mã Đơn/Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                ///Nếu đơn thuộc Tổ Khách Hàng
+                else
+                    if (_donkh != null && txtDanhBo.Text.Trim() != "")
+                    {
+                        if (!_cTTTN.CheckTruyThuTienNuocbyMaDon(_donkh.MaDon))
+                        {
+                            TruyThuTienNuoc tttn = new TruyThuTienNuoc();
+                            tttn.MaDon = _donkh.MaDon;
+
+                            tttn.DanhBo = txtDanhBo.Text.Trim();
+                            tttn.HopDong = txtHopDong.Text.Trim();
+                            tttn.LoTrinh = txtLoTrinh.Text.Trim();
+                            tttn.HoTen = txtHoTen.Text.Trim();
+                            tttn.DiaChi = txtDiaChi.Text.Trim();
+                            tttn.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
+                            tttn.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
+                            tttn.NoiDung = txtNoiDung.Text.Trim();
+                            tttn.DienThoai = txtDienThoai.Text.Trim();
+
+                            if (_ttkhachhang != null)
+                            {
+                                tttn.Dot = _ttkhachhang.Dot;
+                                tttn.Ky = _ttkhachhang.Ky;
+                                tttn.Nam = _ttkhachhang.Nam;
+                            }
+
+                            if (_cTTTN.ThemTruyThuTienNuoc(tttn))
+                            {
+                                if (string.IsNullOrEmpty(_donkh.TienTrinh))
+                                    _donkh.TienTrinh = "TTTN";
+                                else
+                                    _donkh.TienTrinh += ",TTTN";
+                                _donkh.Nhan = true;
+                                _cDonKH.SuaDonKH(_donkh, true);
+                            }
+                        }
+
+                        foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                        {
+                            CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
+                            cttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon(_donkh.MaDon).MaTTTN;
+                            cttttn.Ky = item.Cells["Ky"].Value.ToString();
+                            cttttn.Nam = item.Cells["Nam"].Value.ToString();
+                            cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
+                            cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
+                            cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                            cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
+                            ///
+                            cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
+                            cttttn.DinhMucMoi = int.Parse(item.Cells["DinhMuc_Moi"].Value.ToString());
+                            cttttn.TieuThuMoi = int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
+                            cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
+                            cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
+                            cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
+                            cttttn.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
+                            cttttn.TangGiam = item.Cells["TangGiam"].Value.ToString();
+
+                            _cTTTN.ThemCTTruyThuTienNuoc(cttttn);
+                        }
+
+                        foreach (DataGridViewRow item in dgvThanhToanTruyThuTienNuoc.Rows)
+                        {
+                            ThanhToanTruyThuTienNuoc tttttn = new ThanhToanTruyThuTienNuoc();
+
+                            tttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon(_donkh.MaDon).MaTTTN;
+                            string[] date = item.Cells["NgayChuyen"].Value.ToString().Split('/');
+                            tttttn.NgayDong = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                            tttttn.SoTien = int.Parse(item.Cells["SoTien"].Value.ToString());
+
+                            _cTTTN.ThemThanhToanTruyThuTienNuoc(tttttn);
+                        }
+                        Clear();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtMaDon.Focus();
+                    }
+                    else
+                        MessageBox.Show("Chưa có Mã Đơn/Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

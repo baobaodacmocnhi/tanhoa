@@ -3171,6 +3171,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
                                 where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
+                                && itemCTChungTu.Cat == false
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 {
@@ -3185,6 +3186,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemCTChungTu.NgayHetHan,
                                     itemCTChungTu.CreateDate,
                                     itemCTChungTu.GhiChu,
+                                    itemTTKH.Phuong,
+                                    itemTTKH.Quan,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -3215,6 +3218,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     var query = from itemCTChungTu in db.CTChungTus
                                 join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
                                 where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
+                                && itemCTChungTu.Cat==false
                                 orderby itemCTChungTu.NgayHetHan ascending
                                 select new
                                 { 
@@ -3229,6 +3233,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemCTChungTu.NgayHetHan,
                                     itemCTChungTu.CreateDate,
                                     itemCTChungTu.GhiChu,
+                                    itemTTKH.Phuong,
+                                    itemTTKH.Quan,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

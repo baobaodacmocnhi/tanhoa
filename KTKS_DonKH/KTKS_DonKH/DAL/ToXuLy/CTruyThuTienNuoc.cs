@@ -82,6 +82,8 @@ namespace KTKS_DonKH.DAL.ToXuLy
             {
                 if (CTaiKhoan.RoleTruyThuTienNuoc_CapNhat)
                 {
+                    db.CTTruyThuTienNuocs.DeleteAllOnSubmit(tttn.CTTruyThuTienNuocs.ToList());
+                    db.ThanhToanTruyThuTienNuocs.DeleteAllOnSubmit(tttn.ThanhToanTruyThuTienNuocs.ToList());
                     db.TruyThuTienNuocs.DeleteOnSubmit(tttn);
                     db.SubmitChanges();
                     return true;
@@ -99,6 +101,98 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public bool CheckTruyThuTienNuocbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                if (db.TruyThuTienNuocs.Any(item => item.MaDon == MaDon))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool CheckTruyThuTienNuocbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (db.TruyThuTienNuocs.Any(item => item.MaDonTXL == MaDonTXL))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public TruyThuTienNuoc getTruyThuTienNuocbyMaDon(decimal MaDon)
+        {
+            try
+            {
+                return db.TruyThuTienNuocs.SingleOrDefault(item => item.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public TruyThuTienNuoc getTruyThuTienNuocbyMaDon_TXL(decimal MaDonTXL)
+        {
+            try
+            {
+                return db.TruyThuTienNuocs.SingleOrDefault(item => item.MaDonTXL == MaDonTXL);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public TruyThuTienNuoc getTruyThuTienNuocbyMaTTTN(decimal MaTTTN)
+        {
+            try
+            {
+                return db.TruyThuTienNuocs.SingleOrDefault(item => item.MaTTTN == MaTTTN);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+        }
+
+        public List<TruyThuTienNuoc> LoadDSTruyThuTienNuocbySoPhieu(decimal SoPhieu)
+        {
+            return db.TruyThuTienNuocs.Where(item => item.MaTTTN == SoPhieu).ToList();
+        }
+
+        public List<TruyThuTienNuoc> LoadDSTruyThuTienNuocbyDanhBo(string DanhBo)
+        {
+            return db.TruyThuTienNuocs.Where(item => item.DanhBo == DanhBo).ToList();
+        }
+
+        public List<TruyThuTienNuoc> LoadDSTruyThuTienNuocbyCreateDate(DateTime TuNgay)
+        {
+            return db.TruyThuTienNuocs.Where(item => item.CreateDate.Value.Date == TuNgay.Date).ToList();
+        }
+
+        public List<TruyThuTienNuoc> LoadDSTruyThuTienNuocbyCreateDates(DateTime TuNgay, DateTime DenNgay)
+        {
+            return db.TruyThuTienNuocs.Where(item => item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList();
         }
 
         #endregion
@@ -189,6 +283,20 @@ namespace KTKS_DonKH.DAL.ToXuLy
             }
         }
 
+        public CTTruyThuTienNuoc getCTTruyThuTienNuocbyMaCTTTTN(decimal MaCTTTTN)
+        {
+            try
+            {
+                return db.CTTruyThuTienNuocs.SingleOrDefault(item => item.MaCTTTTN == MaCTTTTN);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+        }
+
         #endregion
 
         #region ThanhToanTruyThuTienNuoc
@@ -275,6 +383,20 @@ namespace KTKS_DonKH.DAL.ToXuLy
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public ThanhToanTruyThuTienNuoc getThanhToanTruyThuTienNuocbyMaTTTTTN(decimal MaTTTTTN)
+        {
+            try
+            {
+                return db.ThanhToanTruyThuTienNuocs.SingleOrDefault(item => item.MaTTTTTN == MaTTTTTN);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
         }
 
         #endregion

@@ -59,6 +59,7 @@
             this.ribbonPanel14 = new System.Windows.Forms.RibbonPanel();
             this.ribbtnNhanDonTXL = new System.Windows.Forms.RibbonButton();
             this.ribbtnQLDonTXL = new System.Windows.Forms.RibbonButton();
+            this.ribbtnTruyThuTienNuoc = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel20 = new System.Windows.Forms.RibbonPanel();
             this.btnBaoCaoDonKH = new System.Windows.Forms.RibbonButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -116,7 +117,7 @@
             this.ribbtnBaoCaoBamChi = new System.Windows.Forms.RibbonButton();
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.IdleTimer = new System.Windows.Forms.Timer(this.components);
-            this.ribbtnTruyThuTienNuoc = new System.Windows.Forms.RibbonButton();
+            this.ribbtnDSTruyThuTienNuoc = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -344,6 +345,7 @@
             this.ribbonPanel14.Items.Add(this.ribbtnNhanDonTXL);
             this.ribbonPanel14.Items.Add(this.ribbtnQLDonTXL);
             this.ribbonPanel14.Items.Add(this.ribbtnTruyThuTienNuoc);
+            this.ribbonPanel14.Items.Add(this.ribbtnDSTruyThuTienNuoc);
             this.ribbonPanel14.Text = "Tổ Xử Lý";
             // 
             // ribbtnNhanDonTXL
@@ -361,6 +363,14 @@
             this.ribbtnQLDonTXL.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnQLDonTXL.SmallImage")));
             this.ribbtnQLDonTXL.Text = "Quản Lý";
             this.ribbtnQLDonTXL.Click += new System.EventHandler(this.ribbtnQLDonTXL_Click);
+            // 
+            // ribbtnTruyThuTienNuoc
+            // 
+            this.ribbtnTruyThuTienNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnTruyThuTienNuoc.MinimumSize = new System.Drawing.Size(120, 0);
+            this.ribbtnTruyThuTienNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnTruyThuTienNuoc.SmallImage")));
+            this.ribbtnTruyThuTienNuoc.Text = "Truy Thu Tiền Nước";
+            this.ribbtnTruyThuTienNuoc.Click += new System.EventHandler(this.ribbtnTruyThuTienNuoc_Click);
             // 
             // ribbonPanel20
             // 
@@ -815,13 +825,13 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             // 
-            // ribbtnTruyThuTienNuoc
+            // ribbtnDSTruyThuTienNuoc
             // 
-            this.ribbtnTruyThuTienNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
-            this.ribbtnTruyThuTienNuoc.MinimumSize = new System.Drawing.Size(120, 0);
-            this.ribbtnTruyThuTienNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnTruyThuTienNuoc.SmallImage")));
-            this.ribbtnTruyThuTienNuoc.Text = "Truy Thu Tiền Nước";
-            this.ribbtnTruyThuTienNuoc.Click += new System.EventHandler(this.ribbtnTruyThuTienNuoc_Click);
+            this.ribbtnDSTruyThuTienNuoc.Image = global::KTKS_DonKH.Properties.Resources.stock_example;
+            this.ribbtnDSTruyThuTienNuoc.MinimumSize = new System.Drawing.Size(140, 0);
+            this.ribbtnDSTruyThuTienNuoc.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbtnDSTruyThuTienNuoc.SmallImage")));
+            this.ribbtnDSTruyThuTienNuoc.Text = "DS Truy Thu Tiền Nước";
+            this.ribbtnDSTruyThuTienNuoc.Click += new System.EventHandler(this.ribbtnDSTruyThuTienNuoc_Click);
             // 
             // Main
             // 
@@ -935,6 +945,7 @@
         private System.Windows.Forms.RibbonButton ribbtnQLDonDT;
         private System.Windows.Forms.RibbonButton ribbtnVeViecTTTL;
         private System.Windows.Forms.RibbonButton ribbtnTruyThuTienNuoc;
+        private System.Windows.Forms.RibbonButton ribbtnDSTruyThuTienNuoc;
     }
 }
 

@@ -486,6 +486,10 @@
               <xs:element name="DaGiaiQuyet" msprop:Generator_ColumnVarNameInTable="columnDaGiaiQuyet" msprop:Generator_ColumnPropNameInRow="DaGiaiQuyet" msprop:Generator_ColumnPropNameInTable="DaGiaiQuyetColumn" msprop:Generator_UserColumnName="DaGiaiQuyet" type="xs:boolean" minOccurs="0" />
               <xs:element name="NgayGiaiQuyet" msprop:Generator_ColumnVarNameInTable="columnNgayGiaiQuyet" msprop:Generator_ColumnPropNameInRow="NgayGiaiQuyet" msprop:Generator_ColumnPropNameInTable="NgayGiaiQuyetColumn" msprop:Generator_UserColumnName="NgayGiaiQuyet" type="xs:string" minOccurs="0" />
               <xs:element name="GhiChuChuyenKT" msprop:Generator_ColumnVarNameInTable="columnGhiChuChuyenKT" msprop:Generator_ColumnPropNameInRow="GhiChuChuyenKT" msprop:Generator_ColumnPropNameInTable="GhiChuChuyenKTColumn" msprop:Generator_UserColumnName="GhiChuChuyenKT" type="xs:string" minOccurs="0" />
+              <xs:element name="ChiBoSung" msprop:Generator_ColumnVarNameInTable="columnChiBoSung" msprop:Generator_ColumnPropNameInRow="ChiBoSung" msprop:Generator_ColumnPropNameInTable="ChiBoSungColumn" msprop:Generator_UserColumnName="ChiBoSung" type="xs:string" minOccurs="0" />
+              <xs:element name="GiuNguyen" msprop:Generator_ColumnVarNameInTable="columnGiuNguyen" msprop:Generator_ColumnPropNameInRow="GiuNguyen" msprop:Generator_ColumnPropNameInTable="GiuNguyenColumn" msprop:Generator_UserColumnName="GiuNguyen" type="xs:string" minOccurs="0" />
+              <xs:element name="DieuChinh" msprop:Generator_ColumnVarNameInTable="columnDieuChinh" msprop:Generator_ColumnPropNameInRow="DieuChinh" msprop:Generator_ColumnPropNameInTable="DieuChinhColumn" msprop:Generator_UserColumnName="DieuChinh" type="xs:string" minOccurs="0" />
+              <xs:element name="TruyThu" msprop:Generator_ColumnVarNameInTable="columnTruyThu" msprop:Generator_ColumnPropNameInRow="TruyThu" msprop:Generator_ColumnPropNameInTable="TruyThuColumn" msprop:Generator_UserColumnName="TruyThu" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

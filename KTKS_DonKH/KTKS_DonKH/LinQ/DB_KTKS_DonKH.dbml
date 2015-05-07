@@ -545,7 +545,7 @@
       <Column Name="GiaBieuMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThuMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienNuocMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBanMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGTMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMTMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCongMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
