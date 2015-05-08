@@ -64,6 +64,31 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                 dgvTruyThuTienNuoc.DataSource = _tttn.CTTruyThuTienNuocs.ToList();
                 dgvThanhToanTruyThuTienNuoc.DataSource = _tttn.ThanhToanTruyThuTienNuocs.ToList();
+
+                int Tongm3HoaDon = 0;
+                int Tongm3ThucTe = 0;
+                int GiaBan = 0;
+                int ThueGTGT = 0;
+                int PhiBVMT = 0;
+                int TongThanhToan = 0;
+                foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                    if (item.Cells["Ky"].Value != null)
+                    {
+                        Tongm3HoaDon += int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                        Tongm3ThucTe += int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
+                        GiaBan += int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
+                        ThueGTGT += int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
+                        PhiBVMT += int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
+                        TongThanhToan += int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
+                    }
+                txtSoKy.Text = (dgvTruyThuTienNuoc.RowCount - 1).ToString();
+                txtTongm3HoaDon.Text = Tongm3HoaDon.ToString();
+                txtTongm3ThucTe.Text = Tongm3ThucTe.ToString();
+                txtTongm3TruyThu.Text = (Tongm3ThucTe - Tongm3HoaDon).ToString();
+                txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBan);
+                txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
+                txtPhiBVMT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMT);
+                txtTongCongMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThanhToan);
             }
         }
 
@@ -237,6 +262,47 @@ namespace KTKS_DonKH.GUI.ToXuLy
             CTTruyThuTienNuoc cttttn = _cTTTN.getCTTruyThuTienNuocbyMaCTTTTN(int.Parse(dgvTruyThuTienNuoc["MaCTTTTN", e.RowIndex].Value.ToString()));
 
             _cTTTN.XoaCTTruyThuTienNuoc(cttttn);
+        }
+
+        private void dgvTruyThuTienNuoc_Leave(object sender, EventArgs e)
+        {
+            int Tongm3HoaDon = 0;
+            int Tongm3ThucTe = 0;
+            int GiaBan = 0;
+            int ThueGTGT = 0;
+            int PhiBVMT = 0;
+            int TongCongCu = 0;
+            int TongCongMoi = 0;
+            foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                if (item.Cells["Ky"].Value != null)
+                {
+                    Tongm3HoaDon += int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                    Tongm3ThucTe += int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
+                    GiaBan += int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
+                    ThueGTGT += int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
+                    PhiBVMT += int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
+                    TongCongMoi += int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
+                    TongCongCu += int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
+                }
+            txtSoKy.Text = (dgvTruyThuTienNuoc.RowCount - 1).ToString();
+            txtTongm3HoaDon.Text = Tongm3HoaDon.ToString();
+            txtTongm3ThucTe.Text = Tongm3ThucTe.ToString();
+            txtTongm3TruyThu.Text = (Tongm3ThucTe - Tongm3HoaDon).ToString();
+            txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBan);
+            txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
+            txtPhiBVMT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMT);
+            txtTongCongMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongMoi);
+            txtTongCongCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongCu);
+            txtTongThanhToan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongMoi - TongCongCu);
+        }
+
+        private void dgvTruyThuTienNuoc_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value;
+            dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value;
+            dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value;
+            dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value;
+            dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value;
         }
     }
 }

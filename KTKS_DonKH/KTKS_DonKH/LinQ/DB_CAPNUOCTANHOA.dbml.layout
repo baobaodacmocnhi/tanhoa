@@ -14,7 +14,7 @@
         <elementListCompartment Id="814857e0-5765-46e7-9a52-88dcfd332aa5" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.59699625651042); (3.5 : 1.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.59699625651042); (3.5 : 1.59699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DB_CAPNUOCTANHOADataContext/QUAN/QUAN_PHUONG" />
       <nodes>
         <classShapeMoniker Id="cf1c22ce-e961-4a39-9893-bf50f4120ed4" />

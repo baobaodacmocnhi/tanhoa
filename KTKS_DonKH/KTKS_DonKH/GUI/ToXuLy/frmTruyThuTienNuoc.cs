@@ -238,7 +238,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 if (int.Parse(dgvTruyThuTienNuoc["TongCong_Cu", e.RowIndex].Value.ToString()) < int.Parse(dgvTruyThuTienNuoc["TongCong_Moi", e.RowIndex].Value.ToString()))
                     dgvTruyThuTienNuoc["TangGiam", e.RowIndex].Value = "Tăng";
                 else
-                    dgvTruyThuTienNuoc["TangGiam", e.RowIndex].Value = "Giảm";
+                    if (int.Parse(dgvTruyThuTienNuoc["TongCong_Cu", e.RowIndex].Value.ToString()) > int.Parse(dgvTruyThuTienNuoc["TongCong_Moi", e.RowIndex].Value.ToString()))
+                        dgvTruyThuTienNuoc["TangGiam", e.RowIndex].Value = "Giảm";
             }
         }
 
@@ -286,6 +287,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         }
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                            if (item.Cells["Ky"].Value != null)
                         {
                             CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
                             cttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon_TXL(_dontxl.MaDon).MaTTTN;
@@ -309,6 +311,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         }
 
                         foreach (DataGridViewRow item in dgvThanhToanTruyThuTienNuoc.Rows)
+                            if (item.Cells["NgayChuyen"].Value != null)
                         {
                             ThanhToanTruyThuTienNuoc tttttn = new ThanhToanTruyThuTienNuoc();
 
@@ -364,6 +367,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         }
 
                         foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                            if (item.Cells["Ky"].Value != null)
                         {
                             CTTruyThuTienNuoc cttttn = new CTTruyThuTienNuoc();
                             cttttn.MaTTTN = _cTTTN.getTruyThuTienNuocbyMaDon(_donkh.MaDon).MaTTTN;
@@ -387,6 +391,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         }
 
                         foreach (DataGridViewRow item in dgvThanhToanTruyThuTienNuoc.Rows)
+                            if (item.Cells["NgayChuyen"].Value != null)
                         {
                             ThanhToanTruyThuTienNuoc tttttn = new ThanhToanTruyThuTienNuoc();
 
@@ -409,6 +414,48 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvTruyThuTienNuoc_Leave(object sender, EventArgs e)
+        {
+            int Tongm3HoaDon = 0;
+            int Tongm3ThucTe = 0;
+            int GiaBan = 0;
+            int ThueGTGT = 0;
+            int PhiBVMT = 0;
+            int TongCongCu = 0;
+            int TongCongMoi = 0;
+            foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                if (item.Cells["Ky"].Value!=null)
+                {
+                    Tongm3HoaDon += int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                    Tongm3ThucTe += int.Parse(item.Cells["TieuThu_Moi"].Value.ToString());
+                    GiaBan += int.Parse(item.Cells["GiaBan_Moi"].Value.ToString());
+                    ThueGTGT += int.Parse(item.Cells["ThueGTGT_Moi"].Value.ToString());
+                    PhiBVMT += int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
+                    TongCongMoi += int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
+                    TongCongCu += int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
+                }
+            txtSoKy.Text = (dgvTruyThuTienNuoc.RowCount-1).ToString();
+            txtTongm3HoaDon.Text = Tongm3HoaDon.ToString();
+            txtTongm3ThucTe.Text = Tongm3ThucTe.ToString();
+            txtTongm3TruyThu.Text = (Tongm3ThucTe - Tongm3HoaDon).ToString();
+            txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", GiaBan);
+            txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
+            txtPhiBVMT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", PhiBVMT);
+            txtTongCongMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongMoi);
+            txtTongCongCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongCu);
+            txtTongThanhToan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongMoi - TongCongCu);
+        }
+
+        private void dgvTruyThuTienNuoc_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvTruyThuTienNuoc["Nam", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["Nam", e.RowIndex].Value;
+            dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value;
+            dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value;
+            dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value;
+            dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value;
+        }
+
 
 
     }

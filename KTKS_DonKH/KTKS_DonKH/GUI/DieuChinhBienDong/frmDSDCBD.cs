@@ -1445,9 +1445,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     {
                                         dlkh.MSTHUE = ctdcbd.MSThue_BD;
                                         if (sql == "")
-                                            sql = "update TB_DULIEUKHACHHANG set MSTHUE='" + dlkh.MSTHUE + "'";
+                                            sql = "update TB_DULIEUKHACHHANG set MSTHUE=N'" + dlkh.MSTHUE + "'";
                                         else
-                                            sql += ",MSTHUE='" + dlkh.MSTHUE + "'";
+                                            sql += ",MSTHUE=N'" + dlkh.MSTHUE + "'";
 
                                         //log.Write("MST: " + dlkh.MSTHUE + "; ");
                                     }
@@ -1456,9 +1456,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                         dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
                                         if (sql == "")
-                                            sql = "update TB_DULIEUKHACHHANG set GIABIEU='" + dlkh.GIABIEU + "'";
+                                            sql = "update TB_DULIEUKHACHHANG set GIABIEU=N'" + dlkh.GIABIEU + "'";
                                         else
-                                            sql += ",GIABIEU='" + dlkh.GIABIEU + "'";
+                                            sql += ",GIABIEU=N'" + dlkh.GIABIEU + "'";
 
                                         //log.Write("GB: " + dlkh.GIABIEU + "; ");
                                     }
@@ -1466,9 +1466,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     {
                                         dlkh.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
                                         if (sql == "")
-                                            sql = "update TB_DULIEUKHACHHANG set DINHMUC='" + ctdcbd.DinhMuc_BD.ToString() + "'";
+                                            sql = "update TB_DULIEUKHACHHANG set DINHMUC=N'" + ctdcbd.DinhMuc_BD.ToString() + "'";
                                         else
-                                            sql += ",DINHMUC='" + ctdcbd.DinhMuc_BD.ToString() + "'";
+                                            sql += ",DINHMUC=N'" + ctdcbd.DinhMuc_BD.ToString() + "'";
                                         //log.Write("ĐM: " + dlkh.DINHMUC + "; ");
                                     }
                                     //log.WriteLine("");
@@ -1482,7 +1482,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             TB_GHICHU ghichu = new TB_GHICHU();
                                             ghichu.DANHBO = ctdcbd.DanhBo;
                                             ghichu.DONVI = "KTKS";
-                                            ghichu.NOIDUNG = " PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                                            ghichu.NOIDUNG = "PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                                             ghichu.NOIDUNG += " ," + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
                                             ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - ĐC";
                                             if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
@@ -1505,7 +1505,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             {
                                                 ghichu.NOIDUNG += " Định Mức Từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD + ",";
                                             }
+
                                             //_cDLKH.ThemGhiChu(ghichu);
+
                                             string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',N'" + CTaiKhoan.HoTen + "')";
                                             _cDLKH.ExecuteNonQuery_Transaction(sqlGhiChu);
                                             ctdcbd.ChuyenDocSo = true;

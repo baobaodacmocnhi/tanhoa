@@ -50,5 +50,16 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
             
         }
+
+        public List<QUAN> LoadDSQuan()
+        {
+           return  dbCAPNUOCTANHOA.QUANs.ToList();
+        }
+
+        public List<PHUONG> LoadDSPhuongbyQuan(int MaQuan)
+        {
+            return dbCAPNUOCTANHOA.PHUONGs.Where(item => item.MAQUAN == MaQuan).ToList();
+        }
+
     }
 }
