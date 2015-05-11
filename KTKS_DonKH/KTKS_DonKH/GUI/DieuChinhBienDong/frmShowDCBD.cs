@@ -49,7 +49,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmShowDCBD_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
+            this.Location = new Point(0, 70);
             if (_cDCBD.getCTDCBDbyID(_MaCTDCBD) != null)
             {
                 _ctdcbd = _cDCBD.getCTDCBDbyID(_MaCTDCBD);
