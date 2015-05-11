@@ -143,7 +143,7 @@ namespace ThuTien.DAL
         {
             try
             {
-                _connectionString = "Data Source=192.168.90.12\\server2008r2;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
+                _connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)
