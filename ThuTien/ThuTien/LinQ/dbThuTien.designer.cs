@@ -8227,6 +8227,8 @@ namespace ThuTien.LinQ
 		
 		private bool _DaThanhToan;
 		
+		private System.Nullable<decimal> _SoPhieu;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -8253,6 +8255,8 @@ namespace ThuTien.LinQ
     partial void OnNgayTraChanged();
     partial void OnDaThanhToanChanging(bool value);
     partial void OnDaThanhToanChanged();
+    partial void OnSoPhieuChanging(System.Nullable<decimal> value);
+    partial void OnSoPhieuChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -8389,6 +8393,26 @@ namespace ThuTien.LinQ
 					this._DaThanhToan = value;
 					this.SendPropertyChanged("DaThanhToan");
 					this.OnDaThanhToanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoPhieu", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> SoPhieu
+		{
+			get
+			{
+				return this._SoPhieu;
+			}
+			set
+			{
+				if ((this._SoPhieu != value))
+				{
+					this.OnSoPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._SoPhieu = value;
+					this.SendPropertyChanged("SoPhieu");
+					this.OnSoPhieuChanged();
 				}
 			}
 		}

@@ -1076,7 +1076,7 @@ namespace ThuTien.DAL.Doi
         public DataTable GetDSTonByMaNVNamKyDot(int MaNV, int nam, int ky, int dot)
         {
             var query = from item in _db.HOADONs
-                        where item.NAM == nam && item.KY == ky && item.DOT == dot && item.MaNV_HanhThu == MaNV && item.MaNV_DangNgan == null
+                        where item.NAM == nam && item.KY == ky && item.DOT == dot && item.MaNV_HanhThu == MaNV && item.NGAYGIAITRACH == null
                         orderby item.SOHOADON ascending
                         select new
                         {
@@ -1095,21 +1095,22 @@ namespace ThuTien.DAL.Doi
         }
 
         /// <summary>
-        /// Lấy Danh Sách Hóa Đơn Tồn theo Danh Bộ, phục vụ cho Thu Tạm tại Quầy/Chuyển Khoản
+        /// Lấy Danh Sách Hóa Đơn Tồn theo Danh Bộ, phục vụ cho Thu Tạm tại Quầy/Chuyển Khoản (Left join)
         /// </summary>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
         public DataTable GetDSTonByDanhBo(string DanhBo)
         {
             var query = from itemHD in _db.HOADONs
-                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND
-                        where itemHD.DANHBA == DanhBo && itemHD.MaNV_DangNgan == null
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
                             MaHD = itemHD.ID_HOADON,
                             itemHD.SOHOADON,
-                            //itemHD.SOPHATHANH,
+                            itemHD.SOPHATHANH,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             MLT = itemHD.MALOTRINH,
                             DanhBo = itemHD.DANHBA,
@@ -1122,7 +1123,7 @@ namespace ThuTien.DAL.Doi
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
-                            HanhThu = itemND.HoTen,
+                            HanhThu = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -1213,7 +1214,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND
                         where itemHD.MaNV_GiaoTon == MaNV_GiaoTon && itemHD.NGAYGIAOTON.Value.Date >= TuNgay.Date && itemHD.NGAYGIAOTON.Value.Date <= DenNgay.Date
-                        && itemHD.MaNV_DangNgan == null
+                        && itemHD.NGAYGIAITRACH == null
                         orderby itemHD.ID_HOADON ascending
                         select new
                         {
