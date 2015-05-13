@@ -297,6 +297,11 @@ namespace KTKS_DonKH.DAL.ToXuLy
 
         }
 
+        public bool CheckCTTruyThuTienNuocbyKyNamMaTTTN(decimal MaTTTN, string Ky, string Nam)
+        {
+            return db.CTTruyThuTienNuocs.Any(item => item.MaTTTN == MaTTTN && item.Ky == Ky && item.Nam == Nam);
+        }
+
         #endregion
 
         #region ThanhToanTruyThuTienNuoc

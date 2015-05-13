@@ -95,7 +95,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
-            dgvDSTruyThuTienNuoc.DataSource = _cTTTN.LoadDSTruyThuTienNuocbyCreateDate(dateTu.Value);
+            dgvDSTruyThuTienNuoc.DataSource = _cTTTN.LoadDSTruyThuTienNuocbyCreateDate(dateTimKiem.Value);
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)

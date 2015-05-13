@@ -89,6 +89,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtTongCongCu = new System.Windows.Forms.TextBox();
             this.txtTongThanhToan = new System.Windows.Forms.TextBox();
+            this.btnIn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTruyThuTienNuoc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -507,7 +508,7 @@
             // 
             // txtSoKy
             // 
-            this.txtSoKy.Location = new System.Drawing.Point(1150, 211);
+            this.txtSoKy.Location = new System.Drawing.Point(1147, 208);
             this.txtSoKy.Name = "txtSoKy";
             this.txtSoKy.Size = new System.Drawing.Size(50, 25);
             this.txtSoKy.TabIndex = 19;
@@ -515,7 +516,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1096, 214);
+            this.label12.Location = new System.Drawing.Point(1093, 211);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(48, 17);
             this.label12.TabIndex = 18;
@@ -523,7 +524,7 @@
             // 
             // txtTongm3HoaDon
             // 
-            this.txtTongm3HoaDon.Location = new System.Drawing.Point(1243, 245);
+            this.txtTongm3HoaDon.Location = new System.Drawing.Point(1240, 242);
             this.txtTongm3HoaDon.Name = "txtTongm3HoaDon";
             this.txtTongm3HoaDon.Size = new System.Drawing.Size(50, 25);
             this.txtTongm3HoaDon.TabIndex = 29;
@@ -531,7 +532,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1096, 248);
+            this.label13.Location = new System.Drawing.Point(1093, 245);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(141, 17);
             this.label13.TabIndex = 28;
@@ -539,7 +540,7 @@
             // 
             // txtTongm3ThucTe
             // 
-            this.txtTongm3ThucTe.Location = new System.Drawing.Point(1243, 276);
+            this.txtTongm3ThucTe.Location = new System.Drawing.Point(1240, 273);
             this.txtTongm3ThucTe.Name = "txtTongm3ThucTe";
             this.txtTongm3ThucTe.Size = new System.Drawing.Size(50, 25);
             this.txtTongm3ThucTe.TabIndex = 31;
@@ -547,7 +548,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1096, 279);
+            this.label14.Location = new System.Drawing.Point(1093, 276);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(137, 17);
             this.label14.TabIndex = 30;
@@ -555,7 +556,7 @@
             // 
             // txtTongm3TruyThu
             // 
-            this.txtTongm3TruyThu.Location = new System.Drawing.Point(1243, 307);
+            this.txtTongm3TruyThu.Location = new System.Drawing.Point(1240, 304);
             this.txtTongm3TruyThu.Name = "txtTongm3TruyThu";
             this.txtTongm3TruyThu.Size = new System.Drawing.Size(50, 25);
             this.txtTongm3TruyThu.TabIndex = 33;
@@ -563,7 +564,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1096, 310);
+            this.label15.Location = new System.Drawing.Point(1093, 307);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(140, 17);
             this.label15.TabIndex = 32;
@@ -600,7 +601,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1097, 475);
+            this.label19.Location = new System.Drawing.Point(1093, 338);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(115, 17);
             this.label19.TabIndex = 40;
@@ -615,10 +616,22 @@
             // 
             // txtTongThanhToan
             // 
-            this.txtTongThanhToan.Location = new System.Drawing.Point(1218, 472);
+            this.txtTongThanhToan.Location = new System.Drawing.Point(1214, 335);
             this.txtTongThanhToan.Name = "txtTongThanhToan";
             this.txtTongThanhToan.Size = new System.Drawing.Size(100, 25);
             this.txtTongThanhToan.TabIndex = 43;
+            // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(1099, 490);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(55, 35);
+            this.btnIn.TabIndex = 44;
+            this.btnIn.Text = "In";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
             // 
             // frmTruyThuTienNuoc
             // 
@@ -626,6 +639,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1340, 561);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtTongThanhToan);
             this.Controls.Add(this.txtTongCongCu);
             this.Controls.Add(this.txtTongCongMoi);
@@ -727,5 +741,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtTongCongCu;
         private System.Windows.Forms.TextBox txtTongThanhToan;
+        private System.Windows.Forms.Button btnIn;
     }
 }
