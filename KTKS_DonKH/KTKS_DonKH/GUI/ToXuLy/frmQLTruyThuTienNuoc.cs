@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.ToXuLy;
+using KTKS_DonKH.LinQ;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -110,6 +111,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void dgvDSTruyThuTienNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "MaDon")
+            {
+                TruyThuTienNuoc tttn = _cTTTN.getTruyThuTienNuocbyMaTTTN(decimal.Parse(dgvDSTruyThuTienNuoc["MaTTTN", e.RowIndex].Value.ToString()));
+                if (tttn.ToXuLy)
+                    e.Value = "TXL" + tttn.MaDonTXL.Value.ToString().Insert(tttn.MaDonTXL.Value.ToString().Length - 2, "-");
+                else
+                    e.Value = tttn.MaDonTXL.Value.ToString().Insert(tttn.MaDonTXL.Value.ToString().Length - 2, "-");
+            }
             if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "MaTTTN" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");

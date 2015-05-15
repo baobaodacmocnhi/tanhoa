@@ -23,6 +23,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         CDCBD _cDCBD = new CDCBD();
         string _TuNgay="", _DenNgay="";
+        DateTime _dateTuNgay, _dateDenNgay;
 
         public frmPhuongQuan()
         {
@@ -32,16 +33,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         public frmPhuongQuan(DateTime TuNgay)
         {
             InitializeComponent();
-            _TuNgay = TuNgay.ToString("dd/MM/yyyy");
-            _dt = _cChungTu.LoadDSCapDinhMuc(TuNgay);
+            _dateTuNgay = TuNgay;
+            _TuNgay = TuNgay.ToString("dd/MM/yyyy");  
         }
 
         public frmPhuongQuan(DateTime TuNgay, DateTime DenNgay)
         {
             InitializeComponent();
+            _dateTuNgay = TuNgay;
+            _dateDenNgay = DenNgay;
             _TuNgay = TuNgay.ToString("dd/MM/yyyy");
-            _DenNgay = DenNgay.ToString("dd/MM/yyyy");
-            _dt = _cChungTu.LoadDSCapDinhMuc(TuNgay, DenNgay);
+            _DenNgay = DenNgay.ToString("dd/MM/yyyy");   
         }
 
         private void frmPhuongQuan_Load(object sender, EventArgs e)
@@ -71,10 +73,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
+            if (chkKhongThoiHan.Checked)
+            {
+                if (!string.IsNullOrEmpty(_DenNgay))
+                    _dt = _cChungTu.LoadDSCapDinhMucKhongThoiHan(_dateTuNgay, _dateDenNgay);
+                else
+                    _dt = _cChungTu.LoadDSCapDinhMucKhongThoiHan(_dateTuNgay);
+            }
+            else
+            {
+                if(!string.IsNullOrEmpty(_DenNgay))
+                    _dt = _cChungTu.LoadDSCapDinhMuc(_dateTuNgay, _dateDenNgay);
+                else
+                    _dt = _cChungTu.LoadDSCapDinhMuc(_dateTuNgay);
+            }
+
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow itemRow in _dt.Rows)
             {
-                if (!string.IsNullOrEmpty(itemRow["NgayHetHan"].ToString()))
                     if (cmbQuan.SelectedValue.ToString() == "0")
                     {
                         DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();

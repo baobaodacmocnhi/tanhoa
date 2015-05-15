@@ -650,6 +650,7 @@
             this.btnIn.Text = "In";
             this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // frmShowTruyThuTienNuoc
             // 

@@ -1414,8 +1414,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     System.IO.StreamWriter log = System.IO.File.AppendText("\\\\192.168.90.9\\cntt\\BaoBao\\KTKS_DonKH\\log.txt");
                     try
                     {
-                        _cDCBD.beginTransaction();
-                        _cDLKH.SqlBeginTransaction();
+                        //_cDCBD.beginTransaction();
+                        //_cDLKH.SqlBeginTransaction();
                         log.WriteLine("Danh Sách chuyển Đọc số ngày " + DateTime.Now);
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
@@ -1517,8 +1517,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         }
                                         else
                                         {
-                                            _cDLKH.SqlRollbackTransaction();
-                                            _cDCBD.rollback();
+                                            //_cDLKH.SqlRollbackTransaction();
+                                            //_cDCBD.rollback();
                                             log.WriteLine("=============================================");
                                             log.Close();
                                             log.Dispose();
@@ -1530,8 +1530,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         + " không có bên QLĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         //DSDCBD_BS.DataSource = _cDCBD.LoadDSCTDCBD();
-                        _cDLKH.SqlCommitTransaction();
-                        _cDCBD.commitTransaction();
+                        //_cDLKH.SqlCommitTransaction();
+                        //_cDCBD.commitTransaction();
                         log.WriteLine("=============================================");
                         log.Close();
                         log.Dispose();
@@ -1539,8 +1539,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     catch (Exception ex)
                     {
-                        _cDLKH.SqlRollbackTransaction();
-                        _cDCBD.rollback();
+                        //_cDLKH.SqlRollbackTransaction();
+                        //_cDCBD.rollback();
                         log.WriteLine("=============================================");
                         log.Close();
                         log.Dispose();

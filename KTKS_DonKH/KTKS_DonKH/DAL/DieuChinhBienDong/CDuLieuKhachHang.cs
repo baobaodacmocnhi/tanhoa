@@ -155,8 +155,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
                 command = new SqlCommand(sql, connection);
-                command.Transaction = transaction;
+                //command.Transaction = transaction;
                 if (command.ExecuteNonQuery() == 0)
                     return false;
                 else

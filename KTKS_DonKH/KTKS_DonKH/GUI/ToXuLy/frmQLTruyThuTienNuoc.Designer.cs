@@ -185,7 +185,7 @@
             this.DiaChi,
             this.NoiDung,
             this.DienThoai});
-            this.dgvDSTruyThuTienNuoc.Location = new System.Drawing.Point(0, 66);
+            this.dgvDSTruyThuTienNuoc.Location = new System.Drawing.Point(13, 67);
             this.dgvDSTruyThuTienNuoc.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTruyThuTienNuoc.MultiSelect = false;
             this.dgvDSTruyThuTienNuoc.Name = "dgvDSTruyThuTienNuoc";
@@ -198,7 +198,7 @@
             // MaDon
             // 
             this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Ma Don";
+            this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             // 
             // MaTTTN

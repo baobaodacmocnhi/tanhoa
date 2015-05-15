@@ -625,13 +625,14 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(1099, 490);
+            this.btnIn.Location = new System.Drawing.Point(1096, 490);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(55, 35);
             this.btnIn.TabIndex = 44;
             this.btnIn.Text = "In";
             this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // frmTruyThuTienNuoc
             // 

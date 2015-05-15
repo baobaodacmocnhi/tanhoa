@@ -33,6 +33,7 @@
             this.cmbPhuong = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnBaoCao = new System.Windows.Forms.Button();
+            this.chkKhongThoiHan = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -83,19 +84,30 @@
             this.btnBaoCao.UseVisualStyleBackColor = true;
             this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
             // 
+            // chkKhongThoiHan
+            // 
+            this.chkKhongThoiHan.AutoSize = true;
+            this.chkKhongThoiHan.Location = new System.Drawing.Point(239, 6);
+            this.chkKhongThoiHan.Name = "chkKhongThoiHan";
+            this.chkKhongThoiHan.Size = new System.Drawing.Size(126, 21);
+            this.chkKhongThoiHan.TabIndex = 21;
+            this.chkKhongThoiHan.Text = "Không Thời Hạn";
+            this.chkKhongThoiHan.UseVisualStyleBackColor = true;
+            // 
             // frmPhuongQuan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(377, 87);
+            this.Controls.Add(this.chkKhongThoiHan);
             this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.cmbPhuong);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbQuan);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPhuongQuan";
@@ -113,5 +125,6 @@
         private System.Windows.Forms.ComboBox cmbPhuong;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBaoCao;
+        private System.Windows.Forms.CheckBox chkKhongThoiHan;
     }
 }
