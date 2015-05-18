@@ -228,6 +228,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
             {
                 string ChiTietCu = "";
                 int TongTienCu = _cGiaNuoc.TinhTienNuoc(false, 0, txtDanhBo.Text.Trim(), int.Parse(dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["TieuThu_Cu", e.RowIndex].Value.ToString()), out ChiTietCu);
+                dgvTruyThuTienNuoc["GiaBan_Cu", e.RowIndex].Value = TongTienCu;
+                dgvTruyThuTienNuoc["ThueGTGT_Cu", e.RowIndex].Value = Math.Round((double)TongTienCu * 5 / 100);
+                dgvTruyThuTienNuoc["PhiBVMT_Cu", e.RowIndex].Value = TongTienCu * 10 / 100;
                 dgvTruyThuTienNuoc["TongCong_Cu", e.RowIndex].Value = TongTienCu + Math.Round((double)TongTienCu * 5 / 100) + (TongTienCu * 10 / 100);
             }
             if (dgvTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "TieuThu_Moi")
@@ -309,6 +312,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                             cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
                             cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                            cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
+                            cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
+                            cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
                             cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
                             ///
                             cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
@@ -389,6 +395,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                             cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
                             cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
+                            cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
+                            cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
+                            cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
                             cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
                             ///
                             cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
@@ -493,6 +502,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dr["GiaBieuCu"] = item.Cells["GiaBieu_Cu"].Value.ToString();
                     dr["DinhMucCu"] = item.Cells["DinhMuc_Cu"].Value.ToString();
                     dr["TieuThuCu"] = item.Cells["TieuThu_Cu"].Value.ToString();
+                    dr["GiaBanCu"] = item.Cells["GiaBan_Cu"].Value.ToString();
+                    dr["ThueGTGTCu"] = item.Cells["ThueGTGT_Cu"].Value.ToString();
+                    dr["PhiBVMTCu"] = item.Cells["PhiBVMT_Cu"].Value.ToString();
                     dr["TongCongCu"] = item.Cells["TongCong_Cu"].Value.ToString();
                     dr["GiaBieuMoi"] = item.Cells["GiaBieu_Moi"].Value.ToString();
                     dr["DinhMucMoi"] = item.Cells["DinhMuc_Moi"].Value.ToString();

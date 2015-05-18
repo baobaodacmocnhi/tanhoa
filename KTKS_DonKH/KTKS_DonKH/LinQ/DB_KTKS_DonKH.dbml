@@ -541,6 +541,9 @@
       <Column Name="GiaBieuCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TieuThuCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBanCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGTCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMTCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongCongCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GiaBieuMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DinhMucMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />

@@ -12849,6 +12849,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _TieuThuCu;
 		
+		private System.Nullable<int> _GiaBanCu;
+		
+		private System.Nullable<int> _ThueGTGTCu;
+		
+		private System.Nullable<int> _PhiBVMTCu;
+		
 		private System.Nullable<int> _TongCongCu;
 		
 		private System.Nullable<int> _GiaBieuMoi;
@@ -12895,6 +12901,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnDinhMucCuChanged();
     partial void OnTieuThuCuChanging(System.Nullable<int> value);
     partial void OnTieuThuCuChanged();
+    partial void OnGiaBanCuChanging(System.Nullable<int> value);
+    partial void OnGiaBanCuChanged();
+    partial void OnThueGTGTCuChanging(System.Nullable<int> value);
+    partial void OnThueGTGTCuChanged();
+    partial void OnPhiBVMTCuChanging(System.Nullable<int> value);
+    partial void OnPhiBVMTCuChanged();
     partial void OnTongCongCuChanging(System.Nullable<int> value);
     partial void OnTongCongCuChanged();
     partial void OnGiaBieuMoiChanging(System.Nullable<int> value);
@@ -13047,6 +13059,66 @@ namespace KTKS_DonKH.LinQ
 					this._TieuThuCu = value;
 					this.SendPropertyChanged("TieuThuCu");
 					this.OnTieuThuCuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBanCu", DbType="Int")]
+		public System.Nullable<int> GiaBanCu
+		{
+			get
+			{
+				return this._GiaBanCu;
+			}
+			set
+			{
+				if ((this._GiaBanCu != value))
+				{
+					this.OnGiaBanCuChanging(value);
+					this.SendPropertyChanging();
+					this._GiaBanCu = value;
+					this.SendPropertyChanged("GiaBanCu");
+					this.OnGiaBanCuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThueGTGTCu", DbType="Int")]
+		public System.Nullable<int> ThueGTGTCu
+		{
+			get
+			{
+				return this._ThueGTGTCu;
+			}
+			set
+			{
+				if ((this._ThueGTGTCu != value))
+				{
+					this.OnThueGTGTCuChanging(value);
+					this.SendPropertyChanging();
+					this._ThueGTGTCu = value;
+					this.SendPropertyChanged("ThueGTGTCu");
+					this.OnThueGTGTCuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiBVMTCu", DbType="Int")]
+		public System.Nullable<int> PhiBVMTCu
+		{
+			get
+			{
+				return this._PhiBVMTCu;
+			}
+			set
+			{
+				if ((this._PhiBVMTCu != value))
+				{
+					this.OnPhiBVMTCuChanging(value);
+					this.SendPropertyChanging();
+					this._PhiBVMTCu = value;
+					this.SendPropertyChanged("PhiBVMTCu");
+					this.OnPhiBVMTCuChanged();
 				}
 			}
 		}
