@@ -200,6 +200,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             if (_ctktxm != null)
             {
+                if (!txtDanhBo.Text.Trim().Contains("GM"))
                 if ((txtDanhBo.Text.Trim().Length > 0 && txtDanhBo.Text.Trim().Length < 11) || txtDanhBo.Text.Trim().Length > 11)
                 {
                     MessageBox.Show("Lỗi Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
