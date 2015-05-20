@@ -77,7 +77,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head2b = oSheetMucLuc.get_Range("C5", "I5");
             head2b.MergeCells = true;
-            head2b.Value2 = "TỔNG HỢP";
+            head2b.Value2 = "TỔNG HỢP ()";
             head2b.Font.Name = "Times New Roman";
             head2b.Font.Size = "20";
             head2b.Font.Bold = true;
@@ -92,7 +92,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head3b = oSheetMucLuc.get_Range("C6", "I6");
             head3b.MergeCells = true;
-            head3b.Value2 = "PHÒNG TỔ CHỨC HÀNH CHÍNH";
+            head3b.Value2 = "PHÒNG TỔ CHỨC HÀNH CHÍNH ()";
             head3b.Font.Name = "Times New Roman";
             head3b.Font.Size = "20";
             head3b.Font.Bold = true;
@@ -107,7 +107,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head4b = oSheetMucLuc.get_Range("C7", "R7");
             head4b.MergeCells = true;
-            head4b.Value2 = "PHÒNG KỸ THUẬT CÔNG NGHỆ";
+            head4b.Value2 = "PHÒNG KẾ TOÁN TÀI CHÍNH ()";
             head4b.Font.Name = "Times New Roman";
             head4b.Font.Size = "20";
             head4b.Font.Bold = true;
@@ -122,7 +122,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head5b = oSheetMucLuc.get_Range("C8", "R8");
             head5b.MergeCells = true;
-            head5b.Value2 = "PHÒNG KẾ TOÁN TÀI CHÍNH";
+            head5b.Value2 = "PHÒNG KẾ HOẠCH ĐẦU TƯ ()";
             head5b.Font.Name = "Times New Roman";
             head5b.Font.Size = "20";
             head5b.Font.Bold = true;
@@ -137,7 +137,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head6b = oSheetMucLuc.get_Range("C9", "R9");
             head6b.MergeCells = true;
-            head6b.Value2 = "PHÒNG KẾ HOẠCH ĐẦU TƯ";
+            head6b.Value2 = "PHÒNG KỶ THUẬT CÔNG NGHỆ ()";
             head6b.Font.Name = "Times New Roman";
             head6b.Font.Size = "20";
             head6b.Font.Bold = true;
@@ -151,7 +151,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head7b = oSheetMucLuc.get_Range("C10", "R10");
             head7b.MergeCells = true;
-            head7b.Value2 = "PHÒNG GIẢM NƯỚC KDT";
+            head7b.Value2 = "PHÒNG KINH DOANH ()";
             head7b.Font.Name = "Times New Roman";
             head7b.Font.Size = "20";
             head7b.Font.Bold = true;
@@ -165,7 +165,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head8b = oSheetMucLuc.get_Range("C11", "R11");
             head8b.MergeCells = true;
-            head8b.Value2 = "PHÒNG KINH DOANH";
+            head8b.Value2 = "ĐỘI QLĐHN ()";
             head8b.Font.Name = "Times New Roman";
             head8b.Font.Size = "20";
             head8b.Font.Bold = true;
@@ -179,7 +179,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head9b = oSheetMucLuc.get_Range("C12", "R12");
             head9b.MergeCells = true;
-            head9b.Value2 = "ĐỘI QLĐHN";
+            head9b.Value2 = "ĐỘI THU TIỀN ()";
             head9b.Font.Name = "Times New Roman";
             head9b.Font.Size = "20";
             head9b.Font.Bold = true;
@@ -193,7 +193,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head10b = oSheetMucLuc.get_Range("C13", "R13");
             head10b.MergeCells = true;
-            head10b.Value2 = "ĐỘI THU TIỀN";
+            head10b.Value2 = "ĐỘI THI CÔNG TU BỔ ()";
             head10b.Font.Name = "Times New Roman";
             head10b.Font.Size = "20";
             head10b.Font.Bold = true;
@@ -207,7 +207,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head11b = oSheetMucLuc.get_Range("C14", "R14");
             head11b.MergeCells = true;
-            head11b.Value2 = "ĐỘI THI CÔNG TU BỔ";
+            head11b.Value2 = "ĐỘI THI CÔNG XÂY LẮP ()";
             head11b.Font.Name = "Times New Roman";
             head11b.Font.Size = "20";
             head11b.Font.Bold = true;
@@ -221,7 +221,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head12b = oSheetMucLuc.get_Range("C15", "R15");
             head12b.MergeCells = true;
-            head12b.Value2 = "ĐỘI THI CÔNG XÂY LẮP";
+            head12b.Value2 = "PHÒNG GIẢM NƯỚC KDT ()";
             head12b.Font.Name = "Times New Roman";
             head12b.Font.Size = "20";
             head12b.Font.Bold = true;
@@ -235,7 +235,7 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head13b = oSheetMucLuc.get_Range("C16", "R16");
             head13b.MergeCells = true;
-            head13b.Value2 = "TỔ GIÚP VIỆC";
+            head13b.Value2 = "TỔ GIÚP VIỆC ()";
             head13b.Font.Name = "Times New Roman";
             head13b.Font.Size = "20";
             head13b.Font.Bold = true;
