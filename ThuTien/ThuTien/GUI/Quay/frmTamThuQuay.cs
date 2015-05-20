@@ -344,14 +344,14 @@ namespace ThuTien.GUI.Quay
                     dsBaoCao ds = new dsBaoCao();
                     DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
                     dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
-                    dr["DanhBo"] = lstTamThu[0].DANHBA;
+                    dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = lstTamThu[0].HOADON.TENKH;
                     dr["DiaChi"] = lstTamThu[0].HOADON.SO + " " + lstTamThu[0].HOADON.DUONG;
                     dr["MLT"] = lstTamThu[0].HOADON.MALOTRINH;
                     dr["GiaBieu"] = lstTamThu[0].HOADON.GB;
                     dr["DinhMuc"] = lstTamThu[0].HOADON.DM;
                     dr["Ky"] = Ky;
-                    dr["TongCongSo"] = TongCongSo;
+                    dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongSo);
                     dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
                     if (lstTamThu[0].HOADON.MaNV_HanhThu != null)
                         dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(lstTamThu[0].HOADON.MaNV_HanhThu.Value);

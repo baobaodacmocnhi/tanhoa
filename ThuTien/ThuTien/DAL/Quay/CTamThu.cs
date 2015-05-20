@@ -112,7 +112,8 @@ namespace ThuTien.DAL.Quay
             var query = from itemTT in _db.TAMTHUs
                         //join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
-                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
                         where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.CreateBy == MaNV && itemTT.ChuyenKhoan == ChuyenKhoan
                         select new
                         {
@@ -134,8 +135,8 @@ namespace ThuTien.DAL.Quay
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
-                            HanhThu = itemND.HoTen,
-                            To = itemND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
                             itemTT.MaNH,
                         };
             return LINQToDataTable(query);

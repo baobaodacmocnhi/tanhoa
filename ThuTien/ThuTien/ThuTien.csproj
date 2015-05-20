@@ -64,6 +64,9 @@
     <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,9 +79,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ThuTien, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <ExecutableExtension>.exe</ExecutableExtension>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaoCao\ChuyenKhoan\rptDSTamThuChuyenKhoan.cs">
@@ -103,6 +103,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPhieuDangNgan.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\Quay\rptPhieuTamThuTraGop.cs">
+      <DependentUpon>rptPhieuTamThuTraGop.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\Quay\rptPhieuTamThu.cs">
       <AutoGen>True</AutoGen>
@@ -194,6 +200,18 @@
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmTamThuChuyenKhoan.Designer.cs">
       <DependentUpon>frmTamThuChuyenKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmKiemTraDangNganDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmKiemTraDangNganDoi.Designer.cs">
+      <DependentUpon>frmKiemTraDangNganDoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmKiemTraTonDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmKiemTraTonDoi.Designer.cs">
+      <DependentUpon>frmKiemTraTonDoi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmLuuHD.cs">
       <SubType>Form</SubType>
@@ -339,17 +357,17 @@
     <Compile Include="GUI\ToTruong\frmHDTienLon.Designer.cs">
       <DependentUpon>frmHDTienLon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmKiemTraDangNgan.cs">
+    <Compile Include="GUI\ToTruong\frmKiemTraDangNganTo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmKiemTraDangNgan.Designer.cs">
-      <DependentUpon>frmKiemTraDangNgan.cs</DependentUpon>
+    <Compile Include="GUI\ToTruong\frmKiemTraDangNganTo.Designer.cs">
+      <DependentUpon>frmKiemTraDangNganTo.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmKiemTraTon.cs">
+    <Compile Include="GUI\ToTruong\frmKiemTraTonTo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmKiemTraTon.Designer.cs">
-      <DependentUpon>frmKiemTraTon.cs</DependentUpon>
+    <Compile Include="GUI\ToTruong\frmKiemTraTonTo.Designer.cs">
+      <DependentUpon>frmKiemTraTonTo.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmNangSuatThuTien.cs">
       <SubType>Form</SubType>
@@ -386,6 +404,10 @@
     <EmbeddedResource Include="BaoCao\NhanVien\rptPhieuDangNgan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuDangNgan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\Quay\rptPhieuTamThuTraGop.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuTamThuTraGop.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\Quay\rptPhieuTamThu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -448,6 +470,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmTamThuChuyenKhoan.resx">
       <DependentUpon>frmTamThuChuyenKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmKiemTraDangNganDoi.resx">
+      <DependentUpon>frmKiemTraDangNganDoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmKiemTraTonDoi.resx">
+      <DependentUpon>frmKiemTraTonDoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmLuuHD.resx">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
@@ -524,11 +552,11 @@
     <EmbeddedResource Include="GUI\ToTruong\frmHDTienLon.resx">
       <DependentUpon>frmHDTienLon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToTruong\frmKiemTraDangNgan.resx">
-      <DependentUpon>frmKiemTraDangNgan.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToTruong\frmKiemTraDangNganTo.resx">
+      <DependentUpon>frmKiemTraDangNganTo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToTruong\frmKiemTraTon.resx">
-      <DependentUpon>frmKiemTraTon.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToTruong\frmKiemTraTonTo.resx">
+      <DependentUpon>frmKiemTraTonTo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmNangSuatThuTien.resx">
       <DependentUpon>frmNangSuatThuTien.cs</DependentUpon>

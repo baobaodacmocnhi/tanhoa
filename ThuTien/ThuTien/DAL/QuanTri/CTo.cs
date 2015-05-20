@@ -66,6 +66,12 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_Tos.ToList();
         }
 
+        public List<TT_To> GetDSHanhThu()
+        {
+            return _db.TT_Tos.Where(item=>item.HanhThu==true).ToList();
+
+        }
+
         public TT_To GetByMaTo(int MaTT_To)
         {
             return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTT_To);

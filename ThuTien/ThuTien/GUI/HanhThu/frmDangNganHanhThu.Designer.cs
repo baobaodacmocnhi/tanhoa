@@ -94,6 +94,8 @@
             this.dateDangNgan = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.btnInPhieu = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHD)).BeginInit();
@@ -731,11 +733,29 @@
             this.btnInPhieu.UseVisualStyleBackColor = true;
             this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 233);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Số Lượng:";
+            // 
+            // txtSoLuong
+            // 
+            this.txtSoLuong.Location = new System.Drawing.Point(85, 230);
+            this.txtSoLuong.Name = "txtSoLuong";
+            this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
+            this.txtSoLuong.TabIndex = 24;
+            // 
             // frmDangNganHanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1107, 670);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.dateDangNgan);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnInPhieu);
@@ -838,5 +858,7 @@
         private System.Windows.Forms.DateTimePicker dateDangNgan;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnInPhieu;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtSoLuong;
     }
 }

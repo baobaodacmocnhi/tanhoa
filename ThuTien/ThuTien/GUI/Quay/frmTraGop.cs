@@ -10,6 +10,9 @@ using ThuTien.DAL.Doi;
 using ThuTien.LinQ;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.QuanTri;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.Quay;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.Quay
 {
@@ -18,6 +21,8 @@ namespace ThuTien.GUI.Quay
         string _mnu = "mnuTraGop";
         CHoaDon _cHoaDon = new CHoaDon();
         CTraGop _cTraGop = new CTraGop();
+        CTamThu _cTamThu = new CTamThu();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
 
         public frmTraGop()
         {
@@ -143,7 +148,29 @@ namespace ThuTien.GUI.Quay
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            dsBaoCao ds = new dsBaoCao();
+            DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
+            TT_TraGop tragop = _cTraGop.GetByMaTG(int.Parse(dgvTraGop.CurrentRow.Cells["MaTG"].Value.ToString()));
 
+            dr["SoPhieu"] = tragop.SoPhieu.ToString().Insert(tragop.SoPhieu.ToString().Length - 2, "-");
+            dr["DanhBo"] = tragop.HOADON.DANHBA.Insert(4, " ").Insert(8, " ");
+            dr["HoTen"] = tragop.HOADON.TENKH;
+            dr["DiaChi"] = tragop.HOADON.SO + " " + tragop.HOADON.DUONG;
+            dr["MLT"] = tragop.HOADON.MALOTRINH;
+            dr["GiaBieu"] = tragop.HOADON.GB;
+            dr["DinhMuc"] = tragop.HOADON.DM;
+            dr["Ky"] = Ky;
+            dr["TongCongSo"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", tragop.SoTien);
+            dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(tragop.SoTien.ToString());
+            if (tragop.HOADON.MaNV_HanhThu != null)
+                dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(tragop.HOADON.MaNV_HanhThu.Value);
+            dr["NhanVienQuay"] = CNguoiDung.HoTen;
+            ds.Tables["PhieuTamThu"].Rows.Add(dr);
+
+            rptPhieuTamThuTraGop rpt = new rptPhieuTamThuTraGop();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void dgvTraGop_CellEndEdit(object sender, DataGridViewCellEventArgs e)

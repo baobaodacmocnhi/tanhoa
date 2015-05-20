@@ -143,6 +143,28 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuKiemTraDangNganDoi_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKiemTraDangNganDoi", "Xem"))
+            {
+                frmKiemTraDangNganDoi frm = new frmKiemTraDangNganDoi();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuKiemTraTonDoi_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKiemTraTonDoi", "Xem"))
+            {
+                frmKiemTraTonDoi frm = new frmKiemTraTonDoi();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Tổ Trưởng
@@ -191,22 +213,22 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuKiemTraDangNgan_Click(object sender, EventArgs e)
+        private void mnuKiemTraDangNganTo_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuGiaoTBDongNuoc", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuKiemTraDangNganTo", "Xem"))
             {
-                frmKiemTraDangNgan frm = new frmKiemTraDangNgan();
+                frmKiemTraDangNganTo frm = new frmKiemTraDangNganTo();
                 OpenForm(frm);
             }
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuKiemTraTon_Click(object sender, EventArgs e)
+        private void mnuKiemTraTonTo_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuKiemTraTon", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuKiemTraTonTo", "Xem"))
             {
-                frmKiemTraTon frm = new frmKiemTraTon();
+                frmKiemTraTonTo frm = new frmKiemTraTonTo();
                 OpenForm(frm);
             }
             else
@@ -432,6 +454,8 @@ namespace ThuTien
         }
 
         #endregion 
+
+        
 
         
 

@@ -74,6 +74,8 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.btnInPhieu = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabDaThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThu)).BeginInit();
@@ -492,11 +494,29 @@
             this.btnInPhieu.UseVisualStyleBackColor = true;
             this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 233);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Số Lượng:";
+            // 
+            // txtSoLuong
+            // 
+            this.txtSoLuong.Location = new System.Drawing.Point(85, 230);
+            this.txtSoLuong.Name = "txtSoLuong";
+            this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
+            this.txtSoLuong.TabIndex = 38;
+            // 
             // frmDangNganTon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1103, 706);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dateDen);
@@ -570,5 +590,7 @@
         private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnInPhieu;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtSoLuong;
     }
 }

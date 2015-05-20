@@ -188,6 +188,7 @@ namespace ThuTien.GUI.HanhThu
                 if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
                 {
                     lstHD.Items.Add(txtSoHoaDon.Text.Trim());
+                    txtSoLuong.Text = lstHD.Items.Count.ToString();
                     txtSoHoaDon.Text = "";
                 }
                 else

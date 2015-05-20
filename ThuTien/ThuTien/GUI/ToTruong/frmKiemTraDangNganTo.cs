@@ -12,12 +12,12 @@ using System.Globalization;
 
 namespace ThuTien.GUI.ToTruong
 {
-    public partial class frmKiemTraDangNgan : Form
+    public partial class frmKiemTraDangNganTo : Form
     {
-        //string _mnu = "mnuKiemTraDangNgan";
+        //string _mnu = "mnuKiemTraDangNganTo";
         CHoaDon _cHoaDon = new CHoaDon();
 
-        public frmKiemTraDangNgan()
+        public frmKiemTraDangNganTo()
         {
             InitializeComponent();
         }
@@ -32,8 +32,8 @@ namespace ThuTien.GUI.ToTruong
 
         public void LoadDataGridView()
         {
-            dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan(CNguoiDung.MaTo, "TG", dateDangNgan.Value);
-            dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan(CNguoiDung.MaTo, "CQ", dateDangNgan.Value);
+            dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To(CNguoiDung.MaTo, "TG", dateDangNgan.Value);
+            dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To(CNguoiDung.MaTo, "CQ", dateDangNgan.Value);
             int TongHD = 0;
             int TongCong = 0;
             if (dgvHDTuGia.RowCount > 0)

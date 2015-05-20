@@ -331,5 +331,122 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
             }
         }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            if (dgvTamThu.RowCount > 0)
+            {
+                //Tạo các đối tượng Excel
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                Microsoft.Office.Interop.Excel.Sheets oSheets;
+                Microsoft.Office.Interop.Excel.Workbook oBook;
+                Microsoft.Office.Interop.Excel.Worksheet oSheet;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = true;
+                oExcel.DisplayAlerts = false;
+                //khai báo số lượng sheet
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+
+                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+                oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+                oSheet.Name = "Sheet1";
+
+                // Tạo tiêu đề cột 
+                Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+                cl1.Value2 = "Số Hóa Đơn";
+                cl1.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+                cl2.Value2 = "Kỳ";
+                cl2.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+                cl3.Value2 = "Danh Bộ";
+                cl3.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+                cl4.Value2 = "Khách Hàng";
+                cl4.ColumnWidth = 30;
+
+                Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+                cl5.Value2 = "Tổng Cộng";
+                cl5.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
+                cl6.Value2 = "Hành Thu";
+                cl6.ColumnWidth = 30;
+
+                // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+                // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+                object[,] arr = new object[dgvTamThu.RowCount, 6];
+
+                //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+                for (int i = 0; i < dgvTamThu.RowCount; i++)
+                {
+                    DataGridViewRow dr = dgvTamThu.Rows[i];
+
+                    arr[i, 0] = dr.Cells["SoHoaDon_TT"].Value.ToString();
+                    arr[i, 1] = dr.Cells["Ky_TT"].Value.ToString();
+                    arr[i, 2] = dr.Cells["DanhBo_TT"].Value.ToString();
+                    arr[i, 3] = dr.Cells["HoTen_TT"].Value.ToString();
+                    arr[i, 4] = dr.Cells["TongCong_TT"].Value.ToString();
+                    arr[i, 5] = dr.Cells["HanhThu_TT"].Value.ToString() + ", " + dr.Cells["To_TT"].Value.ToString();
+                }
+
+                //Thiết lập vùng điền dữ liệu
+                int rowStart = 2;
+                int columnStart = 1;
+
+                int rowEnd = rowStart + dgvTamThu.RowCount - 1;
+                int columnEnd = 6;
+
+                // Ô bắt đầu điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+                // Ô kết thúc điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+                // Lấy về vùng điền dữ liệu
+                Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+                
+
+                Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+                Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+                Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+                oSheet.get_Range(c2a, c3a).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+                Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+                Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+                oSheet.get_Range(c2b, c3b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                oSheet.get_Range(c2b, c3b).NumberFormat = "@";
+
+                Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+                Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+                Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+                oSheet.get_Range(c2c, c3c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+                Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+                Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+                oSheet.get_Range(c2d, c3d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
+                Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
+                Microsoft.Office.Interop.Excel.Range c3e = oSheet.get_Range(c1e, c2e);
+                oSheet.get_Range(c2e, c3e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                Microsoft.Office.Interop.Excel.Range c1f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 6];
+                Microsoft.Office.Interop.Excel.Range c2f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
+                Microsoft.Office.Interop.Excel.Range c3f = oSheet.get_Range(c1f, c2f);
+                oSheet.get_Range(c2f, c3f).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                //Điền dữ liệu vào vùng đã thiết lập
+                range.Value2 = arr;
+            }
+        }
     }
 }
