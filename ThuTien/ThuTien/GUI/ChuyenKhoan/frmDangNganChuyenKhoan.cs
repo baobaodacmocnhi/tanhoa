@@ -42,6 +42,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         lstHD.Items.Add(item.Trim());
                     }
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
             txtSoHoaDon.Text = "";
         }
 

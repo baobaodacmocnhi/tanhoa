@@ -153,6 +153,7 @@ namespace ThuTien.GUI.ToTruong
                 if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
                 {
                     lstHD.Items.Add(txtSoHoaDon.Text.Trim());
+                    txtSoLuong.Text = lstHD.Items.Count.ToString();
                     txtSoHoaDon.Text = "";
                 }
                 else

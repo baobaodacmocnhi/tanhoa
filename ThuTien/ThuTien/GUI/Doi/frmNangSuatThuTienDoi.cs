@@ -7,25 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.Doi;
-using ThuTien.DAL.QuanTri;
 using System.Globalization;
-using ThuTien.BaoCao;
-using KTKS_DonKH.GUI.BaoCao;
-using ThuTien.BaoCao.ToTruong;
+using ThuTien.LinQ;
+using ThuTien.DAL.QuanTri;
 
-namespace ThuTien.GUI.ToTruong
+namespace ThuTien.GUI.Doi
 {
-    public partial class frmNangSuatThuTien : Form
+    public partial class frmNangSuatThuTienDoi : Form
     {
-        //string _mnu = "mnuKiemTraTon";
+        CTo _cTo = new CTo();
         CHoaDon _cHoaDon = new CHoaDon();
 
-        public frmNangSuatThuTien()
+        public frmNangSuatThuTienDoi()
         {
             InitializeComponent();
         }
 
-        private void frmNangSuatThuTien_Load(object sender, EventArgs e)
+        private void frmNangSuatThuTienDoi_Load(object sender, EventArgs e)
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
@@ -33,8 +31,6 @@ namespace ThuTien.GUI.ToTruong
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
-
-            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
         }
 
         public void LoadDataGridView()
@@ -105,20 +101,37 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            DataTable dtTG = new DataTable();
+            DataTable dtCQ = new DataTable();
+            List<TT_To> lst = _cTo.GetDSHanhThu();
+
             ///chọn tất cả các kỳ
-            if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex != 0)
+            if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex == 0)
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNam(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
-                dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNam(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
-                LoadDataGridView();
+                dtTG = _cHoaDon.GetNangSuatByNam_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
+                dtCQ = _cHoaDon.GetNangSuatByNam_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
+                for (int i = 1; i < lst.Count; i++)
+                {
+                    dtTG.Merge(_cHoaDon.GetNangSuatByNam_Doi(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString())));
+                    dtCQ.Merge(_cHoaDon.GetNangSuatByNam_Doi(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString())));
+                }
             }
             ///chọn 1 kỳ cụ thể
             else
-            {
-                dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNamKy(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNamKy(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                LoadDataGridView();
-            }
+                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex > 0)
+                {
+                    dtTG = _cHoaDon.GetNangSuatByNamKy_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dtCQ = _cHoaDon.GetNangSuatByNamKy_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    for (int i = 1; i < lst.Count; i++)
+                    {
+                        dtTG.Merge(_cHoaDon.GetNangSuatByNamKy_Doi(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                        dtCQ.Merge(_cHoaDon.GetNangSuatByNamKy_Doi(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                    }
+
+                }
+            dgvHDTuGia.DataSource = dtTG;
+            dgvHDCoQuan.DataSource = dtCQ;
+            LoadDataGridView();
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -192,52 +205,5 @@ namespace ThuTien.GUI.ToTruong
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
-
-        private void btnIn_Click(object sender, EventArgs e)
-        {
-            dsBaoCao ds = new dsBaoCao();
-            foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-            {
-                DataRow dr = ds.Tables["NangSuatThuTien"].NewRow();
-                dr["Nam"] = cmbNam.SelectedItem.ToString();
-                dr["Ky"] = cmbKy.SelectedItem.ToString();
-                dr["To"] = CNguoiDung.TenTo;
-                dr["Loai"] = "Tư Gia";
-                dr["TongHD"] = item.Cells["TongHD_TG"].Value;
-                dr["TongGiaBan"] = item.Cells["TongGiaBan_TG"].Value;
-                dr["TongHDThu"] = item.Cells["TongHDThu_TG"].Value;
-                dr["TongGiaBanThu"] = item.Cells["TongGiaBanThu_TG"].Value;
-                dr["TongHDTon"] = item.Cells["TongHDTon_TG"].Value;
-                dr["TongGiaBanTon"] = item.Cells["TongGiaBanTon_TG"].Value;
-                dr["NhanVien"] = item.Cells["HoTen_TG"].Value;
-                dr["TiLe"] = item.Cells["TiLe_TG"].Value;
-                ds.Tables["NangSuatThuTien"].Rows.Add(dr);
-            }
-
-            foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-            {
-                DataRow dr = ds.Tables["NangSuatThuTien"].NewRow();
-                dr["Nam"] = cmbNam.SelectedItem.ToString();
-                dr["Ky"] = cmbKy.SelectedItem.ToString();
-                dr["To"] = CNguoiDung.TenTo;
-                dr["Loai"] = "Cơ Quan";
-                dr["TongHD"] = item.Cells["TongHD_CQ"].Value;
-                dr["TongGiaBan"] = item.Cells["TongGiaBan_CQ"].Value;
-                dr["TongHDThu"] = item.Cells["TongHDThu_CQ"].Value;
-                dr["TongGiaBanThu"] = item.Cells["TongGiaBanThu_CQ"].Value;
-                dr["TongHDTon"] = item.Cells["TongHDTon_CQ"].Value;
-                dr["TongGiaBanTon"] = item.Cells["TongGiaBanTon_CQ"].Value;
-                dr["NhanVien"] = item.Cells["HoTen_CQ"].Value;
-                dr["TiLe"] = item.Cells["TiLe_CQ"].Value;
-                ds.Tables["NangSuatThuTien"].Rows.Add(dr);
-            }
-
-            rptNangSuatThuTien rpt = new rptNangSuatThuTien();
-            rpt.SetDataSource(ds);
-            frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
-        }
-
-        
     }
 }

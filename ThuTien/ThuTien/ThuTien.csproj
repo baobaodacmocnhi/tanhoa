@@ -219,6 +219,12 @@
     <Compile Include="GUI\Doi\frmLuuHD.Designer.cs">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Doi\frmNangSuatThuTienDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmNangSuatThuTienDoi.Designer.cs">
+      <DependentUpon>frmNangSuatThuTienDoi.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\HanhThu\frmDangNganTon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,11 +375,11 @@
     <Compile Include="GUI\ToTruong\frmKiemTraTonTo.Designer.cs">
       <DependentUpon>frmKiemTraTonTo.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmNangSuatThuTien.cs">
+    <Compile Include="GUI\ToTruong\frmNangSuatThuTienTo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmNangSuatThuTien.Designer.cs">
-      <DependentUpon>frmNangSuatThuTien.cs</DependentUpon>
+    <Compile Include="GUI\ToTruong\frmNangSuatThuTienTo.Designer.cs">
+      <DependentUpon>frmNangSuatThuTienTo.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmTongHopNo.cs">
       <SubType>Form</SubType>
@@ -480,6 +486,9 @@
     <EmbeddedResource Include="GUI\Doi\frmLuuHD.resx">
       <DependentUpon>frmLuuHD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmNangSuatThuTienDoi.resx">
+      <DependentUpon>frmNangSuatThuTienDoi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmDangNganTon.resx">
       <DependentUpon>frmDangNganTon.cs</DependentUpon>
     </EmbeddedResource>
@@ -558,8 +567,8 @@
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraTonTo.resx">
       <DependentUpon>frmKiemTraTonTo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ToTruong\frmNangSuatThuTien.resx">
-      <DependentUpon>frmNangSuatThuTien.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToTruong\frmNangSuatThuTienTo.resx">
+      <DependentUpon>frmNangSuatThuTienTo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmTongHopNo.resx">
       <DependentUpon>frmTongHopNo.cs</DependentUpon>

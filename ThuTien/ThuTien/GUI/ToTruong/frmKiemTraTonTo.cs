@@ -50,21 +50,21 @@ namespace ThuTien.GUI.ToTruong
             ///chọn tất cả nhân viên trong tổ
             if (cmbNhanVien.SelectedValue.ToString() == "-1")
                 ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex != 0)
+                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex == 0)
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNam(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNam(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNam_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNam_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
                 }
                 ///chọn 1 kỳ cụ thể
                 else
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNamKy(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedValue.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNamKy(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedValue.ToString()));
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNamKy_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNamKy_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 }
             ///chọn 1 nhân viên cụ thể
             else
                 ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex != 0)
+                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex == 0)
                 {
                     dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()));
                     dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
@@ -72,8 +72,8 @@ namespace ThuTien.GUI.ToTruong
                 ///chọn 1 kỳ cụ thể
                 else
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedValue.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedValue.ToString()));
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 }
         }
 
@@ -83,7 +83,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongGiaBan_TG" && e.Value != null)
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCong_TG" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -91,7 +91,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongGiaBanThu_TG" && e.Value != null)
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongThu_TG" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -99,7 +99,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongGiaBanTon_TG" && e.Value != null)
+            if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "TongCongTon_TG" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -111,7 +111,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongGiaBan_CQ" && e.Value != null)
+            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongCong_CQ" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -119,7 +119,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongGiaBanThu_CQ" && e.Value != null)
+            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongCongThu_CQ" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -127,7 +127,7 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongGiaBanTon_CQ" && e.Value != null)
+            if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "TongCongTon_CQ" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
