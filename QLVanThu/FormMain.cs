@@ -63,7 +63,7 @@ namespace QLVanThuDen
             oExcel.Visible = true;
             oExcel.DisplayAlerts = false;
             //khai báo số lượng sheet
-            oExcel.Application.SheetsInNewWorkbook = 5;
+            oExcel.Application.SheetsInNewWorkbook = 6;
             oBooks = oExcel.Workbooks;
 
             oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
@@ -108,7 +108,7 @@ namespace QLVanThuDen
 
             Microsoft.Office.Interop.Excel.Range head3b = oSheetMucLuc.get_Range("B6", "I6");
             head3b.MergeCells = true;
-            head3b.Value2 = "THÀNH PHỐ, QUẬN";
+            head3b.Value2 = "KHÁCH HÀNG";
             head3b.Font.Name = "Times New Roman";
             head3b.Font.Size = "20";
             head3b.Font.Bold = true;
@@ -117,7 +117,7 @@ namespace QLVanThuDen
             ///
             Microsoft.Office.Interop.Excel.Range head4a = oSheetMucLuc.get_Range("A7", "A7");
             head4a.Value2 = "3/";
-            head4a.RowHeight = 100;
+            head4a.RowHeight = 40;
             head4a.Font.Name = "Times New Roman";
             head4a.Font.Size = "20";
             head4a.Font.Bold = true;
@@ -126,12 +126,11 @@ namespace QLVanThuDen
 
             Microsoft.Office.Interop.Excel.Range head4b = oSheetMucLuc.get_Range("B7", "I7");
             head4b.MergeCells = true;
-            head4b.Value2 = "TỔNG CÔNG TY CẤP NƯỚC SÀI GÒN-TNHH MTV";
-            head4b.WrapText = true;
+            head4b.Value2 = "THÀNH PHỐ, QUẬN";
             head4b.Font.Name = "Times New Roman";
             head4b.Font.Size = "20";
             head4b.Font.Bold = true;
-            //head4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            //head3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             head4b.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ///
             Microsoft.Office.Interop.Excel.Range head5a = oSheetMucLuc.get_Range("A8", "A8");
@@ -145,16 +144,35 @@ namespace QLVanThuDen
 
             Microsoft.Office.Interop.Excel.Range head5b = oSheetMucLuc.get_Range("B8", "I8");
             head5b.MergeCells = true;
-            head5b.Value2 = "CÁC CÔNG TY, CN TÂN HÒA, CỤC KHU, TRUNG TÂM, NGÂN HÀNG, VEI...";
+            head5b.Value2 = "TỔNG CÔNG TY CẤP NƯỚC SÀI GÒN-TNHH MTV";
             head5b.WrapText = true;
             head5b.Font.Name = "Times New Roman";
             head5b.Font.Size = "20";
             head5b.Font.Bold = true;
-            //head5b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            //head4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             head5b.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ///
+            Microsoft.Office.Interop.Excel.Range head6a = oSheetMucLuc.get_Range("A9", "A9");
+            head6a.Value2 = "5/";
+            head6a.RowHeight = 100;
+            head6a.Font.Name = "Times New Roman";
+            head6a.Font.Size = "20";
+            head6a.Font.Bold = true;
+            head6a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head6a.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head6b = oSheetMucLuc.get_Range("B9", "I9");
+            head6b.MergeCells = true;
+            head6b.Value2 = "CÁC CÔNG TY, CN TÂN HÒA, CỤC KHU, TRUNG TÂM, NGÂN HÀNG, VEI...";
+            head6b.WrapText = true;
+            head6b.Font.Name = "Times New Roman";
+            head6b.Font.Size = "20";
+            head6b.Font.Bold = true;
+            //head5b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            head6b.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
         }
 
-        private void ExportToExcel(DataTable dt, string loaiVB, string SheetName)
+        private void ExportToExcel(DataTable dt, string loaiVB, string SheetName,string TieuDe)
         {
             int r = 0;
             //float TuSo = 100000;
@@ -234,6 +252,14 @@ namespace QLVanThuDen
                 head7.Font.Name = "Times New Roman";
                 head7.Font.Size = "18";
                 head7.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                Microsoft.Office.Interop.Excel.Range head8 = oSheetTongHop.get_Range("A8", "H8");
+                head8.MergeCells = true;
+                head8.Value2 = TieuDe;
+                head8.Font.Bold = true;
+                head8.Font.Name = "Times New Roman";
+                head8.Font.Size = "18";
+                head8.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
                 // Tạo tiêu đề cột 
                 Microsoft.Office.Interop.Excel.Range cl1 = oSheetTongHop.get_Range("A10", "A10");
@@ -713,7 +739,7 @@ namespace QLVanThuDen
 
         }
 
-        private void ExportToExcelChiTiet(DataTable dt, string loaiVB, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)
+        private void ExportToExcelChiTiet(DataTable dt, string loaiVB, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName,string TieuDe)
         {
             int r = 0;
             //float TuSo = 100000;
@@ -776,6 +802,14 @@ namespace QLVanThuDen
                 head7.Font.Name = "Times New Roman";
                 head7.Font.Size = "18";
                 head7.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                Microsoft.Office.Interop.Excel.Range head8 = oSheet.get_Range("A8", "H8");
+                head8.MergeCells = true;
+                head8.Value2 = TieuDe;
+                head8.Font.Bold = true;
+                head8.Font.Name = "Times New Roman";
+                head8.Font.Size = "18";
+                head8.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
                 // Tạo tiêu đề cột 
                 Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A10", "A10");
@@ -1010,8 +1044,8 @@ namespace QLVanThuDen
                     //ExportToExcelTongHop(((DataTable)vanthus.DataSource).DefaultView.ToTable(), "CÔNG VĂN ĐẾN");
                     DataTable temp = (((DataTable)vanthus.DataSource).DefaultView.ToTable());
                     
-                    DataTable[] a = new DataTable[4];
-                    for (int i = 0; i < 4; i++)
+                    DataTable[] a = new DataTable[5];
+                    for (int i = 0; i < 5; i++)
                     {
                         a[i] = new DataTable();
                         foreach (DataColumn item in temp.Columns)
@@ -1048,24 +1082,28 @@ namespace QLVanThuDen
                     //ExportToExcelTongHop(a[3], "CÔNG VĂN ĐẾN");
                     ExportToExcelMucLuc();
                     Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
-                    Microsoft.Office.Interop.Excel.Worksheet oSheetTPHCM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
-                    Microsoft.Office.Interop.Excel.Worksheet oSheetTongCty = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
-                    Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
-                    for (int i = 0; i < 4; i++)
+                    Microsoft.Office.Interop.Excel.Worksheet oSheetKhachHang = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
+                    Microsoft.Office.Interop.Excel.Worksheet oSheetTPHCM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
+                    Microsoft.Office.Interop.Excel.Worksheet oSheetTongCty = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
+                    Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
+                    for (int i = 0; i < 5; i++)
                     {
                         switch (i)
                         {
                             case 0:
-                                ExportToExcelChiTiet(a[i], "CÔNG VĂN ĐẾN", oSheetTPHCM, "TPHCM");
+                                ExportToExcelChiTiet(a[i], "CÔNG VĂN ĐẾN", oSheetTPHCM, "TPHCM", "THÀNH PHỐ, QUẬN");
                                 break;
                             case 1:
-                                ExportToExcelChiTiet(a[i], "CÔNG VĂN ĐẾN", oSheetTongCty, "Tổng Cty");
+                                ExportToExcelChiTiet(a[i], "CÔNG VĂN ĐẾN", oSheetTongCty, "Tổng Cty", "TỔNG CÔNG TY CẤP NƯỚC SÀI GÒN-TNHH MTV");
                                 break;
                             case 2:
-                                ExportToExcelChiTiet(a[i], "CÔNG VĂN ĐẾN", oSheetKhac, "Khác");
+                                ExportToExcelChiTiet(a[i], "CÔNG VĂN ĐẾN", oSheetKhac, "Khác", "CÁC CÔNG TY, CN TÂN HÒA, CỤC KHU, TRUNG TÂM, NGÂN HÀNG, VEI...");
                                 break;
                             case 3:
-                                ExportToExcelChiTiet(a[i], "CÔNG VĂN ĐẾN", oSheetTongHop, "Tổng Hợp");
+                                ExportToExcelChiTiet(a[i], "CÔNG VĂN ĐẾN", oSheetTongHop, "Tổng Hợp", "BẢNG TỔNG HỢP");
+                                break;
+                            case 4:
+                                ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetKhachHang, "Khách Hàng","KHÁCH HÀNG");
                                 break;
                             default:
                                 break;
@@ -1078,8 +1116,8 @@ namespace QLVanThuDen
                         //ExportToExcelTongHop(((DataTable)vanthus.DataSource).DefaultView.ToTable(), "ĐƠN THƯ ĐẾN");
                         DataTable temp = (((DataTable)vanthus.DataSource).DefaultView.ToTable());
                         
-                        DataTable[] a = new DataTable[4];
-                        for (int i = 0; i < 4; i++)
+                        DataTable[] a = new DataTable[5];
+                        for (int i = 0; i < 5; i++)
                         {
                             a[i] = new DataTable();
                             foreach (DataColumn item in temp.Columns)
@@ -1118,24 +1156,28 @@ namespace QLVanThuDen
                         //ExportToExcelTongHop(a[3], "ĐƠN THƯ ĐẾN");
                         ExportToExcelMucLuc();
                         Microsoft.Office.Interop.Excel.Worksheet oSheetTongHop = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
-                        Microsoft.Office.Interop.Excel.Worksheet oSheetTPHCM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
-                        Microsoft.Office.Interop.Excel.Worksheet oSheetTongCty = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
-                        Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
-                        for (int i = 0; i < 4; i++)
+                        Microsoft.Office.Interop.Excel.Worksheet oSheetKhachHang = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(3);
+                        Microsoft.Office.Interop.Excel.Worksheet oSheetTPHCM = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(4);
+                        Microsoft.Office.Interop.Excel.Worksheet oSheetTongCty = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
+                        Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
+                        for (int i = 0; i < 5; i++)
                         {
                             switch (i)
                             {
                                 case 0:
-                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetTPHCM, "TPHCM");
+                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetTPHCM, "TPHCM", "THÀNH PHỐ, QUẬN");
                                     break;
                                 case 1:
-                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetTongCty, "Tổng Cty");
+                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetTongCty, "Tổng Cty", "TỔNG CÔNG TY CẤP NƯỚC SÀI GÒN-TNHH MTV");
                                     break;
                                 case 2:
-                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetKhac, "Khác");
+                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetKhac, "Khác", "CÁC CÔNG TY, CN TÂN HÒA, CỤC KHU, TRUNG TÂM, NGÂN HÀNG, VEI...");
                                     break;
                                 case 3:
-                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetTongHop, "Tổng Hợp");
+                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetTongHop, "Tổng Hợp", "BẢNG TỔNG HỢP");
+                                    break;
+                                case 4:
+                                    ExportToExcelChiTiet(a[i], "ĐƠN THƯ ĐẾN", oSheetKhachHang, "Khách Hàng", "KHÁCH HÀNG");
                                     break;
                                 default:
                                     break;
@@ -1160,7 +1202,7 @@ namespace QLVanThuDen
                         foreach (DataRow item in dt.Rows)
                             if (!dtTemp.Rows.Contains(item["SoDen"].ToString()))
                                 dtTemp.ImportRow(item);
-                        ExportToExcel(dtTemp, "CÔNG VĂN ĐẾN", cmbPhanLoai.SelectedItem.ToString());
+                        ExportToExcel(dtTemp, "CÔNG VĂN ĐẾN", cmbPhanLoai.SelectedItem.ToString(),cmbPhanLoai.SelectedItem.ToString());
                     }
                     else
                         if (chkDonThuDen.Checked)
@@ -1177,7 +1219,7 @@ namespace QLVanThuDen
                             foreach (DataRow item in dt.Rows)
                                 if (!dtTemp.Rows.Contains(item["SoDen"].ToString()))
                                     dtTemp.ImportRow(item);
-                            ExportToExcel(dtTemp, "ĐƠN THƯ ĐẾN", cmbPhanLoai.SelectedItem.ToString());
+                            ExportToExcel(dtTemp, "ĐƠN THƯ ĐẾN", cmbPhanLoai.SelectedItem.ToString(), cmbPhanLoai.SelectedItem.ToString());
                         }
                 }
         }
