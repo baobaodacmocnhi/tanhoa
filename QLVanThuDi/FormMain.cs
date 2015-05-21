@@ -491,7 +491,13 @@ namespace QLVanThu
                 head7.Font.Size = "18";
                 head7.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-                
+                Microsoft.Office.Interop.Excel.Range head9 = oSheetTongHop.get_Range("A9", "H9");
+                head9.MergeCells = true;
+                head9.Value2 = "TỔNG HỢP";
+                head9.Font.Bold = true;
+                head9.Font.Name = "Times New Roman";
+                head9.Font.Size = "18";
+                head9.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
                 // Tạo tiêu đề cột 
                 Microsoft.Office.Interop.Excel.Range cl1 = oSheetTongHop.get_Range("A10", "A10");
@@ -674,7 +680,7 @@ namespace QLVanThu
 
         }
 
-        private void ExportToExcelChiTiet(DataTable dt,Microsoft.Office.Interop.Excel.Worksheet oSheet,string SheetName)
+        private void ExportToExcelChiTiet(DataTable dt,Microsoft.Office.Interop.Excel.Worksheet oSheet,string SheetName,string TieuDe)
         {
             int r = 0;
             int TuSo = 100000;
@@ -738,7 +744,13 @@ namespace QLVanThu
                 head7.Font.Size = "18";
                 head7.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-
+                Microsoft.Office.Interop.Excel.Range head9 = oSheet.get_Range("A9", "H9");
+                head9.MergeCells = true;
+                head9.Value2 = TieuDe;
+                head9.Font.Bold = true;
+                head9.Font.Name = "Times New Roman";
+                head9.Font.Size = "18";
+                head9.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
                 // Tạo tiêu đề cột 
                 Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A10", "A10");
@@ -1023,53 +1035,53 @@ namespace QLVanThu
                 switch (i)
                 {
                     case 0:
-                        ExportToExcelChiTiet(a[i], oSheetTCHC, "TCHC");
+                        ExportToExcelChiTiet(a[i], oSheetTCHC, "TCHC","PHÒNG TỔ CHỨC HÀNH CHÍNH");
                         break;
                     case 1:
-                        ExportToExcelChiTiet(a[i], oSheetKTTC, "KTTC");
+                        ExportToExcelChiTiet(a[i], oSheetKTTC, "KTTC","PHÒNG KẾ TOÁN TÀI CHÍNH");
                         break;
                     case 2:
-                        ExportToExcelChiTiet(a[i], oSheetKHVTTH, "KHĐT");
+                        ExportToExcelChiTiet(a[i], oSheetKHVTTH, "KHĐT","PHÒNG KẾ HOẠCH ĐẦU TƯ");
                         break;
                     case 3:
-                        ExportToExcelChiTiet(a[i], oSheetKTCN, "KTCN");
+                        ExportToExcelChiTiet(a[i], oSheetKTCN, "KTCN","PHÒNG KỸ THUẬT CÔNG NGHỆ");
                         break;
                     case 4:
-                        ExportToExcelChiTiet(a[i], oSheetKTKS, "KD");
+                        ExportToExcelChiTiet(a[i], oSheetKTKS, "KD","PHÒNG KINH DOANH");
                         break;
-                    case 5:
-                        ExportToExcelChiTiet(a[i], oSheetQLDA, "QLDA");
-                        break;
+                    //case 5:
+                    //    ExportToExcelChiTiet(a[i], oSheetQLDA, "QLDA");
+                    //    break;
                     case 6:
-                        ExportToExcelChiTiet(a[i], oSheetQLĐHN, "QLĐHN");
+                        ExportToExcelChiTiet(a[i], oSheetQLĐHN, "QLĐHN","ĐỘI QLĐHN");
                         break;
                     case 7:
-                        ExportToExcelChiTiet(a[i], oSheetĐTT, "ĐTT");
+                        ExportToExcelChiTiet(a[i], oSheetĐTT, "ĐTT","ĐỘI THU TIỀN");
                         break;
                     case 8:
-                        ExportToExcelChiTiet(a[i], oSheetTCTB, "TCTB");
+                        ExportToExcelChiTiet(a[i], oSheetTCTB, "TCTB","ĐỘI THI CÔNG TU BỔ");
                         break;
                     case 9:
-                        ExportToExcelChiTiet(a[i], oSheetTCXL, "TCXL");
+                        ExportToExcelChiTiet(a[i], oSheetTCXL, "TCXL","ĐỘI THI CÔNG XÂY LẮP");
                         break;
                     case 10:
-                        ExportToExcelChiTiet(a[i], oSheetGNKDT, "GNKDT");
+                        ExportToExcelChiTiet(a[i], oSheetGNKDT, "GNKDT","PHÒNG GIẢM NƯỚC KDT");
                         break;
-                    case 11:
-                        ExportToExcelChiTiet(a[i], oSheetCNTT, "CNTT");
-                        break;
+                    //case 11:
+                    //    ExportToExcelChiTiet(a[i], oSheetCNTT, "CNTT");
+                    //    break;
                     case 12:
-                        ExportToExcelChiTiet(a[i], oSheetTGV, "TGV");
+                        ExportToExcelChiTiet(a[i], oSheetTGV, "TGV","TỔ GIÚP VIỆC");
                         break;
-                    case 13:
-                        ExportToExcelChiTiet(a[i], oSheetQĐ_TCHC, "QĐ-TCHC");
-                        break;
-                    case 14:
-                        ExportToExcelChiTiet(a[i], oSheetHĐ, "HĐ");
-                        break;
-                    case 15:
-                        ExportToExcelChiTiet(a[i], oSheetKhac, "-QLDA");
-                        break;
+                    //case 13:
+                    //    ExportToExcelChiTiet(a[i], oSheetQĐ_TCHC, "QĐ-TCHC");
+                    //    break;
+                    //case 14:
+                    //    ExportToExcelChiTiet(a[i], oSheetHĐ, "HĐ");
+                    //    break;
+                    //case 15:
+                    //    ExportToExcelChiTiet(a[i], oSheetKhac, "-QLDA");
+                    //    break;
                     default:
                         break;
                 }
