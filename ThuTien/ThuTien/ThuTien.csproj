@@ -207,6 +207,12 @@
     <Compile Include="GUI\Doi\frmChuanThu.Designer.cs">
       <DependentUpon>frmChuanThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Doi\frmHDTienLonDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmHDTienLonDoi.Designer.cs">
+      <DependentUpon>frmHDTienLonDoi.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Doi\frmKiemTraDangNganDoi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmNangSuatThuTienDoi.Designer.cs">
       <DependentUpon>frmNangSuatThuTienDoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmXemTBDongNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmXemTBDongNuoc.Designer.cs">
+      <DependentUpon>frmXemTBDongNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HanhThu\frmDangNganTon.cs">
       <SubType>Form</SubType>
@@ -363,11 +375,11 @@
     <Compile Include="GUI\ToTruong\frmGiaoHDHanhThu.Designer.cs">
       <DependentUpon>frmGiaoHDHanhThu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmHDTienLon.cs">
+    <Compile Include="GUI\ToTruong\frmHDTienLonTo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ToTruong\frmHDTienLon.Designer.cs">
-      <DependentUpon>frmHDTienLon.cs</DependentUpon>
+    <Compile Include="GUI\ToTruong\frmHDTienLonTo.Designer.cs">
+      <DependentUpon>frmHDTienLonTo.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmKiemTraDangNganTo.cs">
       <SubType>Form</SubType>
@@ -486,6 +498,9 @@
     <EmbeddedResource Include="GUI\Doi\frmChuanThu.resx">
       <DependentUpon>frmChuanThu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmHDTienLonDoi.resx">
+      <DependentUpon>frmHDTienLonDoi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKiemTraDangNganDoi.resx">
       <DependentUpon>frmKiemTraDangNganDoi.cs</DependentUpon>
     </EmbeddedResource>
@@ -497,6 +512,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmNangSuatThuTienDoi.resx">
       <DependentUpon>frmNangSuatThuTienDoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmXemTBDongNuoc.resx">
+      <DependentUpon>frmXemTBDongNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmDangNganTon.resx">
       <DependentUpon>frmDangNganTon.cs</DependentUpon>
@@ -567,8 +585,8 @@
     <None Include="LinQ\dbKTKS_DonKH.dbml.layout">
       <DependentUpon>dbKTKS_DonKH.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="GUI\ToTruong\frmHDTienLon.resx">
-      <DependentUpon>frmHDTienLon.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ToTruong\frmHDTienLonTo.resx">
+      <DependentUpon>frmHDTienLonTo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraDangNganTo.resx">
       <DependentUpon>frmKiemTraDangNganTo.cs</DependentUpon>

@@ -169,10 +169,10 @@ namespace ThuTien.GUI.TongHop
 
                 if (_cDCHD.Sua(_dchd))
                 {
-                    _hoadon.GIABAN = _ctdchd.TienNuoc_End;
-                    _hoadon.THUE = _ctdchd.ThueGTGT_End;
-                    _hoadon.PHI = _ctdchd.PhiBVMT_End;
-                    _hoadon.TONGCONG = _ctdchd.TongCong_End;
+                    _hoadon.GIABAN = _ctdchd.TienNuoc_End.Value;
+                    _hoadon.THUE = _ctdchd.ThueGTGT_End.Value;
+                    _hoadon.PHI = _ctdchd.PhiBVMT_End.Value;
+                    _hoadon.TONGCONG = _ctdchd.TongCong_End.Value;
                     if (_cHoaDon.Sua(_hoadon))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

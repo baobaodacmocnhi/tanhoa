@@ -35,17 +35,6 @@
             this.txtTongCong_CQ = new System.Windows.Forms.TextBox();
             this.txtTongHD_CQ = new System.Windows.Forms.TextBox();
             this.dgvHDCoQuan = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tabCoQuan = new System.Windows.Forms.TabPage();
-            this.txtTongCong_TG = new System.Windows.Forms.TextBox();
-            this.txtTongHD_TG = new System.Windows.Forms.TextBox();
-            this.tabTuGia = new System.Windows.Forms.TabPage();
-            this.dgvHDTuGia = new System.Windows.Forms.DataGridView();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.dateDangNgan = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
             this.MaHD_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaTo_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTo_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +44,12 @@
             this.DenSoPhatHanh_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tabCoQuan = new System.Windows.Forms.TabPage();
+            this.txtTongCong_TG = new System.Windows.Forms.TextBox();
+            this.txtTongHD_TG = new System.Windows.Forms.TextBox();
+            this.tabTuGia = new System.Windows.Forms.TabPage();
+            this.dgvHDTuGia = new System.Windows.Forms.DataGridView();
             this.MaHD_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaTo_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTo_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +59,13 @@
             this.DenSoPhatHanh_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateDenNgay = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -123,14 +125,84 @@
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
             this.dgvHDCoQuan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDCoQuan_RowPostPaint);
             // 
+            // MaHD_CQ
+            // 
+            this.MaHD_CQ.DataPropertyName = "MaHD";
+            this.MaHD_CQ.HeaderText = "MaHD";
+            this.MaHD_CQ.Name = "MaHD_CQ";
+            this.MaHD_CQ.ReadOnly = true;
+            this.MaHD_CQ.Visible = false;
+            // 
+            // MaTo_CQ
+            // 
+            this.MaTo_CQ.DataPropertyName = "MaTo";
+            this.MaTo_CQ.HeaderText = "MaTo";
+            this.MaTo_CQ.Name = "MaTo_CQ";
+            this.MaTo_CQ.ReadOnly = true;
+            this.MaTo_CQ.Visible = false;
+            // 
+            // TenTo_CQ
+            // 
+            this.TenTo_CQ.DataPropertyName = "TenTo";
+            this.TenTo_CQ.HeaderText = "Tên Tổ";
+            this.TenTo_CQ.Name = "TenTo_CQ";
+            this.TenTo_CQ.ReadOnly = true;
+            // 
+            // TuMLT_CQ
+            // 
+            this.TuMLT_CQ.DataPropertyName = "TuMLT";
+            this.TuMLT_CQ.HeaderText = "Từ MLT";
+            this.TuMLT_CQ.Name = "TuMLT_CQ";
+            this.TuMLT_CQ.ReadOnly = true;
+            this.TuMLT_CQ.Width = 80;
+            // 
+            // DenMLT_CQ
+            // 
+            this.DenMLT_CQ.DataPropertyName = "DenMLT";
+            this.DenMLT_CQ.HeaderText = "Đến MLT";
+            this.DenMLT_CQ.Name = "DenMLT_CQ";
+            this.DenMLT_CQ.ReadOnly = true;
+            this.DenMLT_CQ.Width = 80;
+            // 
+            // TuSoPhatHanh_CQ
+            // 
+            this.TuSoPhatHanh_CQ.DataPropertyName = "TuSoPhatHanh";
+            this.TuSoPhatHanh_CQ.HeaderText = "Từ Số Phát Hành";
+            this.TuSoPhatHanh_CQ.Name = "TuSoPhatHanh_CQ";
+            this.TuSoPhatHanh_CQ.ReadOnly = true;
+            this.TuSoPhatHanh_CQ.Width = 85;
+            // 
+            // DenSoPhatHanh_CQ
+            // 
+            this.DenSoPhatHanh_CQ.DataPropertyName = "DenSoPhatHanh";
+            this.DenSoPhatHanh_CQ.HeaderText = "Đến Số Phát Hành";
+            this.DenSoPhatHanh_CQ.Name = "DenSoPhatHanh_CQ";
+            this.DenSoPhatHanh_CQ.ReadOnly = true;
+            this.DenSoPhatHanh_CQ.Width = 90;
+            // 
+            // TongHD_CQ
+            // 
+            this.TongHD_CQ.DataPropertyName = "TongHD";
+            this.TongHD_CQ.HeaderText = "Tổng HĐ";
+            this.TongHD_CQ.Name = "TongHD_CQ";
+            this.TongHD_CQ.ReadOnly = true;
+            this.TongHD_CQ.Width = 80;
+            // 
+            // TongCong_CQ
+            // 
+            this.TongCong_CQ.DataPropertyName = "TongCong";
+            this.TongCong_CQ.HeaderText = "Tổng Cộng";
+            this.TongCong_CQ.Name = "TongCong_CQ";
+            this.TongCong_CQ.ReadOnly = true;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(266, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 13);
+            this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Ngày Đăng Ngân:";
+            this.label4.Text = "Từ Ngày:";
             // 
             // tabCoQuan
             // 
@@ -210,122 +282,6 @@
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
             this.dgvHDTuGia.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDTuGia_RowPostPaint);
             // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.tabTuGia);
-            this.tabControl.Controls.Add(this.tabCoQuan);
-            this.tabControl.Location = new System.Drawing.Point(12, 39);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(701, 468);
-            this.tabControl.TabIndex = 5;
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(466, 10);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 4;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // dateDangNgan
-            // 
-            this.dateDangNgan.CustomFormat = "dd/MM/yyyy";
-            this.dateDangNgan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDangNgan.Location = new System.Drawing.Point(365, 12);
-            this.dateDangNgan.Name = "dateDangNgan";
-            this.dateDangNgan.Size = new System.Drawing.Size(95, 20);
-            this.dateDangNgan.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tổ:";
-            // 
-            // cmbTo
-            // 
-            this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(139, 12);
-            this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(121, 21);
-            this.cmbTo.TabIndex = 1;
-            // 
-            // MaHD_CQ
-            // 
-            this.MaHD_CQ.DataPropertyName = "MaHD";
-            this.MaHD_CQ.HeaderText = "MaHD";
-            this.MaHD_CQ.Name = "MaHD_CQ";
-            this.MaHD_CQ.ReadOnly = true;
-            this.MaHD_CQ.Visible = false;
-            // 
-            // MaTo_CQ
-            // 
-            this.MaTo_CQ.DataPropertyName = "MaTo";
-            this.MaTo_CQ.HeaderText = "MaTo";
-            this.MaTo_CQ.Name = "MaTo_CQ";
-            this.MaTo_CQ.ReadOnly = true;
-            this.MaTo_CQ.Visible = false;
-            // 
-            // TenTo_CQ
-            // 
-            this.TenTo_CQ.DataPropertyName = "TenTo";
-            this.TenTo_CQ.HeaderText = "Tên Tổ";
-            this.TenTo_CQ.Name = "TenTo_CQ";
-            this.TenTo_CQ.ReadOnly = true;
-            // 
-            // TuMLT_CQ
-            // 
-            this.TuMLT_CQ.DataPropertyName = "TuMLT";
-            this.TuMLT_CQ.HeaderText = "Từ MLT";
-            this.TuMLT_CQ.Name = "TuMLT_CQ";
-            this.TuMLT_CQ.ReadOnly = true;
-            this.TuMLT_CQ.Width = 80;
-            // 
-            // DenMLT_CQ
-            // 
-            this.DenMLT_CQ.DataPropertyName = "DenMLT";
-            this.DenMLT_CQ.HeaderText = "Đến MLT";
-            this.DenMLT_CQ.Name = "DenMLT_CQ";
-            this.DenMLT_CQ.ReadOnly = true;
-            this.DenMLT_CQ.Width = 80;
-            // 
-            // TuSoPhatHanh_CQ
-            // 
-            this.TuSoPhatHanh_CQ.DataPropertyName = "TuSoPhatHanh";
-            this.TuSoPhatHanh_CQ.HeaderText = "Từ Số Phát Hành";
-            this.TuSoPhatHanh_CQ.Name = "TuSoPhatHanh_CQ";
-            this.TuSoPhatHanh_CQ.ReadOnly = true;
-            this.TuSoPhatHanh_CQ.Width = 85;
-            // 
-            // DenSoPhatHanh_CQ
-            // 
-            this.DenSoPhatHanh_CQ.DataPropertyName = "DenSoPhatHanh";
-            this.DenSoPhatHanh_CQ.HeaderText = "Đến Số Phát Hành";
-            this.DenSoPhatHanh_CQ.Name = "DenSoPhatHanh_CQ";
-            this.DenSoPhatHanh_CQ.ReadOnly = true;
-            this.DenSoPhatHanh_CQ.Width = 90;
-            // 
-            // TongHD_CQ
-            // 
-            this.TongHD_CQ.DataPropertyName = "TongHD";
-            this.TongHD_CQ.HeaderText = "Tổng HĐ";
-            this.TongHD_CQ.Name = "TongHD_CQ";
-            this.TongHD_CQ.ReadOnly = true;
-            this.TongHD_CQ.Width = 80;
-            // 
-            // TongCong_CQ
-            // 
-            this.TongCong_CQ.DataPropertyName = "TongCong";
-            this.TongCong_CQ.HeaderText = "Tổng Cộng";
-            this.TongCong_CQ.Name = "TongCong_CQ";
-            this.TongCong_CQ.ReadOnly = true;
-            // 
             // MaHD_TG
             // 
             this.MaHD_TG.DataPropertyName = "MaHD";
@@ -396,17 +352,83 @@
             this.TongCong_TG.Name = "TongCong_TG";
             this.TongCong_TG.ReadOnly = true;
             // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.tabTuGia);
+            this.tabControl.Controls.Add(this.tabCoQuan);
+            this.tabControl.Location = new System.Drawing.Point(12, 39);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(701, 468);
+            this.tabControl.TabIndex = 5;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(589, 9);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 4;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // dateTuNgay
+            // 
+            this.dateTuNgay.CustomFormat = "dd/MM/yyyy";
+            this.dateTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTuNgay.Location = new System.Drawing.Point(323, 12);
+            this.dateTuNgay.Name = "dateTuNgay";
+            this.dateTuNgay.Size = new System.Drawing.Size(95, 20);
+            this.dateTuNgay.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(110, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tổ:";
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(139, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(121, 21);
+            this.cmbTo.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(424, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Đến Ngày:";
+            // 
+            // dateDenNgay
+            // 
+            this.dateDenNgay.CustomFormat = "dd/MM/yyyy";
+            this.dateDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDenNgay.Location = new System.Drawing.Point(488, 12);
+            this.dateDenNgay.Name = "dateDenNgay";
+            this.dateDenNgay.Size = new System.Drawing.Size(95, 20);
+            this.dateDenNgay.TabIndex = 7;
+            // 
             // frmKiemTraDangNganDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 519);
+            this.ClientSize = new System.Drawing.Size(802, 519);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dateDenNgay);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btnXem);
-            this.Controls.Add(this.dateDangNgan);
+            this.Controls.Add(this.dateTuNgay);
             this.Name = "frmKiemTraDangNganDoi";
             this.Text = "Kiểm Tra Đăng Ngân Đội";
             this.Load += new System.EventHandler(this.frmKiemTraDangNganDoi_Load);
@@ -435,7 +457,7 @@
         private System.Windows.Forms.DataGridView dgvHDTuGia;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Button btnXem;
-        private System.Windows.Forms.DateTimePicker dateDangNgan;
+        private System.Windows.Forms.DateTimePicker dateTuNgay;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_CQ;
@@ -456,5 +478,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DenSoPhatHanh_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHD_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TG;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateDenNgay;
     }
 }

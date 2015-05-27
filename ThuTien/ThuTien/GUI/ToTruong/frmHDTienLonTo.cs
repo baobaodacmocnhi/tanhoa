@@ -12,13 +12,13 @@ using System.Globalization;
 
 namespace ThuTien.GUI.ToTruong
 {
-    public partial class frmHDTienLon : Form
+    public partial class frmHDTienLonTo : Form
     {
         //string _mnu = "mnuHDTienLon";
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
 
-        public frmHDTienLon()
+        public frmHDTienLonTo()
         {
             InitializeComponent();
         }

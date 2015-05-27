@@ -1053,97 +1053,97 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetChuanThuByNamKy(int MaTo, string loai, int nam, int ky)
-        {
-            if (loai == "TG")
-            {
-                var query = from item in _db.HOADONs
-                            where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                && item.NAM == nam && item.KY == ky && item.GB >= 11 && item.GB <= 20
-                            select new
-                            {
-                                MaTo = MaTo,
-                                _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
-                                MaHD = item.ID_HOADON,
-                                item.SOHOADON,
-                                item.NGAYGIAITRACH,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
-                                item.TONGCONG,
-                            };
-                return LINQToDataTable(query);
-            }
-            else
-                if (loai == "CQ")
-                {
-                    var query = from item in _db.HOADONs
-                                where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && item.NAM == nam && item.KY == ky && item.GB > 20
-                                select new
-                                {
-                                    MaTo = MaTo,
-                                    _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
-                                    MaHD=item.ID_HOADON,
-                                    item.SOHOADON,
-                                    item.NGAYGIAITRACH,
-                                    item.GIABAN,
-                                    ThueGTGT = item.THUE,
-                                    PhiBVMT = item.PHI,
-                                    item.TONGCONG,
-                                };
-                    return LINQToDataTable(query);
-                }
-            return null;
-        }
+        //public DataTable GetChuanThuByNamKy(int MaTo, string loai, int nam, int ky)
+        //{
+        //    if (loai == "TG")
+        //    {
+        //        var query = from item in _db.HOADONs
+        //                    where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+        //                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                        && item.NAM == nam && item.KY == ky && item.GB >= 11 && item.GB <= 20
+        //                    select new
+        //                    {
+        //                        MaTo = MaTo,
+        //                        _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+        //                        MaHD = item.ID_HOADON,
+        //                        item.SOHOADON,
+        //                        item.NGAYGIAITRACH,
+        //                        item.GIABAN,
+        //                        ThueGTGT = item.THUE,
+        //                        PhiBVMT = item.PHI,
+        //                        item.TONGCONG,
+        //                    };
+        //        return LINQToDataTable(query);
+        //    }
+        //    else
+        //        if (loai == "CQ")
+        //        {
+        //            var query = from item in _db.HOADONs
+        //                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+        //                            && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                            && item.NAM == nam && item.KY == ky && item.GB > 20
+        //                        select new
+        //                        {
+        //                            MaTo = MaTo,
+        //                            _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+        //                            MaHD=item.ID_HOADON,
+        //                            item.SOHOADON,
+        //                            item.NGAYGIAITRACH,
+        //                            item.GIABAN,
+        //                            ThueGTGT = item.THUE,
+        //                            PhiBVMT = item.PHI,
+        //                            item.TONGCONG,
+        //                        };
+        //            return LINQToDataTable(query);
+        //        }
+        //    return null;
+        //}
 
-        public DataTable GetChuanThuNam(int MaTo, string loai, int nam)
-        {
-            if (loai == "TG")
-            {
-                var query = from item in _db.HOADONs
-                            where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                && item.NAM == nam && item.GB >= 11 && item.GB <= 20
-                            select new
-                            {
-                                MaTo = MaTo,
-                                _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
-                                MaHD = item.ID_HOADON,
-                                item.SOHOADON,
-                                item.NGAYGIAITRACH,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
-                                item.TONGCONG,
-                            };
-                return LINQToDataTable(query);
-            }
-            else
-                if (loai == "CQ")
-                {
-                    var query = from item in _db.HOADONs
-                                where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && item.NAM == nam && item.GB > 20
-                                select new
-                                {
-                                    MaTo = MaTo,
-                                    _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
-                                    MaHD = item.ID_HOADON,
-                                    item.SOHOADON,
-                                    item.NGAYGIAITRACH,
-                                    item.GIABAN,
-                                    ThueGTGT = item.THUE,
-                                    PhiBVMT = item.PHI,
-                                    item.TONGCONG,
-                                };
-                    return LINQToDataTable(query);
-                }
-            return null;
-        }
+        //public DataTable GetChuanThuByNam(int MaTo, string loai, int nam)
+        //{
+        //    if (loai == "TG")
+        //    {
+        //        var query = from item in _db.HOADONs
+        //                    where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+        //                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                        && item.NAM == nam && item.GB >= 11 && item.GB <= 20
+        //                    select new
+        //                    {
+        //                        MaTo = MaTo,
+        //                        _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+        //                        MaHD = item.ID_HOADON,
+        //                        item.SOHOADON,
+        //                        item.NGAYGIAITRACH,
+        //                        item.GIABAN,
+        //                        ThueGTGT = item.THUE,
+        //                        PhiBVMT = item.PHI,
+        //                        item.TONGCONG,
+        //                    };
+        //        return LINQToDataTable(query);
+        //    }
+        //    else
+        //        if (loai == "CQ")
+        //        {
+        //            var query = from item in _db.HOADONs
+        //                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+        //                            && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+        //                            && item.NAM == nam && item.GB > 20
+        //                        select new
+        //                        {
+        //                            MaTo = MaTo,
+        //                            _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+        //                            MaHD = item.ID_HOADON,
+        //                            item.SOHOADON,
+        //                            item.NGAYGIAITRACH,
+        //                            item.GIABAN,
+        //                            ThueGTGT = item.THUE,
+        //                            PhiBVMT = item.PHI,
+        //                            item.TONGCONG,
+        //                        };
+        //            return LINQToDataTable(query);
+        //        }
+        //    return null;
+        //}
 
         /// <summary>
         /// Lấy Sum thông tin những hóa đơn đã đăng ngân bởi các anh/em
@@ -1213,16 +1213,17 @@ namespace ThuTien.DAL.Doi
         /// </summary>
         /// <param name="MaTo"></param>
         /// <param name="loai"></param>
-        /// <param name="NgayDangNgan"></param>
+        /// <param name="TuNgayDangNgan"></param>
+        /// <param name="DenNgayDangNgan"></param>
         /// <returns></returns>
-        public DataTable GetTongDangNganByNgayDangNgan_Doi(int MaTo, string loai, DateTime NgayDangNgan)
+        public DataTable GetTongDangNganByNgayDangNgan_Doi(int MaTo, string loai, DateTime TuNgayDangNgan, DateTime DenNgayDangNgan)
         {
             if (loai == "TG")
             {
                 var query = from item in _db.HOADONs
                             where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                && item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date && item.GB >= 11 && item.GB <= 20
+                                && item.NGAYGIAITRACH.Value.Date >= TuNgayDangNgan.Date && item.NGAYGIAITRACH.Value.Date <= DenNgayDangNgan.Date && item.GB >= 11 && item.GB <= 20
                             orderby MaTo ascending
                             group item by MaTo into itemGroup
                             select new
@@ -1248,7 +1249,7 @@ namespace ThuTien.DAL.Doi
                     var query = from item in _db.HOADONs
                                 where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date && item.GB > 20
+                                    && item.NGAYGIAITRACH.Value.Date >= TuNgayDangNgan.Date && item.NGAYGIAITRACH.Value.Date <= DenNgayDangNgan.Date && item.GB > 20
                                 orderby MaTo ascending
                                 group item by MaTo into itemGroup
                                 select new
@@ -1613,9 +1614,7 @@ namespace ThuTien.DAL.Doi
                             itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
                             itemHD.SOPHATHANH,
-                            itemHD.NAM,
-                            itemHD.KY,
-                            itemHD.DOT,
+                            Ky=itemHD.KY+"/"+itemHD.NAM,
                             itemHD.MALOTRINH,
                             MLT = itemHD.MALOTRINH,
                             DanhBo = itemHD.DANHBA,

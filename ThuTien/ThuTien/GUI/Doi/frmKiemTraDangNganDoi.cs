@@ -45,12 +45,12 @@ namespace ThuTien.GUI.Doi
                 DataTable dtTG = new DataTable();
                 DataTable dtCQ = new DataTable();
                 List<TT_To> lst = _cTo.GetDSHanhThu();
-                dtTG = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi(lst[0].MaTo, "TG", dateDangNgan.Value);
-                dtCQ = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi(lst[0].MaTo, "CQ", dateDangNgan.Value);
+                dtTG = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi(lst[0].MaTo, "TG", dateTuNgay.Value, dateDenNgay.Value);
+                dtCQ = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi(lst[0].MaTo, "CQ", dateTuNgay.Value, dateDenNgay.Value);
                 for (int i = 1; i < lst.Count; i++)
                 {
-                    dtTG.Merge(_cHoaDon.GetTongDangNganByNgayDangNgan_Doi(lst[i].MaTo, "TG", dateDangNgan.Value));
-                    dtCQ.Merge(_cHoaDon.GetTongDangNganByNgayDangNgan_Doi(lst[i].MaTo, "CQ", dateDangNgan.Value));
+                    dtTG.Merge(_cHoaDon.GetTongDangNganByNgayDangNgan_Doi(lst[i].MaTo, "TG", dateTuNgay.Value, dateDenNgay.Value));
+                    dtCQ.Merge(_cHoaDon.GetTongDangNganByNgayDangNgan_Doi(lst[i].MaTo, "CQ", dateTuNgay.Value, dateDenNgay.Value));
                 }
 
                 dgvHDTuGia.DataSource = dtTG;
@@ -58,8 +58,8 @@ namespace ThuTien.GUI.Doi
             }
             else
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "TG", dateDangNgan.Value);
-                dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "CQ", dateDangNgan.Value);   
+                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "TG", dateTuNgay.Value, dateDenNgay.Value);
+                dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "CQ", dateTuNgay.Value, dateDenNgay.Value);   
             }
 
             int TongHD = 0;
