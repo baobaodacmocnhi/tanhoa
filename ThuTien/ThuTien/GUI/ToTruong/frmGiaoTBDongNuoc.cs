@@ -42,7 +42,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (cmbNhanVienLap.SelectedIndex != -1 && dateTu.Value <= dateDen.Value)
             {
-                gridControl.DataSource = _cDongNuoc.GetDSByDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
             }
         }
 
@@ -65,7 +65,7 @@ namespace ThuTien.GUI.ToTruong
                             }
                         }
                     _cDongNuoc.SqlCommitTransaction();
-                    gridControl.DataSource = _cDongNuoc.GetDSByDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -107,7 +107,7 @@ namespace ThuTien.GUI.ToTruong
                             }
                         }
                     _cDongNuoc.SqlCommitTransaction();
-                    gridControl.DataSource = _cDongNuoc.GetDSByDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)

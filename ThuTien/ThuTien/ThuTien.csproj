@@ -207,6 +207,12 @@
     <Compile Include="GUI\Doi\frmChuanThu.Designer.cs">
       <DependentUpon>frmChuanThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Doi\frmTinhGiaBanBinhQuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmTinhGiaBanBinhQuan.Designer.cs">
+      <DependentUpon>frmTinhGiaBanBinhQuan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Doi\frmHDTienLonDoi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,18 @@
     </Compile>
     <Compile Include="GUI\Doi\frmNangSuatThuTienDoi.Designer.cs">
       <DependentUpon>frmNangSuatThuTienDoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmPhanTichDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmPhanTichDoanhThu.Designer.cs">
+      <DependentUpon>frmPhanTichDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmPhanTichHD0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmPhanTichHD0.Designer.cs">
+      <DependentUpon>frmPhanTichHD0.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmXemTBDongNuoc.cs">
       <SubType>Form</SubType>
@@ -498,6 +516,9 @@
     <EmbeddedResource Include="GUI\Doi\frmChuanThu.resx">
       <DependentUpon>frmChuanThu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmTinhGiaBanBinhQuan.resx">
+      <DependentUpon>frmTinhGiaBanBinhQuan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmHDTienLonDoi.resx">
       <DependentUpon>frmHDTienLonDoi.cs</DependentUpon>
     </EmbeddedResource>
@@ -512,6 +533,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmNangSuatThuTienDoi.resx">
       <DependentUpon>frmNangSuatThuTienDoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmPhanTichDoanhThu.resx">
+      <DependentUpon>frmPhanTichDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmPhanTichHD0.resx">
+      <DependentUpon>frmPhanTichHD0.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmXemTBDongNuoc.resx">
       <DependentUpon>frmXemTBDongNuoc.cs</DependentUpon>

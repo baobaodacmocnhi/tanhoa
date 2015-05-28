@@ -28,19 +28,353 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TieuThu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GiaBan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ThueGTGT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.PhiBVMT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TongCong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridViewDN = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.MaDN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DanhBo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(85, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(118, 21);
+            this.cmbTo.TabIndex = 42;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(56, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 13);
+            this.label4.TabIndex = 41;
+            this.label4.Text = "Tổ:";
+            // 
+            // gridControl
+            // 
+            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode2.RelationName = "Level1";
+            this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode2});
+            this.gridControl.Location = new System.Drawing.Point(12, 38);
+            this.gridControl.MainView = this.gridViewDN;
+            this.gridControl.Name = "gridControl";
+            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+            this.gridControl.Size = new System.Drawing.Size(1131, 610);
+            this.gridControl.TabIndex = 50;
+            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewCTDN,
+            this.gridViewDN});
+            // 
+            // gridViewCTDN
+            // 
+            this.gridViewCTDN.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.SoHoaDon,
+            this.Ky,
+            this.TieuThu,
+            this.GiaBan,
+            this.ThueGTGT,
+            this.PhiBVMT,
+            this.TongCong});
+            this.gridViewCTDN.GridControl = this.gridControl;
+            this.gridViewCTDN.Name = "gridViewCTDN";
+            this.gridViewCTDN.OptionsView.ColumnAutoWidth = false;
+            this.gridViewCTDN.OptionsView.ShowGroupPanel = false;
+            this.gridViewCTDN.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewCTDN_CustomColumnDisplayText);
+            // 
+            // SoHoaDon
+            // 
+            this.SoHoaDon.Caption = "Số HĐ";
+            this.SoHoaDon.FieldName = "SoHoaDon";
+            this.SoHoaDon.Name = "SoHoaDon";
+            this.SoHoaDon.Visible = true;
+            this.SoHoaDon.VisibleIndex = 0;
+            this.SoHoaDon.Width = 100;
+            // 
+            // Ky
+            // 
+            this.Ky.Caption = "Kỳ";
+            this.Ky.FieldName = "Ky";
+            this.Ky.Name = "Ky";
+            this.Ky.Visible = true;
+            this.Ky.VisibleIndex = 1;
+            // 
+            // TieuThu
+            // 
+            this.TieuThu.Caption = "Tiêu Thụ";
+            this.TieuThu.FieldName = "TieuThu";
+            this.TieuThu.Name = "TieuThu";
+            this.TieuThu.Visible = true;
+            this.TieuThu.VisibleIndex = 2;
+            // 
+            // GiaBan
+            // 
+            this.GiaBan.Caption = "Giá Bán";
+            this.GiaBan.FieldName = "GiaBan";
+            this.GiaBan.Name = "GiaBan";
+            this.GiaBan.Visible = true;
+            this.GiaBan.VisibleIndex = 3;
+            // 
+            // ThueGTGT
+            // 
+            this.ThueGTGT.Caption = "Thuế GTGT";
+            this.ThueGTGT.FieldName = "ThueGTGT";
+            this.ThueGTGT.Name = "ThueGTGT";
+            this.ThueGTGT.Visible = true;
+            this.ThueGTGT.VisibleIndex = 4;
+            // 
+            // PhiBVMT
+            // 
+            this.PhiBVMT.Caption = "Phí BVMT";
+            this.PhiBVMT.FieldName = "PhiBVMT";
+            this.PhiBVMT.Name = "PhiBVMT";
+            this.PhiBVMT.Visible = true;
+            this.PhiBVMT.VisibleIndex = 5;
+            // 
+            // TongCong
+            // 
+            this.TongCong.Caption = "Tổng Cộng";
+            this.TongCong.FieldName = "TongCong";
+            this.TongCong.Name = "TongCong";
+            this.TongCong.Visible = true;
+            this.TongCong.VisibleIndex = 6;
+            // 
+            // gridViewDN
+            // 
+            this.gridViewDN.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.MaDN,
+            this.DanhBo,
+            this.HoTen,
+            this.DiaChi,
+            this.MLT,
+            this.CreateBy,
+            this.MaNV_DongNuoc});
+            this.gridViewDN.GridControl = this.gridControl;
+            this.gridViewDN.IndicatorWidth = 41;
+            this.gridViewDN.Name = "gridViewDN";
+            this.gridViewDN.OptionsSelection.MultiSelect = true;
+            this.gridViewDN.OptionsView.ColumnAutoWidth = false;
+            this.gridViewDN.OptionsView.ShowGroupPanel = false;
+            this.gridViewDN.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewDN_CustomDrawRowIndicator);
+            this.gridViewDN.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewDN_CustomColumnDisplayText);
+            // 
+            // MaDN
+            // 
+            this.MaDN.Caption = "Mã Đóng Nước";
+            this.MaDN.FieldName = "MaDN";
+            this.MaDN.Name = "MaDN";
+            this.MaDN.Visible = true;
+            this.MaDN.VisibleIndex = 0;
+            this.MaDN.Width = 100;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.Caption = "Danh Bộ";
+            this.DanhBo.FieldName = "DanhBo";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.Visible = true;
+            this.DanhBo.VisibleIndex = 1;
+            this.DanhBo.Width = 100;
+            // 
+            // HoTen
+            // 
+            this.HoTen.Caption = "Khách Hàng";
+            this.HoTen.FieldName = "HoTen";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Visible = true;
+            this.HoTen.VisibleIndex = 2;
+            this.HoTen.Width = 200;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.Caption = "Địa Chỉ";
+            this.DiaChi.FieldName = "DiaChi";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Visible = true;
+            this.DiaChi.VisibleIndex = 3;
+            this.DiaChi.Width = 300;
+            // 
+            // MLT
+            // 
+            this.MLT.Caption = "Mã Lộ Trình";
+            this.MLT.FieldName = "MLT";
+            this.MLT.Name = "MLT";
+            this.MLT.Visible = true;
+            this.MLT.VisibleIndex = 4;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.Caption = "Người Lập";
+            this.CreateBy.FieldName = "CreateBy";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.Visible = true;
+            this.CreateBy.VisibleIndex = 5;
+            this.CreateBy.Width = 150;
+            // 
+            // MaNV_DongNuoc
+            // 
+            this.MaNV_DongNuoc.Caption = "Người Giao";
+            this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
+            this.MaNV_DongNuoc.Visible = true;
+            this.MaNV_DongNuoc.VisibleIndex = 6;
+            this.MaNV_DongNuoc.Width = 150;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Caption = "Check";
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(731, 10);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 49;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // dateDen
+            // 
+            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen.Location = new System.Drawing.Point(625, 12);
+            this.dateDen.Name = "dateDen";
+            this.dateDen.Size = new System.Drawing.Size(100, 20);
+            this.dateDen.TabIndex = 48;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(561, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "Đến Ngày:";
+            // 
+            // dateTu
+            // 
+            this.dateTu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu.Location = new System.Drawing.Point(455, 12);
+            this.dateTu.Name = "dateTu";
+            this.dateTu.Size = new System.Drawing.Size(100, 20);
+            this.dateTu.TabIndex = 46;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(398, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "Từ Ngày:";
+            // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(275, 12);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.TabIndex = 44;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(209, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Nhân Viên:";
             // 
             // frmXemTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(1178, 666);
+            this.Controls.Add(this.gridControl);
+            this.Controls.Add(this.btnXem);
+            this.Controls.Add(this.dateDen);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dateTu);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbNhanVien);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.label4);
             this.Name = "frmXemTBDongNuoc";
             this.Text = "Xem Thông Báo Đóng Nước";
+            this.Load += new System.EventHandler(this.frmXemTBDongNuoc_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label label4;
+        private DevExpress.XtraGrid.GridControl gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCTDN;
+        private DevExpress.XtraGrid.Columns.GridColumn SoHoaDon;
+        private DevExpress.XtraGrid.Columns.GridColumn Ky;
+        private DevExpress.XtraGrid.Columns.GridColumn TieuThu;
+        private DevExpress.XtraGrid.Columns.GridColumn GiaBan;
+        private DevExpress.XtraGrid.Columns.GridColumn ThueGTGT;
+        private DevExpress.XtraGrid.Columns.GridColumn PhiBVMT;
+        private DevExpress.XtraGrid.Columns.GridColumn TongCong;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDN;
+        private DevExpress.XtraGrid.Columns.GridColumn MaDN;
+        private DevExpress.XtraGrid.Columns.GridColumn DanhBo;
+        private DevExpress.XtraGrid.Columns.GridColumn HoTen;
+        private DevExpress.XtraGrid.Columns.GridColumn DiaChi;
+        private DevExpress.XtraGrid.Columns.GridColumn MLT;
+        private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
+        private DevExpress.XtraGrid.Columns.GridColumn MaNV_DongNuoc;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.DateTimePicker dateDen;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTu;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbNhanVien;
+        private System.Windows.Forms.Label label2;
     }
 }

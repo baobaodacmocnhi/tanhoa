@@ -82,6 +82,9 @@
             this.StripStatus_Form = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuTinhGiaBanBinhQuan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPhanTichHD0 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPhanTichDoanhThu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -185,7 +188,10 @@
             this.mnuNangSuatThuTienDoi,
             this.mnuChuanThu,
             this.mnuHDTienLonDoi,
-            this.mnuXemTBDongNuoc});
+            this.mnuXemTBDongNuoc,
+            this.mnuTinhGiaBanBinhQuan,
+            this.mnuPhanTichHD0,
+            this.mnuPhanTichDoanhThu});
             this.mnuDoi.Name = "mnuDoi";
             this.mnuDoi.Size = new System.Drawing.Size(37, 20);
             this.mnuDoi.Text = "Đội";
@@ -519,6 +525,27 @@
             this.StripStatus_HoTen.Text = "Xin Chào:";
             this.StripStatus_HoTen.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
+            // mnuTinhGiaBanBinhQuan
+            // 
+            this.mnuTinhGiaBanBinhQuan.Name = "mnuTinhGiaBanBinhQuan";
+            this.mnuTinhGiaBanBinhQuan.Size = new System.Drawing.Size(223, 22);
+            this.mnuTinhGiaBanBinhQuan.Text = "Tính Giá Bán Bình Quân";
+            this.mnuTinhGiaBanBinhQuan.Click += new System.EventHandler(this.mnuTinhGiaBanBinhQuan_Click);
+            // 
+            // mnuPhanTichHD0
+            // 
+            this.mnuPhanTichHD0.Name = "mnuPhanTichHD0";
+            this.mnuPhanTichHD0.Size = new System.Drawing.Size(223, 22);
+            this.mnuPhanTichHD0.Text = "Phân Tích Hóa Đơn = 0 ";
+            this.mnuPhanTichHD0.Click += new System.EventHandler(this.mnuPhanTichHD0_Click);
+            // 
+            // mnuPhanTichDoanhThu
+            // 
+            this.mnuPhanTichDoanhThu.Name = "mnuPhanTichDoanhThu";
+            this.mnuPhanTichDoanhThu.Size = new System.Drawing.Size(223, 22);
+            this.mnuPhanTichDoanhThu.Text = "Phân Tích Doanh Thu";
+            this.mnuPhanTichDoanhThu.Click += new System.EventHandler(this.mnuPhanTichDoanhThu_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -598,6 +625,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuChuanThu;
         private System.Windows.Forms.ToolStripMenuItem mnuXemTBDongNuoc;
         private System.Windows.Forms.ToolStripMenuItem mnuHDTienLonDoi;
+        private System.Windows.Forms.ToolStripMenuItem mnuTinhGiaBanBinhQuan;
+        private System.Windows.Forms.ToolStripMenuItem mnuPhanTichHD0;
+        private System.Windows.Forms.ToolStripMenuItem mnuPhanTichDoanhThu;
     }
 }
 

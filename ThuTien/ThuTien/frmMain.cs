@@ -209,6 +209,39 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuTinhGiaBanBinhQuan_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTinhGiaBanBinhQuan", "Xem"))
+            {
+                frmTinhGiaBanBinhQuan frm = new frmTinhGiaBanBinhQuan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuPhanTichHD0_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuPhanTichHD0", "Xem"))
+            {
+                frmPhanTichHD0 frm = new frmPhanTichHD0();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuPhanTichDoanhThu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuPhanTichDoanhThu", "Xem"))
+            {
+                frmPhanTichDoanhThu frm = new frmPhanTichDoanhThu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Tổ Trưởng
@@ -498,6 +531,8 @@ namespace ThuTien
         }
 
         #endregion 
+
+        
 
         
 

@@ -140,7 +140,7 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
-        public DataSet GetDSByDates(int MaNV,DateTime TuNgay, DateTime DenNgay)
+        public DataSet GetDSByMaNVCreateDates(int MaNV,DateTime TuNgay, DateTime DenNgay)
         {
             DataSet ds = new DataSet();
 
@@ -164,7 +164,7 @@ namespace ThuTien.DAL.DongNuoc
 
             var queryCTDN = from itemCTDN in _db.TT_CTDongNuocs
                             join itemDN in _db.TT_DongNuocs on itemCTDN.MaDN equals itemDN.MaDN
-                            where itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
+                            where itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
                                 itemCTDN.MaDN,

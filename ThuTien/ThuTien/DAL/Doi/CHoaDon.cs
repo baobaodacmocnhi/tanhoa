@@ -1720,7 +1720,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="dot"></param>
         /// <param name="SoTien"></param>
         /// <returns></returns>
-        public DataTable GetDSByTienLon(string loai,int MaNV, int nam, int ky, int dot, int SoTien)
+        public DataTable GetDSByTienLon_To(string loai,int MaNV, int nam, int ky, int dot, int SoTien)
         {
             if (loai == "TG")
             {
@@ -1744,6 +1744,50 @@ namespace ThuTien.DAL.Doi
                 {
                     var query = from item in _db.HOADONs
                                 where item.NAM == nam && item.KY == ky && item.DOT == dot && item.MaNV_HanhThu == MaNV && item.TONGCONG >= SoTien && item.GB > 20
+                                select new
+                                {
+                                    item.NGAYGIAITRACH,
+                                    item.SOHOADON,
+                                    DanhBo = item.DANHBA,
+                                    item.TIEUTHU,
+                                    item.GIABAN,
+                                    ThueGTGT = item.THUE,
+                                    PhiBVMT = item.PHI,
+                                    item.TONGCONG,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
+        public DataTable GetDSByTienLon_Doi(int MaTo, string loai, int nam, int ky, int dot, int SoTien)
+        {
+            if (loai == "TG")
+            {
+                var query = from item in _db.HOADONs
+                            where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.TONGCONG >= SoTien && item.GB >= 11 && item.GB <= 20
+                            select new
+                            {
+                                item.NGAYGIAITRACH,
+                                item.SOHOADON,
+                                DanhBo = item.DANHBA,
+                                item.TIEUTHU,
+                                item.GIABAN,
+                                ThueGTGT = item.THUE,
+                                PhiBVMT = item.PHI,
+                                item.TONGCONG,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (loai == "CQ")
+                {
+                    var query = from item in _db.HOADONs
+                                where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && item.NAM == nam && item.KY == ky && item.DOT == dot && item.TONGCONG >= SoTien && item.GB > 20
                                 select new
                                 {
                                     item.NGAYGIAITRACH,
@@ -1785,8 +1829,6 @@ namespace ThuTien.DAL.Doi
                         };
             return LINQToDataTable(query);
         }
-
-
 
         //public List<HOADON> GetDSBySoPhatHanhNamsKyDot(int MaTo, string loai, decimal tusophathanh, decimal densophathanh, int nam, int ky, int dot)
         //{

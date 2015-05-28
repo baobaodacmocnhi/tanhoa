@@ -43,8 +43,8 @@ namespace ThuTien.GUI.ToTruong
         {
             if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
             }
         }
 
@@ -52,6 +52,11 @@ namespace ThuTien.GUI.ToTruong
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void txtSoTien_Leave(object sender, EventArgs e)
+        {
+            txtSoTien.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -117,10 +122,6 @@ namespace ThuTien.GUI.ToTruong
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
-
-        private void txtSoTien_Leave(object sender, EventArgs e)
-        {
-            txtSoTien.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(txtSoTien.Text.Trim().Replace(".","")));
-        }
+ 
     }
 }

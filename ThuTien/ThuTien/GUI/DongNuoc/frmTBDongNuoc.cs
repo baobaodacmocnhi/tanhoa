@@ -171,7 +171,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (dateTu.Value <= dateDen.Value)
             {
-                gridControl.DataSource = _cDongNuoc.GetDSByDates(CNguoiDung.MaND,dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.MaND,dateTu.Value, dateDen.Value).Tables["DongNuoc"];
             }
         }
 
