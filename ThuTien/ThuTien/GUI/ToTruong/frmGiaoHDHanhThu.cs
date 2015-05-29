@@ -38,6 +38,8 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVien.ValueMember = "MaND";
 
             lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+
+            cmbDotChia.SelectedIndex = 0;
         }
 
         public void Clear()
@@ -192,7 +194,7 @@ namespace ThuTien.GUI.ToTruong
                                 if (_cHoaDon.CheckSoPhatHanhByNamKyDot(CNguoiDung.MaTo, "TG", decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
                                     && _cHoaDon.CheckSoPhatHanhByNamKyDot(CNguoiDung.MaTo, "TG", decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                                 {
-                                    if (_cHoaDon.ThemChia(CNguoiDung.MaTo, "TG", decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                                    if (_cHoaDon.ThemChia(CNguoiDung.MaTo, "TG",int.Parse(cmbDotChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                         int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                     {
                                         LoadDataGridView();
@@ -215,7 +217,7 @@ namespace ThuTien.GUI.ToTruong
                                     if (_cHoaDon.CheckSoPhatHanhByNamKyDot(CNguoiDung.MaTo, "CQ", decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
                                         && _cHoaDon.CheckSoPhatHanhByNamKyDot(CNguoiDung.MaTo, "CQ", decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                                     {
-                                        if (_cHoaDon.ThemChia(CNguoiDung.MaTo, "CQ", decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                                        if (_cHoaDon.ThemChia(CNguoiDung.MaTo, "CQ", int.Parse(cmbDotChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                             int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                         {
                                             LoadDataGridView();
@@ -286,5 +288,6 @@ namespace ThuTien.GUI.ToTruong
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
     }
 }
