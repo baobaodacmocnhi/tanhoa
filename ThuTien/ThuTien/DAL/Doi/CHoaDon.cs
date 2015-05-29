@@ -1830,6 +1830,118 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSHoaDon0ByNamKy(int nam, int ky, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.TIEUTHU == 0 && itemHD.NAM == nam && itemHD.KY == ky
+                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && itemHD.DM.Value.ToString().Contains(DinhMuc.ToString())
+                            && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSHoaDon0ByNam(int nam, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.TIEUTHU == 0 && itemHD.NAM == nam
+                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && itemHD.DM.Value.ToString().Contains(DinhMuc.ToString())
+                            && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public decimal TinhGiaBanBinhQuanByNamKy(int nam, int ky)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NAM == nam && item.KY==ky
+                        select new
+                        {
+                            item.GIABAN,
+                            item.TIEUTHU,
+                        };
+            return query.ToList().Select(item => item.GIABAN).Sum().Value / query.ToList().Select(item => item.TIEUTHU).Sum().Value;
+        }
+
+        public decimal TinhGiaBanBinhQuanByNam(int nam)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NAM == nam
+                        select new
+                        {
+                            item.GIABAN,
+                            item.TIEUTHU,
+                        };
+            return query.ToList().Select(item => item.GIABAN).Sum().Value / query.ToList().Select(item => item.TIEUTHU).Sum().Value;
+        }
+
+        public void PhanTichDoanhThuByNamKy(int nam, int ky,string GiaBieu, string DinhMuc, out decimal DoanhThu, out decimal SanLuong)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NAM == nam && item.KY==ky
+                            && item.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && item.DM.Value.ToString().Contains(DinhMuc.ToString())
+                        select new
+                        {
+                            item.GIABAN,
+                            item.TIEUTHU,
+                        };
+            DoanhThu = query.ToList().Select(item => item.GIABAN).Sum().Value;
+            SanLuong = query.ToList().Select(item => item.TIEUTHU).Sum().Value;
+        }
+
+        public void PhanTichDoanhThuByNam(int nam,string GiaBieu, string DinhMuc, out decimal DoanhThu, out decimal SanLuong)
+        {
+            var query = from item in _db.HOADONs
+                        where item.NAM == nam
+                            && item.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && item.DM.Value.ToString().Contains(DinhMuc.ToString())
+                        select new
+                        {
+                            item.GIABAN,
+                            item.TIEUTHU,
+                        };
+            DoanhThu = query.ToList().Select(item => item.GIABAN).Sum().Value;
+            SanLuong = query.ToList().Select(item => item.TIEUTHU).Sum().Value;
+        }
+
         //public List<HOADON> GetDSBySoPhatHanhNamsKyDot(int MaTo, string loai, decimal tusophathanh, decimal densophathanh, int nam, int ky, int dot)
         //{
         //    if (loai == "TG")

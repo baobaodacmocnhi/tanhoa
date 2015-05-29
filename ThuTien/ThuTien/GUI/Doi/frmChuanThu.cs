@@ -110,7 +110,7 @@ namespace ThuTien.GUI.Doi
             List<TT_To> lst = _cTo.GetDSHanhThu();
 
             ///chọn tất cả các kỳ
-            if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex == 0)
+            if (cmbKy.SelectedIndex == 0)
             {
                 dtTG = _cHoaDon.GetNangSuatByNam_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
                 dtCQ = _cHoaDon.GetNangSuatByNam_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
@@ -126,7 +126,7 @@ namespace ThuTien.GUI.Doi
             }
             ///chọn 1 kỳ cụ thể
             else
-                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex > 0)
+                if (cmbKy.SelectedIndex > 0)
                 {
                     dtTG = _cHoaDon.GetNangSuatByNamKy_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     dtCQ = _cHoaDon.GetNangSuatByNamKy_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));

@@ -242,6 +242,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuKetThucNamTaiKhoa_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKetThucNamTaiKhoa", "Xem"))
+            {
+                frmKetThucNamTaiKhoa frm = new frmKetThucNamTaiKhoa();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Tổ Trưởng
@@ -530,11 +541,7 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        #endregion 
-
-        
-
-        
+        #endregion   
 
         #region
 

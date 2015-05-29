@@ -50,31 +50,33 @@ namespace ThuTien.GUI.ToTruong
             ///chọn tất cả nhân viên trong tổ
             if (cmbNhanVien.SelectedValue.ToString() == "-1")
                 ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex == 0)
+                if (cmbKy.SelectedIndex == 0)
                 {
                     dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNam_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
                     dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNam_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
                 }
                 ///chọn 1 kỳ cụ thể
                 else
-                {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNamKy_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNamKy_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                }
-            ///chọn 1 nhân viên cụ thể
-            else
-                ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex == 0)
-                {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
-                }
-                ///chọn 1 kỳ cụ thể
-                else
-                {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                }
+                    if (cmbKy.SelectedIndex > 0)
+                    {
+                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNamKy_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNamKy_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    }
+                    ///chọn 1 nhân viên cụ thể
+                    else
+                        ///chọn tất cả các kỳ
+                        if (cmbKy.SelectedIndex == 0)
+                        {
+                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()));
+                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
+                        }
+                        ///chọn 1 kỳ cụ thể
+                        else
+                            if (cmbKy.SelectedIndex > 0)
+                            {
+                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            }
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

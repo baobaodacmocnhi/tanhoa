@@ -44,14 +44,13 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
-            {
-                DataTable dtTG = new DataTable();
-                DataTable dtCQ = new DataTable();
-                List<TT_To> lst = _cTo.GetDSHanhThu();
-
-                if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
+            if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
+                if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
                 {
+                    DataTable dtTG = new DataTable();
+                    DataTable dtCQ = new DataTable();
+                    List<TT_To> lst = _cTo.GetDSHanhThu();
+
                     dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                     dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                     for (int i = 1; i < lst.Count; i++)
@@ -63,12 +62,11 @@ namespace ThuTien.GUI.Doi
                     dgvHDTuGia.DataSource = dtTG;
                     dgvHDCoQuan.DataSource = dtCQ;
                 }
-            }
-            else
-            {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));  
-            }
+                else
+                {
+                    dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                }
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)

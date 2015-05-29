@@ -106,14 +106,14 @@ namespace ThuTien.GUI.ToTruong
         private void btnXem_Click(object sender, EventArgs e)
         {
             ///chọn tất cả các kỳ
-            if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex == 0)
+            if (cmbKy.SelectedIndex == 0)
             {
                 dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNam_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
                 dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNam_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
             }
             ///chọn 1 kỳ cụ thể
             else
-                if (cmbKy.SelectedIndex != -1 && cmbKy.SelectedIndex > 0)
+                if (cmbKy.SelectedIndex > 0)
                 {
                     dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNamKy_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNamKy_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
