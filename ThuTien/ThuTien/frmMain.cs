@@ -16,6 +16,7 @@ using ThuTien.GUI.Quay;
 using ThuTien.GUI.ChuyenKhoan;
 using ThuTien.GUI.TongHop;
 using ThuTien.GUI.DongNuoc;
+using ThuTien.GUI.TimKiem;
 
 namespace ThuTien
 {
@@ -247,6 +248,17 @@ namespace ThuTien
             if (CNguoiDung.CheckQuyen("mnuKetThucNamTaiKhoa", "Xem"))
             {
                 frmKetThucNamTaiKhoa frm = new frmKetThucNamTaiKhoa();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBangTongHop_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuBangTongHop", "Xem"))
+            {
+                frmBangTongHop frm = new frmBangTongHop();
                 OpenForm(frm);
             }
             else
@@ -543,9 +555,18 @@ namespace ThuTien
 
         #endregion   
 
-        #region
+        #region Tìm Kiếm
 
-
+        private void mnuTimKiemKhachHang_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTimKiemKhachHang", "Xem"))
+            {
+                frmTimKiemKhachHang frm = new frmTimKiemKhachHang();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         #endregion
     }

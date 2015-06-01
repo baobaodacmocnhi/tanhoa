@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
+using System.Data;
 
 namespace ThuTien.DAL.Doi
 {
@@ -160,6 +161,40 @@ namespace ThuTien.DAL.Doi
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public bool Xoa(TT_HoaDonTon hoadon)
+        {
+            try
+            {
+                _db.TT_HoaDonTons.DeleteOnSubmit(hoadon);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public DataTable GetDS()
+        {
+            var query = from item in _db.TT_HoaDonTons
+                        select new
+                        {
+                            MaHD=item.ID_HOADON,
+                            item.SOHOADON,
+                            DanhBo=item.DANHBA,
+                            item.TIEUTHU,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public TT_HoaDonTon GetByMaHD(int MaHD)
+        {
+            return _db.TT_HoaDonTons.SingleOrDefault(item => item.ID_HOADON == MaHD);
         }
     }
 }

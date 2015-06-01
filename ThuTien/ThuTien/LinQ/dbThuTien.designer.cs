@@ -8755,6 +8755,8 @@ namespace ThuTien.LinQ
 		
 		private string _SO;
 		
+		private bool _DaXuLy;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -8857,6 +8859,8 @@ namespace ThuTien.LinQ
     partial void OnTENKHChanged();
     partial void OnSOChanging(string value);
     partial void OnSOChanged();
+    partial void OnDaXuLyChanging(bool value);
+    partial void OnDaXuLyChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -9768,6 +9772,26 @@ namespace ThuTien.LinQ
 					this._SO = value;
 					this.SendPropertyChanged("SO");
 					this.OnSOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaXuLy", DbType="Bit NOT NULL")]
+		public bool DaXuLy
+		{
+			get
+			{
+				return this._DaXuLy;
+			}
+			set
+			{
+				if ((this._DaXuLy != value))
+				{
+					this.OnDaXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._DaXuLy = value;
+					this.SendPropertyChanged("DaXuLy");
+					this.OnDaXuLyChanged();
 				}
 			}
 		}

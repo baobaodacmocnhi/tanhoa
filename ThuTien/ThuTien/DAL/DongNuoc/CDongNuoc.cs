@@ -221,5 +221,21 @@ namespace ThuTien.DAL.DongNuoc
         {
             return _db.TT_KQDongNuocs.SingleOrDefault(item => item.MaCTDN == MaCTDN);
         }
+
+        public string GetNgayDNByMaHD(int MaHD)
+        {
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
+                        join itemKQDN in _db.TT_KQDongNuocs on itemDN.MaDN equals itemKQDN.MaDN
+                        where itemCTDN.MaHD == MaHD
+                        select new
+                        {
+                            NgayDN=itemKQDN.NgayDN.Value.ToString("dd/MM/yyyy")
+                        };
+            if (query.Count() > 0)
+                return query.Take(1).ToList()[0].NgayDN;
+            else
+                return "";
+        }
     }
 }
