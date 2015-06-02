@@ -278,6 +278,7 @@
               <xs:element name="NgayHetHan" msprop:Generator_ColumnVarNameInTable="columnNgayHetHan" msprop:Generator_ColumnPropNameInRow="NgayHetHan" msprop:Generator_ColumnPropNameInTable="NgayHetHanColumn" msprop:Generator_UserColumnName="NgayHetHan" type="xs:string" minOccurs="0" />
               <xs:element name="DienThoai" msprop:Generator_ColumnVarNameInTable="columnDienThoai" msprop:Generator_ColumnPropNameInRow="DienThoai" msprop:Generator_ColumnPropNameInTable="DienThoaiColumn" msprop:Generator_UserColumnName="DienThoai" type="xs:string" minOccurs="0" />
               <xs:element name="GhiChu" msprop:Generator_ColumnVarNameInTable="columnGhiChu" msprop:Generator_ColumnPropNameInRow="GhiChu" msprop:Generator_ColumnPropNameInTable="GhiChuColumn" msprop:Generator_UserColumnName="GhiChu" type="xs:string" minOccurs="0" />
+              <xs:element name="Quan" msprop:Generator_ColumnVarNameInTable="columnQuan" msprop:Generator_ColumnPropNameInRow="Quan" msprop:Generator_ColumnPropNameInTable="QuanColumn" msprop:Generator_UserColumnName="Quan" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

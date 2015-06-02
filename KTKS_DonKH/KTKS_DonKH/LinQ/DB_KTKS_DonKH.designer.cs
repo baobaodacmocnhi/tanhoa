@@ -9057,6 +9057,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _PhieuDuocKy;
 		
+		private bool _DMGiuNguyen;
+		
+		private bool _GiaHan;
+		
 		private bool _ChuyenDocSo;
 		
 		private System.Nullable<System.DateTime> _NgayChuyenDocSo;
@@ -9141,6 +9145,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnChucVuChanged();
     partial void OnPhieuDuocKyChanging(bool value);
     partial void OnPhieuDuocKyChanged();
+    partial void OnDMGiuNguyenChanging(bool value);
+    partial void OnDMGiuNguyenChanged();
+    partial void OnGiaHanChanging(bool value);
+    partial void OnGiaHanChanged();
     partial void OnChuyenDocSoChanging(bool value);
     partial void OnChuyenDocSoChanged();
     partial void OnNgayChuyenDocSoChanging(System.Nullable<System.DateTime> value);
@@ -9803,6 +9811,46 @@ namespace KTKS_DonKH.LinQ
 					this._PhieuDuocKy = value;
 					this.SendPropertyChanged("PhieuDuocKy");
 					this.OnPhieuDuocKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DMGiuNguyen", DbType="Bit NOT NULL")]
+		public bool DMGiuNguyen
+		{
+			get
+			{
+				return this._DMGiuNguyen;
+			}
+			set
+			{
+				if ((this._DMGiuNguyen != value))
+				{
+					this.OnDMGiuNguyenChanging(value);
+					this.SendPropertyChanging();
+					this._DMGiuNguyen = value;
+					this.SendPropertyChanged("DMGiuNguyen");
+					this.OnDMGiuNguyenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaHan", DbType="Bit NOT NULL")]
+		public bool GiaHan
+		{
+			get
+			{
+				return this._GiaHan;
+			}
+			set
+			{
+				if ((this._GiaHan != value))
+				{
+					this.OnGiaHanChanging(value);
+					this.SendPropertyChanging();
+					this._GiaHan = value;
+					this.SendPropertyChanged("GiaHan");
+					this.OnGiaHanChanged();
 				}
 			}
 		}

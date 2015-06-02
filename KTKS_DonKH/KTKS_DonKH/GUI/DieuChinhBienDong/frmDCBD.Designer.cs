@@ -144,6 +144,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.chkGiaHan = new System.Windows.Forms.CheckBox();
+            this.chkDMGiuNguyen = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -179,7 +181,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtDanhBo);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 32);
+            this.groupBox1.Location = new System.Drawing.Point(-1, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1220, 77);
             this.groupBox1.TabIndex = 2;
@@ -393,7 +395,7 @@
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.txtHoTen_BD);
             this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Location = new System.Drawing.Point(12, 115);
+            this.groupBox2.Location = new System.Drawing.Point(-1, 115);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1220, 77);
             this.groupBox2.TabIndex = 3;
@@ -826,7 +828,7 @@
             // chkCatMSThue
             // 
             this.chkCatMSThue.AutoSize = true;
-            this.chkCatMSThue.Location = new System.Drawing.Point(1238, 158);
+            this.chkCatMSThue.Location = new System.Drawing.Point(1225, 171);
             this.chkCatMSThue.Name = "chkCatMSThue";
             this.chkCatMSThue.Size = new System.Drawing.Size(103, 21);
             this.chkCatMSThue.TabIndex = 11;
@@ -1205,6 +1207,26 @@
             this.label28.TabIndex = 20;
             this.label28.Text = "Ctrl++: Lưu DCBD";
             // 
+            // chkGiaHan
+            // 
+            this.chkGiaHan.AutoSize = true;
+            this.chkGiaHan.Location = new System.Drawing.Point(1225, 115);
+            this.chkGiaHan.Name = "chkGiaHan";
+            this.chkGiaHan.Size = new System.Drawing.Size(76, 21);
+            this.chkGiaHan.TabIndex = 21;
+            this.chkGiaHan.Text = "Gia Hạn";
+            this.chkGiaHan.UseVisualStyleBackColor = true;
+            // 
+            // chkDMGiuNguyen
+            // 
+            this.chkDMGiuNguyen.AutoSize = true;
+            this.chkDMGiuNguyen.Location = new System.Drawing.Point(1225, 88);
+            this.chkDMGiuNguyen.Name = "chkDMGiuNguyen";
+            this.chkDMGiuNguyen.Size = new System.Drawing.Size(126, 21);
+            this.chkDMGiuNguyen.TabIndex = 22;
+            this.chkDMGiuNguyen.Text = "ĐM Giữ Nguyên";
+            this.chkDMGiuNguyen.UseVisualStyleBackColor = true;
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1212,6 +1234,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1359, 726);
+            this.Controls.Add(this.chkDMGiuNguyen);
+            this.Controls.Add(this.chkGiaHan);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
@@ -1226,8 +1250,8 @@
             this.Controls.Add(this.txtMaDon);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.groupBox_DSSoDangKy);
-            this.Controls.Add(this.chkCatMSThue);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.chkCatMSThue);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
@@ -1366,6 +1390,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkGiaHan;
+        private System.Windows.Forms.CheckBox chkDMGiuNguyen;
         
     }
 }

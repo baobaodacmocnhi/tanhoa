@@ -80,6 +80,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtSX_BD.Text = _ctdcbd.SX_BD;
                 txtDV_BD.Text = _ctdcbd.DV_BD;
                 txtHCSN_BD.Text = _ctdcbd.HCSN_BD;
+                if (_ctdcbd.DMGiuNguyen)
+                    chkDMGiuNguyen.Checked = true;
+                else
+                    chkDMGiuNguyen.Checked = false;
+                if (_ctdcbd.GiaHan)
+                    chkGiaHan.Checked = true;
+                else
+                    chkGiaHan.Checked = false;
                 if (_ctdcbd.CatMSThue)
                     chkCatMSThue.Checked = true;
                 else
@@ -141,6 +149,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
+                CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
                 if (_ctdcbd != null)
                 {
                     ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
@@ -260,6 +269,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     _ctdcbd.ThongTin = ThongTin;
                     _ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
+
+                    if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
+                    {
+                        _ctdcbd.ChucVu = null;
+                        _ctdcbd.NguoiKy = null;
+                        _ctdcbd.PhieuDuocKy = false;
+                    }
+                    else
+                    {
+                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            _ctdcbd.ChucVu = "GIÁM ĐỐC";
+                        else
+                            _ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        _ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        _ctdcbd.PhieuDuocKy = true;
+                    }
 
                     if (_cDCBD.SuaCTDCBD(_ctdcbd))
                         MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

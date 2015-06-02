@@ -149,6 +149,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHCSN.Text = "";
             txtDot.Text = "";
             txtHieuLucKy.Text = "";
+            chkDMGiuNguyen.Checked = false;
+            chkGiaHan.Checked = false;
             chkCatMSThue.Checked = false;
             ///
             txtHoTen_BD.Text = "";
@@ -499,13 +501,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 ///Nếu đơn thuộc Tổ Xử Lý
                 if (txtMaDon.Text.Trim().ToUpper().Contains("TXL"))
                 {
-                    if (_dontxl != null && txtHieuLucKy.Text.Trim() != "" && (
+                    if (_dontxl != null &&((chkDMGiuNguyen.Checked||chkGiaHan.Checked)|| (txtHieuLucKy.Text.Trim() != "" && (
                         !string.IsNullOrEmpty(txtHoTen_BD.Text.Trim())
                         || !string.IsNullOrEmpty(txtDiaChi_BD.Text.Trim())
                         || !string.IsNullOrEmpty(txtMSThue_BD.Text.Trim())
                         || !string.IsNullOrEmpty(txtGiaBieu_BD.Text.Trim())
                         || !string.IsNullOrEmpty(txtDinhMuc_BD.Text.Trim())
-                        ))
+                        ))))
                     {
                         ///Nếu DCBD chưa có thì thêm vào
                         if (!_cDCBD.CheckDCBDbyMaDon_TXL(_dontxl.MaDon))
@@ -635,13 +637,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.ThongTin = ThongTin;
                         ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
 
-                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ctdcbd.ChucVu = "GIÁM ĐỐC";
+                        if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
+                        {
+                            ctdcbd.PhieuDuocKy = false;
+                        }
                         else
-                            ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        ctdcbd.PhieuDuocKy = true;
+                        {
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                ctdcbd.ChucVu = "GIÁM ĐỐC";
+                            else
+                                ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            ctdcbd.PhieuDuocKy = true;
+                        }
 
                         if (_cDCBD.ThemCTDCBD(ctdcbd))
                         {
@@ -657,13 +666,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 ///Nếu đơn thuộc Tổ Khách Hàng
                 else
-                if (_donkh != null && txtHieuLucKy.Text.Trim() != "" && (
+                if (_donkh != null && ((chkDMGiuNguyen.Checked||chkGiaHan.Checked)||(txtHieuLucKy.Text.Trim() != "" && (
                         !string.IsNullOrEmpty(txtHoTen_BD.Text.Trim())
                         || !string.IsNullOrEmpty(txtDiaChi_BD.Text.Trim())
                         || !string.IsNullOrEmpty(txtMSThue_BD.Text.Trim())
                         || !string.IsNullOrEmpty(txtGiaBieu_BD.Text.Trim())
                         || !string.IsNullOrEmpty(txtDinhMuc_BD.Text.Trim())
-                        ))
+                        ))))
                 {
                     ///Nếu DCBD chưa có thì thêm vào
                     if (!_cDCBD.CheckDCBDbyMaDon(_donkh.MaDon))
@@ -800,13 +809,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     ctdcbd.ThongTin = ThongTin;
                     ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
 
-                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                        ctdcbd.ChucVu = "GIÁM ĐỐC";
+                    if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
+                    {
+                        ctdcbd.PhieuDuocKy = false;
+                    }
                     else
-                        ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                    ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                    ctdcbd.PhieuDuocKy = true;
+                    {
+                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            ctdcbd.ChucVu = "GIÁM ĐỐC";
+                        else
+                            ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        ctdcbd.PhieuDuocKy = true;
+                    }
 
                     if (_cDCBD.ThemCTDCBD(ctdcbd))
                     {
@@ -1217,10 +1233,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
-
-        
-
-        
 
     }
 }
