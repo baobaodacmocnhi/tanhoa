@@ -14,6 +14,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using System.Globalization;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -26,6 +27,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         TTKhachHang _ttkhachhang = null;
+        CKTXM _cKTXM = new CKTXM();
 
         public frmShowCHDB()
         {
@@ -68,7 +70,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmShowCHDB_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
+            this.Location = new Point(70, 50);
             dgvLichSuXuLy.AutoGenerateColumns = false;
             cmbNoiDung.SelectedIndex = -1;
 
@@ -152,12 +154,25 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
+                CTKTXM ctktxm = new CTKTXM();
+                if (_ctchdb.CHDB.ToXuLy)
+                {
+                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(_ctchdb.CHDB.MaDonTXL.Value, _ctchdb.DanhBo);
+                }
+                else
+                {
+                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(_ctchdb.CHDB.MaDon.Value, _ctchdb.DanhBo);
+                }
+
                 dr["SoPhieu"] = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length-2, "-");
                 dr["HoTen"] = _ctchdb.HoTen;
                 dr["DiaChi"] = _ctchdb.DiaChi;
                 if (!string.IsNullOrEmpty(_ctchdb.DanhBo))
                     dr["DanhBo"] = _ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctchdb.HopDong;
+
+                dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+
                 if (_ctchdb.LyDo != "Vấn Đề Khác")
                     dr["LyDo"] = _ctchdb.LyDo + ". ";
                 if (_ctchdb.GhiChuLyDo != "")
@@ -552,13 +567,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN") || cmbLyDo.SelectedItem.ToString() == "Vấn Đề Khác")
-                txtSoTien.ReadOnly = false;
-            else
-                txtSoTien.ReadOnly = true;
-            if (cmbLyDo.SelectedItem.ToString() == "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày")
+            switch (cmbLyDo.SelectedItem.ToString())
             {
-                txtNoiNhan.Text = "- Như trên\r\n- Đội TCTB: thực hiện\r\n- Lưu.";
+                case "Theo Yêu Cầu Khách Hàng":
+                case "Theo Yêu Cầu Công Ty":
+                case "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày":
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội QLĐHN, Đội TT: để biết.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtSoTien.Text = "";
+                    break;
+                case "Nợ Tiền Nước":
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: gửi thông báo.\r\n- Đội TCTB: thực hiện. (Đội TT)\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtSoTien.Text = "";
+                    break;
+                case "Nợ Tiền Gian Lận Nước":
+                case "Không Thanh Toán Tiền Bồi Thường ĐHN":
+                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
+                    break;
+                default:
+                    txtNoiNhan.Text = "";
+                    txtSoTien.Text = "";
+                    break;
             }
         }
 

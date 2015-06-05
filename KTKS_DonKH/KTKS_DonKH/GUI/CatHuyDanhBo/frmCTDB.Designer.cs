@@ -266,7 +266,6 @@
             // 
             this.txtSoTien.Location = new System.Drawing.Point(385, 24);
             this.txtSoTien.Name = "txtSoTien";
-            this.txtSoTien.ReadOnly = true;
             this.txtSoTien.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;

@@ -340,7 +340,6 @@
             // 
             this.txtSoTien.Location = new System.Drawing.Point(385, 24);
             this.txtSoTien.Name = "txtSoTien";
-            this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
             this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);

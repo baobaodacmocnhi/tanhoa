@@ -637,6 +637,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.ThongTin = ThongTin;
                         ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
 
+                        ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
+                        ctdcbd.GiaHan = chkGiaHan.Checked;
+
                         if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
                         {
                             ctdcbd.PhieuDuocKy = false;
@@ -808,6 +811,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     ctdcbd.ThongTin = ThongTin;
                     ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
+
+                    ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
+                    ctdcbd.GiaHan = chkGiaHan.Checked;
 
                     if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
                     {

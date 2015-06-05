@@ -493,48 +493,6 @@
       <Association Name="DongNuoc_CTDongNuoc" Member="DongNuoc" ThisKey="MaDN" OtherKey="MaDN" Type="DongNuoc" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.CTKTXM" Member="CTKTXMs">
-    <Type Name="CTKTXM">
-      <Column Name="MaCTKTXM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="HopDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DinhMuc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NgayKTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="HienTrangKiemTra" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Hieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Co" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SoThan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ChiSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TinhTrangChiSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ChiMatSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ChiKhoaGoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MucDichSuDung" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="TinhTrangDHN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NoiDungKiemTra" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="HoTenKHKy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="TheoYeuCau" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="LapBangGia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayLapBangGia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DongTienBoiThuong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayDongTien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChuyenLapTBCat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayChuyenLapTBCat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MaKTXM" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="KTXM_CTKTXM" Member="KTXM" ThisKey="MaKTXM" OtherKey="MaKTXM" Type="KTXM" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.CTTruyThuTienNuoc" Member="CTTruyThuTienNuocs">
     <Type Name="CTTruyThuTienNuoc">
       <Column Name="MaCTTTTN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1275,6 +1233,50 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTKTXM" Member="CTKTXMs">
+    <Type Name="CTKTXM">
+      <Column Name="MaCTKTXM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HopDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayKTXM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HienTrangKiemTra" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Hieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Co" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoThan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChiSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TinhTrangChiSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChiMatSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChiKhoaGoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MucDichSuDung" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TinhTrangDHN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NoiDungKiemTra" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoTenKHKy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TheoYeuCau" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LapBangGia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayLapBangGia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DongTienBoiThuong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDongTien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChuyenLapTBCat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayChuyenLapTBCat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ViTriDHN1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ViTriDHN2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaKTXM" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="KTXM_CTKTXM" Member="KTXM" ThisKey="MaKTXM" OtherKey="MaKTXM" Type="KTXM" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

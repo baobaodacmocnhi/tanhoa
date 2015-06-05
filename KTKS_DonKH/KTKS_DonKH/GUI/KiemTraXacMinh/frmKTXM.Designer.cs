@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -57,10 +57,11 @@
             this.NoiDungKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cmbViTriDHN2 = new System.Windows.Forms.ComboBox();
+            this.cmbViTriDHN1 = new System.Windows.Forms.ComboBox();
             this.lbTheoYeuCau = new System.Windows.Forms.Label();
             this.txtTheoYeuCau = new System.Windows.Forms.TextBox();
-            this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.cmbChiKhoaGoc = new System.Windows.Forms.ComboBox();
             this.cmbChiMatSo = new System.Windows.Forms.ComboBox();
             this.cmbTinhTrangChiSo = new System.Windows.Forms.ComboBox();
@@ -83,6 +84,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtHieu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.cmbTinhTrangDHN = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -230,7 +233,7 @@
             this.txtDienThoai.Location = new System.Drawing.Point(540, 73);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(89, 25);
-            this.txtDienThoai.TabIndex = 23;
+            this.txtDienThoai.TabIndex = 24;
             // 
             // label11
             // 
@@ -238,7 +241,7 @@
             this.label11.Location = new System.Drawing.Point(430, 76);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(76, 17);
-            this.label11.TabIndex = 22;
+            this.label11.TabIndex = 23;
             this.label11.Text = "Điện Thoại:";
             // 
             // txtNoiDungKiemTra
@@ -247,7 +250,7 @@
             this.txtNoiDungKiemTra.Multiline = true;
             this.txtNoiDungKiemTra.Name = "txtNoiDungKiemTra";
             this.txtNoiDungKiemTra.Size = new System.Drawing.Size(375, 87);
-            this.txtNoiDungKiemTra.TabIndex = 27;
+            this.txtNoiDungKiemTra.TabIndex = 28;
             // 
             // label1
             // 
@@ -255,7 +258,7 @@
             this.label1.Location = new System.Drawing.Point(750, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 17);
-            this.label1.TabIndex = 26;
+            this.label1.TabIndex = 27;
             this.label1.Text = "Nội Dung Kiểm Tra:";
             // 
             // btnThem
@@ -275,14 +278,14 @@
             // 
             this.dgvDSKetQuaKiemTra.AllowUserToAddRows = false;
             this.dgvDSKetQuaKiemTra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSKetQuaKiemTra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDSKetQuaKiemTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSKetQuaKiemTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTKTXM,
@@ -347,10 +350,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.cmbViTriDHN2);
+            this.groupBox2.Controls.Add(this.cmbViTriDHN1);
             this.groupBox2.Controls.Add(this.lbTheoYeuCau);
             this.groupBox2.Controls.Add(this.txtTheoYeuCau);
-            this.groupBox2.Controls.Add(this.cmbTinhTrangDHN);
-            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.cmbChiKhoaGoc);
             this.groupBox2.Controls.Add(this.cmbChiMatSo);
             this.groupBox2.Controls.Add(this.cmbTinhTrangChiSo);
@@ -384,13 +388,51 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(305, 22);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(123, 17);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "Vị Trí ĐHN lắp đặt";
+            // 
+            // cmbViTriDHN2
+            // 
+            this.cmbViTriDHN2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbViTriDHN2.FormattingEnabled = true;
+            this.cmbViTriDHN2.Items.AddRange(new object[] {
+            "",
+            "Trong Sân",
+            "Trong Nhà",
+            "Vỉa Hè"});
+            this.cmbViTriDHN2.Location = new System.Drawing.Point(395, 42);
+            this.cmbViTriDHN2.MaxDropDownItems = 50;
+            this.cmbViTriDHN2.Name = "cmbViTriDHN2";
+            this.cmbViTriDHN2.Size = new System.Drawing.Size(80, 25);
+            this.cmbViTriDHN2.TabIndex = 6;
+            // 
+            // cmbViTriDHN1
+            // 
+            this.cmbViTriDHN1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbViTriDHN1.FormattingEnabled = true;
+            this.cmbViTriDHN1.Items.AddRange(new object[] {
+            "",
+            "Bên Trái",
+            "Bên Phải"});
+            this.cmbViTriDHN1.Location = new System.Drawing.Point(308, 42);
+            this.cmbViTriDHN1.MaxDropDownItems = 50;
+            this.cmbViTriDHN1.Name = "cmbViTriDHN1";
+            this.cmbViTriDHN1.Size = new System.Drawing.Size(80, 25);
+            this.cmbViTriDHN1.TabIndex = 5;
+            // 
             // lbTheoYeuCau
             // 
             this.lbTheoYeuCau.AutoSize = true;
             this.lbTheoYeuCau.Location = new System.Drawing.Point(583, 138);
             this.lbTheoYeuCau.Name = "lbTheoYeuCau";
             this.lbTheoYeuCau.Size = new System.Drawing.Size(164, 17);
-            this.lbTheoYeuCau.TabIndex = 30;
+            this.lbTheoYeuCau.TabIndex = 29;
             this.lbTheoYeuCau.Text = "Thực Hiện Theo Yêu Cầu:";
             this.lbTheoYeuCau.Visible = false;
             // 
@@ -399,44 +441,8 @@
             this.txtTheoYeuCau.Location = new System.Drawing.Point(753, 135);
             this.txtTheoYeuCau.Name = "txtTheoYeuCau";
             this.txtTheoYeuCau.Size = new System.Drawing.Size(281, 25);
-            this.txtTheoYeuCau.TabIndex = 31;
+            this.txtTheoYeuCau.TabIndex = 30;
             this.txtTheoYeuCau.Visible = false;
-            // 
-            // cmbTinhTrangDHN
-            // 
-            this.cmbTinhTrangDHN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTinhTrangDHN.FormattingEnabled = true;
-            this.cmbTinhTrangDHN.Items.AddRange(new object[] {
-            "",
-            "Còn",
-            "Mất",
-            "Không ĐHN",
-            "Lấp mất",
-            "Bể kiếng",
-            "Mất mặt số",
-            "Chủ gỡ",
-            "Hầm sâu",
-            "Chất đồ",
-            "Gắn ngược",
-            "Đóng nước",
-            "Cắt ống bên ngoài",
-            "Kẹt khóa"});
-            this.cmbTinhTrangDHN.Location = new System.Drawing.Point(310, 41);
-            this.cmbTinhTrangDHN.MaxDropDownItems = 50;
-            this.cmbTinhTrangDHN.Name = "cmbTinhTrangDHN";
-            this.cmbTinhTrangDHN.Size = new System.Drawing.Size(165, 25);
-            this.cmbTinhTrangDHN.TabIndex = 5;
-            this.cmbTinhTrangDHN.Visible = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(307, 21);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(122, 17);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "ĐHN lúc Kiểm Tra";
-            this.label20.Visible = false;
             // 
             // cmbChiKhoaGoc
             // 
@@ -453,7 +459,7 @@
             this.cmbChiKhoaGoc.MaxDropDownItems = 50;
             this.cmbChiKhoaGoc.Name = "cmbChiKhoaGoc";
             this.cmbChiKhoaGoc.Size = new System.Drawing.Size(70, 25);
-            this.cmbChiKhoaGoc.TabIndex = 19;
+            this.cmbChiKhoaGoc.TabIndex = 20;
             // 
             // cmbChiMatSo
             // 
@@ -470,7 +476,7 @@
             this.cmbChiMatSo.MaxDropDownItems = 50;
             this.cmbChiMatSo.Name = "cmbChiMatSo";
             this.cmbChiMatSo.Size = new System.Drawing.Size(70, 25);
-            this.cmbChiMatSo.TabIndex = 17;
+            this.cmbChiMatSo.TabIndex = 18;
             // 
             // cmbTinhTrangChiSo
             // 
@@ -502,7 +508,7 @@
             this.cmbTinhTrangChiSo.MaxDropDownItems = 50;
             this.cmbTinhTrangChiSo.Name = "cmbTinhTrangChiSo";
             this.cmbTinhTrangChiSo.Size = new System.Drawing.Size(165, 25);
-            this.cmbTinhTrangChiSo.TabIndex = 9;
+            this.cmbTinhTrangChiSo.TabIndex = 10;
             // 
             // label19
             // 
@@ -510,7 +516,7 @@
             this.label19.Location = new System.Drawing.Point(537, 22);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(128, 17);
-            this.label19.TabIndex = 8;
+            this.label19.TabIndex = 9;
             this.label19.Text = "Chỉ Số lúc Kiểm Tra";
             // 
             // cmbHienTrangKiemTra
@@ -538,7 +544,7 @@
             this.txtHoTenKHKy.Location = new System.Drawing.Point(540, 104);
             this.txtHoTenKHKy.Name = "txtHoTenKHKy";
             this.txtHoTenKHKy.Size = new System.Drawing.Size(178, 25);
-            this.txtHoTenKHKy.TabIndex = 25;
+            this.txtHoTenKHKy.TabIndex = 26;
             // 
             // label17
             // 
@@ -546,7 +552,7 @@
             this.label17.Location = new System.Drawing.Point(430, 107);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(104, 17);
-            this.label17.TabIndex = 24;
+            this.label17.TabIndex = 25;
             this.label17.Text = "Họ Tên KH Ký:";
             // 
             // dateKTXM
@@ -572,7 +578,7 @@
             this.txtSoThan.Location = new System.Drawing.Point(73, 135);
             this.txtSoThan.Name = "txtSoThan";
             this.txtSoThan.Size = new System.Drawing.Size(97, 25);
-            this.txtSoThan.TabIndex = 15;
+            this.txtSoThan.TabIndex = 16;
             // 
             // label3
             // 
@@ -580,7 +586,7 @@
             this.label3.Location = new System.Drawing.Point(7, 138);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 17);
-            this.label3.TabIndex = 14;
+            this.label3.TabIndex = 15;
             this.label3.Text = "Số Thân:";
             // 
             // label4
@@ -589,7 +595,7 @@
             this.label4.Location = new System.Drawing.Point(176, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 17);
-            this.label4.TabIndex = 18;
+            this.label4.TabIndex = 19;
             this.label4.Text = "Chì Khóa Góc:";
             // 
             // txtMucDichSuDung
@@ -597,7 +603,7 @@
             this.txtMucDichSuDung.Location = new System.Drawing.Point(308, 135);
             this.txtMucDichSuDung.Name = "txtMucDichSuDung";
             this.txtMucDichSuDung.Size = new System.Drawing.Size(231, 25);
-            this.txtMucDichSuDung.TabIndex = 21;
+            this.txtMucDichSuDung.TabIndex = 22;
             // 
             // label5
             // 
@@ -605,7 +611,7 @@
             this.label5.Location = new System.Drawing.Point(176, 138);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 17);
-            this.label5.TabIndex = 20;
+            this.label5.TabIndex = 21;
             this.label5.Text = "Mục Đích Sử Dụng:";
             // 
             // txtCo
@@ -613,7 +619,7 @@
             this.txtCo.Location = new System.Drawing.Point(73, 104);
             this.txtCo.Name = "txtCo";
             this.txtCo.Size = new System.Drawing.Size(97, 25);
-            this.txtCo.TabIndex = 13;
+            this.txtCo.TabIndex = 14;
             this.txtCo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCo_KeyPress);
             // 
             // label12
@@ -622,7 +628,7 @@
             this.label12.Location = new System.Drawing.Point(7, 107);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 17);
-            this.label12.TabIndex = 12;
+            this.label12.TabIndex = 13;
             this.label12.Text = "Cỡ:";
             // 
             // label13
@@ -631,7 +637,7 @@
             this.label13.Location = new System.Drawing.Point(176, 76);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(78, 17);
-            this.label13.TabIndex = 16;
+            this.label13.TabIndex = 17;
             this.label13.Text = "Chì Mặt Số:";
             // 
             // txtChiSo
@@ -639,7 +645,7 @@
             this.txtChiSo.Location = new System.Drawing.Point(481, 42);
             this.txtChiSo.Name = "txtChiSo";
             this.txtChiSo.Size = new System.Drawing.Size(50, 25);
-            this.txtChiSo.TabIndex = 7;
+            this.txtChiSo.TabIndex = 8;
             this.txtChiSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChiSo_KeyPress);
             // 
             // label14
@@ -648,7 +654,7 @@
             this.label14.Location = new System.Drawing.Point(478, 21);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(47, 17);
-            this.label14.TabIndex = 6;
+            this.label14.TabIndex = 7;
             this.label14.Text = "Chỉ Số";
             // 
             // txtHieu
@@ -656,7 +662,7 @@
             this.txtHieu.Location = new System.Drawing.Point(73, 73);
             this.txtHieu.Name = "txtHieu";
             this.txtHieu.Size = new System.Drawing.Size(97, 25);
-            this.txtHieu.TabIndex = 11;
+            this.txtHieu.TabIndex = 12;
             // 
             // label15
             // 
@@ -664,8 +670,44 @@
             this.label15.Location = new System.Drawing.Point(7, 76);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(39, 17);
-            this.label15.TabIndex = 10;
+            this.label15.TabIndex = 11;
             this.label15.Text = "Hiệu:";
+            // 
+            // cmbTinhTrangDHN
+            // 
+            this.cmbTinhTrangDHN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTinhTrangDHN.FormattingEnabled = true;
+            this.cmbTinhTrangDHN.Items.AddRange(new object[] {
+            "",
+            "Còn",
+            "Mất",
+            "Không ĐHN",
+            "Lấp mất",
+            "Bể kiếng",
+            "Mất mặt số",
+            "Chủ gỡ",
+            "Hầm sâu",
+            "Chất đồ",
+            "Gắn ngược",
+            "Đóng nước",
+            "Cắt ống bên ngoài",
+            "Kẹt khóa"});
+            this.cmbTinhTrangDHN.Location = new System.Drawing.Point(778, 418);
+            this.cmbTinhTrangDHN.MaxDropDownItems = 50;
+            this.cmbTinhTrangDHN.Name = "cmbTinhTrangDHN";
+            this.cmbTinhTrangDHN.Size = new System.Drawing.Size(165, 25);
+            this.cmbTinhTrangDHN.TabIndex = 5;
+            this.cmbTinhTrangDHN.Visible = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(775, 398);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(122, 17);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "ĐHN lúc Kiểm Tra";
+            this.label20.Visible = false;
             // 
             // btnSua
             // 
@@ -698,6 +740,8 @@
             this.ClientSize = new System.Drawing.Size(1154, 493);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.btnSua);
+            this.Controls.Add(this.cmbTinhTrangDHN);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvDSKetQuaKiemTra);
             this.Controls.Add(this.btnThem);
@@ -777,5 +821,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDungKiemTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cmbViTriDHN2;
+        private System.Windows.Forms.ComboBox cmbViTriDHN1;
     }
 }

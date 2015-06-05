@@ -102,6 +102,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 ///
                 dateKTXM.Value = ctktxm.NgayKTXM.Value;
                 cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+                cmbViTriDHN1.SelectedItem = ctktxm.ViTriDHN1;
+                cmbViTriDHN2.SelectedItem = ctktxm.ViTriDHN1;
+                ///
                 txtHieu.Text = ctktxm.Hieu;
                 txtCo.Text = ctktxm.Co;
                 txtSoThan.Text = ctktxm.SoThan;
@@ -155,6 +158,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = "";
             ///
             //dateKTXM.Value = DateTime.Now;
+            cmbViTriDHN1.SelectedIndex = -1;
+            cmbViTriDHN2.SelectedIndex = -1;
             txtHieu.Text = "";
             txtCo.Text = "";
             txtSoThan.Text = "";
@@ -223,6 +228,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                 if (cmbHienTrangKiemTra.SelectedValue != null)
                     _ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
+
+                if (cmbViTriDHN1.SelectedItem != null)
+                    _ctktxm.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
+
+                if (cmbViTriDHN2.SelectedItem != null)
+                    _ctktxm.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
 
                 _ctktxm.Hieu = txtHieu.Text.Trim();
                 _ctktxm.Co = txtCo.Text.Trim();

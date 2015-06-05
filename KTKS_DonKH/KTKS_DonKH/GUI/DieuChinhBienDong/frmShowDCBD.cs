@@ -128,6 +128,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["GiaBieuBD"] = _ctdcbd.GiaBieu_BD;
                 dr["DinhMucBD"] = _ctdcbd.DinhMuc_BD;
                 ///Ký Tên
+                if (_ctdcbd.DMGiuNguyen)
+                    dr["KhongBD"] = "ĐM Giữ Nguyên";
+                else
+                    if (_ctdcbd.GiaHan)
+                        dr["KhongBD"] = "Gia Hạn";
                 dr["ChucVu"] = _ctdcbd.ChucVu;
                 dr["NguoiKy"] = _ctdcbd.NguoiKy;
 
@@ -269,6 +274,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     _ctdcbd.ThongTin = ThongTin;
                     _ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
+
+                    _ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
+                    _ctdcbd.GiaHan = chkGiaHan.Checked;
 
                     if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
                     {

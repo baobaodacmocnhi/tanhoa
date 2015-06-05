@@ -238,15 +238,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN") || cmbLyDo.SelectedItem.ToString() == "Vấn Đề Khác")
+            switch (cmbLyDo.SelectedItem.ToString())
             {
-                txtSoTien.ReadOnly = false;
-            }
-            else
-                txtSoTien.ReadOnly = true;
-            if (cmbLyDo.SelectedItem.ToString() == "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày")
-            {
-                txtNoiNhan.Text = "- Như trên\r\n- Đội TCTB: thực hiện\r\n- Lưu.";
+                case "Theo Yêu Cầu Khách Hàng":
+                case "Theo Yêu Cầu Công Ty":
+                case "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày":
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội QLĐHN, Đội TT: để biết.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtSoTien.Text = "";
+                    break;
+                case "Nợ Tiền Nước":
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: gửi thông báo.\r\n- Đội TCTB: thực hiện. (Đội TT)\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtSoTien.Text = "";
+                    break;
+                case "Nợ Tiền Gian Lận Nước":
+                case "Không Thanh Toán Tiền Bồi Thường ĐHN":
+                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
+                    break;
+                default:
+                    txtNoiNhan.Text = "";
+                    txtSoTien.Text = "";
+                    break;
             }
         }
 

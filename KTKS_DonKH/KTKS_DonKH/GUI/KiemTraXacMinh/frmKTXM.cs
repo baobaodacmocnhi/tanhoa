@@ -88,6 +88,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             ///
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
             cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
+            cmbViTriDHN1.SelectedItem = ctktxm.ViTriDHN1;
+            cmbViTriDHN2.SelectedItem = ctktxm.ViTriDHN1;
+            ///
             txtHieu.Text = ctktxm.Hieu;
             txtCo.Text = ctktxm.Co;
             txtSoThan.Text = ctktxm.SoThan;
@@ -113,6 +116,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             ///
             //dateKTXM.Value = DateTime.Now;
             //cmbTinhTrangKiemTra.SelectedIndex = -1;
+            cmbViTriDHN1.SelectedIndex = -1;
+            cmbViTriDHN2.SelectedIndex = -1;
             txtHieu.Text = "";
             txtCo.Text = "";
             txtSoThan.Text = "";
@@ -289,6 +294,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         if (cmbHienTrangKiemTra.SelectedValue != null)
                             ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
 
+                        if (cmbViTriDHN1.SelectedItem != null)
+                            ctktxm.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
+
+                        if (cmbViTriDHN2.SelectedItem != null)
+                            ctktxm.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
+
                         ctktxm.Hieu = txtHieu.Text.Trim();
                         ctktxm.Co = txtCo.Text.Trim();
                         ctktxm.SoThan = txtSoThan.Text.Trim();
@@ -377,6 +388,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         if (cmbHienTrangKiemTra.SelectedValue != null)
                             ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
 
+                        if (cmbViTriDHN1.SelectedItem != null)
+                            ctktxm.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
+
+                        if (cmbViTriDHN2.SelectedItem != null)
+                            ctktxm.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
+
                         ctktxm.Hieu = txtHieu.Text.Trim();
                         ctktxm.Co = txtCo.Text.Trim();
                         ctktxm.SoThan = txtSoThan.Text.Trim();
@@ -449,6 +466,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
                     if (cmbHienTrangKiemTra.SelectedValue != null)
                         ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
+
+                    if (cmbViTriDHN1.SelectedItem != null)
+                        ctktxm.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
+
+                    if (cmbViTriDHN2.SelectedItem != null)
+                        ctktxm.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
 
                     ctktxm.Hieu = txtHieu.Text.Trim();
                     ctktxm.Co = txtCo.Text.Trim();
@@ -532,6 +555,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         txtDienThoai.Enabled = false;
                         txtHoTenKHKy.Enabled = false;
                         ///
+                        cmbViTriDHN1.SelectedIndex = -1;
+                        cmbViTriDHN2.SelectedIndex = -1;
                         txtChiSo.Text = "";
                         cmbTinhTrangChiSo.SelectedIndex = -1;
                         cmbChiMatSo.SelectedIndex = -1;
@@ -555,6 +580,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         txtDienThoai.Enabled = true;
                         txtHoTenKHKy.Enabled = true;
                         ///
+                        cmbViTriDHN1.SelectedIndex = -1;
+                        cmbViTriDHN2.SelectedIndex = -1;
                         txtChiSo.Text = "";
                         cmbTinhTrangChiSo.SelectedIndex = -1;
                         cmbChiMatSo.SelectedIndex = -1;
@@ -578,6 +605,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         txtDienThoai.Enabled = true;
                         txtHoTenKHKy.Enabled = true;
                         ///
+                        cmbViTriDHN1.SelectedIndex = -1;
+                        cmbViTriDHN2.SelectedIndex = -1;
                         txtChiSo.Text = "";
                         cmbTinhTrangChiSo.SelectedIndex = -1;
                         cmbChiMatSo.SelectedIndex = -1;

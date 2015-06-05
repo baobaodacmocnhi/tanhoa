@@ -2264,6 +2264,32 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public CTKTXM getCTKTXMbyMaDonKHDanhBo(decimal MaDonKH, string DanhBo)
+        {
+            try
+            {
+                return db.CTKTXMs.FirstOrDefault(itemCTKTXM => itemCTKTXM.KTXM.MaDon == MaDonKH && itemCTKTXM.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public CTKTXM getCTKTXMbyMaDonTXLDanhBo(decimal MaDonTXL, string DanhBo)
+        {
+            try
+            {
+                return db.CTKTXMs.FirstOrDefault(itemCTKTXM => itemCTKTXM.KTXM.MaDonTXL == MaDonTXL && itemCTKTXM.DanhBo == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Kiểm tra CTKTXM đã được tạo cho Mã Đơn Tổ Khách Hàng, Danh Bộ, Cùng Ngày chưa
         /// </summary>
@@ -2519,7 +2545,6 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                 return 0;
             }
         }
-
 
         #endregion
     }

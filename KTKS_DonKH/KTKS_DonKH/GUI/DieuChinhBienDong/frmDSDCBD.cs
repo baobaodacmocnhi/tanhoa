@@ -987,6 +987,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
                                     dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
                                     ///Ký Tên
+                                    if (ctdcbd.DMGiuNguyen)
+                                        dr["KhongBD"] = "ĐM Giữ Nguyên";
+                                    else
+                                        if (ctdcbd.GiaHan)
+                                            dr["KhongBD"] = "Gia Hạn";
                                     dr["ChucVu"] = ctdcbd.ChucVu;
                                     dr["NguoiKy"] = ctdcbd.NguoiKy;
 

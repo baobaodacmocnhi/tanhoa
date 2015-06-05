@@ -14,6 +14,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using System.Globalization;
 using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.DAL.KhachHang;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -26,6 +27,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CTTKH _cTTKH = new CTTKH();
         TTKhachHang _ttkhachhang = null;
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
+        CKTXM _cKTXM = new CKTXM();
 
         public frmShowCTDB()
         {
@@ -68,7 +70,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void frmShowCTDB_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(70, 70);
+            this.Location = new Point(70,50);
             dgvLichSuXuLy.AutoGenerateColumns = false;
             cmbNoiDung.SelectedIndex = -1;
 
@@ -151,12 +153,25 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
+                CTKTXM ctktxm = new CTKTXM();
+                if (_ctctdb.CHDB.ToXuLy)
+                {
+                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(_ctctdb.CHDB.MaDonTXL.Value, _ctctdb.DanhBo);
+                }
+                else
+                {
+                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(_ctctdb.CHDB.MaDon.Value, _ctctdb.DanhBo);
+                }
+
                 dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                 dr["HoTen"] = _ctctdb.HoTen;
                 dr["DiaChi"] = _ctctdb.DiaChi;
                 if (!string.IsNullOrEmpty(_ctctdb.DanhBo))
                     dr["DanhBo"] = _ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctctdb.HopDong;
+
+                dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+
                 if (_ctctdb.LyDo != "Vấn Đề Khác")
                     dr["LyDo"] = _ctctdb.LyDo + ". ";
                 if (_ctctdb.GhiChuLyDo != "")
@@ -602,20 +617,27 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void cmbLyDo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbLyDo.SelectedItem.ToString().ToUpper().Contains("TIỀN") || cmbLyDo.SelectedItem.ToString() == "Vấn Đề Khác")
+            switch (cmbLyDo.SelectedItem.ToString())
             {
-                txtSoTien.ReadOnly = false;
-                if (cmbLyDo.SelectedItem.ToString() == "Không Thanh Toán Tiền Bồi Thường ĐHN")
-                {
-                    txtNoiNhan.Text = "- Như trên\r\n- Đội TCTB: thực hiện\r\n- Lưu.";
+                case "Theo Yêu Cầu Khách Hàng":
+                case "Theo Yêu Cầu Công Ty":
+                case "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày":
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội QLĐHN, Đội TT: để biết.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtSoTien.Text = "";
+                    break;
+                case "Nợ Tiền Nước":
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: gửi thông báo.\r\n- Đội TCTB: thực hiện. (Đội TT)\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtSoTien.Text = "";
+                    break;
+                case "Nợ Tiền Gian Lận Nước":
+                case "Không Thanh Toán Tiền Bồi Thường ĐHN":
+                    txtNoiNhan.Text = "- Như trên\r\n- Đội QLĐHN: để biết.\r\n- Đội TCTB: thực hiện\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", 1283641);
-                }
-            }
-            else
-                txtSoTien.ReadOnly = true;
-            if (cmbLyDo.SelectedItem.ToString() == "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày")
-            {
-                txtNoiNhan.Text = "- Như trên\r\n- Đội TCTB: thực hiện\r\n- Lưu.";
+                    break;
+                default:
+                    txtNoiNhan.Text = "";
+                    txtSoTien.Text = "";
+                    break;
             }
         }
 
