@@ -153,7 +153,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
 
-                CTKTXM ctktxm = new CTKTXM();
+                CTKTXM ctktxm = null;
                 if (_ctctdb.CHDB.ToXuLy)
                 {
                     ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(_ctctdb.CHDB.MaDonTXL.Value, _ctctdb.DanhBo);
@@ -170,6 +170,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["DanhBo"] = _ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = _ctctdb.HopDong;
 
+                if (ctktxm != null)
                 dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
 
                 if (_ctctdb.LyDo != "Vấn Đề Khác")

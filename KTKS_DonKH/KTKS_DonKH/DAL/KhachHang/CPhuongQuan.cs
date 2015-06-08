@@ -66,5 +66,9 @@ namespace KTKS_DonKH.DAL.KhachHang
             return dbCAPNUOCTANHOA.QUANs.SingleOrDefault(item => item.MAQUAN == MaQuan).TENQUAN;
         }
 
+        public string getTenPhuongByMaQuanPhuong(int MaQuan,string MaPhuong)
+        {
+            return dbCAPNUOCTANHOA.PHUONGs.SingleOrDefault(item => item.MAQUAN == MaQuan&&item.MAPHUONG==MaPhuong).TENPHUONG;
+        }
     }
 }

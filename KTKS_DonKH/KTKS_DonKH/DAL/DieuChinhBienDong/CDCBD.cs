@@ -1576,6 +1576,40 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable LoadDSCTDCBDSoCT(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                join itemCTCT in db.CTChungTus on itemCTDCBD.DanhBo equals itemCTCT.DanhBo
+                                join itemTTKH in db.TTKhachHangs on itemCTDCBD.DanhBo equals itemTTKH.DanhBo
+                                where (itemCTCT.ChungTu.MaLCT == 2 || itemCTCT.ChungTu.MaLCT == 5 || itemCTCT.ChungTu.MaLCT == 6 || itemCTCT.ChungTu.MaLCT == 7)
+                                && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value.Date <= DenNgay.Date
+                                select new
+                                {
+                                    itemCTDCBD.DanhBo,
+                                    itemCTCT.ChungTu.LoaiChungTu.MaLCT,
+                                    itemCTCT.SoNKDangKy,
+                                    itemTTKH.Quan,
+                                    itemTTKH.Phuong,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách CTDCBD theo ngày Chuyển Đọc Số
         /// </summary>

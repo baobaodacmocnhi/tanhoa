@@ -61,7 +61,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            if (radThongKeDMCapCoThoiHan.Checked)
+            if (radDanhSachDMCapCoThoiHan.Checked)
             {
                 DataTable dt = new DataTable();
                 if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
@@ -200,7 +200,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 crystalReportViewer1.ReportSource = rpt;  
             }
 
-            if (radThongKeDMCapKThoiHan.Checked)
+            if (radDanhSachDMCapKThoiHan.Checked)
             {
                 DataTable dt = new DataTable();
                 if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
@@ -339,7 +339,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 crystalReportViewer1.ReportSource = rpt;
             }
 
-            if (radThongKeDMCapNgayHetHan.Checked)
+            if (radDanhSachDMCapNgayHetHan.Checked)
             {
                 DataTable dt = new DataTable();
                 if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
@@ -671,6 +671,41 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 crystalReportViewer1.ReportSource = rpt;
             }
 
+            if (radThongKeDCSoCT.Checked)
+            {
+                DataTable dt=_cDCBD.LoadDSCTDCBDSoCT(dateTu.Value, dateDen.Value);
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                foreach (DataRow itemRow in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["ThongKeDCSoCT"].NewRow();
+
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["DanhBo"] = itemRow["DanhBo"];
+                    if (itemRow["MaLCT"].ToString() == "2")
+                        dr["SoTamTru"] = "true";
+                    if (itemRow["MaLCT"].ToString() == "5")
+                        dr["KT3"] = "true";
+                    if (itemRow["MaLCT"].ToString() == "6")
+                        dr["GiayTamTruNKTT"] = "true";
+                    if (itemRow["MaLCT"].ToString() == "7")
+                        dr["GiayXNTamTru"] = "true";
+                    dr["DinhMucCap"] = int.Parse(itemRow["SoNKDangKy"].ToString()) * 4;
+                    dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                    dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
+
+                    dsBaoCao.Tables["ThongKeDCSoCT"].Rows.Add(dr);
+                }
+
+                dateTu.Value = DateTime.Now;
+                dateDen.Value = DateTime.Now;
+                _tuNgay = _denNgay = "";
+
+                rptThongKeDCSoCT rpt = new rptThongKeDCSoCT();
+                rpt.SetDataSource(dsBaoCao);
+                crystalReportViewer1.ReportSource = rpt;
+            }
         }
 
         private void cmbQuan_SelectedIndexChanged(object sender, EventArgs e)

@@ -937,7 +937,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
 
-                                CTKTXM ctktxm = new CTKTXM();
+                                CTKTXM ctktxm = null;
                                 if (ctctdb.CHDB.ToXuLy)
                                 {
                                     ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(ctctdb.CHDB.MaDonTXL.Value, ctctdb.DanhBo);
@@ -954,7 +954,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctctdb.HopDong;
 
-                                dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                                if (ctktxm != null)
+                                    dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
 
                                 if (ctctdb.LyDo != "Vấn Đề Khác")
                                     dr["LyDo"] = ctctdb.LyDo + ". ";
@@ -991,7 +992,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
 
-                                CTKTXM ctktxm = new CTKTXM();
+                                CTKTXM ctktxm = null;
                                 if (ctchdb.CHDB.ToXuLy)
                                 {
                                     ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(ctchdb.CHDB.MaDonTXL.Value, ctchdb.DanhBo);
@@ -1008,7 +1009,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctchdb.HopDong;
 
-                                dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
+                                if (ctktxm != null)
+                                    dr["ViTriDHN"] = ctktxm.ViTriDHN1 + ", " + ctktxm.ViTriDHN2;
 
                                 if (ctchdb.LyDo != "Vấn Đề Khác")
                                     dr["LyDo"] = ctchdb.LyDo + ". ";
