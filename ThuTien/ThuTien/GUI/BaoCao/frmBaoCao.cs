@@ -17,5 +17,10 @@ namespace KTKS_DonKH.GUI.BaoCao
             InitializeComponent();
             crystalReportViewer1.ReportSource = rpt;
         }
+
+        private void frmBaoCao_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
