@@ -1043,10 +1043,30 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
                                       };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
+        public DataTable LoadDSCTKTXMByMaDonTXL(decimal MaDonTXL)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                {
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
                                        join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
-                                       where itemCTKTXM.KTXM.ToXuLy == true && itemCTKTXM.KTXM.MaDonTXL == MaDon
+                                       where itemCTKTXM.KTXM.ToXuLy == true && itemCTKTXM.KTXM.MaDonTXL == MaDonTXL
                                        select new
                                        {
                                            itemCTKTXM.KTXM.ToXuLy,
@@ -1060,9 +1080,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
                                        };
-                    DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
-                    dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
-                    return dt;
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct());
                 }
                 else
                 {

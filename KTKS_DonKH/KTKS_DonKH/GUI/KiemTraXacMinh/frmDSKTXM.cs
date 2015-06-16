@@ -388,13 +388,13 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     {
                         case "Mã Đơn":
                             if (radDaDuyet.Checked)
-                                gridControl.DataSource = _cKTXM.LoadDSKTXMDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", ""))).Tables["KTXM"];
+                                gridControl.DataSource = _cKTXM.LoadDSKTXMDaDuyetByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", ""))).Tables["KTXM"];
                             else
                                 if (radDSKTXM.Checked)
                                     if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
-                                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                                     else
-                                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                                        dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDon(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
                             break;
                         case "Danh Bộ":
                             if (radDaDuyet.Checked)

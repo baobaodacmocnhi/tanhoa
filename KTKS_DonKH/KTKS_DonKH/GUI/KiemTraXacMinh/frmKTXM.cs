@@ -87,9 +87,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             txtDinhMuc.Text = ctktxm.DinhMuc;
             ///
             dateKTXM.Value = ctktxm.NgayKTXM.Value;
+            if (ctktxm.HienTrangKiemTra != null)
             cmbHienTrangKiemTra.SelectedValue = ctktxm.HienTrangKiemTra;
             cmbViTriDHN1.SelectedItem = ctktxm.ViTriDHN1;
-            cmbViTriDHN2.SelectedItem = ctktxm.ViTriDHN1;
+            cmbViTriDHN2.SelectedItem = ctktxm.ViTriDHN2;
             ///
             txtHieu.Text = ctktxm.Hieu;
             txtCo.Text = ctktxm.Co;

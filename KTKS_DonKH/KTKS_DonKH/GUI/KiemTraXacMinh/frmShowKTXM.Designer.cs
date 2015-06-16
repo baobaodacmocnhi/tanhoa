@@ -222,7 +222,8 @@
             this.cmbViTriDHN1.Items.AddRange(new object[] {
             "",
             "Bên Trái",
-            "Bên Phải"});
+            "Bên Phải",
+            "Ở Giữa"});
             this.cmbViTriDHN1.Location = new System.Drawing.Point(308, 42);
             this.cmbViTriDHN1.MaxDropDownItems = 50;
             this.cmbViTriDHN1.Name = "cmbViTriDHN1";

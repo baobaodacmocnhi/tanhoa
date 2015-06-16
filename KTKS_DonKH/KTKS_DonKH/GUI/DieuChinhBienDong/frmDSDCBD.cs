@@ -1434,12 +1434,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (dlkh != null && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                 {
                                     string sql = "";
+                                    if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
+                                    {
+                                        dlkh.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
+                                        sql = "DINHMUC='" + ctdcbd.DinhMuc_BD.ToString() + "'";
+                                    }
+                                    if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
+                                    {
+                                        dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
+                                        if (sql == "")
+                                            sql += "GIABIEU='" + dlkh.GIABIEU + "'";
+                                        else
+                                            sql += ",GIABIEU='" + dlkh.GIABIEU + "'";
+                                    }
                                     if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                     {
                                         dlkh.HOTEN = ctdcbd.HoTen_BD;
-                                        sql = ",HOTEN=N'" + dlkh.HOTEN + "'";
-
-                                        //log.Write("Họ Tên: " + dlkh.HOTEN + "; ");
+                                        if (sql == "")
+                                            sql += "HOTEN=N'" + dlkh.HOTEN + "'";
+                                        else
+                                            sql += ",HOTEN=N'" + dlkh.HOTEN + "'";
                                     }
                                     //if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                     //{
@@ -1449,37 +1463,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                     {
                                         dlkh.MSTHUE = ctdcbd.MSThue_BD;
-                                        //if (sql == "")
-                                        //    sql = "update TB_DULIEUKHACHHANG set MSTHUE=N'" + dlkh.MSTHUE + "'";
-                                        //else
-                                            sql += ",MSTHUE=N'" + dlkh.MSTHUE + "'";
-
-                                        //log.Write("MST: " + dlkh.MSTHUE + "; ");
-                                    }
-                                    if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
-                                    {
-
-                                        dlkh.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
-                                        //if (sql == "")
-                                        //    sql = "update TB_DULIEUKHACHHANG set GIABIEU=N'" + dlkh.GIABIEU + "'";
-                                        //else
-                                            sql += ",GIABIEU=N'" + dlkh.GIABIEU + "'";
-
-                                        //log.Write("GB: " + dlkh.GIABIEU + "; ");
-                                    }
-                                    if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
-                                    {
-                                        dlkh.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
-                                        //if (sql == "")
-                                        //    sql = "update TB_DULIEUKHACHHANG set DINHMUC=N'" + ctdcbd.DinhMuc_BD.ToString() + "'";
-                                        //else
-                                            sql += ",DINHMUC=N'" + ctdcbd.DinhMuc_BD.ToString() + "'";
-                                        //log.Write("ĐM: " + dlkh.DINHMUC + "; ");
+                                        if (sql == "")
+                                            sql += "MSTHUE='" + dlkh.MSTHUE + "'";
+                                        else
+                                            sql += ",MSTHUE='" + dlkh.MSTHUE + "'";
                                     }
                                     //log.WriteLine("");
 
                                     if (sql != "")
-                                        sql = "update TB_DULIEUKHACHHANG set MODIFYDATE='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "'" + sql + " where DANHBO='" + ctdcbd.DanhBo + "'";
+                                        //sql = "update TB_DULIEUKHACHHANG set MODIFYDATE='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "'" + sql + " where DANHBO='" + ctdcbd.DanhBo + "'";
+                                        sql = "update TB_DULIEUKHACHHANG set " + sql + " where DANHBO='" + ctdcbd.DanhBo + "'";
                                     log.WriteLine(sql);
                                     if (sql != "")
                                         if (_cDLKH.ExecuteNonQuery_Transaction(sql))
