@@ -34,10 +34,13 @@ namespace ThuTien.GUI.HeThong
                 {
                     TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(CNguoiDung.MaND);
                     nguoidung.MatKhau = txtMatKhauMoi.Text.Trim();
-                    _cNguoiDung.Sua(nguoidung);
-                    txtMatKhauCu.Text = "";
-                    txtMatKhauMoi.Text = "";
-                    txtXNMatKhauMoi.Text = "";
+                    if (_cNguoiDung.Sua(nguoidung))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtMatKhauCu.Text = "";
+                        txtMatKhauMoi.Text = "";
+                        txtXNMatKhauMoi.Text = "";
+                    }
                 }
                 else
                     MessageBox.Show("Xác nhận Mật khẩu không giống nhau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

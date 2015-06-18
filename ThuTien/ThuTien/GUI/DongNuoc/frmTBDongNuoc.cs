@@ -70,6 +70,12 @@ namespace ThuTien.GUI.DongNuoc
                         lstHD.SelectedItem = item;
                         return;
                     }
+                    if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.ToString()))
+                    {
+                        MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.SelectedItem = item;
+                        return;
+                    }
                     lstHDTemp.Add(_cHoaDon.GetBySoHoaDon(item.ToString()));
                 }
 
@@ -193,13 +199,14 @@ namespace ThuTien.GUI.DongNuoc
                         }
 
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                        dr["MaDN"] = item["MaDN"];
+                        dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-"); ;
                         dr["HoTen"] = item["HoTen"];
                         dr["DiaChi"] = item["DiaChi"];
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = item["MLT"];
                         dr["Ky"] = Ky;
+                        dr["NhanVien"] = CNguoiDung.HoTen;
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
                         rptTBDongNuoc rpt = new rptTBDongNuoc();
@@ -209,11 +216,11 @@ namespace ThuTien.GUI.DongNuoc
                         printDialog.AllowSomePages = true;
                         printDialog.ShowHelp = true;
 
-                        rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                        rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                        rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation ;
+                        rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
                         rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                        rpt.PrintToPrinter(1, false, 0, 0);
+                        rpt.PrintToPrinter(1, false, 1, 1);
                     }
             }
         }

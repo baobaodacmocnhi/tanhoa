@@ -212,6 +212,11 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateBy == MaNV_DongNuoc);
         }
 
+        public bool CheckCTDongNuocBySoHoaDon(string SoHoaDon)
+        {
+            return _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == SoHoaDon);
+        }
+
         public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)
         {
             return _db.TT_DongNuocs.SingleOrDefault(item => item.MaDN == MaDN);

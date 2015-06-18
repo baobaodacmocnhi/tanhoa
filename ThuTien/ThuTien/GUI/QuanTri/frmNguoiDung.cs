@@ -73,9 +73,11 @@ namespace ThuTien.GUI.QuanTri
                         phanquyennguoidung.MaND = nguoidung.MaND;
                         nguoidung.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                     }
-                    _cNguoiDung.Them(nguoidung);
-                    Clear();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (_cNguoiDung.Them(nguoidung))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
+                    }
                 }
             }
             else

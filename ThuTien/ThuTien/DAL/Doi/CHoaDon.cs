@@ -67,7 +67,7 @@ namespace ThuTien.DAL.Doi
                     if (!string.IsNullOrWhiteSpace(contents[18]))
                         hoadon.KY = int.Parse(contents[18]);
                     if (!string.IsNullOrWhiteSpace(contents[19]))
-                        hoadon.NAM = int.Parse(contents[19]);
+                        hoadon.NAM = int.Parse("20" + contents[19]);
                     if (!string.IsNullOrWhiteSpace(contents[20]))
                         hoadon.CODE = contents[20];
                     //if (!string.IsNullOrWhiteSpace(contents[21]))
@@ -147,15 +147,10 @@ namespace ThuTien.DAL.Doi
                     //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM.Value + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     //    return false;
                     //}
-                    try
-                    {
-                        _db.HOADONs.InsertOnSubmit(hoadon);
-                    }
-                    catch (Exception)
-                    {
+                    if (_db.HOADONs.Any(item => item.SOHOADON == hoadon.SOHOADON))
                         _db.ExecuteCommand("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "',SOHOADON='" + hoadon.SOHOADON + "' where NAM=" + hoadon.NAM.Value + " and KY=" + hoadon.KY + " and DOT=" + hoadon.DOT.Value);
-                    }
-
+                    else
+                        _db.HOADONs.InsertOnSubmit(hoadon);
                 }
                 _db.SubmitChanges();
                 this.CommitTransaction();
@@ -1926,8 +1921,9 @@ namespace ThuTien.DAL.Doi
         public DataTable GetDSByTimKiem(string DanhBo, string HoTen, string DiaChi)
         {
             string sql = "select top(10) ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,"
-                + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,TongCong,NgayGiaiTrach,HoTen as HanhThu"
-                + " from HOADON a left join TT_NguoiDung b on a.MaNV_HanhThu=b.MaND"
+                + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu"
+                + " from HOADON a left join TT_NguoiDung b on a.MaNV_DangNgan=b.MaND"
+                + " left join TT_NguoiDung c on a.MaNV_HanhThu=c.MaND"
                 + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
                 + "order by ID_HOADON desc";
 

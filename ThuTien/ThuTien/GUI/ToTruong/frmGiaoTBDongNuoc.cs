@@ -55,15 +55,15 @@ namespace ThuTien.GUI.ToTruong
                     _cDongNuoc.SqlBeginTransaction();
                     DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
                     foreach (DataRow item in dt.Rows)
-                        if (!_cDongNuoc.XoaGiaoDongNuoc(decimal.Parse(item["MaDN"].ToString())))
-                        {
+                        //if (_cDongNuoc.XoaGiaoDongNuoc(decimal.Parse(item["MaDN"].ToString())))
+                        //{
                             if (!_cDongNuoc.GiaoDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(cmbNhanVienGiao.SelectedValue.ToString())))
                             {
                                 _cDongNuoc.SqlRollbackTransaction();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                        }
+                        //}
                     _cDongNuoc.SqlCommitTransaction();
                     gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
