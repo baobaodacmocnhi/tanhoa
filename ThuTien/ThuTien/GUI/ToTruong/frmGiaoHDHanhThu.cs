@@ -10,6 +10,9 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using System.Globalization;
+using ThuTien.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.BaoCao.ToTruong;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -287,6 +290,57 @@ namespace ThuTien.GUI.ToTruong
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtDenSoPhatHanh_TextChanged(object sender, EventArgs e)
+        {
+            txtSoHD.Text = _cHoaDon.CountBySoPhatHanhs(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim())).ToString();
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    DataRow dr = ds.Tables["ChiaHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["To"] = CNguoiDung.TenTo;
+                    dr["Dot"] = cmbDot.SelectedItem.ToString();
+                    dr["Ky"] = cmbKy.SelectedItem.ToString();
+                    dr["Nam"] = cmbNam.SelectedValue.ToString();
+                    dr["NhanVien"] = item.Cells["HoTen_TG"].Value;
+                    dr["MLT"] = item.Cells["TuMLT_TG"].Value.ToString() + " - " + item.Cells["DenMLT_TG"].Value.ToString();
+                    dr["SoPhatHanh"] = item.Cells["TuSoPhatHanh_TG"].Value.ToString() + " - " + item.Cells["DenSoPhatHanh_TG"].Value.ToString();
+                    dr["TongHD"] = item.Cells["TongHD_TG"].Value;
+                    dr["TongCong"] = item.Cells["TongCong_TG"].Value;
+                    ds.Tables["ChiaHoaDon"].Rows.Add(dr);
+                } 
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                    {
+                        DataRow dr = ds.Tables["ChiaHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN";
+                        dr["To"] = CNguoiDung.TenTo;
+                        dr["Dot"] = cmbDot.SelectedItem.ToString();
+                        dr["Ky"] = cmbKy.SelectedItem.ToString();
+                        dr["Nam"] = cmbNam.SelectedValue.ToString();
+                        dr["NhanVien"] = item.Cells["HoTen_CQ"].Value;
+                        dr["MLT"] = item.Cells["TuMLT_CQ"].Value.ToString() + " - " + item.Cells["DenMLT_CQ"].Value.ToString();
+                        dr["SoPhatHanh"] = item.Cells["TuSoPhatHanh_CQ"].Value.ToString() + " - " + item.Cells["DenSoPhatHanh_CQ"].Value.ToString();
+                        dr["TongHD"] = item.Cells["TongHD_CQ"].Value;
+                        dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
+                        ds.Tables["ChiaHoaDon"].Rows.Add(dr);
+                    }
+                }
+            rptDSChiaHoaDon rpt = new rptDSChiaHoaDon();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
     }

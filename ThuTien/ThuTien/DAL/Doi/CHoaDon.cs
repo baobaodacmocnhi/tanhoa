@@ -1989,6 +1989,11 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Count(item => item.NGAYGIAITRACH == null);
         }
 
+        public int CountBySoPhatHanhs(decimal TuSoPhatHanh, decimal DenSoPhatHanh)
+        {
+            return _db.HOADONs.Count(item => item.SOPHATHANH >= TuSoPhatHanh && item.SOPHATHANH <= DenSoPhatHanh);
+        }
+
         //public List<HOADON> GetDSBySoPhatHanhNamsKyDot(int MaTo, string loai, decimal tusophathanh, decimal densophathanh, int nam, int ky, int dot)
         //{
         //    if (loai == "TG")

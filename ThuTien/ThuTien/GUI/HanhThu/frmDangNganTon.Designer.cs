@@ -76,6 +76,7 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabDaThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThu)).BeginInit();
@@ -510,11 +511,21 @@
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 38;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(193, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "(Enter)";
+            // 
             // frmDangNganTon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1103, 706);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.btnInPhieu);
@@ -592,5 +603,6 @@
         private System.Windows.Forms.Button btnInPhieu;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSoLuong;
+        private System.Windows.Forms.Label label6;
     }
 }

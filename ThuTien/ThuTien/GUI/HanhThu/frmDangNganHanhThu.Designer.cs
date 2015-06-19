@@ -96,6 +96,7 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHD)).BeginInit();
@@ -552,7 +553,6 @@
             this.PhiBVMT_CT,
             this.TongCong_CT});
             this.dgvHDChuaThu.Location = new System.Drawing.Point(6, 6);
-            this.dgvHDChuaThu.MultiSelect = false;
             this.dgvHDChuaThu.Name = "dgvHDChuaThu";
             this.dgvHDChuaThu.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -749,11 +749,21 @@
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 24;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(193, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "(Enter)";
+            // 
             // frmDangNganHanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1107, 670);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.dateDangNgan);
@@ -860,5 +870,6 @@
         private System.Windows.Forms.Button btnInPhieu;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSoLuong;
+        private System.Windows.Forms.Label label8;
     }
 }

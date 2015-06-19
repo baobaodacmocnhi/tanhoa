@@ -273,6 +273,37 @@ namespace ThuTien.GUI.DongNuoc
                     gridViewDN.SetRowCellValue(i, gridViewDN.Columns["In"], "False");
         }
 
+        private void btnDSTB_Click(object sender, EventArgs e)
+        {
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+            foreach (DataRow item in dt.Rows)
+                //if (bool.Parse(item["In"].ToString()))
+                {
+                    DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
+
+                    foreach (DataRow itemChild in childRows)
+                    {
+                        DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                        dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
+                        dr["To"] = CNguoiDung.TenTo;
+                        dr["HoTen"] = item["HoTen"];
+                        dr["DiaChi"] = item["DiaChi"];
+                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["MLT"] = item["MLT"];
+                        dr["Ky"] = itemChild["Ky"];
+                        dr["SoTien"] = itemChild["TongCong"];
+                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+                    }    
+                }
+            rptDSDongNuoc rpt = new rptDSDongNuoc();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
        
  
     }

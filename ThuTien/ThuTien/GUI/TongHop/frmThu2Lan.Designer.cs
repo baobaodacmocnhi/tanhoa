@@ -57,6 +57,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -346,11 +347,21 @@
             this.label2.TabIndex = 44;
             this.label2.Text = "Năm:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(193, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 50;
+            this.label6.Text = "(Enter)";
+            // 
             // frmThu2Lan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 690);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbDot);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbKy);
@@ -404,5 +415,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label6;
     }
 }

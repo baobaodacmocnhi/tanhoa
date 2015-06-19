@@ -404,11 +404,7 @@ namespace ThuTien.GUI.HanhThu
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_DT"].Value;
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
-                }
-                rptDSHoaDon rpt = new rptDSHoaDon();
-                rpt.SetDataSource(ds);
-                frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                } 
             }
             else
                 if (tabControl.SelectedTab.Name == "tabChuaThu")
@@ -426,12 +422,11 @@ namespace ThuTien.GUI.HanhThu
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
-                    rptDSHoaDon rpt = new rptDSHoaDon();
-                    rpt.SetDataSource(ds);
-                    frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.ShowDialog();
                 }
-            
+            rptDSHoaDon rpt = new rptDSHoaDon();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void dateDangNgan_ValueChanged(object sender, EventArgs e)

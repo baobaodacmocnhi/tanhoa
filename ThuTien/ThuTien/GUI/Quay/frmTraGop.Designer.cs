@@ -43,8 +43,13 @@
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnIn = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvTraGop = new System.Windows.Forms.DataGridView();
+            this.MaTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaThanhToan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
@@ -53,11 +58,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
-            this.MaTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DaThanhToan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraGop)).BeginInit();
@@ -181,6 +183,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kế Hoạch Trả Góp";
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(409, 102);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 8;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // btnXoa
             // 
             this.btnXoa.Location = new System.Drawing.Point(172, 73);
@@ -218,6 +230,38 @@
             this.dgvTraGop.Size = new System.Drawing.Size(394, 156);
             this.dgvTraGop.TabIndex = 7;
             this.dgvTraGop.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraGop_CellEndEdit);
+            // 
+            // MaTG
+            // 
+            this.MaTG.DataPropertyName = "MaTG";
+            this.MaTG.HeaderText = "MaTG";
+            this.MaTG.Name = "MaTG";
+            this.MaTG.ReadOnly = true;
+            this.MaTG.Visible = false;
+            // 
+            // NgayTra
+            // 
+            this.NgayTra.DataPropertyName = "NgayTra";
+            this.NgayTra.HeaderText = "Ngày Trả";
+            this.NgayTra.Name = "NgayTra";
+            this.NgayTra.ReadOnly = true;
+            // 
+            // SoTien
+            // 
+            this.SoTien.DataPropertyName = "SoTien";
+            this.SoTien.HeaderText = "Số Tiền";
+            this.SoTien.Name = "SoTien";
+            this.SoTien.ReadOnly = true;
+            // 
+            // DaThanhToan
+            // 
+            this.DaThanhToan.DataPropertyName = "DaThanhToan";
+            this.DaThanhToan.HeaderText = "Đã Thanh Toán";
+            this.DaThanhToan.Name = "DaThanhToan";
+            this.DaThanhToan.ReadOnly = true;
+            this.DaThanhToan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DaThanhToan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DaThanhToan.Width = 120;
             // 
             // btnSua
             // 
@@ -292,53 +336,31 @@
             this.txtDanhBo.TabIndex = 3;
             this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
-            // MaTG
+            // label6
             // 
-            this.MaTG.DataPropertyName = "MaTG";
-            this.MaTG.HeaderText = "MaTG";
-            this.MaTG.Name = "MaTG";
-            this.MaTG.ReadOnly = true;
-            this.MaTG.Visible = false;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(193, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "(Enter)";
             // 
-            // NgayTra
+            // label4
             // 
-            this.NgayTra.DataPropertyName = "NgayTra";
-            this.NgayTra.HeaderText = "Ngày Trả";
-            this.NgayTra.Name = "NgayTra";
-            this.NgayTra.ReadOnly = true;
-            // 
-            // SoTien
-            // 
-            this.SoTien.DataPropertyName = "SoTien";
-            this.SoTien.HeaderText = "Số Tiền";
-            this.SoTien.Name = "SoTien";
-            this.SoTien.ReadOnly = true;
-            // 
-            // DaThanhToan
-            // 
-            this.DaThanhToan.DataPropertyName = "DaThanhToan";
-            this.DaThanhToan.HeaderText = "Đã Thanh Toán";
-            this.DaThanhToan.Name = "DaThanhToan";
-            this.DaThanhToan.ReadOnly = true;
-            this.DaThanhToan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DaThanhToan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DaThanhToan.Width = 120;
-            // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(409, 102);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 8;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(404, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "(Enter)";
             // 
             // frmTraGop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 491);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDanhBo);
             this.Controls.Add(this.groupBox1);
@@ -385,5 +407,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DaThanhToan;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
     }
 }

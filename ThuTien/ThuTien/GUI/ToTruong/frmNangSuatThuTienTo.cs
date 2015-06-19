@@ -199,7 +199,7 @@ namespace ThuTien.GUI.ToTruong
             foreach (DataGridViewRow item in dgvHDTuGia.Rows)
             {
                 DataRow dr = ds.Tables["NangSuatThuTien"].NewRow();
-                dr["Nam"] = cmbNam.SelectedItem.ToString();
+                dr["Nam"] = cmbNam.SelectedValue.ToString();
                 dr["Ky"] = cmbKy.SelectedItem.ToString();
                 dr["To"] = CNguoiDung.TenTo;
                 dr["Loai"] = "Tư Gia";
@@ -217,7 +217,7 @@ namespace ThuTien.GUI.ToTruong
             foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
             {
                 DataRow dr = ds.Tables["NangSuatThuTien"].NewRow();
-                dr["Nam"] = cmbNam.SelectedItem.ToString();
+                dr["Nam"] = cmbNam.SelectedValue.ToString();
                 dr["Ky"] = cmbKy.SelectedItem.ToString();
                 dr["To"] = CNguoiDung.TenTo;
                 dr["Loai"] = "Cơ Quan";

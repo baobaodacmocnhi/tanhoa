@@ -281,7 +281,7 @@ namespace ThuTien.GUI.Quay
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {
                 if (Ky == "Hết nợ")
-                    Ky = item.Cells["Ky"].Value.ToString();
+                    Ky = "Còn nợ Kỳ "+item.Cells["Ky"].Value.ToString();
                 else
                     Ky += ", " + item.Cells["Ky"].Value.ToString();
                 TongCongSo += Int32.Parse(item.Cells["TongCong"].Value.ToString());
@@ -309,15 +309,15 @@ namespace ThuTien.GUI.Quay
                 dsBaoCao ds = new dsBaoCao();
                 DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
                 dr["SoPhieu"] = xacnhanno.SoPhieu.ToString().Insert(xacnhanno.SoPhieu.ToString().Length - 2, "-");
-                dr["DanhBo"] = dgvHoaDon["DanhBo", 0].Value.ToString();
+                dr["DanhBo"] = dgvHoaDon["DanhBo", 0].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = dgvHoaDon["HoTen", 0].Value.ToString();
                 dr["DiaChi"] = dgvHoaDon["DiaChi", 0].Value.ToString();
                 dr["MLT"] = dgvHoaDon["MLT", 0].Value.ToString();
                 dr["GiaBieu"] = dgvHoaDon["GiaBieu", 0].Value.ToString();
                 dr["DinhMuc"] = dgvHoaDon["DinhMuc", 0].Value.ToString();
                 dr["Ky"] = Ky;
-                dr["TongCongSo"] = TongCongSo;
-                dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", TongCongSo);
+                //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
@@ -369,7 +369,7 @@ namespace ThuTien.GUI.Quay
         {
             if (dateTu_XacNhanNo.Value <= dateDen_XacNhanNo.Value)
             {
-                dgvXacNhanNo.DataSource = _cXacNhanNo.GetDSByDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                dgvXacNhanNo.DataSource = _cXacNhanNo.GetDSByDates(CNguoiDung.MaND, dateTu_XacNhanNo.Value, dateDen_XacNhanNo.Value);
             }
         }
 
@@ -379,16 +379,16 @@ namespace ThuTien.GUI.Quay
             {
                 dsBaoCao ds = new dsBaoCao();
                 DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
-                dr["SoPhieu"] = item.Cells["SoPhieu_XacNhanNo"].Value.ToString();
-                dr["DanhBo"] = item.Cells["DanhBo_XacNhanNo"].Value.ToString();
+                dr["SoPhieu"] = item.Cells["SoPhieu_XacNhanNo"].Value.ToString().Insert(item.Cells["SoPhieu_XacNhanNo"].Value.ToString().Length - 2, "-");
+                dr["DanhBo"] = item.Cells["DanhBo_XacNhanNo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_XacNhanNo"].Value.ToString();
                 dr["DiaChi"] = item.Cells["DiaChi_XacNhanNo"].Value.ToString();
                 dr["MLT"] = item.Cells["MLT_XacNhanNo"].Value.ToString();
                 dr["GiaBieu"] = item.Cells["GiaBieu_XacNhanNo"].Value.ToString();
                 dr["DinhMuc"] = item.Cells["DinhMuc_XacNhanNo"].Value.ToString();
                 dr["Ky"] = item.Cells["Ky_XacNhanNo"].Value.ToString();
-                dr["TongCongSo"] = item.Cells["TongCong_XacNhanNo"].Value.ToString();
-                dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", (int)item.Cells["TongCong_XacNhanNo"].Value);
+                //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
@@ -401,15 +401,15 @@ namespace ThuTien.GUI.Quay
 
         private void dgvXacNhanNo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvTamThu.Columns[e.ColumnIndex].Name == "SoPhieu_XacNhanNo" && e.Value != null)
+            if (dgvXacNhanNo.Columns[e.ColumnIndex].Name == "SoPhieu_XacNhanNo" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
             }
-            if (dgvTamThu.Columns[e.ColumnIndex].Name == "DanhBo_XacNhanNo" && e.Value != null)
+            if (dgvXacNhanNo.Columns[e.ColumnIndex].Name == "DanhBo_XacNhanNo" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
-            if (dgvTamThu.Columns[e.ColumnIndex].Name == "TongCong_XacNhanNo" && e.Value != null)
+            if (dgvXacNhanNo.Columns[e.ColumnIndex].Name == "TongCong_XacNhanNo" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

@@ -55,9 +55,12 @@
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabThongTin = new System.Windows.Forms.TabPage();
+            this.btnXacNhanNo = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.tabTamThu = new System.Windows.Forms.TabPage();
             this.btnInTamThu = new System.Windows.Forms.Button();
             this.btnXem = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
@@ -87,10 +90,8 @@
             this.dateTu_XacNhanNo = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvXacNhanNo = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnXacNhanNo = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.SoPhieu_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -156,24 +157,25 @@
             this.PhiBVMT,
             this.TongCong,
             this.HanhThu});
-            this.dgvHoaDon.Location = new System.Drawing.Point(6, 6);
+            this.dgvHoaDon.Location = new System.Drawing.Point(6, 35);
             this.dgvHoaDon.MultiSelect = false;
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1315, 575);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1315, 546);
             this.dgvHoaDon.TabIndex = 13;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
             // 
             // Chon
             // 
+            this.Chon.FalseValue = "false";
             this.Chon.HeaderText = "Chọn";
             this.Chon.Name = "Chon";
             this.Chon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Chon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Chon.TrueValue = "";
+            this.Chon.TrueValue = "true";
             this.Chon.Width = 50;
             // 
             // MaHD
@@ -292,7 +294,9 @@
             // 
             // tabThongTin
             // 
+            this.tabThongTin.Controls.Add(this.btnXacNhanNo);
             this.tabThongTin.Controls.Add(this.dgvHoaDon);
+            this.tabThongTin.Controls.Add(this.btnThem);
             this.tabThongTin.Location = new System.Drawing.Point(4, 22);
             this.tabThongTin.Name = "tabThongTin";
             this.tabThongTin.Padding = new System.Windows.Forms.Padding(3);
@@ -301,10 +305,31 @@
             this.tabThongTin.Text = "Thông Tin";
             this.tabThongTin.UseVisualStyleBackColor = true;
             // 
+            // btnXacNhanNo
+            // 
+            this.btnXacNhanNo.Location = new System.Drawing.Point(245, 6);
+            this.btnXacNhanNo.Name = "btnXacNhanNo";
+            this.btnXacNhanNo.Size = new System.Drawing.Size(86, 23);
+            this.btnXacNhanNo.TabIndex = 18;
+            this.btnXacNhanNo.Text = "Xác Nhận Nợ";
+            this.btnXacNhanNo.UseVisualStyleBackColor = true;
+            this.btnXacNhanNo.Click += new System.EventHandler(this.btnXacNhanNo_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(97, 6);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 15;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
             // tabTamThu
             // 
             this.tabTamThu.Controls.Add(this.btnInTamThu);
             this.tabTamThu.Controls.Add(this.btnXem);
+            this.tabTamThu.Controls.Add(this.btnXoa);
             this.tabTamThu.Controls.Add(this.dateDen);
             this.tabTamThu.Controls.Add(this.label3);
             this.tabTamThu.Controls.Add(this.dateTu);
@@ -337,6 +362,17 @@
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Enabled = false;
+            this.btnXoa.Location = new System.Drawing.Point(645, 6);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 17;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // dateDen
             // 
@@ -647,20 +683,9 @@
             this.dgvXacNhanNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvXacNhanNo_CellFormatting);
             this.dgvXacNhanNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvXacNhanNo_RowPostPaint);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.Enabled = false;
-            this.btnXoa.Location = new System.Drawing.Point(515, 12);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 17;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(434, 12);
+            this.btnSua.Location = new System.Drawing.Point(435, 12);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 16;
@@ -668,25 +693,14 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Visible = false;
             // 
-            // btnThem
+            // label6
             // 
-            this.btnThem.Location = new System.Drawing.Point(353, 12);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 15;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // btnXacNhanNo
-            // 
-            this.btnXacNhanNo.Location = new System.Drawing.Point(596, 12);
-            this.btnXacNhanNo.Name = "btnXacNhanNo";
-            this.btnXacNhanNo.Size = new System.Drawing.Size(86, 23);
-            this.btnXacNhanNo.TabIndex = 18;
-            this.btnXacNhanNo.Text = "Xác Nhận Nợ";
-            this.btnXacNhanNo.UseVisualStyleBackColor = true;
-            this.btnXacNhanNo.Click += new System.EventHandler(this.btnXacNhanNo_Click);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(353, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "(Enter)";
             // 
             // SoPhieu_XacNhanNo
             // 
@@ -749,7 +763,7 @@
             this.Ky_XacNhanNo.HeaderText = "Kỳ";
             this.Ky_XacNhanNo.Name = "Ky_XacNhanNo";
             this.Ky_XacNhanNo.ReadOnly = true;
-            this.Ky_XacNhanNo.Width = 50;
+            this.Ky_XacNhanNo.Width = 150;
             // 
             // TongCong_XacNhanNo
             // 
@@ -763,12 +777,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1349, 666);
-            this.Controls.Add(this.btnXacNhanNo);
-            this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.txtDanhBo);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.label1);
             this.Name = "frmTamThuQuay";
             this.Text = "Tạm Thu Quầy";
@@ -805,22 +817,6 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnXacNhanNo;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.Button btnInTamThu;
         private System.Windows.Forms.TabPage tabXacNhanNo;
         private System.Windows.Forms.Button btnIn_XacNhanNo;
@@ -846,6 +842,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_TT;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu_XacNhanNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_XacNhanNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_XacNhanNo;

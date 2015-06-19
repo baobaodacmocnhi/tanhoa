@@ -65,6 +65,7 @@
             this.txtKy = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -340,7 +341,7 @@
             // 
             // txtMaDon
             // 
-            this.txtMaDon.Location = new System.Drawing.Point(277, 12);
+            this.txtMaDon.Location = new System.Drawing.Point(326, 12);
             this.txtMaDon.Name = "txtMaDon";
             this.txtMaDon.Size = new System.Drawing.Size(100, 20);
             this.txtMaDon.TabIndex = 3;
@@ -348,7 +349,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(194, 15);
+            this.label2.Location = new System.Drawing.Point(243, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 2;
@@ -357,7 +358,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(383, 15);
+            this.label3.Location = new System.Drawing.Point(432, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 4;
@@ -367,14 +368,14 @@
             // 
             this.dateLap.CustomFormat = "dd/MM/yyyy";
             this.dateLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateLap.Location = new System.Drawing.Point(445, 12);
+            this.dateLap.Location = new System.Drawing.Point(494, 12);
             this.dateLap.Name = "dateLap";
             this.dateLap.Size = new System.Drawing.Size(100, 20);
             this.dateLap.TabIndex = 5;
             // 
             // txtSoPhatHanh
             // 
-            this.txtSoPhatHanh.Location = new System.Drawing.Point(277, 38);
+            this.txtSoPhatHanh.Location = new System.Drawing.Point(326, 38);
             this.txtSoPhatHanh.Name = "txtSoPhatHanh";
             this.txtSoPhatHanh.Size = new System.Drawing.Size(100, 20);
             this.txtSoPhatHanh.TabIndex = 9;
@@ -382,7 +383,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(194, 41);
+            this.label4.Location = new System.Drawing.Point(243, 41);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 8;
@@ -406,7 +407,7 @@
             // 
             // txtKy
             // 
-            this.txtKy.Location = new System.Drawing.Point(445, 38);
+            this.txtKy.Location = new System.Drawing.Point(494, 38);
             this.txtKy.Name = "txtKy";
             this.txtKy.Size = new System.Drawing.Size(100, 20);
             this.txtKy.TabIndex = 11;
@@ -414,7 +415,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(383, 41);
+            this.label6.Location = new System.Drawing.Point(432, 41);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(22, 13);
             this.label6.TabIndex = 10;
@@ -430,11 +431,21 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(194, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "(Enter)";
+            // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 243);
+            this.ClientSize = new System.Drawing.Size(609, 243);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.txtKy);
             this.Controls.Add(this.label6);
@@ -500,5 +511,6 @@
         private System.Windows.Forms.TextBox txtKy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Label label7;
     }
 }
