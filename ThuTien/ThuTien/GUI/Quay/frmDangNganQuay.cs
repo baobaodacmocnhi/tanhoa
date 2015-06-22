@@ -186,7 +186,7 @@ namespace ThuTien.GUI.Quay
             if (dateTu.Value.Date == dateDen.Value.Date)
             {
                 dsBaoCao ds = new dsBaoCao();
-                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayDangNgans(CNguoiDung.MaND, "TG", dateTu.Value, dateDen.Value);
+                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayDangNgans("TG", CNguoiDung.MaND, dateTu.Value, dateDen.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
@@ -202,7 +202,7 @@ namespace ThuTien.GUI.Quay
                     ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                 }
 
-                dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayDangNgans(CNguoiDung.MaND, "CQ", dateTu.Value, dateDen.Value);
+                dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayDangNgans("CQ", CNguoiDung.MaND, dateTu.Value, dateDen.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();

@@ -190,7 +190,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="dot"></param>
         /// <param name="MaNV"></param>
         /// <returns></returns>
-        public bool ThemChia(int MaTo, string Loai, int DotChia, decimal TuSoPhatHanh, decimal DenSoPhatHanh, int Nam, int Ky, int Dot, int MaNV)
+        public bool ThemChia(string Loai, int MaTo, int DotChia, decimal TuSoPhatHanh, decimal DenSoPhatHanh, int Nam, int Ky, int Dot, int MaNV)
         {
             try
             {
@@ -270,7 +270,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public bool XoaChia(int MaTo, string Loai, decimal TuSoPhatHanh, decimal DenSoPhatHanh, int Nam, int Ky, int Dot)
+        public bool XoaChia(string Loai, int MaTo, decimal TuSoPhatHanh, decimal DenSoPhatHanh, int Nam, int Ky, int Dot)
         {
             try
             {
@@ -336,7 +336,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public bool CheckSoPhatHanhByNamKyDot(int MaTo, string Loai, decimal SoPhatHanh, int Nam, int Ky, int Dot)
+        public bool CheckSoPhatHanhByNamKyDot(string Loai, int MaTo, decimal SoPhatHanh, int Nam, int Ky, int Dot)
         {
             if (Loai == "TG")
                 return _db.HOADONs.Any(item => Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
@@ -455,7 +455,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetTongGiaoByNamKyDot(int MaTo, string Loai, int Nam, int Ky, int Dot)
+        public DataTable GetTongGiaoByNamKyDot(string Loai, int MaTo, int Nam, int Ky, int Dot)
         {
             if (Loai == "TG")
             {
@@ -520,7 +520,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetTongTonByNamKy_To(int MaTo, string Loai, int Nam, int Ky)
+        public DataTable GetTongTonByNamKy_To(string Loai, int MaTo, int Nam, int Ky)
         {
             if (Loai == "TG")
             {
@@ -576,7 +576,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongTonByNam_To(int MaTo, string Loai, int Nam)
+        public DataTable GetTongTonByNam_To(string Loai, int MaTo, int Nam)
         {
             if (Loai == "TG")
             {
@@ -641,7 +641,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="nam"></param>
         /// <param name="ky"></param>
         /// <returns></returns>
-        public DataTable GetTongTonByNamKy_Doi(int MaTo, string Loai, int Nam, int Ky)
+        public DataTable GetTongTonByNamKy_Doi(string Loai, int MaTo, int Nam, int Ky)
         {
             if (Loai == "TG")
             {
@@ -697,7 +697,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongTonByNam_Doi(int MaTo, string Loai, int Nam)
+        public DataTable GetTongTonByNam_Doi(string Loai, int MaTo, int Nam)
         {
             if (Loai == "TG")
             {
@@ -753,7 +753,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongTonByMaNV_HanhThuNamKy(int MaNV_HanhThu, string Loai, int Nam, int Ky)
+        public DataTable GetTongTonByMaNV_HanhThuNamKy(string Loai, int MaNV_HanhThu, int Nam, int Ky)
         {
             if (Loai == "TG")
             {
@@ -805,7 +805,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongTonByMaNV_HanhThuNam(int MaNV_HanhThu, string Loai, int Nam)
+        public DataTable GetTongTonByMaNV_HanhThuNam(string Loai, int MaNV_HanhThu, int Nam)
         {
             if (Loai == "TG")
             {
@@ -857,7 +857,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetNangSuatByNamKy_To(int MaTo, string Loai, int Nam, int Ky)
+        public DataTable GetNangSuatByNamKy_To(string Loai, int MaTo, int Nam, int Ky)
         {
             if (Loai == "TG")
             {
@@ -905,7 +905,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetNangSuatByNam_To(int MaTo, string Loai, int Nam)
+        public DataTable GetNangSuatByNam_To(string Loai, int MaTo, int Nam)
         {
             if (Loai == "TG")
             {
@@ -953,7 +953,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetNangSuatByNamKy_Doi(int MaTo, string Loai, int Nam, int Ky)
+        public DataTable GetNangSuatByNamKy_Doi(string Loai, int MaTo, int Nam, int Ky)
         {
             if (Loai == "TG")
             {
@@ -1001,7 +1001,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetNangSuatByNam_Doi(int MaTo, string Loai, int Nam)
+        public DataTable GetNangSuatByNam_Doi(string Loai, int MaTo, int Nam)
         {
             if (Loai == "TG")
             {
@@ -1166,7 +1166,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="loai"></param>
         /// <param name="NgayDangNgan"></param>
         /// <returns></returns>
-        public DataTable GetTongDangNganByNgayDangNgan_To(int MaTo, string Loai, DateTime NgayDangNgan)
+        public DataTable GetTongDangNganByNgayDangNgan_To(string Loai, int MaTo, DateTime NgayDangNgan)
         {
             if (Loai == "TG")
             {
@@ -1180,11 +1180,14 @@ namespace ThuTien.DAL.Doi
                             {
                                 MaNV = itemGroup.Key,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
-                                DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
-                                TuSoPhatHanh = itemGroup.Min(groupItem => groupItem.SOPHATHANH),
-                                DenSoPhatHanh = itemGroup.Max(groupItem => groupItem.SOPHATHANH),
+                                //TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
+                                //DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
+                                //TuSoPhatHanh = itemGroup.Min(groupItem => groupItem.SOPHATHANH),
+                                //DenSoPhatHanh = itemGroup.Max(groupItem => groupItem.SOPHATHANH),
                                 TongHD = itemGroup.Count(),
+                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                 TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
                                 //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
                                 //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
@@ -1230,7 +1233,7 @@ namespace ThuTien.DAL.Doi
         /// <param name="TuNgayDangNgan"></param>
         /// <param name="DenNgayDangNgan"></param>
         /// <returns></returns>
-        public DataTable GetTongDangNganByNgayDangNgan_Doi(int MaTo, string Loai, DateTime TuNgayDangNgan, DateTime DenNgayDangNgan)
+        public DataTable GetTongDangNganByNgayDangNgan_Doi(string Loai, int MaTo, DateTime TuNgayDangNgan, DateTime DenNgayDangNgan)
         {
             if (Loai == "TG")
             {
@@ -1286,7 +1289,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongDangNganByMaNV_DangNganNgayDangNgan(int MaNV_DangNgan, string Loai, DateTime NgayDangNgan)
+        public DataTable GetTongDangNganByMaNV_DangNganNgayDangNgan(string Loai, int MaNV_DangNgan, DateTime NgayDangNgan)
         {
             if (Loai == "TG")
             {
@@ -1328,7 +1331,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetTongDangNganByMaNV_DangNganNgayDangNgans(int MaNV_DangNgan, string Loai, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetTongDangNganByMaNV_DangNganNgayDangNgans(string Loai, int MaNV_DangNgan, DateTime TuNgay, DateTime DenNgay)
         {
             if (Loai == "TG")
             {
@@ -1405,10 +1408,10 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetDSDangNganHanhThuByMaNVNamKyDot(int MaNV_DangNgan, int Nam, int Ky, int Dot)
+        public DataTable GetDSDangNganHanhThuTGByMaNVNamKyDot(int MaNV_DangNgan, int Nam, int Ky, int Dot)
         {
             var query = from item in _db.HOADONs
-                        where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.DangNgan_HanhThu == true && item.MaNV_DangNgan == MaNV_DangNgan
+                        where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.DangNgan_HanhThu == true && item.MaNV_DangNgan == MaNV_DangNgan && item.GB >= 11 && item.GB <= 20
                         orderby item.SOHOADON ascending
                         select new
                         {
@@ -1427,26 +1430,52 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDangNganHanhThuByMaNVNgayDangNgan(int MaNV_DangNgan, DateTime NgayDangNgan)
+        public DataTable GetDSDangNganHanhThuByMaNVNgayDangNgan(string Loai,int MaNV_DangNgan, DateTime NgayDangNgan)
         {
-            var query = from item in _db.HOADONs
-                        where item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date && item.DangNgan_HanhThu == true && item.MaNV_DangNgan == MaNV_DangNgan
-                        orderby item.SOHOADON ascending
-                        select new
-                        {
-                            item.NGAYGIAITRACH,
-                            item.SOHOADON,
-                            Ky = item.KY + "/" + item.NAM,
-                            MLT = item.MALOTRINH,
-                            item.SOPHATHANH,
-                            DanhBo = item.DANHBA,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
-                        };
-            return LINQToDataTable(query);
+            if (Loai == "TG")
+            {
+                var query = from item in _db.HOADONs
+                            where item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date && item.DangNgan_HanhThu == true && item.MaNV_DangNgan == MaNV_DangNgan && item.GB >= 11 && item.GB <= 20
+                            orderby item.SOHOADON ascending
+                            select new
+                            {
+                                item.NGAYGIAITRACH,
+                                item.SOHOADON,
+                                Ky = item.KY + "/" + item.NAM,
+                                MLT = item.MALOTRINH,
+                                item.SOPHATHANH,
+                                DanhBo = item.DANHBA,
+                                item.TIEUTHU,
+                                item.GIABAN,
+                                ThueGTGT = item.THUE,
+                                PhiBVMT = item.PHI,
+                                item.TONGCONG,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from item in _db.HOADONs
+                                where item.NGAYGIAITRACH.Value.Date == NgayDangNgan.Date && item.DangNgan_HanhThu == true && item.MaNV_DangNgan == MaNV_DangNgan && item.GB > 20
+                                orderby item.SOHOADON ascending
+                                select new
+                                {
+                                    item.NGAYGIAITRACH,
+                                    item.SOHOADON,
+                                    Ky = item.KY + "/" + item.NAM,
+                                    MLT = item.MALOTRINH,
+                                    item.SOPHATHANH,
+                                    DanhBo = item.DANHBA,
+                                    item.TIEUTHU,
+                                    item.GIABAN,
+                                    ThueGTGT = item.THUE,
+                                    PhiBVMT = item.PHI,
+                                    item.TONGCONG,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
         }
 
         /// <summary>
@@ -1457,10 +1486,10 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetDSTonByMaNVNamKyDot(int MaNV, int Nam, int Ky, int Dot)
+        public DataTable GetDSTonTGByMaNVNamKyDot(int MaNV, int Nam, int Ky, int Dot)
         {
             var query = from item in _db.HOADONs
-                        where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.MaNV_HanhThu == MaNV && item.NGAYGIAITRACH == null
+                        where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.MaNV_HanhThu == MaNV && item.NGAYGIAITRACH == null && item.GB >= 11 && item.GB <= 20
                         orderby item.SOHOADON ascending
                         select new
                         {
@@ -1579,27 +1608,54 @@ namespace ThuTien.DAL.Doi
         /// <param name="TuNgay"></param>
         /// <param name="DenNgay"></param>
         /// <returns></returns>
-        public DataTable GetDSDangNganTonByMaNVDates(int MaNV_DangNgan, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSDangNganTonByMaNVDate(string Loai,int MaNV_DangNgan, DateTime NgayGiaiTrach)
         {
-            var query = from itemHD in _db.HOADONs
-                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND
-                        where itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
-                        && itemHD.DangNgan_Ton == true && itemHD.MaNV_DangNgan == MaNV_DangNgan
-                        orderby itemHD.ID_HOADON ascending
-                        select new
-                        {
-                            MaHD = itemHD.ID_HOADON,
-                            NgayGiaiTrach = itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
-                            DanhBo = itemHD.DANHBA,
-                            itemHD.TIEUTHU,
-                            itemHD.GIABAN,
-                            ThueGTGT = itemHD.THUE,
-                            PhiBVMT = itemHD.PHI,
-                            itemHD.TONGCONG,
-                            MaNV_GiaoTon = itemND.HoTen,
-                        };
-            return LINQToDataTable(query);
+            if (Loai == "TG")
+            {
+                var query = from itemHD in _db.HOADONs
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND
+                            where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                            && itemHD.DangNgan_Ton == true && itemHD.MaNV_DangNgan == MaNV_DangNgan && itemHD.GB>=11 && itemHD.GB<=20
+                            orderby itemHD.ID_HOADON ascending
+                            select new
+                            {
+                                MaHD = itemHD.ID_HOADON,
+                                NgayGiaiTrach = itemHD.NGAYGIAITRACH,
+                                itemHD.SOHOADON,
+                                DanhBo = itemHD.DANHBA,
+                                itemHD.TIEUTHU,
+                                itemHD.GIABAN,
+                                ThueGTGT = itemHD.THUE,
+                                PhiBVMT = itemHD.PHI,
+                                itemHD.TONGCONG,
+                                MaNV_GiaoTon = itemND.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemHD in _db.HOADONs
+                                join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND
+                                where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                                && itemHD.DangNgan_Ton == true && itemHD.MaNV_DangNgan == MaNV_DangNgan && itemHD.GB > 20
+                                orderby itemHD.ID_HOADON ascending
+                                select new
+                                {
+                                    MaHD = itemHD.ID_HOADON,
+                                    NgayGiaiTrach = itemHD.NGAYGIAITRACH,
+                                    itemHD.SOHOADON,
+                                    DanhBo = itemHD.DANHBA,
+                                    itemHD.TIEUTHU,
+                                    itemHD.GIABAN,
+                                    ThueGTGT = itemHD.THUE,
+                                    PhiBVMT = itemHD.PHI,
+                                    itemHD.TONGCONG,
+                                    MaNV_GiaoTon = itemND.HoTen,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
         }
 
         /// <summary>
@@ -1790,7 +1846,7 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetDSByTienLon_Doi(int MaTo, string Loai, int Nam, int Ky, int Dot, int SoTien)
+        public DataTable GetDSByTienLon_Doi(string Loai, int MaTo, int Nam, int Ky, int Dot, int SoTien)
         {
             if (Loai == "TG")
             {

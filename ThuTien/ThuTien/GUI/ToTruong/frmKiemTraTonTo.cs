@@ -52,30 +52,30 @@ namespace ThuTien.GUI.ToTruong
                 ///chọn tất cả các kỳ
                 if (cmbKy.SelectedIndex == 0)
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNam_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNam_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNam_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNam_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
                 }
                 ///chọn 1 kỳ cụ thể
                 else
                     if (cmbKy.SelectedIndex > 0)
                     {
-                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNamKy_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNamKy_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByNamKy_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByNamKy_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     }
                     ///chọn 1 nhân viên cụ thể
                     else
                         ///chọn tất cả các kỳ
                         if (cmbKy.SelectedIndex == 0)
                         {
-                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()));
-                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
+                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                         }
                         ///chọn 1 kỳ cụ thể
                         else
                             if (cmbKy.SelectedIndex > 0)
                             {
-                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy(int.Parse(cmbNhanVien.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                             }
         }
 

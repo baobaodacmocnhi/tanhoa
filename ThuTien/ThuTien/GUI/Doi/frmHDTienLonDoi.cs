@@ -51,12 +51,12 @@ namespace ThuTien.GUI.Doi
                     DataTable dtCQ = new DataTable();
                     List<TT_To> lst = _cTo.GetDSHanhThu();
 
-                    dtTG = _cHoaDon.GetDSByTienLon_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                    dtCQ = _cHoaDon.GetDSByTienLon_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                    dtTG = _cHoaDon.GetDSByTienLon_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                    dtCQ = _cHoaDon.GetDSByTienLon_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                     for (int i = 1; i < lst.Count; i++)
                     {
-                        dtTG.Merge(_cHoaDon.GetDSByTienLon_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
-                        dtCQ.Merge(_cHoaDon.GetDSByTienLon_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                        dtTG.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                        dtCQ.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                     }
 
                     dgvHDTuGia.DataSource = dtTG;
@@ -64,8 +64,8 @@ namespace ThuTien.GUI.Doi
                 }
                 else
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi(int.Parse(cmbTo.SelectedValue.ToString()), "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                    dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                 }
         }
 

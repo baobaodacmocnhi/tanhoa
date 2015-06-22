@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuHeThong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangNhap = new System.Windows.Forms.ToolStripMenuItem();
@@ -532,7 +533,7 @@
             // mnuTimKiemKhachHang
             // 
             this.mnuTimKiemKhachHang.Name = "mnuTimKiemKhachHang";
-            this.mnuTimKiemKhachHang.Size = new System.Drawing.Size(152, 22);
+            this.mnuTimKiemKhachHang.Size = new System.Drawing.Size(139, 22);
             this.mnuTimKiemKhachHang.Text = "Khách Hàng";
             this.mnuTimKiemKhachHang.Click += new System.EventHandler(this.mnuTimKiemKhachHang_Click);
             // 
@@ -590,6 +591,7 @@
             this.ClientSize = new System.Drawing.Size(761, 413);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmMain";

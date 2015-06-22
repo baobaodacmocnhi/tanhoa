@@ -108,15 +108,15 @@ namespace ThuTien.GUI.ToTruong
             ///chọn tất cả các kỳ
             if (cmbKy.SelectedIndex == 0)
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNam_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
-                dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNam_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
+                dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNam_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNam_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
             }
             ///chọn 1 kỳ cụ thể
             else
                 if (cmbKy.SelectedIndex > 0)
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNamKy_To(CNguoiDung.MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNamKy_To(CNguoiDung.MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dgvHDTuGia.DataSource = _cHoaDon.GetNangSuatByNamKy_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetNangSuatByNamKy_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 }
             LoadDataGridView();
         }

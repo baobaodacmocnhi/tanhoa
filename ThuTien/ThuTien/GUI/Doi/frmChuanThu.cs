@@ -112,14 +112,14 @@ namespace ThuTien.GUI.Doi
             ///chọn tất cả các kỳ
             if (cmbKy.SelectedIndex == 0)
             {
-                dtTG = _cHoaDon.GetNangSuatByNam_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
-                dtCQ = _cHoaDon.GetNangSuatByNam_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
+                dtTG = _cHoaDon.GetNangSuatByNam_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                dtCQ = _cHoaDon.GetNangSuatByNam_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
                 dtTG_DCHD = _cDCHD.GetChuanThuByNam(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
                 dtCQ_DCHD = _cDCHD.GetChuanThuByNam(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
                 for (int i = 1; i < lst.Count; i++)
                 {
-                    dtTG.Merge(_cHoaDon.GetNangSuatByNam_Doi(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString())));
-                    dtCQ.Merge(_cHoaDon.GetNangSuatByNam_Doi(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString())));
+                    dtTG.Merge(_cHoaDon.GetNangSuatByNam_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
+                    dtCQ.Merge(_cHoaDon.GetNangSuatByNam_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
                     dtTG_DCHD.Merge(_cDCHD.GetChuanThuByNam(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString())));
                     dtCQ_DCHD.Merge(_cDCHD.GetChuanThuByNam(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString())));
                 }
@@ -128,14 +128,14 @@ namespace ThuTien.GUI.Doi
             else
                 if (cmbKy.SelectedIndex > 0)
                 {
-                    dtTG = _cHoaDon.GetNangSuatByNamKy_Doi(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                    dtCQ = _cHoaDon.GetNangSuatByNamKy_Doi(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dtTG = _cHoaDon.GetNangSuatByNamKy_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dtCQ = _cHoaDon.GetNangSuatByNamKy_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     dtTG_DCHD = _cDCHD.GetChuanThuByNamKy(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     dtCQ_DCHD = _cDCHD.GetChuanThuByNamKy(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     for (int i = 1; i < lst.Count; i++)
                     {
-                        dtTG.Merge(_cHoaDon.GetNangSuatByNamKy_Doi(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
-                        dtCQ.Merge(_cHoaDon.GetNangSuatByNamKy_Doi(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                        dtTG.Merge(_cHoaDon.GetNangSuatByNamKy_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                        dtCQ.Merge(_cHoaDon.GetNangSuatByNamKy_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                         dtTG_DCHD.Merge(_cDCHD.GetChuanThuByNamKy(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                         dtCQ_DCHD.Merge(_cDCHD.GetChuanThuByNamKy(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                     }

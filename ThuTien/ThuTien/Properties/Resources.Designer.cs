@@ -60,10 +60,10 @@ namespace ThuTien.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap logoctycp {
+        internal static System.Drawing.Icon Money {
             get {
-                object obj = ResourceManager.GetObject("logoctycp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("Money", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }
