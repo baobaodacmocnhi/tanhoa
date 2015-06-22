@@ -217,14 +217,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ctchungtu.Lo = txtLo.Text.Trim();
                                     ctchungtu.Phong = txtPhong.Text.Trim();
 
-                                    _lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
-                                    _lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
-                                    _lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
-                                    _lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
-                                    _lichsuchungtu.SoNKNhan = int.Parse(txtSoNKNhan.Text.Trim());
-                                    _lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
+                                    LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                                    lichsuchungtu.MaLSCT = _lichsuchungtu.MaLSCT;
+                                    lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
+                                    lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
+                                    lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
+                                    lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
+                                    lichsuchungtu.SoNKNhan = int.Parse(txtSoNKNhan.Text.Trim());
+                                    lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
 
-                                    if (_cChungTu.SuaNhanChungTu(chungtu, ctchungtu, _lichsuchungtu))
+                                    if (_cChungTu.SuaNhanChungTu(chungtu, ctchungtu, lichsuchungtu))
                                     {
                                         MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }

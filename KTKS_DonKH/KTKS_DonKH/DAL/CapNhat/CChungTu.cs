@@ -2608,7 +2608,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     {
                         chungtuCN.SoNKNhan += ctchungtu.SoNKDangKy;
                         chungtuCN.SoNKDaCap += ctchungtu.SoNKDangKy;
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKNhan - chungtuCN.SoNKDaCap;
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKTong - chungtuCN.SoNKDaCap;
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.MaUser;
 
@@ -2638,7 +2638,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     {
                         chungtuCN.SoNKNhan = ctchungtu.SoNKDangKy;
                         chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKNhan - chungtuCN.SoNKDaCap;
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKTong - chungtuCN.SoNKDaCap;
                     }
                     ///ChungTu đã có trước đó, ta xét số Nhân Khẩu nhận thêm có vượt quá Tổng số Nhân Khẩu hay không
                     else
@@ -2648,7 +2648,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         {
                             chungtuCN.SoNKNhan += ctchungtu.SoNKDangKy;
                             chungtuCN.SoNKDaCap += ctchungtu.SoNKDangKy;
-                            chungtuCN.SoNKConLai = chungtuCN.SoNKNhan - chungtuCN.SoNKDaCap;
+                            chungtuCN.SoNKConLai = chungtuCN.SoNKTong - chungtuCN.SoNKDaCap;
                             chungtuCN.ModifyDate = DateTime.Now;
                             chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         }
@@ -2860,12 +2860,12 @@ namespace KTKS_DonKH.DAL.CapNhat
 
                 ///Kiểm tra Số Nhân Khẩu đăng ký có thay đổi hay không
                 if (ctchungtuCN.SoNKDangKy != ctchungtu.SoNKDangKy)
-                    if (ctchungtu.SoNKDangKy <= chungtuCN.SoNKConLai)
+                    if (chungtuCN.SoNKTong - ctchungtu.SoNKDangKy <= chungtuCN.SoNKConLai)
                     {
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai -= ctchungtu.SoNKDangKy;
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKTong - ctchungtu.SoNKDangKy;
                         chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy + (ctchungtuCN.SoNKDangKy - chungtuCN.SoNKDaCap);
-                        chungtuCN.SoNKNhan += ctchungtu.SoNKDangKy + (ctchungtuCN.SoNKDangKy - chungtuCN.SoNKNhan);
+                        chungtuCN.SoNKNhan = ctchungtu.SoNKDangKy + (ctchungtuCN.SoNKDangKy - chungtuCN.SoNKNhan);
                         chungtuCN.ModifyDate = DateTime.Now;
                         chungtuCN.ModifyBy = CTaiKhoan.MaUser;
                         ///Cập nhật bảng CTChungTu
@@ -2892,7 +2892,16 @@ namespace KTKS_DonKH.DAL.CapNhat
                     ctchungtuCN.ModifyBy = CTaiKhoan.MaUser;
                 }
 
-                if (SuaLichSuChungTu(lichsuchungtu))
+                LichSuChungTu lichsuchungtuCN = getLSCTbyID(lichsuchungtu.MaLSCT);
+                lichsuchungtuCN.CatNK_MaCN = lichsuchungtu.CatNK_MaCN;
+                lichsuchungtuCN.CatNK_DanhBo = lichsuchungtu.CatNK_DanhBo;
+                lichsuchungtuCN.CatNK_HoTen = lichsuchungtu.CatNK_HoTen;
+                lichsuchungtuCN.CatNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
+                lichsuchungtuCN.SoNKNhan = lichsuchungtu.SoNKNhan;
+                lichsuchungtuCN.GhiChu = lichsuchungtu.GhiChu;
+
+
+                if (SuaLichSuChungTu(lichsuchungtuCN))
                 {
                     //CatChuyenDM catchuyendm = _cCatChuyenDM.getCatChuyenDMbySoPhieu(lichsuchungtu.SoPhieu.Value);
                     //catchuyendm.CatNK_MaCN = lichsuchungtu.CatNK_MaCN;
