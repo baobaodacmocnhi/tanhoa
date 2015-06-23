@@ -22,6 +22,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
         CGiaNuoc _cGiaNuoc = new CGiaNuoc();
         private DateTimePicker cellDateTimePicker;
+        bool _flagFirst = true;
 
         public frmShowTruyThuTienNuoc()
         {
@@ -280,8 +281,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dgvTruyThuTienNuoc["TangGiam", e.RowIndex].Value = "Giảm";
             }
 
-            if (e.RowIndex >= 0)
-            if (dgvTruyThuTienNuoc["MaCTTTTN", e.RowIndex].Value != null)
+            if (_flagFirst==false&& dgvTruyThuTienNuoc["MaCTTTTN", e.RowIndex].Value != null)
             {
                 CTTruyThuTienNuoc cttttn = _cTTTN.getCTTruyThuTienNuocbyMaCTTTTN(int.Parse(dgvTruyThuTienNuoc["MaCTTTTN", e.RowIndex].Value.ToString()));
 
@@ -290,9 +290,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 cttttn.GiaBieuCu = int.Parse(dgvTruyThuTienNuoc["GiaBieu_Cu", e.RowIndex].Value.ToString());
                 cttttn.DinhMucCu = int.Parse(dgvTruyThuTienNuoc["DinhMuc_Cu", e.RowIndex].Value.ToString());
                 cttttn.TieuThuCu = int.Parse(dgvTruyThuTienNuoc["TieuThu_Cu", e.RowIndex].Value.ToString());
-                cttttn.GiaBanMoi = int.Parse(dgvTruyThuTienNuoc["GiaBan_Cu", e.RowIndex].Value.ToString());
-                cttttn.ThueGTGTMoi = int.Parse(dgvTruyThuTienNuoc["ThueGTGT_Cu", e.RowIndex].Value.ToString());
-                cttttn.PhiBVMTMoi = int.Parse(dgvTruyThuTienNuoc["PhiBVMT_Cu", e.RowIndex].Value.ToString());
+                cttttn.GiaBanCu = int.Parse(dgvTruyThuTienNuoc["GiaBan_Cu", e.RowIndex].Value.ToString());
+                cttttn.ThueGTGTCu = int.Parse(dgvTruyThuTienNuoc["ThueGTGT_Cu", e.RowIndex].Value.ToString());
+                cttttn.PhiBVMTCu = int.Parse(dgvTruyThuTienNuoc["PhiBVMT_Cu", e.RowIndex].Value.ToString());
                 cttttn.TongCongCu = int.Parse(dgvTruyThuTienNuoc["TongCong_Cu", e.RowIndex].Value.ToString());
                 ///
                 cttttn.GiaBieuMoi = int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString());
@@ -306,7 +306,8 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
                 _cTTTN.SuaCTTruyThuTienNuoc(cttttn);
             }
-            
+            if (e.RowIndex > 0 && dgvTruyThuTienNuoc.RowCount > _tttn.CTTruyThuTienNuocs.ToList().Count)
+                _flagFirst = false;
         }
 
         private void dgvTruyThuTienNuoc_Leave(object sender, EventArgs e)

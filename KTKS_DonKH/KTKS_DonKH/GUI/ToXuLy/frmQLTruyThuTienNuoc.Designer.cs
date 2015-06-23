@@ -48,6 +48,8 @@
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tongm3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTruyThuTienNuoc)).BeginInit();
             this.SuspendLayout();
@@ -184,13 +186,15 @@
             this.HoTen,
             this.DiaChi,
             this.NoiDung,
-            this.DienThoai});
+            this.DienThoai,
+            this.Tongm3,
+            this.TongTien});
             this.dgvDSTruyThuTienNuoc.Location = new System.Drawing.Point(13, 67);
             this.dgvDSTruyThuTienNuoc.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSTruyThuTienNuoc.MultiSelect = false;
             this.dgvDSTruyThuTienNuoc.Name = "dgvDSTruyThuTienNuoc";
             this.dgvDSTruyThuTienNuoc.RowHeadersWidth = 60;
-            this.dgvDSTruyThuTienNuoc.Size = new System.Drawing.Size(1088, 470);
+            this.dgvDSTruyThuTienNuoc.Size = new System.Drawing.Size(1287, 470);
             this.dgvDSTruyThuTienNuoc.TabIndex = 25;
             this.dgvDSTruyThuTienNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSTruyThuTienNuoc_CellFormatting);
             this.dgvDSTruyThuTienNuoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSTruyThuTienNuoc_KeyDown);
@@ -238,6 +242,18 @@
             this.DienThoai.DataPropertyName = "DienThoai";
             this.DienThoai.HeaderText = "Điện Thoại";
             this.DienThoai.Name = "DienThoai";
+            // 
+            // Tongm3
+            // 
+            this.Tongm3.DataPropertyName = "Tongm3";
+            this.Tongm3.HeaderText = "Tổng m3";
+            this.Tongm3.Name = "Tongm3";
+            // 
+            // TongTien
+            // 
+            this.TongTien.DataPropertyName = "TongTien";
+            this.TongTien.HeaderText = "Tổng Tiền";
+            this.TongTien.Name = "TongTien";
             // 
             // frmQLTruyThuTienNuoc
             // 
@@ -287,5 +303,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tongm3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongTien;
     }
 }

@@ -31,6 +31,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         CDCBD _cDCBD = new CDCBD();
         //BindingSource DSDon_BS;
         DataRowView _CTRow = null;
+        CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         string _tuNgay = "", _denNgay = "";
 
         public frmDSKTXM()
@@ -605,11 +606,16 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     dr["DiaChi"] = itemRow["DiaChi"];
                     dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
                     dr["NguoiLap"] = itemRow["CreateBy"];
+                    if (_cTaiKhoan.getUserbyID(int.Parse(itemRow["MaU"].ToString())).ToKH)
+                        dr["To"] = "TKH";
+                    else
+                        if (_cTaiKhoan.getUserbyID(int.Parse(itemRow["MaU"].ToString())).ToXuLy)
+                            dr["To"] = "TXL";
 
                     dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
                 }
 
-                if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27)
+                if (CTaiKhoan.MaUser == 1 || CTaiKhoan.MaUser == 26 || CTaiKhoan.MaUser == 27||CTaiKhoan.MaUser==13)
                 {
                     if (chkLoaiDon.Checked)
                     {

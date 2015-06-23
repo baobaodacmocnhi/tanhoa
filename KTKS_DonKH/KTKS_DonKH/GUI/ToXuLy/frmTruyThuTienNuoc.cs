@@ -312,9 +312,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                             cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
                             cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
-                            cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
-                            cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
-                            cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
+                            cttttn.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
+                            cttttn.ThueGTGTCu = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
+                            cttttn.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
                             cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
                             ///
                             cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
@@ -395,9 +395,9 @@ namespace KTKS_DonKH.GUI.ToXuLy
                             cttttn.GiaBieuCu = int.Parse(item.Cells["GiaBieu_Cu"].Value.ToString());
                             cttttn.DinhMucCu = int.Parse(item.Cells["DinhMuc_Cu"].Value.ToString());
                             cttttn.TieuThuCu = int.Parse(item.Cells["TieuThu_Cu"].Value.ToString());
-                            cttttn.GiaBanMoi = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
-                            cttttn.ThueGTGTMoi = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
-                            cttttn.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
+                            cttttn.GiaBanCu = int.Parse(item.Cells["GiaBan_Cu"].Value.ToString());
+                            cttttn.ThueGTGTCu = int.Parse(item.Cells["ThueGTGT_Cu"].Value.ToString());
+                            cttttn.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
                             cttttn.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
                             ///
                             cttttn.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());

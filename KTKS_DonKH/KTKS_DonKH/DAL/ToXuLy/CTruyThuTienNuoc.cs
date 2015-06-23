@@ -405,5 +405,31 @@ namespace KTKS_DonKH.DAL.ToXuLy
         }
 
         #endregion
+
+        public int CountTongTienThanhToan(decimal MaTTTN)
+        {
+            try
+            {
+                return db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongMoi).Value - db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongCu).Value;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        public int CountTongm3(decimal MaTTTN)
+        {
+            try
+            {
+                return (db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongMoi).Value - db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongCu).Value)/8546;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
     }
 }

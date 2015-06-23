@@ -1042,6 +1042,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NoiDungKiemTra,
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
                                       };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
                 }
@@ -1117,6 +1118,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NoiDungKiemTra,
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
                                       };
 
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
@@ -1135,6 +1137,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NoiDungKiemTra,
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
+                                           itemUser.MaU,
                                        };
                     DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
                     dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
@@ -1175,6 +1178,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NoiDungKiemTra,
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
                                       };
 
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
@@ -1193,6 +1197,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NoiDungKiemTra,
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
+                                           itemUser.MaU,
                                        };
                     DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
                     dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
@@ -1233,6 +1238,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NoiDungKiemTra,
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
                                       };
 
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
@@ -1251,6 +1257,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NoiDungKiemTra,
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
+                                           itemUser.MaU,
                                        };
                     DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
                     dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
@@ -1431,6 +1438,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NoiDungKiemTra,
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
                                       };
 
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
@@ -1448,6 +1456,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NoiDungKiemTra,
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
+                                           itemUser.MaU,
                                        };
                     DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
                     dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
@@ -1488,6 +1497,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NoiDungKiemTra,
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
                                       };
 
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
@@ -1506,6 +1516,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NoiDungKiemTra,
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
+                                           itemUser.MaU,
                                        };
                     DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
                     dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
@@ -1546,6 +1557,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NoiDungKiemTra,
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
                                       };
 
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
@@ -1564,6 +1576,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NoiDungKiemTra,
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
+                                           itemUser.MaU,
                                        };
                     DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
                     dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));
@@ -1604,6 +1617,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                           itemCTKTXM.NoiDungKiemTra,
                                           itemCTKTXM.NgayKTXM,
                                           CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
                                       };
 
                     var query_DonTXL = from itemCTKTXM in db.CTKTXMs
@@ -1622,6 +1636,7 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
                                            itemCTKTXM.NoiDungKiemTra,
                                            itemCTKTXM.NgayKTXM,
                                            CreateBy = itemUser.HoTen,
+                                           itemUser.MaU,
                                        };
                     DataTable dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
                     dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonTXL.Distinct()));

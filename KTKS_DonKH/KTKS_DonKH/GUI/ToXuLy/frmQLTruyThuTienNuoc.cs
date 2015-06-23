@@ -123,6 +123,14 @@ namespace KTKS_DonKH.GUI.ToXuLy
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
+            if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "Tongm3" )
+            {
+                e.Value = _cTTTN.CountTongm3(decimal.Parse(dgvDSTruyThuTienNuoc["MaTTTN",e.RowIndex].Value.ToString()));
+            }
+            if (dgvDSTruyThuTienNuoc.Columns[e.ColumnIndex].Name == "TongTien" )
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cTTTN.CountTongTienThanhToan(decimal.Parse(dgvDSTruyThuTienNuoc["MaTTTN", e.RowIndex].Value.ToString())));
+            }
         }
 
         private void dgvDSTruyThuTienNuoc_KeyDown(object sender, KeyEventArgs e)
