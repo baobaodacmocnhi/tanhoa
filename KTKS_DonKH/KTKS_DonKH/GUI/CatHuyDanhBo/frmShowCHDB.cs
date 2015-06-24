@@ -577,7 +577,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtSoTien.Text = "";
                     break;
                 case "Nợ Tiền Nước":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: gửi thông báo.\r\n- Đội TCTB: thực hiện. (Đội TT)\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TT: thông báo khách hàng.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = "";
                     break;
                 case "Nợ Tiền Gian Lận Nước":
