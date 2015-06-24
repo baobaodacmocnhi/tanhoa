@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using System.Globalization;
+using ThuTien.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -78,8 +80,8 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("TG", CNguoiDung.MaTo, dateDangNgan.Value);
-            dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("CQ", CNguoiDung.MaTo, dateDangNgan.Value);
+            dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
+            dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
             CountDataGridView();
         }
 
@@ -145,6 +147,50 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                DataTable dt = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA ĐÃ THU";
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item["Ky"];
+                    dr["MLT"] = item["MLT"];
+                    dr["TongCong"] = item["TongCong"];
+                    dr["SoPhatHanh"] = item["SoPhatHanh"];
+                    dr["SoHoaDon"] = item["SoHoaDon"];
+                    dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    DataTable dt = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("CQ", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), dateGiaiTrach.Value);
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN ĐÃ THU";
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item["Ky"];
+                        dr["MLT"] = item["MLT"];
+                        dr["TongCong"] = item["TongCong"];
+                        dr["SoPhatHanh"] = item["SoPhatHanh"];
+                        dr["SoHoaDon"] = item["SoHoaDon"];
+                        dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                }
+            rptDSHoaDon rpt = new rptDSHoaDon();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

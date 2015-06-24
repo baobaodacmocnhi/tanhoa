@@ -119,7 +119,7 @@ namespace ThuTien.GUI.TongHop
                     int index = -1;
                     for (int i = 0; i < dgvHoaDon.RowCount; i++)
                     {
-                        if (bool.Parse(dgvHoaDon["Chon", i].Value.ToString()))
+                        if (dgvHoaDon["Chon", i].Value!=null && bool.Parse(dgvHoaDon["Chon", i].Value.ToString()))
                         {
                             Count++;
                             index = i;

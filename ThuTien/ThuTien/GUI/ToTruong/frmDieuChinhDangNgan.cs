@@ -16,6 +16,9 @@ namespace ThuTien.GUI.ToTruong
 {
     public partial class frmDieuChinhDangNgan : Form
     {
+        ///Load tất cả hóa đơn đăng ngân hành thu & tồn nên hàm DangNgan & XoaDangNgan có chút thay đổi
+        ///Xóa người đăng ngân nhưng vẫn giữ hình thức đăng ngân
+        
         string _mnu = "mnuDieuChinhDangNgan";
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
@@ -41,8 +44,8 @@ namespace ThuTien.GUI.ToTruong
 
         public void LoadDanhSachHD()
         {
-            dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganHanhThuByMaNVNgayDangNgan("TG",(int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
-            dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganHanhThuByMaNVNgayDangNgan("CQ",(int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+            dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("TG",(int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+            dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("CQ",(int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
@@ -221,7 +224,7 @@ namespace ThuTien.GUI.ToTruong
                     {
                         _cHoaDon.SqlBeginTransaction();
                         foreach (var item in lstHD.Items)
-                            if (!_cHoaDon.DangNgan("Ton", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                            if (!_cHoaDon.DangNgan("", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
                             {
                                 _cHoaDon.SqlRollbackTransaction();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -256,7 +259,7 @@ namespace ThuTien.GUI.ToTruong
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
-                                if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_TG"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                                if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
                                 {
                                     _cHoaDon.SqlRollbackTransaction();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -269,7 +272,7 @@ namespace ThuTien.GUI.ToTruong
                             {
                                 foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                                 {
-                                    if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_CQ"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                                    if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
                                     {
                                         _cHoaDon.SqlRollbackTransaction();
                                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

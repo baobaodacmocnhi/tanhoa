@@ -193,9 +193,11 @@ namespace ThuTien.GUI.DongNuoc
                     {
                         DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
                         string Ky = "";
+                        int TongCong = 0; ;
                         foreach (DataRow itemChild in childRows)
                         {
                             Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                            TongCong += int.Parse(itemChild["TongCong"].ToString());
                         }
 
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
@@ -206,6 +208,7 @@ namespace ThuTien.GUI.DongNuoc
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = item["MLT"];
                         dr["Ky"] = Ky;
+                        dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
@@ -220,7 +223,7 @@ namespace ThuTien.GUI.DongNuoc
                         rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
                         rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                        rpt.PrintToPrinter(1, false, 1, 1);
+                        rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
                     }
             }
         }

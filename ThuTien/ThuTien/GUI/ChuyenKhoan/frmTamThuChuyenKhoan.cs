@@ -69,7 +69,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnThem_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if (bool.Parse(item.Cells["Chon"].Value.ToString()))
+                if (item.Cells["Chon"].Value!=null&&bool.Parse(item.Cells["Chon"].Value.ToString()))
                 {
                     if (_cTamThu.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                     {
@@ -89,7 +89,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 _cTamThu.BeginTransaction();
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                    if (bool.Parse(item.Cells["Chon"].Value.ToString()))
+                    if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                     {
                         TAMTHU tamthu = new TAMTHU();
                         tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
@@ -169,7 +169,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                     }
                     _cTamThu.CommitTransaction();
-                    dgvTamThu.DataSource = null;
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -253,7 +253,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
-        private void btnIn_Click(object sender, EventArgs e)
+        private void btnInTamThu_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvTamThu.Rows)

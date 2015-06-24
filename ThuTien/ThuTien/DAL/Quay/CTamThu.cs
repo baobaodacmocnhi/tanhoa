@@ -154,12 +154,19 @@ namespace ThuTien.DAL.Quay
 
         public decimal GetMaxSoPhieu()
         {
-            string ID = "SoPhieu";
-            string Table = "TAMTHU";
-            decimal SoPhieu = _db.ExecuteQuery<decimal>("declare @Ma int " +
-                "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
-                "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
-            return getMaxNextIDTable(SoPhieu);
+            if (_db.TAMTHUs.Max(item => item.SoPhieu) == null)
+            {
+                return decimal.Parse("1" + DateTime.Now.ToString("yy"));
+            }
+            else
+            {
+                string ID = "SoPhieu";
+                string Table = "TAMTHU";
+                decimal SoPhieu = _db.ExecuteQuery<decimal>("declare @Ma int " +
+                    "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                    "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                return getMaxNextIDTable(SoPhieu);
+            }
         }
     }
 }

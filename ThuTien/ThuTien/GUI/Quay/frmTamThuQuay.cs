@@ -58,7 +58,7 @@ namespace ThuTien.GUI.Quay
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                    if (bool.Parse(item.Cells["Chon"].Value.ToString()))
+                    if (item.Cells["Chon"].Value!=null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                     {
                         if (_cTamThu.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         {
@@ -80,7 +80,7 @@ namespace ThuTien.GUI.Quay
                     _cTamThu.BeginTransaction();
                     decimal SoPhieu = _cTamThu.GetMaxSoPhieu();
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                        if (bool.Parse(item.Cells["Chon"].Value.ToString()))
+                        if (item.Cells["Chon"].Value!=null&&bool.Parse(item.Cells["Chon"].Value.ToString()))
                         {
                             TAMTHU tamthu = new TAMTHU();
                             tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
@@ -194,7 +194,7 @@ namespace ThuTien.GUI.Quay
                         }
                     }
                     _cTamThu.CommitTransaction();
-                    dgvTamThu.DataSource = null;
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

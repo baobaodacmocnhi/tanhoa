@@ -61,19 +61,19 @@ namespace ThuTien.GUI.Quay
             {
                 foreach (var item in lstHD.Items)
                 {
-                    string loai;
-                    if (!_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
-                    {
-                        MessageBox.Show("Hóa Đơn không có Tạm Thu: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
-                        return;
-                    }
-                    if (loai == "Chuyển Khoản")
-                    {
-                        MessageBox.Show("Hóa Đơn có Tạm Thu(Chuyển Khoản): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
-                        return;
-                    }
+                    //string loai;
+                    //if (!_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
+                    //{
+                    //    MessageBox.Show("Hóa Đơn không có Tạm Thu: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    lstHD.SelectedItem = item;
+                    //    return;
+                    //}
+                    //if (loai == "Chuyển Khoản")
+                    //{
+                    //    MessageBox.Show("Hóa Đơn có Tạm Thu(Chuyển Khoản): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    lstHD.SelectedItem = item;
+                    //    return;
+                    //}
                     if (_cDCHD.CheckBySoHoaDon(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn đã Rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
