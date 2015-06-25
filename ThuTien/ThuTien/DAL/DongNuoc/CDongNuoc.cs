@@ -156,6 +156,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemDN.MLT,
                                 itemDN.CreateBy,
                                 itemDN.MaNV_DongNuoc,
+                                itemDN.CreateDate,
                             };
             DataTable dtDongNuoc = new DataTable();
             dtDongNuoc = LINQToDataTable(queryDN);

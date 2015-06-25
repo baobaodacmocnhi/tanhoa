@@ -208,11 +208,11 @@ namespace ThuTien.GUI.DongNuoc
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = item["MLT"];
                         dr["Ky"] = Ky;
-                        dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                        dr["SoTien"] = TongCong;
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
-                        rptTBDongNuoc rpt = new rptTBDongNuoc();
+                        rptTBDongNuocPhoto rpt = new rptTBDongNuocPhoto();
                         rpt.SetDataSource(dsBaoCao);
                         //frmBaoCao frm = new frmBaoCao(rpt);
                         //frm.ShowDialog();

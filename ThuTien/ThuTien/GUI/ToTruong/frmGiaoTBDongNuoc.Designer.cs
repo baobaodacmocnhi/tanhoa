@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,6 +44,7 @@
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -141,16 +142,16 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(12, 38);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(1131, 610);
+            this.gridControl.Size = new System.Drawing.Size(1131, 590);
             this.gridControl.TabIndex = 26;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -164,6 +165,7 @@
             this.HoTen,
             this.DiaChi,
             this.MLT,
+            this.CreateDate,
             this.CreateBy,
             this.MaNV_DongNuoc});
             this.gridViewDN.GridControl = this.gridControl;
@@ -182,7 +184,7 @@
             this.MaDN.Name = "MaDN";
             this.MaDN.Visible = true;
             this.MaDN.VisibleIndex = 0;
-            this.MaDN.Width = 100;
+            this.MaDN.Width = 90;
             // 
             // DanhBo
             // 
@@ -209,7 +211,7 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
             this.DiaChi.VisibleIndex = 3;
-            this.DiaChi.Width = 300;
+            this.DiaChi.Width = 250;
             // 
             // MLT
             // 
@@ -219,14 +221,22 @@
             this.MLT.Visible = true;
             this.MLT.VisibleIndex = 4;
             // 
+            // CreateDate
+            // 
+            this.CreateDate.Caption = "Ngày Lập";
+            this.CreateDate.FieldName = "CreateDate";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Visible = true;
+            this.CreateDate.VisibleIndex = 5;
+            // 
             // CreateBy
             // 
             this.CreateBy.Caption = "Người Lập";
             this.CreateBy.FieldName = "CreateBy";
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
-            this.CreateBy.VisibleIndex = 5;
-            this.CreateBy.Width = 150;
+            this.CreateBy.VisibleIndex = 6;
+            this.CreateBy.Width = 140;
             // 
             // MaNV_DongNuoc
             // 
@@ -234,8 +244,8 @@
             this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
-            this.MaNV_DongNuoc.VisibleIndex = 6;
-            this.MaNV_DongNuoc.Width = 150;
+            this.MaNV_DongNuoc.VisibleIndex = 7;
+            this.MaNV_DongNuoc.Width = 140;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -368,7 +378,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1355, 666);
+            this.ClientSize = new System.Drawing.Size(1361, 666);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -428,5 +438,6 @@
         private System.Windows.Forms.Button btnSua;
         private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
         private DevExpress.XtraGrid.Columns.GridColumn MaNV_DongNuoc;
+        private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
     }
 }

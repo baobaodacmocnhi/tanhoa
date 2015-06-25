@@ -49,15 +49,26 @@ namespace ThuTien
 
         public void OpenForm(Form frm)
         {
-            foreach (Form item in this.MdiChildren)
+            //foreach (Form item in this.MdiChildren)
+            //{
+            //    this.ActiveMdiChild.Close();
+            //}
+            //frm.MdiParent = this;
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            //frm.Dock = DockStyle.Fill;
+            //frm.Show();
+            //StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
+            foreach (Form form in Application.OpenForms)
             {
-                this.ActiveMdiChild.Close();
+                if (form.Name == frm.Name)
+                {
+                    form.Activate();
+                    return;
+                }
             }
+
             frm.MdiParent = this;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
             frm.Show();
-            StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
         }
 
         #region Hệ Thống
@@ -82,7 +93,6 @@ namespace ThuTien
                 this.ActiveMdiChild.Close();
             }
             StripStatus_HoTen.Text = "";
-            StripStatus_Form.Text = "";
             mnuDangNhap_Click(sender, e);
         }
 
@@ -569,5 +579,53 @@ namespace ThuTien
         }
 
         #endregion
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((tabControl.SelectedTab != null) && (tabControl.SelectedTab.Tag != null))
+                (tabControl.SelectedTab.Tag as Form).Select();
+        }
+
+        private void frmMain_MdiChildActivate(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild == null)
+                tabControl.Visible = false; // If no any child form, hide tabControl
+            else
+            {
+                this.ActiveMdiChild.WindowState = FormWindowState.Maximized; // Child form always maximized
+
+                foreach (TabPage item in tabControl.TabPages)
+                {
+                    if (this.ActiveMdiChild.Text == item.Text)
+                        return;
+                }
+
+                // If child form is new and no has tabPage, create new tabPage
+                if (this.ActiveMdiChild.Tag == null)
+                    {
+                        // Add a tabPage to tabControl with child form caption
+                        TabPage tp = new TabPage(this.ActiveMdiChild.Text);
+                        tp.Tag = this.ActiveMdiChild;
+                        tp.Parent = tabControl;
+                        tabControl.SelectedTab = tp;
+
+                        this.ActiveMdiChild.Tag = tp;
+                        this.ActiveMdiChild.FormClosed += new FormClosedEventHandler(ActiveMdiChild_FormClosed);
+                    }
+                    else
+                    {
+                        TabPage tp = new TabPage(this.ActiveMdiChild.Text);
+                        tabControl.SelectedTab = tp;
+                    }
+
+                if (!tabControl.Visible) tabControl.Visible = true;
+            }
+        }
+
+        // If child form closed, remove tabPage
+        private void ActiveMdiChild_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ((sender as Form).Tag as TabPage).Dispose();
+        }
     }
 }

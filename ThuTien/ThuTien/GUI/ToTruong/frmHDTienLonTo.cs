@@ -41,11 +41,51 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
+            if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                ///chọn tất cả các kỳ
+                if (cmbKy.SelectedIndex == 0)
+                {
+                    dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                }
+                ///chọn 1 kỳ cụ thể
+                else
+                    if (cmbKy.SelectedIndex > 0)
+                        ///chọn tất cả các đợt
+                        if (cmbDot.SelectedIndex == 0)
+                        {
+                            dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                        }
+                        ///chọn 1 đợt cụ thể
+                        else
+                            if (cmbDot.SelectedIndex > 0)
+                            {
+                                dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                            }
             }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    ///chọn tất cả các kỳ
+                    if (cmbKy.SelectedIndex == 0)
+                    {
+                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                    }
+                    ///chọn 1 kỳ cụ thể
+                    else
+                        if (cmbKy.SelectedIndex > 0)
+                            ///chọn tất cả các đợt
+                            if (cmbDot.SelectedIndex == 0)
+                            {
+                                dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                            }
+                            ///chọn 1 đợt cụ thể
+                            else
+                                if (cmbDot.SelectedIndex > 0)
+                                {
+                                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                }
+                }
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)

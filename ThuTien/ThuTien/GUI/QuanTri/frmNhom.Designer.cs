@@ -157,7 +157,7 @@
             this.repositoryItemCheckEdit4,
             this.repositoryItemCheckEdit5,
             this.repositoryItemCheckEdit6});
-            this.gridControl.Size = new System.Drawing.Size(629, 614);
+            this.gridControl.Size = new System.Drawing.Size(629, 595);
             this.gridControl.TabIndex = 12;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -312,7 +312,7 @@
             this.groupBox1.Controls.Add(this.gridControl);
             this.groupBox1.Location = new System.Drawing.Point(269, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(656, 647);
+            this.groupBox1.Size = new System.Drawing.Size(656, 623);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phân Quyền";

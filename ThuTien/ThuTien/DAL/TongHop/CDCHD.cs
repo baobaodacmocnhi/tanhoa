@@ -82,7 +82,7 @@ namespace ThuTien.DAL.TongHop
             return _db.DIEUCHINH_HDs.ToList();
         }
 
-        public DataTable GetChuanThuByNamKy(int MaTo, string loai, int nam, int ky)
+        public DataTable GetChuanThu(int MaTo, string loai, int nam, int ky)
         {
             if (loai == "TG")
             {
@@ -122,7 +122,7 @@ namespace ThuTien.DAL.TongHop
             return null;
         }
 
-        public DataTable GetChuanThuByNam(int MaTo, string loai, int nam)
+        public DataTable GetChuanThu(int MaTo, string loai, int nam)
         {
             if (loai == "TG")
             {

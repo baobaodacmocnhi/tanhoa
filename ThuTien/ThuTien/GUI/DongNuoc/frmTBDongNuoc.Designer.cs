@@ -46,6 +46,7 @@
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.lstHD = new System.Windows.Forms.ListBox();
             this.btnXem = new System.Windows.Forms.Button();
@@ -151,7 +152,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(882, 610);
+            this.gridControl.Size = new System.Drawing.Size(966, 590);
             this.gridControl.TabIndex = 25;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -165,7 +166,8 @@
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
-            this.MLT});
+            this.MLT,
+            this.CreateDate});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -234,6 +236,14 @@
             this.MLT.Name = "MLT";
             this.MLT.Visible = true;
             this.MLT.VisibleIndex = 5;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.Caption = "Ngày Lập";
+            this.CreateDate.FieldName = "CreateDate";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Visible = true;
+            this.CreateDate.VisibleIndex = 6;
             // 
             // label2
             // 
@@ -381,7 +391,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 666);
+            this.ClientSize = new System.Drawing.Size(1286, 666);
             this.Controls.Add(this.btnDSTB);
             this.Controls.Add(this.chkAll);
             this.Controls.Add(this.btnInTB);
@@ -444,6 +454,7 @@
         private System.Windows.Forms.Button btnInTB;
         private System.Windows.Forms.CheckBox chkAll;
         private System.Windows.Forms.Button btnDSTB;
+        private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
 
     }
 }

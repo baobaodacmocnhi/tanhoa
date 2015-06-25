@@ -35,7 +35,7 @@ namespace ThuTien.GUI.Doi
             cmbNam.ValueMember = "Nam";
         }
 
-        public void LoadDataGridView()
+        public void CountdgvTuGia()
         {
             int TongHD = 0;
             long TongGiaBan = 0;
@@ -68,12 +68,16 @@ namespace ThuTien.GUI.Doi
                 txtTongHDTon_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTon);
                 txtTongGiaBanTon_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBanTon);
             }
-            TongHD = 0;
-            TongGiaBan = 0;
-            TongHDThu = 0;
-            TongGiaBanThu = 0;
-            TongHDTon = 0;
-            TongGiaBanTon = 0;
+        }
+
+        public void CountdgvCoQuan()
+        {
+            int TongHD = 0;
+            long TongGiaBan = 0;
+            int TongHDThu = 0;
+            long TongGiaBanThu = 0;
+            int TongHDTon = 0;
+            long TongGiaBanTon = 0;
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
@@ -103,84 +107,104 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            DataTable dtTG = new DataTable();
-            DataTable dtCQ = new DataTable();
-            DataTable dtTG_DCHD = new DataTable();
-            DataTable dtCQ_DCHD = new DataTable();
+            DataTable dt = new DataTable();
+            DataTable dtDCHD = new DataTable();
             List<TT_To> lst = _cTo.GetDSHanhThu();
 
-            ///chọn tất cả các kỳ
-            if (cmbKy.SelectedIndex == 0)
+            if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dtTG = _cHoaDon.GetNangSuatByNam_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
-                dtCQ = _cHoaDon.GetNangSuatByNam_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
-                dtTG_DCHD = _cDCHD.GetChuanThuByNam(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
-                dtCQ_DCHD = _cDCHD.GetChuanThuByNam(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
-                for (int i = 1; i < lst.Count; i++)
+                ///chọn tất cả các kỳ
+                if (cmbKy.SelectedIndex == 0)
                 {
-                    dtTG.Merge(_cHoaDon.GetNangSuatByNam_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
-                    dtCQ.Merge(_cHoaDon.GetNangSuatByNam_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
-                    dtTG_DCHD.Merge(_cDCHD.GetChuanThuByNam(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString())));
-                    dtCQ_DCHD.Merge(_cDCHD.GetChuanThuByNam(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString())));
-                }
-            }
-            ///chọn 1 kỳ cụ thể
-            else
-                if (cmbKy.SelectedIndex > 0)
-                {
-                    dtTG = _cHoaDon.GetNangSuatByNamKy_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                    dtCQ = _cHoaDon.GetNangSuatByNamKy_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                    dtTG_DCHD = _cDCHD.GetChuanThuByNamKy(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                    dtCQ_DCHD = _cDCHD.GetChuanThuByNamKy(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dt = _cHoaDon.GetNangSuat_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                    dtDCHD = _cDCHD.GetChuanThu(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()));
                     for (int i = 1; i < lst.Count; i++)
                     {
-                        dtTG.Merge(_cHoaDon.GetNangSuatByNamKy_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
-                        dtCQ.Merge(_cHoaDon.GetNangSuatByNamKy_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
-                        dtTG_DCHD.Merge(_cDCHD.GetChuanThuByNamKy(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
-                        dtCQ_DCHD.Merge(_cDCHD.GetChuanThuByNamKy(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                        dt.Merge(_cHoaDon.GetNangSuat_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
+                        dtDCHD.Merge(_cDCHD.GetChuanThu(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString())));
+                    }
+                }
+                ///chọn 1 kỳ cụ thể
+                else
+                    if (cmbKy.SelectedIndex > 0)
+                    {
+                        dt = _cHoaDon.GetNangSuat_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dtDCHD = _cDCHD.GetChuanThu(lst[0].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        for (int i = 1; i < lst.Count; i++)
+                        {
+                            dt.Merge(_cHoaDon.GetNangSuat_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                            dtDCHD.Merge(_cDCHD.GetChuanThu(lst[i].MaTo, "TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                        }
+
                     }
 
-                }
-
-            foreach (DataRow item in dtTG_DCHD.Rows)
-            {
-                if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
+                foreach (DataRow item in dtDCHD.Rows)
                 {
-                    DataRow[] dr = dtTG.Select("MaTo=" + item["MaTo"].ToString());
+                    if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
+                    {
+                        DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                    dtTG.Rows[dtTG.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dtTG.Rows[dtTG.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                    dtTG.Rows[dtTG.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dtTG.Rows[dtTG.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                }
-                else
-                {
-                    DataRow[] dr = dtTG.Select("MaTo=" + item["MaTo"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                    }
+                    else
+                    {
+                        DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                    dtTG.Rows[dtTG.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dtTG.Rows[dtTG.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                    dtTG.Rows[dtTG.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dtTG.Rows[dtTG.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                        dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                    }
                 }
+                dgvHDTuGia.DataSource = dt;
+                CountdgvTuGia();
             }
-
-            foreach (DataRow item in dtCQ_DCHD.Rows)
-            {
-                if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    DataRow[] dr = dtCQ.Select("MaTo=" + item["MaTo"].ToString());
+                    ///chọn tất cả các kỳ
+                    if (cmbKy.SelectedIndex == 0)
+                    {
+                        dt = _cHoaDon.GetNangSuat_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                        dtDCHD = _cDCHD.GetChuanThu(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()));
+                        for (int i = 1; i < lst.Count; i++)
+                        {
+                            dt.Merge(_cHoaDon.GetNangSuat_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
+                            dtDCHD.Merge(_cDCHD.GetChuanThu(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString())));
+                        }
+                    }
+                    ///chọn 1 kỳ cụ thể
+                    else
+                        if (cmbKy.SelectedIndex > 0)
+                        {
+                            dt = _cHoaDon.GetNangSuat_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            dtDCHD = _cDCHD.GetChuanThu(lst[0].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            for (int i = 1; i < lst.Count; i++)
+                            {
+                                dt.Merge(_cHoaDon.GetNangSuat_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                                dtDCHD.Merge(_cDCHD.GetChuanThu(lst[i].MaTo, "CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                            }
 
-                    dtCQ.Rows[dtCQ.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dtCQ.Rows[dtCQ.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                    dtCQ.Rows[dtCQ.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dtCQ.Rows[dtCQ.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                }
-                else
-                {
-                    DataRow[] dr = dtCQ.Select("MaTo=" + item["MaTo"].ToString());
+                        }
+                    foreach (DataRow item in dtDCHD.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
+                        {
+                            DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
 
-                    dtCQ.Rows[dtCQ.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dtCQ.Rows[dtCQ.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
-                    dtCQ.Rows[dtCQ.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dtCQ.Rows[dtCQ.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                        }
+                        else
+                        {
+                            DataRow[] dr = dt.Select("MaTo=" + item["MaTo"].ToString());
+
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                            dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_END"].ToString()) + int.Parse(item["GIABAN_BD"].ToString());
+                        }
+                    }
+                    dgvHDCoQuan.DataSource = dt;
+                    CountdgvCoQuan();
                 }
-            }
-            
-            dgvHDTuGia.DataSource = dtTG;
-            dgvHDCoQuan.DataSource = dtCQ;
-            LoadDataGridView();
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

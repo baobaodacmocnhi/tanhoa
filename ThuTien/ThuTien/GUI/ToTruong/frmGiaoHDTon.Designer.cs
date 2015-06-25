@@ -176,7 +176,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDTon.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHDTon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHDTon.Size = new System.Drawing.Size(1028, 610);
+            this.dgvHDTon.Size = new System.Drawing.Size(1028, 590);
             this.dgvHDTon.TabIndex = 26;
             this.dgvHDTon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTon_CellFormatting);
             this.dgvHDTon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDTon_RowPostPaint);

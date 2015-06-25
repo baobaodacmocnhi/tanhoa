@@ -90,8 +90,6 @@
             this.dateTu_XacNhanNo = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvXacNhanNo = new System.Windows.Forms.DataGridView();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.SoPhieu_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +99,8 @@
             this.DinhMuc_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
@@ -163,7 +163,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1315, 546);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1315, 530);
             this.dgvHoaDon.TabIndex = 13;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
@@ -288,7 +288,7 @@
             this.tabControl.Location = new System.Drawing.Point(12, 41);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1335, 613);
+            this.tabControl.Size = new System.Drawing.Size(1335, 598);
             this.tabControl.TabIndex = 14;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -446,7 +446,7 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTamThu.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTamThu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTamThu.Size = new System.Drawing.Size(1315, 546);
+            this.dgvTamThu.Size = new System.Drawing.Size(1315, 530);
             this.dgvTamThu.TabIndex = 14;
             this.dgvTamThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTamThu_CellFormatting);
             this.dgvTamThu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTamThu_RowPostPaint);
@@ -588,7 +588,7 @@
             this.tabXacNhanNo.Controls.Add(this.dgvXacNhanNo);
             this.tabXacNhanNo.Location = new System.Drawing.Point(4, 22);
             this.tabXacNhanNo.Name = "tabXacNhanNo";
-            this.tabXacNhanNo.Size = new System.Drawing.Size(1327, 587);
+            this.tabXacNhanNo.Size = new System.Drawing.Size(1327, 572);
             this.tabXacNhanNo.TabIndex = 2;
             this.tabXacNhanNo.Text = "Danh Sách Xác Nhận Nợ";
             this.tabXacNhanNo.UseVisualStyleBackColor = true;
@@ -678,29 +678,10 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvXacNhanNo.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvXacNhanNo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvXacNhanNo.Size = new System.Drawing.Size(1315, 546);
+            this.dgvXacNhanNo.Size = new System.Drawing.Size(1315, 530);
             this.dgvXacNhanNo.TabIndex = 20;
             this.dgvXacNhanNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvXacNhanNo_CellFormatting);
             this.dgvXacNhanNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvXacNhanNo_RowPostPaint);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(435, 12);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 16;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(353, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "(Enter)";
             // 
             // SoPhieu_XacNhanNo
             // 
@@ -771,6 +752,25 @@
             this.TongCong_XacNhanNo.HeaderText = "Tổng Cộng";
             this.TongCong_XacNhanNo.Name = "TongCong_XacNhanNo";
             this.TongCong_XacNhanNo.ReadOnly = true;
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(435, 12);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 16;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(353, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "(Enter)";
             // 
             // frmTamThuQuay
             // 
