@@ -203,12 +203,24 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateDate.Value.Date == NgayDN.Date);
         }
 
+        /// <summary>
+        /// Kiểm tra thông báo đóng nước có được giao cho nhân viên hay không
+        /// </summary>
+        /// <param name="MaDN"></param>
+        /// <param name="MaNV_DongNuoc"></param>
+        /// <returns></returns>
         public bool CheckDongNuocByMaDNMaNV_DongNuoc(decimal MaDN, int MaNV_DongNuoc)
         {
             return _db.TT_DongNuocs.Any(item => item.MaDN == MaDN && item.MaNV_DongNuoc == MaNV_DongNuoc);
         }
 
-        public bool CheckKQDongNuocByMaDNMaNV_DongNuoc(decimal MaDN, int MaNV_DongNuoc)
+        /// <summary>
+        /// Kiểm tra nhân viên có đi đóng nước thông báo được giao hay chưa
+        /// </summary>
+        /// <param name="MaDN"></param>
+        /// <param name="MaNV_DongNuoc"></param>
+        /// <returns></returns>
+        public bool CheckKQDongNuocByMaDNCreateBy(decimal MaDN, int MaNV_DongNuoc)
         {
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateBy == MaNV_DongNuoc);
         }

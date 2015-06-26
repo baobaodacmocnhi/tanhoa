@@ -44,56 +44,78 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            DataTable dtTG = new DataTable();
-            DataTable dtCQ = new DataTable();
+            DataTable dt = new DataTable();
             List<TT_To> lst = _cTo.GetDSHanhThu();
 
-            ///chọn tất cả tổ
-            if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
+            if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex == 0)
+                ///chọn tất cả tổ
+                if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
                 {
-                    dtTG = _cHoaDon.GetTongTon_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
-                    dtCQ = _cHoaDon.GetTongTon_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
-                    for (int i = 1; i < lst.Count; i++)
+                    ///chọn tất cả các kỳ
+                    if (cmbKy.SelectedIndex == 0)
                     {
-                        dtTG.Merge(_cHoaDon.GetTongTon_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
-                        dtCQ.Merge(_cHoaDon.GetTongTon_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
-                    }
-                }
-                ///chọn 1 kỳ cụ thể
-                else
-                    if (cmbKy.SelectedIndex > 0)
-                    {
-                        dtTG = _cHoaDon.GetTongTon_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                        dtCQ = _cHoaDon.GetTongTon_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dt = _cHoaDon.GetTongTon_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
                         for (int i = 1; i < lst.Count; i++)
+                            dt.Merge(_cHoaDon.GetTongTon_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
+                    }
+                    ///chọn 1 kỳ cụ thể
+                    else
+                        if (cmbKy.SelectedIndex > 0)
                         {
-                            dtTG.Merge(_cHoaDon.GetTongTon_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
-                            dtCQ.Merge(_cHoaDon.GetTongTon_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                            dt = _cHoaDon.GetTongTon_Doi("TG", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            for (int i = 1; i < lst.Count; i++)
+                                dt.Merge(_cHoaDon.GetTongTon_Doi("TG", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                         }
-                    }
-            }
-            ///chọn 1 tổ
-            else
-            {
-                ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex == 0)
-                {
-                    dtTG = _cHoaDon.GetTongTon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
-                    dtCQ = _cHoaDon.GetTongTon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                 }
-                ///chọn 1 kỳ cụ thể
+                ///chọn 1 tổ
                 else
-                    if (cmbKy.SelectedIndex > 0)
-                    {
-                        dtTG = _cHoaDon.GetTongTon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                        dtCQ = _cHoaDon.GetTongTon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                    }
+                {
+                    ///chọn tất cả các kỳ
+                    if (cmbKy.SelectedIndex == 0)
+                        dt = _cHoaDon.GetTongTon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                    ///chọn 1 kỳ cụ thể
+                    else
+                        if (cmbKy.SelectedIndex > 0)
+                            dt = _cHoaDon.GetTongTon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                }
+                dgvHDTuGia.DataSource = dt;
             }
-            dgvHDTuGia.DataSource = dtTG;
-            dgvHDCoQuan.DataSource = dtCQ;
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    ///chọn tất cả tổ
+                    if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
+                    {
+                        ///chọn tất cả các kỳ
+                        if (cmbKy.SelectedIndex == 0)
+                        {
+                            dt = _cHoaDon.GetTongTon_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                            for (int i = 1; i < lst.Count; i++)
+                                dt.Merge(_cHoaDon.GetTongTon_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString())));
+                        }
+                        ///chọn 1 kỳ cụ thể
+                        else
+                            if (cmbKy.SelectedIndex > 0)
+                            {
+                                dt = _cHoaDon.GetTongTon_Doi("CQ", lst[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                for (int i = 1; i < lst.Count; i++)
+                                    dt.Merge(_cHoaDon.GetTongTon_Doi("CQ", lst[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                            }
+                    }
+                    ///chọn 1 tổ
+                    else
+                    {
+                        ///chọn tất cả các kỳ
+                        if (cmbKy.SelectedIndex == 0)
+                            dt = _cHoaDon.GetTongTon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                        ///chọn 1 kỳ cụ thể
+                        else
+                            if (cmbKy.SelectedIndex > 0)
+                                dt = _cHoaDon.GetTongTon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    }
+                    dgvHDCoQuan.DataSource = dt;
+                }
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -10,6 +10,8 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.Doi;
 using ThuTien.LinQ;
 using System.Globalization;
+using ThuTien.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -47,36 +49,105 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            ///chọn tất cả nhân viên trong tổ
-            if (cmbNhanVien.SelectedValue.ToString() == "-1")
-                ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex == 0)
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                if (chkNgayKiemTra.Checked)
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
-                }
-                ///chọn 1 kỳ cụ thể
-                else
-                    if (cmbKy.SelectedIndex > 0)
+                    ///chọn tất cả nhân viên trong tổ
+                    if (cmbNhanVien.SelectedValue.ToString() == "-1")
                     {
-                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
                     }
                     ///chọn 1 nhân viên cụ thể
                     else
+                    {
+                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                    }
+                }
+                else
+                {
+                    ///chọn tất cả nhân viên trong tổ
+                    if (cmbNhanVien.SelectedValue.ToString() == "-1")
+                    {
                         ///chọn tất cả các kỳ
                         if (cmbKy.SelectedIndex == 0)
                         {
-                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
-                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNam("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
                         }
                         ///chọn 1 kỳ cụ thể
                         else
                             if (cmbKy.SelectedIndex > 0)
                             {
-                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThuNamKy("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                             }
+                    }
+                    ///chọn 1 nhân viên cụ thể
+                    else
+                    {
+                        ///chọn tất cả các kỳ
+                        if (cmbKy.SelectedIndex == 0)
+                        {
+                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                        }
+                        ///chọn 1 kỳ cụ thể
+                        else
+                            if (cmbKy.SelectedIndex > 0)
+                            {
+                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            }
+                    }
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    if (chkNgayKiemTra.Checked)
+                    {
+                        ///chọn tất cả nhân viên trong tổ
+                        if (cmbNhanVien.SelectedValue.ToString() == "-1")
+                        {
+                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                        }
+                        ///chọn 1 nhân viên cụ thể
+                        else
+                        {
+                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                        }
+                    }
+                    else
+                    {
+                        ///chọn tất cả nhân viên trong tổ
+                        if (cmbNhanVien.SelectedValue.ToString() == "-1")
+                        {
+                            ///chọn tất cả các kỳ
+                            if (cmbKy.SelectedIndex == 0)
+                            {
+                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                            }
+                            ///chọn 1 kỳ cụ thể
+                            else
+                                if (cmbKy.SelectedIndex > 0)
+                                {
+                                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                }
+                        }
+                        ///chọn 1 nhân viên cụ thể
+                        else
+                        {
+                            ///chọn tất cả các kỳ
+                            if (cmbKy.SelectedIndex == 0)
+                            {
+                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                            }
+                            ///chọn 1 kỳ cụ thể
+                            else
+                                if (cmbKy.SelectedIndex > 0)
+                                {
+                                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                }
+                        }
+                    }
+                }    
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -149,6 +220,58 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                DataTable dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()),int.Parse(cmbKy.SelectedItem.ToString()));
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA TỒN";
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item["Ky"];
+                    dr["MLT"] = item["MLT"];
+                    dr["TongCong"] = item["TongCong"];
+                    dr["SoPhatHanh"] = item["SoPhatHanh"];
+                    dr["SoHoaDon"] = item["SoHoaDon"];
+                    dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    DataTable dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item["Ky"];
+                        dr["MLT"] = item["MLT"];
+                        dr["TongCong"] = item["TongCong"];
+                        dr["SoPhatHanh"] = item["SoPhatHanh"];
+                        dr["SoHoaDon"] = item["SoHoaDon"];
+                        dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                }
+            rptDSHoaDon rpt = new rptDSHoaDon();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void chkNgayKiemTra_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNgayKiemTra.Checked)
+                dateGiaiTrach.Enabled = true;
+            else
+                dateGiaiTrach.Enabled = false;
         }
     }
 }

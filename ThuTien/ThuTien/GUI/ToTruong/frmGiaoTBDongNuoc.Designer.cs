@@ -61,6 +61,8 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.btnInDSTBNguoiLap = new System.Windows.Forms.Button();
+            this.btnInDSTBNguoiGiao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -288,6 +290,7 @@
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 16;
+            this.dateDen.Value = new System.DateTime(2015, 6, 26, 16, 4, 19, 0);
             // 
             // label1
             // 
@@ -306,6 +309,7 @@
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 14;
+            this.dateTu.Value = new System.DateTime(2015, 6, 26, 16, 4, 25, 0);
             // 
             // label3
             // 
@@ -349,7 +353,7 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 29;
-            this.btnThem.Text = "Giao";
+            this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -374,11 +378,33 @@
             this.btnSua.Visible = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // btnInDSTBNguoiLap
+            // 
+            this.btnInDSTBNguoiLap.Location = new System.Drawing.Point(716, 10);
+            this.btnInDSTBNguoiLap.Name = "btnInDSTBNguoiLap";
+            this.btnInDSTBNguoiLap.Size = new System.Drawing.Size(117, 23);
+            this.btnInDSTBNguoiLap.TabIndex = 32;
+            this.btnInDSTBNguoiLap.Text = "In DS TB (Người Lập)";
+            this.btnInDSTBNguoiLap.UseVisualStyleBackColor = true;
+            this.btnInDSTBNguoiLap.Click += new System.EventHandler(this.btnInDSTBNguoiLap_Click);
+            // 
+            // btnInDSTBNguoiGiao
+            // 
+            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1149, 84);
+            this.btnInDSTBNguoiGiao.Name = "btnInDSTBNguoiGiao";
+            this.btnInDSTBNguoiGiao.Size = new System.Drawing.Size(121, 23);
+            this.btnInDSTBNguoiGiao.TabIndex = 33;
+            this.btnInDSTBNguoiGiao.Text = "In DS TB (Người Giao)";
+            this.btnInDSTBNguoiGiao.UseVisualStyleBackColor = true;
+            this.btnInDSTBNguoiGiao.Click += new System.EventHandler(this.btnInDSTBNguoiGiao_Click);
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1361, 666);
+            this.Controls.Add(this.btnInDSTBNguoiGiao);
+            this.Controls.Add(this.btnInDSTBNguoiLap);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -439,5 +465,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn CreateBy;
         private DevExpress.XtraGrid.Columns.GridColumn MaNV_DongNuoc;
         private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
+        private System.Windows.Forms.Button btnInDSTBNguoiLap;
+        private System.Windows.Forms.Button btnInDSTBNguoiGiao;
     }
 }

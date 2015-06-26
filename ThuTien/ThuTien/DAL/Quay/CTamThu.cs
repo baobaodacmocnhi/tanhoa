@@ -138,6 +138,7 @@ namespace ThuTien.DAL.Quay
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             itemTT.MaNH,
+                            GiaBieu=itemHD.GB,
                         };
             return LINQToDataTable(query);
         }

@@ -130,6 +130,7 @@ namespace ThuTien.GUI.DongNuoc
                     }
                     _cHoaDon.CommitTransaction();
                     lstHD.Items.Clear();
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -161,6 +162,7 @@ namespace ThuTien.GUI.DongNuoc
                                 }
 
                     _cDongNuoc.SqlCommitTransaction();
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -280,6 +282,8 @@ namespace ThuTien.GUI.DongNuoc
         {
             dsBaoCao dsBaoCao = new dsBaoCao();
             DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+            //DevExpress.XtraGrid.Views.Grid.GridView gv = (DevExpress.XtraGrid.Views.Grid.GridView)gridControl.DefaultView;
+            //dt = ((DataView)gv.DataSource).ToTable();
             foreach (DataRow item in dt.Rows)
                 //if (bool.Parse(item["In"].ToString()))
                 {
@@ -288,6 +292,7 @@ namespace ThuTien.GUI.DongNuoc
                     foreach (DataRow itemChild in childRows)
                     {
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                        dr["Loai"] = "CHUYỂN";
                         dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
                         dr["To"] = CNguoiDung.TenTo;
                         dr["HoTen"] = item["HoTen"];
