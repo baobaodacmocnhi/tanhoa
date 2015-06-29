@@ -114,6 +114,9 @@
             this.dateXepDon = new System.Windows.Forms.DateTimePicker();
             this.label31 = new System.Windows.Forms.Label();
             this.chkXepDon = new System.Windows.Forms.CheckBox();
+            this.chkDM = new System.Windows.Forms.CheckBox();
+            this.chkCCDM = new System.Windows.Forms.CheckBox();
+            this.chkSTGB = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBoxChuyenKhac.SuspendLayout();
@@ -614,6 +617,9 @@
             // 
             // groupBoxChuyenKTXM
             // 
+            this.groupBoxChuyenKTXM.Controls.Add(this.chkSTGB);
+            this.groupBoxChuyenKTXM.Controls.Add(this.chkCCDM);
+            this.groupBoxChuyenKTXM.Controls.Add(this.chkDM);
             this.groupBoxChuyenKTXM.Controls.Add(this.txtGhiChuChuyenKT);
             this.groupBoxChuyenKTXM.Controls.Add(this.label25);
             this.groupBoxChuyenKTXM.Controls.Add(this.cmbNguoiDi);
@@ -951,6 +957,36 @@
             this.chkXepDon.UseVisualStyleBackColor = true;
             this.chkXepDon.CheckedChanged += new System.EventHandler(this.chkXepDon_CheckedChanged);
             // 
+            // chkDM
+            // 
+            this.chkDM.AutoSize = true;
+            this.chkDM.Location = new System.Drawing.Point(9, 53);
+            this.chkDM.Name = "chkDM";
+            this.chkDM.Size = new System.Drawing.Size(51, 21);
+            this.chkDM.TabIndex = 7;
+            this.chkDM.Text = "ĐM";
+            this.chkDM.UseVisualStyleBackColor = true;
+            // 
+            // chkCCDM
+            // 
+            this.chkCCDM.AutoSize = true;
+            this.chkCCDM.Location = new System.Drawing.Point(66, 53);
+            this.chkCCDM.Name = "chkCCDM";
+            this.chkCCDM.Size = new System.Drawing.Size(71, 21);
+            this.chkCCDM.TabIndex = 8;
+            this.chkCCDM.Text = "CCDM";
+            this.chkCCDM.UseVisualStyleBackColor = true;
+            // 
+            // chkSTGB
+            // 
+            this.chkSTGB.AutoSize = true;
+            this.chkSTGB.Location = new System.Drawing.Point(143, 53);
+            this.chkSTGB.Name = "chkSTGB";
+            this.chkSTGB.Size = new System.Drawing.Size(64, 21);
+            this.chkSTGB.TabIndex = 9;
+            this.chkSTGB.Text = "STGB";
+            this.chkSTGB.UseVisualStyleBackColor = true;
+            // 
             // frmCapNhatDonKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1102,5 +1138,8 @@
         private System.Windows.Forms.DateTimePicker dateXepDon;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.CheckBox chkXepDon;
+        private System.Windows.Forms.CheckBox chkSTGB;
+        private System.Windows.Forms.CheckBox chkCCDM;
+        private System.Windows.Forms.CheckBox chkDM;
     }
 }

@@ -34,6 +34,19 @@ namespace KTKS_DonKH.GUI.ToXuLy
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
+        private void CountdgvDSTruyThuTienNuoc()
+        {
+            int Tongm3 = 0;
+            int TongTien = 0;
+            foreach (DataGridViewRow item in dgvDSTruyThuTienNuoc.Rows)
+            {
+                Tongm3 += _cTTTN.CountTongm3(decimal.Parse(item.Cells["MaTTTN"].Value.ToString()));
+                TongTien += _cTTTN.CountTongTienThanhToan(decimal.Parse(item.Cells["MaTTTN"].Value.ToString()));
+            }
+            txtTongm3.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Tongm3);
+            txtTongTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTien);
+        }
+
         private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cmbTimTheo.SelectedItem.ToString())
@@ -86,6 +99,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                         dgvDSTruyThuTienNuoc.DataSource = _cTTTN.LoadDSTruyThuTienNuocbyDanhBo(txtNoiDungTimKiem.Text.Trim().Replace("-", ""));
                         break;
                 }
+                CountdgvDSTruyThuTienNuoc();
             }
         }
 
@@ -97,6 +111,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
         {
             dgvDSTruyThuTienNuoc.DataSource = _cTTTN.LoadDSTruyThuTienNuocbyCreateDate(dateTimKiem.Value);
+            CountdgvDSTruyThuTienNuoc();
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
@@ -107,6 +122,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
             dgvDSTruyThuTienNuoc.DataSource = _cTTTN.LoadDSTruyThuTienNuocbyCreateDates(dateTu.Value, dateDen.Value);
+            CountdgvDSTruyThuTienNuoc();
         }
 
         private void dgvDSTruyThuTienNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

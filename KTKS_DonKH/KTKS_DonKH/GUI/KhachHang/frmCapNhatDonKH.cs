@@ -231,6 +231,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                         chkChuyenKT.Checked = true;
                         dateChuyenKT.Value = _donkh.NgayChuyenKT.Value;
                         cmbNguoiDi.SelectedValue = _donkh.NguoiDi;
+                        chkDM.Checked = _donkh.DM;
+                        chkCCDM.Checked = _donkh.CCDM;
+                        chkSTGB.Checked = _donkh.STGB;
                         txtGhiChuChuyenKT.Text = _donkh.GhiChuChuyenKT;
                     }
                     else
@@ -238,6 +241,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                         chkChuyenKT.Checked = false;
                         dateChuyenKT.Value = DateTime.Now;
                         cmbNguoiDi.SelectedIndex = -1;
+                        chkDM.Checked = false;
+                        chkCCDM.Checked = false;
+                        chkSTGB.Checked = false;
                         txtGhiChuChuyenKT.Text = "";
                     }
 
@@ -332,6 +338,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                     _donkh.NgayChuyenKT = dateChuyenKT.Value;
                     if (cmbNguoiDi.SelectedIndex != -1)
                         _donkh.NguoiDi = int.Parse(cmbNguoiDi.SelectedValue.ToString());
+                    _donkh.DM = chkDM.Checked;
+                    _donkh.CCDM = chkCCDM.Checked;
+                    _donkh.STGB = chkSTGB.Checked;
                     _donkh.GhiChuChuyenKT = txtGhiChuChuyenKT.Text.Trim();
                 }
                 else
@@ -339,6 +348,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                     _donkh.ChuyenKT = false;
                     _donkh.NgayChuyenKT = null;
                     _donkh.NguoiDi = null;
+                    _donkh.DM = false;
+                    _donkh.CCDM = false;
+                    _donkh.STGB = false;
                     _donkh.GhiChuChuyenKT = null;
                 }
 
@@ -423,6 +435,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                         LichSuChuyenKT lichsuchuyenkt = new LichSuChuyenKT();
                         lichsuchuyenkt.NgayChuyen = _donkh.NgayChuyenKT;
                         lichsuchuyenkt.NguoiDi = _donkh.NguoiDi;
+                        lichsuchuyenkt.DM = _donkh.DM;
+                        lichsuchuyenkt.CCDM = _donkh.CCDM;
+                        lichsuchuyenkt.STGB = _donkh.STGB;
                         lichsuchuyenkt.GhiChuChuyen = _donkh.GhiChuChuyenKT;
                         lichsuchuyenkt.MaDon = _donkh.MaDon;
                         _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);

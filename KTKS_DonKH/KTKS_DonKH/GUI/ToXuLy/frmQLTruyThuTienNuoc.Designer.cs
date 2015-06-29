@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimKiem = new System.Windows.Forms.DateTimePicker();
@@ -50,6 +50,8 @@
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tongm3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTongm3 = new System.Windows.Forms.TextBox();
+            this.txtTongTien = new System.Windows.Forms.TextBox();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTruyThuTienNuoc)).BeginInit();
             this.SuspendLayout();
@@ -170,14 +172,14 @@
             // 
             this.dgvDSTruyThuTienNuoc.AllowUserToAddRows = false;
             this.dgvDSTruyThuTienNuoc.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSTruyThuTienNuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSTruyThuTienNuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSTruyThuTienNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSTruyThuTienNuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaDon,
@@ -194,7 +196,7 @@
             this.dgvDSTruyThuTienNuoc.MultiSelect = false;
             this.dgvDSTruyThuTienNuoc.Name = "dgvDSTruyThuTienNuoc";
             this.dgvDSTruyThuTienNuoc.RowHeadersWidth = 60;
-            this.dgvDSTruyThuTienNuoc.Size = new System.Drawing.Size(1287, 470);
+            this.dgvDSTruyThuTienNuoc.Size = new System.Drawing.Size(1287, 463);
             this.dgvDSTruyThuTienNuoc.TabIndex = 25;
             this.dgvDSTruyThuTienNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSTruyThuTienNuoc_CellFormatting);
             this.dgvDSTruyThuTienNuoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDSTruyThuTienNuoc_KeyDown);
@@ -255,12 +257,28 @@
             this.TongTien.HeaderText = "Tổng Tiền";
             this.TongTien.Name = "TongTien";
             // 
+            // txtTongm3
+            // 
+            this.txtTongm3.Location = new System.Drawing.Point(1075, 530);
+            this.txtTongm3.Name = "txtTongm3";
+            this.txtTongm3.Size = new System.Drawing.Size(100, 25);
+            this.txtTongm3.TabIndex = 26;
+            // 
+            // txtTongTien
+            // 
+            this.txtTongTien.Location = new System.Drawing.Point(1175, 530);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Size = new System.Drawing.Size(100, 25);
+            this.txtTongTien.TabIndex = 27;
+            // 
             // frmQLTruyThuTienNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1332, 628);
+            this.Controls.Add(this.txtTongTien);
+            this.Controls.Add(this.txtTongm3);
             this.Controls.Add(this.dgvDSTruyThuTienNuoc);
             this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.label2);
@@ -305,5 +323,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tongm3;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTien;
+        private System.Windows.Forms.TextBox txtTongm3;
+        private System.Windows.Forms.TextBox txtTongTien;
     }
 }
