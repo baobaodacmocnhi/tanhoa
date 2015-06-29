@@ -755,6 +755,7 @@
       <Column Name="DM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CCDM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="STGB" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="KTTT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="GhiChuChuyenKT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ChuyenVanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayChuyenVanPhong" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -910,6 +911,8 @@
       <Column Name="MaLSCT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MaCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Lo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoNKTong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoNKConLai" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -983,6 +986,7 @@
       <Column Name="DM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CCDM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="STGB" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="KTTT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

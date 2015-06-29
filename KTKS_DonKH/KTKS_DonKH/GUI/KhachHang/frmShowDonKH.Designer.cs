@@ -966,7 +966,7 @@
             // chkMoNuoc
             // 
             this.chkMoNuoc.AutoSize = true;
-            this.chkMoNuoc.Location = new System.Drawing.Point(670, 86);
+            this.chkMoNuoc.Location = new System.Drawing.Point(667, 86);
             this.chkMoNuoc.Name = "chkMoNuoc";
             this.chkMoNuoc.Size = new System.Drawing.Size(82, 21);
             this.chkMoNuoc.TabIndex = 86;
@@ -976,7 +976,7 @@
             // chkThayDoiMST
             // 
             this.chkThayDoiMST.AutoSize = true;
-            this.chkThayDoiMST.Location = new System.Drawing.Point(517, 113);
+            this.chkThayDoiMST.Location = new System.Drawing.Point(514, 113);
             this.chkThayDoiMST.Name = "chkThayDoiMST";
             this.chkThayDoiMST.Size = new System.Drawing.Size(147, 21);
             this.chkThayDoiMST.TabIndex = 85;
@@ -986,7 +986,7 @@
             // chkGiamDM
             // 
             this.chkGiamDM.AutoSize = true;
-            this.chkGiamDM.Location = new System.Drawing.Point(15, 86);
+            this.chkGiamDM.Location = new System.Drawing.Point(12, 86);
             this.chkGiamDM.Name = "chkGiamDM";
             this.chkGiamDM.Size = new System.Drawing.Size(151, 21);
             this.chkGiamDM.TabIndex = 78;
@@ -996,7 +996,7 @@
             // chkTamNgung
             // 
             this.chkTamNgung.AutoSize = true;
-            this.chkTamNgung.Location = new System.Drawing.Point(670, 59);
+            this.chkTamNgung.Location = new System.Drawing.Point(667, 59);
             this.chkTamNgung.Name = "chkTamNgung";
             this.chkTamNgung.Size = new System.Drawing.Size(178, 21);
             this.chkTamNgung.TabIndex = 83;
@@ -1006,7 +1006,7 @@
             // chkHuyHopDong
             // 
             this.chkHuyHopDong.AutoSize = true;
-            this.chkHuyHopDong.Location = new System.Drawing.Point(670, 113);
+            this.chkHuyHopDong.Location = new System.Drawing.Point(667, 113);
             this.chkHuyHopDong.Name = "chkHuyHopDong";
             this.chkHuyHopDong.Size = new System.Drawing.Size(111, 21);
             this.chkHuyHopDong.TabIndex = 84;
@@ -1016,7 +1016,7 @@
             // chkChiNiem
             // 
             this.chkChiNiem.AutoSize = true;
-            this.chkChiNiem.Location = new System.Drawing.Point(517, 59);
+            this.chkChiNiem.Location = new System.Drawing.Point(514, 59);
             this.chkChiNiem.Name = "chkChiNiem";
             this.chkChiNiem.Size = new System.Drawing.Size(79, 21);
             this.chkChiNiem.TabIndex = 82;
@@ -1026,7 +1026,7 @@
             // chkMatDHN
             // 
             this.chkMatDHN.AutoSize = true;
-            this.chkMatDHN.Location = new System.Drawing.Point(377, 113);
+            this.chkMatDHN.Location = new System.Drawing.Point(374, 113);
             this.chkMatDHN.Name = "chkMatDHN";
             this.chkMatDHN.Size = new System.Drawing.Size(88, 21);
             this.chkMatDHN.TabIndex = 81;
@@ -1036,7 +1036,7 @@
             // chkHuHongDHN
             // 
             this.chkHuHongDHN.AutoSize = true;
-            this.chkHuHongDHN.Location = new System.Drawing.Point(670, 140);
+            this.chkHuHongDHN.Location = new System.Drawing.Point(667, 140);
             this.chkHuHongDHN.Name = "chkHuHongDHN";
             this.chkHuHongDHN.Size = new System.Drawing.Size(115, 21);
             this.chkHuHongDHN.TabIndex = 80;
@@ -1046,7 +1046,7 @@
             // chkDieuChinhSoNha
             // 
             this.chkDieuChinhSoNha.AutoSize = true;
-            this.chkDieuChinhSoNha.Location = new System.Drawing.Point(517, 86);
+            this.chkDieuChinhSoNha.Location = new System.Drawing.Point(514, 86);
             this.chkDieuChinhSoNha.Name = "chkDieuChinhSoNha";
             this.chkDieuChinhSoNha.Size = new System.Drawing.Size(132, 21);
             this.chkDieuChinhSoNha.TabIndex = 79;
@@ -1056,7 +1056,7 @@
             // txtMaXepDon
             // 
             this.txtMaXepDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaXepDon.Location = new System.Drawing.Point(501, 156);
+            this.txtMaXepDon.Location = new System.Drawing.Point(498, 156);
             this.txtMaXepDon.Name = "txtMaXepDon";
             this.txtMaXepDon.ReadOnly = true;
             this.txtMaXepDon.Size = new System.Drawing.Size(127, 25);
@@ -1069,7 +1069,7 @@
             this.label17.AutoSize = true;
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(501, 137);
+            this.label17.Location = new System.Drawing.Point(498, 137);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(127, 19);
             this.label17.TabIndex = 67;
@@ -1078,7 +1078,7 @@
             // 
             // txtLyDoKhac
             // 
-            this.txtLyDoKhac.Location = new System.Drawing.Point(122, 138);
+            this.txtLyDoKhac.Location = new System.Drawing.Point(119, 138);
             this.txtLyDoKhac.Name = "txtLyDoKhac";
             this.txtLyDoKhac.ReadOnly = true;
             this.txtLyDoKhac.Size = new System.Drawing.Size(327, 25);
@@ -1087,7 +1087,7 @@
             // chkLyDoKhac
             // 
             this.chkLyDoKhac.AutoSize = true;
-            this.chkLyDoKhac.Location = new System.Drawing.Point(15, 140);
+            this.chkLyDoKhac.Location = new System.Drawing.Point(12, 140);
             this.chkLyDoKhac.Name = "chkLyDoKhac";
             this.chkLyDoKhac.Size = new System.Drawing.Size(101, 21);
             this.chkLyDoKhac.TabIndex = 76;
@@ -1097,7 +1097,7 @@
             // chkCatChuyenDM
             // 
             this.chkCatChuyenDM.AutoSize = true;
-            this.chkCatChuyenDM.Location = new System.Drawing.Point(15, 113);
+            this.chkCatChuyenDM.Location = new System.Drawing.Point(12, 113);
             this.chkCatChuyenDM.Name = "chkCatChuyenDM";
             this.chkCatChuyenDM.Size = new System.Drawing.Size(190, 21);
             this.chkCatChuyenDM.TabIndex = 75;
@@ -1107,7 +1107,7 @@
             // chkCapDM
             // 
             this.chkCapDM.AutoSize = true;
-            this.chkCapDM.Location = new System.Drawing.Point(15, 59);
+            this.chkCapDM.Location = new System.Drawing.Point(12, 59);
             this.chkCapDM.Name = "chkCapDM";
             this.chkCapDM.Size = new System.Drawing.Size(144, 21);
             this.chkCapDM.TabIndex = 74;
@@ -1117,7 +1117,7 @@
             // chkThayDoiTenHopDong
             // 
             this.chkThayDoiTenHopDong.AutoSize = true;
-            this.chkThayDoiTenHopDong.Location = new System.Drawing.Point(211, 86);
+            this.chkThayDoiTenHopDong.Location = new System.Drawing.Point(208, 86);
             this.chkThayDoiTenHopDong.Name = "chkThayDoiTenHopDong";
             this.chkThayDoiTenHopDong.Size = new System.Drawing.Size(160, 21);
             this.chkThayDoiTenHopDong.TabIndex = 73;
@@ -1127,7 +1127,7 @@
             // chkThayDoiGiaNuoc
             // 
             this.chkThayDoiGiaNuoc.AutoSize = true;
-            this.chkThayDoiGiaNuoc.Location = new System.Drawing.Point(377, 86);
+            this.chkThayDoiGiaNuoc.Location = new System.Drawing.Point(374, 86);
             this.chkThayDoiGiaNuoc.Name = "chkThayDoiGiaNuoc";
             this.chkThayDoiGiaNuoc.Size = new System.Drawing.Size(134, 21);
             this.chkThayDoiGiaNuoc.TabIndex = 72;
@@ -1137,7 +1137,7 @@
             // chkKiemTraDHN
             // 
             this.chkKiemTraDHN.AutoSize = true;
-            this.chkKiemTraDHN.Location = new System.Drawing.Point(211, 59);
+            this.chkKiemTraDHN.Location = new System.Drawing.Point(208, 59);
             this.chkKiemTraDHN.Name = "chkKiemTraDHN";
             this.chkKiemTraDHN.Size = new System.Drawing.Size(116, 21);
             this.chkKiemTraDHN.TabIndex = 69;
@@ -1147,7 +1147,7 @@
             // chkChiSoNuoc
             // 
             this.chkChiSoNuoc.AutoSize = true;
-            this.chkChiSoNuoc.Location = new System.Drawing.Point(377, 59);
+            this.chkChiSoNuoc.Location = new System.Drawing.Point(374, 59);
             this.chkChiSoNuoc.Name = "chkChiSoNuoc";
             this.chkChiSoNuoc.Size = new System.Drawing.Size(98, 21);
             this.chkChiSoNuoc.TabIndex = 71;
@@ -1157,7 +1157,7 @@
             // chkTienNuoc
             // 
             this.chkTienNuoc.AutoSize = true;
-            this.chkTienNuoc.Location = new System.Drawing.Point(211, 113);
+            this.chkTienNuoc.Location = new System.Drawing.Point(208, 113);
             this.chkTienNuoc.Name = "chkTienNuoc";
             this.chkTienNuoc.Size = new System.Drawing.Size(86, 21);
             this.chkTienNuoc.TabIndex = 70;
@@ -1170,6 +1170,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1365, 544);
+            this.Controls.Add(this.chkCapDM);
             this.Controls.Add(this.chkMoNuoc);
             this.Controls.Add(this.chkThayDoiMST);
             this.Controls.Add(this.chkGiamDM);
@@ -1184,13 +1185,12 @@
             this.Controls.Add(this.txtLyDoKhac);
             this.Controls.Add(this.chkLyDoKhac);
             this.Controls.Add(this.chkCatChuyenDM);
-            this.Controls.Add(this.chkCapDM);
+            this.Controls.Add(this.label28);
             this.Controls.Add(this.chkThayDoiTenHopDong);
             this.Controls.Add(this.chkThayDoiGiaNuoc);
             this.Controls.Add(this.chkKiemTraDHN);
             this.Controls.Add(this.chkChiSoNuoc);
             this.Controls.Add(this.chkTienNuoc);
-            this.Controls.Add(this.label28);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxChuyenKhac);
             this.Controls.Add(this.chkChuyenKhac);

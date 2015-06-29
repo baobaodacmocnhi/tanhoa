@@ -802,6 +802,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     LoaiChuyen = "Văn Phòng",
                                     itemLSCVP.GhiChuChuyen,
                                     NguoiDi = itemUser.HoTen,
+                                    ChiTiet = "",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -982,6 +983,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     LoaiChuyen = "Tiến Trình Giải Quyết",
                                     itemLSCVP.GhiChuChuyen,
                                     NguoiDi = "",
+                                    ChiTiet = "",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1162,6 +1164,7 @@ namespace KTKS_DonKH.DAL.KhachHang
                                     LoaiChuyen = "Khác",
                                     itemLSCVP.GhiChuChuyen,
                                     NguoiDi = "",
+                                    ChiTiet = "",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

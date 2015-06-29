@@ -162,7 +162,7 @@
             this.chkCT_GCNDTDHN.AutoSize = true;
             this.chkCT_GCNDTDHN.Location = new System.Drawing.Point(480, 85);
             this.chkCT_GCNDTDHN.Name = "chkCT_GCNDTDHN";
-            this.chkCT_GCNDTDHN.Size = new System.Drawing.Size(226, 21);
+            this.chkCT_GCNDTDHN.Size = new System.Drawing.Size(182, 17);
             this.chkCT_GCNDTDHN.TabIndex = 7;
             this.chkCT_GCNDTDHN.Text = "Giấy Ưng Thuận Đứng Tên ĐHN";
             this.chkCT_GCNDTDHN.UseVisualStyleBackColor = true;
@@ -172,7 +172,7 @@
             this.chkCT_GDKKD.AutoSize = true;
             this.chkCT_GDKKD.Location = new System.Drawing.Point(13, 85);
             this.chkCT_GDKKD.Name = "chkCT_GDKKD";
-            this.chkCT_GDKKD.Size = new System.Drawing.Size(187, 21);
+            this.chkCT_GDKKD.Size = new System.Drawing.Size(150, 17);
             this.chkCT_GDKKD.TabIndex = 6;
             this.chkCT_GDKKD.Text = "Giấy Đăng Ký Kinh Doanh";
             this.chkCT_GDKKD.UseVisualStyleBackColor = true;
@@ -182,7 +182,7 @@
             this.chkCT_GXN2SN.AutoSize = true;
             this.chkCT_GXN2SN.Location = new System.Drawing.Point(480, 58);
             this.chkCT_GXN2SN.Name = "chkCT_GXN2SN";
-            this.chkCT_GXN2SN.Size = new System.Drawing.Size(169, 21);
+            this.chkCT_GXN2SN.Size = new System.Drawing.Size(137, 17);
             this.chkCT_GXN2SN.TabIndex = 5;
             this.chkCT_GXN2SN.Text = "Giấy XN 2 Số Nhà Là 1";
             this.chkCT_GXN2SN.UseVisualStyleBackColor = true;
@@ -192,7 +192,7 @@
             this.chkCT_GC_SDSN.AutoSize = true;
             this.chkCT_GC_SDSN.Location = new System.Drawing.Point(243, 58);
             this.chkCT_GC_SDSN.Name = "chkCT_GC_SDSN";
-            this.chkCT_GC_SDSN.Size = new System.Drawing.Size(187, 21);
+            this.chkCT_GC_SDSN.Size = new System.Drawing.Size(154, 17);
             this.chkCT_GC_SDSN.TabIndex = 4;
             this.chkCT_GC_SDSN.Text = "Giấy Cấp hoặc Đổi Số Nhà";
             this.chkCT_GC_SDSN.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             this.chkCT_HDTN_CQN.AutoSize = true;
             this.chkCT_HDTN_CQN.Location = new System.Drawing.Point(13, 58);
             this.chkCT_HDTN_CQN.Name = "chkCT_HDTN_CQN";
-            this.chkCT_HDTN_CQN.Size = new System.Drawing.Size(199, 21);
+            this.chkCT_HDTN_CQN.Size = new System.Drawing.Size(161, 17);
             this.chkCT_HDTN_CQN.TabIndex = 3;
             this.chkCT_HDTN_CQN.Text = "Hợp Đồng TN hoặc CQ Nhà";
             this.chkCT_HDTN_CQN.UseVisualStyleBackColor = true;
@@ -212,7 +212,7 @@
             this.chkCT_STT_GXNTT.AutoSize = true;
             this.chkCT_STT_GXNTT.Location = new System.Drawing.Point(480, 31);
             this.chkCT_STT_GXNTT.Name = "chkCT_STT_GXNTT";
-            this.chkCT_STT_GXNTT.Size = new System.Drawing.Size(240, 21);
+            this.chkCT_STT_GXNTT.Size = new System.Drawing.Size(194, 17);
             this.chkCT_STT_GXNTT.TabIndex = 2;
             this.chkCT_STT_GXNTT.Text = "Sổ Tạm Trú hoặc Giấy XN Tạm Trú";
             this.chkCT_STT_GXNTT.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             this.chkCT_HK_KT3.AutoSize = true;
             this.chkCT_HK_KT3.Location = new System.Drawing.Point(243, 31);
             this.chkCT_HK_KT3.Name = "chkCT_HK_KT3";
-            this.chkCT_HK_KT3.Size = new System.Drawing.Size(144, 21);
+            this.chkCT_HK_KT3.Size = new System.Drawing.Size(118, 17);
             this.chkCT_HK_KT3.TabIndex = 1;
             this.chkCT_HK_KT3.Text = "Hộ Khẩu hoặc KT3";
             this.chkCT_HK_KT3.UseVisualStyleBackColor = true;
@@ -232,7 +232,7 @@
             this.chkCT_HoaDon.AutoSize = true;
             this.chkCT_HoaDon.Location = new System.Drawing.Point(13, 31);
             this.chkCT_HoaDon.Name = "chkCT_HoaDon";
-            this.chkCT_HoaDon.Size = new System.Drawing.Size(82, 21);
+            this.chkCT_HoaDon.Size = new System.Drawing.Size(69, 17);
             this.chkCT_HoaDon.TabIndex = 0;
             this.chkCT_HoaDon.Text = "Hóa Đơn";
             this.chkCT_HoaDon.UseVisualStyleBackColor = true;
@@ -427,7 +427,7 @@
             // 
             // txtLyDoKhac
             // 
-            this.txtLyDoKhac.Location = new System.Drawing.Point(122, 143);
+            this.txtLyDoKhac.Location = new System.Drawing.Point(119, 138);
             this.txtLyDoKhac.Name = "txtLyDoKhac";
             this.txtLyDoKhac.ReadOnly = true;
             this.txtLyDoKhac.Size = new System.Drawing.Size(327, 25);
@@ -436,7 +436,7 @@
             // chkLyDoKhac
             // 
             this.chkLyDoKhac.AutoSize = true;
-            this.chkLyDoKhac.Location = new System.Drawing.Point(15, 145);
+            this.chkLyDoKhac.Location = new System.Drawing.Point(12, 140);
             this.chkLyDoKhac.Name = "chkLyDoKhac";
             this.chkLyDoKhac.Size = new System.Drawing.Size(101, 21);
             this.chkLyDoKhac.TabIndex = 22;
@@ -447,7 +447,7 @@
             // chkCatChuyenDM
             // 
             this.chkCatChuyenDM.AutoSize = true;
-            this.chkCatChuyenDM.Location = new System.Drawing.Point(15, 118);
+            this.chkCatChuyenDM.Location = new System.Drawing.Point(12, 113);
             this.chkCatChuyenDM.Name = "chkCatChuyenDM";
             this.chkCatChuyenDM.Size = new System.Drawing.Size(190, 21);
             this.chkCatChuyenDM.TabIndex = 20;
@@ -457,7 +457,7 @@
             // chkCapDM
             // 
             this.chkCapDM.AutoSize = true;
-            this.chkCapDM.Location = new System.Drawing.Point(15, 64);
+            this.chkCapDM.Location = new System.Drawing.Point(12, 59);
             this.chkCapDM.Name = "chkCapDM";
             this.chkCapDM.Size = new System.Drawing.Size(144, 21);
             this.chkCapDM.TabIndex = 19;
@@ -467,7 +467,7 @@
             // chkThayDoiTenHopDong
             // 
             this.chkThayDoiTenHopDong.AutoSize = true;
-            this.chkThayDoiTenHopDong.Location = new System.Drawing.Point(211, 91);
+            this.chkThayDoiTenHopDong.Location = new System.Drawing.Point(208, 86);
             this.chkThayDoiTenHopDong.Name = "chkThayDoiTenHopDong";
             this.chkThayDoiTenHopDong.Size = new System.Drawing.Size(160, 21);
             this.chkThayDoiTenHopDong.TabIndex = 18;
@@ -477,7 +477,7 @@
             // chkThayDoiGiaNuoc
             // 
             this.chkThayDoiGiaNuoc.AutoSize = true;
-            this.chkThayDoiGiaNuoc.Location = new System.Drawing.Point(377, 91);
+            this.chkThayDoiGiaNuoc.Location = new System.Drawing.Point(374, 86);
             this.chkThayDoiGiaNuoc.Name = "chkThayDoiGiaNuoc";
             this.chkThayDoiGiaNuoc.Size = new System.Drawing.Size(134, 21);
             this.chkThayDoiGiaNuoc.TabIndex = 17;
@@ -487,7 +487,7 @@
             // chkChiSoNuoc
             // 
             this.chkChiSoNuoc.AutoSize = true;
-            this.chkChiSoNuoc.Location = new System.Drawing.Point(377, 64);
+            this.chkChiSoNuoc.Location = new System.Drawing.Point(374, 59);
             this.chkChiSoNuoc.Name = "chkChiSoNuoc";
             this.chkChiSoNuoc.Size = new System.Drawing.Size(98, 21);
             this.chkChiSoNuoc.TabIndex = 16;
@@ -497,7 +497,7 @@
             // chkTienNuoc
             // 
             this.chkTienNuoc.AutoSize = true;
-            this.chkTienNuoc.Location = new System.Drawing.Point(211, 118);
+            this.chkTienNuoc.Location = new System.Drawing.Point(208, 113);
             this.chkTienNuoc.Name = "chkTienNuoc";
             this.chkTienNuoc.Size = new System.Drawing.Size(86, 21);
             this.chkTienNuoc.TabIndex = 15;
@@ -507,7 +507,7 @@
             // chkKiemTraDHN
             // 
             this.chkKiemTraDHN.AutoSize = true;
-            this.chkKiemTraDHN.Location = new System.Drawing.Point(211, 64);
+            this.chkKiemTraDHN.Location = new System.Drawing.Point(208, 59);
             this.chkKiemTraDHN.Name = "chkKiemTraDHN";
             this.chkKiemTraDHN.Size = new System.Drawing.Size(116, 21);
             this.chkKiemTraDHN.TabIndex = 14;
@@ -621,7 +621,7 @@
             // txtMaXepDon
             // 
             this.txtMaXepDon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaXepDon.Location = new System.Drawing.Point(501, 161);
+            this.txtMaXepDon.Location = new System.Drawing.Point(498, 156);
             this.txtMaXepDon.Name = "txtMaXepDon";
             this.txtMaXepDon.ReadOnly = true;
             this.txtMaXepDon.Size = new System.Drawing.Size(127, 25);
@@ -634,7 +634,7 @@
             this.label17.AutoSize = true;
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(501, 142);
+            this.label17.Location = new System.Drawing.Point(498, 137);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(127, 19);
             this.label17.TabIndex = 12;
@@ -676,7 +676,7 @@
             // chkGiamDM
             // 
             this.chkGiamDM.AutoSize = true;
-            this.chkGiamDM.Location = new System.Drawing.Point(15, 91);
+            this.chkGiamDM.Location = new System.Drawing.Point(12, 86);
             this.chkGiamDM.Name = "chkGiamDM";
             this.chkGiamDM.Size = new System.Drawing.Size(151, 21);
             this.chkGiamDM.TabIndex = 32;
@@ -686,7 +686,7 @@
             // chkDieuChinhSoNha
             // 
             this.chkDieuChinhSoNha.AutoSize = true;
-            this.chkDieuChinhSoNha.Location = new System.Drawing.Point(517, 91);
+            this.chkDieuChinhSoNha.Location = new System.Drawing.Point(514, 86);
             this.chkDieuChinhSoNha.Name = "chkDieuChinhSoNha";
             this.chkDieuChinhSoNha.Size = new System.Drawing.Size(132, 21);
             this.chkDieuChinhSoNha.TabIndex = 33;
@@ -696,7 +696,7 @@
             // chkHuHongDHN
             // 
             this.chkHuHongDHN.AutoSize = true;
-            this.chkHuHongDHN.Location = new System.Drawing.Point(670, 145);
+            this.chkHuHongDHN.Location = new System.Drawing.Point(667, 140);
             this.chkHuHongDHN.Name = "chkHuHongDHN";
             this.chkHuHongDHN.Size = new System.Drawing.Size(115, 21);
             this.chkHuHongDHN.TabIndex = 34;
@@ -706,7 +706,7 @@
             // chkMatDHN
             // 
             this.chkMatDHN.AutoSize = true;
-            this.chkMatDHN.Location = new System.Drawing.Point(377, 118);
+            this.chkMatDHN.Location = new System.Drawing.Point(374, 113);
             this.chkMatDHN.Name = "chkMatDHN";
             this.chkMatDHN.Size = new System.Drawing.Size(88, 21);
             this.chkMatDHN.TabIndex = 35;
@@ -716,7 +716,7 @@
             // chkChiNiem
             // 
             this.chkChiNiem.AutoSize = true;
-            this.chkChiNiem.Location = new System.Drawing.Point(517, 64);
+            this.chkChiNiem.Location = new System.Drawing.Point(514, 59);
             this.chkChiNiem.Name = "chkChiNiem";
             this.chkChiNiem.Size = new System.Drawing.Size(79, 21);
             this.chkChiNiem.TabIndex = 36;
@@ -726,7 +726,7 @@
             // chkTamNgung
             // 
             this.chkTamNgung.AutoSize = true;
-            this.chkTamNgung.Location = new System.Drawing.Point(670, 64);
+            this.chkTamNgung.Location = new System.Drawing.Point(667, 59);
             this.chkTamNgung.Name = "chkTamNgung";
             this.chkTamNgung.Size = new System.Drawing.Size(178, 21);
             this.chkTamNgung.TabIndex = 37;
@@ -736,7 +736,7 @@
             // chkHuyHopDong
             // 
             this.chkHuyHopDong.AutoSize = true;
-            this.chkHuyHopDong.Location = new System.Drawing.Point(670, 118);
+            this.chkHuyHopDong.Location = new System.Drawing.Point(667, 113);
             this.chkHuyHopDong.Name = "chkHuyHopDong";
             this.chkHuyHopDong.Size = new System.Drawing.Size(111, 21);
             this.chkHuyHopDong.TabIndex = 38;
@@ -746,7 +746,7 @@
             // chkThayDoiMST
             // 
             this.chkThayDoiMST.AutoSize = true;
-            this.chkThayDoiMST.Location = new System.Drawing.Point(517, 118);
+            this.chkThayDoiMST.Location = new System.Drawing.Point(514, 113);
             this.chkThayDoiMST.Name = "chkThayDoiMST";
             this.chkThayDoiMST.Size = new System.Drawing.Size(147, 21);
             this.chkThayDoiMST.TabIndex = 39;
@@ -769,7 +769,7 @@
             // chkMoNuoc
             // 
             this.chkMoNuoc.AutoSize = true;
-            this.chkMoNuoc.Location = new System.Drawing.Point(670, 91);
+            this.chkMoNuoc.Location = new System.Drawing.Point(667, 86);
             this.chkMoNuoc.Name = "chkMoNuoc";
             this.chkMoNuoc.Size = new System.Drawing.Size(82, 21);
             this.chkMoNuoc.TabIndex = 53;

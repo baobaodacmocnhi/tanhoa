@@ -78,6 +78,10 @@ namespace KTKS_DonKH.GUI.KhachHang
             chkChuyenKT.Checked = false;
             dateChuyenKT.Value = DateTime.Now;
             cmbNguoiDi.SelectedIndex = -1;
+            chkDM.Checked = false;
+            chkCCDM.Checked = false;
+            chkSTGB.Checked = false;
+            chkKTTT.Checked = false;
 
             chkChuyenVanPhong.Checked = false;
             dateChuyenVanPhong.Value = DateTime.Now;
@@ -103,6 +107,42 @@ namespace KTKS_DonKH.GUI.KhachHang
         public void LoadLichSuChuyen(decimal MaDon)
         {
             DataTable dt = _cDonTXL.LoadDSLichSuChuyenKTbyMaDonTKH(MaDon);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                LichSuChuyenKT ls = _cDonTXL.getLichSuChuyenKTbyID(decimal.Parse(item["MaLSChuyen"].ToString()));
+                string ChiTiet = "";
+                if (ls.DM)
+                {
+                    if (ChiTiet == "")
+                        ChiTiet = "ĐM";
+                    else
+                        ChiTiet = ",ĐM";
+                }
+                if (ls.CCDM)
+                {
+                    if (ChiTiet == "")
+                        ChiTiet = "CCĐM";
+                    else
+                        ChiTiet = ",CCĐM";
+                }
+                if (ls.STGB)
+                {
+                    if (ChiTiet == "")
+                        ChiTiet = "STGB";
+                    else
+                        ChiTiet = ",STGB";
+                }
+                if (ls.KTTT)
+                {
+                    if (ChiTiet == "")
+                        ChiTiet = "TT";
+                    else
+                        ChiTiet = ",TT";
+                }
+                item["ChiTiet"] = ChiTiet;
+            }
+
             dt.Merge(_cDonKH.LoadDSLichSuChuyenVanPhongbyMaDonTKH(MaDon));
             dt.Merge(_cDonKH.LoadDSLichSuChuyenBanDoiKhacbyMaDonTKH(MaDon));
             dt.Merge(_cDonKH.LoadDSLichSuChuyenKhacbyMaDonTKH(MaDon));
@@ -142,6 +182,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["LoaiChuyen"] = "TXL";
                     dr["GhiChuChuyen"] = _donkh.GhiChuChuyenToXuLy;
                     dr["NguoiDi"] = "";
+                    dr["ChiTiet"] = "";
 
                     dt.Rows.Add(dr);
                 }
@@ -182,6 +223,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     dr["LoaiChuyen"] = "Xếp Đơn";
                     dr["GhiChuChuyen"] = _donkh.GhiChuXepDon;
                     dr["NguoiDi"] = "";
+                    dr["ChiTiet"] = "";
 
                     dt.Rows.Add(dr);
                 }
@@ -234,6 +276,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         chkDM.Checked = _donkh.DM;
                         chkCCDM.Checked = _donkh.CCDM;
                         chkSTGB.Checked = _donkh.STGB;
+                        chkKTTT.Checked = _donkh.KTTT;
                         txtGhiChuChuyenKT.Text = _donkh.GhiChuChuyenKT;
                     }
                     else
@@ -244,6 +287,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         chkDM.Checked = false;
                         chkCCDM.Checked = false;
                         chkSTGB.Checked = false;
+                        chkKTTT.Checked = false;
                         txtGhiChuChuyenKT.Text = "";
                     }
 
@@ -341,6 +385,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     _donkh.DM = chkDM.Checked;
                     _donkh.CCDM = chkCCDM.Checked;
                     _donkh.STGB = chkSTGB.Checked;
+                    _donkh.KTTT = chkKTTT.Checked;
                     _donkh.GhiChuChuyenKT = txtGhiChuChuyenKT.Text.Trim();
                 }
                 else
@@ -351,6 +396,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                     _donkh.DM = false;
                     _donkh.CCDM = false;
                     _donkh.STGB = false;
+                    _donkh.KTTT = false;
                     _donkh.GhiChuChuyenKT = null;
                 }
 

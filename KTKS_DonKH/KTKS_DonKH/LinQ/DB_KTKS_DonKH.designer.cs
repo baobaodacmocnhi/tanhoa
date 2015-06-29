@@ -16543,6 +16543,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _STGB;
 		
+		private bool _KTTT;
+		
 		private string _GhiChuChuyenKT;
 		
 		private bool _ChuyenVanPhong;
@@ -16745,6 +16747,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCCDMChanged();
     partial void OnSTGBChanging(bool value);
     partial void OnSTGBChanged();
+    partial void OnKTTTChanging(bool value);
+    partial void OnKTTTChanged();
     partial void OnGhiChuChuyenKTChanging(string value);
     partial void OnGhiChuChuyenKTChanged();
     partial void OnChuyenVanPhongChanging(bool value);
@@ -18092,6 +18096,26 @@ namespace KTKS_DonKH.LinQ
 					this._STGB = value;
 					this.SendPropertyChanged("STGB");
 					this.OnSTGBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KTTT", DbType="Bit NOT NULL")]
+		public bool KTTT
+		{
+			get
+			{
+				return this._KTTT;
+			}
+			set
+			{
+				if ((this._KTTT != value))
+				{
+					this.OnKTTTChanging(value);
+					this.SendPropertyChanging();
+					this._KTTT = value;
+					this.SendPropertyChanged("KTTT");
+					this.OnKTTTChanged();
 				}
 			}
 		}
@@ -21534,6 +21558,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MaCT;
 		
+		private string _Lo;
+		
+		private string _Phong;
+		
 		private System.Nullable<int> _SoNKTong;
 		
 		private System.Nullable<int> _SoNKDangKy;
@@ -21604,6 +21632,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnMaCTChanging(string value);
     partial void OnMaCTChanged();
+    partial void OnLoChanging(string value);
+    partial void OnLoChanged();
+    partial void OnPhongChanging(string value);
+    partial void OnPhongChanged();
     partial void OnSoNKTongChanging(System.Nullable<int> value);
     partial void OnSoNKTongChanged();
     partial void OnSoNKDangKyChanging(System.Nullable<int> value);
@@ -21727,6 +21759,46 @@ namespace KTKS_DonKH.LinQ
 					this._MaCT = value;
 					this.SendPropertyChanged("MaCT");
 					this.OnMaCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lo", DbType="NVarChar(50)")]
+		public string Lo
+		{
+			get
+			{
+				return this._Lo;
+			}
+			set
+			{
+				if ((this._Lo != value))
+				{
+					this.OnLoChanging(value);
+					this.SendPropertyChanging();
+					this._Lo = value;
+					this.SendPropertyChanged("Lo");
+					this.OnLoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phong", DbType="NVarChar(50)")]
+		public string Phong
+		{
+			get
+			{
+				return this._Phong;
+			}
+			set
+			{
+				if ((this._Phong != value))
+				{
+					this.OnPhongChanging(value);
+					this.SendPropertyChanging();
+					this._Phong = value;
+					this.SendPropertyChanged("Phong");
+					this.OnPhongChanged();
 				}
 			}
 		}
@@ -23092,6 +23164,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _STGB;
 		
+		private bool _KTTT;
+		
 		private System.Nullable<decimal> _MaDon;
 		
 		private System.Nullable<decimal> _MaDonTXL;
@@ -23126,6 +23200,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCCDMChanged();
     partial void OnSTGBChanging(bool value);
     partial void OnSTGBChanged();
+    partial void OnKTTTChanging(bool value);
+    partial void OnKTTTChanged();
     partial void OnMaDonChanging(System.Nullable<decimal> value);
     partial void OnMaDonChanged();
     partial void OnMaDonTXLChanging(System.Nullable<decimal> value);
@@ -23283,6 +23359,26 @@ namespace KTKS_DonKH.LinQ
 					this._STGB = value;
 					this.SendPropertyChanged("STGB");
 					this.OnSTGBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KTTT", DbType="Bit NOT NULL")]
+		public bool KTTT
+		{
+			get
+			{
+				return this._KTTT;
+			}
+			set
+			{
+				if ((this._KTTT != value))
+				{
+					this.OnKTTTChanging(value);
+					this.SendPropertyChanging();
+					this._KTTT = value;
+					this.SendPropertyChanged("KTTT");
+					this.OnKTTTChanged();
 				}
 			}
 		}

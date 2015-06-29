@@ -1432,6 +1432,7 @@ namespace KTKS_DonKH.DAL.ToXuLy
                                     LoaiChuyen="Kiểm Tra",
                                     itemLSCKT.GhiChuChuyen,
                                     NguoiDi = itemUser.HoTen,
+                                    ChiTiet="",
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
