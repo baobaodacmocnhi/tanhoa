@@ -67,6 +67,13 @@ namespace KTKS_ChungCu.Properties {
             }
         }
         
+        internal static System.Drawing.Icon Office_building {
+            get {
+                object obj = ResourceManager.GetObject("Office_building", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap pencil_24x24 {
             get {
                 object obj = ResourceManager.GetObject("pencil_24x24", resourceCulture);

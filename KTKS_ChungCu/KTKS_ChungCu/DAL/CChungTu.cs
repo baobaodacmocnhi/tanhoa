@@ -45,7 +45,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCT.MaLCT,
                                 itemLCT.TenLCT,
                                 itemCTCT.MaCT,
-                                itemCT.DiaChi,
+                                itemCT.HoTen,
                                 itemCT.SoNKTong,
                                 itemCTCT.SoNKDangKy,
                                 itemCTCT.NgayHetHan,
@@ -98,6 +98,19 @@ namespace KTKS_ChungCu.DAL
             try
             {
                 return db.CTChungTus.Any(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool CheckCTChungTu(string DanhBo, string MaCT,string Lo,string Phong)
+        {
+            try
+            {
+                return db.CTChungTus.Any(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT && itemCT.Lo == Lo && itemCT.Phong == Phong);
             }
             catch (Exception ex)
             {
@@ -177,7 +190,6 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
-
         /// <summary>
         /// Dùng cho Form Cập Nhật Sổ Đăng Ký, khi có >2 yêu cầu cắt nhân khẩu
         /// </summary>
@@ -217,8 +229,8 @@ namespace KTKS_ChungCu.DAL
                         ThemCTChungTu(ctchungtu);
 
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy.Value;
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - ctchungtu.SoNKDangKy;
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
                         db.SubmitChanges();
 
                         ///Cập nhật bảng LichSuChungTu
@@ -301,8 +313,8 @@ namespace KTKS_ChungCu.DAL
                     if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy)
                     {
                         ///Cập nhật Số Nhân Khẩu Cấp cho bảng ChungTu
-                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy.Value - ctchungtuCN.SoNKDangKy.Value);
-                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy.Value;
+                        chungtuCN.SoNKConLai = chungtuCN.SoNKConLai - (ctchungtu.SoNKDangKy - ctchungtuCN.SoNKDangKy);
+                        chungtuCN.SoNKDaCap = ctchungtu.SoNKDangKy;
                         chungtuCN.ModifyDate = DateTime.Now;
                         ///Cập nhật bảng CTChungTu
                         ctchungtuCN.SoNKDangKy = ctchungtu.SoNKDangKy;

@@ -61,7 +61,7 @@ namespace KTKS_ChungCu
             txtPhong.Text = "";
             cmbLoaiCT.SelectedIndex = 0;
             txtMaCT.Text = "";
-            txtDiaChiCT.Text = "";
+            txtHoTenCT.Text = "";
             txtSoNKTong.Text = "";
             txtSoNKDangKy.Text = "";
             txtThoiHan.Text = "";
@@ -101,13 +101,18 @@ namespace KTKS_ChungCu
         {
             try
             {
-                if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0")
+                if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
+                {
+                    MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (txtMaCT.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
                     if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
                         ChungTu chungtu = new ChungTu();
                         chungtu.MaCT = txtMaCT.Text.Trim();
-                        chungtu.DiaChi = txtDiaChiCT.Text.Trim();
-                        chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                        chungtu.HoTen = txtHoTenCT.Text.Trim();
+                        chungtu.SoNKTong = int.Parse(txtSoNKDangKy.Text.Trim());
                         chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                         CTChungTu ctchungtu = new CTChungTu();
@@ -131,11 +136,11 @@ namespace KTKS_ChungCu
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
 
-                            txtLo.Text = "";
-                            txtPhong.Text = "";
-                            cmbLoaiCT.SelectedIndex = 0;
+                            //txtLo.Text = "";
+                            //txtPhong.Text = "";
+                            //cmbLoaiCT.SelectedIndex = 0;
                             txtMaCT.Text = "";
-                            txtDiaChiCT.Text = "";
+                            txtHoTenCT.Text = "";
                             txtSoNKTong.Text = "";
                             txtSoNKDangKy.Text = "";
                             txtThoiHan.Text = "";
@@ -159,13 +164,18 @@ namespace KTKS_ChungCu
             {
                 try
                 {
-                    if (txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0")
+                    if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
+                    {
+                        MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
                         if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                         {
                             ChungTu chungtu = new ChungTu();
                             chungtu.MaCT = txtMaCT.Text.Trim();
-                            chungtu.DiaChi = txtDiaChiCT.Text.Trim();
-                            chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
+                            chungtu.HoTen = txtHoTenCT.Text.Trim();
+                            chungtu.SoNKTong = int.Parse(txtSoNKDangKy.Text.Trim());
                             chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                             CTChungTu ctchungtu = new CTChungTu();
@@ -189,11 +199,11 @@ namespace KTKS_ChungCu
                                 MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
 
-                                txtLo.Text = "";
-                                txtPhong.Text = "";
-                                cmbLoaiCT.SelectedIndex = 0;
+                                //txtLo.Text = "";
+                                //txtPhong.Text = "";
+                                //cmbLoaiCT.SelectedIndex = 0;
                                 txtMaCT.Text = "";
-                                txtDiaChiCT.Text = "";
+                                txtHoTenCT.Text = "";
                                 txtSoNKTong.Text = "";
                                 txtSoNKDangKy.Text = "";
                                 txtThoiHan.Text = "";
@@ -218,7 +228,7 @@ namespace KTKS_ChungCu
             txtPhong.Text = dgvKhachHangChungCu["Phong", e.RowIndex].Value.ToString();
             cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["MaLCT", e.RowIndex].Value.ToString());
             txtMaCT.Text = dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString();
-            txtDiaChiCT.Text = dgvKhachHangChungCu["DiaChi", e.RowIndex].Value.ToString();
+            txtHoTenCT.Text = dgvKhachHangChungCu["HoTen", e.RowIndex].Value.ToString();
             txtSoNKTong.Text = dgvKhachHangChungCu["SoNKTong", e.RowIndex].Value.ToString();
             txtSoNKDangKy.Text = dgvKhachHangChungCu["SoNKDangKy", e.RowIndex].Value.ToString();
             txtThoiHan.Text = dgvKhachHangChungCu["ThoiHan", e.RowIndex].Value.ToString();
@@ -291,6 +301,16 @@ namespace KTKS_ChungCu
         private void frmMain_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void txtMaCT_TimKiem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbLoaiCT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtThoiHan.Text = ((LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
         }
         
     }
