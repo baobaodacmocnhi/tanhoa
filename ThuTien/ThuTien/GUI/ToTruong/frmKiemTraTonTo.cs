@@ -45,6 +45,8 @@ namespace ThuTien.GUI.ToTruong
             cmbNam.ValueMember = "Nam";
 
             lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+
+            dateGiaiTrach.Value = DateTime.Now;
         }
 
         private void btnXem_Click(object sender, EventArgs e)

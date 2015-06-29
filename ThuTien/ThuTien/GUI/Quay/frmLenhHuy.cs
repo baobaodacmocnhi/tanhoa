@@ -27,6 +27,9 @@ namespace ThuTien.GUI.Quay
         private void frmLenhHuy_Load(object sender, EventArgs e)
         {
             dgvHD.AutoGenerateColumns = false;
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)

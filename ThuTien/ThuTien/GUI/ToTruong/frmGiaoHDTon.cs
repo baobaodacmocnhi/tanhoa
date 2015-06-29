@@ -32,6 +32,9 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVien.ValueMember = "MaND";
 
             lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)

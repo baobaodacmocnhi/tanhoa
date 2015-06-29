@@ -36,6 +36,9 @@ namespace ThuTien.GUI.Doi
             cmbTo.DataSource = lst;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         public void CountDataGridView()
@@ -91,12 +94,12 @@ namespace ThuTien.GUI.Doi
                 DataTable dtTG = new DataTable();
                 DataTable dtCQ = new DataTable();
                 List<TT_To> lst = _cTo.GetDS();
-                dtTG = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi("TG", lst[0].MaTo, dateTuNgay.Value, dateDenNgay.Value);
-                dtCQ = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi("CQ", lst[0].MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                dtTG = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi("TG", lst[0].MaTo, dateTu.Value, dateDen.Value);
+                dtCQ = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi("CQ", lst[0].MaTo, dateTu.Value, dateDen.Value);
                 for (int i = 1; i < lst.Count; i++)
                 {
-                    dtTG.Merge(_cHoaDon.GetTongDangNganByNgayDangNgan_Doi("TG", lst[i].MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                    dtCQ.Merge(_cHoaDon.GetTongDangNganByNgayDangNgan_Doi("CQ", lst[i].MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                    dtTG.Merge(_cHoaDon.GetTongDangNganByNgayDangNgan_Doi("TG", lst[i].MaTo, dateTu.Value, dateDen.Value));
+                    dtCQ.Merge(_cHoaDon.GetTongDangNganByNgayDangNgan_Doi("CQ", lst[i].MaTo, dateTu.Value, dateDen.Value));
                 }
 
                 dgvHDTuGia.DataSource = dtTG;
@@ -104,8 +107,8 @@ namespace ThuTien.GUI.Doi
             }
             else
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
-                dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);   
+                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);   
             }
             CountDataGridView();
         }

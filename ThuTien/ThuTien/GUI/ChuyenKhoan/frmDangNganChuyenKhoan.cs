@@ -32,6 +32,8 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void frmDangNganChuyenKhoan_Load(object sender, EventArgs e)
         {
             dgvHDDaThu.AutoGenerateColumns = false;
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)

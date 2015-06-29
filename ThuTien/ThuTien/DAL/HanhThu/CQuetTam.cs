@@ -48,7 +48,7 @@ namespace ThuTien.DAL.HanhThu
             return _db.TT_QuetTams.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public DataTable GetDSByMaNVCreatedDate(int MaNV, string Loai, DateTime CreatedDate)
+        public DataTable GetDSByMaNVCreatedDate(string Loai, int MaNV, DateTime CreatedDate)
         {
             if (Loai == "TG")
             {

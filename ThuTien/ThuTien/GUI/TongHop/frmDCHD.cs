@@ -33,6 +33,9 @@ namespace ThuTien.GUI.TongHop
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvDCHD.AutoGenerateColumns = false;
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         public void Clear()

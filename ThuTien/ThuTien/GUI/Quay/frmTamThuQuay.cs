@@ -37,6 +37,11 @@ namespace ThuTien.GUI.Quay
             dgvHoaDon.AutoGenerateColumns = false;
             dgvTamThu.AutoGenerateColumns = false;
             dgvXacNhanNo.AutoGenerateColumns = false;
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
+            dateTu_XacNhanNo.Value = DateTime.Now;
+            dateDen_XacNhanNo.Value = DateTime.Now;
         }
 
         public void Clear()

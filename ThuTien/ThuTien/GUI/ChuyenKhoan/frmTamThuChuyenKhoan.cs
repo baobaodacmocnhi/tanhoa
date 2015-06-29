@@ -40,6 +40,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             cmbNganHang.DataSource = _cNganHang.GetDS();
             cmbNganHang.DisplayMember = "TenNH";
             cmbNganHang.ValueMember = "MaNH";
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         public void Clear()

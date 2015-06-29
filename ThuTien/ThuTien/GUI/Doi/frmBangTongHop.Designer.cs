@@ -31,12 +31,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateDenNgay = new System.Windows.Forms.DateTimePicker();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
-            this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,14 +56,14 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Đến Ngày:";
             // 
-            // dateDenNgay
+            // dateDen
             // 
-            this.dateDenNgay.CustomFormat = "dd/MM/yyyy";
-            this.dateDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDenNgay.Location = new System.Drawing.Point(389, 12);
-            this.dateDenNgay.Name = "dateDenNgay";
-            this.dateDenNgay.Size = new System.Drawing.Size(95, 20);
-            this.dateDenNgay.TabIndex = 14;
+            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen.Location = new System.Drawing.Point(389, 12);
+            this.dateDen.Name = "dateDen";
+            this.dateDen.Size = new System.Drawing.Size(95, 20);
+            this.dateDen.TabIndex = 14;
             // 
             // cmbTo
             // 
@@ -101,14 +101,14 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
-            // dateTuNgay
+            // dateTu
             // 
-            this.dateTuNgay.CustomFormat = "dd/MM/yyyy";
-            this.dateTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTuNgay.Location = new System.Drawing.Point(224, 12);
-            this.dateTuNgay.Name = "dateTuNgay";
-            this.dateTuNgay.Size = new System.Drawing.Size(95, 20);
-            this.dateTuNgay.TabIndex = 11;
+            this.dateTu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu.Location = new System.Drawing.Point(224, 12);
+            this.dateTu.Name = "dateTu";
+            this.dateTu.Size = new System.Drawing.Size(95, 20);
+            this.dateTu.TabIndex = 11;
             // 
             // dgvHoaDon
             // 
@@ -194,12 +194,12 @@
             this.Controls.Add(this.txtTongHDThu);
             this.Controls.Add(this.dgvHoaDon);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateDenNgay);
+            this.Controls.Add(this.dateDen);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnXem);
-            this.Controls.Add(this.dateTuNgay);
+            this.Controls.Add(this.dateTu);
             this.Name = "frmBangTongHop";
             this.Text = "Bảng Tổng Hợp";
             this.Load += new System.EventHandler(this.frmBangTongHop_Load);
@@ -212,12 +212,12 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateDenNgay;
+        private System.Windows.Forms.DateTimePicker dateDen;
         private System.Windows.Forms.ComboBox cmbTo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnXem;
-        private System.Windows.Forms.DateTimePicker dateTuNgay;
+        private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.DataGridView dgvHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;

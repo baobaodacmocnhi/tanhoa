@@ -32,6 +32,9 @@ namespace ThuTien.GUI.Quay
         private void frmDangNganQuay_Load(object sender, EventArgs e)
         {
             dgvHDDaThu.AutoGenerateColumns = false;
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)

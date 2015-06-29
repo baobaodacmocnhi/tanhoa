@@ -36,6 +36,9 @@ namespace ThuTien.GUI.Doi
             cmbTo.ValueMember = "MaTo";
 
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewCTDN);
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)

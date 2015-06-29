@@ -35,6 +35,9 @@ namespace ThuTien.GUI.Doi
             cmbTo.DataSource = lst;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         public void LoadDataGridView()
@@ -59,10 +62,10 @@ namespace ThuTien.GUI.Doi
             DataTable dt = new DataTable();
             List<TT_To> lst = _cTo.GetDSHanhThu();
 
-            dt = _cHoaDon.GetBangTongHop(lst[0].MaTo, dateTuNgay.Value, dateDenNgay.Value);
+            dt = _cHoaDon.GetBangTongHop(lst[0].MaTo, dateTu.Value, dateDen.Value);
             for (int i = 1; i < lst.Count; i++)
             {
-                dt.Merge(_cHoaDon.GetBangTongHop(lst[i].MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                dt.Merge(_cHoaDon.GetBangTongHop(lst[i].MaTo, dateTu.Value, dateDen.Value));
             }
             dgvHoaDon.DataSource = dt;
             LoadDataGridView();

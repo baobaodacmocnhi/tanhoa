@@ -30,6 +30,8 @@ namespace ThuTien.GUI.ToTruong
             dgvHDCoQuan.AutoGenerateColumns = false;
 
             lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+
+            dateGiaiTrach.Value = DateTime.Now;
         }
 
         public void CountDataGridView()

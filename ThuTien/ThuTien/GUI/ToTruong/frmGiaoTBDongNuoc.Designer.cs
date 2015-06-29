@@ -290,7 +290,6 @@
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 16;
-            this.dateDen.Value = new System.DateTime(2015, 6, 26, 16, 4, 19, 0);
             // 
             // label1
             // 
@@ -309,7 +308,6 @@
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 14;
-            this.dateTu.Value = new System.DateTime(2015, 6, 26, 16, 4, 25, 0);
             // 
             // label3
             // 

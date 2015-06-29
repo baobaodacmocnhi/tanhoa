@@ -2547,6 +2547,10 @@ namespace ThuTien.DAL.Doi
                         if (Loai == "ChuyenKhoan")
                             sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
                                 + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null"; //" and NGAYGIAITRACH is null";
+                        else
+                            if (Loai == "Ton")
+                                sql = "update HOADON set DangNgan_Ton=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
+                                    + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)

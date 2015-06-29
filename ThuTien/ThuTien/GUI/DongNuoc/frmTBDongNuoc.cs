@@ -31,6 +31,9 @@ namespace ThuTien.GUI.DongNuoc
         private void frmLenhDongNuoc_Load(object sender, EventArgs e)
         {
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewCTDN);
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -95,7 +98,7 @@ namespace ThuTien.GUI.DongNuoc
                         ctdongnuoc.MaHD = lstHDTemp[0].ID_HOADON;
                         ctdongnuoc.SoHoaDon = lstHDTemp[0].SOHOADON;
                         ctdongnuoc.Ky = lstHDTemp[0].KY + "/" + lstHDTemp[0].NAM;
-                        ctdongnuoc.TieuThu=(int)lstHDTemp[0].TIEUTHU;
+                        ctdongnuoc.TieuThu = (int)lstHDTemp[0].TIEUTHU;
                         ctdongnuoc.GiaBan = (int)lstHDTemp[0].GIABAN;
                         ctdongnuoc.ThueGTGT = (int)lstHDTemp[0].THUE;
                         ctdongnuoc.PhiBVMT = (int)lstHDTemp[0].PHI;
@@ -103,11 +106,9 @@ namespace ThuTien.GUI.DongNuoc
 
                         dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
 
-                        int k = -1;
                         for (int j = 1; j < lstHDTemp.Count; j++)
                             if (lstHDTemp[0].DANHBA == lstHDTemp[j].DANHBA)
                             {
-                                k = j;
                                 TT_CTDongNuoc ctdongnuoc2 = new TT_CTDongNuoc();
                                 ctdongnuoc2.MaDN = dongnuoc.MaDN;
                                 ctdongnuoc2.MaHD = lstHDTemp[j].ID_HOADON;
@@ -121,11 +122,14 @@ namespace ThuTien.GUI.DongNuoc
 
                                 dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc2);
                             }
+
                         if (_cDongNuoc.ThemDN(dongnuoc))
                         {
-                            if (k != -1)
-                                lstHDTemp.RemoveAt(k);
-                            lstHDTemp.RemoveAt(0);
+                            for (int i = lstHDTemp.Count - 1; i >= 0; i--)
+                                if (lstHDTemp[i].DANHBA == dongnuoc.DanhBo)
+                                {
+                                    lstHDTemp.RemoveAt(i);
+                                }
                         }
                     }
                     _cHoaDon.CommitTransaction();
@@ -147,28 +151,31 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                try
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    _cDongNuoc.SqlBeginTransaction();
+                    try
+                    {
+                        _cDongNuoc.SqlBeginTransaction();
 
-                    for (int i = 0; i < gridViewDN.SelectedRowsCount; i++)
-                        if (gridViewDN.GetSelectedRows()[i] >= 0)
-                            if (!_cDongNuoc.CheckKQDongNuocByMaDN(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
-                                if (!_cDongNuoc.Xoa(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
-                                {
-                                    _cHoaDon.SqlRollbackTransaction();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                        for (int i = 0; i < gridViewDN.SelectedRowsCount; i++)
+                            if (gridViewDN.GetSelectedRows()[i] >= 0)
+                                if (!_cDongNuoc.CheckKQDongNuocByMaDN(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
+                                    if (!_cDongNuoc.Xoa(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
+                                    {
+                                        _cHoaDon.SqlRollbackTransaction();
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
 
-                    _cDongNuoc.SqlCommitTransaction();
-                    btnXem.PerformClick();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    _cHoaDon.SqlRollbackTransaction();
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        _cDongNuoc.SqlCommitTransaction();
+                        btnXem.PerformClick();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        _cHoaDon.SqlRollbackTransaction();
+                        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -281,31 +288,28 @@ namespace ThuTien.GUI.DongNuoc
         private void btnDSTB_Click(object sender, EventArgs e)
         {
             dsBaoCao dsBaoCao = new dsBaoCao();
-            DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
-            //DevExpress.XtraGrid.Views.Grid.GridView gv = (DevExpress.XtraGrid.Views.Grid.GridView)gridControl.DefaultView;
-            //dt = ((DataView)gv.DataSource).ToTable();
-            foreach (DataRow item in dt.Rows)
-                //if (bool.Parse(item["In"].ToString()))
-                {
-                    DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
+            for (int i = 0; i < gridViewDN.DataRowCount; i++)
+            {
+                DataRow row = gridViewDN.GetDataRow(i);
+                DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
 
-                    foreach (DataRow itemChild in childRows)
-                    {
-                        DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                        dr["Loai"] = "CHUYỂN";
-                        dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
-                        dr["To"] = CNguoiDung.TenTo;
-                        dr["HoTen"] = item["HoTen"];
-                        dr["DiaChi"] = item["DiaChi"];
-                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
-                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = item["MLT"];
-                        dr["Ky"] = itemChild["Ky"];
-                        dr["SoTien"] = itemChild["TongCong"];
-                        dr["NhanVien"] = CNguoiDung.HoTen;
-                        dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
-                    }    
-                }
+                foreach (DataRow itemChild in childRows)
+                {
+                    DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                    dr["Loai"] = "CHUYỂN";
+                    dr["MaDN"] = row["MaDN"].ToString().Insert(row["MaDN"].ToString().Length - 2, "-");
+                    dr["To"] = CNguoiDung.TenTo;
+                    dr["HoTen"] = row["HoTen"];
+                    dr["DiaChi"] = row["DiaChi"];
+                    if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
+                        dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["MLT"] = row["MLT"];
+                    dr["Ky"] = itemChild["Ky"];
+                    dr["SoTien"] = itemChild["TongCong"];
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+                }    
+            }
             rptDSDongNuoc rpt = new rptDSDongNuoc();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);

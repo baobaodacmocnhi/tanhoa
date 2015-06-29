@@ -40,6 +40,8 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVien.ValueMember = "MaND";
 
             lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
+
+            dateGiaiTrach.Value = DateTime.Now;
         }
 
         public void LoadDanhSachHD()

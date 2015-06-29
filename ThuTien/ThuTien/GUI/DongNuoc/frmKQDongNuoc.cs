@@ -26,6 +26,9 @@ namespace ThuTien.GUI.DongNuoc
         private void frmKQDongNuoc_Load(object sender, EventArgs e)
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
+
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         public void Clear()

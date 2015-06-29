@@ -33,6 +33,8 @@ namespace ThuTien.GUI.HanhThu
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
+
+            dateGiaiTrach.Value = DateTime.Now;
         }
         
         public void LoadDanhSachHD()
