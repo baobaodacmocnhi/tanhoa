@@ -99,28 +99,59 @@ namespace ThuTien.GUI.HanhThu
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    try
+                    if (tabControl.SelectedTab.Name == "tabTuGia")
                     {
-                        _cQuetTam.BeginTransaction();
-                        foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                        try
                         {
-                            TT_QuetTam quettam = _cQuetTam.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
-                            if (!_cQuetTam.Xoa(quettam))
+                            _cQuetTam.BeginTransaction();
+                            foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                            {
+                                TT_QuetTam quettam = _cQuetTam.GetByID(int.Parse(item.Cells["MaQT_TG"].Value.ToString()));
+                                if (!_cQuetTam.Xoa(quettam))
+                                {
+                                    _cQuetTam.Rollback();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                            _cQuetTam.CommitTransaction();
+                            lstHD.Items.Clear();
+                            btnXem.PerformClick();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception)
+                        {
+                            _cQuetTam.Rollback();
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                        if (tabControl.SelectedTab.Name == "tabCoQuan")
+                        {
+                            try
+                            {
+                                _cQuetTam.BeginTransaction();
+                                foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
+                                {
+                                    TT_QuetTam quettam = _cQuetTam.GetByID(int.Parse(item.Cells["MaQT_CQ"].Value.ToString()));
+                                    if (!_cQuetTam.Xoa(quettam))
+                                    {
+                                        _cQuetTam.Rollback();
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
+                                _cQuetTam.CommitTransaction();
+                                lstHD.Items.Clear();
+                                btnXem.PerformClick();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            catch (Exception)
                             {
                                 _cQuetTam.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        _cQuetTam.CommitTransaction();
-                        lstHD.Items.Clear();
-                        btnXem.PerformClick();
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception)
-                    {
-                        _cQuetTam.Rollback();
-                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
             }
             else

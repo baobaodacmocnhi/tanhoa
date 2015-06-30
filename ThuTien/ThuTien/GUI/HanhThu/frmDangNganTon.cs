@@ -37,10 +37,8 @@ namespace ThuTien.GUI.HanhThu
             dateGiaiTrach.Value = DateTime.Now;
         }
         
-        public void LoadDanhSachHD()
+        public void CountdgvHDTuGia()
         {
-            dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganTonByMaNVDate("TG", CNguoiDung.MaND, dateGiaiTrach.Value);
-            dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganTonByMaNVDate("CQ", CNguoiDung.MaND, dateGiaiTrach.Value);
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
@@ -60,10 +58,14 @@ namespace ThuTien.GUI.HanhThu
                 txtTongPhiBVMT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
                 txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
-            TongGiaBan = 0;
-            TongThueGTGT = 0;
-            TongPhiBVMT = 0;
-            TongCong = 0;
+        }
+
+        public void CountdgvHDCoQuan()
+        {
+            int TongGiaBan = 0;
+            int TongThueGTGT = 0;
+            int TongPhiBVMT = 0;
+            int TongCong = 0;
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
@@ -84,14 +86,13 @@ namespace ThuTien.GUI.HanhThu
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-                if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
-                {
-                    lstHD.Items.Add(txtSoHoaDon.Text.Trim());
-                    txtSoLuong.Text = lstHD.Items.Count.ToString();
-                    txtSoHoaDon.Text = "";
-                }
-                else
-                    txtSoHoaDon.Text = "";
+                foreach (string item in txtSoHoaDon.Lines)
+                    if (!lstHD.Items.Contains(item.Trim()))
+                    {
+                        lstHD.Items.Add(item.Trim());
+                    }
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
+            txtSoHoaDon.Text = "";
         }
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -102,7 +103,17 @@ namespace ThuTien.GUI.HanhThu
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            LoadDanhSachHD();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganTonByMaNVDate("TG", CNguoiDung.MaND, dateGiaiTrach.Value);
+                CountdgvHDTuGia();
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganTonByMaNVDate("CQ", CNguoiDung.MaND, dateGiaiTrach.Value);
+                    CountdgvHDCoQuan();
+                }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -150,7 +161,7 @@ namespace ThuTien.GUI.HanhThu
                                 return;
                             }
                         _cHoaDon.SqlCommitTransaction();
-                        LoadDanhSachHD();
+                        btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -200,7 +211,7 @@ namespace ThuTien.GUI.HanhThu
                                 }
                             }
                         _cHoaDon.SqlCommitTransaction();
-                        LoadDanhSachHD();
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)

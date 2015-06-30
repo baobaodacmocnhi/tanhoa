@@ -44,14 +44,13 @@ namespace ThuTien.GUI.ToTruong
             dateGiaiTrach.Value = DateTime.Now;
         }
 
-        public void LoadDanhSachHD()
+        public void CountdgvHDTuGia()
         {
-            dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("TG",(int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
-            dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("CQ",(int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
             int TongCong = 0;
+
             if (dgvHDTuGia.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
@@ -67,10 +66,15 @@ namespace ThuTien.GUI.ToTruong
                 txtTongPhiBVMT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
                 txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
-            TongGiaBan = 0;
-            TongThueGTGT = 0;
-            TongPhiBVMT = 0;
-            TongCong = 0;
+        }
+
+        public void CoungdgvHDCoQuan()
+        {
+            int TongGiaBan = 0;
+            int TongThueGTGT = 0;
+            int TongPhiBVMT = 0;
+            int TongCong = 0;
+            
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
@@ -90,7 +94,17 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            LoadDanhSachHD();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                CountdgvHDTuGia();
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("CQ", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                    CoungdgvHDCoQuan();
+                }
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -168,14 +182,13 @@ namespace ThuTien.GUI.ToTruong
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-                if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
-                {
-                    lstHD.Items.Add(txtSoHoaDon.Text.Trim());
-                    txtSoLuong.Text = lstHD.Items.Count.ToString();
-                    txtSoHoaDon.Text = "";
-                }
-                else
-                    txtSoHoaDon.Text = "";
+                foreach (string item in txtSoHoaDon.Lines)
+                    if (!lstHD.Items.Contains(item.Trim()))
+                    {
+                        lstHD.Items.Add(item.Trim());
+                    }
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
+            txtSoHoaDon.Text = "";
         }
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -233,7 +246,7 @@ namespace ThuTien.GUI.ToTruong
                                 return;
                             }
                         _cHoaDon.SqlCommitTransaction();
-                        LoadDanhSachHD();
+                        btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -284,7 +297,7 @@ namespace ThuTien.GUI.ToTruong
                             }
                         
                         _cHoaDon.SqlCommitTransaction();
-                        LoadDanhSachHD();
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)

@@ -14,6 +14,10 @@ namespace ThuTien.DAL.HanhThu
         {
             try
             {
+                if (_db.TT_QuetTams.Count() > 0)
+                    quettam.MaQT = _db.TT_QuetTams.Max(item => item.MaQT) + 1;
+                else
+                    quettam.MaQT = 1;
                 quettam.CreateDate = DateTime.Now;
                 quettam.CreateBy = CNguoiDung.MaND;
                 _db.TT_QuetTams.InsertOnSubmit(quettam);
@@ -43,6 +47,11 @@ namespace ThuTien.DAL.HanhThu
             }
         }
 
+        public TT_QuetTam GetByID(int MaQT)
+        {
+            return _db.TT_QuetTams.SingleOrDefault(item => item.MaQT == MaQT);
+        }
+
         public TT_QuetTam GetBySoHoaDon(string SoHoaDon)
         {
             return _db.TT_QuetTams.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
@@ -57,6 +66,7 @@ namespace ThuTien.DAL.HanhThu
                             where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
+                                itemQT.MaQT,
                                 itemQT.SoHoaDon,
                                 DanhBo = itemHD.DANHBA,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,
@@ -74,6 +84,7 @@ namespace ThuTien.DAL.HanhThu
                                 where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV && itemHD.GB > 20
                                 select new
                                 {
+                                    itemQT.MaQT,
                                     itemQT.SoHoaDon,
                                     DanhBo = itemHD.DANHBA,
                                     Ky = itemHD.KY + "/" + itemHD.NAM,
