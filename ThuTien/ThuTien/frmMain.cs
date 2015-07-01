@@ -58,17 +58,24 @@ namespace ThuTien
             //frm.Dock = DockStyle.Fill;
             //frm.Show();
             //StripStatus_Form.Text = "Đang mở Form: " + frm.Text;
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.Name == frm.Name)
-                {
-                    form.Activate();
-                    return;
-                }
-            }
 
-            frm.MdiParent = this;
-            frm.Show();
+            //foreach (Form form in Application.OpenForms)
+            //{
+            //    if (form.Name == frm.Name)
+            //    {
+            //        tabControl.TabPages.con;
+            //        return;
+            //    }
+            //}
+            if (tabControl.TabPages.ContainsKey(frm.Name))
+            {
+                tabControl.SelectedTab = tabControl.TabPages[frm.Name];
+            }
+            else
+            {
+                frm.MdiParent = this;
+                frm.Show();
+            }
         }
 
         #region Hệ Thống
@@ -604,7 +611,9 @@ namespace ThuTien
                 if (this.ActiveMdiChild.Tag == null)
                     {
                         // Add a tabPage to tabControl with child form caption
-                        TabPage tp = new TabPage(this.ActiveMdiChild.Text);
+                        TabPage tp = new TabPage();
+                        tp.Name = this.ActiveMdiChild.Name;
+                        tp.Text = this.ActiveMdiChild.Text;
                         tp.Tag = this.ActiveMdiChild;
                         tp.Parent = tabControl;
                         tabControl.SelectedTab = tp;

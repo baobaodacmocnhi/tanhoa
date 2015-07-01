@@ -37,13 +37,15 @@ namespace ThuTien.GUI.HanhThu
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
+            {
                 foreach (string item in txtSoHoaDon.Lines)
                     if (!lstHD.Items.Contains(item.Trim()))
                     {
                         lstHD.Items.Add(item.Trim());
                     }
-            txtSoLuong.Text = lstHD.Items.Count.ToString();
-            txtSoHoaDon.Text = "";
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+                txtSoHoaDon.Text = "";
+            }
         }
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)

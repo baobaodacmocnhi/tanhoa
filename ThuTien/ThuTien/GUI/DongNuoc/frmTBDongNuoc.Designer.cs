@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,6 +62,8 @@
             this.btnInTB = new System.Windows.Forms.Button();
             this.chkAll = new System.Windows.Forms.CheckBox();
             this.btnDSTB = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSoLuong = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -143,10 +145,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(258, 40);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -342,6 +344,7 @@
             // txtSoHoaDon
             // 
             this.txtSoHoaDon.Location = new System.Drawing.Point(87, 12);
+            this.txtSoHoaDon.Multiline = true;
             this.txtSoHoaDon.Name = "txtSoHoaDon";
             this.txtSoHoaDon.Size = new System.Drawing.Size(100, 20);
             this.txtSoHoaDon.TabIndex = 14;
@@ -387,11 +390,29 @@
             this.btnDSTB.UseVisualStyleBackColor = true;
             this.btnDSTB.Click += new System.EventHandler(this.btnDSTB_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(23, 233);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "Số Lượng:";
+            // 
+            // txtSoLuong
+            // 
+            this.txtSoLuong.Location = new System.Drawing.Point(85, 230);
+            this.txtSoLuong.Name = "txtSoLuong";
+            this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
+            this.txtSoLuong.TabIndex = 41;
+            // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 666);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.btnDSTB);
             this.Controls.Add(this.chkAll);
             this.Controls.Add(this.btnInTB);
@@ -455,6 +476,8 @@
         private System.Windows.Forms.CheckBox chkAll;
         private System.Windows.Forms.Button btnDSTB;
         private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtSoLuong;
 
     }
 }

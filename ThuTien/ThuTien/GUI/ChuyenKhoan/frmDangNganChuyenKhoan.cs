@@ -39,13 +39,15 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
+            {
                 foreach (string item in txtSoHoaDon.Lines)
                     if (!lstHD.Items.Contains(item.Trim()))
                     {
                         lstHD.Items.Add(item.Trim());
                     }
-            txtSoLuong.Text = lstHD.Items.Count.ToString();
-            txtSoHoaDon.Text = "";
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+                txtSoHoaDon.Text = "";
+            }
         }
 
         private void btnXem_Click(object sender, EventArgs e)
