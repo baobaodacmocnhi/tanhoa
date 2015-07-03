@@ -2458,9 +2458,10 @@ namespace ThuTien.DAL.Doi
         public DataTable GetDSByTimKiem(string DanhBo, string HoTen, string DiaChi)
         {
             string sql = "select top(10) ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,"
-                + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu"
+                + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu,NgayDN"
                 + " from HOADON a left join TT_NguoiDung b on a.MaNV_DangNgan=b.MaND"
                 + " left join TT_NguoiDung c on a.MaNV_HanhThu=c.MaND"
+                + " left join (select MaHD,NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN) as DongNuoc on  a.ID_HOADON=DONGNUOC.MaHD"
                 + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
                 + "order by ID_HOADON desc";
 
