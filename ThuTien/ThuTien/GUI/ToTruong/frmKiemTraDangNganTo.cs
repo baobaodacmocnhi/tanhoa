@@ -34,7 +34,7 @@ namespace ThuTien.GUI.ToTruong
             dateGiaiTrach.Value = DateTime.Now;
         }
 
-        public void CountDataGridView()
+        public void CountdgvHDTuGia()
         {
             int TongHD = 0;
             int TongGiaBan = 0;
@@ -57,11 +57,16 @@ namespace ThuTien.GUI.ToTruong
                 txtTongPhiBVMT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
                 txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
-            TongHD = 0;
-            TongGiaBan = 0;
-            TongThueGTGT = 0;
-            TongPhiBVMT = 0;
-            TongCong = 0;
+        }
+
+        public void CountdgvHDCoQuan()
+        {
+            int TongHD = 0;
+            int TongGiaBan = 0;
+            int TongThueGTGT = 0;
+            int TongPhiBVMT = 0;
+            int TongCong = 0;
+            
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
@@ -82,9 +87,17 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
-            dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
-            CountDataGridView();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                CountdgvHDTuGia();
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                    CountdgvHDCoQuan();
+                }
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

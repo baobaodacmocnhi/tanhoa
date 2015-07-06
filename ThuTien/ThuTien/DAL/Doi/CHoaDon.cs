@@ -1930,7 +1930,8 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     var query = from itemHD in _db.HOADONs
-                                join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND
+                                join itemND in _db.TT_NguoiDungs on itemHD.MaNV_GiaoTon equals itemND.MaND into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
                                 where itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
                                 && itemHD.DangNgan_Ton == true && itemHD.MaNV_DangNgan == MaNV_DangNgan && itemHD.GB > 20
                                 orderby itemHD.ID_HOADON ascending
@@ -1948,7 +1949,7 @@ namespace ThuTien.DAL.Doi
                                     ThueGTGT = itemHD.THUE,
                                     PhiBVMT = itemHD.PHI,
                                     itemHD.TONGCONG,
-                                    MaNV_GiaoTon = itemND.HoTen,
+                                    MaNV_GiaoTon = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
                 }
