@@ -967,17 +967,17 @@ namespace QLVanThu
             Microsoft.Office.Interop.Excel.Worksheet oSheetKHVTTH = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(5);
             Microsoft.Office.Interop.Excel.Worksheet oSheetKTCN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(6);
             Microsoft.Office.Interop.Excel.Worksheet oSheetKTKS = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(7);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetQLDA = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetQLĐHN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetĐTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTCTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTCXL = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetGNKDT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetCNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetTGV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetQĐ_TCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetHĐ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(18);
+            //Microsoft.Office.Interop.Excel.Worksheet oSheetQLDA = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetQLĐHN = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(8);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetĐTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(9);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetTCTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetTCXL = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetGNKDT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetCNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetTGV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetQĐ_TCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetHĐ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetKhac = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(17);
 
             ExportToExcelTongHop(((DataTable)vanthudis.DataSource).DefaultView.ToTable(), oSheetTongHop);
 
@@ -1011,8 +1011,8 @@ namespace QLVanThu
                     a[5].ImportRow(dr);
                 if (dr["SoKyHieuVB"].ToString().Contains("QLĐHN"))
                     a[6].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("ĐTT"))
-                    a[7].ImportRow(dr);
+                //if (dr["SoKyHieuVB"].ToString().Contains("ĐTT") || dr["SoKyHieuVB"].ToString().Contains("TT"))
+                //    a[7].ImportRow(dr);
                 if (dr["SoKyHieuVB"].ToString().Contains("TCTB"))
                     a[8].ImportRow(dr);
                 if (dr["SoKyHieuVB"].ToString().Contains("TCXL"))
@@ -1030,6 +1030,13 @@ namespace QLVanThu
                 if (!dr["SoKyHieuVB"].ToString().Contains("QLDA") && !dr["SoKyHieuVB"].ToString().Contains("HĐ") && dr["TypeID"].ToString() != "13" && !dr["SoKyHieuVB"].ToString().Contains("QĐ") && !dr["SoKyHieuVB"].ToString().Contains("TCHC"))
                     a[15].ImportRow(dr);
             }
+
+            var rows = temp.Select("SoKyHieuVB not like '%CNTT' and SoKyHieuVB like '%TT' or SoKyHieuVB like '%ĐTT'");
+            foreach (var item in rows)
+            {
+                a[7].ImportRow(item);
+            }
+
             for (int i = 0; i < 16; i++)
             {
                 switch (i)
@@ -1180,6 +1187,9 @@ namespace QLVanThu
             if (KeyWord == "KHĐT")
                 expression = String.Format("(SoKyHieuVB like '%KHVTTH%' or SoKyHieuVB like '%{0}%')", KeyWord);
             else
+                if (KeyWord == "ĐTT")
+                    expression = String.Format("(SoKyHieuVB not like '%CNTT' and SoKyHieuVB like '%TT' or SoKyHieuVB like '%{0}%')", KeyWord);
+                else
                 if (KeyWord == "KD")
                     expression = String.Format("(SoKyHieuVB like '%KTKS%' or SoKyHieuVB like '%{0}%')", KeyWord);
                 else
