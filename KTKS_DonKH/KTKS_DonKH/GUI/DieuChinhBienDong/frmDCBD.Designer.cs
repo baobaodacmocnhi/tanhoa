@@ -117,17 +117,6 @@
             this.lbTongDM = new System.Windows.Forms.Label();
             this.lbTongNK = new System.Windows.Forms.Label();
             this.dgvDSDieuChinh = new System.Windows.Forms.DataGridView();
-            this.DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HieuLucKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThongTin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MSThue_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMuc_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvLichSuChungTu = new System.Windows.Forms.DataGridView();
             this.MaLSCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayLapLSCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -146,6 +135,19 @@
             this.label28 = new System.Windows.Forms.Label();
             this.chkGiaHan = new System.Windows.Forms.CheckBox();
             this.chkDMGiuNguyen = new System.Windows.Forms.CheckBox();
+            this.DieuChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HieuLucKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThongTin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MSThue_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DMGiuNguyen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.GiaHan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -930,7 +932,9 @@
             this.MSThue_BD,
             this.GiaBieu_BD,
             this.DinhMuc_BD,
-            this.MaDon});
+            this.MaDon,
+            this.DMGiuNguyen,
+            this.GiaHan});
             this.dgvDSDieuChinh.Location = new System.Drawing.Point(5, 6);
             this.dgvDSDieuChinh.MultiSelect = false;
             this.dgvDSDieuChinh.Name = "dgvDSDieuChinh";
@@ -940,95 +944,6 @@
             this.dgvDSDieuChinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDSDieuChinh_CellFormatting);
             this.dgvDSDieuChinh.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSDieuChinh_CellMouseDoubleClick);
             this.dgvDSDieuChinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSDieuChinh_RowPostPaint);
-            // 
-            // DieuChinh
-            // 
-            this.DieuChinh.DataPropertyName = "DieuChinh";
-            this.DieuChinh.HeaderText = "Điều Chỉnh";
-            this.DieuChinh.Name = "DieuChinh";
-            this.DieuChinh.ReadOnly = true;
-            this.DieuChinh.Width = 110;
-            // 
-            // MaDC
-            // 
-            this.MaDC.DataPropertyName = "MaDC";
-            this.MaDC.HeaderText = "Số Phiếu";
-            this.MaDC.Name = "MaDC";
-            this.MaDC.ReadOnly = true;
-            this.MaDC.Width = 70;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 90;
-            // 
-            // HieuLucKy
-            // 
-            this.HieuLucKy.DataPropertyName = "HieuLucKy";
-            this.HieuLucKy.HeaderText = "Hiệu Lực";
-            this.HieuLucKy.Name = "HieuLucKy";
-            this.HieuLucKy.ReadOnly = true;
-            this.HieuLucKy.Width = 70;
-            // 
-            // ThongTin
-            // 
-            this.ThongTin.DataPropertyName = "ThongTin";
-            this.ThongTin.HeaderText = "Thông Tin";
-            this.ThongTin.Name = "ThongTin";
-            this.ThongTin.ReadOnly = true;
-            this.ThongTin.Visible = false;
-            this.ThongTin.Width = 200;
-            // 
-            // HoTen_BD
-            // 
-            this.HoTen_BD.DataPropertyName = "HoTen_BD";
-            this.HoTen_BD.HeaderText = "Họ Tên BĐ";
-            this.HoTen_BD.Name = "HoTen_BD";
-            this.HoTen_BD.ReadOnly = true;
-            this.HoTen_BD.Width = 210;
-            // 
-            // DiaChi_BD
-            // 
-            this.DiaChi_BD.DataPropertyName = "DiaChi_BD";
-            this.DiaChi_BD.HeaderText = "Địa Chỉ BĐ";
-            this.DiaChi_BD.Name = "DiaChi_BD";
-            this.DiaChi_BD.ReadOnly = true;
-            this.DiaChi_BD.Width = 240;
-            // 
-            // MSThue_BD
-            // 
-            this.MSThue_BD.DataPropertyName = "MSThue_BD";
-            this.MSThue_BD.HeaderText = "MSThuế BĐ";
-            this.MSThue_BD.Name = "MSThue_BD";
-            this.MSThue_BD.ReadOnly = true;
-            this.MSThue_BD.Width = 90;
-            // 
-            // GiaBieu_BD
-            // 
-            this.GiaBieu_BD.DataPropertyName = "GiaBieu_BD";
-            this.GiaBieu_BD.HeaderText = "Giá Biểu BĐ";
-            this.GiaBieu_BD.Name = "GiaBieu_BD";
-            this.GiaBieu_BD.ReadOnly = true;
-            this.GiaBieu_BD.Width = 90;
-            // 
-            // DinhMuc_BD
-            // 
-            this.DinhMuc_BD.DataPropertyName = "DinhMuc_BD";
-            this.DinhMuc_BD.HeaderText = "Định Mức BĐ";
-            this.DinhMuc_BD.Name = "DinhMuc_BD";
-            this.DinhMuc_BD.ReadOnly = true;
-            this.DinhMuc_BD.Width = 90;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            this.MaDon.ReadOnly = true;
-            this.MaDon.Width = 70;
             // 
             // dgvLichSuChungTu
             // 
@@ -1227,6 +1142,113 @@
             this.chkDMGiuNguyen.Text = "ĐM Giữ Nguyên";
             this.chkDMGiuNguyen.UseVisualStyleBackColor = true;
             // 
+            // DieuChinh
+            // 
+            this.DieuChinh.DataPropertyName = "DieuChinh";
+            this.DieuChinh.HeaderText = "Điều Chỉnh";
+            this.DieuChinh.Name = "DieuChinh";
+            this.DieuChinh.ReadOnly = true;
+            this.DieuChinh.Width = 80;
+            // 
+            // MaDC
+            // 
+            this.MaDC.DataPropertyName = "MaDC";
+            this.MaDC.HeaderText = "Số Phiếu";
+            this.MaDC.Name = "MaDC";
+            this.MaDC.ReadOnly = true;
+            this.MaDC.Width = 70;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 90;
+            // 
+            // HieuLucKy
+            // 
+            this.HieuLucKy.DataPropertyName = "HieuLucKy";
+            this.HieuLucKy.HeaderText = "Hiệu Lực";
+            this.HieuLucKy.Name = "HieuLucKy";
+            this.HieuLucKy.ReadOnly = true;
+            this.HieuLucKy.Width = 70;
+            // 
+            // ThongTin
+            // 
+            this.ThongTin.DataPropertyName = "ThongTin";
+            this.ThongTin.HeaderText = "Thông Tin";
+            this.ThongTin.Name = "ThongTin";
+            this.ThongTin.ReadOnly = true;
+            this.ThongTin.Visible = false;
+            this.ThongTin.Width = 200;
+            // 
+            // HoTen_BD
+            // 
+            this.HoTen_BD.DataPropertyName = "HoTen_BD";
+            this.HoTen_BD.HeaderText = "Họ Tên BĐ";
+            this.HoTen_BD.Name = "HoTen_BD";
+            this.HoTen_BD.ReadOnly = true;
+            this.HoTen_BD.Width = 190;
+            // 
+            // DiaChi_BD
+            // 
+            this.DiaChi_BD.DataPropertyName = "DiaChi_BD";
+            this.DiaChi_BD.HeaderText = "Địa Chỉ BĐ";
+            this.DiaChi_BD.Name = "DiaChi_BD";
+            this.DiaChi_BD.ReadOnly = true;
+            this.DiaChi_BD.Width = 190;
+            // 
+            // MSThue_BD
+            // 
+            this.MSThue_BD.DataPropertyName = "MSThue_BD";
+            this.MSThue_BD.HeaderText = "MSThuế BĐ";
+            this.MSThue_BD.Name = "MSThue_BD";
+            this.MSThue_BD.ReadOnly = true;
+            this.MSThue_BD.Width = 80;
+            // 
+            // GiaBieu_BD
+            // 
+            this.GiaBieu_BD.DataPropertyName = "GiaBieu_BD";
+            this.GiaBieu_BD.HeaderText = "Giá Biểu BĐ";
+            this.GiaBieu_BD.Name = "GiaBieu_BD";
+            this.GiaBieu_BD.ReadOnly = true;
+            this.GiaBieu_BD.Width = 90;
+            // 
+            // DinhMuc_BD
+            // 
+            this.DinhMuc_BD.DataPropertyName = "DinhMuc_BD";
+            this.DinhMuc_BD.HeaderText = "Định Mức BĐ";
+            this.DinhMuc_BD.Name = "DinhMuc_BD";
+            this.DinhMuc_BD.ReadOnly = true;
+            this.DinhMuc_BD.Width = 90;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            this.MaDon.ReadOnly = true;
+            this.MaDon.Width = 60;
+            // 
+            // DMGiuNguyen
+            // 
+            this.DMGiuNguyen.DataPropertyName = "DMGiuNguyen";
+            this.DMGiuNguyen.HeaderText = "Giữ Nguyên";
+            this.DMGiuNguyen.Name = "DMGiuNguyen";
+            this.DMGiuNguyen.ReadOnly = true;
+            this.DMGiuNguyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DMGiuNguyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DMGiuNguyen.Width = 60;
+            // 
+            // GiaHan
+            // 
+            this.GiaHan.DataPropertyName = "GiaHan";
+            this.GiaHan.HeaderText = "Gia Hạn";
+            this.GiaHan.Name = "GiaHan";
+            this.GiaHan.ReadOnly = true;
+            this.GiaHan.Width = 60;
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1377,6 +1399,10 @@
         private System.Windows.Forms.Label lbTongNK;
         private System.Windows.Forms.Label lbTongDM;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkGiaHan;
+        private System.Windows.Forms.CheckBox chkDMGiuNguyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DieuChinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDC;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
@@ -1388,10 +1414,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_BD;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_BD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
-        private System.Windows.Forms.CheckBox chkGiaHan;
-        private System.Windows.Forms.CheckBox chkDMGiuNguyen;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DMGiuNguyen;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn GiaHan;
         
     }
 }
