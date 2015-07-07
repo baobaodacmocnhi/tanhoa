@@ -50,12 +50,14 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", gridViewCHDB);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời", gridViewTTTL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì", gridViewBamChi);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewDongNuoc);
             ///Tổ Xử Lý
             gridControl.LevelTree.Nodes.Add("Chi Tiết Kiểm Tra Xác Minh TXL", gridViewKTXM_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Điều Chỉnh Biến Động TXL", gridViewDCBD_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ TXL", gridViewCHDB_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thảo Thư Trả Lời TXL", gridViewTTTTL_TXL);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Bấm Chì TXL", gridViewBamChi_TXL);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước TXL", gridViewDongNuoc_TXL);
         }
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
@@ -386,6 +388,39 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
+        #region gridViewDongNuoc
+
+        private void gridViewDongNuoc_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTDN" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (e.Column.FieldName == "MaCTMN")
+                if (e.Value != null)
+                    if (!string.IsNullOrEmpty(e.Value.ToString()))
+                    {
+                        e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                    }
+        }
+
+        private void gridViewDongNuoc_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewDongNuoc_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmShowDongNuoc frm = new frmShowDongNuoc(decimal.Parse(_CTRow.Row["MaCTDN"].ToString()), true);
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
+            }
+        }
+        #endregion
+
         #region gridViewKTXM_TXL
 
         private void gridViewKTXM_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
@@ -605,6 +640,39 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
+        #region gridViewDongNuoc_TXL
+
+        private void gridViewDongNuoc_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaCTDN" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (e.Column.FieldName == "MaCTMN")
+                if (e.Value != null)
+                    if (!string.IsNullOrEmpty(e.Value.ToString()))
+                    {
+                        e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+                    }
+        }
+
+        private void gridViewDongNuoc_TXL_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewDongNuoc_TXL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmShowDongNuoc frm = new frmShowDongNuoc(decimal.Parse(_CTRow.Row["MaCTDN"].ToString()), true);
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
+            }
+        }
+        #endregion
+
         private void btnIn_Click(object sender, EventArgs e)
         {
             if (gridViewDon.RowCount > 0)
@@ -719,7 +787,8 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             else
                 MessageBox.Show("Không có đơn nào", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        }    
+           
     }
 
 }
