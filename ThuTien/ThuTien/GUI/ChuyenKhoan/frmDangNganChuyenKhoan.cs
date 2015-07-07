@@ -145,44 +145,13 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0)
+            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex!=-1)
                 lstHD.Items.RemoveAt(lstHD.SelectedIndex);
         }
 
-        private void dgvHDDaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "TieuThu" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "GiaBan" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "ThueGTGT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "PhiBVMT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-        }
-
-        private void dgvHDDaThu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvHDDaThu.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
 
         private void btnInPhieu_Click(object sender, EventArgs e)
@@ -230,5 +199,42 @@ namespace ThuTien.GUI.ChuyenKhoan
             else
                 MessageBox.Show("Từ Ngày = Đến Ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void dgvHDDaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "TieuThu" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "GiaBan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "ThueGTGT" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "PhiBVMT" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvHDDaThu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvHDDaThu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+ 
     }
 }

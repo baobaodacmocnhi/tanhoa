@@ -99,8 +99,13 @@ namespace ThuTien.GUI.HanhThu
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0)
+            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
                 lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+        }
+
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -273,6 +278,48 @@ namespace ThuTien.GUI.HanhThu
                 frm.ShowDialog();
         }
 
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "TỒN TƯ GIA ĐÃ THU";
+                    dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item.Cells["Ky_TG"].Value;
+                    dr["MLT"] = item.Cells["MLT_TG"].Value;
+                    dr["TongCong"] = item.Cells["TongCong_TG"].Value;
+                    dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
+                    dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "TỒN CƠ QUAN ĐÃ THU";
+                        dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item.Cells["Ky_CQ"].Value;
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value;
+                        dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
+                        dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CQ"].Value;
+                        dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
+                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                }
+            rptDSHoaDon rpt = new rptDSHoaDon();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvHDTuGia.Columns[e.ColumnIndex].Name == "DanhBo_TG" && e.Value != null)
@@ -343,48 +390,6 @@ namespace ThuTien.GUI.HanhThu
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
-        }
-
-        private void btnIn_Click(object sender, EventArgs e)
-        {
-            dsBaoCao ds = new dsBaoCao();
-            if (tabControl.SelectedTab.Name == "tabTuGia")
-            {
-                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-                {
-                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TỒN TƯ GIA ĐÃ THU";
-                    dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["Ky"] = item.Cells["Ky_TG"].Value;
-                    dr["MLT"] = item.Cells["MLT_TG"].Value;
-                    dr["TongCong"] = item.Cells["TongCong_TG"].Value;
-                    dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
-                    dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
-                    dr["NhanVien"] = CNguoiDung.HoTen;
-                    ds.Tables["DSHoaDon"].Rows.Add(dr);
-                }
-            }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
-                {
-                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-                    {
-                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                        dr["LoaiBaoCao"] = "TỒN CƠ QUAN ĐÃ THU";
-                        dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                        dr["Ky"] = item.Cells["Ky_CQ"].Value;
-                        dr["MLT"] = item.Cells["MLT_CQ"].Value;
-                        dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
-                        dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CQ"].Value;
-                        dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
-                        dr["NhanVien"] = CNguoiDung.HoTen;
-                        ds.Tables["DSHoaDon"].Rows.Add(dr);
-                    }
-                }
-            rptDSHoaDon rpt = new rptDSHoaDon();
-            rpt.SetDataSource(ds);
-            frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
         }
     }
 }

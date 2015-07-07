@@ -35,19 +35,26 @@ namespace ThuTien.GUI.Quay
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-                if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
-                {
-                    lstHD.Items.Add(txtSoHoaDon.Text.Trim());
-                    txtSoHoaDon.Text = "";
-                }
-                else
-                    txtSoHoaDon.Text = "";
+            {
+                foreach (string item in txtSoHoaDon.Lines)
+                    if (!lstHD.Items.Contains(item.Trim()))
+                    {
+                        lstHD.Items.Add(item.Trim());
+                    }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+                txtSoHoaDon.Text = "";
+            }
         }
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0)
+            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
                 lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+        }
+
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -152,5 +159,7 @@ namespace ThuTien.GUI.Quay
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
+
+        
     }
 }

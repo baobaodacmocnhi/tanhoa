@@ -17,6 +17,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Data.OleDb;
+using ThuTien.GUI.TimKiem;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -497,6 +498,49 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 //Điền dữ liệu vào vùng đã thiết lập
                 range.Value2 = arr;
+        }
+
+        private void GetNoiDungfrmTimKiem(string NoiDung)
+        {
+            if(tabControl.SelectedTab.Name=="tabThongTin")
+            {
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if(item.Cells["DanhBo"].Value.ToString()==NoiDung)
+                {
+                    item.Selected = true;
+                }
+            }
+            else
+                if(tabControl.SelectedTab.Name=="tabTamThu")
+            {
+                foreach (DataGridViewRow item in dgvTamThu.Rows)
+                    if (item.Cells["DanhBo"].Value.ToString() == NoiDung)
+                    {
+                        item.Selected = true;
+                    }
+            }
+            
+        }
+
+        private void frmTamThuChuyenKhoan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                frmTimKiem frm = new frmTimKiem();
+                bool flag = false;
+                foreach (var item in this.OwnedForms)
+                    if (item.Name == frm.Name)
+                    {
+                        item.Activate();
+                        flag = true;
+                    }
+                if (flag == false)
+                {
+                    frm.MyGetNoiDung = new frmTimKiem.GetNoiDung(GetNoiDungfrmTimKiem);
+                    frm.Owner = this;
+                    frm.Show();
+                }
+            }
         }
     }
 }

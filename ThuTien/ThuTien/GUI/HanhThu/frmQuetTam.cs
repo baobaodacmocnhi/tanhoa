@@ -50,8 +50,13 @@ namespace ThuTien.GUI.HanhThu
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0)
+            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
                 lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+        }
+
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
 
         private void btnThem_Click(object sender, EventArgs e)

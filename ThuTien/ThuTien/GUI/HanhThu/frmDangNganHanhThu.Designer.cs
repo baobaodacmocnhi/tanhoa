@@ -767,6 +767,7 @@
             this.lstHD.Name = "lstHD";
             this.lstHD.Size = new System.Drawing.Size(120, 173);
             this.lstHD.TabIndex = 15;
+            this.lstHD.SelectedIndexChanged += new System.EventHandler(this.lstHD_SelectedIndexChanged);
             this.lstHD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstHD_MouseDoubleClick);
             // 
             // label5
