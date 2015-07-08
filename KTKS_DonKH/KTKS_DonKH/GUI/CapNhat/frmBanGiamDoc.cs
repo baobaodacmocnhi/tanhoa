@@ -134,34 +134,72 @@ namespace KTKS_DonKH.GUI.CapNhat
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            switch (cmbLoai.SelectedItem.ToString())
+            
+            switch (cmbTimTheo.SelectedItem.ToString())
             {
-                case "Điều Chỉnh Biến Động":
-                    dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCBD(dateTimKiem.Value);
+                case "Mã":
+                    switch (cmbLoai.SelectedItem.ToString())
+                    {
+                        case "Điều Chỉnh Biến Động":
+                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCBDBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Điều Chỉnh Hóa Đơn":
+                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCHDBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Cắt Chuyển":
+                            dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDMBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Cắt Tạm Danh Bộ":
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDBByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Cắt Hủy Danh Bộ":
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDBByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Yêu Cầu Cắt Hủy Danh Bộ":
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieu(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Đóng Nước":
+                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTDongNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Mở Nước":
+                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTMoNuocByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                        case "Thảo Thư Trả Lời":
+                            dgvDanhSach.DataSource = _cTTTL.LoadDSCTTTTLByMaTB(decimal.Parse(txtNoiDung.Text.Trim().Replace("-", "")));
+                            break;
+                    }
                     break;
-                case"Điều Chỉnh Hóa Đơn":
-                    dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCHD(dateTimKiem.Value);
-                    break;
-                case "Cắt Chuyển":
-                    dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDM(dateTimKiem.Value);
-                    break;
-                case "Cắt Tạm Danh Bộ":
-                    dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDB(dateTimKiem.Value);
-                    break;
-                case "Cắt Hủy Danh Bộ":
-                    dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDB(dateTimKiem.Value);
-                    break;
-                case "Yêu Cầu Cắt Hủy Danh Bộ":
-                    dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTimKiem.Value);
-                    break;
-                case "Đóng Nước":
-                    dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTDongNuoc(dateTimKiem.Value);
-                    break;
-                case "Mở Nước":
-                    dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTMoNuoc(dateTimKiem.Value);
-                    break;
-                case "Thảo Thư Trả Lời":
-                    dgvDanhSach.DataSource = _cTTTL.LoadDSCTTTTL(dateTimKiem.Value);
+                case "Ngày":
+                    switch (cmbLoai.SelectedItem.ToString())
+                    {
+                        case "Điều Chỉnh Biến Động":
+                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCBD(dateTimKiem.Value);
+                            break;
+                        case "Điều Chỉnh Hóa Đơn":
+                            dgvDanhSach.DataSource = _cDCBD.LoadDSCTDCHD(dateTimKiem.Value);
+                            break;
+                        case "Cắt Chuyển":
+                            dgvDanhSach.DataSource = _cChungTu.LoadDSCatChuyenDM(dateTimKiem.Value);
+                            break;
+                        case "Cắt Tạm Danh Bộ":
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCTDB(dateTimKiem.Value);
+                            break;
+                        case "Cắt Hủy Danh Bộ":
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSCTCHDB(dateTimKiem.Value);
+                            break;
+                        case "Yêu Cầu Cắt Hủy Danh Bộ":
+                            dgvDanhSach.DataSource = _cCHDB.LoadDSYCCHDB_Don(dateTimKiem.Value);
+                            break;
+                        case "Đóng Nước":
+                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTDongNuoc(dateTimKiem.Value);
+                            break;
+                        case "Mở Nước":
+                            dgvDanhSach.DataSource = _cDongNuoc.LoadDSCTMoNuoc(dateTimKiem.Value);
+                            break;
+                        case "Thảo Thư Trả Lời":
+                            dgvDanhSach.DataSource = _cTTTL.LoadDSCTTTTL(dateTimKiem.Value);
+                            break;
+                    }
                     break;
             }
         }
@@ -318,6 +356,25 @@ namespace KTKS_DonKH.GUI.CapNhat
         private void cmbLoai_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvDanhSach.DataSource = null;
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Mã":
+                    txtNoiDung.Visible = true;
+                    dateTimKiem.Visible = false;
+                    break;
+                case "Ngày":
+                    txtNoiDung.Visible = false;
+                    dateTimKiem.Visible = true;
+                    break;
+                default:
+                    txtNoiDung.Visible = false;
+                    dateTimKiem.Visible = false;
+                    break;
+            }
         }
 
     }

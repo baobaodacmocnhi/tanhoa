@@ -484,6 +484,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                         lichsuchuyenkt.DM = _donkh.DM;
                         lichsuchuyenkt.CCDM = _donkh.CCDM;
                         lichsuchuyenkt.STGB = _donkh.STGB;
+                        lichsuchuyenkt.KTTT = _donkh.KTTT;
                         lichsuchuyenkt.GhiChuChuyen = _donkh.GhiChuChuyenKT;
                         lichsuchuyenkt.MaDon = _donkh.MaDon;
                         _cDonTXL.ThemLichSuChuyenKT(lichsuchuyenkt);

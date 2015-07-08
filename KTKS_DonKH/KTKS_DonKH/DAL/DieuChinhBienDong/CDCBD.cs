@@ -1251,6 +1251,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     In = false,
                                     itemCTDCBD.ChuyenDocSo,
                                     SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    Ma = itemCTDCBD.MaCTDCBD,
                                     DieuChinh = "Biến Động",
                                     itemCTDCBD.CreateDate,
                                     itemCTDCBD.DanhBo,
@@ -2074,6 +2075,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                 {
                                     In = false,
                                     SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    Ma = itemCTDCHD.MaCTDCHD,
                                     DieuChinh = "Hóa Đơn",
                                     itemCTDCHD.CreateDate,
                                     itemCTDCHD.DanhBo,
