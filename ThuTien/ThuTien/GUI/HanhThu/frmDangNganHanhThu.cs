@@ -36,6 +36,8 @@ namespace ThuTien.GUI.HanhThu
             dgvTongHD.AutoGenerateColumns = false;
             dgvHDDaThu.AutoGenerateColumns = false;
             dgvHDChuaThu.AutoGenerateColumns = false;
+            dgvHDDaThuDum.AutoGenerateColumns = false;
+           
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
@@ -89,7 +91,8 @@ namespace ThuTien.GUI.HanhThu
         {
             if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
             {
-                dgvTongHD.DataSource = _cHoaDon.GetTongByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                dgvTongHD.DataSource = _cHoaDon.GetTongTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNganByMaNV_HanhThuNamKyDot("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                 LoadDataGridView();
                 _flagNgayDangNgan = false;
             }
@@ -505,6 +508,18 @@ namespace ThuTien.GUI.HanhThu
             }
             catch (Exception)
             {
+            }
+        }
+
+        private void dgvHDDaThuDum_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHDDaThuDum.Columns[e.ColumnIndex].Name == "TongHD_Dum" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHDDaThuDum.Columns[e.ColumnIndex].Name == "TongCong_Dum" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
     }

@@ -34,6 +34,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radChuaThu = new System.Windows.Forms.RadioButton();
             this.radDaThu = new System.Windows.Forms.RadioButton();
@@ -105,6 +107,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.dgvHDDaThuDum = new System.Windows.Forms.DataGridView();
+            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongHD_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBan_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongThueGTGT_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongPhiBVMT_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHD)).BeginInit();
@@ -113,6 +124,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThu)).BeginInit();
             this.tabChuaThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDChuaThu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThuDum)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -843,11 +856,108 @@
             this.label8.TabIndex = 28;
             this.label8.Text = "(Enter)";
             // 
+            // dgvHDDaThuDum
+            // 
+            this.dgvHDDaThuDum.AllowUserToAddRows = false;
+            this.dgvHDDaThuDum.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHDDaThuDum.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvHDDaThuDum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHDDaThuDum.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaNV,
+            this.HoTen,
+            this.TongHD_Dum,
+            this.TongGiaBan_Dum,
+            this.TongThueGTGT_Dum,
+            this.TongPhiBVMT_Dum,
+            this.TongCong_Dum});
+            this.dgvHDDaThuDum.Location = new System.Drawing.Point(6, 19);
+            this.dgvHDDaThuDum.MultiSelect = false;
+            this.dgvHDDaThuDum.Name = "dgvHDDaThuDum";
+            this.dgvHDDaThuDum.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvHDDaThuDum.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvHDDaThuDum.Size = new System.Drawing.Size(346, 121);
+            this.dgvHDDaThuDum.TabIndex = 1;
+            this.dgvHDDaThuDum.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDDaThuDum_CellFormatting);
+            // 
+            // MaNV
+            // 
+            this.MaNV.DataPropertyName = "MaNV";
+            this.MaNV.HeaderText = "MaNV";
+            this.MaNV.Name = "MaNV";
+            this.MaNV.ReadOnly = true;
+            this.MaNV.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Nhân Viên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            // 
+            // TongHD_Dum
+            // 
+            this.TongHD_Dum.DataPropertyName = "TongHD";
+            this.TongHD_Dum.HeaderText = "Tổng HĐ";
+            this.TongHD_Dum.Name = "TongHD_Dum";
+            this.TongHD_Dum.ReadOnly = true;
+            this.TongHD_Dum.Width = 80;
+            // 
+            // TongGiaBan_Dum
+            // 
+            this.TongGiaBan_Dum.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan_Dum.HeaderText = "Giá Bán";
+            this.TongGiaBan_Dum.Name = "TongGiaBan_Dum";
+            this.TongGiaBan_Dum.ReadOnly = true;
+            this.TongGiaBan_Dum.Visible = false;
+            this.TongGiaBan_Dum.Width = 80;
+            // 
+            // TongThueGTGT_Dum
+            // 
+            this.TongThueGTGT_Dum.DataPropertyName = "TongThueGTGT";
+            this.TongThueGTGT_Dum.HeaderText = "Thuế GTGT";
+            this.TongThueGTGT_Dum.Name = "TongThueGTGT_Dum";
+            this.TongThueGTGT_Dum.ReadOnly = true;
+            this.TongThueGTGT_Dum.Visible = false;
+            // 
+            // TongPhiBVMT_Dum
+            // 
+            this.TongPhiBVMT_Dum.DataPropertyName = "TongPhiBVMT";
+            this.TongPhiBVMT_Dum.HeaderText = "Phí BVMT";
+            this.TongPhiBVMT_Dum.Name = "TongPhiBVMT_Dum";
+            this.TongPhiBVMT_Dum.ReadOnly = true;
+            this.TongPhiBVMT_Dum.Visible = false;
+            // 
+            // TongCong_Dum
+            // 
+            this.TongCong_Dum.DataPropertyName = "TongCong";
+            this.TongCong_Dum.HeaderText = "Tổng Cộng";
+            this.TongCong_Dum.Name = "TongCong_Dum";
+            this.TongCong_Dum.ReadOnly = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dgvHDDaThuDum);
+            this.groupBox3.Location = new System.Drawing.Point(985, 29);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(358, 147);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tăng Cường";
+            // 
             // frmDangNganHanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 670);
+            this.ClientSize = new System.Drawing.Size(1436, 670);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSoLuong);
@@ -886,6 +996,8 @@
             this.tabChuaThu.ResumeLayout(false);
             this.tabChuaThu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDChuaThu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThuDum)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -964,5 +1076,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_CT;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_CT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_CT;
+        private System.Windows.Forms.DataGridView dgvHDDaThuDum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongHD_Dum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan_Dum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongThueGTGT_Dum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongPhiBVMT_Dum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_Dum;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

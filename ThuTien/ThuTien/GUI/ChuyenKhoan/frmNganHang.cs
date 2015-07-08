@@ -43,6 +43,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if(!string.IsNullOrEmpty(txtTenNH.Text.Trim()))
                 {
                     NGANHANG nganhang = new NGANHANG();
+                    nganhang.KyHieu = txtKyHieu.Text.Trim();
                     nganhang.NGANHANG1 = txtTenNH.Text.Trim();
                     if (_cNganHang.Them(nganhang))
                     {
@@ -62,6 +63,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (_selectedindex != -1)
                 {
                     NGANHANG nganhang = _cNganHang.GetByMaNH(int.Parse(dgvNganHang["MaNH", _selectedindex].Value.ToString()));
+                    nganhang.KyHieu = txtKyHieu.Text.Trim();
                     nganhang.NGANHANG1 = txtTenNH.Text.Trim();
                     if (_cNganHang.Sua(nganhang))
                     {
@@ -97,6 +99,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             try
             {
                 _selectedindex = e.RowIndex;
+                txtKyHieu.Text = dgvNganHang["KyHieu", e.RowIndex].Value.ToString();
                 txtTenNH.Text = dgvNganHang["TenNH", e.RowIndex].Value.ToString();
             }
             catch

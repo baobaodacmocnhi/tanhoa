@@ -319,9 +319,11 @@
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.txtSoHoaDon);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "frmDangNganQuay";
             this.Text = "Đăng Ngân Quầy";
             this.Load += new System.EventHandler(this.frmDangNganQuay_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDangNganQuay_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDDaThu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

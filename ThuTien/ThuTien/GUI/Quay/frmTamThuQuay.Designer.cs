@@ -300,7 +300,7 @@
             this.tabThongTin.Location = new System.Drawing.Point(4, 22);
             this.tabThongTin.Name = "tabThongTin";
             this.tabThongTin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThongTin.Size = new System.Drawing.Size(1327, 587);
+            this.tabThongTin.Size = new System.Drawing.Size(1327, 572);
             this.tabThongTin.TabIndex = 0;
             this.tabThongTin.Text = "Thông Tin";
             this.tabThongTin.UseVisualStyleBackColor = true;
@@ -338,7 +338,7 @@
             this.tabTamThu.Location = new System.Drawing.Point(4, 22);
             this.tabTamThu.Name = "tabTamThu";
             this.tabTamThu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTamThu.Size = new System.Drawing.Size(1327, 587);
+            this.tabTamThu.Size = new System.Drawing.Size(1327, 572);
             this.tabTamThu.TabIndex = 1;
             this.tabTamThu.Text = "Danh Sách Tạm Thu";
             this.tabTamThu.UseVisualStyleBackColor = true;
@@ -782,9 +782,11 @@
             this.Controls.Add(this.txtDanhBo);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "frmTamThuQuay";
             this.Text = "Tạm Thu Quầy";
             this.Load += new System.EventHandler(this.frmTamThu_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTamThuQuay_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabThongTin.ResumeLayout(false);

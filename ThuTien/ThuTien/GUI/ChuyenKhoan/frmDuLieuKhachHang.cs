@@ -97,6 +97,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     _cDLKH.CommitTransaction();
                     LoadDanhSachHD();
                     txtDanhBo.Text = "";
+                    cmbKy.SelectedIndex = -1;
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)

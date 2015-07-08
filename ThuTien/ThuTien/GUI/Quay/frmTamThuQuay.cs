@@ -15,6 +15,7 @@ using ThuTien.DAL.TongHop;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.Quay;
 using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.TimKiem;
 
 namespace ThuTien.GUI.Quay
 {
@@ -425,6 +426,61 @@ namespace ThuTien.GUI.Quay
             using (SolidBrush b = new SolidBrush(dgvXacNhanNo.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void GetNoiDungfrmTimKiem(string NoiDung)
+        {
+            if (tabControl.SelectedTab.Name == "tabThongTin")
+            {
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                    if (item.Cells["DanhBo"].Value.ToString() == NoiDung)
+                    {
+                        dgvHoaDon.CurrentCell = item.Cells[0];
+                        item.Selected = true;
+                    }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabTamThu")
+                {
+                    foreach (DataGridViewRow item in dgvTamThu.Rows)
+                        if (item.Cells["DanhBo_TT"].Value.ToString() == NoiDung)
+                        {
+                            dgvTamThu.CurrentCell = item.Cells[0];
+                            item.Selected = true;
+                        }
+                }
+                else
+                    if (tabControl.SelectedTab.Name == "tabXacNhanNo")
+                    {
+                        foreach (DataGridViewRow item in dgvXacNhanNo.Rows)
+                            if (item.Cells["DanhBo_XacNhanNo"].Value.ToString() == NoiDung)
+                            {
+                                dgvXacNhanNo.CurrentCell = item.Cells[0];
+                                item.Selected = true;
+                            }
+                    }
+
+        }
+
+        private void frmTamThuQuay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                frmTimKiem frm = new frmTimKiem();
+                bool flag = false;
+                foreach (var item in this.OwnedForms)
+                    if (item.Name == frm.Name)
+                    {
+                        item.Activate();
+                        flag = true;
+                    }
+                if (flag == false)
+                {
+                    frm.MyGetNoiDung = new frmTimKiem.GetNoiDung(GetNoiDungfrmTimKiem);
+                    frm.Owner = this;
+                    frm.Show();
+                }
             }
         }
 

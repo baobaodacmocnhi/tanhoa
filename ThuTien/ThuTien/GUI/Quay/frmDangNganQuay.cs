@@ -14,6 +14,7 @@ using ThuTien.DAL.TongHop;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.NhanVien;
 using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.TimKiem;
 
 namespace ThuTien.GUI.Quay
 {
@@ -242,6 +243,37 @@ namespace ThuTien.GUI.Quay
             using (SolidBrush b = new SolidBrush(dgvHDDaThu.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void GetNoiDungfrmTimKiem(string NoiDung)
+        {
+            foreach (DataGridViewRow item in dgvHDDaThu.Rows)
+                if (item.Cells["DanhBo"].Value.ToString() == NoiDung)
+                {
+                    dgvHDDaThu.CurrentCell = item.Cells[0];
+                    item.Selected = true;
+                }
+        }
+
+        private void frmDangNganQuay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                frmTimKiem frm = new frmTimKiem();
+                bool flag = false;
+                foreach (var item in this.OwnedForms)
+                    if (item.Name == frm.Name)
+                    {
+                        item.Activate();
+                        flag = true;
+                    }
+                if (flag == false)
+                {
+                    frm.MyGetNoiDung = new frmTimKiem.GetNoiDung(GetNoiDungfrmTimKiem);
+                    frm.Owner = this;
+                    frm.Show();
+                }
             }
         }
 

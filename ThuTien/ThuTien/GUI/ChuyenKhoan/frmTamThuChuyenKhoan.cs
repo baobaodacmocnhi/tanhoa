@@ -38,9 +38,6 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvTamThu.AutoGenerateColumns = false;
-            cmbNganHang.DataSource = _cNganHang.GetDS();
-            cmbNganHang.DisplayMember = "TenNH";
-            cmbNganHang.ValueMember = "MaNH";
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
@@ -100,7 +97,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
                         tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
                         tamthu.ChuyenKhoan = true;
-                        tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
+                        tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
 
                         if (!_cTamThu.Them(tamthu))
                         {
@@ -285,6 +282,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
             dialog.Multiselect = false;
+                
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Excel fileExcel = new Excel(dialog.FileName);
@@ -299,7 +297,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dgvHoaDon.DataSource = dt;
 
                 foreach (DataRow itemExcel in dtExcel.Rows)
-                    if (!string.IsNullOrEmpty(itemExcel[0].ToString()) && !string.IsNullOrEmpty(itemExcel[1].ToString()))
+                    if (itemExcel[0].ToString().Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
                     {
                         string ChenhLech = "";
                         int SoTien = 0;
@@ -316,6 +314,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 {
                                     itemRow.Cells["ChenhLech"].Value = ChenhLech;
                                     itemRow.DefaultCellStyle.BackColor = Color.GreenYellow;
+                                    itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
                                 }
                         }
                         else
@@ -327,6 +326,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     {
                                         itemRow.Cells["ChenhLech"].Value = ChenhLech;
                                         itemRow.DefaultCellStyle.BackColor = Color.Orange;
+                                        itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
+                                    }
+                            }
+                            else
+                            {
+                                foreach (DataGridViewRow itemRow in dgvHoaDon.Rows)
+                                    if (itemRow.Cells["DanhBo"].Value.ToString() == itemExcel[0].ToString())
+                                    {
+                                        itemRow.Cells["NganHang"].Value = _cNganHang.GetMaNHByKyHieu(itemExcel[2].ToString());
                                     }
                             }
                     }
@@ -502,24 +510,26 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void GetNoiDungfrmTimKiem(string NoiDung)
         {
-            if(tabControl.SelectedTab.Name=="tabThongTin")
+            if (tabControl.SelectedTab.Name == "tabThongTin")
             {
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if(item.Cells["DanhBo"].Value.ToString()==NoiDung)
-                {
-                    item.Selected = true;
-                }
-            }
-            else
-                if(tabControl.SelectedTab.Name=="tabTamThu")
-            {
-                foreach (DataGridViewRow item in dgvTamThu.Rows)
                     if (item.Cells["DanhBo"].Value.ToString() == NoiDung)
                     {
+                        dgvHoaDon.CurrentCell = item.Cells[0];
                         item.Selected = true;
                     }
             }
-            
+            else
+                if (tabControl.SelectedTab.Name == "tabTamThu")
+                {
+                    foreach (DataGridViewRow item in dgvTamThu.Rows)
+                        if (item.Cells["DanhBo_TT"].Value.ToString() == NoiDung)
+                        {
+                            dgvTamThu.CurrentCell = item.Cells[0];
+                            item.Selected = true;
+                        }
+                }
+
         }
 
         private void frmTamThuChuyenKhoan_KeyDown(object sender, KeyEventArgs e)

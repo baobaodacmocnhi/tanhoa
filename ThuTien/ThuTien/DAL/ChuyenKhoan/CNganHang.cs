@@ -67,9 +67,14 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.NGANHANGs.SingleOrDefault(item => item.ID_NGANHANG == MaNH);
         }
 
+        public int GetMaNHByKyHieu(string KyHieu)
+        {
+            return _db.NGANHANGs.SingleOrDefault(item => item.KyHieu == KyHieu).ID_NGANHANG;
+        }
+
         public System.Data.DataTable GetDS()
         {
-            return LINQToDataTable(_db.NGANHANGs.Select(item => new { MaNH = item.ID_NGANHANG, TenNH = item.NGANHANG1 }).ToList());
+            return LINQToDataTable(_db.NGANHANGs.Select(item => new { MaNH = item.ID_NGANHANG,item.KyHieu ,TenNH = item.NGANHANG1 }).ToList());
         }
     }
 }
