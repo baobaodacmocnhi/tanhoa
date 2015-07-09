@@ -2109,36 +2109,44 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSDangNganQuayByMaNVNgayGiaiTrachs(int MaNV, DateTime TuNgay, DateTime DenNgay)
         {
-            var query = from item in _db.HOADONs
-                        where item.DangNgan_Quay == true && item.MaNV_DangNgan == MaNV && item.NGAYGIAITRACH.Value.Date >= TuNgay.Date && item.NGAYGIAITRACH.Value.Date <= DenNgay.Date
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.DangNgan_Quay == true && itemHD.MaNV_DangNgan == MaNV && itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
                         select new
                         {
-                            item.NGAYGIAITRACH,
-                            item.SOHOADON,
-                            DanhBo = item.DANHBA,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
                         };
             return LINQToDataTable(query);
         }
 
         public DataTable GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrachs(int MaNV, DateTime TuNgay, DateTime DenNgay)
         {
-            var query = from item in _db.HOADONs
-                        where item.DangNgan_ChuyenKhoan == true && item.MaNV_DangNgan == MaNV && item.NGAYGIAITRACH.Value.Date >= TuNgay.Date && item.NGAYGIAITRACH.Value.Date <= DenNgay.Date
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.DangNgan_ChuyenKhoan == true && itemHD.MaNV_DangNgan == MaNV && itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
                         select new
                         {
-                            item.NGAYGIAITRACH,
-                            item.SOHOADON,
-                            DanhBo = item.DANHBA,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To=itemtableND.TT_To.TenTo,
                         };
             return LINQToDataTable(query);
         }
@@ -2503,7 +2511,7 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSByTimKiem(string DanhBo, string HoTen, string DiaChi)
         {
-            string sql = "select top(10) ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,"
+            string sql = "select top(10) ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,SoHoaDon,"
                 + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu,NgayDN"
                 + " from HOADON a left join TT_NguoiDung b on a.MaNV_DangNgan=b.MaND"
                 + " left join TT_NguoiDung c on a.MaNV_HanhThu=c.MaND"

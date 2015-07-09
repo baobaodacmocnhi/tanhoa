@@ -40,7 +40,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                if(!string.IsNullOrEmpty(txtTenNH.Text.Trim()))
+                if(!string.IsNullOrEmpty(txtKyHieu.Text.Trim())&&!string.IsNullOrEmpty(txtTenNH.Text.Trim()))
                 {
                     NGANHANG nganhang = new NGANHANG();
                     nganhang.KyHieu = txtKyHieu.Text.Trim();

@@ -39,7 +39,7 @@ namespace ThuTien.GUI.HanhThu
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!lstHD.Items.Contains(item.Trim()))
+                    if (!string.IsNullOrEmpty(item.Trim()) && !lstHD.Items.Contains(item.Trim()))
                     {
                         lstHD.Items.Add(item.Trim());
                     }
@@ -68,6 +68,12 @@ namespace ThuTien.GUI.HanhThu
                     if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.SelectedItem = item;
+                        return;
+                    }
+                    if (!_cQuetTam.CheckExistByID(item.ToString(),CNguoiDung.MaND))
+                    {
+                        MessageBox.Show("Hóa Đơn đã Quét Tạm " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.SelectedItem = item;
                         return;
                     }
@@ -113,7 +119,7 @@ namespace ThuTien.GUI.HanhThu
                             _cQuetTam.BeginTransaction();
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
-                                TT_QuetTam quettam = _cQuetTam.GetByID(int.Parse(item.Cells["MaQT_TG"].Value.ToString()));
+                                TT_QuetTam quettam = _cQuetTam.GetByID(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND);
                                 if (!_cQuetTam.Xoa(quettam))
                                 {
                                     _cQuetTam.Rollback();
@@ -140,7 +146,7 @@ namespace ThuTien.GUI.HanhThu
                                 _cQuetTam.BeginTransaction();
                                 foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                 {
-                                    TT_QuetTam quettam = _cQuetTam.GetByID(int.Parse(item.Cells["MaQT_CQ"].Value.ToString()));
+                                    TT_QuetTam quettam = _cQuetTam.GetByID(item.Cells["SoHoaDon_CQ"].Value.ToString(),CNguoiDung.MaND);
                                     if (!_cQuetTam.Xoa(quettam))
                                     {
                                         _cQuetTam.Rollback();

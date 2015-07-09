@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnIn = new System.Windows.Forms.Button();
             this.dgvHD = new System.Windows.Forms.DataGridView();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +58,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(161, 201);
+            this.btnIn.Location = new System.Drawing.Point(161, 226);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(81, 23);
             this.btnIn.TabIndex = 19;
@@ -70,14 +70,14 @@
             // 
             this.dgvHD.AllowUserToAddRows = false;
             this.dgvHD.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SoHoaDon,
@@ -89,8 +89,8 @@
             this.dgvHD.Location = new System.Drawing.Point(271, 38);
             this.dgvHD.Name = "dgvHD";
             this.dgvHD.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvHD.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvHD.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHD.Size = new System.Drawing.Size(671, 590);
             this.dgvHD.TabIndex = 20;
@@ -141,7 +141,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(161, 109);
+            this.btnXoa.Location = new System.Drawing.Point(161, 134);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 18;
@@ -151,7 +151,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(161, 80);
+            this.btnSua.Location = new System.Drawing.Point(161, 105);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 17;
@@ -161,7 +161,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(161, 51);
+            this.btnThem.Location = new System.Drawing.Point(161, 76);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 16;
@@ -181,7 +181,7 @@
             // lstHD
             // 
             this.lstHD.FormattingEnabled = true;
-            this.lstHD.Location = new System.Drawing.Point(15, 51);
+            this.lstHD.Location = new System.Drawing.Point(15, 76);
             this.lstHD.Name = "lstHD";
             this.lstHD.Size = new System.Drawing.Size(120, 173);
             this.lstHD.TabIndex = 15;
@@ -193,14 +193,14 @@
             this.txtSoHoaDon.Location = new System.Drawing.Point(87, 12);
             this.txtSoHoaDon.Multiline = true;
             this.txtSoHoaDon.Name = "txtSoHoaDon";
-            this.txtSoHoaDon.Size = new System.Drawing.Size(100, 20);
+            this.txtSoHoaDon.Size = new System.Drawing.Size(100, 45);
             this.txtSoHoaDon.TabIndex = 13;
             this.txtSoHoaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoHoaDon_KeyPress);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 35);
+            this.label4.Location = new System.Drawing.Point(12, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 13);
             this.label4.TabIndex = 14;
@@ -264,7 +264,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 233);
+            this.label8.Location = new System.Drawing.Point(23, 258);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 38;
@@ -272,7 +272,7 @@
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(85, 230);
+            this.txtSoLuong.Location = new System.Drawing.Point(85, 255);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 37;

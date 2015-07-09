@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -145,10 +145,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl.Location = new System.Drawing.Point(258, 40);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -250,7 +250,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 35);
+            this.label2.Location = new System.Drawing.Point(12, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 13);
             this.label2.TabIndex = 15;
@@ -259,7 +259,7 @@
             // lstHD
             // 
             this.lstHD.FormattingEnabled = true;
-            this.lstHD.Location = new System.Drawing.Point(15, 51);
+            this.lstHD.Location = new System.Drawing.Point(15, 76);
             this.lstHD.Name = "lstHD";
             this.lstHD.Size = new System.Drawing.Size(120, 173);
             this.lstHD.TabIndex = 16;
@@ -313,7 +313,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(161, 109);
+            this.btnXoa.Location = new System.Drawing.Point(161, 134);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 19;
@@ -323,7 +323,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(161, 80);
+            this.btnSua.Location = new System.Drawing.Point(161, 105);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 18;
@@ -333,7 +333,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(161, 51);
+            this.btnThem.Location = new System.Drawing.Point(161, 76);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 17;
@@ -346,7 +346,7 @@
             this.txtSoHoaDon.Location = new System.Drawing.Point(87, 12);
             this.txtSoHoaDon.Multiline = true;
             this.txtSoHoaDon.Name = "txtSoHoaDon";
-            this.txtSoHoaDon.Size = new System.Drawing.Size(100, 20);
+            this.txtSoHoaDon.Size = new System.Drawing.Size(100, 45);
             this.txtSoHoaDon.TabIndex = 14;
             this.txtSoHoaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoHoaDon_KeyPress);
             // 
@@ -393,7 +393,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 233);
+            this.label8.Location = new System.Drawing.Point(23, 258);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 42;
@@ -401,7 +401,7 @@
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(85, 230);
+            this.txtSoLuong.Location = new System.Drawing.Point(85, 255);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 41;

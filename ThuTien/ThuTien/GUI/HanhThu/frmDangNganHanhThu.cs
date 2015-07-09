@@ -103,7 +103,7 @@ namespace ThuTien.GUI.HanhThu
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!lstHD.Items.Contains(item.Trim()))
+                    if (!string.IsNullOrEmpty(item.Trim()) && !lstHD.Items.Contains(item.Trim()))
                     {
                         lstHD.Items.Add(item.Trim());
                     }
@@ -195,21 +195,21 @@ namespace ThuTien.GUI.HanhThu
                             DataColumn[] keyColumns = new DataColumn[1];
                             keyColumns[0] = dt.Columns["SoHoaDon"];
                             dt.PrimaryKey = keyColumns;
-                            string loai;
+                            //string loai;
                             foreach (var item in lstHD.Items)
                             {
                                 if (!dt.Rows.Contains(item.ToString()))
                                 {
-                                    MessageBox.Show("Hóa Đơn sai:" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Hóa Đơn sai Hoặc đã Đăng Ngân:" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     lstHD.SelectedItem = item;
                                     return;
                                 }
-                                if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
-                                {
-                                    MessageBox.Show("Hóa Đơn đã được "+loai+": " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    lstHD.SelectedItem = item;
-                                    return;
-                                }
+                                //if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
+                                //{
+                                //    MessageBox.Show("Hóa Đơn đã được "+loai+": " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //    lstHD.SelectedItem = item;
+                                //    return;
+                                //}
                             }
                             try
                             {

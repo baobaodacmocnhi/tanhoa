@@ -38,7 +38,7 @@
         <elementListCompartment Id="7668405d-ac5f-4151-8569-6d9ef5e63583" absoluteBounds="0.765, 5.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 3.4151025390625); (3.125 : 3.7901025390625); (3.125 : 6.08735270182292); (3.5 : 6.08735270182292)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 3.4151025390625); (3.125 : 3.7901025390625); (3.125 : 6.08735270182292); (3.5 : 6.08735270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbThuTienDataContext/TT_To/TT_To_TT_NguoiDung" />
       <nodes>
         <classShapeMoniker Id="872be49a-9e00-4c27-adcb-c3069b50422a" />
@@ -206,16 +206,16 @@
         <elementListCompartment Id="64b0b850-5e4b-4e71-80ba-e6fce3cf352d" absoluteBounds="20.39, 8.585, 1.9700000000000002, 9.8644612630208321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="35e9cc14-b639-4a8d-bfde-f57ea3cc1517" absoluteBounds="13.875, 3.25, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/dbThuTienDataContext/TT_QuetTam" />
-      <nestedChildShapes>
-        <elementListCompartment Id="166714b4-8ad5-473d-ad2a-74ec94caf5ec" absoluteBounds="13.89, 3.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="53f0652e-1073-44c2-93a5-f015776126cd" absoluteBounds="18.75, 4.5, 2, 2.3478011067708335">
+    <classShape Id="269624f0-2971-4061-b2f6-899e9ca3f88a" absoluteBounds="17, 3, 2, 2.1554996744791666">
       <DataClassMoniker Name="/dbThuTienDataContext/NGANHANG" />
       <nestedChildShapes>
-        <elementListCompartment Id="de6c13bc-4eaf-429f-b488-8d2466b362c4" absoluteBounds="18.765, 4.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="5e807a71-ad2a-4733-b7a4-3629e54c3d38" absoluteBounds="17.015, 3.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a24e4b48-395e-4b14-bb23-ee0301828aac" absoluteBounds="12.75, 3.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/dbThuTienDataContext/TT_QuetTam" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5571cb3e-06ee-4a1e-8d2a-ebcdff8cc436" absoluteBounds="12.765, 3.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

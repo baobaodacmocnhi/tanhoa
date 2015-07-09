@@ -46,6 +46,7 @@
             this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGiaiTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,6 +140,7 @@
             this.GiaBieu,
             this.DinhMuc,
             this.Ky,
+            this.SoHoaDon,
             this.TieuThu,
             this.TongCong,
             this.NgayGiaiTrach,
@@ -146,13 +148,13 @@
             this.NgayDN,
             this.NgayMN,
             this.HanhThu});
-            this.dgvHoaDon.Location = new System.Drawing.Point(12, 90);
+            this.dgvHoaDon.Location = new System.Drawing.Point(1, 90);
             this.dgvHoaDon.MultiSelect = false;
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1347, 313);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1358, 313);
             this.dgvHoaDon.TabIndex = 17;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
@@ -176,7 +178,7 @@
             this.MLT.DataPropertyName = "MLT";
             this.MLT.HeaderText = "MLT";
             this.MLT.Name = "MLT";
-            this.MLT.Width = 80;
+            this.MLT.Width = 70;
             // 
             // HoTen
             // 
@@ -212,6 +214,12 @@
             this.Ky.HeaderText = "Kỳ";
             this.Ky.Name = "Ky";
             this.Ky.Width = 50;
+            // 
+            // SoHoaDon
+            // 
+            this.SoHoaDon.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon.HeaderText = "Số Hóa Đơn";
+            this.SoHoaDon.Name = "SoHoaDon";
             // 
             // TieuThu
             // 
@@ -302,6 +310,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach;

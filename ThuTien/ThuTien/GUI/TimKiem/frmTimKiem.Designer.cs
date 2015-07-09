@@ -48,6 +48,7 @@
             this.txtNoiDung.Name = "txtNoiDung";
             this.txtNoiDung.Size = new System.Drawing.Size(100, 20);
             this.txtNoiDung.TabIndex = 1;
+            this.txtNoiDung.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoiDung_KeyPress);
             // 
             // btnTimKiem
             // 

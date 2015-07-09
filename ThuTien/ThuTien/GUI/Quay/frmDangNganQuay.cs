@@ -52,7 +52,7 @@ namespace ThuTien.GUI.Quay
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!lstHD.Items.Contains(item.Trim()))
+                    if (!string.IsNullOrEmpty(item.Trim()) && !lstHD.Items.Contains(item.Trim()))
                     {
                         lstHD.Items.Add(item.Trim());
                     }
@@ -210,6 +210,11 @@ namespace ThuTien.GUI.Quay
                 MessageBox.Show("Từ Ngày = Đến Ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void dgvHDDaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
@@ -276,6 +281,8 @@ namespace ThuTien.GUI.Quay
                 }
             }
         }
+
+        
 
     }
 }

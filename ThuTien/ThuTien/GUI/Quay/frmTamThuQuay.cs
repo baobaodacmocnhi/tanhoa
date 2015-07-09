@@ -16,6 +16,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.Quay;
 using KTKS_DonKH.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
+using ThuTien.BaoCao.ChuyenKhoan;
 
 namespace ThuTien.GUI.Quay
 {
@@ -371,6 +372,29 @@ namespace ThuTien.GUI.Quay
                 }
         }
 
+        private void btnInDSTamThu_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvTamThu.Rows)
+            {
+                DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
+                dr["MLT"] = item.Cells["MLT_TT"].Value.ToString();
+                dr["Ky"] = item.Cells["Ky_TT"].Value.ToString();
+                dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
+                dr["NhanVien"] = item.Cells["HanhThu_TT"].Value.ToString();
+                dr["To"] = item.Cells["To_TT"].Value.ToString();
+                ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+            }
+            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
         private void btnXem_XacNhanNo_Click(object sender, EventArgs e)
         {
             if (dateTu_XacNhanNo.Value <= dateDen_XacNhanNo.Value)
@@ -483,6 +507,8 @@ namespace ThuTien.GUI.Quay
                 }
             }
         }
+
+        
 
 
     }

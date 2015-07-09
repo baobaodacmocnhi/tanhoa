@@ -254,7 +254,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
-        private void btnInTamThu_Click(object sender, EventArgs e)
+        private void btnInDSTamThu_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvTamThu.Rows)
@@ -358,10 +358,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dtCQ.Columns.Add(new DataColumn(item.ColumnName, item.DataType));
                 }
                 foreach (DataRow item in dt.Rows)
-                    if (int.Parse(item["GiaBieu"].ToString()) >= 11 && int.Parse(item["GiaBieu"].ToString()) <= 20)
+                    if (int.Parse(item["GiaBieu_TT"].ToString()) >= 11 && int.Parse(item["GiaBieu_TT"].ToString()) <= 20)
                         dtTG.ImportRow(item);
                     else
-                        if(int.Parse(item["GiaBieu"].ToString()) > 20)
+                        if(int.Parse(item["GiaBieu_TT"].ToString()) > 20)
                             dtCQ.ImportRow(item);
 
                 //Tạo các đối tượng Excel
@@ -515,7 +515,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     if (item.Cells["DanhBo"].Value.ToString() == NoiDung)
                     {
-                        dgvHoaDon.CurrentCell = item.Cells[0];
+                        dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
                         item.Selected = true;
                     }
             }
@@ -525,7 +525,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     foreach (DataGridViewRow item in dgvTamThu.Rows)
                         if (item.Cells["DanhBo_TT"].Value.ToString() == NoiDung)
                         {
-                            dgvTamThu.CurrentCell = item.Cells[0];
+                            dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
                             item.Selected = true;
                         }
                 }

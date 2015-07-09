@@ -111,6 +111,8 @@
               <xs:element name="ThueGTGT" msprop:Generator_ColumnVarNameInTable="columnThueGTGT" msprop:Generator_ColumnPropNameInRow="ThueGTGT" msprop:Generator_ColumnPropNameInTable="ThueGTGTColumn" msprop:Generator_UserColumnName="ThueGTGT" type="xs:int" minOccurs="0" />
               <xs:element name="PhiBVMT" msprop:Generator_ColumnVarNameInTable="columnPhiBVMT" msprop:Generator_ColumnPropNameInRow="PhiBVMT" msprop:Generator_ColumnPropNameInTable="PhiBVMTColumn" msprop:Generator_UserColumnName="PhiBVMT" type="xs:int" minOccurs="0" />
               <xs:element name="TongCong" msprop:Generator_ColumnVarNameInTable="columnTongCong" msprop:Generator_ColumnPropNameInRow="TongCong" msprop:Generator_ColumnPropNameInTable="TongCongColumn" msprop:Generator_UserColumnName="TongCong" type="xs:int" minOccurs="0" />
+              <xs:element name="TongCongSo" msprop:Generator_ColumnVarNameInTable="columnTongCongSo" msprop:Generator_ColumnPropNameInRow="TongCongSo" msprop:Generator_ColumnPropNameInTable="TongCongSoColumn" msprop:Generator_UserColumnName="TongCongSo" type="xs:int" minOccurs="0" />
+              <xs:element name="TongCongChu" msprop:Generator_ColumnVarNameInTable="columnTongCongChu" msprop:Generator_ColumnPropNameInRow="TongCongChu" msprop:Generator_ColumnPropNameInTable="TongCongChuColumn" msprop:Generator_UserColumnName="TongCongChu" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

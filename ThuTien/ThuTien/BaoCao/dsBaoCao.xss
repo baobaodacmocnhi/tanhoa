@@ -11,7 +11,7 @@
     <Shape ID="DesignTable:NangSuatThuTien" ZOrder="6" X="343" Y="21" Height="257" Width="170" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:PhieuDangNgan" ZOrder="5" X="521" Y="21" Height="200" Width="161" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
     <Shape ID="DesignTable:PhieuTamThu" ZOrder="4" X="689" Y="24" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
-    <Shape ID="DesignTable:TongHopNo" ZOrder="3" X="851" Y="24" Height="200" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
+    <Shape ID="DesignTable:TongHopNo" ZOrder="3" X="851" Y="24" Height="238" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
     <Shape ID="DesignTable:TamThuChuyenKhoan" ZOrder="2" X="1033" Y="20" Height="200" Width="193" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
     <Shape ID="DesignTable:ChiaHoaDon" ZOrder="1" X="15" Y="229" Height="219" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="215" />
   </Shapes>

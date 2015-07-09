@@ -11,6 +11,7 @@ using ThuTien.BaoCao;
 using KTKS_DonKH.GUI.BaoCao;
 using ThuTien.BaoCao.ToTruong;
 using System.Globalization;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -100,7 +101,9 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            CTamThu _cTamThu = new CTamThu();
             dsBaoCao ds = new dsBaoCao();
+            int TongCongSo = 0;
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = ds.Tables["TongHopNo"].NewRow();
@@ -113,8 +116,12 @@ namespace ThuTien.GUI.ToTruong
                 dr["ThueGTGT"] = item["ThueGTGT"].ToString();
                 dr["PhiBVMT"] = item["PhiBVMT"].ToString();
                 dr["TongCong"] = item["TongCong"].ToString();
+                TongCongSo += int.Parse(item["TongCong"].ToString());
                 ds.Tables["TongHopNo"].Rows.Add(dr);
             }
+            DataRow dr1 = ds.Tables["TongHopNo"].NewRow();
+            dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
+            ds.Tables["TongHopNo"].Rows.Add(dr1);
             rptTongHopNo rpt = new rptTongHopNo();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);

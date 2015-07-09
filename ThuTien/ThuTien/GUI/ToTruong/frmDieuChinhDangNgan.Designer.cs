@@ -135,7 +135,7 @@
             // lstHD
             // 
             this.lstHD.FormattingEnabled = true;
-            this.lstHD.Location = new System.Drawing.Point(15, 51);
+            this.lstHD.Location = new System.Drawing.Point(15, 76);
             this.lstHD.Name = "lstHD";
             this.lstHD.Size = new System.Drawing.Size(120, 173);
             this.lstHD.TabIndex = 23;
@@ -147,13 +147,13 @@
             this.txtSoHoaDon.Location = new System.Drawing.Point(87, 12);
             this.txtSoHoaDon.Multiline = true;
             this.txtSoHoaDon.Name = "txtSoHoaDon";
-            this.txtSoHoaDon.Size = new System.Drawing.Size(100, 20);
+            this.txtSoHoaDon.Size = new System.Drawing.Size(100, 45);
             this.txtSoHoaDon.TabIndex = 18;
             this.txtSoHoaDon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoHoaDon_KeyPress);
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(161, 109);
+            this.btnXoa.Location = new System.Drawing.Point(161, 134);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 21;
@@ -163,7 +163,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(161, 80);
+            this.btnSua.Location = new System.Drawing.Point(161, 105);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 20;
@@ -173,7 +173,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(161, 51);
+            this.btnThem.Location = new System.Drawing.Point(161, 76);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 19;
@@ -570,7 +570,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 35);
+            this.label6.Location = new System.Drawing.Point(12, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 13);
             this.label6.TabIndex = 17;
@@ -580,7 +580,7 @@
             // 
             this.dateGiaiTrachSua.CustomFormat = "dd/MM/yyyy";
             this.dateGiaiTrachSua.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateGiaiTrachSua.Location = new System.Drawing.Point(156, 204);
+            this.dateGiaiTrachSua.Location = new System.Drawing.Point(156, 229);
             this.dateGiaiTrachSua.Name = "dateGiaiTrachSua";
             this.dateGiaiTrachSua.Size = new System.Drawing.Size(100, 20);
             this.dateGiaiTrachSua.TabIndex = 26;
@@ -588,7 +588,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(153, 188);
+            this.label7.Location = new System.Drawing.Point(153, 213);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(109, 13);
             this.label7.TabIndex = 25;
@@ -607,7 +607,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(25, 233);
+            this.label8.Location = new System.Drawing.Point(25, 258);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 29;
@@ -615,7 +615,7 @@
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(87, 230);
+            this.txtSoLuong.Location = new System.Drawing.Point(87, 255);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 28;
