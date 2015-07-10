@@ -255,5 +255,36 @@ namespace ThuTien.DAL.DongNuoc
             else
                 return "";
         }
+
+        /// <summary>
+        /// Kiểm tra Tồn Tại & Lấy Tên Nhân Viên, Tên Tổ theo Số Hóa Đơn. Phục vụ cho Tạm Thu
+        /// </summary>
+        /// <param name="SoHoaDon"></param>
+        /// <param name="HoTen"></param>
+        /// <param name="TenTo"></param>
+        /// <returns></returns>
+        public bool CheckExistBySoHoaDon(string SoHoaDon, out string HoTen, out string TenTo)
+        {
+            HoTen = "";
+            TenTo = "";
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
+                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
+                        where itemCTDN.SoHoaDon == SoHoaDon
+                        select new
+                        {
+                            itemND.HoTen,
+                            itemND.TT_To.TenTo,
+                        };
+            if (query.Count() > 0)
+            {
+                HoTen = query.Take(1).ToList()[0].HoTen;
+                TenTo = query.Take(1).ToList()[0].TenTo;
+                return true;
+            }
+            else
+                return false;
+            
+        }
     }
 }

@@ -70,6 +70,7 @@ namespace ThuTien.DAL.Quay
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
                         where itemLH.CreateDate.Value.Date >= TuNgay.Date && itemLH.CreateDate.Value.Date <= DenNgay.Date
+                        orderby itemHD.MALOTRINH ascending
                         select new
                         {
                             itemLH.SoHoaDon,

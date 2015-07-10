@@ -87,34 +87,12 @@ namespace ThuTien.DAL.Quay
         {
             var query = from itemTT in _db.TAMTHUs
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
-                        where itemTT.CreateDate.Value.Date==TuNgay.Date && itemTT.CreateBy==MaNV && itemTT.ChuyenKhoan==ChuyenKhoan
-                        select new
-                        {
-                            MaTT = itemTT.ID_TAMTHU,
-                            itemTT.SoPhieu,
-                            itemHD.NGAYGIAITRACH,
-                            itemTT.CreateDate,
-                            itemHD.SOHOADON,
-                            DanhBo = itemHD.DANHBA,
-                            itemHD.TENKH,
-                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
-                            itemHD.TIEUTHU,
-                            itemHD.GIABAN,
-                            ThueGTGT = itemHD.THUE,
-                            PhiBVMT = itemHD.PHI,
-                            itemHD.TONGCONG,
-                        };
-            return LINQToDataTable(query);
-        }
-
-        public DataTable GetDSByDates(bool ChuyenKhoan, int MaNV, DateTime TuNgay, DateTime DenNgay)
-        {
-            var query = from itemTT in _db.TAMTHUs
-                        //join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG
-                        join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.CreateBy == MaNV && itemTT.ChuyenKhoan == ChuyenKhoan
+                        join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        where itemTT.CreateDate.Value.Date==TuNgay.Date && itemTT.CreateBy==MaNV && itemTT.ChuyenKhoan==ChuyenKhoan
+                        orderby itemHD.MALOTRINH ascending
                         select new
                         {
                             MaTT = itemTT.ID_TAMTHU,
@@ -123,9 +101,7 @@ namespace ThuTien.DAL.Quay
                             itemTT.CreateDate,
                             itemHD.SOHOADON,
                             itemHD.SOPHATHANH,
-                            //itemHD.NAM,
-                            Ky=itemHD.KY+"/"+itemHD.NAM,
-                            //itemHD.DOT,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
                             MLT = itemHD.MALOTRINH,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
@@ -138,6 +114,44 @@ namespace ThuTien.DAL.Quay
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             itemTT.MaNH,
+                            TenNH = itemtableNH.NGANHANG1,
+                            GiaBieu = itemHD.GB,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSByDates(bool ChuyenKhoan, int MaNV, DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemTT in _db.TAMTHUs
+                        join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.CreateBy == MaNV && itemTT.ChuyenKhoan == ChuyenKhoan
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            MaTT = itemTT.ID_TAMTHU,
+                            itemTT.SoPhieu,
+                            itemHD.NGAYGIAITRACH,
+                            itemTT.CreateDate,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky=itemHD.KY+"/"+itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            itemTT.MaNH,
+                            TenNH=itemtableNH.NGANHANG1,
                             GiaBieu=itemHD.GB,
                         };
             return LINQToDataTable(query);

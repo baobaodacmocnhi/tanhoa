@@ -172,7 +172,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(161, 226);
+            this.btnInPhieu.Location = new System.Drawing.Point(733, 10);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnInPhieu.TabIndex = 37;
@@ -607,7 +607,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(161, 181);
+            this.btnIn.Location = new System.Drawing.Point(646, 10);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(81, 23);
             this.btnIn.TabIndex = 44;

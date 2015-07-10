@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>19</ApplicationRevision>
+    <ApplicationRevision>26</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -234,6 +234,12 @@
     <Compile Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.Designer.cs">
       <DependentUpon>frmDangNganChuyenKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmDieuChinhDangNganChuyenKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmDieuChinhDangNganChuyenKhoan.Designer.cs">
+      <DependentUpon>frmDieuChinhDangNganChuyenKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmDuLieuKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,6 +341,12 @@
     </Compile>
     <Compile Include="GUI\HanhThu\frmQuetTam.Designer.cs">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Quay\frmDieuChinhDangNganQuay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmDieuChinhDangNganQuay.Designer.cs">
+      <DependentUpon>frmDieuChinhDangNganQuay.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Quay\frmLenhHuy.cs">
       <SubType>Form</SubType>
@@ -591,6 +603,9 @@
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.resx">
       <DependentUpon>frmDangNganChuyenKhoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmDieuChinhDangNganChuyenKhoan.resx">
+      <DependentUpon>frmDieuChinhDangNganChuyenKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmDuLieuKhachHang.resx">
       <DependentUpon>frmDuLieuKhachHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -641,6 +656,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmQuetTam.resx">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmDieuChinhDangNganQuay.resx">
+      <DependentUpon>frmDieuChinhDangNganQuay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmLenhHuy.resx">
       <DependentUpon>frmLenhHuy.cs</DependentUpon>
@@ -1114,6 +1132,9 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GUI\HeThong\config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

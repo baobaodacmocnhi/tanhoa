@@ -89,13 +89,13 @@ namespace ThuTien.GUI.ToTruong
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
                 CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayDangNgan_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
                     CountdgvHDCoQuan();
                 }
         }
@@ -169,7 +169,7 @@ namespace ThuTien.GUI.ToTruong
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
+                DataTable dt = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["DSHoaDon"].NewRow();
@@ -187,7 +187,7 @@ namespace ThuTien.GUI.ToTruong
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    DataTable dt = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), dateGiaiTrach.Value);
+                    DataTable dt = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), dateGiaiTrach.Value);
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["DSHoaDon"].NewRow();
@@ -198,7 +198,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["TongCong"] = item["TongCong"];
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
-                        dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                        dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
                 }

@@ -75,6 +75,11 @@ namespace ThuTien.DAL.Quay
             return _db.TT_XacNhanNos.SingleOrDefault(item => item.SoPhieu == SoPhieu);
         }
 
+        public List<TT_XacNhanNo> GetDSByDate(int MaNV, DateTime TuNgay)
+        {
+            return _db.TT_XacNhanNos.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date == TuNgay.Date).ToList();
+        }
+
         public List<TT_XacNhanNo> GetDSByDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
         {
             return _db.TT_XacNhanNos.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList();

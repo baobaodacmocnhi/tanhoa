@@ -65,6 +65,7 @@ namespace ThuTien.DAL.HanhThu
                 var query = from itemQT in _db.TT_QuetTams
                             join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
                             where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV && itemHD.GB >= 11 && itemHD.GB <= 20
+                            orderby itemHD.MALOTRINH ascending
                             select new
                             {
                                 itemQT.CreateBy,
@@ -83,6 +84,7 @@ namespace ThuTien.DAL.HanhThu
                     var query = from itemQT in _db.TT_QuetTams
                                 join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
                                 where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV && itemHD.GB > 20
+                                orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
                                     itemQT.CreateBy,

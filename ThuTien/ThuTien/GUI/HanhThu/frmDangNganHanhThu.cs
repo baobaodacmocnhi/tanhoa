@@ -118,6 +118,11 @@ namespace ThuTien.GUI.HanhThu
                 lstHD.Items.RemoveAt(lstHD.SelectedIndex);
         }
 
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
@@ -340,7 +345,7 @@ namespace ThuTien.GUI.HanhThu
             _flagNgayDangNgan = true;
             cmbKy.SelectedIndex = -1;
             cmbDot.SelectedIndex = -1;
-            dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuByMaNVNgayDangNgan("TG",CNguoiDung.MaND, dateDangNgan.Value);
+            dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuByMaNVNgayGiaiTrach("TG", CNguoiDung.MaND, dateDangNgan.Value);
             dgvHDChuaThu.Rows.Clear();
         }
 
@@ -349,7 +354,7 @@ namespace ThuTien.GUI.HanhThu
             if (_flagNgayDangNgan)
             {
                 dsBaoCao ds = new dsBaoCao();
-                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayDangNgan("TG", CNguoiDung.MaND, dateDangNgan.Value);
+                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("TG", CNguoiDung.MaND, dateDangNgan.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
@@ -386,11 +391,6 @@ namespace ThuTien.GUI.HanhThu
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();
             }
-        }
-
-        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
 
         private void dgvTongHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

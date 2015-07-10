@@ -40,9 +40,7 @@ namespace ThuTien.GUI.Quay
             dgvTamThu.AutoGenerateColumns = false;
             dgvXacNhanNo.AutoGenerateColumns = false;
 
-            dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
-            dateTu_XacNhanNo.Value = DateTime.Now;
             dateDen_XacNhanNo.Value = DateTime.Now;
         }
 
@@ -67,9 +65,11 @@ namespace ThuTien.GUI.Quay
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     if (item.Cells["Chon"].Value!=null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                     {
-                        if (_cTamThu.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                        string loai = "";
+                        if (_cTamThu.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString(), out loai))
                         {
-                            MessageBox.Show("Hóa Đơn này đã có Tạm Thu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn này đã có Tạm Thu("+loai+")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
                             item.Selected = true;
                             return;
                         }
@@ -77,6 +77,7 @@ namespace ThuTien.GUI.Quay
                         if (_cDCHD.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         {
                             MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
                             item.Selected = true;
                             return;
                         }
@@ -166,10 +167,7 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (dateTu.Value <= dateDen.Value)
-            {
-                dgvTamThu.DataSource = _cTamThu.GetDSByDates(false, CNguoiDung.MaND, dateTu.Value, dateDen.Value);
-            }
+            dgvTamThu.DataSource = _cTamThu.GetDSByDate(false, CNguoiDung.MaND, dateDen.Value);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -378,7 +376,6 @@ namespace ThuTien.GUI.Quay
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
                 DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
@@ -397,10 +394,7 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_XacNhanNo_Click(object sender, EventArgs e)
         {
-            if (dateTu_XacNhanNo.Value <= dateDen_XacNhanNo.Value)
-            {
-                dgvXacNhanNo.DataSource = _cXacNhanNo.GetDSByDates(CNguoiDung.MaND, dateTu_XacNhanNo.Value, dateDen_XacNhanNo.Value);
-            }
+            dgvXacNhanNo.DataSource = _cXacNhanNo.GetDSByDate(CNguoiDung.MaND, dateDen_XacNhanNo.Value);
         }
 
         private void btnIn_XacNhanNo_Click(object sender, EventArgs e)

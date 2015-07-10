@@ -96,13 +96,13 @@ namespace ThuTien.GUI.ToTruong
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                 CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayDangNgan("CQ", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("CQ", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
                     CoungdgvHDCoQuan();
                 }
         }
@@ -123,7 +123,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0)
+            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
                 lstHD.Items.RemoveAt(lstHD.SelectedIndex);
         }
 
