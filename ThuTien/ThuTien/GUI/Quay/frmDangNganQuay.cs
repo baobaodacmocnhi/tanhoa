@@ -15,6 +15,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.NhanVien;
 using KTKS_DonKH.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
+using ThuTien.BaoCao.Quay;
 
 namespace ThuTien.GUI.Quay
 {
@@ -141,12 +142,12 @@ namespace ThuTien.GUI.Quay
             {
                 foreach (var item in lstHD.Items)
                 {
-                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
-                    {
-                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
-                        return;
-                    }
+                    //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                    //{
+                    //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    lstHD.SelectedItem = item;
+                    //    return;
+                    //}
                     //string loai;
                     //if (!_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
                     //{
@@ -414,16 +415,17 @@ namespace ThuTien.GUI.Quay
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
-                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "QUẦY TƯ GIA ĐÃ THU";
+                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                     dr["Ky"] = item.Cells["Ky_TG"].Value;
                     dr["MLT"] = item.Cells["MLT_TG"].Value;
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value;
-                    dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
-                    dr["NhanVien"] = CNguoiDung.HoTen;
-                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    dr["NhanVien"] = item.Cells["HanhThu_TG"].Value.ToString();
+                    dr["To"] = item.Cells["To_TG"].Value.ToString();
+                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
             }
             else
@@ -431,19 +433,20 @@ namespace ThuTien.GUI.Quay
                 {
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {
-                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                        dr["LoaiBaoCao"] = "QUẦY CƠ QUAN ĐÃ THU";
+                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN";
                         dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                         dr["Ky"] = item.Cells["Ky_CQ"].Value;
                         dr["MLT"] = item.Cells["MLT_CQ"].Value;
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
-                        dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CQ"].Value;
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
-                        dr["NhanVien"] = CNguoiDung.HoTen;
-                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                        dr["NhanVien"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                        dr["To"] = item.Cells["To_CQ"].Value.ToString();
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                     }
                 }
-            rptDSHoaDon rpt = new rptDSHoaDon();
+            rptDSDangNganQuay rpt = new rptDSDangNganQuay();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();

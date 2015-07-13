@@ -131,12 +131,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     string loai = "";
                     foreach (var item in lstHD.Items)
                     {
-                        if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
-                        {
-                            MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            lstHD.SelectedItem = item;
-                            return;
-                        }
+                        //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
                         if (!_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
                         {
                             MessageBox.Show("Hóa Đơn không có Tạm Thu: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -154,7 +154,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         _cHoaDon.SqlBeginTransaction();
                         foreach (var item in lstHD.Items)
-                            if (!_cHoaDon.DangNgan("", item.ToString(), CNguoiDung.MaND, dateGiaiTrachSua.Value))
+                            if (!_cHoaDon.DangNgan("ChuyenKhoan", item.ToString(), CNguoiDung.MaND, dateGiaiTrachSua.Value))
                             {
                                 _cHoaDon.SqlRollbackTransaction();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

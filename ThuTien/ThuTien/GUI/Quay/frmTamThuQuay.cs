@@ -120,7 +120,7 @@ namespace ThuTien.GUI.Quay
                 Int32 TongCongSo = 0;
                 foreach (var item in lstTamThu)
                 {
-                    Ky += item.HOADON.KY + "/" + item.HOADON.NAM + ", ";
+                    Ky += item.HOADON.KY + "/" + item.HOADON.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)item.HOADON.TONGCONG)+", ";
                     TongCongSo += (Int32)item.HOADON.TONGCONG;
                 }
 
@@ -134,7 +134,7 @@ namespace ThuTien.GUI.Quay
                 dr["GiaBieu"] = lstTamThu[0].HOADON.GB;
                 dr["DinhMuc"] = lstTamThu[0].HOADON.DM;
                 dr["Ky"] = Ky;
-                dr["TongCongSo"] = TongCongSo;
+                dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongSo);
                 dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
                 if (lstTamThu[0].HOADON.MaNV_HanhThu != null)
                     dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(lstTamThu[0].HOADON.MaNV_HanhThu.Value);
@@ -342,7 +342,7 @@ namespace ThuTien.GUI.Quay
                     List<TAMTHU> lstTamThu = _cTamThu.GetDSBySoPhieu(decimal.Parse(item.Cells["SoPhieu_TT"].Value.ToString()));
                     foreach (var itemTT in lstTamThu)
                     {
-                        Ky += itemTT.HOADON.KY + "/" + itemTT.HOADON.NAM + ", ";
+                        Ky += itemTT.HOADON.KY + "/" + itemTT.HOADON.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)itemTT.HOADON.TONGCONG)+", ";
                         TongCongSo += (Int32)itemTT.HOADON.TONGCONG;
                     }
 

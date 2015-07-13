@@ -153,12 +153,12 @@ namespace ThuTien.GUI.ToTruong
                         //    lstHD.SelectedItem = item;
                         //    return;
                         //}
-                        if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
-                        {
-                            MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            lstHD.SelectedItem = item;
-                            return;
-                        }
+                        //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
                         if (_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
                         {
                             MessageBox.Show("Hóa Đơn đã được Tạm Thu(" + loai + "): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

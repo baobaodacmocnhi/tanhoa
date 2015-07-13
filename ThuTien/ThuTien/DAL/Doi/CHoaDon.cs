@@ -480,7 +480,7 @@ namespace ThuTien.DAL.Doi
                                 //TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                 TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
                             };
-                return LINQToDataTable(query);
+                return LINQToDataTable(query.OrderBy(item=>item.TuMLT));
             }
             else
                 if (Loai == "CQ")
@@ -506,7 +506,7 @@ namespace ThuTien.DAL.Doi
                                     //TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                     TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
                                 };
-                    return LINQToDataTable(query);
+                    return LINQToDataTable(query.OrderBy(item => item.TuMLT));
                 }
             return null;
         }
@@ -2683,20 +2683,21 @@ namespace ThuTien.DAL.Doi
                 string sql = "";
                 if (Loai == "HanhThu")
                     sql = "update HOADON set DangNgan_HanhThu=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                            + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null"; //" and NGAYGIAITRACH is null";
+                            + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null"; //" and NGAYGIAITRACH is null";
                 else
                     if (Loai == "Quay")
                         sql = "update HOADON set DangNgan_Quay=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null"; //" and NGAYGIAITRACH is null";
+                                + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null"; //" and NGAYGIAITRACH is null";
                     else
                         if (Loai == "ChuyenKhoan")
                             sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null"; //" and NGAYGIAITRACH is null";
+                                + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null"; //" and NGAYGIAITRACH is null";
                         else
                             if (Loai == "Ton")
                                 sql = "update HOADON set DangNgan_Ton=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                    + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null";
-                return ExecuteNonQuery_Transaction(sql);
+                                    + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null";
+                ExecuteNonQuery_Transaction(sql);
+                return true;
             }
             catch (Exception ex)
             {
@@ -2712,23 +2713,23 @@ namespace ThuTien.DAL.Doi
                 string sql = "";
                 if (Loai == "")
                     sql = "update HOADON set MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                            + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null";
+                            + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null";
                 else
                     if (Loai == "HanhThu")
                         sql = "update HOADON set DangNgan_HanhThu=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null";
+                                + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null";
                     else
                         if (Loai == "Quay")
                             sql = "update HOADON set DangNgan_Quay=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                    + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null";
+                                    + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null";
                         else
                             if (Loai == "ChuyenKhoan")
                                 sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                    + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null";
+                                    + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null";
                             else
                                 if (Loai == "Ton")
                                     sql = "update HOADON set DangNgan_Ton=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                        + "where SOHOADON='" + SoHoaDon + "' and MaNV_DangNgan is null";
+                                        + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -2846,6 +2847,21 @@ namespace ThuTien.DAL.Doi
         //        return false;
         //    }
         //}
+
+        public bool Thu2Lan(string SoHoaDon)
+        {
+            try
+            {
+                string sql = "";
+                sql = "update HOADON set Thu2Lan=1 where SOHOADON='" + SoHoaDon + "'";
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 
 }

@@ -101,6 +101,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
                         tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
                         tamthu.ChuyenKhoan = true;
+                        if(item.Cells["NganHang"].Value!=null)
                         tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
 
                         if (!_cTamThu.Them(tamthu))

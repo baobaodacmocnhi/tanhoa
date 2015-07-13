@@ -63,6 +63,21 @@ namespace ThuTien.DAL.Quay
             }
         }
 
+        public bool Xoa(string SoHoaDon)
+        {
+            try
+            {
+                string sql = "";
+                sql = "detele TAMTHU where SOHOADON='" + SoHoaDon + "'";
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool CheckBySoHoaDon(string SoHoaDon)
         {
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon);
