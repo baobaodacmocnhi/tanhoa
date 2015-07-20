@@ -28,8 +28,7 @@ namespace ThuTien.GUI.Quay
         {
             dgvHD.AutoGenerateColumns = false;
 
-            dateTu.Value = DateTime.Now;
-            dateDen.Value = DateTime.Now;
+            dateLap.Value = DateTime.Now;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -85,7 +84,7 @@ namespace ThuTien.GUI.Quay
                     }
                     _cLenhHuy.CommitTransaction();
                     lstHD.Items.Clear();
-                    dgvHD.DataSource = _cLenhHuy.GetDSByCreatedDate(dateTu.Value);
+                    dgvHD.DataSource = _cLenhHuy.GetDSByCreatedDate(dateLap.Value);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -118,7 +117,7 @@ namespace ThuTien.GUI.Quay
                         }
                         _cLenhHuy.CommitTransaction();
                         lstHD.Items.Clear();
-                        dgvHD.DataSource = _cLenhHuy.GetDSByCreatedDate(dateTu.Value);
+                        dgvHD.DataSource = _cLenhHuy.GetDSByCreatedDate(dateLap.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
@@ -134,10 +133,7 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (dateTu.Value <= dateDen.Value)
-            {
-                dgvHD.DataSource = _cLenhHuy.GetDSByCreatedDates(dateTu.Value, dateDen.Value);
-            }
+         dgvHD.DataSource = _cLenhHuy.GetDSByCreatedDate(dateLap.Value);
         }
 
         private void dgvHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -158,6 +154,11 @@ namespace ThuTien.GUI.Quay
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+
         }
 
         

@@ -227,7 +227,7 @@ namespace ThuTien.GUI.DongNuoc
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = item["MLT"];
                         dr["Ky"] = Ky;
-                        dr["SoTien"] = TongCong;
+                        dr["TongCong"] = TongCong;
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
@@ -315,7 +315,7 @@ namespace ThuTien.GUI.DongNuoc
                         dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                     dr["MLT"] = row["MLT"];
                     dr["Ky"] = itemChild["Ky"];
-                    dr["SoTien"] = itemChild["TongCong"];
+                    dr["TongCong"] = itemChild["TongCong"];
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                 }    

@@ -78,6 +78,7 @@
             this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaHD_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGiaiTrach_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +94,7 @@
             this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -340,7 +342,8 @@
             this.PhiBVMT_TG,
             this.TongCong_TG,
             this.HanhThu_TG,
-            this.To_TG});
+            this.To_TG,
+            this.GiaBieu_TG});
             this.dgvHDTuGia.Location = new System.Drawing.Point(6, 6);
             this.dgvHDTuGia.Name = "dgvHDTuGia";
             this.dgvHDTuGia.ReadOnly = true;
@@ -431,7 +434,8 @@
             this.PhiBVMT_CQ,
             this.TongCong_CQ,
             this.HanhThu_CQ,
-            this.To_CQ});
+            this.To_CQ,
+            this.GiaBieu_CQ});
             this.dgvHDCoQuan.Location = new System.Drawing.Point(6, 6);
             this.dgvHDCoQuan.Name = "dgvHDCoQuan";
             this.dgvHDCoQuan.ReadOnly = true;
@@ -574,6 +578,14 @@
             this.To_TG.ReadOnly = true;
             this.To_TG.Visible = false;
             // 
+            // GiaBieu_TG
+            // 
+            this.GiaBieu_TG.DataPropertyName = "GiaBieu";
+            this.GiaBieu_TG.HeaderText = "GiaBieu";
+            this.GiaBieu_TG.Name = "GiaBieu_TG";
+            this.GiaBieu_TG.ReadOnly = true;
+            this.GiaBieu_TG.Visible = false;
+            // 
             // MaHD_CQ
             // 
             this.MaHD_CQ.DataPropertyName = "MaHD";
@@ -687,6 +699,14 @@
             this.To_CQ.ReadOnly = true;
             this.To_CQ.Visible = false;
             // 
+            // GiaBieu_CQ
+            // 
+            this.GiaBieu_CQ.DataPropertyName = "GiaBieu";
+            this.GiaBieu_CQ.HeaderText = "GiaBieu";
+            this.GiaBieu_CQ.Name = "GiaBieu_CQ";
+            this.GiaBieu_CQ.ReadOnly = true;
+            this.GiaBieu_CQ.Visible = false;
+            // 
             // frmDangNganQuay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -774,6 +794,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn To_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_CQ;
@@ -789,5 +810,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn To_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_CQ;
     }
 }

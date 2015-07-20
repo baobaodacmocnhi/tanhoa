@@ -39,7 +39,7 @@ namespace ThuTien.GUI.ToTruong
             cmbNhanVienLap.DisplayMember = "HoTen";
             cmbNhanVienLap.ValueMember = "MaND";
 
-            cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+            cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(CNguoiDung.MaTo);
             cmbNhanVienGiao.DisplayMember = "HoTen";
             cmbNhanVienGiao.ValueMember = "MaND";
 
@@ -213,7 +213,7 @@ namespace ThuTien.GUI.ToTruong
                             dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = row["MLT"];
                         dr["Ky"] = itemChild["Ky"];
-                        dr["SoTien"] = itemChild["TongCong"];
+                        dr["TongCong"] = itemChild["TongCong"];
                         dr["NhanVien"] = cmbNhanVienLap.Text;
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
@@ -249,7 +249,7 @@ namespace ThuTien.GUI.ToTruong
                                 dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                             dr["MLT"] = row["MLT"];
                             dr["Ky"] = itemChild["Ky"];
-                            dr["SoTien"] = itemChild["TongCong"];
+                            dr["TongCong"] = itemChild["TongCong"];
                             dr["NhanVien"] = cmbNhanVienGiao.Text;
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
@@ -261,5 +261,44 @@ namespace ThuTien.GUI.ToTruong
                 frm.ShowDialog();
             }
         }
+
+        private void btnInDSTBTonNguoiGiao_Click(object sender, EventArgs e)
+        {
+            if (cmbNhanVienLap.SelectedIndex > -1)
+            {
+                dsBaoCao dsBaoCao = new dsBaoCao();
+                for (int i = 0; i < gridViewDN.DataRowCount; i++)
+                {
+                    DataRow row = gridViewDN.GetDataRow(i);
+                    if (row["MaNV_DongNuoc"].ToString() == cmbNhanVienGiao.SelectedValue.ToString())
+                    {
+                        DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
+
+                        foreach (DataRow itemChild in childRows)
+                            if (string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
+                        {
+                            DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                            dr["Loai"] = "CHUYỂN CÒN TỒN";
+                            dr["MaDN"] = row["MaDN"].ToString().Insert(row["MaDN"].ToString().Length - 2, "-");
+                            dr["To"] = CNguoiDung.TenTo;
+                            dr["HoTen"] = row["HoTen"];
+                            dr["DiaChi"] = row["DiaChi"];
+                            if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
+                                dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            dr["MLT"] = row["MLT"];
+                            dr["Ky"] = itemChild["Ky"];
+                            dr["TongCong"] = itemChild["TongCong"];
+                            dr["NhanVien"] = cmbNhanVienGiao.Text;
+                            dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+                        }
+                    }
+                }
+                rptDSDongNuoc rpt = new rptDSDongNuoc();
+                rpt.SetDataSource(dsBaoCao);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+        }
+
     }
 }

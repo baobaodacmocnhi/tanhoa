@@ -295,8 +295,12 @@ namespace ThuTien.GUI.ToTruong
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                MessageBox.Show(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataTable dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()),int.Parse(cmbKy.SelectedItem.ToString()));
+                DataTable dt=new DataTable();
+                if (cmbKy.SelectedIndex == 0)
+                    dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                else
+                    if (cmbKy.SelectedIndex > 1)
+                        dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["DSHoaDon"].NewRow();
@@ -314,7 +318,12 @@ namespace ThuTien.GUI.ToTruong
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    DataTable dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    DataTable dt = new DataTable() ;
+                    if (cmbKy.SelectedIndex == 0)
+                        dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                    else
+                        if (cmbKy.SelectedIndex > 1)
+                            dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["DSHoaDon"].NewRow();
@@ -325,7 +334,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["TongCong"] = item["TongCong"];
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
-                        dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                        dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
                 }

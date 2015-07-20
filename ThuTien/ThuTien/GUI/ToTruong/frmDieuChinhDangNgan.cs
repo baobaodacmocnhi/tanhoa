@@ -144,7 +144,7 @@ namespace ThuTien.GUI.ToTruong
                     //DataColumn[] keyColumns = new DataColumn[1];
                     //keyColumns[0] = dt.Columns["SoHoaDon"];
                     //dt.PrimaryKey = keyColumns;
-                    string loai;
+                    //string loai;
                     foreach (var item in lstHD.Items)
                     {
                         //if (!dt.Rows.Contains(item.ToString()))
@@ -159,12 +159,12 @@ namespace ThuTien.GUI.ToTruong
                         //    lstHD.SelectedItem = item;
                         //    return;
                         //}
-                        if (_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
-                        {
-                            MessageBox.Show("Hóa Đơn đã được Tạm Thu(" + loai + "): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            lstHD.SelectedItem = item;
-                            return;
-                        }
+                        //if (_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn đã được Tạm Thu(" + loai + "): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
                         if (_cDCHD.CheckBySoHoaDon(item.ToString()))
                         {
                             MessageBox.Show("Hóa Đơn đã rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -176,12 +176,47 @@ namespace ThuTien.GUI.ToTruong
                     {
                         _cHoaDon.SqlBeginTransaction();
                         foreach (var item in lstHD.Items)
-                            if (!_cHoaDon.DangNgan("", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                            ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
+                            if (_cTamThu.CheckBySoHoaDon(item.ToString()))
                             {
-                                _cHoaDon.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                if (_cHoaDon.DangNgan("", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                                {
+                                    if (_cHoaDon.Thu2Lan(item.ToString()))
+                                    {
+                                        if (!_cTamThu.Xoa(item.ToString()))
+                                        {
+                                            _cHoaDon.SqlRollbackTransaction();
+                                            MessageBox.Show("Lỗi Xóa Tạm Thu, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        _cHoaDon.SqlRollbackTransaction();
+                                        MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    _cHoaDon.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             }
+                            else
+                                if (!_cHoaDon.DangNgan("", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                                {
+                                    _cHoaDon.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            //if (!_cHoaDon.DangNgan("", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                            //{
+                            //    _cHoaDon.SqlRollbackTransaction();
+                            //    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    return;
+                            //}
                         _cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
                         lstHD.Items.Clear();

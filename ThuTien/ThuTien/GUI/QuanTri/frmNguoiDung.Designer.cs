@@ -39,14 +39,6 @@
             this.cmbNhom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvNguoiDung = new System.Windows.Forms.DataGridView();
-            this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -69,6 +61,22 @@
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.QuanLy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.chkToTruong = new System.Windows.Forms.CheckBox();
+            this.chkHanhThu = new System.Windows.Forms.CheckBox();
+            this.chkDongNuoc = new System.Windows.Forms.CheckBox();
+            this.chkVanPhong = new System.Windows.Forms.CheckBox();
+            this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -176,7 +184,11 @@
             this.MaTo,
             this.TenTo,
             this.MaNhom,
-            this.TenNhom});
+            this.TenNhom,
+            this.ToTruong,
+            this.HanhThu,
+            this.DongNuoc,
+            this.VanPhong});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
             this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
@@ -186,68 +198,6 @@
             this.dgvNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellContentClick);
             this.dgvNguoiDung.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNguoiDung_CellFormatting);
             this.dgvNguoiDung.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNguoiDung_RowPostPaint);
-            // 
-            // MaND
-            // 
-            this.MaND.DataPropertyName = "MaND";
-            this.MaND.HeaderText = "MaND";
-            this.MaND.Name = "MaND";
-            this.MaND.ReadOnly = true;
-            this.MaND.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 150;
-            // 
-            // TaiKhoan
-            // 
-            this.TaiKhoan.DataPropertyName = "TaiKhoan";
-            this.TaiKhoan.HeaderText = "Tài Khoản";
-            this.TaiKhoan.Name = "TaiKhoan";
-            this.TaiKhoan.ReadOnly = true;
-            // 
-            // MatKhau
-            // 
-            this.MatKhau.DataPropertyName = "MatKhau";
-            this.MatKhau.HeaderText = "Mật Khẩu";
-            this.MatKhau.Name = "MatKhau";
-            this.MatKhau.ReadOnly = true;
-            // 
-            // MaTo
-            // 
-            this.MaTo.DataPropertyName = "MaTo";
-            this.MaTo.HeaderText = "MaTo";
-            this.MaTo.Name = "MaTo";
-            this.MaTo.ReadOnly = true;
-            this.MaTo.Visible = false;
-            // 
-            // TenTo
-            // 
-            this.TenTo.DataPropertyName = "TenTo";
-            this.TenTo.HeaderText = "Tổ";
-            this.TenTo.Name = "TenTo";
-            this.TenTo.ReadOnly = true;
-            this.TenTo.Width = 50;
-            // 
-            // MaNhom
-            // 
-            this.MaNhom.DataPropertyName = "MaNhom";
-            this.MaNhom.HeaderText = "MaNhom";
-            this.MaNhom.Name = "MaNhom";
-            this.MaNhom.ReadOnly = true;
-            this.MaNhom.Visible = false;
-            this.MaNhom.Width = 70;
-            // 
-            // TenNhom
-            // 
-            this.TenNhom.DataPropertyName = "TenNhom";
-            this.TenNhom.HeaderText = "Nhóm";
-            this.TenNhom.Name = "TenNhom";
-            this.TenNhom.ReadOnly = true;
             // 
             // btnXoa
             // 
@@ -451,11 +401,149 @@
             this.repositoryItemCheckEdit6.Caption = "Check";
             this.repositoryItemCheckEdit6.Name = "repositoryItemCheckEdit6";
             // 
+            // chkToTruong
+            // 
+            this.chkToTruong.AutoSize = true;
+            this.chkToTruong.Location = new System.Drawing.Point(256, 120);
+            this.chkToTruong.Name = "chkToTruong";
+            this.chkToTruong.Size = new System.Drawing.Size(76, 17);
+            this.chkToTruong.TabIndex = 16;
+            this.chkToTruong.Text = "Tổ Trưởng";
+            this.chkToTruong.UseVisualStyleBackColor = true;
+            // 
+            // chkHanhThu
+            // 
+            this.chkHanhThu.AutoSize = true;
+            this.chkHanhThu.Location = new System.Drawing.Point(338, 119);
+            this.chkHanhThu.Name = "chkHanhThu";
+            this.chkHanhThu.Size = new System.Drawing.Size(74, 17);
+            this.chkHanhThu.TabIndex = 17;
+            this.chkHanhThu.Text = "Hành Thu";
+            this.chkHanhThu.UseVisualStyleBackColor = true;
+            // 
+            // chkDongNuoc
+            // 
+            this.chkDongNuoc.AutoSize = true;
+            this.chkDongNuoc.Location = new System.Drawing.Point(418, 119);
+            this.chkDongNuoc.Name = "chkDongNuoc";
+            this.chkDongNuoc.Size = new System.Drawing.Size(81, 17);
+            this.chkDongNuoc.TabIndex = 18;
+            this.chkDongNuoc.Text = "Đóng Nước";
+            this.chkDongNuoc.UseVisualStyleBackColor = true;
+            // 
+            // chkVanPhong
+            // 
+            this.chkVanPhong.AutoSize = true;
+            this.chkVanPhong.Location = new System.Drawing.Point(505, 120);
+            this.chkVanPhong.Name = "chkVanPhong";
+            this.chkVanPhong.Size = new System.Drawing.Size(79, 17);
+            this.chkVanPhong.TabIndex = 19;
+            this.chkVanPhong.Text = "Văn Phòng";
+            this.chkVanPhong.UseVisualStyleBackColor = true;
+            // 
+            // MaND
+            // 
+            this.MaND.DataPropertyName = "MaND";
+            this.MaND.HeaderText = "MaND";
+            this.MaND.Name = "MaND";
+            this.MaND.ReadOnly = true;
+            this.MaND.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 150;
+            // 
+            // TaiKhoan
+            // 
+            this.TaiKhoan.DataPropertyName = "TaiKhoan";
+            this.TaiKhoan.HeaderText = "Tài Khoản";
+            this.TaiKhoan.Name = "TaiKhoan";
+            this.TaiKhoan.ReadOnly = true;
+            // 
+            // MatKhau
+            // 
+            this.MatKhau.DataPropertyName = "MatKhau";
+            this.MatKhau.HeaderText = "Mật Khẩu";
+            this.MatKhau.Name = "MatKhau";
+            this.MatKhau.ReadOnly = true;
+            // 
+            // MaTo
+            // 
+            this.MaTo.DataPropertyName = "MaTo";
+            this.MaTo.HeaderText = "MaTo";
+            this.MaTo.Name = "MaTo";
+            this.MaTo.ReadOnly = true;
+            this.MaTo.Visible = false;
+            // 
+            // TenTo
+            // 
+            this.TenTo.DataPropertyName = "TenTo";
+            this.TenTo.HeaderText = "Tổ";
+            this.TenTo.Name = "TenTo";
+            this.TenTo.ReadOnly = true;
+            this.TenTo.Width = 50;
+            // 
+            // MaNhom
+            // 
+            this.MaNhom.DataPropertyName = "MaNhom";
+            this.MaNhom.HeaderText = "MaNhom";
+            this.MaNhom.Name = "MaNhom";
+            this.MaNhom.ReadOnly = true;
+            this.MaNhom.Visible = false;
+            this.MaNhom.Width = 70;
+            // 
+            // TenNhom
+            // 
+            this.TenNhom.DataPropertyName = "TenNhom";
+            this.TenNhom.HeaderText = "Nhóm";
+            this.TenNhom.Name = "TenNhom";
+            this.TenNhom.ReadOnly = true;
+            // 
+            // ToTruong
+            // 
+            this.ToTruong.DataPropertyName = "ToTruong";
+            this.ToTruong.HeaderText = "ToTruong";
+            this.ToTruong.Name = "ToTruong";
+            this.ToTruong.ReadOnly = true;
+            this.ToTruong.Visible = false;
+            // 
+            // HanhThu
+            // 
+            this.HanhThu.DataPropertyName = "HanhThu";
+            this.HanhThu.HeaderText = "HanhThu";
+            this.HanhThu.Name = "HanhThu";
+            this.HanhThu.ReadOnly = true;
+            this.HanhThu.Visible = false;
+            // 
+            // DongNuoc
+            // 
+            this.DongNuoc.DataPropertyName = "DongNuoc";
+            this.DongNuoc.HeaderText = "DongNuoc";
+            this.DongNuoc.Name = "DongNuoc";
+            this.DongNuoc.ReadOnly = true;
+            this.DongNuoc.Visible = false;
+            // 
+            // VanPhong
+            // 
+            this.VanPhong.DataPropertyName = "VanPhong";
+            this.VanPhong.HeaderText = "VanPhong";
+            this.VanPhong.Name = "VanPhong";
+            this.VanPhong.ReadOnly = true;
+            this.VanPhong.Visible = false;
+            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 666);
+            this.Controls.Add(this.chkVanPhong);
+            this.Controls.Add(this.chkDongNuoc);
+            this.Controls.Add(this.chkHanhThu);
+            this.Controls.Add(this.chkToTruong);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -524,6 +612,10 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
         private DevExpress.XtraGrid.Columns.GridColumn QuanLy;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
+        private System.Windows.Forms.CheckBox chkToTruong;
+        private System.Windows.Forms.CheckBox chkHanhThu;
+        private System.Windows.Forms.CheckBox chkDongNuoc;
+        private System.Windows.Forms.CheckBox chkVanPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaiKhoan;
@@ -532,5 +624,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNhom;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNhom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ToTruong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DongNuoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VanPhong;
     }
 }

@@ -165,6 +165,8 @@ namespace ThuTien.DAL.DongNuoc
 
             var queryCTDN = from itemCTDN in _db.TT_CTDongNuocs
                             join itemDN in _db.TT_DongNuocs on itemCTDN.MaDN equals itemDN.MaDN
+                            join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON into tableHD
+                            from itemtableHD in tableHD.DefaultIfEmpty()
                             where itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
@@ -176,6 +178,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemCTDN.ThueGTGT,
                                 itemCTDN.PhiBVMT,
                                 itemCTDN.TongCong,
+                                itemtableHD.NGAYGIAITRACH,
                             };
             DataTable dtCTDongNuoc = new DataTable();
             dtCTDongNuoc = LINQToDataTable(queryCTDN);

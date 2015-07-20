@@ -48,6 +48,9 @@
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGiaiTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,6 +145,9 @@
             this.Ky,
             this.SoHoaDon,
             this.TieuThu,
+            this.GiaBan,
+            this.ThueGTGT,
+            this.PhiBVMT,
             this.TongCong,
             this.NgayGiaiTrach,
             this.DangNgan,
@@ -154,7 +160,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1358, 313);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1358, 527);
             this.dgvHoaDon.TabIndex = 17;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
@@ -185,14 +191,12 @@
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Họ Tên";
             this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
             // 
             // DiaChi
             // 
             this.DiaChi.DataPropertyName = "DiaChi";
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
             // 
             // GiaBieu
             // 
@@ -228,11 +232,33 @@
             this.TieuThu.Name = "TieuThu";
             this.TieuThu.Width = 50;
             // 
+            // GiaBan
+            // 
+            this.GiaBan.DataPropertyName = "GiaBan";
+            this.GiaBan.HeaderText = "Giá Bán";
+            this.GiaBan.Name = "GiaBan";
+            this.GiaBan.Width = 70;
+            // 
+            // ThueGTGT
+            // 
+            this.ThueGTGT.DataPropertyName = "ThueGTGT";
+            this.ThueGTGT.HeaderText = "Thuế GTGT";
+            this.ThueGTGT.Name = "ThueGTGT";
+            this.ThueGTGT.Width = 70;
+            // 
+            // PhiBVMT
+            // 
+            this.PhiBVMT.DataPropertyName = "PhiBVMT";
+            this.PhiBVMT.HeaderText = "Phí BVMT";
+            this.PhiBVMT.Name = "PhiBVMT";
+            this.PhiBVMT.Width = 70;
+            // 
             // TongCong
             // 
             this.TongCong.DataPropertyName = "TongCong";
             this.TongCong.HeaderText = "Tổng Cộng";
             this.TongCong.Name = "TongCong";
+            this.TongCong.Width = 70;
             // 
             // NgayGiaiTrach
             // 
@@ -274,7 +300,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1396, 422);
+            this.ClientSize = new System.Drawing.Size(1360, 629);
             this.Controls.Add(this.dgvHoaDon);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.txtDiaChi);
@@ -312,6 +338,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach;
         private System.Windows.Forms.DataGridViewTextBoxColumn DangNgan;

@@ -14,6 +14,10 @@ namespace ThuTien.DAL.HanhThu
         {
             try
             {
+                if (_db.TT_QuetTams.Count() > 0)
+                    quettam.MaQT = _db.TT_QuetTams.Max(item => item.MaQT) + 1;
+                else
+                    quettam.MaQT = 1;
                 quettam.CreateDate = DateTime.Now;
                 quettam.CreateBy = CNguoiDung.MaND;
                 _db.TT_QuetTams.InsertOnSubmit(quettam);
@@ -43,14 +47,14 @@ namespace ThuTien.DAL.HanhThu
             }
         }
 
-        public bool CheckExistByID(string SoHoaDon, int CreatBy)
+        public bool CheckExist(string SoHoaDon, int CreatBy,DateTime CreateDate)
         {
-            return _db.TT_QuetTams.Any(item => item.SoHoaDon == SoHoaDon && item.CreateBy == CreatBy);
+            return _db.TT_QuetTams.Any(item => item.SoHoaDon == SoHoaDon && item.CreateBy == CreatBy && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
-        public TT_QuetTam GetByID(string SoHoaDon,int CreatBy)
+        public TT_QuetTam GetByID(int MaQT)
         {
-            return _db.TT_QuetTams.SingleOrDefault(item => item.SoHoaDon == SoHoaDon&&item.CreateBy==CreatBy);
+            return _db.TT_QuetTams.SingleOrDefault(item => item.MaQT == MaQT);
         }
 
         public TT_QuetTam GetBySoHoaDon(string SoHoaDon)
@@ -68,6 +72,7 @@ namespace ThuTien.DAL.HanhThu
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
+                                itemQT.MaQT,
                                 itemQT.CreateBy,
                                 itemQT.SoHoaDon,
                                 DanhBo = itemHD.DANHBA,
@@ -87,6 +92,7 @@ namespace ThuTien.DAL.HanhThu
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
+                                    itemQT.MaQT,
                                     itemQT.CreateBy,
                                     itemQT.SoHoaDon,
                                     DanhBo = itemHD.DANHBA,

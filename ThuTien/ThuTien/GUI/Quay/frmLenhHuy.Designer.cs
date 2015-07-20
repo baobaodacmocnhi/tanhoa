@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnIn = new System.Windows.Forms.Button();
             this.dgvHD = new System.Windows.Forms.DataGridView();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,10 +46,8 @@
             this.txtSoHoaDon = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
-            this.dateDen = new System.Windows.Forms.DateTimePicker();
+            this.dateLap = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
@@ -65,19 +63,20 @@
             this.btnIn.Text = "In Danh Sách";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Visible = false;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // dgvHD
             // 
             this.dgvHD.AllowUserToAddRows = false;
             this.dgvHD.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SoHoaDon,
@@ -89,8 +88,8 @@
             this.dgvHD.Location = new System.Drawing.Point(271, 38);
             this.dgvHD.Name = "dgvHD";
             this.dgvHD.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvHD.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvHD.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHD.Size = new System.Drawing.Size(671, 590);
             this.dgvHD.TabIndex = 20;
@@ -216,41 +215,23 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
-            // dateDen
+            // dateLap
             // 
-            this.dateDen.CustomFormat = "dd/MM/yyyy";
-            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(501, 12);
-            this.dateDen.Name = "dateDen";
-            this.dateDen.Size = new System.Drawing.Size(100, 20);
-            this.dateDen.TabIndex = 24;
+            this.dateLap.CustomFormat = "dd/MM/yyyy";
+            this.dateLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateLap.Location = new System.Drawing.Point(501, 12);
+            this.dateLap.Name = "dateLap";
+            this.dateLap.Size = new System.Drawing.Size(100, 20);
+            this.dateLap.TabIndex = 24;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(437, 15);
+            this.label1.Location = new System.Drawing.Point(439, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Đến Ngày:";
-            // 
-            // dateTu
-            // 
-            this.dateTu.CustomFormat = "dd/MM/yyyy";
-            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(331, 12);
-            this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 20);
-            this.dateTu.TabIndex = 22;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(274, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Từ Ngày:";
+            this.label1.Text = "Ngày Lập:";
             // 
             // label6
             // 
@@ -286,10 +267,8 @@
             this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnXem);
-            this.Controls.Add(this.dateDen);
+            this.Controls.Add(this.dateLap);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTu);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dgvHD);
             this.Controls.Add(this.btnXoa);
@@ -320,10 +299,8 @@
         private System.Windows.Forms.TextBox txtSoHoaDon;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnXem;
-        private System.Windows.Forms.DateTimePicker dateDen;
+        private System.Windows.Forms.DateTimePicker dateLap;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTu;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;

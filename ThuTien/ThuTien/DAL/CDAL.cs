@@ -255,6 +255,8 @@ namespace ThuTien.DAL
         {
             try
             {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
                 command = new SqlCommand(sql, connection);
                 command.Transaction = transaction;
                 if (command.ExecuteNonQuery() == 0)

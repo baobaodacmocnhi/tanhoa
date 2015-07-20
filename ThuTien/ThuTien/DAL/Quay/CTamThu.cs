@@ -68,7 +68,7 @@ namespace ThuTien.DAL.Quay
             try
             {
                 string sql = "";
-                sql = "detele TAMTHU where SOHOADON='" + SoHoaDon + "'";
+                sql = "delete TAMTHU where SoHoaDon='" + SoHoaDon + "'";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)

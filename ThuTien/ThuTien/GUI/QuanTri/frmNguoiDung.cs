@@ -32,6 +32,10 @@ namespace ThuTien.GUI.QuanTri
             txtHoTen.Text = "";
             txtTaiKhoan.Text = "";
             txtMatKhau.Text = "";
+            chkToTruong.Checked = false;
+            chkHanhThu.Checked = false;
+            chkDongNuoc.Checked = false;
+            chkVanPhong.Checked = false;
             dgvNguoiDung.DataSource = _cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND);
         }
 
@@ -65,6 +69,10 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     if (cmbNhom.SelectedIndex != -1)
                         nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    nguoidung.ToTruong = chkToTruong.Checked;
+                    nguoidung.HanhThu = chkHanhThu.Checked;
+                    nguoidung.DongNuoc = chkDongNuoc.Checked;
+                    nguoidung.VanPhong = chkVanPhong.Checked;
                     ///tự động thêm quyền cho nhóm mới
                     foreach (var item in _cMenu.GetDS())
                     {
@@ -96,6 +104,10 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    nguoidung.ToTruong = chkToTruong.Checked;
+                    nguoidung.HanhThu = chkHanhThu.Checked;
+                    nguoidung.DongNuoc = chkDongNuoc.Checked;
+                    nguoidung.VanPhong = chkVanPhong.Checked;
                     _cNguoiDung.Sua(nguoidung);
                     DataTable dt = ((DataView)gridView.DataSource).Table;
                     foreach (DataRow item in dt.Rows)
@@ -152,6 +164,10 @@ namespace ThuTien.GUI.QuanTri
                 txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
                 cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
                 cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
+                chkToTruong.Checked = bool.Parse(dgvNguoiDung["ToTruong", e.RowIndex].Value.ToString());
+                chkHanhThu.Checked = bool.Parse(dgvNguoiDung["HanhThu", e.RowIndex].Value.ToString());
+                chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());
+                chkVanPhong.Checked = bool.Parse(dgvNguoiDung["VanPhong", e.RowIndex].Value.ToString());
                 gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
             }
             catch (Exception)

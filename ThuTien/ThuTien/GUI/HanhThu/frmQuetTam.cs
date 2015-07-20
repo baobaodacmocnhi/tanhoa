@@ -71,26 +71,27 @@ namespace ThuTien.GUI.HanhThu
                         lstHD.SelectedItem = item;
                         return;
                     }
-                    if (!_cQuetTam.CheckExistByID(item.ToString(),CNguoiDung.MaND))
-                    {
-                        MessageBox.Show("Hóa Đơn đã Quét Tạm " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
-                        return;
-                    }
+                    //if (!_cQuetTam.CheckExistByID(item.ToString(),CNguoiDung.MaND))
+                    //{
+                    //    MessageBox.Show("Hóa Đơn đã Quét Tạm " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    lstHD.SelectedItem = item;
+                    //    return;
+                    //}
                 }
                 try
                 {
                     _cQuetTam.BeginTransaction();
                     foreach (var item in lstHD.Items)
-                    {
-                        TT_QuetTam quettam = new TT_QuetTam();
-                        quettam.SoHoaDon = item.ToString();
-                        if (!_cQuetTam.Them(quettam))
+                        if (!_cQuetTam.CheckExist(item.ToString(), CNguoiDung.MaND, DateTime.Now))
                         {
-                            _cQuetTam.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            TT_QuetTam quettam = new TT_QuetTam();
+                            quettam.SoHoaDon = item.ToString();
+                            if (!_cQuetTam.Them(quettam))
+                            {
+                                _cQuetTam.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                    }
                     _cQuetTam.CommitTransaction();
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
@@ -119,7 +120,7 @@ namespace ThuTien.GUI.HanhThu
                             _cQuetTam.BeginTransaction();
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
-                                TT_QuetTam quettam = _cQuetTam.GetByID(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND);
+                                TT_QuetTam quettam = _cQuetTam.GetByID(int.Parse(item.Cells["MaQT_TG"].Value.ToString()));
                                 if (!_cQuetTam.Xoa(quettam))
                                 {
                                     _cQuetTam.Rollback();
@@ -146,7 +147,7 @@ namespace ThuTien.GUI.HanhThu
                                 _cQuetTam.BeginTransaction();
                                 foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                 {
-                                    TT_QuetTam quettam = _cQuetTam.GetByID(item.Cells["SoHoaDon_CQ"].Value.ToString(),CNguoiDung.MaND);
+                                    TT_QuetTam quettam = _cQuetTam.GetByID(int.Parse(item.Cells["MaQT_CQ"].Value.ToString()));
                                     if (!_cQuetTam.Xoa(quettam))
                                     {
                                         _cQuetTam.Rollback();

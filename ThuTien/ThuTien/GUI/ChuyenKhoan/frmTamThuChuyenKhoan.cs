@@ -41,6 +41,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             dgvHoaDon.AutoGenerateColumns = false;
             dgvTamThu.AutoGenerateColumns = false;
 
+            cmbNganHang.DataSource = _cNganHang.GetDS();
+            cmbNganHang.DisplayMember = "TenNH";
+            cmbNganHang.ValueMember = "MaNH";
+
             dateDen.Value = DateTime.Now;
         }
 
@@ -54,11 +58,14 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
             {
-                DataTable dt = new DataTable();
+                DataTable dt = (DataTable)dgvHoaDon.DataSource;
                 foreach (string item in txtDanhBo.Lines)
                     if (item.Length == 11)
                     {
-                        dt.Merge(_cHoaDon.GetDSTonByDanhBo(item));
+                        if (dt == null)
+                            dt = _cHoaDon.GetDSTonByDanhBo(item);
+                        else
+                            dt.Merge(_cHoaDon.GetDSTonByDanhBo(item));
                     }
                 dgvHoaDon.DataSource = dt;
                 for (int i = 0; i < dgvHoaDon.Rows.Count; i++)
@@ -103,7 +110,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         tamthu.ChuyenKhoan = true;
                         if(item.Cells["NganHang"].Value!=null)
                         tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
-
+                        else
+                            tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
                         if (!_cTamThu.Them(tamthu))
                         {
                             _cTamThu.Rollback();

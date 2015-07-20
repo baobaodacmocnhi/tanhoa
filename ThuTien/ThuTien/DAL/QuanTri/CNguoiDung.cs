@@ -179,7 +179,12 @@ namespace ThuTien.DAL.QuanTri
         /// <returns></returns>
         public List<TT_NguoiDung> GetDSHanhThuByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.TT_To.HanhThu == true).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.HanhThu == true).ToList();
+        }
+
+        public List<TT_NguoiDung> GetDSDongNuocByMaTo(int MaTo)
+        {
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.DongNuoc == true).ToList();
         }
 
         public TT_NguoiDung GetByMaND(int MaND)

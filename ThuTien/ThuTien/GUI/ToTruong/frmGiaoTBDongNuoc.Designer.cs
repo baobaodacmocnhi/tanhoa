@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -37,6 +37,7 @@
             this.ThueGTGT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PhiBVMT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongCong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NgayGiaiTrach = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridViewDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MaDN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -63,6 +64,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnInDSTBNguoiLap = new System.Windows.Forms.Button();
             this.btnInDSTBNguoiGiao = new System.Windows.Forms.Button();
+            this.btnInDSTBTonNguoiGiao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -78,7 +80,8 @@
             this.GiaBan,
             this.ThueGTGT,
             this.PhiBVMT,
-            this.TongCong});
+            this.TongCong,
+            this.NgayGiaiTrach});
             this.gridViewCTDN.GridControl = this.gridControl;
             this.gridViewCTDN.Name = "gridViewCTDN";
             this.gridViewCTDN.OptionsView.ColumnAutoWidth = false;
@@ -142,12 +145,21 @@
             this.TongCong.Visible = true;
             this.TongCong.VisibleIndex = 6;
             // 
+            // NgayGiaiTrach
+            // 
+            this.NgayGiaiTrach.Caption = "Ngày Giải Trách";
+            this.NgayGiaiTrach.FieldName = "NgayGiaiTrach";
+            this.NgayGiaiTrach.Name = "NgayGiaiTrach";
+            this.NgayGiaiTrach.Visible = true;
+            this.NgayGiaiTrach.VisibleIndex = 7;
+            this.NgayGiaiTrach.Width = 100;
+            // 
             // gridControl
             // 
-            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl.Location = new System.Drawing.Point(12, 38);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -388,7 +400,7 @@
             // 
             // btnInDSTBNguoiGiao
             // 
-            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1149, 84);
+            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1149, 166);
             this.btnInDSTBNguoiGiao.Name = "btnInDSTBNguoiGiao";
             this.btnInDSTBNguoiGiao.Size = new System.Drawing.Size(121, 23);
             this.btnInDSTBNguoiGiao.TabIndex = 33;
@@ -396,11 +408,22 @@
             this.btnInDSTBNguoiGiao.UseVisualStyleBackColor = true;
             this.btnInDSTBNguoiGiao.Click += new System.EventHandler(this.btnInDSTBNguoiGiao_Click);
             // 
+            // btnInDSTBTonNguoiGiao
+            // 
+            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1149, 195);
+            this.btnInDSTBTonNguoiGiao.Name = "btnInDSTBTonNguoiGiao";
+            this.btnInDSTBTonNguoiGiao.Size = new System.Drawing.Size(140, 23);
+            this.btnInDSTBTonNguoiGiao.TabIndex = 34;
+            this.btnInDSTBTonNguoiGiao.Text = "In DS TB Tồn(Người Giao)";
+            this.btnInDSTBTonNguoiGiao.UseVisualStyleBackColor = true;
+            this.btnInDSTBTonNguoiGiao.Click += new System.EventHandler(this.btnInDSTBTonNguoiGiao_Click);
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 666);
+            this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.btnInDSTBTonNguoiGiao);
             this.Controls.Add(this.btnInDSTBNguoiGiao);
             this.Controls.Add(this.btnInDSTBNguoiLap);
             this.Controls.Add(this.btnXoa);
@@ -465,5 +488,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
         private System.Windows.Forms.Button btnInDSTBNguoiLap;
         private System.Windows.Forms.Button btnInDSTBNguoiGiao;
+        private System.Windows.Forms.Button btnInDSTBTonNguoiGiao;
+        private DevExpress.XtraGrid.Columns.GridColumn NgayGiaiTrach;
     }
 }
