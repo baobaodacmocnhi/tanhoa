@@ -57,6 +57,7 @@
             this.txtMaYCCHDB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxCatTamNutBit.SuspendLayout();
@@ -66,7 +67,6 @@
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(429, 43);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.ReadOnly = true;
             this.txtDiaChi.Size = new System.Drawing.Size(470, 25);
             this.txtDiaChi.TabIndex = 7;
             // 
@@ -126,7 +126,6 @@
             // 
             this.txtHoTen.Location = new System.Drawing.Point(223, 43);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.ReadOnly = true;
             this.txtHoTen.Size = new System.Drawing.Size(200, 25);
             this.txtHoTen.TabIndex = 5;
             // 
@@ -170,7 +169,6 @@
             // 
             this.txtHopDong.Location = new System.Drawing.Point(117, 43);
             this.txtHopDong.Name = "txtHopDong";
-            this.txtHopDong.ReadOnly = true;
             this.txtHopDong.Size = new System.Drawing.Size(100, 25);
             this.txtHopDong.TabIndex = 3;
             // 
@@ -187,15 +185,14 @@
             // 
             this.txtDanhBo.Location = new System.Drawing.Point(11, 43);
             this.txtDanhBo.Name = "txtDanhBo";
-            this.txtDanhBo.ReadOnly = true;
             this.txtDanhBo.Size = new System.Drawing.Size(100, 25);
             this.txtDanhBo.TabIndex = 1;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // txtSoTien
             // 
             this.txtSoTien.Location = new System.Drawing.Point(385, 24);
             this.txtSoTien.Name = "txtSoTien";
-            this.txtSoTien.ReadOnly = true;
             this.txtSoTien.Size = new System.Drawing.Size(100, 25);
             this.txtSoTien.TabIndex = 5;
             this.txtSoTien.TextChanged += new System.EventHandler(this.txtSoTien_TextChanged);
@@ -354,12 +351,26 @@
             this.label22.TabIndex = 91;
             this.label22.Text = "Phiếu Cắt";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(525, 243);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(67, 35);
+            this.btnXoa.TabIndex = 92;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmShowYCCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 290);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.txtMaYCCHDB);
             this.Controls.Add(this.label8);
@@ -420,5 +431,6 @@
         private System.Windows.Forms.TextBox txtMaYCCHDB;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

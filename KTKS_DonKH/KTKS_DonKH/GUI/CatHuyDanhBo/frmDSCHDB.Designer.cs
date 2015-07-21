@@ -577,7 +577,7 @@
             this.radDaDuyet.AutoSize = true;
             this.radDaDuyet.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(84, 21);
+            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
             this.radDaDuyet.TabIndex = 0;
             this.radDaDuyet.Text = "Đã Duyệt";
             this.radDaDuyet.UseVisualStyleBackColor = true;
@@ -602,7 +602,7 @@
             this.radChuaDuyet.AutoSize = true;
             this.radChuaDuyet.Location = new System.Drawing.Point(6, 48);
             this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
             this.radChuaDuyet.TabIndex = 1;
             this.radChuaDuyet.Text = "Chưa Duyệt";
             this.radChuaDuyet.UseVisualStyleBackColor = true;
@@ -656,7 +656,7 @@
             this.radDSCatTamDanhBo.AutoSize = true;
             this.radDSCatTamDanhBo.Location = new System.Drawing.Point(107, 18);
             this.radDSCatTamDanhBo.Name = "radDSCatTamDanhBo";
-            this.radDSCatTamDanhBo.Size = new System.Drawing.Size(147, 21);
+            this.radDSCatTamDanhBo.Size = new System.Drawing.Size(122, 17);
             this.radDSCatTamDanhBo.TabIndex = 2;
             this.radDSCatTamDanhBo.Text = "Danh Sách Cắt Tạm";
             this.radDSCatTamDanhBo.UseVisualStyleBackColor = true;
@@ -667,7 +667,7 @@
             this.radDSCatHuyDanhBo.AutoSize = true;
             this.radDSCatHuyDanhBo.Location = new System.Drawing.Point(107, 47);
             this.radDSCatHuyDanhBo.Name = "radDSCatHuyDanhBo";
-            this.radDSCatHuyDanhBo.Size = new System.Drawing.Size(145, 21);
+            this.radDSCatHuyDanhBo.Size = new System.Drawing.Size(120, 17);
             this.radDSCatHuyDanhBo.TabIndex = 3;
             this.radDSCatHuyDanhBo.Text = "Danh Sách Cắt Hủy";
             this.radDSCatHuyDanhBo.UseVisualStyleBackColor = true;
@@ -841,7 +841,7 @@
             this.label2.Location = new System.Drawing.Point(560, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 1;
             this.label2.Text = "Tìm Theo:";
             // 
             // cmbTimTheo
@@ -858,7 +858,7 @@
             this.cmbTimTheo.Location = new System.Drawing.Point(634, 16);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(120, 25);
-            this.cmbTimTheo.TabIndex = 3;
+            this.cmbTimTheo.TabIndex = 2;
             this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
             // 
             // txtNoiDungTimKiem
@@ -866,7 +866,7 @@
             this.txtNoiDungTimKiem.Location = new System.Drawing.Point(834, 16);
             this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
             this.txtNoiDungTimKiem.Size = new System.Drawing.Size(130, 25);
-            this.txtNoiDungTimKiem.TabIndex = 5;
+            this.txtNoiDungTimKiem.TabIndex = 4;
             this.txtNoiDungTimKiem.Visible = false;
             this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
             // 
@@ -876,7 +876,7 @@
             this.label1.Location = new System.Drawing.Point(760, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Nội Dung:";
             // 
             // groupBox1
@@ -898,7 +898,7 @@
             this.radDSDongNuoc.AutoSize = true;
             this.radDSDongNuoc.Location = new System.Drawing.Point(258, 45);
             this.radDSDongNuoc.Name = "radDSDongNuoc";
-            this.radDSDongNuoc.Size = new System.Drawing.Size(165, 21);
+            this.radDSDongNuoc.Size = new System.Drawing.Size(137, 17);
             this.radDSDongNuoc.TabIndex = 5;
             this.radDSDongNuoc.Text = "Danh Sách Đóng Nước";
             this.radDSDongNuoc.UseVisualStyleBackColor = true;
@@ -909,7 +909,7 @@
             this.radDSYCCHDB.AutoSize = true;
             this.radDSYCCHDB.Location = new System.Drawing.Point(260, 18);
             this.radDSYCCHDB.Name = "radDSYCCHDB";
-            this.radDSYCCHDB.Size = new System.Drawing.Size(136, 21);
+            this.radDSYCCHDB.Size = new System.Drawing.Size(111, 17);
             this.radDSYCCHDB.TabIndex = 4;
             this.radDSYCCHDB.Text = "Danh Sách YCCH";
             this.radDSYCCHDB.UseVisualStyleBackColor = true;
@@ -934,7 +934,7 @@
             this.radDSCatTamDanhBo_TXL.AutoSize = true;
             this.radDSCatTamDanhBo_TXL.Location = new System.Drawing.Point(107, 18);
             this.radDSCatTamDanhBo_TXL.Name = "radDSCatTamDanhBo_TXL";
-            this.radDSCatTamDanhBo_TXL.Size = new System.Drawing.Size(147, 21);
+            this.radDSCatTamDanhBo_TXL.Size = new System.Drawing.Size(122, 17);
             this.radDSCatTamDanhBo_TXL.TabIndex = 2;
             this.radDSCatTamDanhBo_TXL.Text = "Danh Sách Cắt Tạm";
             this.radDSCatTamDanhBo_TXL.UseVisualStyleBackColor = true;
@@ -945,7 +945,7 @@
             this.radChuaDuyet_TXL.AutoSize = true;
             this.radChuaDuyet_TXL.Location = new System.Drawing.Point(6, 42);
             this.radChuaDuyet_TXL.Name = "radChuaDuyet_TXL";
-            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(98, 21);
+            this.radChuaDuyet_TXL.Size = new System.Drawing.Size(81, 17);
             this.radChuaDuyet_TXL.TabIndex = 1;
             this.radChuaDuyet_TXL.Text = "Chưa Duyệt";
             this.radChuaDuyet_TXL.UseVisualStyleBackColor = true;
@@ -956,7 +956,7 @@
             this.radDaDuyet_TXL.AutoSize = true;
             this.radDaDuyet_TXL.Location = new System.Drawing.Point(6, 18);
             this.radDaDuyet_TXL.Name = "radDaDuyet_TXL";
-            this.radDaDuyet_TXL.Size = new System.Drawing.Size(84, 21);
+            this.radDaDuyet_TXL.Size = new System.Drawing.Size(70, 17);
             this.radDaDuyet_TXL.TabIndex = 0;
             this.radDaDuyet_TXL.Text = "Đã Duyệt";
             this.radDaDuyet_TXL.UseVisualStyleBackColor = true;
@@ -967,7 +967,7 @@
             this.radDSCatHuyDanhBo_TXL.AutoSize = true;
             this.radDSCatHuyDanhBo_TXL.Location = new System.Drawing.Point(107, 42);
             this.radDSCatHuyDanhBo_TXL.Name = "radDSCatHuyDanhBo_TXL";
-            this.radDSCatHuyDanhBo_TXL.Size = new System.Drawing.Size(145, 21);
+            this.radDSCatHuyDanhBo_TXL.Size = new System.Drawing.Size(120, 17);
             this.radDSCatHuyDanhBo_TXL.TabIndex = 3;
             this.radDSCatHuyDanhBo_TXL.Text = "Danh Sách Cắt Hủy";
             this.radDSCatHuyDanhBo_TXL.UseVisualStyleBackColor = true;
@@ -1018,10 +1018,10 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(826, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(829, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
-            this.panel_KhoangThoiGian.TabIndex = 24;
+            this.panel_KhoangThoiGian.TabIndex = 6;
             this.panel_KhoangThoiGian.Visible = false;
             // 
             // dateTu
@@ -1213,7 +1213,7 @@
             this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(834, 40);
             this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
             this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(130, 25);
-            this.txtNoiDungTimKiem2.TabIndex = 27;
+            this.txtNoiDungTimKiem2.TabIndex = 5;
             this.txtNoiDungTimKiem2.Visible = false;
             this.txtNoiDungTimKiem2.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem2_TextChanged);
             // 
@@ -1230,9 +1230,9 @@
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.dateTimKiem);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.txtNoiDungTimKiem);

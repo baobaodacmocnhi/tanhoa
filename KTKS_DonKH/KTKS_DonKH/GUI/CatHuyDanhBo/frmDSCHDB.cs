@@ -1492,6 +1492,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 else
                     if (radDSCatHuyDanhBo.Checked)
                         dgvDSCTCHDB.DataSource = _cCHDB.LoadDSCTCHDBByMaTBs(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                    else
+                        if (radDSYCCHDB.Checked)
+                            dgvDSYCCHDB.DataSource = _cCHDB.LoadDSYCCHDBBySoPhieus(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
             }
         }
 

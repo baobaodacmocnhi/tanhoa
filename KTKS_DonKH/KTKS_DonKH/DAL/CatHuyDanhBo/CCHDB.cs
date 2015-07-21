@@ -2434,6 +2434,32 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public bool XoaYeuCauCHDB(YeuCauCHDB ycchdb)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    db.YeuCauCHDBs.DeleteOnSubmit(ycchdb);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa YeuCauCHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.YeuCauCHDBs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         public YeuCauCHDB getYeuCauCHDbyID(decimal MaYCCHDB)
         {
             try
@@ -2608,6 +2634,46 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemYCCHDB in db.YeuCauCHDBs
                                 where itemYCCHDB.MaYCCHDB==SoPhieu
+                                orderby itemYCCHDB.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    itemYCCHDB.PhieuDuocKy,
+                                    SoPhieu = itemYCCHDB.MaYCCHDB,
+                                    Ma = itemYCCHDB.MaYCCHDB,
+                                    itemYCCHDB.CreateDate,
+                                    itemYCCHDB.DanhBo,
+                                    itemYCCHDB.HoTen,
+                                    itemYCCHDB.DiaChi,
+                                    itemYCCHDB.LyDo,
+                                    itemYCCHDB.GhiChuLyDo,
+                                    itemYCCHDB.SoTien,
+                                    itemYCCHDB.NguoiKy,
+                                    itemYCCHDB.NgayCatTamNutBit,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSYCCHDBBySoPhieus(decimal TuSoPhieu, decimal DenSoPhieu)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemYCCHDB in db.YeuCauCHDBs
+                                where itemYCCHDB.MaYCCHDB >= TuSoPhieu && itemYCCHDB.MaYCCHDB <= DenSoPhieu
                                 orderby itemYCCHDB.CreateDate descending
                                 select new
                                 {

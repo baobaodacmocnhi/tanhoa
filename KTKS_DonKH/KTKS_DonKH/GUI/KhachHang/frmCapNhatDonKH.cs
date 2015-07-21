@@ -117,28 +117,28 @@ namespace KTKS_DonKH.GUI.KhachHang
                     if (ChiTiet == "")
                         ChiTiet = "ĐM";
                     else
-                        ChiTiet = ",ĐM";
+                        ChiTiet += ",ĐM";
                 }
                 if (ls.CCDM)
                 {
                     if (ChiTiet == "")
                         ChiTiet = "CCĐM";
                     else
-                        ChiTiet = ",CCĐM";
+                        ChiTiet += ",CCĐM";
                 }
                 if (ls.STGB)
                 {
                     if (ChiTiet == "")
                         ChiTiet = "STGB";
                     else
-                        ChiTiet = ",STGB";
+                        ChiTiet += ",STGB";
                 }
                 if (ls.KTTT)
                 {
                     if (ChiTiet == "")
                         ChiTiet = "TT";
                     else
-                        ChiTiet = ",TT";
+                        ChiTiet += ",TT";
                 }
                 item["ChiTiet"] = ChiTiet;
             }
@@ -639,6 +639,14 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 groupBoxXepDon.Enabled = false;
             }
+        }
+
+        private void cmbNguoiDi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chkDM.Checked = false;
+            chkCCDM.Checked = false;
+            chkSTGB.Checked = false;
+            chkKTTT.Checked = false;
         }
 
         

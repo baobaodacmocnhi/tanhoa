@@ -2108,17 +2108,21 @@ namespace KTKS_DonKH.DAL.CapNhat
                     {
                         ctchungtuCN.ThoiHan = ctchungtu.ThoiHan;
                         if (ctchungtu.ThoiHan != null)
+                        {
                             ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
+                            ///Khi gia hạn refresh lại ngày tạo để tính ngày gia hạn
+                            ctchungtuCN.CreateDate = DateTime.Now;
                             ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
+                        }
                         else
                             ctchungtuCN.NgayHetHan = null;
                         flagEdited = true;
                     }
-                    if (ctchungtu.NgayHetHan != null)
-                    {
-                        ctchungtuCN.NgayHetHan = ctchungtu.NgayHetHan;
-                        flagEdited = true;
-                    }
+                    //if (ctchungtu.NgayHetHan != null)
+                    //{
+                    //    ctchungtuCN.NgayHetHan = ctchungtu.NgayHetHan;
+                    //    flagEdited = true;
+                    //}
                     if (ctchungtuCN.Lo != ctchungtu.Lo)
                         ctchungtuCN.Lo = ctchungtu.Lo;
                     if (ctchungtuCN.Phong != ctchungtu.Phong)

@@ -136,7 +136,11 @@ namespace KTKS_DonKH.GUI.KhachHang
                         dr["DenNgay"] = _denNgay;
                         //dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()))
-                            dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                            if (item.Cells["DanhBo"].Value.ToString().ToUpper() == "GM")
+                                dr["DanhBo"] = "GM";
+                            else
+                                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+
                         dr["HoTen"] = item.Cells["HoTen"].Value;
                         dr["DiaChi"] = item.Cells["DiaChi"].Value;
                         dr["NoiDung"] = item.Cells["NoiDung"].Value;
