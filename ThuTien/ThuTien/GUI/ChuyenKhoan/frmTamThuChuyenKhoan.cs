@@ -261,7 +261,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 DataTable dt = new DataTable();
                 foreach (DataRow item in dtExcel.Rows)
-                    if (item[0].ToString().Length == 11)
+                    if (item[0].ToString().Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                     {
                         dt.Merge(_cHoaDon.GetDSTonByDanhBo(item[0].ToString()));
                     }

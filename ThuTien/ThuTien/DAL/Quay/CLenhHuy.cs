@@ -43,6 +43,26 @@ namespace ThuTien.DAL.Quay
             }
         }
 
+        public bool Xoa(string SoHoaDon)
+        {
+            try
+            {
+                string sql = "";
+                sql = "delete TT_LenhHuy where SoHoaDon='" + SoHoaDon + "'";
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool CheckExist(string SoHoaDon)
+        {
+            return _db.TT_LenhHuys.Any(item => item.SoHoaDon == SoHoaDon);
+        }
+
         public TT_LenhHuy GetBySoHoaDon(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
@@ -52,6 +72,8 @@ namespace ThuTien.DAL.Quay
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
                         where itemLH.CreateDate.Value.Date == TuNgay.Date
                         select new
                         {
@@ -61,6 +83,9 @@ namespace ThuTien.DAL.Quay
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,
                             itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu=itemHD.GB,
                         };
             return LINQToDataTable(query);
         }
@@ -69,6 +94,8 @@ namespace ThuTien.DAL.Quay
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
                         where itemLH.CreateDate.Value.Date >= TuNgay.Date && itemLH.CreateDate.Value.Date <= DenNgay.Date
                         orderby itemHD.MALOTRINH ascending
                         select new
@@ -79,6 +106,9 @@ namespace ThuTien.DAL.Quay
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,
                             itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
                         };
             return LINQToDataTable(query);
         }

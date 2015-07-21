@@ -128,7 +128,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (lstHD.Items.Count > 0)
                 {
-                    string loai = "";
+                    //string loai = "";
                     foreach (var item in lstHD.Items)
                     {
                         //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
@@ -137,12 +137,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                         //    lstHD.SelectedItem = item;
                         //    return;
                         //}
-                        if (!_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
-                        {
-                            MessageBox.Show("Hóa Đơn không có Tạm Thu: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            lstHD.SelectedItem = item;
-                            return;
-                        }
+                        //if (!_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn không có Tạm Thu: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
                         if (_cDCHD.CheckBySoHoaDon(item.ToString()))
                         {
                             MessageBox.Show("Hóa Đơn đã rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

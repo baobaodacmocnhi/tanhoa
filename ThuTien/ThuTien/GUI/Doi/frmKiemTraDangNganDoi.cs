@@ -44,19 +44,19 @@ namespace ThuTien.GUI.Doi
         public void CountDataGridView()
         {
             int TongHD = 0;
-            int TongGiaBan = 0;
-            int TongThueGTGT = 0;
-            int TongPhiBVMT = 0;
-            int TongCong = 0;
+            long TongGiaBan = 0;
+            long TongThueGTGT = 0;
+            long TongPhiBVMT = 0;
+            long TongCong = 0;
             if (dgvHDTuGia.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     TongHD += int.Parse(item.Cells["TongHD_TG"].Value.ToString());
-                    TongGiaBan += int.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
-                    TongThueGTGT += int.Parse(item.Cells["TongThueGTGT_TG"].Value.ToString());
-                    TongPhiBVMT += int.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
-                    TongCong += int.Parse(item.Cells["TongCong_TG"].Value.ToString());
+                    TongGiaBan += long.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
+                    TongThueGTGT += long.Parse(item.Cells["TongThueGTGT_TG"].Value.ToString());
+                    TongPhiBVMT += long.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
+                    TongCong += long.Parse(item.Cells["TongCong_TG"].Value.ToString());
                 }
                 txtTongHD_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongGiaBan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
@@ -74,10 +74,10 @@ namespace ThuTien.GUI.Doi
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                 {
                     TongHD += int.Parse(item.Cells["TongHD_CQ"].Value.ToString());
-                    TongGiaBan += int.Parse(item.Cells["TongGiaBan_CQ"].Value.ToString());
-                    TongThueGTGT += int.Parse(item.Cells["TongThueGTGT_CQ"].Value.ToString());
-                    TongPhiBVMT += int.Parse(item.Cells["TongPhiBVMT_CQ"].Value.ToString());
-                    TongCong += int.Parse(item.Cells["TongCong_CQ"].Value.ToString());
+                    TongGiaBan += long.Parse(item.Cells["TongGiaBan_CQ"].Value.ToString());
+                    TongThueGTGT += long.Parse(item.Cells["TongThueGTGT_CQ"].Value.ToString());
+                    TongPhiBVMT += long.Parse(item.Cells["TongPhiBVMT_CQ"].Value.ToString());
+                    TongCong += long.Parse(item.Cells["TongCong_CQ"].Value.ToString());
                 }
                 txtTongHD_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongGiaBan_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);

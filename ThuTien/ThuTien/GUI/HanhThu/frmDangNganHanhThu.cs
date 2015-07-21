@@ -170,11 +170,10 @@ namespace ThuTien.GUI.HanhThu
                         {
                             _cHoaDon.SqlBeginTransaction();
                             foreach (var item in lstHD.Items)
-                                ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
-                                if (_cTamThu.CheckBySoHoaDon(item.ToString()))
+                                if (_cHoaDon.DangNgan("HanhThu", item.ToString(), CNguoiDung.MaND))
                                 {
-                                    if (_cHoaDon.DangNgan("HanhThu", item.ToString(), CNguoiDung.MaND))
-                                    {
+                                    ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
+                                    if (_cTamThu.CheckBySoHoaDon(item.ToString()))
                                         if (_cHoaDon.Thu2Lan(item.ToString()))
                                         {
                                             if (!_cTamThu.Xoa(item.ToString()))
@@ -190,21 +189,13 @@ namespace ThuTien.GUI.HanhThu
                                             MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
-                                    }
-                                    else
-                                    {
-                                        _cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
                                 }
                                 else
-                                    if (!_cHoaDon.DangNgan("HanhThu", item.ToString(), CNguoiDung.MaND))
-                                    {
-                                        _cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
+                                {
+                                    _cHoaDon.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             _cHoaDon.SqlCommitTransaction();
                             LoadDataGridView();
                             lstHD.Items.Clear();
@@ -222,7 +213,7 @@ namespace ThuTien.GUI.HanhThu
                         {
                             if (dgvHDDaThu.Rows.Count > 0)
                             {
-                                MessageBox.Show("Đã Đăng Ngân trước đó\nKhông thể Quét theo kiểu  "+radChuaThu.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Đã Đăng Ngân trước đó\nKhông thể Quét theo kiểu  " + radChuaThu.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                             DataTable dt = (DataTable)dgvHDChuaThu.DataSource;
@@ -251,7 +242,7 @@ namespace ThuTien.GUI.HanhThu
                                 foreach (DataRow item in dt.Rows)
                                     if (!lstHD.Items.Contains(item["SoHoaDon"].ToString()))
                                     {
-                                        if (!_cHoaDon.DangNgan("HanhThu",item["SoHoaDon"].ToString(), CNguoiDung.MaND))
+                                        if (!_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
                                         {
                                             _cHoaDon.SqlRollbackTransaction();
                                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

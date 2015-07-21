@@ -238,7 +238,7 @@ namespace ThuTien.GUI.DongNuoc
                         printDialog.AllowSomePages = true;
                         printDialog.ShowHelp = true;
 
-                        rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation ;
+                        rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
                         rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
                         rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
