@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>39</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -194,6 +194,18 @@
       <DependentUpon>rptHeader.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\TongHop\rptTongHopDangNgan.cs">
+      <DependentUpon>rptTongHopDangNgan.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\TongHop\rptTongHopDangNganChiTiet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTongHopDangNganChiTiet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\ToTruong\rptDSChiaHoaDon.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -231,6 +243,7 @@
     <Compile Include="DAL\Quay\CTamThu.cs" />
     <Compile Include="DAL\Quay\CTraGop.cs" />
     <Compile Include="DAL\Quay\CXacNhanNo.cs" />
+    <Compile Include="DAL\TongHop\CChuyenNoKhoDoi.cs" />
     <Compile Include="DAL\TongHop\CDCHD.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -364,6 +377,12 @@
     <Compile Include="GUI\Quay\frmDieuChinhDangNganQuay.Designer.cs">
       <DependentUpon>frmDieuChinhDangNganQuay.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Quay\frmInQuay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmInQuay.Designer.cs">
+      <DependentUpon>frmInQuay.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Quay\frmLenhHuy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -387,6 +406,18 @@
     </Compile>
     <Compile Include="GUI\TimKiem\frmTimKiemKhachHang.Designer.cs">
       <DependentUpon>frmTimKiemKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TongHop\frmBaoCaoTongHop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TongHop\frmBaoCaoTongHop.Designer.cs">
+      <DependentUpon>frmBaoCaoTongHop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TongHop\frmChuyenNoKhoDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TongHop\frmChuyenNoKhoDoi.Designer.cs">
+      <DependentUpon>frmChuyenNoKhoDoi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\TongHop\frmThu2Lan.cs">
       <SubType>Form</SubType>
@@ -586,6 +617,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptHeader.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNgan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTongHopDangNgan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNganChiTiet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTongHopDangNganChiTiet.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToTruong\rptDSChiaHoaDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSChiaHoaDon.cs</LastGenOutput>
@@ -684,6 +723,9 @@
     <EmbeddedResource Include="GUI\Quay\frmDieuChinhDangNganQuay.resx">
       <DependentUpon>frmDieuChinhDangNganQuay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmInQuay.resx">
+      <DependentUpon>frmInQuay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmLenhHuy.resx">
       <DependentUpon>frmLenhHuy.cs</DependentUpon>
     </EmbeddedResource>
@@ -695,6 +737,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TimKiem\frmTimKiemKhachHang.resx">
       <DependentUpon>frmTimKiemKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TongHop\frmBaoCaoTongHop.resx">
+      <DependentUpon>frmBaoCaoTongHop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TongHop\frmChuyenNoKhoDoi.resx">
+      <DependentUpon>frmChuyenNoKhoDoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmThu2Lan.resx">
       <DependentUpon>frmThu2Lan.cs</DependentUpon>
@@ -1160,6 +1208,7 @@
   <ItemGroup>
     <Content Include="GUI\HeThong\config.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

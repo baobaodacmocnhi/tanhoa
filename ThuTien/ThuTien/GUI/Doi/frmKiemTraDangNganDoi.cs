@@ -91,9 +91,10 @@ namespace ThuTien.GUI.Doi
         {
             if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
             {
+                List<TT_To> lst = _cTo.GetDS();
                 DataTable dtTG = new DataTable();
                 DataTable dtCQ = new DataTable();
-                List<TT_To> lst = _cTo.GetDS();
+                
                 dtTG = _cHoaDon.GetTongDangNganByNgayGiaiTrachs_Doi("TG", lst[0].MaTo, dateTu.Value, dateDen.Value);
                 dtCQ = _cHoaDon.GetTongDangNganByNgayGiaiTrachs_Doi("CQ", lst[0].MaTo, dateTu.Value, dateDen.Value);
                 for (int i = 1; i < lst.Count; i++)

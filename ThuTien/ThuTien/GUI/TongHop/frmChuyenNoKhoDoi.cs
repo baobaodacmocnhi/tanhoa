@@ -7,27 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.Doi;
-using ThuTien.DAL.Quay;
+using ThuTien.DAL.TongHop;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
-using ThuTien.BaoCao;
-using ThuTien.BaoCao.Quay;
-using KTKS_DonKH.GUI.BaoCao;
 
-namespace ThuTien.GUI.Quay
+namespace ThuTien.GUI.TongHop
 {
-    public partial class frmLenhHuy : Form
+    public partial class frmChuyenNoKhoDoi : Form
     {
-        string _mnu = "mnuLenhHuy";
+        string _mnu = "mnuChuyenNoKhoDoi";
         CHoaDon _cHoaDon = new CHoaDon();
-        CLenhHuy _cLenhHuy = new CLenhHuy();
+        CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
 
-        public frmLenhHuy()
+        public frmChuyenNoKhoDoi()
         {
             InitializeComponent();
         }
 
-        private void frmLenhHuy_Load(object sender, EventArgs e)
+        private void frmChuyenNoKhoDoi_Load(object sender, EventArgs e)
         {
             dgvHoaDon.AutoGenerateColumns = false;
 
@@ -71,34 +68,43 @@ namespace ThuTien.GUI.Quay
                         lstHD.SelectedItem = item;
                         return;
                     }
-                    if (_cLenhHuy.CheckExist(item.ToString()))
+                    if (_cCNKD.CheckExist(item.ToString()))
                     {
-                        MessageBox.Show("Hóa Đơn đã có trong Lệnh Hủy: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.SelectedItem = item;
                         return;
                     }
                 }
                 try
                 {
-                    _cLenhHuy.BeginTransaction();
+                    _cCNKD.BeginTransaction();
                     foreach (var item in lstHD.Items)
                     {
-                        TT_LenhHuy lenhhuy = new TT_LenhHuy();
-                        lenhhuy.SoHoaDon = item.ToString();
-                        if (!_cLenhHuy.Them(lenhhuy))
+                        TT_ChuyenNoKhoDoi cnkd = new TT_ChuyenNoKhoDoi();
+                        cnkd.SoHoaDon = item.ToString();
+                        if (_cCNKD.Them(cnkd))
                         {
-                            _cLenhHuy.Rollback();
+                            if (!_cHoaDon.ChuyenNoKhoDoi(item.ToString()))
+                            {
+                                _cCNKD.SqlRollbackTransaction();
+                                MessageBox.Show("Lỗi Cập Nhật Hóa Đơn Chuyển Nợ Khó Đòi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            _cCNKD.Rollback();
                             MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    _cLenhHuy.CommitTransaction();
+                    _cCNKD.CommitTransaction();
                     lstHD.Items.Clear();
-                    dgvHoaDon.DataSource = _cLenhHuy.GetDSByCreatedDate(dateLap.Value);
+                    dgvHoaDon.DataSource = _cCNKD.GetDSByCreatedDate(dateLap.Value);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
                 {
-                    _cLenhHuy.Rollback();
+                    _cCNKD.Rollback();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -114,24 +120,33 @@ namespace ThuTien.GUI.Quay
                 {
                     try
                     {
-                        _cLenhHuy.BeginTransaction();
+                        _cCNKD.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
-                            TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
-                            if (!_cLenhHuy.Xoa(lenhhuy))
+                            TT_ChuyenNoKhoDoi cnkd = _cCNKD.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                            if (_cCNKD.Xoa(cnkd))
                             {
-                                _cLenhHuy.Rollback();
+                                if (!_cHoaDon.XoaChuyenNoKhoDoi(item.Cells["SoHoaDon"].Value.ToString()))
+                                {
+                                    _cCNKD.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi Cập Nhật Hóa Đơn Chuyển Nợ Khó Đòi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                _cCNKD.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        _cLenhHuy.CommitTransaction();
+                        _cCNKD.CommitTransaction();
                         lstHD.Items.Clear();
-                        dgvHoaDon.DataSource = _cLenhHuy.GetDSByCreatedDate(dateLap.Value);
+                        dgvHoaDon.DataSource = _cCNKD.GetDSByCreatedDate(dateLap.Value);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        _cLenhHuy.Rollback();
+                        _cCNKD.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -142,10 +157,10 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cLenhHuy.GetDSByCreatedDate(dateLap.Value);
+            dgvHoaDon.DataSource = _cCNKD.GetDSByCreatedDate(dateLap.Value);
         }
 
-        private void dgvHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
             {
@@ -157,38 +172,12 @@ namespace ThuTien.GUI.Quay
             }
         }
 
-        private void dgvHD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
-        }
-
-        private void btnIn_Click(object sender, EventArgs e)
-        {
-            dsBaoCao ds = new dsBaoCao();
-            foreach (DataGridViewRow item in dgvHoaDon.Rows)
-            {
-                DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                dr["HoTen"] = item.Cells["HoTen"].Value;
-                dr["Ky"] = item.Cells["Ky"].Value;
-                dr["MLT"] = item.Cells["MLT"].Value;
-                dr["TongCong"] = item.Cells["TongCong"].Value;
-                dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
-                dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
-                dr["To"] = item.Cells["To"].Value.ToString();
-                if (int.Parse(item.Cells["To"].Value.ToString()) > 20)
-                    dr["Loai"] = "CQ";
-                else
-                    dr["Loai"] = "TG";
-                ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
-            }
-            rptDSLenhHuy rpt = new rptDSLenhHuy();
-            rpt.SetDataSource(ds);
-            frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
         }
     }
 }

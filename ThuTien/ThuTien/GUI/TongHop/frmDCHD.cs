@@ -143,7 +143,7 @@ namespace ThuTien.GUI.TongHop
                     if (bool.Parse(dgvHoaDon["Chon", index].Value.ToString()) && !_cDCHD.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString()))
                     {
                         string loai;
-                        if (_cTamThu.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString(),out loai))
+                        if (_cTamThu.CheckExistBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString(),out loai))
                         {
                             MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -187,7 +187,7 @@ namespace ThuTien.GUI.TongHop
                     if (dgvHoaDon.RowCount == 1 && !_cDCHD.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString()))
                     {
                         string loai;
-                        if (_cTamThu.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString(), out loai))
+                        if (_cTamThu.CheckExistBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString(), out loai))
                         {
                             MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

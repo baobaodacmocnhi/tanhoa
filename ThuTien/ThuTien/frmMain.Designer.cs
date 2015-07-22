@@ -84,6 +84,7 @@
             this.mnuTongHop = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDCHD = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThu2Lan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChuyenNoKhoDoi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTimKiem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTimKiemKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -92,6 +93,7 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.mnuBaoCaoTongHop = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -521,7 +523,9 @@
             // 
             this.mnuTongHop.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuDCHD,
-            this.mnuThu2Lan});
+            this.mnuThu2Lan,
+            this.mnuChuyenNoKhoDoi,
+            this.mnuBaoCaoTongHop});
             this.mnuTongHop.Name = "mnuTongHop";
             this.mnuTongHop.Size = new System.Drawing.Size(73, 20);
             this.mnuTongHop.Text = "Tổng Hợp";
@@ -539,6 +543,13 @@
             this.mnuThu2Lan.Size = new System.Drawing.Size(183, 22);
             this.mnuThu2Lan.Text = "Thu 2 Lần";
             this.mnuThu2Lan.Click += new System.EventHandler(this.mnuThu2Lan_Click);
+            // 
+            // mnuChuyenNoKhoDoi
+            // 
+            this.mnuChuyenNoKhoDoi.Name = "mnuChuyenNoKhoDoi";
+            this.mnuChuyenNoKhoDoi.Size = new System.Drawing.Size(183, 22);
+            this.mnuChuyenNoKhoDoi.Text = "Chuyển Nợ Khó Đòi";
+            this.mnuChuyenNoKhoDoi.Click += new System.EventHandler(this.mnuChuyenNoKhoDoi_Click);
             // 
             // mnuTimKiem
             // 
@@ -602,6 +613,13 @@
             this.tabControl.Size = new System.Drawing.Size(761, 26);
             this.tabControl.TabIndex = 5;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // mnuBaoCaoTongHop
+            // 
+            this.mnuBaoCaoTongHop.Name = "mnuBaoCaoTongHop";
+            this.mnuBaoCaoTongHop.Size = new System.Drawing.Size(183, 22);
+            this.mnuBaoCaoTongHop.Text = "Báo Cáo";
+            this.mnuBaoCaoTongHop.Click += new System.EventHandler(this.mnuBaoCaoTongHop_Click);
             // 
             // frmMain
             // 
@@ -694,6 +712,8 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhDangNganChuyenKhoan;
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhDangNganQuay;
+        private System.Windows.Forms.ToolStripMenuItem mnuChuyenNoKhoDoi;
+        private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoTongHop;
     }
 }
 

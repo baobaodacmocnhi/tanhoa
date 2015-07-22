@@ -23,6 +23,7 @@ namespace ThuTien.GUI.HanhThu
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
         CDCHD _cDCHD = new CDCHD();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmDangNganTon()
         {
@@ -166,7 +167,7 @@ namespace ThuTien.GUI.HanhThu
                             if (_cHoaDon.DangNgan("Ton", item.ToString(), CNguoiDung.MaND))
                             {
                                 ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
-                                if (_cTamThu.CheckBySoHoaDon(item.ToString()))
+                                if (_cTamThu.CheckExistBySoHoaDon(item.ToString()))
                                     if (_cHoaDon.Thu2Lan(item.ToString()))
                                     {
                                         if (!_cTamThu.Xoa(item.ToString()))
@@ -180,6 +181,13 @@ namespace ThuTien.GUI.HanhThu
                                     {
                                         _cHoaDon.SqlRollbackTransaction();
                                         MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                if (_cLenhHuy.CheckExist(item.ToString()))
+                                    if (!_cLenhHuy.Xoa(item.ToString()))
+                                    {
+                                        _cHoaDon.SqlRollbackTransaction();
+                                        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
                             }

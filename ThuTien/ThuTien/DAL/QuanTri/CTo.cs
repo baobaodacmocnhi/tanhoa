@@ -69,7 +69,6 @@ namespace ThuTien.DAL.QuanTri
         public List<TT_To> GetDSHanhThu()
         {
             return _db.TT_Tos.Where(item=>item.HanhThu==true).ToList();
-
         }
 
         public TT_To GetByMaTo(int MaTT_To)

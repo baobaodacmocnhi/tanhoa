@@ -10,6 +10,7 @@ using ThuTien.DAL.Doi;
 using System.Globalization;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.TongHop;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.Quay
 {
@@ -18,6 +19,7 @@ namespace ThuTien.GUI.Quay
         string _mnu = "mnuDieuChinhDangNganQuay";
         CHoaDon _cHoaDon = new CHoaDon();
         CDCHD _cDCHD = new CDCHD();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmDieuChinhDangNganQuay()
         {
@@ -145,7 +147,17 @@ namespace ThuTien.GUI.Quay
                     {
                         _cHoaDon.SqlBeginTransaction();
                         foreach (var item in lstHD.Items)
-                            if (!_cHoaDon.DangNgan("Quay", item.ToString(), CNguoiDung.MaND, dateGiaiTrachSua.Value))
+                            if (_cHoaDon.DangNgan("Quay", item.ToString(), CNguoiDung.MaND, dateGiaiTrachSua.Value))
+                            {
+                                if (_cLenhHuy.CheckExist(item.ToString()))
+                                    if (!_cLenhHuy.Xoa(item.ToString()))
+                                    {
+                                        _cHoaDon.SqlRollbackTransaction();
+                                        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                            }
+                            else
                             {
                                 _cHoaDon.SqlRollbackTransaction();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

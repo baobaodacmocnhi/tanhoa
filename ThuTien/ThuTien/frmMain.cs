@@ -535,7 +535,7 @@ namespace ThuTien
 
         private void mnuLenhHuy_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuTamThuQuay", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuLenhHuy", "Xem"))
             {
                 frmLenhHuy frm = new frmLenhHuy();
                 OpenForm(frm);
@@ -546,7 +546,7 @@ namespace ThuTien
 
         private void mnuTraGop_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuTamThuQuay", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuTraGop", "Xem"))
             {
                 frmTraGop frm = new frmTraGop();
                 OpenForm(frm);
@@ -586,6 +586,28 @@ namespace ThuTien
             if (CNguoiDung.CheckQuyen("mnuThu2Lan", "Xem"))
             {
                 frmThu2Lan frm = new frmThu2Lan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuChuyenNoKhoDoi_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuChuyenNoKhoDoi", "Xem"))
+            {
+                frmChuyenNoKhoDoi frm = new frmChuyenNoKhoDoi();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBaoCaoTongHop_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuBaoCaoTongHop", "Xem"))
+            {
+                frmBaoCaoTongHop frm = new frmBaoCaoTongHop();
                 OpenForm(frm);
             }
             else
@@ -660,7 +682,6 @@ namespace ThuTien
         }
 
         
-
        
     }
 }

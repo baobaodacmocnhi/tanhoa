@@ -21,10 +21,11 @@ namespace ThuTien.GUI.ChuyenKhoan
 {
     public partial class frmDangNganChuyenKhoan : Form
     {
+        string _mnu = "mnuDangNganChuyenKhoan";
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
-        string _mnu = "mnuDangNganChuyenKhoan";
         CDCHD _cDCHD = new CDCHD();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmDangNganChuyenKhoan()
         {
@@ -162,7 +163,17 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     _cHoaDon.SqlBeginTransaction();
                     foreach (var item in lstHD.Items)
-                        if (!_cHoaDon.DangNgan("ChuyenKhoan", item.ToString(), CNguoiDung.MaND))
+                        if (_cHoaDon.DangNgan("ChuyenKhoan", item.ToString(), CNguoiDung.MaND))
+                        {
+                            if (_cLenhHuy.CheckExist(item.ToString()))
+                                if (!_cLenhHuy.Xoa(item.ToString()))
+                                {
+                                    _cHoaDon.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                        }
+                    else
                         {
                             _cHoaDon.SqlRollbackTransaction();
                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

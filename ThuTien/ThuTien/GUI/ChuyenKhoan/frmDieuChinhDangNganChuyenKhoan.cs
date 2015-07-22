@@ -20,6 +20,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
         CDCHD _cDCHD = new CDCHD();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmDieuChinhDangNganChuyenKhoan()
         {
@@ -154,7 +155,17 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         _cHoaDon.SqlBeginTransaction();
                         foreach (var item in lstHD.Items)
-                            if (!_cHoaDon.DangNgan("ChuyenKhoan", item.ToString(), CNguoiDung.MaND, dateGiaiTrachSua.Value))
+                            if (_cHoaDon.DangNgan("ChuyenKhoan", item.ToString(), CNguoiDung.MaND, dateGiaiTrachSua.Value))
+                            {
+                                if (_cLenhHuy.CheckExist(item.ToString()))
+                                    if (!_cLenhHuy.Xoa(item.ToString()))
+                                    {
+                                        _cHoaDon.SqlRollbackTransaction();
+                                        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                            }
+                            else
                             {
                                 _cHoaDon.SqlRollbackTransaction();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

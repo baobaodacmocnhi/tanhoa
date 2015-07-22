@@ -71,8 +71,12 @@ namespace ThuTien.GUI.QuanTri
                     to.HanhThu = chkHanhThu.Checked;
                     if (!string.IsNullOrEmpty(txtTuCuonGCS.Text.Trim()))
                         to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
+                    else
+                        to.TuCuonGCS = null;
                     if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
                         to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
+                    else
+                        to.DenCuonGCS=null;
                     _cTo.Sua(to);
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
