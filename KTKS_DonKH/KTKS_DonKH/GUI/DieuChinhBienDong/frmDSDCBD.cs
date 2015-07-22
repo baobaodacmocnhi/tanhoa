@@ -992,8 +992,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                         if (ctdcbd.GiaHan)
                                             dr["KhongBD"] = "Gia Hạn";
-                                    dr["ChucVu"] = ctdcbd.ChucVu;
-                                    dr["NguoiKy"] = ctdcbd.NguoiKy;
+                                        else
+                                        {
+                                            dr["ChucVu"] = ctdcbd.ChucVu;
+                                            dr["NguoiKy"] = ctdcbd.NguoiKy;
+                                        }
 
                                     dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
