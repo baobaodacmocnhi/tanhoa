@@ -68,6 +68,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     radDSKTXM.Checked = true;
 
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
+            //txtNoiDungTimKiem2.Location=txtNoiDungTimKiem.Location;
 
             ///GridControl
             ///Tạo đối tượng LookUpEdit
@@ -336,21 +337,25 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 case "Mã Đơn":
                 case "Danh Bộ":
                     txtNoiDungTimKiem.Visible = true;
+                    txtNoiDungTimKiem2.Visible = true;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Ngày":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = true;
                     panel_KhoangThoiGian.Visible = false;
                     break;
                 case "Khoảng Thời Gian":
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = true;
                     break;
                 default:
                     txtNoiDungTimKiem.Visible = false;
+                    txtNoiDungTimKiem2.Visible = false;
                     dateTimKiem.Visible = false;
                     panel_KhoangThoiGian.Visible = false;
                     //DSDon_BS.RemoveFilter();
@@ -364,6 +369,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         {
             try
             {
+                txtNoiDungTimKiem2.Text = "";
                 //if (txtNoiDungTimKiem.Text.Trim() != "")
                 //{
                 //    string expression = "";
@@ -415,6 +421,26 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
             }
 
+        }
+
+        private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim() != "")
+            {
+                switch (cmbTimTheo.SelectedItem.ToString())
+                {
+                    case "Mã Đơn":
+                        if (radDaDuyet.Checked)
+                            gridControl.DataSource = _cKTXM.LoadDSKTXMDaDuyetByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", ""))).Tables["KTXM"];
+                        else
+                            if (radDSKTXM.Checked)
+                                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                                    dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDons(decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                                else
+                                    dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByMaDons(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().ToUpper().Replace("-", "").Replace("T", "").Replace("X", "").Replace("L", "")));
+                        break;
+                }
+            }
         }
 
         private void dateTimKiem_ValueChanged(object sender, EventArgs e)
@@ -691,5 +717,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         dgvDSCTKTXM.DataSource = _cKTXM.LoadDSCTKTXMByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                 }
         }
+
+        
     }
 }

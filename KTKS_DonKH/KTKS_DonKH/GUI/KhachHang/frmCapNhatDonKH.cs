@@ -115,28 +115,28 @@ namespace KTKS_DonKH.GUI.KhachHang
                 if (ls.DM)
                 {
                     if (ChiTiet == "")
-                        ChiTiet = "ĐM";
+                        ChiTiet += "ĐM";
                     else
                         ChiTiet += ",ĐM";
                 }
                 if (ls.CCDM)
                 {
                     if (ChiTiet == "")
-                        ChiTiet = "CCĐM";
+                        ChiTiet += "CCĐM";
                     else
                         ChiTiet += ",CCĐM";
                 }
                 if (ls.STGB)
                 {
                     if (ChiTiet == "")
-                        ChiTiet = "STGB";
+                        ChiTiet += "STGB";
                     else
                         ChiTiet += ",STGB";
                 }
                 if (ls.KTTT)
                 {
                     if (ChiTiet == "")
-                        ChiTiet = "TT";
+                        ChiTiet += "TT";
                     else
                         ChiTiet += ",TT";
                 }
