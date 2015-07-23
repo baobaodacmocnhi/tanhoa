@@ -41,6 +41,7 @@
               <xs:element name="TongCong" msprop:Generator_ColumnVarNameInTable="columnTongCong" msprop:Generator_ColumnPropNameInRow="TongCong" msprop:Generator_ColumnPropNameInTable="TongCongColumn" msprop:Generator_UserColumnName="TongCong" type="xs:int" minOccurs="0" />
               <xs:element name="NhanVien" msprop:Generator_ColumnVarNameInTable="columnNhanVien" msprop:Generator_ColumnPropNameInRow="NhanVien" msprop:Generator_ColumnPropNameInTable="NhanVienColumn" msprop:Generator_UserColumnName="NhanVien" type="xs:string" minOccurs="0" />
               <xs:element name="To" msprop:Generator_ColumnVarNameInTable="columnTo" msprop:Generator_ColumnPropNameInRow="To" msprop:Generator_ColumnPropNameInTable="ToColumn" msprop:Generator_UserColumnName="To" type="xs:string" minOccurs="0" />
+              <xs:element name="NhanVienDN" msprop:Generator_ColumnVarNameInTable="columnNhanVienDN" msprop:Generator_ColumnPropNameInRow="NhanVienDN" msprop:Generator_ColumnPropNameInTable="NhanVienDNColumn" msprop:Generator_UserColumnName="NhanVienDN" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

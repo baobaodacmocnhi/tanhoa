@@ -67,6 +67,7 @@
             this.chkVanPhong = new System.Windows.Forms.CheckBox();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +78,8 @@
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDienThoai = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -179,6 +182,7 @@
             this.dgvNguoiDung.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaND,
             this.HoTen,
+            this.DienThoai,
             this.TaiKhoan,
             this.MatKhau,
             this.MaTo,
@@ -193,7 +197,7 @@
             this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
             this.dgvNguoiDung.ReadOnly = true;
-            this.dgvNguoiDung.Size = new System.Drawing.Size(574, 485);
+            this.dgvNguoiDung.Size = new System.Drawing.Size(664, 485);
             this.dgvNguoiDung.TabIndex = 10;
             this.dgvNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellContentClick);
             this.dgvNguoiDung.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNguoiDung_CellFormatting);
@@ -232,7 +236,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gridControl);
-            this.groupBox1.Location = new System.Drawing.Point(592, 144);
+            this.groupBox1.Location = new System.Drawing.Point(682, 144);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(654, 498);
             this.groupBox1.TabIndex = 15;
@@ -457,6 +461,13 @@
             this.HoTen.ReadOnly = true;
             this.HoTen.Width = 150;
             // 
+            // DienThoai
+            // 
+            this.DienThoai.DataPropertyName = "DienThoai";
+            this.DienThoai.HeaderText = "Điện Thoại";
+            this.DienThoai.Name = "DienThoai";
+            this.DienThoai.ReadOnly = true;
+            // 
             // TaiKhoan
             // 
             this.TaiKhoan.DataPropertyName = "TaiKhoan";
@@ -535,11 +546,29 @@
             this.VanPhong.ReadOnly = true;
             this.VanPhong.Visible = false;
             // 
+            // txtDienThoai
+            // 
+            this.txtDienThoai.Location = new System.Drawing.Point(269, 38);
+            this.txtDienThoai.Name = "txtDienThoai";
+            this.txtDienThoai.Size = new System.Drawing.Size(121, 20);
+            this.txtDienThoai.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(201, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Điện Thoại:";
+            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 666);
+            this.ClientSize = new System.Drawing.Size(1365, 666);
+            this.Controls.Add(this.txtDienThoai);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.chkVanPhong);
             this.Controls.Add(this.chkDongNuoc);
             this.Controls.Add(this.chkHanhThu);
@@ -618,6 +647,7 @@
         private System.Windows.Forms.CheckBox chkVanPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaiKhoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MatKhau;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTo;
@@ -628,5 +658,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DongNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn VanPhong;
+        private System.Windows.Forms.TextBox txtDienThoai;
+        private System.Windows.Forms.Label label6;
     }
 }

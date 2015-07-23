@@ -63,6 +63,7 @@ namespace ThuTien.GUI.QuanTri
                 {
                     TT_NguoiDung nguoidung = new TT_NguoiDung();
                     nguoidung.HoTen = txtHoTen.Text.Trim();
+                    nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     if (cmbTo.SelectedIndex != -1)
@@ -100,6 +101,7 @@ namespace ThuTien.GUI.QuanTri
                 {
                     TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvNguoiDung["MaND", _selectedindex].Value.ToString()));
                     nguoidung.HoTen = txtHoTen.Text.Trim();
+                    nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
@@ -160,6 +162,8 @@ namespace ThuTien.GUI.QuanTri
             {
                 _selectedindex = e.RowIndex;
                 txtHoTen.Text = dgvNguoiDung["HoTen", e.RowIndex].Value.ToString();
+                if (dgvNguoiDung["DienThoai", e.RowIndex].Value != null)
+                    txtDienThoai.Text = dgvNguoiDung["DienThoai", e.RowIndex].Value.ToString();
                 txtTaiKhoan.Text = dgvNguoiDung["TaiKhoan", e.RowIndex].Value.ToString();
                 txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
                 cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());

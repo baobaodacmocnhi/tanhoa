@@ -286,9 +286,9 @@ namespace ThuTien.GUI.Quay
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {
                 if (Ky == "Hết nợ")
-                    Ky = "Còn nợ Kỳ "+item.Cells["Ky"].Value.ToString();
+                    Ky = "Còn nợ Kỳ " + item.Cells["Ky"].Value.ToString() + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Int32.Parse(item.Cells["TongCong"].Value.ToString())) + ", ";
                 else
-                    Ky += ", " + item.Cells["Ky"].Value.ToString();
+                    Ky += ", " + item.Cells["Ky"].Value.ToString() + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Int32.Parse(item.Cells["TongCong"].Value.ToString())) + ", ";
                 TongCongSo += Int32.Parse(item.Cells["TongCong"].Value.ToString());
             }
 

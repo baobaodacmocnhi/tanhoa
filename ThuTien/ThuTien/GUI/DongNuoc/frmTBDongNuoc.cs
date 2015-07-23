@@ -22,6 +22,7 @@ namespace ThuTien.GUI.DongNuoc
         string _mnu = "mnuTBDongNuoc";
         CHoaDon _cHoaDon = new CHoaDon();
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CNguoiDung _cNguoiDung = new CNguoiDung(); 
 
         public frmTBDongNuoc()
         {
@@ -229,6 +230,9 @@ namespace ThuTien.GUI.DongNuoc
                         dr["Ky"] = Ky;
                         dr["TongCong"] = TongCong;
                         dr["NhanVien"] = CNguoiDung.HoTen;
+                        if (!string.IsNullOrEmpty(item["MaNV_DongNuoc"].ToString()))
+                            dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
+
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
                         rptTBDongNuocPhoto rpt = new rptTBDongNuocPhoto();

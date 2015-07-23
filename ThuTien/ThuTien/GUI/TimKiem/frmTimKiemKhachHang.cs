@@ -28,7 +28,7 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cHoaDon.GetDSByTimKiem(txtDanhBo.Text.Trim(), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
+            dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim(), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

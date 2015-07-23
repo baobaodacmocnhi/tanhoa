@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnXem = new System.Windows.Forms.Button();
             this.cmbKy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,20 +50,6 @@
             this.txtTongGiaBan_TG = new System.Windows.Forms.TextBox();
             this.txtTongHD_TG = new System.Windows.Forms.TextBox();
             this.dgvHDTuGia = new System.Windows.Forms.DataGridView();
-            this.MaHD_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNV_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongHD_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongGiaBan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongHDThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongGiaBanThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCongThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongHDTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongGiaBanTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCongTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TiLeGiaBan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TiLeTongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCoQuan = new System.Windows.Forms.TabPage();
             this.txtTongCongTon_CQ = new System.Windows.Forms.TextBox();
             this.txtTongCongThu_CQ = new System.Windows.Forms.TextBox();
@@ -75,9 +61,23 @@
             this.txtTongGiaBan_CQ = new System.Windows.Forms.TextBox();
             this.txtTongHD_CQ = new System.Windows.Forms.TextBox();
             this.dgvHDCoQuan = new System.Windows.Forms.DataGridView();
+            this.MaHD_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTo_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongHD_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongHDThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBanThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCongThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongHDTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBanTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCongTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TiLeGiaBan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TiLeTongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaHD_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNV_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTo_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongGiaBan_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -271,19 +271,19 @@
             // 
             this.dgvHDTuGia.AllowUserToAddRows = false;
             this.dgvHDTuGia.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHDTuGia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHDTuGia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHDTuGia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHDTuGia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD_TG,
-            this.MaNV_TG,
-            this.HoTen_TG,
+            this.MaTo_TG,
+            this.TenTo_TG,
             this.TongHD_TG,
             this.TongGiaBan_TG,
             this.TongCong_TG,
@@ -299,117 +299,12 @@
             this.dgvHDTuGia.MultiSelect = false;
             this.dgvHDTuGia.Name = "dgvHDTuGia";
             this.dgvHDTuGia.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHDTuGia.Size = new System.Drawing.Size(1228, 395);
             this.dgvHDTuGia.TabIndex = 0;
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
             this.dgvHDTuGia.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDTuGia_RowPostPaint);
-            // 
-            // MaHD_TG
-            // 
-            this.MaHD_TG.DataPropertyName = "MaHD";
-            this.MaHD_TG.HeaderText = "MaHD";
-            this.MaHD_TG.Name = "MaHD_TG";
-            this.MaHD_TG.ReadOnly = true;
-            this.MaHD_TG.Visible = false;
-            // 
-            // MaNV_TG
-            // 
-            this.MaNV_TG.DataPropertyName = "MaNV";
-            this.MaNV_TG.HeaderText = "MaNV";
-            this.MaNV_TG.Name = "MaNV_TG";
-            this.MaNV_TG.ReadOnly = true;
-            this.MaNV_TG.Visible = false;
-            // 
-            // HoTen_TG
-            // 
-            this.HoTen_TG.DataPropertyName = "HoTen";
-            this.HoTen_TG.HeaderText = "Nhân Viên";
-            this.HoTen_TG.Name = "HoTen_TG";
-            this.HoTen_TG.ReadOnly = true;
-            this.HoTen_TG.Width = 150;
-            // 
-            // TongHD_TG
-            // 
-            this.TongHD_TG.DataPropertyName = "TongHD";
-            this.TongHD_TG.HeaderText = "Tổng HĐ";
-            this.TongHD_TG.Name = "TongHD_TG";
-            this.TongHD_TG.ReadOnly = true;
-            this.TongHD_TG.Width = 80;
-            // 
-            // TongGiaBan_TG
-            // 
-            this.TongGiaBan_TG.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan_TG.HeaderText = "Tổng Giá Bán";
-            this.TongGiaBan_TG.Name = "TongGiaBan_TG";
-            this.TongGiaBan_TG.ReadOnly = true;
-            // 
-            // TongCong_TG
-            // 
-            this.TongCong_TG.DataPropertyName = "TongCong";
-            this.TongCong_TG.HeaderText = "Tổng Cộng";
-            this.TongCong_TG.Name = "TongCong_TG";
-            this.TongCong_TG.ReadOnly = true;
-            // 
-            // TongHDThu_TG
-            // 
-            this.TongHDThu_TG.DataPropertyName = "TongHDThu";
-            this.TongHDThu_TG.HeaderText = "Tổng HĐ Thu";
-            this.TongHDThu_TG.Name = "TongHDThu_TG";
-            this.TongHDThu_TG.ReadOnly = true;
-            this.TongHDThu_TG.Width = 80;
-            // 
-            // TongGiaBanThu_TG
-            // 
-            this.TongGiaBanThu_TG.DataPropertyName = "TongGiaBanThu";
-            this.TongGiaBanThu_TG.HeaderText = "Tổng Giá Bán Thu";
-            this.TongGiaBanThu_TG.Name = "TongGiaBanThu_TG";
-            this.TongGiaBanThu_TG.ReadOnly = true;
-            // 
-            // TongCongThu_TG
-            // 
-            this.TongCongThu_TG.DataPropertyName = "TongCongThu";
-            this.TongCongThu_TG.HeaderText = "Tổng Cộng Thu";
-            this.TongCongThu_TG.Name = "TongCongThu_TG";
-            this.TongCongThu_TG.ReadOnly = true;
-            // 
-            // TongHDTon_TG
-            // 
-            this.TongHDTon_TG.DataPropertyName = "TongHDTon";
-            this.TongHDTon_TG.HeaderText = "Tổng HĐ Tồn";
-            this.TongHDTon_TG.Name = "TongHDTon_TG";
-            this.TongHDTon_TG.ReadOnly = true;
-            this.TongHDTon_TG.Width = 80;
-            // 
-            // TongGiaBanTon_TG
-            // 
-            this.TongGiaBanTon_TG.DataPropertyName = "TongGiaBanTon";
-            this.TongGiaBanTon_TG.HeaderText = "Tổng Giá Bán Tồn";
-            this.TongGiaBanTon_TG.Name = "TongGiaBanTon_TG";
-            this.TongGiaBanTon_TG.ReadOnly = true;
-            // 
-            // TongCongTon_TG
-            // 
-            this.TongCongTon_TG.DataPropertyName = "TongCongTon";
-            this.TongCongTon_TG.HeaderText = "Tổng Cộng Tồn";
-            this.TongCongTon_TG.Name = "TongCongTon_TG";
-            this.TongCongTon_TG.ReadOnly = true;
-            // 
-            // TiLeGiaBan_TG
-            // 
-            this.TiLeGiaBan_TG.DataPropertyName = "TiLeGiaBan";
-            this.TiLeGiaBan_TG.HeaderText = "Tỉ Lệ Giá Bán";
-            this.TiLeGiaBan_TG.Name = "TiLeGiaBan_TG";
-            this.TiLeGiaBan_TG.ReadOnly = true;
-            this.TiLeGiaBan_TG.Width = 80;
-            // 
-            // TiLeTongCong_TG
-            // 
-            this.TiLeTongCong_TG.DataPropertyName = "TiLeTongCong";
-            this.TiLeTongCong_TG.HeaderText = "Tỉ Lệ Tổng Cộng";
-            this.TiLeTongCong_TG.Name = "TiLeTongCong_TG";
-            this.TiLeTongCong_TG.ReadOnly = true;
             // 
             // tabCoQuan
             // 
@@ -507,19 +402,19 @@
             // 
             this.dgvHDCoQuan.AllowUserToAddRows = false;
             this.dgvHDCoQuan.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHDCoQuan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHDCoQuan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHDCoQuan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHDCoQuan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD_CQ,
-            this.MaNV_CQ,
-            this.HoTen_CQ,
+            this.MaTo_CQ,
+            this.TenTo_CQ,
             this.TongHD_CQ,
             this.TongGiaBan_CQ,
             this.TongCong_CQ,
@@ -535,12 +430,117 @@
             this.dgvHDCoQuan.MultiSelect = false;
             this.dgvHDCoQuan.Name = "dgvHDCoQuan";
             this.dgvHDCoQuan.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHDCoQuan.Size = new System.Drawing.Size(1228, 395);
             this.dgvHDCoQuan.TabIndex = 1;
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
             this.dgvHDCoQuan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDCoQuan_RowPostPaint);
+            // 
+            // MaHD_TG
+            // 
+            this.MaHD_TG.DataPropertyName = "MaHD";
+            this.MaHD_TG.HeaderText = "MaHD";
+            this.MaHD_TG.Name = "MaHD_TG";
+            this.MaHD_TG.ReadOnly = true;
+            this.MaHD_TG.Visible = false;
+            // 
+            // MaTo_TG
+            // 
+            this.MaTo_TG.DataPropertyName = "MaTo";
+            this.MaTo_TG.HeaderText = "MaTo";
+            this.MaTo_TG.Name = "MaTo_TG";
+            this.MaTo_TG.ReadOnly = true;
+            this.MaTo_TG.Visible = false;
+            // 
+            // TenTo_TG
+            // 
+            this.TenTo_TG.DataPropertyName = "TenTo";
+            this.TenTo_TG.HeaderText = "Tên Tổ";
+            this.TenTo_TG.Name = "TenTo_TG";
+            this.TenTo_TG.ReadOnly = true;
+            this.TenTo_TG.Width = 150;
+            // 
+            // TongHD_TG
+            // 
+            this.TongHD_TG.DataPropertyName = "TongHD";
+            this.TongHD_TG.HeaderText = "Tổng HĐ";
+            this.TongHD_TG.Name = "TongHD_TG";
+            this.TongHD_TG.ReadOnly = true;
+            this.TongHD_TG.Width = 80;
+            // 
+            // TongGiaBan_TG
+            // 
+            this.TongGiaBan_TG.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan_TG.HeaderText = "Tổng Giá Bán";
+            this.TongGiaBan_TG.Name = "TongGiaBan_TG";
+            this.TongGiaBan_TG.ReadOnly = true;
+            // 
+            // TongCong_TG
+            // 
+            this.TongCong_TG.DataPropertyName = "TongCong";
+            this.TongCong_TG.HeaderText = "Tổng Cộng";
+            this.TongCong_TG.Name = "TongCong_TG";
+            this.TongCong_TG.ReadOnly = true;
+            // 
+            // TongHDThu_TG
+            // 
+            this.TongHDThu_TG.DataPropertyName = "TongHDThu";
+            this.TongHDThu_TG.HeaderText = "Tổng HĐ Thu";
+            this.TongHDThu_TG.Name = "TongHDThu_TG";
+            this.TongHDThu_TG.ReadOnly = true;
+            this.TongHDThu_TG.Width = 80;
+            // 
+            // TongGiaBanThu_TG
+            // 
+            this.TongGiaBanThu_TG.DataPropertyName = "TongGiaBanThu";
+            this.TongGiaBanThu_TG.HeaderText = "Tổng Giá Bán Thu";
+            this.TongGiaBanThu_TG.Name = "TongGiaBanThu_TG";
+            this.TongGiaBanThu_TG.ReadOnly = true;
+            // 
+            // TongCongThu_TG
+            // 
+            this.TongCongThu_TG.DataPropertyName = "TongCongThu";
+            this.TongCongThu_TG.HeaderText = "Tổng Cộng Thu";
+            this.TongCongThu_TG.Name = "TongCongThu_TG";
+            this.TongCongThu_TG.ReadOnly = true;
+            // 
+            // TongHDTon_TG
+            // 
+            this.TongHDTon_TG.DataPropertyName = "TongHDTon";
+            this.TongHDTon_TG.HeaderText = "Tổng HĐ Tồn";
+            this.TongHDTon_TG.Name = "TongHDTon_TG";
+            this.TongHDTon_TG.ReadOnly = true;
+            this.TongHDTon_TG.Width = 80;
+            // 
+            // TongGiaBanTon_TG
+            // 
+            this.TongGiaBanTon_TG.DataPropertyName = "TongGiaBanTon";
+            this.TongGiaBanTon_TG.HeaderText = "Tổng Giá Bán Tồn";
+            this.TongGiaBanTon_TG.Name = "TongGiaBanTon_TG";
+            this.TongGiaBanTon_TG.ReadOnly = true;
+            // 
+            // TongCongTon_TG
+            // 
+            this.TongCongTon_TG.DataPropertyName = "TongCongTon";
+            this.TongCongTon_TG.HeaderText = "Tổng Cộng Tồn";
+            this.TongCongTon_TG.Name = "TongCongTon_TG";
+            this.TongCongTon_TG.ReadOnly = true;
+            // 
+            // TiLeGiaBan_TG
+            // 
+            this.TiLeGiaBan_TG.DataPropertyName = "TiLeGiaBan";
+            this.TiLeGiaBan_TG.HeaderText = "Tỉ Lệ Giá Bán";
+            this.TiLeGiaBan_TG.Name = "TiLeGiaBan_TG";
+            this.TiLeGiaBan_TG.ReadOnly = true;
+            this.TiLeGiaBan_TG.Width = 80;
+            // 
+            // TiLeTongCong_TG
+            // 
+            this.TiLeTongCong_TG.DataPropertyName = "TiLeTongCong";
+            this.TiLeTongCong_TG.HeaderText = "Tỉ Lệ Tổng Cộng";
+            this.TiLeTongCong_TG.Name = "TiLeTongCong_TG";
+            this.TiLeTongCong_TG.ReadOnly = true;
             // 
             // MaHD_CQ
             // 
@@ -550,21 +550,21 @@
             this.MaHD_CQ.ReadOnly = true;
             this.MaHD_CQ.Visible = false;
             // 
-            // MaNV_CQ
+            // MaTo_CQ
             // 
-            this.MaNV_CQ.DataPropertyName = "MaNV";
-            this.MaNV_CQ.HeaderText = "MaNV";
-            this.MaNV_CQ.Name = "MaNV_CQ";
-            this.MaNV_CQ.ReadOnly = true;
-            this.MaNV_CQ.Visible = false;
+            this.MaTo_CQ.DataPropertyName = "MaTo";
+            this.MaTo_CQ.HeaderText = "MaTo";
+            this.MaTo_CQ.Name = "MaTo_CQ";
+            this.MaTo_CQ.ReadOnly = true;
+            this.MaTo_CQ.Visible = false;
             // 
-            // HoTen_CQ
+            // TenTo_CQ
             // 
-            this.HoTen_CQ.DataPropertyName = "HoTen";
-            this.HoTen_CQ.HeaderText = "Nhân Viên";
-            this.HoTen_CQ.Name = "HoTen_CQ";
-            this.HoTen_CQ.ReadOnly = true;
-            this.HoTen_CQ.Width = 150;
+            this.TenTo_CQ.DataPropertyName = "TenTo";
+            this.TenTo_CQ.HeaderText = "Tên Tổ";
+            this.TenTo_CQ.Name = "TenTo_CQ";
+            this.TenTo_CQ.ReadOnly = true;
+            this.TenTo_CQ.Width = 150;
             // 
             // TongHD_CQ
             // 
@@ -694,20 +694,6 @@
         private System.Windows.Forms.TextBox txtTongGiaBan_TG;
         private System.Windows.Forms.TextBox txtTongHD_TG;
         private System.Windows.Forms.DataGridView dgvHDTuGia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongHD_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongHDThu_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanThu_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCongThu_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongHDTon_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTon_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TiLeGiaBan_TG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TiLeTongCong_TG;
         private System.Windows.Forms.TabPage tabCoQuan;
         private System.Windows.Forms.TextBox txtTongCongTon_CQ;
         private System.Windows.Forms.TextBox txtTongCongThu_CQ;
@@ -719,9 +705,23 @@
         private System.Windows.Forms.TextBox txtTongGiaBan_CQ;
         private System.Windows.Forms.TextBox txtTongHD_CQ;
         private System.Windows.Forms.DataGridView dgvHDCoQuan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTo_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongHD_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongHDThu_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanThu_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCongThu_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongHDTon_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTon_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TiLeGiaBan_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TiLeTongCong_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_CQ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_CQ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTo_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHD_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_CQ;

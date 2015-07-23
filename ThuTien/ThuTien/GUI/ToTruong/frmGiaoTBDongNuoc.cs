@@ -300,5 +300,65 @@ namespace ThuTien.GUI.ToTruong
             }
         }
 
+        private void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAll.Checked)
+                for (int i = 0; i < gridViewDN.RowCount; i++)
+                    gridViewDN.SetRowCellValue(i, gridViewDN.Columns["In"], "True");
+            else
+                for (int i = 0; i < gridViewDN.RowCount; i++)
+                    gridViewDN.SetRowCellValue(i, gridViewDN.Columns["In"], "False");
+        }
+
+        private void btnInTB_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                dsBaoCao dsBaoCao = new dsBaoCao();
+                DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+                foreach (DataRow item in dt.Rows)
+                    if (bool.Parse(item["In"].ToString()))
+                    {
+                        DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
+                        string Ky = "";
+                        int TongCong = 0; ;
+                        foreach (DataRow itemChild in childRows)
+                        {
+                            Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                            TongCong += int.Parse(itemChild["TongCong"].ToString());
+                        }
+
+                        DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                        dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-"); ;
+                        dr["HoTen"] = item["HoTen"];
+                        dr["DiaChi"] = item["DiaChi"];
+                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["MLT"] = item["MLT"];
+                        dr["Ky"] = Ky;
+                        dr["TongCong"] = TongCong;
+                        dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(int.Parse(item["CreateBy"].ToString())); ;
+                        if (!string.IsNullOrEmpty(item["MaNV_DongNuoc"].ToString()))
+                            dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
+
+                        dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+
+                        rptTBDongNuocPhoto rpt = new rptTBDongNuocPhoto();
+                        rpt.SetDataSource(dsBaoCao);
+                        //frmBaoCao frm = new frmBaoCao(rpt);
+                        //frm.ShowDialog();
+                        printDialog.AllowSomePages = true;
+                        printDialog.ShowHelp = true;
+
+                        rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
+                        rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
+                        rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                        rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
+                    }
+            }
+        }
+
     }
 }

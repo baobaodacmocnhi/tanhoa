@@ -223,5 +223,10 @@ namespace ThuTien.DAL.QuanTri
         {
             return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == MaND).HoTen;
         }
+
+        public string GetDienThoaiByMaND(int MaND)
+        {
+            return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == MaND).DienThoai;
+        }
     }
 }

@@ -65,10 +65,15 @@
             this.btnInDSTBNguoiLap = new System.Windows.Forms.Button();
             this.btnInDSTBNguoiGiao = new System.Windows.Forms.Button();
             this.btnInDSTBTonNguoiGiao = new System.Windows.Forms.Button();
+            this.btnInTB = new System.Windows.Forms.Button();
+            this.In = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.chkAll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewCTDN
@@ -164,7 +169,8 @@
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemCheckEdit2});
             this.gridControl.Size = new System.Drawing.Size(1131, 590);
             this.gridControl.TabIndex = 26;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -174,6 +180,7 @@
             // gridViewDN
             // 
             this.gridViewDN.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.In,
             this.MaDN,
             this.DanhBo,
             this.HoTen,
@@ -197,7 +204,7 @@
             this.MaDN.FieldName = "MaDN";
             this.MaDN.Name = "MaDN";
             this.MaDN.Visible = true;
-            this.MaDN.VisibleIndex = 0;
+            this.MaDN.VisibleIndex = 1;
             this.MaDN.Width = 90;
             // 
             // DanhBo
@@ -206,7 +213,7 @@
             this.DanhBo.FieldName = "DanhBo";
             this.DanhBo.Name = "DanhBo";
             this.DanhBo.Visible = true;
-            this.DanhBo.VisibleIndex = 1;
+            this.DanhBo.VisibleIndex = 2;
             this.DanhBo.Width = 100;
             // 
             // HoTen
@@ -215,8 +222,8 @@
             this.HoTen.FieldName = "HoTen";
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
-            this.HoTen.VisibleIndex = 2;
-            this.HoTen.Width = 200;
+            this.HoTen.VisibleIndex = 3;
+            this.HoTen.Width = 150;
             // 
             // DiaChi
             // 
@@ -224,7 +231,7 @@
             this.DiaChi.FieldName = "DiaChi";
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
-            this.DiaChi.VisibleIndex = 3;
+            this.DiaChi.VisibleIndex = 4;
             this.DiaChi.Width = 250;
             // 
             // MLT
@@ -233,7 +240,7 @@
             this.MLT.FieldName = "MLT";
             this.MLT.Name = "MLT";
             this.MLT.Visible = true;
-            this.MLT.VisibleIndex = 4;
+            this.MLT.VisibleIndex = 5;
             // 
             // CreateDate
             // 
@@ -241,7 +248,7 @@
             this.CreateDate.FieldName = "CreateDate";
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.Visible = true;
-            this.CreateDate.VisibleIndex = 5;
+            this.CreateDate.VisibleIndex = 6;
             // 
             // CreateBy
             // 
@@ -249,7 +256,7 @@
             this.CreateBy.FieldName = "CreateBy";
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
-            this.CreateBy.VisibleIndex = 6;
+            this.CreateBy.VisibleIndex = 7;
             this.CreateBy.Width = 140;
             // 
             // MaNV_DongNuoc
@@ -258,7 +265,7 @@
             this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
-            this.MaNV_DongNuoc.VisibleIndex = 7;
+            this.MaNV_DongNuoc.VisibleIndex = 8;
             this.MaNV_DongNuoc.Width = 140;
             // 
             // repositoryItemCheckEdit1
@@ -270,7 +277,7 @@
             // cmbNhanVienLap
             // 
             this.cmbNhanVienLap.FormattingEnabled = true;
-            this.cmbNhanVienLap.Location = new System.Drawing.Point(179, 12);
+            this.cmbNhanVienLap.Location = new System.Drawing.Point(386, 12);
             this.cmbNhanVienLap.Name = "cmbNhanVienLap";
             this.cmbNhanVienLap.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVienLap.TabIndex = 12;
@@ -278,7 +285,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(91, 15);
+            this.label4.Location = new System.Drawing.Point(298, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
             this.label4.TabIndex = 11;
@@ -288,7 +295,7 @@
             // 
             this.lbTo.AutoSize = true;
             this.lbTo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTo.Location = new System.Drawing.Point(12, 9);
+            this.lbTo.Location = new System.Drawing.Point(196, 9);
             this.lbTo.Name = "lbTo";
             this.lbTo.Size = new System.Drawing.Size(32, 19);
             this.lbTo.TabIndex = 10;
@@ -298,7 +305,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(529, 12);
+            this.dateDen.Location = new System.Drawing.Point(736, 12);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 16;
@@ -306,7 +313,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(465, 15);
+            this.label1.Location = new System.Drawing.Point(672, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 15;
@@ -316,7 +323,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(359, 12);
+            this.dateTu.Location = new System.Drawing.Point(566, 12);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 14;
@@ -324,7 +331,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(302, 14);
+            this.label3.Location = new System.Drawing.Point(509, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 13;
@@ -332,7 +339,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(635, 10);
+            this.btnXem.Location = new System.Drawing.Point(842, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 17;
@@ -390,7 +397,7 @@
             // 
             // btnInDSTBNguoiLap
             // 
-            this.btnInDSTBNguoiLap.Location = new System.Drawing.Point(716, 10);
+            this.btnInDSTBNguoiLap.Location = new System.Drawing.Point(923, 10);
             this.btnInDSTBNguoiLap.Name = "btnInDSTBNguoiLap";
             this.btnInDSTBNguoiLap.Size = new System.Drawing.Size(117, 23);
             this.btnInDSTBNguoiLap.TabIndex = 32;
@@ -418,11 +425,50 @@
             this.btnInDSTBTonNguoiGiao.UseVisualStyleBackColor = true;
             this.btnInDSTBTonNguoiGiao.Click += new System.EventHandler(this.btnInDSTBTonNguoiGiao_Click);
             // 
+            // btnInTB
+            // 
+            this.btnInTB.Location = new System.Drawing.Point(1046, 10);
+            this.btnInTB.Name = "btnInTB";
+            this.btnInTB.Size = new System.Drawing.Size(75, 23);
+            this.btnInTB.TabIndex = 35;
+            this.btnInTB.Text = "In Giấy TB";
+            this.btnInTB.UseVisualStyleBackColor = true;
+            this.btnInTB.Click += new System.EventHandler(this.btnInTB_Click);
+            // 
+            // In
+            // 
+            this.In.Caption = "In";
+            this.In.ColumnEdit = this.repositoryItemCheckEdit2;
+            this.In.FieldName = "In";
+            this.In.Name = "In";
+            this.In.Visible = true;
+            this.In.VisibleIndex = 0;
+            this.In.Width = 50;
+            // 
+            // repositoryItemCheckEdit2
+            // 
+            this.repositoryItemCheckEdit2.AutoHeight = false;
+            this.repositoryItemCheckEdit2.Caption = "Check";
+            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            // 
+            // chkAll
+            // 
+            this.chkAll.AutoSize = true;
+            this.chkAll.Location = new System.Drawing.Point(53, 17);
+            this.chkAll.Name = "chkAll";
+            this.chkAll.Size = new System.Drawing.Size(86, 17);
+            this.chkAll.TabIndex = 36;
+            this.chkAll.Text = "Chọn Tất Cả";
+            this.chkAll.UseVisualStyleBackColor = true;
+            this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
+            // 
             // frmGiaoTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.chkAll);
+            this.Controls.Add(this.btnInTB);
             this.Controls.Add(this.btnInDSTBTonNguoiGiao);
             this.Controls.Add(this.btnInDSTBNguoiGiao);
             this.Controls.Add(this.btnInDSTBNguoiLap);
@@ -447,6 +493,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,5 +537,9 @@
         private System.Windows.Forms.Button btnInDSTBNguoiGiao;
         private System.Windows.Forms.Button btnInDSTBTonNguoiGiao;
         private DevExpress.XtraGrid.Columns.GridColumn NgayGiaiTrach;
+        private System.Windows.Forms.Button btnInTB;
+        private DevExpress.XtraGrid.Columns.GridColumn In;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
+        private System.Windows.Forms.CheckBox chkAll;
     }
 }

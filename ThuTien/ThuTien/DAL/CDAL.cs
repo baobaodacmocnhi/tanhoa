@@ -116,10 +116,11 @@ namespace ThuTien.DAL
             }
 
             IDbCommand cmd = ctx.GetCommand(query as IQueryable);
+            cmd.CommandTimeout = 0;
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = (SqlCommand)cmd;
             DataTable dt = new DataTable("sd");
-
+           
             try
             {
                 cmd.Connection.Open();

@@ -64,6 +64,7 @@
             this.btnDSTB = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -169,7 +170,8 @@
             this.HoTen,
             this.DiaChi,
             this.MLT,
-            this.CreateDate});
+            this.CreateDate,
+            this.gridColumn1});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -406,6 +408,12 @@
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 41;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "MaNV_DongNuoc";
+            this.gridColumn1.FieldName = "MaNV_DongNuoc";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,6 +486,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSoLuong;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
 
     }
 }
