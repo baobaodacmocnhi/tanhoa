@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>45</ApplicationRevision>
+    <ApplicationRevision>46</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -263,6 +263,12 @@
     <Compile Include="GUI\BaoCao\frmBaoCao.designer.cs">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.Designer.cs">
+      <DependentUpon>frmBaoCaoChuyenKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -376,6 +382,12 @@
     </Compile>
     <Compile Include="GUI\HanhThu\frmQuetTam.Designer.cs">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Quay\frmBaoCaoQuay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmBaoCaoQuay.Designer.cs">
+      <DependentUpon>frmBaoCaoQuay.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Quay\frmDieuChinhDangNganQuay.cs">
       <SubType>Form</SubType>
@@ -673,6 +685,9 @@
     <EmbeddedResource Include="GUI\BaoCao\frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.resx">
+      <DependentUpon>frmBaoCaoChuyenKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.resx">
       <DependentUpon>frmDangNganChuyenKhoan.cs</DependentUpon>
     </EmbeddedResource>
@@ -729,6 +744,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmQuetTam.resx">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmBaoCaoQuay.resx">
+      <DependentUpon>frmBaoCaoQuay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmDieuChinhDangNganQuay.resx">
       <DependentUpon>frmDieuChinhDangNganQuay.cs</DependentUpon>

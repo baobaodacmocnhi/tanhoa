@@ -85,9 +85,14 @@ namespace ThuTien.DAL.Quay
             return _db.TT_XacNhanNos.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList();
         }
 
-        public bool CheckExistByDanhBoKy(string DanhBo, string Ky)
+        public bool CheckExist(string DanhBo, string Ky)
         {
             return _db.TT_XacNhanNos.Any(item => item.DanhBo == DanhBo && item.Ky == Ky);
+        }
+
+        public bool CheckExist(string DanhBo, DateTime CreateDate)
+        {
+            return _db.TT_XacNhanNos.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
     }
 }

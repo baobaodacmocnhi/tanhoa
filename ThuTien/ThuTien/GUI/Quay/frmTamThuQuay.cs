@@ -17,6 +17,7 @@ using ThuTien.BaoCao.Quay;
 using KTKS_DonKH.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
 using ThuTien.BaoCao.ChuyenKhoan;
+using ThuTien.DAL.DongNuoc;
 
 namespace ThuTien.GUI.Quay
 {
@@ -28,6 +29,7 @@ namespace ThuTien.GUI.Quay
         CDCHD _cDCHD = new CDCHD();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CXacNhanNo _cXacNhanNo = new CXacNhanNo();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
 
         public frmTamThuQuay()
         {
@@ -40,6 +42,7 @@ namespace ThuTien.GUI.Quay
             dgvTamThu.AutoGenerateColumns = false;
             dgvXacNhanNo.AutoGenerateColumns = false;
 
+            dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
             dateDen_XacNhanNo.Value = DateTime.Now;
         }
@@ -167,7 +170,15 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvTamThu.DataSource = _cTamThu.GetDSByDate(false, CNguoiDung.MaND, dateDen.Value);
+            if (dateDen.Value >= dateTu.Value)
+                dgvTamThu.DataSource = _cTamThu.GetDSByDates(false, CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+            string HoTen = "", TenTo = "";
+            foreach (DataGridViewRow item in dgvTamThu.Rows)
+                if (_cDongNuoc.CheckExistBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
+                {
+                    item.Cells["HanhThu_TT"].Value = HoTen;
+                    item.Cells["To_TT"].Value = TenTo;
+                }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -292,34 +303,49 @@ namespace ThuTien.GUI.Quay
                 TongCongSo += Int32.Parse(item.Cells["TongCong"].Value.ToString());
             }
 
-            if (_cXacNhanNo.CheckExistByDanhBoKy(dgvHoaDon["DanhBo", 0].Value.ToString(), Ky))
+            if (_cXacNhanNo.CheckExist(txtDanhBo.Text.Trim(), DateTime.Now))
             {
-                MessageBox.Show("Danh Bộ này đã có Xác Nhận Nợ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Danh Bộ này đã có Xác Nhận Nợ trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             TT_XacNhanNo xacnhanno = new TT_XacNhanNo();
-            xacnhanno.DanhBo = dgvHoaDon["DanhBo", 0].Value.ToString();
-            xacnhanno.HoTen = dgvHoaDon["HoTen", 0].Value.ToString();
-            xacnhanno.DiaChi = dgvHoaDon["DiaChi", 0].Value.ToString();
-            xacnhanno.MLT = dgvHoaDon["MLT", 0].Value.ToString();
-            xacnhanno.GiaBieu = int.Parse(dgvHoaDon["GiaBieu", 0].Value.ToString());
-            xacnhanno.DinhMuc = int.Parse(dgvHoaDon["DinhMuc", 0].Value.ToString());
-            xacnhanno.Ky = Ky;
-            xacnhanno.TongCong = TongCongSo;
-            xacnhanno.CreateBy = CNguoiDung.MaND;
+
+            if (dgvHoaDon.RowCount > 0)
+            {
+                xacnhanno.DanhBo = dgvHoaDon["DanhBo", 0].Value.ToString();
+                xacnhanno.HoTen = dgvHoaDon["HoTen", 0].Value.ToString();
+                xacnhanno.DiaChi = dgvHoaDon["DiaChi", 0].Value.ToString();
+                xacnhanno.MLT = dgvHoaDon["MLT", 0].Value.ToString();
+                xacnhanno.GiaBieu = int.Parse(dgvHoaDon["GiaBieu", 0].Value.ToString());
+                xacnhanno.DinhMuc = int.Parse(dgvHoaDon["DinhMuc", 0].Value.ToString());
+                xacnhanno.Ky = Ky;
+                xacnhanno.TongCong = TongCongSo;
+                xacnhanno.CreateBy = CNguoiDung.MaND;
+            }
+            else
+            {
+                HOADON hoadon = _cHoaDon.GetByDanhBo(txtDanhBo.Text.Trim());
+                xacnhanno.DanhBo = hoadon.DANHBA;
+                xacnhanno.HoTen = hoadon.TENKH;
+                xacnhanno.DiaChi = hoadon.SO + " " + hoadon.DUONG;
+                xacnhanno.MLT = hoadon.MALOTRINH;
+                xacnhanno.GiaBieu = hoadon.GB;
+                xacnhanno.DinhMuc = (int)hoadon.DM;
+                xacnhanno.CreateBy = CNguoiDung.MaND;
+            }
 
             if (_cXacNhanNo.Them(xacnhanno))
             {
                 dsBaoCao ds = new dsBaoCao();
                 DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
                 dr["SoPhieu"] = xacnhanno.SoPhieu.ToString().Insert(xacnhanno.SoPhieu.ToString().Length - 2, "-");
-                dr["DanhBo"] = dgvHoaDon["DanhBo", 0].Value.ToString().Insert(4, " ").Insert(8, " ");
-                dr["HoTen"] = dgvHoaDon["HoTen", 0].Value.ToString();
-                dr["DiaChi"] = dgvHoaDon["DiaChi", 0].Value.ToString();
-                dr["MLT"] = dgvHoaDon["MLT", 0].Value.ToString();
-                dr["GiaBieu"] = dgvHoaDon["GiaBieu", 0].Value.ToString();
-                dr["DinhMuc"] = dgvHoaDon["DinhMuc", 0].Value.ToString();
+                dr["DanhBo"] = xacnhanno.DanhBo.Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = xacnhanno.HoTen;
+                dr["DiaChi"] = xacnhanno.DiaChi;
+                dr["MLT"] = xacnhanno.MLT;
+                dr["GiaBieu"] = xacnhanno.GiaBieu;
+                dr["DinhMuc"] = xacnhanno.DinhMuc;
                 dr["Ky"] = Ky;
                 dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", TongCongSo);
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
@@ -330,7 +356,8 @@ namespace ThuTien.GUI.Quay
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.ShowDialog();  
             }
-            dgvHoaDon.Rows.Clear();
+            if (dgvHoaDon.RowCount > 0)
+                dgvHoaDon.Rows.Clear();
         }
 
         private void btnInTamThu_Click(object sender, EventArgs e)
@@ -423,6 +450,32 @@ namespace ThuTien.GUI.Quay
             
         }
 
+        private void btnXoa_XacNhanNo_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    _cXacNhanNo.BeginTransaction();
+                    foreach (DataGridViewRow item in dgvXacNhanNo.SelectedRows)
+                    {
+                        TT_XacNhanNo xacnhanno = _cXacNhanNo.GetBySoPhieu(int.Parse(item.Cells["SoPhieu_XacNhanNo"].Value.ToString()));
+                        if (!_cXacNhanNo.Xoa(xacnhanno))
+                            {
+                                _cXacNhanNo.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                    }
+                    _cXacNhanNo.CommitTransaction();
+                    btnXem_XacNhanNo.PerformClick();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void dgvXacNhanNo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvXacNhanNo.Columns[e.ColumnIndex].Name == "SoPhieu_XacNhanNo" && e.Value != null)
@@ -503,7 +556,6 @@ namespace ThuTien.GUI.Quay
         }
 
         
-
 
     }
 }

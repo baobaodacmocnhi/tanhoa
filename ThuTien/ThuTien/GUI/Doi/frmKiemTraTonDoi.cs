@@ -42,6 +42,80 @@ namespace ThuTien.GUI.Doi
             cmbNam.ValueMember = "Nam";
         }
 
+        public void CountdgvHDTuGia()
+        {
+            int TongHD = 0;
+            long TongCong = 0;
+            int TongHDThu = 0;
+            long TongCongThu = 0;
+            int TongHDTon = 0;
+            long TongCongTon = 0;
+
+            if (dgvHDTuGia.RowCount > 0)
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    if (!string.IsNullOrEmpty(item.Cells["TongHD_TG"].Value.ToString()))
+                        TongHD += int.Parse(item.Cells["TongHD_TG"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCong_TG"].Value.ToString()))
+                        TongCong += long.Parse(item.Cells["TongCong_TG"].Value.ToString());
+
+                    if (!string.IsNullOrEmpty(item.Cells["TongHDThu_TG"].Value.ToString()))
+                        TongHDThu += int.Parse(item.Cells["TongHDThu_TG"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCongThu_TG"].Value.ToString()))
+                        TongCongThu += long.Parse(item.Cells["TongCongThu_TG"].Value.ToString());
+
+                    if (!string.IsNullOrEmpty(item.Cells["TongHDTon_TG"].Value.ToString()))
+                        TongHDTon += int.Parse(item.Cells["TongHDTon_TG"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCongTon_TG"].Value.ToString()))
+                        TongCongTon += long.Parse(item.Cells["TongCongTon_TG"].Value.ToString());
+                }
+                txtTongHD_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
+                txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                txtTongHDThu_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDThu);
+                txtTongCongThu_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongThu);
+                txtTongHDTon_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTon);
+                txtTongCongTon_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTon);
+            }
+        }
+
+        public void CountdgvHDCoQuan()
+        {
+            int TongHD = 0;
+            long TongCong = 0;
+            int TongHDThu = 0;
+            long TongCongThu = 0;
+            int TongHDTon = 0;
+            long TongCongTon = 0;
+
+            if (dgvHDCoQuan.RowCount > 0)
+            {
+                foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                {
+                    if (!string.IsNullOrEmpty(item.Cells["TongHD_CQ"].Value.ToString()))
+                        TongHD += int.Parse(item.Cells["TongHD_CQ"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCong_CQ"].Value.ToString()))
+                        TongCong += long.Parse(item.Cells["TongCong_CQ"].Value.ToString());
+
+                    if (!string.IsNullOrEmpty(item.Cells["TongHDThu_CQ"].Value.ToString()))
+                        TongHDThu += int.Parse(item.Cells["TongHDThu_CQ"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCongThu_CQ"].Value.ToString()))
+                        TongCongThu += long.Parse(item.Cells["TongCongThu_CQ"].Value.ToString());
+
+                    if (!string.IsNullOrEmpty(item.Cells["TongHDTon_CQ"].Value.ToString()))
+                        TongHDTon += int.Parse(item.Cells["TongHDTon_CQ"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCongTon_CQ"].Value.ToString()))
+                        TongCongTon += long.Parse(item.Cells["TongCongTon_CQ"].Value.ToString());
+                }
+                txtTongHD_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
+                txtTongCong_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+                txtTongHDThu_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDThu);
+                txtTongCongThu_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongThu);
+                txtTongHDTon_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTon);
+                txtTongCongTon_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongTon);
+            }
+        }
+
         private void btnXem_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
@@ -80,6 +154,7 @@ namespace ThuTien.GUI.Doi
                             dt = _cHoaDon.GetTongTon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 }
                 dgvHDTuGia.DataSource = dt;
+                CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
@@ -115,6 +190,7 @@ namespace ThuTien.GUI.Doi
                                 dt = _cHoaDon.GetTongTon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     }
                     dgvHDCoQuan.DataSource = dt;
+                    CountdgvHDCoQuan();
                 }
         }
 
