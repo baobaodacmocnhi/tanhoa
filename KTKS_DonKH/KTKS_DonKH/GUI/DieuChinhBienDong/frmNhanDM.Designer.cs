@@ -243,7 +243,6 @@
             // 
             this.txtDiaChi_Nhan.Location = new System.Drawing.Point(126, 86);
             this.txtDiaChi_Nhan.Name = "txtDiaChi_Nhan";
-            this.txtDiaChi_Nhan.ReadOnly = true;
             this.txtDiaChi_Nhan.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChi_Nhan.TabIndex = 5;
             // 
@@ -251,7 +250,6 @@
             // 
             this.txtDanhBo_Nhan.Location = new System.Drawing.Point(126, 24);
             this.txtDanhBo_Nhan.Name = "txtDanhBo_Nhan";
-            this.txtDanhBo_Nhan.ReadOnly = true;
             this.txtDanhBo_Nhan.Size = new System.Drawing.Size(100, 25);
             this.txtDanhBo_Nhan.TabIndex = 1;
             // 
@@ -277,7 +275,6 @@
             // 
             this.txtHoTen_Nhan.Location = new System.Drawing.Point(126, 55);
             this.txtHoTen_Nhan.Name = "txtHoTen_Nhan";
-            this.txtHoTen_Nhan.ReadOnly = true;
             this.txtHoTen_Nhan.Size = new System.Drawing.Size(290, 25);
             this.txtHoTen_Nhan.TabIndex = 3;
             // 

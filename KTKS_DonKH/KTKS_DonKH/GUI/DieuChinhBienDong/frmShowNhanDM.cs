@@ -245,7 +245,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_lichsuchungtu.YeuCauCat.Value)
                     {
+                        MessageBox.Show("Chỉ sửa Danh Bộ, Khách Hàng, Địa Chỉ Gắn Mới", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         MessageBox.Show("Yêu Cầu Cắt không được sửa ở đây\n Vui lòng vào Số Đơn, Danh Bộ & Số Chứng Từ để sửa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        LichSuChungTu lichsuchungtu = _cChungTu.getLSCTbyID(_lichsuchungtu.MaLSCT);
+                        //lichsuchungtu.MaLSCT = _lichsuchungtu.MaLSCT;
+
+                        lichsuchungtu.NhanNK_DanhBo = txtDanhBo_Nhan.Text.Trim();
+                        lichsuchungtu.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
+                        lichsuchungtu.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
+
+                        if (_cChungTu.SuaLichSuChungTu(lichsuchungtu))
+                        {
+                            MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
