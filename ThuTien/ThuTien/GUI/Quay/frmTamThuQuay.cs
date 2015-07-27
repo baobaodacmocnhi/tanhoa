@@ -353,7 +353,7 @@ namespace ThuTien.GUI.Quay
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
                 rpt.SetDataSource(ds);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmInQuay frm = new frmInQuay(rpt);
                 frm.ShowDialog();  
             }
             if (dgvHoaDon.RowCount > 0)
@@ -392,7 +392,7 @@ namespace ThuTien.GUI.Quay
 
                     rptPhieuTamThu rpt = new rptPhieuTamThu();
                     rpt.SetDataSource(ds);
-                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frmInQuay frm = new frmInQuay(rpt);
                     frm.ShowDialog();
                 }
         }
@@ -444,7 +444,7 @@ namespace ThuTien.GUI.Quay
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
                 rpt.SetDataSource(ds);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmInQuay frm = new frmInQuay(rpt);
                 frm.ShowDialog();  
             }
             

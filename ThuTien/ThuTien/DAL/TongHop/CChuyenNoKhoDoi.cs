@@ -117,55 +117,74 @@ namespace ThuTien.DAL.TongHop
         {
             if (Loai == "TG")
             {
-                var query = from itemCNKD in _db.TT_ChuyenNoKhoDois
-                            join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
-                            where itemCNKD.CreateDate.Value.Date == CreateDate.Date && itemHD.GB >= 11 && itemHD.GB <= 20
-                            group itemHD by itemHD.ID_HOADON into itemGroup
-                            select new
-                            {
-                                TongHD = itemGroup.Count(),
-                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
-                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
-                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                            };
-                return LINQToDataTable(query);
+                //var query = from itemCNKD in _db.TT_ChuyenNoKhoDois
+                //            join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
+                //            where itemCNKD.CreateDate.Value.Date == CreateDate.Date && itemHD.GB >= 11 && itemHD.GB <= 20
+                //            group itemHD by itemHD.ID_HOADON into itemGroup
+                //            select new
+                //            {
+                //                TongHD = itemGroup.Count(),
+                //                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                //                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                //                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                //                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                //            };
+                //return LINQToDataTable(query);
+
+                string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
+                        + " where a.SoHoaDon=b.SOHOADON and GB>=11 and GB<=20"
+                        + " group by DAY(a.CreateDate)";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
             }
             else
                 if (Loai == "CQ")
                 {
-                    var query = from itemCNKD in _db.TT_ChuyenNoKhoDois
-                                join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
-                                where itemCNKD.CreateDate.Value.Date == CreateDate.Date && itemHD.GB > 20
-                                group itemHD by itemHD.ID_HOADON into itemGroup
-                                select new
-                                {
-                                    TongHD = itemGroup.Count(),
-                                    TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                                    TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
-                                    TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
-                                    TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                };
-                    return LINQToDataTable(query);
+                    //var query = from itemCNKD in _db.TT_ChuyenNoKhoDois
+                    //            join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
+                    //            where itemCNKD.CreateDate.Value.Date == CreateDate.Date && itemHD.GB > 20
+                    //            group itemHD by itemHD.ID_HOADON into itemGroup
+                    //            select new
+                    //            {
+                    //                TongHD = itemGroup.Count(),
+                    //                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                    //                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                    //                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                    //                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                    //            };
+                    //return LINQToDataTable(query);
+
+                    string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
+                        + " where a.SoHoaDon=b.SOHOADON and GB>20"
+                        + " group by DAY(a.CreateDate)";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
                 }
             return null;
         }
 
         public DataTable GetTongHopDangNgan(DateTime CreateDate)
         {
-            var query = from itemCNKD in _db.TT_ChuyenNoKhoDois
-                        join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
-                        where itemCNKD.CreateDate.Value.Date == CreateDate.Date
-                        group itemHD by itemHD.ID_HOADON into itemGroup
-                        select new
-                        {
-                            TongHD = itemGroup.Count(),
-                            TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                            TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
-                            TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
-                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                        };
-            return LINQToDataTable(query);
+            //var query = from itemCNKD in _db.TT_ChuyenNoKhoDois
+            //            join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
+            //            where itemCNKD.CreateDate.Value.Date == CreateDate.Date
+            //            group itemHD by itemHD.ID_HOADON into itemGroup
+            //            select new
+            //            {
+            //                TongHD = itemGroup.Count(),
+            //                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+            //                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+            //                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+            //                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+            //            };
+            //return LINQToDataTable(query);
+
+            string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
+                        + " where a.SoHoaDon=b.SOHOADON"
+                        + " group by DAY(a.CreateDate)";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
+
     }
 }

@@ -8,6 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.DongNuoc;
+using ThuTien.DAL;
+using ThuTien.DAL.TongHop;
+using ThuTien.LinQ;
+using ThuTien.DAL.Quay;
+using CrystalDecisions.CrystalReports.Engine;
+using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.BaoCao.TimKiem;
 
 namespace ThuTien.GUI.TimKiem
 {
@@ -15,6 +22,10 @@ namespace ThuTien.GUI.TimKiem
     {
         CHoaDon _cHoaDon = new CHoaDon();
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CKTKS_DonKH _cKinhDoanh = new CKTKS_DonKH();
+        CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
+        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
 
         public frmTimKiemKhachHang()
         {
@@ -24,11 +35,21 @@ namespace ThuTien.GUI.TimKiem
         private void frmTimKiemKhachHang_Load(object sender, EventArgs e)
         {
             dgvHoaDon.AutoGenerateColumns = false;
+            dgvKinhDoanh.AutoGenerateColumns = false;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim(), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
+            dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim());
+
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            {
+                if(_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Red;
+            }
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -55,7 +76,13 @@ namespace ThuTien.GUI.TimKiem
             }
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "NgayDN")
             {
-                //e.Value = _cDongNuoc.GetNgayDNByMaHD(int.Parse(dgvHoaDon["MaHD", e.RowIndex].Value.ToString()));
+                if (_cCNKD.CheckExist(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString()))
+                {
+                    TT_ChuyenNoKhoDoi cnkd = _cCNKD.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+
+                    dgvHoaDon["NgayGiaiTrach", e.RowIndex].Value = cnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                    dgvHoaDon["DangNgan", e.RowIndex].Value = "CNKĐ";
+                }
             }
         }
 
@@ -83,6 +110,15 @@ namespace ThuTien.GUI.TimKiem
         {
             if (e.KeyChar == 13)
                 btnTimKiem.PerformClick();
+        }
+
+        private void btnInPhieuTieuThu_Click(object sender, EventArgs e)
+        {
+            ReportDocument rpt = new rptPhieuTieuThu();
+
+
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
         
     }

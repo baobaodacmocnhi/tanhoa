@@ -144,7 +144,8 @@ namespace ThuTien.DAL
         {
             try
             {
-                _connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
+                //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
+                _connectionString = ThuTien.Properties.Settings.Default.HOADON_TAConnectionString;
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)
@@ -356,7 +357,16 @@ namespace ThuTien.DAL
         /// <returns>Đối tượng datatable chứa dữ liệu kết quả câu truy vấn</returns>
         public DataTable ExecuteQuery_SqlDataAdapter_DataTable(string sql)
         {
-            return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
+            try
+            {
+                return ExecuteQuery_SqlDataAdapter_DataSet(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         /// <summary>

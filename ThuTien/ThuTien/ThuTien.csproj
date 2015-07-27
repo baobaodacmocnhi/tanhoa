@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>46</ApplicationRevision>
+    <ApplicationRevision>52</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -194,6 +194,18 @@
       <DependentUpon>rptHeader.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\TimKiem\rptPhieuTieuThu1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuTieuThu1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\TimKiem\rptPhieuTieuThu.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuTieuThu.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\TongHop\rptTongHopDangNgan.cs">
       <DependentUpon>rptTongHopDangNgan.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -230,6 +242,8 @@
       <DependentUpon>rptTongHopNo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DAL\CCAPNUOCTANHOA.cs" />
+    <Compile Include="DAL\CKTKS_DonKH.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDuLieuKhachHang.cs" />
     <Compile Include="DAL\ChuyenKhoan\CNganHang.cs" />
@@ -575,6 +589,11 @@
     <Compile Include="GUI\ToTruong\frmTongHopNo.Designer.cs">
       <DependentUpon>frmTongHopNo.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbCAPNUOCTANHOA.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbCAPNUOCTANHOA.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbKTKS_DonKH.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -635,6 +654,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptHeader.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TimKiem\rptPhieuTieuThu1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuTieuThu1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TimKiem\rptPhieuTieuThu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuTieuThu.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNgan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopDangNgan.cs</LastGenOutput>
@@ -673,6 +700,11 @@
     </None>
     <None Include="BaoCao\dsBaoCao.xss">
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
+    </None>
+    <None Include="LinQ\dbCAPNUOCTANHOA.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbCAPNUOCTANHOA.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="LinQ\dbKTKS_DonKH.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -844,6 +876,9 @@
     <EmbeddedResource Include="GUI\ToTruong\frmTongHopNo.resx">
       <DependentUpon>frmTongHopNo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbCAPNUOCTANHOA.dbml.layout">
+      <DependentUpon>dbCAPNUOCTANHOA.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

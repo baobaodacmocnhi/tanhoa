@@ -13,6 +13,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.TongHop;
 using KTKS_DonKH.GUI.BaoCao;
 using ThuTien.DAL.TongHop;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -322,18 +323,30 @@ namespace ThuTien.GUI.TongHop
 
                 if (dtCNKD.Rows.Count > 0)
                 {
-                    dr["HoTen"] = item["HoTen"];
-                    dr["TongHD"] = dtCNKD.Rows[0]["TongHD"];
-                    dr["TongGiaBan"] = dtCNKD.Rows[0]["TongGiaBan"];
-                    dr["TongThueGTGT"] = dtCNKD.Rows[0]["TongThueGTGT"];
-                    dr["TongPhiBVMT"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
+                    dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
+                    dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
                 }
-
                 dr["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["TongHopDangNgan"].Rows.Add(dr);
             }
 
-            rptTongHopDangNgan rpt = new rptTongHopDangNgan();
+            if(dt.Rows.Count==0)
+                if (dtCNKD.Rows.Count > 0)
+                {
+                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                    dr["LoaiBaoCao"] = "THU TIỀN";
+                    dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
+                    dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
+                    dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
+
+            ReportDocument rpt = new rptTongHopDangNgan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
@@ -410,12 +423,25 @@ namespace ThuTien.GUI.TongHop
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
                     dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
                 }
-
                 dr["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["TongHopDangNgan"].Rows.Add(dr);
             }
 
-            rptTongHopDangNganChiTiet rpt = new rptTongHopDangNganChiTiet();
+            if (dt.Rows.Count == 0)
+                if (dtCNKD.Rows.Count > 0)
+                {
+                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
+                    dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
+                    dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
+
+            ReportDocument rpt = new rptTongHopDangNganChiTiet();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
@@ -492,12 +518,25 @@ namespace ThuTien.GUI.TongHop
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
                     dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
                 }
-
                 dr["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["TongHopDangNgan"].Rows.Add(dr);
             }
 
-            rptTongHopDangNganChiTiet rpt = new rptTongHopDangNganChiTiet();
+            if (dt.Rows.Count == 0)
+                if (dtCNKD.Rows.Count > 0)
+                {
+                    DataRow dr = ds.Tables["TongHopDangNgan"].NewRow();
+                    dr["LoaiBaoCao"] = "CƠ QUAN";
+                    dr["TongHDCNKD"] = dtCNKD.Rows[0]["TongHD"];
+                    dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
+                    dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
+                    dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["TongHopDangNgan"].Rows.Add(dr);
+                }
+
+            ReportDocument rpt = new rptTongHopDangNganChiTiet();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();

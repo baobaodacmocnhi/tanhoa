@@ -82,6 +82,7 @@ namespace ThuTien.GUI.ToTruong
                         }
                     _cHoaDon.SqlCommitTransaction();
                     lstHD.Items.Clear();
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -111,7 +112,7 @@ namespace ThuTien.GUI.ToTruong
                                 return;
                             }
                     _cHoaDon.SqlCommitTransaction();
-                    dgvHDTon.DataSource = _cHoaDon.GetDSGiaoTonByDates(dateTu.Value, dateDen.Value);
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -128,7 +129,7 @@ namespace ThuTien.GUI.ToTruong
         {
             if (dateTu.Value <= dateDen.Value)
             {
-                dgvHDTon.DataSource = _cHoaDon.GetDSGiaoTonByDates(dateTu.Value, dateDen.Value);
+                dgvHDTon.DataSource = _cHoaDon.GetDSGiaoTonByDates(CNguoiDung.MaTo,dateTu.Value, dateDen.Value);
             }
         }
 
