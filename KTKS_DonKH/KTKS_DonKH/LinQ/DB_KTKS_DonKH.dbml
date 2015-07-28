@@ -318,6 +318,7 @@
       <Column Name="CatNK_HoTen5" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CatNK_DiaChi5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CatNK_SoNKCat5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDateGoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

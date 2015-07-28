@@ -2111,6 +2111,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                         {
                             ///Cập nhật ngày hết hạn dựa vào ngày tạo record này(ngày nhận đơn)
                             ///Khi gia hạn refresh lại ngày tạo để tính ngày gia hạn
+                            if (ctchungtuCN.CreateDateGoc == null)
+                                ctchungtuCN.CreateDateGoc = ctchungtuCN.CreateDate;
                             ctchungtuCN.CreateDate = DateTime.Now;
                             ctchungtuCN.NgayHetHan = ctchungtuCN.CreateDate.Value.AddMonths(ctchungtu.ThoiHan.Value);
                         }
@@ -2120,6 +2122,9 @@ namespace KTKS_DonKH.DAL.CapNhat
                     }
                     if (ctchungtu.NgayHetHan != null)
                     {
+                        if (ctchungtuCN.CreateDateGoc == null)
+                            ctchungtuCN.CreateDateGoc = ctchungtuCN.CreateDate;
+                        ctchungtuCN.CreateDate = DateTime.Now;
                         ctchungtuCN.NgayHetHan = ctchungtu.NgayHetHan;
                         flagEdited = true;
                     }

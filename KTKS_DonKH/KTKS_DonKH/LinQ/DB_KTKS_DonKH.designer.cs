@@ -6833,6 +6833,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _CatNK_SoNKCat5;
 		
+		private System.Nullable<System.DateTime> _CreateDateGoc;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -6941,6 +6943,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCatNK_DiaChi5Changed();
     partial void OnCatNK_SoNKCat5Changing(System.Nullable<int> value);
     partial void OnCatNK_SoNKCat5Changed();
+    partial void OnCreateDateGocChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateGocChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -7897,6 +7901,26 @@ namespace KTKS_DonKH.LinQ
 					this._CatNK_SoNKCat5 = value;
 					this.SendPropertyChanged("CatNK_SoNKCat5");
 					this.OnCatNK_SoNKCat5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDateGoc", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDateGoc
+		{
+			get
+			{
+				return this._CreateDateGoc;
+			}
+			set
+			{
+				if ((this._CreateDateGoc != value))
+				{
+					this.OnCreateDateGocChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDateGoc = value;
+					this.SendPropertyChanged("CreateDateGoc");
+					this.OnCreateDateGocChanged();
 				}
 			}
 		}
