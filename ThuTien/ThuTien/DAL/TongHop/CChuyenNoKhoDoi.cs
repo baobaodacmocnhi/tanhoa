@@ -132,8 +132,8 @@ namespace ThuTien.DAL.TongHop
                 //return LINQToDataTable(query);
 
                 string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON and GB>=11 and GB<=20"
-                        + " group by DAY(a.CreateDate)";
+                        + " where a.SoHoaDon=b.SOHOADON and GB>=11 and GB<=20 and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                 return ExecuteQuery_SqlDataAdapter_DataTable(sql);
             }
@@ -155,8 +155,8 @@ namespace ThuTien.DAL.TongHop
                     //return LINQToDataTable(query);
 
                     string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON and GB>20"
-                        + " group by DAY(a.CreateDate)";
+                        + " where a.SoHoaDon=b.SOHOADON and GB>20 and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                     return ExecuteQuery_SqlDataAdapter_DataTable(sql);
                 }
@@ -180,8 +180,8 @@ namespace ThuTien.DAL.TongHop
             //return LINQToDataTable(query);
 
             string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON"
-                        + " group by DAY(a.CreateDate)";
+                        + " where a.SoHoaDon=b.SOHOADON and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }

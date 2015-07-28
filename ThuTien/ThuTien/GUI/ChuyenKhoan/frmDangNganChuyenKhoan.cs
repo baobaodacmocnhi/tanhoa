@@ -333,123 +333,173 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
+            //if (tabControl.SelectedTab.Name == "tabTuGia")
+            //{
+            //    if (dgvHDTuGia.RowCount > 0)
+            //    {
+            //        CTo _cTo = new CTo();
+            //        List<TT_To> lstTo = _cTo.GetDSHanhThu();
+            //        DataTable[] dtTos = new DataTable[lstTo.Count];
+            //        DataTable dt = (DataTable)dgvHDTuGia.DataSource;
+
+            //        for (int i = 0; i < dtTos.Length; i++)
+            //        {
+            //            dtTos[i] = new DataTable();
+            //        }
+
+            //        for (int i = 0; i < lstTo.Count; i++)
+            //        {
+            //            foreach (DataColumn item in dt.Columns)
+            //            {
+            //                dtTos[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
+            //            }
+            //        }
+
+            //        foreach (DataRow item in dt.Rows)
+            //            for (int i = 0; i < lstTo.Count; i++)
+            //                if (item["To"].ToString() == lstTo[i].TenTo)
+            //                {
+            //                    dtTos[i].ImportRow(item);
+            //                }
+
+            //        //Tạo các đối tượng Excel
+            //        Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+            //        Microsoft.Office.Interop.Excel.Workbooks oBooks;
+            //        //Microsoft.Office.Interop.Excel.Sheets oSheets;
+            //        Microsoft.Office.Interop.Excel.Workbook oBook;
+            //        Microsoft.Office.Interop.Excel.Worksheet[] oSheets = new Microsoft.Office.Interop.Excel.Worksheet[lstTo.Count];
+
+            //        //Tạo mới một Excel WorkBook 
+            //        oExcel.Visible = true;
+            //        oExcel.DisplayAlerts = false;
+            //        //khai báo số lượng sheet
+            //        oExcel.Application.SheetsInNewWorkbook = lstTo.Count;
+            //        oBooks = oExcel.Workbooks;
+
+            //        oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+            //        //oSheets = oBook.Worksheets;
+            //        //oSheetTG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+            //        //oSheetCQ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+
+            //        for (int i = 0; i < lstTo.Count; i++)
+            //        {
+            //            oSheets[i] = (Microsoft.Office.Interop.Excel.Worksheet)oBook.Worksheets.get_Item(i + 1);
+            //            XuatExcel(dtTos[i], oSheets[i], lstTo[i].TenTo);
+            //        }
+            //        //XuatExcel(dtTG, oSheetTG, "Tư Gia");
+            //        //XuatExcel(dtCQ, oSheetCQ, "Cơ Quan");
+            //    }
+            //}
+            //else
+            //    if (tabControl.SelectedTab.Name == "tabCoQuan")
+            //    {
+            //        if (dgvHDCoQuan.RowCount > 0)
+            //        {
+            //            CTo _cTo = new CTo();
+            //            List<TT_To> lstTo = _cTo.GetDSHanhThu();
+            //            DataTable[] dtTos = new DataTable[lstTo.Count];
+            //            DataTable dt = (DataTable)dgvHDCoQuan.DataSource;
+
+            //            for (int i = 0; i < dtTos.Length; i++)
+            //            {
+            //                dtTos[i] = new DataTable();
+            //            }
+
+            //            for (int i = 0; i < lstTo.Count; i++)
+            //            {
+            //                foreach (DataColumn item in dt.Columns)
+            //                {
+            //                    dtTos[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
+            //                }
+            //            }
+
+            //            foreach (DataRow item in dt.Rows)
+            //                for (int i = 0; i < lstTo.Count; i++)
+            //                    if (item["To"].ToString() == lstTo[i].TenTo)
+            //                    {
+            //                        dtTos[i].ImportRow(item);
+            //                    }
+
+            //            //Tạo các đối tượng Excel
+            //            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+            //            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+            //            //Microsoft.Office.Interop.Excel.Sheets oSheets;
+            //            Microsoft.Office.Interop.Excel.Workbook oBook;
+            //            Microsoft.Office.Interop.Excel.Worksheet[] oSheets = new Microsoft.Office.Interop.Excel.Worksheet[lstTo.Count];
+
+            //            //Tạo mới một Excel WorkBook 
+            //            oExcel.Visible = true;
+            //            oExcel.DisplayAlerts = false;
+            //            //khai báo số lượng sheet
+            //            oExcel.Application.SheetsInNewWorkbook = lstTo.Count;
+            //            oBooks = oExcel.Workbooks;
+
+            //            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+            //            //oSheets = oBook.Worksheets;
+            //            //oSheetTG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+            //            //oSheetCQ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+
+            //            for (int i = 0; i < lstTo.Count; i++)
+            //            {
+            //                oSheets[i] = (Microsoft.Office.Interop.Excel.Worksheet)oBook.Worksheets.get_Item(i + 1);
+            //                XuatExcel(dtTos[i], oSheets[i], lstTo[i].TenTo);
+            //            }
+            //            //XuatExcel(dtTG, oSheetTG, "Tư Gia");
+            //            //XuatExcel(dtCQ, oSheetCQ, "Cơ Quan");
+            //        }
+            //    }
+
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                if (dgvHDTuGia.RowCount > 0)
+                DataTable dt = (DataTable)dgvHDTuGia.DataSource;
+
+                //Tạo các đối tượng Excel
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                Microsoft.Office.Interop.Excel.Sheets oSheets;
+                Microsoft.Office.Interop.Excel.Workbook oBook;
+                Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = true;
+                oExcel.DisplayAlerts = false;
+                //khai báo số lượng sheet
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+
+                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+                oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                XuatExcel(dt, oSheet, "TƯ GIA");
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    CTo _cTo = new CTo();
-                    List<TT_To> lstTo = _cTo.GetDSHanhThu();
-                    DataTable[] dtTos = new DataTable[lstTo.Count];
-                    DataTable dt = (DataTable)dgvHDTuGia.DataSource;
-
-                    for (int i = 0; i < dtTos.Length; i++)
-                    {
-                        dtTos[i] = new DataTable();
-                    }
-
-                    for (int i = 0; i < lstTo.Count; i++)
-                    {
-                        foreach (DataColumn item in dt.Columns)
-                        {
-                            dtTos[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
-                        }
-                    }
-
-                    foreach (DataRow item in dt.Rows)
-                        for (int i = 0; i < lstTo.Count; i++)
-                            if (item["To"].ToString() == lstTo[i].TenTo)
-                            {
-                                dtTos[i].ImportRow(item);
-                            }
+                    DataTable dt = (DataTable)dgvHDCoQuan.DataSource;
 
                     //Tạo các đối tượng Excel
                     Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
                     Microsoft.Office.Interop.Excel.Workbooks oBooks;
-                    //Microsoft.Office.Interop.Excel.Sheets oSheets;
+                    Microsoft.Office.Interop.Excel.Sheets oSheets;
                     Microsoft.Office.Interop.Excel.Workbook oBook;
-                    Microsoft.Office.Interop.Excel.Worksheet[] oSheets = new Microsoft.Office.Interop.Excel.Worksheet[lstTo.Count];
+                    Microsoft.Office.Interop.Excel.Worksheet oSheet;
+                    //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
 
                     //Tạo mới một Excel WorkBook 
                     oExcel.Visible = true;
                     oExcel.DisplayAlerts = false;
                     //khai báo số lượng sheet
-                    oExcel.Application.SheetsInNewWorkbook = lstTo.Count;
+                    oExcel.Application.SheetsInNewWorkbook = 1;
                     oBooks = oExcel.Workbooks;
 
                     oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
-                    //oSheets = oBook.Worksheets;
-                    //oSheetTG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
-                    //oSheetCQ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
+                    oSheets = oBook.Worksheets;
+                    oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                    for (int i = 0; i < lstTo.Count; i++)
-                    {
-                        oSheets[i] = (Microsoft.Office.Interop.Excel.Worksheet)oBook.Worksheets.get_Item(i + 1);
-                        XuatExcel(dtTos[i], oSheets[i], lstTo[i].TenTo);
-                    }
-                    //XuatExcel(dtTG, oSheetTG, "Tư Gia");
-                    //XuatExcel(dtCQ, oSheetCQ, "Cơ Quan");
+                    XuatExcel(dt, oSheet, "CƠ QUAN");
                 }
-            }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
-                {
-                    if (dgvHDCoQuan.RowCount > 0)
-                    {
-                        CTo _cTo = new CTo();
-                        List<TT_To> lstTo = _cTo.GetDSHanhThu();
-                        DataTable[] dtTos = new DataTable[lstTo.Count];
-                        DataTable dt = (DataTable)dgvHDCoQuan.DataSource;
-
-                        for (int i = 0; i < dtTos.Length; i++)
-                        {
-                            dtTos[i] = new DataTable();
-                        }
-
-                        for (int i = 0; i < lstTo.Count; i++)
-                        {
-                            foreach (DataColumn item in dt.Columns)
-                            {
-                                dtTos[i].Columns.Add(new DataColumn(item.ColumnName, item.DataType));
-                            }
-                        }
-
-                        foreach (DataRow item in dt.Rows)
-                            for (int i = 0; i < lstTo.Count; i++)
-                                if (item["To"].ToString() == lstTo[i].TenTo)
-                                {
-                                    dtTos[i].ImportRow(item);
-                                }
-
-                        //Tạo các đối tượng Excel
-                        Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
-                        Microsoft.Office.Interop.Excel.Workbooks oBooks;
-                        //Microsoft.Office.Interop.Excel.Sheets oSheets;
-                        Microsoft.Office.Interop.Excel.Workbook oBook;
-                        Microsoft.Office.Interop.Excel.Worksheet[] oSheets = new Microsoft.Office.Interop.Excel.Worksheet[lstTo.Count];
-
-                        //Tạo mới một Excel WorkBook 
-                        oExcel.Visible = true;
-                        oExcel.DisplayAlerts = false;
-                        //khai báo số lượng sheet
-                        oExcel.Application.SheetsInNewWorkbook = lstTo.Count;
-                        oBooks = oExcel.Workbooks;
-
-                        oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
-                        //oSheets = oBook.Worksheets;
-                        //oSheetTG = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
-                        //oSheetCQ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(2);
-
-                        for (int i = 0; i < lstTo.Count; i++)
-                        {
-                            oSheets[i] = (Microsoft.Office.Interop.Excel.Worksheet)oBook.Worksheets.get_Item(i + 1);
-                            XuatExcel(dtTos[i], oSheets[i], lstTo[i].TenTo);
-                        }
-                        //XuatExcel(dtTG, oSheetTG, "Tư Gia");
-                        //XuatExcel(dtCQ, oSheetCQ, "Cơ Quan");
-                    }
-                }
-            
-            
         }
 
         private void XuatExcel(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)

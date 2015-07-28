@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using ThuTien.LinQ;
+using System.Reflection;
 
 namespace ThuTien.DAL
 {
@@ -13,6 +15,7 @@ namespace ThuTien.DAL
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
         protected SqlCommand command;               // Đối tượng command thực thi truy vấn
+        dbCAPNUOCTANHOADataContext _dbCapNuocTanHoa = new dbCAPNUOCTANHOADataContext();
 
         public CCAPNUOCTANHOA()
         {
@@ -39,6 +42,56 @@ namespace ThuTien.DAL
         {
             if (connection.State == ConnectionState.Open)
                 connection.Close();
+        }
+
+        /// <summary>
+        /// var vrCountry = from country in objEmpDataContext.CountryMaster
+        ///                select new {country.CountryID,country.CountryName};
+        /// DataTable dt = LINQToDataTable(vrCountry);
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="varlist"></param>
+        /// <returns></returns>
+        public DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
+        {
+            DataTable dtReturn = new DataTable();
+
+            // column names 
+            PropertyInfo[] oProps = null;
+
+            if (varlist == null) return dtReturn;
+
+            foreach (T rec in varlist)
+            {
+                // Use reflection to get property names, to create table, Only first time, others will follow 
+                if (oProps == null)
+                {
+                    oProps = ((Type)rec.GetType()).GetProperties();
+                    foreach (PropertyInfo pi in oProps)
+                    {
+                        Type colType = pi.PropertyType;
+
+                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition()
+                        == typeof(Nullable<>)))
+                        {
+                            colType = colType.GetGenericArguments()[0];
+                        }
+
+                        dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
+                    }
+                }
+
+                DataRow dr = dtReturn.NewRow();
+
+                foreach (PropertyInfo pi in oProps)
+                {
+                    dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue
+                    (rec, null);
+                }
+
+                dtReturn.Rows.Add(dr);
+            }
+            return dtReturn;
         }
 
         /// <summary>
@@ -94,5 +147,18 @@ namespace ThuTien.DAL
             }
         }
 
+        public DataTable GetTTKH(string DanhBo)
+        {
+            return LINQToDataTable(_dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.Where(item => item.DANHBO == DanhBo)
+                .Select(item => new { DanhBo = item.DANHBO, item.HOPDONG, item.GIABIEU, item.DINHMUC, MLT = item.LOTRINH
+                , Hieu = item.HIEUDH, Co = item.CODH, SoThan = item.SOTHANDH, ViTri = item.VITRIDHN, HoTen = item.HOTEN
+                , DiaChi = item.SONHA + "  " + item.TENDUONG, item.DIENTHOAI,HanhThu="" }).Take(1).ToList());
+        }
+
+        public DataTable GetGhiChu(string DanhBo)
+        {
+            return LINQToDataTable(_dbCapNuocTanHoa.TB_GHICHUs.Where(item => item.DANHBO == DanhBo)
+                .OrderByDescending(item => item.CREATEDATE).Select(item=>new {item.CREATEDATE,item.NOIDUNG }).Take(5).ToList());
+        }
     }
 }

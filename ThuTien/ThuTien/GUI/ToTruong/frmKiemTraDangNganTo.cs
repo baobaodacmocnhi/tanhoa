@@ -87,17 +87,17 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            //if (tabControl.SelectedTab.Name == "tabTuGia")
-            //{
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
                 dgvHDTuGia.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
                 CountdgvHDTuGia();
-            //}
-            //else
-            //    if (tabControl.SelectedTab.Name == "tabCoQuan")
-            //    {
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
                     dgvHDCoQuan.DataSource = _cHoaDon.GetTongDangNganByNgayGiaiTrach_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
                     CountdgvHDCoQuan();
-                //}
+            }
         }
 
         private void btnIn_Click(object sender, EventArgs e)

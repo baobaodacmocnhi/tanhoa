@@ -8,5 +8,11 @@
         <elementListCompartment Id="fc01070f-ea7d-48fa-99d6-1997cabe46e5" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 9.2875569661458321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="ce841f6c-3a8e-40cb-b81b-092efeec412c" absoluteBounds="3.875, 1.625, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/dbCAPNUOCTANHOADataContext/TB_GHICHU" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee048f78-7fc5-4d2a-adeb-e54a586887b9" absoluteBounds="3.89, 2.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

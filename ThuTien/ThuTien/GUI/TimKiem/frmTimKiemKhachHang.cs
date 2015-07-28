@@ -15,6 +15,7 @@ using ThuTien.DAL.Quay;
 using CrystalDecisions.CrystalReports.Engine;
 using KTKS_DonKH.GUI.BaoCao;
 using ThuTien.BaoCao.TimKiem;
+using ThuTien.BaoCao;
 
 namespace ThuTien.GUI.TimKiem
 {
@@ -114,9 +115,79 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnInPhieuTieuThu_Click(object sender, EventArgs e)
         {
+            //DataTable dtTieuThu = _cHoaDon.GetDSTieuThu(txtDanhBo.Text.Trim());
+
+            DataTable dtPhieuTieuThu = _cCapNuocTanHoa.GetTTKH(txtDanhBo.Text.Trim());
+            
+            DataTable dtGhiChu = _cCapNuocTanHoa.GetGhiChu(txtDanhBo.Text.Trim());
+
+            dsBaoCao ds = new dsBaoCao();
+
+            if (dtPhieuTieuThu.Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables["PhieuTieuThu"].NewRow();
+                dr["DanhBo"] = dtPhieuTieuThu.Rows[0]["DanhBo"];
+                dr["HopDong"] = dtPhieuTieuThu.Rows[0]["HopDong"];
+                dr["GiaBieu"] = dtPhieuTieuThu.Rows[0]["GiaBieu"];
+                dr["DinhMuc"] = dtPhieuTieuThu.Rows[0]["DinhMuc"];
+                dr["MLT"] = dtPhieuTieuThu.Rows[0]["MLT"];
+                dr["Hieu"] = dtPhieuTieuThu.Rows[0]["Hieu"];
+                dr["Co"] = dtPhieuTieuThu.Rows[0]["Co"];
+                dr["SoThan"] = dtPhieuTieuThu.Rows[0]["SoThan"];
+                dr["ViTri"] = dtPhieuTieuThu.Rows[0]["ViTri"];
+                dr["HoTen"] = dtPhieuTieuThu.Rows[0]["HoTen"];
+                dr["DiaChi"] = dtPhieuTieuThu.Rows[0]["DiaChi"];
+                dr["DienThoai"] = dtPhieuTieuThu.Rows[0]["DienThoai"];
+                if (dgvHoaDon.Rows.Count > 0)
+                    dr["HanhThu"] = dgvHoaDon["HanhThu",0].Value.ToString();
+                ds.Tables["PhieuTieuThu"].Rows.Add(dr);
+            }
+
+            //foreach (DataRow item in dtTieuThu.Rows)
+            //{
+            //    DataRow dr = ds.Tables["TieuThu"].NewRow();
+            //    dr["Ky"] = item["Ky"];
+            //    dr["SoHoaDon"] = item["SoHoaDon"];
+            //    dr["TieuThu"] = item["TieuThu"];
+            //    dr["TongCong"] = item["TongCong"];
+            //    dr["NgayGiaiTrach"] = item["NgayGiaiTrach"];
+            //    ds.Tables["TieuThu"].Rows.Add(dr);
+            //}
+            if(dgvHoaDon.RowCount>10)
+                for (int i = 0; i < 10; i++)
+                {
+                    DataRow dr = ds.Tables["TieuThu"].NewRow();
+                    dr["Ky"] = dgvHoaDon["Ky", i].Value.ToString();
+                    dr["NgayDoc"] = dgvHoaDon["NgayDoc", i].Value.ToString();
+                    dr["ChiSo"] = dgvHoaDon["ChiSo", i].Value.ToString();
+                    dr["TieuThu"] = dgvHoaDon["TieuThu", i].Value.ToString();
+                    dr["TongCong"] = dgvHoaDon["TongCong", i].Value.ToString();
+                    dr["NgayGiaiTrach"] = dgvHoaDon["NgayGiaiTrach", i].Value.ToString();
+                    ds.Tables["TieuThu"].Rows.Add(dr);
+                }
+            else
+                for (int i = 0; i < dgvHoaDon.RowCount; i++)
+                {
+                    DataRow dr = ds.Tables["TieuThu"].NewRow();
+                    dr["Ky"] = dgvHoaDon["Ky", i].Value.ToString();
+                    dr["NgayDoc"] = dgvHoaDon["NgayDoc", i].Value.ToString();
+                    dr["ChiSo"] = dgvHoaDon["ChiSo", i].Value.ToString();
+                    dr["TieuThu"] = dgvHoaDon["TieuThu", i].Value.ToString();
+                    dr["TongCong"] = dgvHoaDon["TongCong", i].Value.ToString();
+                    dr["NgayGiaiTrach"] = dgvHoaDon["NgayGiaiTrach", i].Value.ToString();
+                    ds.Tables["TieuThu"].Rows.Add(dr);
+                }
+
+            foreach (DataRow item in dtGhiChu.Rows)
+            {
+                DataRow dr = ds.Tables["GhiChu"].NewRow();
+                dr["CreateDate"] = item["CreateDate"];
+                dr["NoiDung"] = item["NoiDung"];
+                ds.Tables["GhiChu"].Rows.Add(dr);
+            }
+
             ReportDocument rpt = new rptPhieuTieuThu();
-
-
+            rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
