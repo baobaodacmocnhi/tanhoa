@@ -82,27 +82,44 @@ namespace ThuTien.GUI.Doi
                 }
                 gridControl.DataSource = ds.Tables["DongNuoc"];
             }
-            ///chọn 1 tổ nhất định
             else
-            {
-                ///chọn tất cả nhân viên
-                if (cmbNhanVien.SelectedIndex == 0)
+                ///chọn 1 tổ nhất định
+                if (cmbTo.SelectedIndex > 0)
                 {
-                    DataSet ds = new DataSet();
-                    for (int i = 1; i < cmbNhanVien.Items.Count; i++)
+                    ///chọn tất cả nhân viên
+                    if (cmbNhanVien.SelectedIndex == 0)
                     {
-                        if (ds.Tables.Count == 0)
-                            ds = _cDongNuoc.GetDSByMaNVCreateDates(((TT_NguoiDung)cmbNhanVien.Items[i]).MaND, dateTu.Value, dateDen.Value);
-                        else
-                            ds.Merge(_cDongNuoc.GetDSByMaNVCreateDates(((TT_NguoiDung)cmbNhanVien.Items[i]).MaND, dateTu.Value, dateDen.Value));
+                        DataSet ds = new DataSet();
+                        for (int i = 1; i < cmbNhanVien.Items.Count; i++)
+                        {
+                            if (ds.Tables.Count == 0)
+                                ds = _cDongNuoc.GetDSByMaNVCreateDates(((TT_NguoiDung)cmbNhanVien.Items[i]).MaND, dateTu.Value, dateDen.Value);
+                            else
+                                ds.Merge(_cDongNuoc.GetDSByMaNVCreateDates(((TT_NguoiDung)cmbNhanVien.Items[i]).MaND, dateTu.Value, dateDen.Value));
+                        }
+                        gridControl.DataSource = ds.Tables["DongNuoc"];
                     }
-                    gridControl.DataSource = ds.Tables["DongNuoc"];
+                    else
+                        ///chọn 1 nhân viên nhất định
+                        if (cmbNhanVien.SelectedIndex > 0)
+                        {
+                            gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                        }
                 }
-                ///chọn 1 nhân viên nhất định
-                else
-                {
-                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
-                }
+
+            ///Kiểm Tra Tình Trạng, Giải Trách hết Hóa Đơn trong Thông Báo Đóng Nước mới tính
+            for (int i = 0; i < gridViewDN.DataRowCount; i++)
+            {
+                DataRow row = gridViewDN.GetDataRow(i);
+                DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
+
+                string TinhTrang = "Đã Xử Lý";
+                foreach (DataRow itemChild in childRows)
+                    if (string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
+                    {
+                        TinhTrang = "Tồn";
+                    }
+                gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
             }
         }
 

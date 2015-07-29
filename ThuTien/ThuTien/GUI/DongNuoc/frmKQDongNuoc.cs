@@ -59,6 +59,7 @@ namespace ThuTien.GUI.DongNuoc
                     txtMLT.Text = _dongnuoc.MLT;
                     txtHoTen.Text = _dongnuoc.HoTen;
                     txtDiaChi.Text = _dongnuoc.DiaChi;
+                    chkHuy.Checked = _dongnuoc.Huy;
                 }
                 else
                 {
@@ -217,6 +218,23 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void chkHuy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (_dongnuoc != null)
+                {
+                    _dongnuoc.Huy = chkHuy.Checked;
+                    if (_cDongNuoc.SuaDN(_dongnuoc))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         

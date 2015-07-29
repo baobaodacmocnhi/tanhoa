@@ -99,7 +99,6 @@ namespace ThuTien.GUI.Doi
             long TongThueGTGT = 0;
             long TongPhiBVMT = 0;
             long TongCong = 0;
-            int i = 1;
             if (dgvNhanVien_TC.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvNhanVien_TC.Rows)

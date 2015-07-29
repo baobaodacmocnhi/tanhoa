@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.gridControl = new DevExpress.XtraGrid.GridControl();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -40,6 +37,8 @@
             this.ThueGTGT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PhiBVMT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongCong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NgayGiaiTrach = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridViewDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MaDN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DanhBo = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,7 +47,10 @@
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,46 +58,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cmbTo
-            // 
-            this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(85, 12);
-            this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(118, 21);
-            this.cmbTo.TabIndex = 42;
-            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 13);
-            this.label4.TabIndex = 41;
-            this.label4.Text = "Tổ:";
-            // 
-            // gridControl
-            // 
-            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode2.RelationName = "Level1";
-            this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
-            this.gridControl.Location = new System.Drawing.Point(12, 38);
-            this.gridControl.MainView = this.gridViewDN;
-            this.gridControl.Name = "gridControl";
-            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(1131, 610);
-            this.gridControl.TabIndex = 50;
-            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewCTDN,
-            this.gridViewDN});
             // 
             // gridViewCTDN
             // 
@@ -106,7 +73,8 @@
             this.GiaBan,
             this.ThueGTGT,
             this.PhiBVMT,
-            this.TongCong});
+            this.TongCong,
+            this.NgayGiaiTrach});
             this.gridViewCTDN.GridControl = this.gridControl;
             this.gridViewCTDN.Name = "gridViewCTDN";
             this.gridViewCTDN.OptionsView.ColumnAutoWidth = false;
@@ -170,6 +138,32 @@
             this.TongCong.Visible = true;
             this.TongCong.VisibleIndex = 6;
             // 
+            // NgayGiaiTrach
+            // 
+            this.NgayGiaiTrach.Caption = "Ngày Giải Trách";
+            this.NgayGiaiTrach.FieldName = "NgayGiaiTrach";
+            this.NgayGiaiTrach.Name = "NgayGiaiTrach";
+            this.NgayGiaiTrach.Visible = true;
+            this.NgayGiaiTrach.VisibleIndex = 7;
+            this.NgayGiaiTrach.Width = 100;
+            // 
+            // gridControl
+            // 
+            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode1.RelationName = "Level1";
+            this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.gridControl.Location = new System.Drawing.Point(12, 38);
+            this.gridControl.MainView = this.gridViewDN;
+            this.gridControl.Name = "gridControl";
+            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+            this.gridControl.Size = new System.Drawing.Size(1154, 610);
+            this.gridControl.TabIndex = 50;
+            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewDN,
+            this.gridViewCTDN});
+            // 
             // gridViewDN
             // 
             this.gridViewDN.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -179,7 +173,8 @@
             this.DiaChi,
             this.MLT,
             this.CreateBy,
-            this.MaNV_DongNuoc});
+            this.MaNV_DongNuoc,
+            this.TinhTrang});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -196,7 +191,7 @@
             this.MaDN.Name = "MaDN";
             this.MaDN.Visible = true;
             this.MaDN.VisibleIndex = 0;
-            this.MaDN.Width = 100;
+            this.MaDN.Width = 80;
             // 
             // DanhBo
             // 
@@ -240,7 +235,7 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
             this.CreateBy.VisibleIndex = 5;
-            this.CreateBy.Width = 150;
+            this.CreateBy.Width = 120;
             // 
             // MaNV_DongNuoc
             // 
@@ -249,13 +244,40 @@
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
             this.MaNV_DongNuoc.VisibleIndex = 6;
-            this.MaNV_DongNuoc.Width = 150;
+            this.MaNV_DongNuoc.Width = 120;
+            // 
+            // TinhTrang
+            // 
+            this.TinhTrang.Caption = "Tình Trạng";
+            this.TinhTrang.FieldName = "TinhTrang";
+            this.TinhTrang.Name = "TinhTrang";
+            this.TinhTrang.Visible = true;
+            this.TinhTrang.VisibleIndex = 7;
+            this.TinhTrang.Width = 80;
             // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Caption = "Check";
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(85, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(118, 21);
+            this.cmbTo.TabIndex = 42;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(56, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 13);
+            this.label4.TabIndex = 41;
+            this.label4.Text = "Tổ:";
             // 
             // btnXem
             // 
@@ -338,8 +360,8 @@
             this.Name = "frmXemTBDongNuoc";
             this.Text = "Xem Thông Báo Đóng Nước";
             this.Load += new System.EventHandler(this.frmXemTBDongNuoc_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
@@ -376,5 +398,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbNhanVien;
         private System.Windows.Forms.Label label2;
+        private DevExpress.XtraGrid.Columns.GridColumn NgayGiaiTrach;
+        private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
     }
 }

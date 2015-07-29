@@ -68,6 +68,27 @@ namespace ThuTien.DAL.Quay
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
+        public DataTable GetDS()
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        select new
+                        {
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSByCreatedDate(DateTime TuNgay)
         {
             var query = from itemLH in _db.TT_LenhHuys

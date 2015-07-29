@@ -40,6 +40,8 @@
             this.NgayGiaiTrach = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridViewDN = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.In = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.MaDN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DanhBo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,14 +68,13 @@
             this.btnInDSTBNguoiGiao = new System.Windows.Forms.Button();
             this.btnInDSTBTonNguoiGiao = new System.Windows.Forms.Button();
             this.btnInTB = new System.Windows.Forms.Button();
-            this.In = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.chkAll = new System.Windows.Forms.CheckBox();
+            this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewCTDN
@@ -188,7 +189,8 @@
             this.MLT,
             this.CreateDate,
             this.CreateBy,
-            this.MaNV_DongNuoc});
+            this.MaNV_DongNuoc,
+            this.TinhTrang});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -198,6 +200,22 @@
             this.gridViewDN.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewDN_CustomDrawRowIndicator);
             this.gridViewDN.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewDN_CustomColumnDisplayText);
             // 
+            // In
+            // 
+            this.In.Caption = "In";
+            this.In.ColumnEdit = this.repositoryItemCheckEdit2;
+            this.In.FieldName = "In";
+            this.In.Name = "In";
+            this.In.Visible = true;
+            this.In.VisibleIndex = 0;
+            this.In.Width = 30;
+            // 
+            // repositoryItemCheckEdit2
+            // 
+            this.repositoryItemCheckEdit2.AutoHeight = false;
+            this.repositoryItemCheckEdit2.Caption = "Check";
+            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            // 
             // MaDN
             // 
             this.MaDN.Caption = "Mã Đóng Nước";
@@ -205,7 +223,7 @@
             this.MaDN.Name = "MaDN";
             this.MaDN.Visible = true;
             this.MaDN.VisibleIndex = 1;
-            this.MaDN.Width = 90;
+            this.MaDN.Width = 80;
             // 
             // DanhBo
             // 
@@ -257,7 +275,7 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
             this.CreateBy.VisibleIndex = 7;
-            this.CreateBy.Width = 140;
+            this.CreateBy.Width = 120;
             // 
             // MaNV_DongNuoc
             // 
@@ -266,7 +284,7 @@
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
             this.MaNV_DongNuoc.VisibleIndex = 8;
-            this.MaNV_DongNuoc.Width = 140;
+            this.MaNV_DongNuoc.Width = 120;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -435,22 +453,6 @@
             this.btnInTB.UseVisualStyleBackColor = true;
             this.btnInTB.Click += new System.EventHandler(this.btnInTB_Click);
             // 
-            // In
-            // 
-            this.In.Caption = "In";
-            this.In.ColumnEdit = this.repositoryItemCheckEdit2;
-            this.In.FieldName = "In";
-            this.In.Name = "In";
-            this.In.Visible = true;
-            this.In.VisibleIndex = 0;
-            this.In.Width = 50;
-            // 
-            // repositoryItemCheckEdit2
-            // 
-            this.repositoryItemCheckEdit2.AutoHeight = false;
-            this.repositoryItemCheckEdit2.Caption = "Check";
-            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
-            // 
             // chkAll
             // 
             this.chkAll.AutoSize = true;
@@ -461,6 +463,15 @@
             this.chkAll.Text = "Chọn Tất Cả";
             this.chkAll.UseVisualStyleBackColor = true;
             this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
+            // 
+            // TinhTrang
+            // 
+            this.TinhTrang.Caption = "Tình Trạng";
+            this.TinhTrang.FieldName = "TinhTrang";
+            this.TinhTrang.Name = "TinhTrang";
+            this.TinhTrang.Visible = true;
+            this.TinhTrang.VisibleIndex = 9;
+            this.TinhTrang.Width = 60;
             // 
             // frmGiaoTBDongNuoc
             // 
@@ -492,8 +503,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,5 +552,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn In;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private System.Windows.Forms.CheckBox chkAll;
+        private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
     }
 }

@@ -41,6 +41,23 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
+        public bool SuaDN(TT_DongNuoc dongnuoc)
+        {
+            try
+            {
+                dongnuoc.ModifyDate = DateTime.Now;
+                dongnuoc.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool ThemKQ(TT_KQDongNuoc kqdongnuoc)
         {
             try
@@ -84,7 +101,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             try
             {
-                string sql = "update TT_DongNuoc set MaNV_DongNuoc=" + MaNV_DongNuoc + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where MaDN=" + MaDN;
+                string sql = "update TT_DongNuoc set MaNV_DongNuoc=" + MaNV_DongNuoc + ",NgayGiao='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where MaDN=" + MaDN;
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -98,7 +115,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             try
             {
-                string sql = "update TT_DongNuoc set MaNV_DongNuoc=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where MaDN=" + MaDN;
+                string sql = "update TT_DongNuoc set MaNV_DongNuoc=null,NgayGiao=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where MaDN=" + MaDN;
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -140,12 +157,19 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
+        /// <summary>
+        /// Lấy Danh Sách Thông Báo Đóng Nước chưa bị Hủy
+        /// </summary>
+        /// <param name="MaNV"></param>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
         public DataSet GetDSByMaNVCreateDates(int MaNV,DateTime TuNgay, DateTime DenNgay)
         {
             DataSet ds = new DataSet();
 
             var queryDN = from itemDN in _db.TT_DongNuocs
-                            where itemDN.CreateBy==MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
+                            where itemDN.Huy==false && itemDN.CreateBy==MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
                                 In=false,
@@ -157,6 +181,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemDN.CreateBy,
                                 itemDN.MaNV_DongNuoc,
                                 itemDN.CreateDate,
+                                TinhTrang="",///Phải thêm để GridView lấy cột để edit lại sau
                             };
             DataTable dtDongNuoc = new DataTable();
             dtDongNuoc = LINQToDataTable(queryDN);
@@ -167,7 +192,7 @@ namespace ThuTien.DAL.DongNuoc
                             join itemDN in _db.TT_DongNuocs on itemCTDN.MaDN equals itemDN.MaDN
                             join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON into tableHD
                             from itemtableHD in tableHD.DefaultIfEmpty()
-                            where itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
+                            where itemDN.Huy == false && itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
                                 itemCTDN.MaDN,
@@ -228,9 +253,14 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateBy == MaNV_DongNuoc);
         }
 
+        /// <summary>
+        /// Kiểm tra Số Hóa Đơn có lập Thông Báo chưa. Nếu Thông Báo trước đó bị hủy thì vẫn được lập cái mới
+        /// </summary>
+        /// <param name="SoHoaDon"></param>
+        /// <returns></returns>
         public bool CheckCTDongNuocBySoHoaDon(string SoHoaDon)
         {
-            return _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == SoHoaDon);
+            return _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == SoHoaDon && item.TT_DongNuoc.Huy == false);
         }
 
         public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)

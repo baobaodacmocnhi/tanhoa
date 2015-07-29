@@ -79,6 +79,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 try
                 {
+                    if (cmbKy.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Vui lòng chọn Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _cDLKH.BeginTransaction();
                     foreach (string item in txtDanhBo.Lines)
                         if (item.Length == 11)

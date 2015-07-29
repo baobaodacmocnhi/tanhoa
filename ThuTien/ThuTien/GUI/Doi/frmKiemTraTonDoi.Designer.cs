@@ -98,6 +98,8 @@
             this.TongCongThu_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHDTon_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCongTon_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInDSTo = new System.Windows.Forms.Button();
+            this.btnInDSNhanVien = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -134,11 +136,11 @@
             this.TongHDTon_CQ,
             this.TongCongTon_CQ});
             this.dgvHDCoQuan.Location = new System.Drawing.Point(6, 6);
-            this.dgvHDCoQuan.MultiSelect = false;
             this.dgvHDCoQuan.Name = "dgvHDCoQuan";
             this.dgvHDCoQuan.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvHDCoQuan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHDCoQuan.Size = new System.Drawing.Size(1040, 150);
             this.dgvHDCoQuan.TabIndex = 1;
             this.dgvHDCoQuan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDCoQuan_CellContentClick);
@@ -257,7 +259,7 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(1055, 234);
+            this.tabTuGia.Size = new System.Drawing.Size(1055, 181);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
@@ -344,11 +346,11 @@
             this.TongHDTon_TG,
             this.TongCongTon_TG});
             this.dgvHDTuGia.Location = new System.Drawing.Point(6, 6);
-            this.dgvHDTuGia.MultiSelect = false;
             this.dgvHDTuGia.Name = "dgvHDTuGia";
             this.dgvHDTuGia.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvHDTuGia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHDTuGia.Size = new System.Drawing.Size(1040, 150);
             this.dgvHDTuGia.TabIndex = 0;
             this.dgvHDTuGia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDTuGia_CellContentClick);
@@ -644,6 +646,7 @@
             this.dgvNhanVien.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(1040, 370);
             this.dgvNhanVien.TabIndex = 19;
             this.dgvNhanVien.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNhanVien_CellFormatting);
@@ -749,11 +752,33 @@
             this.TongCongTon_NV.Name = "TongCongTon_NV";
             this.TongCongTon_NV.ReadOnly = true;
             // 
+            // btnInDSTo
+            // 
+            this.btnInDSTo.Location = new System.Drawing.Point(663, 11);
+            this.btnInDSTo.Name = "btnInDSTo";
+            this.btnInDSTo.Size = new System.Drawing.Size(81, 23);
+            this.btnInDSTo.TabIndex = 42;
+            this.btnInDSTo.Text = "In DS Tổ";
+            this.btnInDSTo.UseVisualStyleBackColor = true;
+            this.btnInDSTo.Click += new System.EventHandler(this.btnInDSTo_Click);
+            // 
+            // btnInDSNhanVien
+            // 
+            this.btnInDSNhanVien.Location = new System.Drawing.Point(750, 11);
+            this.btnInDSNhanVien.Name = "btnInDSNhanVien";
+            this.btnInDSNhanVien.Size = new System.Drawing.Size(95, 23);
+            this.btnInDSNhanVien.TabIndex = 41;
+            this.btnInDSNhanVien.Text = "In DS Nhân Viên";
+            this.btnInDSNhanVien.UseVisualStyleBackColor = true;
+            this.btnInDSNhanVien.Click += new System.EventHandler(this.btnInDSNhanVien_Click);
+            // 
             // frmKiemTraTonDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1210, 640);
+            this.Controls.Add(this.btnInDSTo);
+            this.Controls.Add(this.btnInDSNhanVien);
             this.Controls.Add(this.dgvNhanVien);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.tabControl);
@@ -845,5 +870,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCongThu_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHDTon_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_NV;
+        private System.Windows.Forms.Button btnInDSTo;
+        private System.Windows.Forms.Button btnInDSNhanVien;
     }
 }

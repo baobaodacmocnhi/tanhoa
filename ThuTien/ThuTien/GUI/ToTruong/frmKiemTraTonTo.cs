@@ -300,7 +300,7 @@ namespace ThuTien.GUI.ToTruong
             }
         }
 
-        private void btnIn_Click(object sender, EventArgs e)
+        private void btnInDSNhanVien_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")

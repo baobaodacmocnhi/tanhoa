@@ -66,6 +66,21 @@ namespace ThuTien.GUI.ToTruong
             else
                 if (cmbNhanVienLap.SelectedIndex > 0 && dateTu.Value <= dateDen.Value)
                     gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+
+            ///Kiểm Tra Tình Trạng, Giải Trách hết Hóa Đơn trong Thông Báo Đóng Nước mới tính
+            for (int i = 0; i < gridViewDN.DataRowCount; i++)
+            {
+                DataRow row = gridViewDN.GetDataRow(i);
+                DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
+
+                string TinhTrang = "Đã Xử Lý";
+                foreach (DataRow itemChild in childRows)
+                    if (string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
+                    {
+                        TinhTrang = "Tồn";
+                    }
+                gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)

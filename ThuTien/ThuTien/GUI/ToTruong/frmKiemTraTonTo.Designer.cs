@@ -83,7 +83,7 @@
             this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lbTo = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
+            this.btnInDSNhanVien = new System.Windows.Forms.Button();
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
             this.chkNgayKiemTra = new System.Windows.Forms.CheckBox();
             this.btnInDSTo = new System.Windows.Forms.Button();
@@ -613,15 +613,15 @@
             this.lbTo.TabIndex = 28;
             this.lbTo.Text = "Tổ:";
             // 
-            // btnIn
+            // btnInDSNhanVien
             // 
-            this.btnIn.Location = new System.Drawing.Point(663, 11);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(95, 23);
-            this.btnIn.TabIndex = 32;
-            this.btnIn.Text = "In DS Nhân Viên";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.btnInDSNhanVien.Location = new System.Drawing.Point(750, 11);
+            this.btnInDSNhanVien.Name = "btnInDSNhanVien";
+            this.btnInDSNhanVien.Size = new System.Drawing.Size(95, 23);
+            this.btnInDSNhanVien.TabIndex = 32;
+            this.btnInDSNhanVien.Text = "In DS Nhân Viên";
+            this.btnInDSNhanVien.UseVisualStyleBackColor = true;
+            this.btnInDSNhanVien.Click += new System.EventHandler(this.btnInDSNhanVien_Click);
             // 
             // dateGiaiTrach
             // 
@@ -648,7 +648,7 @@
             // 
             // btnInDSTo
             // 
-            this.btnInDSTo.Location = new System.Drawing.Point(764, 11);
+            this.btnInDSTo.Location = new System.Drawing.Point(663, 11);
             this.btnInDSTo.Name = "btnInDSTo";
             this.btnInDSTo.Size = new System.Drawing.Size(81, 23);
             this.btnInDSTo.TabIndex = 36;
@@ -685,7 +685,7 @@
             this.Controls.Add(this.btnInDSTo);
             this.Controls.Add(this.chkNgayKiemTra);
             this.Controls.Add(this.dateGiaiTrach);
-            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.btnInDSNhanVien);
             this.Controls.Add(this.cmbNhanVien);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbTo);
@@ -725,7 +725,7 @@
         private System.Windows.Forms.ComboBox cmbNhanVien;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbTo;
-        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnInDSNhanVien;
         private System.Windows.Forms.DateTimePicker dateGiaiTrach;
         private System.Windows.Forms.CheckBox chkNgayKiemTra;
         private System.Windows.Forms.TextBox txtTongCongTon_TG;

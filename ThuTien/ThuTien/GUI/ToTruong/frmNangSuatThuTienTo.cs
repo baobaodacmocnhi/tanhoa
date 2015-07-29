@@ -335,7 +335,7 @@ namespace ThuTien.GUI.ToTruong
                         ds.Tables["NangSuatThuTien"].Rows.Add(dr);
                     }
 
-            rptNangSuatThuTien rpt = new rptNangSuatThuTien();
+            rptNangSuatThuTien_To rpt = new rptNangSuatThuTien_To();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
