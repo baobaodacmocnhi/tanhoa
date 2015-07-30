@@ -3756,40 +3756,52 @@ namespace ThuTien.DAL.Doi
         {
             if (Loai == "TG")
             {
-                var query = from item in _db.HOADONs
-                            where item.NAM == Nam && item.MaNV_HanhThu == MaNV && item.TONGCONG >= SoTien && item.GB >= 11 && item.GB <= 20
-                            orderby item.MALOTRINH ascending
+                var query = from itemHD in _db.HOADONs
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemHD.NAM == Nam && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien && itemHD.GB >= 11 && itemHD.GB <= 20
+                            orderby itemHD.MALOTRINH ascending
                             select new
                             {
-                                item.NGAYGIAITRACH,
-                                item.SOHOADON,
-                                Ky = item.KY + "/" + item.NAM,
-                                DanhBo = item.DANHBA,
-                                item.TIEUTHU,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
-                                item.TONGCONG,
+                                itemHD.NGAYGIAITRACH,
+                                itemHD.SOHOADON,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT=itemHD.MALOTRINH,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen=itemHD.TENKH,
+                                DiaChi=itemHD.SO+" "+itemHD.DUONG,
+                                itemHD.TIEUTHU,
+                                itemHD.GIABAN,
+                                ThueGTGT = itemHD.THUE,
+                                PhiBVMT = itemHD.PHI,
+                                itemHD.TONGCONG,
+                                HanhThu=itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
             else
                 if (Loai == "CQ")
                 {
-                    var query = from item in _db.HOADONs
-                                where item.NAM == Nam && item.MaNV_HanhThu == MaNV && item.TONGCONG >= SoTien && item.GB > 20
-                                orderby item.MALOTRINH ascending
+                    var query = from itemHD in _db.HOADONs
+                                join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
+                                where itemHD.NAM == Nam && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien && itemHD.GB > 20
+                                orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
-                                    item.NGAYGIAITRACH,
-                                    item.SOHOADON,
-                                    Ky = item.KY + "/" + item.NAM,
-                                    DanhBo = item.DANHBA,
-                                    item.TIEUTHU,
-                                    item.GIABAN,
-                                    ThueGTGT = item.THUE,
-                                    PhiBVMT = item.PHI,
-                                    item.TONGCONG,
+                                    itemHD.NGAYGIAITRACH,
+                                    itemHD.SOHOADON,
+                                    Ky = itemHD.KY + "/" + itemHD.NAM,
+                                    MLT = itemHD.MALOTRINH,
+                                    DanhBo = itemHD.DANHBA,
+                                    HoTen = itemHD.TENKH,
+                                    DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                    itemHD.TIEUTHU,
+                                    itemHD.GIABAN,
+                                    ThueGTGT = itemHD.THUE,
+                                    PhiBVMT = itemHD.PHI,
+                                    itemHD.TONGCONG,
+                                    HanhThu = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -3800,40 +3812,52 @@ namespace ThuTien.DAL.Doi
         {
             if (Loai == "TG")
             {
-                var query = from item in _db.HOADONs
-                            where item.NAM == Nam && item.KY == Ky && item.MaNV_HanhThu == MaNV && item.TONGCONG >= SoTien && item.GB >= 11 && item.GB <= 20
-                            orderby item.MALOTRINH ascending
+                var query = from itemHD in _db.HOADONs
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien && itemHD.GB >= 11 && itemHD.GB <= 20
+                            orderby itemHD.MALOTRINH ascending
                             select new
                             {
-                                item.NGAYGIAITRACH,
-                                item.SOHOADON,
-                                Ky = item.KY + "/" + item.NAM,
-                                DanhBo = item.DANHBA,
-                                item.TIEUTHU,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
-                                item.TONGCONG,
+                                itemHD.NGAYGIAITRACH,
+                                itemHD.SOHOADON,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                itemHD.TIEUTHU,
+                                itemHD.GIABAN,
+                                ThueGTGT = itemHD.THUE,
+                                PhiBVMT = itemHD.PHI,
+                                itemHD.TONGCONG,
+                                HanhThu = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
             else
                 if (Loai == "CQ")
                 {
-                    var query = from item in _db.HOADONs
-                                where item.NAM == Nam && item.KY == Ky && item.MaNV_HanhThu == MaNV && item.TONGCONG >= SoTien && item.GB > 20
-                                orderby item.MALOTRINH ascending
+                    var query = from itemHD in _db.HOADONs
+                                join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
+                                where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien && itemHD.GB > 20
+                                orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
-                                    item.NGAYGIAITRACH,
-                                    item.SOHOADON,
-                                    Ky = item.KY + "/" + item.NAM,
-                                    DanhBo = item.DANHBA,
-                                    item.TIEUTHU,
-                                    item.GIABAN,
-                                    ThueGTGT = item.THUE,
-                                    PhiBVMT = item.PHI,
-                                    item.TONGCONG,
+                                    itemHD.NGAYGIAITRACH,
+                                    itemHD.SOHOADON,
+                                    Ky = itemHD.KY + "/" + itemHD.NAM,
+                                    MLT = itemHD.MALOTRINH,
+                                    DanhBo = itemHD.DANHBA,
+                                    HoTen = itemHD.TENKH,
+                                    DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                    itemHD.TIEUTHU,
+                                    itemHD.GIABAN,
+                                    ThueGTGT = itemHD.THUE,
+                                    PhiBVMT = itemHD.PHI,
+                                    itemHD.TONGCONG,
+                                    HanhThu = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -3854,40 +3878,52 @@ namespace ThuTien.DAL.Doi
         {
             if (Loai == "TG")
             {
-                var query = from item in _db.HOADONs
-                            where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.MaNV_HanhThu == MaNV && item.TONGCONG >= SoTien && item.GB >= 11 && item.GB <= 20
-                            orderby item.MALOTRINH ascending
+                var query = from itemHD in _db.HOADONs
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien && itemHD.GB >= 11 && itemHD.GB <= 20
+                            orderby itemHD.MALOTRINH ascending
                             select new
                             {
-                                item.NGAYGIAITRACH,
-                                item.SOHOADON,
-                                Ky = item.KY + "/" + item.NAM,
-                                DanhBo = item.DANHBA,
-                                item.TIEUTHU,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
-                                item.TONGCONG,
+                                itemHD.NGAYGIAITRACH,
+                                itemHD.SOHOADON,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                itemHD.TIEUTHU,
+                                itemHD.GIABAN,
+                                ThueGTGT = itemHD.THUE,
+                                PhiBVMT = itemHD.PHI,
+                                itemHD.TONGCONG,
+                                HanhThu = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
             else
                 if (Loai == "CQ")
                 {
-                    var query = from item in _db.HOADONs
-                                where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.MaNV_HanhThu == MaNV && item.TONGCONG >= SoTien && item.GB > 20
-                                orderby item.MALOTRINH ascending
+                    var query = from itemHD in _db.HOADONs
+                                join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                from itemtableND in tableND.DefaultIfEmpty()
+                                where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien && itemHD.GB > 20
+                                orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
-                                    item.NGAYGIAITRACH,
-                                    item.SOHOADON,
-                                    Ky = item.KY + "/" + item.NAM,
-                                    DanhBo = item.DANHBA,
-                                    item.TIEUTHU,
-                                    item.GIABAN,
-                                    ThueGTGT = item.THUE,
-                                    PhiBVMT = item.PHI,
-                                    item.TONGCONG,
+                                    itemHD.NGAYGIAITRACH,
+                                    itemHD.SOHOADON,
+                                    Ky = itemHD.KY + "/" + itemHD.NAM,
+                                    MLT = itemHD.MALOTRINH,
+                                    DanhBo = itemHD.DANHBA,
+                                    HoTen = itemHD.TENKH,
+                                    DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                    itemHD.TIEUTHU,
+                                    itemHD.GIABAN,
+                                    ThueGTGT = itemHD.THUE,
+                                    PhiBVMT = itemHD.PHI,
+                                    itemHD.TONGCONG,
+                                    HanhThu = itemtableND.HoTen,
                                 };
                     return LINQToDataTable(query);
                 }
@@ -4063,10 +4099,10 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
-                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
-                            && itemHD.DM.Value.ToString().Contains(DinhMuc.ToString())
-                            && itemHD.CODE.Contains(Code)
+                        where itemHD.GIABAN == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
+                            && itemHD.GB.Value.ToString().Contains(@GiaBieu.ToString())
+                            && (itemHD.DM==null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                            && itemHD.CODE.Contains(@Code)
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
@@ -4092,10 +4128,130 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam
-                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
-                            && itemHD.DM.Value.ToString().Contains(DinhMuc.ToString())
-                            && itemHD.CODE.Contains(Code)
+                        where itemHD.GIABAN == 0 && itemHD.NAM == Nam
+                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSHoaDon0_To(int MaTo,int Nam, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                              && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        && itemHD.GIABAN == 0 && itemHD.NAM == Nam
+                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSHoaDon0_To(int MaTo,int Nam, int Ky, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                              && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        && itemHD.GIABAN == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
+                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSHoaDon0_NV(int MaNV, int Nam, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.MaNV_HanhThu==MaNV && itemHD.GIABAN == 0 && itemHD.NAM == Nam
+                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSHoaDon0_NV(int MaNV, int Nam, int Ky, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.MaNV_HanhThu == MaNV && itemHD.GIABAN == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
+                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
                         select new
                         {

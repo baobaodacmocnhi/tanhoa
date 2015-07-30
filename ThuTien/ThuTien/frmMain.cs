@@ -220,7 +220,7 @@ namespace ThuTien
         {
             if (CNguoiDung.CheckQuyen("mnuXemTBDongNuoc", "Xem"))
             {
-                frmXemTBDongNuoc frm = new frmXemTBDongNuoc();
+                frmXemTBDongNuocDoi frm = new frmXemTBDongNuocDoi();
                 OpenForm(frm);
             }
             else

@@ -63,9 +63,9 @@ namespace ThuTien.DAL.DongNuoc
             try
             {
                 if (_db.TT_KQDongNuocs.Count() > 0)
-                    kqdongnuoc.MaCTDN = _db.TT_KQDongNuocs.Max(item => item.MaCTDN) + 1;
+                    kqdongnuoc.MaKQDN = _db.TT_KQDongNuocs.Max(item => item.MaKQDN) + 1;
                 else
-                    kqdongnuoc.MaCTDN = 1;
+                    kqdongnuoc.MaKQDN = 1;
                 kqdongnuoc.CreateDate = DateTime.Now;
                 kqdongnuoc.CreateBy = CNguoiDung.MaND;
                 _db.TT_KQDongNuocs.InsertOnSubmit(kqdongnuoc);
@@ -164,7 +164,7 @@ namespace ThuTien.DAL.DongNuoc
         /// <param name="TuNgay"></param>
         /// <param name="DenNgay"></param>
         /// <returns></returns>
-        public DataSet GetDSByMaNVCreateDates(int MaNV,DateTime TuNgay, DateTime DenNgay)
+        public DataSet GetDSByMaNVCreateDates(string TenTo,int MaNV,DateTime TuNgay, DateTime DenNgay)
         {
             DataSet ds = new DataSet();
 
@@ -173,6 +173,7 @@ namespace ThuTien.DAL.DongNuoc
                             select new
                             {
                                 In=false,
+                                TenTo,
                                 itemDN.MaDN,
                                 itemDN.DanhBo,
                                 itemDN.HoTen,
@@ -190,8 +191,8 @@ namespace ThuTien.DAL.DongNuoc
 
             var queryCTDN = from itemCTDN in _db.TT_CTDongNuocs
                             join itemDN in _db.TT_DongNuocs on itemCTDN.MaDN equals itemDN.MaDN
-                            join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON into tableHD
-                            from itemtableHD in tableHD.DefaultIfEmpty()
+                            join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON //into tableHD
+                            //from itemtableHD in tableHD.DefaultIfEmpty()
                             where itemDN.Huy == false && itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
@@ -203,7 +204,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemCTDN.ThueGTGT,
                                 itemCTDN.PhiBVMT,
                                 itemCTDN.TongCong,
-                                itemtableHD.NGAYGIAITRACH,
+                                NgayGiaiTrach=itemHD.NGAYGIAITRACH,
                             };
             DataTable dtCTDongNuoc = new DataTable();
             dtCTDongNuoc = LINQToDataTable(queryCTDN);
@@ -263,32 +264,6 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == SoHoaDon && item.TT_DongNuoc.Huy == false);
         }
 
-        public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)
-        {
-            return _db.TT_DongNuocs.SingleOrDefault(item => item.MaDN == MaDN);
-        }
-
-        public TT_KQDongNuoc GetKQDongNuocByMaCTDN(decimal MaCTDN)
-        {
-            return _db.TT_KQDongNuocs.SingleOrDefault(item => item.MaCTDN == MaCTDN);
-        }
-
-        public string GetNgayDNByMaHD(int MaHD)
-        {
-            var query = from itemDN in _db.TT_DongNuocs
-                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
-                        join itemKQDN in _db.TT_KQDongNuocs on itemDN.MaDN equals itemKQDN.MaDN
-                        where itemCTDN.MaHD == MaHD
-                        select new
-                        {
-                            NgayDN=itemKQDN.NgayDN.Value.ToString("dd/MM/yyyy")
-                        };
-            if (query.Count() > 0)
-                return query.Take(1).ToList()[0].NgayDN;
-            else
-                return "";
-        }
-
         /// <summary>
         /// Kiểm tra Tồn Tại & Lấy Tên Nhân Viên, Tên Tổ theo Số Hóa Đơn. Phục vụ cho Tạm Thu
         /// </summary>
@@ -319,5 +294,42 @@ namespace ThuTien.DAL.DongNuoc
                 return false;
             
         }
+
+        public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)
+        {
+            return _db.TT_DongNuocs.SingleOrDefault(item => item.MaDN == MaDN);
+        }
+
+        public TT_KQDongNuoc GetKQDongNuocByMaCTDN(decimal MaKQDN)
+        {
+            return _db.TT_KQDongNuocs.SingleOrDefault(item => item.MaKQDN == MaKQDN);
+        }
+
+        public string GetNgayDNByMaHD(int MaHD)
+        {
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
+                        join itemKQDN in _db.TT_KQDongNuocs on itemDN.MaDN equals itemKQDN.MaDN
+                        where itemCTDN.MaHD == MaHD
+                        select new
+                        {
+                            NgayDN=itemKQDN.NgayDN.Value.ToString("dd/MM/yyyy")
+                        };
+            if (query.Count() > 0)
+                return query.Take(1).ToList()[0].NgayDN;
+            else
+                return "";
+        }
+
+        //public DataTable GetTongDongNuoc(int MaNV, DateTime TuNgay, DateTime DenNgay)
+        //{
+
+        //    var queryDN = from itemDN in _db.TT_DongNuocs
+        //                  where itemDN.Huy == false && itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
+        //                  select new
+        //                  {
+                              
+        //                  };
+        //}
     }
 }

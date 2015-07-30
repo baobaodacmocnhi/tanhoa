@@ -50,6 +50,7 @@
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cmbNhanVienLap = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.btnInDSTBTonNguoiGiao = new System.Windows.Forms.Button();
             this.btnInTB = new System.Windows.Forms.Button();
             this.chkAll = new System.Windows.Forms.CheckBox();
-            this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -172,7 +172,7 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2});
-            this.gridControl.Size = new System.Drawing.Size(1131, 590);
+            this.gridControl.Size = new System.Drawing.Size(1077, 590);
             this.gridControl.TabIndex = 26;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -250,7 +250,7 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
             this.DiaChi.VisibleIndex = 4;
-            this.DiaChi.Width = 250;
+            this.DiaChi.Width = 200;
             // 
             // MLT
             // 
@@ -285,6 +285,15 @@
             this.MaNV_DongNuoc.Visible = true;
             this.MaNV_DongNuoc.VisibleIndex = 8;
             this.MaNV_DongNuoc.Width = 120;
+            // 
+            // TinhTrang
+            // 
+            this.TinhTrang.Caption = "Tình Trạng";
+            this.TinhTrang.FieldName = "TinhTrang";
+            this.TinhTrang.Name = "TinhTrang";
+            this.TinhTrang.Visible = true;
+            this.TinhTrang.VisibleIndex = 9;
+            this.TinhTrang.Width = 60;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -463,15 +472,6 @@
             this.chkAll.Text = "Chọn Tất Cả";
             this.chkAll.UseVisualStyleBackColor = true;
             this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
-            // 
-            // TinhTrang
-            // 
-            this.TinhTrang.Caption = "Tình Trạng";
-            this.TinhTrang.FieldName = "TinhTrang";
-            this.TinhTrang.Name = "TinhTrang";
-            this.TinhTrang.Visible = true;
-            this.TinhTrang.VisibleIndex = 9;
-            this.TinhTrang.Width = 60;
             // 
             // frmGiaoTBDongNuoc
             // 

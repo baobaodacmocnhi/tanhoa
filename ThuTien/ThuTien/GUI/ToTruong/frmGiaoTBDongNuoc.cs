@@ -58,14 +58,14 @@ namespace ThuTien.GUI.ToTruong
                 DataSet ds = null;
                 for (int i = 1; i < _lst.Count; i++)
                     if (ds == null)
-                        ds = _cDongNuoc.GetDSByMaNVCreateDates(_lst[i].MaND, dateTu.Value, dateDen.Value);
+                        ds = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo,_lst[i].MaND, dateTu.Value, dateDen.Value);
                     else
-                        ds.Merge(_cDongNuoc.GetDSByMaNVCreateDates(_lst[i].MaND, dateTu.Value, dateDen.Value));
+                        ds.Merge(_cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, _lst[i].MaND, dateTu.Value, dateDen.Value));
                 gridControl.DataSource = ds.Tables["DongNuoc"];
             }
             else
                 if (cmbNhanVienLap.SelectedIndex > 0 && dateTu.Value <= dateDen.Value)
-                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
 
             ///Kiểm Tra Tình Trạng, Giải Trách hết Hóa Đơn trong Thông Báo Đóng Nước mới tính
             for (int i = 0; i < gridViewDN.DataRowCount; i++)
@@ -147,7 +147,7 @@ namespace ThuTien.GUI.ToTruong
                             }
                         }
                     _cDongNuoc.SqlCommitTransaction();
-                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                    gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)

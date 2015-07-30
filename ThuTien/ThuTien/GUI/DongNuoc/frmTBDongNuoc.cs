@@ -114,6 +114,8 @@ namespace ThuTien.GUI.DongNuoc
                         ctdongnuoc.ThueGTGT = (int)lstHDTemp[0].THUE;
                         ctdongnuoc.PhiBVMT = (int)lstHDTemp[0].PHI;
                         ctdongnuoc.TongCong = (int)lstHDTemp[0].TONGCONG;
+                        ctdongnuoc.CreateBy = CNguoiDung.MaND;
+                        ctdongnuoc.CreateDate=DateTime.Now;
 
                         dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
 
@@ -130,6 +132,8 @@ namespace ThuTien.GUI.DongNuoc
                                 ctdongnuoc2.ThueGTGT = (int)lstHDTemp[j].THUE;
                                 ctdongnuoc2.PhiBVMT = (int)lstHDTemp[j].PHI;
                                 ctdongnuoc2.TongCong = (int)lstHDTemp[j].TONGCONG;
+                                ctdongnuoc2.CreateBy = CNguoiDung.MaND;
+                                ctdongnuoc2.CreateDate = DateTime.Now;
 
                                 dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc2);
                             }
@@ -197,7 +201,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (dateTu.Value <= dateDen.Value)
             {
-                gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.MaND,dateTu.Value, dateDen.Value).Tables["DongNuoc"];
+                gridControl.DataSource = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, CNguoiDung.MaND, dateTu.Value, dateDen.Value).Tables["DongNuoc"];
             }
         }
 

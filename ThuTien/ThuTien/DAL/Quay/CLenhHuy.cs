@@ -74,10 +74,13 @@ namespace ThuTien.DAL.Quay
                         join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        orderby itemHD.MALOTRINH ascending
                         select new
                         {
                             itemLH.SoHoaDon,
                             DanhBo = itemHD.DANHBA,
+                            HoTen=itemHD.TENKH,
+                            DiaChi=itemHD.SO+" "+itemHD.DUONG,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,
@@ -96,17 +99,20 @@ namespace ThuTien.DAL.Quay
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemLH.CreateDate.Value.Date == TuNgay.Date
+                        orderby itemHD.MALOTRINH ascending
                         select new
                         {
                             itemLH.SoHoaDon,
                             DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,
                             itemHD.TONGCONG,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
-                            GiaBieu=itemHD.GB,
+                            GiaBieu = itemHD.GB,
                         };
             return LINQToDataTable(query);
         }
@@ -123,6 +129,8 @@ namespace ThuTien.DAL.Quay
                         {
                             itemLH.SoHoaDon,
                             DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,

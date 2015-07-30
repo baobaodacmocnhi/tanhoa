@@ -47,6 +47,7 @@
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.lstHD = new System.Windows.Forms.ListBox();
             this.btnXem = new System.Windows.Forms.Button();
@@ -64,7 +65,6 @@
             this.btnDSTB = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -155,7 +155,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(966, 590);
+            this.gridControl.Size = new System.Drawing.Size(816, 590);
             this.gridControl.TabIndex = 25;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -222,7 +222,7 @@
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 3;
-            this.HoTen.Width = 200;
+            this.HoTen.Width = 150;
             // 
             // DiaChi
             // 
@@ -231,7 +231,7 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
             this.DiaChi.VisibleIndex = 4;
-            this.DiaChi.Width = 300;
+            this.DiaChi.Width = 200;
             // 
             // MLT
             // 
@@ -248,6 +248,12 @@
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.Visible = true;
             this.CreateDate.VisibleIndex = 6;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "MaNV_DongNuoc";
+            this.gridColumn1.FieldName = "MaNV_DongNuoc";
+            this.gridColumn1.Name = "gridColumn1";
             // 
             // label2
             // 
@@ -407,12 +413,6 @@
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 41;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "MaNV_DongNuoc";
-            this.gridColumn1.FieldName = "MaNV_DongNuoc";
-            this.gridColumn1.Name = "gridColumn1";
             // 
             // frmTBDongNuoc
             // 

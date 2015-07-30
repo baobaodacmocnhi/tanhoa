@@ -1,6 +1,6 @@
 ﻿namespace ThuTien.GUI.Doi
 {
-    partial class frmXemTBDongNuoc
+    partial class frmXemTBDongNuocDoi
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,6 +49,7 @@
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.To = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,10 +63,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.dgvTongDN = new System.Windows.Forms.DataGridView();
+            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTongDN)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewCTDN
@@ -153,12 +165,12 @@
             gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gridControl.Location = new System.Drawing.Point(12, 38);
+            this.gridControl.Location = new System.Drawing.Point(5, 39);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(1154, 610);
+            this.gridControl.Size = new System.Drawing.Size(1042, 593);
             this.gridControl.TabIndex = 50;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -172,6 +184,7 @@
             this.HoTen,
             this.DiaChi,
             this.MLT,
+            this.To,
             this.CreateBy,
             this.MaNV_DongNuoc,
             this.TinhTrang});
@@ -209,7 +222,7 @@
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 2;
-            this.HoTen.Width = 200;
+            this.HoTen.Width = 150;
             // 
             // DiaChi
             // 
@@ -218,7 +231,7 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
             this.DiaChi.VisibleIndex = 3;
-            this.DiaChi.Width = 300;
+            this.DiaChi.Width = 200;
             // 
             // MLT
             // 
@@ -228,13 +241,22 @@
             this.MLT.Visible = true;
             this.MLT.VisibleIndex = 4;
             // 
+            // To
+            // 
+            this.To.Caption = "Tổ";
+            this.To.FieldName = "TenTo";
+            this.To.Name = "To";
+            this.To.Visible = true;
+            this.To.VisibleIndex = 5;
+            this.To.Width = 50;
+            // 
             // CreateBy
             // 
             this.CreateBy.Caption = "Người Lập";
             this.CreateBy.FieldName = "CreateBy";
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
-            this.CreateBy.VisibleIndex = 5;
+            this.CreateBy.VisibleIndex = 6;
             this.CreateBy.Width = 120;
             // 
             // MaNV_DongNuoc
@@ -243,7 +265,7 @@
             this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
-            this.MaNV_DongNuoc.VisibleIndex = 6;
+            this.MaNV_DongNuoc.VisibleIndex = 7;
             this.MaNV_DongNuoc.Width = 120;
             // 
             // TinhTrang
@@ -252,7 +274,7 @@
             this.TinhTrang.FieldName = "TinhTrang";
             this.TinhTrang.Name = "TinhTrang";
             this.TinhTrang.Visible = true;
-            this.TinhTrang.VisibleIndex = 7;
+            this.TinhTrang.VisibleIndex = 8;
             this.TinhTrang.Width = 80;
             // 
             // repositoryItemCheckEdit1
@@ -342,11 +364,97 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Nhân Viên:";
             // 
-            // frmXemTBDongNuoc
+            // dgvTongDN
+            // 
+            this.dgvTongDN.AllowUserToAddRows = false;
+            this.dgvTongDN.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTongDN.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTongDN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTongDN.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TenTo,
+            this.Tong,
+            this.TongThu,
+            this.TongDN,
+            this.TongTon});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTongDN.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvTongDN.Location = new System.Drawing.Point(1053, 39);
+            this.dgvTongDN.MultiSelect = false;
+            this.dgvTongDN.Name = "dgvTongDN";
+            this.dgvTongDN.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTongDN.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvTongDN.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTongDN.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTongDN.Size = new System.Drawing.Size(298, 154);
+            this.dgvTongDN.TabIndex = 51;
+            // 
+            // TenTo
+            // 
+            this.TenTo.DataPropertyName = "TenTo";
+            this.TenTo.HeaderText = "Tổ";
+            this.TenTo.Name = "TenTo";
+            this.TenTo.ReadOnly = true;
+            this.TenTo.Width = 50;
+            // 
+            // Tong
+            // 
+            this.Tong.DataPropertyName = "Tong";
+            this.Tong.HeaderText = "Tổng";
+            this.Tong.Name = "Tong";
+            this.Tong.ReadOnly = true;
+            this.Tong.Width = 50;
+            // 
+            // TongThu
+            // 
+            this.TongThu.DataPropertyName = "TongThu";
+            this.TongThu.HeaderText = "Thu";
+            this.TongThu.Name = "TongThu";
+            this.TongThu.ReadOnly = true;
+            this.TongThu.Width = 50;
+            // 
+            // TongDN
+            // 
+            this.TongDN.DataPropertyName = "TongDN";
+            this.TongDN.HeaderText = "Đóng Nước";
+            this.TongDN.Name = "TongDN";
+            this.TongDN.ReadOnly = true;
+            this.TongDN.Width = 50;
+            // 
+            // TongTon
+            // 
+            this.TongTon.DataPropertyName = "TongTon";
+            this.TongTon.HeaderText = "Tồn";
+            this.TongTon.Name = "TongTon";
+            this.TongTon.ReadOnly = true;
+            this.TongTon.Width = 50;
+            // 
+            // frmXemTBDongNuocDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 666);
+            this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.dgvTongDN);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dateDen);
@@ -357,13 +465,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.label4);
-            this.Name = "frmXemTBDongNuoc";
-            this.Text = "Xem Thông Báo Đóng Nước";
+            this.Name = "frmXemTBDongNuocDoi";
+            this.Text = "Xem Thông Báo Đóng Nước Đội";
             this.Load += new System.EventHandler(this.frmXemTBDongNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTongDN)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,5 +509,12 @@
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraGrid.Columns.GridColumn NgayGiaiTrach;
         private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
+        private DevExpress.XtraGrid.Columns.GridColumn To;
+        private System.Windows.Forms.DataGridView dgvTongDN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongDN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongTon;
     }
 }
