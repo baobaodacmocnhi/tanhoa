@@ -50,6 +50,18 @@
             this.txtTongGiaBan_TG = new System.Windows.Forms.TextBox();
             this.txtTongHD_TG = new System.Windows.Forms.TextBox();
             this.dgvHDTuGia = new System.Windows.Forms.DataGridView();
+            this.tabCoQuan = new System.Windows.Forms.TabPage();
+            this.txtTongCongTon_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongCongThu_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongCong_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongGiaBanTon_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongHDTon_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongGiaBanThu_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongHDThu_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongGiaBan_CQ = new System.Windows.Forms.TextBox();
+            this.txtTongHD_CQ = new System.Windows.Forms.TextBox();
+            this.dgvHDCoQuan = new System.Windows.Forms.DataGridView();
+            this.btnIn = new System.Windows.Forms.Button();
             this.MaHD_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,17 +76,6 @@
             this.TongCongTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiLeGiaBan_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiLeTongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabCoQuan = new System.Windows.Forms.TabPage();
-            this.txtTongCongTon_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongCongThu_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongCong_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongGiaBanTon_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongHDTon_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongGiaBanThu_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongHDThu_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongGiaBan_CQ = new System.Windows.Forms.TextBox();
-            this.txtTongHD_CQ = new System.Windows.Forms.TextBox();
-            this.dgvHDCoQuan = new System.Windows.Forms.DataGridView();
             this.MaHD_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,7 +90,6 @@
             this.TongCongTon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiLeGiaBan_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiLeTongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -306,111 +306,6 @@
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
             this.dgvHDTuGia.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDTuGia_RowPostPaint);
             // 
-            // MaHD_TG
-            // 
-            this.MaHD_TG.DataPropertyName = "MaHD";
-            this.MaHD_TG.HeaderText = "MaHD";
-            this.MaHD_TG.Name = "MaHD_TG";
-            this.MaHD_TG.ReadOnly = true;
-            this.MaHD_TG.Visible = false;
-            // 
-            // MaNV_TG
-            // 
-            this.MaNV_TG.DataPropertyName = "MaNV";
-            this.MaNV_TG.HeaderText = "MaNV";
-            this.MaNV_TG.Name = "MaNV_TG";
-            this.MaNV_TG.ReadOnly = true;
-            this.MaNV_TG.Visible = false;
-            // 
-            // HoTen_TG
-            // 
-            this.HoTen_TG.DataPropertyName = "HoTen";
-            this.HoTen_TG.HeaderText = "Nhân Viên";
-            this.HoTen_TG.Name = "HoTen_TG";
-            this.HoTen_TG.ReadOnly = true;
-            this.HoTen_TG.Width = 150;
-            // 
-            // TongHD_TG
-            // 
-            this.TongHD_TG.DataPropertyName = "TongHD";
-            this.TongHD_TG.HeaderText = "Tổng HĐ";
-            this.TongHD_TG.Name = "TongHD_TG";
-            this.TongHD_TG.ReadOnly = true;
-            this.TongHD_TG.Width = 80;
-            // 
-            // TongGiaBan_TG
-            // 
-            this.TongGiaBan_TG.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan_TG.HeaderText = "Tổng Giá Bán";
-            this.TongGiaBan_TG.Name = "TongGiaBan_TG";
-            this.TongGiaBan_TG.ReadOnly = true;
-            // 
-            // TongCong_TG
-            // 
-            this.TongCong_TG.DataPropertyName = "TongCong";
-            this.TongCong_TG.HeaderText = "Tổng Cộng";
-            this.TongCong_TG.Name = "TongCong_TG";
-            this.TongCong_TG.ReadOnly = true;
-            // 
-            // TongHDThu_TG
-            // 
-            this.TongHDThu_TG.DataPropertyName = "TongHDThu";
-            this.TongHDThu_TG.HeaderText = "Tổng HĐ Thu";
-            this.TongHDThu_TG.Name = "TongHDThu_TG";
-            this.TongHDThu_TG.ReadOnly = true;
-            this.TongHDThu_TG.Width = 80;
-            // 
-            // TongGiaBanThu_TG
-            // 
-            this.TongGiaBanThu_TG.DataPropertyName = "TongGiaBanThu";
-            this.TongGiaBanThu_TG.HeaderText = "Tổng Giá Bán Thu";
-            this.TongGiaBanThu_TG.Name = "TongGiaBanThu_TG";
-            this.TongGiaBanThu_TG.ReadOnly = true;
-            // 
-            // TongCongThu_TG
-            // 
-            this.TongCongThu_TG.DataPropertyName = "TongCongThu";
-            this.TongCongThu_TG.HeaderText = "Tổng Cộng Thu";
-            this.TongCongThu_TG.Name = "TongCongThu_TG";
-            this.TongCongThu_TG.ReadOnly = true;
-            // 
-            // TongHDTon_TG
-            // 
-            this.TongHDTon_TG.DataPropertyName = "TongHDTon";
-            this.TongHDTon_TG.HeaderText = "Tổng HĐ Tồn";
-            this.TongHDTon_TG.Name = "TongHDTon_TG";
-            this.TongHDTon_TG.ReadOnly = true;
-            this.TongHDTon_TG.Width = 80;
-            // 
-            // TongGiaBanTon_TG
-            // 
-            this.TongGiaBanTon_TG.DataPropertyName = "TongGiaBanTon";
-            this.TongGiaBanTon_TG.HeaderText = "Tổng Giá Bán Tồn";
-            this.TongGiaBanTon_TG.Name = "TongGiaBanTon_TG";
-            this.TongGiaBanTon_TG.ReadOnly = true;
-            // 
-            // TongCongTon_TG
-            // 
-            this.TongCongTon_TG.DataPropertyName = "TongCongTon";
-            this.TongCongTon_TG.HeaderText = "Tổng Cộng Tồn";
-            this.TongCongTon_TG.Name = "TongCongTon_TG";
-            this.TongCongTon_TG.ReadOnly = true;
-            // 
-            // TiLeGiaBan_TG
-            // 
-            this.TiLeGiaBan_TG.DataPropertyName = "TiLeGiaBan";
-            this.TiLeGiaBan_TG.HeaderText = "Tỉ Lệ Giá Bán";
-            this.TiLeGiaBan_TG.Name = "TiLeGiaBan_TG";
-            this.TiLeGiaBan_TG.ReadOnly = true;
-            this.TiLeGiaBan_TG.Width = 80;
-            // 
-            // TiLeTongCong_TG
-            // 
-            this.TiLeTongCong_TG.DataPropertyName = "TiLeTongCong";
-            this.TiLeTongCong_TG.HeaderText = "Tỉ Lệ Tổng Cộng";
-            this.TiLeTongCong_TG.Name = "TiLeTongCong_TG";
-            this.TiLeTongCong_TG.ReadOnly = true;
-            // 
             // tabCoQuan
             // 
             this.tabCoQuan.Controls.Add(this.txtTongCongTon_CQ);
@@ -542,6 +437,121 @@
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
             this.dgvHDCoQuan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDCoQuan_RowPostPaint);
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(475, 11);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 36;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // MaHD_TG
+            // 
+            this.MaHD_TG.DataPropertyName = "MaHD";
+            this.MaHD_TG.HeaderText = "MaHD";
+            this.MaHD_TG.Name = "MaHD_TG";
+            this.MaHD_TG.ReadOnly = true;
+            this.MaHD_TG.Visible = false;
+            // 
+            // MaNV_TG
+            // 
+            this.MaNV_TG.DataPropertyName = "MaNV";
+            this.MaNV_TG.HeaderText = "MaNV";
+            this.MaNV_TG.Name = "MaNV_TG";
+            this.MaNV_TG.ReadOnly = true;
+            this.MaNV_TG.Visible = false;
+            // 
+            // HoTen_TG
+            // 
+            this.HoTen_TG.DataPropertyName = "HoTen";
+            this.HoTen_TG.HeaderText = "Nhân Viên";
+            this.HoTen_TG.Name = "HoTen_TG";
+            this.HoTen_TG.ReadOnly = true;
+            this.HoTen_TG.Width = 150;
+            // 
+            // TongHD_TG
+            // 
+            this.TongHD_TG.DataPropertyName = "TongHD";
+            this.TongHD_TG.HeaderText = "Tổng HĐ";
+            this.TongHD_TG.Name = "TongHD_TG";
+            this.TongHD_TG.ReadOnly = true;
+            this.TongHD_TG.Width = 80;
+            // 
+            // TongGiaBan_TG
+            // 
+            this.TongGiaBan_TG.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan_TG.HeaderText = "Tổng Tiền Nước";
+            this.TongGiaBan_TG.Name = "TongGiaBan_TG";
+            this.TongGiaBan_TG.ReadOnly = true;
+            // 
+            // TongCong_TG
+            // 
+            this.TongCong_TG.DataPropertyName = "TongCong";
+            this.TongCong_TG.HeaderText = "Tổng Cộng";
+            this.TongCong_TG.Name = "TongCong_TG";
+            this.TongCong_TG.ReadOnly = true;
+            // 
+            // TongHDThu_TG
+            // 
+            this.TongHDThu_TG.DataPropertyName = "TongHDThu";
+            this.TongHDThu_TG.HeaderText = "Tổng HĐ Thu";
+            this.TongHDThu_TG.Name = "TongHDThu_TG";
+            this.TongHDThu_TG.ReadOnly = true;
+            this.TongHDThu_TG.Width = 80;
+            // 
+            // TongGiaBanThu_TG
+            // 
+            this.TongGiaBanThu_TG.DataPropertyName = "TongGiaBanThu";
+            this.TongGiaBanThu_TG.HeaderText = "Tổng Tiền Nước Thu";
+            this.TongGiaBanThu_TG.Name = "TongGiaBanThu_TG";
+            this.TongGiaBanThu_TG.ReadOnly = true;
+            // 
+            // TongCongThu_TG
+            // 
+            this.TongCongThu_TG.DataPropertyName = "TongCongThu";
+            this.TongCongThu_TG.HeaderText = "Tổng Cộng Thu";
+            this.TongCongThu_TG.Name = "TongCongThu_TG";
+            this.TongCongThu_TG.ReadOnly = true;
+            // 
+            // TongHDTon_TG
+            // 
+            this.TongHDTon_TG.DataPropertyName = "TongHDTon";
+            this.TongHDTon_TG.HeaderText = "Tổng HĐ Tồn";
+            this.TongHDTon_TG.Name = "TongHDTon_TG";
+            this.TongHDTon_TG.ReadOnly = true;
+            this.TongHDTon_TG.Width = 80;
+            // 
+            // TongGiaBanTon_TG
+            // 
+            this.TongGiaBanTon_TG.DataPropertyName = "TongGiaBanTon";
+            this.TongGiaBanTon_TG.HeaderText = "Tổng Tiền Nước Tồn";
+            this.TongGiaBanTon_TG.Name = "TongGiaBanTon_TG";
+            this.TongGiaBanTon_TG.ReadOnly = true;
+            // 
+            // TongCongTon_TG
+            // 
+            this.TongCongTon_TG.DataPropertyName = "TongCongTon";
+            this.TongCongTon_TG.HeaderText = "Tổng Cộng Tồn";
+            this.TongCongTon_TG.Name = "TongCongTon_TG";
+            this.TongCongTon_TG.ReadOnly = true;
+            // 
+            // TiLeGiaBan_TG
+            // 
+            this.TiLeGiaBan_TG.DataPropertyName = "TiLeGiaBan";
+            this.TiLeGiaBan_TG.HeaderText = "Tỉ Lệ Tiền Nước";
+            this.TiLeGiaBan_TG.Name = "TiLeGiaBan_TG";
+            this.TiLeGiaBan_TG.ReadOnly = true;
+            this.TiLeGiaBan_TG.Width = 80;
+            // 
+            // TiLeTongCong_TG
+            // 
+            this.TiLeTongCong_TG.DataPropertyName = "TiLeTongCong";
+            this.TiLeTongCong_TG.HeaderText = "Tỉ Lệ Tổng Cộng";
+            this.TiLeTongCong_TG.Name = "TiLeTongCong_TG";
+            this.TiLeTongCong_TG.ReadOnly = true;
+            // 
             // MaHD_CQ
             // 
             this.MaHD_CQ.DataPropertyName = "MaHD";
@@ -577,7 +587,7 @@
             // TongGiaBan_CQ
             // 
             this.TongGiaBan_CQ.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan_CQ.HeaderText = "Tổng Giá Bán";
+            this.TongGiaBan_CQ.HeaderText = "Tổng Tiền Nước";
             this.TongGiaBan_CQ.Name = "TongGiaBan_CQ";
             this.TongGiaBan_CQ.ReadOnly = true;
             // 
@@ -599,7 +609,7 @@
             // TongGiaBanThu_CQ
             // 
             this.TongGiaBanThu_CQ.DataPropertyName = "TongGiaBanThu";
-            this.TongGiaBanThu_CQ.HeaderText = "Tổng Giá Bán Thu";
+            this.TongGiaBanThu_CQ.HeaderText = "Tổng Tiền Nước Thu";
             this.TongGiaBanThu_CQ.Name = "TongGiaBanThu_CQ";
             this.TongGiaBanThu_CQ.ReadOnly = true;
             // 
@@ -621,7 +631,7 @@
             // TongGiaBanTon_CQ
             // 
             this.TongGiaBanTon_CQ.DataPropertyName = "TongGiaBanTon";
-            this.TongGiaBanTon_CQ.HeaderText = "Tổng Giá Bán Tồn";
+            this.TongGiaBanTon_CQ.HeaderText = "Tổng Tiền Nước Tồn";
             this.TongGiaBanTon_CQ.Name = "TongGiaBanTon_CQ";
             this.TongGiaBanTon_CQ.ReadOnly = true;
             // 
@@ -635,7 +645,7 @@
             // TiLeGiaBan_CQ
             // 
             this.TiLeGiaBan_CQ.DataPropertyName = "TiLeGiaBan";
-            this.TiLeGiaBan_CQ.HeaderText = "Tỉ Lệ Giá Bán";
+            this.TiLeGiaBan_CQ.HeaderText = "Tỉ Lệ Tiền Nước";
             this.TiLeGiaBan_CQ.Name = "TiLeGiaBan_CQ";
             this.TiLeGiaBan_CQ.ReadOnly = true;
             this.TiLeGiaBan_CQ.Width = 80;
@@ -646,16 +656,6 @@
             this.TiLeTongCong_CQ.HeaderText = "Tỉ Lệ Tổng Cộng";
             this.TiLeTongCong_CQ.Name = "TiLeTongCong_CQ";
             this.TiLeTongCong_CQ.ReadOnly = true;
-            // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(475, 11);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 36;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // frmNangSuatThuTienTo
             // 

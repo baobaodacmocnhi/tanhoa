@@ -222,6 +222,11 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
         }
 
+        public DataTable GetDSKQDongNuocByDates(decimal MaDN, DateTime TuNgay, DateTime DenNgay)
+        {
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.MaDN == MaDN && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
+        }
+
         public bool CheckKQDongNuocByMaDN(decimal MaDN)
         {
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN);

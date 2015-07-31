@@ -282,6 +282,28 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuKiemPortTon_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuKiemPortTon", "Xem"))
+            {
+                frmKiemPortTon frm = new frmKiemPortTon();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuToTrinhCatHuy_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuToTrinhCatHuy", "Xem"))
+            {
+                frmToTrinhCatHuy frm = new frmToTrinhCatHuy();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Tổ Trưởng
@@ -703,11 +725,6 @@ namespace ThuTien
             ((sender as Form).Tag as TabPage).Dispose();
         }
 
-        
 
-        
-
-        
-       
     }
 }

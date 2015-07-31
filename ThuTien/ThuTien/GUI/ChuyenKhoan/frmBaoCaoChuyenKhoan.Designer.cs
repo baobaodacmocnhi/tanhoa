@@ -50,6 +50,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tổng Hợp Đăng Ngân";
+            this.groupBox1.Visible = false;
             // 
             // btnXuatExcelTongHopDangNgan
             // 

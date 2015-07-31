@@ -162,6 +162,10 @@ namespace ThuTien.GUI.ToTruong
 
         private void gridViewDN_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
+            if (e.Column.FieldName == "DanhBo" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
             if (e.Column.FieldName == "MaDN" && e.Value != null)
             {
                 e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");

@@ -60,6 +60,8 @@ namespace ThuTien.GUI.DongNuoc
                     txtHoTen.Text = _dongnuoc.HoTen;
                     txtDiaChi.Text = _dongnuoc.DiaChi;
                     chkHuy.Checked = _dongnuoc.Huy;
+
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(_dongnuoc.MaDN, dateTu.Value, dateDen.Value);
                 }
                 else
                 {

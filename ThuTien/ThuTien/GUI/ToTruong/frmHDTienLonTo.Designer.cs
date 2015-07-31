@@ -532,7 +532,7 @@
             this.txtSoTien.Name = "txtSoTien";
             this.txtSoTien.Size = new System.Drawing.Size(100, 20);
             this.txtSoTien.TabIndex = 40;
-            this.txtSoTien.Text = "1000000";
+            this.txtSoTien.Text = "1.000.000";
             this.txtSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTien_KeyPress);
             this.txtSoTien.Leave += new System.EventHandler(this.txtSoTien_Leave);
             // 
