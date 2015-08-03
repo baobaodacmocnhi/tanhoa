@@ -177,7 +177,7 @@ namespace ThuTien.GUI.ToTruong
                     {
                         _cHoaDon.SqlBeginTransaction();
                         foreach (var item in lstHD.Items)
-                            if (_cHoaDon.DangNgan("", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                            if (_cHoaDon.DangNgan("HanhThu", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
                             {
                                 ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                                 if (_cTamThu.CheckExistBySoHoaDon(item.ToString()))
@@ -239,7 +239,7 @@ namespace ThuTien.GUI.ToTruong
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
-                                if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                                if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_TG"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
                                 {
                                     _cHoaDon.SqlRollbackTransaction();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -252,7 +252,7 @@ namespace ThuTien.GUI.ToTruong
                             {
                                 foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                                 {
-                                    if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                                    if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_CQ"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
                                     {
                                         _cHoaDon.SqlRollbackTransaction();
                                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

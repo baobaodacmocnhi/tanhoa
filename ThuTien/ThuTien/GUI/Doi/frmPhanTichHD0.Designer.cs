@@ -66,10 +66,34 @@
             this.txtGiaBieu = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.txtKy12 = new System.Windows.Forms.TextBox();
+            this.txtKy11 = new System.Windows.Forms.TextBox();
+            this.txtKy10 = new System.Windows.Forms.TextBox();
+            this.txtKy9 = new System.Windows.Forms.TextBox();
+            this.txtKy8 = new System.Windows.Forms.TextBox();
+            this.txtKy7 = new System.Windows.Forms.TextBox();
+            this.txtKy6 = new System.Windows.Forms.TextBox();
+            this.txtKy5 = new System.Windows.Forms.TextBox();
+            this.txtKy4 = new System.Windows.Forms.TextBox();
+            this.txtKy3 = new System.Windows.Forms.TextBox();
+            this.txtKy2 = new System.Windows.Forms.TextBox();
+            this.txtKy1 = new System.Windows.Forms.TextBox();
+            this.txtTong = new System.Windows.Forms.TextBox();
+            this.cmbNamDK = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnXemDK = new System.Windows.Forms.Button();
             this.btnXoaDK = new System.Windows.Forms.Button();
             this.btnThemDK = new System.Windows.Forms.Button();
             this.dgvDanhBoDK = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDanhBoDK = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbNhanVienDK = new System.Windows.Forms.ComboBox();
+            this.cmbToDK = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnInThongKe = new System.Windows.Forms.Button();
+            this.TenTo_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,14 +109,6 @@
             this.Ky10_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky11_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky12_DK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtDanhBoDK = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbNhanVienDK = new System.Windows.Forms.ComboBox();
-            this.cmbToDK = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cmbNamDK = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
@@ -414,6 +430,21 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnInThongKe);
+            this.tabPage2.Controls.Add(this.btnIn);
+            this.tabPage2.Controls.Add(this.txtKy12);
+            this.tabPage2.Controls.Add(this.txtKy11);
+            this.tabPage2.Controls.Add(this.txtKy10);
+            this.tabPage2.Controls.Add(this.txtKy9);
+            this.tabPage2.Controls.Add(this.txtKy8);
+            this.tabPage2.Controls.Add(this.txtKy7);
+            this.tabPage2.Controls.Add(this.txtKy6);
+            this.tabPage2.Controls.Add(this.txtKy5);
+            this.tabPage2.Controls.Add(this.txtKy4);
+            this.tabPage2.Controls.Add(this.txtKy3);
+            this.tabPage2.Controls.Add(this.txtKy2);
+            this.tabPage2.Controls.Add(this.txtKy1);
+            this.tabPage2.Controls.Add(this.txtTong);
             this.tabPage2.Controls.Add(this.cmbNamDK);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.btnXemDK);
@@ -433,6 +464,150 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Đăng Ký";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(859, 4);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 90;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // txtKy12
+            // 
+            this.txtKy12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy12.Location = new System.Drawing.Point(1163, 580);
+            this.txtKy12.Name = "txtKy12";
+            this.txtKy12.Size = new System.Drawing.Size(60, 20);
+            this.txtKy12.TabIndex = 89;
+            this.txtKy12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy11
+            // 
+            this.txtKy11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy11.Location = new System.Drawing.Point(1103, 580);
+            this.txtKy11.Name = "txtKy11";
+            this.txtKy11.Size = new System.Drawing.Size(60, 20);
+            this.txtKy11.TabIndex = 88;
+            this.txtKy11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy10
+            // 
+            this.txtKy10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy10.Location = new System.Drawing.Point(1043, 580);
+            this.txtKy10.Name = "txtKy10";
+            this.txtKy10.Size = new System.Drawing.Size(60, 20);
+            this.txtKy10.TabIndex = 87;
+            this.txtKy10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy9
+            // 
+            this.txtKy9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy9.Location = new System.Drawing.Point(983, 580);
+            this.txtKy9.Name = "txtKy9";
+            this.txtKy9.Size = new System.Drawing.Size(60, 20);
+            this.txtKy9.TabIndex = 86;
+            this.txtKy9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy8
+            // 
+            this.txtKy8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy8.Location = new System.Drawing.Point(923, 580);
+            this.txtKy8.Name = "txtKy8";
+            this.txtKy8.Size = new System.Drawing.Size(60, 20);
+            this.txtKy8.TabIndex = 85;
+            this.txtKy8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy7
+            // 
+            this.txtKy7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy7.Location = new System.Drawing.Point(863, 580);
+            this.txtKy7.Name = "txtKy7";
+            this.txtKy7.Size = new System.Drawing.Size(60, 20);
+            this.txtKy7.TabIndex = 84;
+            this.txtKy7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy6
+            // 
+            this.txtKy6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy6.Location = new System.Drawing.Point(803, 580);
+            this.txtKy6.Name = "txtKy6";
+            this.txtKy6.Size = new System.Drawing.Size(60, 20);
+            this.txtKy6.TabIndex = 83;
+            this.txtKy6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy5
+            // 
+            this.txtKy5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy5.Location = new System.Drawing.Point(743, 580);
+            this.txtKy5.Name = "txtKy5";
+            this.txtKy5.Size = new System.Drawing.Size(60, 20);
+            this.txtKy5.TabIndex = 82;
+            this.txtKy5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy4
+            // 
+            this.txtKy4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy4.Location = new System.Drawing.Point(683, 580);
+            this.txtKy4.Name = "txtKy4";
+            this.txtKy4.Size = new System.Drawing.Size(60, 20);
+            this.txtKy4.TabIndex = 81;
+            this.txtKy4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy3
+            // 
+            this.txtKy3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy3.Location = new System.Drawing.Point(623, 580);
+            this.txtKy3.Name = "txtKy3";
+            this.txtKy3.Size = new System.Drawing.Size(60, 20);
+            this.txtKy3.TabIndex = 80;
+            this.txtKy3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy2
+            // 
+            this.txtKy2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy2.Location = new System.Drawing.Point(563, 580);
+            this.txtKy2.Name = "txtKy2";
+            this.txtKy2.Size = new System.Drawing.Size(60, 20);
+            this.txtKy2.TabIndex = 79;
+            this.txtKy2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtKy1
+            // 
+            this.txtKy1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKy1.Location = new System.Drawing.Point(503, 580);
+            this.txtKy1.Name = "txtKy1";
+            this.txtKy1.Size = new System.Drawing.Size(60, 20);
+            this.txtKy1.TabIndex = 78;
+            this.txtKy1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTong
+            // 
+            this.txtTong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTong.Location = new System.Drawing.Point(8, 580);
+            this.txtTong.Name = "txtTong";
+            this.txtTong.Size = new System.Drawing.Size(50, 20);
+            this.txtTong.TabIndex = 77;
+            this.txtTong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cmbNamDK
+            // 
+            this.cmbNamDK.FormattingEnabled = true;
+            this.cmbNamDK.Location = new System.Drawing.Point(87, 6);
+            this.cmbNamDK.Name = "cmbNamDK";
+            this.cmbNamDK.Size = new System.Drawing.Size(60, 21);
+            this.cmbNamDK.TabIndex = 76;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(49, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 13);
+            this.label11.TabIndex = 75;
+            this.label11.Text = "Năm:";
             // 
             // btnXemDK
             // 
@@ -478,6 +653,7 @@
             this.dgvDanhBoDK.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDanhBoDK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhBoDK.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TenTo_DK,
             this.HoTen_DK,
             this.DanhBo_DK,
             this.DiaChi_DK,
@@ -506,10 +682,79 @@
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhBoDK.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvDanhBoDK.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhBoDK.Size = new System.Drawing.Size(1232, 570);
+            this.dgvDanhBoDK.Size = new System.Drawing.Size(1232, 547);
             this.dgvDanhBoDK.TabIndex = 71;
             this.dgvDanhBoDK.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhBoDK_CellFormatting);
             this.dgvDanhBoDK.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBoDK_RowPostPaint);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(533, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 69;
+            this.label10.Text = "Danh Bộ:";
+            // 
+            // txtDanhBoDK
+            // 
+            this.txtDanhBoDK.Location = new System.Drawing.Point(591, 6);
+            this.txtDanhBoDK.Name = "txtDanhBoDK";
+            this.txtDanhBoDK.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBoDK.TabIndex = 70;
+            this.txtDanhBoDK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBoDK_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(238, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.TabIndex = 67;
+            this.label8.Text = "Nhân Viên:";
+            // 
+            // cmbNhanVienDK
+            // 
+            this.cmbNhanVienDK.FormattingEnabled = true;
+            this.cmbNhanVienDK.Location = new System.Drawing.Point(304, 6);
+            this.cmbNhanVienDK.Name = "cmbNhanVienDK";
+            this.cmbNhanVienDK.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVienDK.TabIndex = 68;
+            // 
+            // cmbToDK
+            // 
+            this.cmbToDK.FormattingEnabled = true;
+            this.cmbToDK.Location = new System.Drawing.Point(182, 6);
+            this.cmbToDK.Name = "cmbToDK";
+            this.cmbToDK.Size = new System.Drawing.Size(50, 21);
+            this.cmbToDK.TabIndex = 66;
+            this.cmbToDK.SelectedIndexChanged += new System.EventHandler(this.cmbToDK_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(153, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(23, 13);
+            this.label9.TabIndex = 65;
+            this.label9.Text = "Tổ:";
+            // 
+            // btnInThongKe
+            // 
+            this.btnInThongKe.Location = new System.Drawing.Point(940, 4);
+            this.btnInThongKe.Name = "btnInThongKe";
+            this.btnInThongKe.Size = new System.Drawing.Size(75, 23);
+            this.btnInThongKe.TabIndex = 91;
+            this.btnInThongKe.Text = "In Thống Kê";
+            this.btnInThongKe.UseVisualStyleBackColor = true;
+            this.btnInThongKe.Click += new System.EventHandler(this.btnInThongKe_Click);
+            // 
+            // TenTo_DK
+            // 
+            this.TenTo_DK.DataPropertyName = "TenTo";
+            this.TenTo_DK.HeaderText = "Tổ";
+            this.TenTo_DK.Name = "TenTo_DK";
+            this.TenTo_DK.Visible = false;
             // 
             // HoTen_DK
             // 
@@ -615,75 +860,6 @@
             this.Ky12_DK.Name = "Ky12_DK";
             this.Ky12_DK.Width = 60;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(533, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
-            this.label10.TabIndex = 69;
-            this.label10.Text = "Danh Bộ:";
-            // 
-            // txtDanhBoDK
-            // 
-            this.txtDanhBoDK.Location = new System.Drawing.Point(591, 6);
-            this.txtDanhBoDK.Name = "txtDanhBoDK";
-            this.txtDanhBoDK.Size = new System.Drawing.Size(100, 20);
-            this.txtDanhBoDK.TabIndex = 70;
-            this.txtDanhBoDK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBoDK_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(238, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 13);
-            this.label8.TabIndex = 67;
-            this.label8.Text = "Nhân Viên:";
-            // 
-            // cmbNhanVienDK
-            // 
-            this.cmbNhanVienDK.FormattingEnabled = true;
-            this.cmbNhanVienDK.Location = new System.Drawing.Point(304, 6);
-            this.cmbNhanVienDK.Name = "cmbNhanVienDK";
-            this.cmbNhanVienDK.Size = new System.Drawing.Size(118, 21);
-            this.cmbNhanVienDK.TabIndex = 68;
-            // 
-            // cmbToDK
-            // 
-            this.cmbToDK.FormattingEnabled = true;
-            this.cmbToDK.Location = new System.Drawing.Point(182, 6);
-            this.cmbToDK.Name = "cmbToDK";
-            this.cmbToDK.Size = new System.Drawing.Size(50, 21);
-            this.cmbToDK.TabIndex = 66;
-            this.cmbToDK.SelectedIndexChanged += new System.EventHandler(this.cmbToDK_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(153, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 13);
-            this.label9.TabIndex = 65;
-            this.label9.Text = "Tổ:";
-            // 
-            // cmbNamDK
-            // 
-            this.cmbNamDK.FormattingEnabled = true;
-            this.cmbNamDK.Location = new System.Drawing.Point(87, 6);
-            this.cmbNamDK.Name = "cmbNamDK";
-            this.cmbNamDK.Size = new System.Drawing.Size(60, 21);
-            this.cmbNamDK.TabIndex = 76;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(49, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 13);
-            this.label11.TabIndex = 75;
-            this.label11.Text = "Năm:";
-            // 
             // frmPhanTichHD0
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -747,6 +923,24 @@
         private System.Windows.Forms.Button btnThemDK;
         private System.Windows.Forms.Button btnXoaDK;
         private System.Windows.Forms.Button btnXemDK;
+        private System.Windows.Forms.ComboBox cmbNamDK;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtKy12;
+        private System.Windows.Forms.TextBox txtKy11;
+        private System.Windows.Forms.TextBox txtKy10;
+        private System.Windows.Forms.TextBox txtKy9;
+        private System.Windows.Forms.TextBox txtKy8;
+        private System.Windows.Forms.TextBox txtKy7;
+        private System.Windows.Forms.TextBox txtKy6;
+        private System.Windows.Forms.TextBox txtKy5;
+        private System.Windows.Forms.TextBox txtKy4;
+        private System.Windows.Forms.TextBox txtKy3;
+        private System.Windows.Forms.TextBox txtKy2;
+        private System.Windows.Forms.TextBox txtKy1;
+        private System.Windows.Forms.TextBox txtTong;
+        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnInThongKe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_DK;
@@ -762,8 +956,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky10_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky11_DK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky12_DK;
-        private System.Windows.Forms.ComboBox cmbNamDK;
-        private System.Windows.Forms.Label label11;
 
     }
 }

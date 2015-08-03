@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.Doi;
 using System.Globalization;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -17,6 +18,7 @@ namespace ThuTien.GUI.ToTruong
         string _mnu = "mnuGiaoHDTon";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
+        List<TT_NguoiDung> _lstND;
 
         public frmGiaoHDTon()
         {
@@ -27,7 +29,13 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvHDTon.AutoGenerateColumns = false;
 
-            cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+            _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+            TT_NguoiDung nguoidung = new TT_NguoiDung();
+            nguoidung.MaND = -1;
+            nguoidung.HoTen = "Tất cả";
+            _lstND.Insert(0, nguoidung);
+
+            cmbNhanVien.DataSource = _lstND;
             cmbNhanVien.DisplayMember = "HoTen";
             cmbNhanVien.ValueMember = "MaND";
 
@@ -128,9 +136,18 @@ namespace ThuTien.GUI.ToTruong
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (dateTu.Value <= dateDen.Value)
-            {
-                dgvHDTon.DataSource = _cHoaDon.GetDSGiaoTonByDates(CNguoiDung.MaTo,dateTu.Value, dateDen.Value);
-            }
+                if (cmbNhanVien.SelectedIndex == 0)
+                {
+                    DataTable dt = new DataTable();
+                    for (int i = 1; i < _lstND.Count; i++)
+                        dt.Merge(_cHoaDon.GetDSGiaoTonByNVDates(_lstND[i].MaND, dateTu.Value, dateDen.Value));
+                    dgvHDTon.DataSource = dt;
+                }
+                else
+                    if (cmbNhanVien.SelectedIndex > 0)
+                    {
+                        dgvHDTon.DataSource = _cHoaDon.GetDSGiaoTonByNVDates(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                    }
         }
 
         private void dgvHDTon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

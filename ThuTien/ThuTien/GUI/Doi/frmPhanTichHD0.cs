@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.Doi;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.Doi
 {
@@ -51,6 +54,62 @@ namespace ThuTien.GUI.Doi
             cmbNamDK.DataSource = _cHoaDon.GetNam();
             cmbNamDK.DisplayMember = "Nam";
             cmbNamDK.ValueMember = "Nam";
+        }
+
+        public void CountdgvDanhBoDK()
+        {
+            int Ky1 = 0;
+            int Ky2 = 0;
+            int Ky3 = 0;
+            int Ky4 = 0;
+            int Ky5 = 0;
+            int Ky6 = 0;
+            int Ky7 = 0;
+            int Ky8 = 0;
+            int Ky9 = 0;
+            int Ky10 = 0;
+            int Ky11 = 0;
+            int Ky12 = 0;
+            foreach (DataGridViewRow item in dgvDanhBoDK.Rows)
+            {
+                if (item.Cells["Ky1_DK"] != null && item.Cells["Ky1_DK"].Value.ToString()!="" && int.Parse(item.Cells["Ky1_DK"].Value.ToString()) != 0)
+                    Ky1++;
+                if (item.Cells["Ky2_DK"] != null && item.Cells["Ky2_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky2_DK"].Value.ToString()) != 0)
+                    Ky2++;
+                if (item.Cells["Ky3_DK"] != null && item.Cells["Ky3_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky3_DK"].Value.ToString()) != 0)
+                    Ky3++;
+                if (item.Cells["Ky4_DK"] != null && item.Cells["Ky4_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky4_DK"].Value.ToString()) != 0)
+                    Ky4++;
+                if (item.Cells["Ky5_DK"] != null && item.Cells["Ky5_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky5_DK"].Value.ToString()) != 0)
+                    Ky5++;
+                if (item.Cells["Ky6_DK"] != null && item.Cells["Ky6_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky6_DK"].Value.ToString()) != 0)
+                    Ky6++;
+                if (item.Cells["Ky7_DK"] != null && item.Cells["Ky7_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky7_DK"].Value.ToString()) != 0)
+                    Ky7++;
+                if (item.Cells["Ky8_DK"] != null && item.Cells["Ky8_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky8_DK"].Value.ToString()) != 0)
+                    Ky8++;
+                if (item.Cells["Ky9_DK"] != null && item.Cells["Ky9_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky9_DK"].Value.ToString()) != 0)
+                    Ky9++;
+                if (item.Cells["Ky10_DK"] != null && item.Cells["Ky10_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky10_DK"].Value.ToString()) != 0)
+                    Ky10++;
+                if (item.Cells["Ky11_DK"] != null && item.Cells["Ky11_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky11_DK"].Value.ToString()) != 0)
+                    Ky11++;
+                if (item.Cells["Ky12_DK"] != null && item.Cells["Ky12_DK"].Value.ToString() != "" && int.Parse(item.Cells["Ky12_DK"].Value.ToString()) != 0)
+                    Ky12++;
+            }
+            txtTong.Text = dgvDanhBoDK.Rows.Count.ToString();
+            txtKy1.Text = Ky1.ToString();
+            txtKy2.Text = Ky2.ToString();
+            txtKy3.Text = Ky3.ToString();
+            txtKy4.Text = Ky4.ToString();
+            txtKy5.Text = Ky5.ToString();
+            txtKy6.Text = Ky6.ToString();
+            txtKy7.Text = Ky7.ToString();
+            txtKy8.Text = Ky8.ToString();
+            txtKy9.Text = Ky9.ToString();
+            txtKy10.Text = Ky10.ToString();
+            txtKy11.Text = Ky11.ToString();
+            txtKy12.Text = Ky12.ToString();
         }
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
@@ -182,6 +241,7 @@ namespace ThuTien.GUI.Doi
                         {
                             dgvDanhBoDK.DataSource = _cDangKyHD0.GetDS(int.Parse(cmbNhanVienDK.SelectedValue.ToString()), int.Parse(cmbNamDK.SelectedValue.ToString()));
                         }
+            CountdgvDanhBoDK();
         }
 
         private void btnThemDK_Click(object sender, EventArgs e)
@@ -250,6 +310,67 @@ namespace ThuTien.GUI.Doi
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDanhBoDK.Rows)
+            {
+                DataRow dr = ds.Tables["DangKyHD0"].NewRow();
+                dr["NhanVien"] = item.Cells["HoTen_DK"].Value;
+                dr["DanhBo"] = item.Cells["DanhBo_DK"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item.Cells["DiaChi_DK"].Value;
+                dr["Ky1"] = item.Cells["Ky1_DK"].Value;
+                dr["Ky2"] = item.Cells["Ky2_DK"].Value;
+                dr["Ky3"] = item.Cells["Ky3_DK"].Value;
+                dr["Ky4"] = item.Cells["Ky4_DK"].Value;
+                dr["Ky5"] = item.Cells["Ky5_DK"].Value;
+                dr["Ky6"] = item.Cells["Ky6_DK"].Value;
+                dr["Ky7"] = item.Cells["Ky7_DK"].Value;
+                dr["Ky8"] = item.Cells["Ky8_DK"].Value;
+                dr["Ky9"] = item.Cells["Ky9_DK"].Value;
+                dr["Ky10"] = item.Cells["Ky10_DK"].Value;
+                dr["Ky11"] = item.Cells["Ky11_DK"].Value;
+                dr["Ky12"] = item.Cells["Ky12_DK"].Value;
+                ds.Tables["DangKyHD0"].Rows.Add(dr);
+            }
+
+            rptDangKyHD0 rpt = new rptDangKyHD0();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void btnInThongKe_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDanhBoDK.Rows)
+            {
+                DataRow dr = ds.Tables["DangKyHD0"].NewRow();
+                dr["To"] = item.Cells["TenTo_DK"].Value;
+                dr["NhanVien"] = item.Cells["HoTen_DK"].Value;
+                dr["DanhBo"] = item.Cells["DanhBo_DK"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item.Cells["DiaChi_DK"].Value;
+                dr["Ky1"] = item.Cells["Ky1_DK"].Value;
+                dr["Ky2"] = item.Cells["Ky2_DK"].Value;
+                dr["Ky3"] = item.Cells["Ky3_DK"].Value;
+                dr["Ky4"] = item.Cells["Ky4_DK"].Value;
+                dr["Ky5"] = item.Cells["Ky5_DK"].Value;
+                dr["Ky6"] = item.Cells["Ky6_DK"].Value;
+                dr["Ky7"] = item.Cells["Ky7_DK"].Value;
+                dr["Ky8"] = item.Cells["Ky8_DK"].Value;
+                dr["Ky9"] = item.Cells["Ky9_DK"].Value;
+                dr["Ky10"] = item.Cells["Ky10_DK"].Value;
+                dr["Ky11"] = item.Cells["Ky11_DK"].Value;
+                dr["Ky12"] = item.Cells["Ky12_DK"].Value;
+                ds.Tables["DangKyHD0"].Rows.Add(dr);
+            }
+
+            rptThongKeDangKyHD0 rpt = new rptThongKeDangKyHD0();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

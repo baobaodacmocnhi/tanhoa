@@ -21,7 +21,7 @@ namespace ThuTien.GUI.ToTruong
         string _mnu = "mnuGiaoTBDongNuoc";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDongNuoc _cDongNuoc = new CDongNuoc();
-        List<TT_NguoiDung> _lst=new List<TT_NguoiDung>();
+        List<TT_NguoiDung> _lstND=new List<TT_NguoiDung>();
 
         public frmGiaoTBDongNuoc()
         {
@@ -33,9 +33,9 @@ namespace ThuTien.GUI.ToTruong
             TT_NguoiDung nguoidung = new TT_NguoiDung();
             nguoidung.MaND = -1;
             nguoidung.HoTen = "Tất cả";
-            _lst = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
-            _lst.Insert(0, nguoidung);
-            cmbNhanVienLap.DataSource = _lst;
+            _lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+            _lstND.Insert(0, nguoidung);
+            cmbNhanVienLap.DataSource = _lstND;
             cmbNhanVienLap.DisplayMember = "HoTen";
             cmbNhanVienLap.ValueMember = "MaND";
 
@@ -56,11 +56,11 @@ namespace ThuTien.GUI.ToTruong
             if (cmbNhanVienLap.SelectedIndex == 0 && dateTu.Value <= dateDen.Value)
             {
                 DataSet ds = null;
-                for (int i = 1; i < _lst.Count; i++)
+                for (int i = 1; i < _lstND.Count; i++)
                     if (ds == null)
-                        ds = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo,_lst[i].MaND, dateTu.Value, dateDen.Value);
+                        ds = _cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo,_lstND[i].MaND, dateTu.Value, dateDen.Value);
                     else
-                        ds.Merge(_cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, _lst[i].MaND, dateTu.Value, dateDen.Value));
+                        ds.Merge(_cDongNuoc.GetDSByMaNVCreateDates(CNguoiDung.TenTo, _lstND[i].MaND, dateTu.Value, dateDen.Value));
                 gridControl.DataSource = ds.Tables["DongNuoc"];
             }
             else

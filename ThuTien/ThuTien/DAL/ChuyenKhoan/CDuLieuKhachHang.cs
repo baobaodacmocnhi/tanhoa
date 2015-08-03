@@ -110,5 +110,84 @@ namespace ThuTien.DAL.ChuyenKhoan
                         };
             return LINQToDataTable(query);
         }
+
+        #region DuLieuKhachHang_SoHoaDon
+
+        public bool Them2(TT_DuLieuKhachHang_SoHoaDon dlkh)
+        {
+            try
+            {
+                dlkh.CreateDate = DateTime.Now;
+                dlkh.CreateBy = CNguoiDung.MaND;
+                _db.TT_DuLieuKhachHang_SoHoaDons.InsertOnSubmit(dlkh);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Sua2(TT_DuLieuKhachHang_SoHoaDon dlkh)
+        {
+            try
+            {
+                dlkh.ModifyDate = DateTime.Now;
+                dlkh.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Xoa2(TT_DuLieuKhachHang_SoHoaDon dlkh)
+        {
+            try
+            {
+                _db.TT_DuLieuKhachHang_SoHoaDons.DeleteOnSubmit(dlkh);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public TT_DuLieuKhachHang_SoHoaDon GetBySoHoaDon2(string SoHoaDon)
+        {
+            return _db.TT_DuLieuKhachHang_SoHoaDons.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+        }
+
+        public DataTable GetDS2(DateTime CreateDate)
+        {
+            var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
+                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        where itemDLKH.CreateDate.Value.Date == CreateDate.Date
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            itemHD.KY,
+                            itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        #endregion
     }
 }

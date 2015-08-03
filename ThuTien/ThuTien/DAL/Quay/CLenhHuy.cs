@@ -43,6 +43,22 @@ namespace ThuTien.DAL.Quay
             }
         }
 
+        public bool Sua(TT_LenhHuy lenhhuy)
+        {
+            try
+            {
+                lenhhuy.ModifyDate = DateTime.Now;
+                lenhhuy.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool Xoa(string SoHoaDon)
         {
             try
@@ -85,6 +101,7 @@ namespace ThuTien.DAL.Quay
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,
                             itemHD.TONGCONG,
+                            itemLH.TinhTrang,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
@@ -110,6 +127,7 @@ namespace ThuTien.DAL.Quay
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,
                             itemHD.TONGCONG,
+                            itemLH.TinhTrang,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
@@ -135,6 +153,7 @@ namespace ThuTien.DAL.Quay
                             MLT = itemHD.MALOTRINH,
                             itemHD.SOPHATHANH,
                             itemHD.TONGCONG,
+                            itemLH.TinhTrang,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,

@@ -176,6 +176,7 @@ namespace ThuTien.GUI.Quay
                 dr["Ky"] = item.Cells["Ky"].Value;
                 //dr["MLT"] = item.Cells["MLT"].Value;
                 dr["TongCong"] = item.Cells["TongCong"].Value;
+                dr["TinhTrang"] = item.Cells["TinhTrang"].Value;
                 dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
                 dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
                 dr["To"] = item.Cells["To"].Value.ToString();
@@ -189,6 +190,16 @@ namespace ThuTien.GUI.Quay
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void dgvHoaDon_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TinhTrang")
+            {
+                TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                lenhhuy.TinhTrang = dgvHoaDon["TinhTrang", e.RowIndex].Value.ToString();
+                _cLenhHuy.Sua(lenhhuy);
+            }
         }
     }
 }
