@@ -12,6 +12,7 @@ using ThuTien.DAL;
 using ThuTien.BaoCao;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Runtime.InteropServices;
+using System.Globalization;
 
 namespace ThuTien.GUI.Doi
 {
@@ -212,6 +213,42 @@ namespace ThuTien.GUI.Doi
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GiaBan" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "ThueGTGT" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "PhiBVMT" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
         }
     }
 }

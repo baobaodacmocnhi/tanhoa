@@ -242,6 +242,10 @@ namespace ThuTien.GUI.Doi
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
                 DataTable dt = new DataTable();
+                if(cmbNam.SelectedIndex==0)
+                    dt = _cHoaDon.GetDSToTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaTo_TG"].Value.ToString()));
+                else
+                    if(cmbNam.SelectedIndex>0)
                 if (cmbKy.SelectedIndex == 0)
                     dt = _cHoaDon.GetDSToTon("TG",int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaTo_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                 else
@@ -265,6 +269,10 @@ namespace ThuTien.GUI.Doi
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
                     DataTable dt = new DataTable();
+                    if (cmbNam.SelectedIndex == 0)
+                        dt = _cHoaDon.GetDSToTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaTo_CQ"].Value.ToString()));
+                    else
+                        if (cmbNam.SelectedIndex > 0)
                     if (cmbKy.SelectedIndex == 0)
                         dt = _cHoaDon.GetDSToTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaTo_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                     else
@@ -296,6 +304,10 @@ namespace ThuTien.GUI.Doi
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
                 DataTable dt = new DataTable();
+                if (cmbNam.SelectedIndex == 0)
+                    dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvNhanVien.SelectedRows[0].Cells["MaNV_NV"].Value.ToString()));
+                else
+                    if (cmbNam.SelectedIndex > 0)
                 if (cmbKy.SelectedIndex == 0)
                     dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvNhanVien.SelectedRows[0].Cells["MaNV_NV"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                 else
@@ -319,6 +331,10 @@ namespace ThuTien.GUI.Doi
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
                     DataTable dt = new DataTable();
+                    if (cmbNam.SelectedIndex == 0)
+                        dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvNhanVien.SelectedRows[0].Cells["MaNV_NV"].Value.ToString()));
+                    else
+                        if (cmbNam.SelectedIndex > 0)
                     if (cmbKy.SelectedIndex == 0)
                         dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvNhanVien.SelectedRows[0].Cells["MaNV_NV"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                     else
@@ -423,6 +439,7 @@ namespace ThuTien.GUI.Doi
                 dgvNhanVien.DataSource = _cHoaDon.GetTongTon_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()));
             }
             else
+                if(cmbNam.SelectedIndex>0)
                 if (cmbKy.SelectedIndex == 0)
                 {
                     dgvNhanVien.DataSource = _cHoaDon.GetTongTon_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
@@ -438,9 +455,10 @@ namespace ThuTien.GUI.Doi
         {
             if (cmbNam.SelectedIndex == 0)
             {
-                dgvNhanVien.DataSource = _cHoaDon.GetTongTon_To("CQ", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()));
+                dgvNhanVien.DataSource = _cHoaDon.GetTongTon_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()));
             }
             else
+                if (cmbNam.SelectedIndex > 0)
                 if (cmbKy.SelectedIndex == 0)
                 {
                     dgvNhanVien.DataSource = _cHoaDon.GetTongTon_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
@@ -575,9 +593,9 @@ namespace ThuTien.GUI.Doi
                         ///chọn tất cả các năm
                         if (cmbNam.SelectedIndex == 0)
                         {
-                            dt = _cHoaDon.GetDSToTon("TG", lstTo[0].MaTo);
+                            dt = _cHoaDon.GetDSToTon("CQ", lstTo[0].MaTo);
                             for (int i = 1; i < lstTo.Count; i++)
-                                dt.Merge(_cHoaDon.GetDSToTon("TG", lstTo[i].MaTo));
+                                dt.Merge(_cHoaDon.GetDSToTon("CQ", lstTo[i].MaTo));
                         }
                         else
                             ///chọn 1 năm cụ thể
@@ -604,9 +622,9 @@ namespace ThuTien.GUI.Doi
                         ///chọn tất cả các năm
                         if (cmbNam.SelectedIndex == 0)
                         {
-                            dt = _cHoaDon.GetDSToTon("TG", lstTo[0].MaTo);
+                            dt = _cHoaDon.GetDSToTon("CQ", lstTo[0].MaTo);
                             for (int i = 1; i < lstTo.Count; i++)
-                                dt.Merge(_cHoaDon.GetDSToTon("TG", lstTo[i].MaTo));
+                                dt.Merge(_cHoaDon.GetDSToTon("CQ", lstTo[i].MaTo));
                         }
                         else
                             ///chọn 1 năm cụ thể
@@ -682,9 +700,17 @@ namespace ThuTien.GUI.Doi
             cl9.Value2 = "Tổng Cộng";
             cl9.ColumnWidth = 15;
 
+            Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
+            cl10.Value2 = "Hành Thu";
+            cl10.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
+            cl11.Value2 = "Tổ";
+            cl11.ColumnWidth = 5;
+
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 11];
+            object[,] arr = new object[dt.Rows.Count, 13];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -700,6 +726,8 @@ namespace ThuTien.GUI.Doi
                 arr[i, 6] = dr["ThueGTGT"].ToString();
                 arr[i, 7] = dr["PhiBVMT"].ToString();
                 arr[i, 8] = dr["TongCong"].ToString();
+                arr[i, 9] = dr["HanhThu"].ToString();
+                arr[i, 10] = dr["To"].ToString();
             }
 
             //Thiết lập vùng điền dữ liệu

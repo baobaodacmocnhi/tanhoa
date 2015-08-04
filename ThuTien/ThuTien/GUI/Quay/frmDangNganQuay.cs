@@ -36,6 +36,7 @@ namespace ThuTien.GUI.Quay
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
+
             dateGiaiTrach.Value = DateTime.Now;
         }
 
@@ -191,6 +192,7 @@ namespace ThuTien.GUI.Quay
                         }
                     _cHoaDon.SqlCommitTransaction();
                     lstHD.Items.Clear();
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)

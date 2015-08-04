@@ -188,6 +188,26 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDS2(DateTime CreateDate1, DateTime CreateDate2)
+        {
+            var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
+                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        where itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            itemHD.KY,
+                            itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
         #endregion
     }
 }

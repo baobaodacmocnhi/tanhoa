@@ -55,17 +55,17 @@ namespace ThuTien.GUI.ToTruong
 
         public void LoadDataGridView()
         {
-            //if (tabControl.SelectedTab.Name == "tabTuGia")
-            //{
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
 
-            dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-            //}
-            //else
-            //    if (tabControl.SelectedTab.Name == "tabCoQuan")
-            //    {
+                dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
 
-            dgvHDCoQuan.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                //}
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                }
         }
 
         private void txtTuMLT_KeyPress(object sender, KeyPressEventArgs e)
@@ -296,7 +296,8 @@ namespace ThuTien.GUI.ToTruong
 
         private void txtDenSoPhatHanh_TextChanged(object sender, EventArgs e)
         {
-            txtSoHD.Text = _cHoaDon.CountBySoPhatHanhs(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim())).ToString();
+            if(!string.IsNullOrEmpty(txtDenSoPhatHanh.Text))
+                txtSoHD.Text = _cHoaDon.CountBySoPhatHanhs(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim())).ToString();
         }
 
         private void btnIn_Click(object sender, EventArgs e)

@@ -263,7 +263,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem2_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cDLKH.GetDS2(dateLap.Value);
+            dgvHoaDon.DataSource = _cDLKH.GetDS2(dateTu.Value,dateDen.Value);
         }
 
         private void btnThem2_Click(object sender, EventArgs e)
