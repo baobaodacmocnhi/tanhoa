@@ -131,23 +131,14 @@ namespace ThuTien.GUI.ToTruong
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                if (chkNgayKiemTra.Checked)
+                ///chọn tất cả nhân viên trong tổ
+                if (cmbNhanVien.SelectedIndex == 0)
                 {
-                    ///chọn tất cả nhân viên trong tổ
-                    if (cmbNhanVien.SelectedValue.ToString() == "-1")
+                    if (chkNgayKiemTra.Checked)
                     {
                         dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
                     }
-                    ///chọn 1 nhân viên cụ thể
                     else
-                    {
-                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
-                    }
-                }
-                else
-                {
-                    ///chọn tất cả nhân viên trong tổ
-                    if (cmbNhanVien.SelectedValue.ToString() == "-1")
                     {
                         ///chọn tất cả các năm
                         if (cmbNam.SelectedIndex == 0)
@@ -169,52 +160,52 @@ namespace ThuTien.GUI.ToTruong
                                         dgvHDTuGia.DataSource = _cHoaDon.GetTongTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                     }
                     }
+                }
+
+                else
                     ///chọn 1 nhân viên cụ thể
-                    else
+                    if (cmbNhanVien.SelectedIndex > 0)
                     {
-                        ///chọn tất cả các năm
-                        if (cmbNam.SelectedIndex == 0)
+                        if (chkNgayKiemTra.Checked)
                         {
-                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
                         }
                         else
-                            ///chọn 1 năm cụ thể
-                            if (cmbNam.SelectedIndex > 0)
-                                ///chọn tất cả các kỳ
-                                if (cmbKy.SelectedIndex == 0)
-                                {
-                                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
-                                }
-                                ///chọn 1 kỳ cụ thể
-                                else
-                                    if (cmbKy.SelectedIndex > 0)
+                        {
+                            ///chọn tất cả các năm
+                            if (cmbNam.SelectedIndex == 0)
+                            {
+                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                            }
+                            else
+                                ///chọn 1 năm cụ thể
+                                if (cmbNam.SelectedIndex > 0)
+                                    ///chọn tất cả các kỳ
+                                    if (cmbKy.SelectedIndex == 0)
                                     {
-                                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                        dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                                     }
+                                    ///chọn 1 kỳ cụ thể
+                                    else
+                                        if (cmbKy.SelectedIndex > 0)
+                                        {
+                                            dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                        }
+                        }
                     }
-                }
                 CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    if (chkNgayKiemTra.Checked)
+                    ///chọn tất cả nhân viên trong tổ
+                    if (cmbNhanVien.SelectedIndex == 0)
                     {
-                        ///chọn tất cả nhân viên trong tổ
-                        if (cmbNhanVien.SelectedValue.ToString() == "-1")
+                        if (chkNgayKiemTra.Checked)
                         {
                             dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
                         }
-                        ///chọn 1 nhân viên cụ thể
                         else
-                        {
-                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
-                        }
-                    }
-                    else
-                    {
-                        ///chọn tất cả nhân viên trong tổ
-                        if (cmbNhanVien.SelectedValue.ToString() == "-1")
                         {
                             ///chọn tất cả các năm
                             if (cmbNam.SelectedIndex == 0)
@@ -236,30 +227,38 @@ namespace ThuTien.GUI.ToTruong
                                             dgvHDCoQuan.DataSource = _cHoaDon.GetTongTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                                         }
                         }
+                    }
+                    else
                         ///chọn 1 nhân viên cụ thể
-                        else
+                        if (cmbNhanVien.SelectedIndex > 0)
                         {
-                            ///chọn tất cả các năm
-                            if (cmbNam.SelectedIndex == 0)
+                            if (chkNgayKiemTra.Checked)
                             {
-                                dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
                             }
                             else
-                                ///chọn 1 năm cụ thể
-                                if (cmbNam.SelectedIndex > 0)
-                                    ///chọn tất cả các kỳ
-                                    if (cmbKy.SelectedIndex == 0)
-                                    {
-                                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
-                                    }
-                                    ///chọn 1 kỳ cụ thể
-                                    else
-                                        if (cmbKy.SelectedIndex > 0)
+                            {
+                                ///chọn tất cả các năm
+                                if (cmbNam.SelectedIndex == 0)
+                                {
+                                    dgvHDTuGia.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                                }
+                                else
+                                    ///chọn 1 năm cụ thể
+                                    if (cmbNam.SelectedIndex > 0)
+                                        ///chọn tất cả các kỳ
+                                        if (cmbKy.SelectedIndex == 0)
                                         {
-                                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                            dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                                         }
+                                        ///chọn 1 kỳ cụ thể
+                                        else
+                                            if (cmbKy.SelectedIndex > 0)
+                                            {
+                                                dgvHDCoQuan.DataSource = _cHoaDon.GetTongTonByMaNV_HanhThu("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                            }
+                            }
                         }
-                    }
                     CountdgvHDCoQuan();
                 }
         }

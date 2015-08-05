@@ -53,19 +53,56 @@ namespace ThuTien.GUI.ToTruong
             txtDenSoPhatHanh.Text = "";
         }
 
-        public void LoadDataGridView()
+        public void CountdgvHDTuGia()
         {
-            if (tabControl.SelectedTab.Name == "tabTuGia")
+            int TongHD = 0;
+            int TongGiaBan = 0;
+            int TongThueGTGT = 0;
+            int TongPhiBVMT = 0;
+            int TongCong = 0;
+            if (dgvHDTuGia.RowCount > 0)
             {
-
-                dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-            }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
-
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    TongHD += int.Parse(item.Cells["TongHD_TG"].Value.ToString());
+                    TongGiaBan += int.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
+                    TongThueGTGT += int.Parse(item.Cells["TongThueGTGT_TG"].Value.ToString());
+                    TongPhiBVMT += int.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
+                    TongCong += int.Parse(item.Cells["TongCong_TG"].Value.ToString());
                 }
+                txtTongHD_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
+                txtTongGiaBan_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
+                txtTongThueGTGT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
+                txtTongPhiBVMT_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
+                txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            }
+            
+        }
+
+        public void CountdgvHDCoQuan()
+        {
+            int TongHD = 0;
+            int TongGiaBan = 0;
+            int TongThueGTGT = 0;
+            int TongPhiBVMT = 0;
+            int TongCong = 0;
+            if (dgvHDTuGia.RowCount > 0)
+            {
+                foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                {
+                    TongHD += int.Parse(item.Cells["TongHD_TG"].Value.ToString());
+                    TongGiaBan += int.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
+                    TongThueGTGT += int.Parse(item.Cells["TongThueGTGT_TG"].Value.ToString());
+                    TongPhiBVMT += int.Parse(item.Cells["TongPhiBVMT_TG"].Value.ToString());
+                    TongCong += int.Parse(item.Cells["TongCong_TG"].Value.ToString());
+                }
+                txtTongHD_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
+                txtTongGiaBan_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
+                txtTongThueGTGT_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
+                txtTongPhiBVMT_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
+                txtTongCong_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            }
+
         }
 
         private void txtTuMLT_KeyPress(object sender, KeyPressEventArgs e)
@@ -84,7 +121,17 @@ namespace ThuTien.GUI.ToTruong
         {
             if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
             {
-                LoadDataGridView();
+                if (tabControl.SelectedTab.Name == "tabTuGia")
+                {
+                    dgvHDTuGia.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    CountdgvHDTuGia();
+                }
+                else
+                    if (tabControl.SelectedTab.Name == "tabCoQuan")
+                    {
+                        dgvHDCoQuan.DataSource = _cHoaDon.GetTongGiaoByNamKyDot("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                        CountdgvHDCoQuan();
+                    }
                 Clear();
             }
         }
@@ -202,7 +249,7 @@ namespace ThuTien.GUI.ToTruong
                                     if (_cHoaDon.ThemChia("TG", CNguoiDung.MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                         int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                     {
-                                        LoadDataGridView();
+                                        btnXem.PerformClick();
                                         Clear();
                                     }
                                 }
@@ -225,7 +272,7 @@ namespace ThuTien.GUI.ToTruong
                                         if (_cHoaDon.ThemChia("CQ", CNguoiDung.MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                             int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                         {
-                                            LoadDataGridView();
+                                            btnXem.PerformClick();
                                             Clear();
                                         }
                                     }
@@ -263,7 +310,7 @@ namespace ThuTien.GUI.ToTruong
                                 if (_cHoaDon.XoaChia("TG", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                                     int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                                 {
-                                    LoadDataGridView();
+                                    btnXem.PerformClick();
                                     Clear();
                                 }
                             }
@@ -277,7 +324,7 @@ namespace ThuTien.GUI.ToTruong
                                 if (_cHoaDon.XoaChia("CQ", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
                                                     int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
                                 {
-                                    LoadDataGridView();
+                                    btnXem.PerformClick();
                                     Clear();
                                 }
                             }
@@ -297,7 +344,7 @@ namespace ThuTien.GUI.ToTruong
         private void txtDenSoPhatHanh_TextChanged(object sender, EventArgs e)
         {
             if(!string.IsNullOrEmpty(txtDenSoPhatHanh.Text))
-                txtSoHD.Text = _cHoaDon.CountBySoPhatHanhs(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim())).ToString();
+                txtSoHD.Text = _cHoaDon.CountBySoPhatHanhs(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())).ToString();
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -317,6 +364,9 @@ namespace ThuTien.GUI.ToTruong
                     dr["MLT"] = item.Cells["TuMLT_TG"].Value.ToString() + " - " + item.Cells["DenMLT_TG"].Value.ToString();
                     dr["SoPhatHanh"] = item.Cells["TuSoPhatHanh_TG"].Value.ToString() + " - " + item.Cells["DenSoPhatHanh_TG"].Value.ToString();
                     dr["TongHD"] = item.Cells["TongHD_TG"].Value;
+                    dr["TongGiaBan"] = item.Cells["TongGiaBan_TG"].Value;
+                    dr["TongThueGTGT"] = item.Cells["TongThueGTGT_TG"].Value;
+                    dr["TongPhiBVMT"] = item.Cells["TongPhiBVMT_TG"].Value;
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value;
                     ds.Tables["ChiaHoaDon"].Rows.Add(dr);
                 } 
@@ -336,6 +386,9 @@ namespace ThuTien.GUI.ToTruong
                         dr["MLT"] = item.Cells["TuMLT_CQ"].Value.ToString() + " - " + item.Cells["DenMLT_CQ"].Value.ToString();
                         dr["SoPhatHanh"] = item.Cells["TuSoPhatHanh_CQ"].Value.ToString() + " - " + item.Cells["DenSoPhatHanh_CQ"].Value.ToString();
                         dr["TongHD"] = item.Cells["TongHD_CQ"].Value;
+                        dr["TongGiaBan"] = item.Cells["TongGiaBan_CQ"].Value;
+                        dr["TongThueGTGT"] = item.Cells["TongThueGTGT_CQ"].Value;
+                        dr["TongPhiBVMT"] = item.Cells["TongPhiBVMT_CQ"].Value;
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
                         ds.Tables["ChiaHoaDon"].Rows.Add(dr);
                     }

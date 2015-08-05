@@ -10,6 +10,7 @@ using ThuTien.DAL.TongHop;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.Doi;
+using System.Globalization;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -107,21 +108,21 @@ namespace ThuTien.GUI.TongHop
 
                 lbTangGiam.Text = _ctdchd.TangGiam;
 
-                txtTienNuoc_Start.Text = _ctdchd.TienNuoc_Start.Value.ToString();
-                txtTienNuoc_BD.Text = _ctdchd.TienNuoc_BD.Value.ToString();
-                txtTienNuoc_End.Text = _ctdchd.TienNuoc_End.Value.ToString();
+                txtTienNuoc_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_Start.Value);
+                txtTienNuoc_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_BD.Value);
+                txtTienNuoc_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_End.Value);
 
-                txtThueGTGT_Start.Text = _ctdchd.ThueGTGT_Start.Value.ToString();  
-                txtThueGTGT_BD.Text = _ctdchd.ThueGTGT_BD.Value.ToString();
-                txtThueGTGT_End.Text = _ctdchd.ThueGTGT_End.Value.ToString();
+                txtThueGTGT_Start.Text =  String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_Start.Value);
+                txtThueGTGT_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_BD.Value);
+                txtThueGTGT_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_End.Value);
 
-                txtPhiBVMT_Start.Text = _ctdchd.PhiBVMT_Start.Value.ToString();
-                txtPhiBVMT_BD.Text = _ctdchd.PhiBVMT_BD.Value.ToString();
-                txtPhiBVMT_End.Text = _ctdchd.PhiBVMT_End.Value.ToString();
-                
-                txtTongCong_Start.Text = _ctdchd.TongCong_Start.Value.ToString();
-                txtTongCong_BD.Text = _ctdchd.TongCong_BD.Value.ToString();
-                txtTongCong_End.Text = _ctdchd.TongCong_End.Value.ToString();
+                txtPhiBVMT_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Start.Value);
+                txtPhiBVMT_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_BD.Value);
+                txtPhiBVMT_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_End.Value);
+
+                txtTongCong_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_Start.Value);
+                txtTongCong_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_BD.Value);
+                txtTongCong_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_End.Value);
                 
             }
         }

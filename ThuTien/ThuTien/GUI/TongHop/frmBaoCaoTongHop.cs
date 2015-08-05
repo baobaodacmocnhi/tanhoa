@@ -354,7 +354,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnTongHopDangNganTG_Click(object sender, EventArgs e)
         {
-            List<TT_To> lst = _cTo.GetDS();
+            List<TT_To> lst = _cTo.GetDSHanhThu();
             DataTable dt = new DataTable();
             DataTable dtCNKD = new DataTable();
             long TongGiaBanTM = 0;
@@ -366,10 +366,10 @@ namespace ThuTien.GUI.TongHop
             long TongPhiBVMTCK = 0;
             long TongCongCK = 0;
 
-            dt = _cHoaDon.GetTongHopDangNganChiTiet("TG", lst[0].MaTo, dateGiaiTrachTongHopDangNgan.Value);
+            dt = _cHoaDon.GetTongHopDangNganChiTietTG(lst[0].MaTo, dateGiaiTrachTongHopDangNgan.Value);
             for (int i = 1; i < lst.Count; i++)
             {
-                dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet("TG", lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
+                dt.Merge(_cHoaDon.GetTongHopDangNganChiTietTG(lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
             }
 
             dtCNKD = _cCNKD.GetTongHopDangNgan("TG", dateGiaiTrachTongHopDangNgan.Value);

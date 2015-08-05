@@ -65,6 +65,7 @@
             this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
+            this.btnInDSDiaChi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -224,7 +225,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(498, 10);
+            this.btnXem.Location = new System.Drawing.Point(539, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 9;
@@ -236,23 +237,25 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(392, 12);
+            this.dateTu.Location = new System.Drawing.Point(433, 12);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 8;
+            this.dateTu.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(351, 15);
+            this.label3.Location = new System.Drawing.Point(371, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Ngày:";
+            this.label3.Text = "Ngày Lập:";
+            this.label3.Visible = false;
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(161, 226);
+            this.btnIn.Location = new System.Drawing.Point(620, 10);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(81, 23);
             this.btnIn.TabIndex = 10;
@@ -400,11 +403,22 @@
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 26;
             // 
+            // btnInDSDiaChi
+            // 
+            this.btnInDSDiaChi.Location = new System.Drawing.Point(707, 10);
+            this.btnInDSDiaChi.Name = "btnInDSDiaChi";
+            this.btnInDSDiaChi.Size = new System.Drawing.Size(81, 23);
+            this.btnInDSDiaChi.TabIndex = 30;
+            this.btnInDSDiaChi.Text = "In DS Địa Chỉ";
+            this.btnInDSDiaChi.UseVisualStyleBackColor = true;
+            this.btnInDSDiaChi.Click += new System.EventHandler(this.btnInDSDiaChi_Click);
+            // 
             // frmQuetTam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 652);
+            this.Controls.Add(this.btnInDSDiaChi);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.txtSoLuong);
@@ -468,5 +482,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhatHanh_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_CQ;
+        private System.Windows.Forms.Button btnInDSDiaChi;
     }
 }

@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>79</ApplicationRevision>
+    <ApplicationRevision>82</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -118,6 +118,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSTamThuChuyenKhoan.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\rptDSHoaDon_DiaChi.cs">
+      <DependentUpon>rptDSHoaDon_DiaChi.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\Doi\rptThongKeDangKyHD0.cs">
       <DependentUpon>rptThongKeDangKyHD0.rpt</DependentUpon>
@@ -355,6 +361,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmChuanThu.Designer.cs">
       <DependentUpon>frmChuanThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Doi\frmDieuChinhDangNganDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Doi\frmDieuChinhDangNganDoi.Designer.cs">
+      <DependentUpon>frmDieuChinhDangNganDoi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmKetThucNamTaiKhoa.cs">
       <SubType>Form</SubType>
@@ -653,6 +665,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSTamThuChuyenKhoan.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptDSHoaDon_DiaChi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSHoaDon_DiaChi.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\Doi\rptThongKeDangKyHD0.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKeDangKyHD0.cs</LastGenOutput>
@@ -803,6 +819,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmChuanThu.resx">
       <DependentUpon>frmChuanThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Doi\frmDieuChinhDangNganDoi.resx">
+      <DependentUpon>frmDieuChinhDangNganDoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmKetThucNamTaiKhoa.resx">
       <DependentUpon>frmKetThucNamTaiKhoa.cs</DependentUpon>

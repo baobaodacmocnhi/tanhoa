@@ -354,6 +354,7 @@ namespace ThuTien.DAL.TongHop
                             where itemDC.TangGiam != null && itemDC.CreateBy == MaNV && itemDC.CreateDate.Value.Date >= TuNgay.Date && itemDC.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
+                                itemDC.CreateDate,
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
                                 itemHD.SOHOADON,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,

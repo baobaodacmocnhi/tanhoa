@@ -304,6 +304,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuDieuChinhDangNganDoi_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDieuChinhDangNganDoi", "Xem"))
+            {
+                frmDieuChinhDangNganDoi frm = new frmDieuChinhDangNganDoi();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Tổ Trưởng
@@ -334,7 +345,7 @@ namespace ThuTien
         {
             if (CNguoiDung.CheckQuyen("mnuDieuChinhDangNgan", "Xem"))
             {
-                frmDieuChinhDangNgan frm = new frmDieuChinhDangNgan();
+                frmDieuChinhDangNganTo frm = new frmDieuChinhDangNganTo();
                 OpenForm(frm);
             }
             else
@@ -724,6 +735,8 @@ namespace ThuTien
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
+
+        
 
 
     }

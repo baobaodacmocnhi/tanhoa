@@ -217,10 +217,10 @@ namespace ThuTien.GUI.HanhThu
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
-                dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("TG", CNguoiDung.MaND, dateTu.Value);
+                dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("TG", CNguoiDung.MaND);
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
-                    dgvHDCoQuan.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("CQ", CNguoiDung.MaND, dateTu.Value);       
+                    dgvHDCoQuan.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("CQ", CNguoiDung.MaND);
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -262,5 +262,25 @@ namespace ThuTien.GUI.HanhThu
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
+
+        private void btnInDSDiaChi_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cQuetTam.GetDSByMaNVCreatedDate(CNguoiDung.MaND, dateTu.Value);
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = item["HoTen"];
+                dr["DiaChi"] = item["DiaChi"];
+                dr["NhanVien"] = CNguoiDung.HoTen;
+                ds.Tables["DSHoaDon"].Rows.Add(dr);
+            }
+            rptDSHoaDon_DiaChi rpt = new rptDSHoaDon_DiaChi();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
     }
 }

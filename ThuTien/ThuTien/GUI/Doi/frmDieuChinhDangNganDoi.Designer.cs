@@ -1,6 +1,6 @@
-﻿namespace ThuTien.GUI.Quay
+﻿namespace ThuTien.GUI.Doi
 {
-    partial class frmDieuChinhDangNganQuay
+    partial class frmDieuChinhDangNganDoi
     {
         /// <summary>
         /// Required designer variable.
@@ -83,9 +83,13 @@
             this.txtSoHoaDon = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -95,7 +99,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(665, 11);
+            this.btnXem.Location = new System.Drawing.Point(861, 9);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 33;
@@ -224,7 +228,6 @@
             this.dgvHDCoQuan.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHDCoQuan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHDCoQuan.Size = new System.Drawing.Size(826, 540);
             this.dgvHDCoQuan.TabIndex = 10;
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
@@ -277,7 +280,7 @@
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(85, 255);
+            this.txtSoLuong.Location = new System.Drawing.Point(87, 255);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(50, 20);
             this.txtSoLuong.TabIndex = 47;
@@ -286,7 +289,7 @@
             // 
             this.dateGiaiTrach.CustomFormat = "dd/MM/yyyy";
             this.dateGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateGiaiTrach.Location = new System.Drawing.Point(559, 13);
+            this.dateGiaiTrach.Location = new System.Drawing.Point(755, 12);
             this.dateGiaiTrach.Name = "dateGiaiTrach";
             this.dateGiaiTrach.Size = new System.Drawing.Size(100, 20);
             this.dateGiaiTrach.TabIndex = 51;
@@ -294,7 +297,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 258);
+            this.label8.Location = new System.Drawing.Point(25, 258);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 48;
@@ -477,7 +480,6 @@
             this.dgvHDTuGia.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvHDTuGia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHDTuGia.Size = new System.Drawing.Size(826, 540);
             this.dgvHDTuGia.TabIndex = 0;
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
@@ -588,6 +590,23 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(538, 12);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.TabIndex = 35;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(472, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "Nhân Viên:";
+            // 
             // btnSua
             // 
             this.btnSua.Location = new System.Drawing.Point(161, 105);
@@ -611,17 +630,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(466, 15);
+            this.label1.Location = new System.Drawing.Point(662, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 50;
             this.label1.Text = "Ngày Giải Trách:";
             // 
-            // frmDieuChinhDangNganQuay
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(416, 11);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(50, 21);
+            this.cmbTo.TabIndex = 53;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(387, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 13);
+            this.label2.TabIndex = 52;
+            this.label2.Text = "Tổ:";
+            // 
+            // frmDieuChinhDangNganDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 641);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtSoLuong);
@@ -635,12 +674,14 @@
             this.Controls.Add(this.txtSoHoaDon);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.cmbNhanVien);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.label1);
-            this.Name = "frmDieuChinhDangNganQuay";
-            this.Text = "Điều Chỉnh Đăng Ngân Quầy";
-            this.Load += new System.EventHandler(this.frmDieuChinhDangNganQuay_Load);
+            this.Name = "frmDieuChinhDangNganDoi";
+            this.Text = "Điều Chỉnh Đăng Ngân Đội";
+            this.Load += new System.EventHandler(this.frmDieuChinhDangNganDoi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).EndInit();
             this.tabCoQuan.ResumeLayout(false);
             this.tabCoQuan.PerformLayout();
@@ -706,8 +747,12 @@
         private System.Windows.Forms.TextBox txtSoHoaDon;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.ComboBox cmbNhanVien;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label label2;
     }
 }

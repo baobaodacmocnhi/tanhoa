@@ -6,43 +6,45 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using System.Globalization;
+using ThuTien.DAL.Doi;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.TongHop;
 
-namespace ThuTien.GUI.ToTruong
+namespace ThuTien.GUI.Doi
 {
-    public partial class frmDieuChinhDangNganTo : Form
+    public partial class frmDieuChinhDangNganDoi : Form
     {
-        ///Load tất cả hóa đơn đăng ngân hành thu & tồn nên hàm DangNgan & XoaDangNgan có chút thay đổi
-        ///Xóa người đăng ngân nhưng vẫn giữ hình thức đăng ngân
-        
-        string _mnu = "mnuDieuChinhDangNgan";
-        CHoaDon _cHoaDon = new CHoaDon();
+        string _mnu = "mnuDieuChinhDangNganDoi";
+        CTo _cTo = new CTo();
         CNguoiDung _cNguoiDung = new CNguoiDung();
-        CTamThu _cTamThu = new CTamThu();
-        CDCHD _cDCHD = new CDCHD();
+        CHoaDon _cHoaDon = new CHoaDon();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CDCHD _cDCHD = new CDCHD();
 
-        public frmDieuChinhDangNganTo()
+        public frmDieuChinhDangNganDoi()
         {
             InitializeComponent();
         }
 
-        private void frmDieuChinhDangNgan_Load(object sender, EventArgs e)
+        private void frmDieuChinhDangNganDoi_Load(object sender, EventArgs e)
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
 
+            cmbTo.DataSource = _cTo.GetDSHanhThu();
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "MaTo";
+
+            dateGiaiTrach.Value = DateTime.Now;
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
             cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
             cmbNhanVien.DisplayMember = "HoTen";
             cmbNhanVien.ValueMember = "MaND";
-
-            lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
-
-            dateGiaiTrach.Value = DateTime.Now;
         }
 
         public void CountdgvHDTuGia()
@@ -76,7 +78,7 @@ namespace ThuTien.GUI.ToTruong
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
             int TongCong = 0;
-            
+
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
@@ -97,17 +99,18 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (tabControl.SelectedTab.Name == "tabTuGia")
-            {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
-                CountdgvHDTuGia();
-            }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
+            if (cmbNhanVien.Items.Count > 0 && cmbNhanVien.SelectedIndex >= 0)
+                if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("CQ", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
-                    CoungdgvHDCoQuan();
+                    dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("TG", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                    CountdgvHDTuGia();
                 }
+                else
+                    if (tabControl.SelectedTab.Name == "tabCoQuan")
+                    {
+                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganByMaNVNgayGiaiTrach("CQ", (int)cmbNhanVien.SelectedValue, dateGiaiTrach.Value);
+                        CoungdgvHDCoQuan();
+                    }
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -141,28 +144,11 @@ namespace ThuTien.GUI.ToTruong
             {
                 if (lstHD.Items.Count > 0)
                 {
-                    //DataTable dt = (DataTable)dgvHDChuaThu.DataSource;
-                    //DataColumn[] keyColumns = new DataColumn[1];
-                    //keyColumns[0] = dt.Columns["SoHoaDon"];
-                    //dt.PrimaryKey = keyColumns;
-                    //string loai;
                     foreach (var item in lstHD.Items)
                     {
-                        //if (!dt.Rows.Contains(item.ToString()))
-                        //{
-                        //    MessageBox.Show("Hóa Đơn sai Hoặc đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    lstHD.SelectedItem = item;
-                        //    return;
-                        //}
                         //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
                         //{
                         //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    lstHD.SelectedItem = item;
-                        //    return;
-                        //}
-                        //if (_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
-                        //{
-                        //    MessageBox.Show("Hóa Đơn đã được Tạm Thu(" + loai + "): " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //    lstHD.SelectedItem = item;
                         //    return;
                         //}
@@ -177,25 +163,8 @@ namespace ThuTien.GUI.ToTruong
                     {
                         _cHoaDon.SqlBeginTransaction();
                         foreach (var item in lstHD.Items)
-                            if (_cHoaDon.DangNgan("HanhThu", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                            if (_cHoaDon.DangNgan("HanhThu", item.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                             {
-                                ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
-                                if (_cTamThu.CheckExistBySoHoaDon(item.ToString()))
-                                    if (_cHoaDon.Thu2Lan(item.ToString()))
-                                    {
-                                        if (!_cTamThu.Xoa(item.ToString()))
-                                        {
-                                            _cHoaDon.SqlRollbackTransaction();
-                                            MessageBox.Show("Lỗi Xóa Tạm Thu, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        _cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
                                 if (_cLenhHuy.CheckExist(item.ToString()))
                                     if (!_cLenhHuy.Xoa(item.ToString()))
                                     {
@@ -207,7 +176,7 @@ namespace ThuTien.GUI.ToTruong
                             else
                             {
                                 _cHoaDon.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                         _cHoaDon.SqlCommitTransaction();
@@ -239,7 +208,7 @@ namespace ThuTien.GUI.ToTruong
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
-                                if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_TG"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                                if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
                                 {
                                     _cHoaDon.SqlRollbackTransaction();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -250,9 +219,9 @@ namespace ThuTien.GUI.ToTruong
                         else
                             if (tabControl.SelectedTab.Name == "tabCoQuan")
                             {
-                                foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                 {
-                                    if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_CQ"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
+                                    if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
                                     {
                                         _cHoaDon.SqlRollbackTransaction();
                                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -260,7 +229,7 @@ namespace ThuTien.GUI.ToTruong
                                     }
                                 }
                             }
-                        
+
                         _cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -270,7 +239,7 @@ namespace ThuTien.GUI.ToTruong
                         _cHoaDon.SqlRollbackTransaction();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
+
                 }
             }
             else
@@ -348,6 +317,5 @@ namespace ThuTien.GUI.ToTruong
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
-
     }
 }

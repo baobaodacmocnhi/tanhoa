@@ -101,6 +101,8 @@
             this.btnInDSTo = new System.Windows.Forms.Button();
             this.btnInDSNhanVien = new System.Windows.Forms.Button();
             this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.chkNgayKiemTra = new System.Windows.Forms.CheckBox();
+            this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -783,11 +785,34 @@
             this.btnXuatExcel.UseVisualStyleBackColor = true;
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
+            // chkNgayKiemTra
+            // 
+            this.chkNgayKiemTra.AutoSize = true;
+            this.chkNgayKiemTra.Location = new System.Drawing.Point(865, 35);
+            this.chkNgayKiemTra.Name = "chkNgayKiemTra";
+            this.chkNgayKiemTra.Size = new System.Drawing.Size(96, 17);
+            this.chkNgayKiemTra.TabIndex = 45;
+            this.chkNgayKiemTra.Text = "Ngày Kiểm Tra";
+            this.chkNgayKiemTra.UseVisualStyleBackColor = true;
+            this.chkNgayKiemTra.CheckedChanged += new System.EventHandler(this.chkNgayKiemTra_CheckedChanged);
+            // 
+            // dateGiaiTrach
+            // 
+            this.dateGiaiTrach.CustomFormat = "dd/MM/yyyy";
+            this.dateGiaiTrach.Enabled = false;
+            this.dateGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateGiaiTrach.Location = new System.Drawing.Point(967, 35);
+            this.dateGiaiTrach.Name = "dateGiaiTrach";
+            this.dateGiaiTrach.Size = new System.Drawing.Size(95, 20);
+            this.dateGiaiTrach.TabIndex = 44;
+            // 
             // frmKiemTraTonDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 640);
+            this.Controls.Add(this.chkNgayKiemTra);
+            this.Controls.Add(this.dateGiaiTrach);
             this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.btnInDSTo);
             this.Controls.Add(this.btnInDSNhanVien);
@@ -885,5 +910,7 @@
         private System.Windows.Forms.Button btnInDSTo;
         private System.Windows.Forms.Button btnInDSNhanVien;
         private System.Windows.Forms.Button btnXuatExcel;
+        private System.Windows.Forms.CheckBox chkNgayKiemTra;
+        private System.Windows.Forms.DateTimePicker dateGiaiTrach;
     }
 }

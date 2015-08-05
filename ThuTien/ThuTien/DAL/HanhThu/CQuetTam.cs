@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ThuTien.DAL.HanhThu
 {
-    class CQuetTam:CDAL
+    class CQuetTam : CDAL
     {
         public bool Them(TT_QuetTam quettam)
         {
@@ -47,7 +47,7 @@ namespace ThuTien.DAL.HanhThu
             }
         }
 
-        public bool CheckExist(string SoHoaDon, int CreatBy,DateTime CreateDate)
+        public bool CheckExist(string SoHoaDon, int CreatBy, DateTime CreateDate)
         {
             return _db.TT_QuetTams.Any(item => item.SoHoaDon == SoHoaDon && item.CreateBy == CreatBy && item.CreateDate.Value.Date == CreateDate.Date);
         }
@@ -104,6 +104,65 @@ namespace ThuTien.DAL.HanhThu
                     return LINQToDataTable(query);
                 }
             return null;
+        }
+
+        public DataTable GetDSByMaNVCreatedDate(string Loai, int MaNV)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemQT in _db.TT_QuetTams
+                            join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                            where itemQT.CreateBy == MaNV && itemHD.GB >= 11 && itemHD.GB <= 20
+                            orderby itemHD.MALOTRINH ascending
+                            select new
+                            {
+                                itemQT.MaQT,
+                                itemQT.CreateBy,
+                                itemQT.SoHoaDon,
+                                DanhBo = itemHD.DANHBA,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                MLT = itemHD.MALOTRINH,
+                                itemHD.SOPHATHANH,
+                                itemHD.TONGCONG,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemQT in _db.TT_QuetTams
+                                join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                                where itemQT.CreateBy == MaNV && itemHD.GB > 20
+                                orderby itemHD.MALOTRINH ascending
+                                select new
+                                {
+                                    itemQT.MaQT,
+                                    itemQT.CreateBy,
+                                    itemQT.SoHoaDon,
+                                    DanhBo = itemHD.DANHBA,
+                                    Ky = itemHD.KY + "/" + itemHD.NAM,
+                                    MLT = itemHD.MALOTRINH,
+                                    itemHD.SOPHATHANH,
+                                    itemHD.TONGCONG,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
+        public DataTable GetDSByMaNVCreatedDate(int MaNV, DateTime CreatedDate)
+        {
+            var query = from itemQT in _db.TT_QuetTams
+                        join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                        where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                        };
+            return LINQToDataTable(query);
         }
     }
 }

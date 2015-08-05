@@ -5,6 +5,7 @@ using System.Text;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
 using System.Data;
+using System.Globalization;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
@@ -23,6 +24,22 @@ namespace ThuTien.DAL.ChuyenKhoan
             catch (Exception ex)
             {
                 _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Them(string DanhBo)
+        {
+            try
+            {
+                string sql = "insert into TT_DuLieuKhachHang(DanhBo,CreateDate,CreateBy) values ('" + DanhBo + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'," + CNguoiDung.MaND + ")";
+
+                ExecuteNonQuery_Transaction(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -59,21 +76,21 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public TT_DuLieuKhachHang GetByNamKyDanhBo(int nam, int ky,string DanhBo)
+        public TT_DuLieuKhachHang GetByDanhBo(string DanhBo)
         {
-            return _db.TT_DuLieuKhachHangs.SingleOrDefault(item => item.Nam == nam && item.Ky == ky && item.DanhBo == DanhBo);
+            return _db.TT_DuLieuKhachHangs.SingleOrDefault(item => item.DanhBo == DanhBo);
         }
 
-        public bool CheckExistByNamKyDanhBo(int nam, int ky, string DanhBo)
+        public bool CheckExist(string DanhBo)
         {
-            return _db.TT_DuLieuKhachHangs.Any(item => item.Nam == nam && item.Ky == ky && item.DanhBo == DanhBo);
+            return _db.TT_DuLieuKhachHangs.Any(item=>item.DanhBo == DanhBo);
         }
 
-        public DataTable GetDSDangNgan(int nam, int ky)
+        public DataTable GetDSDangNgan()
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHangs
                         join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
-                        where itemDLKH.Nam == nam && itemDLKH.Ky == ky && itemHD.NAM == nam && itemHD.KY == ky && itemHD.MaNV_DangNgan != null
+                        where itemHD.MaNV_DangNgan != null
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
@@ -90,11 +107,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSTon(int nam, int ky)
+        public DataTable GetDSTon()
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHangs
                         join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
-                        where itemDLKH.Nam == nam && itemDLKH.Ky == ky && itemHD.NAM == nam && itemHD.KY == ky && itemHD.MaNV_DangNgan == null
+                        where itemHD.MaNV_DangNgan == null
                         select new
                         {
                             itemHD.NGAYGIAITRACH,

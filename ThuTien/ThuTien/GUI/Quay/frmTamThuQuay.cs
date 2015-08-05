@@ -123,7 +123,10 @@ namespace ThuTien.GUI.Quay
                 Int32 TongCongSo = 0;
                 foreach (var item in lstTamThu)
                 {
-                    Ky += item.HOADON.KY + "/" + item.HOADON.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)item.HOADON.TONGCONG)+", ";
+                    if(Ky=="")
+                    Ky += item.HOADON.KY + "/" + item.HOADON.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)item.HOADON.TONGCONG);
+                    else
+                        Ky += ", "+item.HOADON.KY + "/" + item.HOADON.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)item.HOADON.TONGCONG);
                     TongCongSo += (Int32)item.HOADON.TONGCONG;
                 }
 
@@ -297,9 +300,9 @@ namespace ThuTien.GUI.Quay
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {
                 if (Ky == "Hết nợ")
-                    Ky = "Còn nợ Kỳ " + item.Cells["Ky"].Value.ToString() + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Int32.Parse(item.Cells["TongCong"].Value.ToString())) + ", ";
+                    Ky = "Còn nợ Kỳ " + item.Cells["Ky"].Value.ToString() + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Int32.Parse(item.Cells["TongCong"].Value.ToString()));
                 else
-                    Ky += ", " + item.Cells["Ky"].Value.ToString() + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Int32.Parse(item.Cells["TongCong"].Value.ToString())) + ", ";
+                    Ky += ", " + item.Cells["Ky"].Value.ToString() + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Int32.Parse(item.Cells["TongCong"].Value.ToString()));
                 TongCongSo += Int32.Parse(item.Cells["TongCong"].Value.ToString());
             }
 
@@ -357,7 +360,7 @@ namespace ThuTien.GUI.Quay
                 frm.ShowDialog();  
             }
             if (dgvHoaDon.RowCount > 0)
-                dgvHoaDon.Rows.Clear();
+                dgvHoaDon.DataSource = null;
         }
 
         private void btnInTamThu_Click(object sender, EventArgs e)
