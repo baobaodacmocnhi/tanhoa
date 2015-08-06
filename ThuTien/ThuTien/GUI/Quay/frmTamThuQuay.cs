@@ -359,8 +359,10 @@ namespace ThuTien.GUI.Quay
                 frmInQuay frm = new frmInQuay(rpt);
                 frm.ShowDialog();  
             }
-            if (dgvHoaDon.RowCount > 0)
-                dgvHoaDon.DataSource = null;
+            while (dgvHoaDon.Rows.Count > 0)
+            {
+                dgvHoaDon.Rows.RemoveAt(0);
+            }
         }
 
         private void btnInTamThu_Click(object sender, EventArgs e)

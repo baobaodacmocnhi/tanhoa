@@ -6,14 +6,241 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ThuTien.DAL.Doi;
+using ThuTien.DAL.QuanTri;
+using ThuTien.DAL;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.Doi
 {
     public partial class frmToTrinhCatHuy : Form
     {
+        string _mnu = "mnuToTrinhCatHuy";
+        CHoaDon _cHoaDon = new CHoaDon();
+        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+        CToTrinhCatHuy _cToTrinhCatHuy = new CToTrinhCatHuy();
+
         public frmToTrinhCatHuy()
         {
             InitializeComponent();
         }
+
+        private void frmToTrinhCatHuy_Load(object sender, EventArgs e)
+        {
+            dgvToTrinh.AutoGenerateColumns = false;
+            dgvCTToTrinh.AutoGenerateColumns = false;
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Length == 11)
+            {
+                bool exist = false;
+                foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
+                    if (item.Cells["DanhBo"].Value.ToString() == txtDanhBo.Text.Trim())
+                    {
+                        exist = true;
+                        break;
+                    }
+                if (exist == false)
+                {
+                    DataTable dt = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
+                    string Ky = "";
+                    int TongCongSo = 0;
+                    int TieuThu = 0;
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        if (Ky == "")
+                            Ky += item["Ky"];
+                        else
+                            Ky += ", " + item["Ky"];
+                        TongCongSo += int.Parse(item["TongCong"].ToString());
+                        TieuThu += int.Parse(item["TieuThu"].ToString());
+                    }
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        dgvCTToTrinh.Rows.Add();
+
+                        dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DanhBo"].ToString();
+                        dgvCTToTrinh["MLT", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["MLT"].ToString();
+                        dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["HoTen"].ToString();
+                        dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DiaChi"].ToString();
+                        dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
+                        dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
+                        dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
+                        dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
+                    }
+                    txtDanhBo.Text = "";
+                }
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            dgvToTrinh.DataSource = _cToTrinhCatHuy.GetDSTT();
+            while (dgvCTToTrinh.Rows.Count > 0)
+            {
+                dgvCTToTrinh.Rows.RemoveAt(0);
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                if (dgvCTToTrinh.Rows.Count > 0)
+                    try
+                    {
+                        _cToTrinhCatHuy.BeginTransaction();
+
+                        TT_ToTrinhCatHuy totrinh = new TT_ToTrinhCatHuy();
+                        int MaCTTT = _cToTrinhCatHuy.GetMaxMaCTTT();
+
+                        foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
+                        {
+                            TT_CTToTrinhCatHuy cttotrinh = new TT_CTToTrinhCatHuy();
+                            cttotrinh.MaCTTT = ++MaCTTT;
+                            cttotrinh.DanhBo = item.Cells["DanhBo"].Value.ToString();
+                            cttotrinh.MLT = item.Cells["MLT"].Value.ToString();
+                            cttotrinh.CoDHN = int.Parse(item.Cells["CoDHN"].Value.ToString());
+                            cttotrinh.HoTen = item.Cells["HoTen"].Value.ToString();
+                            cttotrinh.DiaChi = item.Cells["DiaChi"].Value.ToString();
+                            cttotrinh.Ky = item.Cells["Ky"].Value.ToString();
+                            cttotrinh.TongCong = int.Parse(item.Cells["TongCong"].Value.ToString());
+                            cttotrinh.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
+                            if (item.Cells["GhiChu"].Value != null)
+                                cttotrinh.GhiChu = item.Cells["GhiChu"].Value.ToString();
+
+                            totrinh.TT_CTToTrinhCatHuys.Add(cttotrinh);
+                        }
+
+                        if (_cToTrinhCatHuy.ThemTT(totrinh))
+                        {
+                            _cToTrinhCatHuy.CommitTransaction();
+                            btnXem.PerformClick();
+                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            _cToTrinhCatHuy.Rollback();
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        _cToTrinhCatHuy.Rollback();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    try
+                    {
+                        _cToTrinhCatHuy.BeginTransaction();
+                        foreach (DataGridViewRow item in dgvCTToTrinh.SelectedRows)
+                        {
+                            TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(item.Cells["MaCTTT"].Value.ToString()));
+                            if (!_cToTrinhCatHuy.XoaCT(cttotrinh))
+                            {
+                                _cToTrinhCatHuy.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        ///xóa tờ trình nếu hết chi tiết
+                        if(_cToTrinhCatHuy.CountCTTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString()))==0)
+                        {
+                            TT_ToTrinhCatHuy totrinh=_cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString()));
+                            _cToTrinhCatHuy.XoaTT(totrinh);
+                        }
+
+                        _cToTrinhCatHuy.CommitTransaction();
+                        btnXem.PerformClick();
+                        MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception)
+                    {
+                        _cToTrinhCatHuy.Rollback();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvToTrinh.Columns[e.ColumnIndex].Name == "MaTT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            
+        }
+
+        private void dgvToTrinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvToTrinh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvCTToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "TieuThu" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvCTToTrinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvCTToTrinh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvToTrinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvToTrinh.RowCount > 0)
+                dgvCTToTrinh.DataSource = _cToTrinhCatHuy.GetDSCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+        }
+
+        private void dgvCTToTrinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "GhiChu")
+            {
+                TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(dgvCTToTrinh["MaCTTT",e.RowIndex].Value.ToString()));
+                cttotrinh.GhiChu = dgvCTToTrinh["GhiChu", e.RowIndex].Value.ToString();
+                _cToTrinhCatHuy.SuaCTTT(cttotrinh);
+            }
+        }
+
+        
     }
 }

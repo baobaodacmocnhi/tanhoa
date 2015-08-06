@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>82</ApplicationRevision>
+    <ApplicationRevision>83</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -117,6 +117,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDSTamThuChuyenKhoan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\Doi\rptToTrinhCatHuy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptToTrinhCatHuy.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\rptDSHoaDon_DiaChi.cs">
@@ -287,6 +293,7 @@
     <Compile Include="DAL\Doi\CDangKyHD0.cs" />
     <Compile Include="DAL\Doi\CHoaDon.cs" />
     <Compile Include="DAL\Doi\CHoaDonTon.cs" />
+    <Compile Include="DAL\Doi\CToTrinhCatHuy.cs" />
     <Compile Include="DAL\DongNuoc\CDongNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\Excel.cs" />
     <Compile Include="DAL\HanhThu\CQuetTam.cs" />
@@ -664,6 +671,10 @@
     <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptDSTamThuChuyenKhoan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSTamThuChuyenKhoan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\Doi\rptToTrinhCatHuy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinhCatHuy.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptDSHoaDon_DiaChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

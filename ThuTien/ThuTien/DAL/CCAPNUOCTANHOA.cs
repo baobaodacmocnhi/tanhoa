@@ -160,5 +160,11 @@ namespace ThuTien.DAL
             return LINQToDataTable(_dbCapNuocTanHoa.TB_GHICHUs.Where(item => item.DANHBO == DanhBo)
                 .OrderByDescending(item => item.CREATEDATE).Select(item=>new {item.CREATEDATE,item.NOIDUNG }).Take(5).ToList());
         }
+
+        public string GetCoDHN(string DanhBo)
+        {
+            return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.SingleOrDefault(item=>item.DANHBO==DanhBo).CODH;
+               
+        }
     }
 }

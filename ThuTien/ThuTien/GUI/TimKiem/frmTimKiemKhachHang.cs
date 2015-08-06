@@ -49,7 +49,10 @@ namespace ThuTien.GUI.TimKiem
                 if(_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Yellow;
                 if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                {
+                    item.Cells["TinhTrang"].Value = _cLenhHuy.GetTinhTrangBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                     item.DefaultCellStyle.BackColor = Color.Red;
+                }
             }
         }
 

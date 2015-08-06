@@ -354,7 +354,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnTongHopDangNganTG_Click(object sender, EventArgs e)
         {
-            List<TT_To> lst = _cTo.GetDSHanhThu();
+            List<TT_To> lst = _cTo.GetDS();
             DataTable dt = new DataTable();
             DataTable dtCNKD = new DataTable();
             long TongGiaBanTM = 0;
@@ -366,11 +366,12 @@ namespace ThuTien.GUI.TongHop
             long TongPhiBVMTCK = 0;
             long TongCongCK = 0;
 
-            dt = _cHoaDon.GetTongHopDangNganChiTietTG(lst[0].MaTo, dateGiaiTrachTongHopDangNgan.Value);
-            for (int i = 1; i < lst.Count; i++)
-            {
-                dt.Merge(_cHoaDon.GetTongHopDangNganChiTietTG(lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
-            }
+            dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThuTG(dateGiaiTrachTongHopDangNgan.Value);
+            for (int i = 0; i < lst.Count; i++)
+                if (lst[i].HanhThu == false)
+                {
+                    dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet("TG", lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
+                }
 
             dtCNKD = _cCNKD.GetTongHopDangNgan("TG", dateGiaiTrachTongHopDangNgan.Value);
 
@@ -385,10 +386,14 @@ namespace ThuTien.GUI.TongHop
                 }
                 else
                 {
-                    TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
-                    TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
-                    TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
-                    TongCongTM += long.Parse(item["TongCong"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongGiaBan"].ToString()))
+                        TongGiaBanTM += long.Parse(item["TongGiaBan"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongThueGTGT"].ToString()))
+                        TongThueGTGTTM += long.Parse(item["TongThueGTGT"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongPhiBVMT"].ToString()))
+                        TongPhiBVMTTM += long.Parse(item["TongPhiBVMT"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongCong"].ToString()))
+                        TongCongTM += long.Parse(item["TongCong"].ToString());
                 }
             }
 
