@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lstHD = new System.Windows.Forms.ListBox();
             this.btnXem = new System.Windows.Forms.Button();
-            this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
+            this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -87,6 +87,8 @@
             this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTongCong_CQ = new System.Windows.Forms.TextBox();
             this.btnInDS = new System.Windows.Forms.Button();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -115,7 +117,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(568, 10);
+            this.btnXem.Location = new System.Drawing.Point(611, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 24;
@@ -123,23 +125,23 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
-            // dateGiaiTrach
+            // dateDen
             // 
-            this.dateGiaiTrach.CustomFormat = "dd/MM/yyyy";
-            this.dateGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateGiaiTrach.Location = new System.Drawing.Point(462, 12);
-            this.dateGiaiTrach.Name = "dateGiaiTrach";
-            this.dateGiaiTrach.Size = new System.Drawing.Size(100, 20);
-            this.dateGiaiTrach.TabIndex = 23;
+            this.dateDen.CustomFormat = "dd/MM/yyyy";
+            this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen.Location = new System.Drawing.Point(505, 12);
+            this.dateDen.Name = "dateDen";
+            this.dateDen.Size = new System.Drawing.Size(100, 20);
+            this.dateDen.TabIndex = 23;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(369, 15);
+            this.label4.Location = new System.Drawing.Point(441, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 22;
-            this.label4.Text = "Ngày Giải Trách:";
+            this.label4.Text = "Đến Ngày:";
             // 
             // btnXoa
             // 
@@ -191,7 +193,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(649, 10);
+            this.btnInPhieu.Location = new System.Drawing.Point(692, 10);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnInPhieu.TabIndex = 38;
@@ -226,7 +228,7 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(817, 10);
+            this.btnXuatExcel.Location = new System.Drawing.Point(860, 10);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
             this.btnXuatExcel.TabIndex = 42;
@@ -618,7 +620,7 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(730, 10);
+            this.btnInDS.Location = new System.Drawing.Point(773, 10);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(81, 23);
             this.btnInDS.TabIndex = 30;
@@ -626,11 +628,31 @@
             this.btnInDS.UseVisualStyleBackColor = true;
             this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
+            // dateTu
+            // 
+            this.dateTu.CustomFormat = "dd/MM/yyyy";
+            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu.Location = new System.Drawing.Point(335, 12);
+            this.dateTu.Name = "dateTu";
+            this.dateTu.Size = new System.Drawing.Size(100, 20);
+            this.dateTu.TabIndex = 45;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(278, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "Từ Ngày:";
+            // 
             // frmDangNganChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1349, 638);
+            this.Controls.Add(this.dateTu);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnInDS);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btnXuatExcel);
@@ -641,7 +663,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstHD);
             this.Controls.Add(this.btnXem);
-            this.Controls.Add(this.dateGiaiTrach);
+            this.Controls.Add(this.dateDen);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -670,7 +692,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox lstHD;
         private System.Windows.Forms.Button btnXem;
-        private System.Windows.Forms.DateTimePicker dateGiaiTrach;
+        private System.Windows.Forms.DateTimePicker dateDen;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
@@ -722,5 +744,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_CQ;
         private System.Windows.Forms.TextBox txtTongCong_CQ;
         private System.Windows.Forms.Button btnInDS;
+        private System.Windows.Forms.DateTimePicker dateTu;
+        private System.Windows.Forms.Label label3;
     }
 }

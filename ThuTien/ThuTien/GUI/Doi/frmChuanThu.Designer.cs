@@ -109,6 +109,7 @@
             this.TiLeGiaBan_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiLeTongCong_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInTo = new System.Windows.Forms.Button();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -859,11 +860,22 @@
             this.btnInTo.UseVisualStyleBackColor = true;
             this.btnInTo.Click += new System.EventHandler(this.btnInTo_Click);
             // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.Location = new System.Drawing.Point(726, 9);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcel.TabIndex = 56;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = true;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            // 
             // frmChuanThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1269, 629);
+            this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.btnInTo);
             this.Controls.Add(this.dgvNhanVien);
             this.Controls.Add(this.cmbDot);
@@ -968,5 +980,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TiLeGiaBan_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TiLeTongCong_NV;
+        private System.Windows.Forms.Button btnXuatExcel;
     }
 }

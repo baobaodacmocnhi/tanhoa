@@ -38,12 +38,14 @@
             this.btnIn = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvToTrinh = new System.Windows.Forms.DataGridView();
-            this.dgvCTToTrinh = new System.Windows.Forms.DataGridView();
             this.MaTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvCTToTrinh = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.MaTT_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaCTTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,10 +56,10 @@
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXem = new System.Windows.Forms.Button();
+            this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCTToTrinh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,16 +120,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Tờ Trình";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dgvCTToTrinh);
-            this.groupBox2.Location = new System.Drawing.Point(297, 39);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(925, 590);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Chi Tiết Tờ Trình";
-            // 
             // dgvToTrinh
             // 
             this.dgvToTrinh.AllowUserToAddRows = false;
@@ -156,6 +148,28 @@
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
             // 
+            // MaTT
+            // 
+            this.MaTT.DataPropertyName = "MaTT";
+            this.MaTT.HeaderText = "Mã Tờ Trình";
+            this.MaTT.Name = "MaTT";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvCTToTrinh);
+            this.groupBox2.Location = new System.Drawing.Point(297, 39);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(925, 590);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Chi Tiết Tờ Trình";
+            // 
             // dgvCTToTrinh
             // 
             this.dgvCTToTrinh.AllowUserToAddRows = false;
@@ -170,6 +184,7 @@
             this.dgvCTToTrinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCTToTrinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCTToTrinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaTT_CT,
             this.MaCTTT,
             this.DanhBo,
             this.MLT,
@@ -179,7 +194,8 @@
             this.Ky,
             this.TongCong,
             this.TieuThu,
-            this.GhiChu});
+            this.GhiChu,
+            this.CreateDate_CT});
             this.dgvCTToTrinh.Location = new System.Drawing.Point(6, 19);
             this.dgvCTToTrinh.Name = "dgvCTToTrinh";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -191,18 +207,6 @@
             this.dgvCTToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCTToTrinh_CellFormatting);
             this.dgvCTToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCTToTrinh_RowPostPaint);
             // 
-            // MaTT
-            // 
-            this.MaTT.DataPropertyName = "MaTT";
-            this.MaTT.HeaderText = "Mã Tờ Trình";
-            this.MaTT.Name = "MaTT";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -211,6 +215,23 @@
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "(enter)";
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(512, 10);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 3;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // MaTT_CT
+            // 
+            this.MaTT_CT.DataPropertyName = "MaTT";
+            this.MaTT_CT.HeaderText = "MaTT";
+            this.MaTT_CT.Name = "MaTT_CT";
+            this.MaTT_CT.Visible = false;
             // 
             // MaCTTT
             // 
@@ -280,15 +301,12 @@
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.Width = 200;
             // 
-            // btnXem
+            // CreateDate_CT
             // 
-            this.btnXem.Location = new System.Drawing.Point(512, 10);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 3;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            this.CreateDate_CT.DataPropertyName = "CreateDate";
+            this.CreateDate_CT.HeaderText = "CreateDate";
+            this.CreateDate_CT.Name = "CreateDate_CT";
+            this.CreateDate_CT.Visible = false;
             // 
             // frmToTrinhCatHuy
             // 
@@ -308,8 +326,8 @@
             this.Text = "Tờ Trình Cắt Hủy Danh Bộ";
             this.Load += new System.EventHandler(this.frmToTrinhCatHuy_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCTToTrinh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -330,6 +348,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridView dgvCTToTrinh;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTT_CT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
@@ -340,6 +360,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
-        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_CT;
     }
 }

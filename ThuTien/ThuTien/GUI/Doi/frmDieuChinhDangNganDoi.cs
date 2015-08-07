@@ -22,6 +22,7 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDCHD _cDCHD = new CDCHD();
+        bool _flagLoadFirst = false;
 
         public frmDieuChinhDangNganDoi()
         {
@@ -36,15 +37,23 @@ namespace ThuTien.GUI.Doi
             cmbTo.DataSource = _cTo.GetDSHanhThu();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
+            cmbTo.SelectedIndex = -1;
 
             dateGiaiTrach.Value = DateTime.Now;
+
+            _flagLoadFirst = true;
         }
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
-            cmbNhanVien.DisplayMember = "HoTen";
-            cmbNhanVien.ValueMember = "MaND";
+            if (_flagLoadFirst == true && cmbTo.SelectedIndex != -1)
+            {
+                cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+            }
+            else
+                cmbNhanVien.DataSource = null;
         }
 
         public void CountdgvHDTuGia()

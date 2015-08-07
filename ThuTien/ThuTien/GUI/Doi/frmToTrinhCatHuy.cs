@@ -10,6 +10,9 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL;
 using ThuTien.LinQ;
+using ThuTien.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.BaoCao.Doi;
 
 namespace ThuTien.GUI.Doi
 {
@@ -111,6 +114,8 @@ namespace ThuTien.GUI.Doi
                             cttotrinh.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
                             if (item.Cells["GhiChu"].Value != null)
                                 cttotrinh.GhiChu = item.Cells["GhiChu"].Value.ToString();
+                            cttotrinh.CreateBy = CNguoiDung.MaND;
+                            cttotrinh.CreateDate = DateTime.Now;
 
                             totrinh.TT_CTToTrinhCatHuys.Add(cttotrinh);
                         }
@@ -181,7 +186,29 @@ namespace ThuTien.GUI.Doi
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            dsBaoCao ds = new dsBaoCao();
 
+            foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
+            {
+                DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
+                dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 1, "-");
+                dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
+                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                dr["MLT"] = item.Cells["MLT"].Value;
+                dr["CoDHN"] = item.Cells["CoDHN"].Value;
+                dr["HoTen"] = item.Cells["HoTen"].Value;
+                dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                dr["Ky"] = item.Cells["Ky"].Value;
+                dr["TongCong"] = item.Cells["TongCong"].Value;
+                dr["TieuThu"] = item.Cells["TieuThu"].Value;
+                dr["GhiChu"] = item.Cells["GhiChu"].Value;
+                ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
+            }
+
+            rptToTrinhCatHuy rpt = new rptToTrinhCatHuy();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void dgvToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

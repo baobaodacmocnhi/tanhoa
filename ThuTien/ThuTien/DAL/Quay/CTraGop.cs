@@ -15,10 +15,16 @@ namespace ThuTien.DAL.Quay
             {
                 if (_db.TT_TraGops.Count() > 0)
                 {
-                    tragop.MaTG = _db.TT_TraGops.Max(item => item.MaTG) + 1;
+                    string ID = "MaTG";
+                    string Table = "TT_TraGop";
+                    decimal MaTG = _db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    //decimal MaDCBD = db.DCBDs.Max(itemDCBD => itemDCBD.MaDCBD);
+                    tragop.MaTG = getMaxNextIDTable(MaTG);
                 }
                 else
-                    tragop.MaTG = 1;
+                    tragop.MaTG = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 tragop.CreateDate = DateTime.Now;
                 tragop.CreateBy = CNguoiDung.MaND;
                 _db.TT_TraGops.InsertOnSubmit(tragop);
@@ -84,6 +90,10 @@ namespace ThuTien.DAL.Quay
             return _db.TT_TraGops.Where(item => item.MaHD == MaHD).ToList();
         }
 
+        public System.Data.DataTable GetDS()
+        {
+            return ExecuteQuery_SqlDataAdapter_DataTable("select distinct MaHD,tg.SoHoaDon,SOPHATHANH,CAST(hd.KY as varchar)+'/'+CAST(hd.NAM as varchar) as Ky,DANHBA as DanhBo,hd.TENKH as HoTen,(hd.SO+' '+hd.DUONG) as DiaChi,MALOTRINH as MLT,TONGCONG from TT_TraGop tg,HOADON hd where tg.MaHD=hd.ID_HOADON");
+        }
         public TT_TraGop GetByMaTG(int MaTG)
         {
             return _db.TT_TraGops.SingleOrDefault(item => item.MaTG == MaTG);

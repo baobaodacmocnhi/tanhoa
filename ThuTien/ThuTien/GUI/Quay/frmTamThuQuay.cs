@@ -149,7 +149,7 @@ namespace ThuTien.GUI.Quay
 
                 rptPhieuTamThu rpt = new rptPhieuTamThu();
                 rpt.SetDataSource(ds);
-                frmBaoCao frm = new frmBaoCao(rpt);
+                frmInQuay frm = new frmInQuay(rpt);
                 frm.ShowDialog();
             }
             else

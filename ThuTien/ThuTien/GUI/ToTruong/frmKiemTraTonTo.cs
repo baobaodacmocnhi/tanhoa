@@ -161,7 +161,6 @@ namespace ThuTien.GUI.ToTruong
                                     }
                     }
                 }
-
                 else
                     ///chọn 1 nhân viên cụ thể
                     if (cmbNhanVien.SelectedIndex > 0)
@@ -337,50 +336,71 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnInDSNhanVien_Click(object sender, EventArgs e)
         {
+            DataTable dt = new DataTable();
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt=new DataTable();
-                if (cmbKy.SelectedIndex == 0)
-                    dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
-                else
-                    if (cmbKy.SelectedIndex > 1)
-                        dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                foreach (DataRow item in dt.Rows)
+                if (chkNgayKiemTra.Checked)
                 {
-                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TƯ GIA TỒN";
-                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                    dr["Ky"] = item["Ky"];
-                    dr["MLT"] = item["MLT"];
-                    dr["TongCong"] = item["TongCong"];
-                    dr["SoPhatHanh"] = item["SoPhatHanh"];
-                    dr["SoHoaDon"] = item["SoHoaDon"];
-                    dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
-                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
                 }
-            }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                else
                 {
-                    DataTable dt = new DataTable() ;
+                    if (cmbNam.SelectedIndex == 0)
+                        dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()));
+                    else
+                        if (cmbNam.SelectedIndex > 0)
                     if (cmbKy.SelectedIndex == 0)
-                        dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                        dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                     else
                         if (cmbKy.SelectedIndex > 1)
-                            dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                        dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
+                        dr["LoaiBaoCao"] = "TƯ GIA TỒN";
                         dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                         dr["Ky"] = item["Ky"];
                         dr["MLT"] = item["MLT"];
                         dr["TongCong"] = item["TongCong"];
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
-                        dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                        dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    if (chkNgayKiemTra.Checked)
+                    {
+                        dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
+                    }
+                    else
+                    {
+                        if (cmbNam.SelectedIndex == 0)
+                            dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()));
+                        else
+                            if (cmbNam.SelectedIndex > 0)
+                        if (cmbKy.SelectedIndex == 0)
+                            dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                        else
+                            if (cmbKy.SelectedIndex > 1)
+                                dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                            dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                            dr["Ky"] = item["Ky"];
+                            dr["MLT"] = item["MLT"];
+                            dr["TongCong"] = item["TongCong"];
+                            dr["SoPhatHanh"] = item["SoPhatHanh"];
+                            dr["SoHoaDon"] = item["SoHoaDon"];
+                            dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                            ds.Tables["DSHoaDon"].Rows.Add(dr);
+                        }
                     }
                 }
             rptDSHoaDon rpt = new rptDSHoaDon();
@@ -391,50 +411,71 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnInDSTo_Click(object sender, EventArgs e)
         {
+            DataTable dt = new DataTable();
             dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = new DataTable();
-                if (cmbKy.SelectedIndex == 0)
-                    dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
-                else
-                    if (cmbKy.SelectedIndex > 1)
-                        dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                foreach (DataRow item in dt.Rows)
+                if (chkNgayKiemTra.Checked)
                 {
-                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                    dr["LoaiBaoCao"] = "TƯ GIA TỒN";
-                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                    dr["Ky"] = item["Ky"];
-                    dr["MLT"] = item["MLT"];
-                    dr["TongCong"] = item["TongCong"];
-                    dr["SoPhatHanh"] = item["SoPhatHanh"];
-                    dr["SoHoaDon"] = item["SoHoaDon"];
-                    dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
-                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
                 }
-            }
-            else
-                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                else
                 {
-                    DataTable dt = new DataTable();
-                    if (cmbKy.SelectedIndex == 0)
-                        dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                    if (cmbNam.SelectedIndex == 0)
+                        dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo);
                     else
-                        if (cmbKy.SelectedIndex > 1)
-                            dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        if (cmbNam.SelectedIndex > 0)
+                            if (cmbKy.SelectedIndex == 0)
+                                dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                            else
+                                if (cmbKy.SelectedIndex > 1)
+                                    dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                        dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
+                        dr["LoaiBaoCao"] = "TƯ GIA TỒN";
                         dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                         dr["Ky"] = item["Ky"];
                         dr["MLT"] = item["MLT"];
                         dr["TongCong"] = item["TongCong"];
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
-                        dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                        dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    if (chkNgayKiemTra.Checked)
+                    {
+                        dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                    }
+                    else
+                    {
+                        if (cmbNam.SelectedIndex == 0)
+                            dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo);
+                        else
+                            if (cmbNam.SelectedIndex > 0)
+                                if (cmbKy.SelectedIndex == 0)
+                                    dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                                else
+                                    if (cmbKy.SelectedIndex > 1)
+                                        dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                            dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                            dr["Ky"] = item["Ky"];
+                            dr["MLT"] = item["MLT"];
+                            dr["TongCong"] = item["TongCong"];
+                            dr["SoPhatHanh"] = item["SoPhatHanh"];
+                            dr["SoHoaDon"] = item["SoHoaDon"];
+                            dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                            ds.Tables["DSHoaDon"].Rows.Add(dr);
+                        }
                     }
                 }
             rptDSHoaDon rpt = new rptDSHoaDon();

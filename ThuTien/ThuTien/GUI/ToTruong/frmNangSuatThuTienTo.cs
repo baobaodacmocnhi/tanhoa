@@ -341,6 +341,14 @@ namespace ThuTien.GUI.ToTruong
             frm.ShowDialog();
         }
 
+        private void chkNgayKiemTra_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNgayKiemTra.Checked)
+                dateGiaiTrach.Enabled = true;
+            else
+                dateGiaiTrach.Enabled = false;
+        }
+
 
     }
 }

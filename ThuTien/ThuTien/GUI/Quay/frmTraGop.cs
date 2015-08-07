@@ -53,7 +53,7 @@ namespace ThuTien.GUI.Quay
                 {
                     dgvHoaDon.Rows.Clear();
                     HOADON hoadon = _cHoaDon.GetBySoHoaDon(txtSoHoaDon.Text.Trim());
-                    dgvHoaDon.Rows.Add(hoadon.ID_HOADON,hoadon.SOHOADON,hoadon.KY+"/"+hoadon.NAM,hoadon.MALOTRINH,hoadon.SOPHATHANH,hoadon.DANHBA,hoadon.TONGCONG);
+                    dgvHoaDon.Rows.Add(hoadon.ID_HOADON,hoadon.SOHOADON,hoadon.KY+"/"+hoadon.NAM,hoadon.MALOTRINH,hoadon.SOPHATHANH,hoadon.DANHBA,hoadon.SO+" "+hoadon.DUONG,hoadon.TENKH,hoadon.TONGCONG);
                     txtSoHoaDon.Text = "";
                 }
                 else
@@ -93,9 +93,10 @@ namespace ThuTien.GUI.Quay
 
                 tragop.MaHD = int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString());
                 tragop.SoHoaDon = dgvHoaDon.CurrentRow.Cells["SoHoaDon"].Value.ToString();
-                string[] date = dgvHoaDon.CurrentRow.Cells["NgayTra"].Value.ToString().Split('/');
-                tragop.NgayTra = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                tragop.SoTien = int.Parse(dgvHoaDon.CurrentRow.Cells["SoTien"].Value.ToString());
+                //string[] date = dgvHoaDon.CurrentRow.Cells["NgayTra"].Value.ToString().Split('/');
+                //tragop.NgayTra = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                tragop.NgayTra = dateTra.Value;
+                tragop.SoTien = int.Parse(txtSoTien.Text.Trim());
 
                 if (_cTraGop.Them(tragop))
                 {
@@ -113,9 +114,11 @@ namespace ThuTien.GUI.Quay
             {
                 TT_TraGop tragop = _cTraGop.GetByMaTG(int.Parse(dgvTraGop.CurrentRow.Cells["MaTG"].Value.ToString()));
 
-                string[] date = dgvHoaDon.CurrentRow.Cells["NgayTra"].Value.ToString().Split('/');
-                tragop.NgayTra = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                tragop.SoTien = int.Parse(dgvHoaDon.CurrentRow.Cells["SoTien"].Value.ToString());
+                //string[] date = dgvHoaDon.CurrentRow.Cells["NgayTra"].Value.ToString().Split('/');
+                //tragop.NgayTra = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                //tragop.SoTien = int.Parse(dgvHoaDon.CurrentRow.Cells["SoTien"].Value.ToString());
+                tragop.NgayTra = dateTra.Value;
+                tragop.SoTien = int.Parse(txtSoTien.Text.Trim());
 
                 if (_cTraGop.Sua(tragop))
                 {
@@ -150,16 +153,16 @@ namespace ThuTien.GUI.Quay
         {
             dsBaoCao ds = new dsBaoCao();
             DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
-            TT_TraGop tragop = _cTraGop.GetByMaTG(int.Parse(dgvTraGop.CurrentRow.Cells["MaTG"].Value.ToString()));
+            TT_TraGop tragop = _cTraGop.GetByMaTG(int.Parse(dgvTraGop.SelectedRows[0].Cells["MaTG"].Value.ToString()));
 
-            dr["SoPhieu"] = tragop.SoPhieu.ToString().Insert(tragop.SoPhieu.ToString().Length - 2, "-");
+            dr["SoPhieu"] = tragop.MaTG.ToString().Insert(tragop.MaTG.ToString().Length - 2, "-");
             dr["DanhBo"] = tragop.HOADON.DANHBA.Insert(4, " ").Insert(8, " ");
             dr["HoTen"] = tragop.HOADON.TENKH;
             dr["DiaChi"] = tragop.HOADON.SO + " " + tragop.HOADON.DUONG;
             dr["MLT"] = tragop.HOADON.MALOTRINH;
             dr["GiaBieu"] = tragop.HOADON.GB;
             dr["DinhMuc"] = tragop.HOADON.DM;
-            dr["Ky"] = Ky;
+            dr["Ky"] = tragop.HOADON.KY+"/"+tragop.HOADON.NAM;
             dr["TongCongSo"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", tragop.SoTien);
             dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(tragop.SoTien.ToString());
             if (tragop.HOADON.MaNV_HanhThu != null)
@@ -175,15 +178,51 @@ namespace ThuTien.GUI.Quay
 
         private void dgvTraGop_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            TT_TraGop tragop = _cTraGop.GetByMaTG(int.Parse(dgvTraGop.CurrentRow.Cells["MaTG"].Value.ToString()));
-
-            if (tragop.DaThanhToan != bool.Parse(dgvTraGop.CurrentRow.Cells["DaThanhToan"].Value.ToString()))
+            if (dgvTraGop.Columns[e.ColumnIndex].Name == "DaThanhToan")
             {
-                tragop.DaThanhToan = bool.Parse(dgvTraGop.CurrentRow.Cells["DaThanhToan"].Value.ToString());
-                if (tragop.SoPhieu == null)
-                    tragop.SoPhieu = _cTraGop.GetNextSoPhieu();
-                _cTraGop.Sua(tragop);
+                TT_TraGop tragop = _cTraGop.GetByMaTG(int.Parse(dgvTraGop.CurrentRow.Cells["MaTG"].Value.ToString()));
+
+                if (tragop.DaThanhToan != bool.Parse(dgvTraGop.CurrentRow.Cells["DaThanhToan"].Value.ToString()))
+                {
+                    tragop.DaThanhToan = bool.Parse(dgvTraGop.CurrentRow.Cells["DaThanhToan"].Value.ToString());
+                    if (tragop.SoPhieu == null)
+                        tragop.SoPhieu = _cTraGop.GetNextSoPhieu();
+                    _cTraGop.Sua(tragop);
+                }
             }
+        }
+
+        private void dgvTraGop_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvTraGop.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvTraGop_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvTraGop.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvTraGop_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dateTra.Value = DateTime.Parse(dgvTraGop["NgayTra", e.RowIndex].Value.ToString());
+                txtSoTien.Text = dgvTraGop["SoTien", e.RowIndex].Value.ToString();
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            dgvHoaDon.DataSource = _cTraGop.GetDS();
         }
 
         

@@ -193,8 +193,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
-                            itemHD.KY,
-                            itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             itemHD.TIEUTHU,
                             itemHD.GIABAN,
@@ -209,19 +209,24 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
                         join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
                         where itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
-                            itemHD.KY,
-                            itemHD.NAM,
+                            MLT=itemHD.MALOTRINH,
+                            Ky=itemHD.KY+"/"+itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
+                            HoTen=itemHD.TENKH,
                             itemHD.TIEUTHU,
                             itemHD.GIABAN,
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
+                            HanhThu=itemtableND.HanhThu,
+                            To=itemtableND.TT_To.TenTo,
                         };
             return LINQToDataTable(query);
         }

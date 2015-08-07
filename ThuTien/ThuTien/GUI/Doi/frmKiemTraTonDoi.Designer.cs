@@ -777,7 +777,7 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(724, 12);
+            this.btnXuatExcel.Location = new System.Drawing.Point(724, 11);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(81, 23);
             this.btnXuatExcel.TabIndex = 43;
