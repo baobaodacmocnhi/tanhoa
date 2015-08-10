@@ -106,7 +106,7 @@ namespace ThuTien.GUI.DongNuoc
 
                         TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                         ctdongnuoc.MaDN = dongnuoc.MaDN;
-                        ctdongnuoc.MaHD = lstHDTemp[0].ID_HOADON;
+                        //ctdongnuoc.MaHD = lstHDTemp[0].ID_HOADON;
                         ctdongnuoc.SoHoaDon = lstHDTemp[0].SOHOADON;
                         ctdongnuoc.Ky = lstHDTemp[0].KY + "/" + lstHDTemp[0].NAM;
                         ctdongnuoc.TieuThu = (int)lstHDTemp[0].TIEUTHU;
@@ -124,7 +124,7 @@ namespace ThuTien.GUI.DongNuoc
                             {
                                 TT_CTDongNuoc ctdongnuoc2 = new TT_CTDongNuoc();
                                 ctdongnuoc2.MaDN = dongnuoc.MaDN;
-                                ctdongnuoc2.MaHD = lstHDTemp[j].ID_HOADON;
+                                //ctdongnuoc2.MaHD = lstHDTemp[j].ID_HOADON;
                                 ctdongnuoc2.SoHoaDon = lstHDTemp[j].SOHOADON;
                                 ctdongnuoc2.Ky = lstHDTemp[j].KY + "/" + lstHDTemp[j].NAM;
                                 ctdongnuoc2.TieuThu = (int)lstHDTemp[j].TIEUTHU;

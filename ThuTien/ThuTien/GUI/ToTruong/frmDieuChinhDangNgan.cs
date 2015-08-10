@@ -180,8 +180,9 @@ namespace ThuTien.GUI.ToTruong
                             if (_cHoaDon.DangNgan("HanhThu", item.ToString(), (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
                             {
                                 ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
-                                if (_cTamThu.CheckExistBySoHoaDon(item.ToString()))
-                                    if (_cHoaDon.Thu2Lan(item.ToString()))
+                                bool ChuyenKhoan = false;
+                                if (_cTamThu.CheckExistBySoHoaDon(item.ToString(),out ChuyenKhoan))
+                                    if (_cHoaDon.Thu2Lan(item.ToString(),ChuyenKhoan))
                                     {
                                         if (!_cTamThu.Xoa(item.ToString()))
                                         {

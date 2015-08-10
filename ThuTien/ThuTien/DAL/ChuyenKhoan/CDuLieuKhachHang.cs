@@ -225,7 +225,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
-                            HanhThu=itemtableND.HanhThu,
+                            HanhThu=itemtableND.HoTen,
                             To=itemtableND.TT_To.TenTo,
                         };
             return LINQToDataTable(query);

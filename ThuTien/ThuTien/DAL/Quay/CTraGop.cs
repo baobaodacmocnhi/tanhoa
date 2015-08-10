@@ -85,14 +85,14 @@ namespace ThuTien.DAL.Quay
             }
         }
 
-        public List<TT_TraGop> GetDSByMaHD(int MaHD)
+        public List<TT_TraGop> GetDSBySoHoaDon(string SoHoaDon)
         {
-            return _db.TT_TraGops.Where(item => item.MaHD == MaHD).ToList();
+            return _db.TT_TraGops.Where(item => item.SoHoaDon == SoHoaDon).ToList();
         }
 
         public System.Data.DataTable GetDS()
         {
-            return ExecuteQuery_SqlDataAdapter_DataTable("select distinct MaHD,tg.SoHoaDon,SOPHATHANH,CAST(hd.KY as varchar)+'/'+CAST(hd.NAM as varchar) as Ky,DANHBA as DanhBo,hd.TENKH as HoTen,(hd.SO+' '+hd.DUONG) as DiaChi,MALOTRINH as MLT,TONGCONG from TT_TraGop tg,HOADON hd where tg.MaHD=hd.ID_HOADON");
+            return ExecuteQuery_SqlDataAdapter_DataTable("select distinct tg.SoHoaDon,SOPHATHANH,CAST(hd.KY as varchar)+'/'+CAST(hd.NAM as varchar) as Ky,DANHBA as DanhBo,hd.TENKH as HoTen,(hd.SO+' '+hd.DUONG) as DiaChi,MALOTRINH as MLT,TONGCONG from TT_TraGop tg,HOADON hd where tg.SoHoaDon=hd.SOHOADON");
         }
         public TT_TraGop GetByMaTG(int MaTG)
         {

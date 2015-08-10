@@ -46,7 +46,7 @@ namespace ThuTien.GUI.HanhThu
         public void LoadDataGridView()
         {
             dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-            dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon("TG",CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+            dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
@@ -172,8 +172,9 @@ namespace ThuTien.GUI.HanhThu
                                 if (_cHoaDon.DangNgan("HanhThu", item.ToString(), CNguoiDung.MaND))
                                 {
                                     ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
-                                    if (_cTamThu.CheckExistBySoHoaDon(item.ToString()))
-                                        if (_cHoaDon.Thu2Lan(item.ToString()))
+                                    bool ChuyenKhoan = false;
+                                    if (_cTamThu.CheckExistBySoHoaDon(item.ToString(),out ChuyenKhoan))
+                                        if (_cHoaDon.Thu2Lan(item.ToString(),ChuyenKhoan))
                                         {
                                             if (!_cTamThu.Xoa(item.ToString()))
                                             {
@@ -248,7 +249,35 @@ namespace ThuTien.GUI.HanhThu
                                 foreach (DataRow item in dt.Rows)
                                     if (!lstHD.Items.Contains(item["SoHoaDon"].ToString()))
                                     {
-                                        if (!_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
+                                        if (_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
+                                        {
+                                            ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
+                                            bool ChuyenKhoan = false;
+                                            if (_cTamThu.CheckExistBySoHoaDon(item.ToString(), out ChuyenKhoan))
+                                                if (_cHoaDon.Thu2Lan(item.ToString(), ChuyenKhoan))
+                                                {
+                                                    if (!_cTamThu.Xoa(item.ToString()))
+                                                    {
+                                                        _cHoaDon.SqlRollbackTransaction();
+                                                        MessageBox.Show("Lỗi Xóa Tạm Thu, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                        return;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    _cHoaDon.SqlRollbackTransaction();
+                                                    MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    return;
+                                                }
+                                            if (_cLenhHuy.CheckExist(item.ToString()))
+                                                if (!_cLenhHuy.Xoa(item.ToString()))
+                                                {
+                                                    _cHoaDon.SqlRollbackTransaction();
+                                                    MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    return;
+                                                }
+                                        }
+                                        else
                                         {
                                             _cHoaDon.SqlRollbackTransaction();
                                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

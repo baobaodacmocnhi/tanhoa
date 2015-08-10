@@ -41,8 +41,8 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim(), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
-            dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim());
+            dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
+            dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ",""));
 
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {

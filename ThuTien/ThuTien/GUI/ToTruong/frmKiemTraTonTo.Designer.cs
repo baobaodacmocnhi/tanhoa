@@ -91,8 +91,6 @@
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
             this.chkNgayKiemTra = new System.Windows.Forms.CheckBox();
             this.btnInDSTo = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNhieuKy = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -690,32 +688,11 @@
             this.btnInDSTo.UseVisualStyleBackColor = true;
             this.btnInDSTo.Click += new System.EventHandler(this.btnInDSTo_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1033, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Nhiều Kỳ:";
-            this.label1.Visible = false;
-            // 
-            // txtNhieuKy
-            // 
-            this.txtNhieuKy.Location = new System.Drawing.Point(1092, 8);
-            this.txtNhieuKy.Name = "txtNhieuKy";
-            this.txtNhieuKy.Size = new System.Drawing.Size(30, 20);
-            this.txtNhieuKy.TabIndex = 38;
-            this.txtNhieuKy.Text = "1";
-            this.txtNhieuKy.Visible = false;
-            // 
             // frmKiemTraTonTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1210, 520);
-            this.Controls.Add(this.txtNhieuKy);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnInDSTo);
             this.Controls.Add(this.chkNgayKiemTra);
             this.Controls.Add(this.dateGiaiTrach);
@@ -801,7 +778,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHDTon_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_TG;
         private System.Windows.Forms.Button btnInDSTo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNhieuKy;
     }
 }

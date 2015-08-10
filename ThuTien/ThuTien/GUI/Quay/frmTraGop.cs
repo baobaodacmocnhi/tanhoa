@@ -37,7 +37,7 @@ namespace ThuTien.GUI.Quay
 
         public void LoadDanhSach()
         {
-            dgvTraGop.DataSource = _cTraGop.GetDSByMaHD(int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString()));
+            dgvTraGop.DataSource = _cTraGop.GetDSBySoHoaDon(dgvHoaDon.CurrentRow.Cells["SoHoaDon"].Value.ToString());
         }
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
@@ -68,21 +68,9 @@ namespace ThuTien.GUI.Quay
             }
         }
 
-        private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void btnXem_Click(object sender, EventArgs e)
         {
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
-            }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
-            {
-                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-        }
-
-        private void dgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            LoadDanhSach();
+            dgvHoaDon.DataSource = _cTraGop.GetDS();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -91,7 +79,7 @@ namespace ThuTien.GUI.Quay
             {
                 TT_TraGop tragop = new TT_TraGop();
 
-                tragop.MaHD = int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString());
+                //tragop.MaHD = int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString());
                 tragop.SoHoaDon = dgvHoaDon.CurrentRow.Cells["SoHoaDon"].Value.ToString();
                 //string[] date = dgvHoaDon.CurrentRow.Cells["NgayTra"].Value.ToString().Split('/');
                 //tragop.NgayTra = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
@@ -176,6 +164,31 @@ namespace ThuTien.GUI.Quay
             frm.ShowDialog();
         }
 
+        private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            {
+                e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadDanhSach();
+        }
+
         private void dgvTraGop_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvTraGop.Columns[e.ColumnIndex].Name == "DaThanhToan")
@@ -219,12 +232,6 @@ namespace ThuTien.GUI.Quay
             {
             }
         }
-
-        private void btnXem_Click(object sender, EventArgs e)
-        {
-            dgvHoaDon.DataSource = _cTraGop.GetDS();
-        }
-
         
     }
 }

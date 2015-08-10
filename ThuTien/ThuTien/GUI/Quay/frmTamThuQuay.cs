@@ -321,7 +321,8 @@ namespace ThuTien.GUI.Quay
                 xacnhanno.DiaChi = dgvHoaDon["DiaChi", 0].Value.ToString();
                 xacnhanno.MLT = dgvHoaDon["MLT", 0].Value.ToString();
                 xacnhanno.GiaBieu = int.Parse(dgvHoaDon["GiaBieu", 0].Value.ToString());
-                xacnhanno.DinhMuc = int.Parse(dgvHoaDon["DinhMuc", 0].Value.ToString());
+                if (!string.IsNullOrEmpty(dgvHoaDon["DinhMuc", 0].Value.ToString()))
+                    xacnhanno.DinhMuc = int.Parse(dgvHoaDon["DinhMuc", 0].Value.ToString());
                 xacnhanno.Ky = Ky;
                 xacnhanno.TongCong = TongCongSo;
                 xacnhanno.CreateBy = CNguoiDung.MaND;
@@ -334,7 +335,8 @@ namespace ThuTien.GUI.Quay
                 xacnhanno.DiaChi = hoadon.SO + " " + hoadon.DUONG;
                 xacnhanno.MLT = hoadon.MALOTRINH;
                 xacnhanno.GiaBieu = hoadon.GB;
-                xacnhanno.DinhMuc = (int)hoadon.DM;
+                if (hoadon.DM != null)
+                    xacnhanno.DinhMuc = (int)hoadon.DM;
                 xacnhanno.CreateBy = CNguoiDung.MaND;
             }
 
@@ -348,7 +350,10 @@ namespace ThuTien.GUI.Quay
                 dr["DiaChi"] = xacnhanno.DiaChi;
                 dr["MLT"] = xacnhanno.MLT;
                 dr["GiaBieu"] = xacnhanno.GiaBieu;
-                dr["DinhMuc"] = xacnhanno.DinhMuc;
+                if (xacnhanno.DinhMuc == null)
+                    dr["DinhMuc"] = 0;
+                else
+                    dr["DinhMuc"] = xacnhanno.DinhMuc;
                 dr["Ky"] = Ky;
                 dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", TongCongSo);
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
@@ -441,7 +446,10 @@ namespace ThuTien.GUI.Quay
                 dr["DiaChi"] = item.Cells["DiaChi_XacNhanNo"].Value.ToString();
                 dr["MLT"] = item.Cells["MLT_XacNhanNo"].Value.ToString();
                 dr["GiaBieu"] = item.Cells["GiaBieu_XacNhanNo"].Value.ToString();
-                dr["DinhMuc"] = item.Cells["DinhMuc_XacNhanNo"].Value.ToString();
+                if (item.Cells["DinhMuc_XacNhanNo"].Value == null)
+                    dr["DinhMuc"] = 0;
+                else
+                    dr["DinhMuc"] = item.Cells["DinhMuc_XacNhanNo"].Value.ToString();
                 dr["Ky"] = item.Cells["Ky_XacNhanNo"].Value.ToString();
                 dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", (int)item.Cells["TongCong_XacNhanNo"].Value);
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;

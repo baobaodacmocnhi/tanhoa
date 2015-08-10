@@ -167,8 +167,9 @@ namespace ThuTien.GUI.HanhThu
                             if (_cHoaDon.DangNgan("Ton", item.ToString(), CNguoiDung.MaND))
                             {
                                 ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
-                                if (_cTamThu.CheckExistBySoHoaDon(item.ToString()))
-                                    if (_cHoaDon.Thu2Lan(item.ToString()))
+                                bool ChuyenKhoan = false;
+                                if (_cTamThu.CheckExistBySoHoaDon(item.ToString(),out ChuyenKhoan))
+                                    if (_cHoaDon.Thu2Lan(item.ToString(),ChuyenKhoan))
                                     {
                                         if (!_cTamThu.Xoa(item.ToString()))
                                         {

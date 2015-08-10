@@ -342,19 +342,19 @@ namespace ThuTien.GUI.ToTruong
             {
                 if (chkNgayKiemTra.Checked)
                 {
-                    dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
+                    dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
                 }
                 else
                 {
                     if (cmbNam.SelectedIndex == 0)
-                        dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()));
+                        dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()));
                     else
                         if (cmbNam.SelectedIndex > 0)
                     if (cmbKy.SelectedIndex == 0)
-                        dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                        dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                     else
                         if (cmbKy.SelectedIndex > 1)
-                            dt = _cHoaDon.GetDSTon("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                            dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["DSHoaDon"].NewRow();
@@ -375,19 +375,19 @@ namespace ThuTien.GUI.ToTruong
                 {
                     if (chkNgayKiemTra.Checked)
                     {
-                        dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
+                        dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value);
                     }
                     else
                     {
                         if (cmbNam.SelectedIndex == 0)
-                            dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()));
+                            dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()));
                         else
                             if (cmbNam.SelectedIndex > 0)
                         if (cmbKy.SelectedIndex == 0)
-                            dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
+                            dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()));
                         else
                             if (cmbKy.SelectedIndex > 1)
-                                dt = _cHoaDon.GetDSTon("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                         foreach (DataRow item in dt.Rows)
                         {
                             DataRow dr = ds.Tables["DSHoaDon"].NewRow();
@@ -417,19 +417,19 @@ namespace ThuTien.GUI.ToTruong
             {
                 if (chkNgayKiemTra.Checked)
                 {
-                    dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                    dt = _cHoaDon.GetDSTon_To("TG", CNguoiDung.MaTo, dateGiaiTrach.Value, 1);
                 }
                 else
                 {
                     if (cmbNam.SelectedIndex == 0)
-                        dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo);
+                        dt = _cHoaDon.GetDSTon_To("TG", CNguoiDung.MaTo,1);
                     else
                         if (cmbNam.SelectedIndex > 0)
                             if (cmbKy.SelectedIndex == 0)
-                                dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                                dt = _cHoaDon.GetDSTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()),1);
                             else
                                 if (cmbKy.SelectedIndex > 1)
-                                    dt = _cHoaDon.GetDSToTon("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                    dt = _cHoaDon.GetDSTon_To("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),1);
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["DSHoaDon"].NewRow();
@@ -450,19 +450,19 @@ namespace ThuTien.GUI.ToTruong
                 {
                     if (chkNgayKiemTra.Checked)
                     {
-                        dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value);
+                        dt = _cHoaDon.GetDSTon_To("CQ", CNguoiDung.MaTo, dateGiaiTrach.Value,1);
                     }
                     else
                     {
                         if (cmbNam.SelectedIndex == 0)
-                            dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo);
+                            dt = _cHoaDon.GetDSTon_To("CQ", CNguoiDung.MaTo,1);
                         else
                             if (cmbNam.SelectedIndex > 0)
                                 if (cmbKy.SelectedIndex == 0)
-                                    dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()));
+                                    dt = _cHoaDon.GetDSTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()),1);
                                 else
                                     if (cmbKy.SelectedIndex > 1)
-                                        dt = _cHoaDon.GetDSToTon("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                        dt = _cHoaDon.GetDSTon_To("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),1);
                         foreach (DataRow item in dt.Rows)
                         {
                             DataRow dr = ds.Tables["DSHoaDon"].NewRow();

@@ -103,6 +103,8 @@
             this.btnXuatExcel = new System.Windows.Forms.Button();
             this.chkNgayKiemTra = new System.Windows.Forms.CheckBox();
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
+            this.txtNhieuKy = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -806,11 +808,30 @@
             this.dateGiaiTrach.Size = new System.Drawing.Size(95, 20);
             this.dateGiaiTrach.TabIndex = 44;
             // 
+            // txtNhieuKy
+            // 
+            this.txtNhieuKy.Location = new System.Drawing.Point(1032, 8);
+            this.txtNhieuKy.Name = "txtNhieuKy";
+            this.txtNhieuKy.Size = new System.Drawing.Size(30, 20);
+            this.txtNhieuKy.TabIndex = 47;
+            this.txtNhieuKy.Text = "1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(973, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Nhiều Kỳ:";
+            // 
             // frmKiemTraTonDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 640);
+            this.Controls.Add(this.txtNhieuKy);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.chkNgayKiemTra);
             this.Controls.Add(this.dateGiaiTrach);
             this.Controls.Add(this.btnXuatExcel);
@@ -912,5 +933,7 @@
         private System.Windows.Forms.Button btnXuatExcel;
         private System.Windows.Forms.CheckBox chkNgayKiemTra;
         private System.Windows.Forms.DateTimePicker dateGiaiTrach;
+        private System.Windows.Forms.TextBox txtNhieuKy;
+        private System.Windows.Forms.Label label1;
     }
 }
