@@ -111,7 +111,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(394, 11);
+            this.btnXem.Location = new System.Drawing.Point(404, 11);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 33;
@@ -136,7 +136,7 @@
             "10",
             "11",
             "12"});
-            this.cmbKy.Location = new System.Drawing.Point(338, 12);
+            this.cmbKy.Location = new System.Drawing.Point(348, 12);
             this.cmbKy.Name = "cmbKy";
             this.cmbKy.Size = new System.Drawing.Size(50, 21);
             this.cmbKy.TabIndex = 32;
@@ -144,7 +144,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(310, 15);
+            this.label3.Location = new System.Drawing.Point(320, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 13);
             this.label3.TabIndex = 31;
@@ -153,7 +153,7 @@
             // cmbNam
             // 
             this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(244, 12);
+            this.cmbNam.Location = new System.Drawing.Point(254, 12);
             this.cmbNam.Name = "cmbNam";
             this.cmbNam.Size = new System.Drawing.Size(60, 21);
             this.cmbNam.TabIndex = 30;
@@ -161,7 +161,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(206, 15);
+            this.label2.Location = new System.Drawing.Point(216, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 29;
@@ -204,6 +204,7 @@
             this.txtTongCongTon_TG.Name = "txtTongCongTon_TG";
             this.txtTongCongTon_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongTon_TG.TabIndex = 9;
+            this.txtTongCongTon_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongCongThu_TG
             // 
@@ -212,6 +213,7 @@
             this.txtTongCongThu_TG.Name = "txtTongCongThu_TG";
             this.txtTongCongThu_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongThu_TG.TabIndex = 8;
+            this.txtTongCongThu_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongCong_TG
             // 
@@ -220,6 +222,7 @@
             this.txtTongCong_TG.Name = "txtTongCong_TG";
             this.txtTongCong_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong_TG.TabIndex = 7;
+            this.txtTongCong_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongGiaBanTon_TG
             // 
@@ -228,6 +231,7 @@
             this.txtTongGiaBanTon_TG.Name = "txtTongGiaBanTon_TG";
             this.txtTongGiaBanTon_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBanTon_TG.TabIndex = 6;
+            this.txtTongGiaBanTon_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongHDTon_TG
             // 
@@ -236,6 +240,7 @@
             this.txtTongHDTon_TG.Name = "txtTongHDTon_TG";
             this.txtTongHDTon_TG.Size = new System.Drawing.Size(80, 20);
             this.txtTongHDTon_TG.TabIndex = 5;
+            this.txtTongHDTon_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongGiaBanThu_TG
             // 
@@ -244,6 +249,7 @@
             this.txtTongGiaBanThu_TG.Name = "txtTongGiaBanThu_TG";
             this.txtTongGiaBanThu_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBanThu_TG.TabIndex = 4;
+            this.txtTongGiaBanThu_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongHDThu_TG
             // 
@@ -252,6 +258,7 @@
             this.txtTongHDThu_TG.Name = "txtTongHDThu_TG";
             this.txtTongHDThu_TG.Size = new System.Drawing.Size(80, 20);
             this.txtTongHDThu_TG.TabIndex = 3;
+            this.txtTongHDThu_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongGiaBan_TG
             // 
@@ -260,6 +267,7 @@
             this.txtTongGiaBan_TG.Name = "txtTongGiaBan_TG";
             this.txtTongGiaBan_TG.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBan_TG.TabIndex = 2;
+            this.txtTongGiaBan_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongHD_TG
             // 
@@ -268,6 +276,7 @@
             this.txtTongHD_TG.Name = "txtTongHD_TG";
             this.txtTongHD_TG.Size = new System.Drawing.Size(80, 20);
             this.txtTongHD_TG.TabIndex = 1;
+            this.txtTongHD_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgvHDTuGia
             // 
@@ -440,6 +449,7 @@
             this.txtTongCongTon_CQ.Name = "txtTongCongTon_CQ";
             this.txtTongCongTon_CQ.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongTon_CQ.TabIndex = 15;
+            this.txtTongCongTon_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongCongThu_CQ
             // 
@@ -448,6 +458,7 @@
             this.txtTongCongThu_CQ.Name = "txtTongCongThu_CQ";
             this.txtTongCongThu_CQ.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongThu_CQ.TabIndex = 14;
+            this.txtTongCongThu_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongCong_CQ
             // 
@@ -456,6 +467,7 @@
             this.txtTongCong_CQ.Name = "txtTongCong_CQ";
             this.txtTongCong_CQ.Size = new System.Drawing.Size(100, 20);
             this.txtTongCong_CQ.TabIndex = 13;
+            this.txtTongCong_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongGiaBanTon_CQ
             // 
@@ -464,6 +476,7 @@
             this.txtTongGiaBanTon_CQ.Name = "txtTongGiaBanTon_CQ";
             this.txtTongGiaBanTon_CQ.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBanTon_CQ.TabIndex = 12;
+            this.txtTongGiaBanTon_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongHDTon_CQ
             // 
@@ -472,6 +485,7 @@
             this.txtTongHDTon_CQ.Name = "txtTongHDTon_CQ";
             this.txtTongHDTon_CQ.Size = new System.Drawing.Size(80, 20);
             this.txtTongHDTon_CQ.TabIndex = 11;
+            this.txtTongHDTon_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongGiaBanThu_CQ
             // 
@@ -480,6 +494,7 @@
             this.txtTongGiaBanThu_CQ.Name = "txtTongGiaBanThu_CQ";
             this.txtTongGiaBanThu_CQ.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBanThu_CQ.TabIndex = 10;
+            this.txtTongGiaBanThu_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongHDThu_CQ
             // 
@@ -488,6 +503,7 @@
             this.txtTongHDThu_CQ.Name = "txtTongHDThu_CQ";
             this.txtTongHDThu_CQ.Size = new System.Drawing.Size(80, 20);
             this.txtTongHDThu_CQ.TabIndex = 9;
+            this.txtTongHDThu_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongGiaBan_CQ
             // 
@@ -496,6 +512,7 @@
             this.txtTongGiaBan_CQ.Name = "txtTongGiaBan_CQ";
             this.txtTongGiaBan_CQ.Size = new System.Drawing.Size(100, 20);
             this.txtTongGiaBan_CQ.TabIndex = 8;
+            this.txtTongGiaBan_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongHD_CQ
             // 
@@ -504,6 +521,7 @@
             this.txtTongHD_CQ.Name = "txtTongHD_CQ";
             this.txtTongHD_CQ.Size = new System.Drawing.Size(80, 20);
             this.txtTongHD_CQ.TabIndex = 7;
+            this.txtTongHD_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgvHDCoQuan
             // 
@@ -651,7 +669,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(475, 11);
+            this.btnIn.Location = new System.Drawing.Point(485, 11);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 36;
@@ -662,7 +680,7 @@
             // chkNgayKiemTra
             // 
             this.chkNgayKiemTra.AutoSize = true;
-            this.chkNgayKiemTra.Location = new System.Drawing.Point(1069, 35);
+            this.chkNgayKiemTra.Location = new System.Drawing.Point(856, 35);
             this.chkNgayKiemTra.Name = "chkNgayKiemTra";
             this.chkNgayKiemTra.Size = new System.Drawing.Size(96, 17);
             this.chkNgayKiemTra.TabIndex = 47;
@@ -675,7 +693,7 @@
             this.dateGiaiTrach.CustomFormat = "dd/MM/yyyy";
             this.dateGiaiTrach.Enabled = false;
             this.dateGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateGiaiTrach.Location = new System.Drawing.Point(1171, 35);
+            this.dateGiaiTrach.Location = new System.Drawing.Point(958, 35);
             this.dateGiaiTrach.Name = "dateGiaiTrach";
             this.dateGiaiTrach.Size = new System.Drawing.Size(95, 20);
             this.dateGiaiTrach.TabIndex = 46;

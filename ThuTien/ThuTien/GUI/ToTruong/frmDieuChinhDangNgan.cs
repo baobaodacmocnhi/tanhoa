@@ -139,6 +139,11 @@ namespace ThuTien.GUI.ToTruong
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
+                if (dateGiaiTrachSua.Value.Date != DateTime.Now.Date)
+                {
+                    MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (lstHD.Items.Count > 0)
                 {
                     //DataTable dt = (DataTable)dgvHDChuaThu.DataSource;

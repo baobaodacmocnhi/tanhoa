@@ -91,6 +91,8 @@
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
             this.chkNgayKiemTra = new System.Windows.Forms.CheckBox();
             this.btnInDSTo = new System.Windows.Forms.Button();
+            this.txtSoKy = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -688,11 +690,30 @@
             this.btnInDSTo.UseVisualStyleBackColor = true;
             this.btnInDSTo.Click += new System.EventHandler(this.btnInDSTo_Click);
             // 
+            // txtSoKy
+            // 
+            this.txtSoKy.Location = new System.Drawing.Point(1080, 8);
+            this.txtSoKy.Name = "txtSoKy";
+            this.txtSoKy.Size = new System.Drawing.Size(30, 20);
+            this.txtSoKy.TabIndex = 49;
+            this.txtSoKy.Text = "1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1021, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Nhiều Kỳ:";
+            // 
             // frmKiemTraTonTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1210, 520);
+            this.Controls.Add(this.txtSoKy);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnInDSTo);
             this.Controls.Add(this.chkNgayKiemTra);
             this.Controls.Add(this.dateGiaiTrach);
@@ -778,5 +799,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHDTon_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_TG;
         private System.Windows.Forms.Button btnInDSTo;
+        private System.Windows.Forms.TextBox txtSoKy;
+        private System.Windows.Forms.Label label1;
     }
 }

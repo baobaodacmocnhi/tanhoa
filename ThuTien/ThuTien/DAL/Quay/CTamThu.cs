@@ -78,9 +78,12 @@ namespace ThuTien.DAL.Quay
             }
         }
 
-        public bool CheckExistBySoHoaDon(string SoHoaDon,out bool ChuyenKhoan)
+        public bool CheckExistBySoHoaDon(string SoHoaDon, out bool ChuyenKhoan)
         {
-            ChuyenKhoan = _db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).ChuyenKhoan;
+            if (_db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon))
+                ChuyenKhoan = _db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).ChuyenKhoan;
+            else
+                ChuyenKhoan = false;
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon);
         }
 

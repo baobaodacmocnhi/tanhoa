@@ -33,8 +33,12 @@ namespace ThuTien.GUI.Doi
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
 
-            cmbNam.DataSource = _cHoaDon.GetNam();
-            cmbNam.DisplayMember = "Nam";
+            DataTable dtNam = _cHoaDon.GetNam();
+            DataRow dr = dtNam.NewRow();
+            dr["ID"] = "Tất Cả";
+            dtNam.Rows.InsertAt(dr, 0);
+            cmbNam.DataSource = dtNam;
+            cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
 
             _lstTo = _cTo.GetDSHanhThu();
@@ -49,82 +53,84 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            //if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
-            //    if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
-            //    {
-            //        DataTable dtTG = new DataTable();
-            //        DataTable dtCQ = new DataTable();
-
-            //        dtTG = _cHoaDon.GetDSByTienLon_Doi("TG", _lstTo[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-            //        dtCQ = _cHoaDon.GetDSByTienLon_Doi("CQ", _lstTo[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-            //        for (int i = 1; i < _lstTo.Count; i++)
-            //        {
-            //            dtTG.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", _lstTo[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
-            //            dtCQ.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", _lstTo[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
-            //        }
-
-            //        dgvHDTuGia.DataSource = dtTG;
-            //        dgvHDCoQuan.DataSource = dtCQ;
-            //    }
-            //    else
-            //    {
-            //        dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-            //        dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-            //    }
+            DataTable dt = new DataTable();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                ///chọn tất cả các kỳ
-                if (cmbKy.SelectedIndex == 0)
+                if (cmbTo.SelectedIndex == 0)
                 {
-                    if (cmbTo.SelectedIndex == 0)
+                    ///chọn tất cả các năm
+                    if (cmbNam.SelectedIndex == 0)
                     {
-                        DataTable dt = new DataTable();
                         foreach (TT_To item in _lstTo)
                         {
-                            dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                            dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", item.MaTo, int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                         }
-                        dgvHDTuGia.DataSource = dt;
                     }
                     else
-                        if (cmbTo.SelectedIndex > 0)
-                            dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi("TG", ((TT_To)cmbTo.SelectedItem).MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                }
-                ///chọn 1 kỳ cụ thể
-                else
-                    if (cmbKy.SelectedIndex > 0)
-                        ///chọn tất cả các đợt
-                        if (cmbDot.SelectedIndex == 0)
-                        {
-                            if (cmbTo.SelectedIndex == 0)
+                        ///chọn 1 năm cụ thể
+                        if (cmbNam.SelectedIndex > 0)
+                            ///chọn tất cả các kỳ
+                            if (cmbKy.SelectedIndex == 0)
                             {
-                                DataTable dt = new DataTable();
                                 foreach (TT_To item in _lstTo)
                                 {
-                                    dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                    dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                 }
-                                dgvHDTuGia.DataSource = dt;
                             }
+                            ///chọn 1 kỳ cụ thể
                             else
-                                if (cmbTo.SelectedIndex > 0)
-                                    dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi("TG", ((TT_To)cmbTo.SelectedItem).MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                        }
-                        ///chọn 1 đợt cụ thể
-                        else
-                            if (cmbDot.SelectedIndex > 0)
-                            {
-                                if (cmbTo.SelectedIndex == 0)
-                                {
-                                    DataTable dt = new DataTable();
-                                    foreach (TT_To item in _lstTo)
+                                if (cmbKy.SelectedIndex > 0)
+                                    ///chọn tất cả các đợt
+                                    if (cmbDot.SelectedIndex == 0)
                                     {
-                                        dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                        foreach (TT_To item in _lstTo)
+                                        {
+                                            dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                        }
                                     }
-                                    dgvHDTuGia.DataSource = dt;
+                                    ///chọn 1 đợt cụ thể
+                                    else
+                                        if (cmbDot.SelectedIndex > 0)
+                                        {
+                                            foreach (TT_To item in _lstTo)
+                                            {
+                                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                            }
+                                        }
+                }
+                else
+                    if (cmbTo.SelectedIndex > 0)
+                    {
+                        ///chọn tất cả các năm
+                        if (cmbNam.SelectedIndex == 0)
+                        {
+                            dt=_cHoaDon.GetDSByTienLon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                        }
+                        else
+                            ///chọn 1 năm cụ thể
+                            if (cmbNam.SelectedIndex > 0)
+                                ///chọn tất cả các kỳ
+                                if (cmbKy.SelectedIndex == 0)
+                                {
+                                    dt = _cHoaDon.GetDSByTienLon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                 }
+                                ///chọn 1 kỳ cụ thể
                                 else
-                                    if (cmbTo.SelectedIndex > 0)
-                                        dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_Doi("TG", ((TT_To)cmbTo.SelectedItem).MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                            }
+                                    if (cmbKy.SelectedIndex > 0)
+                                        ///chọn tất cả các đợt
+                                        if (cmbDot.SelectedIndex == 0)
+                                        {
+                                            dt = _cHoaDon.GetDSByTienLon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                        }
+                                        ///chọn 1 đợt cụ thể
+                                        else
+                                            if (cmbDot.SelectedIndex > 0)
+                                            {
+                                                dt = _cHoaDon.GetDSByTienLon_Doi("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                            }
+                    }
+
+                dgvHDTuGia.DataSource = dt;
                 dgvHDTuGia.Sort(dgvHDTuGia.Columns["NgayGiaiTrach_TG"], ListSortDirection.Ascending);
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
@@ -137,58 +143,81 @@ namespace ThuTien.GUI.Doi
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    ///chọn tất cả các kỳ
-                    if (cmbKy.SelectedIndex == 0)
+                    if (cmbTo.SelectedIndex == 0)
                     {
-                        if (cmbTo.SelectedIndex == 0)
+                        ///chọn tất cả các năm
+                        if (cmbNam.SelectedIndex == 0)
                         {
-                            DataTable dt = new DataTable();
                             foreach (TT_To item in _lstTo)
                             {
-                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                             }
-                            dgvHDCoQuan.DataSource = dt;
                         }
                         else
-                            if (cmbTo.SelectedIndex > 0)
-                                dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi("CQ", ((TT_To)cmbTo.SelectedItem).MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                    }
-                    ///chọn 1 kỳ cụ thể
-                    else
-                        if (cmbKy.SelectedIndex > 0)
-                            ///chọn tất cả các đợt
-                            if (cmbDot.SelectedIndex == 0)
-                            {
-                                if (cmbTo.SelectedIndex == 0)
+                            ///chọn 1 năm cụ thể
+                            if (cmbNam.SelectedIndex > 0)
+                                ///chọn tất cả các kỳ
+                                if (cmbKy.SelectedIndex == 0)
                                 {
-                                    DataTable dt = new DataTable();
                                     foreach (TT_To item in _lstTo)
                                     {
-                                        dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                        dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                     }
-                                    dgvHDCoQuan.DataSource = dt;
                                 }
+                                ///chọn 1 kỳ cụ thể
                                 else
-                                    if (cmbTo.SelectedIndex > 0)
-                                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi("CQ", ((TT_To)cmbTo.SelectedItem).MaTo, int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                            }
-                            ///chọn 1 đợt cụ thể
-                            else
-                                if (cmbDot.SelectedIndex > 0)
-                                {
-                                    if (cmbTo.SelectedIndex == 0)
-                                    {
-                                        DataTable dt = new DataTable();
-                                        foreach (TT_To item in _lstTo)
+                                    if (cmbKy.SelectedIndex > 0)
+                                        ///chọn tất cả các đợt
+                                        if (cmbDot.SelectedIndex == 0)
                                         {
-                                            dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                            foreach (TT_To item in _lstTo)
+                                            {
+                                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                            }
                                         }
-                                        dgvHDCoQuan.DataSource = dt;
+                                        ///chọn 1 đợt cụ thể
+                                        else
+                                            if (cmbDot.SelectedIndex > 0)
+                                            {
+                                                foreach (TT_To item in _lstTo)
+                                                {
+                                                    dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                                }
+                                            }
+                    }
+                    else
+                        if (cmbTo.SelectedIndex > 0)
+                        {
+                            ///chọn tất cả các năm
+                            if (cmbNam.SelectedIndex == 0)
+                            {
+                                dt = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                            }
+                            else
+                                ///chọn 1 năm cụ thể
+                                if (cmbNam.SelectedIndex > 0)
+                                    ///chọn tất cả các kỳ
+                                    if (cmbKy.SelectedIndex == 0)
+                                    {
+                                        dt = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                     }
+                                    ///chọn 1 kỳ cụ thể
                                     else
-                                        if (cmbTo.SelectedIndex > 0)
-                                            dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_Doi("CQ", ((TT_To)cmbTo.SelectedItem).MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                                }
+                                        if (cmbKy.SelectedIndex > 0)
+                                            ///chọn tất cả các đợt
+                                            if (cmbDot.SelectedIndex == 0)
+                                            {
+                                                dt = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                            }
+                                            ///chọn 1 đợt cụ thể
+                                            else
+                                                if (cmbDot.SelectedIndex > 0)
+                                                {
+                                                    dt = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                                }
+                        }
+                            
+                    dgvHDCoQuan.DataSource = dt;
                     dgvHDCoQuan.Sort(dgvHDCoQuan.Columns["NgayGiaiTrach_CQ"], ListSortDirection.Ascending);
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {

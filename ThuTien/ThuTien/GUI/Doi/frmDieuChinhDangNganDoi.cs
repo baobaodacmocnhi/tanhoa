@@ -34,7 +34,7 @@ namespace ThuTien.GUI.Doi
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
 
-            cmbTo.DataSource = _cTo.GetDSHanhThu();
+            cmbTo.DataSource = _cTo.GetDS();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
             cmbTo.SelectedIndex = -1;
