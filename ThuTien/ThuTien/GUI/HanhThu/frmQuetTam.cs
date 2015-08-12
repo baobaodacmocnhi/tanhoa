@@ -265,17 +265,32 @@ namespace ThuTien.GUI.HanhThu
 
         private void btnInDSDiaChi_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cQuetTam.GetDSByMaNVCreatedDate(CNguoiDung.MaND, dateTu.Value);
             dsBaoCao ds = new dsBaoCao();
-            foreach (DataRow item in dt.Rows)
+            if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                dr["HoTen"] = item["HoTen"];
-                dr["DiaChi"] = item["DiaChi"];
-                dr["NhanVien"] = CNguoiDung.HoTen;
-                ds.Tables["DSHoaDon"].Rows.Add(dr);
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item.Cells["HoTen_TG"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
             }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
+                        dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
+                        dr["NhanVien"] = CNguoiDung.HoTen;
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
+                }
             rptDSHoaDon_DiaChi rpt = new rptDSHoaDon_DiaChi();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);

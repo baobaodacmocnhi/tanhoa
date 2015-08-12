@@ -55,16 +55,5 @@ namespace ThuTien.Properties {
                 return ((string)(this["CAPNUOCTANHOAConnectionString"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.8\\KD;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=T" +
-            "rue;User ID=sa")]
-        public string CAPNUOCTANHOAConnectionString1 {
-            get {
-                return ((string)(this["CAPNUOCTANHOAConnectionString1"]));
-            }
-        }
     }
 }

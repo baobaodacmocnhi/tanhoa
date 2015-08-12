@@ -49,7 +49,9 @@
             this.TongHDTon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongGiaBanTon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCongTon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBanTonBilling_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabTuGia = new System.Windows.Forms.TabPage();
+            this.txtTongGiaBanTonBilling_TG = new System.Windows.Forms.TextBox();
             this.txtTongGiaBanTon_TG = new System.Windows.Forms.TextBox();
             this.txtTongCongTon_TG = new System.Windows.Forms.TextBox();
             this.txtTongHDTon_TG = new System.Windows.Forms.TextBox();
@@ -72,9 +74,11 @@
             this.TongHDTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongGiaBanTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCongTon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBanTonBilling_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabCoQuan = new System.Windows.Forms.TabPage();
+            this.txtTongGiaBanTonBilling_CQ = new System.Windows.Forms.TextBox();
             this.txtTongGiaBanTon_CQ = new System.Windows.Forms.TextBox();
             this.txtTongCongTon_CQ = new System.Windows.Forms.TextBox();
             this.txtTongHDTon_CQ = new System.Windows.Forms.TextBox();
@@ -110,6 +114,7 @@
             this.TongHDTon_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongGiaBanTon_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCongTon_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBanTonBilling_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -145,14 +150,15 @@
             this.TongCongThu_CQ,
             this.TongHDTon_CQ,
             this.TongGiaBanTon_CQ,
-            this.TongCongTon_CQ});
+            this.TongCongTon_CQ,
+            this.TongGiaBanTonBilling_CQ});
             this.dgvHDCoQuan.Location = new System.Drawing.Point(6, 6);
             this.dgvHDCoQuan.Name = "dgvHDCoQuan";
             this.dgvHDCoQuan.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHDCoQuan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHDCoQuan.Size = new System.Drawing.Size(1135, 150);
+            this.dgvHDCoQuan.Size = new System.Drawing.Size(1243, 150);
             this.dgvHDCoQuan.TabIndex = 1;
             this.dgvHDCoQuan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDCoQuan_CellContentClick);
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
@@ -265,8 +271,16 @@
             this.TongCongTon_CQ.Name = "TongCongTon_CQ";
             this.TongCongTon_CQ.ReadOnly = true;
             // 
+            // TongGiaBanTonBilling_CQ
+            // 
+            this.TongGiaBanTonBilling_CQ.DataPropertyName = "TongGiaBanTonBilling";
+            this.TongGiaBanTonBilling_CQ.HeaderText = "Tổng Giá Bán Tồn(Billing)";
+            this.TongGiaBanTonBilling_CQ.Name = "TongGiaBanTonBilling_CQ";
+            this.TongGiaBanTonBilling_CQ.ReadOnly = true;
+            // 
             // tabTuGia
             // 
+            this.tabTuGia.Controls.Add(this.txtTongGiaBanTonBilling_TG);
             this.tabTuGia.Controls.Add(this.txtTongGiaBanTon_TG);
             this.tabTuGia.Controls.Add(this.txtTongCongTon_TG);
             this.tabTuGia.Controls.Add(this.txtTongHDTon_TG);
@@ -278,10 +292,19 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(1147, 181);
+            this.tabTuGia.Size = new System.Drawing.Size(1255, 181);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
+            // 
+            // txtTongGiaBanTonBilling_TG
+            // 
+            this.txtTongGiaBanTonBilling_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongGiaBanTonBilling_TG.Location = new System.Drawing.Point(1125, 156);
+            this.txtTongGiaBanTonBilling_TG.Name = "txtTongGiaBanTonBilling_TG";
+            this.txtTongGiaBanTonBilling_TG.Size = new System.Drawing.Size(100, 20);
+            this.txtTongGiaBanTonBilling_TG.TabIndex = 20;
+            this.txtTongGiaBanTonBilling_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongGiaBanTon_TG
             // 
@@ -373,14 +396,15 @@
             this.TongCongThu_TG,
             this.TongHDTon_TG,
             this.TongGiaBanTon_TG,
-            this.TongCongTon_TG});
+            this.TongCongTon_TG,
+            this.TongGiaBanTonBilling_TG});
             this.dgvHDTuGia.Location = new System.Drawing.Point(6, 6);
             this.dgvHDTuGia.Name = "dgvHDTuGia";
             this.dgvHDTuGia.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHDTuGia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHDTuGia.Size = new System.Drawing.Size(1135, 150);
+            this.dgvHDTuGia.Size = new System.Drawing.Size(1243, 150);
             this.dgvHDTuGia.TabIndex = 0;
             this.dgvHDTuGia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDTuGia_CellContentClick);
             this.dgvHDTuGia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDTuGia_CellFormatting);
@@ -493,6 +517,13 @@
             this.TongCongTon_TG.Name = "TongCongTon_TG";
             this.TongCongTon_TG.ReadOnly = true;
             // 
+            // TongGiaBanTonBilling_TG
+            // 
+            this.TongGiaBanTonBilling_TG.DataPropertyName = "TongGiaBanTonBilling";
+            this.TongGiaBanTonBilling_TG.HeaderText = "Tổng Giá Bán Tồn(Billing)";
+            this.TongGiaBanTonBilling_TG.Name = "TongGiaBanTonBilling_TG";
+            this.TongGiaBanTonBilling_TG.ReadOnly = true;
+            // 
             // cmbTo
             // 
             this.cmbTo.FormattingEnabled = true;
@@ -508,11 +539,12 @@
             this.tabControl.Location = new System.Drawing.Point(12, 39);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1155, 207);
+            this.tabControl.Size = new System.Drawing.Size(1263, 207);
             this.tabControl.TabIndex = 38;
             // 
             // tabCoQuan
             // 
+            this.tabCoQuan.Controls.Add(this.txtTongGiaBanTonBilling_CQ);
             this.tabCoQuan.Controls.Add(this.txtTongGiaBanTon_CQ);
             this.tabCoQuan.Controls.Add(this.txtTongCongTon_CQ);
             this.tabCoQuan.Controls.Add(this.txtTongHDTon_CQ);
@@ -524,10 +556,19 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(1147, 181);
+            this.tabCoQuan.Size = new System.Drawing.Size(1255, 181);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
+            // 
+            // txtTongGiaBanTonBilling_CQ
+            // 
+            this.txtTongGiaBanTonBilling_CQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongGiaBanTonBilling_CQ.Location = new System.Drawing.Point(1125, 156);
+            this.txtTongGiaBanTonBilling_CQ.Name = "txtTongGiaBanTonBilling_CQ";
+            this.txtTongGiaBanTonBilling_CQ.Size = new System.Drawing.Size(100, 20);
+            this.txtTongGiaBanTonBilling_CQ.TabIndex = 26;
+            this.txtTongGiaBanTonBilling_CQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongGiaBanTon_CQ
             // 
@@ -686,7 +727,8 @@
             this.TongCongThu_NV,
             this.TongHDTon_NV,
             this.TongGiaBanTon_NV,
-            this.TongCongTon_NV});
+            this.TongCongTon_NV,
+            this.TongGiaBanTonBilling_NV});
             this.dgvNhanVien.Location = new System.Drawing.Point(22, 252);
             this.dgvNhanVien.MultiSelect = false;
             this.dgvNhanVien.Name = "dgvNhanVien";
@@ -694,7 +736,7 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNhanVien.Size = new System.Drawing.Size(1135, 370);
+            this.dgvNhanVien.Size = new System.Drawing.Size(1243, 370);
             this.dgvNhanVien.TabIndex = 19;
             this.dgvNhanVien.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNhanVien_CellFormatting);
             this.dgvNhanVien.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvNhanVien_RowPostPaint);
@@ -874,11 +916,18 @@
             this.TongCongTon_NV.Name = "TongCongTon_NV";
             this.TongCongTon_NV.ReadOnly = true;
             // 
+            // TongGiaBanTonBilling_NV
+            // 
+            this.TongGiaBanTonBilling_NV.DataPropertyName = "TongGiaBanTonBilling";
+            this.TongGiaBanTonBilling_NV.HeaderText = "Tổng Giá Bán Tồn(Billing)";
+            this.TongGiaBanTonBilling_NV.Name = "TongGiaBanTonBilling_NV";
+            this.TongGiaBanTonBilling_NV.ReadOnly = true;
+            // 
             // frmKiemTraTonDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1243, 640);
+            this.ClientSize = new System.Drawing.Size(1287, 640);
             this.Controls.Add(this.txtSoKy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkNgayKiemTra);
@@ -945,6 +994,8 @@
         private System.Windows.Forms.DateTimePicker dateGiaiTrach;
         private System.Windows.Forms.TextBox txtSoKy;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtTongGiaBanTon_TG;
+        private System.Windows.Forms.TextBox txtTongGiaBanTon_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTo_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_CQ;
@@ -959,6 +1010,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHDTon_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTon_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTonBilling_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTo_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo_TG;
@@ -973,8 +1025,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHDTon_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTon_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_TG;
-        private System.Windows.Forms.TextBox txtTongGiaBanTon_TG;
-        private System.Windows.Forms.TextBox txtTongGiaBanTon_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTonBilling_TG;
+        private System.Windows.Forms.TextBox txtTongGiaBanTonBilling_TG;
+        private System.Windows.Forms.TextBox txtTongGiaBanTonBilling_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_NV;
@@ -989,5 +1042,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHDTon_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTon_NV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCongTon_NV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBanTonBilling_NV;
     }
 }

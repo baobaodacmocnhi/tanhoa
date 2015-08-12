@@ -82,6 +82,28 @@ namespace ThuTien.DAL.TongHop
             return _db.DIEUCHINH_HDs.ToList();
         }
 
+        public DataTable GetChuanThu(int MaTo, int Nam, int Ky, int Dot)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.GB >= 11 && itemHD.GB <= 20
+                        select new
+                        {
+                            MaTo = MaTo,
+                            _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                            MaNV = itemHD.MaNV_HanhThu,
+                            _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                            itemHD.NGAYGIAITRACH,
+                            itemDC.GIABAN_BD,
+                            itemDC.TONGCONG_BD,
+                            itemDC.GIABAN_END,
+                            itemDC.TONGCONG_END,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetChuanThu(string Loai, int MaTo, int Nam, int Ky, int Dot)
         {
             if (Loai == "TG")
@@ -128,28 +150,6 @@ namespace ThuTien.DAL.TongHop
                     return LINQToDataTable(query);
                 }
             return null;
-        }
-
-        public DataTable GetChuanThu(int MaTo, int Nam, int Ky, int Dot)
-        {
-            var query = from itemDC in _db.DIEUCHINH_HDs
-                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
-                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.GB >= 11 && itemHD.GB <= 20
-                        select new
-                        {
-                            MaTo = MaTo,
-                            _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
-                            MaNV = itemHD.MaNV_HanhThu,
-                            _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
-                            itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
-                        };
-            return LINQToDataTable(query);
         }
 
         public DataTable GetChuanThu(string Loai, int MaTo, int Nam, int Ky)
@@ -255,7 +255,7 @@ namespace ThuTien.DAL.TongHop
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && itemDC.SoPhieu != null && itemHD.NAM==Nam&&itemHD.KY==Ky&& (itemHD.NGAYGIAITRACH==null||itemHD.NGAYGIAITRACH.Value.Date>NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
+                                    && itemDC.SoPhieu != null && itemHD.NAM==Nam&&itemHD.KY==Ky&& itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 MaTo = MaTo,
@@ -277,7 +277,244 @@ namespace ThuTien.DAL.TongHop
                                 join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                                 where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                         && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                        && itemDC.SoPhieu != null &&itemHD.NAM==Nam &&itemHD.KY==Ky&& (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
+                                        && itemDC.SoPhieu != null &&itemHD.NAM==Nam &&itemHD.KY==Ky&& itemHD.GB > 20
+                                select new
+                                {
+                                    MaTo = MaTo,
+                                    _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                    MaNV = itemHD.MaNV_HanhThu,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemDC.GIABAN_BD,
+                                    itemDC.TONGCONG_BD,
+                                    itemDC.GIABAN_END,
+                                    itemDC.TONGCONG_END,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
+        public DataTable GetChuanThuTon(string Loai, int MaTo, int Nam, int Ky, int Dot)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.NGAYGIAITRACH==null&&itemHD.GB >= 11 && itemHD.GB <= 20
+                            select new
+                            {
+                                MaTo = MaTo,
+                                _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                MaNV = itemHD.MaNV_HanhThu,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                itemHD.NGAYGIAITRACH,
+                                itemDC.GIABAN_BD,
+                                itemDC.TONGCONG_BD,
+                                itemDC.GIABAN_END,
+                                itemDC.TONGCONG_END,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemDC in _db.DIEUCHINH_HDs
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                                where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
+                                select new
+                                {
+                                    MaTo = MaTo,
+                                    _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                    MaNV = itemHD.MaNV_HanhThu,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
+                                    itemDC.GIABAN_BD,
+                                    itemDC.TONGCONG_BD,
+                                    itemDC.GIABAN_END,
+                                    itemDC.TONGCONG_END,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
+        public DataTable GetChuanThuTon(string Loai, int MaTo, int Nam, int Ky)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
+                            select new
+                            {
+                                MaTo = MaTo,
+                                _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                MaNV = itemHD.MaNV_HanhThu,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                itemHD.NGAYGIAITRACH,
+                                itemDC.GIABAN_BD,
+                                itemDC.TONGCONG_BD,
+                                itemDC.GIABAN_END,
+                                itemDC.TONGCONG_END,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemDC in _db.DIEUCHINH_HDs
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                                where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
+                                select new
+                                {
+                                    MaTo = MaTo,
+                                    _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                    MaNV = itemHD.MaNV_HanhThu,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
+                                    itemDC.GIABAN_BD,
+                                    itemDC.TONGCONG_BD,
+                                    itemDC.GIABAN_END,
+                                    itemDC.TONGCONG_END,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
+        public DataTable GetChuanThuTon(string Loai, int MaTo, int Nam)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
+                            select new
+                            {
+                                MaTo = MaTo,
+                                _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                MaNV = itemHD.MaNV_HanhThu,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                itemHD.NGAYGIAITRACH,
+                                itemDC.GIABAN_BD,
+                                itemDC.TONGCONG_BD,
+                                itemDC.GIABAN_END,
+                                itemDC.TONGCONG_END,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemDC in _db.DIEUCHINH_HDs
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                                where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
+                                select new
+                                {
+                                    MaTo = MaTo,
+                                    _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                    MaNV = itemHD.MaNV_HanhThu,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemDC.GIABAN_BD,
+                                    itemDC.TONGCONG_BD,
+                                    itemDC.GIABAN_END,
+                                    itemDC.TONGCONG_END,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
+        public DataTable GetChuanThuTon(string Loai, int MaTo)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && itemDC.SoPhieu != null && itemHD.NGAYGIAITRACH == null && itemHD.GB >= 11 && itemHD.GB <= 20
+                            select new
+                            {
+                                MaTo = MaTo,
+                                _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                MaNV = itemHD.MaNV_HanhThu,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                itemHD.NGAYGIAITRACH,
+                                itemDC.GIABAN_BD,
+                                itemDC.TONGCONG_BD,
+                                itemDC.GIABAN_END,
+                                itemDC.TONGCONG_END,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemDC in _db.DIEUCHINH_HDs
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                                where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && itemDC.SoPhieu != null && itemHD.NGAYGIAITRACH == null && itemHD.GB > 20
+                                select new
+                                {
+                                    MaTo = MaTo,
+                                    _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                    MaNV = itemHD.MaNV_HanhThu,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemDC.GIABAN_BD,
+                                    itemDC.TONGCONG_BD,
+                                    itemDC.GIABAN_END,
+                                    itemDC.TONGCONG_END,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
+        public DataTable GetChuanThuTon(string Loai, int MaTo,DateTime NgayGiaiTrach)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && itemDC.SoPhieu != null && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
+                            select new
+                            {
+                                MaTo = MaTo,
+                                _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
+                                MaNV = itemHD.MaNV_HanhThu,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                itemHD.NGAYGIAITRACH,
+                                itemDC.GIABAN_BD,
+                                itemDC.TONGCONG_BD,
+                                itemDC.GIABAN_END,
+                                itemDC.TONGCONG_END,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemDC in _db.DIEUCHINH_HDs
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                                where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && itemDC.SoPhieu != null && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
                                 select new
                                 {
                                     MaTo = MaTo,

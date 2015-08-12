@@ -46,7 +46,7 @@ namespace ThuTien.GUI.HanhThu
         public void LoadDataGridView()
         {
             dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-            dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+            dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()),1);
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
