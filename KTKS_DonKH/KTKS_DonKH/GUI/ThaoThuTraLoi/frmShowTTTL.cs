@@ -215,5 +215,17 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
                 txtNoiNhan.Text = "";
             }
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (_cttttl != null)
+                if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (_cTTTL.XoaCTTTTL(_cttttl))
+                    {
+                        MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+        }
     }
 }

@@ -941,6 +941,32 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
             }
         }
 
+        public bool XoaCTTTTL(CTTTTL cttttl)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    db.CTTTTLs.DeleteOnSubmit(cttttl);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa CTTTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTTTTLs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         public CTTTTL getCTTTTLbyID(decimal MaCTTTTL)
         {
             try
@@ -1368,11 +1394,11 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTTTTLbyMaDonDanhBo(decimal MaDon,string DanhBo)
+        public bool CheckCTTTTLbyMaDonDanhBo(decimal MaDon, string DanhBo, DateTime CreateDate)
         {
             try
             {
-                return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDon == MaDon && itemCTTTTL.DanhBo == DanhBo);
+                return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDon == MaDon && itemCTTTTL.DanhBo == DanhBo && itemCTTTTL.CreateDate.Value.Date == CreateDate.Date);
             }
             catch (Exception ex)
             {
@@ -1387,11 +1413,11 @@ namespace KTKS_DonKH.DAL.ThaoThuTraLoi
         /// <param name="MaDon"></param>
         /// <param name="DanhBo"></param>
         /// <returns></returns>
-        public bool CheckCTTTTLbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo)
+        public bool CheckCTTTTLbyMaDonDanhBo_TXL(decimal MaDonTXL, string DanhBo,DateTime CreateDate)
         {
             try
             {
-                return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDonTXL == MaDonTXL && itemCTTTTL.DanhBo == DanhBo);
+                return db.CTTTTLs.Any(itemCTTTTL => itemCTTTTL.TTTL.MaDonTXL == MaDonTXL && itemCTTTTL.DanhBo == DanhBo&&itemCTTTTL.CreateDate.Value.Date==CreateDate.Date);
             }
             catch (Exception ex)
             {
