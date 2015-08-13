@@ -163,7 +163,7 @@ namespace ThuTien.GUI.Quay
                     //    lstHD.SelectedItem = item;
                     //    return;
                     //}
-                    if (_cDCHD.CheckBySoHoaDon(item.ToString()))
+                    if (_cDCHD.CheckExistByDangRutDC(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn đã Rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.SelectedItem = item;
@@ -332,7 +332,7 @@ namespace ThuTien.GUI.Quay
         {
             if (e.Control && e.KeyCode == Keys.F)
             {
-                frmTimKiem frm = new frmTimKiem();
+                frmTimKiemForm frm = new frmTimKiemForm();
                 bool flag = false;
                 foreach (var item in this.OwnedForms)
                     if (item.Name == frm.Name)
@@ -342,7 +342,7 @@ namespace ThuTien.GUI.Quay
                     }
                 if (flag == false)
                 {
-                    frm.MyGetNoiDung = new frmTimKiem.GetNoiDung(GetNoiDungfrmTimKiem);
+                    frm.MyGetNoiDung = new frmTimKiemForm.GetNoiDung(GetNoiDungfrmTimKiem);
                     frm.Owner = this;
                     frm.Show();
                 }

@@ -89,7 +89,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         item.Selected = true;
                         return;
                     }
-                    if (_cDCHD.CheckBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                    if (_cDCHD.CheckExistByDangRutDC(item.Cells["SoHoaDon"].Value.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
@@ -516,7 +516,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (e.Control && e.KeyCode == Keys.F)
             {
-                frmTimKiem frm = new frmTimKiem();
+                frmTimKiemForm frm = new frmTimKiemForm();
                 bool flag = false;
                 foreach (var item in this.OwnedForms)
                     if (item.Name == frm.Name)
@@ -526,7 +526,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                 if (flag == false)
                 {
-                    frm.MyGetNoiDung = new frmTimKiem.GetNoiDung(GetNoiDungfrmTimKiem);
+                    frm.MyGetNoiDung = new frmTimKiemForm.GetNoiDung(GetNoiDungfrmTimKiem);
                     frm.Owner = this;
                     frm.Show();
                 }

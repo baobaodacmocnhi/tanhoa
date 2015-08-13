@@ -1,6 +1,6 @@
 ﻿namespace ThuTien.GUI.TimKiem
 {
-    partial class frmTimKiem
+    partial class frmTimKiemForm
     {
         /// <summary>
         /// Required designer variable.

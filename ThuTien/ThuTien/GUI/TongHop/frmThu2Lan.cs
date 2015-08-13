@@ -56,12 +56,20 @@ namespace ThuTien.GUI.TongHop
             //    }
             //    else
             //        txtSoHoaDon.Text = "";
+            if (e.KeyChar == 13)
+                btnXem.PerformClick();
         }
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (lstHD.Items.Count > 0)
                 lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnXem.PerformClick();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -226,6 +234,8 @@ namespace ThuTien.GUI.TongHop
             }
             
         }
+
+        
 
        
     }

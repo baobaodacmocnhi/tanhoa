@@ -44,7 +44,23 @@ namespace ThuTien
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            Application.Idle += new EventHandler(Application_Idle);
             mnuDangNhap.PerformClick();
+        }
+
+        void Application_Idle(object sender, EventArgs e)
+        {
+            timer.Start();
+        }
+
+        private void frmMain_MouseMove(object sender, MouseEventArgs e)
+        {
+            timer.Stop();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         public void OpenForm(Form frm)
@@ -738,6 +754,8 @@ namespace ThuTien
 
         
 
+        
 
     }
 }
+    

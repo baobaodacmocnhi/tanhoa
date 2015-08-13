@@ -158,7 +158,7 @@ namespace ThuTien.GUI.HanhThu
                             //    lstHD.SelectedItem = item;
                             //    return;
                             //}
-                            if (_cDCHD.CheckBySoHoaDon(item.ToString()))
+                            if (_cDCHD.CheckExistByDangRutDC(item.ToString()))
                             {
                                 MessageBox.Show("Hóa Đơn đã rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 lstHD.SelectedItem = item;

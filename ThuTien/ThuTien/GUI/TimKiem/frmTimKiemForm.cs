@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ThuTien.GUI.TimKiem
 {
-    public partial class frmTimKiem : Form
+    public partial class frmTimKiemForm : Form
     {
-        public frmTimKiem()
+        public frmTimKiemForm()
         {
             InitializeComponent();
         }

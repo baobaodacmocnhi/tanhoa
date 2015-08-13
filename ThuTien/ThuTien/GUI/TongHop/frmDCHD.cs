@@ -140,7 +140,7 @@ namespace ThuTien.GUI.TongHop
                             return;
                         }
                     ///Bắt đầu đăng ngân chỉ 1 hóa đơn được chọn
-                    if (bool.Parse(dgvHoaDon["Chon", index].Value.ToString()) && !_cDCHD.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString()))
+                    if (bool.Parse(dgvHoaDon["Chon", index].Value.ToString()) && !_cDCHD.CheckExist(dgvHoaDon["SoHoaDon", index].Value.ToString()))
                     {
                         string loai;
                         if (_cTamThu.CheckExistBySoHoaDon(dgvHoaDon["SoHoaDon", index].Value.ToString(),out loai))
@@ -184,7 +184,7 @@ namespace ThuTien.GUI.TongHop
                 }
                 else
                     ///Có 1 hóa đơn nên set mặc định row 0
-                    if (dgvHoaDon.RowCount == 1 && !_cDCHD.CheckBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString()))
+                    if (dgvHoaDon.RowCount == 1 && !_cDCHD.CheckExist(dgvHoaDon["SoHoaDon", 0].Value.ToString()))
                     {
                         string loai;
                         if (_cTamThu.CheckExistBySoHoaDon(dgvHoaDon["SoHoaDon", 0].Value.ToString(), out loai))

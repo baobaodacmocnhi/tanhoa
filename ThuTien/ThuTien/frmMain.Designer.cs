@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuHeThong = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +44,7 @@
             this.mnuLuuHD = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKiemTraDangNganDoi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKiemTraTonDoi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDieuChinhDangNganDoi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNangSuatThuTienDoi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChuanThu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHDTienLonDoi = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +100,7 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.mnuDieuChinhDangNganDoi = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -236,6 +238,13 @@
             this.mnuKiemTraTonDoi.Size = new System.Drawing.Size(223, 22);
             this.mnuKiemTraTonDoi.Text = "Kiểm Tra Tồn";
             this.mnuKiemTraTonDoi.Click += new System.EventHandler(this.mnuKiemTraTonDoi_Click);
+            // 
+            // mnuDieuChinhDangNganDoi
+            // 
+            this.mnuDieuChinhDangNganDoi.Name = "mnuDieuChinhDangNganDoi";
+            this.mnuDieuChinhDangNganDoi.Size = new System.Drawing.Size(223, 22);
+            this.mnuDieuChinhDangNganDoi.Text = "Điều Chỉnh Đăng Ngân";
+            this.mnuDieuChinhDangNganDoi.Click += new System.EventHandler(this.mnuDieuChinhDangNganDoi_Click);
             // 
             // mnuNangSuatThuTienDoi
             // 
@@ -400,8 +409,8 @@
             this.mnuDangNganTon,
             this.mnuQuetTam});
             this.mnuHanhThu.Name = "mnuHanhThu";
-            this.mnuHanhThu.Size = new System.Drawing.Size(72, 20);
-            this.mnuHanhThu.Text = "Hành Thu";
+            this.mnuHanhThu.Size = new System.Drawing.Size(79, 20);
+            this.mnuHanhThu.Text = "Đăng Ngân";
             // 
             // mnuDangNganHanhThu
             // 
@@ -659,12 +668,10 @@
             this.tabControl.TabIndex = 5;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
-            // mnuDieuChinhDangNganDoi
+            // timer
             // 
-            this.mnuDieuChinhDangNganDoi.Name = "mnuDieuChinhDangNganDoi";
-            this.mnuDieuChinhDangNganDoi.Size = new System.Drawing.Size(223, 22);
-            this.mnuDieuChinhDangNganDoi.Text = "Điều Chỉnh Đăng Ngân";
-            this.mnuDieuChinhDangNganDoi.Click += new System.EventHandler(this.mnuDieuChinhDangNganDoi_Click);
+            this.timer.Interval = 1800000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // frmMain
             // 
@@ -677,12 +684,14 @@
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmMain";
             this.Text = "Quản Lý Thu Ngân";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.MdiChildActivate += new System.EventHandler(this.frmMain_MdiChildActivate);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -764,6 +773,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuKiemPortTon;
         private System.Windows.Forms.ToolStripMenuItem mnuToTrinhCatHuy;
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhDangNganDoi;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

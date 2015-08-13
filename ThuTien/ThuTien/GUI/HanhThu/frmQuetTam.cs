@@ -32,6 +32,8 @@ namespace ThuTien.GUI.HanhThu
             dgvHDCoQuan.AutoGenerateColumns = false;
 
             dateTu.Value = DateTime.Now;
+
+            btnXem.PerformClick();
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)

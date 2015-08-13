@@ -42,7 +42,8 @@ namespace ThuTien.GUI.TimKiem
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
-            dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ",""));
+            dgvKinhDoanh.DataSource = null;
+            dgvKinhDoanh.Visible = false;
 
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {
@@ -50,7 +51,7 @@ namespace ThuTien.GUI.TimKiem
                     item.DefaultCellStyle.BackColor = Color.Yellow;
                 if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
                 {
-                    item.Cells["TinhTrang"].Value = _cLenhHuy.GetTinhTrangBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                    //item.Cells["TinhTrang"].Value = _cLenhHuy.GetTinhTrangBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                     item.DefaultCellStyle.BackColor = Color.Red;
                 }
             }
@@ -78,7 +79,7 @@ namespace ThuTien.GUI.TimKiem
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "NgayDN")
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "NgayGiaiTrach")
             {
                 if (_cCNKD.CheckExist(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString()))
                 {
@@ -87,6 +88,10 @@ namespace ThuTien.GUI.TimKiem
                     dgvHoaDon["NgayGiaiTrach", e.RowIndex].Value = cnkd.CreateDate.Value.ToString("dd/MM/yyyy");
                     dgvHoaDon["DangNgan", e.RowIndex].Value = "CNKĐ";
                 }
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "MaDN" && e.Value.ToString().Length>2)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 
@@ -193,6 +198,12 @@ namespace ThuTien.GUI.TimKiem
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnXemPKinhDoanh_Click(object sender, EventArgs e)
+        {
+            dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ", ""));
+            dgvKinhDoanh.Visible = true;
         }
         
     }
