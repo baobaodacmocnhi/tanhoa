@@ -303,10 +303,10 @@ namespace ThuTien.GUI.TongHop
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (radChuaDCHD.Checked)
-                dgvDCHD.DataSource = _cDCHD.GetDSByMaNVCreateDates(false, CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                dgvDCHD.DataSource = _cDCHD.GetDSByCreateDates(false, dateTu.Value, dateDen.Value);
             else
                 if (radDaDCHD.Checked)
-                    dgvDCHD.DataSource = _cDCHD.GetDSByMaNVCreateDates(true, CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                    dgvDCHD.DataSource = _cDCHD.GetDSByCreateDates(true, dateTu.Value, dateDen.Value);
         }
 
         private void dgvDCHD_MouseDoubleClick(object sender, MouseEventArgs e)

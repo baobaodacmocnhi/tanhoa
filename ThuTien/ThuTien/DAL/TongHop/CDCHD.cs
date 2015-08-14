@@ -814,7 +814,7 @@ namespace ThuTien.DAL.TongHop
         //    return LINQToDataTable(query);
         //}
 
-        public DataTable GetDSByMaNVCreateDate(bool DaDieuChinh, int MaNV, DateTime TuNgay)
+        public DataTable GetDSByCreateDate(bool DaDieuChinh, DateTime TuNgay)
         {
             if (DaDieuChinh)
             {
@@ -822,7 +822,7 @@ namespace ThuTien.DAL.TongHop
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemDC.TangGiam != null && itemDC.CreateBy == MaNV && itemDC.CreateDate.Value.Date == TuNgay.Date
+                            where itemDC.TangGiam != null && itemDC.CreateDate.Value.Date == TuNgay.Date
                             select new
                             {
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
@@ -847,7 +847,7 @@ namespace ThuTien.DAL.TongHop
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemDC.TangGiam == null && itemDC.CreateBy == MaNV && itemDC.CreateDate.Value.Date == TuNgay.Date
+                            where itemDC.TangGiam == null && itemDC.CreateDate.Value.Date == TuNgay.Date
                             select new
                             {
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
@@ -868,7 +868,7 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public DataTable GetDSByMaNVCreateDates(bool DaDieuChinh, int MaNV, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSByCreateDates(bool DaDieuChinh, DateTime TuNgay, DateTime DenNgay)
         {
             if (DaDieuChinh)
             {
@@ -876,7 +876,7 @@ namespace ThuTien.DAL.TongHop
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemDC.TangGiam != null && itemDC.CreateBy == MaNV && itemDC.CreateDate.Value.Date >= TuNgay.Date && itemDC.CreateDate.Value.Date <= DenNgay.Date
+                            where itemDC.TangGiam != null && itemDC.CreateDate.Value.Date >= TuNgay.Date && itemDC.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
                                 itemDC.CreateDate,
@@ -902,7 +902,62 @@ namespace ThuTien.DAL.TongHop
                             join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemDC.TangGiam == null && itemDC.CreateBy == MaNV && itemDC.CreateDate.Value.Date >= TuNgay.Date && itemDC.CreateDate.Value.Date <= DenNgay.Date
+                            where itemDC.TangGiam == null && itemDC.CreateDate.Value.Date >= TuNgay.Date && itemDC.CreateDate.Value.Date <= DenNgay.Date
+                            select new
+                            {
+                                MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                                itemHD.SOHOADON,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                GiaBan_Start = itemDC.GIABAN_BD,
+                                ThueGTGT_Start = itemDC.THUE_BD,
+                                PhiBVMT_Start = itemDC.PHI_BD,
+                                TongCong_Start = itemDC.TONGCONG_BD,
+                                itemDC.TangGiam,
+                                TongCong_BD = itemDC.TONGCONG_DC,
+                                TongCong_End = itemDC.TONGCONG_END,
+                                HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+        }
+
+        public DataTable GetDS(bool DaDieuChinh)
+        {
+            if (DaDieuChinh)
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemDC.TangGiam != null
+                            select new
+                            {
+                                itemDC.CreateDate,
+                                MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                                itemHD.SOHOADON,
+                                Ky = itemHD.KY + "/" + itemHD.NAM,
+                                DanhBo = itemHD.DANHBA,
+                                HoTen = itemHD.TENKH,
+                                GiaBan_Start = itemDC.GIABAN_BD,
+                                ThueGTGT_Start = itemDC.THUE_BD,
+                                PhiBVMT_Start = itemDC.PHI_BD,
+                                TongCong_Start = itemDC.TONGCONG_BD,
+                                itemDC.TangGiam,
+                                TongCong_BD = itemDC.TONGCONG_DC,
+                                TongCong_End = itemDC.TONGCONG_END,
+                                HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                            from itemtableND in tableND.DefaultIfEmpty()
+                            where itemDC.TangGiam == null
                             select new
                             {
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,

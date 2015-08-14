@@ -4422,9 +4422,9 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
-                            && itemHD.GB.Value.ToString().Contains(@GiaBieu.ToString())
-                            && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
-                            && itemHD.CODE.Contains(@Code)
+                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
+                            && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
@@ -4452,7 +4452,7 @@ namespace ThuTien.DAL.Doi
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam
                         && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
-                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
                         select new
@@ -4483,7 +4483,7 @@ namespace ThuTien.DAL.Doi
                               && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam
                         && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
-                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
                         select new
@@ -4514,7 +4514,7 @@ namespace ThuTien.DAL.Doi
                               && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
                         && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
-                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
                         select new
@@ -4543,7 +4543,7 @@ namespace ThuTien.DAL.Doi
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam
                         && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
-                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
                         select new
@@ -4572,7 +4572,7 @@ namespace ThuTien.DAL.Doi
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
                         && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
-                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(@DinhMuc.ToString()))
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)
                         orderby itemHD.ID_HOADON descending
                         select new
@@ -4604,7 +4604,7 @@ namespace ThuTien.DAL.Doi
                 + " left join"
                 + " (select b.SoHoaDon,a.MaDN,NgayDN from TT_DongNuoc a"
                 + " left join TT_CTDongNuoc b on a.MaDN=b.MaDN"
-                + " left join TT_KQDongNuoc c on a.MaDN=c.MaDN) as dn on  a.SOHOADON=dn.SoHoaDon"
+                + " left join TT_KQDongNuoc c on a.MaDN=c.MaDN where Huy=0) as dn on  a.SOHOADON=dn.SoHoaDon"
                 + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
                 + "order by ID_HOADON desc";
 
@@ -4640,7 +4640,7 @@ namespace ThuTien.DAL.Doi
             var query = from item in _db.HOADONs
                         where item.NAM == Nam && item.KY == Ky
                             && item.GB.Value.ToString().Contains(GiaBieu.ToString())
-                            && item.DM.Value.ToString().Contains(DinhMuc.ToString())
+                            && (item.DM == null || item.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         select new
                         {
                             item.GIABAN,
@@ -4655,7 +4655,7 @@ namespace ThuTien.DAL.Doi
             var query = from item in _db.HOADONs
                         where item.NAM == Nam
                             && item.GB.Value.ToString().Contains(GiaBieu.ToString())
-                            && item.DM.Value.ToString().Contains(DinhMuc.ToString())
+                            && (item.DM==null ||item.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         select new
                         {
                             item.GIABAN,
