@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13.625" name="DB_CAPNUOCTANHOA">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.75" name="DB_CAPNUOCTANHOA">
   <DataContextMoniker Name="/DB_CAPNUOCTANHOADataContext" />
   <nestedChildShapes>
     <classShape Id="ffe6f3e0-bf97-4617-aaa7-5eb10aec12fd" absoluteBounds="3.5, 0.875, 2, 1.3862939453124998">
@@ -27,10 +27,10 @@
         <elementListCompartment Id="9ff33bdc-81c7-4b2f-baa3-1831fb1a6e64" absoluteBounds="7.39, 2.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f5d9f642-a233-4821-96a5-87c16aac2add" absoluteBounds="4.25, 3.5, 2, 9.8475569661458326">
+    <classShape Id="2edc9500-126a-43bd-b874-d19b489b31ab" absoluteBounds="3.125, 2.625, 2, 9.8475569661458326">
       <DataClassMoniker Name="/DB_CAPNUOCTANHOADataContext/TB_DULIEUKHACHHANG" />
       <nestedChildShapes>
-        <elementListCompartment Id="854e28a2-b93e-4a61-9a4c-e442e0eaa74d" absoluteBounds="4.265, 3.96, 1.9700000000000002, 9.2875569661458321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fd607659-20f8-42de-9d59-4942f2396e9c" absoluteBounds="3.1399999999999997, 3.085, 1.9700000000000002, 9.2875569661458321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

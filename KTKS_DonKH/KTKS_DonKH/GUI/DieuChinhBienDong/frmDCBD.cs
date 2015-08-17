@@ -33,7 +33,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-        bool flagFirst = true;///Lần đầu Load Form (trường hợp 1 đơn nhiều Danh Bộ)
+        //bool flagFirst = true;///Lần đầu Load Form (trường hợp 1 đơn nhiều Danh Bộ)
         bool _direct = false;///Mở form trực tiếp không qua Danh Sách Đơn
         bool _flagCtrl3 = false;
 
@@ -169,7 +169,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSDieuChinh.DataSource = null;
             dgvLichSuChungTu.DataSource = null;
             dgvDSChungTu.DataSource = null;
-            flagFirst = true;
+            //flagFirst = true;
         }
 
         /// <summary>

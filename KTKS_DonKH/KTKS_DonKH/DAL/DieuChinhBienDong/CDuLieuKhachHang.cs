@@ -27,6 +27,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool CheckExist(string DanhBo)
+        {
+            try
+            {
+                return db.TB_DULIEUKHACHHANGs.Any(itemDLKH => itemDLKH.DANHBO == DanhBo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool SuaDLKH(TB_DULIEUKHACHHANG dulieukhachhang)
         {
             try
@@ -53,7 +66,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 db.SubmitChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
