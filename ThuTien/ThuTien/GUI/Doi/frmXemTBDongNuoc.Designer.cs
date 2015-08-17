@@ -69,6 +69,7 @@
             this.TongThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -183,6 +184,7 @@
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
+            this.gridColumn1,
             this.MLT,
             this.To,
             this.CreateBy,
@@ -213,7 +215,7 @@
             this.DanhBo.Name = "DanhBo";
             this.DanhBo.Visible = true;
             this.DanhBo.VisibleIndex = 1;
-            this.DanhBo.Width = 100;
+            this.DanhBo.Width = 90;
             // 
             // HoTen
             // 
@@ -222,7 +224,7 @@
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 2;
-            this.HoTen.Width = 150;
+            this.HoTen.Width = 130;
             // 
             // DiaChi
             // 
@@ -231,7 +233,7 @@
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
             this.DiaChi.VisibleIndex = 3;
-            this.DiaChi.Width = 200;
+            this.DiaChi.Width = 180;
             // 
             // MLT
             // 
@@ -239,7 +241,7 @@
             this.MLT.FieldName = "MLT";
             this.MLT.Name = "MLT";
             this.MLT.Visible = true;
-            this.MLT.VisibleIndex = 4;
+            this.MLT.VisibleIndex = 5;
             // 
             // To
             // 
@@ -247,8 +249,8 @@
             this.To.FieldName = "TenTo";
             this.To.Name = "To";
             this.To.Visible = true;
-            this.To.VisibleIndex = 5;
-            this.To.Width = 50;
+            this.To.VisibleIndex = 6;
+            this.To.Width = 30;
             // 
             // CreateBy
             // 
@@ -256,8 +258,8 @@
             this.CreateBy.FieldName = "CreateBy";
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
-            this.CreateBy.VisibleIndex = 6;
-            this.CreateBy.Width = 120;
+            this.CreateBy.VisibleIndex = 7;
+            this.CreateBy.Width = 110;
             // 
             // MaNV_DongNuoc
             // 
@@ -265,8 +267,8 @@
             this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
-            this.MaNV_DongNuoc.VisibleIndex = 7;
-            this.MaNV_DongNuoc.Width = 120;
+            this.MaNV_DongNuoc.VisibleIndex = 8;
+            this.MaNV_DongNuoc.Width = 110;
             // 
             // TinhTrang
             // 
@@ -274,8 +276,8 @@
             this.TinhTrang.FieldName = "TinhTrang";
             this.TinhTrang.Name = "TinhTrang";
             this.TinhTrang.Visible = true;
-            this.TinhTrang.VisibleIndex = 8;
-            this.TinhTrang.Width = 80;
+            this.TinhTrang.VisibleIndex = 9;
+            this.TinhTrang.Width = 70;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -449,6 +451,14 @@
             this.TongTon.ReadOnly = true;
             this.TongTon.Width = 50;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Tổng Cộng";
+            this.gridColumn1.FieldName = "TongCong";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            // 
             // frmXemTBDongNuocDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -516,5 +526,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTon;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

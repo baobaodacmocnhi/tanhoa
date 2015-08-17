@@ -14,6 +14,17 @@ namespace ThuTien.DAL.TongHop
         {
             try
             {
+                if (_db.TT_ChuyenNoKhoDois.Count() > 0)
+                {
+                    string ID = "MaCNKD";
+                    string Table = "TT_ChuyenNoKhoDoi";
+                    decimal MaCNKD = _db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    cnkd.MaCNKD = getMaxNextIDTable(MaCNKD);
+                }
+                else
+                    cnkd.MaCNKD = decimal.Parse("1" + DateTime.Now.ToString("yy"));
                 cnkd.CreateDate = DateTime.Now;
                 cnkd.CreateBy = CNguoiDung.MaND;
                 _db.TT_ChuyenNoKhoDois.InsertOnSubmit(cnkd);
@@ -28,11 +39,46 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public bool Xoa(TT_ChuyenNoKhoDoi cnkd)
+        public bool Sua(TT_ChuyenNoKhoDoi cnkd)
         {
             try
             {
-                _db.TT_ChuyenNoKhoDois.DeleteOnSubmit(cnkd);
+                cnkd.ModifyDate = DateTime.Now;
+                cnkd.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool ThemCT(TT_CTChuyenNoKhoDoi ctcnkd)
+        {
+            try
+            {
+                ctcnkd.CreateDate = DateTime.Now;
+                ctcnkd.CreateBy = CNguoiDung.MaND;
+                _db.TT_CTChuyenNoKhoDois.InsertOnSubmit(ctcnkd);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool XoaCT(TT_CTChuyenNoKhoDoi ctcnkd)
+        {
+            try
+            {
+                _db.TT_CTChuyenNoKhoDois.DeleteOnSubmit(ctcnkd);
                 _db.SubmitChanges();
                 return true;
             }
@@ -43,12 +89,12 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public bool Xoa(string SoHoaDon)
+        public bool XoaCT(string SoHoaDon)
         {
             try
             {
                 string sql = "";
-                sql = "delete TT_ChuyenNoKhoDoi where SoHoaDon='" + SoHoaDon + "'";
+                sql = "delete TT_CTChuyenNoKhoDoi where SoHoaDon='" + SoHoaDon + "'";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -58,19 +104,42 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public bool CheckExist(string SoHoaDon)
+        public bool CheckExistCT(string SoHoaDon)
         {
-            return _db.TT_ChuyenNoKhoDois.Any(item => item.SoHoaDon == SoHoaDon);
+            return _db.TT_CTChuyenNoKhoDois.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public TT_ChuyenNoKhoDoi GetBySoHoaDon(string SoHoaDon)
+        public TT_CTChuyenNoKhoDoi GetBySoHoaDon(string SoHoaDon)
         {
-            return _db.TT_ChuyenNoKhoDois.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+            return _db.TT_CTChuyenNoKhoDois.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public DataTable GetDSByCreatedDate(DateTime TuNgay)
+        public DataTable GetDSCT()
         {
-            var query = from itemCNKD in _db.TT_ChuyenNoKhoDois
+            var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
+                        join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        select new
+                        {
+                            itemCNKD.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemCNKD.CreateDate,
+                            itemCNKD.MaCNKD,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSCT(DateTime TuNgay)
+        {
+            var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
                         join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
@@ -86,13 +155,15 @@ namespace ThuTien.DAL.TongHop
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
+                            itemCNKD.CreateDate,
+                            itemCNKD.MaCNKD,
                         };
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByCreatedDates(DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSCT(DateTime TuNgay, DateTime DenNgay)
         {
-            var query = from itemCNKD in _db.TT_ChuyenNoKhoDois
+            var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
                         join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
@@ -109,6 +180,8 @@ namespace ThuTien.DAL.TongHop
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
+                            itemCNKD.CreateDate,
+                            itemCNKD.MaCNKD,
                         };
             return LINQToDataTable(query);
         }
@@ -131,7 +204,7 @@ namespace ThuTien.DAL.TongHop
                 //            };
                 //return LINQToDataTable(query);
 
-                string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
+                string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_CTChuyenNoKhoDoi a,HOADON b"
                         + " where a.SoHoaDon=b.SOHOADON and GB>=11 and GB<=20 and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
@@ -154,7 +227,7 @@ namespace ThuTien.DAL.TongHop
                     //            };
                     //return LINQToDataTable(query);
 
-                    string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
+                    string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_CTChuyenNoKhoDoi a,HOADON b"
                         + " where a.SoHoaDon=b.SOHOADON and GB>20 and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
@@ -179,7 +252,7 @@ namespace ThuTien.DAL.TongHop
             //            };
             //return LINQToDataTable(query);
 
-            string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_ChuyenNoKhoDoi a,HOADON b"
+            string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT from TT_CTChuyenNoKhoDoi a,HOADON b"
                         + " where a.SoHoaDon=b.SOHOADON and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 

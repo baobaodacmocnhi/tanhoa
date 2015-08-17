@@ -161,6 +161,20 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
+        public DataTable GetTinhTrangMoiNhat(string DanhBo)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        where itemHD.DANHBA==DanhBo
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            Ky=itemHD.KY+"/"+itemHD.NAM,
+                            itemLH.TinhTrang,
+                        };
+            return LINQToDataTable(query.Take(1));
+        }
+         
         public string GetTinhTrangBySoHoaDon(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).TinhTrang;

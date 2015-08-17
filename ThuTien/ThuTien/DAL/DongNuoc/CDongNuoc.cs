@@ -178,6 +178,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemDN.DanhBo,
                                 itemDN.HoTen,
                                 itemDN.DiaChi,
+                                TongCong=itemDN.TT_CTDongNuocs.Sum(item=>item.TongCong),
                                 itemDN.MLT,
                                 itemDN.CreateBy,
                                 itemDN.MaNV_DongNuoc,

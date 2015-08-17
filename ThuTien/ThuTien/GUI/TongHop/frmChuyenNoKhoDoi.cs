@@ -28,7 +28,7 @@ namespace ThuTien.GUI.TongHop
         {
             dgvHoaDon.AutoGenerateColumns = false;
 
-            dateLap.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -68,7 +68,7 @@ namespace ThuTien.GUI.TongHop
                         lstHD.SelectedItem = item;
                         return;
                     }
-                    if (_cCNKD.CheckExist(item.ToString()))
+                    if (_cCNKD.CheckExistCT(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         lstHD.SelectedItem = item;
@@ -80,9 +80,9 @@ namespace ThuTien.GUI.TongHop
                     _cCNKD.BeginTransaction();
                     foreach (var item in lstHD.Items)
                     {
-                        TT_ChuyenNoKhoDoi cnkd = new TT_ChuyenNoKhoDoi();
-                        cnkd.SoHoaDon = item.ToString();
-                        if (_cCNKD.Them(cnkd))
+                        TT_CTChuyenNoKhoDoi ctcnkd = new TT_CTChuyenNoKhoDoi();
+                        ctcnkd.SoHoaDon = item.ToString();
+                        if (_cCNKD.ThemCT(ctcnkd))
                         {
                             if (!_cHoaDon.ChuyenNoKhoDoi(item.ToString()))
                             {
@@ -99,7 +99,7 @@ namespace ThuTien.GUI.TongHop
                     }
                     _cCNKD.CommitTransaction();
                     lstHD.Items.Clear();
-                    dgvHoaDon.DataSource = _cCNKD.GetDSByCreatedDate(dateLap.Value);
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -123,8 +123,8 @@ namespace ThuTien.GUI.TongHop
                         _cCNKD.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
-                            TT_ChuyenNoKhoDoi cnkd = _cCNKD.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
-                            if (_cCNKD.Xoa(cnkd))
+                            TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                            if (_cCNKD.XoaCT(ctcnkd))
                             {
                                 if (!_cHoaDon.XoaChuyenNoKhoDoi(item.Cells["SoHoaDon"].Value.ToString()))
                                 {
@@ -141,7 +141,7 @@ namespace ThuTien.GUI.TongHop
                         }
                         _cCNKD.CommitTransaction();
                         lstHD.Items.Clear();
-                        dgvHoaDon.DataSource = _cCNKD.GetDSByCreatedDate(dateLap.Value);
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
@@ -157,7 +157,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cCNKD.GetDSByCreatedDate(dateLap.Value);
+            dgvHoaDon.DataSource = _cCNKD.GetDSCT(dateTu.Value,dateDen.Value);
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -170,6 +170,10 @@ namespace ThuTien.GUI.TongHop
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "MaCNKD" && e.Value.ToString().Length>2)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
+            }
         }
 
         private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -178,6 +182,11 @@ namespace ThuTien.GUI.TongHop
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnInPhieu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

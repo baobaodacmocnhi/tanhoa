@@ -930,7 +930,7 @@ namespace ThuTien.GUI.Doi
                 for (int j = 0; j < _lstTo.Count; j++)
                 {
                     dtTemp.Merge(_cHoaDon.GetChuanThu_Doi(_lstTo[j].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
-                    dtDCHDTemp.Merge(_cDCHD.GetChuanThu(_lstTo[j].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
+                    dtDCHDTemp.Merge(_cDCHD.GetTongChuanThu(_lstTo[j].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i));
                 }
 
                 foreach (DataRow item in dtDCHDTemp.Rows)

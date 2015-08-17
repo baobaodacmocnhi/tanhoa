@@ -314,6 +314,7 @@
             this.mnuKetThucNamTaiKhoa.Name = "mnuKetThucNamTaiKhoa";
             this.mnuKetThucNamTaiKhoa.Size = new System.Drawing.Size(223, 22);
             this.mnuKetThucNamTaiKhoa.Text = "Kết Thúc Năm Tài Khóa";
+            this.mnuKetThucNamTaiKhoa.Visible = false;
             this.mnuKetThucNamTaiKhoa.Click += new System.EventHandler(this.mnuKetThucNamTaiKhoa_Click);
             // 
             // mnuKiemPortTon

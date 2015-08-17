@@ -47,6 +47,7 @@ namespace ThuTien.GUI.Doi
                             item.TieuThu,
                             TongCong = item.GiaBan + item.ThueGTGT + item.PhiBVMT,
                             item.SoPhatHanh,
+                            item.Xoa,
                         };
 
             dgvHoaDon.DataSource = _cDAL.LINQToDataTable(query);
@@ -159,7 +160,8 @@ namespace ThuTien.GUI.Doi
                     if (_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == item.ToString()))
                     {
                         TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.SingleOrDefault(itemHD => itemHD.SoHoaDon == item.ToString());
-                        _db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);
+                        //_db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);
+                        hoadon.Xoa = true;
                         _db.SubmitChanges();
                     }
                 lstHD.Items.Clear();
@@ -198,17 +200,18 @@ namespace ThuTien.GUI.Doi
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
-            {
-                DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                dr["LoaiBaoCao"] = "TỒN";
-                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                dr["Ky"] = item.Cells["Ky"].Value;
-                dr["MLT"] = item.Cells["MLT"].Value;
-                dr["TongCong"] = item.Cells["TongCong"].Value;
-                dr["SoPhatHanh"] = item.Cells["SoPhatHanh"].Value;
-                dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
-                ds.Tables["DSHoaDon"].Rows.Add(dr);
-            }
+                if (!bool.Parse(item.Cells["Xoa"].Value.ToString()))
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "TỒN";
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item.Cells["Ky"].Value;
+                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["TongCong"] = item.Cells["TongCong"].Value;
+                    dr["SoPhatHanh"] = item.Cells["SoPhatHanh"].Value;
+                    dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -249,6 +252,28 @@ namespace ThuTien.GUI.Doi
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnInDSDaXoa_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if (bool.Parse(item.Cells["Xoa"].Value.ToString()))
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "ĐÃ XÓA";
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item.Cells["Ky"].Value;
+                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["TongCong"] = item.Cells["TongCong"].Value;
+                    dr["SoPhatHanh"] = item.Cells["SoPhatHanh"].Value;
+                    dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
+            rptDSHoaDon rpt = new rptDSHoaDon();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

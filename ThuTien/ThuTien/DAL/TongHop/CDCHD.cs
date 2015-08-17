@@ -94,24 +94,39 @@ namespace ThuTien.DAL.TongHop
             return _db.DIEUCHINH_HDs.ToList();
         }
 
-        public DataTable GetChuanThu(int MaTo, int Nam, int Ky, int Dot)
+        public DataTable GetTongChuanThu(int Nam, int Ky)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        where itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky
+                        group itemDC by itemHD.KY into itemGroup
+                        select new
+                        {
+                            Ky = Ky,
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetTongChuanThu(int MaTo, int Nam, int Ky, int Dot)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                 && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot
+                        group itemDC by itemHD.KY into itemGroup
                         select new
                         {
                             MaTo = MaTo,
                             _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
-                            MaNV = itemHD.MaNV_HanhThu,
-                            _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
-                            itemHD.NGAYGIAITRACH,
-                            itemDC.GIABAN_BD,
-                            itemDC.TONGCONG_BD,
-                            itemDC.GIABAN_END,
-                            itemDC.TONGCONG_END,
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
             return LINQToDataTable(query);
         }

@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtDoanhThu = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbKy
@@ -165,11 +166,21 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Doanh Thu:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(285, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 13);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Đã điều chỉnh Hóa Đơn";
+            // 
             // frmPhanTichDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 92);
+            this.ClientSize = new System.Drawing.Size(699, 95);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSanLuong);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDoanhThu);
@@ -206,5 +217,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDoanhThu;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

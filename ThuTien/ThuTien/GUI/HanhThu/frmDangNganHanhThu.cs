@@ -247,7 +247,7 @@ namespace ThuTien.GUI.HanhThu
                             {
                                 _cHoaDon.SqlBeginTransaction();
                                 foreach (DataRow item in dt.Rows)
-                                    if (!lstHD.Items.Contains(item["SoHoaDon"].ToString()))
+                                    if (!lstHD.Items.Contains(item["SoHoaDon"].ToString().ToUpper()))
                                     {
                                         if (_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
                                         {

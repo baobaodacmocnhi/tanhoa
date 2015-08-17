@@ -312,7 +312,9 @@ namespace ThuTien.GUI.Quay
                 return;
             }
 
+            HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim());
             TT_XacNhanNo xacnhanno = new TT_XacNhanNo();
+            xacnhanno.TinhDenKy = "Tính đến Kỳ " + hoadon.KY + "/" + hoadon.NAM;
 
             if (dgvHoaDon.RowCount > 0)
             {
@@ -329,7 +331,6 @@ namespace ThuTien.GUI.Quay
             }
             else
             {
-                HOADON hoadon = _cHoaDon.GetByDanhBo(txtDanhBo.Text.Trim());
                 xacnhanno.DanhBo = hoadon.DANHBA;
                 xacnhanno.HoTen = hoadon.TENKH;
                 xacnhanno.DiaChi = hoadon.SO + " " + hoadon.DUONG;
@@ -356,6 +357,7 @@ namespace ThuTien.GUI.Quay
                     dr["DinhMuc"] = xacnhanno.DinhMuc;
                 dr["Ky"] = Ky;
                 dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", TongCongSo);
+                dr["TinhDenKy"] = xacnhanno.TinhDenKy;
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
@@ -452,6 +454,7 @@ namespace ThuTien.GUI.Quay
                     dr["DinhMuc"] = item.Cells["DinhMuc_XacNhanNo"].Value.ToString();
                 dr["Ky"] = item.Cells["Ky_XacNhanNo"].Value.ToString();
                 dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", (int)item.Cells["TongCong_XacNhanNo"].Value);
+                dr["TinhDenKy"] = item.Cells["TinhTenKy_XacNhanNo"].Value.ToString();
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 

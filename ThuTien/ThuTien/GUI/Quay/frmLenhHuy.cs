@@ -71,6 +71,12 @@ namespace ThuTien.GUI.Quay
                         lstHD.SelectedItem = item;
                         return;
                     }
+                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                    {
+                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.SelectedItem = item;
+                        return;
+                    }
                     if (_cLenhHuy.CheckExist(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn đã có trong Lệnh Hủy: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -200,6 +206,37 @@ namespace ThuTien.GUI.Quay
                 lenhhuy.TinhTrang = dgvHoaDon["TinhTrang", e.RowIndex].Value.ToString();
                 _cLenhHuy.Sua(lenhhuy);
             }
+        }
+
+        private void btnInDSKhongTrung_Click(object sender, EventArgs e)
+        {
+            DataTable dt = (DataTable)dgvHoaDon.DataSource;
+            dsBaoCao ds = new dsBaoCao();
+            ds.Tables["TamThuChuyenKhoan"].PrimaryKey = new DataColumn[] { ds.Tables["TamThuChuyenKhoan"].Columns["DanhBo"] };
+            foreach (DataRow item in dt.Rows)
+                if (!ds.Tables["TamThuChuyenKhoan"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
+                {
+                    DataRow[] drDGV = dt.Select("DanhBo=" + item["DanhBo"]);
+                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["DanhBo"] = drDGV[drDGV.Count() - 1]["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["DiaChi"] = drDGV[drDGV.Count() - 1]["DiaChi"];
+                    dr["Ky"] = drDGV[drDGV.Count() - 1]["Ky"];
+                    dr["MLT"] = drDGV[drDGV.Count() - 1]["MLT"];
+                    dr["TongCong"] = drDGV[drDGV.Count() - 1]["TongCong"];
+                    dr["TinhTrang"] = drDGV[drDGV.Count() - 1]["TinhTrang"];
+                    //dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
+                    dr["NhanVien"] = drDGV[drDGV.Count() - 1]["HanhThu"];
+                    dr["To"] = drDGV[drDGV.Count() - 1]["To"];
+                    if (int.Parse(drDGV[drDGV.Count() - 1]["GiaBieu"].ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                }
+            rptDSLenhHuy rpt = new rptDSLenhHuy();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
     }
 }

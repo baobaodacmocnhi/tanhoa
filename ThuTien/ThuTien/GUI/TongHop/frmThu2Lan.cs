@@ -215,20 +215,13 @@ namespace ThuTien.GUI.TongHop
         {
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Tra")
             {
-                HOADON hoadon = _cHoaDon.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
-                if (hoadon.Thu2Lan_Tra != bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()))
+                if (bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()))
                 {
-                    if (bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()) == true)
-                    {
-                        hoadon.Thu2Lan_Tra = true;
-                        hoadon.Thu2Lan_NgayTra = DateTime.Now;
-                    }
-                    else
-                    {
-                        hoadon.Thu2Lan_Tra = false;
-                        hoadon.Thu2Lan_NgayTra = null;
-                    }
-                    _cHoaDon.Sua(hoadon);
+                    _cHoaDon.Thu2Lan_Tra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                }
+                else
+                {
+                    _cHoaDon.Thu2Lan_XoaTra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
                 }
                 btnXem.PerformClick();
             }
