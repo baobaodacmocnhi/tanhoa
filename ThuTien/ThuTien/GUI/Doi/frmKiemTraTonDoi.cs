@@ -1009,6 +1009,19 @@ namespace ThuTien.GUI.Doi
                                         dt = _cHoaDon.GetDSTon_To("TG", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                     }
                 }
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    if (_cDCHD.CheckExist(item["SoHoaDon"].ToString()))
+                    {
+                        DataTable dtDCHD = _cDCHD.GetChuanThu(item["SoHoaDon"].ToString());
+                        item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - int.Parse(dtDCHD.Rows[0]["GIABAN_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
+                        item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - int.Parse(dtDCHD.Rows[0]["THUEGTGT_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["THUEGTGT_BD"].ToString());
+                        item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - int.Parse(dtDCHD.Rows[0]["PHIBVMT_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["PHIBVMT_BD"].ToString());
+                        item["TongCong"] = long.Parse(item["TongCong"].ToString()) - int.Parse(dtDCHD.Rows[0]["TONGCONG_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
+                    }
+                }
+
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
                 Microsoft.Office.Interop.Excel.Workbooks oBooks;
@@ -1099,6 +1112,19 @@ namespace ThuTien.GUI.Doi
                                             dt = _cHoaDon.GetDSTon_To("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                         }
                     }
+
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        if (_cDCHD.CheckExist(item["SoHoaDon"].ToString()))
+                        {
+                            DataTable dtDCHD = _cDCHD.GetChuanThu(item["SoHoaDon"].ToString());
+                            item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - int.Parse(dtDCHD.Rows[0]["GIABAN_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
+                            item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - int.Parse(dtDCHD.Rows[0]["THUEGTGT_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["THUEGTGT_BD"].ToString());
+                            item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - int.Parse(dtDCHD.Rows[0]["PHIBVMT_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["PHIBVMT_BD"].ToString());
+                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - int.Parse(dtDCHD.Rows[0]["TONGCONG_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
+                        }
+                    }
+
                     //Tạo các đối tượng Excel
                     Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
                     Microsoft.Office.Interop.Excel.Workbooks oBooks;

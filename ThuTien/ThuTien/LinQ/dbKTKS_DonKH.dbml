@@ -131,6 +131,7 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonKH_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDon" Type="DCBD" />
+      <Association Name="DonKH_YeuCauCHDB" Member="YeuCauCHDBs" ThisKey="MaDon" OtherKey="MaDon" Type="YeuCauCHDB" />
     </Type>
   </Table>
   <Table Name="dbo.DonTXL" Member="DonTXLs">
@@ -177,6 +178,41 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonTXL_DCBD" Member="DCBDs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="DCBD" />
+      <Association Name="DonTXL_YeuCauCHDB" Member="YeuCauCHDBs" ThisKey="MaDon" OtherKey="MaDonTXL" Type="YeuCauCHDB" />
+    </Type>
+  </Table>
+  <Table Name="dbo.YeuCauCHDB" Member="YeuCauCHDBs">
+    <Type Name="YeuCauCHDB">
+      <Column Name="MaYCCHDB" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HopDong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Dot" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GhiChuLyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CatTamNutBit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayCatTamNutBit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TBCTDB" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaCTCTDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TBCHDB" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaCTCHDB" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ToXyLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DonKH_YeuCauCHDB" Member="DonKH" ThisKey="MaDon" OtherKey="MaDon" Type="DonKH" IsForeignKey="true" />
+      <Association Name="DonTXL_YeuCauCHDB" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

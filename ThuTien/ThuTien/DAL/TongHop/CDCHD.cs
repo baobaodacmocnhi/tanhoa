@@ -10,8 +10,6 @@ namespace ThuTien.DAL.TongHop
 {
     class CDCHD : CDAL
     {
-        dbKTKS_DonKHDataContext _dbKTKS_DonKH = new dbKTKS_DonKHDataContext();
-
         public bool Them(DIEUCHINH_HD dchd)
         {
             try
@@ -319,6 +317,25 @@ namespace ThuTien.DAL.TongHop
                     return LINQToDataTable(query);
                 }
             return null;
+        }
+
+        public DataTable GetChuanThu(string SoHoaDon)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        where itemDC.SoHoaDon == SoHoaDon
+                        select new
+                        {
+                            itemDC.GIABAN_BD,
+                            THUEGTGT_BD = itemDC.THUE_BD,
+                            PHIBVMT_BD = itemDC.PHI_BD,
+                            itemDC.TONGCONG_BD,
+                            itemDC.GIABAN_END,
+                            THUEGTGT_END = itemDC.THUE_END,
+                            PHIBVMT_END = itemDC.PHI_END,
+                            itemDC.TONGCONG_END,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetChuanThuTon(string Loai, int MaTo, int Nam, int Ky, int Dot)
@@ -1002,6 +1019,8 @@ namespace ThuTien.DAL.TongHop
         {
             return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
+
+        dbKTKS_DonKHDataContext _dbKTKS_DonKH = new dbKTKS_DonKHDataContext();
 
         public DonKH GetDonKHbyID(decimal MaDon)
         {

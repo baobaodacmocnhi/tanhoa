@@ -112,6 +112,8 @@ namespace ThuTien.GUI.TongHop
                             MessageBox.Show("Mã Đơn lúc Rút & nhập Kết Quả có khác nhau \nVui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
+                txtSoPhieu.Text = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+
                 lbTangGiam.Text = _ctdchd.TangGiam;
 
                 txtTienNuoc_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_Start.Value);
@@ -135,7 +137,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuDCHD", "Sửa"))
+            if (CNguoiDung.CheckQuyen("mnuDCHD", "Sua"))
             {
                 if (_dchd.PHIEU_DC == null)
                 {

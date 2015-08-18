@@ -56,6 +56,21 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
+        public bool Xoa(decimal MaCNKD)
+        {
+            try
+            {
+                string sql = "";
+                sql = "delete TT_ChuyenNoKhoDoi where MaCNKD=" + MaCNKD;
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool ThemCT(TT_CTChuyenNoKhoDoi ctcnkd)
         {
             try
@@ -63,6 +78,23 @@ namespace ThuTien.DAL.TongHop
                 ctcnkd.CreateDate = DateTime.Now;
                 ctcnkd.CreateBy = CNguoiDung.MaND;
                 _db.TT_CTChuyenNoKhoDois.InsertOnSubmit(ctcnkd);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool SuaCT(TT_CTChuyenNoKhoDoi ctcnkd)
+        {
+            try
+            {
+                ctcnkd.ModifyDate = DateTime.Now;
+                ctcnkd.ModifyBy = CNguoiDung.MaND;
                 _db.SubmitChanges();
                 return true;
             }
@@ -109,9 +141,41 @@ namespace ThuTien.DAL.TongHop
             return _db.TT_CTChuyenNoKhoDois.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public TT_CTChuyenNoKhoDoi GetBySoHoaDon(string SoHoaDon)
+        public TT_ChuyenNoKhoDoi Get(decimal MaCNKD)
+        {
+            return _db.TT_ChuyenNoKhoDois.SingleOrDefault(item => item.MaCNKD == MaCNKD);
+        }
+
+        public TT_CTChuyenNoKhoDoi GetCT(string SoHoaDon)
         {
             return _db.TT_CTChuyenNoKhoDois.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+        }
+
+        public List<TT_CTChuyenNoKhoDoi> GetDSCT_ChuaLapPhieu(string DanhBo)
+        {
+            var query = from itemCT in _db.TT_CTChuyenNoKhoDois
+                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        where itemHD.DANHBA == DanhBo && itemCT.MaCNKD == null
+                        select itemCT;
+            return query.ToList();
+        }
+
+        public DataTable GetDSCT(decimal MaCNKD)
+        {
+            var query = from itemCT in _db.TT_CTChuyenNoKhoDois
+                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        where itemCT.MaCNKD == MaCNKD
+                        select new
+                        {
+                            itemCT.MaCNKD,
+                            Ky=itemHD.KY+"/"+itemHD.NAM,
+                            itemHD.SOPHATHANH,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT=itemHD.THUE,
+                            PhiBVMT=itemHD.PHI,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDSCT()
@@ -259,5 +323,16 @@ namespace ThuTien.DAL.TongHop
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
+        public int CountCT(decimal MaCNKD)
+        {
+            return _db.TT_CTChuyenNoKhoDois.Count(item => item.MaCNKD == MaCNKD);
+        }
+
+        dbKTKS_DonKHDataContext _dbKTKS_DonKH = new dbKTKS_DonKHDataContext();
+
+        public YeuCauCHDB GetYeuCauCHDB(decimal MaYCCHDB)
+        {
+            return _dbKTKS_DonKH.YeuCauCHDBs.SingleOrDefault(item => item.MaYCCHDB == MaYCCHDB);
+        }
     }
 }

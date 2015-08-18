@@ -59,7 +59,7 @@ namespace ThuTien.GUI.TimKiem
                 }
                 if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
                 {
-                    TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                    TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
 
                     item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
                     item.Cells["DangNgan"].Value = "CNKĐ";

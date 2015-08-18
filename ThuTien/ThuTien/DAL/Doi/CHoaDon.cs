@@ -4920,7 +4920,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set ChuyenNoKhoDoi=1 where SOHOADON='" + SoHoaDon + "'";
+                sql = "update HOADON set ChuyenNoKhoDoi=1,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where SOHOADON='" + SoHoaDon + "'";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -4935,7 +4935,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set ChuyenNoKhoDoi=0 where SOHOADON='" + SoHoaDon + "'";
+                sql = "update HOADON set ChuyenNoKhoDoi=0,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where SOHOADON='" + SoHoaDon + "'";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)

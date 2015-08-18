@@ -158,6 +158,7 @@
             this.dgvHoaDon.TabIndex = 47;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
+            this.dgvHoaDon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHoaDon_MouseDoubleClick);
             // 
             // CreateDate
             // 

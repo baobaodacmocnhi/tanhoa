@@ -40,6 +40,7 @@
             this.dateLap = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSoPhieu
@@ -48,6 +49,7 @@
             this.txtSoPhieu.Name = "txtSoPhieu";
             this.txtSoPhieu.Size = new System.Drawing.Size(100, 20);
             this.txtSoPhieu.TabIndex = 3;
+            this.txtSoPhieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoPhieu_KeyPress);
             // 
             // label1
             // 
@@ -141,12 +143,24 @@
             this.btnSua.TabIndex = 38;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(406, 88);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 39;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmShowChuyenNoKhoDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 128);
+            this.ClientSize = new System.Drawing.Size(497, 128);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.dateLap);
             this.Controls.Add(this.label5);
@@ -161,6 +175,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmShowChuyenNoKhoDoi";
             this.Text = "Nhập Kết Quả Chuyển Nợ Khó Đòi";
+            this.Load += new System.EventHandler(this.frmShowChuyenNoKhoDoi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,5 +195,6 @@
         private System.Windows.Forms.DateTimePicker dateLap;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

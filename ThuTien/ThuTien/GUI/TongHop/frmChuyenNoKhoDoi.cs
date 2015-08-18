@@ -10,6 +10,9 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.TongHop;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.TongHop;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -60,6 +63,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
+                List<HOADON> lstHDTemp = new List<HOADON>();
                 foreach (var item in lstHD.Items)
                 {
                     if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
@@ -74,27 +78,47 @@ namespace ThuTien.GUI.TongHop
                         lstHD.SelectedItem = item;
                         return;
                     }
+                    lstHDTemp.Add(_cHoaDon.GetBySoHoaDon(item.ToString()));
                 }
                 try
                 {
                     _cCNKD.BeginTransaction();
-                    foreach (var item in lstHD.Items)
+                    while (lstHDTemp.Count > 0)
                     {
+                        TT_ChuyenNoKhoDoi cnkd = new TT_ChuyenNoKhoDoi();
+                        cnkd.DanhBo = lstHDTemp[0].DANHBA;
+                        cnkd.HoTen = lstHDTemp[0].TENKH;
+                        cnkd.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG;
+
                         TT_CTChuyenNoKhoDoi ctcnkd = new TT_CTChuyenNoKhoDoi();
-                        ctcnkd.SoHoaDon = item.ToString();
-                        if (_cCNKD.ThemCT(ctcnkd))
-                        {
-                            if (!_cHoaDon.ChuyenNoKhoDoi(item.ToString()))
+                        ctcnkd.MaCNKD = cnkd.MaCNKD;
+                        ctcnkd.SoHoaDon = lstHDTemp[0].SOHOADON;
+                        ctcnkd.CreateBy = CNguoiDung.MaND;
+                        ctcnkd.CreateDate = DateTime.Now;
+
+                        cnkd.TT_CTChuyenNoKhoDois.Add(ctcnkd);
+                        _cHoaDon.ChuyenNoKhoDoi(ctcnkd.SoHoaDon);
+
+                        for (int j = 1; j < lstHDTemp.Count; j++)
+                            if (lstHDTemp[0].DANHBA == lstHDTemp[j].DANHBA)
                             {
-                                _cCNKD.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi Cập Nhật Hóa Đơn Chuyển Nợ Khó Đòi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                TT_CTChuyenNoKhoDoi ctcnkd2 = new TT_CTChuyenNoKhoDoi();
+                                ctcnkd2.MaCNKD = cnkd.MaCNKD;
+                                ctcnkd2.SoHoaDon = lstHDTemp[j].SOHOADON;
+                                ctcnkd2.CreateBy = CNguoiDung.MaND;
+                                ctcnkd2.CreateDate = DateTime.Now;
+
+                                cnkd.TT_CTChuyenNoKhoDois.Add(ctcnkd2);
+                                _cHoaDon.ChuyenNoKhoDoi(ctcnkd2.SoHoaDon);
                             }
-                        }
-                        else
+
+                        if (_cCNKD.Them(cnkd))
                         {
-                            _cCNKD.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            for (int i = lstHDTemp.Count - 1; i >= 0; i--)
+                                if (lstHDTemp[i].DANHBA == cnkd.DanhBo)
+                                {
+                                    lstHDTemp.RemoveAt(i);
+                                }
                         }
                     }
                     _cCNKD.CommitTransaction();
@@ -120,33 +144,35 @@ namespace ThuTien.GUI.TongHop
                 {
                     try
                     {
-                        _cCNKD.BeginTransaction();
+                        //_cCNKD.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
-                            TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                            TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
                             if (_cCNKD.XoaCT(ctcnkd))
                             {
                                 if (!_cHoaDon.XoaChuyenNoKhoDoi(item.Cells["SoHoaDon"].Value.ToString()))
                                 {
-                                    _cCNKD.SqlRollbackTransaction();
+                                    //_cCNKD.SqlRollbackTransaction();
                                     MessageBox.Show("Lỗi Cập Nhật Hóa Đơn Chuyển Nợ Khó Đòi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
-                                }
+                                }    
                             }
                             else
                             {
-                                _cCNKD.Rollback();
+                                //_cCNKD.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
+                            if (_cCNKD.CountCT(ctcnkd.MaCNKD) == 0)
+                                _cCNKD.Xoa(ctcnkd.MaCNKD);
                         }
-                        _cCNKD.CommitTransaction();
+                        //_cCNKD.CommitTransaction();
                         lstHD.Items.Clear();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        _cCNKD.Rollback();
+                        //_cCNKD.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -186,7 +212,46 @@ namespace ThuTien.GUI.TongHop
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(dgvHoaDon.SelectedRows[0].Cells["MaCNKD"].Value.ToString()))
+            {
+                TT_ChuyenNoKhoDoi cnkd = _cCNKD.Get(decimal.Parse(dgvHoaDon.SelectedRows[0].Cells["MaCNKD"].Value.ToString()));
+                DataTable dt = _cCNKD.GetDSCT(decimal.Parse(dgvHoaDon.SelectedRows[0].Cells["MaCNKD"].Value.ToString()));
+                
+                dsBaoCao ds = new dsBaoCao();
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["TongHopNo"].NewRow();
+                    dr["SoPhieu"] = item["MaCNKD"].ToString().Insert(item["MaCNKD"].ToString().Length - 2, "-");
+                    dr["DanhBo"] = cnkd.DanhBo.Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = cnkd.HoTen;
+                    dr["DiaChi"] = cnkd.DiaChi;
+                    if (cnkd.SoPhieuYCCHDB!=null)
+                        dr["SoPhieuYCCHDB"] = cnkd.SoPhieuYCCHDB.Value.ToString().Insert(cnkd.SoPhieuYCCHDB.Value.ToString().Length - 2, "-");
+                    if (cnkd.NgayYCCHDB != null)
+                        dr["NgayYCCHDB"] = cnkd.NgayYCCHDB.Value.ToString("dd/MM/yyyy");
+                    dr["Ky"] = item["Ky"];
+                    dr["SoPhatHanh"] = item["SoPhatHanh"];
+                    dr["TieuThu"] = item["TieuThu"];
+                    dr["GiaBan"] = item["GiaBan"];
+                    dr["ThueGTGT"] = item["ThueGTGT"];
+                    dr["PhiBVMT"] = item["PhiBVMT"];
+                    ds.Tables["TongHopNo"].Rows.Add(dr);
+                }
 
+                rptChuyenNoKhoDoi rpt = new rptChuyenNoKhoDoi();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
+        }
+
+        private void dgvHoaDon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dgvHoaDon.RowCount > 0)
+            {
+                frmShowChuyenNoKhoDoi frm = new frmShowChuyenNoKhoDoi(dgvHoaDon.CurrentRow.Cells["DanhBo"].Value.ToString(), decimal.Parse(dgvHoaDon.CurrentRow.Cells["MaCNKD"].Value.ToString()));
+                frm.ShowDialog();
+            }
         }
     }
 }
