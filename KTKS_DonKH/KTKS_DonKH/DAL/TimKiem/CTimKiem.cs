@@ -447,6 +447,26 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
+                ///Table YeuCauCHDB
+                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                                      where itemYCCHDB.MaDonTXL == MaDonTXL
+                                  select new
+                                  {
+                                     itemYCCHDB.MaYCCHDB,
+                                     itemYCCHDB.CreateDate,
+                                     itemYCCHDB.DanhBo,
+                                     itemYCCHDB.HoTen,
+                                     itemYCCHDB.DiaChi,
+                                     itemYCCHDB.LyDo,
+                                     itemYCCHDB.GhiChuLyDo,
+                                     MaDon = itemYCCHDB.MaDonTXL,
+                                  };
+
+                DataTable dtYCCHDB = new DataTable();
+                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB.TableName = "YeuCauCHDB";
+                ds.Tables.Add(dtYCCHDB);
+
                 ///Table CTTTTL
                 var queryTTTL = from itemCTTTTL in db.CTTTTLs
                                 where itemCTTTTL.TTTL.MaDonTXL == MaDonTXL
