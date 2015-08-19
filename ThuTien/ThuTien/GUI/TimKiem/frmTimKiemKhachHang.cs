@@ -134,7 +134,7 @@ namespace ThuTien.GUI.TimKiem
             if (dtPhieuTieuThu.Rows.Count > 0)
             {
                 DataRow dr = ds.Tables["PhieuTieuThu"].NewRow();
-                dr["DanhBo"] = dtPhieuTieuThu.Rows[0]["DanhBo"];
+                dr["DanhBo"] = dtPhieuTieuThu.Rows[0]["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                 dr["HopDong"] = dtPhieuTieuThu.Rows[0]["HopDong"];
                 dr["GiaBieu"] = dtPhieuTieuThu.Rows[0]["GiaBieu"];
                 dr["DinhMuc"] = dtPhieuTieuThu.Rows[0]["DinhMuc"];
@@ -194,7 +194,7 @@ namespace ThuTien.GUI.TimKiem
                 ds.Tables["GhiChu"].Rows.Add(dr);
             }
 
-            ReportDocument rpt = new rptPhieuTieuThu();
+            rptPhieuTieuThu rpt = new rptPhieuTieuThu();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();

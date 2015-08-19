@@ -218,12 +218,17 @@ namespace ThuTien.DAL.DongNuoc
             return ds;
         }
 
-        public DataTable GetDSKQDongNuocByDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSKQDongNuocByMaNVDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
         {
             return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
         }
 
-        public DataTable GetDSKQDongNuocByDates(decimal MaDN, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSKQDongNuocByMaNVDates(DateTime TuNgay, DateTime DenNgay)
+        {
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
+        }
+
+        public DataTable GetDSKQDongNuocByMaDNDates(decimal MaDN, DateTime TuNgay, DateTime DenNgay)
         {
             return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.MaDN == MaDN && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
         }

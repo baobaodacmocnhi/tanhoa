@@ -61,7 +61,8 @@ namespace ThuTien.GUI.DongNuoc
                     txtDiaChi.Text = _dongnuoc.DiaChi;
                     chkHuy.Checked = _dongnuoc.Huy;
 
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(_dongnuoc.MaDN, dateTu.Value, dateDen.Value);
+                    //dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaDNDates(_dongnuoc.MaDN, dateTu.Value, dateDen.Value);
+                    btnXem.PerformClick();
                 }
                 else
                 {
@@ -80,11 +81,12 @@ namespace ThuTien.GUI.DongNuoc
                         MessageBox.Show("Biên Bản ngày " + dateDongNuoc.Value.ToString("dd/MM/yyyy") + " đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (!_cDongNuoc.CheckDongNuocByMaDNMaNV_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
-                    {
-                        MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    if(!CNguoiDung.ToTruong)
+                        if (!_cDongNuoc.CheckDongNuocByMaDNMaNV_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
+                        {
+                            MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
 
                     TT_KQDongNuoc kqdongnuoc = new TT_KQDongNuoc();
                     kqdongnuoc.MaDN = _dongnuoc.MaDN;
@@ -108,6 +110,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (_cDongNuoc.ThemKQ(kqdongnuoc))
                     {
                         Clear();
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -142,7 +145,7 @@ namespace ThuTien.GUI.DongNuoc
                 if (_cDongNuoc.SuaKQ(kqdongnuoc))
                 {
                     Clear();
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -158,7 +161,7 @@ namespace ThuTien.GUI.DongNuoc
                 if (_cDongNuoc.XoaKQ(kqdongnuoc))
                 {
                     Clear();
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -168,7 +171,10 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+            if(CNguoiDung.ToTruong)
+                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVDates(dateTu.Value, dateDen.Value);
+            else
+                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
         }
 
         private void dgvKQDongNuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)

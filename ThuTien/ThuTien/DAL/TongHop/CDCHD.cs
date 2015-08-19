@@ -471,6 +471,7 @@ namespace ThuTien.DAL.TongHop
                                     _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
                                     itemDC.GIABAN_BD,
                                     itemDC.TONGCONG_BD,
                                     itemDC.GIABAN_END,
@@ -518,6 +519,7 @@ namespace ThuTien.DAL.TongHop
                                     _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
                                     itemDC.GIABAN_BD,
                                     itemDC.TONGCONG_BD,
                                     itemDC.GIABAN_END,
@@ -565,6 +567,7 @@ namespace ThuTien.DAL.TongHop
                                     _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == MaTo).TenTo,
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
                                     itemDC.GIABAN_BD,
                                     itemDC.TONGCONG_BD,
                                     itemDC.GIABAN_END,
@@ -690,6 +693,7 @@ namespace ThuTien.DAL.TongHop
                                 {
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
                                     itemDC.GIABAN_BD,
                                     itemDC.TONGCONG_BD,
                                     itemDC.GIABAN_END,
@@ -731,6 +735,7 @@ namespace ThuTien.DAL.TongHop
                                 {
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
                                     itemDC.GIABAN_BD,
                                     itemDC.TONGCONG_BD,
                                     itemDC.GIABAN_END,
@@ -772,6 +777,7 @@ namespace ThuTien.DAL.TongHop
                                 {
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
                                     itemDC.GIABAN_BD,
                                     itemDC.TONGCONG_BD,
                                     itemDC.GIABAN_END,

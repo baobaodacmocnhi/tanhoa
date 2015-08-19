@@ -40,7 +40,7 @@ namespace ThuTien.GUI.HeThong
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             CNguoiDung _cNguoiDung = new CNguoiDung();
-            
+
             if (_cNguoiDung.DangNhap(txtTaiKhoan.Text.Trim(), txtMatKhau.Text.Trim()))
             {
                 TT_NguoiDung nguoidung = _cNguoiDung.GetByTaiKhoan(txtTaiKhoan.Text.Trim());
@@ -51,6 +51,7 @@ namespace ThuTien.GUI.HeThong
 
                     CNguoiDung.MaND = nguoidung.MaND;
                     CNguoiDung.HoTen = nguoidung.HoTen;
+                    CNguoiDung.ToTruong = nguoidung.ToTruong;
                     if (nguoidung.MaTo != null)
                     {
                         CNguoiDung.MaTo = nguoidung.MaTo.Value;

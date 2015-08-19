@@ -327,6 +327,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
                     dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                 }
                 dr["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["TongHopDangNgan"].Rows.Add(dr);
@@ -341,6 +342,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
                     dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
@@ -427,6 +429,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
                     dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                 }
                 dr["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["TongHopDangNgan"].Rows.Add(dr);
@@ -441,6 +444,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
                     dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
@@ -522,6 +526,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
                     dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
                 }
                 dr["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["TongHopDangNgan"].Rows.Add(dr);
@@ -536,6 +541,7 @@ namespace ThuTien.GUI.TongHop
                     dr["TongGiaBanCNKD"] = dtCNKD.Rows[0]["TongGiaBan"];
                     dr["TongThueGTGTCNKD"] = dtCNKD.Rows[0]["TongThueGTGT"];
                     dr["TongPhiBVMTCNKD"] = dtCNKD.Rows[0]["TongPhiBVMT"];
+                    dr["TongCongCNKD"] = dtCNKD.Rows[0]["TongCong"];
 
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);

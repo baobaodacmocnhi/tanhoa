@@ -217,12 +217,19 @@ namespace ThuTien.GUI.Quay
                 if (!ds.Tables["TamThuChuyenKhoan"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
                 {
                     DataRow[] drDGV = dt.Select("DanhBo=" + item["DanhBo"]);
+                    string Ky="";
+                    int TongCong = 0 ;
+                    foreach (DataRow itemRow in drDGV)
+                    {
+                        Ky += itemRow["Ky"].ToString().Trim()+", ";
+                        TongCong += int.Parse(itemRow["TongCong"].ToString());
+                    }
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                     dr["DanhBo"] = drDGV[drDGV.Count() - 1]["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                     dr["DiaChi"] = drDGV[drDGV.Count() - 1]["DiaChi"];
-                    dr["Ky"] = drDGV[drDGV.Count() - 1]["Ky"];
+                    dr["Ky"] = Ky;
                     dr["MLT"] = drDGV[drDGV.Count() - 1]["MLT"];
-                    dr["TongCong"] = drDGV[drDGV.Count() - 1]["TongCong"];
+                    dr["TongCong"] = TongCong;
                     dr["TinhTrang"] = drDGV[drDGV.Count() - 1]["TinhTrang"];
                     //dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
                     dr["NhanVien"] = drDGV[drDGV.Count() - 1]["HanhThu"];
