@@ -161,7 +161,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
                 else
                 {
-                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(_ctchdb.CHDB.MaDon.Value, _ctchdb.DanhBo);
+                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(_ctchdb.CHDB.MaDon.Value, _ctchdb.DanhBo);
                 }
 
                 dr["SoPhieu"] = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length-2, "-");
@@ -207,7 +207,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         YeuCauCHDB ycchdb = new YeuCauCHDB();
                         if (_ctchdb.CHDB.ToXuLy)
                         {
-                            ycchdb.ToXyLy = true;
+                            ycchdb.ToXuLy = true;
                             ycchdb.MaDonTXL = _ctchdb.CHDB.MaDonTXL;
                         }
                         else
@@ -295,7 +295,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             YeuCauCHDB ycchdb = new YeuCauCHDB();
                             if (_ctchdb.CHDB.ToXuLy)
                             {
-                                ycchdb.ToXyLy = true;
+                                ycchdb.ToXuLy = true;
                                 ycchdb.MaDonTXL = _ctchdb.CHDB.MaDonTXL;
                             }
                             else

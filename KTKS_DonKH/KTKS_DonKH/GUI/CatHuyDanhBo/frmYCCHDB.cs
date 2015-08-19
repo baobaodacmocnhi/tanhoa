@@ -150,7 +150,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         if (!_cCHDB.CheckYCCHDBbyMaDonDanhBo_TXL(_dontxl.MaDon, _dontxl.DanhBo))
                         {
                             YeuCauCHDB ycchdb = new YeuCauCHDB();
-                            ycchdb.ToXyLy = true;
+                            ycchdb.ToXuLy = true;
                             ycchdb.MaDonTXL = _dontxl.MaDon;
                             ycchdb.DanhBo = txtDanhBo.Text.Trim();
                             ycchdb.HopDong = txtHopDong.Text.Trim();

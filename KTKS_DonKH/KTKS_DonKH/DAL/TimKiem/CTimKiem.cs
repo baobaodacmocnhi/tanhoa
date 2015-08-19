@@ -204,6 +204,26 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
+                ///Table YeuCauCHDB
+                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                                  where itemYCCHDB.MaDon == MaDon
+                                  select new
+                                  {
+                                      itemYCCHDB.MaYCCHDB,
+                                      itemYCCHDB.CreateDate,
+                                      itemYCCHDB.DanhBo,
+                                      itemYCCHDB.HoTen,
+                                      itemYCCHDB.DiaChi,
+                                      itemYCCHDB.LyDo,
+                                      itemYCCHDB.GhiChuLyDo,
+                                      MaDon = itemYCCHDB.MaDon,
+                                  };
+
+                DataTable dtYCCHDB = new DataTable();
+                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB.TableName = "YCCHDB";
+                ds.Tables.Add(dtYCCHDB);
+
                 ///Table CTTTTL
                 var queryTTTL = from itemCTTTTL in db.CTTTTLs
                             where itemCTTTTL.TTTL.MaDon == MaDon
@@ -239,6 +259,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtCHDB.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
@@ -464,7 +487,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 DataTable dtYCCHDB = new DataTable();
                 dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
-                dtYCCHDB.TableName = "YeuCauCHDB";
+                dtYCCHDB.TableName = "YCCHDB";
                 ds.Tables.Add(dtYCCHDB);
 
                 ///Table CTTTTL
@@ -502,6 +525,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtCHDB.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["Don"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
@@ -703,6 +729,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
+                ///Table YeuCauCHDB
+                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                                  where itemYCCHDB.DanhBo==DanhBo
+                                  select new
+                                  {
+                                      itemYCCHDB.MaDon,
+                                      itemYCCHDB.ToXuLy,
+                                      itemYCCHDB.MaDonTXL,
+                                      itemYCCHDB.MaYCCHDB,
+                                      itemYCCHDB.CreateDate,
+                                      itemYCCHDB.DanhBo,
+                                      itemYCCHDB.HoTen,
+                                      itemYCCHDB.DiaChi,
+                                      itemYCCHDB.LyDo,
+                                      itemYCCHDB.GhiChuLyDo,
+                                  };
+
+                DataTable dtYCCHDB = new DataTable();
+                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB.TableName = "YCCHDB";
+                ds.Tables.Add(dtYCCHDB);
+
                 ///Table CTTTTL
                 var queryTTTL = from itemCTTTTL in db.CTTTTLs
                                 where itemCTTTTL.DanhBo == DanhBo
@@ -861,6 +909,25 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon6));
 
+                ///Table DonKH 9
+                var queryDon9 = from itemDon in db.DonKHs
+                                join itemYCCHDB in db.YeuCauCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
+                                where itemYCCHDB.DanhBo==DanhBo
+                                select new
+                                {
+                                    ToXuLy = false,
+                                    itemDon.MaDon,
+                                    itemDon.LoaiDon.TenLD,
+                                    itemDon.CreateDate,
+                                    itemDon.DanhBo,
+                                    itemDon.HoTen,
+                                    itemDon.DiaChi,
+                                    itemDon.GiaBieu,
+                                    itemDon.DinhMuc,
+                                    itemDon.NoiDung,
+                                };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon9));
+
                 ///Table DonKH 7
                 var queryDon7 = from itemDon in db.DonKHs
                                 join itemCTTTTL in db.CTTTTLs on itemDon.MaDon equals itemCTTTTL.TTTL.MaDon
@@ -898,7 +965,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.NoiDung,
                                 };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon8));
-#endregion
+                #endregion
 
                 #region DonTXL
 
@@ -1040,6 +1107,26 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
 
+                ///Table DonKH 9
+                var queryDonTXL9 = from itemDonTXL in db.DonTXLs
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemYCCHDB in db.YeuCauCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
+                                   where itemYCCHDB.DanhBo == DanhBo
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.GiaBieu,
+                                       itemDonTXL.DinhMuc,
+                                       itemDonTXL.NoiDung,
+                                   };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL9));
+
                 ///Table DonTXL 7
                 var queryDonTXL7 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
@@ -1131,6 +1218,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                 {
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDon"]);
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDonTXL"]);
+                }
+
+                if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
+                {
+                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
                 }
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
@@ -1334,6 +1427,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
+                ///Table YeuCauCHDB
+                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                                  where itemYCCHDB.HoTen.Contains(HoTen)
+                                  select new
+                                  {
+                                      itemYCCHDB.MaDon,
+                                      itemYCCHDB.ToXuLy,
+                                      itemYCCHDB.MaDonTXL,
+                                      itemYCCHDB.MaYCCHDB,
+                                      itemYCCHDB.CreateDate,
+                                      itemYCCHDB.DanhBo,
+                                      itemYCCHDB.HoTen,
+                                      itemYCCHDB.DiaChi,
+                                      itemYCCHDB.LyDo,
+                                      itemYCCHDB.GhiChuLyDo,
+                                  };
+
+                DataTable dtYCCHDB = new DataTable();
+                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB.TableName = "YCCHDB";
+                ds.Tables.Add(dtYCCHDB);
+
                 ///Table CTTTTL
                 var queryTTTL = from itemCTTTTL in db.CTTTTLs
                                 where itemCTTTTL.HoTen.Contains(HoTen)
@@ -1492,6 +1607,25 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.NoiDung,
                                 };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon6));
+
+                ///Table DonKH 9
+                var queryDon9 = from itemDon in db.DonKHs
+                                join itemYCCHDB in db.YeuCauCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
+                                where itemYCCHDB.HoTen.Contains(HoTen)
+                                select new
+                                {
+                                    ToXuLy = false,
+                                    itemDon.MaDon,
+                                    itemDon.LoaiDon.TenLD,
+                                    itemDon.CreateDate,
+                                    itemDon.DanhBo,
+                                    itemDon.HoTen,
+                                    itemDon.DiaChi,
+                                    itemDon.GiaBieu,
+                                    itemDon.DinhMuc,
+                                    itemDon.NoiDung,
+                                };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon9));
 
                 ///Table DonKH 7
                 var queryDon7 = from itemDon in db.DonKHs
@@ -1672,6 +1806,26 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
 
+                ///Table DonKH 9
+                var queryDonTXL9 = from itemDonTXL in db.DonTXLs
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemYCCHDB in db.YeuCauCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
+                                   where itemYCCHDB.HoTen.Contains(HoTen)
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.GiaBieu,
+                                       itemDonTXL.DinhMuc,
+                                       itemDonTXL.NoiDung,
+                                   };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL9));
+
                 ///Table DonTXL 7
                 var queryDonTXL7 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
@@ -1763,6 +1917,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                 {
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDon"]);
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDonTXL"]);
+                }
+
+                if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
+                {
+                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
                 }
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
@@ -1966,6 +2126,28 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtCHDB.TableName = "CHDB";
                 ds.Tables.Add(dtCHDB);
 
+                ///Table YeuCauCHDB
+                var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                                  where itemYCCHDB.DiaChi.Contains(DiaChi)
+                                  select new
+                                  {
+                                      itemYCCHDB.MaDon,
+                                      itemYCCHDB.ToXuLy,
+                                      itemYCCHDB.MaDonTXL,
+                                      itemYCCHDB.MaYCCHDB,
+                                      itemYCCHDB.CreateDate,
+                                      itemYCCHDB.DanhBo,
+                                      itemYCCHDB.HoTen,
+                                      itemYCCHDB.DiaChi,
+                                      itemYCCHDB.LyDo,
+                                      itemYCCHDB.GhiChuLyDo,  
+                                  };
+
+                DataTable dtYCCHDB = new DataTable();
+                dtYCCHDB = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB);
+                dtYCCHDB.TableName = "YCCHDB";
+                ds.Tables.Add(dtYCCHDB);
+
                 ///Table CTTTTL
                 var queryTTTL = from itemCTTTTL in db.CTTTTLs
                                 where itemCTTTTL.DiaChi.Contains(DiaChi)
@@ -2124,6 +2306,25 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemDon.NoiDung,
                                 };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon6));
+
+                ///Table DonKH 9
+                var queryDon9 = from itemDon in db.DonKHs
+                                join itemYCCHDB in db.YeuCauCHDBs on itemDon.MaDon equals itemYCCHDB.MaDon
+                                where itemYCCHDB.DiaChi.Contains(DiaChi)
+                                select new
+                                {
+                                    ToXuLy = false,
+                                    itemDon.MaDon,
+                                    itemDon.LoaiDon.TenLD,
+                                    itemDon.CreateDate,
+                                    itemDon.DanhBo,
+                                    itemDon.HoTen,
+                                    itemDon.DiaChi,
+                                    itemDon.GiaBieu,
+                                    itemDon.DinhMuc,
+                                    itemDon.NoiDung,
+                                };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDon9));
 
                 ///Table DonKH 7
                 var queryDon7 = from itemDon in db.DonKHs
@@ -2304,6 +2505,26 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    };
                 dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL6));
 
+                ///Table DonKH 9
+                var queryDonTXL9 = from itemDonTXL in db.DonTXLs
+                                   //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
+                                   join itemYCCHDB in db.YeuCauCHDBs on itemDonTXL.MaDon equals itemYCCHDB.MaDonTXL
+                                   where itemYCCHDB.DiaChi.Contains(DiaChi)
+                                   select new
+                                   {
+                                       ToXuLy = true,
+                                       itemDonTXL.MaDon,
+                                       itemDonTXL.LoaiDonTXL.TenLD,
+                                       itemDonTXL.CreateDate,
+                                       itemDonTXL.DanhBo,
+                                       itemDonTXL.HoTen,
+                                       itemDonTXL.DiaChi,
+                                       itemDonTXL.GiaBieu,
+                                       itemDonTXL.DinhMuc,
+                                       itemDonTXL.NoiDung,
+                                   };
+                dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryDonTXL9));
+
                 ///Table DonTXL 7
                 var queryDonTXL7 = from itemDonTXL in db.DonTXLs
                                    //join itemKTXM in db.KTXMs on itemDon.MaDon equals itemKTXM.MaDon
@@ -2394,6 +2615,12 @@ namespace KTKS_DonKH.DAL.TimKiem
                 {
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDon"]);
                     ds.Relations.Add("Chi Tiết Cắt Tạm/Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["CHDB"].Columns["MaDonTXL"]);
+                }
+
+                if (dtDon.Rows.Count > 0 && dtYCCHDB.Rows.Count > 0)
+                {
+                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Phiếu Cắt Hủy Danh Bộ TXL", ds.Tables["Don"].Columns["MaDon"], ds.Tables["YCCHDB"].Columns["MaDonTXL"]);
                 }
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)

@@ -822,7 +822,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         YeuCauCHDB ycchdb = new YeuCauCHDB();
                         if (_ctctdb.CHDB.ToXuLy)
                         {
-                            ycchdb.ToXyLy = true;
+                            ycchdb.ToXuLy = true;
                             ycchdb.MaDonTXL = _ctctdb.CHDB.MaDonTXL;
                         }
                         else
@@ -914,7 +914,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             YeuCauCHDB ycchdb = new YeuCauCHDB();
                             if (_ctctdb.CHDB.ToXuLy)
                             {
-                                ycchdb.ToXyLy = true;
+                                ycchdb.ToXuLy = true;
                                 ycchdb.MaDonTXL = _ctctdb.CHDB.MaDonTXL;
                             }
                             else

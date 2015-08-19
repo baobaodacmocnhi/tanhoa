@@ -944,7 +944,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 }
                                 else
                                 {
-                                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(ctctdb.CHDB.MaDon.Value, ctctdb.DanhBo);
+                                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(ctctdb.CHDB.MaDon.Value, ctctdb.DanhBo);
                                 }
 
                                 dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
@@ -999,7 +999,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 }
                                 else
                                 {
-                                    ctktxm = _cKTXM.getCTKTXMbyMaDonTXLDanhBo(ctchdb.CHDB.MaDon.Value, ctchdb.DanhBo);
+                                    ctktxm = _cKTXM.getCTKTXMbyMaDonKHDanhBo(ctchdb.CHDB.MaDon.Value, ctchdb.DanhBo);
                                 }
 
                                 dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");

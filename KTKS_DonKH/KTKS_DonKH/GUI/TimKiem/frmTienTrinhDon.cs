@@ -423,6 +423,34 @@ namespace KTKS_DonKH.GUI.TimKiem
         }
         #endregion
 
+        #region gridViewYeuCauCHDB
+
+        private void gridViewYeuCauCHDB_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaYCCHDB" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void gridViewYeuCauCHDB_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewYeuCauCHDB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmShowYCCHDB frm = new frmShowYCCHDB(decimal.Parse(_CTRow.Row["MaYCCHDB"].ToString()), true);
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                    _CTRow = null;
+            }
+        }
+
+        #endregion
+
         #region gridViewKTXM_TXL
 
         private void gridViewKTXM_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
@@ -675,6 +703,31 @@ namespace KTKS_DonKH.GUI.TimKiem
         }
         #endregion
 
+        #region gridViewYeuCauCHDB_TXL
+
+        private void gridViewYeuCauCHDB_TXL_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "MaYCCHDB" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void gridViewYeuCauCHDB_TXL_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        private void gridViewYeuCauCHDB_TXL_KeyDown(object sender, KeyEventArgs e)
+        {
+            frmShowYCCHDB frm = new frmShowYCCHDB(decimal.Parse(_CTRow.Row["MaYCCHDB"].ToString()), true);
+            if (frm.ShowDialog() == DialogResult.Cancel)
+                _CTRow = null;
+        }
+
+        #endregion
+
         private void btnIn_Click(object sender, EventArgs e)
         {
             if (gridViewDon.RowCount > 0)
@@ -789,8 +842,8 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             else
                 MessageBox.Show("Không có đơn nào", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }    
-           
+        }
+        
     }
 
 }

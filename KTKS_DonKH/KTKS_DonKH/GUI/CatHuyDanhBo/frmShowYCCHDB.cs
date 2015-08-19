@@ -37,6 +37,18 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             _MaYCCHDB = MaYCCHDB;
         }
 
+        public frmShowYCCHDB(decimal MaYCCHDB, bool TimKiem)
+        {
+            InitializeComponent();
+            _MaYCCHDB = MaYCCHDB;
+            if (TimKiem)
+            {
+                btnXoa.Enabled = false;
+                btnInPhieu.Enabled = false;
+                btnSua.Enabled = false;
+            }
+        }
+
         private void frmShowYCCHDB_Load(object sender, EventArgs e)
         {
             this.Location = new Point(70, 70);
