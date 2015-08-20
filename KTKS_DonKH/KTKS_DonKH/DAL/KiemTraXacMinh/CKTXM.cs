@@ -1232,6 +1232,44 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public DataTable LoadDSCTKTXMByMaDonsTXL(decimal TuMaDonTXL, decimal DenMaDonTXL)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_Xem || CTaiKhoan.RoleQLKTXM_CapNhat)
+                {
+                    var query_DonKH = from itemCTKTXM in db.CTKTXMs
+                                      join itemUser in db.Users on itemCTKTXM.CreateBy equals itemUser.MaU
+                                      where itemCTKTXM.KTXM.ToXuLy == false && itemCTKTXM.KTXM.MaDonTXL >= TuMaDonTXL && itemCTKTXM.KTXM.MaDonTXL <= DenMaDonTXL
+                                      select new
+                                      {
+                                          itemCTKTXM.KTXM.ToXuLy,
+                                          itemCTKTXM.MaCTKTXM,
+                                          MaDon=itemCTKTXM.KTXM.MaDonTXL,
+                                          itemCTKTXM.KTXM.DonKH.LoaiDon.TenLD,
+                                          itemCTKTXM.DanhBo,
+                                          itemCTKTXM.HoTen,
+                                          itemCTKTXM.DiaChi,
+                                          itemCTKTXM.NoiDungKiemTra,
+                                          itemCTKTXM.NgayKTXM,
+                                          CreateBy = itemUser.HoTen,
+                                          itemUser.MaU,
+                                      };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query_DonKH.Distinct());
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTKTXMByDanhBo(string DanhBo)
         {
             try
