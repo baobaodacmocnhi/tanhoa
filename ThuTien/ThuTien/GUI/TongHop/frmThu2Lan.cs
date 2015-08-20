@@ -17,7 +17,6 @@ namespace ThuTien.GUI.TongHop
     {
         string _mnu = "mnuThu2Lan";
         CHoaDon _cHoaDon = new CHoaDon();
-        //private DateTimePicker cellDateTimePicker;
 
         public frmThu2Lan()
         {
@@ -32,38 +31,6 @@ namespace ThuTien.GUI.TongHop
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
 
-            //this.cellDateTimePicker = new DateTimePicker();
-            //this.cellDateTimePicker.ValueChanged += new EventHandler(cellDateTimePickerValueChanged);
-            //this.cellDateTimePicker.Visible = false;
-            //this.cellDateTimePicker.CustomFormat = "dd/MM/yyyy HH:mm:ss";
-            //this.cellDateTimePicker.Format = DateTimePickerFormat.Custom;
-            //this.dgvHoaDon.Controls.Add(cellDateTimePicker);
-        }
-
-        void cellDateTimePickerValueChanged(object sender, EventArgs e)
-        {
-            //dgvHoaDon.CurrentCell.Value = cellDateTimePicker.Value.ToString("dd/MM/yyyy HH:mm:ss");
-            //cellDateTimePicker.Visible = false;
-        }
-
-        private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-            //    if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
-            //    {
-            //        lstHD.Items.Add(txtSoHoaDon.Text.Trim());
-            //        txtSoHoaDon.Text = "";
-            //    }
-            //    else
-            //        txtSoHoaDon.Text = "";
-            if (e.KeyChar == 13)
-                btnXem.PerformClick();
-        }
-
-        private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (lstHD.Items.Count > 0)
-                lstHD.Items.RemoveAt(lstHD.SelectedIndex);
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -76,33 +43,8 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                foreach (var item in lstHD.Items)
-                {
-                    if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
-                    {
-                        MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
-                        return;
-                    }
-                }
-                try
-                {
-                    _cHoaDon.BeginTransaction();
-                    foreach (var item in lstHD.Items)
-                    {
-                        HOADON hoadon = _cHoaDon.GetBySoHoaDon(item.ToString());
-                        hoadon.Thu2Lan = true;
-                    }
-                    _cHoaDon.SubmitChanges();
-                    _cHoaDon.CommitTransaction();
-                    lstHD.Items.Clear();
+                if (_cHoaDon.Thu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),txtDanhBo.Text.Trim(), true))
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception)
-                {
-                    _cHoaDon.Rollback();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -136,7 +78,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtSoHoaDon.Text.Trim(),txtDanhBo.Text.Trim().Replace(" ",""));
+            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtDanhBo.Text.Trim().Replace(" ",""));
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -175,43 +117,7 @@ namespace ThuTien.GUI.TongHop
             }
         }
 
-        private void dgvHoaDon_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            //if (dgvHoaDon.Columns[e.ColumnIndex].Name == "NgayTra")
-            //{
-            //    Rectangle tempRect = this.dgvHoaDon.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
-            //    cellDateTimePicker.Location = tempRect.Location;
-            //    cellDateTimePicker.Width = tempRect.Width;
-            //    try
-            //    {
-            //        cellDateTimePicker.Value = DateTime.Parse(dgvHoaDon.CurrentCell.Value.ToString());
-            //    }
-            //    catch
-            //    {
-            //        cellDateTimePicker.Value = DateTime.Now;
-            //    }
-            //    cellDateTimePicker.Visible = true;
-            //    dgvHoaDon["Tra", e.RowIndex].Value = "True";
-            //}
-        }
-
         private void dgvHoaDon_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (dgvHoaDon.Columns[e.ColumnIndex].Name == "NgayTra" && !string.IsNullOrEmpty(dgvHoaDon["NgayTra", e.RowIndex].Value.ToString()))
-            //{
-            //    HOADON hoadon = _cHoaDon.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
-            //    string[] date = dgvHoaDon["NgayTra", e.RowIndex].Value.ToString().Split('/');
-            //    string[] name = date[2].Split(' ');
-            //    string[] time = name[1].Split(':');
-            //    hoadon.Thu2Lan_Tra = true;
-            //    hoadon.Thu2Lan_NgayTra = new DateTime(int.Parse(name[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
-            //    _cHoaDon.Sua(hoadon);
-            //    btnXem.PerformClick();
-            //}
-            
-        }
-
-        private void dgvHoaDon_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Tra")
             {
@@ -223,13 +129,13 @@ namespace ThuTien.GUI.TongHop
                 {
                     _cHoaDon.Thu2Lan_XoaTra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
                 }
-                btnXem.PerformClick();
             }
-            
+
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GhiChu")
+            {
+                _cHoaDon.Thu2Lan_GhiChu(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), dgvHoaDon["GhiChu", e.RowIndex].Value.ToString());
+            }
         }
-
-        
-
-       
+ 
     }
 }

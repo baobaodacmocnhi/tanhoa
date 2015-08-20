@@ -11,6 +11,10 @@ using ThuTien.DAL.QuanTri;
 using System.Globalization;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.TongHop;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.NhanVien;
+using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -353,6 +357,54 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnInPhieu_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
+                    dr["To"] = CNguoiDung.TenTo;
+                    dr["Loai"] = "Tư Gia";
+                    dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
+                    dr["TongHD"] = item["TongHD"].ToString();
+                    dr["TongGiaBan"] = item["TongGiaBan"].ToString();
+                    dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
+                    dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                    dr["TongCong"] = item["TongCong"].ToString();
+                    dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                    ds.Tables["PhieuDangNgan"].Rows.Add(dr);
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrach.Value);
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
+                        dr["To"] = CNguoiDung.TenTo;
+                        dr["Loai"] = "Cơ Quan";
+                        dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
+                        dr["TongHD"] = item["TongHD"].ToString();
+                        dr["TongGiaBan"] = item["TongGiaBan"].ToString();
+                        dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
+                        dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                        dr["TongCong"] = item["TongCong"].ToString();
+                        dr["NhanVien"] = ((TT_NguoiDung)cmbNhanVien.SelectedItem).HoTen;
+                        ds.Tables["PhieuDangNgan"].Rows.Add(dr);
+                    }
+                }
+            
+
+            rptPhieuDangNgan rpt = new rptPhieuDangNgan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
     }

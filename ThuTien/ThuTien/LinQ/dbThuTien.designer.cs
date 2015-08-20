@@ -111,12 +111,12 @@ namespace ThuTien.LinQ
     partial void InsertTT_ChuyenNoKhoDoi(TT_ChuyenNoKhoDoi instance);
     partial void UpdateTT_ChuyenNoKhoDoi(TT_ChuyenNoKhoDoi instance);
     partial void DeleteTT_ChuyenNoKhoDoi(TT_ChuyenNoKhoDoi instance);
-    partial void InsertHOADON(HOADON instance);
-    partial void UpdateHOADON(HOADON instance);
-    partial void DeleteHOADON(HOADON instance);
     partial void InsertTT_CTChuyenNoKhoDoi(TT_CTChuyenNoKhoDoi instance);
     partial void UpdateTT_CTChuyenNoKhoDoi(TT_CTChuyenNoKhoDoi instance);
     partial void DeleteTT_CTChuyenNoKhoDoi(TT_CTChuyenNoKhoDoi instance);
+    partial void InsertHOADON(HOADON instance);
+    partial void UpdateHOADON(HOADON instance);
+    partial void DeleteHOADON(HOADON instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -381,19 +381,19 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<HOADON> HOADONs
-		{
-			get
-			{
-				return this.GetTable<HOADON>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TT_CTChuyenNoKhoDoi> TT_CTChuyenNoKhoDois
 		{
 			get
 			{
 				return this.GetTable<TT_CTChuyenNoKhoDoi>();
+			}
+		}
+		
+		public System.Data.Linq.Table<HOADON> HOADONs
+		{
+			get
+			{
+				return this.GetTable<HOADON>();
 			}
 		}
 	}
@@ -10653,6 +10653,270 @@ namespace ThuTien.LinQ
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_CTChuyenNoKhoDoi")]
+	public partial class TT_CTChuyenNoKhoDoi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _SoHoaDon;
+		
+		private decimal _MaCNKD;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private EntityRef<TT_ChuyenNoKhoDoi> _TT_ChuyenNoKhoDoi;
+		
+		private EntityRef<HOADON> _HOADON;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSoHoaDonChanging(string value);
+    partial void OnSoHoaDonChanged();
+    partial void OnMaCNKDChanging(decimal value);
+    partial void OnMaCNKDChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    #endregion
+		
+		public TT_CTChuyenNoKhoDoi()
+		{
+			this._TT_ChuyenNoKhoDoi = default(EntityRef<TT_ChuyenNoKhoDoi>);
+			this._HOADON = default(EntityRef<HOADON>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDon", DbType="NVarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string SoHoaDon
+		{
+			get
+			{
+				return this._SoHoaDon;
+			}
+			set
+			{
+				if ((this._SoHoaDon != value))
+				{
+					if (this._HOADON.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSoHoaDonChanging(value);
+					this.SendPropertyChanging();
+					this._SoHoaDon = value;
+					this.SendPropertyChanged("SoHoaDon");
+					this.OnSoHoaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCNKD", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaCNKD
+		{
+			get
+			{
+				return this._MaCNKD;
+			}
+			set
+			{
+				if ((this._MaCNKD != value))
+				{
+					if (this._TT_ChuyenNoKhoDoi.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaCNKDChanging(value);
+					this.SendPropertyChanging();
+					this._MaCNKD = value;
+					this.SendPropertyChanged("MaCNKD");
+					this.OnMaCNKDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TT_ChuyenNoKhoDoi_TT_CTChuyenNoKhoDoi", Storage="_TT_ChuyenNoKhoDoi", ThisKey="MaCNKD", OtherKey="MaCNKD", IsForeignKey=true)]
+		public TT_ChuyenNoKhoDoi TT_ChuyenNoKhoDoi
+		{
+			get
+			{
+				return this._TT_ChuyenNoKhoDoi.Entity;
+			}
+			set
+			{
+				TT_ChuyenNoKhoDoi previousValue = this._TT_ChuyenNoKhoDoi.Entity;
+				if (((previousValue != value) 
+							|| (this._TT_ChuyenNoKhoDoi.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TT_ChuyenNoKhoDoi.Entity = null;
+						previousValue.TT_CTChuyenNoKhoDois.Remove(this);
+					}
+					this._TT_ChuyenNoKhoDoi.Entity = value;
+					if ((value != null))
+					{
+						value.TT_CTChuyenNoKhoDois.Add(this);
+						this._MaCNKD = value.MaCNKD;
+					}
+					else
+					{
+						this._MaCNKD = default(decimal);
+					}
+					this.SendPropertyChanged("TT_ChuyenNoKhoDoi");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HOADON_TT_CTChuyenNoKhoDoi", Storage="_HOADON", ThisKey="SoHoaDon", OtherKey="SOHOADON", IsForeignKey=true)]
+		public HOADON HOADON
+		{
+			get
+			{
+				return this._HOADON.Entity;
+			}
+			set
+			{
+				HOADON previousValue = this._HOADON.Entity;
+				if (((previousValue != value) 
+							|| (this._HOADON.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._HOADON.Entity = null;
+						previousValue.TT_CTChuyenNoKhoDois.Remove(this);
+					}
+					this._HOADON.Entity = value;
+					if ((value != null))
+					{
+						value.TT_CTChuyenNoKhoDois.Add(this);
+						this._SoHoaDon = value.SOHOADON;
+					}
+					else
+					{
+						this._SoHoaDon = default(string);
+					}
+					this.SendPropertyChanged("HOADON");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HOADON")]
 	public partial class HOADON : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -10794,6 +11058,8 @@ namespace ThuTien.LinQ
 		private bool _Thu2Lan_Tra;
 		
 		private System.Nullable<System.DateTime> _Thu2Lan_NgayTra;
+		
+		private string _Thu2Lan_GhiChu;
 		
 		private bool _ChuyenNoKhoDoi;
 		
@@ -10953,6 +11219,8 @@ namespace ThuTien.LinQ
     partial void OnThu2Lan_TraChanged();
     partial void OnThu2Lan_NgayTraChanging(System.Nullable<System.DateTime> value);
     partial void OnThu2Lan_NgayTraChanged();
+    partial void OnThu2Lan_GhiChuChanging(string value);
+    partial void OnThu2Lan_GhiChuChanged();
     partial void OnChuyenNoKhoDoiChanging(bool value);
     partial void OnChuyenNoKhoDoiChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -12334,6 +12602,26 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thu2Lan_GhiChu", DbType="NVarChar(MAX)")]
+		public string Thu2Lan_GhiChu
+		{
+			get
+			{
+				return this._Thu2Lan_GhiChu;
+			}
+			set
+			{
+				if ((this._Thu2Lan_GhiChu != value))
+				{
+					this.OnThu2Lan_GhiChuChanging(value);
+					this.SendPropertyChanging();
+					this._Thu2Lan_GhiChu = value;
+					this.SendPropertyChanged("Thu2Lan_GhiChu");
+					this.OnThu2Lan_GhiChuChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChuyenNoKhoDoi", DbType="Bit NOT NULL")]
 		public bool ChuyenNoKhoDoi
 		{
@@ -12552,270 +12840,6 @@ namespace ThuTien.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.HOADON = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_CTChuyenNoKhoDoi")]
-	public partial class TT_CTChuyenNoKhoDoi : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _SoHoaDon;
-		
-		private decimal _MaCNKD;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private EntityRef<HOADON> _HOADON;
-		
-		private EntityRef<TT_ChuyenNoKhoDoi> _TT_ChuyenNoKhoDoi;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSoHoaDonChanging(string value);
-    partial void OnSoHoaDonChanged();
-    partial void OnMaCNKDChanging(decimal value);
-    partial void OnMaCNKDChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    #endregion
-		
-		public TT_CTChuyenNoKhoDoi()
-		{
-			this._HOADON = default(EntityRef<HOADON>);
-			this._TT_ChuyenNoKhoDoi = default(EntityRef<TT_ChuyenNoKhoDoi>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDon", DbType="NVarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string SoHoaDon
-		{
-			get
-			{
-				return this._SoHoaDon;
-			}
-			set
-			{
-				if ((this._SoHoaDon != value))
-				{
-					if (this._HOADON.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSoHoaDonChanging(value);
-					this.SendPropertyChanging();
-					this._SoHoaDon = value;
-					this.SendPropertyChanged("SoHoaDon");
-					this.OnSoHoaDonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCNKD", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal MaCNKD
-		{
-			get
-			{
-				return this._MaCNKD;
-			}
-			set
-			{
-				if ((this._MaCNKD != value))
-				{
-					if (this._TT_ChuyenNoKhoDoi.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaCNKDChanging(value);
-					this.SendPropertyChanging();
-					this._MaCNKD = value;
-					this.SendPropertyChanged("MaCNKD");
-					this.OnMaCNKDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HOADON_TT_CTChuyenNoKhoDoi", Storage="_HOADON", ThisKey="SoHoaDon", OtherKey="SOHOADON", IsForeignKey=true)]
-		public HOADON HOADON
-		{
-			get
-			{
-				return this._HOADON.Entity;
-			}
-			set
-			{
-				HOADON previousValue = this._HOADON.Entity;
-				if (((previousValue != value) 
-							|| (this._HOADON.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._HOADON.Entity = null;
-						previousValue.TT_CTChuyenNoKhoDois.Remove(this);
-					}
-					this._HOADON.Entity = value;
-					if ((value != null))
-					{
-						value.TT_CTChuyenNoKhoDois.Add(this);
-						this._SoHoaDon = value.SOHOADON;
-					}
-					else
-					{
-						this._SoHoaDon = default(string);
-					}
-					this.SendPropertyChanged("HOADON");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TT_ChuyenNoKhoDoi_TT_CTChuyenNoKhoDoi", Storage="_TT_ChuyenNoKhoDoi", ThisKey="MaCNKD", OtherKey="MaCNKD", IsForeignKey=true)]
-		public TT_ChuyenNoKhoDoi TT_ChuyenNoKhoDoi
-		{
-			get
-			{
-				return this._TT_ChuyenNoKhoDoi.Entity;
-			}
-			set
-			{
-				TT_ChuyenNoKhoDoi previousValue = this._TT_ChuyenNoKhoDoi.Entity;
-				if (((previousValue != value) 
-							|| (this._TT_ChuyenNoKhoDoi.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TT_ChuyenNoKhoDoi.Entity = null;
-						previousValue.TT_CTChuyenNoKhoDois.Remove(this);
-					}
-					this._TT_ChuyenNoKhoDoi.Entity = value;
-					if ((value != null))
-					{
-						value.TT_CTChuyenNoKhoDois.Add(this);
-						this._MaCNKD = value.MaCNKD;
-					}
-					else
-					{
-						this._MaCNKD = default(decimal);
-					}
-					this.SendPropertyChanged("TT_ChuyenNoKhoDoi");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }

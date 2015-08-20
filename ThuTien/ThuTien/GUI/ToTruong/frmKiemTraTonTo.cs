@@ -12,6 +12,7 @@ using ThuTien.LinQ;
 using System.Globalization;
 using ThuTien.BaoCao;
 using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -20,6 +21,7 @@ namespace ThuTien.GUI.ToTruong
         //string _mnu = "mnuKiemTraTonTo";
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmKiemTraTonTo()
         {
@@ -366,6 +368,8 @@ namespace ThuTien.GUI.ToTruong
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
                         dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                        if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
+                            dr["LenhHuy"] = true;
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
                 }
@@ -399,6 +403,8 @@ namespace ThuTien.GUI.ToTruong
                             dr["SoPhatHanh"] = item["SoPhatHanh"];
                             dr["SoHoaDon"] = item["SoHoaDon"];
                             dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                            if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
+                                dr["LenhHuy"] = true;
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }
                     }
@@ -441,6 +447,8 @@ namespace ThuTien.GUI.ToTruong
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
                         dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                        if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
+                            dr["LenhHuy"] = true;
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
                 }
@@ -474,6 +482,8 @@ namespace ThuTien.GUI.ToTruong
                             dr["SoPhatHanh"] = item["SoPhatHanh"];
                             dr["SoHoaDon"] = item["SoHoaDon"];
                             dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                            if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
+                                dr["LenhHuy"] = true;
                             ds.Tables["DSHoaDon"].Rows.Add(dr);
                         }
                     }

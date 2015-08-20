@@ -32,13 +32,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (dateTu.Value<=dateDen.Value)
             {
                 List<TT_To> lstTo = _cTo.GetDSHanhThu();
-                DataTable[] dtTo = new DataTable[lstTo.Count];
+                //DataTable[] dtTo = new DataTable[lstTo.Count];
 
-                dtTo[0] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[0].MaTo, dateTu.Value, dateDen.Value);
-                for (int i = 1; i < lstTo.Count; i++)
-                {
-                    dtTo[i] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
-                }
+                //dtTo[0] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[0].MaTo, dateTu.Value, dateDen.Value);
+                //for (int i = 1; i < lstTo.Count; i++)
+                //{
+                //    dtTo[i] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                //}
 
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();

@@ -2689,6 +2689,42 @@ namespace ThuTien.DAL.Doi
         }
 
         /// <summary>
+        /// Lấy Sum hóa đơn đã đăng ngân Quầy theo Tổ trong khoảng thời gian
+        /// </summary>
+        /// <param name="MaTo"></param>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable GetTongDangNganQuayByMaToNgayGiaiTrachs(int MaTo, DateTime TuNgayGiaiTrach, DateTime DenNgayGiaiTrach)
+        {
+            var query = from item in _db.HOADONs
+                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        && item.DangNgan_Quay == true && item.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date
+                        orderby item.NGAYGIAITRACH ascending
+                        group item by item.NGAYGIAITRACH.Value.Date into itemGroup
+                        select new
+                        {
+                            Ngay = itemGroup.Key.Day + "/" + itemGroup.Key.Month,
+                            TongHD = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                        };
+            return LINQToDataTable(query);
+
+            //string sql = "declare @Tungaygiaitrach varchar(10);"
+            //            + " declare @Denngaygiaitrach varchar(10);"
+            //            + " set @Tungaygiaitrach=" + TuNgayGiaiTrach.ToString("yyyy-MM-dd") + ";"
+            //            + " set @Denngaygiaitrach=" + DenNgayGiaiTrach.ToString("yyyy-MM-dd") + ";"
+            //            + " select nd.MaTo,TenTo,day(NGAYGIAITRACH) as Ngay,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+            //            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND join TT_To tto on nd.MaTo=tto.MaTo"
+            //            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+            //            + " and DangNgan_ChuyenKhoan='True' and NGAYGIAITRACH>=@Tungaygiaitrach and NGAYGIAITRACH<=@Denngaygiaitrach"
+            //            + " group by nd.MaTo,TenTo,day(NGAYGIAITRACH)";
+
+            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        /// <summary>
         /// Hàm dùng để Báo Cáo Tổng Hợp. Hàm giống GetTongDangNganByNgayGiaiTrach_To nhưng khác ở chỗ chống trùng nhân viên đăng ngân Tổ Văn Phòng ở Tổ Hành Thu
         /// </summary>
         /// <param name="Loai"></param>
@@ -4393,16 +4429,17 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetDSThu2Lan(string SoHoaDon, string DanhBo)
+        public DataTable GetDSThu2Lan(string DanhBo)
         {
             var query = from item in _db.HOADONs
-                        where item.SOHOADON.Contains(SoHoaDon) && item.DANHBA.Contains(DanhBo) && item.Thu2Lan == true
+                        where item.DANHBA.Contains(DanhBo) && item.Thu2Lan == true
                         orderby item.NGAYGIAITRACH descending
                         select new
                         {
                             MaHD = item.ID_HOADON,
                             item.NGAYGIAITRACH,
                             item.SOHOADON,
+                            Ky=item.KY+"/"+item.NAM,
                             DanhBo = item.DANHBA,
                             item.TIEUTHU,
                             item.GIABAN,
@@ -4412,6 +4449,7 @@ namespace ThuTien.DAL.Doi
                             ChuyenKhoan = item.Thu2Lan_ChuyenKhoan,
                             Tra = item.Thu2Lan_Tra,
                             NgayTra = item.Thu2Lan_NgayTra,
+                            GhiChu=item.Thu2Lan_GhiChu,
                         };
             return LINQToDataTable(query);
         }
@@ -4883,13 +4921,44 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool Thu2Lan(int Nam, int Ky, string DanhBo, bool ChuyenKhoan)
+        {
+            try
+            {
+                string sql = "";
+                sql = "update HOADON set Thu2Lan=1,Thu2Lan_ChuyenKhoan='" + ChuyenKhoan + "' where NAM=" + Nam + " and KY=" + Ky + " and DANHBA='" + DanhBo + "'";
+                return ExecuteNonQuery(sql,false);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Thu2Lan_GhiChu(string SoHoaDon,string GhiChu)
+        {
+            try
+            {
+                string sql = "";
+                sql = "update HOADON set Thu2Lan_GhiChu=N'"+GhiChu+"',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'"
+                +" where SOHOADON='" + SoHoaDon + "'";
+                return ExecuteNonQuery_Transaction(sql);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool Thu2Lan_Tra(string SoHoaDon)
         {
             try
             {
                 string sql = "";
                 sql = "update HOADON set Thu2Lan_Tra=1,Thu2Lan_NgayTra='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'"
-                +" where SOHOADON='" + SoHoaDon + "'";
+                + " where SOHOADON='" + SoHoaDon + "'";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -4904,7 +4973,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "";
-                sql = "update HOADON set Thu2Lan_Tra=0,Thu2Lan_NgayTra=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'"
+                sql = "update HOADON set Thu2Lan_Tra=0,Thu2Lan_NgayTra=null,Thu2Lan_GhiChu=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'"
                     + " where SOHOADON='" + SoHoaDon + "'";
                 return ExecuteNonQuery_Transaction(sql);
             }
