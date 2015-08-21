@@ -313,8 +313,8 @@ namespace ThuTien.GUI.TongHop
         {
             if (dgvDCHD.RowCount > 0)
             {
-                frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.SelectedRows[0].Cells["MaDCHD"].Value.ToString()));
-                frm.ShowDialog();
+                //frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.SelectedRows[0].Cells["MaDCHD"].Value.ToString()));
+                //frm.ShowDialog();
             }
         }
 

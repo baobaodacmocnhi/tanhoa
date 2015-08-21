@@ -10,6 +10,24 @@ namespace ThuTien.DAL.TongHop
 {
     class CDCHD : CDAL
     {
+        public bool ThemLSDC(TT_LichSuDieuChinhHD lsdc)
+        {
+            try
+            {
+                lsdc.CreateDate = DateTime.Now;
+                lsdc.CreateBy = CNguoiDung.MaND;
+                _db.TT_LichSuDieuChinhHDs.InsertOnSubmit(lsdc);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool Them(DIEUCHINH_HD dchd)
         {
             try
@@ -959,6 +977,33 @@ namespace ThuTien.DAL.TongHop
                             };
                 return LINQToDataTable(query);
             }
+        }
+
+        public DataTable GetDSByNgayDC(DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemDC.NGAY_DC.Value.Date >= TuNgay.Date && itemDC.NGAY_DC.Value.Date <= DenNgay.Date
+                        select new
+                        {
+                            NgayDC = itemDC.NGAY_DC,
+                            MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            GiaBan_Start = itemDC.GIABAN_BD,
+                            ThueGTGT_Start = itemDC.THUE_BD,
+                            PhiBVMT_Start = itemDC.PHI_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            itemDC.TangGiam,
+                            TongCong_BD = itemDC.TONGCONG_DC,
+                            TongCong_End = itemDC.TONGCONG_END,
+                            HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDS(bool DaDieuChinh)

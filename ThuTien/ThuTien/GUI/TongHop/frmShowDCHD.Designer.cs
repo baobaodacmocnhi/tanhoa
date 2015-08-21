@@ -99,7 +99,7 @@
             this.groupBox3.Controls.Add(this.lbTangGiam);
             this.groupBox3.Controls.Add(this.txtTienNuoc_BD);
             this.groupBox3.Controls.Add(this.txtTieuThu_BD);
-            this.groupBox3.Location = new System.Drawing.Point(12, 110);
+            this.groupBox3.Location = new System.Drawing.Point(12, 107);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(507, 135);
             this.groupBox3.TabIndex = 12;
@@ -428,7 +428,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(444, 251);
+            this.btnSua.Location = new System.Drawing.Point(444, 248);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 13;
@@ -447,7 +447,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(83, 84);
+            this.textBox1.Location = new System.Drawing.Point(83, 81);
             this.textBox1.Name = "textBox1";
             this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox1.Size = new System.Drawing.Size(80, 20);
@@ -457,7 +457,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(169, 84);
+            this.textBox2.Location = new System.Drawing.Point(169, 81);
             this.textBox2.Name = "textBox2";
             this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox2.Size = new System.Drawing.Size(80, 20);
@@ -466,7 +466,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(255, 84);
+            this.textBox3.Location = new System.Drawing.Point(255, 81);
             this.textBox3.Name = "textBox3";
             this.textBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox3.Size = new System.Drawing.Size(79, 20);
@@ -475,7 +475,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(340, 84);
+            this.textBox4.Location = new System.Drawing.Point(340, 81);
             this.textBox4.Name = "textBox4";
             this.textBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox4.Size = new System.Drawing.Size(77, 20);
@@ -484,7 +484,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(423, 84);
+            this.textBox5.Location = new System.Drawing.Point(423, 81);
             this.textBox5.Name = "textBox5";
             this.textBox5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox5.Size = new System.Drawing.Size(80, 20);

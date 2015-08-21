@@ -645,7 +645,7 @@ namespace ThuTien
         {
             if (CNguoiDung.CheckQuyen("mnuDCHD", "Xem"))
             {
-                frmDCHD frm = new frmDCHD();
+                frmDCHDNew frm = new frmDCHDNew();
                 OpenForm(frm);
             }
             else
