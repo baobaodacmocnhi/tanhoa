@@ -20,7 +20,22 @@ namespace KTKS_DonKH.GUI.BaoCao
 
         private void frmBaoCao_Load(object sender, EventArgs e)
         {
+            Application.Idle += new EventHandler(Application_Idle);
+        }
 
+        void Application_Idle(object sender, EventArgs e)
+        {
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmBaoCao_MouseMove(object sender, MouseEventArgs e)
+        {
+            timer.Stop();
         }
     }
 }

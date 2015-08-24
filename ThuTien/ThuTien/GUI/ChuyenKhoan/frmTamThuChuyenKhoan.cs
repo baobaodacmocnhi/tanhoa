@@ -203,6 +203,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
                 DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
@@ -230,6 +231,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (string.IsNullOrEmpty(item.Cells["NgayGiaiTrach_TT"].Value.ToString()))
                 {
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                     dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();

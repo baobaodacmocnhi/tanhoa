@@ -155,6 +155,7 @@ namespace ThuTien.GUI.TongHop
             {
                 try
                 {
+                    _cDCHD.BeginTransaction();
                     ///đã có điều chỉnh
                     if (_dchd != null)
                     {
@@ -202,6 +203,7 @@ namespace ThuTien.GUI.TongHop
                             _dchd.HOADON.TONGCONG = _ctdchd.TongCong_End.Value;
                             if (_cHoaDon.Sua(_dchd.HOADON))
                             {
+                                _cDCHD.CommitTransaction();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Close();
                             }
@@ -265,7 +267,7 @@ namespace ThuTien.GUI.TongHop
                             if (_cDCHD.Them(dchd))
                             {
                                 ///lưu lịch sử
-                                LuuLichSuDC(_dchd);
+                                LuuLichSuDC(dchd);
 
                                 dchd.HOADON.GIABAN = _ctdchd.TienNuoc_End.Value;
                                 dchd.HOADON.THUE = _ctdchd.ThueGTGT_End.Value;
@@ -273,6 +275,7 @@ namespace ThuTien.GUI.TongHop
                                 dchd.HOADON.TONGCONG = _ctdchd.TongCong_End.Value;
                                 if (_cHoaDon.Sua(dchd.HOADON))
                                 {
+                                    _cDCHD.CommitTransaction();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Close();
                                 }
@@ -280,9 +283,11 @@ namespace ThuTien.GUI.TongHop
                         }
                         else
                             MessageBox.Show("Hóa Đơn này đã Rút Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _cDCHD.CommitTransaction();
                 }
                 catch (Exception ex)
                 {
+                    _cDCHD.Rollback();
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

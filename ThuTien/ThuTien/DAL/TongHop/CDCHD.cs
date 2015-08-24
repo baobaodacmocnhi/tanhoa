@@ -881,19 +881,21 @@ namespace ThuTien.DAL.TongHop
                             where itemDC.TangGiam != null && itemDC.CreateDate.Value.Date == TuNgay.Date
                             select new
                             {
+                                NgayDC = itemDC.NGAY_DC,
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
                                 itemHD.SOHOADON,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
-                                GiaBan_Start = itemDC.GIABAN_BD,
-                                ThueGTGT_Start = itemDC.THUE_BD,
-                                PhiBVMT_Start = itemDC.PHI_BD,
-                                TongCong_Start = itemDC.TONGCONG_BD,
+                                GiaBan_End = itemDC.GIABAN_END,
+                                ThueGTGT_End = itemDC.THUE_END,
+                                PhiBVMT_End = itemDC.PHI_END,
+                                TongCong_End = itemDC.TONGCONG_END,
                                 itemDC.TangGiam,
                                 TongCong_BD = itemDC.TONGCONG_DC,
-                                TongCong_End = itemDC.TONGCONG_END,
-                                HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                                TongCong_Start = itemDC.TONGCONG_BD,
+                                To = itemtableND.TT_To.TenTo,
+                                HanhThu = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
@@ -906,19 +908,21 @@ namespace ThuTien.DAL.TongHop
                             where itemDC.TangGiam == null && itemDC.CreateDate.Value.Date == TuNgay.Date
                             select new
                             {
+                                NgayDC = itemDC.NGAY_DC,
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
                                 itemHD.SOHOADON,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
-                                GiaBan_Start = itemDC.GIABAN_BD,
-                                ThueGTGT_Start = itemDC.THUE_BD,
-                                PhiBVMT_Start = itemDC.PHI_BD,
-                                TongCong_Start = itemDC.TONGCONG_BD,
+                                GiaBan_End = itemDC.GIABAN_END,
+                                ThueGTGT_End = itemDC.THUE_END,
+                                PhiBVMT_End = itemDC.PHI_END,
+                                TongCong_End = itemDC.TONGCONG_END,
                                 itemDC.TangGiam,
                                 TongCong_BD = itemDC.TONGCONG_DC,
-                                TongCong_End = itemDC.TONGCONG_END,
-                                HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                                TongCong_Start = itemDC.TONGCONG_BD,
+                                To = itemtableND.TT_To.TenTo,
+                                HanhThu = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
@@ -935,20 +939,21 @@ namespace ThuTien.DAL.TongHop
                             where itemDC.TangGiam != null && itemDC.CreateDate.Value.Date >= TuNgay.Date && itemDC.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
-                                itemDC.CreateDate,
+                                NgayDC = itemDC.NGAY_DC,
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
                                 itemHD.SOHOADON,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
-                                GiaBan_Start = itemDC.GIABAN_BD,
-                                ThueGTGT_Start = itemDC.THUE_BD,
-                                PhiBVMT_Start = itemDC.PHI_BD,
-                                TongCong_Start = itemDC.TONGCONG_BD,
+                                GiaBan_End = itemDC.GIABAN_END,
+                                ThueGTGT_End = itemDC.THUE_END,
+                                PhiBVMT_End = itemDC.PHI_END,
+                                TongCong_End = itemDC.TONGCONG_END,
                                 itemDC.TangGiam,
                                 TongCong_BD = itemDC.TONGCONG_DC,
-                                TongCong_End = itemDC.TONGCONG_END,
-                                HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                                TongCong_Start = itemDC.TONGCONG_BD,
+                                To = itemtableND.TT_To.TenTo,
+                                HanhThu = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
@@ -961,19 +966,21 @@ namespace ThuTien.DAL.TongHop
                             where itemDC.TangGiam == null && itemDC.CreateDate.Value.Date >= TuNgay.Date && itemDC.CreateDate.Value.Date <= DenNgay.Date
                             select new
                             {
+                                NgayDC = itemDC.NGAY_DC,
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
                                 itemHD.SOHOADON,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
-                                GiaBan_Start = itemDC.GIABAN_BD,
-                                ThueGTGT_Start = itemDC.THUE_BD,
-                                PhiBVMT_Start = itemDC.PHI_BD,
-                                TongCong_Start = itemDC.TONGCONG_BD,
+                                GiaBan_End = itemDC.GIABAN_END,
+                                ThueGTGT_End = itemDC.THUE_END,
+                                PhiBVMT_End = itemDC.PHI_END,
+                                TongCong_End = itemDC.TONGCONG_END,
                                 itemDC.TangGiam,
                                 TongCong_BD = itemDC.TONGCONG_DC,
-                                TongCong_End = itemDC.TONGCONG_END,
-                                HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                                TongCong_Start = itemDC.TONGCONG_BD,
+                                To = itemtableND.TT_To.TenTo,
+                                HanhThu = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
@@ -994,14 +1001,71 @@ namespace ThuTien.DAL.TongHop
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBan_Start = itemDC.GIABAN_BD,
-                            ThueGTGT_Start = itemDC.THUE_BD,
-                            PhiBVMT_Start = itemDC.PHI_BD,
-                            TongCong_Start = itemDC.TONGCONG_BD,
+                            GiaBan_End = itemDC.GIABAN_END,
+                            ThueGTGT_End = itemDC.THUE_END,
+                            PhiBVMT_End = itemDC.PHI_END,
+                            TongCong_End = itemDC.TONGCONG_END,
                             itemDC.TangGiam,
                             TongCong_BD = itemDC.TONGCONG_DC,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNgan(DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
+                        select new
+                        {
+                            NgayDC = itemDC.NGAY_DC,
+                            MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            GiaBan_End = itemDC.GIABAN_END,
+                            ThueGTGT_End = itemDC.THUE_END,
+                            PhiBVMT_End = itemDC.PHI_END,
                             TongCong_End = itemDC.TONGCONG_END,
-                            HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                            itemDC.TangGiam,
+                            TongCong_BD = itemDC.TONGCONG_DC,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSTon()
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.NGAYGIAITRACH==null
+                        select new
+                        {
+                            NgayDC = itemDC.NGAY_DC,
+                            MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            GiaBan_End = itemDC.GIABAN_END,
+                            ThueGTGT_End = itemDC.THUE_END,
+                            PhiBVMT_End = itemDC.PHI_END,
+                            TongCong_End = itemDC.TONGCONG_END,
+                            itemDC.TangGiam,
+                            TongCong_BD = itemDC.TONGCONG_DC,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -1017,20 +1081,21 @@ namespace ThuTien.DAL.TongHop
                             where itemDC.TangGiam != null
                             select new
                             {
-                                itemDC.CreateDate,
+                                NgayDC = itemDC.NGAY_DC,
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
                                 itemHD.SOHOADON,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
-                                GiaBan_Start = itemDC.GIABAN_BD,
-                                ThueGTGT_Start = itemDC.THUE_BD,
-                                PhiBVMT_Start = itemDC.PHI_BD,
-                                TongCong_Start = itemDC.TONGCONG_BD,
+                                GiaBan_End = itemDC.GIABAN_END,
+                                ThueGTGT_End = itemDC.THUE_END,
+                                PhiBVMT_End = itemDC.PHI_END,
+                                TongCong_End = itemDC.TONGCONG_END,
                                 itemDC.TangGiam,
                                 TongCong_BD = itemDC.TONGCONG_DC,
-                                TongCong_End = itemDC.TONGCONG_END,
-                                HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                                TongCong_Start = itemDC.TONGCONG_BD,
+                                To = itemtableND.TT_To.TenTo,
+                                HanhThu = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }
@@ -1043,19 +1108,21 @@ namespace ThuTien.DAL.TongHop
                             where itemDC.TangGiam == null
                             select new
                             {
+                                NgayDC = itemDC.NGAY_DC,
                                 MaDCHD = itemDC.ID_DIEUCHINH_HD,
                                 itemHD.SOHOADON,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,
                                 DanhBo = itemHD.DANHBA,
                                 HoTen = itemHD.TENKH,
-                                GiaBan_Start = itemDC.GIABAN_BD,
-                                ThueGTGT_Start = itemDC.THUE_BD,
-                                PhiBVMT_Start = itemDC.PHI_BD,
-                                TongCong_Start = itemDC.TONGCONG_BD,
+                                GiaBan_End = itemDC.GIABAN_END,
+                                ThueGTGT_End = itemDC.THUE_END,
+                                PhiBVMT_End = itemDC.PHI_END,
+                                TongCong_End = itemDC.TONGCONG_END,
                                 itemDC.TangGiam,
                                 TongCong_BD = itemDC.TONGCONG_DC,
-                                TongCong_End = itemDC.TONGCONG_END,
-                                HanhThu = itemtableND.TT_To.TenTo + ": " + itemtableND.HoTen,
+                                TongCong_Start = itemDC.TONGCONG_BD,
+                                To = itemtableND.TT_To.TenTo,
+                                HanhThu = itemtableND.HoTen,
                             };
                 return LINQToDataTable(query);
             }

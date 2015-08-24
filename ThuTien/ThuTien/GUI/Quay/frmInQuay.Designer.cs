@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnIn = new System.Windows.Forms.Button();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnIn
@@ -55,6 +57,11 @@
             this.crystalReportViewer1.TabIndex = 1;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
+            // timer
+            // 
+            this.timer.Interval = 300000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // frmInQuay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -66,6 +73,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hiện Thị Dữ Liệu Để In";
             this.Load += new System.EventHandler(this.frmInQuay_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmInQuay_MouseMove);
             this.ResumeLayout(false);
 
         }
@@ -74,5 +82,6 @@
 
         private System.Windows.Forms.Button btnIn;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.Timer timer;
     }
 }

@@ -23,7 +23,12 @@ namespace ThuTien.GUI.Quay
 
         private void frmInQuay_Load(object sender, EventArgs e)
         {
+            Application.Idle += new EventHandler(Application_Idle);
+        }
 
+        void Application_Idle(object sender, EventArgs e)
+        {
+            timer.Start();
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -40,6 +45,16 @@ namespace ThuTien.GUI.Quay
                 _rpt.PrintToPrinter(1, false, 1, 1);
 
             }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmInQuay_MouseMove(object sender, MouseEventArgs e)
+        {
+            timer.Stop();
         }
     }
 }

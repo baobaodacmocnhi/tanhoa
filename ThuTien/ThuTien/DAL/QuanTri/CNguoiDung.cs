@@ -169,6 +169,11 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.ToList();
         }
 
+        public List<TT_NguoiDung> GetDSExceptAdmin()
+        {
+            return _db.TT_NguoiDungs.Where(item =>item.MaND != 0).ToList();
+        }
+
         /// <summary>
         /// Lấy Danh Sách Nhân Viên ngoài trừ Mã ND truyền vào
         /// </summary>

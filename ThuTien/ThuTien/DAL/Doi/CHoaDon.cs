@@ -3845,6 +3845,7 @@ namespace ThuTien.DAL.Doi
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
+                            To=itemtableND.TT_To.TenTo,
                             HanhThu = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);

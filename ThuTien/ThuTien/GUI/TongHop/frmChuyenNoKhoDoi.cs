@@ -13,6 +13,7 @@ using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.TongHop;
 using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -21,6 +22,7 @@ namespace ThuTien.GUI.TongHop
         string _mnu = "mnuChuyenNoKhoDoi";
         CHoaDon _cHoaDon = new CHoaDon();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmChuyenNoKhoDoi()
         {
@@ -114,6 +116,16 @@ namespace ThuTien.GUI.TongHop
 
                         if (_cCNKD.Them(cnkd))
                         {
+                            foreach (TT_CTChuyenNoKhoDoi item in cnkd.TT_CTChuyenNoKhoDois.ToList())
+                            {
+                                if (_cLenhHuy.CheckExist(item.SoHoaDon))
+                                    if (!_cLenhHuy.Xoa(item.SoHoaDon))
+                                    {
+                                        _cCNKD.Rollback();
+                                        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.SoHoaDon, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                            }
                             for (int i = lstHDTemp.Count - 1; i >= 0; i--)
                                 if (lstHDTemp[i].DANHBA == cnkd.DanhBo)
                                 {
