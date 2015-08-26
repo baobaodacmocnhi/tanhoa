@@ -103,7 +103,7 @@
             this.DinhMuc_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TinhTenKy_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TinhDenKy_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
@@ -693,7 +693,7 @@
             this.DinhMuc_XacNhanNo,
             this.Ky_XacNhanNo,
             this.TongCong_XacNhanNo,
-            this.TinhTenKy_XacNhanNo});
+            this.TinhDenKy_XacNhanNo});
             this.dgvXacNhanNo.Location = new System.Drawing.Point(6, 35);
             this.dgvXacNhanNo.Name = "dgvXacNhanNo";
             this.dgvXacNhanNo.ReadOnly = true;
@@ -794,19 +794,19 @@
             this.TongCong_XacNhanNo.Name = "TongCong_XacNhanNo";
             this.TongCong_XacNhanNo.ReadOnly = true;
             // 
-            // TinhTenKy_XacNhanNo
+            // TinhDenKy_XacNhanNo
             // 
-            this.TinhTenKy_XacNhanNo.DataPropertyName = "TinhTenKy";
-            this.TinhTenKy_XacNhanNo.HeaderText = "TinhDenKy";
-            this.TinhTenKy_XacNhanNo.Name = "TinhTenKy_XacNhanNo";
-            this.TinhTenKy_XacNhanNo.ReadOnly = true;
-            this.TinhTenKy_XacNhanNo.Visible = false;
+            this.TinhDenKy_XacNhanNo.DataPropertyName = "TinhDenKy";
+            this.TinhDenKy_XacNhanNo.HeaderText = "TinhDenKy";
+            this.TinhDenKy_XacNhanNo.Name = "TinhDenKy_XacNhanNo";
+            this.TinhDenKy_XacNhanNo.ReadOnly = true;
+            this.TinhDenKy_XacNhanNo.Visible = false;
             // 
             // frmTamThuQuay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1380, 666);
+            this.ClientSize = new System.Drawing.Size(1360, 666);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.txtDanhBo);
@@ -902,6 +902,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc_XacNhanNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_XacNhanNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_XacNhanNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TinhTenKy_XacNhanNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TinhDenKy_XacNhanNo;
     }
 }

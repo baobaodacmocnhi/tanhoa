@@ -102,9 +102,9 @@ namespace ThuTien.GUI.HanhThu
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim()) && !lstHD.Items.Contains(item.Trim()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
                     {
-                        lstHD.Items.Add(item.Trim());
+                        lstHD.Items.Add(item.Trim().ToUpper());
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
@@ -230,7 +230,7 @@ namespace ThuTien.GUI.HanhThu
                             //string loai;
                             foreach (var item in lstHD.Items)
                             {
-                                if (!dt.Rows.Contains(item.ToString()))
+                                if (!dt.Rows.Contains(item.ToString().ToUpper()))
                                 {
                                     MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     lstHD.SelectedItem = item;
@@ -247,7 +247,7 @@ namespace ThuTien.GUI.HanhThu
                             {
                                 _cHoaDon.SqlBeginTransaction();
                                 foreach (DataRow item in dt.Rows)
-                                    if (!lstHD.Items.Contains(item["SoHoaDon"].ToString().ToUpper()))
+                                    if (!lstHD.Items.Contains(item["SoHoaDon"].ToString()))
                                     {
                                         if (_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
                                         {

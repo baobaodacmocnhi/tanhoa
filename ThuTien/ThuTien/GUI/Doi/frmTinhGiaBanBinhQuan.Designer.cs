@@ -40,11 +40,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtGiaBanBinhQuan = new System.Windows.Forms.TextBox();
             this.dgvGiaBanBinhQuan = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBanBinhQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongGiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label4 = new System.Windows.Forms.Label();
+            this.GiaBanBinhQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiaBanBinhQuan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,9 +141,9 @@
             this.dgvGiaBanBinhQuan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGiaBanBinhQuan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ky,
-            this.GiaBanBinhQuan,
             this.TongGiaBan,
-            this.TongTieuThu});
+            this.TongTieuThu,
+            this.GiaBanBinhQuan});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,39 +165,9 @@
             this.dgvGiaBanBinhQuan.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvGiaBanBinhQuan.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvGiaBanBinhQuan.Size = new System.Drawing.Size(217, 300);
+            this.dgvGiaBanBinhQuan.Size = new System.Drawing.Size(415, 300);
             this.dgvGiaBanBinhQuan.TabIndex = 57;
-            // 
-            // Ky
-            // 
-            this.Ky.DataPropertyName = "Ky";
-            this.Ky.HeaderText = "Kỳ";
-            this.Ky.Name = "Ky";
-            this.Ky.ReadOnly = true;
-            this.Ky.Width = 50;
-            // 
-            // GiaBanBinhQuan
-            // 
-            this.GiaBanBinhQuan.DataPropertyName = "GiaBanBinhQuan";
-            this.GiaBanBinhQuan.HeaderText = "Giá Bán Bình Quân";
-            this.GiaBanBinhQuan.Name = "GiaBanBinhQuan";
-            this.GiaBanBinhQuan.ReadOnly = true;
-            // 
-            // TongGiaBan
-            // 
-            this.TongGiaBan.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan.HeaderText = "TongGiaBan";
-            this.TongGiaBan.Name = "TongGiaBan";
-            this.TongGiaBan.ReadOnly = true;
-            this.TongGiaBan.Visible = false;
-            // 
-            // TongTieuThu
-            // 
-            this.TongTieuThu.DataPropertyName = "TongTieuThu";
-            this.TongTieuThu.HeaderText = "TongTieuThu";
-            this.TongTieuThu.Name = "TongTieuThu";
-            this.TongTieuThu.ReadOnly = true;
-            this.TongTieuThu.Visible = false;
+            this.dgvGiaBanBinhQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvGiaBanBinhQuan_CellFormatting);
             // 
             // label4
             // 
@@ -207,6 +177,35 @@
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 58;
             this.label4.Text = "Giá Billing";
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.ReadOnly = true;
+            this.Ky.Width = 50;
+            // 
+            // TongGiaBan
+            // 
+            this.TongGiaBan.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan.HeaderText = "Doanh Thu";
+            this.TongGiaBan.Name = "TongGiaBan";
+            this.TongGiaBan.ReadOnly = true;
+            // 
+            // TongTieuThu
+            // 
+            this.TongTieuThu.DataPropertyName = "TongTieuThu";
+            this.TongTieuThu.HeaderText = "Sản Lượng";
+            this.TongTieuThu.Name = "TongTieuThu";
+            this.TongTieuThu.ReadOnly = true;
+            // 
+            // GiaBanBinhQuan
+            // 
+            this.GiaBanBinhQuan.DataPropertyName = "GiaBanBinhQuan";
+            this.GiaBanBinhQuan.HeaderText = "Giá Bán Bình Quân";
+            this.GiaBanBinhQuan.Name = "GiaBanBinhQuan";
+            this.GiaBanBinhQuan.ReadOnly = true;
             // 
             // frmTinhGiaBanBinhQuan
             // 
@@ -241,10 +240,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtGiaBanBinhQuan;
         private System.Windows.Forms.DataGridView dgvGiaBanBinhQuan;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBanBinhQuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTieuThu;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBanBinhQuan;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.QuanTri
 {
@@ -18,6 +19,7 @@ namespace ThuTien.GUI.QuanTri
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CMenu _cMenu = new CMenu();
         CPhanQuyenNguoiDung _cPhanQuyenNguoiDung = new CPhanQuyenNguoiDung();
+        CChamCong _cChamCong = new CChamCong();
         int _selectedindex = -1;
         string _mnu = "mnuNguoiDung";
 
@@ -74,6 +76,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.HanhThu = chkHanhThu.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
                     nguoidung.VanPhong = chkVanPhong.Checked;
+                    nguoidung.ChamCong = chkChamCong.Checked;
                     ///tự động thêm quyền cho nhóm mới
                     foreach (var item in _cMenu.GetDS())
                     {
@@ -82,6 +85,9 @@ namespace ThuTien.GUI.QuanTri
                         phanquyennguoidung.MaND = nguoidung.MaND;
                         nguoidung.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                     }
+                    TT_CTChamCong ctchamcong = new TT_CTChamCong();
+                    ctchamcong.MaCC = _cChamCong.GetMaxMaCC();
+                    nguoidung.TT_CTChamCongs.Add(ctchamcong);
                     if (_cNguoiDung.Them(nguoidung))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -110,6 +116,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.HanhThu = chkHanhThu.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
                     nguoidung.VanPhong = chkVanPhong.Checked;
+                    nguoidung.ChamCong = chkChamCong.Checked;
                     _cNguoiDung.Sua(nguoidung);
                     DataTable dt = ((DataView)gridView.DataSource).Table;
                     foreach (DataRow item in dt.Rows)
@@ -172,6 +179,7 @@ namespace ThuTien.GUI.QuanTri
                 chkHanhThu.Checked = bool.Parse(dgvNguoiDung["HanhThu", e.RowIndex].Value.ToString());
                 chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());
                 chkVanPhong.Checked = bool.Parse(dgvNguoiDung["VanPhong", e.RowIndex].Value.ToString());
+                chkChamCong.Checked = bool.Parse(dgvNguoiDung["ChamCong", e.RowIndex].Value.ToString());
                 gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(int.Parse(dgvNguoiDung["MaND", e.RowIndex].Value.ToString()));
             }
             catch (Exception)

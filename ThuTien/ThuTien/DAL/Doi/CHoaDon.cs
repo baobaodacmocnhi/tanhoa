@@ -4432,25 +4432,32 @@ namespace ThuTien.DAL.Doi
         /// <returns></returns>
         public DataTable GetDSThu2Lan(string DanhBo)
         {
-            var query = from item in _db.HOADONs
-                        where item.DANHBA.Contains(DanhBo) && item.Thu2Lan == true
-                        orderby item.NGAYGIAITRACH descending
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.DANHBA.Contains(DanhBo) && itemHD.Thu2Lan == true
+                        orderby itemHD.NGAYGIAITRACH descending
                         select new
                         {
-                            MaHD = item.ID_HOADON,
-                            item.NGAYGIAITRACH,
-                            item.SOHOADON,
-                            Ky=item.KY+"/"+item.NAM,
-                            DanhBo = item.DANHBA,
-                            item.TIEUTHU,
-                            item.GIABAN,
-                            ThueGTGT = item.THUE,
-                            PhiBVMT = item.PHI,
-                            item.TONGCONG,
-                            ChuyenKhoan = item.Thu2Lan_ChuyenKhoan,
-                            Tra = item.Thu2Lan_Tra,
-                            NgayTra = item.Thu2Lan_NgayTra,
-                            GhiChu=item.Thu2Lan_GhiChu,
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            Ky=itemHD.KY+"/"+itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            MLT=itemHD.MALOTRINH,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            DiaChi=itemHD.SO+" "+itemHD.DUONG,
+                            GiaBieu=itemHD.GB,
+                            ChuyenKhoan = itemHD.Thu2Lan_ChuyenKhoan,
+                            Tra = itemHD.Thu2Lan_Tra,
+                            NgayTra = itemHD.Thu2Lan_NgayTra,
+                            GhiChu=itemHD.Thu2Lan_GhiChu,
+                            To=itemtableND.TT_To.TenTo,
+                            HanhThu=itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }

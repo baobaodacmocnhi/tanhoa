@@ -57,8 +57,8 @@ namespace ThuTien.GUI.Doi
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!lstHD.Items.Contains(item))
-                        lstHD.Items.Add(item);
+                    if (!lstHD.Items.Contains(item.ToUpper()))
+                        lstHD.Items.Add(item.ToUpper());
             txtSoHoaDon.Text = "";
         }
 

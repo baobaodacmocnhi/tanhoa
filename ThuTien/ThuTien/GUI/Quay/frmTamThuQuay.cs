@@ -174,7 +174,7 @@ namespace ThuTien.GUI.Quay
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (dateDen.Value >= dateTu.Value)
-                dgvTamThu.DataSource = _cTamThu.GetDSByDates(false, CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                dgvTamThu.DataSource = _cTamThu.GetDS(false, dateTu.Value, dateDen.Value);
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
                 if (_cDongNuoc.CheckExistBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
@@ -338,6 +338,8 @@ namespace ThuTien.GUI.Quay
                 xacnhanno.GiaBieu = hoadon.GB;
                 if (hoadon.DM != null)
                     xacnhanno.DinhMuc = (int)hoadon.DM;
+                xacnhanno.Ky = Ky;
+                xacnhanno.TongCong = TongCongSo;
                 xacnhanno.CreateBy = CNguoiDung.MaND;
             }
 
@@ -433,7 +435,7 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_XacNhanNo_Click(object sender, EventArgs e)
         {
-            dgvXacNhanNo.DataSource = _cXacNhanNo.GetDSByDate(CNguoiDung.MaND, dateDen_XacNhanNo.Value);
+            dgvXacNhanNo.DataSource = _cXacNhanNo.GetDS(dateDen_XacNhanNo.Value);
         }
 
         private void btnIn_XacNhanNo_Click(object sender, EventArgs e)
@@ -452,18 +454,21 @@ namespace ThuTien.GUI.Quay
                     dr["DinhMuc"] = 0;
                 else
                     dr["DinhMuc"] = item.Cells["DinhMuc_XacNhanNo"].Value.ToString();
-                dr["Ky"] = item.Cells["Ky_XacNhanNo"].Value.ToString();
-                dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", (int)item.Cells["TongCong_XacNhanNo"].Value);
-                dr["TinhDenKy"] = item.Cells["TinhTenKy_XacNhanNo"].Value.ToString();
+                if (item.Cells["Ky_XacNhanNo"].Value != null)
+                    dr["Ky"] = item.Cells["Ky_XacNhanNo"].Value.ToString();
+                if (item.Cells["TongCong_XacNhanNo"].Value != null)
+                    dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", (int)item.Cells["TongCong_XacNhanNo"].Value);
+                if (item.Cells["TinhDenKy_XacNhanNo"].Value != null)
+                    dr["TinhDenKy"] = item.Cells["TinhDenKy_XacNhanNo"].Value.ToString();
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
                 rpt.SetDataSource(ds);
                 frmInQuay frm = new frmInQuay(rpt);
-                frm.ShowDialog();  
+                frm.ShowDialog();
             }
-            
+
         }
 
         private void btnXoa_XacNhanNo_Click(object sender, EventArgs e)

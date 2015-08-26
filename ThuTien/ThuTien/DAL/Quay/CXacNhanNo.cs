@@ -75,14 +75,14 @@ namespace ThuTien.DAL.Quay
             return _db.TT_XacNhanNos.SingleOrDefault(item => item.SoPhieu == SoPhieu);
         }
 
-        public List<TT_XacNhanNo> GetDSByDate(int MaNV, DateTime TuNgay)
+        public List<TT_XacNhanNo> GetDS(DateTime TuNgay)
         {
-            return _db.TT_XacNhanNos.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date == TuNgay.Date).ToList();
+            return _db.TT_XacNhanNos.Where(item => item.CreateDate.Value.Date == TuNgay.Date).ToList();
         }
 
-        public List<TT_XacNhanNo> GetDSByDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
+        public List<TT_XacNhanNo> GetDS(DateTime TuNgay, DateTime DenNgay)
         {
-            return _db.TT_XacNhanNos.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList();
+            return _db.TT_XacNhanNos.Where(item =>item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList();
         }
 
         public bool CheckExist(string DanhBo, string Ky)

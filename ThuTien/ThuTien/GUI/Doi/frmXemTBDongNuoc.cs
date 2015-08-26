@@ -149,22 +149,26 @@ namespace ThuTien.GUI.Doi
 
                 DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
 
-                string TinhTrang = "Đã Xử Lý";
+                string TinhTrang = "Tồn";
                 foreach (DataRow itemChild in childRows)
-                    if (string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
+                    if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
                     {
-                        TinhTrang = "Tồn";
+                        TinhTrang = "Đăng Ngân";
                     }
+                    else
+                        if (_cDongNuoc.CheckKQDongNuocByMaDN(int.Parse(row["MaDN"].ToString())))
+                        {
+                            TinhTrang = "Đã Khóa Nước";
+                        }
                 gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
 
                 rowTong[0]["Tong"] = int.Parse(rowTong[0]["Tong"].ToString()) + 1;
 
                 if (TinhTrang == "Tồn")
                     rowTong[0]["TongTon"] = int.Parse(rowTong[0]["TongTon"].ToString()) + 1;
-                else
+                if (TinhTrang == "Đăng Ngân")
                     rowTong[0]["TongThu"] = int.Parse(rowTong[0]["TongThu"].ToString()) + 1;
-
-                if (_cDongNuoc.CheckKQDongNuocByMaDN(int.Parse(row["MaDN"].ToString())))
+                if (TinhTrang == "Đã Khóa Nước")
                     rowTong[0]["TongDN"] = int.Parse(rowTong[0]["TongDN"].ToString()) + 1;
             }
 

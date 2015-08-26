@@ -13,6 +13,7 @@ using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.DongNuoc;
 using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -22,6 +23,7 @@ namespace ThuTien.GUI.ToTruong
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         List<TT_NguoiDung> _lstND=new List<TT_NguoiDung>();
+        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
 
         public frmGiaoTBDongNuoc()
         {
@@ -73,12 +75,17 @@ namespace ThuTien.GUI.ToTruong
                 DataRow row = gridViewDN.GetDataRow(i);
                 DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
 
-                string TinhTrang = "Đã Xử Lý";
+                string TinhTrang = "Tồn";
                 foreach (DataRow itemChild in childRows)
-                    if (string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
+                    if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
                     {
-                        TinhTrang = "Tồn";
+                        TinhTrang = "Đăng Ngân";
                     }
+                    else
+                        if (_cDongNuoc.CheckKQDongNuocByMaDN(int.Parse(row["MaDN"].ToString())))
+                        {
+                            TinhTrang = "Đã Khóa Nước";
+                        }
                 gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
             }
         }
@@ -352,6 +359,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-"); ;
                         dr["HoTen"] = item["HoTen"];
                         dr["DiaChi"] = item["DiaChi"];
+                        dr["DienThoai"] = _cCapNuocTanHoa.GetTTKH(item["DanhBo"].ToString());
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = item["MLT"];

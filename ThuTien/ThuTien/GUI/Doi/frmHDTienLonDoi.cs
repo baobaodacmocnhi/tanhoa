@@ -311,6 +311,28 @@ namespace ThuTien.GUI.Doi
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
+
+        private void dgvHDTuGia_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+            {
+                if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Red;
+            }
+        }
+
+        private void dgvHDCoQuan_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+            {
+                if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Red;
+            }
+        }
  
     }
 }

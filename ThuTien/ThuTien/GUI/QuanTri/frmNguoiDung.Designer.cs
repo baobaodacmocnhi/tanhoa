@@ -65,6 +65,9 @@
             this.chkHanhThu = new System.Windows.Forms.CheckBox();
             this.chkDongNuoc = new System.Windows.Forms.CheckBox();
             this.chkVanPhong = new System.Windows.Forms.CheckBox();
+            this.txtDienThoai = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chkChamCong = new System.Windows.Forms.CheckBox();
             this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,8 +81,7 @@
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDienThoai = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.ChamCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -192,7 +194,8 @@
             this.ToTruong,
             this.HanhThu,
             this.DongNuoc,
-            this.VanPhong});
+            this.VanPhong,
+            this.ChamCong});
             this.dgvNguoiDung.Location = new System.Drawing.Point(12, 144);
             this.dgvNguoiDung.MultiSelect = false;
             this.dgvNguoiDung.Name = "dgvNguoiDung";
@@ -445,6 +448,32 @@
             this.chkVanPhong.Text = "Văn Phòng";
             this.chkVanPhong.UseVisualStyleBackColor = true;
             // 
+            // txtDienThoai
+            // 
+            this.txtDienThoai.Location = new System.Drawing.Point(269, 38);
+            this.txtDienThoai.Name = "txtDienThoai";
+            this.txtDienThoai.Size = new System.Drawing.Size(121, 20);
+            this.txtDienThoai.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(201, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Điện Thoại:";
+            // 
+            // chkChamCong
+            // 
+            this.chkChamCong.AutoSize = true;
+            this.chkChamCong.Location = new System.Drawing.Point(590, 119);
+            this.chkChamCong.Name = "chkChamCong";
+            this.chkChamCong.Size = new System.Drawing.Size(81, 17);
+            this.chkChamCong.TabIndex = 22;
+            this.chkChamCong.Text = "Chấm Công";
+            this.chkChamCong.UseVisualStyleBackColor = true;
+            // 
             // MaND
             // 
             this.MaND.DataPropertyName = "MaND";
@@ -546,27 +575,20 @@
             this.VanPhong.ReadOnly = true;
             this.VanPhong.Visible = false;
             // 
-            // txtDienThoai
+            // ChamCong
             // 
-            this.txtDienThoai.Location = new System.Drawing.Point(269, 38);
-            this.txtDienThoai.Name = "txtDienThoai";
-            this.txtDienThoai.Size = new System.Drawing.Size(121, 20);
-            this.txtDienThoai.TabIndex = 21;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(201, 41);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Điện Thoại:";
+            this.ChamCong.DataPropertyName = "ChamCong";
+            this.ChamCong.HeaderText = "ChamCong";
+            this.ChamCong.Name = "ChamCong";
+            this.ChamCong.ReadOnly = true;
+            this.ChamCong.Visible = false;
             // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1365, 666);
+            this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.chkChamCong);
             this.Controls.Add(this.txtDienThoai);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.chkVanPhong);
@@ -645,6 +667,9 @@
         private System.Windows.Forms.CheckBox chkHanhThu;
         private System.Windows.Forms.CheckBox chkDongNuoc;
         private System.Windows.Forms.CheckBox chkVanPhong;
+        private System.Windows.Forms.TextBox txtDienThoai;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chkChamCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
@@ -658,7 +683,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DongNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn VanPhong;
-        private System.Windows.Forms.TextBox txtDienThoai;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChamCong;
     }
 }

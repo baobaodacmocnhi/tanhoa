@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ThuTien.BaoCao.ToTruong {
+namespace ThuTien.BaoCao.TongHop {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace ThuTien.BaoCao.ToTruong {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptDSChiaHoaDon : ReportClass {
+    public class rptChamCong : ReportClass {
         
-        public rptDSChiaHoaDon() {
+        public rptChamCong() {
         }
         
         public override string ResourceName {
             get {
-                return "rptDSChiaHoaDon.rpt";
+                return "rptChamCong.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ThuTien.BaoCao.ToTruong {
         
         public override string FullResourceName {
             get {
-                return "ThuTien.BaoCao.ToTruong.rptDSChiaHoaDon.rpt";
+                return "ThuTien.BaoCao.TongHop.rptChamCong.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace ThuTien.BaoCao.ToTruong {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptDSChiaHoaDon : Component, ICachedReport {
+    public class CachedrptChamCong : Component, ICachedReport {
         
-        public CachedrptDSChiaHoaDon() {
+        public CachedrptChamCong() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace ThuTien.BaoCao.ToTruong {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptDSChiaHoaDon rpt = new rptDSChiaHoaDon();
+            rptChamCong rpt = new rptChamCong();
             rpt.Site = this.Site;
             return rpt;
         }

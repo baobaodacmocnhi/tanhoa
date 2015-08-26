@@ -48,9 +48,9 @@ namespace ThuTien.GUI.ToTruong
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-                if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
+                if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim().ToUpper()))
                 {
-                    lstHD.Items.Add(txtSoHoaDon.Text.Trim());
+                    lstHD.Items.Add(txtSoHoaDon.Text.Trim().ToUpper());
                     txtSoLuong.Text = lstHD.Items.Count.ToString();
                     txtSoHoaDon.Text = "";
                 }

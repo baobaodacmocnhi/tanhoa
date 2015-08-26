@@ -39,8 +39,8 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         public void LoadDanhSachHD()
         {
-            dgvHDDaThu.DataSource = _cDLKH.GetDSDangNgan();
-            dgvHDChuaThu.DataSource = _cDLKH.GetDSTon();
+            dgvHDDaThu.DataSource = _cDLKH.GetDSDangNgan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+            dgvHDChuaThu.DataSource = _cDLKH.GetDSTon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
             long TongCong = 0;
             if (dgvHDDaThu.RowCount > 0)
             {
@@ -229,9 +229,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim()) && !lstHD.Items.Contains(item.Trim()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
                     {
-                        lstHD.Items.Add(item.Trim());
+                        lstHD.Items.Add(item.Trim().ToUpper());
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";

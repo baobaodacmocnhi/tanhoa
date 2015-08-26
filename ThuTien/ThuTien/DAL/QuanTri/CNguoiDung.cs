@@ -169,9 +169,9 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.ToList();
         }
 
-        public List<TT_NguoiDung> GetDSExceptAdmin()
+        public List<TT_NguoiDung> GetDSChamCong()
         {
-            return _db.TT_NguoiDungs.Where(item =>item.MaND != 0).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != 0 && item.ChamCong == true).ToList();
         }
 
         /// <summary>

@@ -155,6 +155,11 @@ namespace ThuTien.DAL
                 , DiaChi = item.SONHA + "  " + item.TENDUONG, item.DIENTHOAI,HanhThu="" }).Take(1).ToList());
         }
 
+        public string GetDienThoaiKH(string DanhBo)
+        {
+            return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DIENTHOAI;
+        }
+
         public DataTable GetGhiChu(string DanhBo)
         {
             return LINQToDataTable(_dbCapNuocTanHoa.TB_GHICHUs.Where(item => item.DANHBO == DanhBo)

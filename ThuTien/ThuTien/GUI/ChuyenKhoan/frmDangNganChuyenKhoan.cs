@@ -92,9 +92,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim())&&!lstHD.Items.Contains(item.Trim()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
                     {
-                        lstHD.Items.Add(item.Trim());
+                        lstHD.Items.Add(item.Trim().ToUpper());
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";

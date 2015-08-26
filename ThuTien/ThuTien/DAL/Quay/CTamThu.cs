@@ -102,7 +102,7 @@ namespace ThuTien.DAL.Quay
                 return false;
         }
 
-        public DataTable GetDSByDate(bool ChuyenKhoan,int MaNV,DateTime TuNgay)
+        public DataTable GetDS(bool ChuyenKhoan,DateTime TuNgay)
         {
             var query = from itemTT in _db.TAMTHUs
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
@@ -110,7 +110,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemTT.CreateDate.Value.Date==TuNgay.Date && itemTT.CreateBy==MaNV && itemTT.ChuyenKhoan==ChuyenKhoan
+                        where itemTT.CreateDate.Value.Date==TuNgay.Date && itemTT.ChuyenKhoan==ChuyenKhoan
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -139,7 +139,7 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByDates(bool ChuyenKhoan, int MaNV, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS(bool ChuyenKhoan,DateTime TuNgay, DateTime DenNgay)
         {
             var query = from itemTT in _db.TAMTHUs
                         join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
@@ -147,7 +147,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.CreateBy == MaNV && itemTT.ChuyenKhoan == ChuyenKhoan
+                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {

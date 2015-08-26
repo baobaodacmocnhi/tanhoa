@@ -86,11 +86,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_DuLieuKhachHangs.Any(item=>item.DanhBo == DanhBo);
         }
 
-        public DataTable GetDSDangNgan()
+        public DataTable GetDSDangNgan(int Nam,int Ky)
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHangs
                         join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
-                        where itemHD.NGAYGIAITRACH != null
+                        where itemHD.NGAYGIAITRACH != null && itemHD.NAM==Nam && itemHD.KY==Ky
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
@@ -107,11 +107,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSTon()
+        public DataTable GetDSTon(int Nam, int Ky)
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHangs
                         join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
-                        where itemHD.NGAYGIAITRACH == null && itemHD.ChuyenNoKhoDoi==false
+                        where itemHD.NGAYGIAITRACH == null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.ChuyenNoKhoDoi == false
                         select new
                         {
                             itemHD.NGAYGIAITRACH,

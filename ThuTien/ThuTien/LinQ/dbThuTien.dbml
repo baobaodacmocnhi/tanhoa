@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HOADON_TA" Class="dbThuTienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.8\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HOADON_TT" Class="dbThuTienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.90.9;Initial Catalog=HOADON_TT;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TT_To" Member="TT_Tos">
     <Type Name="TT_To">
       <Column Name="MaTo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -192,30 +192,6 @@
       <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TT_NguoiDung" Member="TT_NguoiDungs">
-    <Type Name="TT_NguoiDung">
-      <Column Name="MaND" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="LoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ToTruong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="HanhThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="DongNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="VanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MaTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaNhom" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TT_NguoiDung_TT_PhanQuyenNguoiDung" Member="TT_PhanQuyenNguoiDungs" ThisKey="MaND" OtherKey="MaND" Type="TT_PhanQuyenNguoiDung" />
-      <Association Name="TT_NguoiDung_TT_CTChamCong" Member="TT_CTChamCongs" ThisKey="MaND" OtherKey="MaND" Type="TT_CTChamCong" />
-      <Association Name="TT_Nhom_TT_NguoiDung" Member="TT_Nhom" ThisKey="MaNhom" OtherKey="MaNhom" Type="TT_Nhom" IsForeignKey="true" />
-      <Association Name="TT_To_TT_NguoiDung" Member="TT_To" ThisKey="MaTo" OtherKey="MaTo" Type="TT_To" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TT_DongNuoc" Member="TT_DongNuocs">
@@ -639,43 +615,68 @@
     <Type Name="TT_CTChamCong">
       <Column Name="MaCC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaND" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="N1" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N2" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N3" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N4" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N5" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N6" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N7" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N8" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N9" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N10" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N11" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N12" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N13" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N14" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N15" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N16" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N17" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N18" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N19" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N20" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N21" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N22" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N23" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N24" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N25" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N26" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N27" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N28" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N29" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N30" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="N31" AutoSync="Never" Type="System.Boolean" DbType="Bit NOT NULL" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="N1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N3" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N4" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N5" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N6" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N7" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N8" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N9" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N10" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N11" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N12" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N13" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N14" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N15" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N16" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N17" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N18" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N19" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N20" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N21" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N22" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N23" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N24" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N25" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N26" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N27" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N28" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N29" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N30" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="N31" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TT_ChamCong_TT_CTChamCong" Member="TT_ChamCong" ThisKey="MaCC" OtherKey="MaCC" Type="TT_ChamCong" IsForeignKey="true" />
       <Association Name="TT_NguoiDung_TT_CTChamCong" Member="TT_NguoiDung" ThisKey="MaND" OtherKey="MaND" Type="TT_NguoiDung" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_NguoiDung" Member="TT_NguoiDungs">
+    <Type Name="TT_NguoiDung">
+      <Column Name="MaND" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ToTruong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HanhThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DongNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="VanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ChamCong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNhom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TT_NguoiDung_TT_PhanQuyenNguoiDung" Member="TT_PhanQuyenNguoiDungs" ThisKey="MaND" OtherKey="MaND" Type="TT_PhanQuyenNguoiDung" />
+      <Association Name="TT_NguoiDung_TT_CTChamCong" Member="TT_CTChamCongs" ThisKey="MaND" OtherKey="MaND" Type="TT_CTChamCong" />
+      <Association Name="TT_Nhom_TT_NguoiDung" Member="TT_Nhom" ThisKey="MaNhom" OtherKey="MaNhom" Type="TT_Nhom" IsForeignKey="true" />
+      <Association Name="TT_To_TT_NguoiDung" Member="TT_To" ThisKey="MaTo" OtherKey="MaTo" Type="TT_To" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

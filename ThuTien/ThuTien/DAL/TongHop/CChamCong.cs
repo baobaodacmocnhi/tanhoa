@@ -56,10 +56,12 @@ namespace ThuTien.DAL.TongHop
         {
             var query = from item in _db.TT_CTChamCongs
                         where item.TT_ChamCong.Thang == Thang && item.TT_ChamCong.Nam == Nam
+                        orderby item.TT_NguoiDung.TT_To.MaTo, item.TT_NguoiDung.MaND
                         select new
                         {
                             item.MaCC,
                             MaNV=item.MaND,
+                            To=item.TT_NguoiDung.TT_To.TenTo,
                             item.TT_NguoiDung.HoTen,
                             item.N1,
                             item.N2,
@@ -92,8 +94,20 @@ namespace ThuTien.DAL.TongHop
                             item.N29,
                             item.N30,
                             item.N31,
+                            Nghi=0,
                         };
             return LINQToDataTable(query);
+        }
+
+        public bool ChamCong(int MaCC, int MaNV, string Ngay, bool DiLam)
+        {
+            string sql = "update TT_CTChamCong set " + Ngay + "='" + DiLam + "' where MaCC=" + MaCC + " and MaND=" + MaNV;
+            return ExecuteNonQuery(sql, false);
+        }
+
+        public int GetMaxMaCC()
+        {
+            return _db.TT_ChamCongs.Max(item => item.MaCC);
         }
     }
 }
