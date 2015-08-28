@@ -3895,14 +3895,14 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDangNganQuayByMaNVNgayGiaiTrach(string Loai, int MaNV, DateTime NgayGiaiTrach)
+        public DataTable GetDSDangNganQuayByMaNVNgayGiaiTrach(string Loai,DateTime NgayGiaiTrach)
         {
             if (Loai == "TG")
             {
                 var query = from itemHD in _db.HOADONs
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemHD.DangNgan_Quay == true && itemHD.MaNV_DangNgan == MaNV && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.GB >= 11 && itemHD.GB <= 20
+                            where itemHD.DangNgan_Quay == true && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.GB >= 11 && itemHD.GB <= 20
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
@@ -3929,7 +3929,7 @@ namespace ThuTien.DAL.Doi
                     var query = from itemHD in _db.HOADONs
                                 join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
-                                where itemHD.DangNgan_Quay == true && itemHD.MaNV_DangNgan == MaNV && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.GB > 20
+                                where itemHD.DangNgan_Quay == true && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.GB > 20
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
@@ -3953,14 +3953,14 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrach(string Loai, int MaNV, DateTime NgayGiaiTrach)
+        public DataTable GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrach(string Loai,DateTime NgayGiaiTrach)
         {
             if (Loai == "TG")
             {
                 var query = from itemHD in _db.HOADONs
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemHD.DangNgan_ChuyenKhoan == true && itemHD.MaNV_DangNgan == MaNV && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.GB >= 11 && itemHD.GB <= 20
+                            where itemHD.DangNgan_ChuyenKhoan == true && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 itemHD.NGAYGIAITRACH,
@@ -3985,7 +3985,7 @@ namespace ThuTien.DAL.Doi
                     var query = from itemHD in _db.HOADONs
                                 join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
-                                where itemHD.DangNgan_ChuyenKhoan == true && itemHD.MaNV_DangNgan == MaNV && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.GB > 20
+                                where itemHD.DangNgan_ChuyenKhoan == true && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && itemHD.GB > 20
                                 select new
                                 {
                                     itemHD.NGAYGIAITRACH,
@@ -4007,14 +4007,14 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrach(string Loai, int MaNV, DateTime TuNgayGiaiTrach, DateTime DenNgayGiaiTrach)
+        public DataTable GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrach(string Loai, DateTime TuNgayGiaiTrach, DateTime DenNgayGiaiTrach)
         {
             if (Loai == "TG")
             {
                 var query = from itemHD in _db.HOADONs
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemHD.DangNgan_ChuyenKhoan == true && itemHD.MaNV_DangNgan == MaNV && itemHD.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date && itemHD.GB >= 11 && itemHD.GB <= 20
+                            where itemHD.DangNgan_ChuyenKhoan == true && itemHD.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 itemHD.NGAYGIAITRACH,
@@ -4039,7 +4039,7 @@ namespace ThuTien.DAL.Doi
                     var query = from itemHD in _db.HOADONs
                                 join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
-                                where itemHD.DangNgan_ChuyenKhoan == true && itemHD.MaNV_DangNgan == MaNV && itemHD.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date && itemHD.GB > 20
+                                where itemHD.DangNgan_ChuyenKhoan == true && itemHD.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date && itemHD.GB > 20
                                 select new
                                 {
                                     itemHD.NGAYGIAITRACH,
@@ -4642,17 +4642,18 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSTimKiem(string DanhBo, string HoTen, string DiaChi)
         {
-            string sql = "select ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,a.SoHoaDon,"
-                + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,GiaBan,Thue as ThueGTGT,Phi as PhiBVMT,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu,MaDN,NgayDN"
-                + ",DENNGAY as NgayDoc,CSMOI as ChiSo"
-                + " from HOADON a left join TT_NguoiDung b on a.MaNV_DangNgan=b.MaND"
-                + " left join TT_NguoiDung c on a.MaNV_HanhThu=c.MaND"
-                + " left join"
-                + " (select b.SoHoaDon,a.MaDN,NgayDN from TT_DongNuoc a"
-                + " left join TT_CTDongNuoc b on a.MaDN=b.MaDN"
-                + " left join TT_KQDongNuoc c on a.MaDN=c.MaDN where Huy=0) as dn on  a.SOHOADON=dn.SoHoaDon"
-                + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
-                + "order by ID_HOADON desc";
+            //string sql = "select ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,a.SoHoaDon,"
+            //    + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,GiaBan,Thue as ThueGTGT,Phi as PhiBVMT,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu,MaDN,NgayDN"
+            //    + ",DENNGAY as NgayDoc,CSMOI as ChiSo"
+            //    + " from HOADON a left join TT_NguoiDung b on a.MaNV_DangNgan=b.MaND"
+            //    + " left join TT_NguoiDung c on a.MaNV_HanhThu=c.MaND"
+            //    + " left join"
+            //    + " (select b.SoHoaDon,a.MaDN,NgayDN from TT_DongNuoc a"
+            //    + " left join TT_CTDongNuoc b on a.MaDN=b.MaDN"
+            //    + " left join TT_KQDongNuoc c on a.MaDN=c.MaDN where Huy=0) as dn on  a.SOHOADON=dn.SoHoaDon"
+            //    + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
+            //    + "order by ID_HOADON desc";
+            string sql = "select * from TimKiem('"+DanhBo+"','"+HoTen+"','"+DiaChi+"')";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }

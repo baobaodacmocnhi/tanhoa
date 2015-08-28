@@ -127,13 +127,13 @@ namespace ThuTien.GUI.Quay
                 
                 if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("TG",CNguoiDung.MaND, dateGiaiTrach.Value);
+                    dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("TG", dateGiaiTrach.Value);
                     CountdgvHDTuGia();
                 }
                 else
                     if (tabControl.SelectedTab.Name == "tabCoQuan")
                     {
-                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("CQ",CNguoiDung.MaND, dateGiaiTrach.Value);
+                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("CQ", dateGiaiTrach.Value);
                         CountdgvHDCoQuan();
                     }
         }
@@ -144,12 +144,12 @@ namespace ThuTien.GUI.Quay
             {
                 foreach (var item in lstHD.Items)
                 {
-                    //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
-                    //{
-                    //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    lstHD.SelectedItem = item;
-                    //    return;
-                    //}
+                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                    {
+                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.SelectedItem = item;
+                        return;
+                    }
                     //string loai;
                     //if (!_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
                     //{

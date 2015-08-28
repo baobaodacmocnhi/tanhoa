@@ -12,6 +12,9 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.LinQ;
 using ThuTien.GUI.TimKiem;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.ChuyenKhoan;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -20,6 +23,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         string _mnu = "mnuDuLieuKhachHang";
         CHoaDon _cHoaDon = new CHoaDon();
         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
+        CTo _cTo = new CTo();
 
         public frmDuLieuKhachHang()
         {
@@ -28,8 +32,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void frmDuLieuKhachHang_Load(object sender, EventArgs e)
         {
-            dgvHDDaThu.AutoGenerateColumns = false;
-            dgvHDChuaThu.AutoGenerateColumns = false;
+            dgvDanhBo.AutoGenerateColumns = false;
             dgvHoaDon.AutoGenerateColumns = false;
 
             cmbNam.DataSource = _cHoaDon.GetNam();
@@ -37,192 +40,57 @@ namespace ThuTien.GUI.ChuyenKhoan
             cmbNam.ValueMember = "Nam";
         }
 
-        public void LoadDanhSachHD()
-        {
-            dgvHDDaThu.DataSource = _cDLKH.GetDSDangNgan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-            dgvHDChuaThu.DataSource = _cDLKH.GetDSTon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-            long TongCong = 0;
-            if (dgvHDDaThu.RowCount > 0)
-            {
-                foreach (DataGridViewRow item in dgvHDDaThu.Rows)
-                {
-                    TongCong += int.Parse(item.Cells["TongCong_DT"].Value.ToString());
-                }
-                if (TongCong == 0)
-                    txtTongCong_DT.Text = "0";
-                else
-                    txtTongCong_DT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
-            }
-            TongCong = 0;
-            if (dgvHDChuaThu.RowCount > 0)
-            {
-                foreach (DataGridViewRow item in dgvHDChuaThu.Rows)
-                {
-                    TongCong += int.Parse(item.Cells["TongCong_CT"].Value.ToString());
-                }
-                if (TongCong == 0)
-                    txtTongCong_CT.Text = "0";
-                else
-                    txtTongCong_CT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
-            }
-        }
-
         private void btnXem_Click(object sender, EventArgs e)
         {
-            LoadDanhSachHD();
+            dgvDanhBo.DataSource = _cDLKH.GetDSDanhBo(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void btnIn_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            dsBaoCao ds = new dsBaoCao();
+            List<TT_To> lstTo=_cTo.GetDSHanhThu();
+            List<TT_DuLieuKhachHang_DanhBo> lstDB = _cDLKH.GetDS();
+            foreach (TT_DuLieuKhachHang_DanhBo item in lstDB)
             {
-                try
-                {
-                    //_cDLKH.SqlBeginTransaction();
-                    foreach (string item in txtDanhBo.Lines)
-                        if (item.Length == 11 && !_cDLKH.CheckExist(item.ToString()))
-                            if (!_cDLKH.Them(item.ToString()))
-                            {
-                                //_cDLKH.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                    //_cDLKH.SqlCommitTransaction();
-                    LoadDanhSachHD();
-                    txtDanhBo.Text = "";
-                    //cmbKy.SelectedIndex = -1;
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception)
-                {
-                    //_cDLKH.SqlRollbackTransaction();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                dr["DanhBo"] = item.DanhBo.Insert(4, " ").Insert(8, " ");
+
+                HOADON hoadon = _cHoaDon.GetMoiNhat(item.DanhBo);
+                dr["HoTen"] = hoadon.TENKH;
+                dr["MLT"] = hoadon.MALOTRINH;
+                dr["To"] = lstTo.SingleOrDefault(itemTo => itemTo.TuCuonGCS <= int.Parse(hoadon.MAY) && itemTo.DenCuonGCS >= int.Parse(hoadon.MAY)).TenTo;
+                ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            rptDSDLKH rpt = new rptDSDLKH();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                try
-                {
-                    _cDLKH.BeginTransaction();
-                    if (tabControl1.SelectedTab.Name == "tabDaThu")
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    try
                     {
-                        foreach (DataGridViewRow item in dgvHDDaThu.SelectedRows)
+                        foreach (DataGridViewRow item in dgvDanhBo.SelectedRows)
                         {
-                            TT_DuLieuKhachHang dlkh = _cDLKH.GetByDanhBo(item.Cells["DanhBo_DT"].Value.ToString());
-                            if (!_cDLKH.Xoa(dlkh))
-                            {
-                                _cDLKH.Rollback();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            _cDLKH.Xoa(_cDLKH.GetByDanhBo(item.Cells["DanhBo_DB"].Value.ToString()));
                         }
+                        btnXem.PerformClick();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else
-                        if (tabControl1.SelectedTab.Name == "tabChuaThu")
-                        {
-                            foreach (DataGridViewRow item in dgvHDChuaThu.SelectedRows)
-                            {
-                                TT_DuLieuKhachHang dlkh = _cDLKH.GetByDanhBo(item.Cells["DanhBo_CT"].Value.ToString());
-                                if (!_cDLKH.Xoa(dlkh))
-                                {
-                                    _cDLKH.Rollback();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                            }
-                        }
-                    _cDLKH.CommitTransaction();
-                    LoadDanhSachHD();
-                    txtDanhBo.Text = "";
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception)
-                {
-                    _cDLKH.Rollback();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void dgvHDDaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "DanhBo_DT" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "TieuThu_DT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "GiaBan_DT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "ThueGTGT_DT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "PhiBVMT_DT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "TongCong_DT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-        }
-
-        private void dgvHDDaThu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvHDDaThu.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvHDChuaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "DanhBo_CT" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
-            }
-            if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "TieuThu_CT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "GiaBan_CT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "ThueGTGT_CT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "PhiBVMT_CT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-            if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "TongCong_CT" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-        }
-
-        private void dgvHDChuaThu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvHDChuaThu.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
+        
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -251,7 +119,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem2_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cDLKH.GetDS2(dateTu.Value,dateDen.Value);
+            dgvHoaDon.DataSource = _cDLKH.GetDS2(dateTu.Value, dateDen.Value);
         }
 
         private void btnThem2_Click(object sender, EventArgs e)
@@ -348,7 +216,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            XuatExcel(dt, oSheet, "TƯ GIA");
+            XuatExcel(dt, oSheet, "ĐÔNG Á");
         }
 
         private void XuatExcel(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)
@@ -356,73 +224,85 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Name = SheetName;
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
-            cl1.Value2 = "Số Hóa Đơn";
-            cl1.ColumnWidth = 15;
+            cl1.Value2 = "STT";
+            cl1.ColumnWidth = 5;
 
             Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
-            cl2.Value2 = "Kỳ";
-            cl2.ColumnWidth = 10;
+            cl2.Value2 = "CN";
+            cl2.ColumnWidth = 5;
 
             Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
-            cl3.Value2 = "Danh Bộ";
-            cl3.ColumnWidth = 15;
+            cl3.Value2 = "Năm";
+            cl3.ColumnWidth = 5;
 
             Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
-            cl4.Value2 = "Khách Hàng";
-            cl4.ColumnWidth = 30;
+            cl4.Value2 = "Kỳ";
+            cl4.ColumnWidth = 5;
 
             Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
-            cl5.Value2 = "MLT";
-            cl5.ColumnWidth = 12;
+            cl5.Value2 = "Đợt";
+            cl5.ColumnWidth = 5;
 
             Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
-            cl6.Value2 = "Giá Bán";
+            cl6.Value2 = "Danh Bộ";
             cl6.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
-            cl7.Value2 = "Thuế GTGT";
+            cl7.Value2 = "Số Hóa Đơn";
             cl7.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
-            cl8.Value2 = "Phí BVMT";
+            cl8.Value2 = "Số Tài Khoản";
             cl8.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
-            cl9.Value2 = "Tổng Cộng";
+            cl9.Value2 = "Số Tiền Phải Thu";
             cl9.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
-            cl10.Value2 = "Hành Thu";
-            cl10.ColumnWidth = 20;
+            cl10.Value2 = "LNTT";
+            cl10.ColumnWidth = 5;
 
             Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
-            cl11.Value2 = "Tổ";
-            cl11.ColumnWidth = 5;
+            cl11.Value2 = "Tiền Nước";
+            cl11.ColumnWidth = 10;
 
             Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
-            cl12.Value2 = "Ngày Giải Trách";
+            cl12.Value2 = "Thuế GTGT";
             cl12.ColumnWidth = 10;
+
+            Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M1", "M1");
+            cl13.Value2 = "Phí BVMT";
+            cl13.ColumnWidth = 10;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+                if (!string.IsNullOrEmpty(dt.Rows[i]["NgayGiaiTrach"].ToString()))
+                {
+                    dt.Rows.RemoveAt(i);
+                    i--;
+                }
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 12];
+            object[,] arr = new object[dt.Rows.Count, 13];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow dr = dt.Rows[i];
-                arr[i, 0] = dr["SoHoaDon"].ToString();
-                arr[i, 1] = dr["Ky"].ToString();
-                arr[i, 2] = dr["DanhBo"].ToString();
-                arr[i, 3] = dr["HoTen"].ToString();
-                arr[i, 4] = dr["MLT"].ToString();
-                arr[i, 5] = dr["GiaBan"].ToString();
-                arr[i, 6] = dr["ThueGTGT"].ToString();
-                arr[i, 7] = dr["PhiBVMT"].ToString();
+                arr[i, 0] = i+1;
+                arr[i, 1] = "TH";
+                arr[i, 2] = dr["Nam"].ToString();
+                arr[i, 3] = dr["Ky"].ToString();
+                arr[i, 4] = dr["Dot"].ToString();
+                arr[i, 5] = dr["DanhBo"].ToString();
+                arr[i, 6] = dr["SoHoaDon"].ToString();
+                arr[i, 7] = dr["SoTaiKhoan"].ToString();
                 arr[i, 8] = dr["TongCong"].ToString();
-                arr[i, 9] = dr["HanhThu"].ToString();
-                arr[i, 10] = dr["To"].ToString();
-                arr[i, 11] = dr["NgayGiaiTrach"].ToString();
+                arr[i, 9] = dr["TieuThu"].ToString();
+                arr[i, 10] = dr["GiaBan"].ToString();
+                arr[i, 11] = dr["ThueGTGT"].ToString();
+                arr[i, 12] = dr["PhiBVMT"].ToString();
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -430,7 +310,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 12;
+            int columnEnd = 13;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
@@ -439,26 +319,26 @@ namespace ThuTien.GUI.ChuyenKhoan
             // Lấy về vùng điền dữ liệu
             Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
 
-            Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
-            Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
-            Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
-            oSheet.get_Range(c2a, c3a).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            //Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+            //Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+            //Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+            //oSheet.get_Range(c2a, c3a).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
 
-            Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
-            Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
-            Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
-            oSheet.get_Range(c2b, c3b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-            oSheet.get_Range(c2b, c3b).NumberFormat = "@";
+            //Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+            //Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+            //Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+            //oSheet.get_Range(c2b, c3b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            //oSheet.get_Range(c2b, c3b).NumberFormat = "@";
 
-            Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
-            Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
-            Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
-            oSheet.get_Range(c2c, c3c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            //Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            //Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            //Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+            //oSheet.get_Range(c2c, c3c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
 
-            Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
-            Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
-            Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
-            oSheet.get_Range(c2d, c3d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+            //Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            //Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            //Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+            //oSheet.get_Range(c2d, c3d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
 
             //Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
             //Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
@@ -476,28 +356,28 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void GetNoiDungfrmTimKiem(string NoiDung)
         {
-            if (tabControl.SelectedTab.Name == "tabDLKH1")
-            {
-                if (tabControl1.SelectedTab.Name == "tabDaThu")
-                {
-                    foreach (DataGridViewRow item in dgvHDDaThu.Rows)
-                        if (item.Cells["DanhBo_DT"].Value.ToString() == NoiDung)
-                        {
-                            dgvHDDaThu.CurrentCell = item.Cells["DanhBo_DT"];
-                            item.Selected = true;
-                        }
-                }
-                else
-                    if (tabControl1.SelectedTab.Name == "tabChuaThu")
-                    {
-                        foreach (DataGridViewRow item in dgvHDChuaThu.Rows)
-                            if (item.Cells["DanhBo_CT"].Value.ToString() == NoiDung)
-                            {
-                                dgvHDChuaThu.CurrentCell = item.Cells["DanhBo_CT"];
-                                item.Selected = true;
-                            }
-                    }
-            }
+            //if (tabControl.SelectedTab.Name == "tabDLKH1")
+            //{
+            //    if (tabControl1.SelectedTab.Name == "tabDaThu")
+            //    {
+            //        foreach (DataGridViewRow item in dgvDanhBo.Rows)
+            //            if (item.Cells["DanhBo_DT"].Value.ToString() == NoiDung)
+            //            {
+            //                dgvDanhBo.CurrentCell = item.Cells["DanhBo_DT"];
+            //                item.Selected = true;
+            //            }
+            //    }
+            //    else
+            //        if (tabControl1.SelectedTab.Name == "tabChuaThu")
+            //        {
+            //            foreach (DataGridViewRow item in dgvHDChuaThu.Rows)
+            //                if (item.Cells["DanhBo_CT"].Value.ToString() == NoiDung)
+            //                {
+            //                    dgvHDChuaThu.CurrentCell = item.Cells["DanhBo_CT"];
+            //                    item.Selected = true;
+            //                }
+            //        }
+            //}
         }
 
         private void frmDuLieuKhachHang_KeyDown(object sender, KeyEventArgs e)
@@ -521,6 +401,115 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
+        private void btnChonFile_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                try
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        Excel fileExcel = new Excel(dialog.FileName);
+                        DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
+
+                        foreach (DataRow item in dtExcel.Rows)
+                            if (item[0].ToString().Length == 11 && !_cDLKH.CheckExist(item[0].ToString()))
+                            {
+                                TT_DuLieuKhachHang_DanhBo dlkh = new TT_DuLieuKhachHang_DanhBo();
+                                dlkh.DanhBo = item[0].ToString();
+                                dlkh.SoTaiKhoan = item[1].ToString();
+                                _cDLKH.Them(dlkh);
+                            }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvDanhBo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo_DB" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "TieuThu_DB" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "GiaBan_DB" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "ThueGTGT_DB" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "PhiBVMT_DB" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "TongCong_DB" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvDanhBo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDanhBo.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo_HD" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu_HD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GiaBan_HD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "ThueGTGT_HD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "PhiBVMT_HD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TongCong_HD" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvHoaDon_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
         
+
+
     }
 }

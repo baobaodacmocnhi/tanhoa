@@ -311,7 +311,7 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_DongNuocs.SingleOrDefault(item => item.MaDN == MaDN);
         }
 
-        public TT_KQDongNuoc GetKQDongNuocByMaCTDN(decimal MaKQDN)
+        public TT_KQDongNuoc GetKQDongNuocByMaKQDN(decimal MaKQDN)
         {
             return _db.TT_KQDongNuocs.SingleOrDefault(item => item.MaKQDN == MaKQDN);
         }

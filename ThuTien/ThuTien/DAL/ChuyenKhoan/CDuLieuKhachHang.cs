@@ -11,13 +11,13 @@ namespace ThuTien.DAL.ChuyenKhoan
 {
     class CDuLieuKhachHang:CDAL
     {
-        public bool Them(TT_DuLieuKhachHang dlkh)
+        public bool Them(TT_DuLieuKhachHang_DanhBo dlkh)
         {
             try
             {
                 dlkh.CreateDate = DateTime.Now;
                 dlkh.CreateBy = CNguoiDung.MaND;
-                _db.TT_DuLieuKhachHangs.InsertOnSubmit(dlkh);
+                _db.TT_DuLieuKhachHang_DanhBos.InsertOnSubmit(dlkh);
                 _db.SubmitChanges();
                 return true;
             }
@@ -45,7 +45,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public bool Sua(TT_DuLieuKhachHang dlkh)
+        public bool Sua(TT_DuLieuKhachHang_DanhBo dlkh)
         {
             try
             {
@@ -61,11 +61,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public bool Xoa(TT_DuLieuKhachHang dlkh)
+        public bool Xoa(TT_DuLieuKhachHang_DanhBo dlkh)
         {
             try
             {
-                _db.TT_DuLieuKhachHangs.DeleteOnSubmit(dlkh);
+                _db.TT_DuLieuKhachHang_DanhBos.DeleteOnSubmit(dlkh);
                 _db.SubmitChanges();
                 return true;
             }
@@ -76,40 +76,34 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public TT_DuLieuKhachHang GetByDanhBo(string DanhBo)
+        public TT_DuLieuKhachHang_DanhBo GetByDanhBo(string DanhBo)
         {
-            return _db.TT_DuLieuKhachHangs.SingleOrDefault(item => item.DanhBo == DanhBo);
+            return _db.TT_DuLieuKhachHang_DanhBos.SingleOrDefault(item => item.DanhBo == DanhBo);
         }
 
         public bool CheckExist(string DanhBo)
         {
-            return _db.TT_DuLieuKhachHangs.Any(item=>item.DanhBo == DanhBo);
+            return _db.TT_DuLieuKhachHang_DanhBos.Any(item => item.DanhBo == DanhBo);
         }
 
-        public DataTable GetDSDangNgan(int Nam,int Ky)
+        public List<TT_DuLieuKhachHang_DanhBo> GetDS()
         {
-            var query = from itemDLKH in _db.TT_DuLieuKhachHangs
-                        join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
-                        where itemHD.NGAYGIAITRACH != null && itemHD.NAM==Nam && itemHD.KY==Ky
-                        select new
-                        {
-                            itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
-                            itemHD.KY,
-                            itemHD.NAM,
-                            DanhBo = itemHD.DANHBA,
-                            itemHD.TIEUTHU,
-                            itemHD.GIABAN,
-                            ThueGTGT = itemHD.THUE,
-                            PhiBVMT = itemHD.PHI,
-                            itemHD.TONGCONG,
-                        };
-            return LINQToDataTable(query);
+            return _db.TT_DuLieuKhachHang_DanhBos.ToList();
+        }
+
+        public DataTable GetDSDanhBo(int Nam, int Ky)
+        {
+            string sql = "select dlkhDB.DanhBo,SoTaiKhoan,SoHoaDon,Ky,TIEUTHU,GIABAN,ThueGTGT,PhiBVMT,TONGCONG from TT_DuLieuKhachHang_DanhBo dlkhDB"
+                     + " left  join"
+                     + " (select DANHBA,a.SoHoaDon,(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+                     + " from TT_DuLieuKhachHang_SoHoaDon a, HOADON b where a.SoHoaDon=b.SOHOADON and NAM=" + Nam + " and KY=" + Ky + ") dlkhHD on dlkhHD.DANHBA=dlkhDB.DanhBo";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable GetDSTon(int Nam, int Ky)
         {
-            var query = from itemDLKH in _db.TT_DuLieuKhachHangs
+            var query = from itemDLKH in _db.TT_DuLieuKhachHang_DanhBos
                         join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
                         where itemHD.NGAYGIAITRACH == null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.ChuyenNoKhoDoi == false
                         select new
@@ -209,6 +203,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
                         join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        join itemDLKHDB in _db.TT_DuLieuKhachHang_DanhBos on itemHD.DANHBA equals itemDLKHDB.DanhBo
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date
@@ -216,17 +211,20 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
-                            MLT=itemHD.MALOTRINH,
-                            Ky=itemHD.KY+"/"+itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.KY,
+                            itemHD.NAM,
+                            itemHD.DOT,
                             DanhBo = itemHD.DANHBA,
-                            HoTen=itemHD.TENKH,
+                            HoTen = itemHD.TENKH,
                             itemHD.TIEUTHU,
                             itemHD.GIABAN,
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
-                            HanhThu=itemtableND.HoTen,
-                            To=itemtableND.TT_To.TenTo,
+                            itemDLKHDB.SoTaiKhoan,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
                         };
             return LINQToDataTable(query);
         }

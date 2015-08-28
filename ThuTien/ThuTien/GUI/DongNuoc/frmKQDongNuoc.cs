@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -17,6 +18,7 @@ namespace ThuTien.GUI.DongNuoc
         string _mnu = "mnuKQDongNuoc";
         CDongNuoc _cDongNuoc = new CDongNuoc();
         TT_DongNuoc _dongnuoc = null;
+        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
 
         public frmKQDongNuoc()
         {
@@ -61,6 +63,10 @@ namespace ThuTien.GUI.DongNuoc
                     txtDiaChi.Text = _dongnuoc.DiaChi;
                     chkHuy.Checked = _dongnuoc.Huy;
 
+                    DataTable dt = _cCapNuocTanHoa.GetTTKH(_dongnuoc.DanhBo);
+                    txtHieu.Text = dt.Rows[0]["Hieu"].ToString();
+                    txtCo.Text = dt.Rows[0]["Co"].ToString();
+                    txtSoThan.Text = dt.Rows[0]["SoThan"].ToString();
                     //dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaDNDates(_dongnuoc.MaDN, dateTu.Value, dateDen.Value);
                     btnXem.PerformClick();
                 }
@@ -76,9 +82,9 @@ namespace ThuTien.GUI.DongNuoc
             {
                 if (_dongnuoc != null)
                 {
-                    if (_cDongNuoc.CheckKQDongNuocByMaDNNgayDN(_dongnuoc.MaDN, dateDongNuoc.Value))
+                    if (_cDongNuoc.CheckKQDongNuocByMaDN(_dongnuoc.MaDN))
                     {
-                        MessageBox.Show("Biên Bản ngày " + dateDongNuoc.Value.ToString("dd/MM/yyyy") + " đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lệnh này đã nhập Kết Quả", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if(!CNguoiDung.ToTruong)
@@ -95,18 +101,26 @@ namespace ThuTien.GUI.DongNuoc
                     kqdongnuoc.HoTen = txtHoTen.Text.Trim();
                     kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
 
+                    kqdongnuoc.DongNuoc = true;
                     kqdongnuoc.NgayDN = dateDongNuoc.Value;
                     if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                         kqdongnuoc.ChiSo = int.Parse(txtChiSo.Text.Trim());
-                    kqdongnuoc.Hieu = txtDanhBo.Text.Trim();
+                    kqdongnuoc.Hieu = txtHieu.Text.Trim();
                     if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                         kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
-                    kqdongnuoc.SoThan = txtDanhBo.Text.Trim();
+                    kqdongnuoc.SoThan = txtSoThan.Text.Trim();
                     if (cmbChiMatSo.SelectedItem != null)
                         kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
                     if (cmbChiKhoaGoc.SelectedItem != null)
                         kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                     kqdongnuoc.LyDo = txtLyDo.Text.Trim();
+
+                    if (chkMoNuoc.Checked)
+                    {
+                        kqdongnuoc.MoNuoc = true;
+                        kqdongnuoc.NgayMN = dateMoNuoc.Value;
+                    }
+
                     if (_cDongNuoc.ThemKQ(kqdongnuoc))
                     {
                         Clear();
@@ -123,7 +137,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaCTDN(decimal.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaCTDN"].Value.ToString()));
+                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(decimal.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
                 kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
                 kqdongnuoc.MLT = txtMLT.Text.Trim();
                 kqdongnuoc.HoTen = txtHoTen.Text.Trim();
@@ -132,15 +146,27 @@ namespace ThuTien.GUI.DongNuoc
                 kqdongnuoc.NgayDN = dateDongNuoc.Value;
                 if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                     kqdongnuoc.ChiSo = int.Parse(txtChiSo.Text.Trim());
-                kqdongnuoc.Hieu = txtDanhBo.Text.Trim();
+                kqdongnuoc.Hieu = txtHieu.Text.Trim();
                 if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                     kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
-                kqdongnuoc.SoThan = txtDanhBo.Text.Trim();
+                kqdongnuoc.SoThan = txtSoThan.Text.Trim();
                 if (cmbChiMatSo.SelectedItem != null)
                     kqdongnuoc.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
                 if (cmbChiKhoaGoc.SelectedItem != null)
                     kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                 kqdongnuoc.LyDo = txtLyDo.Text.Trim();
+
+                if (chkMoNuoc.Checked)
+                {
+                    kqdongnuoc.MoNuoc = true;
+                    kqdongnuoc.NgayMN = dateMoNuoc.Value;
+                }
+                else
+                {
+                    kqdongnuoc.MoNuoc = false;
+                    kqdongnuoc.NgayMN = null;
+
+                }
 
                 if (_cDongNuoc.SuaKQ(kqdongnuoc))
                 {
@@ -157,7 +183,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaCTDN(decimal.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaCTDN"].Value.ToString()));
+                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(decimal.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
                 if (_cDongNuoc.XoaKQ(kqdongnuoc))
                 {
                     Clear();
@@ -181,7 +207,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             try
             {
-                dgvKQDongNuoc.Rows[e.RowIndex].Selected = true;
+                //dgvKQDongNuoc.Rows[e.RowIndex].Selected = true;
                 txtDanhBo.Text = dgvKQDongNuoc["DanhBo", e.RowIndex].Value.ToString();
                 txtMLT.Text = dgvKQDongNuoc["MLT", e.RowIndex].Value.ToString();
                 txtHoTen.Text = dgvKQDongNuoc["HoTen", e.RowIndex].Value.ToString();
@@ -205,6 +231,10 @@ namespace ThuTien.GUI.DongNuoc
             if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "MaDN" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
             }
         }
 
@@ -243,6 +273,14 @@ namespace ThuTien.GUI.DongNuoc
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void chkMoNuoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMoNuoc.Checked)
+                dateMoNuoc.Enabled = true;
+            else
+                dateMoNuoc.Enabled = false;
         }
 
         

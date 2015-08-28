@@ -116,13 +116,13 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrach("TG", CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrach("TG",dateTu.Value, dateDen.Value);
                 CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrach("CQ", CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganChuyenKhoanByMaNVNgayGiaiTrach("CQ", dateTu.Value, dateDen.Value);
                     CountdgvHDCoQuan();
                 }
         }
@@ -134,18 +134,18 @@ namespace ThuTien.GUI.ChuyenKhoan
                 //string loai = "";
                 foreach (var item in lstHD.Items)
                 {
-                    if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
-                    {
-                        MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
-                        return;
-                    }
-                    //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                    //if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
                     //{
-                    //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //    lstHD.SelectedItem = item;
                     //    return;
                     //}
+                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                    {
+                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lstHD.SelectedItem = item;
+                        return;
+                    }
                     //if (!_cTamThu.CheckBySoHoaDon(item.ToString(), out loai))
                     //{
                     //    MessageBox.Show("Hóa Đơn không có Tạm Thu: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
