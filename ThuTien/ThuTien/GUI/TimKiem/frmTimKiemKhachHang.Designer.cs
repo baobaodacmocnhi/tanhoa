@@ -483,7 +483,7 @@
             // NgayDN
             // 
             this.NgayDN.DataPropertyName = "NgayDN";
-            this.NgayDN.HeaderText = "Ngày ĐN";
+            this.NgayDN.HeaderText = "Khóa Nước";
             this.NgayDN.Name = "NgayDN";
             this.NgayDN.ReadOnly = true;
             this.NgayDN.Width = 80;
@@ -491,10 +491,9 @@
             // NgayMN
             // 
             this.NgayMN.DataPropertyName = "NgayMN";
-            this.NgayMN.HeaderText = "Ngày Mở Nước";
+            this.NgayMN.HeaderText = "Mở Nước";
             this.NgayMN.Name = "NgayMN";
             this.NgayMN.ReadOnly = true;
-            this.NgayMN.Visible = false;
             this.NgayMN.Width = 80;
             // 
             // HanhThu

@@ -4643,7 +4643,7 @@ namespace ThuTien.DAL.Doi
         public DataTable GetDSTimKiem(string DanhBo, string HoTen, string DiaChi)
         {
             //string sql = "select ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,a.SoHoaDon,"
-            //    + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,GiaBan,Thue as ThueGTGT,Phi as PhiBVMT,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu,MaDN,NgayDN"
+            //    + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,GiaBan,Thue as ThueGTGT,Phi as PhiBVMT,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu,MaDN,NgayDN,NgayMN"
             //    + ",DENNGAY as NgayDoc,CSMOI as ChiSo"
             //    + " from HOADON a left join TT_NguoiDung b on a.MaNV_DangNgan=b.MaND"
             //    + " left join TT_NguoiDung c on a.MaNV_HanhThu=c.MaND"
@@ -4653,7 +4653,7 @@ namespace ThuTien.DAL.Doi
             //    + " left join TT_KQDongNuoc c on a.MaDN=c.MaDN where Huy=0) as dn on  a.SOHOADON=dn.SoHoaDon"
             //    + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
             //    + "order by ID_HOADON desc";
-            string sql = "select * from TimKiem('"+DanhBo+"','"+HoTen+"','"+DiaChi+"')";
+            string sql = "select * from TimKiem('"+DanhBo+"','"+HoTen+"','"+DiaChi+"') order by MaHD desc";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }

@@ -50,7 +50,10 @@ namespace ThuTien
 
         void Application_Idle(object sender, EventArgs e)
         {
-            timer.Start();
+            if (CNguoiDung.MaTo == 5)
+                timer.Stop();
+            else
+                timer.Start();
         }
 
         private void frmMain_MouseMove(object sender, MouseEventArgs e)

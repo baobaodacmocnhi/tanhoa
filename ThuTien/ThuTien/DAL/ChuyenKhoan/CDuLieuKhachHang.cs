@@ -81,7 +81,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_DuLieuKhachHang_DanhBos.SingleOrDefault(item => item.DanhBo == DanhBo);
         }
 
-        public bool CheckExist(string DanhBo)
+        public bool CheckExistDanhBo(string DanhBo)
         {
             return _db.TT_DuLieuKhachHang_DanhBos.Any(item => item.DanhBo == DanhBo);
         }
@@ -173,6 +173,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
+        public bool CheckExistSoHoaDon(string SoHoaDon)
+        {
+            return _db.TT_DuLieuKhachHang_SoHoaDons.Any(item => item.SoHoaDon == SoHoaDon);
+        }
+
         public TT_DuLieuKhachHang_SoHoaDon GetBySoHoaDon2(string SoHoaDon)
         {
             return _db.TT_DuLieuKhachHang_SoHoaDons.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
@@ -228,6 +233,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         };
             return LINQToDataTable(query);
         }
+
         #endregion
     }
 }

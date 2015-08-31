@@ -167,27 +167,29 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                try
-                {
-                    _cDLKH.BeginTransaction();
-                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    try
                     {
-                        TT_DuLieuKhachHang_SoHoaDon dlkh = _cDLKH.GetBySoHoaDon2(item.Cells["SoHoaDon"].Value.ToString());
-                        if (!_cDLKH.Xoa2(dlkh))
+                        _cDLKH.BeginTransaction();
+                        foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
-                            _cDLKH.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            TT_DuLieuKhachHang_SoHoaDon dlkh = _cDLKH.GetBySoHoaDon2(item.Cells["SoHoaDon_HD"].Value.ToString());
+                            if (!_cDLKH.Xoa2(dlkh))
+                            {
+                                _cDLKH.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
+                        _cDLKH.CommitTransaction();
+                        btnXem2.PerformClick();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    _cDLKH.CommitTransaction();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception)
-                {
-                    _cDLKH.Rollback();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    catch (Exception)
+                    {
+                        _cDLKH.Rollback();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -417,7 +419,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                         foreach (DataRow item in dtExcel.Rows)
-                            if (item[0].ToString().Length == 11 && !_cDLKH.CheckExist(item[0].ToString()))
+                            if (item[0].ToString().Length == 11 && !_cDLKH.CheckExistDanhBo(item[0].ToString()))
                             {
                                 TT_DuLieuKhachHang_DanhBo dlkh = new TT_DuLieuKhachHang_DanhBo();
                                 dlkh.DanhBo = item[0].ToString();

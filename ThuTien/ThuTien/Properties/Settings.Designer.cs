@@ -48,7 +48,7 @@ namespace ThuTien.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.9;Initial Catalog=HOADON_TT;Persist Security Info=True;Use" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.90.9;Initial Catalog=HOADON_TA;Persist Security Info=True;Use" +
             "r ID=sa;Password=123@tanhoa")]
         public string HOADON_TAConnectionString {
             get {

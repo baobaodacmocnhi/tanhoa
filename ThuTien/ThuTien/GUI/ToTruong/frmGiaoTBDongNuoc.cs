@@ -359,7 +359,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-"); ;
                         dr["HoTen"] = item["HoTen"];
                         dr["DiaChi"] = item["DiaChi"];
-                        dr["DienThoai"] = _cCapNuocTanHoa.GetTTKH(item["DanhBo"].ToString());
+                        dr["DienThoai"] = _cCapNuocTanHoa.GetTTKH(item["DanhBo"].ToString()).Rows[0]["DienThoai"];
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
                         dr["MLT"] = item["MLT"];

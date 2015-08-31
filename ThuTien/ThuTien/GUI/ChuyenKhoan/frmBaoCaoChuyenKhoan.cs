@@ -82,15 +82,18 @@ namespace ThuTien.GUI.ChuyenKhoan
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
             cl1.Value2 = "Ngày";
-            cl1.ColumnWidth = 35;
+            cl1.ColumnWidth = 30;
+            cl1.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "B3");
             cl2.Value2 = "Tổng HĐ";
-            cl2.ColumnWidth = 35;
+            cl2.ColumnWidth = 30;
+            cl2.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C3", "C3");
             cl3.Value2 = "Tổng Cộng";
-            cl3.ColumnWidth = 35;
+            cl3.ColumnWidth = 30;
+            cl3.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
@@ -139,7 +142,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
             oSheet.get_Range(c2c, c3c).Font.Bold = true;
             oSheet.get_Range(c2c, c3c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            oSheet.get_Range(c2c, c3c).NumberFormat = "@";
+            oSheet.get_Range(c2c, c3c).NumberFormat = "#,##0";
 
             //Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
             //Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];

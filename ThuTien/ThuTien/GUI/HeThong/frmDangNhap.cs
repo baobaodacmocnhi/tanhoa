@@ -51,6 +51,7 @@ namespace ThuTien.GUI.HeThong
 
                     CNguoiDung.MaND = nguoidung.MaND;
                     CNguoiDung.HoTen = nguoidung.HoTen;
+                    CNguoiDung.Doi = nguoidung.Doi;
                     CNguoiDung.ToTruong = nguoidung.ToTruong;
                     if (nguoidung.MaTo != null)
                     {

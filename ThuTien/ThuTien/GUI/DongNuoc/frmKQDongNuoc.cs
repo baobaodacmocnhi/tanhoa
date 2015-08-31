@@ -47,6 +47,8 @@ namespace ThuTien.GUI.DongNuoc
             cmbChiMatSo.SelectedIndex = -1;
             cmbChiKhoaGoc.SelectedIndex = -1;
             txtLyDo.Text = "";
+            chkMoNuoc.Checked = false;
+            dateMoNuoc.Value = DateTime.Now;
             _dongnuoc = null;
         }
 
@@ -197,10 +199,13 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if(CNguoiDung.ToTruong)
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVDates(dateTu.Value, dateDen.Value);
+            if (CNguoiDung.Doi)
+                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(dateTu.Value, dateDen.Value);
             else
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                if (CNguoiDung.ToTruong)
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToDates(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                else
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
         }
 
         private void dgvKQDongNuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -220,6 +225,8 @@ namespace ThuTien.GUI.DongNuoc
                 cmbChiMatSo.SelectedItem = dgvKQDongNuoc["ChiMatSo", e.RowIndex].Value.ToString();
                 cmbChiKhoaGoc.SelectedItem = dgvKQDongNuoc["ChiKhoaGoc", e.RowIndex].Value.ToString();
                 txtLyDo.Text = dgvKQDongNuoc["LyDo", e.RowIndex].Value.ToString();
+                chkMoNuoc.Checked = bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString());
+                dateDongNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
             }
             catch
             {

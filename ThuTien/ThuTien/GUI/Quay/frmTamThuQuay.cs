@@ -528,7 +528,7 @@ namespace ThuTien.GUI.Quay
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     if (item.Cells["DanhBo"].Value.ToString() == NoiDung)
                     {
-                        dgvHoaDon.CurrentCell = item.Cells[0];
+                        dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
                         item.Selected = true;
                     }
             }
@@ -538,7 +538,7 @@ namespace ThuTien.GUI.Quay
                     foreach (DataGridViewRow item in dgvTamThu.Rows)
                         if (item.Cells["DanhBo_TT"].Value.ToString() == NoiDung)
                         {
-                            dgvTamThu.CurrentCell = item.Cells[0];
+                            dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
                             item.Selected = true;
                         }
                 }
@@ -548,7 +548,7 @@ namespace ThuTien.GUI.Quay
                         foreach (DataGridViewRow item in dgvXacNhanNo.Rows)
                             if (item.Cells["DanhBo_XacNhanNo"].Value.ToString() == NoiDung)
                             {
-                                dgvXacNhanNo.CurrentCell = item.Cells[0];
+                                dgvXacNhanNo.CurrentCell = item.Cells["DanhBo_XacNhanNo"];
                                 item.Selected = true;
                             }
                     }

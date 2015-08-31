@@ -72,6 +72,7 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     if (cmbNhom.SelectedIndex != -1)
                         nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    nguoidung.Doi = chkDoi.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
@@ -112,6 +113,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
+                    nguoidung.Doi = chkDoi.Checked;
                     nguoidung.ToTruong = chkToTruong.Checked;
                     nguoidung.HanhThu = chkHanhThu.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
@@ -168,13 +170,14 @@ namespace ThuTien.GUI.QuanTri
             try
             {
                 _selectedindex = e.RowIndex;
-                txtHoTen.Text = dgvNguoiDung["HoTen", e.RowIndex].Value.ToString();
+                txtHoTen.Text = dgvNguoiDung["HoTen",e.RowIndex].Value.ToString();
                 if (dgvNguoiDung["DienThoai", e.RowIndex].Value != null)
                     txtDienThoai.Text = dgvNguoiDung["DienThoai", e.RowIndex].Value.ToString();
                 txtTaiKhoan.Text = dgvNguoiDung["TaiKhoan", e.RowIndex].Value.ToString();
                 txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
                 cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
                 cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
+                chkDoi.Checked = bool.Parse(dgvNguoiDung["Doi", e.RowIndex].Value.ToString());
                 chkToTruong.Checked = bool.Parse(dgvNguoiDung["ToTruong", e.RowIndex].Value.ToString());
                 chkHanhThu.Checked = bool.Parse(dgvNguoiDung["HanhThu", e.RowIndex].Value.ToString());
                 chkDongNuoc.Checked = bool.Parse(dgvNguoiDung["DongNuoc", e.RowIndex].Value.ToString());

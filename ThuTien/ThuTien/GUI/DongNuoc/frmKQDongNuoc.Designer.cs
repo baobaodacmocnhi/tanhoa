@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateMoNuoc = new System.Windows.Forms.DateTimePicker();
+            this.chkMoNuoc = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtLyDo = new System.Windows.Forms.TextBox();
             this.cmbChiKhoaGoc = new System.Windows.Forms.ComboBox();
@@ -46,6 +48,7 @@
             this.txtCo = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.dateDongNuoc = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
             this.txtChiSo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -69,9 +72,6 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.chkHuy = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.chkMoNuoc = new System.Windows.Forms.CheckBox();
-            this.dateMoNuoc = new System.Windows.Forms.DateTimePicker();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +87,8 @@
             this.ChiMatSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiKhoaGoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -118,6 +120,27 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Đóng Nước";
+            // 
+            // dateMoNuoc
+            // 
+            this.dateMoNuoc.CustomFormat = "dd/MM/yyyy";
+            this.dateMoNuoc.Enabled = false;
+            this.dateMoNuoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateMoNuoc.Location = new System.Drawing.Point(295, 16);
+            this.dateMoNuoc.Name = "dateMoNuoc";
+            this.dateMoNuoc.Size = new System.Drawing.Size(89, 20);
+            this.dateMoNuoc.TabIndex = 33;
+            // 
+            // chkMoNuoc
+            // 
+            this.chkMoNuoc.AutoSize = true;
+            this.chkMoNuoc.Location = new System.Drawing.Point(219, 18);
+            this.chkMoNuoc.Name = "chkMoNuoc";
+            this.chkMoNuoc.Size = new System.Drawing.Size(70, 17);
+            this.chkMoNuoc.TabIndex = 32;
+            this.chkMoNuoc.Text = "Mở Nước";
+            this.chkMoNuoc.UseVisualStyleBackColor = true;
+            this.chkMoNuoc.CheckedChanged += new System.EventHandler(this.chkMoNuoc_CheckedChanged);
             // 
             // label23
             // 
@@ -244,6 +267,15 @@
             this.dateDongNuoc.Name = "dateDongNuoc";
             this.dateDongNuoc.Size = new System.Drawing.Size(89, 20);
             this.dateDongNuoc.TabIndex = 1;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 13);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Ngày ĐN:";
             // 
             // txtChiSo
             // 
@@ -434,7 +466,9 @@
             this.SoThan,
             this.ChiMatSo,
             this.ChiKhoaGoc,
-            this.LyDo});
+            this.LyDo,
+            this.MoNuoc,
+            this.NgayMN});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -504,36 +538,6 @@
             this.chkHuy.Text = "Hủy TB ĐN";
             this.chkHuy.UseVisualStyleBackColor = true;
             this.chkHuy.CheckedChanged += new System.EventHandler(this.chkHuy_CheckedChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(54, 13);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Ngày ĐN:";
-            // 
-            // chkMoNuoc
-            // 
-            this.chkMoNuoc.AutoSize = true;
-            this.chkMoNuoc.Location = new System.Drawing.Point(219, 18);
-            this.chkMoNuoc.Name = "chkMoNuoc";
-            this.chkMoNuoc.Size = new System.Drawing.Size(70, 17);
-            this.chkMoNuoc.TabIndex = 32;
-            this.chkMoNuoc.Text = "Mở Nước";
-            this.chkMoNuoc.UseVisualStyleBackColor = true;
-            this.chkMoNuoc.CheckedChanged += new System.EventHandler(this.chkMoNuoc_CheckedChanged);
-            // 
-            // dateMoNuoc
-            // 
-            this.dateMoNuoc.CustomFormat = "dd/MM/yyyy";
-            this.dateMoNuoc.Enabled = false;
-            this.dateMoNuoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateMoNuoc.Location = new System.Drawing.Point(295, 16);
-            this.dateMoNuoc.Name = "dateMoNuoc";
-            this.dateMoNuoc.Size = new System.Drawing.Size(89, 20);
-            this.dateMoNuoc.TabIndex = 33;
             // 
             // MaDN
             // 
@@ -654,6 +658,22 @@
             this.LyDo.ReadOnly = true;
             this.LyDo.Visible = false;
             // 
+            // MoNuoc
+            // 
+            this.MoNuoc.DataPropertyName = "MoNuoc";
+            this.MoNuoc.HeaderText = "DongNuoc";
+            this.MoNuoc.Name = "MoNuoc";
+            this.MoNuoc.ReadOnly = true;
+            this.MoNuoc.Visible = false;
+            // 
+            // NgayMN
+            // 
+            this.NgayMN.DataPropertyName = "NgayMN";
+            this.NgayMN.HeaderText = "NgayMN";
+            this.NgayMN.Name = "NgayMN";
+            this.NgayMN.ReadOnly = true;
+            this.NgayMN.Visible = false;
+            // 
             // frmKQDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -743,5 +763,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiMatSo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiKhoaGoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MoNuoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayMN;
     }
 }
