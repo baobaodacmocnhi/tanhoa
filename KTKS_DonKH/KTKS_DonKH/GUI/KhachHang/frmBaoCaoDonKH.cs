@@ -279,9 +279,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                         }
                     }
                 }
-                dateTu.Value = DateTime.Now;
-                dateDen.Value = DateTime.Now;
-                _tuNgay = _denNgay = "";
+                //dateTu.Value = DateTime.Now;
+                //dateDen.Value = DateTime.Now;
+                //_tuNgay = _denNgay = "";
 
                 rptChiTietDon rpt = new rptChiTietDon();
                 rpt.SetDataSource(dsBaoCao);
@@ -421,9 +421,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                                 dsBaoCao.Tables["DanhSachDonKH"].Rows.Add(dr);
                             }
                     }
-                    dateTu.Value = DateTime.Now;
-                    dateDen.Value = DateTime.Now;
-                    _tuNgay = _denNgay = "";
+                    //dateTu.Value = DateTime.Now;
+                    //dateDen.Value = DateTime.Now;
+                    //_tuNgay = _denNgay = "";
 
                     rptThongKeDonKH rpt = new rptThongKeDonKH();
                     rpt.SetDataSource(dsBaoCao);
@@ -452,9 +452,9 @@ namespace KTKS_DonKH.GUI.KhachHang
                         dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
                     }
 
-                    dateTu.Value = DateTime.Now;
-                    dateDen.Value = DateTime.Now;
-                    _tuNgay = _denNgay = "";
+                    //dateTu.Value = DateTime.Now;
+                    //dateDen.Value = DateTime.Now;
+                    //_tuNgay = _denNgay = "";
 
                     rptThongKeDonTXL rpt = new rptThongKeDonTXL();
                     rpt.SetDataSource(dsBaoCao);

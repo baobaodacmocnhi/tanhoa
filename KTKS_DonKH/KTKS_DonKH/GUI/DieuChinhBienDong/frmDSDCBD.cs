@@ -956,6 +956,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                                 if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                                    if (int.Parse(dgvDSDCBD["CreateBy", i].Value.ToString())==CTaiKhoan.MaUser)
                                 {
                                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                     DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
@@ -1120,6 +1121,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 for (int i = 0; i < dgvDSCatChuyenDM.Rows.Count; i++)
                                     if (bool.Parse(dgvDSCatChuyenDM["InCatChuyen", i].Value.ToString()) == true)
+                                        if (int.Parse(dgvDSCatChuyenDM["CreateBy_CC", i].Value.ToString()) == CTaiKhoan.MaUser)
                                     {
                                         LichSuChungTu lichsuchungtu = _cChungTu.getLichSuChungTubySoPhieu(decimal.Parse(dgvDSCatChuyenDM["CT_SoPhieu", i].Value.ToString()));
                                         if (!string.IsNullOrEmpty(lichsuchungtu.NhanDM.ToString()))

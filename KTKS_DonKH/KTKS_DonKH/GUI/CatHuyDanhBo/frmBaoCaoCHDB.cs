@@ -177,9 +177,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
                 }
 
-                dateTu.Value = DateTime.Now;
-                dateDen.Value = DateTime.Now;
-                _tuNgay = _denNgay = "";
+                //dateTu.Value = DateTime.Now;
+                //dateDen.Value = DateTime.Now;
+                //_tuNgay = _denNgay = "";
 
                 rptThongKeCHDB rpt = new rptThongKeCHDB();
                 rpt.SetDataSource(dsBaoCao);
@@ -223,9 +223,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
                     }
 
-                    dateTu.Value = DateTime.Now;
-                    dateDen.Value = DateTime.Now;
-                    _tuNgay = _denNgay = "";
+                    //dateTu.Value = DateTime.Now;
+                    //dateDen.Value = DateTime.Now;
+                    //_tuNgay = _denNgay = "";
 
                     rptDSYCCHDB rpt = new rptDSYCCHDB();
                     rpt.SetDataSource(dsBaoCao);
@@ -255,9 +255,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
                             }
 
-                        dateTu.Value = DateTime.Now;
-                        dateDen.Value = DateTime.Now;
-                        _tuNgay = _denNgay = "";
+                        //dateTu.Value = DateTime.Now;
+                        //dateDen.Value = DateTime.Now;
+                        //_tuNgay = _denNgay = "";
 
                         rptDSCatTamNutBit rpt = new rptDSCatTamNutBit();
                         rpt.SetDataSource(dsBaoCao);
@@ -297,9 +297,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
                 }
 
-                dateTu.Value = DateTime.Now;
-                dateDen.Value = DateTime.Now;
-                _tuNgay = _denNgay = "";
+                //dateTu.Value = DateTime.Now;
+                //dateDen.Value = DateTime.Now;
+                //_tuNgay = _denNgay = "";
 
                 rptDSCTDBtheocamket rpt = new rptDSCTDBtheocamket();
                 rpt.SetDataSource(dsBaoCao);

@@ -330,9 +330,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         dsBaoCao.Tables["ThongKeBienBanKTXM"].Rows.Add(dr);
                     }
 
-                dateTu.Value = DateTime.Now;
-                dateDen.Value = DateTime.Now;
-                _tuNgay = _denNgay = "";
+                //dateTu.Value = DateTime.Now;
+                //dateDen.Value = DateTime.Now;
+                //_tuNgay = _denNgay = "";
 
                 rptThongKeKTXM rpt = new rptThongKeKTXM();
                 rpt.SetDataSource(dsBaoCao);
