@@ -117,7 +117,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(611, 10);
+            this.btnXem.Location = new System.Drawing.Point(604, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 24;
@@ -129,7 +129,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(505, 12);
+            this.dateDen.Location = new System.Drawing.Point(498, 12);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 23;
@@ -137,7 +137,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(441, 15);
+            this.label4.Location = new System.Drawing.Point(434, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 22;
@@ -193,7 +193,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(692, 10);
+            this.btnInPhieu.Location = new System.Drawing.Point(685, 10);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnInPhieu.TabIndex = 38;
@@ -228,7 +228,7 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(860, 10);
+            this.btnXuatExcel.Location = new System.Drawing.Point(853, 10);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
             this.btnXuatExcel.TabIndex = 42;
@@ -620,7 +620,7 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(773, 10);
+            this.btnInDS.Location = new System.Drawing.Point(766, 10);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(81, 23);
             this.btnInDS.TabIndex = 30;
@@ -632,7 +632,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(335, 12);
+            this.dateTu.Location = new System.Drawing.Point(328, 12);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 45;
@@ -640,7 +640,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(278, 15);
+            this.label3.Location = new System.Drawing.Point(271, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 44;
@@ -650,7 +650,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1349, 638);
+            this.ClientSize = new System.Drawing.Size(1276, 638);
             this.Controls.Add(this.dateTu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnInDS);

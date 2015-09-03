@@ -237,12 +237,33 @@ namespace ThuTien.DAL.DongNuoc
                                 && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         select itemKQ;
-            return LINQToDataTable(query);
+            return LINQToDataTable(query.Distinct());
         }
 
         public DataTable GetDSKQDongNuocByMaDNDates(decimal MaDN, DateTime TuNgay, DateTime DenNgay)
         {
             return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.MaDN == MaDN && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
+        }
+
+        public DataTable GetDSCanMoNuoc(int MaTo)
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        where itemHD.NGAYGIAITRACH != null && itemKQ.NgayDN != null && itemKQ.NgayMN==null
+                                && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        select new
+                        {
+                            itemKQ.MaDN,
+                            itemKQ.CreateDate,
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.NgayDN,
+                            itemHD.NGAYGIAITRACH,
+                        };
+            return LINQToDataTable(query.Distinct());
         }
 
         public bool CheckKQDongNuocByMaDN(decimal MaDN)

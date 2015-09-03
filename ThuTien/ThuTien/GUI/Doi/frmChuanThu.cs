@@ -237,10 +237,11 @@ namespace ThuTien.GUI.Doi
                     {
                         if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
                         {
-                            string[] date = item["NgayGiaiTrach"].ToString().Split('/');
-                            string[] year = date[2].Split(' ');
-                            string[] time = year[1].Split(':');
-                            DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                            //string[] date = item["NgayGiaiTrach"].ToString().Split('/');
+                            //string[] year = date[2].Split(' ');
+                            //string[] time = year[1].Split(':');
+                            //DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                            DateTime NgayGiaiTrach = DateTime.Parse(item["NgayGiaiTrach"].ToString());
 
                             if (NgayGiaiTrach.Date <= dateGiaiTrach.Value.Date)
                             {
@@ -353,10 +354,11 @@ namespace ThuTien.GUI.Doi
                         {
                             if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
                             {
-                                string[] date = item["NgayGiaiTrach"].ToString().Split('/');
-                                string[] year = date[2].Split(' ');
-                                string[] time = year[1].Split(':');
-                                DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                                //string[] date = item["NgayGiaiTrach"].ToString().Split('/');
+                                //string[] year = date[2].Split(' ');
+                                //string[] time = year[1].Split(':');
+                                //DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                                DateTime NgayGiaiTrach = DateTime.Parse(item["NgayGiaiTrach"].ToString());
 
                                 if (NgayGiaiTrach.Date <= dateGiaiTrach.Value.Date)
                                 {
@@ -676,10 +678,11 @@ namespace ThuTien.GUI.Doi
                 {
                     if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
                     {
-                        string[] date = item["NgayGiaiTrach"].ToString().Split('/');
-                        string[] year = date[2].Split(' ');
-                        string[] time = year[1].Split(':');
-                        DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                        //string[] date = item["NgayGiaiTrach"].ToString().Split('/');
+                        //string[] year = date[2].Split(' ');
+                        //string[] time = year[1].Split(':');
+                        //DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                        DateTime NgayGiaiTrach = DateTime.Parse(item["NgayGiaiTrach"].ToString());
 
                         if (NgayGiaiTrach.Date <= dateGiaiTrach.Value.Date)
                         {
@@ -774,10 +777,11 @@ namespace ThuTien.GUI.Doi
                 {
                     if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
                     {
-                        string[] date = item["NgayGiaiTrach"].ToString().Split('/');
-                        string[] year = date[2].Split(' ');
-                        string[] time = year[1].Split(':');
-                        DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                        //string[] date = item["NgayGiaiTrach"].ToString().Split('/');
+                        //string[] year = date[2].Split(' ');
+                        //string[] time = year[1].Split(':');
+                        //DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
+                        DateTime NgayGiaiTrach = DateTime.Parse(item["NgayGiaiTrach"].ToString());
 
                         if (NgayGiaiTrach.Date <= dateGiaiTrach.Value.Date)
                         {

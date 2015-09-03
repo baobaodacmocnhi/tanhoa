@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
+using System.Data;
 
 namespace ThuTien.DAL.Doi
 {
@@ -39,6 +40,23 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool SuaTT(TT_ToTrinhCatHuy totrinh)
+        {
+            try
+            {
+                totrinh.ModifyDate = DateTime.Now;
+                totrinh.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _db = new dbThuTienDataContext();
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool XoaTT(TT_ToTrinhCatHuy totrinh)
         {
             try
@@ -54,9 +72,9 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public List<TT_ToTrinhCatHuy> GetDSTT()
+        public DataTable GetDSTT()
         {
-           return _db.TT_ToTrinhCatHuys.ToList();
+           return LINQToDataTable(_db.TT_ToTrinhCatHuys.ToList());
         }
 
         public TT_ToTrinhCatHuy GetTT(decimal MaTT)
@@ -98,9 +116,9 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public List<TT_CTToTrinhCatHuy> GetDSCTTT(decimal MaTT)
+        public DataTable GetDSCTTT(decimal MaTT)
         {
-            return _db.TT_CTToTrinhCatHuys.Where(item=>item.MaTT==MaTT).ToList();
+            return LINQToDataTable(_db.TT_CTToTrinhCatHuys.Where(item => item.MaTT == MaTT).ToList());
         }
 
         public TT_CTToTrinhCatHuy GetCT(int MaCTTT)

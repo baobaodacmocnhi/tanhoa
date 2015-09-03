@@ -437,6 +437,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuMoNuoc_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuMoNuoc", "Xem"))
+            {
+                frmMoNuoc frm = new frmMoNuoc();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        } 
+
         #endregion
 
         #region Hành Thu
@@ -562,6 +573,17 @@ namespace ThuTien
         private void mnuBaoCaoChuyenKhoan_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen("mnuBaoCaoChuyenKhoan", "Xem"))
+            {
+                frmBaoCaoChuyenKhoan frm = new frmBaoCaoChuyenKhoan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBangKe_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuBangKe", "Xem"))
             {
                 frmBaoCaoChuyenKhoan frm = new frmBaoCaoChuyenKhoan();
                 OpenForm(frm);
@@ -768,9 +790,7 @@ namespace ThuTien
 
         
 
-        
-
-        
+         
 
     }
 }

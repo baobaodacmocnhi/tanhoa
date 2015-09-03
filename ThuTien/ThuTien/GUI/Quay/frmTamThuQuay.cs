@@ -30,6 +30,7 @@ namespace ThuTien.GUI.Quay
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CXacNhanNo _cXacNhanNo = new CXacNhanNo();
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmTamThuQuay()
         {
@@ -58,6 +59,14 @@ namespace ThuTien.GUI.Quay
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
             {
                 dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ",""));
+
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                {
+                    if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                        item.DefaultCellStyle.BackColor = Color.Yellow;
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                        item.DefaultCellStyle.BackColor = Color.Red;
+                }
             }
         }
 

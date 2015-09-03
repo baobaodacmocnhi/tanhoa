@@ -81,7 +81,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtDanhBo.Text.Trim().Replace(" ",""));
+            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(cmbDot.SelectedItem.ToString(),txtDanhBo.Text.Trim().Replace(" ",""));
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -140,11 +140,37 @@ namespace ThuTien.GUI.TongHop
             }
         }
 
-        private void btnInDSTon_Click(object sender, EventArgs e)
+        private void btnInDSTonQuay_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if (!bool.Parse(item.Cells["Tra"].Value.ToString()))
+                if (!bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString())&&!bool.Parse(item.Cells["Tra"].Value.ToString()))
+                {
+                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                    dr["MLT"] = item.Cells["MLT"].Value.ToString();
+                    dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                    dr["TongCong"] = item.Cells["TongCong"].Value.ToString();
+                    dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                    dr["To"] = item.Cells["To"].Value.ToString();
+                    if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                }
+            rptDSThu2Lan rpt = new rptDSThu2Lan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void btnInDSTonCK_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if (bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["Tra"].Value.ToString()))
                 {
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");

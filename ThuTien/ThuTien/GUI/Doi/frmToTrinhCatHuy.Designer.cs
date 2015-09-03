@@ -43,8 +43,6 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCTToTrinh = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnXem = new System.Windows.Forms.Button();
             this.MaTT_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaCTTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +55,8 @@
             this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -207,25 +207,6 @@
             this.dgvCTToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCTToTrinh_CellFormatting);
             this.dgvCTToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCTToTrinh_RowPostPaint);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(465, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "(enter)";
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(512, 10);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 3;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
             // MaTT_CT
             // 
             this.MaTT_CT.DataPropertyName = "MaTT";
@@ -307,6 +288,25 @@
             this.CreateDate_CT.HeaderText = "CreateDate";
             this.CreateDate_CT.Name = "CreateDate_CT";
             this.CreateDate_CT.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(465, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "(enter)";
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(512, 10);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 3;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // frmToTrinhCatHuy
             // 

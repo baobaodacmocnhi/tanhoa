@@ -37,7 +37,8 @@ namespace ThuTien.GUI.Quay
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
 
-            dateGiaiTrach.Value = DateTime.Now;
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         public void CountdgvHDTuGia()
@@ -127,13 +128,13 @@ namespace ThuTien.GUI.Quay
                 
                 if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
-                    dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("TG", dateGiaiTrach.Value);
+                    dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("TG", dateTu.Value,dateDen.Value);
                     CountdgvHDTuGia();
                 }
                 else
                     if (tabControl.SelectedTab.Name == "tabCoQuan")
                     {
-                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("CQ", dateGiaiTrach.Value);
+                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("CQ", dateTu.Value, dateDen.Value);
                         CountdgvHDCoQuan();
                     }
         }
@@ -144,12 +145,12 @@ namespace ThuTien.GUI.Quay
             {
                 foreach (var item in lstHD.Items)
                 {
-                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
-                    {
-                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
-                        return;
-                    }
+                    //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                    //{
+                    //    MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    lstHD.SelectedItem = item;
+                    //    return;
+                    //}
                     //string loai;
                     //if (!_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
                     //{
@@ -259,13 +260,13 @@ namespace ThuTien.GUI.Quay
                 dsBaoCao ds = new dsBaoCao();
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("TG", CNguoiDung.MaND, dateGiaiTrach.Value);
+                DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("TG", CNguoiDung.MaND, dateTu.Value, dateDen.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                     dr["To"] = CNguoiDung.TenTo;
                     dr["Loai"] = "Tư Gia";
-                    dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
+                    dr["NgayDangNgan"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                     dr["TongHD"] = item["TongHD"].ToString();
                     dr["TongGiaBan"] = item["TongGiaBan"].ToString();
                     dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
@@ -278,13 +279,13 @@ namespace ThuTien.GUI.Quay
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("CQ", CNguoiDung.MaND, dateGiaiTrach.Value);
+                    DataTable dt = _cHoaDon.GetTongDangNganByMaNV_DangNganNgayGiaiTrach("CQ", CNguoiDung.MaND, dateTu.Value, dateDen.Value);
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                         dr["To"] = CNguoiDung.TenTo;
                         dr["Loai"] = "Cơ Quan";
-                        dr["NgayDangNgan"] = dateGiaiTrach.Value.Date.ToString("dd/MM/yyyy");
+                        dr["NgayDangNgan"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
                         dr["TongHD"] = item["TongHD"].ToString();
                         dr["TongGiaBan"] = item["TongGiaBan"].ToString();
                         dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();

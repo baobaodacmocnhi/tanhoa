@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>153</ApplicationRevision>
+    <ApplicationRevision>166</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -315,6 +315,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\CCAPNUOCTANHOA.cs" />
+    <Compile Include="DAL\ChuyenKhoan\CBangKe.cs" />
     <Compile Include="DAL\CKTKS_DonKH.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDuLieuKhachHang.cs" />
@@ -351,6 +352,12 @@
     </Compile>
     <Compile Include="GUI\BaoCao\frmBaoCao.designer.cs">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmBangKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmBangKe.Designer.cs">
+      <DependentUpon>frmBangKe.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.cs">
       <SubType>Form</SubType>
@@ -688,6 +695,12 @@
     <Compile Include="GUI\ToTruong\frmKiemTraTonTo.Designer.cs">
       <DependentUpon>frmKiemTraTonTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmMoNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmMoNuoc.Designer.cs">
+      <DependentUpon>frmMoNuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmNangSuatThuTienTo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -878,6 +891,9 @@
     <EmbeddedResource Include="GUI\BaoCao\frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmBangKe.resx">
+      <DependentUpon>frmBangKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.resx">
       <DependentUpon>frmBaoCaoChuyenKhoan.cs</DependentUpon>
     </EmbeddedResource>
@@ -1048,6 +1064,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraTonTo.resx">
       <DependentUpon>frmKiemTraTonTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmMoNuoc.resx">
+      <DependentUpon>frmMoNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmNangSuatThuTienTo.resx">
       <DependentUpon>frmNangSuatThuTienTo.cs</DependentUpon>
