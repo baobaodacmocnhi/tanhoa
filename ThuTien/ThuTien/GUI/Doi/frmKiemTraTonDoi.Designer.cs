@@ -161,7 +161,6 @@
             this.dgvHDCoQuan.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDCoQuan.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHDCoQuan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHDCoQuan.Size = new System.Drawing.Size(1243, 150);
             this.dgvHDCoQuan.TabIndex = 1;
             this.dgvHDCoQuan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDCoQuan_CellContentClick);
@@ -407,7 +406,6 @@
             this.dgvHDTuGia.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHDTuGia.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvHDTuGia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHDTuGia.Size = new System.Drawing.Size(1243, 150);
             this.dgvHDTuGia.TabIndex = 0;
             this.dgvHDTuGia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDTuGia_CellContentClick);
@@ -739,7 +737,6 @@
             this.dgvNhanVien.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(1243, 350);
             this.dgvNhanVien.TabIndex = 19;
             this.dgvNhanVien.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNhanVien_CellFormatting);

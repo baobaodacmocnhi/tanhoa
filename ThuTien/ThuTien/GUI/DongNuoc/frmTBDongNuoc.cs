@@ -341,6 +341,11 @@ namespace ThuTien.GUI.DongNuoc
             frm.ShowDialog();
         }
 
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
+        }
+
        
  
     }

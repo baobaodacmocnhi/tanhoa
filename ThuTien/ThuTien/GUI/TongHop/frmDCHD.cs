@@ -43,7 +43,7 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvHoaDon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvHoaDon.RowCount > 0)
+            if (dgvHoaDon.RowCount > 0 && e.Button == MouseButtons.Left)
             {
                 frmShowDCHD frm = new frmShowDCHD(dgvHoaDon.SelectedRows[0].Cells["SoHoaDon"].Value.ToString());
                 frm.ShowDialog();
@@ -53,7 +53,7 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvDCHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvDCHD.RowCount > 0)
+            if (dgvDCHD.RowCount > 0 && e.Button==MouseButtons.Left)
             {
                 frmShowDCHD frm = new frmShowDCHD(dgvDCHD.SelectedRows[0].Cells["SoHoaDon_DC"].Value.ToString());
                 frm.ShowDialog();

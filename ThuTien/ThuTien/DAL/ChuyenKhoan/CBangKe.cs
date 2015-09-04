@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
+using System.Data;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
@@ -61,6 +62,25 @@ namespace ThuTien.DAL.ChuyenKhoan
         public bool CheckExist(string DanhBo,int MaNH)
         {
             return _db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.MaNH == MaNH);
+        }
+
+        public TT_BangKe GetByDanhBoMaNH(string DanhBo,int MaNH)
+        {
+            return _db.TT_BangKes.SingleOrDefault(item => item.DanhBo == DanhBo && item.MaNH == MaNH);
+        }
+
+        public DataTable GetDS()
+        {
+            var query = from itemBK in _db.TT_BangKes
+                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG
+                        select new
+                        {
+                            itemBK.DanhBo,
+                            MaNH=itemNH.ID_NGANHANG,
+                            TenNH=itemNH.NGANHANG1,
+                            itemBK.SoPhieu,
+                        };
+            return LINQToDataTable(query);
         }
     }
 }

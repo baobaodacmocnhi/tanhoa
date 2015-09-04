@@ -48,14 +48,15 @@ namespace ThuTien.GUI.ToTruong
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-                if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim().ToUpper()))
-                {
-                    lstHD.Items.Add(txtSoHoaDon.Text.Trim().ToUpper());
-                    txtSoLuong.Text = lstHD.Items.Count.ToString();
-                    txtSoHoaDon.Text = "";
-                }
-                else
-                    txtSoHoaDon.Text = "";
+            {
+                foreach (string item in txtSoHoaDon.Lines)
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    {
+                        lstHD.Items.Add(item.Trim().ToUpper());
+                    }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+                txtSoHoaDon.Text = "";
+            }
         }
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -184,6 +185,11 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
     }
 }

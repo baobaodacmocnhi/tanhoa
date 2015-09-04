@@ -411,22 +411,22 @@ namespace ThuTien.GUI.ToTruong
                                     else
                                         if (cmbKy.SelectedIndex > 1)
                                             dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
-                            foreach (DataRow item in dt.Rows)
-                            {
-                                DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                                dr["LoaiBaoCao"] = "TƯ GIA TỒN";
-                                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                                dr["Ky"] = item["Ky"];
-                                dr["MLT"] = item["MLT"];
-                                dr["TongCong"] = item["TongCong"];
-                                dr["SoPhatHanh"] = item["SoPhatHanh"];
-                                dr["SoHoaDon"] = item["SoHoaDon"];
-                                dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
-                                if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
-                                    dr["LenhHuy"] = true;
-                                ds.Tables["DSHoaDon"].Rows.Add(dr);
-                            }
                         }
+                foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "TƯ GIA TỒN";
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["Ky"] = item["Ky"];
+                    dr["MLT"] = item["MLT"];
+                    dr["TongCong"] = item["TongCong"];
+                    dr["SoPhatHanh"] = item["SoPhatHanh"];
+                    dr["SoHoaDon"] = item["SoHoaDon"];
+                    dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                    if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
+                        dr["LenhHuy"] = true;
+                    ds.Tables["DSHoaDon"].Rows.Add(dr);
+                }
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
@@ -456,22 +456,22 @@ namespace ThuTien.GUI.ToTruong
                                         else
                                             if (cmbKy.SelectedIndex > 1)
                                                 dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
-                                foreach (DataRow item in dt.Rows)
-                                {
-                                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                                    dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
-                                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                                    dr["Ky"] = item["Ky"];
-                                    dr["MLT"] = item["MLT"];
-                                    dr["TongCong"] = item["TongCong"];
-                                    dr["SoPhatHanh"] = item["SoPhatHanh"];
-                                    dr["SoHoaDon"] = item["SoHoaDon"];
-                                    dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
-                                    if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
-                                        dr["LenhHuy"] = true;
-                                    ds.Tables["DSHoaDon"].Rows.Add(dr);
-                                }
                             }
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item["Ky"];
+                        dr["MLT"] = item["MLT"];
+                        dr["TongCong"] = item["TongCong"];
+                        dr["SoPhatHanh"] = item["SoPhatHanh"];
+                        dr["SoHoaDon"] = item["SoHoaDon"];
+                        dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                        if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
+                            dr["LenhHuy"] = true;
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
                 }
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
@@ -617,21 +617,21 @@ namespace ThuTien.GUI.ToTruong
                                     else
                                         if (cmbKy.SelectedIndex > 1)
                                             dt = _cHoaDon.GetDSTon_NV("TG", int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
-                            foreach (DataRow item in dt.Rows)
-                                if (!_cDongNuoc.CheckCTDongNuocBySoHoaDon(item["SoHoaDon"].ToString()) && !_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) && !_cDLKH.CheckExistSoHoaDon(item["SoHoaDon"].ToString()))
-                                {
-                                    DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                                    dr["LoaiBaoCao"] = "TƯ GIA TỒN";
-                                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                                    dr["Ky"] = item["Ky"];
-                                    dr["MLT"] = item["MLT"];
-                                    dr["TongCong"] = item["TongCong"];
-                                    dr["SoPhatHanh"] = item["SoPhatHanh"];
-                                    dr["SoHoaDon"] = item["SoHoaDon"];
-                                    dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
-                                    ds.Tables["DSHoaDon"].Rows.Add(dr);
-                                }
                         }
+                foreach (DataRow item in dt.Rows)
+                    if (!_cDongNuoc.CheckCTDongNuocBySoHoaDon(item["SoHoaDon"].ToString()) && !_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) && !_cDLKH.CheckExistSoHoaDon(item["SoHoaDon"].ToString()))
+                    {
+                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                        dr["LoaiBaoCao"] = "TƯ GIA TỒN";
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                        dr["Ky"] = item["Ky"];
+                        dr["MLT"] = item["MLT"];
+                        dr["TongCong"] = item["TongCong"];
+                        dr["SoPhatHanh"] = item["SoPhatHanh"];
+                        dr["SoHoaDon"] = item["SoHoaDon"];
+                        dr["NhanVien"] = dgvHDTuGia.SelectedRows[0].Cells["HoTen_TG"].Value.ToString();
+                        ds.Tables["DSHoaDon"].Rows.Add(dr);
+                    }
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
@@ -661,21 +661,21 @@ namespace ThuTien.GUI.ToTruong
                                         else
                                             if (cmbKy.SelectedIndex > 1)
                                                 dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
-                                foreach (DataRow item in dt.Rows)
-                                    if (!_cDongNuoc.CheckCTDongNuocBySoHoaDon(item["SoHoaDon"].ToString()) && !_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) && !_cDLKH.CheckExistSoHoaDon(item["SoHoaDon"].ToString()))
-                                    {
-                                        DataRow dr = ds.Tables["DSHoaDon"].NewRow();
-                                        dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
-                                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                                        dr["Ky"] = item["Ky"];
-                                        dr["MLT"] = item["MLT"];
-                                        dr["TongCong"] = item["TongCong"];
-                                        dr["SoPhatHanh"] = item["SoPhatHanh"];
-                                        dr["SoHoaDon"] = item["SoHoaDon"];
-                                        dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
-                                        ds.Tables["DSHoaDon"].Rows.Add(dr);
-                                    }
                             }
+                    foreach (DataRow item in dt.Rows)
+                        if (!_cDongNuoc.CheckCTDongNuocBySoHoaDon(item["SoHoaDon"].ToString()) && !_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) && !_cDLKH.CheckExistSoHoaDon(item["SoHoaDon"].ToString()))
+                        {
+                            DataRow dr = ds.Tables["DSHoaDon"].NewRow();
+                            dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                            dr["Ky"] = item["Ky"];
+                            dr["MLT"] = item["MLT"];
+                            dr["TongCong"] = item["TongCong"];
+                            dr["SoPhatHanh"] = item["SoPhatHanh"];
+                            dr["SoHoaDon"] = item["SoHoaDon"];
+                            dr["NhanVien"] = dgvHDCoQuan.SelectedRows[0].Cells["HoTen_CQ"].Value.ToString();
+                            ds.Tables["DSHoaDon"].Rows.Add(dr);
+                        }
                 }
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);

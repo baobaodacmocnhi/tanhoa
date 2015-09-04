@@ -56,10 +56,16 @@ namespace ThuTien.GUI.Doi
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
+            {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!lstHD.Items.Contains(item.ToUpper()))
-                        lstHD.Items.Add(item.ToUpper());
-            txtSoHoaDon.Text = "";
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    {
+                        lstHD.Items.Add(item.Trim().ToUpper());
+                    }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+                lstHD.SelectedIndex = lstHD.Items.Count - 1;
+                txtSoHoaDon.Text = "";
+            }
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -274,6 +280,17 @@ namespace ThuTien.GUI.Doi
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
+                lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+        }
+
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
     }
 }

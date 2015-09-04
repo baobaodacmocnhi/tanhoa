@@ -214,7 +214,7 @@ namespace ThuTien.GUI.TongHop
                         if (!_cDCHD.CheckExist(_SoHoaDon))
                         {
                             string loai;
-                            if (_cTamThu.CheckExistBySoHoaDon(_SoHoaDon, out loai))
+                            if (_cTamThu.CheckExist(_SoHoaDon, out loai))
                             {
                                 MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;

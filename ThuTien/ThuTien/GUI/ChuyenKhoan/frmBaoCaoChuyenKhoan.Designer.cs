@@ -34,7 +34,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnXuatExcelBangKe = new System.Windows.Forms.Button();
+            this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -97,17 +102,60 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "Đến Ngày:";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnXuatExcelBangKe);
+            this.groupBox2.Controls.Add(this.dateGiaiTrach);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Location = new System.Drawing.Point(12, 70);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(426, 52);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Bảng Kê";
+            // 
+            // btnXuatExcelBangKe
+            // 
+            this.btnXuatExcelBangKe.Location = new System.Drawing.Point(341, 17);
+            this.btnXuatExcelBangKe.Name = "btnXuatExcelBangKe";
+            this.btnXuatExcelBangKe.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcelBangKe.TabIndex = 28;
+            this.btnXuatExcelBangKe.Text = "Xuất Excel";
+            this.btnXuatExcelBangKe.UseVisualStyleBackColor = true;
+            this.btnXuatExcelBangKe.Click += new System.EventHandler(this.btnXuatExcelBangKe_Click);
+            // 
+            // dateGiaiTrach
+            // 
+            this.dateGiaiTrach.CustomFormat = "dd/MM/yyyy";
+            this.dateGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateGiaiTrach.Location = new System.Drawing.Point(235, 19);
+            this.dateGiaiTrach.Name = "dateGiaiTrach";
+            this.dateGiaiTrach.Size = new System.Drawing.Size(100, 20);
+            this.dateGiaiTrach.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(136, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Ngày Đăng Ngân:";
+            // 
             // frmBaoCaoChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 382);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmBaoCaoChuyenKhoan";
             this.Text = "Báo Cáo Chuyển Khoản";
             this.Load += new System.EventHandler(this.frmBaoCaoChuyenKhoan_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -120,5 +168,9 @@
         private System.Windows.Forms.DateTimePicker dateDen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnXuatExcelTongHopDangNgan;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnXuatExcelBangKe;
+        private System.Windows.Forms.DateTimePicker dateGiaiTrach;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -125,9 +125,9 @@ namespace ThuTien.GUI.TimKiem
         {
             //DataTable dtTieuThu = _cHoaDon.GetDSTieuThu(txtDanhBo.Text.Trim());
 
-            DataTable dtPhieuTieuThu = _cCapNuocTanHoa.GetTTKH(txtDanhBo.Text.Trim());
-            
-            DataTable dtGhiChu = _cCapNuocTanHoa.GetGhiChu(txtDanhBo.Text.Trim());
+            DataTable dtPhieuTieuThu = _cCapNuocTanHoa.GetTTKH(txtDanhBo.Text.Trim().Replace(" ",""));
+
+            DataTable dtGhiChu = _cCapNuocTanHoa.GetGhiChu(txtDanhBo.Text.Trim().Replace(" ", ""));
 
             dsBaoCao ds = new dsBaoCao();
 

@@ -86,9 +86,12 @@ namespace ThuTien.GUI.QuanTri
                         phanquyennguoidung.MaND = nguoidung.MaND;
                         nguoidung.TT_PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                     }
-                    TT_CTChamCong ctchamcong = new TT_CTChamCong();
-                    ctchamcong.MaCC = _cChamCong.GetMaxMaCC();
-                    nguoidung.TT_CTChamCongs.Add(ctchamcong);
+                    if (chkChamCong.Checked)
+                    {
+                        TT_CTChamCong ctchamcong = new TT_CTChamCong();
+                        ctchamcong.MaCC = _cChamCong.GetMaxMaCC();
+                        nguoidung.TT_CTChamCongs.Add(ctchamcong);
+                    }
                     if (_cNguoiDung.Them(nguoidung))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

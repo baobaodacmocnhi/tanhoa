@@ -78,7 +78,7 @@ namespace ThuTien.DAL.Quay
             }
         }
 
-        public bool CheckExistBySoHoaDon(string SoHoaDon, out bool ChuyenKhoan)
+        public bool CheckExist(string SoHoaDon, out bool ChuyenKhoan)
         {
             if (_db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon))
                 ChuyenKhoan = _db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).ChuyenKhoan;
@@ -87,19 +87,24 @@ namespace ThuTien.DAL.Quay
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public bool CheckExistBySoHoaDon(string SoHoaDon, out string loai)
+        public bool CheckExist(string SoHoaDon, out string Loai)
         {
-            loai = "";
+            Loai = "";
             if (_db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon))
             {
                 if (_db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).ChuyenKhoan)
-                    loai = "Chuyển Khoản";
+                    Loai = "Chuyển Khoản";
                 else
-                    loai = "Quầy";
+                    Loai = "Quầy";
                 return true;
             }
             else
                 return false;
+        }
+
+        public bool CheckExist(string SoHoaDon, bool ChuyenKhoan)
+        {
+            return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon && item.ChuyenKhoan == ChuyenKhoan);
         }
 
         public DataTable GetDS(bool ChuyenKhoan,DateTime TuNgay)
