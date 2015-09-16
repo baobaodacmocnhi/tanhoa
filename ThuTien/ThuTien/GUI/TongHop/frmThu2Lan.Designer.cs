@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXem = new System.Windows.Forms.Button();
@@ -61,10 +63,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnInDSTonQuay = new System.Windows.Forms.Button();
+            this.btnInDSTon = new System.Windows.Forms.Button();
             this.cmbDot = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnInDSTonCK = new System.Windows.Forms.Button();
+            this.btnInDSTra = new System.Windows.Forms.Button();
+            this.radChuyenKhoan = new System.Windows.Forms.RadioButton();
+            this.radQuay = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,11 +136,27 @@
             this.GhiChu,
             this.To,
             this.HanhThu});
-            this.dgvHoaDon.Location = new System.Drawing.Point(12, 39);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvHoaDon.Location = new System.Drawing.Point(12, 61);
             this.dgvHoaDon.Name = "dgvHoaDon";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1271, 590);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvHoaDon.Size = new System.Drawing.Size(1271, 568);
             this.dgvHoaDon.TabIndex = 43;
             this.dgvHoaDon.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellEndEdit);
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
@@ -284,6 +304,7 @@
             // 
             this.cmbKy.FormattingEnabled = true;
             this.cmbKy.Items.AddRange(new object[] {
+            "Tất Cả",
             "1",
             "2",
             "3",
@@ -347,26 +368,27 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(922, 23);
+            this.label6.Location = new System.Drawing.Point(918, 38);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(132, 13);
             this.label6.TabIndex = 53;
             this.label6.Text = "Không Check là của Quầy";
             // 
-            // btnInDSTonQuay
+            // btnInDSTon
             // 
-            this.btnInDSTonQuay.Location = new System.Drawing.Point(699, 10);
-            this.btnInDSTonQuay.Name = "btnInDSTonQuay";
-            this.btnInDSTonQuay.Size = new System.Drawing.Size(95, 23);
-            this.btnInDSTonQuay.TabIndex = 54;
-            this.btnInDSTonQuay.Text = "In DS Tồn Quầy";
-            this.btnInDSTonQuay.UseVisualStyleBackColor = true;
-            this.btnInDSTonQuay.Click += new System.EventHandler(this.btnInDSTonQuay_Click);
+            this.btnInDSTon.Location = new System.Drawing.Point(699, 10);
+            this.btnInDSTon.Name = "btnInDSTon";
+            this.btnInDSTon.Size = new System.Drawing.Size(75, 23);
+            this.btnInDSTon.TabIndex = 54;
+            this.btnInDSTon.Text = "In DS Tồn";
+            this.btnInDSTon.UseVisualStyleBackColor = true;
+            this.btnInDSTon.Click += new System.EventHandler(this.btnInDSTon_Click);
             // 
             // cmbDot
             // 
             this.cmbDot.FormattingEnabled = true;
             this.cmbDot.Items.AddRange(new object[] {
+            "Tất Cả",
             "1",
             "2",
             "3",
@@ -401,25 +423,50 @@
             this.label1.TabIndex = 55;
             this.label1.Text = "Đợt:";
             // 
-            // btnInDSTonCK
+            // btnInDSTra
             // 
-            this.btnInDSTonCK.Location = new System.Drawing.Point(800, 10);
-            this.btnInDSTonCK.Name = "btnInDSTonCK";
-            this.btnInDSTonCK.Size = new System.Drawing.Size(95, 23);
-            this.btnInDSTonCK.TabIndex = 57;
-            this.btnInDSTonCK.Text = "In DS Tồn CK";
-            this.btnInDSTonCK.UseVisualStyleBackColor = true;
-            this.btnInDSTonCK.Click += new System.EventHandler(this.btnInDSTonCK_Click);
+            this.btnInDSTra.Location = new System.Drawing.Point(780, 10);
+            this.btnInDSTra.Name = "btnInDSTra";
+            this.btnInDSTra.Size = new System.Drawing.Size(75, 23);
+            this.btnInDSTra.TabIndex = 57;
+            this.btnInDSTra.Text = "In DS Trả";
+            this.btnInDSTra.UseVisualStyleBackColor = true;
+            this.btnInDSTra.Click += new System.EventHandler(this.btnInDSTra_Click);
+            // 
+            // radChuyenKhoan
+            // 
+            this.radChuyenKhoan.AutoSize = true;
+            this.radChuyenKhoan.Checked = true;
+            this.radChuyenKhoan.Location = new System.Drawing.Point(295, 38);
+            this.radChuyenKhoan.Name = "radChuyenKhoan";
+            this.radChuyenKhoan.Size = new System.Drawing.Size(95, 17);
+            this.radChuyenKhoan.TabIndex = 58;
+            this.radChuyenKhoan.TabStop = true;
+            this.radChuyenKhoan.Text = "Chuyển Khoản";
+            this.radChuyenKhoan.UseVisualStyleBackColor = true;
+            // 
+            // radQuay
+            // 
+            this.radQuay.AutoSize = true;
+            this.radQuay.Location = new System.Drawing.Point(396, 38);
+            this.radQuay.Name = "radQuay";
+            this.radQuay.Size = new System.Drawing.Size(50, 17);
+            this.radQuay.TabIndex = 59;
+            this.radQuay.TabStop = true;
+            this.radQuay.Text = "Quầy";
+            this.radQuay.UseVisualStyleBackColor = true;
             // 
             // frmThu2Lan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 641);
-            this.Controls.Add(this.btnInDSTonCK);
+            this.Controls.Add(this.radQuay);
+            this.Controls.Add(this.radChuyenKhoan);
+            this.Controls.Add(this.btnInDSTra);
             this.Controls.Add(this.cmbDot);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnInDSTonQuay);
+            this.Controls.Add(this.btnInDSTon);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtDanhBo);
@@ -453,7 +500,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnInDSTonQuay;
+        private System.Windows.Forms.Button btnInDSTon;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
@@ -476,6 +523,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.ComboBox cmbDot;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnInDSTonCK;
+        private System.Windows.Forms.Button btnInDSTra;
+        private System.Windows.Forms.RadioButton radChuyenKhoan;
+        private System.Windows.Forms.RadioButton radQuay;
     }
 }

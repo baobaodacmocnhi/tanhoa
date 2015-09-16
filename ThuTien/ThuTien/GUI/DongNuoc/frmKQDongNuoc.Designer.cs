@@ -49,7 +49,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.dateDongNuoc = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtChiSo = new System.Windows.Forms.TextBox();
+            this.txtChiSoDN = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -72,6 +72,8 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.chkHuy = new System.Windows.Forms.CheckBox();
+            this.txtChiSoMN = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +91,7 @@
             this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChiSoMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -96,6 +99,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtChiSoMN);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.dateMoNuoc);
             this.groupBox2.Controls.Add(this.chkMoNuoc);
             this.groupBox2.Controls.Add(this.label23);
@@ -112,7 +117,7 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.dateDongNuoc);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.txtChiSo);
+            this.groupBox2.Controls.Add(this.txtChiSoDN);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Location = new System.Drawing.Point(12, 150);
             this.groupBox2.Name = "groupBox2";
@@ -277,13 +282,13 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Ngày ĐN:";
             // 
-            // txtChiSo
+            // txtChiSoDN
             // 
-            this.txtChiSo.Location = new System.Drawing.Point(91, 42);
-            this.txtChiSo.Name = "txtChiSo";
-            this.txtChiSo.Size = new System.Drawing.Size(89, 20);
-            this.txtChiSo.TabIndex = 5;
-            this.txtChiSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChiSo_KeyPress);
+            this.txtChiSoDN.Location = new System.Drawing.Point(91, 42);
+            this.txtChiSoDN.Name = "txtChiSoDN";
+            this.txtChiSoDN.Size = new System.Drawing.Size(89, 20);
+            this.txtChiSoDN.TabIndex = 5;
+            this.txtChiSoDN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChiSo_KeyPress);
             // 
             // label14
             // 
@@ -468,7 +473,8 @@
             this.ChiKhoaGoc,
             this.LyDo,
             this.MoNuoc,
-            this.NgayMN});
+            this.NgayMN,
+            this.ChiSoMN});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -477,7 +483,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvKQDongNuoc.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvKQDongNuoc.Location = new System.Drawing.Point(510, 43);
+            this.dgvKQDongNuoc.Location = new System.Drawing.Point(491, 38);
             this.dgvKQDongNuoc.MultiSelect = false;
             this.dgvKQDongNuoc.Name = "dgvKQDongNuoc";
             this.dgvKQDongNuoc.ReadOnly = true;
@@ -492,7 +498,7 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvKQDongNuoc.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvKQDongNuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKQDongNuoc.Size = new System.Drawing.Size(731, 470);
+            this.dgvKQDongNuoc.Size = new System.Drawing.Size(774, 470);
             this.dgvKQDongNuoc.TabIndex = 30;
             this.dgvKQDongNuoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKQDongNuoc_CellContentClick);
             this.dgvKQDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKQDongNuoc_CellFormatting);
@@ -538,6 +544,23 @@
             this.chkHuy.Text = "Hủy TB ĐN";
             this.chkHuy.UseVisualStyleBackColor = true;
             this.chkHuy.CheckedChanged += new System.EventHandler(this.chkHuy_CheckedChanged);
+            // 
+            // txtChiSoMN
+            // 
+            this.txtChiSoMN.Location = new System.Drawing.Point(295, 42);
+            this.txtChiSoMN.Name = "txtChiSoMN";
+            this.txtChiSoMN.ReadOnly = true;
+            this.txtChiSoMN.Size = new System.Drawing.Size(89, 20);
+            this.txtChiSoMN.TabIndex = 35;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(248, 45);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "Chỉ Số:";
             // 
             // MaDN
             // 
@@ -605,10 +628,10 @@
             // ChiSo
             // 
             this.ChiSo.DataPropertyName = "ChiSo";
-            this.ChiSo.HeaderText = "ChiSo";
+            this.ChiSo.HeaderText = "ĐN";
             this.ChiSo.Name = "ChiSo";
             this.ChiSo.ReadOnly = true;
-            this.ChiSo.Visible = false;
+            this.ChiSo.Width = 50;
             // 
             // Hieu
             // 
@@ -674,11 +697,19 @@
             this.NgayMN.ReadOnly = true;
             this.NgayMN.Visible = false;
             // 
+            // ChiSoMN
+            // 
+            this.ChiSoMN.DataPropertyName = "ChiSoMN";
+            this.ChiSoMN.HeaderText = "MN";
+            this.ChiSoMN.Name = "ChiSoMN";
+            this.ChiSoMN.ReadOnly = true;
+            this.ChiSoMN.Width = 50;
+            // 
             // frmKQDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1253, 525);
+            this.ClientSize = new System.Drawing.Size(1285, 525);
             this.Controls.Add(this.chkHuy);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -722,7 +753,7 @@
         private System.Windows.Forms.TextBox txtCo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker dateDongNuoc;
-        private System.Windows.Forms.TextBox txtChiSo;
+        private System.Windows.Forms.TextBox txtChiSoDN;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtDiaChi;
@@ -748,6 +779,8 @@
         private System.Windows.Forms.DateTimePicker dateMoNuoc;
         private System.Windows.Forms.CheckBox chkMoNuoc;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtChiSoMN;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKQDN;
@@ -765,5 +798,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoMN;
     }
 }

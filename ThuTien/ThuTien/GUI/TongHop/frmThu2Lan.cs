@@ -46,7 +46,13 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                if (_cHoaDon.Thu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),txtDanhBo.Text.Trim(), true))
+                bool ChuyenKhoan = true;
+                if (radChuyenKhoan.Checked)
+                    ChuyenKhoan = true;
+                if (radQuay.Checked)
+                    ChuyenKhoan = false;
+
+                if (_cHoaDon.Thu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),txtDanhBo.Text.Trim(), ChuyenKhoan))
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -57,23 +63,24 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                try
-                {
-                    _cHoaDon.BeginTransaction();
-                    foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    try
                     {
-                        HOADON hoadon = _cHoaDon.GetByMaHD(int.Parse(item.Cells["MaHD"].Value.ToString()));
-                        hoadon.Thu2Lan = false;
+                        _cHoaDon.BeginTransaction();
+                        foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
+                        {
+                            HOADON hoadon = _cHoaDon.GetByMaHD(int.Parse(item.Cells["MaHD"].Value.ToString()));
+                            hoadon.Thu2Lan = false;
+                        }
+                        _cHoaDon.SubmitChanges();
+                        _cHoaDon.CommitTransaction();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    _cHoaDon.SubmitChanges();
-                    _cHoaDon.CommitTransaction();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception)
-                {
-                    _cHoaDon.Rollback();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    catch (Exception)
+                    {
+                        _cHoaDon.Rollback();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -81,7 +88,49 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(cmbDot.SelectedItem.ToString(),txtDanhBo.Text.Trim().Replace(" ",""));
+            if (radChuyenKhoan.Checked)
+            {
+                if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                {
+                    dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtDanhBo.Text.Trim().Replace(" ", ""),true);
+                }
+                else
+                    if (cmbKy.SelectedIndex == 0)
+                    {
+                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()),true);
+                    }
+                    else
+                        if (cmbKy.SelectedIndex > 0)
+                            if (cmbDot.SelectedIndex == 0)
+                            {
+                                dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), true);
+                            }
+                            else
+                                if (cmbDot.SelectedIndex > 0)
+                                    dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), true);
+            }
+            else
+                if(radQuay.Checked)
+                {
+                    if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                    {
+                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtDanhBo.Text.Trim().Replace(" ", ""),false);
+                    }
+                    else
+                        if (cmbKy.SelectedIndex == 0)
+                        {
+                            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), false);
+                        }
+                        else
+                            if (cmbKy.SelectedIndex > 0)
+                                if (cmbDot.SelectedIndex == 0)
+                                {
+                                    dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), false);
+                                }
+                                else
+                                    if (cmbDot.SelectedIndex > 0)
+                                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), false);
+                }
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -122,70 +171,129 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvHoaDon_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Tra")
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                if (bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()))
+                if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Tra")
                 {
-                    _cHoaDon.Thu2Lan_Tra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    if (bool.Parse(dgvHoaDon["Tra", e.RowIndex].Value.ToString()))
+                    {
+                        _cHoaDon.Thu2Lan_Tra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    }
+                    else
+                    {
+                        _cHoaDon.Thu2Lan_XoaTra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    }
                 }
-                else
-                {
-                    _cHoaDon.Thu2Lan_XoaTra(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
-                }
-            }
 
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GhiChu")
-            {
-                _cHoaDon.Thu2Lan_GhiChu(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), dgvHoaDon["GhiChu", e.RowIndex].Value.ToString());
+                if (dgvHoaDon.Columns[e.ColumnIndex].Name == "GhiChu")
+                {
+                    _cHoaDon.Thu2Lan_GhiChu(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString(), dgvHoaDon["GhiChu", e.RowIndex].Value.ToString());
+                }
             }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void btnInDSTonQuay_Click(object sender, EventArgs e)
+        private void btnInDSTon_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if (!bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString())&&!bool.Parse(item.Cells["Tra"].Value.ToString()))
+            if (radChuyenKhoan.Checked)
+            {
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                    if (bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["Tra"].Value.ToString()))
+                    {
+                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["LoaiBaoCao"] = "CHUYỂN KHOẢN TỒN";
+                        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT"].Value.ToString();
+                        dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                        dr["TongCong"] = item.Cells["TongCong"].Value.ToString();
+                        dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                        dr["To"] = item.Cells["To"].Value.ToString();
+                        if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    }
+            }
+            else
+                if (radQuay.Checked)
                 {
-                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                    dr["MLT"] = item.Cells["MLT"].Value.ToString();
-                    dr["Ky"] = item.Cells["Ky"].Value.ToString();
-                    dr["TongCong"] = item.Cells["TongCong"].Value.ToString();
-                    dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
-                    dr["To"] = item.Cells["To"].Value.ToString();
-                    if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
-                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                        if (!bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["Tra"].Value.ToString()))
+                        {
+                            DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                            dr["LoaiBaoCao"] = "QUẦY TỒN";
+                            dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                            dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                            dr["MLT"] = item.Cells["MLT"].Value.ToString();
+                            dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                            dr["TongCong"] = item.Cells["TongCong"].Value.ToString();
+                            dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                            dr["To"] = item.Cells["To"].Value.ToString();
+                            if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                                dr["Loai"] = "CQ";
+                            else
+                                dr["Loai"] = "TG";
+                            ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                        }
                 }
+            
             rptDSThu2Lan rpt = new rptDSThu2Lan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
 
-        private void btnInDSTonCK_Click(object sender, EventArgs e)
+        private void btnInDSTra_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if (bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["Tra"].Value.ToString()))
+            if (radChuyenKhoan.Checked)
+            {
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                    if (bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && bool.Parse(item.Cells["Tra"].Value.ToString()))
+                    {
+                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["LoaiBaoCao"] = "CHUYỂN KHOẢN TRẢ";
+                        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT"].Value.ToString();
+                        dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                        dr["TongCong"] = item.Cells["TongCong"].Value.ToString();
+                        dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                        dr["To"] = item.Cells["To"].Value.ToString();
+                        if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    }
+            }
+            else
+                if (radQuay.Checked)
                 {
-                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                    dr["MLT"] = item.Cells["MLT"].Value.ToString();
-                    dr["Ky"] = item.Cells["Ky"].Value.ToString();
-                    dr["TongCong"] = item.Cells["TongCong"].Value.ToString();
-                    dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
-                    dr["To"] = item.Cells["To"].Value.ToString();
-                    if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
-                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                        if (!bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && bool.Parse(item.Cells["Tra"].Value.ToString()))
+                        {
+                            DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                            dr["LoaiBaoCao"] = "QUẦY TRẢ";
+                            dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                            dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                            dr["MLT"] = item.Cells["MLT"].Value.ToString();
+                            dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                            dr["TongCong"] = item.Cells["TongCong"].Value.ToString();
+                            dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                            dr["To"] = item.Cells["To"].Value.ToString();
+                            if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                                dr["Loai"] = "CQ";
+                            else
+                                dr["Loai"] = "TG";
+                            ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                        }
                 }
+
             rptDSThu2Lan rpt = new rptDSThu2Lan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);

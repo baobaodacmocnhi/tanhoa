@@ -40,7 +40,7 @@ namespace ThuTien.GUI.DongNuoc
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             dateDongNuoc.Value = DateTime.Now;
-            txtChiSo.Text = "";
+            txtChiSoDN.Text = "";
             txtHieu.Text = "";
             txtCo.Text = "";
             txtSoThan.Text = "";
@@ -49,6 +49,7 @@ namespace ThuTien.GUI.DongNuoc
             txtLyDo.Text = "";
             chkMoNuoc.Checked = false;
             dateMoNuoc.Value = DateTime.Now;
+            txtChiSoMN.Text = "";
             _dongnuoc = null;
         }
 
@@ -105,8 +106,8 @@ namespace ThuTien.GUI.DongNuoc
 
                     kqdongnuoc.DongNuoc = true;
                     kqdongnuoc.NgayDN = dateDongNuoc.Value;
-                    if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
-                        kqdongnuoc.ChiSo = int.Parse(txtChiSo.Text.Trim());
+                    if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
+                        kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
                     kqdongnuoc.Hieu = txtHieu.Text.Trim();
                     if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                         kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
@@ -121,6 +122,7 @@ namespace ThuTien.GUI.DongNuoc
                     {
                         kqdongnuoc.MoNuoc = true;
                         kqdongnuoc.NgayMN = dateMoNuoc.Value;
+                        kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
                     }
 
                     if (_cDongNuoc.ThemKQ(kqdongnuoc))
@@ -146,8 +148,8 @@ namespace ThuTien.GUI.DongNuoc
                 kqdongnuoc.DiaChi = txtDiaChi.Text.Trim();
 
                 kqdongnuoc.NgayDN = dateDongNuoc.Value;
-                if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
-                    kqdongnuoc.ChiSo = int.Parse(txtChiSo.Text.Trim());
+                if (!string.IsNullOrEmpty(txtChiSoDN.Text.Trim()))
+                    kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
                 kqdongnuoc.Hieu = txtHieu.Text.Trim();
                 if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                     kqdongnuoc.Co = int.Parse(txtCo.Text.Trim());
@@ -162,12 +164,13 @@ namespace ThuTien.GUI.DongNuoc
                 {
                     kqdongnuoc.MoNuoc = true;
                     kqdongnuoc.NgayMN = dateMoNuoc.Value;
+                    kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
                 }
                 else
                 {
                     kqdongnuoc.MoNuoc = false;
                     kqdongnuoc.NgayMN = null;
-
+                    kqdongnuoc.ChiSoMN = null;
                 }
 
                 if (_cDongNuoc.SuaKQ(kqdongnuoc))
@@ -218,7 +221,7 @@ namespace ThuTien.GUI.DongNuoc
                 txtHoTen.Text = dgvKQDongNuoc["HoTen", e.RowIndex].Value.ToString();
                 txtDiaChi.Text = dgvKQDongNuoc["DiaChi", e.RowIndex].Value.ToString();
                 dateDongNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN", e.RowIndex].Value.ToString());
-                txtChiSo.Text = dgvKQDongNuoc["ChiSo", e.RowIndex].Value.ToString();
+                txtChiSoDN.Text = dgvKQDongNuoc["ChiSo", e.RowIndex].Value.ToString();
                 txtHieu.Text = dgvKQDongNuoc["Hieu", e.RowIndex].Value.ToString();
                 txtCo.Text = dgvKQDongNuoc["Co", e.RowIndex].Value.ToString();
                 txtSoThan.Text = dgvKQDongNuoc["SoThan", e.RowIndex].Value.ToString();
@@ -285,9 +288,15 @@ namespace ThuTien.GUI.DongNuoc
         private void chkMoNuoc_CheckedChanged(object sender, EventArgs e)
         {
             if (chkMoNuoc.Checked)
+            {
                 dateMoNuoc.Enabled = true;
+                txtChiSoMN.ReadOnly = false;
+            }
             else
+            {
                 dateMoNuoc.Enabled = false;
+                txtChiSoMN.ReadOnly = true;
+            }
         }
 
         
