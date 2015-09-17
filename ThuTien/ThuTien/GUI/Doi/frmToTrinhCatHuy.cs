@@ -47,56 +47,92 @@ namespace ThuTien.GUI.Doi
                     }
                 if (exist == false)
                 {
-                    DataTable dt = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
-                    string Ky = "";
-                    int TongCongSo = 0;
-                    int TieuThu = 0;
-                    foreach (DataRow item in dt.Rows)
+                    //DataTable dt = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
+                    //string Ky = "";
+                    //int TongCongSo = 0;
+                    //int TieuThu = 0;
+                    //foreach (DataRow item in dt.Rows)
+                    //{
+                    //    if (Ky == "")
+                    //        Ky += item["Ky"];
+                    //    else
+                    //        Ky += ", " + item["Ky"];
+                    //    TongCongSo += int.Parse(item["TongCong"].ToString());
+                    //    TieuThu += int.Parse(item["TieuThu"].ToString());
+                    //}
+
+                    //if (dt.Rows.Count > 0)
+                    //{
+                        //if (dgvCTToTrinh.DataSource == null)
+                        //{
+                        //    dgvCTToTrinh.Rows.Add();
+
+                        //    dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DanhBo"].ToString();
+                        //    dgvCTToTrinh["MLT", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["MLT"].ToString();
+                        //    dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["HoTen"].ToString();
+                        //    dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DiaChi"].ToString();
+                        //    dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
+                        //    dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
+                        //    dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
+                        //    dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
+                        //}
+                        //else
+                        //{
+                        //    DataTable dtTemp = (DataTable)dgvCTToTrinh.DataSource;
+
+                        //    DataRow dr = dtTemp.NewRow();
+
+                        //    dr["DanhBo"] = dt.Rows[0]["DanhBo"].ToString();
+                        //    dr["MLT"] = dt.Rows[0]["MLT"].ToString();
+                        //    dr["HoTen"] = dt.Rows[0]["HoTen"].ToString();
+                        //    dr["DiaChi"] = dt.Rows[0]["DiaChi"].ToString();
+                        //    dr["Ky"] = Ky;
+                        //    dr["TongCong"] = TongCongSo;
+                        //    dr["TieuThu"] = TieuThu;
+                        //    dr["CoDHN"] = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
+
+                        //    dtTemp.Rows.Add(dr);
+                        //    dtTemp.AcceptChanges();
+
+                        //    dgvCTToTrinh.DataSource = dtTemp;
+                        //}
+                    //}
+
+                    HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim());
+                    if (dgvCTToTrinh.DataSource == null)
                     {
-                        if (Ky == "")
-                            Ky += item["Ky"];
-                        else
-                            Ky += ", " + item["Ky"];
-                        TongCongSo += int.Parse(item["TongCong"].ToString());
-                        TieuThu += int.Parse(item["TieuThu"].ToString());
+                        dgvCTToTrinh.Rows.Add();
+
+                        dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = hoadon.DANHBA;
+                        dgvCTToTrinh["MLT", dgvCTToTrinh.Rows.Count - 1].Value = hoadon.MALOTRINH;
+                        dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = hoadon.TENKH;
+                        dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = hoadon.SO + " " + hoadon.DUONG;
+                        //dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
+                        //dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
+                        //dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
+                        dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = _cCapNuocTanHoa.GetCoDHN(hoadon.DANHBA);
+                    }
+                    else
+                    {
+                        DataTable dtTemp = (DataTable)dgvCTToTrinh.DataSource;
+
+                        DataRow dr = dtTemp.NewRow();
+
+                        dr["DanhBo"] = hoadon.DANHBA;
+                        dr["MLT"] = hoadon.MALOTRINH;
+                        dr["HoTen"] = hoadon.TENKH;
+                        dr["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
+                        //dr["Ky"] = Ky;
+                        //dr["TongCong"] = TongCongSo;
+                        //dr["TieuThu"] = TieuThu;
+                        dr["CoDHN"] = _cCapNuocTanHoa.GetCoDHN(hoadon.DANHBA);
+
+                        dtTemp.Rows.Add(dr);
+                        dtTemp.AcceptChanges();
+
+                        dgvCTToTrinh.DataSource = dtTemp;
                     }
 
-                    if (dt.Rows.Count > 0)
-                    {
-                        if (dgvCTToTrinh.DataSource == null)
-                        {
-                            dgvCTToTrinh.Rows.Add();
-
-                            dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DanhBo"].ToString();
-                            dgvCTToTrinh["MLT", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["MLT"].ToString();
-                            dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["HoTen"].ToString();
-                            dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = dt.Rows[0]["DiaChi"].ToString();
-                            dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
-                            dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
-                            dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
-                            dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
-                        }
-                        else
-                        {
-                            DataTable dtTemp = (DataTable)dgvCTToTrinh.DataSource;
-
-                            DataRow dr = dtTemp.NewRow();
-
-                            dr["DanhBo"] = dt.Rows[0]["DanhBo"].ToString();
-                            dr["MLT"] = dt.Rows[0]["MLT"].ToString();
-                            dr["HoTen"] = dt.Rows[0]["HoTen"].ToString();
-                            dr["DiaChi"] = dt.Rows[0]["DiaChi"].ToString();
-                            dr["Ky"] = Ky;
-                            dr["TongCong"] = TongCongSo;
-                            dr["TieuThu"] = TieuThu;
-                            dr["CoDHN"] = _cCapNuocTanHoa.GetCoDHN(dt.Rows[0]["DanhBo"].ToString());
-
-                            dtTemp.Rows.Add(dr);
-                            dtTemp.AcceptChanges();
-
-                            dgvCTToTrinh.DataSource = dtTemp;
-                        }
-                    }
                     txtDanhBo.Text = "";
                 }
             }
@@ -120,8 +156,8 @@ namespace ThuTien.GUI.Doi
                     {
                         //_cToTrinhCatHuy.BeginTransaction();
                         TT_ToTrinhCatHuy totrinh;
-                        if(dgvCTToTrinh.DataSource==null)
-                         totrinh= new TT_ToTrinhCatHuy();
+                        if (dgvCTToTrinh.DataSource == null)
+                            totrinh = new TT_ToTrinhCatHuy();
                         else
                             totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvCTToTrinh["MaTT_CT", 0].Value.ToString()));
                         int MaCTTT = _cToTrinhCatHuy.GetMaxMaCTTT();
@@ -136,9 +172,9 @@ namespace ThuTien.GUI.Doi
                                 cttotrinh.CoDHN = int.Parse(item.Cells["CoDHN"].Value.ToString());
                                 cttotrinh.HoTen = item.Cells["HoTen"].Value.ToString();
                                 cttotrinh.DiaChi = item.Cells["DiaChi"].Value.ToString();
-                                cttotrinh.Ky = item.Cells["Ky"].Value.ToString();
-                                cttotrinh.TongCong = int.Parse(item.Cells["TongCong"].Value.ToString());
-                                cttotrinh.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
+                                //cttotrinh.Ky = item.Cells["Ky"].Value.ToString();
+                                //cttotrinh.TongCong = int.Parse(item.Cells["TongCong"].Value.ToString());
+                                //cttotrinh.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
                                 if (item.Cells["GhiChu"].Value != null)
                                     cttotrinh.GhiChu = item.Cells["GhiChu"].Value.ToString();
                                 cttotrinh.CreateBy = CNguoiDung.MaND;
@@ -148,17 +184,17 @@ namespace ThuTien.GUI.Doi
                             }
 
                         if (dgvCTToTrinh.DataSource == null)
-                        if (_cToTrinhCatHuy.ThemTT(totrinh))
-                        {
-                            //_cToTrinhCatHuy.CommitTransaction();
-                            btnXem.PerformClick();
-                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            //_cToTrinhCatHuy.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                            if (_cToTrinhCatHuy.ThemTT(totrinh))
+                            {
+                                //_cToTrinhCatHuy.CommitTransaction();
+                                btnXem.PerformClick();
+                                MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                //_cToTrinhCatHuy.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         else
                             if (_cToTrinhCatHuy.SuaTT(totrinh))
                             {
@@ -201,9 +237,9 @@ namespace ThuTien.GUI.Doi
                             }
                         }
                         ///xóa tờ trình nếu hết chi tiết
-                        if(_cToTrinhCatHuy.CountCTTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString()))==0)
+                        if (_cToTrinhCatHuy.CountCTTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString())) == 0)
                         {
-                            TT_ToTrinhCatHuy totrinh=_cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString()));
+                            TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh.SelectedRows[0].Cells["MaTT"].Value.ToString()));
                             _cToTrinhCatHuy.XoaTT(totrinh);
                         }
 
@@ -216,7 +252,7 @@ namespace ThuTien.GUI.Doi
                         //_cToTrinhCatHuy.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
+
                 }
             }
             else
@@ -227,22 +263,55 @@ namespace ThuTien.GUI.Doi
         {
             dsBaoCao ds = new dsBaoCao();
 
-            foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
-            {
-                DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
-                dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 2, "-");
-                dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
-                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                dr["MLT"] = item.Cells["MLT"].Value;
-                dr["CoDHN"] = item.Cells["CoDHN"].Value;
-                dr["HoTen"] = item.Cells["HoTen"].Value;
-                dr["DiaChi"] = item.Cells["DiaChi"].Value;
-                dr["Ky"] = item.Cells["Ky"].Value;
-                dr["TongCong"] = item.Cells["TongCong"].Value;
-                dr["TieuThu"] = item.Cells["TieuThu"].Value;
-                dr["GhiChu"] = item.Cells["GhiChu"].Value;
-                ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
-            }
+            if(!bool.Parse(dgvToTrinh.SelectedRows[0].Cells["Khoa"].Value.ToString()))
+                foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
+                {
+                    DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
+                    dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 2, "-");
+                    dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["CoDHN"] = item.Cells["CoDHN"].Value;
+                    dr["HoTen"] = item.Cells["HoTen"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
+
+                    DataTable dt = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.Cells["DanhBo"].Value.ToString());
+                    string Ky = "";
+                    int TongCongSo = 0;
+                    int TieuThu = 0;
+                    foreach (DataRow itemTon in dt.Rows)
+                    {
+                        if (Ky == "")
+                            Ky += itemTon["Ky"];
+                        else
+                            Ky += ", " + itemTon["Ky"];
+                        TongCongSo += int.Parse(itemTon["TongCong"].ToString());
+                        TieuThu += int.Parse(itemTon["TieuThu"].ToString());
+                    }
+
+                    dr["Ky"] = Ky;
+                    dr["TongCong"] = TongCongSo;
+                    dr["TieuThu"] = TieuThu;
+                    dr["GhiChu"] = item.Cells["GhiChu"].Value;
+                    ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
+                }
+            else
+                foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
+                {
+                    DataRow dr = ds.Tables["ToTrinhCatHuy"].NewRow();
+                    dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 2, "-");
+                    dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["CoDHN"] = item.Cells["CoDHN"].Value;
+                    dr["HoTen"] = item.Cells["HoTen"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                    dr["Ky"] = item.Cells["Ky"].Value;
+                    dr["TongCong"] = item.Cells["TongCong"].Value;
+                    dr["TieuThu"] = item.Cells["TieuThu"].Value;
+                    dr["GhiChu"] = item.Cells["GhiChu"].Value;
+                    ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
+                }
 
             rptToTrinhCatHuy rpt = new rptToTrinhCatHuy();
             rpt.SetDataSource(ds);
@@ -304,6 +373,41 @@ namespace ThuTien.GUI.Doi
                 TT_CTToTrinhCatHuy cttotrinh = _cToTrinhCatHuy.GetCT(int.Parse(dgvCTToTrinh["MaCTTT",e.RowIndex].Value.ToString()));
                 cttotrinh.GhiChu = dgvCTToTrinh["GhiChu", e.RowIndex].Value.ToString();
                 _cToTrinhCatHuy.SuaCTTT(cttotrinh);
+            }
+        }
+
+        private void dgvToTrinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvToTrinh.Columns[e.ColumnIndex].Name == "Khoa")
+            {
+                List<TT_CTToTrinhCatHuy> lst = _cToTrinhCatHuy.GetListCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+
+                foreach (TT_CTToTrinhCatHuy item in lst)
+                {
+                    DataTable dtTon = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.DanhBo);
+                    string Ky = "";
+                    int TongCongSo = 0;
+                    int TieuThu = 0;
+                    foreach (DataRow itemTon in dtTon.Rows)
+                    {
+                        if (Ky == "")
+                            Ky += itemTon["Ky"];
+                        else
+                            Ky += ", " + itemTon["Ky"];
+                        TongCongSo += int.Parse(itemTon["TongCong"].ToString());
+                        TieuThu += int.Parse(itemTon["TieuThu"].ToString());
+                    }
+
+                    item.Ky = Ky;
+                    item.TongCong = TongCongSo;
+                    item.TieuThu = TieuThu;
+
+                    _cToTrinhCatHuy.SuaCTTT(item);
+                }
+
+                TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+                totrinh.Khoa = bool.Parse(dgvToTrinh["Khoa", e.RowIndex].Value.ToString());
+                _cToTrinhCatHuy.SuaTT(totrinh);
             }
         }
 

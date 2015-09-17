@@ -479,7 +479,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 oSheets = oBook.Worksheets;
                 oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                XuatExcel(dt, oSheet, "TƯ GIA");
+                XuatExcel(dt, oSheet, "ĐĂNG NGÂN TƯ GIA");
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
@@ -505,7 +505,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     oSheets = oBook.Worksheets;
                     oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                    XuatExcel(dt, oSheet, "CƠ QUAN");
+                    XuatExcel(dt, oSheet, "ĐĂNG NGÂN CƠ QUAN");
                 }
         }
 
@@ -557,9 +557,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl11.Value2 = "Tổ";
             cl11.ColumnWidth = 5;
 
+            Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
+            cl12.Value2 = "Ngân Hàng";
+            cl12.ColumnWidth = 20;
+
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 11];
+            object[,] arr = new object[dt.Rows.Count, 12];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -577,6 +581,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 8] = dr["TongCong"].ToString();
                 arr[i, 9] = dr["HanhThu"].ToString();
                 arr[i, 10] = dr["To"].ToString();
+                arr[i, 11] = _cTamThu.GetTenNganHang(dr["SoHoaDon"].ToString());
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -584,7 +589,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 11;
+            int columnEnd = 12;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
@@ -750,7 +755,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-                    if (!_cTamThu.CheckExist(item.Cells["DanhBo_TG"].Value.ToString(), true))
+                    if (!_cTamThu.CheckExist(item.Cells["SoHoaDon_TG"].Value.ToString(), true))
                     {
                         DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                         dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
@@ -763,13 +768,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["NhanVien"] = item.Cells["HanhThu_TG"].Value.ToString();
                         dr["To"] = item.Cells["To_TG"].Value.ToString();
                         dr["Loai"] = "TG";
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                     }
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-                        if (!_cTamThu.CheckExist(item.Cells["DanhBo_CQ"].Value.ToString(), true))
+                        if (!_cTamThu.CheckExist(item.Cells["SoHoaDon_CQ"].Value.ToString(), true))
                         {
                             DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                             dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");

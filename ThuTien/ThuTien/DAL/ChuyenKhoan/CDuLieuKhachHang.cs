@@ -103,7 +103,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             //         + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT="+Dot+") dlkhHD on dlkhHD.DANHBA=dlkhDB.DanhBo";
             string sql = "select dlkhDB.DanhBo,HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
-                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and ChuyenNoKhoDoi=0 and DOT=" + Dot
+                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT=" + Dot + " and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by dlkhDB.DanhBo,KY asc";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -113,7 +113,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             string sql = "select dlkhDB.DanhBo,HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
-                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and ChuyenNoKhoDoi=0"
+                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by dlkhDB.DanhBo,KY asc";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
@@ -122,7 +122,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_DanhBos
                         join itemHD in _db.HOADONs on itemDLKH.DanhBo equals itemHD.DANHBA
-                        where itemHD.NGAYGIAITRACH == null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.ChuyenNoKhoDoi == false
+                        where itemHD.NGAYGIAITRACH == null && itemHD.NAM == Nam && itemHD.KY == Ky
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
@@ -225,7 +225,8 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
                         join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
-                        join itemDLKHDB in _db.TT_DuLieuKhachHang_DanhBos on itemHD.DANHBA equals itemDLKHDB.DanhBo
+                        join itemDLKHDB in _db.TT_DuLieuKhachHang_DanhBos on itemHD.DANHBA equals itemDLKHDB.DanhBo into tableDLHKDB
+                        from itemtableDLHKDB in tableDLHKDB.DefaultIfEmpty()
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date
@@ -233,20 +234,73 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
                             MLT = itemHD.MALOTRINH,
                             itemHD.KY,
                             itemHD.NAM,
                             itemHD.DOT,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
+                            GiaBieu=itemHD.GB,
                             itemHD.TIEUTHU,
                             itemHD.GIABAN,
                             ThueGTGT = itemHD.THUE,
                             PhiBVMT = itemHD.PHI,
                             itemHD.TONGCONG,
-                            itemDLKHDB.SoTaiKhoan,
+                            itemtableDLHKDB.SoTaiKhoan,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetTongQuet(int MaTo, DateTime CreateDate1, DateTime CreateDate2)
+        {
+            var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
+                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        && itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date
+                        group itemHD by itemDLKH.CreateDate.Value.Date into itemGroup
+                        select new
+                        {
+                            Ngay = itemGroup.Key.Day + "/" + itemGroup.Key.Month,
+                            TongHD = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetTongQuetDangNgan(int MaTo, DateTime CreateDate1, DateTime CreateDate2)
+        {
+            var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
+                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        && itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date && itemHD.NGAYGIAITRACH!=null
+                        group itemHD by itemDLKH.CreateDate.Value.Date into itemGroup
+                        select new
+                        {
+                            Ngay = itemGroup.Key.Day + "/" + itemGroup.Key.Month,
+                            TongHD = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetTongQuetTon(int MaTo, DateTime CreateDate1, DateTime CreateDate2)
+        {
+            var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
+                        join itemHD in _db.HOADONs on itemDLKH.SoHoaDon equals itemHD.SOHOADON
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        && itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date && itemHD.NGAYGIAITRACH == null
+                        group itemHD by itemDLKH.CreateDate.Value.Date into itemGroup
+                        select new
+                        {
+                            Ngay = itemGroup.Key.Day + "/" + itemGroup.Key.Month,
+                            TongHD = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
                         };
             return LINQToDataTable(query);
         }

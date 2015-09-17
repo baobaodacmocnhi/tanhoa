@@ -510,7 +510,7 @@
             // SoHoaDon_TG
             // 
             this.SoHoaDon_TG.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_TG.HeaderText = "Số HĐ";
+            this.SoHoaDon_TG.HeaderText = "Số Hóa Đơn";
             this.SoHoaDon_TG.Name = "SoHoaDon_TG";
             this.SoHoaDon_TG.ReadOnly = true;
             // 
@@ -623,7 +623,7 @@
             // SoHoaDon_CQ
             // 
             this.SoHoaDon_CQ.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_CQ.HeaderText = "Số HĐ";
+            this.SoHoaDon_CQ.HeaderText = "Số Hóa Đơn";
             this.SoHoaDon_CQ.Name = "SoHoaDon_CQ";
             this.SoHoaDon_CQ.ReadOnly = true;
             // 

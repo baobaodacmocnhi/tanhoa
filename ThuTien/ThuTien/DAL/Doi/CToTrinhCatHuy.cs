@@ -116,6 +116,11 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public List<TT_CTToTrinhCatHuy> GetListCTTT(decimal MaTT)
+        {
+            return _db.TT_CTToTrinhCatHuys.Where(item => item.MaTT == MaTT).ToList();
+        }
+
         public DataTable GetDSCTTT(decimal MaTT)
         {
             return LINQToDataTable(_db.TT_CTToTrinhCatHuys.Where(item => item.MaTT == MaTT).ToList());

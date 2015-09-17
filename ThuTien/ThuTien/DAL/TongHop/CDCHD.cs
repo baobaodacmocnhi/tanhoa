@@ -105,6 +105,11 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
+        public DIEUCHINH_HD Get(string SoHoaDon)
+        {
+            return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+        }
+
         public List<DIEUCHINH_HD> GetDS()
         {
             return _db.DIEUCHINH_HDs.ToList();
@@ -1202,7 +1207,7 @@ namespace ThuTien.DAL.TongHop
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
+                        where itemHD.ChuyenNoKhoDoi==false && itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
                         select new
                         {
                             NgayDC = itemDC.NGAY_DC,

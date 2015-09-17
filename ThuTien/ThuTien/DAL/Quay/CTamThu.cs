@@ -207,5 +207,13 @@ namespace ThuTien.DAL.Quay
                 return getMaxNextIDTable(SoPhieu);
             }
         }
+
+        public string GetTenNganHang(string SoHoaDon)
+        {
+            if (_db.TAMTHUs.Any(itemTT => itemTT.SoHoaDon == SoHoaDon && itemTT.MaNH != null))
+                return _db.NGANHANGs.SingleOrDefault(item => item.ID_NGANHANG == _db.TAMTHUs.SingleOrDefault(itemTT => itemTT.SoHoaDon == SoHoaDon && itemTT.MaNH != null).MaNH).NGANHANG1;
+            else
+                return "";
+        }
     }
 }

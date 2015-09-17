@@ -211,6 +211,14 @@ namespace ThuTien.GUI.TimKiem
             dgvLenhHuy.DataSource = _cLenhHuy.GetTinhTrangMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
             dgvLenhHuy.Visible = true;
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtDanhBo.Text = "";
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtDanhBo.Focus();
+        }
         
     }
 }

@@ -295,16 +295,6 @@
       <Association Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy" Member="TT_ToTrinhCatHuy" ThisKey="MaTT" OtherKey="MaTT" Type="TT_ToTrinhCatHuy" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_ToTrinhCatHuy" Member="TT_ToTrinhCatHuys">
-    <Type Name="TT_ToTrinhCatHuy">
-      <Column Name="MaTT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy" Member="TT_CTToTrinhCatHuys" ThisKey="MaTT" OtherKey="MaTT" Type="TT_CTToTrinhCatHuy" />
-    </Type>
-  </Table>
   <Table Name="dbo.TT_TraGop" Member="TT_TraGops">
     <Type Name="TT_TraGop">
       <Column Name="MaTG" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -695,6 +685,17 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TT_DongNuoc_TT_KQDongNuoc" Member="TT_DongNuoc" ThisKey="MaDN" OtherKey="MaDN" Type="TT_DongNuoc" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_ToTrinhCatHuy" Member="TT_ToTrinhCatHuys">
+    <Type Name="TT_ToTrinhCatHuy">
+      <Column Name="MaTT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Khoa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy" Member="TT_CTToTrinhCatHuys" ThisKey="MaTT" OtherKey="MaTT" Type="TT_CTToTrinhCatHuy" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

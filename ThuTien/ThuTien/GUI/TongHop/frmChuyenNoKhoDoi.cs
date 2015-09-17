@@ -23,6 +23,7 @@ namespace ThuTien.GUI.TongHop
         CHoaDon _cHoaDon = new CHoaDon();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmChuyenNoKhoDoi()
         {
@@ -195,7 +196,13 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cCNKD.GetDSCT(dateTu.Value,dateDen.Value);
+            dgvHoaDon.DataSource = _cCNKD.GetDSCT(dateTu.Value, dateDen.Value);
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if (_cDCHD.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                {
+                    DIEUCHINH_HD dchd = _cDCHD.Get(item.Cells["SoHoaDon"].Value.ToString());
+                    item.Cells["TongCong"].Value = dchd.TONGCONG_BD;
+                }
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -244,9 +251,19 @@ namespace ThuTien.GUI.TongHop
                     dr["Ky"] = item["Ky"];
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["TieuThu"] = item["TieuThu"];
-                    dr["GiaBan"] = item["GiaBan"];
-                    dr["ThueGTGT"] = item["ThueGTGT"];
-                    dr["PhiBVMT"] = item["PhiBVMT"];
+                    if (_cDCHD.CheckExist(item["SoHoaDon"].ToString()))
+                    {
+                        DIEUCHINH_HD dchd = _cDCHD.Get(item["SoHoaDon"].ToString());
+                        dr["GiaBan"] = dchd.GIABAN_BD;
+                        dr["ThueGTGT"] = dchd.THUE_BD;
+                        dr["PhiBVMT"] = dchd.PHI_BD;
+                    }
+                    else
+                    {
+                        dr["GiaBan"] = item["GiaBan"];
+                        dr["ThueGTGT"] = item["ThueGTGT"];
+                        dr["PhiBVMT"] = item["PhiBVMT"];
+                    }
                     ds.Tables["TongHopNo"].Rows.Add(dr);
                 }
 

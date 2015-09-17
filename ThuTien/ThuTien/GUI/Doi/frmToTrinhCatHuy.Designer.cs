@@ -39,8 +39,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvToTrinh = new System.Windows.Forms.DataGridView();
-            this.MaTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCTToTrinh = new System.Windows.Forms.DataGridView();
             this.MaTT_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +55,9 @@
             this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
+            this.MaTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Khoa = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -66,7 +67,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(301, 15);
+            this.label1.Location = new System.Drawing.Point(349, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 0;
@@ -74,7 +75,7 @@
             // 
             // txtDanhBo
             // 
-            this.txtDanhBo.Location = new System.Drawing.Point(359, 12);
+            this.txtDanhBo.Location = new System.Drawing.Point(407, 12);
             this.txtDanhBo.Name = "txtDanhBo";
             this.txtDanhBo.Size = new System.Drawing.Size(100, 20);
             this.txtDanhBo.TabIndex = 1;
@@ -82,7 +83,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(593, 10);
+            this.btnThem.Location = new System.Drawing.Point(641, 10);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 4;
@@ -92,7 +93,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(755, 10);
+            this.btnIn.Location = new System.Drawing.Point(803, 10);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 6;
@@ -102,7 +103,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(674, 10);
+            this.btnXoa.Location = new System.Drawing.Point(722, 10);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 5;
@@ -115,7 +116,7 @@
             this.groupBox1.Controls.Add(this.dgvToTrinh);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 229);
+            this.groupBox1.Size = new System.Drawing.Size(327, 229);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Tờ Trình";
@@ -135,35 +136,25 @@
             this.dgvToTrinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvToTrinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTT,
-            this.CreateDate});
+            this.CreateDate,
+            this.Khoa});
             this.dgvToTrinh.Location = new System.Drawing.Point(6, 19);
             this.dgvToTrinh.MultiSelect = false;
             this.dgvToTrinh.Name = "dgvToTrinh";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvToTrinh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvToTrinh.Size = new System.Drawing.Size(266, 200);
+            this.dgvToTrinh.Size = new System.Drawing.Size(315, 200);
             this.dgvToTrinh.TabIndex = 0;
             this.dgvToTrinh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellContentClick);
+            this.dgvToTrinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellEndEdit);
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
-            // 
-            // MaTT
-            // 
-            this.MaTT.DataPropertyName = "MaTT";
-            this.MaTT.HeaderText = "Mã Tờ Trình";
-            this.MaTT.Name = "MaTT";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvCTToTrinh);
-            this.groupBox2.Location = new System.Drawing.Point(297, 39);
+            this.groupBox2.Location = new System.Drawing.Point(345, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(925, 590);
             this.groupBox2.TabIndex = 8;
@@ -292,7 +283,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(465, 15);
+            this.label2.Location = new System.Drawing.Point(513, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 2;
@@ -300,7 +291,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(512, 10);
+            this.btnXem.Location = new System.Drawing.Point(560, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 3;
@@ -308,11 +299,30 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // MaTT
+            // 
+            this.MaTT.DataPropertyName = "MaTT";
+            this.MaTT.HeaderText = "Mã Tờ Trình";
+            this.MaTT.Name = "MaTT";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // Khoa
+            // 
+            this.Khoa.DataPropertyName = "Khoa";
+            this.Khoa.HeaderText = "Khóa";
+            this.Khoa.Name = "Khoa";
+            this.Khoa.Width = 50;
+            // 
             // frmToTrinhCatHuy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1234, 668);
+            this.ClientSize = new System.Drawing.Size(1277, 668);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
@@ -344,8 +354,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvToTrinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaTT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridView dgvCTToTrinh;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnXem;
@@ -361,5 +369,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_CT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Khoa;
     }
 }

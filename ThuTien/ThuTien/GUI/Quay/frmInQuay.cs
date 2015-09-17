@@ -33,18 +33,22 @@ namespace ThuTien.GUI.Quay
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == DialogResult.OK)
-            {
-                printDialog.AllowSomePages = true;
-                printDialog.ShowHelp = true;
+            //PrintDialog printDialog = new PrintDialog();
+            //if (printDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    printDialog.AllowSomePages = true;
+            //    printDialog.ShowHelp = true;
 
-                _rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-                _rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                _rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                _rpt.PrintToPrinter(1, false, 1, 1);
-
-            }
+            //    _rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+            //    _rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+            //    _rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+            //    _rpt.PrintToPrinter(1, false, 1, 1);
+            //}
+            System.Drawing.Printing.PrinterSettings settings = new System.Drawing.Printing.PrinterSettings();
+            _rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+            _rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+            _rpt.PrintOptions.PrinterName = settings.PrinterName;
+            _rpt.PrintToPrinter(1, false, 1, 1);
         }
 
         private void timer_Tick(object sender, EventArgs e)

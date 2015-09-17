@@ -168,6 +168,7 @@ namespace ThuTien.DAL.TongHop
                         select new
                         {
                             itemCT.MaCNKD,
+                            itemCT.SoHoaDon,
                             Ky=itemHD.KY+"/"+itemHD.NAM,
                             itemHD.SOPHATHANH,
                             itemHD.TIEUTHU,

@@ -2021,7 +2021,7 @@ namespace ThuTien.DAL.Doi
                 var query = from item in _db.HOADONs
                             where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                && item.NAM == Nam && item.KY == Ky && item.ChuyenNoKhoDoi==false &&item.GB >= 11 && item.GB <= 20
+                                && item.NAM == Nam && item.KY == Ky &&item.GB >= 11 && item.GB <= 20
                             orderby MaTo ascending
                             group item by MaTo into itemGroup
                             select new
@@ -2046,7 +2046,7 @@ namespace ThuTien.DAL.Doi
                     var query = from item in _db.HOADONs
                                 where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && item.NAM == Nam && item.KY == Ky && item.ChuyenNoKhoDoi == false && item.GB > 20
+                                    && item.NAM == Nam && item.KY == Ky && item.GB > 20
                                 orderby MaTo ascending
                                 group item by MaTo into itemGroup
                                 select new
@@ -2075,7 +2075,7 @@ namespace ThuTien.DAL.Doi
                 var query = from item in _db.HOADONs
                             where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.ChuyenNoKhoDoi == false && item.GB >= 11 && item.GB <= 20
+                                && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.GB >= 11 && item.GB <= 20
                             orderby MaTo ascending
                             group item by MaTo into itemGroup
                             select new
@@ -2100,7 +2100,7 @@ namespace ThuTien.DAL.Doi
                     var query = from item in _db.HOADONs
                                 where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.ChuyenNoKhoDoi == false && item.GB > 20
+                                    && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.GB > 20
                                 orderby MaTo ascending
                                 group item by MaTo into itemGroup
                                 select new
@@ -2129,7 +2129,7 @@ namespace ThuTien.DAL.Doi
                 var query = from item in _db.HOADONs
                             where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                && item.NAM == Nam && item.ChuyenNoKhoDoi == false && item.GB >= 11 && item.GB <= 20
+                                && item.NAM == Nam && item.GB >= 11 && item.GB <= 20
                             orderby MaTo ascending
                             group item by MaTo into itemGroup
                             select new
@@ -2154,7 +2154,7 @@ namespace ThuTien.DAL.Doi
                     var query = from item in _db.HOADONs
                                 where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                                    && item.NAM == Nam && item.ChuyenNoKhoDoi == false && item.GB > 20
+                                    && item.NAM == Nam && item.GB > 20
                                 orderby MaTo ascending
                                 group item by MaTo into itemGroup
                                 select new
@@ -2269,7 +2269,7 @@ namespace ThuTien.DAL.Doi
             var query = from item in _db.HOADONs
                         where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.ChuyenNoKhoDoi == false
+                            && item.NAM == Nam && item.KY == Ky && item.DOT == Dot
                         orderby MaTo ascending
                         group item by MaTo into itemGroup
                         select new
@@ -4102,7 +4102,7 @@ namespace ThuTien.DAL.Doi
         public DataTable GetDSTon()
         {
             var query = from item in _db.HOADONs
-                        where item.NGAYGIAITRACH == null && item.ChuyenNoKhoDoi==false
+                        where item.NGAYGIAITRACH == null
                         select new
                         {
                             item.SOHOADON,
@@ -4121,7 +4121,36 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.ChuyenNoKhoDoi == false
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSTonByDanhBo_ExceptHD0(string DanhBo)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.TONGCONG != 0
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
@@ -4150,7 +4179,7 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.SOHOADON == SoHoaDon && itemHD.NGAYGIAITRACH == null && itemHD.ChuyenNoKhoDoi == false
+                        where itemHD.SOHOADON == SoHoaDon && itemHD.NGAYGIAITRACH == null
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
@@ -4613,6 +4642,7 @@ namespace ThuTien.DAL.Doi
                             {
                                 itemHD.NGAYGIAITRACH,
                                 itemHD.SOHOADON,
+                                itemHD.SOPHATHANH,
                                 Ky = itemHD.KY + "/" + itemHD.NAM,
                                 MLT = itemHD.MALOTRINH,
                                 DanhBo = itemHD.DANHBA,
@@ -4638,6 +4668,7 @@ namespace ThuTien.DAL.Doi
                                 {
                                     itemHD.NGAYGIAITRACH,
                                     itemHD.SOHOADON,
+                                    itemHD.SOPHATHANH,
                                     Ky = itemHD.KY + "/" + itemHD.NAM,
                                     MLT = itemHD.MALOTRINH,
                                     DanhBo = itemHD.DANHBA,
@@ -4674,9 +4705,9 @@ namespace ThuTien.DAL.Doi
                                 HoTen = itemHD.TENKH,
                                 DiaChi = itemHD.SO + " " + itemHD.DUONG,
                                 itemHD.TIEUTHU,
-                                itemHD.GIABAN,
-                                ThueGTGT = itemHD.THUE,
-                                PhiBVMT = itemHD.PHI,
+                                //itemHD.GIABAN,
+                                //ThueGTGT = itemHD.THUE,
+                                //PhiBVMT = itemHD.PHI,
                                 itemHD.TONGCONG,
                                 HanhThu = itemtableND.HoTen,
                             };
@@ -4700,9 +4731,9 @@ namespace ThuTien.DAL.Doi
                                     HoTen = itemHD.TENKH,
                                     DiaChi = itemHD.SO + " " + itemHD.DUONG,
                                     itemHD.TIEUTHU,
-                                    itemHD.GIABAN,
-                                    ThueGTGT = itemHD.THUE,
-                                    PhiBVMT = itemHD.PHI,
+                                    //itemHD.GIABAN,
+                                    //ThueGTGT = itemHD.THUE,
+                                    //PhiBVMT = itemHD.PHI,
                                     itemHD.TONGCONG,
                                     HanhThu = itemtableND.HoTen,
                                 };
@@ -4730,9 +4761,9 @@ namespace ThuTien.DAL.Doi
                                 HoTen = itemHD.TENKH,
                                 DiaChi = itemHD.SO + " " + itemHD.DUONG,
                                 itemHD.TIEUTHU,
-                                itemHD.GIABAN,
-                                ThueGTGT = itemHD.THUE,
-                                PhiBVMT = itemHD.PHI,
+                                //itemHD.GIABAN,
+                                //ThueGTGT = itemHD.THUE,
+                                //PhiBVMT = itemHD.PHI,
                                 itemHD.TONGCONG,
                                 HanhThu = itemtableND.HoTen,
                             };
@@ -4756,9 +4787,9 @@ namespace ThuTien.DAL.Doi
                                     HoTen = itemHD.TENKH,
                                     DiaChi = itemHD.SO + " " + itemHD.DUONG,
                                     itemHD.TIEUTHU,
-                                    itemHD.GIABAN,
-                                    ThueGTGT = itemHD.THUE,
-                                    PhiBVMT = itemHD.PHI,
+                                    //itemHD.GIABAN,
+                                    //ThueGTGT = itemHD.THUE,
+                                    //PhiBVMT = itemHD.PHI,
                                     itemHD.TONGCONG,
                                     HanhThu = itemtableND.HoTen,
                                 };
@@ -4796,9 +4827,9 @@ namespace ThuTien.DAL.Doi
                                 HoTen = itemHD.TENKH,
                                 DiaChi = itemHD.SO + " " + itemHD.DUONG,
                                 itemHD.TIEUTHU,
-                                itemHD.GIABAN,
-                                ThueGTGT = itemHD.THUE,
-                                PhiBVMT = itemHD.PHI,
+                                //itemHD.GIABAN,
+                                //ThueGTGT = itemHD.THUE,
+                                //PhiBVMT = itemHD.PHI,
                                 itemHD.TONGCONG,
                                 HanhThu = itemtableND.HoTen,
                             };
@@ -4822,9 +4853,9 @@ namespace ThuTien.DAL.Doi
                                     HoTen = itemHD.TENKH,
                                     DiaChi = itemHD.SO + " " + itemHD.DUONG,
                                     itemHD.TIEUTHU,
-                                    itemHD.GIABAN,
-                                    ThueGTGT = itemHD.THUE,
-                                    PhiBVMT = itemHD.PHI,
+                                    //itemHD.GIABAN,
+                                    //ThueGTGT = itemHD.THUE,
+                                    //PhiBVMT = itemHD.PHI,
                                     itemHD.TONGCONG,
                                     HanhThu = itemtableND.HoTen,
                                 };
@@ -4850,11 +4881,12 @@ namespace ThuTien.DAL.Doi
                                 Ky = item.KY + "/" + item.NAM,
                                 DanhBo = item.DANHBA,
                                 HoTen=item.TENKH,
+                                DiaChi=item.SO+ " "+item.DUONG,
                                 MLT=item.MALOTRINH,
                                 item.TIEUTHU,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
+                                //item.GIABAN,
+                                //ThueGTGT = item.THUE,
+                                //PhiBVMT = item.PHI,
                                 item.TONGCONG,
                                 To=itemtableND.TT_To.TenTo,
                                 HanhThu=itemtableND.HoTen,
@@ -4877,11 +4909,12 @@ namespace ThuTien.DAL.Doi
                                     Ky = item.KY + "/" + item.NAM,
                                     DanhBo = item.DANHBA,
                                     HoTen = item.TENKH,
+                                    DiaChi = item.SO + " " + item.DUONG,
                                     MLT = item.MALOTRINH,
                                     item.TIEUTHU,
-                                    item.GIABAN,
-                                    ThueGTGT = item.THUE,
-                                    PhiBVMT = item.PHI,
+                                    //item.GIABAN,
+                                    //ThueGTGT = item.THUE,
+                                    //PhiBVMT = item.PHI,
                                     item.TONGCONG,
                                     To = itemtableND.TT_To.TenTo,
                                     HanhThu = itemtableND.HoTen,
@@ -4908,11 +4941,12 @@ namespace ThuTien.DAL.Doi
                                 Ky = item.KY + "/" + item.NAM,
                                 DanhBo = item.DANHBA,
                                 HoTen = item.TENKH,
+                                DiaChi = item.SO + " " + item.DUONG,
                                 MLT = item.MALOTRINH,
                                 item.TIEUTHU,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
+                                //item.GIABAN,
+                                //ThueGTGT = item.THUE,
+                                //PhiBVMT = item.PHI,
                                 item.TONGCONG,
                                 To = itemtableND.TT_To.TenTo,
                                 HanhThu = itemtableND.HoTen,
@@ -4935,11 +4969,12 @@ namespace ThuTien.DAL.Doi
                                     Ky = item.KY + "/" + item.NAM,
                                     DanhBo = item.DANHBA,
                                     HoTen = item.TENKH,
+                                    DiaChi = item.SO + " " + item.DUONG,
                                     MLT = item.MALOTRINH,
                                     item.TIEUTHU,
-                                    item.GIABAN,
-                                    ThueGTGT = item.THUE,
-                                    PhiBVMT = item.PHI,
+                                    //item.GIABAN,
+                                    //ThueGTGT = item.THUE,
+                                    //PhiBVMT = item.PHI,
                                     item.TONGCONG,
                                     To = itemtableND.TT_To.TenTo,
                                     HanhThu = itemtableND.HoTen,
@@ -4966,11 +5001,12 @@ namespace ThuTien.DAL.Doi
                                 Ky = item.KY + "/" + item.NAM,
                                 DanhBo = item.DANHBA,
                                 HoTen = item.TENKH,
+                                DiaChi = item.SO + " " + item.DUONG,
                                 MLT = item.MALOTRINH,
                                 item.TIEUTHU,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
+                                //item.GIABAN,
+                                //ThueGTGT = item.THUE,
+                                //PhiBVMT = item.PHI,
                                 item.TONGCONG,
                                 To = itemtableND.TT_To.TenTo,
                                 HanhThu = itemtableND.HoTen,
@@ -4993,11 +5029,12 @@ namespace ThuTien.DAL.Doi
                                     Ky = item.KY + "/" + item.NAM,
                                     DanhBo = item.DANHBA,
                                     HoTen = item.TENKH,
+                                    DiaChi = item.SO + " " + item.DUONG,
                                     MLT = item.MALOTRINH,
                                     item.TIEUTHU,
-                                    item.GIABAN,
-                                    ThueGTGT = item.THUE,
-                                    PhiBVMT = item.PHI,
+                                    //item.GIABAN,
+                                    //ThueGTGT = item.THUE,
+                                    //PhiBVMT = item.PHI,
                                     item.TONGCONG,
                                     To = itemtableND.TT_To.TenTo,
                                     HanhThu = itemtableND.HoTen,
@@ -5024,11 +5061,12 @@ namespace ThuTien.DAL.Doi
                                 Ky = item.KY + "/" + item.NAM,
                                 DanhBo = item.DANHBA,
                                 HoTen = item.TENKH,
+                                DiaChi = item.SO + " " + item.DUONG,
                                 MLT = item.MALOTRINH,
                                 item.TIEUTHU,
-                                item.GIABAN,
-                                ThueGTGT = item.THUE,
-                                PhiBVMT = item.PHI,
+                                //item.GIABAN,
+                                //ThueGTGT = item.THUE,
+                                //PhiBVMT = item.PHI,
                                 item.TONGCONG,
                                 To = itemtableND.TT_To.TenTo,
                                 HanhThu = itemtableND.HoTen,
