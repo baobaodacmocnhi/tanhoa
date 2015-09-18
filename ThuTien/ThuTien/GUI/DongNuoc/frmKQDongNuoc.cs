@@ -221,7 +221,7 @@ namespace ThuTien.GUI.DongNuoc
                 txtHoTen.Text = dgvKQDongNuoc["HoTen", e.RowIndex].Value.ToString();
                 txtDiaChi.Text = dgvKQDongNuoc["DiaChi", e.RowIndex].Value.ToString();
                 dateDongNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayDN", e.RowIndex].Value.ToString());
-                txtChiSoDN.Text = dgvKQDongNuoc["ChiSo", e.RowIndex].Value.ToString();
+                txtChiSoDN.Text = dgvKQDongNuoc["ChiSoDN", e.RowIndex].Value.ToString();
                 txtHieu.Text = dgvKQDongNuoc["Hieu", e.RowIndex].Value.ToString();
                 txtCo.Text = dgvKQDongNuoc["Co", e.RowIndex].Value.ToString();
                 txtSoThan.Text = dgvKQDongNuoc["SoThan", e.RowIndex].Value.ToString();
@@ -230,6 +230,7 @@ namespace ThuTien.GUI.DongNuoc
                 txtLyDo.Text = dgvKQDongNuoc["LyDo", e.RowIndex].Value.ToString();
                 chkMoNuoc.Checked = bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString());
                 dateDongNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
+                txtChiSoMN.Text = dgvKQDongNuoc["ChiSoMN", e.RowIndex].Value.ToString();
             }
             catch
             {

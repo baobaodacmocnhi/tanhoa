@@ -205,6 +205,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = "TẠM THU CHUYỂN KHOẢN";
                 dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
                 dr["MLT"] = item.Cells["MLT_TT"].Value.ToString();
@@ -233,6 +234,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                     dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = "TẠM THU CHUYỂN KHOẢN TỒN";
                     dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
                     dr["MLT"] = item.Cells["MLT_TT"].Value.ToString();

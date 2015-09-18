@@ -188,6 +188,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                     _cHoaDon.SqlCommitTransaction();
                     lstHD.Items.Clear();
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)

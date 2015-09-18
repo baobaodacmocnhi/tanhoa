@@ -52,6 +52,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.btnInDSDiaChi = new System.Windows.Forms.Button();
+            this.btnInDSPhanTo = new System.Windows.Forms.Button();
             this.MaQT_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +62,9 @@
             this.HoTen_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaQT_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +74,9 @@
             this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -166,7 +173,10 @@
             this.DanhBo_TG,
             this.HoTen_TG,
             this.DiaChi_TG,
-            this.TongCong_TG});
+            this.TongCong_TG,
+            this.GiaBieu_TG,
+            this.HanhThu_TG,
+            this.To_TG});
             this.dgvHDTuGia.Location = new System.Drawing.Point(6, 6);
             this.dgvHDTuGia.Name = "dgvHDTuGia";
             this.dgvHDTuGia.ReadOnly = true;
@@ -281,7 +291,10 @@
             this.DanhBo_CQ,
             this.HoTen_CQ,
             this.DiaChi_CQ,
-            this.TongCong_CQ});
+            this.TongCong_CQ,
+            this.GiaBieu_CQ,
+            this.HanhThu_CQ,
+            this.To_CQ});
             this.dgvHDCoQuan.Location = new System.Drawing.Point(6, 6);
             this.dgvHDCoQuan.Name = "dgvHDCoQuan";
             this.dgvHDCoQuan.ReadOnly = true;
@@ -318,6 +331,16 @@
             this.btnInDSDiaChi.Text = "In DS Địa Chỉ";
             this.btnInDSDiaChi.UseVisualStyleBackColor = true;
             this.btnInDSDiaChi.Click += new System.EventHandler(this.btnInDSDiaChi_Click);
+            // 
+            // btnInDSPhanTo
+            // 
+            this.btnInDSPhanTo.Location = new System.Drawing.Point(794, 10);
+            this.btnInDSPhanTo.Name = "btnInDSPhanTo";
+            this.btnInDSPhanTo.Size = new System.Drawing.Size(90, 23);
+            this.btnInDSPhanTo.TabIndex = 32;
+            this.btnInDSPhanTo.Text = "In DS Phân Tổ";
+            this.btnInDSPhanTo.UseVisualStyleBackColor = true;
+            this.btnInDSPhanTo.Click += new System.EventHandler(this.btnInDSPhanTo_Click);
             // 
             // MaQT_TG
             // 
@@ -386,6 +409,30 @@
             this.TongCong_TG.Name = "TongCong_TG";
             this.TongCong_TG.ReadOnly = true;
             // 
+            // GiaBieu_TG
+            // 
+            this.GiaBieu_TG.DataPropertyName = "GiaBieu";
+            this.GiaBieu_TG.HeaderText = "GiaBieu";
+            this.GiaBieu_TG.Name = "GiaBieu_TG";
+            this.GiaBieu_TG.ReadOnly = true;
+            this.GiaBieu_TG.Visible = false;
+            // 
+            // HanhThu_TG
+            // 
+            this.HanhThu_TG.DataPropertyName = "HanhThu";
+            this.HanhThu_TG.HeaderText = "HanhThu";
+            this.HanhThu_TG.Name = "HanhThu_TG";
+            this.HanhThu_TG.ReadOnly = true;
+            this.HanhThu_TG.Visible = false;
+            // 
+            // To_TG
+            // 
+            this.To_TG.DataPropertyName = "To";
+            this.To_TG.HeaderText = "To";
+            this.To_TG.Name = "To_TG";
+            this.To_TG.ReadOnly = true;
+            this.To_TG.Visible = false;
+            // 
             // MaQT_CQ
             // 
             this.MaQT_CQ.DataPropertyName = "MaQT";
@@ -453,11 +500,36 @@
             this.TongCong_CQ.Name = "TongCong_CQ";
             this.TongCong_CQ.ReadOnly = true;
             // 
+            // GiaBieu_CQ
+            // 
+            this.GiaBieu_CQ.DataPropertyName = "GiaBieu";
+            this.GiaBieu_CQ.HeaderText = "GiaBieu";
+            this.GiaBieu_CQ.Name = "GiaBieu_CQ";
+            this.GiaBieu_CQ.ReadOnly = true;
+            this.GiaBieu_CQ.Visible = false;
+            // 
+            // HanhThu_CQ
+            // 
+            this.HanhThu_CQ.DataPropertyName = "HanhThu";
+            this.HanhThu_CQ.HeaderText = "HanhThu";
+            this.HanhThu_CQ.Name = "HanhThu_CQ";
+            this.HanhThu_CQ.ReadOnly = true;
+            this.HanhThu_CQ.Visible = false;
+            // 
+            // To_CQ
+            // 
+            this.To_CQ.DataPropertyName = "To";
+            this.To_CQ.HeaderText = "To";
+            this.To_CQ.Name = "To_CQ";
+            this.To_CQ.ReadOnly = true;
+            this.To_CQ.Visible = false;
+            // 
             // frmQuetTam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 652);
+            this.ClientSize = new System.Drawing.Size(1063, 652);
+            this.Controls.Add(this.btnInDSPhanTo);
             this.Controls.Add(this.btnInDSDiaChi);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tabControl);
@@ -509,6 +581,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.Button btnInDSDiaChi;
+        private System.Windows.Forms.Button btnInDSPhanTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaQT_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_TG;
@@ -518,6 +591,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_TG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn To_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaQT_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_CQ;
@@ -527,5 +603,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_CQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn To_CQ;
     }
 }

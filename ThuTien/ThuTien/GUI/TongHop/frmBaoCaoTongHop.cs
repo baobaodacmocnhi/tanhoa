@@ -279,6 +279,15 @@ namespace ThuTien.GUI.TongHop
             dt.Merge(_cHoaDon.GetTongHopDangNganDoi("CK", dateGiaiTrachTongHopDangNgan.Value));
             dtCNKD = _cCNKD.GetTongHopDangNgan(dateGiaiTrachTongHopDangNgan.Value);
 
+            DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD(dateGiaiTrachTongHopDangNgan.Value);
+            if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
+            {
+                dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
+                dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
+                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+            }
+
             foreach (DataRow item in dt.Rows)
             {
                 if (bool.Parse(item["ChuyenKhoan"].ToString()))
@@ -376,6 +385,15 @@ namespace ThuTien.GUI.TongHop
                 }
 
             dtCNKD = _cCNKD.GetTongHopDangNgan("TG", dateGiaiTrachTongHopDangNgan.Value);
+
+            DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD("TG",dateGiaiTrachTongHopDangNgan.Value);
+            if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
+            {
+                dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
+                dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
+                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+            }
 
             foreach (DataRow item in dt.Rows)
             {
@@ -477,6 +495,15 @@ namespace ThuTien.GUI.TongHop
             }
 
             dtCNKD = _cCNKD.GetTongHopDangNgan("CQ", dateGiaiTrachTongHopDangNgan.Value);
+
+            DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD("CQ", dateGiaiTrachTongHopDangNgan.Value);
+            if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
+            {
+                dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
+                dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
+                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
+                dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+            }
 
             foreach (DataRow item in dt.Rows)
             {

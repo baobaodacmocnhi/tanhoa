@@ -426,7 +426,9 @@ namespace ThuTien.GUI.Quay
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
                 DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = "TẠM THU QUẦY";
                 dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
                 dr["MLT"] = item.Cells["MLT_TT"].Value.ToString();
@@ -434,6 +436,10 @@ namespace ThuTien.GUI.Quay
                 dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
                 dr["NhanVien"] = item.Cells["HanhThu_TT"].Value.ToString();
                 dr["To"] = item.Cells["To_TT"].Value.ToString();
+                if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
+                    dr["Loai"] = "CQ";
+                else
+                    dr["Loai"] = "TG";
                 ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
             }
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();

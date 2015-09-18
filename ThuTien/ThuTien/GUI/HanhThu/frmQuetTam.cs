@@ -12,6 +12,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.BaoCao.ChuyenKhoan;
 
 namespace ThuTien.GUI.HanhThu
 {
@@ -294,6 +295,61 @@ namespace ThuTien.GUI.HanhThu
                     }
                 }
             rptDSHoaDon_DiaChi rpt = new rptDSHoaDon_DiaChi();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void btnInDSPhanTo_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = "HÓA ĐƠN TƯ GIA";
+                    dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item.Cells["HoTen_TG"].Value.ToString();
+                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString();
+                    dr["Ky"] = item.Cells["Ky_TG"].Value.ToString();
+                    dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
+                    dr["NhanVien"] = item.Cells["HanhThu_TG"].Value.ToString();
+                    dr["To"] = item.Cells["To_TG"].Value.ToString();
+                    if (int.Parse(item.Cells["GiaBieu_TG"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                }
+            }
+            else
+                if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
+                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                    {
+                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dr["LoaiBaoCao"] = "HÓA ĐƠN CƠ QUAN";
+                        dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen_CQ"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString();
+                        dr["Ky"] = item.Cells["Ky_CQ"].Value.ToString();
+                        dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();
+                        dr["NhanVien"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                        dr["To"] = item.Cells["To_CQ"].Value.ToString();
+                        if (int.Parse(item.Cells["GiaBieu_CQ"].Value.ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    }
+                }
+            
+            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
