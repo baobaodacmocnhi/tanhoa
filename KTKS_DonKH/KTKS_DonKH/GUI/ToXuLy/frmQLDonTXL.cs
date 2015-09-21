@@ -13,6 +13,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.HeThong;
+using KTKS_DonKH.DAL.BamChi;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -23,6 +24,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
         CDonTXL _cDonTXL = new CDonTXL();
         string _tuNgay = "", _denNgay = "";
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CBamChi _cBamChi = new CBamChi();
 
         public frmQLDonTXL()
         {
@@ -51,33 +53,6 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
             cmbTimTheo.SelectedIndex = 6;
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
-        }
-
-        private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radDaChuyen.Checked)
-            {
-                //DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLDaChuyen();
-                cmbTimTheo.SelectedIndex = 0;
-            }
-        }
-
-        private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radChuaChuyen.Checked)
-            {
-                //DSDonKH_BS.DataSource = _cDonTXL.LoadDSDonTXLChuaChuyen();
-                cmbTimTheo.SelectedIndex = 0;
-            }
-        }
-
-        private void radAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radAll.Checked)
-            {
-                //DSDonKH_BS.DataSource = _cDonTXL.LoadDSAllDonTXL();
-                cmbTimTheo.SelectedIndex = 0;
-            }
         }
 
         private void dgvDSDonTXL_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -243,7 +218,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
             //string expression = String.Format("CreateDate > #{0:yyyy-MM-dd} 00:00:00# and CreateDate < #{1:yyyy-MM-dd} 23:59:59#", dateTu.Value, dateDen.Value);
             //DSDonKH_BS.Filter = expression;
             _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
-            dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByDates(dateTu.Value,dateDen.Value);
+            dgvDSDonTXL.DataSource = _cDonTXL.LoadDSDonTXLByDates(dateTu.Value, dateDen.Value);
         }
 
         private void btnInDSDonKH_Click(object sender, EventArgs e)
@@ -323,7 +298,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     {
                         dr["NguoiDi"] = _cTaiKhoan.getHoTenUserbyID(int.Parse(itemRow["NguoiDi"].ToString()));
                         string NgayGiaiQuyet;
-                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString()),out NgayGiaiQuyet).ToString();
+                        dr["DaGiaiQuyet"] = _cDonTXL.CheckGiaiQuyetDonTXLbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString()), out NgayGiaiQuyet).ToString();
                         dr["NgayGiaiQuyet"] = NgayGiaiQuyet;
                     }
 
@@ -526,6 +501,36 @@ namespace KTKS_DonKH.GUI.ToXuLy
                 dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
             }
             rptDSDonTXLChuyenKhac rpt = new rptDSDonTXLChuyenKhac();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void btnInBamChi_Click(object sender, EventArgs e)
+        {
+            DataTable dt = ((DataTable)dgvDSDonTXL.DataSource).DefaultView.ToTable();
+
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            foreach (DataRow itemRow in dt.Rows)
+                if (itemRow["TenLD"].ToString().Contains("Bấm Chì"))
+            {
+                DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
+
+                dr["TuNgay"] = _tuNgay;
+                dr["DenNgay"] = _denNgay;
+                dr["TenLD"] = itemRow["TenLD"];
+                dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                if (_cBamChi.CheckBamChibyMaDon_TXL(decimal.Parse(itemRow["MaDon"].ToString())))
+                {
+                    dr["DaGiaiQuyet"] = "True";
+                }
+
+                dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+            }
+
+            rptDSDonTXL_BamChi rpt = new rptDSDonTXL_BamChi();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();

@@ -47,6 +47,7 @@
             this.cmbQuan = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.radThongKeDCSoCT = new System.Windows.Forms.RadioButton();
+            this.radDSDMCapHetHan = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -239,12 +240,23 @@
             this.radThongKeDCSoCT.Text = "Thống Kê Điều Chỉnh(Sổ CT)";
             this.radThongKeDCSoCT.UseVisualStyleBackColor = true;
             // 
+            // radDSDMCapHetHan
+            // 
+            this.radDSDMCapHetHan.AutoSize = true;
+            this.radDSDMCapHetHan.Location = new System.Drawing.Point(531, 60);
+            this.radDSDMCapHetHan.Name = "radDSDMCapHetHan";
+            this.radDSDMCapHetHan.Size = new System.Drawing.Size(204, 21);
+            this.radDSDMCapHetHan.TabIndex = 13;
+            this.radDSDMCapHetHan.Text = "Danh Sách ĐM Cấp (hết hạn)";
+            this.radDSDMCapHetHan.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 598);
+            this.Controls.Add(this.radDSDMCapHetHan);
             this.Controls.Add(this.radThongKeDCSoCT);
             this.Controls.Add(this.cmbPhuong);
             this.Controls.Add(this.label2);
@@ -293,5 +305,6 @@
         private System.Windows.Forms.ComboBox cmbQuan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radThongKeDCSoCT;
+        private System.Windows.Forms.RadioButton radDSDMCapHetHan;
     }
 }

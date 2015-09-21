@@ -1210,7 +1210,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     else
                         dr["SoPhieu"] = "";
 
-
                     if (_cChungTu.CheckMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString()))
                     {
                         decimal MaDon = _cChungTu.getMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString());

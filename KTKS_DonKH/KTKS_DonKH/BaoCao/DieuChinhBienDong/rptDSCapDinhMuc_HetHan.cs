@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.CatHuyDanhBo {
+namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.CatHuyDanhBo {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptThongBaoCTDB : ReportClass {
+    public class rptDSCapDinhMuc_HetHan : ReportClass {
         
-        public rptThongBaoCTDB() {
+        public rptDSCapDinhMuc_HetHan() {
         }
         
         public override string ResourceName {
             get {
-                return "rptThongBaoCTDB.rpt";
+                return "rptDSCapDinhMuc_HetHan.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.CatHuyDanhBo {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.CatHuyDanhBo.rptThongBaoCTDB.rpt";
+                return "KTKS_DonKH.BaoCao.DieuChinhBienDong.rptDSCapDinhMuc_HetHan.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.BaoCao.CatHuyDanhBo {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.CatHuyDanhBo {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,33 @@ namespace KTKS_DonKH.BaoCao.CatHuyDanhBo {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptThongBaoCTDB : Component, ICachedReport {
+    public class CachedrptDSCapDinhMuc_HetHan : Component, ICachedReport {
         
-        public CachedrptThongBaoCTDB() {
+        public CachedrptDSCapDinhMuc_HetHan() {
         }
         
         [Browsable(false)]
@@ -129,7 +145,7 @@ namespace KTKS_DonKH.BaoCao.CatHuyDanhBo {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptThongBaoCTDB rpt = new rptThongBaoCTDB();
+            rptDSCapDinhMuc_HetHan rpt = new rptDSCapDinhMuc_HetHan();
             rpt.Site = this.Site;
             return rpt;
         }

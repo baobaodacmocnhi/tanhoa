@@ -706,6 +706,44 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rpt.SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;
             }
+
+            if (radDSDMCapHetHan.Checked)
+            {
+                DataTable dt = new DataTable();
+                dt = _cChungTu.LoadDSCapDinhMucHetHan();
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                dsBaoCao.Tables["DSCapDinhMuc"].PrimaryKey = new DataColumn[] { dsBaoCao.Tables["DSCapDinhMuc"].Columns["DanhBo"] };
+
+                foreach (DataRow itemRow in dt.Rows)
+                    if (!string.IsNullOrEmpty(itemRow["NgayHetHan"].ToString()) && !dsBaoCao.Tables["DSCapDinhMuc"].Rows.Contains(itemRow["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
+                    {
+                        DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
+
+                        dr["TuNgay"] = "";
+                        dr["DenNgay"] = "";
+                        CTDCBD ctdcbd = _cDCBD.getLastCTDCBDbyDanhBo(itemRow["DanhBo"].ToString());
+                        if (ctdcbd!=null)
+                        {
+                            dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                            dr["DinhMucCap"] = ctdcbd.DinhMuc_BD;
+                            ///lấy đỡ cột ghi chú xài đỡ
+                            dr["GhiChu"] = ctdcbd.DinhMuc;
+                        }
+                        else
+                            dr["SoPhieu"] = "";
+                        dr["TenLCT"] = itemRow["TenLCT"];
+                        if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                            dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = itemRow["HoTen"];
+                        dr["DiaChi"] = itemRow["DiaChi"];
+                        dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
+                    }
+
+                rptDSCapDinhMuc_HetHan rpt = new rptDSCapDinhMuc_HetHan();
+                rpt.SetDataSource(dsBaoCao);
+                crystalReportViewer1.ReportSource = rpt;
+            }
         }
 
         private void cmbQuan_SelectedIndexChanged(object sender, EventArgs e)
@@ -719,5 +757,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbPhuong.DisplayMember = "TenPhuong";
             cmbPhuong.ValueMember = "MaPhuong";
         }
+
     }
 }

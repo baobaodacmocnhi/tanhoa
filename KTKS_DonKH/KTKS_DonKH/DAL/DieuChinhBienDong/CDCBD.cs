@@ -1188,6 +1188,52 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable LoadDSCTDCBDByMaDon(int CreateBy,decimal MaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateBy==CreateBy && (itemCTDCBD.DCBD.MaDon == MaDon || itemCTDCBD.DCBD.MaDonTXL == MaDon)
+                                orderby itemCTDCBD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTDCBDByMaDons(decimal TuMaDon,decimal DenMaDon)
         {
             try
@@ -1237,6 +1283,55 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable LoadDSCTDCBDByMaDons(int CreateBy, decimal TuMaDon, decimal DenMaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateBy==CreateBy &&(((itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDon.Value.ToString().Substring(itemCTDCBD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                                && (itemCTDCBD.DCBD.MaDon >= TuMaDon && itemCTDCBD.DCBD.MaDon <= DenMaDon))
+                                || ((itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCBD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                                && (itemCTDCBD.DCBD.MaDonTXL >= TuMaDon && itemCTDCBD.DCBD.MaDonTXL <= DenMaDon)))
+                                orderby itemCTDCBD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTDCBDBySoPhieu(decimal SoPhieu)
         {
             try
@@ -1245,6 +1340,53 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
                                 where itemCTDCBD.MaCTDCBD == SoPhieu
+                                orderby itemCTDCBD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    Ma = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCBDBySoPhieu(int CreateBy, decimal SoPhieu)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD == SoPhieu
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
@@ -1332,6 +1474,54 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable LoadDSCTDCBDBySoPhieus(int CreateBy, decimal TuSoPhieu, decimal DenSoPhieu)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                                && itemCTDCBD.MaCTDCBD.ToString().Substring(itemCTDCBD.MaCTDCBD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                                && itemCTDCBD.MaCTDCBD >= TuSoPhieu && itemCTDCBD.MaCTDCBD <= DenSoPhieu
+                                orderby itemCTDCBD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTDCBDByDanhBo(string DanhBo)
         {
             try
@@ -1340,6 +1530,52 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
                                 where itemCTDCBD.DanhBo == DanhBo
+                                orderby itemCTDCBD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCBDByDanhBo(int CreateBy, string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.DanhBo == DanhBo
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
@@ -1424,6 +1660,52 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DataTable LoadDSCTDCBDByDate(int CreateBy, DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.CreateDate.Value.Date == TuNgay.Date
+                                orderby itemCTDCBD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCTDCBDByDates(DateTime TuNgay, DateTime DenNgay)
         {
             try
@@ -1432,6 +1714,52 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCBD in db.CTDCBDs
                                 where itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value <= DenNgay.Date
+                                orderby itemCTDCBD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemCTDCBD.ChuyenDocSo,
+                                    SoPhieu = itemCTDCBD.MaCTDCBD,
+                                    DieuChinh = "Biến Động",
+                                    itemCTDCBD.CreateDate,
+                                    itemCTDCBD.DanhBo,
+                                    itemCTDCBD.HoTen,
+                                    itemCTDCBD.HoTen_BD,
+                                    itemCTDCBD.DiaChi,
+                                    itemCTDCBD.DiaChi_BD,
+                                    itemCTDCBD.MSThue,
+                                    itemCTDCBD.MSThue_BD,
+                                    itemCTDCBD.GiaBieu,
+                                    itemCTDCBD.GiaBieu_BD,
+                                    itemCTDCBD.DinhMuc,
+                                    itemCTDCBD.DinhMuc_BD,
+                                    itemCTDCBD.PhieuDuocKy,
+                                    itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCBDByDates(int CreateBy, DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCBD in db.CTDCBDs
+                                where itemCTDCBD.CreateBy == CreateBy && itemCTDCBD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCBD.CreateDate.Value <= DenNgay.Date
                                 orderby itemCTDCBD.CreateDate ascending
                                 select new
                                 {
@@ -1714,6 +2042,22 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 return db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == MaDon);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public CTDCBD getLastCTDCBDbyDanhBo(string DanhBo)
+        {
+            try
+            {
+                if (db.CTDCBDs.Where(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.PhieuDuocKy == true && itemCTDCBD.DinhMuc_BD != null).Count() > 0)
+                    return db.CTDCBDs.Where(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.PhieuDuocKy == true && itemCTDCBD.DinhMuc_BD != null).OrderByDescending(item => item.CreateDate).First();
+                else
+                    return null;
             }
             catch (Exception ex)
             {
@@ -2253,6 +2597,327 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     var query = from itemCTDCHD in db.CTDCHDs
                                 where itemCTDCHD.CreateDate.Value.Date>=TuNgay.Date&&itemCTDCHD.CreateDate.Value.Date<=DenNgay.Date
+                                orderby itemCTDCHD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
+                                    itemCTDCHD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCHDByMaDon(int CreateBy,decimal MaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateBy==CreateBy &&( itemCTDCHD.DCBD.MaDon == MaDon || itemCTDCHD.DCBD.MaDonTXL == MaDon)
+                                orderby itemCTDCHD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
+                                    itemCTDCHD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCHDByMaDons(int CreateBy, decimal TuMaDon, decimal DenMaDon)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateBy == CreateBy && (((itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDon.Value.ToString().Substring(itemCTDCHD.DCBD.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                                && (itemCTDCHD.DCBD.MaDon >= TuMaDon && itemCTDCHD.DCBD.MaDon <= DenMaDon))
+                                || ((itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Substring(itemCTDCHD.DCBD.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                                && (itemCTDCHD.DCBD.MaDonTXL >= TuMaDon && itemCTDCHD.DCBD.MaDonTXL <= DenMaDon)))
+                                orderby itemCTDCHD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
+                                    itemCTDCHD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCHDBySoPhieu(int CreateBy, decimal SoPhieu)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD == SoPhieu
+                                orderby itemCTDCHD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    Ma = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
+                                    itemCTDCHD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCHDBySoPhieus(int CreateBy, decimal TuSoPhieu, decimal DenSoPhieu)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                                && itemCTDCHD.MaCTDCHD.ToString().Substring(itemCTDCHD.MaCTDCHD.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                                && itemCTDCHD.MaCTDCHD >= TuSoPhieu && itemCTDCHD.MaCTDCHD <= DenSoPhieu
+                                orderby itemCTDCHD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
+                                    itemCTDCHD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCHDByDanhBo(int CreateBy, string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.DanhBo == DanhBo
+                                orderby itemCTDCHD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
+                                    itemCTDCHD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCHDByDate(int CreateBy, DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateBy==CreateBy &&itemCTDCHD.CreateDate.Value.Date == TuNgay.Date
+                                orderby itemCTDCHD.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    SoPhieu = itemCTDCHD.MaCTDCHD,
+                                    DieuChinh = "Hóa Đơn",
+                                    itemCTDCHD.CreateDate,
+                                    itemCTDCHD.DanhBo,
+                                    itemCTDCHD.GiaBieu,
+                                    itemCTDCHD.GiaBieu_BD,
+                                    itemCTDCHD.DinhMuc,
+                                    itemCTDCHD.DinhMuc_BD,
+                                    itemCTDCHD.TieuThu,
+                                    itemCTDCHD.TieuThu_BD,
+                                    itemCTDCHD.TongCong_Start,
+                                    itemCTDCHD.TongCong_End,
+                                    itemCTDCHD.TongCong_BD,
+                                    itemCTDCHD.TangGiam,
+                                    itemCTDCHD.PhieuDuocKy,
+                                    itemCTDCHD.NguoiKy,
+                                    itemCTDCHD.CreateBy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTDCHDByDates(int CreateBy, DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTDCHD in db.CTDCHDs
+                                where itemCTDCHD.CreateBy == CreateBy && itemCTDCHD.CreateDate.Value.Date >= TuNgay.Date && itemCTDCHD.CreateDate.Value.Date <= DenNgay.Date
                                 orderby itemCTDCHD.CreateDate ascending
                                 select new
                                 {
