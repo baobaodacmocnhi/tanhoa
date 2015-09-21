@@ -93,6 +93,7 @@ namespace ThuTien.DAL.Quay
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
+                            itemHD.NGAYGIAITRACH,
                             itemLH.SoHoaDon,
                             DanhBo = itemHD.DANHBA,
                             HoTen=itemHD.TENKH,

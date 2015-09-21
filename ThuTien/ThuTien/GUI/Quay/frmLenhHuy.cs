@@ -175,23 +175,24 @@ namespace ThuTien.GUI.Quay
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
-            {
-                DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                dr["DiaChi"] = item.Cells["DiaChi"].Value;
-                dr["Ky"] = item.Cells["Ky"].Value;
-                dr["MLT"] = item.Cells["MLT"].Value;
-                dr["TongCong"] = item.Cells["TongCong"].Value;
-                dr["TinhTrang"] = item.Cells["TinhTrang"].Value;
-                //dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
-                dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
-                dr["To"] = item.Cells["To"].Value.ToString();
-                if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
-                    dr["Loai"] = "CQ";
-                else
-                    dr["Loai"] = "TG";
-                ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
-            }
+                if (string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()))
+                {
+                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                    dr["Ky"] = item.Cells["Ky"].Value;
+                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["TongCong"] = item.Cells["TongCong"].Value;
+                    dr["TinhTrang"] = item.Cells["TinhTrang"].Value;
+                    //dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
+                    dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                    dr["To"] = item.Cells["To"].Value.ToString();
+                    if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                }
             rptDSLenhHuy rpt = new rptDSLenhHuy();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -214,7 +215,7 @@ namespace ThuTien.GUI.Quay
             dsBaoCao ds = new dsBaoCao();
             ds.Tables["TamThuChuyenKhoan"].PrimaryKey = new DataColumn[] { ds.Tables["TamThuChuyenKhoan"].Columns["DanhBo"] };
             foreach (DataRow item in dt.Rows)
-                if (!ds.Tables["TamThuChuyenKhoan"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
+                if (string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString())&&!ds.Tables["TamThuChuyenKhoan"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
                 {
                     DataRow[] drDGV = dt.Select("DanhBo=" + item["DanhBo"]);
                     string Ky="";

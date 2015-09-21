@@ -157,13 +157,13 @@ namespace ThuTien.GUI.Quay
                         foreach (var item in lstHD.Items)
                             if (_cHoaDon.DangNgan("Quay", item.ToString(), CNguoiDung.MaND, dateGiaiTrachSua.Value))
                             {
-                                if (_cLenhHuy.CheckExist(item.ToString()))
-                                    if (!_cLenhHuy.Xoa(item.ToString()))
-                                    {
-                                        _cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
+                                //if (_cLenhHuy.CheckExist(item.ToString()))
+                                //    if (!_cLenhHuy.Xoa(item.ToString()))
+                                //    {
+                                //        _cHoaDon.SqlRollbackTransaction();
+                                //        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //        return;
+                                //    }
                             }
                             else
                             {
