@@ -13,6 +13,7 @@ using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using KTKS_DonKH.GUI.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
+using System.Globalization;
 
 namespace ThuTien.GUI.HanhThu
 {
@@ -35,6 +36,36 @@ namespace ThuTien.GUI.HanhThu
             dateTu.Value = DateTime.Now;
 
             btnXem.PerformClick();
+        }
+
+        public void CountdgvHDTuGia()
+        {
+            int TongCong = 0;
+            if (dgvHDTuGia.RowCount > 0)
+            {
+                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                {
+                    TongCong += int.Parse(item.Cells["TongCong_TG"].Value.ToString());
+                }
+                txtTongHD_TG.Text = dgvHDTuGia.RowCount.ToString();
+                txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHDTuGia.RowCount);
+                txtTongCong_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            }
+        }
+
+        public void CountdgvHDCoQuan()
+        {
+            int TongCong = 0;
+            if (dgvHDCoQuan.RowCount > 0)
+            {
+                foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                {
+                    TongCong += int.Parse(item.Cells["TongCong_CQ"].Value.ToString());
+                }
+                txtTongHD_CQ.Text = dgvHDCoQuan.RowCount.ToString();
+                txtTongCong_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvHDCoQuan.RowCount);
+                txtTongCong_CQ.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            }
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -220,10 +251,16 @@ namespace ThuTien.GUI.HanhThu
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
+            {
                 dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("TG", CNguoiDung.MaND);
+                CountdgvHDTuGia();
+            }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
+                {
                     dgvHDCoQuan.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("CQ", CNguoiDung.MaND);
+                    CountdgvHDCoQuan();
+                }
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

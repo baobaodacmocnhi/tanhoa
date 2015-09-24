@@ -912,6 +912,49 @@ namespace ThuTien.GUI.ChuyenKhoan
             frm.ShowDialog();
         }
 
+        private void btnTra_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    foreach (var item in lstHD.Items)
+                    {
+                        if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
+                        {
+                            MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            lstHD.SelectedItem = item;
+                            return;
+                        }
+                    }
+                    try
+                    {
+                        _cDLKH.BeginTransaction();
+                        foreach (var item in lstHD.Items)
+                        {
+                            TT_DuLieuKhachHang_SoHoaDon dlkh = _cDLKH.GetBySoHoaDon2(item.ToString());
+                            if (!_cDLKH.Xoa2(dlkh))
+                            {
+                                _cDLKH.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        _cDLKH.CommitTransaction();
+                        lstHD.Items.Clear();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception)
+                    {
+                        _cDLKH.Rollback();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         
     }
 }

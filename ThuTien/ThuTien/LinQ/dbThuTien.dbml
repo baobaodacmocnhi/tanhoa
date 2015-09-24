@@ -658,6 +658,17 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_ToTrinhCatHuy" Member="TT_ToTrinhCatHuys">
+    <Type Name="TT_ToTrinhCatHuy">
+      <Column Name="MaTT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Khoa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy" Member="TT_CTToTrinhCatHuys" ThisKey="MaTT" OtherKey="MaTT" Type="TT_CTToTrinhCatHuy" />
+    </Type>
+  </Table>
   <Table Name="dbo.TT_KQDongNuoc" Member="TT_KQDongNuocs">
     <Type Name="TT_KQDongNuoc">
       <Column Name="MaKQDN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -676,6 +687,7 @@
       <Column Name="ChiKhoaGoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PhiMoNuoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MoNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ChiSoMN" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -687,15 +699,19 @@
       <Association Name="TT_DongNuoc_TT_KQDongNuoc" Member="TT_DongNuoc" ThisKey="MaDN" OtherKey="MaDN" Type="TT_DongNuoc" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_ToTrinhCatHuy" Member="TT_ToTrinhCatHuys">
-    <Type Name="TT_ToTrinhCatHuy">
-      <Column Name="MaTT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Khoa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.TT_CacLoaiPhi" Member="TT_CacLoaiPhis">
+    <Type Name="TT_CacLoaiPhi">
+      <Column Name="PhiMoNuoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_TienDu" Member="TT_TienDus">
+    <Type Name="TT_TienDu">
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy" Member="TT_CTToTrinhCatHuys" ThisKey="MaTT" OtherKey="MaTT" Type="TT_CTToTrinhCatHuy" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

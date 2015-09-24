@@ -30,6 +30,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CNganHang _cNganHang = new CNganHang();
         CDCHD _cDCHD = new CDCHD();
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmTamThuChuyenKhoan()
         {
@@ -217,6 +218,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["Loai"] = "CQ";
                 else
                     dr["Loai"] = "TG";
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                    dr["LenhHuy"] = true;
                 ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
             }
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
@@ -246,6 +249,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["Loai"] = "CQ";
                     else
                         dr["Loai"] = "TG";
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                        dr["LenhHuy"] = true;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();

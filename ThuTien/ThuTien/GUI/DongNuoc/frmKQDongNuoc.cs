@@ -118,6 +118,8 @@ namespace ThuTien.GUI.DongNuoc
                         kqdongnuoc.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
                     kqdongnuoc.LyDo = txtLyDo.Text.Trim();
 
+                    kqdongnuoc.PhiMoNuoc = _cDongNuoc.GetPhiMoNuoc();
+
                     if (chkMoNuoc.Checked)
                     {
                         kqdongnuoc.MoNuoc = true;

@@ -430,7 +430,7 @@ namespace ThuTien.GUI.Quay
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                    dr["LoaiBaoCao"] = "TƯ GIA";
+                    dr["LoaiBaoCao"] = "QUẦY TƯ GIA";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                     dr["Ky"] = item.Cells["Ky_TG"].Value;
@@ -449,7 +449,7 @@ namespace ThuTien.GUI.Quay
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {
                         DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                        dr["LoaiBaoCao"] = "CƠ QUAN";
+                        dr["LoaiBaoCao"] = "QUẦY CƠ QUAN";
                         dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
                         dr["Ky"] = item.Cells["Ky_CQ"].Value;

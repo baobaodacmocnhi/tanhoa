@@ -123,12 +123,15 @@ namespace ThuTien.LinQ
     partial void InsertTT_BangKe(TT_BangKe instance);
     partial void UpdateTT_BangKe(TT_BangKe instance);
     partial void DeleteTT_BangKe(TT_BangKe instance);
-    partial void InsertTT_KQDongNuoc(TT_KQDongNuoc instance);
-    partial void UpdateTT_KQDongNuoc(TT_KQDongNuoc instance);
-    partial void DeleteTT_KQDongNuoc(TT_KQDongNuoc instance);
     partial void InsertTT_ToTrinhCatHuy(TT_ToTrinhCatHuy instance);
     partial void UpdateTT_ToTrinhCatHuy(TT_ToTrinhCatHuy instance);
     partial void DeleteTT_ToTrinhCatHuy(TT_ToTrinhCatHuy instance);
+    partial void InsertTT_KQDongNuoc(TT_KQDongNuoc instance);
+    partial void UpdateTT_KQDongNuoc(TT_KQDongNuoc instance);
+    partial void DeleteTT_KQDongNuoc(TT_KQDongNuoc instance);
+    partial void InsertTT_TienDu(TT_TienDu instance);
+    partial void UpdateTT_TienDu(TT_TienDu instance);
+    partial void DeleteTT_TienDu(TT_TienDu instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -425,6 +428,14 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<TT_ToTrinhCatHuy> TT_ToTrinhCatHuys
+		{
+			get
+			{
+				return this.GetTable<TT_ToTrinhCatHuy>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TT_KQDongNuoc> TT_KQDongNuocs
 		{
 			get
@@ -433,11 +444,19 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<TT_ToTrinhCatHuy> TT_ToTrinhCatHuys
+		public System.Data.Linq.Table<TT_CacLoaiPhi> TT_CacLoaiPhis
 		{
 			get
 			{
-				return this.GetTable<TT_ToTrinhCatHuy>();
+				return this.GetTable<TT_CacLoaiPhi>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TT_TienDu> TT_TienDus
+		{
+			get
+			{
+				return this.GetTable<TT_TienDu>();
 			}
 		}
 		
@@ -14571,6 +14590,216 @@ namespace ThuTien.LinQ
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_ToTrinhCatHuy")]
+	public partial class TT_ToTrinhCatHuy : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _MaTT;
+		
+		private bool _Khoa;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private EntitySet<TT_CTToTrinhCatHuy> _TT_CTToTrinhCatHuys;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaTTChanging(decimal value);
+    partial void OnMaTTChanged();
+    partial void OnKhoaChanging(bool value);
+    partial void OnKhoaChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    #endregion
+		
+		public TT_ToTrinhCatHuy()
+		{
+			this._TT_CTToTrinhCatHuys = new EntitySet<TT_CTToTrinhCatHuy>(new Action<TT_CTToTrinhCatHuy>(this.attach_TT_CTToTrinhCatHuys), new Action<TT_CTToTrinhCatHuy>(this.detach_TT_CTToTrinhCatHuys));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTT", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaTT
+		{
+			get
+			{
+				return this._MaTT;
+			}
+			set
+			{
+				if ((this._MaTT != value))
+				{
+					this.OnMaTTChanging(value);
+					this.SendPropertyChanging();
+					this._MaTT = value;
+					this.SendPropertyChanged("MaTT");
+					this.OnMaTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Khoa", DbType="Bit NOT NULL")]
+		public bool Khoa
+		{
+			get
+			{
+				return this._Khoa;
+			}
+			set
+			{
+				if ((this._Khoa != value))
+				{
+					this.OnKhoaChanging(value);
+					this.SendPropertyChanging();
+					this._Khoa = value;
+					this.SendPropertyChanged("Khoa");
+					this.OnKhoaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy", Storage="_TT_CTToTrinhCatHuys", ThisKey="MaTT", OtherKey="MaTT")]
+		public EntitySet<TT_CTToTrinhCatHuy> TT_CTToTrinhCatHuys
+		{
+			get
+			{
+				return this._TT_CTToTrinhCatHuys;
+			}
+			set
+			{
+				this._TT_CTToTrinhCatHuys.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TT_CTToTrinhCatHuys(TT_CTToTrinhCatHuy entity)
+		{
+			this.SendPropertyChanging();
+			entity.TT_ToTrinhCatHuy = this;
+		}
+		
+		private void detach_TT_CTToTrinhCatHuys(TT_CTToTrinhCatHuy entity)
+		{
+			this.SendPropertyChanging();
+			entity.TT_ToTrinhCatHuy = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_KQDongNuoc")]
 	public partial class TT_KQDongNuoc : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -14608,6 +14837,8 @@ namespace ThuTien.LinQ
 		private string _LyDo;
 		
 		private string _GhiChu;
+		
+		private System.Nullable<int> _PhiMoNuoc;
 		
 		private bool _MoNuoc;
 		
@@ -14663,6 +14894,8 @@ namespace ThuTien.LinQ
     partial void OnLyDoChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
+    partial void OnPhiMoNuocChanging(System.Nullable<int> value);
+    partial void OnPhiMoNuocChanged();
     partial void OnMoNuocChanging(bool value);
     partial void OnMoNuocChanged();
     partial void OnNgayMNChanging(System.Nullable<System.DateTime> value);
@@ -15007,6 +15240,26 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiMoNuoc", DbType="Int")]
+		public System.Nullable<int> PhiMoNuoc
+		{
+			get
+			{
+				return this._PhiMoNuoc;
+			}
+			set
+			{
+				if ((this._PhiMoNuoc != value))
+				{
+					this.OnPhiMoNuocChanging(value);
+					this.SendPropertyChanging();
+					this._PhiMoNuoc = value;
+					this.SendPropertyChanged("PhiMoNuoc");
+					this.OnPhiMoNuocChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoNuoc", DbType="Bit NOT NULL")]
 		public bool MoNuoc
 		{
@@ -15226,15 +15479,42 @@ namespace ThuTien.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_ToTrinhCatHuy")]
-	public partial class TT_ToTrinhCatHuy : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_CacLoaiPhi")]
+	public partial class TT_CacLoaiPhi
+	{
+		
+		private System.Nullable<int> _PhiMoNuoc;
+		
+		public TT_CacLoaiPhi()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhiMoNuoc", DbType="Int")]
+		public System.Nullable<int> PhiMoNuoc
+		{
+			get
+			{
+				return this._PhiMoNuoc;
+			}
+			set
+			{
+				if ((this._PhiMoNuoc != value))
+				{
+					this._PhiMoNuoc = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_TienDu")]
+	public partial class TT_TienDu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _MaTT;
+		private string _DanhBo;
 		
-		private bool _Khoa;
+		private System.Nullable<int> _SoTien;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
@@ -15244,16 +15524,14 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
-		private EntitySet<TT_CTToTrinhCatHuy> _TT_CTToTrinhCatHuys;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaTTChanging(decimal value);
-    partial void OnMaTTChanged();
-    partial void OnKhoaChanging(bool value);
-    partial void OnKhoaChanged();
+    partial void OnDanhBoChanging(string value);
+    partial void OnDanhBoChanged();
+    partial void OnSoTienChanging(System.Nullable<int> value);
+    partial void OnSoTienChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -15264,48 +15542,47 @@ namespace ThuTien.LinQ
     partial void OnModifyByChanged();
     #endregion
 		
-		public TT_ToTrinhCatHuy()
+		public TT_TienDu()
 		{
-			this._TT_CTToTrinhCatHuys = new EntitySet<TT_CTToTrinhCatHuy>(new Action<TT_CTToTrinhCatHuy>(this.attach_TT_CTToTrinhCatHuys), new Action<TT_CTToTrinhCatHuy>(this.detach_TT_CTToTrinhCatHuys));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTT", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal MaTT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="VarChar(11) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string DanhBo
 		{
 			get
 			{
-				return this._MaTT;
+				return this._DanhBo;
 			}
 			set
 			{
-				if ((this._MaTT != value))
+				if ((this._DanhBo != value))
 				{
-					this.OnMaTTChanging(value);
+					this.OnDanhBoChanging(value);
 					this.SendPropertyChanging();
-					this._MaTT = value;
-					this.SendPropertyChanged("MaTT");
-					this.OnMaTTChanged();
+					this._DanhBo = value;
+					this.SendPropertyChanged("DanhBo");
+					this.OnDanhBoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Khoa", DbType="Bit NOT NULL")]
-		public bool Khoa
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien", DbType="Int")]
+		public System.Nullable<int> SoTien
 		{
 			get
 			{
-				return this._Khoa;
+				return this._SoTien;
 			}
 			set
 			{
-				if ((this._Khoa != value))
+				if ((this._SoTien != value))
 				{
-					this.OnKhoaChanging(value);
+					this.OnSoTienChanging(value);
 					this.SendPropertyChanging();
-					this._Khoa = value;
-					this.SendPropertyChanged("Khoa");
-					this.OnKhoaChanged();
+					this._SoTien = value;
+					this.SendPropertyChanged("SoTien");
+					this.OnSoTienChanged();
 				}
 			}
 		}
@@ -15390,19 +15667,6 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy", Storage="_TT_CTToTrinhCatHuys", ThisKey="MaTT", OtherKey="MaTT")]
-		public EntitySet<TT_CTToTrinhCatHuy> TT_CTToTrinhCatHuys
-		{
-			get
-			{
-				return this._TT_CTToTrinhCatHuys;
-			}
-			set
-			{
-				this._TT_CTToTrinhCatHuys.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -15421,18 +15685,6 @@ namespace ThuTien.LinQ
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_TT_CTToTrinhCatHuys(TT_CTToTrinhCatHuy entity)
-		{
-			this.SendPropertyChanging();
-			entity.TT_ToTrinhCatHuy = this;
-		}
-		
-		private void detach_TT_CTToTrinhCatHuys(TT_CTToTrinhCatHuy entity)
-		{
-			this.SendPropertyChanging();
-			entity.TT_ToTrinhCatHuy = null;
 		}
 	}
 	

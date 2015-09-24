@@ -365,6 +365,11 @@ namespace ThuTien.DAL.DongNuoc
                 return "";
         }
 
+        public int GetPhiMoNuoc()
+        {
+            return _db.TT_CacLoaiPhis.FirstOrDefault().PhiMoNuoc.Value;
+        }
+
         //public DataTable GetTongDongNuoc(int MaNV, DateTime TuNgay, DateTime DenNgay)
         //{
 
