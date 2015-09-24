@@ -1229,6 +1229,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["NgayHetHan"] = itemRow["NgayHetHan"];
                     dr["DienThoai"] = itemRow["DienThoai"];
                     dr["GhiChu"] = itemRow["GhiChu"];
+                    dr["Phuong"] = _cPhuongQuan.getTenPhuongByMaQuanPhuong(int.Parse(itemRow["Quan"].ToString()), itemRow["Phuong"].ToString());
+                    dr["Quan"] = _cPhuongQuan.getTenQuanByMaQuan(int.Parse(itemRow["Quan"].ToString()));
                     dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                 }
             }

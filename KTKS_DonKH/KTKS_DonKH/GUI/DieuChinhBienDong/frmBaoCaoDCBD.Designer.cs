@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.radThongKeDCSoCT = new System.Windows.Forms.RadioButton();
             this.radDSDMCapHetHan = new System.Windows.Forms.RadioButton();
+            this.radThongKeCapDMCoThoiHanTangGiam = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -249,6 +250,17 @@
             this.radDSDMCapHetHan.TabIndex = 13;
             this.radDSDMCapHetHan.Text = "Danh Sách ĐM Cấp (hết hạn)";
             this.radDSDMCapHetHan.UseVisualStyleBackColor = true;
+            this.radDSDMCapHetHan.Visible = false;
+            // 
+            // radThongKeCapDMCoThoiHanTangGiam
+            // 
+            this.radThongKeCapDMCoThoiHanTangGiam.AutoSize = true;
+            this.radThongKeCapDMCoThoiHanTangGiam.Location = new System.Drawing.Point(12, 60);
+            this.radThongKeCapDMCoThoiHanTangGiam.Name = "radThongKeCapDMCoThoiHanTangGiam";
+            this.radThongKeCapDMCoThoiHanTangGiam.Size = new System.Drawing.Size(277, 21);
+            this.radThongKeCapDMCoThoiHanTangGiam.TabIndex = 14;
+            this.radThongKeCapDMCoThoiHanTangGiam.Text = "Thống Kê ĐM Cấp (có thời hạn, ngày tạo)";
+            this.radThongKeCapDMCoThoiHanTangGiam.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoDCBD
             // 
@@ -256,6 +268,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 598);
+            this.Controls.Add(this.radThongKeCapDMCoThoiHanTangGiam);
             this.Controls.Add(this.radDSDMCapHetHan);
             this.Controls.Add(this.radThongKeDCSoCT);
             this.Controls.Add(this.cmbPhuong);
@@ -306,5 +319,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radThongKeDCSoCT;
         private System.Windows.Forms.RadioButton radDSDMCapHetHan;
+        private System.Windows.Forms.RadioButton radThongKeCapDMCoThoiHanTangGiam;
     }
 }

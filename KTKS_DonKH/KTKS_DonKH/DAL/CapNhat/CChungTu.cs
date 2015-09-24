@@ -13,6 +13,7 @@ namespace KTKS_DonKH.DAL.CapNhat
 {
     class CChungTu : CDAL
     {
+        DB_CAPNUOCTANHOADataContext _dbCapNuocTanHoa = new DB_CAPNUOCTANHOADataContext();
         ///Chứa hàm truy xuất dữ liệu từ bảng ChungTu & CTChungTu & LichSuChungTu
 
         #region ChungTu
@@ -4228,6 +4229,74 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        public DataTable LoadThongKeDMCapCoThoiHan(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTChungTu in db.CTChungTus
+                                join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
+                                where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date == TuNgay.Date
+                                && itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null
+                                orderby itemCTChungTu.NgayHetHan ascending
+                                select new
+                                {
+                                    itemCTChungTu.DanhBo,
+                                    itemTTKH.Phuong,
+                                    itemTTKH.Quan,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query.Distinct());
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadThongKeDMCapCoThoiHan(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDCBD_Xem || CTaiKhoan.RoleDCBD_CapNhat)
+                {
+                    var query = from itemCTChungTu in db.CTChungTus
+                                join itemTTKH in db.TTKhachHangs on itemCTChungTu.DanhBo equals itemTTKH.DanhBo
+                                where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
+                                && itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan!=null
+                                orderby itemCTChungTu.NgayHetHan ascending
+                                select new
+                                {
+                                    itemCTChungTu.DanhBo,
+                                    itemTTKH.Phuong,
+                                    itemTTKH.Quan,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
+                                    itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query.Distinct());
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSCapDinhMucNgayHetHan(DateTime TuNgay)
         {
             try
@@ -4423,6 +4492,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemCTChungTu.NgayHetHan,
                                     itemCTChungTu.CreateDate,
                                     itemCTChungTu.GhiChu,
+                                    itemTTKH.Phuong,
+                                    itemTTKH.Quan,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
                 }
