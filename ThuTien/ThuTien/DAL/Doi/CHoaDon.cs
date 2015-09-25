@@ -11,6 +11,8 @@ namespace ThuTien.DAL.Doi
 {
     class CHoaDon : CDAL
     {
+        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+
         /// <summary>
         /// Thêm hóa đơn mới từ billing (.dat)
         /// </summary>
@@ -141,6 +143,13 @@ namespace ThuTien.DAL.Doi
                     hoadon.CreateBy = CNguoiDung.MaND;
                     hoadon.CreateDate = DateTime.Now;
                     hoadon.MALOTRINH = hoadon.DOT.Value.ToString("00") + hoadon.MAY + hoadon.STT;
+                    
+                    string Quan = "", Phuong = "", CoDH = "", MaDMA = "";
+                    _cCapNuocTanHoa.GetDMA(hoadon.DANHBA, out Quan, out Phuong, out CoDH, out MaDMA);
+                    hoadon.Quan = Quan;
+                    hoadon.Phuong = Phuong;
+                    hoadon.CoDH = CoDH;
+                    hoadon.MaDMA = MaDMA;
                     //if (CheckByNamKyDot(hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value))
                     //{
                     //    this.Rollback();
@@ -3586,10 +3595,10 @@ namespace ThuTien.DAL.Doi
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
                             + " from HOADON"
                             + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + "  and GB>20 and DANHBA in"
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and NGAYGIAITRACH is null and GB>20 and DANHBA in"
                             + " (select DANHBA from HOADON"
                             + " where MaNV_HanhThu=" + MaNV
-                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + "  and GB>20"
+                            + " and NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and NGAYGIAITRACH is null and GB>20"
                             + " group by DANHBA"
                             + " having COUNT(*)>=" + SoKy + ")"
                             + " order by MLT,Ky asc";

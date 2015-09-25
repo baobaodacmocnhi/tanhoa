@@ -171,5 +171,36 @@ namespace ThuTien.DAL
             return _dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.SingleOrDefault(item=>item.DANHBO==DanhBo).CODH;
                
         }
+
+        public void GetDMA(string DanhBo, out string Quan, out string Phuong, out  string CoDHN, out string MaDMA)
+        {
+            Connect();
+            SqlCommand cmd = new SqlCommand("sp_ThongTin", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter inparm = cmd.Parameters.Add("@DANHBO", SqlDbType.VarChar);
+            inparm.Direction = ParameterDirection.Input;
+            inparm.Value = _dbCapNuocTanHoa;
+
+            SqlParameter _QUAN = cmd.Parameters.Add("@QUAN", SqlDbType.VarChar);
+            _QUAN.Direction = ParameterDirection.Output;
+
+            SqlParameter _PHUONG = cmd.Parameters.Add("@PHUONG", SqlDbType.VarChar);
+            _PHUONG.Direction = ParameterDirection.Output;
+
+            SqlParameter _CODH = cmd.Parameters.Add("@CODH", SqlDbType.VarChar);
+            _CODH.Direction = ParameterDirection.Output;
+
+            SqlParameter _MADMA = cmd.Parameters.Add("@MADMA", SqlDbType.VarChar);
+            _MADMA.Direction = ParameterDirection.Output;
+
+            cmd.ExecuteNonQuery();
+            Quan = cmd.Parameters["@QUAN"].Value + "";
+            Phuong = cmd.Parameters["@PHUONG"].Value + "";
+            CoDHN = cmd.Parameters["@CODH"].Value + "";
+            MaDMA = cmd.Parameters["@MADMA"].Value + "";
+            Disconnect();
+
+        }
     }
 }

@@ -462,17 +462,17 @@ namespace ThuTien.GUI.ToTruong
                 {
                     if (chkKyKiemTra.Checked && chkNgayKiemTra.Checked)
                     {
-                        dt = _cHoaDon.GetDSTonDenKyDenNgay_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value, int.Parse(txtSoKy.Text.Trim()));
+                        dt = _cHoaDon.GetDSTonDenKyDenNgay_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value, int.Parse(txtSoKy.Text.Trim()));
                     }
                     else
                         if (chkKyKiemTra.Checked)
                         {
-                            dt = _cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                            dt = _cHoaDon.GetDSTonDenKy_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                         }
                         else
                             if (chkNgayKiemTra.Checked)
                             {
-                                dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), dateGiaiTrach.Value, int.Parse(txtSoKy.Text.Trim()));
+                                dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), dateGiaiTrach.Value, int.Parse(txtSoKy.Text.Trim()));
                             }
                             else
                             {
@@ -484,8 +484,8 @@ namespace ThuTien.GUI.ToTruong
                                             dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                         else
                                             if (cmbKy.SelectedIndex > 1)
-                                                if(cmbNhanVien.SelectedIndex==0)
-                                                dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                                                if (cmbNhanVien.SelectedIndex == 0)
+                                                    dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                                 else
                                                     dt = _cHoaDon.GetDSTon_NV("CQ", int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["MaNV_CQ"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDCoQuan.SelectedRows[0].Cells["Dot_CQ"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
                             }

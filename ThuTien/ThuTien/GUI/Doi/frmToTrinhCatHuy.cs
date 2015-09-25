@@ -380,34 +380,39 @@ namespace ThuTien.GUI.Doi
         {
             if (dgvToTrinh.Columns[e.ColumnIndex].Name == "Khoa")
             {
-                List<TT_CTToTrinhCatHuy> lst = _cToTrinhCatHuy.GetListCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-
-                foreach (TT_CTToTrinhCatHuy item in lst)
+                TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+                if (totrinh.Khoa == false)
                 {
-                    DataTable dtTon = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.DanhBo);
-                    string Ky = "";
-                    int TongCongSo = 0;
-                    int TieuThu = 0;
-                    foreach (DataRow itemTon in dtTon.Rows)
+                    List<TT_CTToTrinhCatHuy> lst = _cToTrinhCatHuy.GetListCTTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
+
+                    foreach (TT_CTToTrinhCatHuy item in lst)
                     {
-                        if (Ky == "")
-                            Ky += itemTon["Ky"];
-                        else
-                            Ky += ", " + itemTon["Ky"];
-                        TongCongSo += int.Parse(itemTon["TongCong"].ToString());
-                        TieuThu += int.Parse(itemTon["TieuThu"].ToString());
+                        DataTable dtTon = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.DanhBo);
+                        string Ky = "";
+                        int TongCongSo = 0;
+                        int TieuThu = 0;
+                        foreach (DataRow itemTon in dtTon.Rows)
+                        {
+                            if (Ky == "")
+                                Ky += itemTon["Ky"];
+                            else
+                                Ky += ", " + itemTon["Ky"];
+                            TongCongSo += int.Parse(itemTon["TongCong"].ToString());
+                            TieuThu += int.Parse(itemTon["TieuThu"].ToString());
+                        }
+
+                        item.Ky = Ky;
+                        item.TongCong = TongCongSo;
+                        item.TieuThu = TieuThu;
+
+                        _cToTrinhCatHuy.SuaCTTT(item);
                     }
 
-                    item.Ky = Ky;
-                    item.TongCong = TongCongSo;
-                    item.TieuThu = TieuThu;
-
-                    _cToTrinhCatHuy.SuaCTTT(item);
+                    totrinh.Khoa = bool.Parse(dgvToTrinh["Khoa", e.RowIndex].Value.ToString());
+                    _cToTrinhCatHuy.SuaTT(totrinh);
                 }
-
-                TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.GetTT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-                totrinh.Khoa = bool.Parse(dgvToTrinh["Khoa", e.RowIndex].Value.ToString());
-                _cToTrinhCatHuy.SuaTT(totrinh);
+                else
+                    MessageBox.Show("Đã khóa, không được quyền tự ý mở \r\n Xin vui lòng liên hệ CNTT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
