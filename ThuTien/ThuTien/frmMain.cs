@@ -585,7 +585,7 @@ namespace ThuTien
         {
             if (CNguoiDung.CheckQuyen("mnuBangKe", "Xem"))
             {
-                frmBaoCaoChuyenKhoan frm = new frmBaoCaoChuyenKhoan();
+                frmBangKe frm = new frmBangKe();
                 OpenForm(frm);
             }
             else

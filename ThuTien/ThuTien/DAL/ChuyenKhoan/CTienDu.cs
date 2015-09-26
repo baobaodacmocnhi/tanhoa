@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
+using System.Windows.Forms;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
@@ -55,6 +56,21 @@ namespace ThuTien.DAL.ChuyenKhoan
         public bool CheckExist(string DanhBo)
         {
             return _db.TT_TienDus.Any(item => item.DanhBo == DanhBo);
+        }
+
+        public bool Update(string DanhBo, int SoTien)
+        {
+            try
+            {
+                if (!ExecuteNonQuery("update TT_BangKe set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'", false))
+                    ExecuteNonQuery("insert into TT_BangKe(DanhBo,SoTien,CreateBy,CreateDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE())", false);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }

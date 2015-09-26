@@ -193,7 +193,7 @@ namespace ThuTien.GUI.ToTruong
                                 if (_cTamThu.CheckExist(item.ToString(),out ChuyenKhoan))
                                     if (_cHoaDon.Thu2Lan(item.ToString(),ChuyenKhoan))
                                     {
-                                        if (!_cTamThu.Xoa(item.ToString()))
+                                        if (!_cTamThu.XoaAn(item.ToString()))
                                         {
                                             _cHoaDon.SqlRollbackTransaction();
                                             MessageBox.Show("Lỗi Xóa Tạm Thu, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

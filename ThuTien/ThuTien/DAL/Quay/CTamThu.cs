@@ -63,12 +63,12 @@ namespace ThuTien.DAL.Quay
             }
         }
 
-        public bool Xoa(string SoHoaDon)
+        public bool XoaAn(string SoHoaDon)
         {
             try
             {
                 string sql = "";
-                sql = "delete TAMTHU where SoHoaDon='" + SoHoaDon + "'";
+                sql = "update TAMTHU set Xoa=1 where SoHoaDon='" + SoHoaDon + "'";
                 return ExecuteNonQuery_Transaction(sql);
             }
             catch (Exception ex)
@@ -115,7 +115,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemTT.CreateDate.Value.Date==TuNgay.Date && itemTT.ChuyenKhoan==ChuyenKhoan
+                        where itemTT.Xoa == false && itemTT.CreateDate.Value.Date == TuNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -152,7 +152,7 @@ namespace ThuTien.DAL.Quay
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemNH in _db.NGANHANGs on itemTT.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
+                        where itemTT.Xoa==false&& itemTT.CreateDate.Value.Date >= TuNgay.Date && itemTT.CreateDate.Value.Date <= DenNgay.Date && itemTT.ChuyenKhoan == ChuyenKhoan
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {

@@ -14,6 +14,10 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             try
             {
+                if (_db.TT_BangKes.Count() == 0)
+                    bangke.MaBK = 1;
+                else
+                    bangke.MaBK = _db.TT_BangKes.Max(item => item.MaBK) + 1;
                 bangke.CreateDate = DateTime.Now;
                 bangke.CreateBy = CNguoiDung.MaND;
                 _db.TT_BangKes.InsertOnSubmit(bangke);
@@ -59,14 +63,14 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public bool CheckExist(string DanhBo,int MaNH)
+        public bool CheckExist(string DanhBo,DateTime CreateDate)
         {
-            return _db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.MaNH == MaNH);
+            return _db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
-        public TT_BangKe GetByDanhBoMaNH(string DanhBo,int MaNH)
+        public TT_BangKe Get(int MaBK)
         {
-            return _db.TT_BangKes.SingleOrDefault(item => item.DanhBo == DanhBo && item.MaNH == MaNH);
+            return _db.TT_BangKes.SingleOrDefault(item => item.MaBK == MaBK);
         }
 
         public DataTable GetDS()
@@ -75,10 +79,27 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG
                         select new
                         {
+                            itemBK.MaBK,
                             itemBK.DanhBo,
-                            MaNH=itemNH.ID_NGANHANG,
+                            itemBK.SoTien,
+                          itemBK.CreateDate,
                             TenNH=itemNH.NGANHANG1,
-                            itemBK.SoPhieu,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(DateTime TuNgay,DateTime DenNgay)
+        {
+            var query = from itemBK in _db.TT_BangKes
+                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG
+                        where itemBK.CreateDate.Value.Date>=TuNgay.Date&&itemBK.CreateDate.Value.Date<=DenNgay.Date
+                        select new
+                        {
+                            itemBK.MaBK,
+                            itemBK.DanhBo,
+                            itemBK.SoTien,
+                            itemBK.CreateDate,
+                            TenNH = itemNH.NGANHANG1,
                         };
             return LINQToDataTable(query);
         }
