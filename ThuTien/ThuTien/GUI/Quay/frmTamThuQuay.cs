@@ -62,6 +62,7 @@ namespace ThuTien.GUI.Quay
 
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                 {
+                    item.Cells["Chon"].Value = "True";
                     if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Yellow;
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
@@ -86,13 +87,13 @@ namespace ThuTien.GUI.Quay
                             return;
                         }
 
-                        if (_cDCHD.CheckExistByDangRutDC(item.Cells["SoHoaDon"].Value.ToString()))
-                        {
-                            MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
-                            item.Selected = true;
-                            return;
-                        }
+                        //if (_cDCHD.CheckExistByDangRutDC(item.Cells["SoHoaDon"].Value.ToString()))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
+                        //    item.Selected = true;
+                        //    return;
+                        //}
                     }
                 List<TAMTHU> lstTamThu = new List<TAMTHU>();
                 try

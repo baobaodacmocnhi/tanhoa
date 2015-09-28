@@ -18,6 +18,7 @@ using ThuTien.GUI.TimKiem;
 using ThuTien.LinQ;
 using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.BaoCao.Quay;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -28,6 +29,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CTamThu _cTamThu = new CTamThu();
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CTienDu _cTienDu = new CTienDu();
 
         public frmDangNganChuyenKhoan()
         {
@@ -94,7 +96,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length==13 && !lstHD.Items.Contains(item.Trim().ToUpper()))
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
                     }
@@ -160,12 +162,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    lstHD.SelectedItem = item;
                     //    return;
                     //}
-                    if (_cDCHD.CheckExistByDangRutDC(item.ToString()))
-                    {
-                        MessageBox.Show("Hóa Đơn đã Rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
-                        return;
-                    }
+                    //if (_cDCHD.CheckExistByDangRutDC(item.ToString()))
+                    //{
+                    //    MessageBox.Show("Hóa Đơn đã Rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    lstHD.SelectedItem = item;
+                    //    return;
+                    //}
                 }
                 try
                 {
@@ -180,6 +182,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             //        return;
                             //    }
+                            if (!_cTienDu.UpdateThem(item.ToString()))
+                            {
+                                _cHoaDon.SqlRollbackTransaction();
+                                MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
                     else
                         {
@@ -215,7 +223,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
-                                if (!_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                {
+                                    if (!_cTienDu.UpdateXoa(item.ToString()))
+                                    {
+                                        _cHoaDon.SqlRollbackTransaction();
+                                        MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
+                                else
                                 {
                                     _cHoaDon.SqlRollbackTransaction();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -228,7 +245,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                             {
                                 foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                 {
-                                    if (!_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                    if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                    {
+                                        if (!_cTienDu.UpdateXoa(item.ToString()))
+                                        {
+                                            _cHoaDon.SqlRollbackTransaction();
+                                            MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    }
+                                    else
                                     {
                                         _cHoaDon.SqlRollbackTransaction();
                                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

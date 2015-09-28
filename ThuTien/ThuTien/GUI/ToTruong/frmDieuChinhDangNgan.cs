@@ -119,7 +119,7 @@ namespace ThuTien.GUI.ToTruong
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && !lstHD.Items.Contains(item.Trim().ToUpper()))
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
                     }
@@ -175,12 +175,12 @@ namespace ThuTien.GUI.ToTruong
                         //    lstHD.SelectedItem = item;
                         //    return;
                         //}
-                        if (_cDCHD.CheckExistByDangRutDC(item.ToString()))
-                        {
-                            MessageBox.Show("Hóa Đơn đã rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            lstHD.SelectedItem = item;
-                            return;
-                        }
+                        //if (_cDCHD.CheckExistByDangRutDC(item.ToString()))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn đã rút đi Điều Chỉnh: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    lstHD.SelectedItem = item;
+                        //    return;
+                        //}
                     }
                     try
                     {

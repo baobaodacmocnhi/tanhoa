@@ -46,8 +46,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                         DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                         foreach (DataRow item in dtExcel.Rows)
-                            if (item[0].ToString().Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                            if (!string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                             {
+                                if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
+                                {
+                                    MessageBox.Show("Danh Bộ: " + item[0].ToString() + " đã thêm trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    continue;
+                                }
                                 TT_BangKe bangke = new TT_BangKe();
                                 bangke.DanhBo = item[0].ToString();
                                 bangke.SoTien = int.Parse(item[1].ToString());
@@ -110,7 +115,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvBangKe_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length==11)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
@@ -125,6 +130,20 @@ namespace ThuTien.GUI.ChuyenKhoan
             using (SolidBrush b = new SolidBrush(dgvBangKe.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvBangKe_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.FormattedValue.ToString().Replace(" ", "") != dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString())
+            {
+                TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
+                bangke.DanhBo = dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ","");
+                if (_cBangKe.Sua(bangke))
+                {
+                    _cTienDu.Update(e.FormattedValue.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1));
+                    _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value);
+                }
             }
         }
     }

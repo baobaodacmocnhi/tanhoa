@@ -39,7 +39,7 @@ namespace ThuTien.GUI.Quay
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && !lstHD.Items.Contains(item.Trim().ToUpper()))
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
                     }

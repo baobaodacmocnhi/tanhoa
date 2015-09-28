@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
-    class CTienDu:CDAL
+    class CTienDu : CDAL
     {
         //Quản lý tiền dư của khách hàng
 
@@ -62,9 +62,10 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             try
             {
-                if (!ExecuteNonQuery("update TT_BangKe set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'", false))
-                    ExecuteNonQuery("insert into TT_BangKe(DanhBo,SoTien,CreateBy,CreateDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE())", false);
-                return true;
+                if (!ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'", false))
+                    return ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE())", false);
+                else
+                    return true;
             }
             catch (Exception ex)
             {
@@ -72,5 +73,38 @@ namespace ThuTien.DAL.ChuyenKhoan
                 return false;
             }
         }
+
+        public bool UpdateThem(string SoHoaDon)
+        {
+            try
+            {
+                if (!ExecuteNonQuery_Transaction("update TT_TienDu set SoTien=SoTien-(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')"))
+                    return ExecuteNonQuery_Transaction("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())");
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool UpdateXoa(string SoHoaDon)
+        {
+            try
+            {
+                if (!ExecuteNonQuery_Transaction("update TT_TienDu set SoTien=SoTien+(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')"))
+                    return ExecuteNonQuery_Transaction("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())");
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
     }
 }

@@ -89,7 +89,6 @@
             this.dgvBangKe.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBangKe.Location = new System.Drawing.Point(105, 38);
             this.dgvBangKe.Name = "dgvBangKe";
-            this.dgvBangKe.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,6 +103,7 @@
             this.dgvBangKe.Size = new System.Drawing.Size(475, 567);
             this.dgvBangKe.TabIndex = 62;
             this.dgvBangKe.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBangKe_CellFormatting);
+            this.dgvBangKe.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBangKe_CellValidating);
             this.dgvBangKe.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBangKe_RowPostPaint);
             // 
             // MaBK
@@ -111,7 +111,6 @@
             this.MaBK.DataPropertyName = "MaBK";
             this.MaBK.HeaderText = "MaBK";
             this.MaBK.Name = "MaBK";
-            this.MaBK.ReadOnly = true;
             this.MaBK.Visible = false;
             // 
             // CreateDate
@@ -119,28 +118,24 @@
             this.CreateDate.DataPropertyName = "CreateDate";
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
             // 
             // DanhBo
             // 
             this.DanhBo.DataPropertyName = "DanhBo";
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
             // 
             // SoTien
             // 
             this.SoTien.DataPropertyName = "SoTien";
             this.SoTien.HeaderText = "Số Tiền";
             this.SoTien.Name = "SoTien";
-            this.SoTien.ReadOnly = true;
             // 
             // TenNH
             // 
             this.TenNH.DataPropertyName = "TenNH";
             this.TenNH.HeaderText = "Ngân Hàng";
             this.TenNH.Name = "TenNH";
-            this.TenNH.ReadOnly = true;
             // 
             // btnXem
             // 

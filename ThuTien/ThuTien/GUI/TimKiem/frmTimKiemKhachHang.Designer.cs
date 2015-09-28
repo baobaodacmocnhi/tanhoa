@@ -76,9 +76,9 @@
             this.btnXemLenhHuy = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvLenhHuy = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.Ky_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TinhTrang_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKinhDoanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLenhHuy)).BeginInit();
@@ -502,9 +502,19 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dgvLenhHuy.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvLenhHuy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLenhHuy.Size = new System.Drawing.Size(264, 235);
+            this.dgvLenhHuy.Size = new System.Drawing.Size(646, 235);
             this.dgvLenhHuy.TabIndex = 24;
             this.dgvLenhHuy.Visible = false;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(342, 4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(90, 23);
+            this.btnRefresh.TabIndex = 27;
+            this.btnRefresh.Text = "Xóa Điều Kiện";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // Ky_LH
             // 
@@ -518,17 +528,7 @@
             this.TinhTrang_LH.DataPropertyName = "TinhTrang";
             this.TinhTrang_LH.HeaderText = "Tình Trạng";
             this.TinhTrang_LH.Name = "TinhTrang_LH";
-            this.TinhTrang_LH.Width = 150;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(342, 4);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(90, 23);
-            this.btnRefresh.TabIndex = 27;
-            this.btnRefresh.Text = "Xóa Điều Kiện";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.TinhTrang_LH.Width = 500;
             // 
             // frmTimKiemKhachHang
             // 
@@ -586,8 +586,6 @@
         private System.Windows.Forms.Button btnXemLenhHuy;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvLenhHuy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ky_LH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang_LH;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
@@ -611,5 +609,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSo;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ky_LH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang_LH;
     }
 }

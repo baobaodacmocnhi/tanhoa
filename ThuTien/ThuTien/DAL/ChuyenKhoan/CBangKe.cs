@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
-    class CBangKe:CDAL
+    class CBangKe : CDAL
     {
         public bool Them(TT_BangKe bangke)
         {
@@ -63,7 +63,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public bool CheckExist(string DanhBo,DateTime CreateDate)
+        public bool CheckExist(string DanhBo, DateTime CreateDate)
         {
             return _db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
@@ -76,30 +76,32 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetDS()
         {
             var query = from itemBK in _db.TT_BangKes
-                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG
-                        select new
-                        {
-                            itemBK.MaBK,
-                            itemBK.DanhBo,
-                            itemBK.SoTien,
-                          itemBK.CreateDate,
-                            TenNH=itemNH.NGANHANG1,
-                        };
-            return LINQToDataTable(query);
-        }
-
-        public DataTable GetDS(DateTime TuNgay,DateTime DenNgay)
-        {
-            var query = from itemBK in _db.TT_BangKes
-                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG
-                        where itemBK.CreateDate.Value.Date>=TuNgay.Date&&itemBK.CreateDate.Value.Date<=DenNgay.Date
+                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
                         select new
                         {
                             itemBK.MaBK,
                             itemBK.DanhBo,
                             itemBK.SoTien,
                             itemBK.CreateDate,
-                            TenNH = itemNH.NGANHANG1,
+                            TenNH = itemtableNH.NGANHANG1,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemBK in _db.TT_BangKes
+                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
+                        select new
+                        {
+                            itemBK.MaBK,
+                            itemBK.DanhBo,
+                            itemBK.SoTien,
+                            itemBK.CreateDate,
+                            TenNH = itemtableNH.NGANHANG1,
                         };
             return LINQToDataTable(query);
         }
