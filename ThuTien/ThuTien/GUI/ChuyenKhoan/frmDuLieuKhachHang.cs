@@ -15,6 +15,7 @@ using ThuTien.GUI.TimKiem;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
 using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -24,6 +25,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CHoaDon _cHoaDon = new CHoaDon();
         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
         CTo _cTo = new CTo();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmDuLieuKhachHang()
         {
@@ -41,6 +43,8 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            cmbDot.SelectedIndex = 0;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -521,7 +525,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
-        private void btnXuatExcel_Click(object sender, EventArgs e)
+        private void btnInDSTon_DB_Click(object sender, EventArgs e)
         {
             //DataTable dt = (DataTable)dgvDanhBo.DataSource;
 
@@ -545,6 +549,33 @@ namespace ThuTien.GUI.ChuyenKhoan
             //oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
             //XuatExcel(dt, oSheet, "ĐÔNG Á");
+
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDanhBo.Rows)
+            {
+                DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                //dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                //dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = "CHUYỂN KHOẢN CẦN RÚT";
+                dr["DanhBo"] = item.Cells["DanhBo_DB"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = item.Cells["HoTen_DB"].Value.ToString();
+                dr["MLT"] = item.Cells["MLT_DB"].Value.ToString();
+                dr["Ky"] = item.Cells["Ky_DB"].Value.ToString();
+                dr["TongCong"] = item.Cells["TongCong_DB"].Value.ToString();
+                dr["NhanVien"] = item.Cells["HanhThu_DB"].Value.ToString();
+                dr["To"] = item.Cells["To_DB"].Value.ToString();
+                if (int.Parse(item.Cells["GiaBieu_DB"].Value.ToString()) > 20)
+                    dr["Loai"] = "CQ";
+                else
+                    dr["Loai"] = "TG";
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_DB"].Value.ToString()))
+                    dr["LenhHuy"] = true;
+                ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+            }
+            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
         private void XuatExcel(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)

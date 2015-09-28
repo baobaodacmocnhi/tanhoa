@@ -28,37 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabDLKH1 = new System.Windows.Forms.TabPage();
             this.btnXemDanhBo = new System.Windows.Forms.Button();
             this.cmbDot = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.btnInDSTon_DB = new System.Windows.Forms.Button();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.dgvDanhBo = new System.Windows.Forms.DataGridView();
-            this.NgayGiaiTrach_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTaiKhoan_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoHoaDon_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhatHanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nam_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dot_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MLT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TieuThu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThueGTGT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhiBVMT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbKy = new System.Windows.Forms.ComboBox();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -67,6 +51,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabDLKH2 = new System.Windows.Forms.TabPage();
+            this.btnTra = new System.Windows.Forms.Button();
             this.btnXuatExcelTon = new System.Windows.Forms.Button();
             this.btnInDSTon = new System.Windows.Forms.Button();
             this.btnXuatExcelDangNgan = new System.Windows.Forms.Button();
@@ -106,7 +91,25 @@
             this.lstHD = new System.Windows.Forms.ListBox();
             this.txtSoHoaDon = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnTra = new System.Windows.Forms.Button();
+            this.NgayGiaiTrach_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTaiKhoan_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhatHanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dot_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThueGTGT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhiBVMT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabDLKH1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
@@ -130,7 +133,7 @@
             this.tabDLKH1.Controls.Add(this.btnXemDanhBo);
             this.tabDLKH1.Controls.Add(this.cmbDot);
             this.tabDLKH1.Controls.Add(this.label1);
-            this.tabDLKH1.Controls.Add(this.btnXuatExcel);
+            this.tabDLKH1.Controls.Add(this.btnInDSTon_DB);
             this.tabDLKH1.Controls.Add(this.btnChonFile);
             this.tabDLKH1.Controls.Add(this.dgvDanhBo);
             this.tabDLKH1.Controls.Add(this.cmbKy);
@@ -197,15 +200,15 @@
             this.label1.TabIndex = 59;
             this.label1.Text = "Đợt:";
             // 
-            // btnXuatExcel
+            // btnInDSTon_DB
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(567, 6);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
-            this.btnXuatExcel.TabIndex = 58;
-            this.btnXuatExcel.Text = "Xuất Excel";
-            this.btnXuatExcel.UseVisualStyleBackColor = true;
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            this.btnInDSTon_DB.Location = new System.Drawing.Point(567, 6);
+            this.btnInDSTon_DB.Name = "btnInDSTon_DB";
+            this.btnInDSTon_DB.Size = new System.Drawing.Size(75, 23);
+            this.btnInDSTon_DB.TabIndex = 58;
+            this.btnInDSTon_DB.Text = "In DS Tồn";
+            this.btnInDSTon_DB.UseVisualStyleBackColor = true;
+            this.btnInDSTon_DB.Click += new System.EventHandler(this.btnInDSTon_DB_Click);
             // 
             // btnChonFile
             // 
@@ -221,14 +224,14 @@
             // 
             this.dgvDanhBo.AllowUserToAddRows = false;
             this.dgvDanhBo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NgayGiaiTrach_DB,
@@ -242,160 +245,40 @@
             this.Dot_DB,
             this.MLT_DB,
             this.HoTen_DB,
+            this.GiaBieu_DB,
             this.TieuThu_DB,
             this.GiaBan_DB,
             this.ThueGTGT_DB,
             this.PhiBVMT_DB,
-            this.TongCong_DB});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDanhBo.DefaultCellStyle = dataGridViewCellStyle12;
+            this.TongCong_DB,
+            this.HanhThu_DB,
+            this.To_DB});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDanhBo.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDanhBo.Location = new System.Drawing.Point(8, 35);
             this.dgvDanhBo.Name = "dgvDanhBo";
             this.dgvDanhBo.ReadOnly = true;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhBo.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDanhBo.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhBo.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDanhBo.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDanhBo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDanhBo.Size = new System.Drawing.Size(1174, 567);
             this.dgvDanhBo.TabIndex = 0;
             this.dgvDanhBo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhBo_CellFormatting);
             this.dgvDanhBo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBo_RowPostPaint);
-            // 
-            // NgayGiaiTrach_DB
-            // 
-            this.NgayGiaiTrach_DB.DataPropertyName = "NgayGiaiTrach";
-            this.NgayGiaiTrach_DB.HeaderText = "Ngày Giải Trách";
-            this.NgayGiaiTrach_DB.Name = "NgayGiaiTrach_DB";
-            this.NgayGiaiTrach_DB.ReadOnly = true;
-            this.NgayGiaiTrach_DB.Visible = false;
-            this.NgayGiaiTrach_DB.Width = 80;
-            // 
-            // DanhBo_DB
-            // 
-            this.DanhBo_DB.DataPropertyName = "DanhBo";
-            this.DanhBo_DB.HeaderText = "Danh Bộ";
-            this.DanhBo_DB.Name = "DanhBo_DB";
-            this.DanhBo_DB.ReadOnly = true;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 200;
-            // 
-            // SoTaiKhoan_DB
-            // 
-            this.SoTaiKhoan_DB.DataPropertyName = "SoTaiKhoan";
-            this.SoTaiKhoan_DB.HeaderText = "Tài Khoản";
-            this.SoTaiKhoan_DB.Name = "SoTaiKhoan_DB";
-            this.SoTaiKhoan_DB.ReadOnly = true;
-            // 
-            // SoHoaDon_DB
-            // 
-            this.SoHoaDon_DB.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_DB.HeaderText = "Số HĐ";
-            this.SoHoaDon_DB.Name = "SoHoaDon_DB";
-            this.SoHoaDon_DB.ReadOnly = true;
-            // 
-            // SoPhatHanh
-            // 
-            this.SoPhatHanh.DataPropertyName = "SoPhatHanh";
-            this.SoPhatHanh.HeaderText = "SoPhatHanh";
-            this.SoPhatHanh.Name = "SoPhatHanh";
-            this.SoPhatHanh.ReadOnly = true;
-            this.SoPhatHanh.Visible = false;
-            // 
-            // Nam_DB
-            // 
-            this.Nam_DB.DataPropertyName = "Nam";
-            this.Nam_DB.HeaderText = "Năm";
-            this.Nam_DB.Name = "Nam_DB";
-            this.Nam_DB.ReadOnly = true;
-            this.Nam_DB.Width = 50;
-            // 
-            // Ky_DB
-            // 
-            this.Ky_DB.DataPropertyName = "Ky";
-            this.Ky_DB.HeaderText = "Kỳ";
-            this.Ky_DB.Name = "Ky_DB";
-            this.Ky_DB.ReadOnly = true;
-            this.Ky_DB.Width = 50;
-            // 
-            // Dot_DB
-            // 
-            this.Dot_DB.DataPropertyName = "Dot";
-            this.Dot_DB.HeaderText = "Đợt";
-            this.Dot_DB.Name = "Dot_DB";
-            this.Dot_DB.ReadOnly = true;
-            this.Dot_DB.Width = 50;
-            // 
-            // MLT_DB
-            // 
-            this.MLT_DB.DataPropertyName = "MLT";
-            this.MLT_DB.HeaderText = "MLT";
-            this.MLT_DB.Name = "MLT_DB";
-            this.MLT_DB.ReadOnly = true;
-            this.MLT_DB.Visible = false;
-            // 
-            // HoTen_DB
-            // 
-            this.HoTen_DB.DataPropertyName = "HoTen";
-            this.HoTen_DB.HeaderText = "HoTen";
-            this.HoTen_DB.Name = "HoTen_DB";
-            this.HoTen_DB.ReadOnly = true;
-            this.HoTen_DB.Visible = false;
-            // 
-            // TieuThu_DB
-            // 
-            this.TieuThu_DB.DataPropertyName = "TieuThu";
-            this.TieuThu_DB.HeaderText = "Tiêu Thụ";
-            this.TieuThu_DB.Name = "TieuThu_DB";
-            this.TieuThu_DB.ReadOnly = true;
-            this.TieuThu_DB.Width = 80;
-            // 
-            // GiaBan_DB
-            // 
-            this.GiaBan_DB.DataPropertyName = "GiaBan";
-            this.GiaBan_DB.HeaderText = "Giá Bán";
-            this.GiaBan_DB.Name = "GiaBan_DB";
-            this.GiaBan_DB.ReadOnly = true;
-            this.GiaBan_DB.Width = 80;
-            // 
-            // ThueGTGT_DB
-            // 
-            this.ThueGTGT_DB.DataPropertyName = "ThueGTGT";
-            this.ThueGTGT_DB.HeaderText = "Thuế GTGT";
-            this.ThueGTGT_DB.Name = "ThueGTGT_DB";
-            this.ThueGTGT_DB.ReadOnly = true;
-            // 
-            // PhiBVMT_DB
-            // 
-            this.PhiBVMT_DB.DataPropertyName = "PhiBVMT";
-            this.PhiBVMT_DB.HeaderText = "Phí BVMT";
-            this.PhiBVMT_DB.Name = "PhiBVMT_DB";
-            this.PhiBVMT_DB.ReadOnly = true;
-            // 
-            // TongCong_DB
-            // 
-            this.TongCong_DB.DataPropertyName = "TongCong";
-            this.TongCong_DB.HeaderText = "Tổng Cộng";
-            this.TongCong_DB.Name = "TongCong_DB";
-            this.TongCong_DB.ReadOnly = true;
             // 
             // cmbKy
             // 
@@ -509,6 +392,16 @@
             this.tabDLKH2.Text = "Hóa Đơn";
             this.tabDLKH2.UseVisualStyleBackColor = true;
             // 
+            // btnTra
+            // 
+            this.btnTra.Location = new System.Drawing.Point(150, 157);
+            this.btnTra.Name = "btnTra";
+            this.btnTra.Size = new System.Drawing.Size(75, 23);
+            this.btnTra.TabIndex = 62;
+            this.btnTra.Text = "Trả";
+            this.btnTra.UseVisualStyleBackColor = true;
+            this.btnTra.Click += new System.EventHandler(this.btnTra_Click);
+            // 
             // btnXuatExcelTon
             // 
             this.btnXuatExcelTon.Location = new System.Drawing.Point(937, 6);
@@ -581,14 +474,14 @@
             // 
             this.dgvHoaDon.AllowUserToAddRows = false;
             this.dgvHoaDon.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD_HD,
@@ -610,19 +503,19 @@
             this.To_HD,
             this.SoTaiKhoan_HD,
             this.GiaBieu_HD});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvHoaDon.Location = new System.Drawing.Point(245, 35);
             this.dgvHoaDon.Name = "dgvHoaDon";
             this.dgvHoaDon.ReadOnly = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvHoaDon.Size = new System.Drawing.Size(1047, 567);
             this.dgvHoaDon.TabIndex = 54;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
@@ -882,15 +775,152 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Số Hóa Đơn:";
             // 
-            // btnTra
+            // NgayGiaiTrach_DB
             // 
-            this.btnTra.Location = new System.Drawing.Point(150, 157);
-            this.btnTra.Name = "btnTra";
-            this.btnTra.Size = new System.Drawing.Size(75, 23);
-            this.btnTra.TabIndex = 62;
-            this.btnTra.Text = "Trả";
-            this.btnTra.UseVisualStyleBackColor = true;
-            this.btnTra.Click += new System.EventHandler(this.btnTra_Click);
+            this.NgayGiaiTrach_DB.DataPropertyName = "NgayGiaiTrach";
+            this.NgayGiaiTrach_DB.HeaderText = "Ngày Giải Trách";
+            this.NgayGiaiTrach_DB.Name = "NgayGiaiTrach_DB";
+            this.NgayGiaiTrach_DB.ReadOnly = true;
+            this.NgayGiaiTrach_DB.Visible = false;
+            this.NgayGiaiTrach_DB.Width = 80;
+            // 
+            // DanhBo_DB
+            // 
+            this.DanhBo_DB.DataPropertyName = "DanhBo";
+            this.DanhBo_DB.HeaderText = "Danh Bộ";
+            this.DanhBo_DB.Name = "DanhBo_DB";
+            this.DanhBo_DB.ReadOnly = true;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 200;
+            // 
+            // SoTaiKhoan_DB
+            // 
+            this.SoTaiKhoan_DB.DataPropertyName = "SoTaiKhoan";
+            this.SoTaiKhoan_DB.HeaderText = "Tài Khoản";
+            this.SoTaiKhoan_DB.Name = "SoTaiKhoan_DB";
+            this.SoTaiKhoan_DB.ReadOnly = true;
+            // 
+            // SoHoaDon_DB
+            // 
+            this.SoHoaDon_DB.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_DB.HeaderText = "Số HĐ";
+            this.SoHoaDon_DB.Name = "SoHoaDon_DB";
+            this.SoHoaDon_DB.ReadOnly = true;
+            // 
+            // SoPhatHanh
+            // 
+            this.SoPhatHanh.DataPropertyName = "SoPhatHanh";
+            this.SoPhatHanh.HeaderText = "SoPhatHanh";
+            this.SoPhatHanh.Name = "SoPhatHanh";
+            this.SoPhatHanh.ReadOnly = true;
+            this.SoPhatHanh.Visible = false;
+            // 
+            // Nam_DB
+            // 
+            this.Nam_DB.DataPropertyName = "Nam";
+            this.Nam_DB.HeaderText = "Năm";
+            this.Nam_DB.Name = "Nam_DB";
+            this.Nam_DB.ReadOnly = true;
+            this.Nam_DB.Width = 50;
+            // 
+            // Ky_DB
+            // 
+            this.Ky_DB.DataPropertyName = "Ky";
+            this.Ky_DB.HeaderText = "Kỳ";
+            this.Ky_DB.Name = "Ky_DB";
+            this.Ky_DB.ReadOnly = true;
+            this.Ky_DB.Width = 50;
+            // 
+            // Dot_DB
+            // 
+            this.Dot_DB.DataPropertyName = "Dot";
+            this.Dot_DB.HeaderText = "Đợt";
+            this.Dot_DB.Name = "Dot_DB";
+            this.Dot_DB.ReadOnly = true;
+            this.Dot_DB.Width = 50;
+            // 
+            // MLT_DB
+            // 
+            this.MLT_DB.DataPropertyName = "MLT";
+            this.MLT_DB.HeaderText = "MLT";
+            this.MLT_DB.Name = "MLT_DB";
+            this.MLT_DB.ReadOnly = true;
+            this.MLT_DB.Visible = false;
+            // 
+            // HoTen_DB
+            // 
+            this.HoTen_DB.DataPropertyName = "HoTen";
+            this.HoTen_DB.HeaderText = "HoTen";
+            this.HoTen_DB.Name = "HoTen_DB";
+            this.HoTen_DB.ReadOnly = true;
+            this.HoTen_DB.Visible = false;
+            // 
+            // GiaBieu_DB
+            // 
+            this.GiaBieu_DB.DataPropertyName = "GiaBieu";
+            this.GiaBieu_DB.HeaderText = "GiaBieu";
+            this.GiaBieu_DB.Name = "GiaBieu_DB";
+            this.GiaBieu_DB.ReadOnly = true;
+            this.GiaBieu_DB.Visible = false;
+            // 
+            // TieuThu_DB
+            // 
+            this.TieuThu_DB.DataPropertyName = "TieuThu";
+            this.TieuThu_DB.HeaderText = "Tiêu Thụ";
+            this.TieuThu_DB.Name = "TieuThu_DB";
+            this.TieuThu_DB.ReadOnly = true;
+            this.TieuThu_DB.Width = 80;
+            // 
+            // GiaBan_DB
+            // 
+            this.GiaBan_DB.DataPropertyName = "GiaBan";
+            this.GiaBan_DB.HeaderText = "Giá Bán";
+            this.GiaBan_DB.Name = "GiaBan_DB";
+            this.GiaBan_DB.ReadOnly = true;
+            this.GiaBan_DB.Width = 80;
+            // 
+            // ThueGTGT_DB
+            // 
+            this.ThueGTGT_DB.DataPropertyName = "ThueGTGT";
+            this.ThueGTGT_DB.HeaderText = "Thuế GTGT";
+            this.ThueGTGT_DB.Name = "ThueGTGT_DB";
+            this.ThueGTGT_DB.ReadOnly = true;
+            // 
+            // PhiBVMT_DB
+            // 
+            this.PhiBVMT_DB.DataPropertyName = "PhiBVMT";
+            this.PhiBVMT_DB.HeaderText = "Phí BVMT";
+            this.PhiBVMT_DB.Name = "PhiBVMT_DB";
+            this.PhiBVMT_DB.ReadOnly = true;
+            // 
+            // TongCong_DB
+            // 
+            this.TongCong_DB.DataPropertyName = "TongCong";
+            this.TongCong_DB.HeaderText = "Tổng Cộng";
+            this.TongCong_DB.Name = "TongCong_DB";
+            this.TongCong_DB.ReadOnly = true;
+            // 
+            // HanhThu_DB
+            // 
+            this.HanhThu_DB.DataPropertyName = "HanhThu";
+            this.HanhThu_DB.HeaderText = "HanhThu";
+            this.HanhThu_DB.Name = "HanhThu_DB";
+            this.HanhThu_DB.ReadOnly = true;
+            this.HanhThu_DB.Visible = false;
+            // 
+            // To_DB
+            // 
+            this.To_DB.DataPropertyName = "To";
+            this.To_DB.HeaderText = "To";
+            this.To_DB.Name = "To_DB";
+            this.To_DB.ReadOnly = true;
+            this.To_DB.Visible = false;
             // 
             // frmDuLieuKhachHang
             // 
@@ -944,25 +974,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnXuatExcel2;
         private System.Windows.Forms.Button btnChonFile;
-        private System.Windows.Forms.Button btnXuatExcel;
+        private System.Windows.Forms.Button btnInDSTon_DB;
         private System.Windows.Forms.ComboBox cmbDot;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoTaiKhoan_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhatHanh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nam_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ky_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dot_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MLT_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_DB;
         private System.Windows.Forms.Button btnXemDanhBo;
         private System.Windows.Forms.Button btnXuatExcelDangNgan;
         private System.Windows.Forms.Button btnXuatExcelQuet;
@@ -988,6 +1002,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTaiKhoan_HD;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_HD;
         private System.Windows.Forms.Button btnTra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTaiKhoan_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhatHanh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nam_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ky_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dot_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MLT_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn To_DB;
 
     }
 }

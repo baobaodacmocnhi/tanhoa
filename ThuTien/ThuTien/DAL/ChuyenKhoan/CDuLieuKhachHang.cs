@@ -101,18 +101,23 @@ namespace ThuTien.DAL.ChuyenKhoan
             //         + " left  join"
             //         + " (select DANHBA,SOHOADON,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
             //         + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT="+Dot+") dlkhHD on dlkhHD.DANHBA=dlkhDB.DanhBo";
-            string sql = "select dlkhDB.DanhBo,HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
+                        + "nd.HoTen as HanhThu,tto.TenTo as 'To',GB as GiaBieu,MALOTRINH as MLT"
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
-                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT=" + Dot + " and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
+                        + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " left join TT_To tto on nd.MaTo=tto.MaTo"
+                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT="+Dot+" and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by dlkhDB.DanhBo,KY asc";
-
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         public DataTable GetDSDanhBoTon()
         {
-            string sql = "select dlkhDB.DanhBo,HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
+                        + "nd.HoTen as HanhThu,tto.TenTo as 'To',GB as GiaBieu,MALOTRINH as MLT"
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
+                        + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " left join TT_To tto on nd.MaTo=tto.MaTo"
                         + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by dlkhDB.DanhBo,KY asc";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
