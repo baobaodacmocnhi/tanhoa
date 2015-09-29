@@ -62,10 +62,20 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             try
             {
-                if (!ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'", false))
-                    return ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE())", false);
+                if (ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'", false))
+                {
+                  return  ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE())", false);
+                }
                 else
-                    return true;
+                    if (ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE())", false))
+                    {
+                        return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE())", false);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                
             }
             catch (Exception ex)
             {
@@ -78,10 +88,19 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             try
             {
-                if (!ExecuteNonQuery_Transaction("update TT_TienDu set SoTien=SoTien-(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')"))
-                    return ExecuteNonQuery_Transaction("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())");
+                if (ExecuteNonQuery("update TT_TienDu set SoTien=SoTien-(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')", false))
+                {
+                    return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false);
+                }
                 else
-                    return true;
+                    if (ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false))
+                    {
+                        return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG=-TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false);
+                    }
+                    else
+                    {
+                        return false;
+                    }
             }
             catch (Exception ex)
             {
@@ -94,10 +113,19 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             try
             {
-                if (!ExecuteNonQuery_Transaction("update TT_TienDu set SoTien=SoTien+(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')"))
-                    return ExecuteNonQuery_Transaction("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())");
+                if (ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')", false))
+                {
+                    return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false);
+                }
                 else
-                    return true;
+                    if (ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false))
+                    {
+                        return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false);
+                    }
+                    else
+                    {
+                        return false;
+                    }
             }
             catch (Exception ex)
             {

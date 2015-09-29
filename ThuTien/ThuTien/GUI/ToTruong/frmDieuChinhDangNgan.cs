@@ -216,9 +216,9 @@ namespace ThuTien.GUI.ToTruong
                             }
                             else
                             {
-                                _cHoaDon.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                //_cHoaDon.SqlRollbackTransaction();
+                                //MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //return;
                             }
                         _cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
@@ -251,9 +251,9 @@ namespace ThuTien.GUI.ToTruong
                             {
                                 if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_TG"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
                                 {
-                                    _cHoaDon.SqlRollbackTransaction();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    //_cHoaDon.SqlRollbackTransaction();
+                                    //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    //return;
                                 }
                             }
                         }
@@ -264,9 +264,9 @@ namespace ThuTien.GUI.ToTruong
                                 {
                                     if (!_cHoaDon.XoaDangNgan("HanhThu", item.Cells["SoHoaDon_CQ"].Value.ToString(), (int)cmbNhanVien.SelectedValue))
                                     {
-                                        _cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
+                                        //_cHoaDon.SqlRollbackTransaction();
+                                        //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        //return;
                                     }
                                 }
                             }

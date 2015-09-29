@@ -48,11 +48,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                         foreach (DataRow item in dtExcel.Rows)
                             if (!string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                             {
-                                if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
-                                {
-                                    MessageBox.Show("Danh Bộ: " + item[0].ToString() + " đã thêm trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    continue;
-                                }
+                                //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
+                                //{
+                                //    MessageBox.Show("Danh Bộ: " + item[0].ToString() + " đã thêm trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //    continue;
+                                //}
                                 TT_BangKe bangke = new TT_BangKe();
                                 bangke.DanhBo = item[0].ToString();
                                 bangke.SoTien = int.Parse(item[1].ToString());

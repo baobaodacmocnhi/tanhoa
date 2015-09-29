@@ -260,6 +260,7 @@ namespace ThuTien.DAL
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
                 command = new SqlCommand(sql, connection);
+                //command.CommandTimeout = 0;
                 command.Transaction = transaction;
                 if (command.ExecuteNonQuery() == 0)
                     return false;

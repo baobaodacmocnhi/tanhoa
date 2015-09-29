@@ -192,9 +192,9 @@ namespace ThuTien.GUI.HanhThu
                             }
                             else
                             {
-                                _cHoaDon.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                //_cHoaDon.SqlRollbackTransaction();
+                                //MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //return;
                             }
                         _cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();

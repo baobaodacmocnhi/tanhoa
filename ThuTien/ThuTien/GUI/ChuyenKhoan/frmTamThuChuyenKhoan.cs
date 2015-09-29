@@ -90,13 +90,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                         item.Selected = true;
                         return;
                     }
-                    if (_cDCHD.CheckExistByDangRutDC(item.Cells["SoHoaDon"].Value.ToString()))
-                    {
-                        MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
-                        item.Selected = true;
-                        return;
-                    }
+                    //if (_cDCHD.CheckExistByDangRutDC(item.Cells["SoHoaDon"].Value.ToString()))
+                    //{
+                    //    MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
+                    //    item.Selected = true;
+                    //    return;
+                    //}
                 }
 
             try
@@ -104,23 +104,24 @@ namespace ThuTien.GUI.ChuyenKhoan
                 _cTamThu.BeginTransaction();
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
-                    {
-                        TAMTHU tamthu = new TAMTHU();
-                        tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
-                        tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
-                        tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
-                        tamthu.ChuyenKhoan = true;
-                        if(item.Cells["NganHang"].Value!=null)
-                        tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
-                        else
-                            tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
-                        if (!_cTamThu.Them(tamthu))
+                        if (!_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), true))
                         {
-                            _cTamThu.Rollback();
-                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            TAMTHU tamthu = new TAMTHU();
+                            tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
+                            tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
+                            tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
+                            tamthu.ChuyenKhoan = true;
+                            if (item.Cells["NganHang"].Value != null)
+                                tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
+                            else
+                                tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
+                            if (!_cTamThu.Them(tamthu))
+                            {
+                                _cTamThu.Rollback();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
-                    }
                 _cTamThu.CommitTransaction();
                 Clear();
                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

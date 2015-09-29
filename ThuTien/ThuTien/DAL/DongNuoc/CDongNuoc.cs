@@ -170,7 +170,8 @@ namespace ThuTien.DAL.DongNuoc
 
             var queryDN = from itemDN in _db.TT_DongNuocs
                             where itemDN.Huy==false && itemDN.CreateBy==MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
-                            select new
+                          orderby itemDN.MLT ascending  
+                          select new
                             {
                                 In=false,
                                 TenTo,
