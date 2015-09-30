@@ -10,6 +10,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.LinQ;
 using System.Globalization;
+using ThuTien.GUI.TimKiem;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -113,6 +114,37 @@ namespace ThuTien.GUI.ChuyenKhoan
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void GetNoiDungfrmTimKiem(string NoiDung)
+        {
+            foreach (DataGridViewRow item in dgvBangKe.Rows)
+                if (item.Cells["DanhBo"].Value.ToString() == NoiDung || item.Cells["SoTien"].Value.ToString() == NoiDung)
+                {
+                    dgvBangKe.CurrentCell = item.Cells["DanhBo"];
+                    item.Selected = true;
+                }
+        }
+
+        private void dgvBangKe_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                frmTimKiemForm frm = new frmTimKiemForm();
+                bool flag = false;
+                foreach (var item in this.OwnedForms)
+                    if (item.Name == frm.Name)
+                    {
+                        item.Activate();
+                        flag = true;
+                    }
+                if (flag == false)
+                {
+                    frm.MyGetNoiDung = new frmTimKiemForm.GetNoiDung(GetNoiDungfrmTimKiem);
+                    frm.Owner = this;
+                    frm.Show();
+                }
+            }
+        }
+
         private void dgvBangKe_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length==11)
@@ -146,5 +178,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
             }
         }
+
+        
     }
 }
