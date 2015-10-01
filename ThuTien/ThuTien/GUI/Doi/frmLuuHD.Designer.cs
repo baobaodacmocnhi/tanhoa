@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtTongHD = new System.Windows.Forms.TextBox();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +50,11 @@
             this.TongPhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTongTieuThu = new System.Windows.Forms.TextBox();
+            this.txtTongGiaBan = new System.Windows.Forms.TextBox();
+            this.txtTongThueGTGT = new System.Windows.Forms.TextBox();
+            this.txtTongPhiBVMT = new System.Windows.Forms.TextBox();
+            this.txtTongCong = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
@@ -94,6 +100,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTongCong);
+            this.groupBox1.Controls.Add(this.txtTongPhiBVMT);
+            this.groupBox1.Controls.Add(this.txtTongThueGTGT);
+            this.groupBox1.Controls.Add(this.txtTongGiaBan);
+            this.groupBox1.Controls.Add(this.txtTongTieuThu);
+            this.groupBox1.Controls.Add(this.txtTongHD);
             this.groupBox1.Controls.Add(this.dgvHoaDon);
             this.groupBox1.Controls.Add(this.btnXem);
             this.groupBox1.Controls.Add(this.cmbKy);
@@ -102,7 +114,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(774, 540);
+            this.groupBox1.Size = new System.Drawing.Size(774, 550);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
@@ -134,7 +146,7 @@
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.Size = new System.Drawing.Size(755, 472);
+            this.dgvHoaDon.Size = new System.Drawing.Size(755, 465);
             this.dgvHoaDon.TabIndex = 5;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             // 
@@ -195,6 +207,15 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Năm:";
             // 
+            // txtTongHD
+            // 
+            this.txtTongHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongHD.Location = new System.Drawing.Point(101, 519);
+            this.txtTongHD.Name = "txtTongHD";
+            this.txtTongHD.Size = new System.Drawing.Size(80, 20);
+            this.txtTongHD.TabIndex = 6;
+            this.txtTongHD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Dot
             // 
             this.Dot.DataPropertyName = "Dot";
@@ -221,7 +242,6 @@
             this.TongGiaBan.DataPropertyName = "TongGiaBan";
             this.TongGiaBan.HeaderText = "Giá Bán";
             this.TongGiaBan.Name = "TongGiaBan";
-            this.TongGiaBan.Width = 80;
             // 
             // TongThueGTGT
             // 
@@ -247,11 +267,56 @@
             this.CreateDate.HeaderText = "Ngày Tạo";
             this.CreateDate.Name = "CreateDate";
             // 
+            // txtTongTieuThu
+            // 
+            this.txtTongTieuThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongTieuThu.Location = new System.Drawing.Point(181, 519);
+            this.txtTongTieuThu.Name = "txtTongTieuThu";
+            this.txtTongTieuThu.Size = new System.Drawing.Size(80, 20);
+            this.txtTongTieuThu.TabIndex = 7;
+            this.txtTongTieuThu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongGiaBan
+            // 
+            this.txtTongGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongGiaBan.Location = new System.Drawing.Point(261, 519);
+            this.txtTongGiaBan.Name = "txtTongGiaBan";
+            this.txtTongGiaBan.Size = new System.Drawing.Size(100, 20);
+            this.txtTongGiaBan.TabIndex = 8;
+            this.txtTongGiaBan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongThueGTGT
+            // 
+            this.txtTongThueGTGT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongThueGTGT.Location = new System.Drawing.Point(361, 519);
+            this.txtTongThueGTGT.Name = "txtTongThueGTGT";
+            this.txtTongThueGTGT.Size = new System.Drawing.Size(100, 20);
+            this.txtTongThueGTGT.TabIndex = 9;
+            this.txtTongThueGTGT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongPhiBVMT
+            // 
+            this.txtTongPhiBVMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongPhiBVMT.Location = new System.Drawing.Point(461, 519);
+            this.txtTongPhiBVMT.Name = "txtTongPhiBVMT";
+            this.txtTongPhiBVMT.Size = new System.Drawing.Size(100, 20);
+            this.txtTongPhiBVMT.TabIndex = 10;
+            this.txtTongPhiBVMT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongCong
+            // 
+            this.txtTongCong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongCong.Location = new System.Drawing.Point(561, 519);
+            this.txtTongCong.Name = "txtTongCong";
+            this.txtTongCong.Size = new System.Drawing.Size(100, 20);
+            this.txtTongCong.TabIndex = 11;
+            this.txtTongCong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmLuuHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 600);
+            this.ClientSize = new System.Drawing.Size(807, 623);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnChonFile);
@@ -281,6 +346,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTongCong;
+        private System.Windows.Forms.TextBox txtTongPhiBVMT;
+        private System.Windows.Forms.TextBox txtTongThueGTGT;
+        private System.Windows.Forms.TextBox txtTongGiaBan;
+        private System.Windows.Forms.TextBox txtTongTieuThu;
+        private System.Windows.Forms.TextBox txtTongHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTieuThu;

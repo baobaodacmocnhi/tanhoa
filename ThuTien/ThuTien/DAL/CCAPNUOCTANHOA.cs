@@ -23,7 +23,7 @@ namespace ThuTien.DAL
             {
                 //_connectionString = "Data Source=192.168.90.8\\KD;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=123@tanhoa";
                 _connectionString = ThuTien.Properties.Settings.Default.CAPNUOCTANHOAConnectionString;
-                connection = new SqlConnection(_connectionString);
+                connection = new SqlConnection(ThuTien.Properties.Settings.Default.CAPNUOCTANHOAConnectionString);
             }
             catch (Exception)
             {
@@ -178,20 +178,20 @@ namespace ThuTien.DAL
             SqlCommand cmd = new SqlCommand("sp_ThongTin", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter inparm = cmd.Parameters.Add("@DANHBO", SqlDbType.VarChar);
+            SqlParameter inparm = cmd.Parameters.Add("@DANHBO", SqlDbType.VarChar,50);
             inparm.Direction = ParameterDirection.Input;
-            inparm.Value = _dbCapNuocTanHoa;
+            inparm.Value = DanhBo;
 
-            SqlParameter _QUAN = cmd.Parameters.Add("@QUAN", SqlDbType.VarChar);
+            SqlParameter _QUAN = cmd.Parameters.Add("@QUAN", SqlDbType.VarChar, 50);
             _QUAN.Direction = ParameterDirection.Output;
 
-            SqlParameter _PHUONG = cmd.Parameters.Add("@PHUONG", SqlDbType.VarChar);
+            SqlParameter _PHUONG = cmd.Parameters.Add("@PHUONG", SqlDbType.VarChar, 50);
             _PHUONG.Direction = ParameterDirection.Output;
 
-            SqlParameter _CODH = cmd.Parameters.Add("@CODH", SqlDbType.VarChar);
+            SqlParameter _CODH = cmd.Parameters.Add("@CODH", SqlDbType.VarChar, 50);
             _CODH.Direction = ParameterDirection.Output;
 
-            SqlParameter _MADMA = cmd.Parameters.Add("@MADMA", SqlDbType.VarChar);
+            SqlParameter _MADMA = cmd.Parameters.Add("@MADMA", SqlDbType.VarChar, 50);
             _MADMA.Direction = ParameterDirection.Output;
 
             cmd.ExecuteNonQuery();

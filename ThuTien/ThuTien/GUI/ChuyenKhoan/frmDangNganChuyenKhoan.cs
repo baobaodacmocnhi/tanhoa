@@ -247,7 +247,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 {
                                     if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
                                     {
-                                        if (!_cTienDu.UpdateXoa(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                        if (!_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                         {
                                             //_cHoaDon.SqlRollbackTransaction();
                                             MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

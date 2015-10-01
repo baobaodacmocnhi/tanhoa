@@ -55,9 +55,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 //    continue;
                                 //}
                                 TT_BangKe bangke = new TT_BangKe();
-                                bangke.DanhBo = item[0].ToString();
-                                bangke.SoTien = int.Parse(item[1].ToString());
-                                bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString());
+                                bangke.DanhBo = item[0].ToString().Trim();
+                                bangke.SoTien = int.Parse(item[1].ToString().Trim());
+                                bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
                                 if (_cBangKe.Them(bangke))
                                     _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value);
                             }

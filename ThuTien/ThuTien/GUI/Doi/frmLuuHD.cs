@@ -71,6 +71,28 @@ namespace ThuTien.GUI.Doi
                 dgvHoaDon.DataSource = _cHoaDon.GetTongByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 //startTime.Stop();
                 //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                int TongHD = 0;
+                int TongTieuThu = 0;
+                long TongGiaBan = 0;
+                long TongThueGTGT = 0;
+                long TongPhiBVMT = 0;
+                long TongCong = 0;
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                {
+                    TongHD += int.Parse(item.Cells["TongHD"].Value.ToString());
+                    TongTieuThu += int.Parse(item.Cells["TongTieuThu"].Value.ToString());
+                    TongGiaBan += long.Parse(item.Cells["TongGiaBan"].Value.ToString());
+                    TongThueGTGT += long.Parse(item.Cells["TongThueGTGT"].Value.ToString());
+                    TongPhiBVMT += long.Parse(item.Cells["TongPhiBVMT"].Value.ToString());
+                    TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
+                }
+                txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
+                txtTongTieuThu.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTieuThu);
+                txtTongGiaBan.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
+                txtTongThueGTGT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
+                txtTongPhiBVMT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
+                txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
 

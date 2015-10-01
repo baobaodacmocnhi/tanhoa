@@ -315,12 +315,14 @@ namespace ThuTien.GUI.TongHop
 
             dgvChamCong.DataSource = _cChamCong.GetDS(dateChamCong.Value.Month, dateChamCong.Value.Year);
 
-            for (int i = 1; i <= GetTongNgay(DateTime.Now.Month, DateTime.Now.Year); i++)
+            for (int i = 1; i <= GetTongNgay(dateChamCong.Value.Month, dateChamCong.Value.Year); i++)
             {
-                DateTime time = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
+                DateTime time = new DateTime(dateChamCong.Value.Year, dateChamCong.Value.Month, i);
 
                 if (time.DayOfWeek == DayOfWeek.Saturday || time.DayOfWeek == DayOfWeek.Sunday)
                     dgvChamCong.Columns["N" + i].DefaultCellStyle.BackColor = Color.Orange;
+                else
+                    dgvChamCong.Columns["N" + i].DefaultCellStyle.BackColor = Color.White;
             }
 
             foreach (DataGridViewRow item in dgvChamCong.Rows)

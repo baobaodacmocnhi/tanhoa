@@ -27,6 +27,11 @@ namespace ThuTien.GUI.ToTruong
             dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(CNguoiDung.MaTo);
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(CNguoiDung.MaTo);
+        }
+
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "MaDN" && e.Value != null)
@@ -46,5 +51,7 @@ namespace ThuTien.GUI.ToTruong
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
+
+        
     }
 }
