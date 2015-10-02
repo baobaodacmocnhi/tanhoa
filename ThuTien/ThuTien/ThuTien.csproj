@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>213</ApplicationRevision>
+    <ApplicationRevision>216</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -334,6 +334,7 @@
     <Compile Include="DAL\Doi\CToTrinhCatHuy.cs" />
     <Compile Include="DAL\DongNuoc\CDongNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\Excel.cs" />
+    <Compile Include="DAL\DongNuoc\CVanTu.cs" />
     <Compile Include="DAL\HanhThu\CQuetTam.cs" />
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNguoiDung.cs" />
@@ -491,6 +492,12 @@
     </Compile>
     <Compile Include="GUI\Doi\frmXemTBDongNuoc.Designer.cs">
       <DependentUpon>frmXemTBDongNuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DongNuoc\frmVanTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DongNuoc\frmVanTu.Designer.cs">
+      <DependentUpon>frmVanTu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\HanhThu\frmDangNganTon.cs">
       <SubType>Form</SubType>
@@ -967,6 +974,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmXemTBDongNuoc.resx">
       <DependentUpon>frmXemTBDongNuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DongNuoc\frmVanTu.resx">
+      <DependentUpon>frmVanTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HanhThu\frmDangNganTon.resx">
       <DependentUpon>frmDangNganTon.cs</DependentUpon>

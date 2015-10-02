@@ -103,6 +103,8 @@
             this.N30 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.N31 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Nghi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.XS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.KK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChamCong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,13 +176,15 @@
             this.N29,
             this.N30,
             this.N31,
-            this.Nghi});
+            this.Nghi,
+            this.XS,
+            this.KK});
             this.dgvChamCong.Location = new System.Drawing.Point(12, 38);
             this.dgvChamCong.Name = "dgvChamCong";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvChamCong.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvChamCong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChamCong.Size = new System.Drawing.Size(1296, 572);
+            this.dgvChamCong.Size = new System.Drawing.Size(1311, 572);
             this.dgvChamCong.TabIndex = 35;
             this.dgvChamCong.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChamCong_CellEndEdit);
             this.dgvChamCong.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvChamCong_RowPostPaint);
@@ -520,7 +524,7 @@
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Họ Tên";
             this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 200;
+            this.HoTen.Width = 150;
             // 
             // N1
             // 
@@ -746,6 +750,20 @@
             this.Nghi.Name = "Nghi";
             this.Nghi.Width = 50;
             // 
+            // XS
+            // 
+            this.XS.DataPropertyName = "XS";
+            this.XS.HeaderText = "1.1";
+            this.XS.Name = "XS";
+            this.XS.Width = 30;
+            // 
+            // KK
+            // 
+            this.KK.DataPropertyName = "KK";
+            this.KK.HeaderText = "KK";
+            this.KK.Name = "KK";
+            this.KK.Width = 30;
+            // 
             // frmChamCong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -872,5 +890,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn N30;
         private System.Windows.Forms.DataGridViewCheckBoxColumn N31;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nghi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn XS;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn KK;
     }
 }

@@ -18,8 +18,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                     bangke.MaBK = 1;
                 else
                     bangke.MaBK = _db.TT_BangKes.Max(item => item.MaBK) + 1;
-                bangke.CreateDate = DateTime.Now;
-                bangke.CreateBy = CNguoiDung.MaND;
+                //bangke.CreateDate = DateTime.Now;
+                //bangke.CreateBy = CNguoiDung.MaND;
                 _db.TT_BangKes.InsertOnSubmit(bangke);
                 _db.SubmitChanges();
                 return true;

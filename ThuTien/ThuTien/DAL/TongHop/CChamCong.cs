@@ -95,6 +95,8 @@ namespace ThuTien.DAL.TongHop
                             item.N30,
                             item.N31,
                             Nghi=0,
+                            item.XS,
+                            item.KK,
                         };
             return LINQToDataTable(query);
         }
