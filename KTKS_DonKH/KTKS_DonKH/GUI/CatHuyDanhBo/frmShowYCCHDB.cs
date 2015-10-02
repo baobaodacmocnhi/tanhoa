@@ -162,6 +162,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 dr["ChucVu"] = _ycchdb.ChucVu;
                 dr["NguoiKy"] = _ycchdb.NguoiKy;
 
+                if (!string.IsNullOrEmpty(_ycchdb.MaDonTXL.ToString()))
+                    dr["MaDon"] = "TXL" + _ycchdb.MaDonTXL.ToString().Insert(_ycchdb.MaDonTXL.ToString().Length - 2, "-");
+                else
+                    if (!string.IsNullOrEmpty(_ycchdb.MaDon.ToString()))
+                        dr["MaDon"] = _ycchdb.MaDon.ToString().Insert(_ycchdb.MaDon.ToString().Length - 2, "-");
+
                 dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
                 rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
