@@ -85,6 +85,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtGhiChuXuLy.Text = "";
             cmbNoiDung.SelectedIndex = -1;
             dateXuLy.Value = DateTime.Now;
+            chkNgayXuLy.Checked = false;
             ///
             chkKetQuaTCTBXuLy.Checked = false;
             dateLichSuXuLy.Value = DateTime.Now;
@@ -1011,8 +1012,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     if (_ctchdb.NoiDungXuLy != null)
                     {
+                        chkNgayXuLy.Checked = true;
                         dateXuLy.Value = _ctchdb.NgayXuLy.Value;
                         cmbNoiDung.SelectedItem = _ctchdb.NoiDungXuLy;
+                    }
+                    else
+                    {
+                        chkNgayXuLy.Checked = false;
+                        dateXuLy.Value = DateTime.Now;
+                        cmbNoiDung.SelectedIndex = -1;
                     }
 
                     txtNoiNhan.Text = _ctchdb.NoiNhan;
@@ -1153,10 +1161,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     else
                         _ctchdb.SoTien = null;
 
-                    if (cmbNoiDung.SelectedIndex != -1)
+                    if (chkNgayXuLy.Checked)
                     {
                         _ctchdb.NgayXuLy = dateXuLy.Value;
                         _ctchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        _ctchdb.NgayXuLy = null;
+                        _ctchdb.NoiDungXuLy = null;
                     }
 
                     _ctchdb.NoiNhan = txtNoiNhan.Text.Trim();
@@ -1305,8 +1318,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void cmbNoiDung_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbNoiDung.SelectedIndex != -1)
-                dateXuLy.Enabled = true;
+            //if (cmbNoiDung.SelectedIndex != -1)
+            //    dateXuLy.Enabled = true;
         }
 
         private void txtSoTien_TextChanged(object sender, EventArgs e)
@@ -1318,6 +1331,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (txtSoTien.Text.Trim() != "")
                 txtSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+        }
+
+        private void chkNgayXuLy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNgayXuLy.Checked)
+            {
+                dateXuLy.Enabled = true;
+                cmbNoiDung.Enabled = true;
+            }
+            else
+            {
+                dateXuLy.Enabled = false;
+                cmbNoiDung.Enabled = false;
+            }
         }
 
     }

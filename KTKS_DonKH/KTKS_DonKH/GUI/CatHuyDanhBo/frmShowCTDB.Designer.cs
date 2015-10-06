@@ -71,7 +71,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cmbNoiDung = new System.Windows.Forms.ComboBox();
             this.dateXuLy = new System.Windows.Forms.DateTimePicker();
-            this.label18 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
             this.chkKetQuaTCTBXuLy = new System.Windows.Forms.CheckBox();
@@ -92,6 +91,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label22 = new System.Windows.Forms.Label();
+            this.chkNgayXuLy = new System.Windows.Forms.CheckBox();
             this.groupBoxKetQuaCapTrenXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -309,7 +309,7 @@
             this.chkTroNgai.AutoSize = true;
             this.chkTroNgai.Location = new System.Drawing.Point(405, 28);
             this.chkTroNgai.Name = "chkTroNgai";
-            this.chkTroNgai.Size = new System.Drawing.Size(67, 17);
+            this.chkTroNgai.Size = new System.Drawing.Size(80, 21);
             this.chkTroNgai.TabIndex = 11;
             this.chkTroNgai.Text = "Trở Ngại";
             this.chkTroNgai.UseVisualStyleBackColor = true;
@@ -473,12 +473,12 @@
             // 
             // groupBoxNguyenNhanXuLy
             // 
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.chkNgayXuLy);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label19);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtSoTien);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.cmbNoiDung);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label7);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.dateXuLy);
-            this.groupBoxNguyenNhanXuLy.Controls.Add(this.label18);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtGhiChuXuLy);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label6);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.cmbLyDo);
@@ -502,6 +502,7 @@
             // 
             // cmbNoiDung
             // 
+            this.cmbNoiDung.Enabled = false;
             this.cmbNoiDung.FormattingEnabled = true;
             this.cmbNoiDung.Items.AddRange(new object[] {
             "Khách hàng đóng tiền",
@@ -523,15 +524,6 @@
             this.dateXuLy.Name = "dateXuLy";
             this.dateXuLy.Size = new System.Drawing.Size(109, 25);
             this.dateXuLy.TabIndex = 90;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(705, 30);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(85, 17);
-            this.label18.TabIndex = 89;
-            this.label18.Text = "Ngày Xử Lý:";
             // 
             // btnSua
             // 
@@ -628,7 +620,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(926, 104);
+            this.label15.Location = new System.Drawing.Point(926, 103);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(69, 17);
             this.label15.TabIndex = 59;
@@ -636,7 +628,7 @@
             // 
             // txtNoiNhan
             // 
-            this.txtNoiNhan.Location = new System.Drawing.Point(929, 124);
+            this.txtNoiNhan.Location = new System.Drawing.Point(929, 123);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
             this.txtNoiNhan.Size = new System.Drawing.Size(252, 100);
@@ -736,6 +728,17 @@
             this.label22.Size = new System.Drawing.Size(118, 31);
             this.label22.TabIndex = 89;
             this.label22.Text = "Cắt Tạm";
+            // 
+            // chkNgayXuLy
+            // 
+            this.chkNgayXuLy.AutoSize = true;
+            this.chkNgayXuLy.Location = new System.Drawing.Point(686, 27);
+            this.chkNgayXuLy.Name = "chkNgayXuLy";
+            this.chkNgayXuLy.Size = new System.Drawing.Size(104, 21);
+            this.chkNgayXuLy.TabIndex = 90;
+            this.chkNgayXuLy.Text = "Ngày Xử Lý:";
+            this.chkNgayXuLy.UseVisualStyleBackColor = true;
+            this.chkNgayXuLy.CheckedChanged += new System.EventHandler(this.chkNgayXuLy_CheckedChanged);
             // 
             // frmShowCTDB
             // 
@@ -849,7 +852,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cmbNoiDung;
         private System.Windows.Forms.DateTimePicker dateXuLy;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox chkNgayXuLy;
     }
 }

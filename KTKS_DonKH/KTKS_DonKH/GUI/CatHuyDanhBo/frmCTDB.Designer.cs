@@ -44,7 +44,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cmbNoiDung = new System.Windows.Forms.ComboBox();
             this.dateXuLy = new System.Windows.Forms.DateTimePicker();
-            this.label18 = new System.Windows.Forms.Label();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -91,6 +90,7 @@
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.chkNgayXuLy = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
@@ -201,10 +201,10 @@
             // 
             // groupBoxNguyenNhanXuLy
             // 
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.chkNgayXuLy);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label19);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.cmbNoiDung);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.dateXuLy);
-            this.groupBoxNguyenNhanXuLy.Controls.Add(this.label18);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtSoTien);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnLuu);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnSua);
@@ -231,6 +231,7 @@
             // 
             // cmbNoiDung
             // 
+            this.cmbNoiDung.Enabled = false;
             this.cmbNoiDung.FormattingEnabled = true;
             this.cmbNoiDung.Items.AddRange(new object[] {
             "Khách hàng đóng tiền",
@@ -252,15 +253,6 @@
             this.dateXuLy.Name = "dateXuLy";
             this.dateXuLy.Size = new System.Drawing.Size(109, 25);
             this.dateXuLy.TabIndex = 16;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(705, 30);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(85, 17);
-            this.label18.TabIndex = 15;
-            this.label18.Text = "Ngày Xử Lý:";
             // 
             // txtSoTien
             // 
@@ -446,7 +438,7 @@
             this.chkTroNgai.AutoSize = true;
             this.chkTroNgai.Location = new System.Drawing.Point(405, 28);
             this.chkTroNgai.Name = "chkTroNgai";
-            this.chkTroNgai.Size = new System.Drawing.Size(67, 17);
+            this.chkTroNgai.Size = new System.Drawing.Size(80, 21);
             this.chkTroNgai.TabIndex = 10;
             this.chkTroNgai.Text = "Trở Ngại";
             this.chkTroNgai.UseVisualStyleBackColor = true;
@@ -731,6 +723,17 @@
             this.label22.TabIndex = 61;
             this.label22.Text = "Cắt Tạm";
             // 
+            // chkNgayXuLy
+            // 
+            this.chkNgayXuLy.AutoSize = true;
+            this.chkNgayXuLy.Location = new System.Drawing.Point(686, 27);
+            this.chkNgayXuLy.Name = "chkNgayXuLy";
+            this.chkNgayXuLy.Size = new System.Drawing.Size(104, 21);
+            this.chkNgayXuLy.TabIndex = 15;
+            this.chkNgayXuLy.Text = "Ngày Xử Lý:";
+            this.chkNgayXuLy.UseVisualStyleBackColor = true;
+            this.chkNgayXuLy.CheckedChanged += new System.EventHandler(this.chkNgayXuLy_CheckedChanged);
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -839,7 +842,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cmbNoiDung;
         private System.Windows.Forms.DateTimePicker dateXuLy;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox chkNgayXuLy;
     }
 }

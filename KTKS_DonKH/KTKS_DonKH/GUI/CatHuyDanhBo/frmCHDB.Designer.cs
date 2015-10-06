@@ -71,7 +71,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cmbNoiDung = new System.Windows.Forms.ComboBox();
             this.dateXuLy = new System.Windows.Forms.DateTimePicker();
-            this.label20 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -94,6 +93,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label22 = new System.Windows.Forms.Label();
+            this.chkNgayXuLy = new System.Windows.Forms.CheckBox();
             this.groupBoxKetQuaCapTrenXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -318,7 +318,7 @@
             this.chkCatTam.AutoSize = true;
             this.chkCatTam.Location = new System.Drawing.Point(491, 28);
             this.chkCatTam.Name = "chkCatTam";
-            this.chkCatTam.Size = new System.Drawing.Size(66, 17);
+            this.chkCatTam.Size = new System.Drawing.Size(79, 21);
             this.chkCatTam.TabIndex = 14;
             this.chkCatTam.Text = "Cắt Tạm";
             this.chkCatTam.UseVisualStyleBackColor = true;
@@ -328,7 +328,7 @@
             this.chkTroNgai.AutoSize = true;
             this.chkTroNgai.Location = new System.Drawing.Point(405, 28);
             this.chkTroNgai.Name = "chkTroNgai";
-            this.chkTroNgai.Size = new System.Drawing.Size(67, 17);
+            this.chkTroNgai.Size = new System.Drawing.Size(80, 21);
             this.chkTroNgai.TabIndex = 13;
             this.chkTroNgai.Text = "Trở Ngại";
             this.chkTroNgai.UseVisualStyleBackColor = true;
@@ -484,12 +484,12 @@
             // 
             // groupBoxNguyenNhanXuLy
             // 
+            this.groupBoxNguyenNhanXuLy.Controls.Add(this.chkNgayXuLy);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label19);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnLuu);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.cmbNoiDung);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.dateXuLy);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtSoTien);
-            this.groupBoxNguyenNhanXuLy.Controls.Add(this.label20);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.btnSua);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.label7);
             this.groupBoxNguyenNhanXuLy.Controls.Add(this.txtGhiChuXuLy);
@@ -514,6 +514,7 @@
             // 
             // cmbNoiDung
             // 
+            this.cmbNoiDung.Enabled = false;
             this.cmbNoiDung.FormattingEnabled = true;
             this.cmbNoiDung.Items.AddRange(new object[] {
             "Khách hàng đóng tiền",
@@ -537,15 +538,6 @@
             this.dateXuLy.Name = "dateXuLy";
             this.dateXuLy.Size = new System.Drawing.Size(109, 25);
             this.dateXuLy.TabIndex = 61;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(705, 30);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(85, 17);
-            this.label20.TabIndex = 60;
-            this.label20.Text = "Ngày Xử Lý:";
             // 
             // btnSua
             // 
@@ -749,7 +741,7 @@
             // 
             this.xóaToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.xóaToolStripMenuItem.Text = "Xóa";
             this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
@@ -763,6 +755,17 @@
             this.label22.Size = new System.Drawing.Size(113, 31);
             this.label22.TabIndex = 60;
             this.label22.Text = "Cắt Hủy";
+            // 
+            // chkNgayXuLy
+            // 
+            this.chkNgayXuLy.AutoSize = true;
+            this.chkNgayXuLy.Location = new System.Drawing.Point(686, 27);
+            this.chkNgayXuLy.Name = "chkNgayXuLy";
+            this.chkNgayXuLy.Size = new System.Drawing.Size(104, 21);
+            this.chkNgayXuLy.TabIndex = 64;
+            this.chkNgayXuLy.Text = "Ngày Xử Lý:";
+            this.chkNgayXuLy.UseVisualStyleBackColor = true;
+            this.chkNgayXuLy.CheckedChanged += new System.EventHandler(this.chkNgayXuLy_CheckedChanged);
             // 
             // frmCHDB
             // 
@@ -877,8 +880,8 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cmbNoiDung;
         private System.Windows.Forms.DateTimePicker dateXuLy;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox chkNgayXuLy;
 
     }
 }
