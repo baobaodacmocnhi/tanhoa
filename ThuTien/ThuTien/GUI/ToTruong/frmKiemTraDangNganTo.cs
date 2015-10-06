@@ -10,7 +10,7 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using System.Globalization;
 using ThuTien.BaoCao;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 
 namespace ThuTien.GUI.ToTruong
 {

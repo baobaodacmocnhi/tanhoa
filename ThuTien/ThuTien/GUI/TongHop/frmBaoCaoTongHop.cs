@@ -11,7 +11,7 @@ using ThuTien.DAL.Doi;
 using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.TongHop;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.TongHop;
 using CrystalDecisions.CrystalReports.Engine;
 

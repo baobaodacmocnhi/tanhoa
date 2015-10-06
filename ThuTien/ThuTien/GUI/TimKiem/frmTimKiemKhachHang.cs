@@ -13,7 +13,7 @@ using ThuTien.DAL.TongHop;
 using ThuTien.LinQ;
 using ThuTien.DAL.Quay;
 using CrystalDecisions.CrystalReports.Engine;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.TimKiem;
 using ThuTien.BaoCao;
 

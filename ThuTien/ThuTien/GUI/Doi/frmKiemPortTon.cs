@@ -10,9 +10,10 @@ using Microsoft.Office.Interop.Excel;
 using ThuTien.LinQ;
 using ThuTien.DAL;
 using ThuTien.BaoCao;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using System.Runtime.InteropServices;
 using System.Globalization;
+using ThuTien.DAL.QuanTri;
 
 namespace ThuTien.GUI.Doi
 {
@@ -34,6 +35,7 @@ namespace ThuTien.GUI.Doi
         public void LoadDSHoaDon()
         {
             var query = from item in _db.TT_TestHoaDonTons
+                        where item.CreateDate.Value.Month == dateNgayLap2.Value.Month && item.CreateDate.Value.Year == dateNgayLap2.Value.Year
                         select new
                         {
                             item.Loai,
@@ -128,6 +130,8 @@ namespace ThuTien.GUI.Doi
                             if (valueArray[row, 16] != null)
                                 hoadon.SoNha = valueArray[row, 16].ToString();
                             hoadon.Duong = valueArray[row, 17].ToString();
+                            hoadon.CreateBy = CNguoiDung.MaND;
+                            hoadon.CreateDate = dateNgayLap.Value;
 
                             _db.TT_TestHoaDonTons.InsertOnSubmit(hoadon);
                             _db.SubmitChanges();
@@ -168,6 +172,8 @@ namespace ThuTien.GUI.Doi
                         TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.SingleOrDefault(itemHD => itemHD.SoHoaDon == item.ToString());
                         //_db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);
                         hoadon.Xoa = true;
+                        hoadon.ModifyBy = CNguoiDung.MaND;
+                        hoadon.ModifyDate = DateTime.Now;
                         _db.SubmitChanges();
                     }
                 lstHD.Items.Clear();

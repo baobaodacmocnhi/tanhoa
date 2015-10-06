@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>216</ApplicationRevision>
+    <ApplicationRevision>219</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -378,6 +378,12 @@
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.Designer.cs">
       <DependentUpon>frmDangNganChuyenKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmDangNganTienMatChuyenKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmDangNganTienMatChuyenKhoan.Designer.cs">
+      <DependentUpon>frmDangNganTienMatChuyenKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmDieuChinhDangNganChuyenKhoan.cs">
       <SubType>Form</SubType>
@@ -917,6 +923,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.resx">
       <DependentUpon>frmDangNganChuyenKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmDangNganTienMatChuyenKhoan.resx">
+      <DependentUpon>frmDangNganTienMatChuyenKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmDieuChinhDangNganChuyenKhoan.resx">
       <DependentUpon>frmDieuChinhDangNganChuyenKhoan.cs</DependentUpon>

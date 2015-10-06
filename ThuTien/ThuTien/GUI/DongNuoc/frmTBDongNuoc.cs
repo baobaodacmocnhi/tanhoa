@@ -12,7 +12,7 @@ using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.QuanTri;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.DongNuoc;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using System.Globalization;
 using ThuTien.DAL;
 

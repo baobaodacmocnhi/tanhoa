@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnXoaDK = new System.Windows.Forms.Button();
-            this.btnThemDK = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtDanhBoDK = new System.Windows.Forms.TextBox();
+            this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.dgvVanTu = new System.Windows.Forms.DataGridView();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,25 +43,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvVanTu)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnXoaDK
+            // btnXoa
             // 
-            this.btnXoaDK.Location = new System.Drawing.Point(294, 10);
-            this.btnXoaDK.Name = "btnXoaDK";
-            this.btnXoaDK.Size = new System.Drawing.Size(75, 23);
-            this.btnXoaDK.TabIndex = 77;
-            this.btnXoaDK.Text = "Xóa";
-            this.btnXoaDK.UseVisualStyleBackColor = true;
-            this.btnXoaDK.Click += new System.EventHandler(this.btnXoaDK_Click);
+            this.btnXoa.Location = new System.Drawing.Point(294, 10);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 77;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // btnThemDK
+            // btnThem
             // 
-            this.btnThemDK.Location = new System.Drawing.Point(213, 10);
-            this.btnThemDK.Name = "btnThemDK";
-            this.btnThemDK.Size = new System.Drawing.Size(75, 23);
-            this.btnThemDK.TabIndex = 76;
-            this.btnThemDK.Text = "Thêm";
-            this.btnThemDK.UseVisualStyleBackColor = true;
-            this.btnThemDK.Click += new System.EventHandler(this.btnThemDK_Click);
+            this.btnThem.Location = new System.Drawing.Point(213, 10);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 76;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label10
             // 
@@ -72,47 +72,49 @@
             this.label10.TabIndex = 74;
             this.label10.Text = "Danh Bộ:";
             // 
-            // txtDanhBoDK
+            // txtDanhBo
             // 
-            this.txtDanhBoDK.Location = new System.Drawing.Point(107, 12);
-            this.txtDanhBoDK.Name = "txtDanhBoDK";
-            this.txtDanhBoDK.Size = new System.Drawing.Size(100, 20);
-            this.txtDanhBoDK.TabIndex = 75;
-            this.txtDanhBoDK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBoDK_KeyPress);
+            this.txtDanhBo.Location = new System.Drawing.Point(107, 12);
+            this.txtDanhBo.Name = "txtDanhBo";
+            this.txtDanhBo.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBo.TabIndex = 75;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
             // 
             // dgvVanTu
             // 
             this.dgvVanTu.AllowUserToAddRows = false;
             this.dgvVanTu.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVanTu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVanTu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVanTu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVanTu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
             this.DiaChi,
             this.To,
             this.HanhThu});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVanTu.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVanTu.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVanTu.Location = new System.Drawing.Point(12, 38);
             this.dgvVanTu.Name = "dgvVanTu";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvVanTu.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvVanTu.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVanTu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVanTu.Size = new System.Drawing.Size(992, 381);
             this.dgvVanTu.TabIndex = 78;
+            this.dgvVanTu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVanTu_CellFormatting);
+            this.dgvVanTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvVanTu_RowPostPaint);
             // 
             // DanhBo
             // 
@@ -147,10 +149,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 448);
             this.Controls.Add(this.dgvVanTu);
-            this.Controls.Add(this.btnXoaDK);
-            this.Controls.Add(this.btnThemDK);
+            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.btnThem);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtDanhBoDK);
+            this.Controls.Add(this.txtDanhBo);
             this.Name = "frmVanTu";
             this.Text = "Van Từ";
             this.Load += new System.EventHandler(this.frmVanTu_Load);
@@ -162,10 +164,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnXoaDK;
-        private System.Windows.Forms.Button btnThemDK;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtDanhBoDK;
+        private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.DataGridView dgvVanTu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;

@@ -11,7 +11,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using System.Globalization;
 using ThuTien.BaoCao;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.ToTruong;
 
 namespace ThuTien.GUI.ToTruong

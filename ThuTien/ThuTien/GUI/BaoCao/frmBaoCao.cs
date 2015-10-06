@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 
-namespace KTKS_DonKH.GUI.BaoCao
+namespace ThuTien.GUI.BaoCao
 {
     public partial class frmBaoCao : Form
     {

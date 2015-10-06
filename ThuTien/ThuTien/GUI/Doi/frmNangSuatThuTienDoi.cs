@@ -12,7 +12,7 @@ using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.ToTruong;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.Doi;
 
 namespace ThuTien.GUI.Doi

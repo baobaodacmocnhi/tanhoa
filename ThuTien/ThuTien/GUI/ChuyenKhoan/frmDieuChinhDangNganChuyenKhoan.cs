@@ -13,7 +13,7 @@ using ThuTien.DAL.Quay;
 using ThuTien.DAL.TongHop;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.NhanVien;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.ChuyenKhoan

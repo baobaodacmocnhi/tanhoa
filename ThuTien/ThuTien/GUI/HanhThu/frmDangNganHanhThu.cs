@@ -12,7 +12,7 @@ using System.Globalization;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.TongHop;
 using ThuTien.BaoCao;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.NhanVien;
 
 namespace ThuTien.GUI.HanhThu

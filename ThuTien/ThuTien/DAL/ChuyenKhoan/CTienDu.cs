@@ -109,6 +109,31 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
+        public bool UpdateThemTienMat(string SoHoaDon)
+        {
+            try
+            {
+                if (ExecuteNonQuery("update TT_TienDu set SoTien=SoTien-(select TienDu from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')", false))
+                {
+                    return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu=-TienDu from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false);
+                }
+                else
+                    if (ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu=-TienDu from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false))
+                    {
+                        return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu=-TienDu from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool UpdateXoa(string SoHoaDon)
         {
             try
@@ -134,5 +159,29 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
+        public bool UpdateXoaTienMat(string SoHoaDon)
+        {
+            try
+            {
+                if (ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+(select TienDu from HOADON where SOHOADON='" + SoHoaDon + "'),ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo=(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "')", false))
+                {
+                    return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false);
+                }
+                else
+                    if (ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate) values((select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false))
+                    {
+                        return ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),(select DANHBA from HOADON where SOHOADON='" + SoHoaDon + "'),(select TienDu from HOADON where SOHOADON='" + SoHoaDon + "')," + CNguoiDung.MaND + ",GETDATE())", false);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

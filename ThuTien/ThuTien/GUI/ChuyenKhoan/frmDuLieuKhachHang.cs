@@ -14,7 +14,7 @@ using ThuTien.LinQ;
 using ThuTien.GUI.TimKiem;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.ChuyenKhoan
@@ -26,6 +26,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
         CTo _cTo = new CTo();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
 
         public frmDuLieuKhachHang()
         {
@@ -58,7 +59,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnIn_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            List<TT_To> lstTo=_cTo.GetDSHanhThu();
+            //List<TT_To> lstTo=_cTo.GetDSHanhThu();
             List<TT_DuLieuKhachHang_DanhBo> lstDB = _cDLKH.GetDS();
             foreach (TT_DuLieuKhachHang_DanhBo item in lstDB)
             {
@@ -68,7 +69,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                 HOADON hoadon = _cHoaDon.GetMoiNhat(item.DanhBo);
                 dr["HoTen"] = hoadon.TENKH;
                 dr["MLT"] = hoadon.MALOTRINH;
-                dr["To"] = lstTo.SingleOrDefault(itemTo => itemTo.TuCuonGCS <= int.Parse(hoadon.MAY) && itemTo.DenCuonGCS >= int.Parse(hoadon.MAY)).TenTo;
+                dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
+                dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
                 ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
             }
             rptDSDLKH rpt = new rptDSDLKH();

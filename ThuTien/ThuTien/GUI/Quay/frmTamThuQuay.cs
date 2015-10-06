@@ -14,7 +14,7 @@ using System.Globalization;
 using ThuTien.DAL.TongHop;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.Quay;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
 using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.DAL.DongNuoc;

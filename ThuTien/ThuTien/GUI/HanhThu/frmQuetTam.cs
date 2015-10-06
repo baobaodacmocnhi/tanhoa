@@ -11,7 +11,7 @@ using ThuTien.DAL.HanhThu;
 using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using ThuTien.BaoCao;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
 using System.Globalization;
 

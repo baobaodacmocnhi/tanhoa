@@ -105,5 +105,22 @@ namespace ThuTien.DAL.ChuyenKhoan
                         };
             return LINQToDataTable(query);
         }
+
+        public DataTable GetDS_BangKe(DateTime CreateDate)
+        {
+            var query = from itemBK in _db.TT_BangKes
+                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        where itemBK.CreateDate.Value.Date >= CreateDate.Date.AddDays(-5)&&itemBK.CreateDate.Value.Date <= CreateDate.Date
+                        select new
+                        {
+                            itemBK.MaBK,
+                            itemBK.DanhBo,
+                            itemBK.SoTien,
+                            itemBK.CreateDate,
+                            TenNH = itemtableNH.NGANHANG1,
+                        };
+            return LINQToDataTable(query);
+        }
     }
 }

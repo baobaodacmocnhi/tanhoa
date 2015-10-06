@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.Doi;
 using ThuTien.BaoCao;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.ToTruong;
 using System.Globalization;
 using ThuTien.DAL.Quay;

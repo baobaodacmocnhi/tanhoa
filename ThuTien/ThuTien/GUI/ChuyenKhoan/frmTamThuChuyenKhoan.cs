@@ -15,7 +15,7 @@ using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.DAL.TongHop;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using System.Data.OleDb;
 using ThuTien.GUI.TimKiem;
 using ThuTien.DAL.DongNuoc;
@@ -79,59 +79,64 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if (item.Cells["Chon"].Value!=null&&bool.Parse(item.Cells["Chon"].Value.ToString()))
-                {
-                    string loai="";
-                    if (_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(),out loai))
-                    {
-                        MessageBox.Show("Hóa Đơn này đã Tạm Thu("+loai+")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
-                        item.Selected = true;
-                        return;
-                    }
-                    //if (_cDCHD.CheckExistByDangRutDC(item.Cells["SoHoaDon"].Value.ToString()))
-                    //{
-                    //    MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
-                    //    item.Selected = true;
-                    //    return;
-                    //}
-                }
-
-            try
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                _cTamThu.BeginTransaction();
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
-                        if (!_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), true))
+                    {
+                        string loai = "";
+                        if (_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), out loai))
                         {
-                            TAMTHU tamthu = new TAMTHU();
-                            tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
-                            tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
-                            tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
-                            tamthu.ChuyenKhoan = true;
-                            if (item.Cells["NganHang"].Value != null)
-                                tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
-                            else
-                                tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
-                            if (!_cTamThu.Them(tamthu))
-                            {
-                                _cTamThu.Rollback();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
+                            item.Selected = true;
+                            return;
                         }
-                _cTamThu.CommitTransaction();
-                Clear();
-                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //if (_cDCHD.CheckExistByDangRutDC(item.Cells["SoHoaDon"].Value.ToString()))
+                        //{
+                        //    MessageBox.Show("Hóa Đơn này đã Rút đi Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
+                        //    item.Selected = true;
+                        //    return;
+                        //}
+                    }
+
+                try
+                {
+                    _cTamThu.BeginTransaction();
+                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                        if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                            if (!_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), true))
+                            {
+                                TAMTHU tamthu = new TAMTHU();
+                                tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
+                                tamthu.FK_HOADON = int.Parse(item.Cells["MaHD"].Value.ToString());
+                                tamthu.SoHoaDon = item.Cells["SoHoaDon"].Value.ToString();
+                                tamthu.ChuyenKhoan = true;
+                                if (item.Cells["NganHang"].Value != null)
+                                    tamthu.MaNH = int.Parse(item.Cells["NganHang"].Value.ToString());
+                                else
+                                    tamthu.MaNH = int.Parse(cmbNganHang.SelectedValue.ToString());
+                                if (!_cTamThu.Them(tamthu))
+                                {
+                                    _cTamThu.Rollback();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                    _cTamThu.CommitTransaction();
+                    Clear();
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception)
+                {
+                    _cTamThu.Rollback();
+                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-            catch (Exception)
-            {
-                _cTamThu.Rollback();
-                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXem_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿namespace KTKS_DonKH.GUI.BaoCao
+﻿namespace ThuTien.GUI.BaoCao
 {
     partial class frmBaoCao
     {

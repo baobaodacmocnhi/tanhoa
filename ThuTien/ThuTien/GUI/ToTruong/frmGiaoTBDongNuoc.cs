@@ -12,7 +12,7 @@ using System.Globalization;
 using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.DongNuoc;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.DAL;
 
 namespace ThuTien.GUI.ToTruong

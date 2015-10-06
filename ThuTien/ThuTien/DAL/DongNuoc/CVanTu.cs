@@ -55,13 +55,17 @@ namespace ThuTien.DAL.DongNuoc
 
         public DataTable GetDS()
         {
-            var query = from itemKQ in _db.TT_KQDongNuocs
-                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
-                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
-                        where itemKQ.CreateDate.Value.Date >= TuNgay.Date && itemKQ.CreateDate.Value.Date <= DenNgay.Date
-                                && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        select itemKQ;
+            var query = from itemVT in _db.TT_VanTus
+                        join itemHD in _db.HOADONs on itemVT.DanhBo equals itemHD.DANHBA
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        select new
+                        {
+                            itemVT.DanhBo,
+                            DiaChi=itemHD.SO+ " "+itemHD.DUONG,
+                            To=itemtableND.TT_To.TenTo,
+                            HanhThu=itemtableND.HoTen,
+                        };
 
             return LINQToDataTable(query);
         }

@@ -13,7 +13,7 @@ using System.Globalization;
 using ThuTien.DAL.TongHop;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.NhanVien;
-using KTKS_DonKH.GUI.BaoCao;
+using ThuTien.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
 using ThuTien.LinQ;
 using ThuTien.BaoCao.ChuyenKhoan;
@@ -40,6 +40,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
+            dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
         }
 
