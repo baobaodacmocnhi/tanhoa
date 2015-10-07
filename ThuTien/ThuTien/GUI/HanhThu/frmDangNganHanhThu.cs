@@ -102,9 +102,10 @@ namespace ThuTien.GUI.HanhThu
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
+                        lstHD.EnsureVisible(lstHD.Items.Count - 1);
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
@@ -113,8 +114,14 @@ namespace ThuTien.GUI.HanhThu
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
-                lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+            if (lstHD.Items.Count > 0 && e.Button == MouseButtons.Left)
+            {
+                foreach (ListViewItem item in lstHD.SelectedItems)
+                {
+                    lstHD.Items.Remove(item);
+                }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+            }
         }
 
         private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,12 +151,13 @@ namespace ThuTien.GUI.HanhThu
                         keyColumns[0] = dt.Columns["SoHoaDon"];
                         dt.PrimaryKey = keyColumns;
                         //string loai;
-                        foreach (var item in lstHD.Items)
+                        foreach (ListViewItem item in lstHD.Items)
                         {
-                            if (!dt.Rows.Contains(item.ToString()))
+                            if (!dt.Rows.Contains(item.Text))
                             {
-                                MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                lstHD.SelectedItem = item;
+                                MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                item.Selected = true;
+                                item.Focused = true;
                                 return;
                             }
                             //if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
@@ -168,25 +176,25 @@ namespace ThuTien.GUI.HanhThu
                         try
                         {
                             _cHoaDon.SqlBeginTransaction();
-                            foreach (var item in lstHD.Items)
-                                if (_cHoaDon.DangNgan("HanhThu", item.ToString(), CNguoiDung.MaND))
+                            foreach (ListViewItem item in lstHD.Items)
+                                if (_cHoaDon.DangNgan("HanhThu", item.Text, CNguoiDung.MaND))
                                 {
                                     ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                                     bool ChuyenKhoan = false;
-                                    if (_cTamThu.CheckExist(item.ToString(),out ChuyenKhoan))
-                                        if (_cHoaDon.Thu2Lan(item.ToString(),ChuyenKhoan))
+                                    if (_cTamThu.CheckExist(item.Text,out ChuyenKhoan))
+                                        if (_cHoaDon.Thu2Lan(item.Text,ChuyenKhoan))
                                         {
-                                            if (!_cTamThu.XoaAn(item.ToString()))
+                                            if (!_cTamThu.XoaAn(item.Text))
                                             {
                                                 _cHoaDon.SqlRollbackTransaction();
-                                                MessageBox.Show("Lỗi Xóa Tạm Thu, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                MessageBox.Show("Lỗi Xóa Tạm Thu, Vui lòng thử lại \r\n" + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 return;
                                             }
                                         }
                                         else
                                         {
                                             _cHoaDon.SqlRollbackTransaction();
-                                            MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("Lỗi Thu 2 Lần, Vui lòng thử lại \r\n" + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
                                     //if (_cLenhHuy.CheckExist(item.ToString()))
@@ -228,12 +236,13 @@ namespace ThuTien.GUI.HanhThu
                             keyColumns[0] = dt.Columns["SoHoaDon"];
                             dt.PrimaryKey = keyColumns;
                             //string loai;
-                            foreach (var item in lstHD.Items)
+                            foreach (ListViewItem item in lstHD.Items)
                             {
-                                if (!dt.Rows.Contains(item.ToString().ToUpper()))
+                                if (!dt.Rows.Contains(item.Text.ToUpper()))
                                 {
-                                    MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    lstHD.SelectedItem = item;
+                                    MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    item.Selected=true;
+                                    item.Focused = true;
                                     return;
                                 }
                                 //if (_cTamThu.CheckBySoHoaDon(item.ToString(),out loai))
@@ -247,7 +256,7 @@ namespace ThuTien.GUI.HanhThu
                             {
                                 _cHoaDon.SqlBeginTransaction();
                                 foreach (DataRow item in dt.Rows)
-                                    if (!lstHD.Items.Contains(item["SoHoaDon"].ToString()))
+                                    if (lstHD.FindItemWithText(item["SoHoaDon"].ToString())==null)
                                     {
                                         if (_cHoaDon.DangNgan("HanhThu", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
                                         {

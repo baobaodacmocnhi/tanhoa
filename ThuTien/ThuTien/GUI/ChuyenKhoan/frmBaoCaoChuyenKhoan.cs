@@ -225,10 +225,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            XuatExcelBangKe(dt, oSheet, "BẢNG KÊ", dateGiaiTrach.Value.ToString("dd/MM/yyyy"));
+            XuatExcelBangKe(dt, oSheet, "BẢNG KÊ", dateGiaiTrach.Value.ToString("dd/MM/yyyy"),0);
         }
 
-        private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach)
+        private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach,long TonDau)
         {
             oSheet.Name = SheetName;
 
@@ -241,6 +241,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             head.Font.Size = "20";
             head.RowHeight = 50;
             head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head2 = oSheet.get_Range("A2", "M2");
+            head2.MergeCells = true;
+            head2.Value2 = "Tồn đầu ngày: "+TonDau;
+            head2.Font.Bold = true;
+            head2.Font.Name = "Times New Roman";
 
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");

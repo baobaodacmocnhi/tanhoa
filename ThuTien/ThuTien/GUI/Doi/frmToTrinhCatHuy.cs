@@ -163,7 +163,7 @@ namespace ThuTien.GUI.Doi
                         int MaCTTT = _cToTrinhCatHuy.GetMaxMaCTTT();
 
                         foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
-                            if (string.IsNullOrEmpty(item.Cells["MaCTTT"].Value.ToString()))
+                            if (item.Cells["MaCTTT"].Value==null||string.IsNullOrEmpty(item.Cells["MaCTTT"].Value.ToString()))
                             {
                                 TT_CTToTrinhCatHuy cttotrinh = new TT_CTToTrinhCatHuy();
                                 cttotrinh.MaCTTT = ++MaCTTT;

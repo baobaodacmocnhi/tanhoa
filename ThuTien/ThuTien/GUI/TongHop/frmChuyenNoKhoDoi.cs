@@ -42,9 +42,10 @@ namespace ThuTien.GUI.TongHop
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
+                        lstHD.EnsureVisible(lstHD.Items.Count - 1);
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
@@ -53,8 +54,14 @@ namespace ThuTien.GUI.TongHop
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
-                lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+            if (lstHD.Items.Count > 0 && e.Button == MouseButtons.Left)
+            {
+                foreach (ListViewItem item in lstHD.SelectedItems)
+                {
+                    lstHD.Items.Remove(item);
+                }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+            }
         }
 
         private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,18 +74,20 @@ namespace ThuTien.GUI.TongHop
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
                 List<HOADON> lstHDTemp = new List<HOADON>();
-                foreach (var item in lstHD.Items)
+                foreach (ListViewItem item in lstHD.Items)
                 {
                     if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
+                        item.Selected = true;
+                        item.Focused = true;
                         return;
                     }
                     if (_cCNKD.CheckExistCT(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
+                        item.Selected = true;
+                        item.Focused = true;
                         return;
                     }
                     lstHDTemp.Add(_cHoaDon.GetBySoHoaDon(item.ToString()));

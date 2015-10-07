@@ -39,6 +39,9 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvToTrinh = new System.Windows.Forms.DataGridView();
+            this.MaTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Khoa = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCTToTrinh = new System.Windows.Forms.DataGridView();
             this.MaTT_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,9 +58,6 @@
             this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
-            this.MaTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Khoa = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -151,6 +151,25 @@
             this.dgvToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvToTrinh_CellFormatting);
             this.dgvToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvToTrinh_RowPostPaint);
             // 
+            // MaTT
+            // 
+            this.MaTT.DataPropertyName = "MaTT";
+            this.MaTT.HeaderText = "Mã Tờ Trình";
+            this.MaTT.Name = "MaTT";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // Khoa
+            // 
+            this.Khoa.DataPropertyName = "Khoa";
+            this.Khoa.HeaderText = "Khóa";
+            this.Khoa.Name = "Khoa";
+            this.Khoa.Width = 50;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvCTToTrinh);
@@ -191,7 +210,6 @@
             this.dgvCTToTrinh.Name = "dgvCTToTrinh";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvCTToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCTToTrinh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCTToTrinh.Size = new System.Drawing.Size(913, 565);
             this.dgvCTToTrinh.TabIndex = 22;
             this.dgvCTToTrinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCTToTrinh_CellEndEdit);
@@ -298,25 +316,6 @@
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // MaTT
-            // 
-            this.MaTT.DataPropertyName = "MaTT";
-            this.MaTT.HeaderText = "Mã Tờ Trình";
-            this.MaTT.Name = "MaTT";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // Khoa
-            // 
-            this.Khoa.DataPropertyName = "Khoa";
-            this.Khoa.HeaderText = "Khóa";
-            this.Khoa.Name = "Khoa";
-            this.Khoa.Width = 50;
             // 
             // frmToTrinhCatHuy
             // 

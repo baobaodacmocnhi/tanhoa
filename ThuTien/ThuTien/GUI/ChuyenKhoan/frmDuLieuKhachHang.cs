@@ -107,9 +107,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
+                        lstHD.EnsureVisible(lstHD.Items.Count - 1);
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
@@ -118,8 +119,14 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
-                lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+            if (lstHD.Items.Count > 0 && e.Button == MouseButtons.Left)
+            {
+                foreach (ListViewItem item in lstHD.SelectedItems)
+                {
+                    lstHD.Items.Remove(item);
+                }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+            }
         }
 
         private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,22 +143,23 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                foreach (var item in lstHD.Items)
+                foreach (ListViewItem item in lstHD.Items)
                 {
-                    if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
+                    if (!_cHoaDon.CheckBySoHoaDon(item.Text))
                     {
-                        MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
+                        MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        item.Selected = true;
+                        item.Focused = true;
                         return;
                     }
                 }
                 try
                 {
                     _cDLKH.BeginTransaction();
-                    foreach (var item in lstHD.Items)
+                    foreach (ListViewItem item in lstHD.Items)
                     {
                         TT_DuLieuKhachHang_SoHoaDon dlkh = new TT_DuLieuKhachHang_SoHoaDon();
-                        dlkh.SoHoaDon = item.ToString();
+                        dlkh.SoHoaDon = item.Text;
                         if (!_cDLKH.Them2(dlkh))
                         {
                             _cDLKH.Rollback();
@@ -951,21 +959,22 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    foreach (var item in lstHD.Items)
+                    foreach (ListViewItem item in lstHD.Items)
                     {
-                        if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
+                        if (!_cHoaDon.CheckBySoHoaDon(item.Text))
                         {
-                            MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            lstHD.SelectedItem = item;
+                            MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            item.Focused = true;
                             return;
                         }
                     }
                     try
                     {
                         _cDLKH.BeginTransaction();
-                        foreach (var item in lstHD.Items)
+                        foreach (ListViewItem item in lstHD.Items)
                         {
-                            TT_DuLieuKhachHang_SoHoaDon dlkh = _cDLKH.GetBySoHoaDon2(item.ToString());
+                            TT_DuLieuKhachHang_SoHoaDon dlkh = _cDLKH.GetBySoHoaDon2(item.Text);
                             if (!_cDLKH.Xoa2(dlkh))
                             {
                                 _cDLKH.Rollback();

@@ -3377,6 +3377,8 @@ namespace ThuTien.DAL.Doi
                                 TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                 TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                 TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                TienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                TienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
                             };
                 return LINQToDataTable(query);
             }
@@ -6027,7 +6029,7 @@ namespace ThuTien.DAL.Doi
             try
             {
                 string sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV + ",NGAYGIAITRACH='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',"
-                    + "TienDu=(select td.SoTien from TT_TienDu td,HOADON hd where td.DanhBo=hd.DANHBA and SOHOADON='"+SoHoaDon+"'),TienMat=TONGCONG-TienDu"            
+                    + "TienDu=(select td.SoTien from TT_TienDu td,HOADON hd where td.DanhBo=hd.DANHBA and SOHOADON='" + SoHoaDon + "'),TienMat=(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')-(select td.SoTien from TT_TienDu td,HOADON hd where td.DanhBo=hd.DANHBA and SOHOADON='" + SoHoaDon + "')"
                     + " where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null ";
                 return ExecuteNonQuery(sql, false);
             }
@@ -6058,7 +6060,7 @@ namespace ThuTien.DAL.Doi
                             if (Loai == "ChuyenKhoan")
                             {
                                 sql = "update HOADON set DangNgan_ChuyenKhoan=0,MaNV_DangNgan=null,NGAYGIAITRACH=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' "
-                                       + "where SOHOADON='" + SoHoaDon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV;
+                                       + "where SOHOADON='" + SoHoaDon + "' and DangNgan_ChuyenKhoan=1 and MaNV_DangNgan=" + MaNV+" and TienMat is null";
                                 return ExecuteNonQuery(sql, false);
                             }
                             else

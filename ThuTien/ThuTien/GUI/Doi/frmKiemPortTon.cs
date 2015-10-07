@@ -60,14 +60,31 @@ namespace ThuTien.GUI.Doi
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
+                        lstHD.EnsureVisible(lstHD.Items.Count - 1);
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
-                lstHD.SelectedIndex = lstHD.Items.Count - 1;
                 txtSoHoaDon.Text = "";
             }
+        }
+
+        private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstHD.Items.Count > 0 && e.Button == MouseButtons.Left)
+            {
+                foreach (ListViewItem item in lstHD.SelectedItems)
+                {
+                    lstHD.Items.Remove(item);
+                }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+            }
+        }
+
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -107,8 +124,8 @@ namespace ThuTien.GUI.Doi
                         //for (int col = 1; col <= worksheet.UsedRange.Columns.Count; ++col)
                         //{
                         //access each cell
-                        if (!_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == valueArray[row, 14].ToString()))
-                        {
+                        //if (!_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == valueArray[row, 14].ToString()))
+                        //{
                             if (k == 31)
                             {
 
@@ -135,7 +152,7 @@ namespace ThuTien.GUI.Doi
 
                             _db.TT_TestHoaDonTons.InsertOnSubmit(hoadon);
                             _db.SubmitChanges();
-                        }
+                        //}
                         //}
                     }
 
@@ -166,10 +183,10 @@ namespace ThuTien.GUI.Doi
         {
             try
             {
-                foreach (var item in lstHD.Items)
-                    if (_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == item.ToString()))
+                foreach (ListViewItem item in lstHD.Items)
+                    if (_db.TT_TestHoaDonTons.Any(itemHD => itemHD.SoHoaDon == item.Text))
                     {
-                        TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.SingleOrDefault(itemHD => itemHD.SoHoaDon == item.ToString());
+                        TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.Where(itemHD => itemHD.SoHoaDon == item.Text).OrderByDescending(itemHD => itemHD.MaHD).First();
                         //_db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);
                         hoadon.Xoa = true;
                         hoadon.ModifyBy = CNguoiDung.MaND;
@@ -196,7 +213,7 @@ namespace ThuTien.GUI.Doi
                         //TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.SingleOrDefault(itemHD => itemHD.SoHoaDon == item.Cells["SoHoaDon"].Value.ToString());
                         //_db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);
                         //_db.SubmitChanges();
-                        _db.ExecuteCommand("delete TT_TestHoaDonTon where SoHoaDon='" + item.Cells["SoHoaDon"].Value.ToString() + "'");
+                        _db.ExecuteCommand("delete TT_TestHoaDonTon where MaHD='" + item.Cells["MaHD"].Value.ToString() + "'");
                     }
                 lstHD.Items.Clear();
                 LoadDSHoaDon();
@@ -288,15 +305,5 @@ namespace ThuTien.GUI.Doi
             frm.ShowDialog();
         }
 
-        private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
-                lstHD.Items.RemoveAt(lstHD.SelectedIndex);
-        }
-
-        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtSoLuong.Text = lstHD.Items.Count.ToString();
-        }
     }
 }

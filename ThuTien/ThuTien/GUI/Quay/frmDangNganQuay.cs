@@ -91,21 +91,13 @@ namespace ThuTien.GUI.Quay
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-            //    if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
-            //    {
-            //        lstHD.Items.Add(txtSoHoaDon.Text.Trim());
-            //        txtSoLuong.Text = lstHD.Items.Count.ToString();
-            //        txtSoHoaDon.Text = "";
-            //    }
-            //    else
-            //        txtSoHoaDon.Text = "";
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
+                        lstHD.EnsureVisible(lstHD.Items.Count - 1);
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
@@ -114,8 +106,14 @@ namespace ThuTien.GUI.Quay
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0 && lstHD.SelectedIndex != -1)
-                lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+            if (lstHD.Items.Count > 0 && e.Button == MouseButtons.Left)
+            {
+                foreach (ListViewItem item in lstHD.SelectedItems)
+                {
+                    lstHD.Items.Remove(item);
+                }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+            }
         }
 
         private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,7 +141,7 @@ namespace ThuTien.GUI.Quay
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                foreach (var item in lstHD.Items)
+                foreach (ListViewItem item in lstHD.Items)
                 {
                     //if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
                     //{
@@ -174,8 +172,8 @@ namespace ThuTien.GUI.Quay
                 try
                 {
                     _cHoaDon.SqlBeginTransaction();
-                    foreach (var item in lstHD.Items)
-                        if (_cHoaDon.DangNgan("Quay", item.ToString(), CNguoiDung.MaND))
+                    foreach (ListViewItem item in lstHD.Items)
+                        if (_cHoaDon.DangNgan("Quay", item.Text, CNguoiDung.MaND))
                         {
                             //if (_cLenhHuy.CheckExist(item.ToString()))
                             //    if (!_cLenhHuy.Xoa(item.ToString()))

@@ -41,20 +41,13 @@ namespace ThuTien.GUI.DongNuoc
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-            //    if (!lstHD.Items.Contains(txtSoHoaDon.Text.Trim()))
-            //    {
-            //        lstHD.Items.Add(txtSoHoaDon.Text.Trim());
-            //        txtSoHoaDon.Text = "";
-            //    }
-            //    else
-            //        txtSoHoaDon.Text = "";
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && !lstHD.Items.Contains(item.Trim().ToUpper()))
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13 && lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                     {
                         lstHD.Items.Add(item.Trim().ToUpper());
+                        lstHD.EnsureVisible(lstHD.Items.Count - 1);
                     }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
@@ -63,8 +56,19 @@ namespace ThuTien.GUI.DongNuoc
 
         private void lstHD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstHD.Items.Count > 0)
-                lstHD.Items.RemoveAt(lstHD.SelectedIndex);
+            if (lstHD.Items.Count > 0 && e.Button == MouseButtons.Left)
+            {
+                foreach (ListViewItem item in lstHD.SelectedItems)
+                {
+                    lstHD.Items.Remove(item);
+                }
+                txtSoLuong.Text = lstHD.Items.Count.ToString();
+            }
+        }
+
+        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = lstHD.Items.Count.ToString();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -72,27 +76,30 @@ namespace ThuTien.GUI.DongNuoc
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
                 List<HOADON> lstHDTemp = new List<HOADON>();
-                foreach (var item in lstHD.Items)
+                foreach (ListViewItem item in lstHD.Items)
                 {
-                    if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
+                    if (!_cHoaDon.CheckBySoHoaDon(item.Text))
                     {
-                        MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
+                        MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        item.Selected=true;
+                        item.Focused = true;
                         return;
                     }
-                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.ToString()))
+                    if (_cHoaDon.CheckDangNganBySoHoaDon(item.Text))
                     {
-                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
+                        MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        item.Selected = true;
+                        item.Focused = true;
                         return;
                     }
                     if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.ToString()))
                     {
-                        MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        lstHD.SelectedItem = item;
+                        MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        item.Selected = true;
+                        item.Focused = true;
                         return;
                     }
-                    lstHDTemp.Add(_cHoaDon.GetBySoHoaDon(item.ToString()));
+                    lstHDTemp.Add(_cHoaDon.GetBySoHoaDon(item.Text));
                 }
 
                 try
@@ -341,10 +348,6 @@ namespace ThuTien.GUI.DongNuoc
             frm.ShowDialog();
         }
 
-        private void lstHD_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtSoLuong.Text = lstHD.Items.Count.ToString();
-        }
 
        
  
