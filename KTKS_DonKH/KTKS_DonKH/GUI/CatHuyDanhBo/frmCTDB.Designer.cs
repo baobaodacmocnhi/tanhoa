@@ -41,6 +41,7 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxNguyenNhanXuLy = new System.Windows.Forms.GroupBox();
+            this.chkNgayXuLy = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cmbNoiDung = new System.Windows.Forms.ComboBox();
             this.dateXuLy = new System.Windows.Forms.DateTimePicker();
@@ -90,7 +91,6 @@
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.chkNgayXuLy = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
@@ -220,6 +220,17 @@
             this.groupBoxNguyenNhanXuLy.TabStop = false;
             this.groupBoxNguyenNhanXuLy.Text = "Nguyên Nhân Xử Lý";
             // 
+            // chkNgayXuLy
+            // 
+            this.chkNgayXuLy.AutoSize = true;
+            this.chkNgayXuLy.Location = new System.Drawing.Point(686, 27);
+            this.chkNgayXuLy.Name = "chkNgayXuLy";
+            this.chkNgayXuLy.Size = new System.Drawing.Size(104, 21);
+            this.chkNgayXuLy.TabIndex = 15;
+            this.chkNgayXuLy.Text = "Ngày Xử Lý:";
+            this.chkNgayXuLy.UseVisualStyleBackColor = true;
+            this.chkNgayXuLy.CheckedChanged += new System.EventHandler(this.chkNgayXuLy_CheckedChanged);
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -237,7 +248,8 @@
             "Khách hàng đóng tiền",
             "Khách hàng cam kết sử dụng lại",
             "Hủy lệnh",
-            "Đã cắt tạm bít nút"});
+            "Đã cắt tạm bít nút",
+            "Trùng lệnh"});
             this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);
@@ -722,17 +734,6 @@
             this.label22.Size = new System.Drawing.Size(118, 31);
             this.label22.TabIndex = 61;
             this.label22.Text = "Cắt Tạm";
-            // 
-            // chkNgayXuLy
-            // 
-            this.chkNgayXuLy.AutoSize = true;
-            this.chkNgayXuLy.Location = new System.Drawing.Point(686, 27);
-            this.chkNgayXuLy.Name = "chkNgayXuLy";
-            this.chkNgayXuLy.Size = new System.Drawing.Size(104, 21);
-            this.chkNgayXuLy.TabIndex = 15;
-            this.chkNgayXuLy.Text = "Ngày Xử Lý:";
-            this.chkNgayXuLy.UseVisualStyleBackColor = true;
-            this.chkNgayXuLy.CheckedChanged += new System.EventHandler(this.chkNgayXuLy_CheckedChanged);
             // 
             // frmCTDB
             // 
