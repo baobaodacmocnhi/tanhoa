@@ -273,8 +273,8 @@ namespace ThuTien.GUI.TongHop
             long TongThueGTGTCK = 0;
             long TongPhiBVMTCK = 0;
             long TongCongCK = 0;
-            long TienDu = 0;
-            long TienMat = 0;
+            //long TongTienDu = 0;
+            long TongTienMat = 0;
 
             dt = _cHoaDon.GetTongHopDangNganDoi("TG", dateGiaiTrachTongHopDangNgan.Value);
             dt.Merge( _cHoaDon.GetTongHopDangNganDoi("CQ", dateGiaiTrachTongHopDangNgan.Value));
@@ -298,10 +298,10 @@ namespace ThuTien.GUI.TongHop
                     TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
                     TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
                     TongCongCK += long.Parse(item["TongCong"].ToString());
-                    if (!string.IsNullOrEmpty(item["TienDu"].ToString()))
-                    TienDu += long.Parse(item["TienDu"].ToString());
-                    if (!string.IsNullOrEmpty(item["TienMat"].ToString()))
-                    TienMat += long.Parse(item["TienMat"].ToString());
+                    //if (!string.IsNullOrEmpty(item["TongTienDu"].ToString()))
+                    //TongTienDu += long.Parse(item["TongTienDu"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
+                        TongTienMat += long.Parse(item["TongTienMat"].ToString());
                 }
                 else
                 {
@@ -324,8 +324,8 @@ namespace ThuTien.GUI.TongHop
                 dr["TongThueGTGTCK"] = TongThueGTGTCK;
                 dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
                 dr["TongCongCK"] = TongCongCK;
-                dr["TienDu"] = TienDu;
-                dr["TienMat"] = TienMat;
+                //dr["TongTienDu"] = TongTienDu;
+                dr["TongTienMat"] = TongTienMat;
 
                 dr["TongGiaBanTM"] = TongGiaBanTM;
                 dr["TongThueGTGTTM"] = TongThueGTGTTM;

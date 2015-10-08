@@ -46,8 +46,11 @@ namespace ThuTien.GUI.DongNuoc
 
                 TT_VanTu vantu = new TT_VanTu();
                 vantu.DanhBo = txtDanhBo.Text.Trim();
-                if(_cVanTu.Them(vantu))
+                if (_cVanTu.Them(vantu))
+                {
+                    txtDanhBo.Text = "";
                     dgvVanTu.DataSource = _cVanTu.GetDS();
+                }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

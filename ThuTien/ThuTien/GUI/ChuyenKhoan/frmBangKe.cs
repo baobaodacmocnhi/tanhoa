@@ -128,23 +128,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvBangKe_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F)
-            {
-                frmTimKiemForm frm = new frmTimKiemForm();
-                bool flag = false;
-                foreach (var item in this.OwnedForms)
-                    if (item.Name == frm.Name)
-                    {
-                        item.Activate();
-                        flag = true;
-                    }
-                if (flag == false)
-                {
-                    frm.MyGetNoiDung = new frmTimKiemForm.GetNoiDung(GetNoiDungfrmTimKiem);
-                    frm.Owner = this;
-                    frm.Show();
-                }
-            }
+
         }
 
         private void dgvBangKe_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -172,10 +156,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.FormattedValue.ToString().Replace(" ", "") != dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString())
             {
                 TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
-                bangke.DanhBo = dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ","");
+                bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
                 if (_cBangKe.Sua(bangke))
                 {
-                    _cTienDu.Update(e.FormattedValue.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1));
+                    _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1));
                     _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value);
                 }
             }
@@ -212,6 +196,27 @@ namespace ThuTien.GUI.ChuyenKhoan
             rpt.SetDataSource(ds);
             ThuTien.GUI.BaoCao.frmBaoCao frm = new ThuTien.GUI.BaoCao.frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void frmBangKe_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                frmTimKiemForm frm = new frmTimKiemForm();
+                bool flag = false;
+                foreach (var item in this.OwnedForms)
+                    if (item.Name == frm.Name)
+                    {
+                        item.Activate();
+                        flag = true;
+                    }
+                if (flag == false)
+                {
+                    frm.MyGetNoiDung = new frmTimKiemForm.GetNoiDung(GetNoiDungfrmTimKiem);
+                    frm.Owner = this;
+                    frm.Show();
+                }
+            }
         }
 
         

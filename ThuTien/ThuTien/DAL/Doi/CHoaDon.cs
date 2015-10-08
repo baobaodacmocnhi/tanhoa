@@ -3214,6 +3214,8 @@ namespace ThuTien.DAL.Doi
                                 TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                 TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                 TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
                             };
                 return LINQToDataTable(query);
             }
@@ -3233,6 +3235,8 @@ namespace ThuTien.DAL.Doi
                                     TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                     TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                     TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                    TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                    TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
                                 };
                     return LINQToDataTable(query);
                 }
@@ -3377,8 +3381,8 @@ namespace ThuTien.DAL.Doi
                                 TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                 TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                 TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                TienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
-                                TienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
+                                TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
                             };
                 return LINQToDataTable(query);
             }
@@ -4418,7 +4422,7 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && itemHD.TONGCONG != 0
-                        orderby itemHD.ID_HOADON descending
+                        orderby itemHD.ID_HOADON ascending
                         select new
                         {
                             MaHD = itemHD.ID_HOADON,
@@ -5585,6 +5589,35 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSHoaDon0(int Nam, int Ky, int TuDot,int DenDot, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT >= TuDot&& itemHD.DOT <= DenDot
+                            && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                            && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
+                            && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSHoaDon0(int Nam, int Ky, int Dot, string GiaBieu, string DinhMuc, string Code)
         {
             var query = from itemHD in _db.HOADONs
@@ -5734,6 +5767,37 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSHoaDon0_To(int MaTo, int Nam, int Ky, int TuDot, int DenDot, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                              && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT >= TuDot && itemHD.DOT <= DenDot
+                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
+                        && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSHoaDon0_To(int MaTo, int Nam, int Ky, int Dot, string GiaBieu, string DinhMuc, string Code)
         {
             var query = from itemHD in _db.HOADONs
@@ -5800,6 +5864,35 @@ namespace ThuTien.DAL.Doi
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.MaNV_HanhThu == MaNV && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky
+                        && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
+                        && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
+                        && itemHD.CODE.Contains(Code)
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.SOHOADON,
+                            itemHD.SOPHATHANH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            GiaBieu = itemHD.GB,
+                            DinhMuc = itemHD.DM,
+                            itemHD.CODE,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TIEUTHU,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSHoaDon0_NV(int MaNV, int Nam, int Ky, int TuDot,int DenDot, string GiaBieu, string DinhMuc, string Code)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.MaNV_HanhThu == MaNV && itemHD.TIEUTHU == 0 && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT >= TuDot && itemHD.DOT <= DenDot
                         && itemHD.GB.Value.ToString().Contains(GiaBieu.ToString())
                         && (itemHD.DM == null || itemHD.DM.Value.ToString().Contains(DinhMuc.ToString()))
                         && itemHD.CODE.Contains(Code)

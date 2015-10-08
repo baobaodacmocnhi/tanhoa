@@ -303,6 +303,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                     dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
                     dr["TongCong"] = item["TongCong"].ToString();
+                    if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
+                        dr["TongTienMat"] = item["TongTienMat"].ToString();
+                    else
+                        dr["TongTienMat"] = 0;
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                 }
@@ -322,6 +326,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
                         dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
                         dr["TongCong"] = item["TongCong"].ToString();
+                        if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
+                            dr["TongTienMat"] = item["TongTienMat"].ToString();
+                        else
+                            dr["TongTienMat"] = 0;
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                     }

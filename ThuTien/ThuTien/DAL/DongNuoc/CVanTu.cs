@@ -59,6 +59,7 @@ namespace ThuTien.DAL.DongNuoc
                         join itemHD in _db.HOADONs on itemVT.DanhBo equals itemHD.DANHBA
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.ID_HOADON == _db.HOADONs.Where(item=>item.DANHBA==itemVT.DanhBo).Max(item=>item.ID_HOADON)
                         select new
                         {
                             itemVT.DanhBo,
@@ -67,7 +68,7 @@ namespace ThuTien.DAL.DongNuoc
                             HanhThu=itemtableND.HoTen,
                         };
 
-            return LINQToDataTable(query);
+            return LINQToDataTable(query.Distinct());
         }
     }
 }

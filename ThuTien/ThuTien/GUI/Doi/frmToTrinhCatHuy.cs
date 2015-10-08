@@ -13,6 +13,7 @@ using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.Doi;
+using ThuTien.DAL.Quay;
 
 namespace ThuTien.GUI.Doi
 {
@@ -22,6 +23,7 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
         CToTrinhCatHuy _cToTrinhCatHuy = new CToTrinhCatHuy();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmToTrinhCatHuy()
         {
@@ -399,6 +401,10 @@ namespace ThuTien.GUI.Doi
                                 Ky += ", " + itemTon["Ky"];
                             TongCongSo += int.Parse(itemTon["TongCong"].ToString());
                             TieuThu += int.Parse(itemTon["TieuThu"].ToString());
+
+                            TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                            lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
+                            _cLenhHuy.Them(lenhhuy);
                         }
 
                         item.Ky = Ky;

@@ -18,6 +18,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CTo _cTo = new CTo();
         CHoaDon _cHoaDon = new CHoaDon();
         CBangKe _cBangKe = new CBangKe();
+        CTienDu _cTienDu = new CTienDu();
 
         public frmBaoCaoChuyenKhoan()
         {
@@ -225,7 +226,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            XuatExcelBangKe(dt, oSheet, "BẢNG KÊ", dateGiaiTrach.Value.ToString("dd/MM/yyyy"),0);
+            XuatExcelBangKe(dt, oSheet, "BẢNG KÊ", dateGiaiTrach.Value.ToString("dd/MM/yyyy"),_cTienDu.GetTienTon(dateGiaiTrach.Value));
         }
 
         private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach,long TonDau)

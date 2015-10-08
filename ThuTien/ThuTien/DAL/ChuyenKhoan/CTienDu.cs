@@ -183,5 +183,10 @@ namespace ThuTien.DAL.ChuyenKhoan
                 return false;
             }
         }
+
+        public long GetTienTon(DateTime CreateDate)
+        {
+            return (long)(_db.TT_TienDus.Sum(item => item.SoTien) - _db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= CreateDate.Date).Sum(item => item.SoTien));
+        }
     }
 }
