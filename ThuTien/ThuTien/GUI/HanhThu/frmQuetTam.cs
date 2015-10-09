@@ -14,6 +14,7 @@ using ThuTien.BaoCao;
 using ThuTien.GUI.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
 using System.Globalization;
+using ThuTien.BaoCao.DongNuoc;
 
 namespace ThuTien.GUI.HanhThu
 {
@@ -396,6 +397,128 @@ namespace ThuTien.GUI.HanhThu
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnInTBTienNuoc_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                dsBaoCao ds = new dsBaoCao();
+                DataTable dt = new DataTable();
+                if (tabControl.SelectedTab.Name == "tabTuGia")
+                {
+                    dt = (DataTable)dgvHDTuGia.DataSource;
+                }
+                else
+                    if (tabControl.SelectedTab.Name == "tabCoQuan")
+                    {
+                        dt = (DataTable)dgvHDCoQuan.DataSource;
+                    }
+
+                ds.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { ds.Tables["TBDongNuoc"].Columns["DanhBo"] };
+                foreach (DataRow item in dt.Rows)
+                    if (!ds.Tables["TBDongNuoc"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
+                    {
+                        DataRow[] drTemp = dt.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
+
+                        string Ky = "";
+                        string SoTien = "";
+                        int TongCong = 0;
+                        foreach (DataRow itemChild in drTemp)
+                        {
+                            Ky += itemChild["Ky"] + "\n";
+                            SoTien += String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                            TongCong += int.Parse(itemChild["TongCong"].ToString());
+                        }
+
+                        DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
+                        dr["HoTen"] = item["HoTen"];
+                        dr["DiaChi"] = item["DiaChi"];
+                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["MLT"] = item["MLT"];
+                        dr["Ky"] = Ky;
+                        dr["SoTien"] = SoTien;
+                        dr["TongCong"] = TongCong;
+
+                        ds.Tables["TBDongNuoc"].Rows.Add(dr);
+                    }
+
+                rptTBTienNuocPhoto rpt = new rptTBTienNuocPhoto();
+                rpt.SetDataSource(ds);
+                //frmBaoCao frm = new frmBaoCao(rpt);
+                //frm.ShowDialog();
+                printDialog.AllowSomePages = true;
+                printDialog.ShowHelp = true;
+
+                rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
+                rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
+                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
+            }
+        }
+
+        private void btnInTBCatOng_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                dsBaoCao ds = new dsBaoCao();
+                DataTable dt = new DataTable();
+                if (tabControl.SelectedTab.Name == "tabTuGia")
+                {
+                    dt = (DataTable)dgvHDTuGia.DataSource;
+                }
+                else
+                    if (tabControl.SelectedTab.Name == "tabCoQuan")
+                    {
+                        dt = (DataTable)dgvHDCoQuan.DataSource;
+                    }
+
+                int stt = 1;
+                ds.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { ds.Tables["TBDongNuoc"].Columns["DanhBo"] };
+                foreach (DataRow item in dt.Rows)
+                    if (!ds.Tables["TBDongNuoc"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
+                    {
+                        DataRow[] drTemp = dt.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
+
+                        string Ky = "";
+                        int TongCong = 0;
+                        foreach (DataRow itemChild in drTemp)
+                        {
+                            Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                            TongCong += int.Parse(itemChild["TongCong"].ToString());
+                        }
+
+                        DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
+                        dr["MaDN"] = stt++;
+                        dr["HoTen"] = item["HoTen"];
+                        dr["DiaChi"] = item["DiaChi"];
+                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["MLT"] = item["MLT"];
+                        dr["HopDong"] = item["HopDong"];
+                        dr["Ky"] = Ky;
+                        dr["TongCong"] = TongCong;
+
+                        ds.Tables["TBDongNuoc"].Rows.Add(dr);
+                    }
+
+                rptTBCatOngPhoto rpt = new rptTBCatOngPhoto();
+                rpt.SetDataSource(ds);
+                //frmBaoCao frm = new frmBaoCao(rpt);
+                //frm.ShowDialog();
+                printDialog.AllowSomePages = true;
+                printDialog.ShowHelp = true;
+
+                rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
+                rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
+                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+
+                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
+            }
         }
 
     }

@@ -384,6 +384,7 @@ namespace ThuTien.GUI.TongHop
             long TongThueGTGTCK = 0;
             long TongPhiBVMTCK = 0;
             long TongCongCK = 0;
+            long TongTienMat = 0;
 
             dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThuTG(dateGiaiTrachTongHopDangNgan.Value);
             for (int i = 0; i < lst.Count; i++)
@@ -411,6 +412,8 @@ namespace ThuTien.GUI.TongHop
                     TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
                     TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
                     TongCongCK += long.Parse(item["TongCong"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
+                        TongTienMat += long.Parse(item["TongTienMat"].ToString());
                 }
                 else
                 {
@@ -437,6 +440,7 @@ namespace ThuTien.GUI.TongHop
                 dr["TongThueGTGTCK"] = TongThueGTGTCK;
                 dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
                 dr["TongCongCK"] = TongCongCK;
+                dr["TongTienMat"] = TongTienMat;
 
                 dr["TongGiaBanTM"] = TongGiaBanTM;
                 dr["TongThueGTGTTM"] = TongThueGTGTTM;
@@ -495,6 +499,7 @@ namespace ThuTien.GUI.TongHop
             long TongThueGTGTCK = 0;
             long TongPhiBVMTCK = 0;
             long TongCongCK = 0;
+            long TongTienMat = 0;
 
             dt = _cHoaDon.GetTongHopDangNganChiTiet("CQ", lst[0].MaTo, dateGiaiTrachTongHopDangNgan.Value);
             for (int i = 1; i < lst.Count; i++)
@@ -521,6 +526,8 @@ namespace ThuTien.GUI.TongHop
                     TongThueGTGTCK += long.Parse(item["TongThueGTGT"].ToString());
                     TongPhiBVMTCK += long.Parse(item["TongPhiBVMT"].ToString());
                     TongCongCK += long.Parse(item["TongCong"].ToString());
+                    if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
+                        TongTienMat += long.Parse(item["TongTienMat"].ToString());
                 }
                 else
                 {
@@ -543,6 +550,7 @@ namespace ThuTien.GUI.TongHop
                 dr["TongThueGTGTCK"] = TongThueGTGTCK;
                 dr["TongPhiBVMTCK"] = TongPhiBVMTCK;
                 dr["TongCongCK"] = TongCongCK;
+                dr["TongTienMat"] = TongTienMat;
 
                 dr["TongGiaBanTM"] = TongGiaBanTM;
                 dr["TongThueGTGTTM"] = TongThueGTGTTM;

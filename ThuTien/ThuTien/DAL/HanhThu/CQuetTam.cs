@@ -143,6 +143,7 @@ namespace ThuTien.DAL.HanhThu
                                 itemHD.SOPHATHANH,
                                 itemHD.TONGCONG,
                                 GiaBieu=itemHD.GB,
+                                itemHD.HOPDONG,
                                 HanhThu = itemtableND.HoTen,
                                 To=itemtableND.TT_To.TenTo,
                             };
@@ -170,6 +171,7 @@ namespace ThuTien.DAL.HanhThu
                                     itemHD.SOPHATHANH,
                                     itemHD.TONGCONG,
                                     GiaBieu = itemHD.GB,
+                                    itemHD.HOPDONG,
                                     HanhThu = itemtableND.HoTen,
                                     To = itemtableND.TT_To.TenTo,
                                 };

@@ -402,9 +402,12 @@ namespace ThuTien.GUI.Doi
                             TongCongSo += int.Parse(itemTon["TongCong"].ToString());
                             TieuThu += int.Parse(itemTon["TieuThu"].ToString());
 
-                            TT_LenhHuy lenhhuy = new TT_LenhHuy();
-                            lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
-                            _cLenhHuy.Them(lenhhuy);
+                            if (!_cLenhHuy.CheckExist(itemTon["SoHoaDon"].ToString()))
+                            {
+                                TT_LenhHuy lenhhuy = new TT_LenhHuy();
+                                lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
+                                _cLenhHuy.Them(lenhhuy);
+                            }
                         }
 
                         item.Ky = Ky;

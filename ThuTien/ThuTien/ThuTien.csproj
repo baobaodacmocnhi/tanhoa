@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>235</ApplicationRevision>
+    <ApplicationRevision>237</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -136,6 +136,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptToTrinhCatHuy.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\DongNuoc\rptTBCatOngPhoto.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTBCatOngPhoto.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\DongNuoc\rptTBTienNuocPhoto.cs">
+      <DependentUpon>rptTBTienNuocPhoto.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BaoCao\TongHop\rptChamCong.cs">
       <AutoGen>True</AutoGen>
@@ -764,6 +776,14 @@
     <EmbeddedResource Include="BaoCao\Doi\rptToTrinhCatHuy.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinhCatHuy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptTBCatOngPhoto.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTBCatOngPhoto.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptTBTienNuocPhoto.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTBTienNuocPhoto.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TongHop\rptChamCong.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

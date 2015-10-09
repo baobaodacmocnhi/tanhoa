@@ -22,7 +22,7 @@ namespace ThuTien.DAL.Doi
         {
             try
             {
-                this.BeginTransaction();
+                //this.BeginTransaction();
                 string[] lines = System.IO.File.ReadAllLines(path);
                 foreach (string line in lines)
                 {
@@ -157,17 +157,20 @@ namespace ThuTien.DAL.Doi
                     //    return false;
                     //}
                     if (_db.HOADONs.Any(item => item.SOHOADON == hoadon.SOHOADON))
-                        _db.ExecuteCommand("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "',SOHOADON='" + hoadon.SOHOADON + "' where NAM=" + hoadon.NAM.Value + " and KY=" + hoadon.KY + " and DOT=" + hoadon.DOT.Value);
+                    {
+                        _db.ExecuteCommand("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                    }
                     else
                         _db.HOADONs.InsertOnSubmit(hoadon);
+                    _db.SubmitChanges();
                 }
-                _db.SubmitChanges();
-                this.CommitTransaction();
+                
+                //this.CommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
-                this.Rollback();
+                //this.Rollback();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -3460,6 +3463,8 @@ namespace ThuTien.DAL.Doi
                                     TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                     TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                     TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                    TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                    TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
                                 };
                     return LINQToDataTable(query);
                 }
@@ -3508,6 +3513,8 @@ namespace ThuTien.DAL.Doi
                                         TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                         TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                         TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                        TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                        TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
                                     };
                         return LINQToDataTable(query);
                     }
