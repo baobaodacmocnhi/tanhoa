@@ -392,7 +392,7 @@ namespace ThuTien.GUI.HanhThu
                         ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                     }
                 }
-            
+
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -406,57 +406,101 @@ namespace ThuTien.GUI.HanhThu
             {
                 dsBaoCao ds = new dsBaoCao();
                 DataTable dt = new DataTable();
+
+                ds.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { ds.Tables["TBDongNuoc"].Columns["DanhBo"] };
+
                 if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
                     dt = (DataTable)dgvHDTuGia.DataSource;
+                    foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                        if (bool.Parse(item.Cells["In_TG"].Value.ToString()) && !ds.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ")))
+                        {
+                            DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_TG"].Value.ToString() + "'");
+
+                            string Ky = "";
+                            string SoTien = "";
+                            int TongCong = 0;
+                            foreach (DataRow itemChild in drTemp)
+                            {
+                                Ky += itemChild["Ky"] + "\n";
+                                SoTien += String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                                TongCong += int.Parse(itemChild["TongCong"].ToString());
+                            }
+
+                            DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
+                            dr["HoTen"] = item.Cells["HoTen_TG"].Value;
+                            dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
+                            if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
+                                dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                            dr["MLT"] = item.Cells["MLT_TG"].Value;
+                            dr["Ky"] = Ky;
+                            dr["SoTien"] = SoTien;
+                            dr["TongCong"] = TongCong;
+
+                            ds.Tables["TBDongNuoc"].Rows.Add(dr);
+                        }
                 }
                 else
                     if (tabControl.SelectedTab.Name == "tabCoQuan")
                     {
                         dt = (DataTable)dgvHDCoQuan.DataSource;
+                        foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                            if (bool.Parse(item.Cells["In_CQ"].Value.ToString()) && !ds.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ")))
+                            {
+                                DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_CQ"].Value.ToString() + "'");
+
+                                string Ky = "";
+                                string SoTien = "";
+                                int TongCong = 0;
+                                foreach (DataRow itemChild in drTemp)
+                                {
+                                    Ky += itemChild["Ky"] + "\n";
+                                    SoTien += String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                                    TongCong += int.Parse(itemChild["TongCong"].ToString());
+                                }
+
+                                DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
+                                dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
+                                dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
+                                if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
+                                    dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                                dr["MLT"] = item.Cells["MLT_CQ"].Value;
+                                dr["Ky"] = Ky;
+                                dr["SoTien"] = SoTien;
+                                dr["TongCong"] = TongCong;
+
+                                ds.Tables["TBDongNuoc"].Rows.Add(dr);
+                            }
                     }
 
-                ds.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { ds.Tables["TBDongNuoc"].Columns["DanhBo"] };
-                foreach (DataRow item in dt.Rows)
-                    if (!ds.Tables["TBDongNuoc"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
-                    {
-                        DataRow[] drTemp = dt.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
+                foreach (DataRow item in ds.Tables["TBDongNuoc"].Rows)
+                {
+                    dsBaoCao dsTemp = new dsBaoCao();
+                    DataRow dr = dsTemp.Tables["TBDongNuoc"].NewRow();
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["MLT"] = item["MLT"];
+                    dr["Ky"] = item["Ky"];
+                    dr["SoTien"] = item["SoTien"];
+                    dr["TongCong"] = item["TongCong"];
 
-                        string Ky = "";
-                        string SoTien = "";
-                        int TongCong = 0;
-                        foreach (DataRow itemChild in drTemp)
-                        {
-                            Ky += itemChild["Ky"] + "\n";
-                            SoTien += String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
-                            TongCong += int.Parse(itemChild["TongCong"].ToString());
-                        }
+                    dsTemp.Tables["TBDongNuoc"].Rows.Add(dr);
 
-                        DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
-                        dr["HoTen"] = item["HoTen"];
-                        dr["DiaChi"] = item["DiaChi"];
-                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
-                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = item["MLT"];
-                        dr["Ky"] = Ky;
-                        dr["SoTien"] = SoTien;
-                        dr["TongCong"] = TongCong;
+                    rptTBTienNuocPhoto rpt = new rptTBTienNuocPhoto();
+                    rpt.SetDataSource(dsTemp);
+                    //frmBaoCao frm = new frmBaoCao(rpt);
+                    //frm.ShowDialog();
+                    printDialog.AllowSomePages = true;
+                    printDialog.ShowHelp = true;
 
-                        ds.Tables["TBDongNuoc"].Rows.Add(dr);
-                    }
+                    rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
+                    rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
+                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                rptTBTienNuocPhoto rpt = new rptTBTienNuocPhoto();
-                rpt.SetDataSource(ds);
-                //frmBaoCao frm = new frmBaoCao(rpt);
-                //frm.ShowDialog();
-                printDialog.AllowSomePages = true;
-                printDialog.ShowHelp = true;
-
-                rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
-                rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
-                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
-                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
+                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
+                }
             }
         }
 
@@ -470,54 +514,100 @@ namespace ThuTien.GUI.HanhThu
                 if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
                     dt = (DataTable)dgvHDTuGia.DataSource;
+
+                    int stt = 1;
+                    ds.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { ds.Tables["TBDongNuoc"].Columns["DanhBo"] };
+                    foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                        if (!ds.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ")))
+                        {
+                            DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_TG"].Value.ToString() + "'");
+
+                            string Ky = "";
+                            int TongCong = 0;
+                            foreach (DataRow itemChild in drTemp)
+                            {
+                                Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                                TongCong += int.Parse(itemChild["TongCong"].ToString());
+                            }
+
+                            DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
+                            dr["MaDN"] = stt++;
+                            dr["HoTen"] = item.Cells["HoTen_TG"].Value;
+                            dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
+                            if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
+                                dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                            dr["MLT"] = item.Cells["MLT_TG"].Value;
+                            dr["HopDong"] = item.Cells["HopDong_TG"].Value;
+                            dr["Ky"] = Ky;
+                            dr["TongCong"] = TongCong;
+
+                            ds.Tables["TBDongNuoc"].Rows.Add(dr);
+                        }
                 }
                 else
                     if (tabControl.SelectedTab.Name == "tabCoQuan")
                     {
                         dt = (DataTable)dgvHDCoQuan.DataSource;
+
+                        int stt = 1;
+                        ds.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { ds.Tables["TBDongNuoc"].Columns["DanhBo"] };
+                        foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                            if (!ds.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ")))
+                            {
+                                DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo"].Value.ToString() + "'");
+
+                                string Ky = "";
+                                int TongCong = 0;
+                                foreach (DataRow itemChild in drTemp)
+                                {
+                                    Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
+                                    TongCong += int.Parse(itemChild["TongCong"].ToString());
+                                }
+
+                                DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
+                                dr["MaDN"] = stt++;
+                                dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
+                                dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
+                                if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
+                                    dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                                dr["MLT"] = item.Cells["MLT_CQ"].Value;
+                                dr["HopDong"] = item.Cells["HopDong_CQ"].Value;
+                                dr["Ky"] = Ky;
+                                dr["TongCong"] = TongCong;
+
+                                ds.Tables["TBDongNuoc"].Rows.Add(dr);
+                            }
                     }
 
-                int stt = 1;
-                ds.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { ds.Tables["TBDongNuoc"].Columns["DanhBo"] };
-                foreach (DataRow item in dt.Rows)
-                    if (!ds.Tables["TBDongNuoc"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
-                    {
-                        DataRow[] drTemp = dt.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
+                foreach (DataRow item in ds.Tables["TBDongNuoc"].Rows)
+                {
+                    dsBaoCao dsTemp = new dsBaoCao();
+                    DataRow dr = dsTemp.Tables["TBDongNuoc"].NewRow();
+                    dr["MaDN"] = dr["MaDN"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["MLT"] = item["MLT"];
+                    dr["HopDong"] = item["HopDong"];
+                    dr["Ky"] = item["Ky"];
+                    dr["TongCong"] = item["TongCong"];
 
-                        string Ky = "";
-                        int TongCong = 0;
-                        foreach (DataRow itemChild in drTemp)
-                        {
-                            Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "\n";
-                            TongCong += int.Parse(itemChild["TongCong"].ToString());
-                        }
+                    dsTemp.Tables["TBDongNuoc"].Rows.Add(dr);
 
-                        DataRow dr = ds.Tables["TBDongNuoc"].NewRow();
-                        dr["MaDN"] = stt++;
-                        dr["HoTen"] = item["HoTen"];
-                        dr["DiaChi"] = item["DiaChi"];
-                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
-                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = item["MLT"];
-                        dr["HopDong"] = item["HopDong"];
-                        dr["Ky"] = Ky;
-                        dr["TongCong"] = TongCong;
+                    rptTBCatOngPhoto rpt = new rptTBCatOngPhoto();
+                    rpt.SetDataSource(dsTemp);
+                    //frmBaoCao frm = new frmBaoCao(rpt);
+                    //frm.ShowDialog();
+                    printDialog.AllowSomePages = true;
+                    printDialog.ShowHelp = true;
 
-                        ds.Tables["TBDongNuoc"].Rows.Add(dr);
-                    }
+                    rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
+                    rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
+                    rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
 
-                rptTBCatOngPhoto rpt = new rptTBCatOngPhoto();
-                rpt.SetDataSource(ds);
-                //frmBaoCao frm = new frmBaoCao(rpt);
-                //frm.ShowDialog();
-                printDialog.AllowSomePages = true;
-                printDialog.ShowHelp = true;
-
-                rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
-                rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
-                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
-                rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
+                    rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
+                }
             }
         }
 

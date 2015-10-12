@@ -41,7 +41,7 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
+            dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtMLT.Text.Trim(), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
             dgvKinhDoanh.DataSource = null;
             dgvKinhDoanh.Visible = false;
 
@@ -104,6 +104,12 @@ namespace ThuTien.GUI.TimKiem
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnTimKiem.PerformClick();
+        }
+
+        private void txtMLT_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 btnTimKiem.PerformClick();
@@ -215,10 +221,13 @@ namespace ThuTien.GUI.TimKiem
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             txtDanhBo.Text = "";
+            txtMLT.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             txtDanhBo.Focus();
         }
+
+        
         
     }
 }

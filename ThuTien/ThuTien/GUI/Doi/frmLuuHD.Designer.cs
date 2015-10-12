@@ -35,13 +35,13 @@
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.cmbKy = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbNam = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txtTongCong = new System.Windows.Forms.TextBox();
+            this.txtTongPhiBVMT = new System.Windows.Forms.TextBox();
+            this.txtTongThueGTGT = new System.Windows.Forms.TextBox();
+            this.txtTongGiaBan = new System.Windows.Forms.TextBox();
+            this.txtTongTieuThu = new System.Windows.Forms.TextBox();
             this.txtTongHD = new System.Windows.Forms.TextBox();
+            this.dgvHoaDon = new System.Windows.Forms.DataGridView();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,11 +50,12 @@
             this.TongPhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtTongTieuThu = new System.Windows.Forms.TextBox();
-            this.txtTongGiaBan = new System.Windows.Forms.TextBox();
-            this.txtTongThueGTGT = new System.Windows.Forms.TextBox();
-            this.txtTongPhiBVMT = new System.Windows.Forms.TextBox();
-            this.txtTongCong = new System.Windows.Forms.TextBox();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.cmbKy = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
@@ -100,6 +101,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.progressBar);
             this.groupBox1.Controls.Add(this.txtTongCong);
             this.groupBox1.Controls.Add(this.txtTongPhiBVMT);
             this.groupBox1.Controls.Add(this.txtTongThueGTGT);
@@ -118,6 +120,60 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Hóa Đơn";
+            // 
+            // txtTongCong
+            // 
+            this.txtTongCong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongCong.Location = new System.Drawing.Point(561, 519);
+            this.txtTongCong.Name = "txtTongCong";
+            this.txtTongCong.Size = new System.Drawing.Size(100, 20);
+            this.txtTongCong.TabIndex = 11;
+            this.txtTongCong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongPhiBVMT
+            // 
+            this.txtTongPhiBVMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongPhiBVMT.Location = new System.Drawing.Point(461, 519);
+            this.txtTongPhiBVMT.Name = "txtTongPhiBVMT";
+            this.txtTongPhiBVMT.Size = new System.Drawing.Size(100, 20);
+            this.txtTongPhiBVMT.TabIndex = 10;
+            this.txtTongPhiBVMT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongThueGTGT
+            // 
+            this.txtTongThueGTGT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongThueGTGT.Location = new System.Drawing.Point(361, 519);
+            this.txtTongThueGTGT.Name = "txtTongThueGTGT";
+            this.txtTongThueGTGT.Size = new System.Drawing.Size(100, 20);
+            this.txtTongThueGTGT.TabIndex = 9;
+            this.txtTongThueGTGT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongGiaBan
+            // 
+            this.txtTongGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongGiaBan.Location = new System.Drawing.Point(261, 519);
+            this.txtTongGiaBan.Name = "txtTongGiaBan";
+            this.txtTongGiaBan.Size = new System.Drawing.Size(100, 20);
+            this.txtTongGiaBan.TabIndex = 8;
+            this.txtTongGiaBan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongTieuThu
+            // 
+            this.txtTongTieuThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongTieuThu.Location = new System.Drawing.Point(181, 519);
+            this.txtTongTieuThu.Name = "txtTongTieuThu";
+            this.txtTongTieuThu.Size = new System.Drawing.Size(80, 20);
+            this.txtTongTieuThu.TabIndex = 7;
+            this.txtTongTieuThu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTongHD
+            // 
+            this.txtTongHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongHD.Location = new System.Drawing.Point(101, 519);
+            this.txtTongHD.Name = "txtTongHD";
+            this.txtTongHD.Size = new System.Drawing.Size(80, 20);
+            this.txtTongHD.TabIndex = 6;
+            this.txtTongHD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgvHoaDon
             // 
@@ -149,6 +205,57 @@
             this.dgvHoaDon.Size = new System.Drawing.Size(755, 465);
             this.dgvHoaDon.TabIndex = 5;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
+            // 
+            // Dot
+            // 
+            this.Dot.DataPropertyName = "Dot";
+            this.Dot.HeaderText = "Đợt";
+            this.Dot.Name = "Dot";
+            this.Dot.Width = 50;
+            // 
+            // TongHD
+            // 
+            this.TongHD.DataPropertyName = "TongHD";
+            this.TongHD.HeaderText = "Tổng HĐ";
+            this.TongHD.Name = "TongHD";
+            this.TongHD.Width = 80;
+            // 
+            // TongTieuThu
+            // 
+            this.TongTieuThu.DataPropertyName = "TongTieuThu";
+            this.TongTieuThu.HeaderText = "Tiêu Thụ";
+            this.TongTieuThu.Name = "TongTieuThu";
+            this.TongTieuThu.Width = 80;
+            // 
+            // TongGiaBan
+            // 
+            this.TongGiaBan.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan.HeaderText = "Giá Bán";
+            this.TongGiaBan.Name = "TongGiaBan";
+            // 
+            // TongThueGTGT
+            // 
+            this.TongThueGTGT.DataPropertyName = "TongThueGTGT";
+            this.TongThueGTGT.HeaderText = "Thuế GTGT";
+            this.TongThueGTGT.Name = "TongThueGTGT";
+            // 
+            // TongPhiBVMT
+            // 
+            this.TongPhiBVMT.DataPropertyName = "TongPhiBVMT";
+            this.TongPhiBVMT.HeaderText = "Phí BVMT";
+            this.TongPhiBVMT.Name = "TongPhiBVMT";
+            // 
+            // TongCong
+            // 
+            this.TongCong.DataPropertyName = "TongCong";
+            this.TongCong.HeaderText = "Tổng Cộng";
+            this.TongCong.Name = "TongCong";
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Tạo";
+            this.CreateDate.Name = "CreateDate";
             // 
             // btnXem
             // 
@@ -207,110 +314,12 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Năm:";
             // 
-            // txtTongHD
+            // progressBar
             // 
-            this.txtTongHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongHD.Location = new System.Drawing.Point(101, 519);
-            this.txtTongHD.Name = "txtTongHD";
-            this.txtTongHD.Size = new System.Drawing.Size(80, 20);
-            this.txtTongHD.TabIndex = 6;
-            this.txtTongHD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Dot
-            // 
-            this.Dot.DataPropertyName = "Dot";
-            this.Dot.HeaderText = "Đợt";
-            this.Dot.Name = "Dot";
-            this.Dot.Width = 50;
-            // 
-            // TongHD
-            // 
-            this.TongHD.DataPropertyName = "TongHD";
-            this.TongHD.HeaderText = "Tổng HĐ";
-            this.TongHD.Name = "TongHD";
-            this.TongHD.Width = 80;
-            // 
-            // TongTieuThu
-            // 
-            this.TongTieuThu.DataPropertyName = "TongTieuThu";
-            this.TongTieuThu.HeaderText = "Tiêu Thụ";
-            this.TongTieuThu.Name = "TongTieuThu";
-            this.TongTieuThu.Width = 80;
-            // 
-            // TongGiaBan
-            // 
-            this.TongGiaBan.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan.HeaderText = "Giá Bán";
-            this.TongGiaBan.Name = "TongGiaBan";
-            // 
-            // TongThueGTGT
-            // 
-            this.TongThueGTGT.DataPropertyName = "TongThueGTGT";
-            this.TongThueGTGT.HeaderText = "Thuế GTGT";
-            this.TongThueGTGT.Name = "TongThueGTGT";
-            // 
-            // TongPhiBVMT
-            // 
-            this.TongPhiBVMT.DataPropertyName = "TongPhiBVMT";
-            this.TongPhiBVMT.HeaderText = "Phí BVMT";
-            this.TongPhiBVMT.Name = "TongPhiBVMT";
-            // 
-            // TongCong
-            // 
-            this.TongCong.DataPropertyName = "TongCong";
-            this.TongCong.HeaderText = "Tổng Cộng";
-            this.TongCong.Name = "TongCong";
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Tạo";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // txtTongTieuThu
-            // 
-            this.txtTongTieuThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongTieuThu.Location = new System.Drawing.Point(181, 519);
-            this.txtTongTieuThu.Name = "txtTongTieuThu";
-            this.txtTongTieuThu.Size = new System.Drawing.Size(80, 20);
-            this.txtTongTieuThu.TabIndex = 7;
-            this.txtTongTieuThu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTongGiaBan
-            // 
-            this.txtTongGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongGiaBan.Location = new System.Drawing.Point(261, 519);
-            this.txtTongGiaBan.Name = "txtTongGiaBan";
-            this.txtTongGiaBan.Size = new System.Drawing.Size(100, 20);
-            this.txtTongGiaBan.TabIndex = 8;
-            this.txtTongGiaBan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTongThueGTGT
-            // 
-            this.txtTongThueGTGT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongThueGTGT.Location = new System.Drawing.Point(361, 519);
-            this.txtTongThueGTGT.Name = "txtTongThueGTGT";
-            this.txtTongThueGTGT.Size = new System.Drawing.Size(100, 20);
-            this.txtTongThueGTGT.TabIndex = 9;
-            this.txtTongThueGTGT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTongPhiBVMT
-            // 
-            this.txtTongPhiBVMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongPhiBVMT.Location = new System.Drawing.Point(461, 519);
-            this.txtTongPhiBVMT.Name = "txtTongPhiBVMT";
-            this.txtTongPhiBVMT.Size = new System.Drawing.Size(100, 20);
-            this.txtTongPhiBVMT.TabIndex = 10;
-            this.txtTongPhiBVMT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTongCong
-            // 
-            this.txtTongCong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCong.Location = new System.Drawing.Point(561, 519);
-            this.txtTongCong.Name = "txtTongCong";
-            this.txtTongCong.Size = new System.Drawing.Size(100, 20);
-            this.txtTongCong.TabIndex = 11;
-            this.txtTongCong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.progressBar.Location = new System.Drawing.Point(561, 25);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(203, 23);
+            this.progressBar.TabIndex = 12;
             // 
             // frmLuuHD
             // 
@@ -360,5 +369,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongPhiBVMT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

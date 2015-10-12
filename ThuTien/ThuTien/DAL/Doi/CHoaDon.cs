@@ -176,6 +176,23 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool Them(HOADON hoadon)
+        {
+            try
+            {
+                hoadon.CreateBy = CNguoiDung.MaND;
+                hoadon.CreateDate = DateTime.Now;
+                _db.HOADONs.InsertOnSubmit(hoadon);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool ThemChia(List<HOADON> lstHD)
         {
             try
@@ -5952,7 +5969,7 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSTimKiem(string DanhBo, string HoTen, string DiaChi)
+        public DataTable GetDSTimKiem(string DanhBo, string MLT, string HoTen, string DiaChi)
         {
             //string sql = "select ID_HOADON as MaHD,DANHBA as DanhBo,MALOTRINH as MLT,TENKH as HoTen,(SO+' '+DUONG) as DiaChi,GB as GiaBieu,DM as DinhMuc,a.SoHoaDon,"
             //    + "(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TieuThu,GiaBan,Thue as ThueGTGT,Phi as PhiBVMT,TongCong,NgayGiaiTrach,b.HoTen as DangNgan,c.HoTen as HanhThu,MaDN,NgayDN,NgayMN"
@@ -5965,7 +5982,7 @@ namespace ThuTien.DAL.Doi
             //    + " left join TT_KQDongNuoc c on a.MaDN=c.MaDN where Huy=0) as dn on  a.SOHOADON=dn.SoHoaDon"
             //    + " where a.DANHBA like '%" + DanhBo + "%' and a.TENKH like '%" + HoTen + "%' and (SO+' '+DUONG) like '%" + DiaChi + "%'"
             //    + "order by ID_HOADON desc";
-            string sql = "select * from TimKiem('"+DanhBo+"','"+HoTen+"','"+DiaChi+"') order by MaHD desc";
+            string sql = "select * from TimKiem('"+DanhBo+"','"+MLT+"','"+HoTen+"','"+DiaChi+"') order by MaHD desc";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }

@@ -132,6 +132,7 @@ namespace ThuTien.DAL.HanhThu
                             orderby itemHD.MALOTRINH ascending
                             select new
                             {
+                                In=true,
                                 itemQT.MaQT,
                                 itemQT.CreateBy,
                                 itemQT.SoHoaDon,
@@ -160,6 +161,7 @@ namespace ThuTien.DAL.HanhThu
                                 orderby itemHD.MALOTRINH ascending
                                 select new
                                 {
+                                    In = true,
                                     itemQT.MaQT,
                                     itemQT.CreateBy,
                                     itemQT.SoHoaDon,

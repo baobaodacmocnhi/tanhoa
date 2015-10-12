@@ -29,6 +29,25 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void frmBangKe_Load(object sender, EventArgs e)
         {
             dgvBangKe.AutoGenerateColumns = false;
+            dgvTienDu.AutoGenerateColumns = false;
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
+            dateNgayLap.Value = DateTime.Now;
+
+            btnRefresh.PerformClick();
+        }
+
+        public void CountdgvTienDu()
+        {
+            long TongCong = 0;
+            if (dgvTienDu.RowCount > 0)
+            {
+                foreach (DataGridViewRow item in dgvTienDu.Rows)
+                {
+                    TongCong += long.Parse(item.Cells["SoTien_TienDu"].Value.ToString());
+                }
+                txtTongCongTienDu.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            }
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -219,6 +238,31 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
-        
+        private void dgvTienDu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvTienDu.Columns[e.ColumnIndex].Name == "DanhBo_TienDu" && e.Value != null&&!string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvTienDu.Columns[e.ColumnIndex].Name == "SoTien_TienDu" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvTienDu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvTienDu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            dgvTienDu.DataSource = _cTienDu.GetDSTienBienDong();
+            CountdgvTienDu();
+        }
+
     }
 }

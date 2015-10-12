@@ -509,6 +509,9 @@ namespace ThuTien.DAL
 
         #endregion
 
-
+        public int LinQ_ExecuteCommand(string sql)
+        {
+            return _db.ExecuteCommand(sql);
+        }
     }
 }

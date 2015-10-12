@@ -48,6 +48,21 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
+        public List<TT_TienDu> GetDSTienAm()
+        {
+            return _db.TT_TienDus.Where(item => item.SoTien < 0).ToList();
+        }
+
+        public List<TT_TienDu> GetDSTienDu()
+        {
+            return _db.TT_TienDus.Where(item => item.SoTien > 0).ToList();
+        }
+
+        public List<TT_TienDu> GetDSTienBienDong()
+        {
+            return _db.TT_TienDus.Where(item => item.SoTien != 0).ToList();
+        }
+
         public TT_TienDu Get(string DanhBo)
         {
             return _db.TT_TienDus.SingleOrDefault(item => item.DanhBo == DanhBo);
@@ -186,7 +201,10 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public long GetTienTon(DateTime CreateDate)
         {
-            return (long)(_db.TT_TienDus.Sum(item => item.SoTien) - _db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= CreateDate.Date).Sum(item => item.SoTien));
+            if (_db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= CreateDate.Date).Sum(item => item.SoTien) != null)
+                return (long)(_db.TT_TienDus.Sum(item => item.SoTien) - _db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= CreateDate.Date).Sum(item => item.SoTien));
+            else
+                return (long)(_db.TT_TienDus.Sum(item => item.SoTien));
         }
     }
 }
