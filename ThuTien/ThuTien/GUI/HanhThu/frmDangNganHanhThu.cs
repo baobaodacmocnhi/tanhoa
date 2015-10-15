@@ -583,5 +583,15 @@ namespace ThuTien.GUI.HanhThu
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
+
+        private void btnCopyToClipboard_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstHD.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
+        }
     }
 }

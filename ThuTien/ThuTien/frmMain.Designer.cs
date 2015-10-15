@@ -83,6 +83,7 @@
             this.mnuDieuChinhDangNganChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBangKe = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDangNganTienMatChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangNganQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTamThuQuay = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +106,7 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mnuDangNganTienMatChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCongVan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -542,6 +543,13 @@
             this.mnuBangKe.Text = "Bảng Kê";
             this.mnuBangKe.Click += new System.EventHandler(this.mnuBangKe_Click);
             // 
+            // mnuDangNganTienMatChuyenKhoan
+            // 
+            this.mnuDangNganTienMatChuyenKhoan.Name = "mnuDangNganTienMatChuyenKhoan";
+            this.mnuDangNganTienMatChuyenKhoan.Size = new System.Drawing.Size(265, 22);
+            this.mnuDangNganTienMatChuyenKhoan.Text = "Đăng Ngân Tiền Mặt Chuyển Khoản";
+            this.mnuDangNganTienMatChuyenKhoan.Click += new System.EventHandler(this.mnuDangNganTienMatChuyenKhoan_Click);
+            // 
             // mnuQuay
             // 
             this.mnuQuay.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -604,7 +612,8 @@
             this.mnuThu2Lan,
             this.mnuChuyenNoKhoDoi,
             this.mnuBaoCaoTongHop,
-            this.mnuChamCong});
+            this.mnuChamCong,
+            this.mnuCongVan});
             this.mnuTongHop.Name = "mnuTongHop";
             this.mnuTongHop.Size = new System.Drawing.Size(73, 20);
             this.mnuTongHop.Text = "Tổng Hợp";
@@ -712,12 +721,12 @@
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // mnuDangNganTienMatChuyenKhoan
+            // mnuCongVan
             // 
-            this.mnuDangNganTienMatChuyenKhoan.Name = "mnuDangNganTienMatChuyenKhoan";
-            this.mnuDangNganTienMatChuyenKhoan.Size = new System.Drawing.Size(265, 22);
-            this.mnuDangNganTienMatChuyenKhoan.Text = "Đăng Ngân Tiền Mặt Chuyển Khoản";
-            this.mnuDangNganTienMatChuyenKhoan.Click += new System.EventHandler(this.mnuDangNganTienMatChuyenKhoan_Click);
+            this.mnuCongVan.Name = "mnuCongVan";
+            this.mnuCongVan.Size = new System.Drawing.Size(183, 22);
+            this.mnuCongVan.Text = "Công Văn";
+            this.mnuCongVan.Click += new System.EventHandler(this.mnuCongVan_Click);
             // 
             // frmMain
             // 
@@ -825,6 +834,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuBangKe;
         private System.Windows.Forms.ToolStripMenuItem mnuVanTu;
         private System.Windows.Forms.ToolStripMenuItem mnuDangNganTienMatChuyenKhoan;
+        private System.Windows.Forms.ToolStripMenuItem mnuCongVan;
     }
 }
 

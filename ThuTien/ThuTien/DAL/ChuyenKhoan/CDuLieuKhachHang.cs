@@ -107,7 +107,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                         + " left join TT_To tto on nd.MaTo=tto.MaTo"
                         + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT="+Dot+" and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
-                        + " order by dlkhDB.DanhBo,KY asc";
+                        + " order by MALOTRINH asc";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
@@ -119,7 +119,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                         + " left join TT_To tto on nd.MaTo=tto.MaTo"
                         + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
-                        + " order by dlkhDB.DanhBo,KY asc";
+                        + " order by MALOTRINH asc";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 

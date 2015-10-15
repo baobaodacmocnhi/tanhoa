@@ -28,9 +28,13 @@ namespace ThuTien.GUI.TongHop
             InitializeComponent();
         }
 
-        private void frmDCHDNew_Load(object sender, EventArgs e)
+        private void frmDCHD_Load(object sender, EventArgs e)
         {
+            dgvHoaDon.AutoGenerateColumns = false;
+            dgvDCHD.AutoGenerateColumns = false;
 
+            dateTu.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -46,8 +50,8 @@ namespace ThuTien.GUI.TongHop
             if (dgvHoaDon.RowCount > 0 && e.Button == MouseButtons.Left)
             {
                 frmShowDCHD frm = new frmShowDCHD(dgvHoaDon.SelectedRows[0].Cells["SoHoaDon"].Value.ToString());
-                frm.ShowDialog();
-                btnXem.PerformClick();
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    btnXem.PerformClick();
             }
         }
 
@@ -56,8 +60,8 @@ namespace ThuTien.GUI.TongHop
             if (dgvDCHD.RowCount > 0 && e.Button==MouseButtons.Left)
             {
                 frmShowDCHD frm = new frmShowDCHD(dgvDCHD.SelectedRows[0].Cells["SoHoaDon_DC"].Value.ToString());
-                frm.ShowDialog();
-                btnXem.PerformClick();
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    btnXem.PerformClick();
             }
         }
 

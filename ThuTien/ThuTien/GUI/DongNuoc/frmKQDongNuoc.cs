@@ -10,6 +10,9 @@ using ThuTien.DAL.DongNuoc;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.DongNuoc;
+using ThuTien.GUI.BaoCao;
 
 namespace ThuTien.GUI.DongNuoc
 {
@@ -56,6 +59,8 @@ namespace ThuTien.GUI.DongNuoc
         private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtMaDN.Text.Trim()) && e.KeyChar == 13)
+            {
+                Clear();
                 if (_cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))) != null)
                 {
                     _dongnuoc = _cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", "")));
@@ -73,10 +78,7 @@ namespace ThuTien.GUI.DongNuoc
                     //dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaDNDates(_dongnuoc.MaDN, dateTu.Value, dateDen.Value);
                     btnXem.PerformClick();
                 }
-                else
-                {
-                    Clear();
-                }
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -90,7 +92,7 @@ namespace ThuTien.GUI.DongNuoc
                         MessageBox.Show("Lệnh này đã nhập Kết Quả", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if(!CNguoiDung.ToTruong)
+                    if (!CNguoiDung.ToTruong)
                         if (!_cDongNuoc.CheckDongNuocByMaDNMaNV_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
                         {
                             MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -143,7 +145,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(decimal.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
                 kqdongnuoc.DanhBo = txtDanhBo.Text.Trim();
                 kqdongnuoc.MLT = txtMLT.Text.Trim();
                 kqdongnuoc.HoTen = txtHoTen.Text.Trim();
@@ -190,12 +192,15 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(decimal.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
-                if (_cDongNuoc.XoaKQ(kqdongnuoc))
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    Clear();
-                    btnXem.PerformClick();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc.SelectedRows[0].Cells["MaKQDN"].Value.ToString()));
+                    if (_cDongNuoc.XoaKQ(kqdongnuoc))
+                    {
+                        Clear();
+                        btnXem.PerformClick();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             else
@@ -204,13 +209,31 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.Doi)
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(dateTu.Value, dateDen.Value);
-            else
-                if (CNguoiDung.ToTruong)
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToDates(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+            if (radDongNuoc.Checked)
+            {
+                if (CNguoiDung.Doi)
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByDates(dateTu.Value, dateDen.Value);
                 else
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                    if (CNguoiDung.ToTruong)
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaToDates(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                    else
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+            }
+            else
+                if (radMoNuoc.Checked)
+                {
+                    if (CNguoiDung.Doi)
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByDates(dateTu.Value, dateDen.Value);
+                    else
+                        if (CNguoiDung.ToTruong)
+                            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByMaToDates(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                        else
+                            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                }
+            foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
+            {
+                item.Cells["Chon"].Value = true;
+            }
         }
 
         private void dgvKQDongNuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -231,12 +254,12 @@ namespace ThuTien.GUI.DongNuoc
                 cmbChiKhoaGoc.SelectedItem = dgvKQDongNuoc["ChiKhoaGoc", e.RowIndex].Value.ToString();
                 txtLyDo.Text = dgvKQDongNuoc["LyDo", e.RowIndex].Value.ToString();
                 chkMoNuoc.Checked = bool.Parse(dgvKQDongNuoc["MoNuoc", e.RowIndex].Value.ToString());
-                dateDongNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
+                dateMoNuoc.Value = DateTime.Parse(dgvKQDongNuoc["NgayMN", e.RowIndex].Value.ToString());
                 txtChiSoMN.Text = dgvKQDongNuoc["ChiSoMN", e.RowIndex].Value.ToString();
             }
             catch
             {
-            }  
+            }
         }
 
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -245,9 +268,17 @@ namespace ThuTien.GUI.DongNuoc
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-            if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+            if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "SoPhieuDN" && e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+            if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "SoPhieuMN" && e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 
@@ -299,9 +330,158 @@ namespace ThuTien.GUI.DongNuoc
             {
                 dateMoNuoc.Enabled = false;
                 txtChiSoMN.ReadOnly = true;
+                dateMoNuoc.Value = DateTime.Now;
+                txtChiSoMN.Text = "";
             }
         }
 
-        
+        private void btnInPhieu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn In Phiếu?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    dsBaoCao dsBaoCao = new dsBaoCao();
+                    if (radDongNuoc.Checked)
+                    {
+                        decimal SoPhieuDN = _cDongNuoc.GetNextSoPhieuDN();
+                        List<TT_KQDongNuoc> lst = new List<TT_KQDongNuoc>();
+
+                        foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
+                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true)
+                            {
+                                if (string.IsNullOrEmpty(item.Cells["SoPhieuDN"].Value.ToString()))
+                                {
+                                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
+                                    kqdongnuoc.SoPhieuDN = SoPhieuDN;
+                                    kqdongnuoc.NgaySoPhieuDN = DateTime.Now;
+                                    _cDongNuoc.SuaKQ(kqdongnuoc);
+                                }
+                                else
+                                    if (!lst.Any(itemlst => itemlst.SoPhieuDN == decimal.Parse(item.Cells["SoPhieuDN"].Value.ToString())))
+                                        lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuDN(decimal.Parse(item.Cells["SoPhieuDN"].Value.ToString()))).ToList();
+                            }
+
+                        lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuDN(SoPhieuDN)).ToList();
+                        foreach (TT_KQDongNuoc item in lst)
+                        {
+                            DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+
+                            dr["MaDN"] = item.SoPhieuDN.ToString().Insert(item.SoPhieuDN.ToString().Length - 2, "-");
+                            dr["Loai"] = "ĐÓNG NƯỚC";
+                            if (item.DanhBo.Length == 11)
+                                dr["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = item.DiaChi;
+                            string Ky = "";
+                            foreach (TT_CTDongNuoc itemDN in item.TT_DongNuoc.TT_CTDongNuocs.ToList())
+                            {
+                                if (string.IsNullOrEmpty(Ky))
+                                    Ky = itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                else
+                                    Ky += ", " + itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                            }
+                            dr["Ky"] = Ky;
+                            dr["NgayDongMoNuoc"] = item.NgayDN;
+                            dr["ChiSoDongMoNuoc"] = item.ChiSoDN;
+
+                            dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+                        }
+                    }
+                    else
+                        if (radMoNuoc.Checked)
+                        {
+                            decimal SoPhieuMN = _cDongNuoc.GetNextSoPhieuMN();
+                            List<TT_KQDongNuoc> lst = new List<TT_KQDongNuoc>();
+
+                            foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
+                                if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true)
+                                {
+                                    if (string.IsNullOrEmpty(item.Cells["SoPhieuMN"].Value.ToString()))
+                                    {
+                                        TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
+                                        kqdongnuoc.SoPhieuMN = SoPhieuMN;
+                                        kqdongnuoc.NgaySoPhieuMN = DateTime.Now;
+                                        _cDongNuoc.SuaKQ(kqdongnuoc);
+                                    }
+                                    else
+                                        if (!lst.Any(itemlst => itemlst.SoPhieuMN == decimal.Parse(item.Cells["SoPhieuMN"].Value.ToString())))
+                                            lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuMN(decimal.Parse(item.Cells["SoPhieuMN"].Value.ToString()))).ToList();
+                                }
+
+                            lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuMN(SoPhieuMN)).ToList();
+                            foreach (TT_KQDongNuoc item in lst)
+                            {
+                                DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+
+                                dr["MaDN"] = item.SoPhieuMN.ToString().Insert(item.SoPhieuMN.ToString().Length - 2, "-");
+                                dr["Loai"] = "MỞ NƯỚC";
+                                if (item.DanhBo.Length == 11)
+                                    dr["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
+                                dr["DiaChi"] = item.DiaChi;
+                                string Ky = "";
+                                foreach (TT_CTDongNuoc itemDN in item.TT_DongNuoc.TT_CTDongNuocs.ToList())
+                                {
+                                    if (string.IsNullOrEmpty(Ky))
+                                        Ky = itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                    else
+                                        Ky += ", " + itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                }
+                                dr["Ky"] = Ky;
+                                dr["NgayDongMoNuoc"] = item.NgayMN;
+                                dr["ChiSoDongMoNuoc"] = item.ChiSoMN;
+
+                                dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+                            }
+                        }
+
+                    rptPhieuBaoDongMoNuoc rpt = new rptPhieuBaoDongMoNuoc();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmBaoCao frm = new frmBaoCao(rpt);
+                    frm.ShowDialog();
+
+                    btnXem.PerformClick();
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoaPhieu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    if (radDongNuoc.Checked)
+                    {
+                        foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
+                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && string.IsNullOrEmpty(item.Cells["SoPhieuDN"].Value.ToString()))
+                            {
+                                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
+                                kqdongnuoc.SoPhieuDN = null;
+                                kqdongnuoc.NgaySoPhieuDN = null;
+                                _cDongNuoc.SuaKQ(kqdongnuoc);
+                            }
+                    }
+                    else
+                        if (radMoNuoc.Checked)
+                        {
+                            foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
+                                if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && string.IsNullOrEmpty(item.Cells["SoPhieuMN"].Value.ToString()))
+                                {
+                                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
+                                    kqdongnuoc.SoPhieuMN = null;
+                                    kqdongnuoc.NgaySoPhieuMN = null;
+                                    _cDongNuoc.SuaKQ(kqdongnuoc);
+                                }
+                        }
+                    btnXem.PerformClick();
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
     }
 }

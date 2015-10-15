@@ -174,13 +174,18 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.FormattedValue.ToString().Replace(" ", "") != dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString())
             {
-                TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
-                bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
-                if (_cBangKe.Sua(bangke))
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1));
-                    _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value);
+                    TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
+                    bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
+                    if (_cBangKe.Sua(bangke))
+                    {
+                        _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1));
+                        _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value);
+                    }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -205,6 +205,7 @@ namespace ThuTien.GUI.TongHop
                             {
                                 _cDCHD.CommitTransaction();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                 Close();
                             }
                         }
@@ -277,6 +278,7 @@ namespace ThuTien.GUI.TongHop
                                 {
                                     _cDCHD.CommitTransaction();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                     Close();
                                 }
                             }
@@ -332,6 +334,11 @@ namespace ThuTien.GUI.TongHop
             lsdc.TIEUTHU_DC = dchd.TIEUTHU_DC;
 
             _cDCHD.ThemLSDC(lsdc);
+        }
+
+        private void frmShowDCHD_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
     }
 

@@ -76,21 +76,21 @@ namespace ThuTien.GUI.TongHop
                 List<HOADON> lstHDTemp = new List<HOADON>();
                 foreach (ListViewItem item in lstHD.Items)
                 {
-                    if (!_cHoaDon.CheckBySoHoaDon(item.ToString()))
+                    if (!_cHoaDon.CheckBySoHoaDon(item.Text))
                     {
-                        MessageBox.Show("Hóa Đơn sai: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         item.Selected = true;
                         item.Focused = true;
                         return;
                     }
                     if (_cCNKD.CheckExistCT(item.ToString()))
                     {
-                        MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn đã có trong Chuyển Nợ Khó Đòi: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         item.Selected = true;
                         item.Focused = true;
                         return;
                     }
-                    lstHDTemp.Add(_cHoaDon.GetBySoHoaDon(item.ToString()));
+                    lstHDTemp.Add(_cHoaDon.GetBySoHoaDon(item.Text));
                 }
                 try
                 {
@@ -126,16 +126,16 @@ namespace ThuTien.GUI.TongHop
 
                         if (_cCNKD.Them(cnkd))
                         {
-                            foreach (TT_CTChuyenNoKhoDoi item in cnkd.TT_CTChuyenNoKhoDois.ToList())
-                            {
-                                if (_cLenhHuy.CheckExist(item.SoHoaDon))
-                                    if (!_cLenhHuy.Xoa(item.SoHoaDon))
-                                    {
-                                        _cCNKD.Rollback();
-                                        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.SoHoaDon, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                            }
+                            //foreach (TT_CTChuyenNoKhoDoi item in cnkd.TT_CTChuyenNoKhoDois.ToList())
+                            //{
+                            //    if (_cLenhHuy.CheckExist(item.SoHoaDon))
+                            //        if (!_cLenhHuy.Xoa(item.SoHoaDon))
+                            //        {
+                            //            _cCNKD.Rollback();
+                            //            MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.SoHoaDon, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //            return;
+                            //        }
+                            //}
                             for (int i = lstHDTemp.Count - 1; i >= 0; i--)
                                 if (lstHDTemp[i].DANHBA == cnkd.DanhBo)
                                 {
@@ -290,6 +290,16 @@ namespace ThuTien.GUI.TongHop
                 frmShowChuyenNoKhoDoi frm = new frmShowChuyenNoKhoDoi(dgvHoaDon.CurrentRow.Cells["DanhBo"].Value.ToString(), decimal.Parse(dgvHoaDon.CurrentRow.Cells["MaCNKD"].Value.ToString()));
                 frm.ShowDialog();
             }
+        }
+
+        private void btnCopyToClipboard_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstHD.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
         }
     }
 }

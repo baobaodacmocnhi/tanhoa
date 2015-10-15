@@ -535,7 +535,7 @@
             this.Controls.Add(this.dgvHoaDon);
             this.Name = "frmDCHD";
             this.Text = "Điều Chỉnh Hóa Đơn";
-            this.Load += new System.EventHandler(this.frmDCHDNew_Load);
+            this.Load += new System.EventHandler(this.frmDCHD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).EndInit();
             this.ResumeLayout(false);

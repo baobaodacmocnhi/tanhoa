@@ -52,7 +52,7 @@ namespace ThuTien.GUI.Doi
             {
                 if (txtDuongDan.Text.Trim() != "" && _fileName.Length == 12)
                 {
-                    string[] lines = System.IO.File.ReadAllLines(_fileName);
+                    string[] lines = System.IO.File.ReadAllLines(txtDuongDan.Text.Trim());
                     progressBar.Minimum = 0;
                     progressBar.Maximum = lines.Count();
                     int i = 1;
@@ -189,9 +189,10 @@ namespace ThuTien.GUI.Doi
                         //}
                         if (!_cHoaDon.Them(hoadon))
                         {
-                            _cHoaDon.LinQ_ExecuteCommand("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                            _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
                         }
                     }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else

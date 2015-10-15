@@ -34,15 +34,20 @@ namespace ThuTien.DAL
         public void SubmitChanges()
         {
             _db.SubmitChanges();
-
         }
 
-        public bool LinQExecuteNonQuery(string sql)
+        public bool LinQ_ExecuteNonQuery(string sql)
         {
             if (_db.ExecuteCommand(sql) == 0)
+            {
+                 _db = new dbThuTienDataContext();
                 return false;
+            }
             else
+            {
+                 _db = new dbThuTienDataContext();
                 return true;
+            }
         }
 
         //public void SubmitChanges()
@@ -509,9 +514,5 @@ namespace ThuTien.DAL
 
         #endregion
 
-        public int LinQ_ExecuteCommand(string sql)
-        {
-            return _db.ExecuteCommand(sql);
-        }
     }
 }

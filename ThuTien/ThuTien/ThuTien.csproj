@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>245</ApplicationRevision>
+    <ApplicationRevision>252</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -135,6 +135,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptToTrinhCatHuy.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\DongNuoc\rptPhieuBaoDongMoNuoc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuBaoDongMoNuoc.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\DongNuoc\rptTBCatOngPhoto.cs">
@@ -588,6 +594,12 @@
     <Compile Include="GUI\TongHop\frmChuyenNoKhoDoi.Designer.cs">
       <DependentUpon>frmChuyenNoKhoDoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\TongHop\frmCongVan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TongHop\frmCongVan.Designer.cs">
+      <DependentUpon>frmCongVan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TongHop\frmDCHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -776,6 +788,10 @@
     <EmbeddedResource Include="BaoCao\Doi\rptToTrinhCatHuy.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptToTrinhCatHuy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DongNuoc\rptPhieuBaoDongMoNuoc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuBaoDongMoNuoc.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DongNuoc\rptTBCatOngPhoto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1041,6 +1057,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmChuyenNoKhoDoi.resx">
       <DependentUpon>frmChuyenNoKhoDoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TongHop\frmCongVan.resx">
+      <DependentUpon>frmCongVan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmDCHD.resx">
       <DependentUpon>frmDCHD.cs</DependentUpon>

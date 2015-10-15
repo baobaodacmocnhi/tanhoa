@@ -308,6 +308,16 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
+        private void btnCopyToClipboard_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstHD.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
+        }
+
         
     }
 }

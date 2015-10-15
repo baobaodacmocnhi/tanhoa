@@ -5,6 +5,7 @@ using System.Text;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
 using System.Windows.Forms;
+using System.Data;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
@@ -48,19 +49,19 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public List<TT_TienDu> GetDSTienAm()
+        public DataTable GetDSTienAm()
         {
-            return _db.TT_TienDus.Where(item => item.SoTien < 0).ToList();
+            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien < 0).ToList());
         }
 
-        public List<TT_TienDu> GetDSTienDu()
+        public DataTable GetDSTienDu()
         {
-            return _db.TT_TienDus.Where(item => item.SoTien > 0).ToList();
+            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
         }
 
-        public List<TT_TienDu> GetDSTienBienDong()
+        public DataTable GetDSTienBienDong()
         {
-            return _db.TT_TienDus.Where(item => item.SoTien != 0).ToList();
+            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien != 0).ToList());
         }
 
         public TT_TienDu Get(string DanhBo)

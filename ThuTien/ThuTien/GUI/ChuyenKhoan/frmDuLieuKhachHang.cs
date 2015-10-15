@@ -155,25 +155,27 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
                 try
                 {
-                    _cDLKH.BeginTransaction();
+                    //_cDLKH.BeginTransaction();
                     foreach (ListViewItem item in lstHD.Items)
+                        if(!_cDLKH.CheckExistSoHoaDon(item.Text))
                     {
                         TT_DuLieuKhachHang_SoHoaDon dlkh = new TT_DuLieuKhachHang_SoHoaDon();
                         dlkh.SoHoaDon = item.Text;
                         if (!_cDLKH.Them2(dlkh))
                         {
-                            _cDLKH.Rollback();
+                            //_cDLKH.Rollback();
                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
-                    _cDLKH.CommitTransaction();
+                    //_cDLKH.CommitTransaction();
                     lstHD.Items.Clear();
+                    btnXem2.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
                 {
-                    _cDLKH.Rollback();
+                    //_cDLKH.Rollback();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -971,30 +973,41 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                     try
                     {
-                        _cDLKH.BeginTransaction();
+                        //_cDLKH.BeginTransaction();
                         foreach (ListViewItem item in lstHD.Items)
                         {
                             TT_DuLieuKhachHang_SoHoaDon dlkh = _cDLKH.GetBySoHoaDon2(item.Text);
                             if (!_cDLKH.Xoa2(dlkh))
                             {
-                                _cDLKH.Rollback();
+                                //_cDLKH.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                         }
-                        _cDLKH.CommitTransaction();
+                        //_cDLKH.CommitTransaction();
                         lstHD.Items.Clear();
+                        btnXem2.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        _cDLKH.Rollback();
+                        //_cDLKH.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnCopyToClipboard_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstHD.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
         }
 
         

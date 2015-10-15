@@ -520,6 +520,7 @@
             this.MinimizeBox = false;
             this.Name = "frmShowDCHD";
             this.Text = "Nhập Kết Quả Điều Chỉnh Hóa Đơn";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShowDCHD_FormClosing);
             this.Load += new System.EventHandler(this.frmShowDCHD_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

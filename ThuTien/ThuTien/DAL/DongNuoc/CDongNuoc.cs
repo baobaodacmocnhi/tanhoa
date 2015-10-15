@@ -219,14 +219,9 @@ namespace ThuTien.DAL.DongNuoc
             return ds;
         }
 
-        public DataTable GetDSKQDongNuocByMaNVDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
-        {
-            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
-        }
-
         public DataTable GetDSKQDongNuocByDates(DateTime TuNgay, DateTime DenNgay)
         {
-            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.NgayDN.Value.Date >= TuNgay.Date && item.NgayDN.Value.Date <= DenNgay.Date).ToList());
         }
 
         public DataTable GetDSKQDongNuocByMaToDates(int MaTo, DateTime TuNgay, DateTime DenNgay)
@@ -234,16 +229,58 @@ namespace ThuTien.DAL.DongNuoc
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
-                        where itemKQ.CreateDate.Value.Date >= TuNgay.Date && itemKQ.CreateDate.Value.Date <= DenNgay.Date
+                        where itemKQ.NgayDN.Value.Date >= TuNgay.Date && itemKQ.NgayDN.Value.Date <= DenNgay.Date
                                 && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         select itemKQ;
             return LINQToDataTable(query.Distinct());
         }
 
-        public DataTable GetDSKQDongNuocByMaDNDates(decimal MaDN, DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDSKQDongNuocByMaNVDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
         {
-            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.MaDN == MaDN && item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value.Date <= DenNgay.Date).ToList());
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.NgayDN.Value.Date >= TuNgay.Date && item.NgayDN.Value.Date <= DenNgay.Date).ToList());
+        }
+
+        public List<TT_KQDongNuoc> GetDSKQDongNuocBySoPhieuDN(decimal SoPhieuDN)
+        {
+            return _db.TT_KQDongNuocs.Where(item => item.SoPhieuDN == SoPhieuDN).ToList();
+        }
+
+        public List<TT_KQDongNuoc> GetDSKQDongNuocBySoPhieuMN(decimal SoPhieuMN)
+        {
+            return _db.TT_KQDongNuocs.Where(item => item.SoPhieuMN == SoPhieuMN).ToList();
+        }
+
+        public List<TT_KQDongNuoc> GetDSSoPhieuDN()
+        {
+            return _db.TT_KQDongNuocs.Where(item => item.SoPhieuDN != null).GroupBy(item=>item.SoPhieuDN).Select(group=>group.First()).ToList();
+        }
+
+        public List<TT_KQDongNuoc> GetDSSoPhieuMN()
+        {
+            return _db.TT_KQDongNuocs.Where(item => item.SoPhieuMN != null).GroupBy(item => item.SoPhieuMN).Select(group => group.First()).ToList();
+        }
+
+        public DataTable GetDSKQMoNuocByDates(DateTime TuNgay, DateTime DenNgay)
+        {
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.NgayMN.Value.Date >= TuNgay.Date && item.NgayMN.Value.Date <= DenNgay.Date).ToList());
+        }
+
+        public DataTable GetDSKQMoNuocByMaToDates(int MaTo, DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        where itemKQ.NgayMN.Value.Date >= TuNgay.Date && itemKQ.NgayMN.Value.Date <= DenNgay.Date
+                                && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        select itemKQ;
+            return LINQToDataTable(query.Distinct());
+        }
+
+        public DataTable GetDSKQMoNuocByMaNVDates(int MaNV, DateTime TuNgay, DateTime DenNgay)
+        {
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.NgayMN.Value.Date >= TuNgay.Date && item.NgayMN.Value.Date <= DenNgay.Date).ToList());
         }
 
         public DataTable GetDSCanMoNuoc(int MaTo)
@@ -345,7 +382,7 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_DongNuocs.SingleOrDefault(item => item.MaDN == MaDN);
         }
 
-        public TT_KQDongNuoc GetKQDongNuocByMaKQDN(decimal MaKQDN)
+        public TT_KQDongNuoc GetKQDongNuocByMaKQDN(int MaKQDN)
         {
             return _db.TT_KQDongNuocs.SingleOrDefault(item => item.MaKQDN == MaKQDN);
         }
@@ -369,6 +406,36 @@ namespace ThuTien.DAL.DongNuoc
         public int GetPhiMoNuoc()
         {
             return _db.TT_CacLoaiPhis.FirstOrDefault().PhiMoNuoc.Value;
+        }
+
+        public decimal GetNextSoPhieuDN()
+        {
+            if (_db.TT_KQDongNuocs.Max(item => item.SoPhieuDN) == null)
+                return decimal.Parse("1" + DateTime.Now.ToString("yy"));
+            else
+            {
+                string ID = "SoPhieuDN";
+                string Table = "TT_KQDongNuoc";
+                decimal SoPhieu = _db.ExecuteQuery<decimal>("declare @Ma int " +
+                    "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                    "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                return getMaxNextIDTable(SoPhieu);
+            }
+        }
+
+        public decimal GetNextSoPhieuMN()
+        {
+            if (_db.TT_KQDongNuocs.Max(item => item.SoPhieuMN) == null)
+                return decimal.Parse("1" + DateTime.Now.ToString("yy"));
+            else
+            {
+                string ID = "SoPhieuMN";
+                string Table = "TT_KQDongNuoc";
+                decimal SoPhieu = _db.ExecuteQuery<decimal>("declare @Ma int " +
+                    "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                    "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                return getMaxNextIDTable(SoPhieu);
+            }
         }
 
         //public DataTable GetTongDongNuoc(int MaNV, DateTime TuNgay, DateTime DenNgay)

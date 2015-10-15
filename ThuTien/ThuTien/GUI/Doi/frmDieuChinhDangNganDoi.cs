@@ -333,5 +333,15 @@ namespace ThuTien.GUI.Doi
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
+
+        private void btnCopyToClipboard_Click(object sender, EventArgs e)
+        {
+            string str = "";
+            foreach (ListViewItem item in lstHD.Items)
+            {
+                str += item.Text + "\n";
+            }
+            Clipboard.SetText(str);
+        }
     }
 }
