@@ -246,7 +246,7 @@ namespace KTKS_DonKH.GUI.KhachHang
         /// <param name="e"></param>
         private void dgvDSDonKH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null)
+            if (dgvDSDonKH.Columns[e.ColumnIndex].Name == "MaDon" && e.Value != null&&e.Value.ToString().Length>2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -460,6 +460,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                 {
                     string a = itemRow["NguoiDi"].ToString();
                     string b = itemRow["MaDon"].ToString();
+                    if (!string.IsNullOrEmpty(itemRow["NguoiDi"].ToString()))
                     if (!_cDonTXL.CheckGiaiQuyetDonKHbyUser(int.Parse(itemRow["NguoiDi"].ToString()), decimal.Parse(itemRow["MaDon"].ToString())))
                     {
                         DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();

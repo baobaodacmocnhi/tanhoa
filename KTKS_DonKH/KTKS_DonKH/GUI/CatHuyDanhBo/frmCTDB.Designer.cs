@@ -249,7 +249,8 @@
             "Khách hàng cam kết sử dụng lại",
             "Hủy lệnh",
             "Đã cắt tạm bít nút",
-            "Trùng lệnh"});
+            "Trùng lệnh",
+            "Đóng nước-niêm chì"});
             this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);

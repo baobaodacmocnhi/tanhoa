@@ -347,9 +347,9 @@
             this.label22.ForeColor = System.Drawing.Color.Red;
             this.label22.Location = new System.Drawing.Point(129, 9);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(131, 31);
+            this.label22.Size = new System.Drawing.Size(137, 31);
             this.label22.TabIndex = 91;
-            this.label22.Text = "Phiếu Cắt";
+            this.label22.Text = "Phiếu Hủy";
             // 
             // btnXoa
             // 

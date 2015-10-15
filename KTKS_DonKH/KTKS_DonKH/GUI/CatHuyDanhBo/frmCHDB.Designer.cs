@@ -534,7 +534,8 @@
             "Đã cắt tạm bít nút",
             "Bít hủy tận gốc",
             "Cắt ống ngánh khóa con cóc",
-            "Trùng lệnh"});
+            "Trùng lệnh",
+            "Đóng nước-niêm chì"});
             this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
             this.cmbNoiDung.Name = "cmbNoiDung";
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);

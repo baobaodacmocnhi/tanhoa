@@ -950,7 +950,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctctdb.HoTen;
                                 dr["DiaChi"] = ctctdb.DiaChi;
-                                if(!string.IsNullOrEmpty(ctctdb.DanhBo))
+                                if (!string.IsNullOrEmpty(ctctdb.DanhBo))
                                     dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctctdb.HopDong;
 
