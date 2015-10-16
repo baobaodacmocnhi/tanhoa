@@ -92,8 +92,6 @@
             this.dateDen_XacNhanNo = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvXacNhanNo = new System.Windows.Forms.DataGridView();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.SoPhieu_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,6 +102,8 @@
             this.Ky_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TinhDenKy_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
@@ -165,7 +165,6 @@
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHoaDon.Size = new System.Drawing.Size(1315, 530);
             this.dgvHoaDon.TabIndex = 13;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
@@ -705,25 +704,6 @@
             this.dgvXacNhanNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvXacNhanNo_CellFormatting);
             this.dgvXacNhanNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvXacNhanNo_RowPostPaint);
             // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(435, 12);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 4;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(353, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "(Enter)";
-            // 
             // SoPhieu_XacNhanNo
             // 
             this.SoPhieu_XacNhanNo.DataPropertyName = "SoPhieu";
@@ -801,6 +781,25 @@
             this.TinhDenKy_XacNhanNo.Name = "TinhDenKy_XacNhanNo";
             this.TinhDenKy_XacNhanNo.ReadOnly = true;
             this.TinhDenKy_XacNhanNo.Visible = false;
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(435, 12);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 4;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(353, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "(Enter)";
             // 
             // frmTamThuQuay
             // 

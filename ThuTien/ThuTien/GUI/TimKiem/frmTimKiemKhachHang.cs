@@ -208,8 +208,11 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnXemPKinhDoanh_Click(object sender, EventArgs e)
         {
-            dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ", ""));
-            dgvKinhDoanh.Visible = true;
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
+            {
+                dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ", ""));
+                dgvKinhDoanh.Visible = true;
+            }
         }
 
         private void btnXemLenhHuy_Click(object sender, EventArgs e)

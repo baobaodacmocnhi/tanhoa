@@ -200,12 +200,17 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public long GetTienTon(DateTime CreateDate)
+        public long GetTongTienTon(DateTime CreateDate)
         {
             if (_db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= CreateDate.Date).Sum(item => item.SoTien) != null)
                 return (long)(_db.TT_TienDus.Sum(item => item.SoTien) - _db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= CreateDate.Date).Sum(item => item.SoTien));
             else
                 return (long)(_db.TT_TienDus.Sum(item => item.SoTien));
+        }
+
+        public int GetTienDu(string DanhBo)
+        {
+            return _db.TT_TienDus.SingleOrDefault(item => item.DanhBo==DanhBo).SoTien.Value;
         }
     }
 }

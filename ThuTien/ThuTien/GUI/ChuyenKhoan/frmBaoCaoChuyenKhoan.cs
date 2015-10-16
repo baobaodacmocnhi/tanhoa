@@ -226,7 +226,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            XuatExcelBangKe(dt, oSheet, "BẢNG KÊ", dateGiaiTrach.Value.ToString("dd/MM/yyyy"),_cTienDu.GetTienTon(dateGiaiTrach.Value));
+            XuatExcelBangKe(dt, oSheet, "BẢNG KÊ", dateGiaiTrach.Value.ToString("dd/MM/yyyy"),_cTienDu.GetTongTienTon(dateGiaiTrach.Value));
         }
 
         private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach,long TonDau)

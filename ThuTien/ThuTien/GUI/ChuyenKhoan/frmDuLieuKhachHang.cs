@@ -27,6 +27,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CTo _cTo = new CTo();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        CTienDu _cTienDu = new CTienDu();
 
         public frmDuLieuKhachHang()
         {
@@ -46,6 +47,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dateDen.Value = DateTime.Now;
 
             cmbDot.SelectedIndex = 0;
+            cmbDenDot.SelectedIndex = 0;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -53,7 +55,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (cmbDot.SelectedIndex == 0)
                 dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon();
             else
-                dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbDot.SelectedItem.ToString()));
+                if (cmbDot.SelectedIndex > 0)
+                    if (cmbDenDot.SelectedIndex == 0)
+                        dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbDot.SelectedItem.ToString()));
+                    else
+                        if (cmbDenDot.SelectedIndex > 0)
+                            dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()));
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -301,6 +308,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl13.Value2 = "Phí BVMT";
             cl13.ColumnWidth = 10;
 
+            Microsoft.Office.Interop.Excel.Range cl15 = oSheet.get_Range("O1", "O1");
+            cl15.Value2 = "Trừ Tiền Dư";
+            cl15.ColumnWidth = 10;
+
             //for (int i = 0; i < dt.Rows.Count; i++)
             //    if (!string.IsNullOrEmpty(dt.Rows[i]["NgayGiaiTrach"].ToString()))
             //    {
@@ -310,7 +321,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 14];
+            object[,] arr = new object[dt.Rows.Count, 15];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -325,7 +336,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 6] = dr["HoTen"].ToString();
                 arr[i, 7] = int.Parse(dr["SoPhatHanh"].ToString()).ToString("00000000");
                 arr[i, 8] = dr["SoTaiKhoan"].ToString();
-                arr[i, 9] = dr["TongCong"].ToString();
+                int TienDu=_cTienDu.GetTienDu(dr["DanhBo"].ToString());
+                if (TienDu > 0)
+                {
+                    arr[i, 14] = "Có";
+                    if (TienDu >= int.Parse(dr["TongCong"].ToString()))
+                        arr[i, 9] = 0;
+                    else
+                        arr[i, 9] = int.Parse(dr["TongCong"].ToString()) - TienDu;
+                }
                 arr[i, 10] = int.Parse(dr["TieuThu"].ToString()).ToString("00");
                 arr[i, 11] = dr["GiaBan"].ToString();
                 arr[i, 12] = dr["ThueGTGT"].ToString();
@@ -337,7 +356,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 14;
+            int columnEnd = 15;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];

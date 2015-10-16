@@ -70,6 +70,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabDLKH2 = new System.Windows.Forms.TabPage();
+            this.btnCopyToClipboard = new System.Windows.Forms.Button();
             this.lstHD = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnTra = new System.Windows.Forms.Button();
@@ -110,7 +111,8 @@
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.txtSoHoaDon = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnCopyToClipboard = new System.Windows.Forms.Button();
+            this.cmbDenDot = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabDLKH1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
@@ -131,6 +133,8 @@
             // 
             // tabDLKH1
             // 
+            this.tabDLKH1.Controls.Add(this.cmbDenDot);
+            this.tabDLKH1.Controls.Add(this.label4);
             this.tabDLKH1.Controls.Add(this.btnXemDanhBo);
             this.tabDLKH1.Controls.Add(this.cmbDot);
             this.tabDLKH1.Controls.Add(this.label1);
@@ -203,7 +207,7 @@
             // 
             // btnInDSTon_DB
             // 
-            this.btnInDSTon_DB.Location = new System.Drawing.Point(567, 6);
+            this.btnInDSTon_DB.Location = new System.Drawing.Point(656, 6);
             this.btnInDSTon_DB.Name = "btnInDSTon_DB";
             this.btnInDSTon_DB.Size = new System.Drawing.Size(75, 23);
             this.btnInDSTon_DB.TabIndex = 58;
@@ -452,7 +456,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(405, 6);
+            this.btnXem.Location = new System.Drawing.Point(494, 6);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 17;
@@ -462,7 +466,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(648, 6);
+            this.btnXoa.Location = new System.Drawing.Point(737, 6);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 20;
@@ -472,7 +476,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(486, 6);
+            this.btnIn.Location = new System.Drawing.Point(575, 6);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 19;
@@ -539,6 +543,16 @@
             this.tabDLKH2.TabIndex = 1;
             this.tabDLKH2.Text = "Hóa Đơn";
             this.tabDLKH2.UseVisualStyleBackColor = true;
+            // 
+            // btnCopyToClipboard
+            // 
+            this.btnCopyToClipboard.Location = new System.Drawing.Point(24, 281);
+            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
+            this.btnCopyToClipboard.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyToClipboard.TabIndex = 70;
+            this.btnCopyToClipboard.Text = "Copy to Clipboard";
+            this.btnCopyToClipboard.UseVisualStyleBackColor = true;
+            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
             // lstHD
             // 
@@ -922,15 +936,44 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Số Hóa Đơn:";
             // 
-            // btnCopyToClipboard
+            // cmbDenDot
             // 
-            this.btnCopyToClipboard.Location = new System.Drawing.Point(24, 281);
-            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
-            this.btnCopyToClipboard.Size = new System.Drawing.Size(110, 23);
-            this.btnCopyToClipboard.TabIndex = 70;
-            this.btnCopyToClipboard.Text = "Copy to Clipboard";
-            this.btnCopyToClipboard.UseVisualStyleBackColor = true;
-            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
+            this.cmbDenDot.FormattingEnabled = true;
+            this.cmbDenDot.Items.AddRange(new object[] {
+            "",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbDenDot.Location = new System.Drawing.Point(438, 6);
+            this.cmbDenDot.Name = "cmbDenDot";
+            this.cmbDenDot.Size = new System.Drawing.Size(50, 21);
+            this.cmbDenDot.TabIndex = 63;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(405, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(27, 13);
+            this.label4.TabIndex = 62;
+            this.label4.Text = "Đợt:";
             // 
             // frmDuLieuKhachHang
             // 
@@ -1032,6 +1075,8 @@
         private System.Windows.Forms.ListView lstHD;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Button btnCopyToClipboard;
+        private System.Windows.Forms.ComboBox cmbDenDot;
+        private System.Windows.Forms.Label label4;
 
     }
 }

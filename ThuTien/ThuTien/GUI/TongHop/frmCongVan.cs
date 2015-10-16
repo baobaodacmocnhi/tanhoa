@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.QuanTri;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -15,6 +16,7 @@ namespace ThuTien.GUI.TongHop
     {
         string _mnu = "mnuCongVan";
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CKTKS_DonKH _cKinhDoanh = new CKTKS_DonKH();
 
         public frmCongVan()
         {
@@ -25,6 +27,7 @@ namespace ThuTien.GUI.TongHop
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
             dgvKQMoNuoc.AutoGenerateColumns = false;
+            dgvKinhDoanh.AutoGenerateColumns = false;
 
             btnXem.PerformClick();
         }
@@ -97,6 +100,39 @@ namespace ThuTien.GUI.TongHop
         {
             dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSSoPhieuDN();
             dgvKQMoNuoc.DataSource = _cDongNuoc.GetDSSoPhieuMN();
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+            {
+                dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ", ""));
+            }
+        }
+
+        private void dgvKinhDoanh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "ThuTien_Nhan" && e.FormattedValue.ToString() != dgvKinhDoanh[e.ColumnIndex, e.RowIndex].Value.ToString())
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (bool.Parse(e.FormattedValue.ToString()) == true)
+                        _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_Nhan=1,ThuTien_NgayNhan=getdate() where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
+                    else
+                        _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_Nhan=0,ThuTien_NgayNhan=null where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
+                    dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ", ""));
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvKinhDoanh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvKinhDoanh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
         }
 
     }

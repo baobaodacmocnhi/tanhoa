@@ -111,6 +111,26 @@ namespace ThuTien.DAL.ChuyenKhoan
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
+        public DataTable GetDSDanhBoTon(int TuDot, int DenDot)
+        {
+            //string sql = "select dlkhDB.DanhBo,SoTaiKhoan,SoHoaDon,Ky,TIEUTHU,GIABAN,ThueGTGT,PhiBVMT,TONGCONG from TT_DuLieuKhachHang_DanhBo dlkhDB"
+            //         + " left  join"
+            //         + " (select DANHBA,a.SoHoaDon,(convert(varchar(2),KY)+'/'+convert(varchar(4),NAM)) as Ky,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+            //         + " from TT_DuLieuKhachHang_SoHoaDon a, HOADON b where a.SoHoaDon=b.SOHOADON and NAM=" + Nam + " and KY=" + Ky + ") dlkhHD on dlkhHD.DANHBA=dlkhDB.DanhBo";
+            //string sql = "select dlkhDB.DanhBo,SoTaiKhoan,dlkhHD.* from TT_DuLieuKhachHang_DanhBo dlkhDB"
+            //         + " left  join"
+            //         + " (select DANHBA,SOHOADON,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG"
+            //         + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT="+Dot+") dlkhHD on dlkhHD.DANHBA=dlkhDB.DanhBo";
+            string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
+                        + "nd.HoTen as HanhThu,tto.TenTo as 'To',GB as GiaBieu,MALOTRINH as MLT"
+                        + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
+                        + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
+                        + " left join TT_To tto on nd.MaTo=tto.MaTo"
+                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT>=" + TuDot + " and DOT<="+DenDot+" and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
+                        + " order by MALOTRINH asc";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         public DataTable GetDSDanhBoTon()
         {
             string sql = "select dlkhDB.DanhBo,dlkhDB.HoTen,SoTaiKhoan,SOHOADON,SOPHATHANH,NAM,KY,DOT,TIEUTHU,GIABAN,THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,"
