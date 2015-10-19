@@ -509,7 +509,11 @@ namespace ThuTien.DAL
 
         public string ConvertMoneyToWord(string money)
         {
-            return replace_special_word(join_unit(money));
+            string str=replace_special_word(join_unit(money));
+            if (str.Length > 1)
+                return str.Substring(0, 1).ToUpper() + str.Substring(1).ToLower();
+            else
+                return "";
         }
 
         #endregion

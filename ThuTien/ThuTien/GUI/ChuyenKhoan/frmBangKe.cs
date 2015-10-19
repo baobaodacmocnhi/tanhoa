@@ -29,25 +29,10 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void frmBangKe_Load(object sender, EventArgs e)
         {
             dgvBangKe.AutoGenerateColumns = false;
-            dgvTienDu.AutoGenerateColumns = false;
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
             dateNgayLap.Value = DateTime.Now;
 
-            btnRefresh.PerformClick();
-        }
-
-        public void CountdgvTienDu()
-        {
-            long TongCong = 0;
-            if (dgvTienDu.RowCount > 0)
-            {
-                foreach (DataGridViewRow item in dgvTienDu.Rows)
-                {
-                    TongCong += long.Parse(item.Cells["SoTien_TienDu"].Value.ToString());
-                }
-                txtTongCongTienDu.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
-            }
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -97,15 +82,23 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvBangKe.DataSource = _cBangKe.GetDS(dateTu.Value,dateDen.Value);
+            dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan(dateTu.Value, dateDen.Value);
+            int TongSoTien = 0;
+            int TongHD = 0;
             int TongCong = 0;
             if (dgvBangKe.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvBangKe.Rows)
                 {
-                    TongCong += int.Parse(item.Cells["SoTien"].Value.ToString());
+                    TongSoTien += int.Parse(item.Cells["SoTien"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["HoaDon"].Value.ToString()))
+                        TongHD += int.Parse(item.Cells["HoaDon"].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
+                        TongCong += int.Parse(item.Cells["TongCong"].Value.ToString());
                 }
-                txtTongHD.Text = dgvBangKe.RowCount.ToString();
+                txtTongDanhBo.Text = dgvBangKe.RowCount.ToString();
+                txtTongSoTien.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
+                txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
@@ -157,6 +150,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
             if (dgvBangKe.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvBangKe.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -241,32 +238,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     frm.Show();
                 }
             }
-        }
-
-        private void dgvTienDu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvTienDu.Columns[e.ColumnIndex].Name == "DanhBo_TienDu" && e.Value != null&&!string.IsNullOrEmpty(e.Value.ToString()))
-            {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
-            }
-            if (dgvTienDu.Columns[e.ColumnIndex].Name == "SoTien_TienDu" && e.Value != null)
-            {
-                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
-            }
-        }
-
-        private void dgvTienDu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvTienDu.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            dgvTienDu.DataSource = _cTienDu.GetDSTienBienDong();
-            CountdgvTienDu();
         }
 
     }

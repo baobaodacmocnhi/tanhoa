@@ -27,6 +27,8 @@ namespace ThuTien.GUI.ToTruong
         public frmTongHopNo()
         {
             InitializeComponent();
+
+            dateThanhToan.Value = DateTime.Now;
         }
 
         private void frmTongHopNo_Load(object sender, EventArgs e)
@@ -155,10 +157,12 @@ namespace ThuTien.GUI.ToTruong
                 dr["CSC"] = txtCSC.Text.Trim();
                 dr["TT"] = txtTT.Text.Trim();
                 dr["DM"] = txtDM.Text.Trim();
+                
                 ds.Tables["TongHopNo"].Rows.Add(dr);
             }
             DataRow dr1 = ds.Tables["TongHopNo"].NewRow();
             dr1["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
+            dr1["NgayThanhToan"] = dateThanhToan.Value.ToString("dd/MM/yyyy");
             ds.Tables["TongHopNo"].Rows.Add(dr1);
             rptTongHopNo rpt = new rptTongHopNo();
             rpt.SetDataSource(ds);

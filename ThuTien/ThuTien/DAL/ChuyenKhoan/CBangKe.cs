@@ -111,7 +111,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             var query = from itemBK in _db.TT_BangKes
                         join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
-                        where itemBK.CreateDate.Value.Date >= CreateDate.Date.AddDays(-5)&&itemBK.CreateDate.Value.Date <= CreateDate.Date
+                        where itemBK.CreateDate.Value.Date >= CreateDate.Date.AddDays(-5) && itemBK.CreateDate.Value.Date <= CreateDate.Date
                         select new
                         {
                             itemBK.MaBK,
@@ -121,6 +121,23 @@ namespace ThuTien.DAL.ChuyenKhoan
                             TenNH = itemtableNH.NGANHANG1,
                         };
             return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS_BangKe_DangNgan(DateTime TuNgay, DateTime DenNgay)
+        {
+            string sql = "declare @NgayGiaiTrach1 date;"
+                + " declare @NgayGiaiTrach2 date;"
+                + " set @NgayGiaiTrach1='" + TuNgay.ToString("yyyy-MM-dd") + "';"
+                + " set @NgayGiaiTrach2='" + DenNgay.ToString("yyyy-MM-dd") + "';"
+                + " select MaBK,DanhBo,SoTien,CreateDate,TenNH,HoaDon,TongCong from"
+                + " (select MaBK,DanhBo,SoTien,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)='2015-10-19') bk"
+                + " left join"
+                + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"
+                + " left join"
+                + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where CAST(NGAYGIAITRACH as date)='2015-10-19' group by DANHBA)"
+                + " dn on bk.DanhBo=dn.DANHBA";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
     }
 }

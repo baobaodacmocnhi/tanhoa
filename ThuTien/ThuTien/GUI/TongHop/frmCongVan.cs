@@ -27,6 +27,7 @@ namespace ThuTien.GUI.TongHop
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
             dgvKQMoNuoc.AutoGenerateColumns = false;
+            dgvKQDongMoNuoc.AutoGenerateColumns = false;
             dgvKinhDoanh.AutoGenerateColumns = false;
 
             btnXem.PerformClick();
@@ -102,11 +103,11 @@ namespace ThuTien.GUI.TongHop
             dgvKQMoNuoc.DataSource = _cDongNuoc.GetDSSoPhieuMN();
         }
 
-        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtDanhBo_KD_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+            if (e.KeyChar == 13 && txtDanhBo_KD.Text.Trim().Replace(" ", "").Length == 11)
             {
-                dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ", ""));
+                dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo_KD.Text.Trim().Replace(" ", ""));
             }
         }
 
@@ -120,7 +121,7 @@ namespace ThuTien.GUI.TongHop
                         _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_Nhan=1,ThuTien_NgayNhan=getdate() where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
                     else
                         _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_Nhan=0,ThuTien_NgayNhan=null where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
-                    dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo.Text.Trim().Replace(" ", ""));
+                    dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo_KD.Text.Trim().Replace(" ", ""));
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -134,6 +135,15 @@ namespace ThuTien.GUI.TongHop
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
+
+        private void txtDanhBo_DHN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo_DHN.Text.Trim().Replace(" ", "").Length == 11)
+            {
+                dgvKQDongMoNuoc.DataSource = _cDongNuoc.GetDSKQDongMoNuocByDanhBo(txtDanhBo_DHN.Text.Trim().Replace(" ", ""));
+            }
+        }
+
 
     }
 }

@@ -261,6 +261,11 @@ namespace ThuTien.DAL.DongNuoc
             return _db.TT_KQDongNuocs.Where(item => item.SoPhieuMN != null).GroupBy(item => item.SoPhieuMN).Select(group => group.First()).ToList();
         }
 
+        public DataTable GetDSKQDongMoNuocByDanhBo(string DanhBo)
+        {
+            return LINQToDataTable(_db.TT_KQDongNuocs.Where(item =>item.DanhBo==DanhBo).ToList());
+        }
+
         public DataTable GetDSKQMoNuocByDates(DateTime TuNgay, DateTime DenNgay)
         {
             return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.NgayMN.Value.Date >= TuNgay.Date && item.NgayMN.Value.Date <= DenNgay.Date).ToList());
