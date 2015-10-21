@@ -780,12 +780,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         CTDCBD ctdcbd = _cDCBD.getLastCTDCBDbyDanhBo(itemRow["DanhBo"].ToString());
                         if (ctdcbd != null)
                         {
-                            dr["DinhMucCap"] = ctdcbd.DinhMuc_BD;
-                            dr["DinhMucTruoc"] = ctdcbd.DinhMuc;
-                            if (ctdcbd.DinhMuc_BD.Value - ctdcbd.DinhMuc.Value > 0)
-                                dr["Tang"] = ctdcbd.DinhMuc_BD.Value - ctdcbd.DinhMuc.Value;
-                            else
-                                dr["Giam"] = ctdcbd.DinhMuc_BD.Value - ctdcbd.DinhMuc.Value;
+                            if (ctdcbd.DinhMuc_BD != null)
+                                dr["DinhMucCap"] = ctdcbd.DinhMuc_BD;
+                            if (ctdcbd.DinhMuc != null)
+                                dr["DinhMucTruoc"] = ctdcbd.DinhMuc;
+                            if (ctdcbd.DinhMuc_BD != null && ctdcbd.DinhMuc != null)
+                                if (ctdcbd.DinhMuc_BD.Value - ctdcbd.DinhMuc.Value > 0)
+                                    dr["Tang"] = ctdcbd.DinhMuc_BD.Value - ctdcbd.DinhMuc.Value;
+                                else
+                                    dr["Giam"] = ctdcbd.DinhMuc_BD.Value - ctdcbd.DinhMuc.Value;
                         }
 
                         if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
