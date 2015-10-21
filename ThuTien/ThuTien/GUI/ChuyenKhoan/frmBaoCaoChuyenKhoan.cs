@@ -53,18 +53,28 @@ namespace ThuTien.GUI.ChuyenKhoan
                 oExcel.Visible = true;
                 oExcel.DisplayAlerts = false;
                 //khai báo số lượng sheet
-                oExcel.Application.SheetsInNewWorkbook = lstTo.Count;
+                oExcel.Application.SheetsInNewWorkbook = lstTo.Count+1;
                 oBooks = oExcel.Workbooks;
 
                 oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
                 oSheets = oBook.Worksheets;
 
-                Microsoft.Office.Interop.Excel.Worksheet[] dtoSheet = new Microsoft.Office.Interop.Excel.Worksheet[lstTo.Count];
+                Microsoft.Office.Interop.Excel.Worksheet[] dtoSheet = new Microsoft.Office.Interop.Excel.Worksheet[lstTo.Count+1];
+
+                DataTable[] dtTongDangNgan = new DataTable[lstTo.Count];
+                DataTable[] dtTongDangNgan_DongA = new DataTable[lstTo.Count];
+                DataTable[] dtTongDangNgan_ExceptDongA = new DataTable[lstTo.Count];
+
                 for (int i = 0; i < lstTo.Count; i++)
                 {
                     dtoSheet[i] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(i+1);
-                    XuatExcelTongHopDangNgan(_cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value), dtoSheet[i], lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
+                    dtTongDangNgan[i] = _cHoaDon.GetTongDangNganChuyenKhoanByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                    dtTongDangNgan_DongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanDongAByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                    dtTongDangNgan_ExceptDongA[i] = _cHoaDon.GetTongDangNganChuyenKhoanExceptDongAByMaToNgayGiaiTrachs(lstTo[i].MaTo, dateTu.Value, dateDen.Value);
+                    XuatExcelTongHopDangNgan(dtTongDangNgan[i], dtoSheet[i], lstTo[i].TenTo, dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
                 }
+                dtoSheet[lstTo.Count] = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(lstTo.Count + 1);
+                XuatExcelTongHopDangNgan_DongA(dtTongDangNgan_ExceptDongA, dtTongDangNgan_DongA, dtoSheet[lstTo.Count], "Đông Á", dateDen.Value.Month.ToString() + "/" + dateDen.Value.Year.ToString());
             }
         }
 
@@ -161,6 +171,351 @@ namespace ThuTien.GUI.ChuyenKhoan
             //Microsoft.Office.Interop.Excel.Range c2f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
             //Microsoft.Office.Interop.Excel.Range c3f = oSheet.get_Range(c1f, c2f);
             //oSheet.get_Range(c2f, c3f).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
+        }
+
+        private void XuatExcelTongHopDangNgan_DongA(DataTable[] dtDangNgan, DataTable[] dtDongA, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string Ky)
+        {
+            oSheet.Name = SheetName;
+
+            // Tạo phần đầu nếu muốn
+            Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "M1");
+            head.MergeCells = true;
+            head.Value2 = "PHIẾU BÁO CÁO SỐ LIỆU UNC ĐĂNG NGÂN THÁNG \r\n " + Ky;
+            head.Font.Bold = true;
+            head.Font.Name = "Times New Roman";
+            head.Font.Size = "20";
+            head.RowHeight = 50;
+            head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            // Tạo tiêu đề cột 
+            Microsoft.Office.Interop.Excel.Range cl = oSheet.get_Range("A3", "A3");
+            cl.Value2 = "Ngày";
+            cl.ColumnWidth = 10;
+            cl.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("C3", "D3");
+            cl1.MergeCells = true;
+            cl1.Value2 = "TB1";
+            cl1.ColumnWidth = 25;
+            cl1.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl1a = oSheet.get_Range("C4", "C4");
+            cl1a.Value2 = "HĐ";
+            cl1a.ColumnWidth = 10;
+            cl1a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl1b = oSheet.get_Range("D4", "D4");
+            cl1b.Value2 = "TC";
+            cl1b.ColumnWidth = 15;
+            cl1b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("E3", "F3");
+            cl2.MergeCells = true;
+            cl2.Value2 = "TB2";
+            cl2.ColumnWidth = 25;
+            cl2.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl2a = oSheet.get_Range("E4", "E4");
+            cl2a.Value2 = "HĐ";
+            cl2a.ColumnWidth = 10;
+            cl2a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl2b = oSheet.get_Range("F4", "F4");
+            cl2b.Value2 = "TC";
+            cl2b.ColumnWidth = 15;
+            cl2b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("G3", "H3");
+            cl3.MergeCells = true;
+            cl3.Value2 = "TP1";
+            cl3.ColumnWidth = 25;
+            cl3.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl3a = oSheet.get_Range("G4", "G4");
+            cl3a.Value2 = "HĐ";
+            cl3a.ColumnWidth = 10;
+            cl3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl3b = oSheet.get_Range("H4", "H4");
+            cl3b.Value2 = "TC";
+            cl3b.ColumnWidth = 15;
+            cl3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("I3", "J3");
+            cl4.MergeCells = true;
+            cl4.Value2 = "TP2";
+            cl4.ColumnWidth = 25;
+            cl4.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl4a = oSheet.get_Range("I4", "I4");
+            cl4a.Value2 = "HĐ";
+            cl4a.ColumnWidth = 10;
+            cl4a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl4b = oSheet.get_Range("J4", "J4");
+            cl4b.Value2 = "TC";
+            cl4b.ColumnWidth = 15;
+            cl4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("K3", "L3");
+            cl5.MergeCells = true;
+            cl5.Value2 = "TỔNG";
+            cl5.ColumnWidth = 25;
+            cl5.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl5a = oSheet.get_Range("K4", "K4");
+            cl5a.Value2 = "HĐ";
+            cl5a.ColumnWidth = 10;
+            cl5a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl5b = oSheet.get_Range("L4", "L4");
+            cl5b.Value2 = "TC";
+            cl5b.ColumnWidth = 15;
+            cl5b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("M3", "N3");
+            cl6.MergeCells = true;
+            cl6.Value2 = "CÒN LẠI";
+            cl6.ColumnWidth = 25;
+            cl6.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl6a = oSheet.get_Range("M4", "M4");
+            cl6a.Value2 = "HĐ";
+            cl6a.ColumnWidth = 10;
+            cl6a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range cl6b = oSheet.get_Range("N4", "N4");
+            cl6b.Value2 = "TC";
+            cl6b.ColumnWidth = 15;
+            cl6b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+            object[,] arr = new object[dtDangNgan[0].Rows.Count * 3, 14];
+
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            //TB1
+            int j = 0;//biến kiểm soát nhảy hàng
+            for (int i = 0; i < dtDangNgan[0].Rows.Count; i++)
+            {
+                DataRow dr = dtDangNgan[0].Rows[i];
+
+                arr[i+j, 0] = dr["Ngay"].ToString();
+
+                DataRow[] drDongA = dtDongA[0].Select("Ngay like '" + dr["Ngay"].ToString() + "'");
+                arr[i + j + 1, 1] = "Đông Á";
+                if (drDongA.Count() > 0)
+                {
+                    arr[i + j + 1, 2] = drDongA[0]["TongHD"].ToString();
+                    arr[i + j + 1, 3] = drDongA[0]["TongCong"].ToString();
+
+                    arr[i + j + 1, 10] = drDongA[0]["TongHD"].ToString();
+                    arr[i + j + 1, 11] = drDongA[0]["TongCong"].ToString();
+                }
+
+                arr[i + j, 1] = "Tổ";
+                arr[i + j, 2] = dr["TongHD"].ToString();
+                arr[i + j, 3] = dr["TongCong"].ToString();
+
+                arr[i + j, 10] = dr["TongHD"].ToString();
+                arr[i + j, 11] = dr["TongCong"].ToString();
+
+                j = j + 2;//nhảy hàng
+            }
+
+            //TB2
+            j = 0;//biến kiểm soát nhảy hàng
+            for (int i = 0; i < dtDangNgan[1].Rows.Count; i++)
+            {
+                DataRow dr = dtDangNgan[1].Rows[i];
+
+                DataRow[] drDongA = dtDongA[1].Select("Ngay like '" + dr["Ngay"].ToString() + "'");
+                if (drDongA.Count() > 0)
+                {
+                    arr[i + j + 1, 4] = drDongA[0]["TongHD"].ToString();
+                    arr[i + j + 1, 5] = drDongA[0]["TongCong"].ToString();
+
+                    if (arr[i + j + 1, 10]!=null)
+                        arr[i + j + 1, 10] = int.Parse(arr[i + j + 1, 10].ToString()) + int.Parse(drDongA[0]["TongHD"].ToString());
+                    else
+                        arr[i + j + 1, 10] = drDongA[0]["TongHD"].ToString();
+                    if (arr[i + j + 1, 11] != null)
+                        arr[i + j + 1, 11] = int.Parse(arr[i + j + 1, 11].ToString()) + int.Parse(drDongA[0]["TongCong"].ToString());
+                    else
+                        arr[i + j + 1, 11] = drDongA[0]["TongCong"].ToString();
+                }
+
+                arr[i + j, 4] = dr["TongHD"].ToString();
+                arr[i + j, 5] = dr["TongCong"].ToString();
+
+                arr[i + j, 10] = int.Parse(arr[i + j, 10].ToString()) + int.Parse(dr["TongHD"].ToString());
+                arr[i + j, 11] = int.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
+
+                j = j + 2;//nhảy hàng
+            }
+
+            //TP1
+            j = 0;//biến kiểm soát nhảy hàng
+            for (int i = 0; i < dtDangNgan[2].Rows.Count; i++)
+            {
+                DataRow dr = dtDangNgan[2].Rows[i];
+
+                DataRow[] drDongA = dtDongA[2].Select("Ngay like '" + dr["Ngay"].ToString() + "'");
+                if (drDongA.Count() > 0)
+                {
+                    arr[i + j + 1, 6] = drDongA[0]["TongHD"].ToString();
+                    arr[i + j + 1, 7] = drDongA[0]["TongCong"].ToString();
+
+                    if (arr[i + j + 1, 10] != null)
+                        arr[i + j + 1, 10] = int.Parse(arr[i + j + 1, 10].ToString()) + int.Parse(drDongA[0]["TongHD"].ToString());
+                    else
+                        arr[i + j + 1, 10] = drDongA[0]["TongHD"].ToString();
+                    if (arr[i + j + 1, 11] != null)
+                        arr[i + j + 1, 11] = int.Parse(arr[i + j + 1, 11].ToString()) + int.Parse(drDongA[0]["TongCong"].ToString());
+                    else
+                        arr[i + j + 1, 11] = drDongA[0]["TongCong"].ToString();
+                }
+
+                arr[i + j, 6] = dr["TongHD"].ToString();
+                arr[i + j, 7] = dr["TongCong"].ToString();
+
+                arr[i + j, 10] = int.Parse(arr[i + j, 10].ToString()) + int.Parse(dr["TongHD"].ToString());
+                arr[i + j, 11] = int.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
+
+                j = j + 2;//nhảy hàng
+            }
+
+            //TP2
+            j = 0;//biến kiểm soát nhảy hàng
+            for (int i = 0; i < dtDangNgan[3].Rows.Count; i++)
+            {
+                DataRow dr = dtDangNgan[3].Rows[i];
+
+                DataRow[] drDongA = dtDongA[3].Select("Ngay like '" + dr["Ngay"].ToString() + "'");
+                if (drDongA.Count() > 0)
+                {
+                    arr[i + j + 1, 8] = drDongA[0]["TongHD"].ToString();
+                    arr[i + j + 1, 9] = drDongA[0]["TongCong"].ToString();
+
+                    if (arr[i + j + 1, 10] != null)
+                        arr[i + j + 1, 10] = int.Parse(arr[i + j + 1, 10].ToString()) + int.Parse(drDongA[0]["TongHD"].ToString());
+                    else
+                        arr[i + j + 1, 10] = drDongA[0]["TongHD"].ToString();
+                    if (arr[i + j + 1, 11] != null)
+                        arr[i + j + 1, 11] = int.Parse(arr[i + j + 1, 11].ToString()) + int.Parse(drDongA[0]["TongCong"].ToString());
+                    else
+                        arr[i + j + 1, 11] = drDongA[0]["TongCong"].ToString();
+                }
+
+                arr[i + j, 8] = dr["TongHD"].ToString();
+                arr[i + j, 9] = dr["TongCong"].ToString();
+
+                arr[i + j, 10] = int.Parse(arr[i + j, 10].ToString()) + int.Parse(dr["TongHD"].ToString());
+                arr[i + j, 11] = int.Parse(arr[i + j, 11].ToString()) + int.Parse(dr["TongCong"].ToString());
+
+                j = j + 2;//nhảy hàng
+            }
+
+            //Thiết lập vùng điền dữ liệu
+            int rowStart = 5;
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dtDangNgan[0].Rows.Count * 3 - 1;
+            int columnEnd = 14;
+
+            // Ô bắt đầu điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            // Ô kết thúc điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            // Lấy về vùng điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+            Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+            Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+            oSheet.get_Range(c2a, c3a).Font.Bold = true;
+            oSheet.get_Range(c2a, c3a).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2a, c3a).NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
+            Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
+            Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1a, c2a);
+            oSheet.get_Range(c2b, c3b).Font.Bold = true;
+            oSheet.get_Range(c2b, c3b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2b, c3b).NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1b, c2b);
+            oSheet.get_Range(c2c, c3c).Font.Bold = true;
+            oSheet.get_Range(c2c, c3c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2c, c3c).NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1c, c2c);
+            oSheet.get_Range(c2d, c3d).Font.Bold = true;
+            oSheet.get_Range(c2d, c3d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2d, c3d).NumberFormat = "#,##0";
+
+            Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
+            Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
+            Microsoft.Office.Interop.Excel.Range c3e = oSheet.get_Range(c1d, c2d);
+            oSheet.get_Range(c2e, c3e).Font.Bold = true;
+            oSheet.get_Range(c2e, c3e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2e, c3e).NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 6];
+            Microsoft.Office.Interop.Excel.Range c2f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
+            Microsoft.Office.Interop.Excel.Range c3f = oSheet.get_Range(c1e, c2e);
+            oSheet.get_Range(c2f, c3f).Font.Bold = true;
+            oSheet.get_Range(c2f, c3f).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2f, c3f).NumberFormat = "#,##0";
+
+            Microsoft.Office.Interop.Excel.Range c1g = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 7];
+            Microsoft.Office.Interop.Excel.Range c2g = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 7];
+            Microsoft.Office.Interop.Excel.Range c3g = oSheet.get_Range(c1f, c2f);
+            oSheet.get_Range(c2g, c3g).Font.Bold = true;
+            oSheet.get_Range(c2g, c3g).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2g, c3g).NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1h = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 8];
+            Microsoft.Office.Interop.Excel.Range c2h = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 8];
+            Microsoft.Office.Interop.Excel.Range c3h = oSheet.get_Range(c1g, c2g);
+            oSheet.get_Range(c2h, c3h).Font.Bold = true;
+            oSheet.get_Range(c2h, c3h).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2h, c3h).NumberFormat = "#,##0";
+
+            Microsoft.Office.Interop.Excel.Range c1i = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 9];
+            Microsoft.Office.Interop.Excel.Range c2i = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 9];
+            Microsoft.Office.Interop.Excel.Range c3i = oSheet.get_Range(c1h, c2h);
+            oSheet.get_Range(c2i, c3i).Font.Bold = true;
+            oSheet.get_Range(c2i, c3i).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2i, c3i).NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1j = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 10];
+            Microsoft.Office.Interop.Excel.Range c2j = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 10];
+            Microsoft.Office.Interop.Excel.Range c3j = oSheet.get_Range(c1i, c2i);
+            oSheet.get_Range(c2j, c3j).Font.Bold = true;
+            oSheet.get_Range(c2j, c3j).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2j, c3j).NumberFormat = "#,##0";
+
+            Microsoft.Office.Interop.Excel.Range c1k = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 11];
+            Microsoft.Office.Interop.Excel.Range c2k = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 11];
+            Microsoft.Office.Interop.Excel.Range c3k = oSheet.get_Range(c1j, c2j);
+            oSheet.get_Range(c2k, c3k).Font.Bold = true;
+            oSheet.get_Range(c2k, c3k).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2k, c3k).NumberFormat = "@";
+
+            Microsoft.Office.Interop.Excel.Range c1l = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 12];
+            Microsoft.Office.Interop.Excel.Range c2l = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 12];
+            Microsoft.Office.Interop.Excel.Range c3l = oSheet.get_Range(c1k, c2k);
+            oSheet.get_Range(c2l, c3l).Font.Bold = true;
+            oSheet.get_Range(c2l, c3l).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            oSheet.get_Range(c2l, c3l).NumberFormat = "#,##0";
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;

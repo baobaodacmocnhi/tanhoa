@@ -93,13 +93,13 @@ namespace ThuTien.DAL.Doi
                     if (!string.IsNullOrWhiteSpace(contents[30]))
                         hoadon.TIEUTHUBU = int.Parse(contents[30]);
                     if (!string.IsNullOrWhiteSpace(contents[31]))
-                        hoadon.TILESH = int.Parse(contents[31]);
+                        hoadon.TIEUTHUSH = int.Parse(contents[31]);
                     if (!string.IsNullOrWhiteSpace(contents[32]))
-                        hoadon.TILEHCSN = int.Parse(contents[32]);
+                        hoadon.TIEUTHUHCSN = int.Parse(contents[32]);
                     if (!string.IsNullOrWhiteSpace(contents[33]))
-                        hoadon.TILESX = int.Parse(contents[33]);
+                        hoadon.TIEUTHUSX = int.Parse(contents[33]);
                     if (!string.IsNullOrWhiteSpace(contents[34]))
-                        hoadon.TILEDV = int.Parse(contents[34]);
+                        hoadon.TIEUTHUDV = int.Parse(contents[34]);
                     if (!string.IsNullOrWhiteSpace(contents[35]))
                         hoadon.MAY = contents[35];
                     if (!string.IsNullOrWhiteSpace(contents[36]))
@@ -439,6 +439,14 @@ namespace ThuTien.DAL.Doi
         public HOADON GetMoiNhat(string DanhBo)
         {
             return _db.HOADONs.Where(item => item.DANHBA == DanhBo).ToList().OrderByDescending(item => item.ID_HOADON).First();
+        }
+
+        public HOADON GetTonMoiNhat(string DanhBo)
+        {
+            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).Count() > 0)
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).ToList().OrderByDescending(item => item.ID_HOADON).First();
+            else
+                return null;
         }
 
         /// <summary>
@@ -3318,6 +3326,66 @@ namespace ThuTien.DAL.Doi
                         where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         && item.DangNgan_ChuyenKhoan == true && item.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date
+                        orderby item.NGAYGIAITRACH ascending
+                        group item by item.NGAYGIAITRACH.Value.Date into itemGroup
+                        select new
+                        {
+                            Ngay = itemGroup.Key.Day + "/" + itemGroup.Key.Month,
+                            TongHD = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                        };
+            return LINQToDataTable(query);
+
+            //string sql = "declare @Tungaygiaitrach varchar(10);"
+            //            + " declare @Denngaygiaitrach varchar(10);"
+            //            + " set @Tungaygiaitrach=" + TuNgayGiaiTrach.ToString("yyyy-MM-dd") + ";"
+            //            + " set @Denngaygiaitrach=" + DenNgayGiaiTrach.ToString("yyyy-MM-dd") + ";"
+            //            + " select nd.MaTo,TenTo,day(NGAYGIAITRACH) as Ngay,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+            //            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND join TT_To tto on nd.MaTo=tto.MaTo"
+            //            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+            //            + " and DangNgan_ChuyenKhoan='True' and NGAYGIAITRACH>=@Tungaygiaitrach and NGAYGIAITRACH<=@Denngaygiaitrach"
+            //            + " group by nd.MaTo,TenTo,day(NGAYGIAITRACH)";
+
+            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetTongDangNganChuyenKhoanDongAByMaToNgayGiaiTrachs(int MaTo, DateTime TuNgayGiaiTrach, DateTime DenNgayGiaiTrach)
+        {
+            var query = from item in _db.HOADONs
+                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                && item.DangNgan_ChuyenKhoan == true && item.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date
+                                && (from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons select itemDLKH.SoHoaDon).Contains(item.SOHOADON)
+                        orderby item.NGAYGIAITRACH ascending
+                        group item by item.NGAYGIAITRACH.Value.Date into itemGroup
+                        select new
+                        {
+                            Ngay = itemGroup.Key.Day + "/" + itemGroup.Key.Month,
+                            TongHD = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                        };
+            return LINQToDataTable(query);
+
+            //string sql = "declare @Tungaygiaitrach varchar(10);"
+            //            + " declare @Denngaygiaitrach varchar(10);"
+            //            + " set @Tungaygiaitrach=" + TuNgayGiaiTrach.ToString("yyyy-MM-dd") + ";"
+            //            + " set @Denngaygiaitrach=" + DenNgayGiaiTrach.ToString("yyyy-MM-dd") + ";"
+            //            + " select nd.MaTo,TenTo,day(NGAYGIAITRACH) as Ngay,count(DANHBA) as TongHD,sum(hd.TONGCONG) as TongCong"
+            //            + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND join TT_To tto on nd.MaTo=tto.MaTo"
+            //            + " where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+            //            + " and DangNgan_ChuyenKhoan='True' and NGAYGIAITRACH>=@Tungaygiaitrach and NGAYGIAITRACH<=@Denngaygiaitrach"
+            //            + " group by nd.MaTo,TenTo,day(NGAYGIAITRACH)";
+
+            //return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
+        public DataTable GetTongDangNganChuyenKhoanExceptDongAByMaToNgayGiaiTrachs(int MaTo, DateTime TuNgayGiaiTrach, DateTime DenNgayGiaiTrach)
+        {
+            var query = from item in _db.HOADONs
+                        where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                && item.DangNgan_ChuyenKhoan == true && item.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && item.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date
+                                && !(from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons select itemDLKH.SoHoaDon).Contains(item.SOHOADON)
                         orderby item.NGAYGIAITRACH ascending
                         group item by item.NGAYGIAITRACH.Value.Date into itemGroup
                         select new

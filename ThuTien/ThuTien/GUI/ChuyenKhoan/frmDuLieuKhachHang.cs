@@ -345,6 +345,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     else
                         arr[i, 9] = int.Parse(dr["TongCong"].ToString()) - TienDu;
                 }
+                else
+                {
+                    arr[i, 9] = int.Parse(dr["TongCong"].ToString());
+                }
                 arr[i, 10] = int.Parse(dr["TieuThu"].ToString()).ToString("00");
                 arr[i, 11] = dr["GiaBan"].ToString();
                 arr[i, 12] = dr["ThueGTGT"].ToString();

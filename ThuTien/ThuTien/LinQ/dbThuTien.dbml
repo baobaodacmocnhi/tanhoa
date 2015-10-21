@@ -616,6 +616,44 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TT_KQDongNuoc" Member="TT_KQDongNuocs">
+    <Type Name="TT_KQDongNuoc">
+      <Column Name="MaKQDN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HopDong" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MLT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DongNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Hieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ChiSoDN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiMatSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChiKhoaGoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PhiMoNuoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoPhieuDN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NgaySoPhieuDN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChuyenDN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayChuyenDN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MoNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChiSoMN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoPhieuMN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NgaySoPhieuMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChuyenMN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayChuyenMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaDN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TT_DongNuoc_TT_KQDongNuoc" Member="TT_DongNuoc" ThisKey="MaDN" OtherKey="MaDN" Type="TT_DongNuoc" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.HOADON" Member="HOADONs">
     <Type Name="HOADON">
       <Column Name="ID_HOADON" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -640,7 +678,7 @@
       <Column Name="TIEUTHUSH" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="TIEUTHUSX" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="TIEUTHUHCSN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="TIEUTHUDV" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="TIEUTHUDV" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="GIABAN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="THUE" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="PHI" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
@@ -710,48 +748,11 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DanhBo" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
       <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TT_KQDongNuoc" Member="TT_KQDongNuocs">
-    <Type Name="TT_KQDongNuoc">
-      <Column Name="MaKQDN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DanhBo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="HopDong" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="MLT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DongNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayDN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Hieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ChiSoDN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChiMatSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ChiKhoaGoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PhiMoNuoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoPhieuDN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="NgaySoPhieuDN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ChuyenDN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayChuyenDN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MoNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ChiSoMN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoPhieuMN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="NgaySoPhieuMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ChuyenMN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="NgayChuyenMN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MaDN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TT_DongNuoc_TT_KQDongNuoc" Member="TT_DongNuoc" ThisKey="MaDN" OtherKey="MaDN" Type="TT_DongNuoc" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

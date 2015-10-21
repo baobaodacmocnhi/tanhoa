@@ -130,11 +130,11 @@ namespace ThuTien.DAL.ChuyenKhoan
                 + " set @NgayGiaiTrach1='" + TuNgay.ToString("yyyy-MM-dd") + "';"
                 + " set @NgayGiaiTrach2='" + DenNgay.ToString("yyyy-MM-dd") + "';"
                 + " select MaBK,DanhBo,SoTien,CreateDate,TenNH,HoaDon,TongCong from"
-                + " (select MaBK,DanhBo,SoTien,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)='2015-10-19') bk"
+                + " (select MaBK,DanhBo,SoTien,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@NgayGiaiTrach1 and CAST(CreateDate as date)<=@NgayGiaiTrach2) bk"
                 + " left join"
                 + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"
                 + " left join"
-                + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where CAST(NGAYGIAITRACH as date)='2015-10-19' group by DANHBA)"
+                + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where CAST(NGAYGIAITRACH as date)>=@NgayGiaiTrach1 and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach2 group by DANHBA)"
                 + " dn on bk.DanhBo=dn.DANHBA";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);

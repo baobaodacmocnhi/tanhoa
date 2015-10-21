@@ -230,10 +230,10 @@ namespace ThuTien.GUI.DongNuoc
                         else
                             dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQMoNuocByMaNVDates(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
                 }
-            foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
-            {
-                item.Cells["Chon"].Value = true;
-            }
+            //foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
+            //{
+            //    item.Cells["Chon"].Value = true;
+            //}
         }
 
         private void dgvKQDongNuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -455,7 +455,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (radDongNuoc.Checked)
                     {
                         foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
-                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && string.IsNullOrEmpty(item.Cells["SoPhieuDN"].Value.ToString()))
+                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && !string.IsNullOrEmpty(item.Cells["SoPhieuDN"].Value.ToString()))
                             {
                                 TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
                                 kqdongnuoc.SoPhieuDN = null;
@@ -467,7 +467,7 @@ namespace ThuTien.GUI.DongNuoc
                         if (radMoNuoc.Checked)
                         {
                             foreach (DataGridViewRow item in dgvKQDongNuoc.Rows)
-                                if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && string.IsNullOrEmpty(item.Cells["SoPhieuMN"].Value.ToString()))
+                                if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && !string.IsNullOrEmpty(item.Cells["SoPhieuMN"].Value.ToString()))
                                 {
                                     TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(item.Cells["MaKQDN"].Value.ToString()));
                                     kqdongnuoc.SoPhieuMN = null;

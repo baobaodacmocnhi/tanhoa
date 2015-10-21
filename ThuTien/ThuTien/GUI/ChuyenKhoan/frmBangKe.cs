@@ -83,18 +83,18 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan(dateTu.Value, dateDen.Value);
-            int TongSoTien = 0;
+            long TongSoTien = 0;
             int TongHD = 0;
-            int TongCong = 0;
+            long TongCong = 0;
             if (dgvBangKe.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvBangKe.Rows)
                 {
-                    TongSoTien += int.Parse(item.Cells["SoTien"].Value.ToString());
+                    TongSoTien += long.Parse(item.Cells["SoTien"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["HoaDon"].Value.ToString()))
                         TongHD += int.Parse(item.Cells["HoaDon"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
-                        TongCong += int.Parse(item.Cells["TongCong"].Value.ToString());
+                        TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
                 }
                 txtTongDanhBo.Text = dgvBangKe.RowCount.ToString();
                 txtTongSoTien.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);

@@ -126,13 +126,13 @@ namespace ThuTien.GUI.Doi
                         if (!string.IsNullOrWhiteSpace(contents[30]))
                             hoadon.TIEUTHUBU = int.Parse(contents[30]);
                         if (!string.IsNullOrWhiteSpace(contents[31]))
-                            hoadon.TILESH = int.Parse(contents[31]);
+                            hoadon.TIEUTHUSH = int.Parse(contents[31]);
                         if (!string.IsNullOrWhiteSpace(contents[32]))
-                            hoadon.TILEHCSN = int.Parse(contents[32]);
+                            hoadon.TIEUTHUHCSN = int.Parse(contents[32]);
                         if (!string.IsNullOrWhiteSpace(contents[33]))
-                            hoadon.TILESX = int.Parse(contents[33]);
+                            hoadon.TIEUTHUSX = int.Parse(contents[33]);
                         if (!string.IsNullOrWhiteSpace(contents[34]))
-                            hoadon.TILEDV = int.Parse(contents[34]);
+                            hoadon.TIEUTHUDV = int.Parse(contents[34]);
                         if (!string.IsNullOrWhiteSpace(contents[35]))
                             hoadon.MAY = contents[35];
                         if (!string.IsNullOrWhiteSpace(contents[36]))
