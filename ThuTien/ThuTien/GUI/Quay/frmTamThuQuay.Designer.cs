@@ -161,7 +161,6 @@
             this.TongCong,
             this.HanhThu});
             this.dgvHoaDon.Location = new System.Drawing.Point(6, 35);
-            this.dgvHoaDon.MultiSelect = false;
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;

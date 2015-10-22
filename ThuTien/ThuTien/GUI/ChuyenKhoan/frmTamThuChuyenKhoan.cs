@@ -145,11 +145,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dgvTamThu.DataSource = _cTamThu.GetDS(true, dateTu.Value, dateDen.Value);
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
+            {
+                if (bool.Parse(item.Cells["TienDu_TT"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
                 if (_cDongNuoc.CheckExistBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
                 {
                     item.Cells["HanhThu_TT"].Value = HoTen;
                     item.Cells["To_TT"].Value = TenTo;
                 }
+            }
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -504,26 +508,59 @@ namespace ThuTien.GUI.ChuyenKhoan
                 range.Value2 = arr;
         }
 
+        private int _searchIndex = -1;
+        private string _searchNoiDung = "";
+
         private void GetNoiDungfrmTimKiem(string NoiDung)
         {
             if (tabControl.SelectedTab.Name == "tabThongTin")
             {
-                foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                    if (item.Cells["DanhBo"].Value.ToString() == NoiDung)
+                if (_searchNoiDung != NoiDung)
+                    _searchIndex = -1;
+
+                for (int i = 0; i < dgvHoaDon.Rows.Count; i++)
+                {
+                    if (_searchNoiDung != NoiDung)
+                        _searchNoiDung = NoiDung;
+
+                    _searchIndex = (_searchIndex + 1) % dgvHoaDon.Rows.Count;
+                    DataGridViewRow row = dgvHoaDon.Rows[_searchIndex];
+                    if (row.Cells["DanhBo"].Value == null)
                     {
-                        dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
-                        item.Selected = true;
+                        continue;
                     }
+                    if (row.Cells["DanhBo"].Value.ToString() == NoiDung)
+                    {
+                        dgvHoaDon.CurrentCell = row.Cells["DanhBo"];
+                        dgvHoaDon.Rows[_searchIndex].Selected = true;
+                        return;
+                    }
+                }
             }
             else
                 if (tabControl.SelectedTab.Name == "tabTamThu")
                 {
-                    foreach (DataGridViewRow item in dgvTamThu.Rows)
-                        if (item.Cells["DanhBo_TT"].Value.ToString() == NoiDung)
+                    if (_searchNoiDung != NoiDung)
+                        _searchIndex = -1;
+
+                    for (int i = 0; i < dgvTamThu.Rows.Count; i++)
+                    {
+                        if (_searchNoiDung != NoiDung)
+                            _searchNoiDung = NoiDung;
+
+                        _searchIndex = (_searchIndex + 1) % dgvTamThu.Rows.Count;
+                        DataGridViewRow row = dgvTamThu.Rows[_searchIndex];
+                        if (row.Cells["DanhBo_TT"].Value == null)
                         {
-                            dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
-                            item.Selected = true;
+                            continue;
                         }
+                        if (row.Cells["DanhBo_TT"].Value.ToString() == NoiDung)
+                        {
+                            dgvTamThu.CurrentCell = row.Cells["DanhBo_TT"];
+                            dgvTamThu.Rows[_searchIndex].Selected = true;
+                            return;
+                        }
+                    }
                 }
         }
 

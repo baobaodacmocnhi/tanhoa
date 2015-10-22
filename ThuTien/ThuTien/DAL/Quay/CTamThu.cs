@@ -107,6 +107,11 @@ namespace ThuTien.DAL.Quay
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon && item.ChuyenKhoan == ChuyenKhoan);
         }
 
+        public bool CheckExist(string SoHoaDon)
+        {
+            return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon);
+        }
+
         public DataTable GetDS(bool ChuyenKhoan,DateTime TuNgay)
         {
             var query = from itemTT in _db.TAMTHUs
@@ -140,6 +145,7 @@ namespace ThuTien.DAL.Quay
                             itemTT.MaNH,
                             TenNH = itemtableNH.NGANHANG1,
                             GiaBieu = itemHD.GB,
+                            itemTT.TienDu,
                         };
             return LINQToDataTable(query);
         }
@@ -177,6 +183,7 @@ namespace ThuTien.DAL.Quay
                             itemTT.MaNH,
                             TenNH=itemtableNH.NGANHANG1,
                             GiaBieu=itemHD.GB,
+                            itemTT.TienDu,
                         };
             return LINQToDataTable(query);
         }

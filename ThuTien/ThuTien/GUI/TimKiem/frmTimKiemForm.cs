@@ -35,5 +35,6 @@ namespace ThuTien.GUI.TimKiem
             if (e.KeyChar == 13)
                 btnTimKiem.PerformClick();
         }
+
     }
 }

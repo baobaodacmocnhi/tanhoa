@@ -304,26 +304,59 @@ namespace ThuTien.GUI.Quay
 
         }
 
+        private int _searchIndex = -1;
+        private string _searchNoiDung = "";
+
         private void GetNoiDungfrmTimKiem(string NoiDung)
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-                    if (item.Cells["DanhBo_TG"].Value.ToString() == NoiDung)
+                if (_searchNoiDung != NoiDung)
+                    _searchIndex = -1;
+
+                for (int i = 0; i < dgvHDTuGia.Rows.Count; i++)
+                {
+                    if (_searchNoiDung != NoiDung)
+                        _searchNoiDung = NoiDung;
+
+                    _searchIndex = (_searchIndex + 1) % dgvHDTuGia.Rows.Count;
+                    DataGridViewRow row = dgvHDTuGia.Rows[_searchIndex];
+                    if (row.Cells["DanhBo_TG"].Value == null)
                     {
-                        dgvHDTuGia.CurrentCell = item.Cells[0];
-                        item.Selected = true;
+                        continue;
                     }
+                    if (row.Cells["DanhBo_TG"].Value.ToString() == NoiDung)
+                    {
+                        dgvHDTuGia.CurrentCell = row.Cells["DanhBo_TG"];
+                        dgvHDTuGia.Rows[_searchIndex].Selected = true;
+                        return;
+                    }
+                }
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-                        if (item.Cells["DanhBo_CQ"].Value.ToString() == NoiDung)
+                    if (_searchNoiDung != NoiDung)
+                        _searchIndex = -1;
+
+                    for (int i = 0; i < dgvHDCoQuan.Rows.Count; i++)
+                    {
+                        if (_searchNoiDung != NoiDung)
+                            _searchNoiDung = NoiDung;
+
+                        _searchIndex = (_searchIndex + 1) % dgvHDCoQuan.Rows.Count;
+                        DataGridViewRow row = dgvHDCoQuan.Rows[_searchIndex];
+                        if (row.Cells["DanhBo_CQ"].Value == null)
                         {
-                            dgvHDCoQuan.CurrentCell = item.Cells[0];
-                            item.Selected = true;
+                            continue;
                         }
+                        if (row.Cells["DanhBo_CQ"].Value.ToString() == NoiDung)
+                        {
+                            dgvHDCoQuan.CurrentCell = row.Cells["DanhBo_CQ"];
+                            dgvHDCoQuan.Rows[_searchIndex].Selected = true;
+                            return;
+                        }
+                    }
                 }
         }
 

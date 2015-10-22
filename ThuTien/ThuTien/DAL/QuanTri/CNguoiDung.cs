@@ -173,12 +173,12 @@ namespace ThuTien.DAL.QuanTri
 
         public List<TT_NguoiDung> GetDS()
         {
-            return _db.TT_NguoiDungs.ToList();
+            return _db.TT_NguoiDungs.OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSChamCong()
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != 0 && item.ChamCong == true).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != 0 && item.ChamCong == true).OrderBy(item => item.STT).ToList();
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace ThuTien.DAL.QuanTri
         /// <returns></returns>
         public List<TT_NguoiDung> GetDSExceptMaND(int MaND)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0).OrderBy(item=>item.STT).ToList();
         }
 
         /// <summary>
@@ -198,12 +198,12 @@ namespace ThuTien.DAL.QuanTri
         /// <returns></returns>
         public List<TT_NguoiDung> GetDSHanhThuByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.HanhThu == true).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.HanhThu == true).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSDongNuocByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.DongNuoc == true).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.DongNuoc == true).OrderBy(item => item.STT).ToList();
         }
 
         public TT_NguoiDung GetByMaND(int MaND)

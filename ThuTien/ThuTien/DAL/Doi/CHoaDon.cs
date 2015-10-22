@@ -3536,7 +3536,7 @@ namespace ThuTien.DAL.Doi
                     var query = from item in _db.HOADONs
                                 where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
                                 && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
-                                orderby item.MaNV_DangNgan ascending
+                                orderby item.STT ascending
                                 group item by item.MaNV_DangNgan into itemGroup
                                 select new
                                 {
@@ -3561,7 +3561,7 @@ namespace ThuTien.DAL.Doi
                                     && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                     && _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
                                     && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB >= 11 && item.GB <= 20
-                                orderby item.MaNV_DangNgan ascending
+                                orderby item.STT ascending
                                 group item by item.MaNV_DangNgan into itemGroup
                                 select new
                                 {
@@ -3586,7 +3586,7 @@ namespace ThuTien.DAL.Doi
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
                                     && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
-                                    orderby item.MaNV_DangNgan ascending
+                                    orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
                                     {
@@ -3611,7 +3611,7 @@ namespace ThuTien.DAL.Doi
                                         && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                                         && _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
                                         && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
-                                    orderby item.MaNV_DangNgan ascending
+                                    orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
                                     {
@@ -3632,12 +3632,12 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetTongHopDangNganChiTiet_HanhThuTG(DateTime NgayGiaiTrach)
         {
-            string sql = "select MaND as MaNV,HoTen,CAST(0 as bit) as ChuyenKhoan,TongHD,TongGiaBan,TongThueGTGT,TongPhiBVMT,TongCong from"
-                        + " (select MaND,HoTen from TT_NguoiDung where HanhThu=1)nd"
+            string sql = "select MaND as MaNV,STT,HoTen,CAST(0 as bit) as ChuyenKhoan,TongHD,TongGiaBan,TongThueGTGT,TongPhiBVMT,TongCong from"
+                        + " (select MaND,STT,HoTen from TT_NguoiDung where HanhThu=1)nd"
                         + " left join"
                         + " (select MaNV_DangNgan,COUNT(*)as TongHD,SUM(GIABAN)as TongGiaBan,SUM(THUE)as TongThueGTGT,SUM(PHI)as TongPhiBVMT,SUM(TONGCONG)as TongCong"
                         + " from HOADON where ChuyenNoKhoDoi=0 and GB>=1 and GB<=20 and CAST(NGAYGIAITRACH as date)='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "' group by MaNV_DangNgan)hd on hd.MaNV_DangNgan=nd.MaND"
-                        + " order by nd.MaND asc";
+                        + " order by nd.STT asc";
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 

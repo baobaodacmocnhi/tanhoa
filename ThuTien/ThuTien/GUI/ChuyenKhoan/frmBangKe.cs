@@ -29,6 +29,9 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void frmBangKe_Load(object sender, EventArgs e)
         {
             dgvBangKe.AutoGenerateColumns = false;
+            dgvBangKeGroup.AutoGenerateColumns = false;
+            dgvLichSuTienDu.AutoGenerateColumns = false;
+
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
             dateNgayLap.Value = DateTime.Now;
@@ -65,7 +68,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 bangke.CreateDate = dateNgayLap.Value;
                                 bangke.CreateBy = CNguoiDung.MaND;
                                 if (_cBangKe.Them(bangke))
-                                    _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value);
+                                    _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value,"Bảng Kê");
                             }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -101,6 +104,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                 txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
+
+            dgvBangKeGroup.DataSource = _cBangKe.GetDS_Group(dateTu.Value, dateDen.Value);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -114,7 +119,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             TT_BangKe bangke = _cBangKe.Get(int.Parse(item.Cells["MaBK"].Value.ToString()));
                             if (_cBangKe.Xoa(bangke))
-                                _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1);
+                                _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê");
                         }
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -128,19 +133,32 @@ namespace ThuTien.GUI.ChuyenKhoan
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private int _searchIndex = -1;
+        private string _searchNoiDung = "";
+
         private void GetNoiDungfrmTimKiem(string NoiDung)
         {
-            foreach (DataGridViewRow item in dgvBangKe.Rows)
-                if (item.Cells["DanhBo"].Value.ToString() == NoiDung || item.Cells["SoTien"].Value.ToString() == NoiDung)
+            if (_searchNoiDung != NoiDung)
+                _searchIndex = -1;
+
+            for(int i = 0; i < dgvBangKe.Rows.Count; i++)
+            {
+                if (_searchNoiDung != NoiDung)
+                    _searchNoiDung = NoiDung;
+
+                _searchIndex = (_searchIndex + 1) % dgvBangKe.Rows.Count;
+                DataGridViewRow row = dgvBangKe.Rows[_searchIndex];
+                if (row.Cells["DanhBo"].Value == null || row.Cells["SoTien"].Value == null)
                 {
-                    dgvBangKe.CurrentCell = item.Cells["DanhBo"];
-                    item.Selected = true;
+                    continue;
                 }
-        }
-
-        private void dgvBangKe_KeyDown(object sender, KeyEventArgs e)
-        {
-
+                if (row.Cells["DanhBo"].Value.ToString() == NoiDung || row.Cells["SoTien"].Value.ToString() == NoiDung)
+                {
+                    dgvBangKe.CurrentCell = row.Cells["DanhBo"];
+                    dgvBangKe.Rows[_searchIndex].Selected = true;
+                    return;
+                }
+            }
         }
 
         private void dgvBangKe_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -177,8 +195,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                     bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
                     if (_cBangKe.Sua(bangke))
                     {
-                        _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1));
-                        _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value);
+                        _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê");
+                        _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê");
                     }
                 }
                 else
@@ -237,6 +255,30 @@ namespace ThuTien.GUI.ChuyenKhoan
                     frm.Owner = this;
                     frm.Show();
                 }
+            }
+        }
+
+        private void dgvBangKeGroup_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvBangKeGroup.Columns[e.ColumnIndex].Name == "TongCong_Group" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvBangKeGroup_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvBangKeGroup.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Length == 11)
+            {
+                dgvLichSuTienDu.DataSource = _cTienDu.GetDSLichSu(txtDanhBo.Text.Trim());
             }
         }
 

@@ -435,20 +435,20 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (e.Control && e.KeyCode == Keys.F)
             {
-                frmTimKiemForm frm = new frmTimKiemForm();
-                bool flag = false;
-                foreach (var item in this.OwnedForms)
-                    if (item.Name == frm.Name)
-                    {
-                        item.Activate();
-                        flag = true;
-                    }
-                if (flag == false)
-                {
-                    frm.MyGetNoiDung = new frmTimKiemForm.GetNoiDung(GetNoiDungfrmTimKiem);
-                    frm.Owner = this;
-                    frm.Show();
-                }
+                //frmTimKiemForm frm = new frmTimKiemForm();
+                //bool flag = false;
+                //foreach (var item in this.OwnedForms)
+                //    if (item.Name == frm.Name)
+                //    {
+                //        item.Activate();
+                //        flag = true;
+                //    }
+                //if (flag == false)
+                //{
+                //    frm.MyGetNoiDung = new frmTimKiemForm.GetNoiDung(GetNoiDungfrmTimKiem);
+                //    frm.Owner = this;
+                //    frm.Show();
+                //}
             }
         }
 

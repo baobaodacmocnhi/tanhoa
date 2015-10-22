@@ -769,27 +769,85 @@ namespace ThuTien.GUI.ChuyenKhoan
             frm.ShowDialog();
         }
 
+        private int _searchIndex = -1;
+        private string _searchNoiDung = "";
+
         private void GetNoiDungfrmTimKiem(string NoiDung)
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                foreach (DataGridViewRow item in dgvHDTuGia.Rows)
-                    if (item.Cells["DanhBo_TG"].Value.ToString() == NoiDung)
+                if (_searchNoiDung != NoiDung)
+                    _searchIndex = -1;
+
+                for (int i = 0; i < dgvHDTuGia.Rows.Count; i++)
+                {
+                    if (_searchNoiDung != NoiDung)
+                        _searchNoiDung = NoiDung;
+
+                    _searchIndex = (_searchIndex + 1) % dgvHDTuGia.Rows.Count;
+                    DataGridViewRow row = dgvHDTuGia.Rows[_searchIndex];
+                    if (row.Cells["DanhBo_TG"].Value == null)
                     {
-                        dgvHDTuGia.CurrentCell = item.Cells[0];
-                        item.Selected = true;
+                        continue;
                     }
+                    if (row.Cells["DanhBo_TG"].Value.ToString() == NoiDung)
+                    {
+                        dgvHDTuGia.CurrentCell = row.Cells["DanhBo_TG"];
+                        dgvHDTuGia.Rows[_searchIndex].Selected = true;
+                        return;
+                    }
+                }
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-                        if (item.Cells["DanhBo_CQ"].Value.ToString() == NoiDung)
+                    if (_searchNoiDung != NoiDung)
+                        _searchIndex = -1;
+
+                    for (int i = 0; i < dgvHDCoQuan.Rows.Count; i++)
+                    {
+                        if (_searchNoiDung != NoiDung)
+                            _searchNoiDung = NoiDung;
+
+                        _searchIndex = (_searchIndex + 1) % dgvHDCoQuan.Rows.Count;
+                        DataGridViewRow row = dgvHDCoQuan.Rows[_searchIndex];
+                        if (row.Cells["DanhBo_CQ"].Value == null)
                         {
-                            dgvHDCoQuan.CurrentCell = item.Cells[0];
-                            item.Selected = true;
+                            continue;
                         }
+                        if (row.Cells["DanhBo_CQ"].Value.ToString() == NoiDung)
+                        {
+                            dgvHDCoQuan.CurrentCell = row.Cells["DanhBo_CQ"];
+                            dgvHDCoQuan.Rows[_searchIndex].Selected = true;
+                            return;
+                        }
+                    }
                 }
+                else
+                    if (tabControl.SelectedTab.Name == "tabTienDu")
+                    {
+                        if (_searchNoiDung != NoiDung)
+                            _searchIndex = -1;
+
+                        for (int i = 0; i < dgvTienDu.Rows.Count; i++)
+                        {
+                            if (_searchNoiDung != NoiDung)
+                                _searchNoiDung = NoiDung;
+
+                            _searchIndex = (_searchIndex + 1) % dgvTienDu.Rows.Count;
+                            DataGridViewRow row = dgvTienDu.Rows[_searchIndex];
+                            if (row.Cells["DanhBo_TienDu"].Value == null)
+                            {
+                                continue;
+                            }
+                            if (row.Cells["DanhBo_TienDu"].Value.ToString() == NoiDung)
+                            {
+                                dgvTienDu.CurrentCell = row.Cells["DanhBo_TienDu"];
+                                dgvTienDu.Rows[_searchIndex].Selected = true;
+                                return;
+                            }
+                        }
+                    }
         }
 
         private void frmDangNganChuyenKhoan_KeyDown(object sender, KeyEventArgs e)
@@ -941,12 +999,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             foreach (DataGridViewRow item in dgvTienDu.Rows)
             {
                 HOADON hoadon = _cHoaDon.GetTonMoiNhat(item.Cells["DanhBo_TienDu"].Value.ToString());
-                if (hoadon!=null&&hoadon.DOT == int.Parse(cmbDot.SelectedItem.ToString()))
+                if (hoadon != null && hoadon.DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString())<hoadon.TONGCONG)
                 {
                     DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
                     dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = hoadon.TENKH;
-                    dr["Ky"] = hoadon.KY+"/"+hoadon.NAM;
+                    dr["Ky"] = hoadon.KY + "/" + hoadon.NAM;
                     dr["MLT"] = hoadon.MALOTRINH;
                     dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
                     dr["TongCong"] = hoadon.TONGCONG;
@@ -962,6 +1020,42 @@ namespace ThuTien.GUI.ChuyenKhoan
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnChuyenTamThu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTamThuChuyenKhoan", "Them"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn Chuyển Tạm Thu " + cmbDot.SelectedItem.ToString() + "?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow item in dgvTienDu.Rows)
+                    {
+                        HOADON hoadon = _cHoaDon.GetTonMoiNhat(item.Cells["DanhBo_TienDu"].Value.ToString());
+                        if (hoadon != null && hoadon.DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= hoadon.TONGCONG && !_cTamThu.CheckExist(hoadon.SOHOADON))
+                        {
+                            TAMTHU tamthu = new TAMTHU();
+                            tamthu.DANHBA = hoadon.DANHBA;
+                            tamthu.FK_HOADON = hoadon.ID_HOADON;
+                            tamthu.SoHoaDon = hoadon.SOHOADON;
+                            tamthu.ChuyenKhoan = true;
+                            tamthu.TienDu = true;
+                            _cTamThu.Them(tamthu);
+                        }
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form Tạm Thu Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvTienDu_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvTienDu.RowCount > 0 && e.Button == MouseButtons.Left)
+            {
+                frmChuyenTien frm = new frmChuyenTien(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString(), dgvTienDu["SoTien_TienDu", e.RowIndex].Value.ToString());
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    btnXem.PerformClick();
+            }
         }
 
     }

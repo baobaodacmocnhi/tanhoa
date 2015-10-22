@@ -40,9 +40,9 @@ namespace ThuTien.GUI.ToTruong
             DataColumn col = new DataColumn("MaHD");
             col.DataType = System.Type.GetType("System.String");
             dt.Columns.Add(col);
-            DataColumn[] columns = new DataColumn[1];
-            columns[0] = dt.Columns["MaHD"];
-            dt.PrimaryKey = columns;
+            //DataColumn[] columns = new DataColumn[1];
+            //columns[0] = dt.Columns["MaHD"];
+            //dt.PrimaryKey = columns;
 
             col = new DataColumn("HoTen");
             col.DataType = System.Type.GetType("System.String");
@@ -99,7 +99,7 @@ namespace ThuTien.GUI.ToTruong
                 if (dtTemp.Rows.Count > 0)
                 {
                     foreach (DataRow item in dtTemp.Rows)
-                        if (!dt.Rows.Contains(item["MaHD"].ToString()))
+                        //if (!dt.Rows.Contains(item["MaHD"].ToString()))
                         {
                             DataRow row = dt.NewRow();
                             row["MaHD"] = item["MaHD"];

@@ -60,7 +60,7 @@
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // frmTimKiem
+            // frmTimKiemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -70,7 +70,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmTimKiem";
+            this.Name = "frmTimKiemForm";
             this.Text = "Tìm Kiếm";
             this.Load += new System.EventHandler(this.frmTimKiem_Load);
             this.ResumeLayout(false);
