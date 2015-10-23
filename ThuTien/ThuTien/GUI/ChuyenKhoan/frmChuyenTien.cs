@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.ChuyenKhoan;
+using ThuTien.DAL.QuanTri;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -21,7 +22,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             InitializeComponent();
         }
 
-        public frmChuyenTien(string DanhBo,string SoTien)
+        public frmChuyenTien(string DanhBo, string SoTien)
         {
             _DanhBo = DanhBo;
             _SoTien = SoTien;
@@ -30,7 +31,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void frmChuyenTien_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(200,150);
+            this.Location = new Point(200, 150);
 
             txtDanhBoA.Text = _DanhBo.Insert(7, " ").Insert(4, " ");
             txtSoTienA.Text = _SoTien;
@@ -40,9 +41,9 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (e.KeyChar == 13 && txtDanhBoB.Text.Trim().Length == 11)
             {
-                if (_cTienDu.CheckExist(txtDanhBoB.Text.Trim()))
+                if (_cTienDu.CheckExist(txtDanhBoB.Text.Trim().Replace(" ", "")))
                 {
-                    txtSoTienB.Text = _cTienDu.GetTienDu(txtDanhBoB.Text.Trim()).ToString();
+                    txtSoTienB.Text = _cTienDu.GetTienDu(txtDanhBoB.Text.Trim().Replace(" ", "")).ToString();
                 }
                 else
                     MessageBox.Show("Danh Bộ này chưa được Thêm vào Tiền Dư, Xin liên hệ T.CNTT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -57,10 +58,20 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnChuyen_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn Chuyển?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (CNguoiDung.CheckQuyen("mnuDangNganChuyenKhoan", "Sua"))
             {
-
+                if (MessageBox.Show("Bạn có chắc chắn Chuyển?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    if (_cTienDu.Update(txtDanhBoA.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()) * -1, "Chuyển Tiền"))
+                        if (_cTienDu.Update(txtDanhBoB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Chuyển Tiền"))
+                        {
+                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                            this.Close();
+                        }
+                }
             }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }

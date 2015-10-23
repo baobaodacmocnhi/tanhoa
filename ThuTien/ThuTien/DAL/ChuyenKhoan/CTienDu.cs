@@ -59,6 +59,18 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
         }
 
+        public DataTable GetDSTienDu(DateTime NgayGiaiTrach)
+        {
+            string sql = "declare @NgayGiaiTrach date;"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "'"
+                    + " select a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien from"
+                    + " (select DanhBo,SoTien from TT_TienDu) a"
+                    + " left join"
+                    + " (select DanhBo,SUM(SoTien) as SoTien from TT_TienDuLichSu where CAST(CreateDate as date)>@NgayGiaiTrach group by DanhBo) b on a.DanhBo=b.DanhBo"
+                    + " where case when b.SoTien is null then a.SoTien else a.SoTien-b.SoTien end>0";
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         public DataTable GetDSTienBienDong()
         {
             return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien != 0).ToList());

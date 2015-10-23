@@ -217,6 +217,12 @@ namespace ThuTien.GUI.Quay
                 lenhhuy.TinhTrang = dgvHoaDon["TinhTrang", e.RowIndex].Value.ToString();
                 _cLenhHuy.Sua(lenhhuy);
             }
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Cat")
+            {
+                TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                lenhhuy.Cat = bool.Parse(dgvHoaDon["Cat", e.RowIndex].Value.ToString());
+                _cLenhHuy.Sua(lenhhuy);
+            }
         }
 
         private void btnInDSKhongTrung_Click(object sender, EventArgs e)

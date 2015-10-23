@@ -51,7 +51,6 @@
             this.txtTongSoTien = new System.Windows.Forms.TextBox();
             this.dateNgayLap = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnInDSTon = new System.Windows.Forms.Button();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,12 +66,12 @@
             this.SoLuong_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvLichSuTienDu = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtDanhBo = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.CreateDate_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai_LSTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDanhBo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKe)).BeginInit();
@@ -181,17 +180,6 @@
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 77;
             this.label1.Text = "Ngày Lập:";
-            // 
-            // btnInDSTon
-            // 
-            this.btnInDSTon.Location = new System.Drawing.Point(529, 9);
-            this.btnInDSTon.Name = "btnInDSTon";
-            this.btnInDSTon.Size = new System.Drawing.Size(75, 23);
-            this.btnInDSTon.TabIndex = 79;
-            this.btnInDSTon.Text = "In DS Tồn";
-            this.btnInDSTon.UseVisualStyleBackColor = true;
-            this.btnInDSTon.Visible = false;
-            this.btnInDSTon.Click += new System.EventHandler(this.btnInDSTon_Click);
             // 
             // TongCong
             // 
@@ -406,6 +394,26 @@
             this.dgvLichSuTienDu.Size = new System.Drawing.Size(313, 310);
             this.dgvLichSuTienDu.TabIndex = 83;
             // 
+            // CreateDate_LSTD
+            // 
+            this.CreateDate_LSTD.DataPropertyName = "CreateDate";
+            this.CreateDate_LSTD.HeaderText = "Ngày Lập";
+            this.CreateDate_LSTD.Name = "CreateDate_LSTD";
+            // 
+            // SoTien_LSTD
+            // 
+            this.SoTien_LSTD.DataPropertyName = "SoTien";
+            this.SoTien_LSTD.HeaderText = "Số Tiền";
+            this.SoTien_LSTD.Name = "SoTien_LSTD";
+            this.SoTien_LSTD.Width = 70;
+            // 
+            // Loai_LSTD
+            // 
+            this.Loai_LSTD.DataPropertyName = "Loai";
+            this.Loai_LSTD.HeaderText = "Loại";
+            this.Loai_LSTD.Name = "Loai_LSTD";
+            this.Loai_LSTD.Width = 80;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -431,26 +439,6 @@
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 86;
             this.label2.Text = "(enter)";
-            // 
-            // CreateDate_LSTD
-            // 
-            this.CreateDate_LSTD.DataPropertyName = "CreateDate";
-            this.CreateDate_LSTD.HeaderText = "Ngày Lập";
-            this.CreateDate_LSTD.Name = "CreateDate_LSTD";
-            // 
-            // SoTien_LSTD
-            // 
-            this.SoTien_LSTD.DataPropertyName = "SoTien";
-            this.SoTien_LSTD.HeaderText = "Số Tiền";
-            this.SoTien_LSTD.Name = "SoTien_LSTD";
-            this.SoTien_LSTD.Width = 70;
-            // 
-            // Loai_LSTD
-            // 
-            this.Loai_LSTD.DataPropertyName = "Loai";
-            this.Loai_LSTD.HeaderText = "Loại";
-            this.Loai_LSTD.Name = "Loai_LSTD";
-            this.Loai_LSTD.Width = 80;
             // 
             // label6
             // 
@@ -484,7 +472,6 @@
             this.Controls.Add(this.dgvBangKeGroup);
             this.Controls.Add(this.txtTongHD);
             this.Controls.Add(this.txtTongCong);
-            this.Controls.Add(this.btnInDSTon);
             this.Controls.Add(this.dateNgayLap);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTongDanhBo);
@@ -523,7 +510,6 @@
         private System.Windows.Forms.TextBox txtTongSoTien;
         private System.Windows.Forms.DateTimePicker dateNgayLap;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnInDSTon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNH;

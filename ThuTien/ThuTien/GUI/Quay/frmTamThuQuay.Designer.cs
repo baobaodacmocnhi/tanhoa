@@ -92,6 +92,8 @@
             this.dateDen_XacNhanNo = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvXacNhanNo = new System.Windows.Forms.DataGridView();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.SoPhieu_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,8 +104,7 @@
             this.Ky_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TinhDenKy_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Cat_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
@@ -691,7 +692,8 @@
             this.DinhMuc_XacNhanNo,
             this.Ky_XacNhanNo,
             this.TongCong_XacNhanNo,
-            this.TinhDenKy_XacNhanNo});
+            this.TinhDenKy_XacNhanNo,
+            this.Cat_XacNhanNo});
             this.dgvXacNhanNo.Location = new System.Drawing.Point(6, 35);
             this.dgvXacNhanNo.Name = "dgvXacNhanNo";
             this.dgvXacNhanNo.ReadOnly = true;
@@ -702,6 +704,25 @@
             this.dgvXacNhanNo.TabIndex = 20;
             this.dgvXacNhanNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvXacNhanNo_CellFormatting);
             this.dgvXacNhanNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvXacNhanNo_RowPostPaint);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(435, 12);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 4;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(353, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "(Enter)";
             // 
             // SoPhieu_XacNhanNo
             // 
@@ -781,24 +802,14 @@
             this.TinhDenKy_XacNhanNo.ReadOnly = true;
             this.TinhDenKy_XacNhanNo.Visible = false;
             // 
-            // btnSua
+            // Cat_XacNhanNo
             // 
-            this.btnSua.Location = new System.Drawing.Point(435, 12);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 4;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(353, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "(Enter)";
+            this.Cat_XacNhanNo.DataPropertyName = "Cat";
+            this.Cat_XacNhanNo.HeaderText = "Cat";
+            this.Cat_XacNhanNo.Name = "Cat_XacNhanNo";
+            this.Cat_XacNhanNo.ReadOnly = true;
+            this.Cat_XacNhanNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Cat_XacNhanNo.Visible = false;
             // 
             // frmTamThuQuay
             // 
@@ -901,5 +912,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_XacNhanNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_XacNhanNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TinhDenKy_XacNhanNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cat_XacNhanNo;
     }
 }

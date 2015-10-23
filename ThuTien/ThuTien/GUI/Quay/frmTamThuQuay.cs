@@ -143,7 +143,7 @@ namespace ThuTien.GUI.Quay
                 dsBaoCao ds = new dsBaoCao();
                 DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
                 dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
-                dr["DanhBo"] = lstTamThu[0].DANHBA;
+                dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = lstTamThu[0].HOADON.TENKH;
                 dr["DiaChi"] = lstTamThu[0].HOADON.SO + " " + lstTamThu[0].HOADON.DUONG;
                 dr["MLT"] = lstTamThu[0].HOADON.MALOTRINH;
@@ -325,6 +325,8 @@ namespace ThuTien.GUI.Quay
             HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim());
             TT_XacNhanNo xacnhanno = new TT_XacNhanNo();
             xacnhanno.TinhDenKy = "Tính đến Kỳ " + hoadon.KY + "/" + hoadon.NAM;
+            if (_cLenhHuy.GetCatByDanhBo(hoadon.DANHBA))
+                xacnhanno.Cat = "ĐỀ NGHỊ K/H LIÊN HỆ P.KINH DOANH\nLÀM THỦ TỤC VÀ ĐÓNG CHI PHÍ NỐI LẠI ỐNG";
 
             if (dgvHoaDon.RowCount > 0)
             {
@@ -337,7 +339,7 @@ namespace ThuTien.GUI.Quay
                     xacnhanno.DinhMuc = int.Parse(dgvHoaDon["DinhMuc", 0].Value.ToString());
                 xacnhanno.Ky = Ky;
                 xacnhanno.TongCong = TongCongSo;
-                xacnhanno.CreateBy = CNguoiDung.MaND;
+                //xacnhanno.CreateBy = CNguoiDung.MaND;
             }
             else
             {
@@ -350,7 +352,7 @@ namespace ThuTien.GUI.Quay
                     xacnhanno.DinhMuc = (int)hoadon.DM;
                 xacnhanno.Ky = Ky;
                 xacnhanno.TongCong = TongCongSo;
-                xacnhanno.CreateBy = CNguoiDung.MaND;
+                //xacnhanno.CreateBy = CNguoiDung.MaND;
             }
 
             if (_cXacNhanNo.Them(xacnhanno))
@@ -370,6 +372,8 @@ namespace ThuTien.GUI.Quay
                 dr["Ky"] = Ky;
                 dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", TongCongSo);
                 dr["TinhDenKy"] = xacnhanno.TinhDenKy;
+                if (xacnhanno.Cat != null)
+                    dr["Cat"] = xacnhanno.Cat;
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
@@ -476,6 +480,8 @@ namespace ThuTien.GUI.Quay
                     dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##} đồng", (int)item.Cells["TongCong_XacNhanNo"].Value);
                 if (item.Cells["TinhDenKy_XacNhanNo"].Value != null)
                     dr["TinhDenKy"] = item.Cells["TinhDenKy_XacNhanNo"].Value.ToString();
+                if (item.Cells["Cat_XacNhanNo"].Value != null)
+                    dr["Cat"] = item.Cells["Cat_XacNhanNo"].Value.ToString();
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 

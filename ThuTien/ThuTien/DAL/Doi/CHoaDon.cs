@@ -3190,11 +3190,12 @@ namespace ThuTien.DAL.Doi
                 var query = from item in _db.HOADONs
                             where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.MaNV_HanhThu == MaNV_HanhThu && item.NGAYGIAITRACH != null && item.GB >= 11 && item.GB <= 20
                             orderby item.MaNV_DangNgan ascending
-                            group item by item.MaNV_DangNgan into itemGroup
+                            group item by new { item.MaNV_DangNgan ,item.NGAYGIAITRACH.Value.Date} into itemGroup
                             select new
                             {
-                                MaNV = itemGroup.Key,
-                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                MaNV = itemGroup.Key.MaNV_DangNgan,
+                                NgayGiaiTrach=itemGroup.Key.Date,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key.MaNV_DangNgan).HoTen,
                                 TongHD = itemGroup.Count(),
                                 TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                 TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
@@ -3209,11 +3210,12 @@ namespace ThuTien.DAL.Doi
                     var query = from item in _db.HOADONs
                                 where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.MaNV_HanhThu == MaNV_HanhThu && item.NGAYGIAITRACH != null && item.GB > 20
                                 orderby item.MaNV_DangNgan ascending
-                                group item by item.MaNV_DangNgan into itemGroup
+                                group item by new { item.MaNV_DangNgan, item.NGAYGIAITRACH.Value.Date } into itemGroup
                                 select new
                                 {
-                                    MaNV = itemGroup.Key,
-                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
+                                    MaNV = itemGroup.Key.MaNV_DangNgan,
+                                    NgayGiaiTrach = itemGroup.Key.Date,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key.MaNV_DangNgan).HoTen,
                                     TongHD = itemGroup.Count(),
                                     TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                     TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
@@ -3680,6 +3682,28 @@ namespace ThuTien.DAL.Doi
         {
             var query = from item in _db.HOADONs
                         where item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.DangNgan_HanhThu == true && item.MaNV_DangNgan == MaNV_DangNgan && item.GB >= 11 && item.GB <= 20
+                        orderby item.MALOTRINH ascending
+                        select new
+                        {
+                            item.NGAYGIAITRACH,
+                            item.SOHOADON,
+                            Ky = item.KY + "/" + item.NAM,
+                            MLT = item.MALOTRINH,
+                            item.SOPHATHANH,
+                            DanhBo = item.DANHBA,
+                            item.TIEUTHU,
+                            item.GIABAN,
+                            ThueGTGT = item.THUE,
+                            PhiBVMT = item.PHI,
+                            item.TONGCONG,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNganByMaNVNgayGiaiTrach(int MaNV_DangNgan, int Nam, int Ky, int Dot,DateTime NgayGiaiTrach)
+        {
+            var query = from item in _db.HOADONs
+                        where item.MaNV_DangNgan == MaNV_DangNgan && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
                         orderby item.MALOTRINH ascending
                         select new
                         {

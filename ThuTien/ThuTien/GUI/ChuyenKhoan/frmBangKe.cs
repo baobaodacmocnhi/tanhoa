@@ -195,46 +195,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                     bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
                     if (_cBangKe.Sua(bangke))
                     {
-                        _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê");
+                        _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * -1, "Bảng Kê");
                         _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê");
                     }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnInDSTon_Click(object sender, EventArgs e)
-        {
-            ThuTien.DAL.Doi.CHoaDon _cHoaDon = new DAL.Doi.CHoaDon();
-            CNguoiDung _cNguoiDung=new CNguoiDung();
-            CTo _cTo = new CTo();
-            ThuTien.BaoCao.dsBaoCao ds = new ThuTien.BaoCao.dsBaoCao();
-            foreach (DataGridViewRow item in dgvBangKe.Rows)
-                if(!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()))
-                {
-                    HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
-                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                    dr["LoaiBaoCao"] = "CHUYỂN KHOẢN TỒN";
-                    dr["DanhBo"] = hd.DANHBA.Insert(4, " ").Insert(8, " ");
-                    dr["DiaChi"] = hd.SO + " " + hd.DUONG;
-                    dr["MLT"] = hd.MALOTRINH;
-                    dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
-                    if (hd.MaNV_HanhThu != null)
-                    {
-                        dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(int.Parse(hd.MaNV_HanhThu.Value.ToString()));
-                        dr["To"] = _cNguoiDung.GetTenToByMaND(int.Parse(hd.MaNV_HanhThu.Value.ToString()));
-                    }
-                    if (hd.GB.Value > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
-                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
-                }
-            ThuTien.BaoCao.TongHop.rptDSThu2Lan rpt = new ThuTien.BaoCao.TongHop.rptDSThu2Lan();
-            rpt.SetDataSource(ds);
-            ThuTien.GUI.BaoCao.frmBaoCao frm = new ThuTien.GUI.BaoCao.frmBaoCao(rpt);
-            frm.ShowDialog();
         }
 
         private void frmBangKe_KeyDown(object sender, KeyEventArgs e)

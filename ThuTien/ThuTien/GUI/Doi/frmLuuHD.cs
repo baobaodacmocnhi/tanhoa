@@ -10,6 +10,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.Doi;
 using System.Globalization;
 using ThuTien.LinQ;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.Doi
 {
@@ -19,7 +20,8 @@ namespace ThuTien.GUI.Doi
         string _mnu = "mnuLuuHD";
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CHoaDon _cHoaDon = new CHoaDon();
-
+        CCAPNUOCTANHOA _cCapNuocTanHoa = new CCAPNUOCTANHOA();
+         
         public frmLuuHD()
         {
             InitializeComponent();
@@ -175,12 +177,12 @@ namespace ThuTien.GUI.Doi
                         //    hoadon.SoHo = contents[54];
                         hoadon.MALOTRINH = hoadon.DOT.Value.ToString("00") + hoadon.MAY + hoadon.STT;
 
-                        //string Quan = "", Phuong = "", CoDH = "", MaDMA = "";
-                        //_cCapNuocTanHoa.GetDMA(hoadon.DANHBA, out Quan, out Phuong, out CoDH, out MaDMA);
-                        //hoadon.Quan = Quan;
-                        //hoadon.Phuong = Phuong;
-                        //hoadon.CoDH = CoDH;
-                        //hoadon.MaDMA = MaDMA;
+                        string Quan = "", Phuong = "", CoDH = "", MaDMA = "";
+                        _cCapNuocTanHoa.GetDMA(hoadon.DANHBA, out Quan, out Phuong, out CoDH, out MaDMA);
+                        hoadon.Quan = Quan;
+                        hoadon.Phuong = Phuong;
+                        hoadon.CoDH = CoDH;
+                        hoadon.MaDMA = MaDMA;
                         //if (CheckByNamKyDot(hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value))
                         //{
                         //    this.Rollback();

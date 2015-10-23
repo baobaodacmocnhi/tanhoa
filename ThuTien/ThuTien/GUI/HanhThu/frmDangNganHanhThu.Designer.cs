@@ -106,17 +106,18 @@
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvHDDaThuDum = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lstHD = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnCopyToClipboard = new System.Windows.Forms.Button();
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongGiaBan_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongThueGTGT_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongPhiBVMT_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_Dum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lstHD = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnCopyToClipboard = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHD)).BeginInit();
@@ -853,6 +854,7 @@
             this.dgvHDDaThuDum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHDDaThuDum.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
+            this.NgayGiaiTrach_Dum,
             this.HoTen,
             this.TongHD_Dum,
             this.TongGiaBan_Dum,
@@ -868,6 +870,45 @@
             this.dgvHDDaThuDum.Size = new System.Drawing.Size(346, 121);
             this.dgvHDDaThuDum.TabIndex = 1;
             this.dgvHDDaThuDum.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDDaThuDum_CellFormatting);
+            this.dgvHDDaThuDum.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHDDaThuDum_CellMouseDoubleClick);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dgvHDDaThuDum);
+            this.groupBox3.Location = new System.Drawing.Point(985, 29);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(358, 147);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tăng Cường";
+            // 
+            // lstHD
+            // 
+            this.lstHD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lstHD.Location = new System.Drawing.Point(15, 76);
+            this.lstHD.Name = "lstHD";
+            this.lstHD.Size = new System.Drawing.Size(125, 173);
+            this.lstHD.TabIndex = 48;
+            this.lstHD.UseCompatibleStateImageBehavior = false;
+            this.lstHD.View = System.Windows.Forms.View.Details;
+            this.lstHD.SelectedIndexChanged += new System.EventHandler(this.lstHD_SelectedIndexChanged);
+            this.lstHD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstHD_MouseDoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Danh Sách Hóa Đơn";
+            this.columnHeader1.Width = 120;
+            // 
+            // btnCopyToClipboard
+            // 
+            this.btnCopyToClipboard.Location = new System.Drawing.Point(30, 281);
+            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
+            this.btnCopyToClipboard.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyToClipboard.TabIndex = 71;
+            this.btnCopyToClipboard.Text = "Copy to Clipboard";
+            this.btnCopyToClipboard.UseVisualStyleBackColor = true;
+            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
             // MaNV
             // 
@@ -876,6 +917,14 @@
             this.MaNV.Name = "MaNV";
             this.MaNV.ReadOnly = true;
             this.MaNV.Visible = false;
+            // 
+            // NgayGiaiTrach_Dum
+            // 
+            this.NgayGiaiTrach_Dum.DataPropertyName = "NgayGiaiTrach";
+            this.NgayGiaiTrach_Dum.HeaderText = "NgayGiaiTrach";
+            this.NgayGiaiTrach_Dum.Name = "NgayGiaiTrach_Dum";
+            this.NgayGiaiTrach_Dum.ReadOnly = true;
+            this.NgayGiaiTrach_Dum.Visible = false;
             // 
             // HoTen
             // 
@@ -923,44 +972,6 @@
             this.TongCong_Dum.HeaderText = "Tổng Cộng";
             this.TongCong_Dum.Name = "TongCong_Dum";
             this.TongCong_Dum.ReadOnly = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dgvHDDaThuDum);
-            this.groupBox3.Location = new System.Drawing.Point(985, 29);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(358, 147);
-            this.groupBox3.TabIndex = 29;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tăng Cường";
-            // 
-            // lstHD
-            // 
-            this.lstHD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lstHD.Location = new System.Drawing.Point(15, 76);
-            this.lstHD.Name = "lstHD";
-            this.lstHD.Size = new System.Drawing.Size(125, 173);
-            this.lstHD.TabIndex = 48;
-            this.lstHD.UseCompatibleStateImageBehavior = false;
-            this.lstHD.View = System.Windows.Forms.View.Details;
-            this.lstHD.SelectedIndexChanged += new System.EventHandler(this.lstHD_SelectedIndexChanged);
-            this.lstHD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstHD_MouseDoubleClick);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Danh Sách Hóa Đơn";
-            this.columnHeader1.Width = 120;
-            // 
-            // btnCopyToClipboard
-            // 
-            this.btnCopyToClipboard.Location = new System.Drawing.Point(30, 281);
-            this.btnCopyToClipboard.Name = "btnCopyToClipboard";
-            this.btnCopyToClipboard.Size = new System.Drawing.Size(110, 23);
-            this.btnCopyToClipboard.TabIndex = 71;
-            this.btnCopyToClipboard.Text = "Copy to Clipboard";
-            this.btnCopyToClipboard.UseVisualStyleBackColor = true;
-            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
             // frmDangNganHanhThu
             // 
@@ -1085,16 +1096,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_CT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_CT;
         private System.Windows.Forms.DataGridView dgvHDDaThuDum;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListView lstHD;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button btnCopyToClipboard;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_Dum;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHD_Dum;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan_Dum;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongThueGTGT_Dum;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongPhiBVMT_Dum;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_Dum;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListView lstHD;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.Button btnCopyToClipboard;
     }
 }

@@ -106,6 +106,7 @@ namespace ThuTien.DAL.Quay
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
+                            itemLH.Cat,
                         };
             return LINQToDataTable(query);
         }
@@ -132,6 +133,7 @@ namespace ThuTien.DAL.Quay
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
+                            itemLH.Cat,
                         };
             return LINQToDataTable(query);
         }
@@ -158,6 +160,7 @@ namespace ThuTien.DAL.Quay
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
+                            itemLH.Cat,
                         };
             return LINQToDataTable(query);
         }
@@ -179,6 +182,22 @@ namespace ThuTien.DAL.Quay
         public string GetTinhTrangBySoHoaDon(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).TinhTrang;
+        }
+
+        public bool GetCatByDanhBo(string DanhBo)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        where itemHD.DANHBA == DanhBo
+                        orderby itemHD.ID_HOADON descending
+                        select new
+                        {
+                            itemLH.Cat,
+                        };
+            if (query.ToList().Count > 0)
+                return query.FirstOrDefault().Cat;
+            else
+                return false;
         }
     }
 }
