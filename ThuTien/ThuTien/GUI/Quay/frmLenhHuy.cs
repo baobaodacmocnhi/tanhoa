@@ -13,6 +13,7 @@ using ThuTien.LinQ;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.Quay;
 using ThuTien.GUI.BaoCao;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.Quay
 {
@@ -21,6 +22,8 @@ namespace ThuTien.GUI.Quay
         string _mnu = "mnuLenhHuy";
         CHoaDon _cHoaDon = new CHoaDon();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
+        CTo _cTo = new CTo();
 
         public frmLenhHuy()
         {
@@ -32,6 +35,15 @@ namespace ThuTien.GUI.Quay
             dgvHoaDon.AutoGenerateColumns = false;
 
             dateLap.Value = DateTime.Now;
+
+            List<TT_To> lstTo = _cTo.GetDSHanhThu();
+            TT_To to = new TT_To();
+            to.MaTo = 0;
+            to.TenTo = "Tất Cả";
+            lstTo.Insert(0, to);
+            cmbTo.DataSource = lstTo;
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "MaTo";
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -109,7 +121,7 @@ namespace ThuTien.GUI.Quay
                     }
                     _cLenhHuy.CommitTransaction();
                     lstHD.Items.Clear();
-                    dgvHoaDon.DataSource = _cLenhHuy.GetDSByCreatedDate(dateLap.Value);
+                    btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -142,7 +154,7 @@ namespace ThuTien.GUI.Quay
                         }
                         _cLenhHuy.CommitTransaction();
                         lstHD.Items.Clear();
-                        dgvHoaDon.DataSource = _cLenhHuy.GetDSByCreatedDate(dateLap.Value);
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
@@ -158,7 +170,25 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cLenhHuy.GetDS();
+            ///chọn tất cả tổ
+            if (cmbTo.SelectedIndex == 0)
+            {
+                dgvHoaDon.DataSource = _cLenhHuy.GetDS();
+            }
+            ///chọn 1 tổ cụ thể
+            else
+            {
+                dgvHoaDon.DataSource = _cLenhHuy.GetDS(int.Parse(cmbTo.SelectedValue.ToString()));
+            }
+
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+            {
+                TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+
+                //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                item.Cells["DangNgan"].Value = "CNKĐ";
+            }
         }
 
         private void dgvHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -194,6 +224,7 @@ namespace ThuTien.GUI.Quay
                     dr["MLT"] = item.Cells["MLT"].Value;
                     dr["TongCong"] = item.Cells["TongCong"].Value;
                     dr["TinhTrang"] = item.Cells["TinhTrang"].Value;
+                    dr["Cat"] = item.Cells["Cat"].Value;
                     //dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
                     dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
                     dr["To"] = item.Cells["To"].Value.ToString();
@@ -211,18 +242,23 @@ namespace ThuTien.GUI.Quay
 
         private void dgvHoaDon_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TinhTrang")
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
-                lenhhuy.TinhTrang = dgvHoaDon["TinhTrang", e.RowIndex].Value.ToString();
-                _cLenhHuy.Sua(lenhhuy);
+                if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TinhTrang")
+                {
+                    TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    lenhhuy.TinhTrang = dgvHoaDon["TinhTrang", e.RowIndex].Value.ToString();
+                    _cLenhHuy.Sua(lenhhuy);
+                }
+                if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Cat")
+                {
+                    TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    lenhhuy.Cat = bool.Parse(dgvHoaDon["Cat", e.RowIndex].Value.ToString());
+                    _cLenhHuy.Sua(lenhhuy);
+                }
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Cat")
-            {
-                TT_LenhHuy lenhhuy = _cLenhHuy.GetBySoHoaDon(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
-                lenhhuy.Cat = bool.Parse(dgvHoaDon["Cat", e.RowIndex].Value.ToString());
-                _cLenhHuy.Sua(lenhhuy);
-            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnInDSKhongTrung_Click(object sender, EventArgs e)
@@ -248,6 +284,7 @@ namespace ThuTien.GUI.Quay
                     dr["MLT"] = drDGV[drDGV.Count() - 1]["MLT"];
                     dr["TongCong"] = TongCong;
                     dr["TinhTrang"] = drDGV[drDGV.Count() - 1]["TinhTrang"];
+                    dr["Cat"] = drDGV[drDGV.Count() - 1]["Cat"];
                     //dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
                     dr["NhanVien"] = drDGV[drDGV.Count() - 1]["HanhThu"];
                     dr["To"] = drDGV[drDGV.Count() - 1]["To"];

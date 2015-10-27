@@ -97,6 +97,7 @@
             this.mnuChuyenNoKhoDoi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoTongHop = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChamCong = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCongVan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTimKiem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTimKiemKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -106,7 +107,6 @@
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mnuCongVan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -653,6 +653,13 @@
             this.mnuChamCong.Text = "Chấm Công";
             this.mnuChamCong.Click += new System.EventHandler(this.mnuChamCong_Click);
             // 
+            // mnuCongVan
+            // 
+            this.mnuCongVan.Name = "mnuCongVan";
+            this.mnuCongVan.Size = new System.Drawing.Size(183, 22);
+            this.mnuCongVan.Text = "Công Văn";
+            this.mnuCongVan.Click += new System.EventHandler(this.mnuCongVan_Click);
+            // 
             // mnuTimKiem
             // 
             this.mnuTimKiem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -720,13 +727,6 @@
             // 
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // mnuCongVan
-            // 
-            this.mnuCongVan.Name = "mnuCongVan";
-            this.mnuCongVan.Size = new System.Drawing.Size(183, 22);
-            this.mnuCongVan.Text = "Công Văn";
-            this.mnuCongVan.Click += new System.EventHandler(this.mnuCongVan_Click);
             // 
             // frmMain
             // 

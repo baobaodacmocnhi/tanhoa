@@ -47,6 +47,8 @@
             this.lstHD = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,12 +63,13 @@
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayGiaiTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DangNgan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(466, 10);
+            this.btnIn.Location = new System.Drawing.Point(446, 9);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(81, 23);
             this.btnIn.TabIndex = 19;
@@ -101,7 +104,8 @@
             this.HanhThu,
             this.To,
             this.Cat,
-            this.NgayGiaiTrach});
+            this.NgayGiaiTrach,
+            this.DangNgan});
             this.dgvHoaDon.Location = new System.Drawing.Point(213, 38);
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -162,7 +166,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(385, 10);
+            this.btnXem.Location = new System.Drawing.Point(365, 9);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 25;
@@ -174,7 +178,7 @@
             // 
             this.dateLap.CustomFormat = "dd/MM/yyyy";
             this.dateLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateLap.Location = new System.Drawing.Point(279, 12);
+            this.dateLap.Location = new System.Drawing.Point(904, 12);
             this.dateLap.Name = "dateLap";
             this.dateLap.Size = new System.Drawing.Size(100, 20);
             this.dateLap.TabIndex = 24;
@@ -183,7 +187,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(217, 15);
+            this.label1.Location = new System.Drawing.Point(842, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 23;
@@ -217,7 +221,7 @@
             // 
             // btnInDSKhongTrung
             // 
-            this.btnInDSKhongTrung.Location = new System.Drawing.Point(553, 10);
+            this.btnInDSKhongTrung.Location = new System.Drawing.Point(533, 9);
             this.btnInDSKhongTrung.Name = "btnInDSKhongTrung";
             this.btnInDSKhongTrung.Size = new System.Drawing.Size(90, 23);
             this.btnInDSKhongTrung.TabIndex = 39;
@@ -253,6 +257,23 @@
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
             this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(241, 11);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(118, 21);
+            this.cmbTo.TabIndex = 73;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(212, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 13);
+            this.label4.TabIndex = 72;
+            this.label4.Text = "Tổ:";
+            // 
             // Ky
             // 
             this.Ky.DataPropertyName = "Ky";
@@ -279,14 +300,13 @@
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Họ Tên";
             this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
             // 
             // DiaChi
             // 
             this.DiaChi.DataPropertyName = "DiaChi";
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
+            this.DiaChi.Width = 150;
             // 
             // SoHoaDon
             // 
@@ -348,15 +368,24 @@
             // NgayGiaiTrach
             // 
             this.NgayGiaiTrach.DataPropertyName = "NgayGiaiTrach";
-            this.NgayGiaiTrach.HeaderText = "Ngày Giải Trach";
+            this.NgayGiaiTrach.HeaderText = "Ngày Giải Trách";
             this.NgayGiaiTrach.Name = "NgayGiaiTrach";
             this.NgayGiaiTrach.Width = 80;
+            // 
+            // DangNgan
+            // 
+            this.DangNgan.DataPropertyName = "DangNgan";
+            this.DangNgan.HeaderText = "Đăng Ngân";
+            this.DangNgan.Name = "DangNgan";
+            this.DangNgan.Width = 50;
             // 
             // frmLenhHuy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 638);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.lstHD);
             this.Controls.Add(this.btnInDSKhongTrung);
@@ -401,6 +430,8 @@
         private System.Windows.Forms.ListView lstHD;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Button btnCopyToClipboard;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
@@ -415,5 +446,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn To;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Cat;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DangNgan;
     }
 }

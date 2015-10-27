@@ -111,13 +111,42 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByCreatedDate(DateTime TuNgay)
+        public DataTable GetDS(int MaTo)
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemLH.CreateDate.Value.Date == TuNgay.Date
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                           && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS(DateTime CreateDate)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemLH.CreateDate.Value.Date == CreateDate.Date
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -138,13 +167,13 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSByCreatedDates(DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemLH.CreateDate.Value.Date >= TuNgay.Date && itemLH.CreateDate.Value.Date <= DenNgay.Date
+                        where itemLH.CreateDate.Value.Date >= FromCreateDate.Date && itemLH.CreateDate.Value.Date <= ToCreateDate.Date
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
