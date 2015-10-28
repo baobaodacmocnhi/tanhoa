@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>287</ApplicationRevision>
+    <ApplicationRevision>291</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -360,6 +360,7 @@
     <Compile Include="DAL\ChuyenKhoan\Excel.cs" />
     <Compile Include="DAL\DongNuoc\CVanTu.cs" />
     <Compile Include="DAL\HanhThu\CQuetTam.cs" />
+    <Compile Include="DAL\HanhThu\CThongTinKhachHang.cs" />
     <Compile Include="DAL\QuanTri\CMenu.cs" />
     <Compile Include="DAL\QuanTri\CNguoiDung.cs" />
     <Compile Include="DAL\QuanTri\CNhom.cs" />
@@ -546,6 +547,12 @@
     </Compile>
     <Compile Include="GUI\HanhThu\frmQuetTam.Designer.cs">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HanhThu\frmThongTinKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\HanhThu\frmThongTinKhachHang.Designer.cs">
+      <DependentUpon>frmThongTinKhachHang.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Quay\frmBaoCaoQuay.cs">
       <SubType>Form</SubType>
@@ -738,6 +745,12 @@
     </Compile>
     <Compile Include="GUI\ToTruong\frmHDTienLonTo.Designer.cs">
       <DependentUpon>frmHDTienLonTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmHoaDonTamThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmHoaDonTamThu.Designer.cs">
+      <DependentUpon>frmHoaDonTamThu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmKiemTraDangNganTo.cs">
       <SubType>Form</SubType>
@@ -1048,6 +1061,9 @@
     <EmbeddedResource Include="GUI\HanhThu\frmQuetTam.resx">
       <DependentUpon>frmQuetTam.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\HanhThu\frmThongTinKhachHang.resx">
+      <DependentUpon>frmThongTinKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmBaoCaoQuay.resx">
       <DependentUpon>frmBaoCaoQuay.cs</DependentUpon>
     </EmbeddedResource>
@@ -1146,6 +1162,9 @@
     </None>
     <EmbeddedResource Include="GUI\ToTruong\frmHDTienLonTo.resx">
       <DependentUpon>frmHDTienLonTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmHoaDonTamThu.resx">
+      <DependentUpon>frmHoaDonTamThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmKiemTraDangNganTo.resx">
       <DependentUpon>frmKiemTraDangNganTo.cs</DependentUpon>

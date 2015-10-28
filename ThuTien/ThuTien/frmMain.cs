@@ -446,7 +446,18 @@ namespace ThuTien
             }
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        } 
+        }
+
+        private void mnuHoaDonTamThu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuHoaDonTamThu", "Xem"))
+            {
+                frmHoaDonTamThu frm = new frmHoaDonTamThu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         #endregion
 
@@ -483,6 +494,17 @@ namespace ThuTien
             }
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuThongTinKhachHang_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuThongTinKhachHang", "Xem"))
+            {
+                frmThongTinKhachHang frm = new frmThongTinKhachHang();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
         }
 
         #endregion
@@ -820,6 +842,13 @@ namespace ThuTien
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
+
+        private void mnuThongTinKhachHang_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
          
 

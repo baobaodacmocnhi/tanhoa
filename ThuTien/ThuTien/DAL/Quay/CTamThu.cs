@@ -188,6 +188,30 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSTon(int MaTo,bool ChuyenKhoan)
+        {
+            var query = from itemTT in _db.TAMTHUs
+                        join itemHD in _db.HOADONs on itemTT.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemTT.Xoa == false && itemTT.ChuyenKhoan == ChuyenKhoan && itemHD.NGAYGIAITRACH==null
+                        && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemTT.CreateDate,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            itemHD.TONGCONG,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public List<TAMTHU> GetDSBySoPhieu(decimal SoPhieu)
         {
             return _db.TAMTHUs.Where(item => item.SoPhieu == SoPhieu).ToList();

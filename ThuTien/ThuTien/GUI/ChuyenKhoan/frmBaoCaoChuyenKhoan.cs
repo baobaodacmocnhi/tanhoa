@@ -527,18 +527,21 @@ namespace ThuTien.GUI.ChuyenKhoan
             DataTable dtDN = _cHoaDon.GetDSDangNganChuyenKhoan_BangKe(dateGiaiTrach.Value);
             
             DataTable dt = new DataTable();
+            dt.Columns.Add("TongBK", typeof(int));
             dt.Columns.Add("MaBK", typeof(int));
             dt.Columns.Add("DanhBo", typeof(string));
             dt.Columns.Add("SoTien", typeof(int));
             dt.Columns.Add("CreateDate", typeof(DateTime));
+            dt.Columns.Add("MaNH", typeof(int));
             dt.Columns.Add("NganHang", typeof(string));
-            dt.Columns.Add("Ky", typeof(int));
+            dt.Columns.Add("TongHD", typeof(int));
+            dt.Columns.Add("Ky", typeof(string));
             dt.Columns.Add("HoTen", typeof(string));
             dt.Columns.Add("GiaBan", typeof(int));
             dt.Columns.Add("ThueGTGT", typeof(int));
             dt.Columns.Add("PhiBVMT", typeof(int));
             dt.Columns.Add("TongCong", typeof(int));
-            dt.Columns.Add("GiaBieu", typeof(int));
+            dt.Columns.Add("Loai", typeof(string));
 
             foreach (DataRow item in dtDN.Rows)
             {
@@ -546,11 +549,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                 DataRow dr = dt.NewRow();
                 if (drBK.Count() > 0)
                 {
+                    dr["TongBK"] = drBK[0]["TongBK"];
                     dr["MaBK"] = drBK[0]["MaBK"];
                     dr["SoTien"] = drBK[0]["SoTien"];
                     dr["CreateDate"] = drBK[0]["CreateDate"];
+                    dr["MaNH"] = drBK[0]["MaNH"];
                     dr["NganHang"] = drBK[0]["TenNH"];
                 }
+                dr["TongHD"] = item["TongHD"];
                 dr["Ky"] = item["Ky"];
                 dr["DanhBo"] = item["DanhBo"];
                 dr["HoTen"] = item["HoTen"];
@@ -558,9 +564,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dr["ThueGTGT"] = item["ThueGTGT"];
                 dr["PhiBVMT"] = item["PhiBVMT"];
                 dr["TongCong"] = item["TongCong"];
-                dr["GiaBieu"] = item["GiaBieu"];
+                if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                    dr["Loai"] = "CQ";
+                else
+                    dr["Loai"] = "TG";
                 dt.Rows.Add(dr);
             }
+            dt.DefaultView.Sort = "Loai DESC,MaBK ASC";
+            dt = dt.DefaultView.ToTable();
 
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -581,10 +592,227 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            XuatExcelBangKe(dt, oSheet, "BẢNG KÊ", dateGiaiTrach.Value.ToString("dd/MM/yyyy"),_cTienDu.GetTongTienTon(dateGiaiTrach.Value));
+            //XuatExcelBangKe(dt, oSheet, "BẢNG KÊ", dateGiaiTrach.Value.ToString("dd/MM/yyyy"), _cTienDu.GetTongTienTon(dateGiaiTrach.Value));
+
+            oSheet.Name = "BẢNG KÊ";
+
+            // Tạo phần đầu nếu muốn
+            Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "M1");
+            head.MergeCells = true;
+            head.Value2 = "BẢNG KÊ KHÁCH HÀNG CHUYỂN KHOẢN - GIẢI TRÁCH TIỀN NƯỚC \r\n NGÀY " + dateGiaiTrach.Value.ToString("dd/MM/yyyy");
+            head.Font.Bold = true;
+            head.Font.Name = "Times New Roman";
+            head.Font.Size = "20";
+            head.RowHeight = 50;
+            head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head2 = oSheet.get_Range("A2", "M2");
+            head2.MergeCells = true;
+            head2.Value2 = "Tồn đầu ngày: " + _cTienDu.GetTongTienTon(dateGiaiTrach.Value);
+            head2.Font.Bold = true;
+            head2.Font.Name = "Times New Roman";
+
+            // Tạo tiêu đề cột 
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
+            cl1.Value2 = "STT";
+            cl1.ColumnWidth = 5;
+            cl1.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl1.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "B3");
+            cl2.Value2 = "TÊN KHÁCH HÀNG";
+            cl2.ColumnWidth = 20;
+            cl2.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl2.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C3", "C3");
+            cl3.Value2 = "DANH BỘ";
+            cl3.ColumnWidth = 15;
+            cl3.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl3.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D3", "E3");
+            cl4.MergeCells = true;
+            cl4.Value2 = "KHÁCH HÀNG CK";
+            cl4.ColumnWidth = 20;
+            cl4.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl4.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl4a = oSheet.get_Range("D4", "D4");
+            cl4a.Value2 = "PT";
+            cl4a.ColumnWidth = 10;
+            cl4a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl4a.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl4b = oSheet.get_Range("E4", "E4");
+            cl4b.Value2 = "SỐ TIỀN";
+            cl4b.ColumnWidth = 10;
+            cl4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl4b.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("F3", "M3");
+            cl5.MergeCells = true;
+            cl5.Value2 = "GIẢI TRÁCH";
+            cl5.ColumnWidth = 70;
+            cl5.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5a = oSheet.get_Range("F4", "F4");
+            cl5a.Value2 = "KỲ";
+            cl5a.ColumnWidth = 5;
+            cl5a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5a.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5b = oSheet.get_Range("G4", "G4");
+            cl5b.Value2 = "NGÀY BK";
+            cl5b.ColumnWidth = 10;
+            cl5b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5b.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5c = oSheet.get_Range("H4", "H4");
+            cl5c.Value2 = "PT";
+            cl5c.ColumnWidth = 10;
+            cl5c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5c.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5d = oSheet.get_Range("I4", "I4");
+            cl5d.Value2 = "TN";
+            cl5d.ColumnWidth = 10;
+            cl5d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5d.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5e = oSheet.get_Range("J4", "J4");
+            cl5e.Value2 = "THUẾ";
+            cl5e.ColumnWidth = 10;
+            cl5e.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5e.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5f = oSheet.get_Range("K4", "K4");
+            cl5f.Value2 = "PHÍ BVMT";
+            cl5f.ColumnWidth = 10;
+            cl5f.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5f.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5g = oSheet.get_Range("L4", "L4");
+            cl5g.Value2 = "CỘNG GT";
+            cl5g.ColumnWidth = 10;
+            cl5g.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5g.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl5h = oSheet.get_Range("M4", "M4");
+            cl5h.Value2 = "LỆCH";
+            cl5h.ColumnWidth = 10;
+            cl5h.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl5h.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("N3", "N3");
+            cl6.MergeCells = true;
+            cl6.Value2 = "LOẠI";
+            cl6.ColumnWidth = 5;
+            cl6.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl6.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("O3", "O3");
+            cl7.MergeCells = true;
+            cl7.Value2 = "TRÙNG";
+            cl7.ColumnWidth = 5;
+            cl7.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl7.Font.Name = "Times New Roman";
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+            object[,] arr = new object[dt.Rows.Count, 15];
+
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+
+                arr[i, 0] = i + 1;
+                arr[i, 1] = dr["HoTen"].ToString();
+                arr[i, 2] = dr["DanhBo"].ToString();
+                arr[i, 4] = dr["SoTien"].ToString();
+                arr[i, 5] = dr["Ky"].ToString();
+                if (!string.IsNullOrEmpty(dr["CreateDate"].ToString()))
+                    arr[i, 6] = DateTime.Parse(dr["CreateDate"].ToString()).ToString("dd/MM/yyyy");
+                arr[i, 8] = dr["GiaBan"].ToString();
+                arr[i, 9] = dr["ThueGTGT"].ToString();
+                arr[i, 10] = dr["PhiBVMT"].ToString();
+                arr[i, 11] = dr["TongCong"].ToString();
+                if (!string.IsNullOrEmpty(dr["SoTien"].ToString()))
+                    arr[i, 12] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
+                arr[i, 13] = dr["Loai"];
+                if (!string.IsNullOrEmpty(dr["TongBK"].ToString()))
+                    if (int.Parse(dr["TongBK"].ToString()) > 1)
+                        arr[i, 14] = "X";
+                if (!string.IsNullOrEmpty(dr["TongHD"].ToString()))
+                    if (int.Parse(dr["TongHD"].ToString()) > 1)
+                        arr[i, 14] = "X";
+            }
+
+            //Thiết lập vùng điền dữ liệu
+            int rowStart = 5;
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dt.Rows.Count - 1;
+            int columnEnd = 15;
+
+            // Ô bắt đầu điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            // Ô kết thúc điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            // Lấy về vùng điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            //Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
+            //Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
+            //Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+            //oSheet.get_Range(c2a, c3a).Font.Bold = true;
+            //oSheet.get_Range(c2a, c3a).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            //oSheet.get_Range(c2a, c3a).NumberFormat = "@";
+
+            //Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 6];
+            //Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
+            //Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+            //oSheet.get_Range(c2b, c3b).Font.Bold = true;
+            //oSheet.get_Range(c2b, c3b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            //oSheet.get_Range(c2b, c3b).NumberFormat = "@";
+
+            //Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            //Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            //Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
+            //oSheet.get_Range(c2c, c3c).Font.Bold = true;
+            //oSheet.get_Range(c2c, c3c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            //oSheet.get_Range(c2c, c3c).NumberFormat = "#,##0";
+
+            ////Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
+            ////Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
+            ////Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
+            ////oSheet.get_Range(c2d, c3d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            ////Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
+            ////Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
+            ////Microsoft.Office.Interop.Excel.Range c3e = oSheet.get_Range(c1e, c2e);
+            ////oSheet.get_Range(c2e, c3e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            ////Microsoft.Office.Interop.Excel.Range c1f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 6];
+            ////Microsoft.Office.Interop.Excel.Range c2f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
+            ////Microsoft.Office.Interop.Excel.Range c3f = oSheet.get_Range(c1f, c2f);
+            ////oSheet.get_Range(c2f, c3f).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
+
+            oSheet.Cells[rowEnd + 2, 2] = "AGR";
+            oSheet.Cells[rowEnd + 3, 2] = "MB";
+            oSheet.Cells[rowEnd + 4, 2] = "KHO BẠC";
+
+            oSheet.Cells[rowEnd + 2, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4");
+            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH = 4");
+            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 3");
         }
 
-        private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach,long TonDau)
+        private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach, long TonDau)
         {
             oSheet.Name = SheetName;
 
@@ -600,7 +828,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             Microsoft.Office.Interop.Excel.Range head2 = oSheet.get_Range("A2", "M2");
             head2.MergeCells = true;
-            head2.Value2 = "Tồn đầu ngày: "+TonDau;
+            head2.Value2 = "Tồn đầu ngày: " + TonDau;
             head2.Font.Bold = true;
             head2.Font.Name = "Times New Roman";
 
@@ -726,10 +954,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 11] = dr["TongCong"].ToString();
                 if (!string.IsNullOrEmpty(dr["SoTien"].ToString()))
                     arr[i, 12] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
-                if (int.Parse(dr["GiaBieu"].ToString()) > 20)
-                    arr[i, 13] = "CQ";
-                else
-                    arr[i, 13] = "TG";
+                arr[i, 13] = dr["Loai"];
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -784,6 +1009,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+
+            oSheet.Cells[rowEnd + 2, 2] = "AGR";
+            oSheet.Cells[rowEnd + 3, 2] = "MB";
+            oSheet.Cells[rowEnd + 4, 2] = "KHO BẠC";
         }
     }
 }

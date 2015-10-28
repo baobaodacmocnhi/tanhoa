@@ -109,16 +109,19 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable GetDS_BangKe(DateTime CreateDate)
         {
             var query = from itemBK in _db.TT_BangKes
-                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
-                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        //join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        //from itemtableNH in tableNH.DefaultIfEmpty()
                         where itemBK.CreateDate.Value.Date >= CreateDate.Date.AddDays(-5) && itemBK.CreateDate.Value.Date <= CreateDate.Date
+                        group itemBK by itemBK.DanhBo into itemGroup
                         select new
                         {
-                            itemBK.MaBK,
-                            itemBK.DanhBo,
-                            itemBK.SoTien,
-                            itemBK.CreateDate,
-                            TenNH = itemtableNH.NGANHANG1,
+                            TongBK=itemGroup.Count(),
+                            DanhBo = itemGroup.Key,
+                            SoTien = itemGroup.Sum(item => item.SoTien),
+                            itemGroup.OrderByDescending(item => item.MaBK).FirstOrDefault().MaBK,
+                            itemGroup.OrderByDescending(item => item.MaBK).FirstOrDefault().CreateDate,
+                            itemGroup.OrderByDescending(item => item.MaBK).FirstOrDefault().MaNH,
+                            TenNH = _db.NGANHANGs.SingleOrDefault(item => item.ID_NGANHANG == itemGroup.OrderByDescending(itemBK => itemBK.MaBK).FirstOrDefault().MaNH).NGANHANG1,
                         };
             return LINQToDataTable(query);
         }
