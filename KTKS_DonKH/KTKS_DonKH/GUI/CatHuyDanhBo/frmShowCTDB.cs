@@ -442,6 +442,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             dr["ChucVu"] = ycchdb.ChucVu;
                             dr["NguoiKy"] = ycchdb.NguoiKy;
 
+                            if (!string.IsNullOrEmpty(ycchdb.MaDonTXL.ToString()))
+                                dr["MaDon"] = "TXL" + ycchdb.MaDonTXL.ToString().Insert(ycchdb.MaDonTXL.ToString().Length - 2, "-");
+                            else
+                                if (!string.IsNullOrEmpty(ycchdb.MaDon.ToString()))
+                                    dr["MaDon"] = ycchdb.MaDon.ToString().Insert(ycchdb.MaDon.ToString().Length - 2, "-");
+
                             dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 
                             rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
@@ -529,6 +535,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dr["ChucVu"] = ycchdb.ChucVu;
                                 dr["NguoiKy"] = ycchdb.NguoiKy;
+
+                                if (!string.IsNullOrEmpty(ycchdb.MaDonTXL.ToString()))
+                                    dr["MaDon"] = "TXL" + ycchdb.MaDonTXL.ToString().Insert(ycchdb.MaDonTXL.ToString().Length - 2, "-");
+                                else
+                                    if (!string.IsNullOrEmpty(ycchdb.MaDon.ToString()))
+                                        dr["MaDon"] = ycchdb.MaDon.ToString().Insert(ycchdb.MaDon.ToString().Length - 2, "-");
 
                                 dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
 

@@ -192,7 +192,7 @@ namespace KTKS_DonKH.GUI.KhachHang
             {
                 _cDonKH.beginTransaction();
                 foreach (DataGridViewRow item in dgvDonDT.Rows)
-                    if (bool.Parse(item.Cells["LapDon"].Value.ToString()))
+                    if (bool.Parse(item.Cells["LapDon"].Value.ToString()) && string.IsNullOrEmpty(item.Cells["MaDon"].Value.ToString()))
                     {
                         DonDienThoai dondt = _cDonDT.getDonDienThoaibyID(decimal.Parse(item.Cells["MaDonDT"].Value.ToString()));
                         DonKH donkh = new DonKH();
