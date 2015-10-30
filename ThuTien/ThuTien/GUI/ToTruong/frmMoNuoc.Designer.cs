@@ -96,9 +96,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvKQDongNuoc.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvKQDongNuoc.Location = new System.Drawing.Point(12, 41);
-            this.dgvKQDongNuoc.MultiSelect = false;
             this.dgvKQDongNuoc.Name = "dgvKQDongNuoc";
-            this.dgvKQDongNuoc.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -120,7 +118,6 @@
             this.MaDN.DataPropertyName = "MaDN";
             this.MaDN.HeaderText = "Mã TB";
             this.MaDN.Name = "MaDN";
-            this.MaDN.ReadOnly = true;
             this.MaDN.Width = 80;
             // 
             // CreateDate
@@ -128,7 +125,6 @@
             this.CreateDate.DataPropertyName = "CreateDate";
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
             this.CreateDate.Width = 80;
             // 
             // MaKQDN
@@ -136,7 +132,6 @@
             this.MaKQDN.DataPropertyName = "MaKQDN";
             this.MaKQDN.HeaderText = "MaKQDN";
             this.MaKQDN.Name = "MaKQDN";
-            this.MaKQDN.ReadOnly = true;
             this.MaKQDN.Visible = false;
             // 
             // DanhBo
@@ -144,14 +139,12 @@
             this.DanhBo.DataPropertyName = "DanhBo";
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
             // 
             // HoTen
             // 
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Khách Hàng";
             this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
             this.HoTen.Width = 150;
             // 
             // DiaChi
@@ -159,7 +152,6 @@
             this.DiaChi.DataPropertyName = "DiaChi";
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
             this.DiaChi.Width = 200;
             // 
             // MLT
@@ -167,7 +159,6 @@
             this.MLT.DataPropertyName = "MLT";
             this.MLT.HeaderText = "MLT";
             this.MLT.Name = "MLT";
-            this.MLT.ReadOnly = true;
             this.MLT.Visible = false;
             // 
             // NgayDN
@@ -175,21 +166,18 @@
             this.NgayDN.DataPropertyName = "NgayDN";
             this.NgayDN.HeaderText = "Đóng Nước";
             this.NgayDN.Name = "NgayDN";
-            this.NgayDN.ReadOnly = true;
             // 
             // NgayGiaiTrach
             // 
             this.NgayGiaiTrach.DataPropertyName = "NgayGiaiTrach";
             this.NgayGiaiTrach.HeaderText = "Đăng Ngân";
             this.NgayGiaiTrach.Name = "NgayGiaiTrach";
-            this.NgayGiaiTrach.ReadOnly = true;
             // 
             // ChiSo
             // 
             this.ChiSo.DataPropertyName = "ChiSo";
             this.ChiSo.HeaderText = "ChiSo";
             this.ChiSo.Name = "ChiSo";
-            this.ChiSo.ReadOnly = true;
             this.ChiSo.Visible = false;
             // 
             // Hieu
@@ -197,7 +185,6 @@
             this.Hieu.DataPropertyName = "Hieu";
             this.Hieu.HeaderText = "Hieu";
             this.Hieu.Name = "Hieu";
-            this.Hieu.ReadOnly = true;
             this.Hieu.Visible = false;
             // 
             // Co
@@ -205,7 +192,6 @@
             this.Co.DataPropertyName = "Co";
             this.Co.HeaderText = "Co";
             this.Co.Name = "Co";
-            this.Co.ReadOnly = true;
             this.Co.Visible = false;
             // 
             // SoThan
@@ -213,7 +199,6 @@
             this.SoThan.DataPropertyName = "SoThan";
             this.SoThan.HeaderText = "SoThan";
             this.SoThan.Name = "SoThan";
-            this.SoThan.ReadOnly = true;
             this.SoThan.Visible = false;
             // 
             // ChiMatSo
@@ -221,7 +206,6 @@
             this.ChiMatSo.DataPropertyName = "ChiMatSo";
             this.ChiMatSo.HeaderText = "ChiMatSo";
             this.ChiMatSo.Name = "ChiMatSo";
-            this.ChiMatSo.ReadOnly = true;
             this.ChiMatSo.Visible = false;
             // 
             // ChiKhoaGoc
@@ -229,7 +213,6 @@
             this.ChiKhoaGoc.DataPropertyName = "ChiKhoaGoc";
             this.ChiKhoaGoc.HeaderText = "ChiKhoaGoc";
             this.ChiKhoaGoc.Name = "ChiKhoaGoc";
-            this.ChiKhoaGoc.ReadOnly = true;
             this.ChiKhoaGoc.Visible = false;
             // 
             // LyDo
@@ -237,7 +220,6 @@
             this.LyDo.DataPropertyName = "LyDo";
             this.LyDo.HeaderText = "LyDo";
             this.LyDo.Name = "LyDo";
-            this.LyDo.ReadOnly = true;
             this.LyDo.Visible = false;
             // 
             // MoNuoc
@@ -245,7 +227,6 @@
             this.MoNuoc.DataPropertyName = "MoNuoc";
             this.MoNuoc.HeaderText = "DongNuoc";
             this.MoNuoc.Name = "MoNuoc";
-            this.MoNuoc.ReadOnly = true;
             this.MoNuoc.Visible = false;
             // 
             // NgayMN
@@ -253,7 +234,6 @@
             this.NgayMN.DataPropertyName = "NgayMN";
             this.NgayMN.HeaderText = "NgayMN";
             this.NgayMN.Name = "NgayMN";
-            this.NgayMN.ReadOnly = true;
             this.NgayMN.Visible = false;
             // 
             // btnRefresh

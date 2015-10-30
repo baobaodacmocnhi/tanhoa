@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>291</ApplicationRevision>
+    <ApplicationRevision>300</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -346,6 +346,7 @@
     </Compile>
     <Compile Include="DAL\CCAPNUOCTANHOA.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe.cs" />
+    <Compile Include="DAL\ChuyenKhoan\CDichVuThu.cs" />
     <Compile Include="DAL\ChuyenKhoan\CTienDu.cs" />
     <Compile Include="DAL\CKTKS_DonKH.cs" />
     <Compile Include="DAL\CDAL.cs" />
@@ -415,6 +416,12 @@
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmDangNganTienMatChuyenKhoan.Designer.cs">
       <DependentUpon>frmDangNganTienMatChuyenKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmDichVuThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmDichVuThu.Designer.cs">
+      <DependentUpon>frmDichVuThu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmDieuChinhDangNganChuyenKhoan.cs">
       <SubType>Form</SubType>
@@ -577,6 +584,12 @@
     </Compile>
     <Compile Include="GUI\Quay\frmLenhHuy.Designer.cs">
       <DependentUpon>frmLenhHuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Quay\frmPhiMoNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Quay\frmPhiMoNuoc.Designer.cs">
+      <DependentUpon>frmPhiMoNuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Quay\frmTraGop.cs">
       <SubType>Form</SubType>
@@ -995,6 +1008,9 @@
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmDangNganTienMatChuyenKhoan.resx">
       <DependentUpon>frmDangNganTienMatChuyenKhoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmDichVuThu.resx">
+      <DependentUpon>frmDichVuThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmDieuChinhDangNganChuyenKhoan.resx">
       <DependentUpon>frmDieuChinhDangNganChuyenKhoan.cs</DependentUpon>
     </EmbeddedResource>
@@ -1075,6 +1091,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmLenhHuy.resx">
       <DependentUpon>frmLenhHuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Quay\frmPhiMoNuoc.resx">
+      <DependentUpon>frmPhiMoNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmTraGop.resx">
       <DependentUpon>frmTraGop.cs</DependentUpon>

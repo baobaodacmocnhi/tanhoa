@@ -8,12 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.QuanTri;
+using ThuTien.DAL.DongNuoc;
 
 namespace ThuTien.GUI.ToTruong
 {
     public partial class frmHoaDonTamThu : Form
     {
         CTamThu _cTamThu = new CTamThu();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
+        CLenhHuy _cLenhHuy = new CLenhHuy();
 
         public frmHoaDonTamThu()
         {
@@ -28,6 +31,14 @@ namespace ThuTien.GUI.ToTruong
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             dgvHoaDon.DataSource = _cTamThu.GetDSTon(CNguoiDung.MaTo, false);
+
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            {
+                if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Red;
+            }
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

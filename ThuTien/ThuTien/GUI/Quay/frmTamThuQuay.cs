@@ -65,6 +65,7 @@ namespace ThuTien.GUI.Quay
                     item.Cells["Chon"].Value = "True";
                     if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Yellow;
+                    item.Cells["NgayDN"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Red;
                 }
@@ -187,11 +188,18 @@ namespace ThuTien.GUI.Quay
                 dgvTamThu.DataSource = _cTamThu.GetDS(false, dateTu.Value, dateDen.Value);
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
+            {
                 if (_cDongNuoc.CheckExistBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
                 {
                     item.Cells["HanhThu_TT"].Value = HoTen;
                     item.Cells["To_TT"].Value = TenTo;
+                    item.DefaultCellStyle.BackColor = Color.Yellow;
                 }
+                //if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                //    item.DefaultCellStyle.BackColor = Color.Yellow;
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                    item.DefaultCellStyle.BackColor = Color.Red;
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

@@ -24,7 +24,7 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
 
-            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(CNguoiDung.MaTo);
+            btnRefresh.PerformClick();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

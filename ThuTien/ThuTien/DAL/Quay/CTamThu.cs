@@ -201,6 +201,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemTT.CreateDate,
+                            itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             MLT = itemHD.MALOTRINH,
                             DanhBo = itemHD.DANHBA,

@@ -524,17 +524,16 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnXuatExcelBangKe_Click(object sender, EventArgs e)
         {
             DataTable dtBK = _cBangKe.GetDS_BangKe(dateGiaiTrach.Value);
-            DataTable dtDN = _cHoaDon.GetDSDangNganChuyenKhoan_BangKe(dateGiaiTrach.Value);
-            
+            DataTable dtDN = _cHoaDon.GetDSDangNganChuyenKhoan(dateGiaiTrach.Value);
+            DataTable dtBKLui5 = _cBangKe.GetDS_BangKeLui5(dateGiaiTrach.Value);
+
             DataTable dt = new DataTable();
-            dt.Columns.Add("TongBK", typeof(int));
             dt.Columns.Add("MaBK", typeof(int));
             dt.Columns.Add("DanhBo", typeof(string));
             dt.Columns.Add("SoTien", typeof(int));
             dt.Columns.Add("CreateDate", typeof(DateTime));
             dt.Columns.Add("MaNH", typeof(int));
             dt.Columns.Add("NganHang", typeof(string));
-            dt.Columns.Add("TongHD", typeof(int));
             dt.Columns.Add("Ky", typeof(string));
             dt.Columns.Add("HoTen", typeof(string));
             dt.Columns.Add("GiaBan", typeof(int));
@@ -543,35 +542,124 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("TongCong", typeof(int));
             dt.Columns.Add("Loai", typeof(string));
 
-            foreach (DataRow item in dtDN.Rows)
+            foreach (DataRow item in dtBK.Rows)
             {
-                DataRow[] drBK = dtBK.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
-                DataRow dr = dt.NewRow();
-                if (drBK.Count() > 0)
+                DataRow[] drDN = dtDN.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
+
+                ///bảng kê có đăng ngân
+                if (drDN.Count() > 0)
                 {
-                    dr["TongBK"] = drBK[0]["TongBK"];
-                    dr["MaBK"] = drBK[0]["MaBK"];
-                    dr["SoTien"] = drBK[0]["SoTien"];
-                    dr["CreateDate"] = drBK[0]["CreateDate"];
-                    dr["MaNH"] = drBK[0]["MaNH"];
-                    dr["NganHang"] = drBK[0]["TenNH"];
+                    int i = 0;
+                    foreach (DataRow itemdrDN in drDN)
+                    {
+                        DataRow dr = dt.NewRow();
+
+                        if (i == 0)
+                        {
+                            dr["MaBK"] = item["MaBK"];
+                            dr["SoTien"] = item["SoTien"];
+                            dr["CreateDate"] = item["CreateDate"];
+                            dr["MaNH"] = item["MaNH"];
+                            dr["NganHang"] = item["TenNH"];
+                        }
+                        else
+                        {
+                            dr["MaBK"] = item["MaBK"];
+                            dr["CreateDate"] = item["CreateDate"];
+                        }
+
+                        dr["DanhBo"] = item["DanhBo"];
+                        dr["HoTen"] = itemdrDN["HoTen"];
+                        dr["Ky"] = itemdrDN["Ky"];
+                        dr["GiaBan"] = itemdrDN["GiaBan"];
+                        dr["ThueGTGT"] = itemdrDN["ThueGTGT"];
+                        dr["PhiBVMT"] = itemdrDN["PhiBVMT"];
+                        dr["TongCong"] = itemdrDN["TongCong"];
+                        if (int.Parse(itemdrDN["GiaBieu"].ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+
+                        dt.Rows.Add(dr);
+                        i++;
+                        dtDN.Rows.Remove(itemdrDN);
+                    }
                 }
-                dr["TongHD"] = item["TongHD"];
-                dr["Ky"] = item["Ky"];
-                dr["DanhBo"] = item["DanhBo"];
-                dr["HoTen"] = item["HoTen"];
-                dr["GiaBan"] = item["GiaBan"];
-                dr["ThueGTGT"] = item["ThueGTGT"];
-                dr["PhiBVMT"] = item["PhiBVMT"];
-                dr["TongCong"] = item["TongCong"];
-                if (int.Parse(item["GiaBieu"].ToString()) > 20)
-                    dr["Loai"] = "CQ";
+                ///bảng kê không có đăng ngân
                 else
-                    dr["Loai"] = "TG";
-                dt.Rows.Add(dr);
+                {
+                    DataRow dr = dt.NewRow();
+
+                    dr["MaBK"] = item["MaBK"];
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["SoTien"] = item["SoTien"];
+                    dr["CreateDate"] = item["CreateDate"];
+                    dr["MaNH"] = item["MaNH"];
+                    dr["NganHang"] = item["TenNH"];
+
+                    HOADON hoadon = _cHoaDon.GetMoiNhat(item["DanhBo"].ToString());
+                    if (hoadon.GB > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+
+                    dt.Rows.Add(dr);
+                }
             }
+
             dt.DefaultView.Sort = "Loai DESC,MaBK ASC";
             dt = dt.DefaultView.ToTable();
+
+            dtDN.DefaultView.Sort = "GiaBieu ASC";
+            dtDN = dtDN.DefaultView.ToTable();
+            foreach (DataRow item in dtDN.Rows)
+            {
+                DataRow[] drBKLui5 = dtBKLui5.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
+
+                if (drBKLui5.Count() > 0)
+                {
+                    DataRow dr = dt.NewRow();
+
+                    dr["MaBK"] = drBKLui5[drBKLui5.Count()-1]["MaBK"];
+                    dr["DanhBo"] = drBKLui5[drBKLui5.Count()-1]["DanhBo"];
+                    dr["SoTien"] = drBKLui5[drBKLui5.Count()-1]["SoTien"];
+                    dr["CreateDate"] = drBKLui5[drBKLui5.Count()-1]["CreateDate"];
+                    dr["MaNH"] = drBKLui5[drBKLui5.Count()-1]["MaNH"];
+                    dr["NganHang"] = drBKLui5[drBKLui5.Count() - 1]["TenNH"];
+
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["Ky"] = item["Ky"];
+                    dr["GiaBan"] = item["GiaBan"];
+                    dr["ThueGTGT"] = item["ThueGTGT"];
+                    dr["PhiBVMT"] = item["PhiBVMT"];
+                    dr["TongCong"] = item["TongCong"];
+                    if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+
+                    dt.Rows.Add(dr);
+                }
+                else
+                {
+                    DataRow dr = dt.NewRow();
+
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["Ky"] = item["Ky"];
+                    dr["GiaBan"] = item["GiaBan"];
+                    dr["ThueGTGT"] = item["ThueGTGT"];
+                    dr["PhiBVMT"] = item["PhiBVMT"];
+                    dr["TongCong"] = item["TongCong"];
+                    if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+
+                    dt.Rows.Add(dr);
+                }
+            }
 
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -724,30 +812,33 @@ namespace ThuTien.GUI.ChuyenKhoan
             object[,] arr = new object[dt.Rows.Count, 15];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            //int STT = 1;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow dr = dt.Rows[i];
 
+                //if (!string.IsNullOrEmpty(dr["DanhBo"].ToString()))
+                //    arr[i, 0] = STT++;
                 arr[i, 0] = i + 1;
                 arr[i, 1] = dr["HoTen"].ToString();
                 arr[i, 2] = dr["DanhBo"].ToString();
                 arr[i, 4] = dr["SoTien"].ToString();
                 arr[i, 5] = dr["Ky"].ToString();
                 if (!string.IsNullOrEmpty(dr["CreateDate"].ToString()))
-                    arr[i, 6] = DateTime.Parse(dr["CreateDate"].ToString()).ToString("dd/MM/yyyy");
+                    arr[i, 6] = DateTime.Parse(dr["CreateDate"].ToString()).AddDays(-1).ToString("dd/MM/yyyy");
                 arr[i, 8] = dr["GiaBan"].ToString();
                 arr[i, 9] = dr["ThueGTGT"].ToString();
                 arr[i, 10] = dr["PhiBVMT"].ToString();
                 arr[i, 11] = dr["TongCong"].ToString();
-                if (!string.IsNullOrEmpty(dr["SoTien"].ToString()))
+                if (!string.IsNullOrEmpty(dr["SoTien"].ToString()) && !string.IsNullOrEmpty(dr["TongCong"].ToString()))
                     arr[i, 12] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
                 arr[i, 13] = dr["Loai"];
-                if (!string.IsNullOrEmpty(dr["TongBK"].ToString()))
-                    if (int.Parse(dr["TongBK"].ToString()) > 1)
-                        arr[i, 14] = "X";
-                if (!string.IsNullOrEmpty(dr["TongHD"].ToString()))
-                    if (int.Parse(dr["TongHD"].ToString()) > 1)
-                        arr[i, 14] = "X";
+                //if (!string.IsNullOrEmpty(dr["TongBK"].ToString()))
+                //    if (int.Parse(dr["TongBK"].ToString()) > 1)
+                //        arr[i, 14] = "X";
+                //if (!string.IsNullOrEmpty(dr["TongHD"].ToString()))
+                //    if (int.Parse(dr["TongHD"].ToString()) > 1)
+                //        arr[i, 14] = "X";
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -807,9 +898,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Cells[rowEnd + 3, 2] = "MB";
             oSheet.Cells[rowEnd + 4, 2] = "KHO BẠC";
 
-            oSheet.Cells[rowEnd + 2, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4");
-            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH = 4");
-            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 3");
+            oSheet.Cells[rowEnd + 2, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and CreateDate >='"+dateGiaiTrach.Value.ToString("yyyy/MM/dd")+"'");
+            oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH = 4 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+            oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 3 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
         }
 
         private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach, long TonDau)

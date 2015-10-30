@@ -5073,24 +5073,23 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetDSDangNganChuyenKhoan_BangKe(DateTime NgayGiaiTrach)
+        public DataTable GetDSDangNganChuyenKhoan(DateTime NgayGiaiTrach)
         {
             var query = from itemHD in _db.HOADONs
                         //join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         //from itemtableND in tableND.DefaultIfEmpty()
                         where itemHD.DangNgan_ChuyenKhoan == true && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
-                        group itemHD by itemHD.DANHBA into itemGroup
+                        orderby itemHD.ID_HOADON ascending
                         select new
                         {
-                            TongHD = itemGroup.Count(),
-                            DanhBo = itemGroup.Key,
-                            HoTen = itemGroup.OrderByDescending(item => item.ID_HOADON).FirstOrDefault().TENKH,
-                            Ky = String.Join(",", itemGroup.Select(x => x.KY)),
-                            GiaBan = itemGroup.Sum(item => item.GIABAN),
-                            ThueGTGT = itemGroup.Sum(item => item.THUE),
-                            PhiBVMT = itemGroup.Sum(item => item.PHI),
-                            TongCong = itemGroup.Sum(item => item.TONGCONG),
-                            GiaBieu = itemGroup.OrderByDescending(item => item.ID_HOADON).FirstOrDefault().GB,
+                            DanhBo=itemHD.DANHBA,
+                            HoTen=itemHD.TENKH,
+                            itemHD.KY,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            TongCong = itemHD.TONGCONG,
+                            GiaBieu = itemHD.GB,
                         };
             return LINQToDataTable(query);
         }
