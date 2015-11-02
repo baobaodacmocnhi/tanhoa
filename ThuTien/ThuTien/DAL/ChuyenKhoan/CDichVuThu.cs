@@ -33,6 +33,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi=itemHD.SO+" "+itemHD.DUONG,
+                            GiaBieu=itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                         };
@@ -61,6 +62,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            GiaBieu = itemHD.GB,
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                         };

@@ -288,7 +288,8 @@ namespace ThuTien.GUI.TongHop
             if (dgvHoaDon.RowCount > 0)
             {
                 frmShowChuyenNoKhoDoi frm = new frmShowChuyenNoKhoDoi(dgvHoaDon.CurrentRow.Cells["DanhBo"].Value.ToString(), decimal.Parse(dgvHoaDon.CurrentRow.Cells["MaCNKD"].Value.ToString()));
-                frm.ShowDialog();
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    btnXem.PerformClick();
             }
         }
 
@@ -300,6 +301,11 @@ namespace ThuTien.GUI.TongHop
                 str += item.Text + "\n";
             }
             Clipboard.SetText(str);
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

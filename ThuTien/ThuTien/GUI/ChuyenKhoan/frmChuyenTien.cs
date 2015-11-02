@@ -33,17 +33,22 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             this.Location = new Point(200, 150);
 
-            txtDanhBoA.Text = _DanhBo.Insert(7, " ").Insert(4, " ");
-            txtSoTienA.Text = _SoTien;
+            txtDanhBoCTA.Text = txtDanhBoSuaTien.Text = _DanhBo.Insert(7, " ").Insert(4, " ");
+            txtSoTienCTA.Text = txtSoTienCu.Text = _SoTien;
+
+            if (CNguoiDung.MaND == 0)
+                btnSua.Enabled = true;
+            else
+                btnSua.Enabled = false;
         }
 
-        private void txtDanhBoB_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtDanhBoCTB_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtDanhBoB.Text.Trim().Length == 11)
+            if (e.KeyChar == 13 && txtDanhBoCTB.Text.Trim().Length == 11)
             {
-                if (_cTienDu.CheckExist(txtDanhBoB.Text.Trim().Replace(" ", "")))
+                if (_cTienDu.CheckExist(txtDanhBoCTB.Text.Trim().Replace(" ", "")))
                 {
-                    txtSoTienB.Text = _cTienDu.GetTienDu(txtDanhBoB.Text.Trim().Replace(" ", "")).ToString();
+                    txtSoTienCTB.Text = _cTienDu.GetTienDu(txtDanhBoCTB.Text.Trim().Replace(" ", "")).ToString();
                 }
                 else
                     MessageBox.Show("Danh Bộ này chưa được Thêm vào Tiền Dư, Xin liên hệ T.CNTT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -52,8 +57,8 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void txtSoTienChuyen_TextChanged(object sender, EventArgs e)
         {
-            if (int.Parse(txtSoTienChuyen.Text.Trim()) > int.Parse(txtSoTienA.Text.Trim()))
-                txtSoTienChuyen.Text = txtSoTienA.Text;
+            if (int.Parse(txtSoTienChuyen.Text.Trim()) > int.Parse(txtSoTienCTA.Text.Trim()))
+                txtSoTienChuyen.Text = txtSoTienCTA.Text;
         }
 
         private void btnChuyen_Click(object sender, EventArgs e)
@@ -62,16 +67,33 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if (_cTienDu.Update(txtDanhBoA.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()) * -1, "Chuyển Tiền"))
-                        if (_cTienDu.Update(txtDanhBoB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Chuyển Tiền"))
-                        {
-                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                            this.Close();
-                        }
+                    if (txtDanhBoCTA.Text.Trim().Replace(" ", "").Length == 11 && txtDanhBoCTB.Text.Trim().Replace(" ", "").Length == 11 && int.Parse(txtSoTienChuyen.Text.Trim()) > 0 && int.Parse(txtSoTienCTA.Text.Trim()) > 0)
+                        if (_cTienDu.Update(txtDanhBoCTA.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()) * -1, "Chuyển Tiền"))
+                            if (_cTienDu.Update(txtDanhBoCTB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Chuyển Tiền"))
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                this.Close();
+                            }
                 }
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn Sửa?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (int.Parse(txtSoTienMoi.Text.Trim()) >= 0)
+                    if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienCu.Text.Trim()) * -1, "Điều Chỉnh Tiền"))
+                        if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienMoi.Text.Trim()), "Điều Chỉnh Tiền"))
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                            this.Close();
+                        }
+            }
         }
 
     }

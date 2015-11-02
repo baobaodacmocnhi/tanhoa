@@ -346,8 +346,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TongCong"] = item["TongCong"].ToString();
                     if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                         dr["TongTienMat"] = item["TongTienMat"].ToString();
-                    else
-                        dr["TongTienMat"] = 0;
+                    //else
+                    //    dr["TongTienMat"] = 0;
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                 }
@@ -369,8 +369,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["TongCong"] = item["TongCong"].ToString();
                         if (!string.IsNullOrEmpty(item["TongTienMat"].ToString()))
                             dr["TongTienMat"] = item["TongTienMat"].ToString();
-                        else
-                            dr["TongTienMat"] = 0;
+                        //else
+                        //    dr["TongTienMat"] = 0;
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                     }
@@ -1023,6 +1023,35 @@ namespace ThuTien.GUI.ChuyenKhoan
             frm.ShowDialog();
         }
 
+        private void btnInDSDuTien_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvTienDu.Rows)
+            {
+                HOADON hoadon = _cHoaDon.GetTonMoiNhat(item.Cells["DanhBo_TienDu"].Value.ToString());
+                if (hoadon != null && hoadon.DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= hoadon.TONGCONG)
+                {
+                    DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
+                    dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = hoadon.TENKH;
+                    dr["Ky"] = hoadon.KY + "/" + hoadon.NAM;
+                    dr["MLT"] = hoadon.MALOTRINH;
+                    dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
+                    dr["TongCong"] = hoadon.TONGCONG;
+                    if (hoadon.MaNV_HanhThu != null)
+                    {
+                        dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
+                        dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
+                    }
+                    ds.Tables["TienDuKhachHang"].Rows.Add(dr);
+                }
+            }
+            rptTienDuKhachHang rpt = new rptTienDuKhachHang();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
         private void btnChuyenTamThu_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen("mnuTamThuChuyenKhoan", "Them"))
@@ -1187,6 +1216,8 @@ namespace ThuTien.GUI.ChuyenKhoan
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
         }
+
+        
 
     }
 }

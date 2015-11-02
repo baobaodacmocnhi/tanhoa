@@ -32,10 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnXem = new System.Windows.Forms.Button();
             this.dgvKQDongNuoc = new System.Windows.Forms.DataGridView();
-            this.radChuaDongPhi = new System.Windows.Forms.RadioButton();
-            this.radDaDongPhi = new System.Windows.Forms.RadioButton();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,18 +44,22 @@
             this.DongPhi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayDongPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGiaiTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radChuaDongPhi = new System.Windows.Forms.RadioButton();
+            this.radDaDongPhi = new System.Windows.Forms.RadioButton();
+            this.txtDanhBo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnRefresh
+            // btnXem
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(157, 6);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 34;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnXem.Location = new System.Drawing.Point(330, 9);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 34;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // dgvKQDongNuoc
             // 
@@ -109,28 +111,6 @@
             this.dgvKQDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKQDongNuoc_CellFormatting);
             this.dgvKQDongNuoc.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvKQDongNuoc_CellValidating);
             this.dgvKQDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKQDongNuoc_RowPostPaint);
-            // 
-            // radChuaDongPhi
-            // 
-            this.radChuaDongPhi.AutoSize = true;
-            this.radChuaDongPhi.Checked = true;
-            this.radChuaDongPhi.Location = new System.Drawing.Point(52, 9);
-            this.radChuaDongPhi.Name = "radChuaDongPhi";
-            this.radChuaDongPhi.Size = new System.Drawing.Size(99, 17);
-            this.radChuaDongPhi.TabIndex = 35;
-            this.radChuaDongPhi.TabStop = true;
-            this.radChuaDongPhi.Text = "Chưa Đóng Phí";
-            this.radChuaDongPhi.UseVisualStyleBackColor = true;
-            // 
-            // radDaDongPhi
-            // 
-            this.radDaDongPhi.AutoSize = true;
-            this.radDaDongPhi.Location = new System.Drawing.Point(52, 32);
-            this.radDaDongPhi.Name = "radDaDongPhi";
-            this.radDaDongPhi.Size = new System.Drawing.Size(86, 17);
-            this.radDaDongPhi.TabIndex = 36;
-            this.radDaDongPhi.Text = "Đã Đóng Phi";
-            this.radDaDongPhi.UseVisualStyleBackColor = true;
             // 
             // MaDN
             // 
@@ -199,14 +179,55 @@
             this.NgayGiaiTrach.HeaderText = "Đăng Ngân";
             this.NgayGiaiTrach.Name = "NgayGiaiTrach";
             // 
+            // radChuaDongPhi
+            // 
+            this.radChuaDongPhi.AutoSize = true;
+            this.radChuaDongPhi.Checked = true;
+            this.radChuaDongPhi.Location = new System.Drawing.Point(52, 9);
+            this.radChuaDongPhi.Name = "radChuaDongPhi";
+            this.radChuaDongPhi.Size = new System.Drawing.Size(99, 17);
+            this.radChuaDongPhi.TabIndex = 35;
+            this.radChuaDongPhi.TabStop = true;
+            this.radChuaDongPhi.Text = "Chưa Đóng Phí";
+            this.radChuaDongPhi.UseVisualStyleBackColor = true;
+            // 
+            // radDaDongPhi
+            // 
+            this.radDaDongPhi.AutoSize = true;
+            this.radDaDongPhi.Location = new System.Drawing.Point(52, 32);
+            this.radDaDongPhi.Name = "radDaDongPhi";
+            this.radDaDongPhi.Size = new System.Drawing.Size(86, 17);
+            this.radDaDongPhi.TabIndex = 36;
+            this.radDaDongPhi.Text = "Đã Đóng Phi";
+            this.radDaDongPhi.UseVisualStyleBackColor = true;
+            // 
+            // txtDanhBo
+            // 
+            this.txtDanhBo.Location = new System.Drawing.Point(224, 12);
+            this.txtDanhBo.Name = "txtDanhBo";
+            this.txtDanhBo.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBo.TabIndex = 38;
+            this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(166, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Danh Bộ:";
+            // 
             // frmPhiMoNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 665);
+            this.Controls.Add(this.txtDanhBo);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.radDaDongPhi);
             this.Controls.Add(this.radChuaDongPhi);
-            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dgvKQDongNuoc);
             this.Name = "frmPhiMoNuoc";
             this.Text = "Phí Mở Nước";
@@ -219,7 +240,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.DataGridView dgvKQDongNuoc;
         private System.Windows.Forms.RadioButton radChuaDongPhi;
         private System.Windows.Forms.RadioButton radDaDongPhi;
@@ -233,5 +254,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn DongPhi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDongPhi;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach;
+        private System.Windows.Forms.TextBox txtDanhBo;
+        private System.Windows.Forms.Label label1;
     }
 }

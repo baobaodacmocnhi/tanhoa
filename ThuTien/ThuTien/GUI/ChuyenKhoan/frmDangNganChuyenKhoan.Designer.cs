@@ -103,6 +103,7 @@
             this.HanhThu_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTongCong_CQ = new System.Windows.Forms.TextBox();
             this.tabTienDu = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnXuatExcelTienDu = new System.Windows.Forms.Button();
             this.dateNgayGiaiTrach = new System.Windows.Forms.DateTimePicker();
             this.btnChuyenTamThu = new System.Windows.Forms.Button();
@@ -129,7 +130,7 @@
             this.lstHD = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btnInDSDuTien = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -732,6 +733,7 @@
             // 
             // tabTienDu
             // 
+            this.tabTienDu.Controls.Add(this.btnInDSDuTien);
             this.tabTienDu.Controls.Add(this.label9);
             this.tabTienDu.Controls.Add(this.btnXuatExcelTienDu);
             this.tabTienDu.Controls.Add(this.dateNgayGiaiTrach);
@@ -751,6 +753,15 @@
             this.tabTienDu.TabIndex = 2;
             this.tabTienDu.Text = "Tiền Dư";
             this.tabTienDu.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(696, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(146, 13);
+            this.label9.TabIndex = 93;
+            this.label9.Text = "Double-Click để Chuyển Tiền";
             // 
             // btnXuatExcelTienDu
             // 
@@ -773,7 +784,7 @@
             // 
             // btnChuyenTamThu
             // 
-            this.btnChuyenTamThu.Location = new System.Drawing.Point(849, 84);
+            this.btnChuyenTamThu.Location = new System.Drawing.Point(851, 113);
             this.btnChuyenTamThu.Name = "btnChuyenTamThu";
             this.btnChuyenTamThu.Size = new System.Drawing.Size(100, 23);
             this.btnChuyenTamThu.TabIndex = 90;
@@ -821,7 +832,7 @@
             // 
             // btnInDSThuThem
             // 
-            this.btnInDSThuThem.Location = new System.Drawing.Point(849, 55);
+            this.btnInDSThuThem.Location = new System.Drawing.Point(851, 55);
             this.btnInDSThuThem.Name = "btnInDSThuThem";
             this.btnInDSThuThem.Size = new System.Drawing.Size(94, 23);
             this.btnInDSThuThem.TabIndex = 49;
@@ -1062,14 +1073,15 @@
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
             this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
-            // label9
+            // btnInDSDuTien
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(696, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(146, 13);
-            this.label9.TabIndex = 93;
-            this.label9.Text = "Double-Click để Chuyển Tiền";
+            this.btnInDSDuTien.Location = new System.Drawing.Point(851, 84);
+            this.btnInDSDuTien.Name = "btnInDSDuTien";
+            this.btnInDSDuTien.Size = new System.Drawing.Size(94, 23);
+            this.btnInDSDuTien.TabIndex = 94;
+            this.btnInDSDuTien.Text = "In DS Đủ Tiền";
+            this.btnInDSDuTien.UseVisualStyleBackColor = true;
+            this.btnInDSDuTien.Click += new System.EventHandler(this.btnInDSDuTien_Click);
             // 
             // frmDangNganChuyenKhoan
             // 
@@ -1205,5 +1217,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_TienAm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyDate_TienAm;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnInDSDuTien;
     }
 }

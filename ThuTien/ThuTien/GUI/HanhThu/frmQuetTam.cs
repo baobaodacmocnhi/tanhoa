@@ -321,6 +321,7 @@ namespace ThuTien.GUI.HanhThu
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                     dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
+                    dr["MLT"] = item.Cells["MLT_TG"].Value;
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }
@@ -334,6 +335,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
                         dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value;
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }

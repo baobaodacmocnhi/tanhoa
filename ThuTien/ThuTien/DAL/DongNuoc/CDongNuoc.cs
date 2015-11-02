@@ -309,12 +309,12 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(query.GroupBy(item=>item.MaDN).Select(item=>item.First()).ToList());
         }
 
-        public DataTable GetDSKQDongNuoc(bool DongPhi)
+        public DataTable GetDSKQDongNuoc(bool DongPhi,string DanhBo)
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
                         join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
                         join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
-                        where itemKQ.DongPhi == DongPhi && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false
+                        where itemKQ.DongPhi == DongPhi && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false && itemKQ.DanhBo.Contains(DanhBo)
                         select new
                         {
                             itemKQ.MaDN,
@@ -427,10 +427,10 @@ namespace ThuTien.DAL.DongNuoc
                         where itemCTDN.SoHoaDon == SoHoaDon && itemKQDN.NgayDN != null && itemDN.Huy == false
                         select new
                         {
-                            NgayDN = itemKQDN.NgayDN.Value.ToString("dd/MM/yyyy")
+                            NgayDN = itemKQDN.NgayDN
                         };
             if (query.Count() > 0)
-                return query.Take(1).ToList()[0].NgayDN;
+                return query.Take(1).ToList()[0].NgayDN.Value.ToString("dd/MM/yyyy");
             else
                 return "";
         }

@@ -318,6 +318,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             Clipboard.SetText(str);
         }
 
+        private void btnInPhieu_Click(object sender, EventArgs e)
+        {
+
+        }
+
         
     }
 }

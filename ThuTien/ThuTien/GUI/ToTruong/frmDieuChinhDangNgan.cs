@@ -249,6 +249,11 @@ namespace ThuTien.GUI.ToTruong
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    if (dateGiaiTrachSua.Value.Date != DateTime.Now.Date)
+                    {
+                        MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     try
                     {
                         _cHoaDon.SqlBeginTransaction();
@@ -422,6 +427,11 @@ namespace ThuTien.GUI.ToTruong
                 str += item.Text + "\n";
             }
             Clipboard.SetText(str);
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

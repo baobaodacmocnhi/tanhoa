@@ -27,13 +27,13 @@ namespace ThuTien.GUI.Quay
             dgvKQDongNuoc.AutoGenerateColumns = false;
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnXem_Click(object sender, EventArgs e)
         {
             if (radChuaDongPhi.Checked)
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc(false);
+                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc(false, txtDanhBo.Text.Trim().Replace(" ", ""));
             else
                 if (radDaDongPhi.Checked)
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc(true);
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc(true, txtDanhBo.Text.Trim().Replace(" ", ""));
         }
 
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -77,5 +77,12 @@ namespace ThuTien.GUI.Quay
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
+                btnXem.PerformClick();
+        }
+
     }
 }

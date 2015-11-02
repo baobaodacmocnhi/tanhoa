@@ -77,6 +77,8 @@ namespace ThuTien.GUI.TongHop
                         if (_cCNKD.Sua(_cnkd))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                            this.Close();
                         }
                         
                     }
@@ -104,6 +106,8 @@ namespace ThuTien.GUI.TongHop
                     if (_cCNKD.Sua(_cnkd))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                        this.Close();
                     }
                 }
             }
