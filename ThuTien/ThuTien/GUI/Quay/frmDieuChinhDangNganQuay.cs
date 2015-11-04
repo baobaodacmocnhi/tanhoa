@@ -160,7 +160,7 @@ namespace ThuTien.GUI.Quay
                     }
                     try
                     {
-                        _cHoaDon.SqlBeginTransaction();
+                        //_cHoaDon.SqlBeginTransaction();
                         foreach (ListViewItem item in lstHD.Items)
                             if (_cHoaDon.DangNgan("Quay", item.Text, CNguoiDung.MaND, dateGiaiTrachSua.Value))
                             {
@@ -175,17 +175,17 @@ namespace ThuTien.GUI.Quay
                             else
                             {
                                 //_cHoaDon.SqlRollbackTransaction();
-                                //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //return;
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
-                        _cHoaDon.SqlCommitTransaction();
+                        //_cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        _cHoaDon.SqlRollbackTransaction();
+                        //_cHoaDon.SqlRollbackTransaction();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -202,7 +202,7 @@ namespace ThuTien.GUI.Quay
                 {
                     try
                     {
-                        _cHoaDon.SqlBeginTransaction();
+                        //_cHoaDon.SqlBeginTransaction();
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
@@ -210,8 +210,8 @@ namespace ThuTien.GUI.Quay
                                 if (!_cHoaDon.XoaDangNgan("Quay", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
                                 {
                                     //_cHoaDon.SqlRollbackTransaction();
-                                    //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    //return;
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
                                 }
                             }
                         }
@@ -223,19 +223,19 @@ namespace ThuTien.GUI.Quay
                                     if (!_cHoaDon.XoaDangNgan("Quay", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
                                     {
                                         //_cHoaDon.SqlRollbackTransaction();
-                                        //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        //return;
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
                                     }
                                 }
                             }
 
-                        _cHoaDon.SqlCommitTransaction();
+                        //_cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        _cHoaDon.SqlRollbackTransaction();
+                        //_cHoaDon.SqlRollbackTransaction();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 

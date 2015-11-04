@@ -115,22 +115,22 @@ namespace ThuTien.GUI.Doi
             {
                 try
                 {
-                    _cHoaDon.SqlBeginTransaction();
+                    //_cHoaDon.SqlBeginTransaction();
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
                         if (!_cHoaDon.XoaDangNgan(item.Cells["SoHoaDon"].Value.ToString()))
                         {
-                            _cHoaDon.SqlRollbackTransaction();
+                            //_cHoaDon.SqlRollbackTransaction();
                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
-                    _cHoaDon.SqlCommitTransaction();
+                    //_cHoaDon.SqlCommitTransaction();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
                 {
-                    _cHoaDon.SqlRollbackTransaction();
+                    //_cHoaDon.SqlRollbackTransaction();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

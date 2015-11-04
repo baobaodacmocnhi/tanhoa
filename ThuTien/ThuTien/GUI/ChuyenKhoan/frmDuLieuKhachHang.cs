@@ -76,6 +76,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 HOADON hoadon = _cHoaDon.GetMoiNhat(item.DanhBo);
                 dr["HoTen"] = hoadon.TENKH;
                 dr["MLT"] = hoadon.MALOTRINH;
+                if (hoadon.MaNV_HanhThu == null)
+                {
+                    hoadon = _cHoaDon.GetMoiNhi(item.DanhBo);
+                }
                 dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
                 dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
                 ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);

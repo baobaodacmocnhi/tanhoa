@@ -191,8 +191,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                             else
                             {
                                 //_cHoaDon.SqlRollbackTransaction();
-                                //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //return;
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
                         //_cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
@@ -235,8 +235,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 else
                                 {
                                 //    _cHoaDon.SqlRollbackTransaction();
-                                //    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //    return;
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
                                 }
                             }
                         }
@@ -257,8 +257,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     else
                                     {
                                         //_cHoaDon.SqlRollbackTransaction();
-                                        //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        //return;
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
                                     }
                                 }
                             }

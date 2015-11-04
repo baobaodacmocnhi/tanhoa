@@ -265,6 +265,30 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    if (tabControl.SelectedTab.Name == "tabTuGia")
+                    {
+                        foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                        {
+                            if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString()).Date != DateTime.Now.Date)
+                            {
+                                MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    }
+                    else
+                        if (tabControl.SelectedTab.Name == "tabCoQuan")
+                        {
+                            foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                            {
+                                if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_CQ"].Value.ToString()).Date != DateTime.Now.Date)
+                                {
+                                    MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+
                     try
                     {
                         //_cHoaDon.SqlBeginTransaction();
@@ -999,22 +1023,26 @@ namespace ThuTien.GUI.ChuyenKhoan
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvTienDu.Rows)
             {
-                HOADON hoadon = _cHoaDon.GetTonMoiNhat(item.Cells["DanhBo_TienDu"].Value.ToString());
-                if (hoadon != null && hoadon.DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) < hoadon.TONGCONG)
+                List<HOADON> lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_TienDu"].Value.ToString());
+
+                if (lstHD!=null && lstHD[0].DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) < lstHD.Sum(itemHD=>itemHD.TONGCONG))
                 {
-                    DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
-                    dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["HoTen"] = hoadon.TENKH;
-                    dr["Ky"] = hoadon.KY + "/" + hoadon.NAM;
-                    dr["MLT"] = hoadon.MALOTRINH;
-                    dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
-                    dr["TongCong"] = hoadon.TONGCONG;
-                    if (hoadon.MaNV_HanhThu != null)
+                    foreach (HOADON itemHD in lstHD)
                     {
-                        dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
-                        dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
+                        DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
+                        dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = itemHD.TENKH;
+                        dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
+                        dr["MLT"] = itemHD.MALOTRINH;
+                        dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
+                        dr["TongCong"] = itemHD.TONGCONG;
+                        if (lstHD[0].MaNV_HanhThu != null)
+                        {
+                            dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                            dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                        }
+                        ds.Tables["TienDuKhachHang"].Rows.Add(dr);
                     }
-                    ds.Tables["TienDuKhachHang"].Rows.Add(dr);
                 }
             }
             rptTienDuKhachHang rpt = new rptTienDuKhachHang();
@@ -1028,22 +1056,26 @@ namespace ThuTien.GUI.ChuyenKhoan
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvTienDu.Rows)
             {
-                HOADON hoadon = _cHoaDon.GetTonMoiNhat(item.Cells["DanhBo_TienDu"].Value.ToString());
-                if (hoadon != null && hoadon.DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= hoadon.TONGCONG)
+                List<HOADON> lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_TienDu"].Value.ToString());
+
+                if (lstHD != null && lstHD[0].DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                 {
-                    DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
-                    dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["HoTen"] = hoadon.TENKH;
-                    dr["Ky"] = hoadon.KY + "/" + hoadon.NAM;
-                    dr["MLT"] = hoadon.MALOTRINH;
-                    dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
-                    dr["TongCong"] = hoadon.TONGCONG;
-                    if (hoadon.MaNV_HanhThu != null)
+                    foreach (HOADON itemHD in lstHD)
                     {
-                        dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
-                        dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
+                        DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
+                        dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = itemHD.TENKH;
+                        dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
+                        dr["MLT"] = itemHD.MALOTRINH;
+                        dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
+                        dr["TongCong"] = itemHD.TONGCONG;
+                        if (lstHD[0].MaNV_HanhThu != null)
+                        {
+                            dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                            dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                        }
+                        ds.Tables["TienDuKhachHang"].Rows.Add(dr);
                     }
-                    ds.Tables["TienDuKhachHang"].Rows.Add(dr);
                 }
             }
             rptTienDuKhachHang rpt = new rptTienDuKhachHang();

@@ -175,6 +175,30 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    if (tabControl.SelectedTab.Name == "tabTuGia")
+                    {
+                        foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                        {
+                            if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_TG"].Value.ToString()).Date != DateTime.Now.Date)
+                            {
+                                MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    }
+                    else
+                        if (tabControl.SelectedTab.Name == "tabCoQuan")
+                        {
+                            foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                            {
+                                if (_cHoaDon.GetNgayGiaiTrach(item.Cells["SoHoaDon_CQ"].Value.ToString()).Date != DateTime.Now.Date)
+                                {
+                                    MessageBox.Show("Chỉ được Điều Chỉnh Đăng Ngân trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+
                     try
                     {
                         if (tabControl.SelectedTab.Name == "tabTuGia")
