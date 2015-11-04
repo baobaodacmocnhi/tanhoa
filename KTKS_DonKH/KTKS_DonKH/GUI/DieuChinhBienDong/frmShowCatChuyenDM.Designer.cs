@@ -55,6 +55,7 @@
             this.cmbChiNhanh_Nhan = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -157,7 +158,6 @@
             // 
             this.txtDiaChi_Cat.Location = new System.Drawing.Point(143, 120);
             this.txtDiaChi_Cat.Name = "txtDiaChi_Cat";
-            this.txtDiaChi_Cat.ReadOnly = true;
             this.txtDiaChi_Cat.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChi_Cat.TabIndex = 7;
             // 
@@ -174,7 +174,6 @@
             // 
             this.txtHoTen_Cat.Location = new System.Drawing.Point(143, 89);
             this.txtHoTen_Cat.Name = "txtHoTen_Cat";
-            this.txtHoTen_Cat.ReadOnly = true;
             this.txtHoTen_Cat.Size = new System.Drawing.Size(290, 25);
             this.txtHoTen_Cat.TabIndex = 5;
             // 
@@ -319,12 +318,26 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
+            // btnSua
+            // 
+            this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(464, 274);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(65, 35);
+            this.btnSua.TabIndex = 86;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // frmShowCatChuyenDM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(907, 322);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -372,5 +385,6 @@
         private System.Windows.Forms.ComboBox cmbChiNhanh_Nhan;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnSua;
     }
 }

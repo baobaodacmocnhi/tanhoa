@@ -102,5 +102,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
             }
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (_lichsuchungtu != null)
+            {
+                _lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text;
+                _lichsuchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text;
+                ///
+                _lichsuchungtu.NhanNK_HoTen = txtHoTen_Nhan.Text;
+                _lichsuchungtu.NhanNK_DiaChi = txtDiaChi_Nhan.Text;
+
+                if(_cChungTu.SuaLichSuChungTu(_lichsuchungtu))
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

@@ -1589,6 +1589,70 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public DataTable LoadDSCTCTDB_Ton(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.NgayXuLy==null && itemCTCTDB.SoPhieu==null && itemCTCTDB.CreateDate.Value.Date == TuNgay.Date
+                                select new
+                                {
+                                    itemCTCTDB.MaCTCTDB,
+                                    itemCTCTDB.CreateDate,
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTCTDB_Ton(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCTDB in db.CTCTDBs
+                                where itemCTCTDB.NgayXuLy == null && itemCTCTDB.SoPhieu == null && itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value.Date <= DenNgay.Date
+                                select new
+                                {
+                                    itemCTCTDB.MaCTCTDB,
+                                    itemCTCTDB.CreateDate,
+                                    itemCTCTDB.DanhBo,
+                                    itemCTCTDB.HoTen,
+                                    itemCTCTDB.DiaChi,
+                                    itemCTCTDB.LyDo,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Lấy Danh Sách Chi Tiết Cắt Tạm Danh Bộ Tổ Xử Lý
         /// </summary>
@@ -2170,6 +2234,70 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.TroNgai,
                                     itemCTCHDB.NguoiKy,
                                     itemCTCHDB.NoiDungXuLy,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTCHDB_Ton(DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCHDB in db.CTCHDBs
+                                where itemCTCHDB.NgayXuLy == null && itemCTCHDB.SoPhieu == null && itemCTCHDB.CreateDate.Value.Date == TuNgay.Date
+                                select new
+                                {
+                                    itemCTCHDB.MaCTCHDB,
+                                    itemCTCHDB.CreateDate,
+                                    itemCTCHDB.DanhBo,
+                                    itemCTCHDB.HoTen,
+                                    itemCTCHDB.DiaChi,
+                                    itemCTCHDB.LyDo,
+                                };
+                    return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCTCHDB_Ton(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_Xem || CTaiKhoan.RoleCHDB_CapNhat)
+                {
+                    var query = from itemCTCHDB in db.CTCHDBs
+                                where itemCTCHDB.NgayXuLy == null && itemCTCHDB.SoPhieu == null && itemCTCHDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCHDB.CreateDate.Value.Date <= DenNgay.Date
+                                select new
+                                {
+                                    itemCTCHDB.MaCTCHDB,
+                                    itemCTCHDB.CreateDate,
+                                    itemCTCHDB.DanhBo,
+                                    itemCTCHDB.HoTen,
+                                    itemCTCHDB.DiaChi,
+                                    itemCTCHDB.LyDo,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }

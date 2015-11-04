@@ -275,25 +275,28 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     _ctdcbd.ThongTin = ThongTin;
                     _ctdcbd.HieuLucKy = txtHieuLucKy.Text.Trim();
 
+                    if (_ctdcbd.DMGiuNguyen != chkDMGiuNguyen.Checked || _ctdcbd.GiaHan != chkGiaHan.Checked)
+                    {
+                        if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
+                        {
+                            _ctdcbd.ChucVu = null;
+                            _ctdcbd.NguoiKy = null;
+                            _ctdcbd.PhieuDuocKy = false;
+                        }
+                        else
+                        {
+                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                _ctdcbd.ChucVu = "GIÁM ĐỐC";
+                            else
+                                _ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            _ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            _ctdcbd.PhieuDuocKy = true;
+                        }
+                    }
+
                     _ctdcbd.DMGiuNguyen = chkDMGiuNguyen.Checked;
                     _ctdcbd.GiaHan = chkGiaHan.Checked;
-
-                    if (chkDMGiuNguyen.Checked || chkGiaHan.Checked)
-                    {
-                        _ctdcbd.ChucVu = null;
-                        _ctdcbd.NguoiKy = null;
-                        _ctdcbd.PhieuDuocKy = false;
-                    }
-                    else
-                    {
-                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            _ctdcbd.ChucVu = "GIÁM ĐỐC";
-                        else
-                            _ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        _ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                        _ctdcbd.PhieuDuocKy = true;
-                    }
 
                     if (_cDCBD.SuaCTDCBD(_ctdcbd))
                         MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

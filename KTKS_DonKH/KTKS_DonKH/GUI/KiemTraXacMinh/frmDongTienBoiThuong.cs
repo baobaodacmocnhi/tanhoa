@@ -74,12 +74,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             if (ctktxm.DongTienBoiThuong)
             {
                 chkDongTienBoiThuong.Checked = true;
+                cmbNoiDung.SelectedItem = ctktxm.NoiDung;
                 dateDongTien.Value = ctktxm.NgayDongTien.Value;
                 txtSoTien.Text = ctktxm.SoTien.ToString();
             }
             else
             {
                 chkDongTienBoiThuong.Checked = false;
+                cmbNoiDung.SelectedIndex = -1;
                 dateDongTien.Value = DateTime.Now;
                 txtSoTien.Text = "";
             }
@@ -122,6 +124,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             dateLapBangGia.Value = DateTime.Now;
             ///
             chkDongTienBoiThuong.Checked = false;
+            cmbNoiDung.SelectedIndex = -1;
             dateDongTien.Value = DateTime.Now;
             txtSoTien.Text = "";
             ///
@@ -168,13 +171,14 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         if (chkDongTienBoiThuong.Checked)
                         {
                             ctktxm.DongTienBoiThuong = true;
+                            ctktxm.NoiDung = cmbNoiDung.SelectedItem.ToString();
                             ctktxm.NgayDongTien = dateDongTien.Value;
-                            if (!string.IsNullOrEmpty(txtSoTien.Text.Trim()))
-                                ctktxm.SoTien = int.Parse(txtSoTien.Text.Trim());
+                            ctktxm.SoTien = txtSoTien.Text.Trim();
                         }
                         else
                         {
                             ctktxm.DongTienBoiThuong = false;
+                            ctktxm.NoiDung = null;
                             ctktxm.NgayDongTien = null;
                             ctktxm.SoTien = null;
                         }

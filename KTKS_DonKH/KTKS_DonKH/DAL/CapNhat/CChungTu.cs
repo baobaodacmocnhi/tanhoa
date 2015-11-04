@@ -3862,6 +3862,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                 }
 
                 LichSuChungTu lichsuchungtuCN = getLSCTbyID(lichsuchungtu.MaLSCT);
+                lichsuchungtuCN.NhanNK_HoTen = lichsuchungtu.NhanNK_HoTen;
+                lichsuchungtuCN.NhanNK_DiaChi = lichsuchungtu.NhanNK_DiaChi;
                 lichsuchungtuCN.CatNK_MaCN = lichsuchungtu.CatNK_MaCN;
                 lichsuchungtuCN.CatNK_DanhBo = lichsuchungtu.CatNK_DanhBo;
                 lichsuchungtuCN.CatNK_HoTen = lichsuchungtu.CatNK_HoTen;

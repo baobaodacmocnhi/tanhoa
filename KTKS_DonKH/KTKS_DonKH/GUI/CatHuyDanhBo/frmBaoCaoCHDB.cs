@@ -305,6 +305,67 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 rpt.SetDataSource(dsBaoCao);
                 crystalReportViewer1.ReportSource = rpt;
             }
+
+            if (radDSCTCTTon.Checked)
+            {
+                DataTable dtCTDB = new DataTable();
+                DataTable dtCHDB = new DataTable();
+
+                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
+                {
+                    dtCTDB = _cCHDB.LoadDSCTCTDB_Ton(dateTu.Value, dateDen.Value);
+                    dtCHDB = _cCHDB.LoadDSCTCHDB_Ton(dateTu.Value, dateDen.Value);
+                }
+                else
+                    if (!string.IsNullOrEmpty(_tuNgay))
+                    {
+                        dtCTDB = _cCHDB.LoadDSCTCTDB_Ton(dateTu.Value);
+                        dtCHDB = _cCHDB.LoadDSCTCHDB_Ton(dateTu.Value);
+                    }
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+                foreach (DataRow itemRow in dtCTDB.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["Loai"] = "Cắt Tạm Danh Bộ";
+                    dr["SoPhieu"] = itemRow["MaCTCTDB"].ToString().Insert(itemRow["MaCTCTDB"].ToString().Length-2,"-");
+                    dr["NgayLap"] = itemRow["CreateDate"];
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["LyDo"] = itemRow["LyDo"];
+
+                    dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                }
+
+                foreach (DataRow itemRow in dtCHDB.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["Loai"] = "Cắt Hủy Danh Bộ";
+                    dr["SoPhieu"] = itemRow["MaCTCHDB"].ToString().Insert(itemRow["MaCTCHDB"].ToString().Length - 2, "-");
+                    dr["NgayLap"] = itemRow["CreateDate"];
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["LyDo"] = itemRow["LyDo"];
+
+                    dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                }
+                //dateTu.Value = DateTime.Now;
+                //dateDen.Value = DateTime.Now;
+                //_tuNgay = _denNgay = "";
+
+                rptDSCHDB rpt = new rptDSCHDB();
+                rpt.SetDataSource(dsBaoCao);
+                crystalReportViewer1.ReportSource = rpt;
+            }
         }
     }
 }

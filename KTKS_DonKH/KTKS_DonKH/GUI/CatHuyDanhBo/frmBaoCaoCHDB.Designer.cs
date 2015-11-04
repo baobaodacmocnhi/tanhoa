@@ -40,6 +40,7 @@
             this.radDSYCCHDB = new System.Windows.Forms.RadioButton();
             this.radDSYCCHDBNutBit = new System.Windows.Forms.RadioButton();
             this.radDSCTDBtheocamket = new System.Windows.Forms.RadioButton();
+            this.radDSCTCTTon = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +59,7 @@
             // 
             this.radThongKeSoLuong.AutoSize = true;
             this.radThongKeSoLuong.Checked = true;
-            this.radThongKeSoLuong.Location = new System.Drawing.Point(71, 7);
+            this.radThongKeSoLuong.Location = new System.Drawing.Point(12, 12);
             this.radThongKeSoLuong.Name = "radThongKeSoLuong";
             this.radThongKeSoLuong.Size = new System.Drawing.Size(147, 21);
             this.radThongKeSoLuong.TabIndex = 29;
@@ -109,7 +110,7 @@
             // 
             this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
             this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.Location = new System.Drawing.Point(733, 2);
+            this.btnBaoCao.Location = new System.Drawing.Point(804, 2);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
             this.btnBaoCao.TabIndex = 28;
@@ -132,7 +133,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(535, 2);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(606, 2);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
             this.panel_KhoangThoiGian.TabIndex = 27;
@@ -140,7 +141,7 @@
             // radDSYCCHDB
             // 
             this.radDSYCCHDB.AutoSize = true;
-            this.radDSYCCHDB.Location = new System.Drawing.Point(71, 34);
+            this.radDSYCCHDB.Location = new System.Drawing.Point(12, 39);
             this.radDSYCCHDB.Name = "radDSYCCHDB";
             this.radDSYCCHDB.Size = new System.Drawing.Size(193, 21);
             this.radDSYCCHDB.TabIndex = 30;
@@ -150,7 +151,7 @@
             // radDSYCCHDBNutBit
             // 
             this.radDSYCCHDBNutBit.AutoSize = true;
-            this.radDSYCCHDBNutBit.Location = new System.Drawing.Point(224, 7);
+            this.radDSYCCHDBNutBit.Location = new System.Drawing.Point(165, 12);
             this.radDSYCCHDBNutBit.Name = "radDSYCCHDBNutBit";
             this.radDSYCCHDBNutBit.Size = new System.Drawing.Size(250, 21);
             this.radDSYCCHDBNutBit.TabIndex = 31;
@@ -160,12 +161,22 @@
             // radDSCTDBtheocamket
             // 
             this.radDSCTDBtheocamket.AutoSize = true;
-            this.radDSCTDBtheocamket.Location = new System.Drawing.Point(270, 34);
+            this.radDSCTDBtheocamket.Location = new System.Drawing.Point(211, 39);
             this.radDSCTDBtheocamket.Name = "radDSCTDBtheocamket";
             this.radDSCTDBtheocamket.Size = new System.Drawing.Size(215, 21);
             this.radDSCTDBtheocamket.TabIndex = 32;
             this.radDSCTDBtheocamket.Text = "Danh Sách CTDB theo cam kết";
             this.radDSCTDBtheocamket.UseVisualStyleBackColor = true;
+            // 
+            // radDSCTCTTon
+            // 
+            this.radDSCTCTTon.AutoSize = true;
+            this.radDSCTCTTon.Location = new System.Drawing.Point(421, 12);
+            this.radDSCTCTTon.Name = "radDSCTCTTon";
+            this.radDSCTCTTon.Size = new System.Drawing.Size(166, 21);
+            this.radDSCTCTTon.TabIndex = 33;
+            this.radDSCTCTTon.Text = "Danh Sách CT-CH Tồn";
+            this.radDSCTCTTon.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoCHDB
             // 
@@ -173,6 +184,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.radDSCTCTTon);
             this.Controls.Add(this.radDSCTDBtheocamket);
             this.Controls.Add(this.radDSYCCHDBNutBit);
             this.Controls.Add(this.radDSYCCHDB);
@@ -207,6 +219,7 @@
         private System.Windows.Forms.RadioButton radDSYCCHDB;
         private System.Windows.Forms.RadioButton radDSYCCHDBNutBit;
         private System.Windows.Forms.RadioButton radDSCTDBtheocamket;
+        private System.Windows.Forms.RadioButton radDSCTCTTon;
 
     }
 }

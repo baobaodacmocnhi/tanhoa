@@ -219,6 +219,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                                     LichSuChungTu lichsuchungtu = new LichSuChungTu();
                                     lichsuchungtu.MaLSCT = _lichsuchungtu.MaLSCT;
+                                    lichsuchungtu.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
+                                    lichsuchungtu.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
                                     lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());
                                     lichsuchungtu.CatNK_DanhBo = txtDanhBo_Cat.Text.Trim();
                                     lichsuchungtu.CatNK_HoTen = txtHoTen_Cat.Text.Trim();
