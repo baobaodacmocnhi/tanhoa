@@ -77,7 +77,7 @@ namespace ThuTien.GUI.DongNuoc
                         txtChiSoDN.Text = _kqdongnuoc.ChiSoDN.Value.ToString();
                     txtHieu.Text = _kqdongnuoc.Hieu;
                     if (_kqdongnuoc.Co != null)
-                    txtCo.Text = _kqdongnuoc.Co.Value.ToString();
+                        txtCo.Text = _kqdongnuoc.Co.Value.ToString();
                     txtSoThan.Text = _kqdongnuoc.SoThan;
                     cmbChiMatSo.SelectedItem = _kqdongnuoc.ChiMatSo;
                     cmbChiKhoaGoc.SelectedItem = _kqdongnuoc.ChiKhoaGoc;

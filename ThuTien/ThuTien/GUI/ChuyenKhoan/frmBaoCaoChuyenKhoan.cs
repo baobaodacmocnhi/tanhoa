@@ -694,113 +694,127 @@ namespace ThuTien.GUI.ChuyenKhoan
             head.RowHeight = 50;
             head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
+            long TonDau=_cTienDu.GetTongTienTon(dateGiaiTrach.Value);
+
             Microsoft.Office.Interop.Excel.Range head2 = oSheet.get_Range("A2", "M2");
             head2.MergeCells = true;
-            head2.Value2 = "Tồn đầu ngày: " + _cTienDu.GetTongTienTon(dateGiaiTrach.Value);
+            head2.Value2 = "Tồn năm " + dateGiaiTrach.Value.ToString("yyyy") + ": " + TonDau;
             head2.Font.Bold = true;
             head2.Font.Name = "Times New Roman";
 
+            Microsoft.Office.Interop.Excel.Range head3 = oSheet.get_Range("A3", "M3");
+            head3.MergeCells = true;
+            head3.Value2 = "A. Tồn lũy kế đầu ngày: " + TonDau;
+            //head3.Font.Bold = true;
+            head3.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range head4 = oSheet.get_Range("A4", "M4");
+            head4.MergeCells = true;
+            head4.Value2 = "B. Tình hình phát sinh, giải trách của chứng từ ngày " + dateGiaiTrach.Value.AddDays(-1).ToString("dd/MM/yyyy") + ":";
+            //head4.Font.Bold = true;
+            head4.Font.Name = "Times New Roman";
+
             // Tạo tiêu đề cột 
-            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A3", "A3");
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A5", "A5");
             cl1.Value2 = "STT";
             cl1.ColumnWidth = 5;
             cl1.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl1.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B3", "B3");
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B5", "B5");
             cl2.Value2 = "TÊN KHÁCH HÀNG";
             cl2.ColumnWidth = 20;
             cl2.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl2.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C3", "C3");
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C5", "C5");
             cl3.Value2 = "DANH BỘ";
             cl3.ColumnWidth = 15;
             cl3.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl3.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D3", "E3");
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D5", "E5");
             cl4.MergeCells = true;
             cl4.Value2 = "KHÁCH HÀNG CK";
             cl4.ColumnWidth = 20;
             cl4.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl4.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl4a = oSheet.get_Range("D4", "D4");
+            Microsoft.Office.Interop.Excel.Range cl4a = oSheet.get_Range("D6", "D6");
             cl4a.Value2 = "PT";
             cl4a.ColumnWidth = 10;
             cl4a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl4a.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl4b = oSheet.get_Range("E4", "E4");
+            Microsoft.Office.Interop.Excel.Range cl4b = oSheet.get_Range("E6", "E6");
             cl4b.Value2 = "SỐ TIỀN";
             cl4b.ColumnWidth = 10;
             cl4b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl4b.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("F3", "M3");
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("F5", "M5");
             cl5.MergeCells = true;
             cl5.Value2 = "GIẢI TRÁCH";
             cl5.ColumnWidth = 70;
             cl5.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5a = oSheet.get_Range("F4", "F4");
+            Microsoft.Office.Interop.Excel.Range cl5a = oSheet.get_Range("F6", "F6");
             cl5a.Value2 = "KỲ";
             cl5a.ColumnWidth = 5;
             cl5a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5a.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5b = oSheet.get_Range("G4", "G4");
+            Microsoft.Office.Interop.Excel.Range cl5b = oSheet.get_Range("G6", "G6");
             cl5b.Value2 = "NGÀY BK";
             cl5b.ColumnWidth = 10;
             cl5b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5b.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5c = oSheet.get_Range("H4", "H4");
+            Microsoft.Office.Interop.Excel.Range cl5c = oSheet.get_Range("H6", "H6");
             cl5c.Value2 = "PT";
             cl5c.ColumnWidth = 10;
             cl5c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5c.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5d = oSheet.get_Range("I4", "I4");
+            Microsoft.Office.Interop.Excel.Range cl5d = oSheet.get_Range("I6", "I6");
             cl5d.Value2 = "TN";
             cl5d.ColumnWidth = 10;
             cl5d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5d.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5e = oSheet.get_Range("J4", "J4");
+            Microsoft.Office.Interop.Excel.Range cl5e = oSheet.get_Range("J6", "J6");
             cl5e.Value2 = "THUẾ";
             cl5e.ColumnWidth = 10;
             cl5e.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5e.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5f = oSheet.get_Range("K4", "K4");
+            Microsoft.Office.Interop.Excel.Range cl5f = oSheet.get_Range("K6", "K6");
             cl5f.Value2 = "PHÍ BVMT";
             cl5f.ColumnWidth = 10;
             cl5f.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5f.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5g = oSheet.get_Range("L4", "L4");
+            Microsoft.Office.Interop.Excel.Range cl5g = oSheet.get_Range("L6", "L6");
             cl5g.Value2 = "CỘNG GT";
             cl5g.ColumnWidth = 10;
             cl5g.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5g.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl5h = oSheet.get_Range("M4", "M4");
+            Microsoft.Office.Interop.Excel.Range cl5h = oSheet.get_Range("M6", "M6");
             cl5h.Value2 = "LỆCH";
             cl5h.ColumnWidth = 10;
             cl5h.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl5h.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("N3", "N3");
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("N5", "N5");
             cl6.MergeCells = true;
             cl6.Value2 = "LOẠI";
             cl6.ColumnWidth = 5;
             cl6.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl6.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("O3", "O3");
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("O5", "O5");
             cl7.MergeCells = true;
             cl7.Value2 = "TRÙNG";
             cl7.ColumnWidth = 5;
@@ -842,7 +856,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
 
             //Thiết lập vùng điền dữ liệu
-            int rowStart = 5;
+            int rowStart = 7;
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;

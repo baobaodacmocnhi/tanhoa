@@ -171,7 +171,7 @@ namespace ThuTien.GUI.Quay
                 }
                 try
                 {
-                    _cHoaDon.SqlBeginTransaction();
+                    //_cHoaDon.SqlBeginTransaction();
                     foreach (ListViewItem item in lstHD.Items)
                         if (_cHoaDon.DangNgan("Quay", item.Text, CNguoiDung.MaND))
                         {
@@ -186,17 +186,17 @@ namespace ThuTien.GUI.Quay
                         else
                         {
                             //_cHoaDon.SqlRollbackTransaction();
-                            //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //return;
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
-                    _cHoaDon.SqlCommitTransaction();
+                    //_cHoaDon.SqlCommitTransaction();
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
                 {
-                    _cHoaDon.SqlRollbackTransaction();
+                    //_cHoaDon.SqlRollbackTransaction();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

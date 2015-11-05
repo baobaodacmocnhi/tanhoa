@@ -446,9 +446,9 @@
             // 
             this.btnInPhieuTieuThu.Location = new System.Drawing.Point(423, 51);
             this.btnInPhieuTieuThu.Name = "btnInPhieuTieuThu";
-            this.btnInPhieuTieuThu.Size = new System.Drawing.Size(100, 23);
+            this.btnInPhieuTieuThu.Size = new System.Drawing.Size(115, 23);
             this.btnInPhieuTieuThu.TabIndex = 10;
-            this.btnInPhieuTieuThu.Text = "In Phiếu Tiêu Thụ";
+            this.btnInPhieuTieuThu.Text = "In Phiếu Đăng Ngân";
             this.btnInPhieuTieuThu.UseVisualStyleBackColor = true;
             this.btnInPhieuTieuThu.Click += new System.EventHandler(this.btnInPhieuTieuThu_Click);
             // 

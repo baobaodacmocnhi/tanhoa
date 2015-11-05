@@ -38,6 +38,10 @@ namespace ThuTien.GUI.Doi
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            cmbNam.DataSource = _cHoaDon.GetNam();
+            cmbNam.DisplayMember = "Nam";
+            cmbNam.ValueMember = "Nam";
         }
 
         public void LoadDataGridView()
@@ -88,6 +92,14 @@ namespace ThuTien.GUI.Doi
             using (SolidBrush b = new SolidBrush(dgvHoaDon.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (cmbKy.SelectedIndex != -1)
+            {
+
             }
         }
 

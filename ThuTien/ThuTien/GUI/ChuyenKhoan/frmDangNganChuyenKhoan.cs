@@ -1092,16 +1092,21 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     foreach (DataGridViewRow item in dgvTienDu.Rows)
                     {
-                        HOADON hoadon = _cHoaDon.GetTonMoiNhat(item.Cells["DanhBo_TienDu"].Value.ToString());
-                        if (hoadon != null && hoadon.DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= hoadon.TONGCONG && !_cTamThu.CheckExist(hoadon.SOHOADON))
+                        List<HOADON> lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_TienDu"].Value.ToString());
+                        if (lstHD != null && lstHD[0].DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                         {
-                            TAMTHU tamthu = new TAMTHU();
-                            tamthu.DANHBA = hoadon.DANHBA;
-                            tamthu.FK_HOADON = hoadon.ID_HOADON;
-                            tamthu.SoHoaDon = hoadon.SOHOADON;
-                            tamthu.ChuyenKhoan = true;
-                            tamthu.TienDu = true;
-                            _cTamThu.Them(tamthu);
+                            foreach (HOADON itemHD in lstHD)
+                                if (!_cTamThu.CheckExist(itemHD.SOHOADON))
+                                {
+                                    TAMTHU tamthu = new TAMTHU();
+                                    tamthu.DANHBA = itemHD.DANHBA;
+                                    tamthu.FK_HOADON = itemHD.ID_HOADON;
+                                    tamthu.SoHoaDon = itemHD.SOHOADON;
+                                    tamthu.ChuyenKhoan = true;
+                                    tamthu.TienDu = true;
+                                    _cTamThu.Them(tamthu);
+                                }
+
                         }
                     }
                 }
