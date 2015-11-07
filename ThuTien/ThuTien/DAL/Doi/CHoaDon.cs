@@ -2606,6 +2606,126 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetBaoCaoTongHop_Doi(string Loai, int Nam, int Ky, DateTime NgayGiaiTrachNow, DateTime NgayGiaiTrachOld)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "declare @NgayGiaiTrachNow date;"
+                        + " declare @NgayGiaiTrachOld date;"
+                        + " declare @nam int;"
+                        + " declare @ky int;"
+                        + " set @nam=" + Nam + ";"
+                        + " set @ky=" + Ky + ";"
+                        + " set @NgayGiaiTrachNow='" + NgayGiaiTrachNow.ToString("yyyy-MM-dd") + "';"
+                        + " set @NgayGiaiTrachOld='" + NgayGiaiTrachOld.ToString("yyyy-MM-dd") + "';"
+                        + " select 0 as MaTo,N'Đội' as TenTo,'TG' as Loai,MAX(HDTonCu)as HDTonCu,MAX(GTTonCu)as GTTonCu,MAX(HDChuanThu)as HDChuanThu,MAX(GTChuanThu)as GTChuanThu,MAX(HDTonThu)as HDTonThu,MAX(GTTonThu)as GTTonThu,MAX(HDTongTon)as HDTongTon,MAX(GTTongTon)as GTTongTon from"
+                        + " ((select COUNT(ID_HOADON) as HDTonCu,SUM(TONGCONG) as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld)) and GB>=11 and GB<=20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,COUNT(ID_HOADON) as HDChuanThu,SUM(TONGCONG) as GTChuanThu,0 as HDTonThu,0 as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where NAM=@nam and KY=@ky and GB>=11 and GB<=20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,COUNT(ID_HOADON) as HDTonThu,SUM(TONGCONG) as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where NAM=@nam and KY=@ky and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow)) and GB>=11 and GB<=20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
+                        + " from HOADON where (NAM<@nam or (NAM=@nam and KY<=@ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow)) and GB>=11 and GB<=20))t1";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "declare @NgayGiaiTrachNow date;"
+                        + " declare @NgayGiaiTrachOld date;"
+                        + " declare @nam int;"
+                        + " declare @ky int;"
+                        + " set @nam=" + Nam + ";"
+                        + " set @ky=" + Ky + ";"
+                        + " set @NgayGiaiTrachNow='" + NgayGiaiTrachNow.ToString("yyyy-MM-dd") + "';"
+                        + " set @NgayGiaiTrachOld='" + NgayGiaiTrachOld.ToString("yyyy-MM-dd") + "';"
+                        + " select 0 as MaTo,N'Đội' as TenTo,'CQ' as Loai,MAX(HDTonCu)as HDTonCu,MAX(GTTonCu)as GTTonCu,MAX(HDChuanThu)as HDChuanThu,MAX(GTChuanThu)as GTChuanThu,MAX(HDTonThu)as HDTonThu,MAX(GTTonThu)as GTTonThu,MAX(HDTongTon)as HDTongTon,MAX(GTTongTon)as GTTongTon from"
+                        + " ((select COUNT(ID_HOADON) as HDTonCu,SUM(TONGCONG) as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld)) and GB>20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,COUNT(ID_HOADON) as HDChuanThu,SUM(TONGCONG) as GTChuanThu,0 as HDTonThu,0 as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where NAM=@nam and KY=@ky and GB>20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,COUNT(ID_HOADON) as HDTonThu,SUM(TONGCONG) as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where NAM=@nam and KY=@ky and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow)) and GB>20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
+                        + " from HOADON where (NAM<@nam or (NAM=@nam and KY<=@ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow)) and GB>20))t1";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
+        public DataTable GetBaoCaoTongHop_To(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrachNow, DateTime NgayGiaiTrachOld)
+        {
+            if (Loai == "TG")
+            {
+                string sql = "declare @NgayGiaiTrachNow date;"
+                        + " declare @NgayGiaiTrachOld date;"
+                        + " declare @nam int;"
+                        + " declare @ky int;"
+                        + " set @nam=" + Nam + ";"
+                        + " set @ky=" + Ky + ";"
+                        + " set @NgayGiaiTrachNow='" + NgayGiaiTrachNow.ToString("yyyy-MM-dd") + "';"
+                        + " set @NgayGiaiTrachOld='" + NgayGiaiTrachOld.ToString("yyyy-MM-dd") + "';"
+                        + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,'TG' as Loai,MAX(HDTonCu)as HDTonCu,MAX(GTTonCu)as GTTonCu,MAX(HDChuanThu)as HDChuanThu,MAX(GTChuanThu)as GTChuanThu,MAX(HDTonThu)as HDTonThu,MAX(GTTonThu)as GTTonThu,MAX(HDTongTon)as HDTongTon,MAX(GTTongTon)as GTTongTon from"
+                        + " ((select COUNT(ID_HOADON) as HDTonCu,SUM(TONGCONG) as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld)) and GB>=11 and GB<=20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,COUNT(ID_HOADON) as HDChuanThu,SUM(TONGCONG) as GTChuanThu,0 as HDTonThu,0 as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and NAM=@nam and KY=@ky and GB>=11 and GB<=20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,COUNT(ID_HOADON) as HDTonThu,SUM(TONGCONG) as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                        + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and NAM=@nam and KY=@ky and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow)) and GB>=11 and GB<=20)"
+                        + " union"
+                        + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
+                        + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow)) and GB>=11 and GB<=20))t1";
+
+                return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    string sql = "declare @NgayGiaiTrachNow date;"
+                                            + " declare @NgayGiaiTrachOld date;"
+                                            + " declare @nam int;"
+                                            + " declare @ky int;"
+                                            + " set @nam=" + Nam + ";"
+                                            + " set @ky=" + Ky + ";"
+                                            + " set @NgayGiaiTrachNow='" + NgayGiaiTrachNow.ToString("yyyy-MM-dd") + "';"
+                                            + " set @NgayGiaiTrachOld='" + NgayGiaiTrachOld.ToString("yyyy-MM-dd") + "';"
+                                            + " select '" + MaTo + "' as MaTo,'" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TenTo + "' as TenTo,'CQ' as Loai,MAX(HDTonCu)as HDTonCu,MAX(GTTonCu)as GTTonCu,MAX(HDChuanThu)as HDChuanThu,MAX(GTChuanThu)as GTChuanThu,MAX(HDTonThu)as HDTonThu,MAX(GTTonThu)as GTTonThu,MAX(HDTongTon)as HDTongTon,MAX(GTTongTon)as GTTongTon from"
+                                            + " ((select COUNT(ID_HOADON) as HDTonCu,SUM(TONGCONG) as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                                            + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                            + " and (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld)) and GB>20)"
+                                            + " union"
+                                            + " (select 0 as HDTonCu,0 as GTTonCu,COUNT(ID_HOADON) as HDChuanThu,SUM(TONGCONG) as GTChuanThu,0 as HDTonThu,0 as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                                            + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                            + " and NAM=@nam and KY=@ky and GB>20)"
+                                            + " union"
+                                            + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,COUNT(ID_HOADON) as HDTonThu,SUM(TONGCONG) as GTTonThu,0 as HDTongTon,0 as GTTongTon"
+                                            + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                            + " and NAM=@nam and KY=@ky and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow)) and GB>20)"
+                                            + " union"
+                                            + " (select 0 as HDTonCu,0 as GTTonCu,0 as HDChuanThu,0 as GTChuanThu,0 as HDTonThu,0 as GTTonThu,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
+                                            + " from HOADON where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                            + " and (NAM<@nam or (NAM=@nam and KY<=@ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow)) and GB>20))t1";
+
+                    return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+                }
+            return null;
+        }
+
         //public DataTable GetChuanThuByNamKy(int MaTo, string loai, int nam, int ky)
         //{
         //    if (loai == "TG")

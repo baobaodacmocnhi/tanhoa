@@ -137,6 +137,12 @@
       <DependentUpon>rptTienDuKhachHang.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\Doi\rptBangTinhTongHop.cs">
+      <DependentUpon>rptBangTinhTongHop.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\Doi\rptBaoCaoTongHop.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -833,6 +839,10 @@
     <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptTienDuKhachHang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTienDuKhachHang.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\Doi\rptBangTinhTongHop.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBangTinhTongHop.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\Doi\rptBaoCaoTongHop.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -360,6 +360,66 @@ namespace ThuTien.DAL.TongHop
             return _db.TT_CTChuyenNoKhoDois.Count(item => item.MaCNKD == MaCNKD);
         }
 
+        public int CountCT(string Loai, int Nam,int Ky)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
+                            join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
+                            where itemHD.GB<=20 && itemCNKD.CreateDate.Value.Year == Nam && itemCNKD.CreateDate.Value.Month == Ky
+                            select new
+                            {
+                                itemCNKD.SoHoaDon,
+                            };
+                return query.Count();
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
+                                join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
+                                where itemHD.GB > 20 && itemCNKD.CreateDate.Value.Year == Nam && itemCNKD.CreateDate.Value.Month == Ky
+                                select new
+                                {
+                                    itemCNKD.SoHoaDon,
+                                };
+                    return query.Count();
+                }
+            return 0;
+        }
+
+        public int CountCT(string Loai,int MaTo, int Nam,int Ky)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
+                            join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
+                            where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                && itemHD.GB <= 20 && itemCNKD.CreateDate.Value.Year == Nam && itemCNKD.CreateDate.Value.Month == Ky
+                            select new
+                            {
+                                itemCNKD.SoHoaDon,
+                            };
+                return query.Count();
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
+                                join itemHD in _db.HOADONs on itemCNKD.SoHoaDon equals itemHD.SOHOADON
+                                where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                    && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                    && itemHD.GB > 20 && itemCNKD.CreateDate.Value.Year == Nam && itemCNKD.CreateDate.Value.Month == Ky
+                                select new
+                                {
+                                    itemCNKD.SoHoaDon,
+                                };
+                    return query.Count();
+                }
+            return 0;
+        }
+
         dbKTKS_DonKHDataContext _dbKTKS_DonKH = new dbKTKS_DonKHDataContext();
 
         public YeuCauCHDB GetYeuCauCHDB(decimal MaYCCHDB)
