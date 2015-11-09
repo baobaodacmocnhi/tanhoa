@@ -1132,7 +1132,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvTienDu_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (dgvTienDu.RowCount > 0 && e.Button == MouseButtons.Left)
+            if (dgvTienDu.RowCount > 0 && e.Button == MouseButtons.Left && dgvTienDu.Columns[e.ColumnIndex].Name != "DienThoai_TienDu")
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {

@@ -41,6 +41,9 @@ namespace ThuTien.GUI.HanhThu
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
+
+            cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+            tabControl.SelectedTab = tabControl.TabPages["tabChuaThu"];
         }
 
         public void LoadDataGridView()

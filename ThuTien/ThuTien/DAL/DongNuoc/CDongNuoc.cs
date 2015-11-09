@@ -298,6 +298,7 @@ namespace ThuTien.DAL.DongNuoc
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         select new
                         {
+                            itemKQ.MaKQDN,
                             itemKQ.MaDN,
                             itemKQ.CreateDate,
                             itemKQ.DanhBo,
@@ -305,6 +306,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.DiaChi,
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
+                            itemKQ.GhiChuTroNgai,
                         };
             return LINQToDataTable(query.GroupBy(item=>item.MaDN).Select(item=>item.First()).ToList());
         }
