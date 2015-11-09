@@ -330,7 +330,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
                     dr["TuNgay"] = _tuNgay;
                     dr["DenNgay"] = _denNgay;
-                    dr["Loai"] = "Cắt Tạm Danh Bộ";
+                    dr["Loai"] = "CẮT TẠM DANH BỘ";
                     dr["SoPhieu"] = itemRow["MaCTCTDB"].ToString().Insert(itemRow["MaCTCTDB"].ToString().Length-2,"-");
                     dr["NgayLap"] = itemRow["CreateDate"];
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
@@ -347,7 +347,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
                     dr["TuNgay"] = _tuNgay;
                     dr["DenNgay"] = _denNgay;
-                    dr["Loai"] = "Cắt Hủy Danh Bộ";
+                    dr["Loai"] = "CẮT HỦY DANH BỘ";
                     dr["SoPhieu"] = itemRow["MaCTCHDB"].ToString().Insert(itemRow["MaCTCHDB"].ToString().Length - 2, "-");
                     dr["NgayLap"] = itemRow["CreateDate"];
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))

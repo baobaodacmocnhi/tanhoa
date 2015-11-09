@@ -846,7 +846,7 @@
             this.chkLapBangGia.TabIndex = 4;
             this.chkLapBangGia.Text = "Lập Bảng Giá";
             this.chkLapBangGia.UseVisualStyleBackColor = true;
-            this.chkLapBangGia.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.chkLapBangGia.CheckedChanged += new System.EventHandler(this.chkLapBangGia_CheckedChanged);
             // 
             // groupBoxLapBangGia
             // 

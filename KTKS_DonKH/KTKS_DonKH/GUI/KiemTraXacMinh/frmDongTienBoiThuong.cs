@@ -218,9 +218,15 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void chkDongTienBoiThuong_CheckedChanged(object sender, EventArgs e)
         {
             if (chkDongTienBoiThuong.Checked)
+            {
+                cmbNoiDung.SelectedIndex = 0;
                 groupBoxDongTienBoiThuong.Enabled = true;
+            }
             else
+            {
+                cmbNoiDung.SelectedIndex = -1;
                 groupBoxDongTienBoiThuong.Enabled = false;
+            }
         }
 
         private void chkChuyenCatHuy_CheckedChanged(object sender, EventArgs e)

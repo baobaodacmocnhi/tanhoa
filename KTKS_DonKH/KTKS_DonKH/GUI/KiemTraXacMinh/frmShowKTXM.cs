@@ -428,7 +428,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void chkLapBangGia_CheckedChanged(object sender, EventArgs e)
         {
             if (chkLapBangGia.Checked)
                 groupBoxLapBangGia.Enabled = true;
@@ -439,9 +439,15 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void chkDongTienBoiThuong_CheckedChanged(object sender, EventArgs e)
         {
             if (chkDongTienBoiThuong.Checked)
+            {
+                cmbNoiDung.SelectedIndex = 0;
                 groupBoxDongTienBoiThuong.Enabled = true;
+            }
             else
+            {
+                cmbNoiDung.SelectedIndex = -1;
                 groupBoxDongTienBoiThuong.Enabled = false;
+            }
         }
 
         private void chkChuyenCatHuy_CheckedChanged(object sender, EventArgs e)
