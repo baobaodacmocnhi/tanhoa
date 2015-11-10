@@ -19,7 +19,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemDV.CreateDate.Date >= FromCreateDate.Date && itemDV.CreateDate.Date <= ToCreateDate.Date && itemDV.TenDichVu.Contains(TenDichVu)
+                        where itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate 
+                        && itemDV.TenDichVu.Contains(TenDichVu)
                         select new
                         {
                             itemDV.SoHoaDon,
@@ -46,9 +47,9 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemDV.CreateDate.Date >= FromCreateDate.Date && itemDV.CreateDate.Date <= ToCreateDate.Date && itemDV.TenDichVu.Contains(TenDichVu)
-                            && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                         select new
                         {
                             itemDV.SoHoaDon,

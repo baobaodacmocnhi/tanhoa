@@ -609,11 +609,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["MaNH"] = item["MaNH"];
                     dr["NganHang"] = item["TenNH"];
 
-                    HOADON hoadon = _cHoaDon.GetMoiNhat(item["DanhBo"].ToString());
-                    if (hoadon.GB > 20)
-                        dr["Loai"] = "CQ";
-                    else
-                        dr["Loai"] = "TG";
+                    if (item["DanhBo"].ToString().Length == 11)
+                    {
+                        HOADON hoadon = _cHoaDon.GetMoiNhat(item["DanhBo"].ToString());
+                        if (hoadon != null)
+                            if (hoadon.GB > 20)
+                                dr["Loai"] = "CQ";
+                            else
+                                dr["Loai"] = "TG";
+                    }
 
                     dt.Rows.Add(dr);
                 }
@@ -820,18 +824,22 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl5h.Font.Name = "Times New Roman";
 
             Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("N5", "N5");
-            cl6.MergeCells = true;
             cl6.Value2 = "LOẠI";
             cl6.ColumnWidth = 5;
             cl6.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             cl6.Font.Name = "Times New Roman";
 
-            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("O5", "O5");
-            cl7.MergeCells = true;
-            cl7.Value2 = "TRÙNG";
-            cl7.ColumnWidth = 5;
-            cl7.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            cl7.Font.Name = "Times New Roman";
+            //Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("O5", "O5");
+            //cl7.Value2 = "TRÙNG";
+            //cl7.ColumnWidth = 5;
+            //cl7.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            //cl7.Font.Name = "Times New Roman";
+
+            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("O5", "O5");
+            cl8.Value2 = "BANK";
+            cl8.ColumnWidth = 10;
+            cl8.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            cl8.Font.Name = "Times New Roman";
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
@@ -859,6 +867,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (!string.IsNullOrEmpty(dr["SoTien"].ToString()) && !string.IsNullOrEmpty(dr["TongCong"].ToString()))
                     arr[i, 12] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
                 arr[i, 13] = dr["Loai"];
+
+                arr[i, 14] = dr["NganHang"];
                 //if (!string.IsNullOrEmpty(dr["TongBK"].ToString()))
                 //    if (int.Parse(dr["TongBK"].ToString()) > 1)
                 //        arr[i, 14] = "X";

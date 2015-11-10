@@ -22,6 +22,7 @@ namespace ThuTien.GUI.Doi
         CTo _cTo = new CTo();
         CHoaDon _cHoaDon = new CHoaDon();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
+        CDCHD _cDCHD = new CDCHD();
 
         public frmBangTongHop()
         {
@@ -114,6 +115,76 @@ namespace ThuTien.GUI.Doi
                 DataTable dtDoi = _cHoaDon.GetBaoCaoTongHop_Doi("TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld);
                 dtDoi.Merge(_cHoaDon.GetBaoCaoTongHop_Doi("CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld));
 
+                /////lấy chuẩn thu của kỳ
+                //DataTable dtDCHD = _cDCHD.GetChuanThu_Doi("TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                //dtDCHD.Merge(_cDCHD.GetChuanThu_Doi("CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                //foreach (DataRow item in dtDCHD.Rows)
+                //{
+                //    DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
+                //    drDoi[0]["GTChuanThu"] = long.Parse(drDoi[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                //}
+
+                DataTable dtDCHDChuanThu = new DataTable();
+                DataTable dtDCHDTonCuKy = new DataTable();
+                DataTable dtDCHDTonTrongKy = new DataTable();
+                DataTable dtDCHDTongTon = new DataTable();
+                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+
+                DataTable dtTo = new DataTable();
+                for (int i = 0; i < lstTo.Count; i++)
+                {
+                    dtTo.Merge(_cHoaDon.GetBaoCaoTongHop_To("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld));
+                    dtTo.Merge(_cHoaDon.GetBaoCaoTongHop_To("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld));
+
+                    dtDCHDChuanThu.Merge(_cDCHD.GetChuanThu("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                    dtDCHDChuanThu.Merge(_cDCHD.GetChuanThu("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+
+                    dtDCHDTonCuKy.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("TG",lstTo[i].MaTo,int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())-1,NgayGiaiTrachOld));
+                    dtDCHDTonCuKy.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()) - 1, NgayGiaiTrachOld));
+                    
+                    dtDCHDTonTrongKy.Merge(_cDCHD.GetChuanThuTonTrongKyDenNgay("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow));
+                    dtDCHDTonTrongKy.Merge(_cDCHD.GetChuanThuTonTrongKyDenNgay("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow));
+                    
+                    dtDCHDTongTon.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow));
+                    dtDCHDTongTon.Merge(_cDCHD.GetChuanThuTonDenKyDenNgay("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow));
+                }
+
+                foreach (DataRow item in dtDCHDChuanThu.Rows)
+                {
+                    DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
+                    drDoi[0]["GTChuanThu"] = long.Parse(drDoi[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+
+                    DataRow[] drTo = dtTo.Select("TenTo='" + item["TenTo"] + "' and Loai='" + item["Loai"] + "'");
+                    drTo[0]["GTChuanThu"] = long.Parse(drTo[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                }
+
+                foreach (DataRow item in dtDCHDTonCuKy.Rows)
+                {
+                    DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
+                    drDoi[0]["GTTonCu"] = long.Parse(drDoi[0]["GTTonCu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+
+                    DataRow[] drTo = dtTo.Select("TenTo='" + item["TenTo"] + "' and Loai='" + item["Loai"] + "'");
+                    drTo[0]["GTTonCu"] = long.Parse(drTo[0]["GTTonCu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                }
+
+                foreach (DataRow item in dtDCHDTonTrongKy.Rows)
+                {
+                    DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
+                    drDoi[0]["GTTonThu"] = long.Parse(drDoi[0]["GTTonThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+
+                    DataRow[] drTo = dtTo.Select("TenTo='" + item["TenTo"] + "' and Loai='" + item["Loai"] + "'");
+                    drTo[0]["GTTonThu"] = long.Parse(drTo[0]["GTTonThu"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                }
+
+                foreach (DataRow item in dtDCHDTongTon.Rows)
+                {
+                    DataRow[] drDoi = dtDoi.Select("Loai='" + item["Loai"] + "'");
+                    drDoi[0]["GTTongTon"] = long.Parse(drDoi[0]["GTTongTon"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+
+                    DataRow[] drTo = dtTo.Select("TenTo='" + item["TenTo"] + "' and Loai='" + item["Loai"] + "'");
+                    drTo[0]["GTTongTon"] = long.Parse(drTo[0]["GTTongTon"].ToString()) - long.Parse(item["TONGCONG_END"].ToString()) + long.Parse(item["TONGCONG_BD"].ToString());
+                }
+
                 foreach (DataRow item in dtDoi.Rows)
                 {
                     DataRow dr = ds.Tables["BaoCaoTongHop"].NewRow();
@@ -158,51 +229,6 @@ namespace ThuTien.GUI.Doi
                     dr2["TyLeTongTon"] = "100";
                     dr2["ThuDat"] = dr["TyLeTonThu"];
                     ds.Tables["BaoCaoTongHop"].Rows.Add(dr2);
-                }
-
-                //dtDoi = _cHoaDon.GetBaoCaoTongHop_Doi("CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld);
-
-                //foreach (DataRow item in dtDoi.Rows)
-                //{
-                //    DataRow dr = ds.Tables["BaoCaoTongHop"].NewRow();
-                //    dr["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
-                //    dr["To"] = "Đội";
-                //    dr["Loai"] = "CQ";
-                //    dr["LoaiBaoCao"] = "HĐ";
-                //    dr["TonCu"] = item["HDTonCu"];
-                //    dr["TyLeTonCu"] = "100";
-                //    dr["ChuanThu"] = item["HDChuanThu"];
-                //    dr["TyLeChuanThu"] = "100";
-                //    dr["TonThu"] = item["HDTonThu"];
-                //    dr["TyLeTonThu"] = "";
-                //    dr["TongTon"] = item["HDTongTon"];
-                //    dr["TyLeTongTon"] = "100";
-                //    ds.Tables["BaoCaoTongHop"].Rows.Add(dr);
-
-                //    DataRow dr2 = ds.Tables["BaoCaoTongHop"].NewRow();
-                //    dr2["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
-                //    dr2["To"] = "Đội";
-                //    dr2["Loai"] = "CQ";
-                //    dr2["LoaiBaoCao"] = "GT";
-                //    dr2["TonCu"] = item["GTTonCu"];
-                //    dr2["TyLeTonCu"] = "100";
-                //    dr2["ChuanThu"] = item["GTChuanThu"];
-                //    dr2["TyLeChuanThu"] = "100";
-                //    dr2["TonThu"] = item["GTTonThu"];
-                //    dr2["TyLeTonThu"] = "";
-                //    dr2["TongTon"] = item["GTTongTon"];
-                //    dr2["TyLeTongTon"] = "100";
-                //    ds.Tables["BaoCaoTongHop"].Rows.Add(dr2);
-                //}
-
-                List<TT_To> lstTo = _cTo.GetDSHanhThu();
-
-                DataTable dtTo = new DataTable();
-                //DataTable dtTo = _cHoaDon.GetBaoCaoTongHop_To("TG",lstTo[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld);
-                for (int i = 0; i < lstTo.Count; i++)
-                {
-                    dtTo.Merge(_cHoaDon.GetBaoCaoTongHop_To("TG", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld));
-                    dtTo.Merge(_cHoaDon.GetBaoCaoTongHop_To("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld));
                 }
 
                 foreach (DataRow item in dtTo.Rows)
@@ -250,37 +276,6 @@ namespace ThuTien.GUI.Doi
                     dr2["ThuDat"] = 100 - Math.Round(double.Parse(item["GTTonThu"].ToString()) / double.Parse(item["GTChuanThu"].ToString()) * 100, 2);
                     ds.Tables["BaoCaoTongHop"].Rows.Add(dr2);
                 }
-
-                //dtTo = _cHoaDon.GetBaoCaoTongHop_To("CQ", lstTo[0].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld);
-                //for (int i = 0; i < lstTo.Count; i++)
-                //{
-                //    dtTo.Merge(_cHoaDon.GetBaoCaoTongHop_To("CQ", lstTo[i].MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld));
-                //}
-
-                //foreach (DataRow item in dtTo.Rows)
-                //{
-                //    DataRow dr = ds.Tables["BaoCaoTongHop"].NewRow();
-                //    dr["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
-                //    dr["To"] = item["TenTo"];
-                //    dr["Loai"] = "CQ";
-                //    dr["LoaiBaoCao"] = "HĐ";
-                //    dr["TonCu"] = item["HDTonCu"];
-                //    dr["ChuanThu"] = item["HDChuanThu"];
-                //    dr["TonThu"] = item["HDTonThu"];
-                //    dr["TongTon"] = item["HDTongTon"];
-                //    ds.Tables["BaoCaoTongHop"].Rows.Add(dr);
-
-                //    DataRow dr2 = ds.Tables["BaoCaoTongHop"].NewRow();
-                //    dr2["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
-                //    dr2["To"] = item["TenTo"];
-                //    dr2["Loai"] = "CQ";
-                //    dr2["LoaiBaoCao"] = "GT";
-                //    dr2["TonCu"] = item["GTTonCu"];
-                //    dr2["ChuanThu"] = item["GTChuanThu"];
-                //    dr2["TonThu"] = item["GTTonThu"];
-                //    dr2["TongTon"] = item["GTTongTon"];
-                //    ds.Tables["BaoCaoTongHop"].Rows.Add(dr2);
-                //}
 
                 rptBaoCaoTongHop rpt = new rptBaoCaoTongHop();
                 rpt.SetDataSource(ds);

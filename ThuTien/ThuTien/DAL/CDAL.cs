@@ -221,7 +221,10 @@ namespace ThuTien.DAL
                     if (rowAffect == 0)
                         return false;
                     else
+                    {
+                        _db = new dbThuTienDataContext();
                         return true;
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -192,8 +192,8 @@ namespace ThuTien.GUI.Doi
                             else
                             {
                                 //_cHoaDon.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //return;
                             }
                         //_cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();

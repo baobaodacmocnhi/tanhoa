@@ -224,8 +224,8 @@ namespace ThuTien.GUI.ToTruong
                             else
                             {
                                 //_cHoaDon.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                //MessageBox.Show("Lỗi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //return;
                             }
                         //_cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();

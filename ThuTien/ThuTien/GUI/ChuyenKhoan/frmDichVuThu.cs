@@ -106,26 +106,27 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
-            {
-                DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                dr["LoaiBaoCao"] = "DỊCH VỤ THU HỘ";
-                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
-                dr["MLT"] = item.Cells["MLT"].Value.ToString();
-                dr["Ky"] = item.Cells["Ky"].Value.ToString();
-                dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
-                dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
-                dr["To"] = item.Cells["To"].Value.ToString();
-                if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
-                    dr["Loai"] = "CQ";
-                else
-                    dr["Loai"] = "TG";
-                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
-                    dr["LenhHuy"] = true;
-                ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
-            }
+                if (string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()))
+                {
+                    DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                    dr["LoaiBaoCao"] = "DỊCH VỤ THU HỘ";
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                    dr["MLT"] = item.Cells["MLT"].Value.ToString();
+                    dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                    dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
+                    dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                    dr["To"] = item.Cells["To"].Value.ToString();
+                    if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                        dr["Loai"] = "CQ";
+                    else
+                        dr["Loai"] = "TG";
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                        dr["LenhHuy"] = true;
+                    ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                }
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
