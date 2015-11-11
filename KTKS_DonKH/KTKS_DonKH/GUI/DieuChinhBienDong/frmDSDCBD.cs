@@ -1575,13 +1575,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         //_cDCBD.beginTransaction();
                         //_cDLKH.SqlBeginTransaction();
-                        //_cDLKH.ExecuteNonQuery_Transaction("alter table TB_DULIEUKHACHHANG alter column GIABIEU int alter table TB_DULIEUKHACHHANG alter column DINHMUC int");
                         log.WriteLine("Danh Sách chuyển Đọc số ngày " + DateTime.Now);
                         for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
                             if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
                             {
                                 CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
-                                //TB_DULIEUKHACHHANG dlkh = _cDLKH.getDLKH(ctdcbd.DanhBo);
                                 k++;
                                 log.Write(k.ToString() + "/ " + ctdcbd.MaCTDCBD + "; " + ctdcbd.ThongTin + "; " + ctdcbd.DanhBo + "; ");
                                 //if(k==8)
@@ -1620,15 +1618,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             sql += ",MSTHUE='" + ctdcbd.MSThue_BD + "'";
                                     }
                                     if (sql != "")
-                                        //sql = "update TB_DULIEUKHACHHANG set MODIFYDATE='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',MODIFYBY=N'" + CTaiKhoan.HoTen + "'" + sql + " where DANHBO='" + ctdcbd.DanhBo + "'";
                                         sql = "update TB_DULIEUKHACHHANG set " + sql + " where DANHBO='" + ctdcbd.DanhBo + "'";
+
                                     if (sql == "" && !string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
-                                    {
                                         sql = "DiaChi";
-                                        //dlkh.SONHA = ctdcbd.DiaChi_BD.Substring(0, ctdcbd.DiaChi_BD.IndexOf(" "));
-                                        //dlkh.TENDUONG = ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1);
-                                    }
-                                    //log.WriteLine("");
 
                                     log.WriteLine(sql);
                                     if (sql != "")
@@ -1674,6 +1667,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         {
                                             if (_cDLKH.SuaDLKH(dlkh))
                                             {
+                                                TB_DULIEUKHACHHANG dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
+
+                                                if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
+                                                    while (dlkhFinal.GIABIEU != ctdcbd.GiaBieu_BD.ToString())
+                                                    {
+                                                        dlkhFinal.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
+                                                        _cDLKH.SuaDLKH(dlkhFinal);
+                                                        dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
+                                                    }
+
+                                                if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
+                                                    while (dlkhFinal.DINHMUC != ctdcbd.DinhMuc_BD.ToString())
+                                                    {
+                                                        dlkhFinal.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
+                                                        _cDLKH.SuaDLKH(dlkhFinal);
+                                                        dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
+                                                    }
+
                                                 TB_GHICHU ghichu = new TB_GHICHU();
                                                 ghichu.DANHBO = ctdcbd.DanhBo;
                                                 ghichu.DONVI = "KTKS";
@@ -1717,7 +1728,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 log.WriteLine("=============================================");
                                                 log.Close();
                                                 log.Dispose();
-                                                //_cDLKH.ExecuteNonQuery_Transaction("alter table TB_DULIEUKHACHHANG alter column GIABIEU varchar(50) alter table TB_DULIEUKHACHHANG alter column DINHMUC varchar(50)");
                                                 MessageBox.Show("Lỗi tại Số Phiếu: " + dgvDSDCBD["SoPhieu", i].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             }
                                         }
@@ -1732,7 +1742,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         log.WriteLine("=============================================");
                         log.Close();
                         log.Dispose();
-                        //_cDLKH.ExecuteNonQuery_Transaction("alter table TB_DULIEUKHACHHANG alter column GIABIEU varchar(50) alter table TB_DULIEUKHACHHANG alter column DINHMUC varchar(50)");
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -1742,7 +1751,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         log.WriteLine("=============================================");
                         log.Close();
                         log.Dispose();
-                        //_cDLKH.ExecuteNonQuery_Transaction("alter table TB_DULIEUKHACHHANG alter column GIABIEU varchar(50) alter table TB_DULIEUKHACHHANG alter column DINHMUC varchar(50)");
                         MessageBox.Show("Lỗi tại Số Phiếu: " + dgvDSDCBD["SoPhieu", k].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

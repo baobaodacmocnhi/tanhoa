@@ -324,8 +324,8 @@
             "Hủy lệnh",
             "Đã cắt tạm bít nút",
             "Bít hủy tận gốc",
-            "Cắt ống ngánh khóa con cóc",
             "Trùng lệnh",
+            "Cắt ống ngánh khóa con cóc",
             "Đóng nước-niêm chì"});
             this.cmbNoiDung.Location = new System.Drawing.Point(711, 55);
             this.cmbNoiDung.Name = "cmbNoiDung";

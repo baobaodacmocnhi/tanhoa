@@ -600,7 +600,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     txtSoTien.Text = "";
                     break;
                 case "Khách Hàng Không Sử Dụng Nước Máy Theo Cam Kết Ngày":
-                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TCTB: thực hiện.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
+                    txtNoiNhan.Text = "- Như trên.\r\n- Đội TCTB: thực hiện.\r\n- Đội QLĐHN: để biết.\r\n- Lưu.(" + txtMaDon.Text.Trim() + ")";
                     txtSoTien.Text = "";
                     break;
                 case "Nợ Tiền Nước":

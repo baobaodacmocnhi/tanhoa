@@ -1605,6 +1605,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.HoTen,
                                     itemCTCTDB.DiaChi,
                                     itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1637,6 +1638,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCTDB.HoTen,
                                     itemCTCTDB.DiaChi,
                                     itemCTCTDB.LyDo,
+                                    itemCTCTDB.GhiChuLyDo,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -2266,6 +2268,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.HoTen,
                                     itemCTCHDB.DiaChi,
                                     itemCTCHDB.LyDo,
+                                    itemCTCHDB.GhiChuLyDo,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -2298,6 +2301,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                                     itemCTCHDB.HoTen,
                                     itemCTCHDB.DiaChi,
                                     itemCTCHDB.LyDo,
+                                    itemCTCHDB.GhiChuLyDo,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
