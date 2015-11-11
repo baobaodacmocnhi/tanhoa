@@ -1643,39 +1643,45 @@ namespace ThuTien.GUI.Doi
 
             Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
             cl4.Value2 = "Khách Hàng";
-            cl4.ColumnWidth = 30;
+            cl4.ColumnWidth = 25;
 
-            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+            Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("E1", "E1");
+            cl12.Value2 = "Địa Chỉ";
+            cl12.ColumnWidth = 30;
+
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("F1", "F1");
             cl5.Value2 = "MLT";
-            cl5.ColumnWidth = 12;
+            cl5.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("G1", "G1");
             cl6.Value2 = "Giá Bán";
-            cl6.ColumnWidth = 15;
+            cl6.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("H1", "H1");
             cl7.Value2 = "Thuế GTGT";
-            cl7.ColumnWidth = 15;
+            cl7.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
+            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("I1", "I1");
             cl8.Value2 = "Phí BVMT";
-            cl8.ColumnWidth = 15;
+            cl8.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
+            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("J1", "J1");
             cl9.Value2 = "Tổng Cộng";
-            cl9.ColumnWidth = 15;
+            cl9.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
-            cl10.Value2 = "Hành Thu";
-            cl10.ColumnWidth = 15;
+            Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("K1", "K1");
+            cl10.Value2 = "Tổ";
+            cl10.ColumnWidth = 5;
 
-            Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
-            cl11.Value2 = "Tổ";
-            cl11.ColumnWidth = 5;
+            Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("L1", "L1");
+            cl11.Value2 = "Hành Thu";
+            cl11.ColumnWidth = 15;
+
+            
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 13];
+            object[,] arr = new object[dt.Rows.Count, 12];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -1686,13 +1692,14 @@ namespace ThuTien.GUI.Doi
                 arr[i, 1] = dr["Ky"].ToString();
                 arr[i, 2] = dr["DanhBo"].ToString();
                 arr[i, 3] = dr["HoTen"].ToString();
-                arr[i, 4] = dr["MLT"].ToString();
-                arr[i, 5] = dr["GiaBan"].ToString();
-                arr[i, 6] = dr["ThueGTGT"].ToString();
-                arr[i, 7] = dr["PhiBVMT"].ToString();
-                arr[i, 8] = dr["TongCong"].ToString();
-                arr[i, 9] = dr["HanhThu"].ToString();
+                arr[i, 4] = dr["DiaChi"].ToString();
+                arr[i, 5] = dr["MLT"].ToString();
+                arr[i, 6] = dr["GiaBan"].ToString();
+                arr[i, 7] = dr["ThueGTGT"].ToString();
+                arr[i, 8] = dr["PhiBVMT"].ToString();
+                arr[i, 9] = dr["TongCong"].ToString();
                 arr[i, 10] = dr["To"].ToString();
+                arr[i, 11] = dr["HanhThu"].ToString();
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -1700,7 +1707,7 @@ namespace ThuTien.GUI.Doi
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 11;
+            int columnEnd = 12;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];

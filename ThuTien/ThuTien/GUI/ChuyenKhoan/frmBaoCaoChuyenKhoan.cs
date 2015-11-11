@@ -710,7 +710,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             head.RowHeight = 50;
             head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-            long TonDau=_cTienDu.GetTongTienTon(dateGiaiTrach.Value);
+            long TonDau=_cTienDu.GetTongTienTonDauNgay(dateGiaiTrach.Value);
 
             Microsoft.Office.Interop.Excel.Range head2 = oSheet.get_Range("A2", "M2");
             head2.MergeCells = true;
@@ -937,6 +937,8 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.Cells[rowEnd + 2, 3] = dt.Compute("sum(SoTien)", "MaNH <> 3 and MaNH <> 4 and CreateDate >='"+dateGiaiTrach.Value.ToString("yyyy/MM/dd")+"'");
             oSheet.Cells[rowEnd + 3, 3] = dt.Compute("sum(SoTien)", "MaNH = 4 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
             oSheet.Cells[rowEnd + 4, 3] = dt.Compute("sum(SoTien)", "MaNH = 3 and CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
+
+            oSheet.Cells[rowEnd + 6, 2] = "Tồn cuối ngày: "+_cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value);
         }
 
         private void XuatExcelBangKe(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string NgayGiaiTrach, long TonDau)

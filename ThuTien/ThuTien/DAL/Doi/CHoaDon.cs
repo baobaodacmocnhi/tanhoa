@@ -438,17 +438,23 @@ namespace ThuTien.DAL.Doi
 
         public HOADON GetMoiNhat(string DanhBo)
         {
-            return _db.HOADONs.Where(item => item.DANHBA == DanhBo).ToList().OrderByDescending(item => item.ID_HOADON).First();
+            if (_db.HOADONs.Any(item => item.DANHBA == DanhBo))
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo).ToList().OrderByDescending(item => item.ID_HOADON).First();
+            else
+                return null;
         }
 
         public HOADON GetMoiNhi(string DanhBo)
         {
-            return _db.HOADONs.Where(item => item.DANHBA == DanhBo).ToList().OrderByDescending(item => item.ID_HOADON).Skip(1).First();
+            if (_db.HOADONs.Any(item => item.DANHBA == DanhBo))
+                return _db.HOADONs.Where(item => item.DANHBA == DanhBo).ToList().OrderByDescending(item => item.ID_HOADON).Skip(1).First();
+            else
+                return null;
         }
 
         public HOADON GetTonMoiNhat(string DanhBo)
         {
-            if (_db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).Count() > 0)
+            if (_db.HOADONs.Any(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null))
                 return _db.HOADONs.Where(item => item.DANHBA == DanhBo && item.NGAYGIAITRACH == null).ToList().OrderByDescending(item => item.ID_HOADON).First();
             else
                 return null;
@@ -4304,7 +4310,7 @@ namespace ThuTien.DAL.Doi
             if (Loai == "TG")
             {
                 string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4324,7 +4330,7 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4348,7 +4354,7 @@ namespace ThuTien.DAL.Doi
             if (Loai == "TG")
             {
                 string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4368,7 +4374,7 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4392,7 +4398,7 @@ namespace ThuTien.DAL.Doi
             if (Loai == "TG")
             {
                 string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4412,7 +4418,7 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4436,7 +4442,7 @@ namespace ThuTien.DAL.Doi
             if (Loai == "TG")
             {
                 string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4456,7 +4462,7 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4482,7 +4488,7 @@ namespace ThuTien.DAL.Doi
                 string sql = "declare @NgayGiaiTrach date;"
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "';"
                             + " select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4504,7 +4510,7 @@ namespace ThuTien.DAL.Doi
                     string sql = "declare @NgayGiaiTrach date;"
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "';"
                             + " select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4528,7 +4534,7 @@ namespace ThuTien.DAL.Doi
             if (Loai == "TG")
             {
                 string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4548,7 +4554,7 @@ namespace ThuTien.DAL.Doi
                 if (Loai == "CQ")
                 {
                     string sql = "select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4574,7 +4580,7 @@ namespace ThuTien.DAL.Doi
                 string sql = "declare @NgayGiaiTrach date;"
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "';"
                             + " select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"
@@ -4596,7 +4602,7 @@ namespace ThuTien.DAL.Doi
                     string sql = "declare @NgayGiaiTrach date;"
                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyy-MM-dd") + "';"
                             + " select SOHOADON,CONVERT(varchar(2),KY)+'/'+CONVERT(varchar(4),NAM)as Ky,"
-                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,TIEUTHU,GIABAN,"
+                            + " MALOTRINH as MLT,SOPHATHANH,DANHBA as DanhBo,TENKH as HoTen,SO+' '+DUONG as DiaChi,TIEUTHU,GIABAN,"
                             + " THUE as ThueGTGT,PHI as PhiBVMT,TONGCONG,nd.HoTen as HanhThu,tto.TenTo as 'To'"
                             + " from HOADON hd"
                             + " left join TT_NguoiDung nd on nd.MaND=hd.MaNV_HanhThu"

@@ -71,14 +71,19 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_Tos.Where(item=>item.HanhThu==true).ToList();
         }
 
-        public TT_To GetByMaTo(int MaTT_To)
+        public TT_To GetByMaTo(int MaTo)
         {
-            return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTT_To);
+            return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTo);
         }
 
-        public string GetTenToByMaTo(int MaTT_To)
+        public string GetTenToByMaTo(int MaTo)
         {
-            return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTT_To).TenTo;
+            return _db.TT_Tos.SingleOrDefault(item => item.MaTo == MaTo).TenTo;
+        }
+
+        public bool CheckHanhThu(int MaTo)
+        {
+            return _db.TT_Tos.Any(item => item.MaTo == MaTo && item.HanhThu == true);
         }
     }
 }

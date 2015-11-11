@@ -1147,6 +1147,8 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXuatExcelTienDu_Click(object sender, EventArgs e)
         {
+            DataTable dt = _cTienDu.GetDSTienDu(dateNgayGiaiTrach.Value);
+
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbooks oBooks;
@@ -1165,18 +1167,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
-
-            XuatExcelTienDu(_cTienDu.GetDSTienDu(dateNgayGiaiTrach.Value), oSheet, "Tiền Dư", dateNgayGiaiTrach.Value.ToString("dd/MM/yyyy"));
-        }
-
-        private void XuatExcelTienDu(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName, string ThoiGian)
-        {
-            oSheet.Name = SheetName;
+            
+            oSheet.Name = "Tiền Dư";
 
             // Tạo phần đầu nếu muốn
             Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range("A1", "F1");
             head.MergeCells = true;
-            head.Value2 = "DANH SÁCH TIỀN DƯ NGÀY \r\n" + ThoiGian;
+            head.Value2 = "DANH SÁCH TIỀN DƯ NGÀY \r\n" + dateNgayGiaiTrach.Value.ToString("dd/MM/yyyy");
             head.Font.Bold = true;
             head.Font.Name = "Times New Roman";
             head.Font.Size = "20";
@@ -1192,9 +1189,29 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl2.Value2 = "Số Tiền";
             cl2.ColumnWidth = 10;
 
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C3", "C3");
+            cl3.Value2 = "MLT";
+            cl3.ColumnWidth = 12;
+
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D3", "D3");
+            cl4.Value2 = "Khách Hàng";
+            cl4.ColumnWidth = 20;
+
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E3", "E3");
+            cl5.Value2 = "Địa Chỉ";
+            cl5.ColumnWidth = 30;
+
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F3", "F3");
+            cl6.Value2 = "Tổ";
+            cl6.ColumnWidth = 5;
+
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G3", "G3");
+            cl7.Value2 = "Hành Thu";
+            cl7.ColumnWidth = 12;
+
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 2];
+            object[,] arr = new object[dt.Rows.Count, 7];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -1203,6 +1220,19 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 arr[i, 0] = dr["DanhBo"].ToString();
                 arr[i, 1] = dr["SoTien"].ToString();
+
+                HOADON hoadon = _cHoaDon.GetMoiNhat(dr["DanhBo"].ToString());
+                if (hoadon != null)
+                {
+                    arr[i, 2] = hoadon.MALOTRINH;
+                    arr[i, 3] = hoadon.TENKH;
+                    arr[i, 4] = hoadon.SO + " " + hoadon.DUONG;
+                    if (hoadon.MaNV_HanhThu != null)
+                    {
+                        arr[i, 5] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
+                        arr[i, 6] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
+                    }
+                }
             }
 
             //Thiết lập vùng điền dữ liệu
@@ -1210,7 +1240,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             int columnStart = 1;
 
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 2;
+            int columnEnd = 7;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
@@ -1253,8 +1283,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
         }
-
-        
 
     }
 }

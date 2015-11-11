@@ -48,7 +48,10 @@ namespace ThuTien.GUI.Doi
         {
             if (_flagLoadFirst == true && cmbTo.SelectedIndex != -1)
             {
-                cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                if ((_cTo.CheckHanhThu(int.Parse(cmbTo.SelectedValue.ToString()))))
+                    cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                else
+                    cmbNhanVien.DataSource = _cNguoiDung.GetDSByToVanPhong(int.Parse(cmbTo.SelectedValue.ToString()));
                 cmbNhanVien.DisplayMember = "HoTen";
                 cmbNhanVien.ValueMember = "MaND";
             }
