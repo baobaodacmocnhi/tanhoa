@@ -8,8 +8,8 @@ namespace KTKS_ChungCu.DAL
 {
     class CDAL
     {
-        protected static DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
-
+        protected static dbChungCuDataContext db = new dbChungCuDataContext();
+        protected static dbDonKHDataContext dbDonKH = new dbDonKHDataContext();
         ///// <summary>
         ///// Lấy mã tiếp theo, theo định dạng năm-stt (2013-1)
         ///// </summary>

@@ -15,5 +15,10 @@ namespace KTKS_ChungCu.GUI.ChungTu
         {
             InitializeComponent();
         }
+
+        private void frmNhanDM_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

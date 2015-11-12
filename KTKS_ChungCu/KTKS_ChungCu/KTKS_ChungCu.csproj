@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -116,6 +116,38 @@
       <DependentUpon>rptDSChungTu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\rptHeader.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptHeader.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\rptPhieuYCCatDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuYCCatDM.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\rptPhieuYCCatDMx2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuYCCatDMx2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\rptPhieuYCNhanDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuYCNhanDM.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\rptPhieuYCNhanDMx2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPhieuYCNhanDMx2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DAL\CBanGiamDoc.cs" />
+    <Compile Include="DAL\CChiNhanh.cs" />
     <Compile Include="DAL\CChungTu.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CLoaiChungTu.cs" />
@@ -125,6 +157,12 @@
     </Compile>
     <Compile Include="frmBaoCao.Designer.cs">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSCatChuyenDM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSCatChuyenDM.Designer.cs">
+      <DependentUpon>frmDSCatChuyenDM.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -145,10 +183,15 @@
     <Compile Include="GUI\ChungTu\frmSoDK.Designer.cs">
       <DependentUpon>frmSoDK.cs</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\DB_KTKS_DonKH.designer.cs">
+    <Compile Include="LinQ\dbChungCu.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
+      <DependentUpon>dbChungCu.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="LinQ\dbDonKH.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDonKH.dbml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,12 +199,36 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSChungTu.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptHeader.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptHeader.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptPhieuYCCatDM.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuYCCatDM.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptPhieuYCCatDMx2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuYCCatDMx2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptPhieuYCNhanDM.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuYCNhanDM.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\rptPhieuYCNhanDMx2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPhieuYCNhanDMx2.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSCatChuyenDM.resx">
+      <DependentUpon>frmDSCatChuyenDM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="BaoCao\DataSetBaoCao.xsc">
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </None>
@@ -174,15 +241,18 @@
       <DependentUpon>DataSetBaoCao.xsd</DependentUpon>
     </None>
     <None Include="KTKS_ChungCu_TemporaryKey.pfx" />
-    <None Include="LinQ\DB_KTKS_DonKH.dbml.layout">
-      <DependentUpon>DB_KTKS_DonKH.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="GUI\ChungTu\frmNhanDM.resx">
       <DependentUpon>frmNhanDM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChungTu\frmSoDK.resx">
       <DependentUpon>frmSoDK.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbChungCu.dbml.layout">
+      <DependentUpon>dbChungCu.dbml</DependentUpon>
+    </None>
+    <None Include="LinQ\dbDonKH.dbml.layout">
+      <DependentUpon>dbDonKH.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -193,10 +263,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config" />
-    <None Include="LinQ\DB_KTKS_DonKH.dbml">
+    <None Include="LinQ\dbChungCu.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DB_KTKS_DonKH.designer.cs</LastGenOutput>
+      <LastGenOutput>dbChungCu.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LinQ\dbDonKH.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbDonKH.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -306,7 +380,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Office building.ico" />
+    <None Include="Resources\save 24x24.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

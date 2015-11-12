@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KTKS_ChungCu.LinQ;
 using KTKS_ChungCu.DAL;
 using KTKS_ChungCu.BaoCao;
+using KTKS_ChungCu.GUI.ChungTu;
 
 namespace KTKS_ChungCu
 {
@@ -311,6 +312,24 @@ namespace KTKS_ChungCu
         private void cmbLoaiCT_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtThoiHan.Text = ((LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
+        }
+
+        private void dgvKhachHangChungCu_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvKhachHangChungCu.RowCount > 0 && e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                frmSoDK frm = new frmSoDK(dgvKhachHangChungCu["DanhBo", e.RowIndex].Value.ToString(), dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString());
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private void btnShowDSCatChuyenDM_Click(object sender, EventArgs e)
+        {
+            frmDSCatChuyenDM frm = new frmDSCatChuyenDM();
+            frm.ShowDialog();
         }
         
     }

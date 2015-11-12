@@ -325,6 +325,7 @@
             // 
             // btnLuu
             // 
+            this.btnLuu.Image = global::KTKS_ChungCu.Properties.Resources.save_24x24;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuu.Location = new System.Drawing.Point(808, 331);
             this.btnLuu.Name = "btnLuu";
@@ -359,9 +360,10 @@
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmNhanDM";
             this.Text = "Tiếp Nhận Định Mức";
+            this.Load += new System.EventHandler(this.frmNhanDM_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

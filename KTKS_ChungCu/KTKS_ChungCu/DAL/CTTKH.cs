@@ -18,7 +18,7 @@ namespace KTKS_ChungCu.DAL
         {
             try
             {
-                return db.TTKhachHangs.SingleOrDefault(itemTTKH => itemTTKH.DanhBo == DanhBo);
+                return dbDonKH.TTKhachHangs.SingleOrDefault(itemTTKH => itemTTKH.DanhBo == DanhBo);
             }
             catch (Exception ex)
             {
@@ -31,7 +31,7 @@ namespace KTKS_ChungCu.DAL
         {
             try
             {
-                return db.TTKhachHangs.Any(itemTTKH => itemTTKH.DanhBo == DanhBo);
+                return dbDonKH.TTKhachHangs.Any(itemTTKH => itemTTKH.DanhBo == DanhBo);
             }
             catch (Exception ex)
             {

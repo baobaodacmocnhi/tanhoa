@@ -9,7 +9,6 @@ namespace KTKS_ChungCu.DAL
 {
     class CLoaiChungTu : CDAL
     {
-        //DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
 
         /// <summary>
         /// Lấy danh sách loại chứng từ, hàm này được dùng trong nội bộ DAL
@@ -24,7 +23,7 @@ namespace KTKS_ChungCu.DAL
                 {
                     //var query = from itemLCT in db.LoaiChungTus
                     //            select new { itemLCT.MaLCT, itemLCT.KyHieuLCT, itemLCT.TenLCT, itemLCT.ThoiHan };
-                    return db.LoaiChungTus.ToList();
+                    return dbDonKH.LoaiChungTus.ToList();
                 }
                 else
                 {
@@ -42,7 +41,7 @@ namespace KTKS_ChungCu.DAL
         {
             try
             {
-                return db.LoaiChungTus.SingleOrDefault(itemLCT => itemLCT.MaLCT == MaLCT);
+                return dbDonKH.LoaiChungTus.SingleOrDefault(itemLCT => itemLCT.MaLCT == MaLCT);
             }
             catch (Exception ex)
             {
@@ -60,7 +59,7 @@ namespace KTKS_ChungCu.DAL
         {
             try
             {
-                return db.LoaiChungTus.SingleOrDefault(itemLCT => itemLCT.TenLCT == TenLCT).MaLCT;
+                return dbDonKH.LoaiChungTus.SingleOrDefault(itemLCT => itemLCT.TenLCT == TenLCT).MaLCT;
             }
             catch (Exception ex)
             {

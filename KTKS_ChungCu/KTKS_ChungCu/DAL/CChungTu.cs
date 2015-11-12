@@ -11,7 +11,8 @@ namespace KTKS_ChungCu.DAL
     class CChungTu
     {
         ///Chứa hàm truy xuất dữ liệu từ bảng ChungTu & CTChungTu & LichSuChungTu
-        protected static DB_KTKS_DonKHDataContext db = new DB_KTKS_DonKHDataContext();
+        protected static dbChungCuDataContext db = new dbChungCuDataContext();
+        protected static dbDonKHDataContext dbDonKH = new dbDonKHDataContext();
 
         public decimal getMaxNextIDTable(decimal id)
         {
@@ -35,7 +36,7 @@ namespace KTKS_ChungCu.DAL
             {
                 var query = from itemCTCT in db.CTChungTus
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
-                            join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                            join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                             where itemCTCT.DanhBo == DanhBo
                             select new
                             {
@@ -88,7 +89,7 @@ namespace KTKS_ChungCu.DAL
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbChungCuDataContext();
                 return false;
             }
         }
@@ -146,36 +147,36 @@ namespace KTKS_ChungCu.DAL
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbChungCuDataContext();
                 return false;
             }
         }
 
-        public bool ThemLichSuChungTu(LichSuChungTu lichsuchungtu)
-        {
-            try
-            {
-                if (db.LichSuChungTus.Count() > 0)
-                {
-                    decimal MaLSCT = db.LichSuChungTus.Max(itemLSCT => itemLSCT.MaLSCT);
-                    lichsuchungtu.MaLSCT = getMaxNextIDTable(MaLSCT);
-                }
-                else
-                    lichsuchungtu.MaLSCT = decimal.Parse(DateTime.Now.Year + "1");
-                lichsuchungtu.CreateDate = DateTime.Now;
-                lichsuchungtu.CreateBy = -1;
-                db.LichSuChungTus.InsertOnSubmit(lichsuchungtu);
-                db.SubmitChanges();
-                //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
-                return false;
-            }
-        }
+        //public bool ThemLichSuChungTu(LichSuChungTu lichsuchungtu)
+        //{
+        //    try
+        //    {
+        //        if (db.LichSuChungTus.Count() > 0)
+        //        {
+        //            decimal MaLSCT = db.LichSuChungTus.Max(itemLSCT => itemLSCT.MaLSCT);
+        //            lichsuchungtu.MaLSCT = getMaxNextIDTable(MaLSCT);
+        //        }
+        //        else
+        //            lichsuchungtu.MaLSCT = decimal.Parse(DateTime.Now.Year + "1");
+        //        lichsuchungtu.CreateDate = DateTime.Now;
+        //        lichsuchungtu.CreateBy = -1;
+        //        db.LichSuChungTus.InsertOnSubmit(lichsuchungtu);
+        //        db.SubmitChanges();
+        //        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        db = new dbChungCuDataContext();
+        //        return false;
+        //    }
+        //}
 
         public CTChungTu getCTChungTubyID(string DanhBo, string MaCT)
         {
@@ -261,7 +262,7 @@ namespace KTKS_ChungCu.DAL
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbChungCuDataContext();
                 return false;
             }
         }
@@ -356,7 +357,90 @@ namespace KTKS_ChungCu.DAL
                     ctchungtuCN.ModifyDate = DateTime.Now;
                     ctchungtuCN.ModifyBy = -1;
                 }
-                
+
+                //if (ctchungtu.YeuCauCat != ctchungtuCN.YeuCauCat)
+                if (ctchungtu.YeuCauCat)
+                {
+                    //chungtuCN.YeuCauCat = true;
+                    //chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
+                    //chungtuCN.CatNK_DanhBo = chungtu.CatNK_DanhBo;
+                    //chungtuCN.CatNK_HoTen = chungtu.CatNK_HoTen;
+                    //chungtuCN.CatNK_DiaChi = chungtu.CatNK_DiaChi;
+                    //chungtuCN.CatNK_SoNKCat = chungtu.CatNK_SoNKCat;
+                    ///
+                    ctchungtuCN.YeuCauCat = true;
+                    ctchungtuCN.CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                    ctchungtuCN.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                    ctchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                    ctchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                    ctchungtuCN.CatNK_SoNKCat = ctchungtu.CatNK_SoNKCat;
+                    ///Nếu phiếu đã có
+                    if (ctchungtuCN.SoPhieu.HasValue)
+                    {
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu.Value);
+                        lichsuchungtuCN.CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                        lichsuchungtuCN.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                        lichsuchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                        lichsuchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                        lichsuchungtuCN.SoNKNhan = ctchungtu.CatNK_SoNKCat;
+                        if (SuaLichSuChungTu(lichsuchungtuCN))
+                        {
+                            //CatChuyenDM catchuyendm = _cCatChuyenDM.getCatChuyenDMbySoPhieu(ctchungtuCN.SoPhieu.Value);
+                            //catchuyendm.CatNK_MaCN = lichsuchungtuCN.CatNK_MaCN;
+                            //catchuyendm.CatNK_DanhBo = lichsuchungtuCN.CatNK_DanhBo;
+                            //catchuyendm.CatNK_HoTen = lichsuchungtuCN.CatNK_HoTen;
+                            //catchuyendm.CatNK_DiaChi = lichsuchungtuCN.CatNK_DiaChi;
+                            //catchuyendm.SoNKNhan = lichsuchungtuCN.SoNKNhan;
+
+                            //_cCatChuyenDM.SuaCatChuyemDM(catchuyendm);
+                        }
+                    }
+                    ///Nếu chưa có phiếu
+                    else
+                    {
+                        lichsuchungtu.MaCT = ctchungtu.MaCT;
+                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                        lichsuchungtu.SoNKTong = chungtuCN.SoNKTong;
+                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                        lichsuchungtu.SoNKConLai = chungtuCN.SoNKConLai;
+                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                        lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                        ///
+                        lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
+                        ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
+                        lichsuchungtu.YeuCauCat = true;
+
+                        lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
+                        lichsuchungtu.CatNK_DanhBo = ctchungtu.CatNK_DanhBo;
+                        lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen;
+                        lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
+                        lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat;
+                        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
+                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            lichsuchungtu.ChucVu = "GIÁM ĐỐC";
+                        else
+                            lichsuchungtu.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        lichsuchungtu.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        if (ThemLichSuChungTu(lichsuchungtu))
+                        {
+                            ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
+                            //CatChuyenDM catchuyendm = new CatChuyenDM();
+                            //LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
+                            //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);
+                        }
+                    }
+                }
+                else
+                {
+                    ctchungtuCN.YeuCauCat = false;
+                    if (ctchungtuCN.SoPhieu.HasValue)
+                    {
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(ctchungtuCN.SoPhieu.Value);
+                        XoaLichSuChungTu(lichsuchungtuCN);
+                    }
+                }
+
                 ///Thêm LichSuChungTu
                 if (flagEdited)
                 {
@@ -379,10 +463,2239 @@ namespace KTKS_ChungCu.DAL
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new DB_KTKS_DonKHDataContext();
+                db = new dbChungCuDataContext();
                 return false;
             }
         }
 
+        #region LichSuChungTu
+
+        public bool ThemLichSuChungTu(LichSuChungTu lichsuchungtu)
+        {
+            try
+            {
+                if (db.LichSuChungTus.Count() > 0)
+                {
+                    string ID = "MaLSCT";
+                    string Table = "LichSuChungTu";
+                    decimal MaLSCT = db.ExecuteQuery<decimal>("declare @Ma int " +
+                        "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                        "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                    //decimal MaLSCT = db.LichSuChungTus.Max(itemLSCT => itemLSCT.MaLSCT);
+                    lichsuchungtu.MaLSCT = getMaxNextIDTable(MaLSCT);
+                }
+                else
+                    lichsuchungtu.MaLSCT = decimal.Parse(DateTime.Now.Year + "1");
+                lichsuchungtu.CreateDate = DateTime.Now;
+                db.LichSuChungTus.InsertOnSubmit(lichsuchungtu);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbChungCuDataContext();
+                return false;
+            }
+        }
+
+        public bool SuaLichSuChungTu(LichSuChungTu lichsuchungtu)
+        {
+            try
+            {
+                lichsuchungtu.ModifyDate = DateTime.Now;
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbChungCuDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaLichSuChungTu(LichSuChungTu lichsuchungtu)
+        {
+            try
+            {
+                db.LichSuChungTus.DeleteOnSubmit(lichsuchungtu);
+                db.SubmitChanges();
+                //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbChungCuDataContext();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Số Phiếu kế tiếp cho Cắt Chuyển Định Mức
+        /// </summary>
+        /// <returns></returns>
+        public decimal getMaxNextSoPhieuLSCT()
+        {
+            try
+            {
+                if (db.LichSuChungTus.Count() > 0)
+                {
+                    if (db.LichSuChungTus.Max(itemLSCT => itemLSCT.SoPhieu) == null)
+                        return decimal.Parse("1" + DateTime.Now.ToString("yy"));
+                    else
+                    {
+                        string ID = "SoPhieu";
+                        string Table = "LichSuChungTu";
+                        decimal SoPhieu = db.ExecuteQuery<decimal>("declare @Ma int " +
+                            "select @Ma=MAX(SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)) from " + Table + " " +
+                            "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
+                        return getMaxNextIDTable(SoPhieu);
+                    }
+                }
+                else
+                    return decimal.Parse("1" + DateTime.Now.ToString("yy"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Phiếu Cắt Chuyển Định Mức
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LoadDSCatChuyenDM()
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.SoPhieu != null
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByMaDon(decimal MaDon)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.SoPhieu != null && (itemLSCT.MaDon == MaDon || itemLSCT.MaDonTXL == MaDon)
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByMaDons(decimal TuMaDon, decimal DenMaDon)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.SoPhieu != null &&
+                                ((itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                                && (itemLSCT.MaDon >= TuMaDon && itemLSCT.MaDon <= DenMaDon))
+                                || ((itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                                && (itemLSCT.MaDonTXL >= TuMaDon && itemLSCT.MaDonTXL <= DenMaDon))
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMBySoPhieu(decimal SoPhieu)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.SoPhieu != null && itemLSCT.SoPhieu == SoPhieu
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMBySoPhieus(decimal TuSoPhieu, decimal DenSoPhieu)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.SoPhieu != null &&
+                                itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                                && itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                                && itemLSCT.SoPhieu >= TuSoPhieu && itemLSCT.SoPhieu <= DenSoPhieu
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByDanhBo(string DanhBo)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByDate(DateTime TuNgay)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date == TuNgay.Date
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByDates(DateTime TuNgay, DateTime DenNgay)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByMaDon(int CreateBy, decimal MaDon)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && (itemLSCT.MaDon == MaDon || itemLSCT.MaDonTXL == MaDon)
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByMaDons(int CreateBy, decimal TuMaDon, decimal DenMaDon)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null &&
+                                ((itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDon.Value.ToString().Substring(itemLSCT.MaDon.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                                && (itemLSCT.MaDon >= TuMaDon && itemLSCT.MaDon <= DenMaDon))
+                                || ((itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == TuMaDon.ToString().Substring(TuMaDon.ToString().Length - 2, 2) && itemLSCT.MaDonTXL.Value.ToString().Substring(itemLSCT.MaDonTXL.Value.ToString().Length - 2, 2) == DenMaDon.ToString().Substring(DenMaDon.ToString().Length - 2, 2))
+                                && (itemLSCT.MaDonTXL >= TuMaDon && itemLSCT.MaDonTXL <= DenMaDon))
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMBySoPhieu(int CreateBy, decimal SoPhieu)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.SoPhieu == SoPhieu
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMBySoPhieus(int CreateBy, decimal TuSoPhieu, decimal DenSoPhieu)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null &&
+                                itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == TuSoPhieu.ToString().Substring(TuSoPhieu.ToString().Length - 2, 2)
+                                && itemLSCT.SoPhieu.ToString().Substring(itemLSCT.SoPhieu.ToString().Length - 2, 2) == DenSoPhieu.ToString().Substring(DenSoPhieu.ToString().Length - 2, 2)
+                                && itemLSCT.SoPhieu >= TuSoPhieu && itemLSCT.SoPhieu <= DenSoPhieu
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByDanhBo(int CreateBy, string DanhBo)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByDate(int CreateBy, DateTime TuNgay)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date == TuNgay.Date
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCatChuyenDMByDates(int CreateBy, DateTime TuNgay, DateTime DenNgay)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                //join itemDCBD in db.DCBDs on itemLSCT.MaDon equals itemDCBD.MaDon
+                                where itemLSCT.CreateBy == CreateBy && itemLSCT.SoPhieu != null && itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date
+                                //where itemLSCT.MaLSCT == 126114
+                                orderby itemLSCT.CreateDate ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.MaLSCT,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    //SoPhieuDCBD = itemDCBD.CTDCBDs.SingleOrDefault(itemCTDCBD => itemCTDCBD.DanhBo == itemCCDM.DanhBo).MaCTDCBD,
+                                    itemLSCT.CreateDate,
+                                    itemLSCT.MaCT,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.NhanNK_MaCN,
+                                    itemLSCT.NhanNK_DanhBo,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    itemLSCT.NhanNK_HoTen,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NhanNK_DiaChi,
+                                    itemLSCT.NhanDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.SoNKNhan,
+                                    itemLSCT.CatNK_MaCN,
+                                    itemLSCT.CatNK_DanhBo,
+                                    itemLSCT.CatNK_HoTen,
+                                    itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.PhieuDuocKy,
+                                    itemLSCT.MaDon,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CreateBy,
+                                };
+                    if (query.Count() > 0)
+                    {
+                        //DataTable table = new DataTable();
+                        //table.Columns.Add("In", typeof(bool));
+                        //table.Columns.Add("MaLSCT", typeof(string));
+                        //table.Columns.Add("SoPhieu", typeof(string));
+                        //table.Columns.Add("SoPhieuDCBD", typeof(string));
+                        //table.Columns.Add("CreateDate", typeof(string));
+                        //table.Columns.Add("MaCT", typeof(string));
+                        //table.Columns.Add("CatNhan", typeof(string));
+                        //table.Columns.Add("SoNK", typeof(string));
+                        //table.Columns.Add("NhanNK_MaCN", typeof(string));
+                        //table.Columns.Add("NhanNK_DanhBo", typeof(string));
+                        //table.Columns.Add("NhanNK_HoTen", typeof(string));
+                        //table.Columns.Add("NhanNK_DiaChi", typeof(string));
+                        //table.Columns.Add("CatNK_MaCN", typeof(string));
+                        //table.Columns.Add("CatNK_DanhBo", typeof(string));
+                        //table.Columns.Add("CatNK_HoTen", typeof(string));
+                        //table.Columns.Add("CatNK_DiaChi", typeof(string));
+                        //table.Columns.Add("PhieuDuocKy", typeof(bool));
+
+                        //DataTable table2 = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
+                        //CChiNhanh _cChiNhanh = new CChiNhanh();
+                        //foreach (DataRow itemRow in table2.Rows)
+                        //{
+                        //    //a = itemRow["MaLSCT"].ToString();
+                        //    DataRow Row = table.NewRow();
+                        //    Row["In"] = false;
+                        //    Row["MaLSCT"] = itemRow["MaLSCT"];
+                        //    Row["SoPhieu"] = itemRow["SoPhieu"];
+                        //    if (!string.IsNullOrEmpty(itemRow["MaDon"].ToString()))
+                        //        if (db.CTDCBDs.Any(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())))
+                        //            Row["SoPhieuDCBD"] = db.CTDCBDs.FirstOrDefault(itemCTDCBD => itemCTDCBD.DCBD.MaDon == decimal.Parse(itemRow["MaDon"].ToString())).MaCTDCBD;
+                        //        else
+                        //            Row["SoPhieuDCBD"] = "";
+                        //    else
+                        //        Row["SoPhieuDCBD"] = "";
+                        //    Row["CreateDate"] = itemRow["CreateDate"];
+                        //    Row["MaCT"] = itemRow["MaCT"];
+                        //    if (itemRow["CatDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["CatDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKCat"];
+                        //        }
+                        //    if (itemRow["NhanDM"].ToString() != "")
+                        //        if (bool.Parse(itemRow["NhanDM"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "Nhận";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["YeuCauCat"].ToString() != "")
+                        //        if (bool.Parse(itemRow["YeuCauCat"].ToString()) == true)
+                        //        {
+                        //            Row["CatNhan"] = "YC Cắt";
+                        //            Row["SoNK"] = itemRow["SoNKNhan"];
+                        //        }
+                        //    if (itemRow["NhanNK_MaCN"].ToString() != "")
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["NhanNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["NhanNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["NhanNK_DanhBo"] = itemRow["NhanNK_DanhBo"];
+                        //    Row["NhanNK_HoTen"] = itemRow["NhanNK_HoTen"];
+                        //    Row["NhanNK_DiaChi"] = itemRow["NhanNK_DiaChi"];
+                        //    if (itemRow["CatNK_MaCN"].ToString() != "")
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(itemRow["CatNK_MaCN"].ToString()));
+                        //    else
+                        //        Row["CatNK_MaCN"] = _cChiNhanh.getTenChiNhanhbyID(1);
+                        //    Row["CatNK_DanhBo"] = itemRow["CatNK_DanhBo"];
+                        //    Row["CatNK_HoTen"] = itemRow["CatNK_HoTen"];
+                        //    Row["CatNK_DiaChi"] = itemRow["CatNK_DiaChi"];
+                        //    Row["PhieuDuocKy"] = itemRow["PhieuDuocKy"];
+
+                        //    table.Rows.Add(Row);
+                        //}
+                        //return table;
+                        return Function.CLinQToDataTable.LINQToDataTable(query);
+                    }
+                    else
+                        return null;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Phiếu Cắt Chuyển Định Mức trong Ngày
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCatChuyenDM(DateTime TuNgay)
+        {
+            //string a = "";
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                where itemLSCT.CreateDate.Value.Date == TuNgay.Date && itemLSCT.SoPhieu != null
+                                //orderby itemLSCT.SoPhieu ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.NhanDM,
+                                };
+                    return Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Phiếu Cắt Chuyển Định Mức trong Khoảng Thời Gian
+        /// </summary>
+        /// <param name="TuNgay"></param>
+        /// <param name="DenNgay"></param>
+        /// <returns></returns>
+        public DataTable LoadDSCatChuyenDM(DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                    var query = from itemLSCT in db.LichSuChungTus
+                                where itemLSCT.CreateDate.Value.Date >= TuNgay.Date && itemLSCT.CreateDate.Value.Date <= DenNgay.Date && itemLSCT.SoPhieu != null
+                                //orderby itemLSCT.SoPhieu ascending
+                                select new
+                                {
+                                    In = false,
+                                    itemLSCT.SoPhieu,
+                                    Ma = itemLSCT.SoPhieu,
+                                    DanhBo = itemLSCT.NhanNK_DanhBo,
+                                    HoTen = itemLSCT.NhanNK_HoTen,
+                                    itemLSCT.NguoiKy,
+                                    itemLSCT.CatDM,
+                                    itemLSCT.YeuCauCat,
+                                    itemLSCT.NhanDM,
+                                };
+                    return Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(a, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Lịch Sử Chứng Từ
+        /// </summary>
+        /// <param name="MaLSCT"></param>
+        /// <returns></returns>
+        public LichSuChungTu getLSCTbyID(decimal MaLSCT)
+        {
+            try
+            {
+                return db.LichSuChungTus.SingleOrDefault(itemLSCT => itemLSCT.MaLSCT == MaLSCT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Danh Sách Lịch Sử Chứng Từ với Sổ Đăng Ký truyền vào
+        /// </summary>
+        /// <param name="MaCT"></param>
+        /// <returns></returns>
+        public List<LichSuChungTu> LoadDSLichSuChungTubyID(string MaCT)
+        {
+            try
+            {
+                return db.LichSuChungTus.Where(itemLSCT => itemLSCT.MaCT == MaCT).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy LichSuChungTu dự theo Số Phiếu
+        /// </summary>
+        /// <param name="SoPhieu"></param>
+        /// <returns></returns>
+        public LichSuChungTu getLichSuChungTubySoPhieu(decimal SoPhieu)
+        {
+            try
+            {
+                return db.LichSuChungTus.SingleOrDefault(itemLSCT => itemLSCT.SoPhieu == SoPhieu);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy LichSuChungTu dự theo Số Phiếu!=null & Danh Bộ
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <returns></returns>
+        public List<LichSuChungTu> getLichSuChungTubyDanhBo(string DanhBo)
+        {
+            try
+            {
+                return db.LichSuChungTus.Where(itemLSCT => itemLSCT.SoPhieu != null && itemLSCT.DanhBo == DanhBo).OrderBy(itemLSCT => itemLSCT.CreateDate).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra lichsuchungtu có số phiếu chưa
+        /// </summary>
+        /// <param name="SoPhieu"></param>
+        /// <returns></returns>
+        public bool CheckLichSuChungTu(decimal SoPhieu)
+        {
+            try
+            {
+                return db.LichSuChungTus.Any(itemLSCT => itemLSCT.SoPhieu == SoPhieu);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool CheckMaDonbyDanhBoChungTu(string DanhBo, string MaCT)
+        {
+            try
+            {
+                return db.LichSuChungTus.Any(itemLSCT => itemLSCT.DanhBo == DanhBo && itemLSCT.MaCT == MaCT && itemLSCT.MaDon != null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Lấy Mã Đơn với Danh Bộ và Chứng Từ
+        /// </summary>
+        /// <param name="DanhBo"></param>
+        /// <param name="MaCT"></param>
+        /// <returns></returns>
+        public decimal getMaDonbyDanhBoChungTu(string DanhBo, string MaCT)
+        {
+            try
+            {
+                return db.LichSuChungTus.FirstOrDefault(itemLSCT => itemLSCT.DanhBo == DanhBo && itemLSCT.MaCT == MaCT && itemLSCT.MaDon != null).MaDon.Value;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        #endregion
     }
 }

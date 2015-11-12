@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
             this.chkYCCat4 = new System.Windows.Forms.CheckBox();
             this.txtSoNKCat_YCC4 = new System.Windows.Forms.TextBox();
@@ -391,6 +391,7 @@
             // 
             this.txtPhong.Location = new System.Drawing.Point(360, 135);
             this.txtPhong.Name = "txtPhong";
+            this.txtPhong.ReadOnly = true;
             this.txtPhong.Size = new System.Drawing.Size(49, 25);
             this.txtPhong.TabIndex = 60;
             // 
@@ -416,6 +417,7 @@
             // 
             this.txtLo.Location = new System.Drawing.Point(263, 135);
             this.txtLo.Name = "txtLo";
+            this.txtLo.ReadOnly = true;
             this.txtLo.Size = new System.Drawing.Size(37, 25);
             this.txtLo.TabIndex = 58;
             // 
@@ -439,14 +441,14 @@
             // 
             this.dgvDSDanhBo.AllowUserToAddRows = false;
             this.dgvDSDanhBo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
@@ -456,6 +458,7 @@
             this.dgvDSDanhBo.Name = "dgvDSDanhBo";
             this.dgvDSDanhBo.Size = new System.Drawing.Size(398, 170);
             this.dgvDSDanhBo.TabIndex = 56;
+            this.dgvDSDanhBo.Visible = false;
             // 
             // panel_YCCat5
             // 
@@ -531,6 +534,7 @@
             // 
             // btnYCCat
             // 
+            this.btnYCCat.Image = global::KTKS_ChungCu.Properties.Resources.add_24x24;
             this.btnYCCat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnYCCat.Location = new System.Drawing.Point(707, 2);
             this.btnYCCat.Name = "btnYCCat";
@@ -539,6 +543,7 @@
             this.btnYCCat.Text = "Thêm YC Cắt";
             this.btnYCCat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnYCCat.UseVisualStyleBackColor = true;
+            this.btnYCCat.Click += new System.EventHandler(this.btnYCCat_Click);
             // 
             // label19
             // 
@@ -674,6 +679,7 @@
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(124, 104);
             this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.ReadOnly = true;
             this.txtDiaChi.Size = new System.Drawing.Size(285, 25);
             this.txtDiaChi.TabIndex = 34;
             // 
@@ -689,6 +695,7 @@
             // btnThem
             // 
             this.btnThem.Enabled = false;
+            this.btnThem.Image = global::KTKS_ChungCu.Properties.Resources.add_24x24;
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.Location = new System.Drawing.Point(246, 187);
             this.btnThem.Name = "btnThem";
@@ -697,10 +704,12 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Visible = false;
             // 
             // btnSua
             // 
             this.btnSua.Enabled = false;
+            this.btnSua.Image = global::KTKS_ChungCu.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.Location = new System.Drawing.Point(343, 187);
             this.btnSua.Name = "btnSua";
@@ -709,11 +718,13 @@
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // txtThoiHan
             // 
             this.txtThoiHan.Location = new System.Drawing.Point(124, 197);
             this.txtThoiHan.Name = "txtThoiHan";
+            this.txtThoiHan.ReadOnly = true;
             this.txtThoiHan.Size = new System.Drawing.Size(100, 25);
             this.txtThoiHan.TabIndex = 40;
             // 
@@ -774,6 +785,7 @@
             // 
             this.txtSoNKDangKy.Location = new System.Drawing.Point(124, 166);
             this.txtSoNKDangKy.Name = "txtSoNKDangKy";
+            this.txtSoNKDangKy.ReadOnly = true;
             this.txtSoNKDangKy.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKDangKy.TabIndex = 38;
             // 
@@ -781,6 +793,7 @@
             // 
             this.txtSoNKTong.Location = new System.Drawing.Point(124, 135);
             this.txtSoNKTong.Name = "txtSoNKTong";
+            this.txtSoNKTong.ReadOnly = true;
             this.txtSoNKTong.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKTong.TabIndex = 36;
             // 
@@ -797,6 +810,7 @@
             // 
             this.txtMaCT.Location = new System.Drawing.Point(124, 73);
             this.txtMaCT.Name = "txtMaCT";
+            this.txtMaCT.ReadOnly = true;
             this.txtMaCT.Size = new System.Drawing.Size(100, 25);
             this.txtMaCT.TabIndex = 32;
             // 
@@ -944,6 +958,7 @@
             // 
             this.txtGhiChu.Location = new System.Drawing.Point(124, 228);
             this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.ReadOnly = true;
             this.txtGhiChu.Size = new System.Drawing.Size(285, 25);
             this.txtGhiChu.TabIndex = 42;
             // 
@@ -1003,9 +1018,10 @@
             this.Controls.Add(this.chkYCCat1);
             this.Controls.Add(this.label35);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmSoDK";
             this.Text = "Cập Nhật Sổ Đăng Ký";
+            this.Load += new System.EventHandler(this.frmSoDK_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.panel_YCCat4.ResumeLayout(false);
