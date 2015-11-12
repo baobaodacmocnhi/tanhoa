@@ -235,10 +235,24 @@ namespace QLVanThu
 
             Microsoft.Office.Interop.Excel.Range head13b = oSheetMucLuc.get_Range("C16", "R16");
             head13b.MergeCells = true;
-            head13b.Value2 = "TỔ GIÚP VIỆC ()";
+            head13b.Value2 = "HỘI ĐỒNG QUẢN TRỊ ()";
             head13b.Font.Name = "Times New Roman";
             head13b.Font.Size = "20";
             head13b.Font.Bold = true;
+            ///
+            Microsoft.Office.Interop.Excel.Range head14a = oSheetMucLuc.get_Range("B17", "B17");
+            head14a.Value2 = "13/";
+            head14a.Font.Name = "Times New Roman";
+            head14a.Font.Size = "20";
+            head14a.Font.Bold = true;
+            head14a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            Microsoft.Office.Interop.Excel.Range head14b = oSheetMucLuc.get_Range("C17", "R17");
+            head14b.MergeCells = true;
+            head14b.Value2 = "TỔ GIÚP VIỆC ()";
+            head14b.Font.Name = "Times New Roman";
+            head14b.Font.Size = "20";
+            head14b.Font.Bold = true;
         }
 
         private void ExportToExcel(DataTable dt, string sheetName, string title)
@@ -973,7 +987,7 @@ namespace QLVanThu
             Microsoft.Office.Interop.Excel.Worksheet oSheetTCTB = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(10);
             Microsoft.Office.Interop.Excel.Worksheet oSheetTCXL = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(11);
             Microsoft.Office.Interop.Excel.Worksheet oSheetGNKDT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(12);
-            Microsoft.Office.Interop.Excel.Worksheet oSheetCNTT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
+            Microsoft.Office.Interop.Excel.Worksheet oSheetHDQT = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(13);
             Microsoft.Office.Interop.Excel.Worksheet oSheetTGV = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(14);
             Microsoft.Office.Interop.Excel.Worksheet oSheetQĐ_TCHC = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(15);
             Microsoft.Office.Interop.Excel.Worksheet oSheetHĐ = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(16);
@@ -1019,7 +1033,7 @@ namespace QLVanThu
                     a[9].ImportRow(dr);
                 if (dr["SoKyHieuVB"].ToString().Contains("GNKDT"))
                     a[10].ImportRow(dr);
-                if (dr["SoKyHieuVB"].ToString().Contains("CNTT"))
+                if (dr["SoKyHieuVB"].ToString().Contains("HĐQT"))
                     a[11].ImportRow(dr);
                 if (dr["SoKyHieuVB"].ToString().Contains("TGV"))
                     a[12].ImportRow(dr);
@@ -1074,9 +1088,9 @@ namespace QLVanThu
                     case 10:
                         ExportToExcelChiTiet(a[i], oSheetGNKDT, "GNKDT","PHÒNG GIẢM NƯỚC KDT");
                         break;
-                    //case 11:
-                    //    ExportToExcelChiTiet(a[i], oSheetCNTT, "CNTT");
-                    //    break;
+                    case 11:
+                        ExportToExcelChiTiet(a[i], oSheetHDQT, "HĐQT", "HỘI ĐỒNG QUẢN TRỊ");
+                        break;
                     case 12:
                         ExportToExcelChiTiet(a[i], oSheetTGV, "TGV","TỔ GIÚP VIỆC");
                         break;
@@ -1165,7 +1179,7 @@ namespace QLVanThu
                     KeyWord = "GNKDT";
                     break;
                 case 12:
-                    KeyWord = "CNTT";
+                    KeyWord = "HĐQT";
                     break;
                 case 13:
                     KeyWord = "TGV";

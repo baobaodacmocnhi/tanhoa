@@ -360,7 +360,7 @@
             "Đội TCTB",
             "Đội TCXL",
             "GNKDT",
-            "CNTT",
+            "HĐQT",
             "Tổ Giúp Việc",
             "QĐ-TCHC",
             "HĐ",
