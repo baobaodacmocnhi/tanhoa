@@ -423,7 +423,7 @@ namespace ThuTien.GUI.Quay
                     dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
                     if (lstTamThu[0].HOADON.MaNV_HanhThu != null)
                         dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(lstTamThu[0].HOADON.MaNV_HanhThu.Value);
-                    dr["NhanVienQuay"] = CNguoiDung.HoTen;
+                    //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                     ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                     rptPhieuTamThu rpt = new rptPhieuTamThu();
@@ -606,7 +606,57 @@ namespace ThuTien.GUI.Quay
             }
         }
 
-        
+        private void dgvTamThu_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvTamThu.Columns[e.ColumnIndex].Name == "Tra_TT" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvTamThu[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    TAMTHU tamthu = _cTamThu.GetByMaTT(int.Parse(dgvTamThu["MaTT", e.RowIndex].Value.ToString()));
+                    tamthu.Tra = bool.Parse(e.FormattedValue.ToString());
+                    if (tamthu.Tra)
+                        tamthu.NgayTra = DateTime.Now;
+                    else
+                        tamthu.NgayTra = null;
+                    _cTamThu.Sua(tamthu);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (dgvTamThu.Columns[e.ColumnIndex].Name == "GhiChuTra_TT" && e.FormattedValue.ToString().Trim() != dgvTamThu[e.ColumnIndex, e.RowIndex].Value.ToString().Trim())
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    TAMTHU tamthu = _cTamThu.GetByMaTT(int.Parse(dgvTamThu["MaTT", e.RowIndex].Value.ToString()));
+                    tamthu.GhiChuTra = e.FormattedValue.ToString().Trim();
+                    _cTamThu.Sua(tamthu);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInTamThuKhong_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
+            dr["SoPhieu"] = "";
+            dr["DanhBo"] = "";
+            dr["HoTen"] = "";
+            dr["DiaChi"] = "";
+            dr["MLT"] = "";
+            dr["GiaBieu"] = "";
+            dr["DinhMuc"] = "";
+            dr["Ky"] = "";
+            dr["NhanVienThuTien"] = "";
+            ds.Tables["PhieuTamThu"].Rows.Add(dr);
+
+            rptPhieuTamThu rpt = new rptPhieuTamThu();
+            rpt.SetDataSource(ds);
+            frmInQuay frm = new frmInQuay(rpt);
+            frm.ShowDialog();
+        }  
 
     }
 }

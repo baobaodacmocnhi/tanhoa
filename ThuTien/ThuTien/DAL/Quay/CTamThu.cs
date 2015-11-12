@@ -146,6 +146,9 @@ namespace ThuTien.DAL.Quay
                             TenNH = itemtableNH.NGANHANG1,
                             GiaBieu = itemHD.GB,
                             itemTT.TienDu,
+                            itemTT.Tra,
+                            itemTT.NgayTra,
+                            itemTT.GhiChuTra,
                         };
             return LINQToDataTable(query);
         }
@@ -184,6 +187,9 @@ namespace ThuTien.DAL.Quay
                             TenNH=itemtableNH.NGANHANG1,
                             GiaBieu=itemHD.GB,
                             itemTT.TienDu,
+                            itemTT.Tra,
+                            itemTT.NgayTra,
+                            itemTT.GhiChuTra,
                         };
             return LINQToDataTable(query);
         }

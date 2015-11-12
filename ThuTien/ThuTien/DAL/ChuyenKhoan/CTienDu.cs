@@ -241,5 +241,14 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.DanhBo == DanhBo).OrderByDescending(item=>item.CreateDate).ToList());
         }
 
+        public DataTable GetDSChuyenTien(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Loai == "Chuyển Tiền" && item.SoTien < 0));
+        }
+
+        public DataTable GetDSNhanTien(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Loai == "Chuyển Tiền" && item.SoTien > 0));
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dateDen.Value = DateTime.Now;
             dateNgayGiaiTrach.Value = DateTime.Now;
 
-            cmbDot.SelectedIndex = 0;
+            cmbFromDot.SelectedIndex = 0;
         }
 
         public void CountdgvHDTuGia()
@@ -1025,7 +1025,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 List<HOADON> lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_TienDu"].Value.ToString());
 
-                if (lstHD!=null && lstHD[0].DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) < lstHD.Sum(itemHD=>itemHD.TONGCONG))
+                if (lstHD != null && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) < lstHD.Sum(itemHD => itemHD.TONGCONG))
                 {
                     foreach (HOADON itemHD in lstHD)
                     {
@@ -1042,11 +1042,32 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                         }
                         ds.Tables["TienDuKhachHang"].Rows.Add(dr);
+
+                        DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        drTT["LoaiBaoCao"] = "TIỀN DƯ THU THÊM";
+                        drTT["DanhBo"] = itemHD.DANHBA.Insert(4, " ").Insert(8, " ");
+                        drTT["HoTen"] = itemHD.TENKH;
+                        drTT["MLT"] = itemHD.MALOTRINH;
+                        drTT["Ky"] = itemHD.KY+"/"+itemHD.NAM;
+                        drTT["TongCong"] = itemHD.TONGCONG;
+                        if (itemHD.MaNV_HanhThu != null)
+                        {
+                            drTT["NhanVien"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                            drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                        }
+                        if (itemHD.GB.Value > 20)
+                            drTT["Loai"] = "CQ";
+                        else
+                            drTT["Loai"] = "TG";
+                        if (_cLenhHuy.CheckExist(itemHD.SOHOADON))
+                            drTT["LenhHuy"] = true;
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(drTT);
                     }
                 }
             }
             rptTienDuKhachHang rpt = new rptTienDuKhachHang();
             rpt.SetDataSource(ds);
+            rpt.Subreports[0].SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
@@ -1058,7 +1079,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 List<HOADON> lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_TienDu"].Value.ToString());
 
-                if (lstHD != null && lstHD[0].DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
+                if (lstHD != null && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                 {
                     foreach (HOADON itemHD in lstHD)
                     {
@@ -1075,6 +1096,26 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                         }
                         ds.Tables["TienDuKhachHang"].Rows.Add(dr);
+
+                        DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        drTT["LoaiBaoCao"] = "ĐỦ TIỀN";
+                        drTT["DanhBo"] = itemHD.DANHBA.Insert(4, " ").Insert(8, " ");
+                        drTT["HoTen"] = itemHD.TENKH;
+                        drTT["MLT"] = itemHD.MALOTRINH;
+                        drTT["Ky"] = itemHD.KY + "/" + itemHD.NAM;
+                        drTT["TongCong"] = itemHD.TONGCONG;
+                        if (itemHD.MaNV_HanhThu != null)
+                        {
+                            drTT["NhanVien"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                            drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                        }
+                        if (itemHD.GB.Value > 20)
+                            drTT["Loai"] = "CQ";
+                        else
+                            drTT["Loai"] = "TG";
+                        if (_cLenhHuy.CheckExist(itemHD.SOHOADON))
+                            drTT["LenhHuy"] = true;
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(drTT);
                     }
                 }
             }
@@ -1088,12 +1129,12 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (CNguoiDung.CheckQuyen("mnuTamThuChuyenKhoan", "Them"))
             {
-                if (MessageBox.Show("Bạn có chắc chắn Chuyển Tạm Thu " + cmbDot.SelectedItem.ToString() + "?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc chắn Chuyển Tạm Thu " + cmbFromDot.SelectedItem.ToString() + "?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     foreach (DataGridViewRow item in dgvTienDu.Rows)
                     {
                         List<HOADON> lstHD = _cHoaDon.GetDSTon(item.Cells["DanhBo_TienDu"].Value.ToString());
-                        if (lstHD != null && lstHD[0].DOT == int.Parse(cmbDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
+                        if (lstHD != null && lstHD[0].DOT == int.Parse(cmbFromDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) >= lstHD.Sum(itemHD => itemHD.TONGCONG))
                         {
                             foreach (HOADON itemHD in lstHD)
                                 if (!_cTamThu.CheckExist(itemHD.SOHOADON))

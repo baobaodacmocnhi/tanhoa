@@ -647,6 +647,16 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuLichSuDieuChinhTienDu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuLichSuDieuChinhTienDu", "Xem"))
+            {
+                frmLichSuDieuChinhTienDu frm = new frmLichSuDieuChinhTienDu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         #endregion
 
         #region Quầy
@@ -866,9 +876,6 @@ namespace ThuTien
         }
 
         
-
-        
-  
 
     }
 }

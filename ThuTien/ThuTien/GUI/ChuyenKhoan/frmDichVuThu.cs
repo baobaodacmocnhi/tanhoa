@@ -112,6 +112,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                     dr["LoaiBaoCao"] = "DỊCH VỤ THU HỘ";
+                    dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
                     dr["MLT"] = item.Cells["MLT"].Value.ToString();
