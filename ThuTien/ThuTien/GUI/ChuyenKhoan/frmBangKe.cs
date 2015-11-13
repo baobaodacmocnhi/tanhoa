@@ -71,7 +71,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     bangke.CreateDate2 = DateTime.Now;
                                     bangke.CreateBy2 = CNguoiDung.MaND;
                                     if (_cBangKe.Them(bangke))
-                                        _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê");
+                                        _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê","Thêm");
                                 }
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -123,7 +123,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             TT_BangKe bangke = _cBangKe.Get(int.Parse(item.Cells["MaBK"].Value.ToString()));
                             if (_cBangKe.Xoa(bangke))
-                                _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê");
+                                _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê","Xóa");
                         }
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -199,8 +199,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                     bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
                     if (_cBangKe.Sua(bangke))
                     {
-                        _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * -1, "Bảng Kê");
-                        _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê");
+                        _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * -1, "Bảng Kê","Sửa Từ Danh Bộ");
+                        _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Sửa Đến Danh Bộ");
                     }
                 }
                 else

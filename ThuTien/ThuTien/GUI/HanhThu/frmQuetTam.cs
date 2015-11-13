@@ -362,7 +362,7 @@ namespace ThuTien.GUI.HanhThu
                     dr["MLT"] = item.Cells["MLT_TG"].Value.ToString();
                     dr["Ky"] = item.Cells["Ky_TG"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
-                    dr["NhanVien"] = item.Cells["HanhThu_TG"].Value.ToString();
+                    dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                     dr["To"] = item.Cells["To_TG"].Value.ToString();
                     if (int.Parse(item.Cells["GiaBieu_TG"].Value.ToString()) > 20)
                         dr["Loai"] = "CQ";
@@ -385,7 +385,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString();
                         dr["Ky"] = item.Cells["Ky_CQ"].Value.ToString();
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();
-                        dr["NhanVien"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
                         dr["To"] = item.Cells["To_CQ"].Value.ToString();
                         if (int.Parse(item.Cells["GiaBieu_CQ"].Value.ToString()) > 20)
                             dr["Loai"] = "CQ";

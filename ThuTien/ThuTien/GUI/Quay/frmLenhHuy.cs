@@ -226,7 +226,7 @@ namespace ThuTien.GUI.Quay
                     dr["TinhTrang"] = item.Cells["TinhTrang"].Value;
                     dr["Cat"] = item.Cells["Cat"].Value;
                     //dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
-                    dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                    dr["HanhThu"] = item.Cells["HanhThu"].Value.ToString();
                     dr["To"] = item.Cells["To"].Value.ToString();
                     if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
                         dr["Loai"] = "CQ";
@@ -286,7 +286,7 @@ namespace ThuTien.GUI.Quay
                     dr["TinhTrang"] = drDGV[drDGV.Count() - 1]["TinhTrang"];
                     dr["Cat"] = drDGV[drDGV.Count() - 1]["Cat"];
                     //dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
-                    dr["NhanVien"] = drDGV[drDGV.Count() - 1]["HanhThu"];
+                    dr["HanhThu"] = drDGV[drDGV.Count() - 1]["HanhThu"];
                     dr["To"] = drDGV[drDGV.Count() - 1]["To"];
                     if (int.Parse(drDGV[drDGV.Count() - 1]["GiaBieu"].ToString()) > 20)
                         dr["Loai"] = "CQ";

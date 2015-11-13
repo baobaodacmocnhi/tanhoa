@@ -153,7 +153,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                 + " left join"
                 + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"
                 + " left join"
-                + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where CAST(NGAYGIAITRACH as date)>=@NgayGiaiTrach1 and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach2 group by DANHBA)"
+                + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where DangNgan_ChuyenKhoan=1 and CAST(NGAYGIAITRACH as date)>=@NgayGiaiTrach1 and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach2 group by DANHBA)"
                 + " dn on bk.DanhBo=dn.DANHBA";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);

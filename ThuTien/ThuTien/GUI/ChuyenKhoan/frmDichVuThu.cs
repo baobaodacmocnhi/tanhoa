@@ -118,7 +118,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["MLT"] = item.Cells["MLT"].Value.ToString();
                     dr["Ky"] = item.Cells["Ky"].Value.ToString();
                     dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
-                    dr["NhanVien"] = item.Cells["HanhThu"].Value.ToString();
+                    dr["HanhThu"] = item.Cells["HanhThu"].Value.ToString();
                     dr["To"] = item.Cells["To"].Value.ToString();
                     if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
                         dr["Loai"] = "CQ";

@@ -447,7 +447,7 @@ namespace ThuTien.GUI.Quay
                 dr["MLT"] = item.Cells["MLT_TT"].Value.ToString();
                 dr["Ky"] = item.Cells["Ky_TT"].Value.ToString();
                 dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
-                dr["NhanVien"] = item.Cells["HanhThu_TT"].Value.ToString();
+                dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
                 dr["To"] = item.Cells["To_TT"].Value.ToString();
                 if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
                     dr["Loai"] = "CQ";

@@ -442,6 +442,7 @@ namespace ThuTien.GUI.DongNuoc
 
                             dr["MaDN"] = item.SoPhieuDN.ToString().Insert(item.SoPhieuDN.ToString().Length - 2, "-");
                             dr["Loai"] = "ĐÓNG NƯỚC";
+                            dr["KyHieuLoai"] = "ĐN";
                             if (item.DanhBo.Length == 11)
                                 dr["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["DiaChi"] = item.DiaChi;
@@ -488,6 +489,7 @@ namespace ThuTien.GUI.DongNuoc
 
                                 dr["MaDN"] = item.SoPhieuMN.ToString().Insert(item.SoPhieuMN.ToString().Length - 2, "-");
                                 dr["Loai"] = "MỞ NƯỚC";
+                                dr["KyHieuLoai"] = "MN";
                                 if (item.DanhBo.Length == 11)
                                     dr["DanhBo"] = item.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["DiaChi"] = item.DiaChi;

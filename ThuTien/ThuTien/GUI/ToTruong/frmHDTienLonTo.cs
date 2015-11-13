@@ -286,7 +286,7 @@ namespace ThuTien.GUI.ToTruong
                     dr["Ky"] = item.Cells["Ky_TG"].Value;
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
-                    dr["NhanVien"] = item.Cells["HanhThu_TG"].Value.ToString();
+                    dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                     dr["To"] = CNguoiDung.TenTo;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
@@ -304,7 +304,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["Ky"] = item.Cells["Ky_CQ"].Value;
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
-                        dr["NhanVien"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
                         dr["To"] = CNguoiDung.TenTo;
                         ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                     }

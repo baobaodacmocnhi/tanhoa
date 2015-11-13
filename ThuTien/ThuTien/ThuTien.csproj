@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>328</ApplicationRevision>
+    <ApplicationRevision>333</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -235,6 +235,7 @@
     </Compile>
     <Compile Include="BaoCao\dsBaoCao.cs">
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\dsBaoCao.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -293,6 +294,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPhieuTieuThu.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\TongHop\rptDSCongVan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDSCongVan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\TongHop\rptDSDCHD.cs">
@@ -404,11 +411,11 @@
     <Compile Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.Designer.cs">
       <DependentUpon>frmBaoCaoChuyenKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ChuyenKhoan\frmChuyenTien.cs">
+    <Compile Include="GUI\ChuyenKhoan\frmDieuChinhTienDu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ChuyenKhoan\frmChuyenTien.Designer.cs">
-      <DependentUpon>frmChuyenTien.cs</DependentUpon>
+    <Compile Include="GUI\ChuyenKhoan\frmDieuChinhTienDu.Designer.cs">
+      <DependentUpon>frmDieuChinhTienDu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.cs">
       <SubType>Form</SubType>
@@ -939,6 +946,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPhieuTieuThu.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TongHop\rptDSCongVan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSCongVan.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TongHop\rptDSDCHD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDCHD.cs</LastGenOutput>
@@ -1014,8 +1025,8 @@
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmBaoCaoChuyenKhoan.resx">
       <DependentUpon>frmBaoCaoChuyenKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ChuyenKhoan\frmChuyenTien.resx">
-      <DependentUpon>frmChuyenTien.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmDieuChinhTienDu.resx">
+      <DependentUpon>frmDieuChinhTienDu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmDangNganChuyenKhoan.resx">
       <DependentUpon>frmDangNganChuyenKhoan.cs</DependentUpon>

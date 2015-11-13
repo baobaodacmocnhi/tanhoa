@@ -11,18 +11,18 @@ using ThuTien.DAL.QuanTri;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
-    public partial class frmChuyenTien : Form
+    public partial class frmDieuChinhTienDu : Form
     {
         string _DanhBo = "";
         string _SoTien = "";
         CTienDu _cTienDu = new CTienDu();
 
-        public frmChuyenTien()
+        public frmDieuChinhTienDu()
         {
             InitializeComponent();
         }
 
-        public frmChuyenTien(string DanhBo, string SoTien)
+        public frmDieuChinhTienDu(string DanhBo, string SoTien)
         {
             _DanhBo = DanhBo;
             _SoTien = SoTien;
@@ -68,8 +68,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     if (txtDanhBoCTA.Text.Trim().Replace(" ", "").Length == 11 && txtDanhBoCTB.Text.Trim().Replace(" ", "").Length == 11 && int.Parse(txtSoTienChuyen.Text.Trim()) > 0 && int.Parse(txtSoTienCTA.Text.Trim()) > 0)
-                        if (_cTienDu.Update(txtDanhBoCTA.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()) * -1, "Chuyển Tiền"))
-                            if (_cTienDu.Update(txtDanhBoCTB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Chuyển Tiền"))
+                        if (_cTienDu.Update(txtDanhBoCTA.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()) * -1, "Chuyển Tiền",txtGhiChuChuyen.Text.Trim()))
+                            if (_cTienDu.Update(txtDanhBoCTB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Chuyển Tiền", txtGhiChuChuyen.Text.Trim()))
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -86,8 +86,8 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (MessageBox.Show("Bạn có chắc chắn Sửa?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 if (int.Parse(txtSoTienMoi.Text.Trim()) >= 0)
-                    if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienCu.Text.Trim()) * -1, "Điều Chỉnh Tiền"))
-                        if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienMoi.Text.Trim()), "Điều Chỉnh Tiền"))
+                    if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienCu.Text.Trim()) * -1, "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
+                        if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienMoi.Text.Trim()), "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.DialogResult = System.Windows.Forms.DialogResult.OK;

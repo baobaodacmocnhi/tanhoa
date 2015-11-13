@@ -420,7 +420,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["MLT"] = item.Cells["MLT_TG"].Value;
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
-                    dr["NhanVien"] = item.Cells["HanhThu_TG"].Value.ToString();
+                    dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                     dr["To"] = item.Cells["To_TG"].Value.ToString();
                     dr["Loai"] = "TG";
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
@@ -439,7 +439,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["MLT"] = item.Cells["MLT_CQ"].Value;
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
-                        dr["NhanVien"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
                         dr["To"] = item.Cells["To_CQ"].Value.ToString();
                         dr["Loai"] = "CQ";
                         ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
@@ -762,7 +762,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["MLT"] = item.Cells["MLT_TG"].Value.ToString();
                         dr["Ky"] = item.Cells["Ky_TG"].Value.ToString();
                         dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
-                        dr["NhanVien"] = item.Cells["HanhThu_TG"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                         dr["To"] = item.Cells["To_TG"].Value.ToString();
                         dr["Loai"] = "TG";
                         ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
@@ -782,7 +782,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString();
                             dr["Ky"] = item.Cells["Ky_CQ"].Value.ToString();
                             dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();
-                            dr["NhanVien"] = item.Cells["HanhThu_CQ"].Value.ToString();
+                            dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
                             dr["To"] = item.Cells["To_CQ"].Value.ToString();
                             dr["Loai"] = "CQ";
                             ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
@@ -1038,7 +1038,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["TongCong"] = itemHD.TONGCONG;
                         if (lstHD[0].MaNV_HanhThu != null)
                         {
-                            dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                            dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                             dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                         }
                         ds.Tables["TienDuKhachHang"].Rows.Add(dr);
@@ -1052,7 +1052,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         drTT["TongCong"] = itemHD.TONGCONG;
                         if (itemHD.MaNV_HanhThu != null)
                         {
-                            drTT["NhanVien"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                            drTT["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                             drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                         }
                         if (itemHD.GB.Value > 20)
@@ -1067,9 +1067,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
             rptTienDuKhachHang rpt = new rptTienDuKhachHang();
             rpt.SetDataSource(ds);
-            rpt.Subreports[0].SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+
+            rptDSTamThuChuyenKhoan rptTT = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frmTT = new frmBaoCao(rptTT);
+            frmTT.ShowDialog();
         }
 
         private void btnInDSDuTien_Click(object sender, EventArgs e)
@@ -1092,7 +1096,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["TongCong"] = itemHD.TONGCONG;
                         if (lstHD[0].MaNV_HanhThu != null)
                         {
-                            dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                            dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                             dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                         }
                         ds.Tables["TienDuKhachHang"].Rows.Add(dr);
@@ -1106,7 +1110,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         drTT["TongCong"] = itemHD.TONGCONG;
                         if (itemHD.MaNV_HanhThu != null)
                         {
-                            drTT["NhanVien"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                            drTT["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
                             drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
                         }
                         if (itemHD.GB.Value > 20)
@@ -1123,6 +1127,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+
+            rptDSTamThuChuyenKhoan rptTT = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frmTT = new frmBaoCao(rptTT);
+            frmTT.ShowDialog();
         }
 
         private void btnChuyenTamThu_Click(object sender, EventArgs e)
@@ -1177,7 +1186,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    frmChuyenTien frm = new frmChuyenTien(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString(), dgvTienDu["SoTien_TienDu", e.RowIndex].Value.ToString());
+                    frmDieuChinhTienDu frm = new frmDieuChinhTienDu(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString(), dgvTienDu["SoTien_TienDu", e.RowIndex].Value.ToString());
                     if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         btnXem.PerformClick();
                 }

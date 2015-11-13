@@ -1,6 +1,6 @@
 ﻿namespace ThuTien.GUI.ChuyenKhoan
 {
-    partial class frmChuyenTien
+    partial class frmDieuChinhTienDu
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,7 @@
             this.txtSoTienCTA = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtSoTienCTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDanhBoCTB = new System.Windows.Forms.TextBox();
@@ -50,7 +51,10 @@
             this.txtSoTienMoi = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
+            this.txtGhiChuChuyen = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtGhiChuSua = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -118,6 +122,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh Bộ Nhận";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(178, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.TabIndex = 96;
+            this.label8.Text = "(enter)";
+            // 
             // txtSoTienCTB
             // 
             this.txtSoTienCTB.Location = new System.Drawing.Point(72, 47);
@@ -154,7 +167,7 @@
             // 
             // btnChuyen
             // 
-            this.btnChuyen.Location = new System.Drawing.Point(258, 103);
+            this.btnChuyen.Location = new System.Drawing.Point(351, 103);
             this.btnChuyen.Name = "btnChuyen";
             this.btnChuyen.Size = new System.Drawing.Size(75, 23);
             this.btnChuyen.TabIndex = 91;
@@ -164,7 +177,7 @@
             // 
             // txtSoTienChuyen
             // 
-            this.txtSoTienChuyen.Location = new System.Drawing.Point(152, 105);
+            this.txtSoTienChuyen.Location = new System.Drawing.Point(101, 105);
             this.txtSoTienChuyen.Name = "txtSoTienChuyen";
             this.txtSoTienChuyen.Size = new System.Drawing.Size(100, 20);
             this.txtSoTienChuyen.TabIndex = 90;
@@ -173,7 +186,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(60, 108);
+            this.label4.Location = new System.Drawing.Point(9, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 91;
@@ -181,6 +194,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtGhiChuChuyen);
+            this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.groupBox1);
             this.groupBox3.Controls.Add(this.txtSoTienChuyen);
             this.groupBox3.Controls.Add(this.groupBox2);
@@ -188,13 +203,15 @@
             this.groupBox3.Controls.Add(this.btnChuyen);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(436, 137);
+            this.groupBox3.Size = new System.Drawing.Size(436, 164);
             this.groupBox3.TabIndex = 92;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chuyển Tiền";
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.txtGhiChuSua);
+            this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.txtSoTienCu);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.txtDanhBoSuaTien);
@@ -204,7 +221,7 @@
             this.groupBox4.Controls.Add(this.btnSua);
             this.groupBox4.Location = new System.Drawing.Point(463, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(206, 137);
+            this.groupBox4.Size = new System.Drawing.Size(320, 137);
             this.groupBox4.TabIndex = 93;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Điều Chỉnh Tiền";
@@ -261,7 +278,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(115, 102);
+            this.btnSua.Location = new System.Drawing.Point(196, 74);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 91;
@@ -269,23 +286,46 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // label8
+            // txtGhiChuChuyen
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(178, 24);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 13);
-            this.label8.TabIndex = 96;
-            this.label8.Text = "(enter)";
+            this.txtGhiChuChuyen.Location = new System.Drawing.Point(101, 131);
+            this.txtGhiChuChuyen.Name = "txtGhiChuChuyen";
+            this.txtGhiChuChuyen.Size = new System.Drawing.Size(325, 20);
+            this.txtGhiChuChuyen.TabIndex = 92;
             // 
-            // frmChuyenTien
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 134);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 13);
+            this.label9.TabIndex = 93;
+            this.label9.Text = "Ghi Chú Chuyển:";
+            // 
+            // txtGhiChuSua
+            // 
+            this.txtGhiChuSua.Location = new System.Drawing.Point(90, 102);
+            this.txtGhiChuSua.Name = "txtGhiChuSua";
+            this.txtGhiChuSua.Size = new System.Drawing.Size(224, 20);
+            this.txtGhiChuSua.TabIndex = 96;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(17, 105);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(70, 13);
+            this.label11.TabIndex = 97;
+            this.label11.Text = "Ghi Chú Sữa:";
+            // 
+            // frmDieuChinhTienDu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 160);
+            this.ClientSize = new System.Drawing.Size(794, 187);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Name = "frmChuyenTien";
+            this.Name = "frmDieuChinhTienDu";
             this.Text = "Điều Chỉnh Tiền Dư";
             this.Load += new System.EventHandler(this.frmChuyenTien_Load);
             this.groupBox1.ResumeLayout(false);
@@ -325,5 +365,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtGhiChuChuyen;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtGhiChuSua;
+        private System.Windows.Forms.Label label11;
     }
 }
