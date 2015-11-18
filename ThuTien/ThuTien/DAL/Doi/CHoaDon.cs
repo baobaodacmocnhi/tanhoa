@@ -5229,6 +5229,7 @@ namespace ThuTien.DAL.Doi
                             PhiBVMT = itemHD.PHI,
                             TongCong = itemHD.TONGCONG,
                             GiaBieu = itemHD.GB,
+                            itemHD.TienMat,
                         };
             return LINQToDataTable(query);
         }

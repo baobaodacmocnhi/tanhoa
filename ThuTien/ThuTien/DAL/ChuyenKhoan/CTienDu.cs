@@ -56,7 +56,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSTienDu()
         {
-            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
+            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien > 0||item.Phi>0).ToList());
         }
 
         public DataTable GetDSTienDu(DateTime NgayGiaiTrach)
@@ -104,6 +104,32 @@ namespace ThuTien.DAL.ChuyenKhoan
                         return false;
                     }
                 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu,string DanhBoChuyenNhan)
+        {
+            try
+            {
+                if (LinQ_ExecuteNonQuery("update TT_TienDu set SoTien=SoTien+" + SoTien + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=GETDATE() where DanhBo='" + DanhBo + "'"))
+                {
+                    return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,DanhBoChuyenNhan,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "','"+DanhBoChuyenNhan+"'," + CNguoiDung.MaND + ",GETDATE())");
+                }
+                else
+                    if (LinQ_ExecuteNonQuery("insert into TT_TienDu(DanhBo,SoTien,CreateBy,CreateDate,ModifyBy,ModifyDate) values('" + DanhBo + "'," + SoTien + "," + CNguoiDung.MaND + ",GETDATE()," + CNguoiDung.MaND + ",GETDATE())"))
+                    {
+                        return LinQ_ExecuteNonQuery("insert into TT_TienDuLichSu(ID,DanhBo,SoTien,Loai,GhiChu,DanhBoChuyenNhan,CreateBy,CreateDate) values((select MAX(ID)+1 from TT_TienDuLichSu),'" + DanhBo + "'," + SoTien + ",N'" + Loai + "',N'" + GhiChu + "','"+DanhBoChuyenNhan+"'," + CNguoiDung.MaND + ",GETDATE())");
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
             }
             catch (Exception ex)
             {
@@ -248,7 +274,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSNhanTien(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Loai == "Chuyển Tiền" && item.SoTien > 0));
+            return LINQToDataTable(_db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.Loai == "Nhận Tiền" && item.SoTien > 0));
         }
     }
 }

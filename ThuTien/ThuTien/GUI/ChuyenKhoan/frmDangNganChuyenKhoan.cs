@@ -49,6 +49,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             dateNgayGiaiTrach.Value = DateTime.Now;
 
             cmbFromDot.SelectedIndex = 0;
+            cmbToDot.SelectedIndex = 0;
         }
 
         public void CountdgvHDTuGia()
