@@ -732,16 +732,18 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     _ctctdb.GhiChuLyDo = txtGhiChuXuLy.Text.Trim();
                     if (txtSoTien.Text.Trim() != "")
                         _ctctdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
-
+                    ///
                     if (chkNgayXuLy.Checked)
                     {
                         _ctctdb.NgayXuLy = dateXuLy.Value;
                         _ctctdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                        _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
                     }
                     else
                     {
                         _ctctdb.NgayXuLy = null;
                         _ctctdb.NoiDungXuLy = null;
+                        _ctctdb.CreateDate_NgayXuLy = null;
                     }
 
                     _ctctdb.NoiNhan = txtNoiNhan.Text.Trim();

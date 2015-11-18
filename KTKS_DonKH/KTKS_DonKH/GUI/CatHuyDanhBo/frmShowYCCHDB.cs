@@ -71,6 +71,28 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 txtGhiChuXuLy.Text = _ycchdb.GhiChuLyDo;
                 txtSoTien.Text = _ycchdb.SoTien.ToString();
                 txtHieuLucKy.Text = _ycchdb.HieuLucKy;
+                ///
+                if (chkCatTamNutBit.Checked)
+                {
+                    _ycchdb.CatTamNutBit = true;
+                    _ycchdb.NgayCatTamNutBit = dateCatTamNutBit.Value;
+                }
+                else
+                {
+                    _ycchdb.CatTamNutBit = false;
+                    _ycchdb.NgayCatTamNutBit = null;
+                }
+                ///
+                if (chkNgayXuLy.Checked)
+                {
+                    _ycchdb.NgayXuLy = dateXuLy.Value;
+                    _ycchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                }
+                else
+                {
+                    _ycchdb.NgayXuLy = null;
+                    _ycchdb.NoiDungXuLy = null;
+                }
             }
         }
 
@@ -111,6 +133,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (txtSoTien.Text.Trim() != "")
                         _ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                     _ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                    ///
                     if (chkCatTamNutBit.Checked)
                     {
                         _ycchdb.CatTamNutBit = true;
@@ -120,6 +143,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         _ycchdb.CatTamNutBit = false;
                         _ycchdb.NgayCatTamNutBit = null;
+                    }
+                    ///
+                    if (chkNgayXuLy.Checked)
+                    {
+                        _ycchdb.NgayXuLy = dateXuLy.Value;
+                        _ycchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                        _ycchdb.CreateDate_NgayXuLy = DateTime.Now;
+                    }
+                    else
+                    {
+                        _ycchdb.NgayXuLy = null;
+                        _ycchdb.NoiDungXuLy = null;
+                        _ycchdb.CreateDate_NgayXuLy = null;
                     }
                     if (_cCHDB.SuaYeuCauCHDB(_ycchdb))
                     {

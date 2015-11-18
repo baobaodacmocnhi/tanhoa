@@ -1597,6 +1597,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemCTCTDB in db.CTCTDBs
                                 where itemCTCTDB.NgayXuLy==null && itemCTCTDB.SoPhieu==null && itemCTCTDB.CreateDate.Value.Date == TuNgay.Date
+                                orderby itemCTCTDB.CreateDate ascending
                                 select new
                                 {
                                     itemCTCTDB.MaCTCTDB,
@@ -1630,6 +1631,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemCTCTDB in db.CTCTDBs
                                 where itemCTCTDB.NgayXuLy == null && itemCTCTDB.SoPhieu == null && itemCTCTDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCTDB.CreateDate.Value.Date <= DenNgay.Date
+                                orderby itemCTCTDB.CreateDate ascending
                                 select new
                                 {
                                     itemCTCTDB.MaCTCTDB,
@@ -2260,6 +2262,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemCTCHDB in db.CTCHDBs
                                 where itemCTCHDB.NgayXuLy == null && itemCTCHDB.SoPhieu == null && itemCTCHDB.CreateDate.Value.Date == TuNgay.Date
+                                orderby itemCTCHDB.CreateDate ascending
                                 select new
                                 {
                                     itemCTCHDB.MaCTCHDB,
@@ -2293,6 +2296,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                 {
                     var query = from itemCTCHDB in db.CTCHDBs
                                 where itemCTCHDB.NgayXuLy == null && itemCTCHDB.SoPhieu == null && itemCTCHDB.CreateDate.Value.Date >= TuNgay.Date && itemCTCHDB.CreateDate.Value.Date <= DenNgay.Date
+                                orderby itemCTCHDB.CreateDate ascending
                                 select new
                                 {
                                     itemCTCHDB.MaCTCHDB,

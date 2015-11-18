@@ -60,7 +60,8 @@ namespace KTKS_DonKH.GUI.KhachHang
                 txtSoCongVan.Text = _donkh.SoCongVan;
                 if (_donkh.TongSoDanhBo != null)
                 txtTongSoDanhBo.Text = _donkh.TongSoDanhBo.Value.ToString();
-                txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
+                if (_donkh.MaDon.ToString().Length > 2)
+                    txtMaDon.Text = _donkh.MaDon.ToString().Insert(_donkh.MaDon.ToString().Length - 2, "-");
                 txtNgayNhan.Text = _donkh.CreateDate.Value.ToString("dd/MM/yyyy");
                 txtNoiDung.Text = _donkh.NoiDung;
                 //txtMaXepDon.Text = _donkh.MaXepDon.ToString().Insert(_donkh.MaXepDon.ToString().Length - 2, "-") + "/" + _cLoaiDon.getKyHieuLDubyID(int.Parse(cmbLD.SelectedValue.ToString()));

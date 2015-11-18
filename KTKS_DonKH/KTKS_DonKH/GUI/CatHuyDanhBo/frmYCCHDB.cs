@@ -359,6 +359,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         chkCatTamNutBit.Checked = false;
                         dateCatTamNutBit.Value = DateTime.Now;
                     }
+                    ///
+                    if (_ycchdb.NoiDungXuLy != null)
+                    {
+                        chkNgayXuLy.Checked = true;
+                        dateXuLy.Value = _ycchdb.NgayXuLy.Value;
+                        cmbNoiDung.SelectedItem = _ycchdb.NoiDungXuLy;
+                    }
+                    else
+                    {
+                        chkNgayXuLy.Checked = false;
+                        dateXuLy.Value = DateTime.Now;
+                        cmbNoiDung.SelectedIndex = -1;
+                    }
                 }
                 else
                 {
@@ -390,6 +403,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 if (txtSoTien.Text.Trim() != "")
                     _ycchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                 _ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                ///
                 if (chkCatTamNutBit.Checked)
                 {
                     _ycchdb.CatTamNutBit = true;
@@ -399,6 +413,19 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 {
                     _ycchdb.CatTamNutBit = false;
                     _ycchdb.NgayCatTamNutBit = null;
+                }
+                ///
+                if (chkNgayXuLy.Checked)
+                {
+                    _ycchdb.NgayXuLy = dateXuLy.Value;
+                    _ycchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                    _ycchdb.CreateDate_NgayXuLy = DateTime.Now;
+                }
+                else
+                {
+                    _ycchdb.NgayXuLy = null;
+                    _ycchdb.NoiDungXuLy = null;
+                    _ycchdb.CreateDate_NgayXuLy = null;
                 }
                 if (_cCHDB.SuaYeuCauCHDB(_ycchdb))
                 {
@@ -448,6 +475,20 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     _ttkhachhang = null;
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void chkNgayXuLy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNgayXuLy.Checked)
+            {
+                dateXuLy.Enabled = true;
+                cmbNoiDung.Enabled = true;
+            }
+            else
+            {
+                dateXuLy.Enabled = false;
+                cmbNoiDung.Enabled = false;
             }
         }
         

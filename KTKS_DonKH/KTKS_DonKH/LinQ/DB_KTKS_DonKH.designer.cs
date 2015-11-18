@@ -1209,6 +1209,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _PhieuDuocKy;
 		
+		private System.Nullable<System.DateTime> _NgayXuLy;
+		
+		private string _NoiDungXuLy;
+		
+		private System.Nullable<System.DateTime> _CreateDate_NgayXuLy;
+		
 		private bool _CatTamNutBit;
 		
 		private System.Nullable<System.DateTime> _NgayCatTamNutBit;
@@ -1283,6 +1289,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnHieuLucKyChanged();
     partial void OnPhieuDuocKyChanging(bool value);
     partial void OnPhieuDuocKyChanged();
+    partial void OnNgayXuLyChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayXuLyChanged();
+    partial void OnNoiDungXuLyChanging(string value);
+    partial void OnNoiDungXuLyChanged();
+    partial void OnCreateDate_NgayXuLyChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDate_NgayXuLyChanged();
     partial void OnCatTamNutBitChanging(bool value);
     partial void OnCatTamNutBitChanged();
     partial void OnNgayCatTamNutBitChanging(System.Nullable<System.DateTime> value);
@@ -1586,6 +1598,66 @@ namespace KTKS_DonKH.LinQ
 					this._PhieuDuocKy = value;
 					this.SendPropertyChanged("PhieuDuocKy");
 					this.OnPhieuDuocKyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayXuLy", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayXuLy
+		{
+			get
+			{
+				return this._NgayXuLy;
+			}
+			set
+			{
+				if ((this._NgayXuLy != value))
+				{
+					this.OnNgayXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._NgayXuLy = value;
+					this.SendPropertyChanged("NgayXuLy");
+					this.OnNgayXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungXuLy", DbType="NVarChar(MAX)")]
+		public string NoiDungXuLy
+		{
+			get
+			{
+				return this._NoiDungXuLy;
+			}
+			set
+			{
+				if ((this._NoiDungXuLy != value))
+				{
+					this.OnNoiDungXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDungXuLy = value;
+					this.SendPropertyChanged("NoiDungXuLy");
+					this.OnNoiDungXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate_NgayXuLy", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate_NgayXuLy
+		{
+			get
+			{
+				return this._CreateDate_NgayXuLy;
+			}
+			set
+			{
+				if ((this._CreateDate_NgayXuLy != value))
+				{
+					this.OnCreateDate_NgayXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate_NgayXuLy = value;
+					this.SendPropertyChanged("CreateDate_NgayXuLy");
+					this.OnCreateDate_NgayXuLyChanged();
 				}
 			}
 		}
@@ -5724,6 +5796,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDungXuLy;
 		
+		private System.Nullable<System.DateTime> _CreateDate_NgayXuLy;
+		
 		private System.Nullable<System.DateTime> _NgayTCTBXuLy;
 		
 		private string _KetQuaTCTBXuLy;
@@ -5822,6 +5896,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayXuLyChanged();
     partial void OnNoiDungXuLyChanging(string value);
     partial void OnNoiDungXuLyChanged();
+    partial void OnCreateDate_NgayXuLyChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDate_NgayXuLyChanged();
     partial void OnNgayTCTBXuLyChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayTCTBXuLyChanged();
     partial void OnKetQuaTCTBXuLyChanging(string value);
@@ -6204,6 +6280,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDungXuLy = value;
 					this.SendPropertyChanged("NoiDungXuLy");
 					this.OnNoiDungXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate_NgayXuLy", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate_NgayXuLy
+		{
+			get
+			{
+				return this._CreateDate_NgayXuLy;
+			}
+			set
+			{
+				if ((this._CreateDate_NgayXuLy != value))
+				{
+					this.OnCreateDate_NgayXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate_NgayXuLy = value;
+					this.SendPropertyChanged("CreateDate_NgayXuLy");
+					this.OnCreateDate_NgayXuLyChanged();
 				}
 			}
 		}
@@ -8240,6 +8336,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _NoiDungXuLy;
 		
+		private System.Nullable<System.DateTime> _CreateDate_NgayXuLy;
+		
 		private System.Nullable<System.DateTime> _NgayTCTBXuLy;
 		
 		private string _KetQuaTCTBXuLy;
@@ -8324,6 +8422,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayXuLyChanged();
     partial void OnNoiDungXuLyChanging(string value);
     partial void OnNoiDungXuLyChanged();
+    partial void OnCreateDate_NgayXuLyChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDate_NgayXuLyChanged();
     partial void OnNgayTCTBXuLyChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayTCTBXuLyChanged();
     partial void OnKetQuaTCTBXuLyChanging(string value);
@@ -8674,6 +8774,26 @@ namespace KTKS_DonKH.LinQ
 					this._NoiDungXuLy = value;
 					this.SendPropertyChanged("NoiDungXuLy");
 					this.OnNoiDungXuLyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate_NgayXuLy", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate_NgayXuLy
+		{
+			get
+			{
+				return this._CreateDate_NgayXuLy;
+			}
+			set
+			{
+				if ((this._CreateDate_NgayXuLy != value))
+				{
+					this.OnCreateDate_NgayXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate_NgayXuLy = value;
+					this.SendPropertyChanged("CreateDate_NgayXuLy");
+					this.OnCreateDate_NgayXuLyChanged();
 				}
 			}
 		}

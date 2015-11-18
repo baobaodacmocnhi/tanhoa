@@ -77,6 +77,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 int nd6 = 0;
                 int nd7 = 0;
                 int nd8 = 0;
+                int nd9 = 0;
                 foreach (DataRow itemRow in dtCTDB.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
@@ -88,11 +89,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
                     {
-                        DataRow dr2 = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
-                        dr2["LoaiCat"] = "Lập Thông Báo Cắt Tạm";
-                        dr2["LyDo"] = "Đã Lập Phiếu";
-                        dr2["DanhBo"] = itemRow["DanhBo"];
-                        dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr2);
+                        //DataRow dr2 = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
+                        //dr2["LoaiCat"] = "Lập Thông Báo Cắt Tạm";
+                        //dr2["LyDo"] = "Đã Lập Phiếu";
+                        //dr2["DanhBo"] = itemRow["DanhBo"];
+                        //dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr2);
+                        nd9++;
                     }
 
                     //if (bool.Parse(itemRow["TCTBXuLy"].ToString()))
@@ -141,6 +143,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["NoiDungXuLy5"] = "Trùng lệnh";
                     dr["NoiDungXuLy6"] = "Bít hủy tận gốc";
                     dr["NoiDungXuLy7"] = "Đóng nước-niêm chì";
+                    dr["NoiDungXuLy9"] = "Đã lập phiếu hủy";
 
                     dr["SoLuong1"] = nd1;
                     dr["SoLuong2"] = nd2;
@@ -149,6 +152,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["SoLuong5"] = nd5;
                     dr["SoLuong6"] = nd6;
                     dr["SoLuong7"] = nd7;
+                    dr["SoLuong9"] = nd9;
                     dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
                 }
 
@@ -160,6 +164,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 nd6 = 0;
                 nd7 = 0;
                 nd8 = 0;
+                nd9 = 0;
                 foreach (DataRow itemRow in dtCHDB.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
@@ -171,11 +176,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                     if (bool.Parse(itemRow["DaLapPhieu"].ToString()))
                     {
-                        DataRow dr2 = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
-                        dr2["LoaiCat"] = "Lập Thông Báo Cắt Hủy";
-                        dr2["LyDo"] = "Đã Lập Phiếu";
-                        dr2["DanhBo"] = itemRow["DanhBo"];
-                        dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr2);
+                        //DataRow dr2 = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
+                        //dr2["LoaiCat"] = "Lập Thông Báo Cắt Hủy";
+                        //dr2["LyDo"] = "Đã Lập Phiếu";
+                        //dr2["DanhBo"] = itemRow["DanhBo"];
+                        //dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr2);
+                        nd9++;
                     }
 
                     //if (bool.Parse(itemRow["TCTBXuLy"].ToString()))
@@ -228,6 +234,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["NoiDungXuLy6"] = "Đóng nước-niêm chì";
                     dr["NoiDungXuLy7"] = "Bít hủy tận gốc";
                     dr["NoiDungXuLy8"] =  "Cắt ống ngánh khóa con cóc";
+                    dr["NoiDungXuLy9"] = "Đã lập phiếu hủy";
 
                     dr["SoLuong1"] = nd1;
                     dr["SoLuong2"] = nd2;
@@ -235,8 +242,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["SoLuong4"] = nd4;
                     dr["SoLuong5"] = nd5;
                     dr["SoLuong6"] = nd6;
-                    dr["SoLuong7"] = nd6;
-                    dr["SoLuong8"] = nd6;
+                    dr["SoLuong7"] = nd7;
+                    dr["SoLuong8"] = nd8;
+                    dr["SoLuong9"] = nd9;
                     dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
                 }
 
@@ -405,7 +413,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
                     dr["TuNgay"] = _tuNgay;
                     dr["DenNgay"] = _denNgay;
-                    dr["Loai"] = "CẮT TẠM DANH BỘ";
+                    dr["Loai"] = "CẮT TẠM";
                     dr["SoPhieu"] = itemRow["MaCTCTDB"].ToString().Insert(itemRow["MaCTCTDB"].ToString().Length-2,"-");
                     dr["NgayLap"] = itemRow["CreateDate"];
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
@@ -423,7 +431,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
                     dr["TuNgay"] = _tuNgay;
                     dr["DenNgay"] = _denNgay;
-                    dr["Loai"] = "CẮT HỦY DANH BỘ";
+                    dr["Loai"] = "CẮT HỦY";
                     dr["SoPhieu"] = itemRow["MaCTCHDB"].ToString().Insert(itemRow["MaCTCHDB"].ToString().Length - 2, "-");
                     dr["NgayLap"] = itemRow["CreateDate"];
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))

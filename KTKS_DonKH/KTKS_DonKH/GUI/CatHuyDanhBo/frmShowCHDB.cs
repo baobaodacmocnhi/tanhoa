@@ -472,11 +472,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     {
                         _ctchdb.NgayXuLy = dateXuLy.Value;
                         _ctchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                        _ctchdb.CreateDate_NgayXuLy = DateTime.Now;
                     }
                     else
                     {
                         _ctchdb.NgayXuLy = null;
                         _ctchdb.NoiDungXuLy = null;
+                        _ctchdb.CreateDate_NgayXuLy = null;
                     }
 
                     _ctchdb.NoiNhan = txtNoiNhan.Text.Trim();

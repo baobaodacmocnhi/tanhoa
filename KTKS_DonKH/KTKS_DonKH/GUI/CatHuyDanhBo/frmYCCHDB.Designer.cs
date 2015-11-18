@@ -58,6 +58,10 @@
             this.groupBoxCatTamNutBit = new System.Windows.Forms.GroupBox();
             this.btnSua = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
+            this.chkNgayXuLy = new System.Windows.Forms.CheckBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cmbNoiDung = new System.Windows.Forms.ComboBox();
+            this.dateXuLy = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxCatTamNutBit.SuspendLayout();
@@ -263,7 +267,7 @@
             // 
             this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(720, 243);
+            this.btnLuu.Location = new System.Drawing.Point(797, 202);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
             this.btnLuu.TabIndex = 6;
@@ -276,7 +280,7 @@
             // 
             this.btnInPhieu.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnInPhieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInPhieu.Location = new System.Drawing.Point(575, 243);
+            this.btnInPhieu.Location = new System.Drawing.Point(797, 243);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(135, 35);
             this.btnInPhieu.TabIndex = 18;
@@ -306,7 +310,7 @@
             // chkCatTamNutBit
             // 
             this.chkCatTamNutBit.AutoSize = true;
-            this.chkCatTamNutBit.Location = new System.Drawing.Point(797, 131);
+            this.chkCatTamNutBit.Location = new System.Drawing.Point(12, 243);
             this.chkCatTamNutBit.Name = "chkCatTamNutBit";
             this.chkCatTamNutBit.Size = new System.Drawing.Size(126, 21);
             this.chkCatTamNutBit.TabIndex = 21;
@@ -337,7 +341,7 @@
             this.groupBoxCatTamNutBit.Controls.Add(this.dateCatTamNutBit);
             this.groupBoxCatTamNutBit.Controls.Add(this.label9);
             this.groupBoxCatTamNutBit.Enabled = false;
-            this.groupBoxCatTamNutBit.Location = new System.Drawing.Point(797, 147);
+            this.groupBoxCatTamNutBit.Location = new System.Drawing.Point(12, 259);
             this.groupBoxCatTamNutBit.Name = "groupBoxCatTamNutBit";
             this.groupBoxCatTamNutBit.Size = new System.Drawing.Size(126, 72);
             this.groupBoxCatTamNutBit.TabIndex = 24;
@@ -347,7 +351,7 @@
             // 
             this.btnSua.Image = global::KTKS_DonKH.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(858, 243);
+            this.btnSua.Location = new System.Drawing.Point(726, 243);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(65, 35);
             this.btnSua.TabIndex = 17;
@@ -367,12 +371,58 @@
             this.label22.TabIndex = 90;
             this.label22.Text = "Phiếu Hủy";
             // 
+            // chkNgayXuLy
+            // 
+            this.chkNgayXuLy.AutoSize = true;
+            this.chkNgayXuLy.Location = new System.Drawing.Point(223, 246);
+            this.chkNgayXuLy.Name = "chkNgayXuLy";
+            this.chkNgayXuLy.Size = new System.Drawing.Size(104, 21);
+            this.chkNgayXuLy.TabIndex = 94;
+            this.chkNgayXuLy.Text = "Ngày Xử Lý:";
+            this.chkNgayXuLy.UseVisualStyleBackColor = true;
+            this.chkNgayXuLy.CheckedChanged += new System.EventHandler(this.chkNgayXuLy_CheckedChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(174, 277);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(68, 17);
+            this.label19.TabIndex = 93;
+            this.label19.Text = "Nội Dung:";
+            // 
+            // cmbNoiDung
+            // 
+            this.cmbNoiDung.Enabled = false;
+            this.cmbNoiDung.FormattingEnabled = true;
+            this.cmbNoiDung.Items.AddRange(new object[] {
+            "Xếp hồ sơ",
+            "Tái lập danh bộ"});
+            this.cmbNoiDung.Location = new System.Drawing.Point(248, 274);
+            this.cmbNoiDung.Name = "cmbNoiDung";
+            this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);
+            this.cmbNoiDung.TabIndex = 92;
+            // 
+            // dateXuLy
+            // 
+            this.dateXuLy.CustomFormat = "dd/MM/yyyy";
+            this.dateXuLy.Enabled = false;
+            this.dateXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateXuLy.Location = new System.Drawing.Point(333, 243);
+            this.dateXuLy.Name = "dateXuLy";
+            this.dateXuLy.Size = new System.Drawing.Size(109, 25);
+            this.dateXuLy.TabIndex = 91;
+            // 
             // frmYCCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(938, 288);
+            this.ClientSize = new System.Drawing.Size(938, 344);
+            this.Controls.Add(this.chkNgayXuLy);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.cmbNoiDung);
+            this.Controls.Add(this.dateXuLy);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.groupBoxCatTamNutBit);
@@ -432,5 +482,9 @@
         private System.Windows.Forms.GroupBox groupBoxCatTamNutBit;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox chkNgayXuLy;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cmbNoiDung;
+        private System.Windows.Forms.DateTimePicker dateXuLy;
     }
 }
