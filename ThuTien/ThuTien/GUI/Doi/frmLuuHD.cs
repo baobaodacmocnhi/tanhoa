@@ -189,14 +189,56 @@ namespace ThuTien.GUI.Doi
                         //    System.Windows.Forms.MessageBox.Show("Năm " + hoadon.NAM.Value + "; Kỳ " + hoadon.KY + "; Đợt " + hoadon.DOT.Value + " đã có rồi", "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                         //    return false;
                         //}
+
                         if (!_cHoaDon.CheckBySoHoaDon(hoadon.SOHOADON))
                             _cHoaDon.Them(hoadon);
                         else
                         {
-                         if(hoadon.DM!=null)
-                            _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
-                         else
-                             _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                            if (hoadon.DM != null)
+                                _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                            else
+                                _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                        //string sql = "";
+                        //if (hoadon.TILESH != null)
+                        //    sql += "TILESH=" + hoadon.TILESH;
+                        //else
+                        //    sql += "TILESH=null";
+
+                        //if (hoadon.TILEHCSN != null)
+                        //    sql += ",TILEHCSN=" + hoadon.TILEHCSN;
+                        //else
+                        //    sql += ",TILEHCSN=null";
+
+                        //if (hoadon.TILESX != null)
+                        //    sql += ",TILESX=" + hoadon.TILESX;
+                        //else
+                        //    sql += ",TILESX=null";
+
+                        //if (hoadon.TILEDV != null)
+                        //    sql += ",TILEDV=" + hoadon.TILEDV;
+                        //else
+                        //    sql += ",TILEDV=null";
+
+                        //if (hoadon.TIEUTHUSH != null)
+                        //    sql += ",TIEUTHUSH=" + hoadon.TIEUTHUSH;
+                        //else
+                        //    sql += ",TIEUTHUSH=null";
+
+                        //if (hoadon.TIEUTHUSX != null)
+                        //    sql += ",TIEUTHUSX=" + hoadon.TIEUTHUSX;
+                        //else
+                        //    sql += ",TIEUTHUSX=null";
+
+                        //if (hoadon.TIEUTHUHCSN != null)
+                        //    sql += ",TIEUTHUHCSN=" + hoadon.TIEUTHUHCSN;
+                        //else
+                        //    sql += ",TIEUTHUHCSN=null" ;
+
+                        //if (hoadon.TIEUTHUDV != null)
+                        //    sql += ",TIEUTHUDV=" + hoadon.TIEUTHUDV;
+                        //else
+                        //    sql += ",TIEUTHUDV=null";
+                        //_cHoaDon.LinQ_ExecuteNonQuery("update HOADON set " + sql + " where SOHOADON='" + hoadon.SOHOADON + "'");
                         }
                     }
 

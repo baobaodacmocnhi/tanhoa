@@ -73,6 +73,14 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_BangKes.SingleOrDefault(item => item.MaBK == MaBK);
         }
 
+        public TT_BangKe Get(string DanhBo)
+        {
+            if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo))
+                return _db.TT_BangKes.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First();
+            else
+                return null;
+        }
+
         public DataTable GetDS()
         {
             var query = from itemBK in _db.TT_BangKes

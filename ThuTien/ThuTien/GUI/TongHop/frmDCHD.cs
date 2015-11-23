@@ -149,7 +149,7 @@ namespace ThuTien.GUI.TongHop
             rptDSDCHD rpt = new rptDSDCHD();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInDSTon_Click(object sender, EventArgs e)
@@ -176,7 +176,7 @@ namespace ThuTien.GUI.TongHop
             rptDSDCHD rpt = new rptDSDCHD();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

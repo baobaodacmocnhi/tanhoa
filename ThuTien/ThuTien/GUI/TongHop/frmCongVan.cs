@@ -311,7 +311,7 @@ namespace ThuTien.GUI.TongHop
             rptDSCongVan rpt = new rptDSCongVan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         

@@ -340,7 +340,7 @@ namespace ThuTien.GUI.Doi
             rptNangSuatThuTien_Doi rpt = new rptNangSuatThuTien_Doi();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInTo_Click(object sender, EventArgs e)
@@ -395,7 +395,7 @@ namespace ThuTien.GUI.Doi
             rptNangSuatThuTien_To rpt = new rptNangSuatThuTien_To();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dgvHDTuGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

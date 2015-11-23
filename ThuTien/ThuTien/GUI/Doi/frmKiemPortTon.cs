@@ -244,7 +244,7 @@ namespace ThuTien.GUI.Doi
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -302,7 +302,7 @@ namespace ThuTien.GUI.Doi
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)

@@ -320,7 +320,7 @@ namespace ThuTien.GUI.Quay
                 rptPhieuDangNgan rpt = new rptPhieuDangNgan();
                 rpt.SetDataSource(ds);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
         }
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
@@ -520,7 +520,7 @@ namespace ThuTien.GUI.Quay
             rptDSDangNganQuay rpt = new rptDSDangNganQuay();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)

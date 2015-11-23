@@ -413,7 +413,7 @@ namespace ThuTien.GUI.HanhThu
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dateDangNgan_ValueChanged(object sender, EventArgs e)
@@ -463,7 +463,7 @@ namespace ThuTien.GUI.HanhThu
             rptPhieuDangNgan rpt = new rptPhieuDangNgan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dgvTongHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

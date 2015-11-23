@@ -110,6 +110,8 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnInTamThuKhong = new System.Windows.Forms.Button();
+            this.txtDanhBo_TT = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
@@ -341,6 +343,8 @@
             // 
             // tabTamThu
             // 
+            this.tabTamThu.Controls.Add(this.txtDanhBo_TT);
+            this.tabTamThu.Controls.Add(this.label5);
             this.tabTamThu.Controls.Add(this.dateTu);
             this.tabTamThu.Controls.Add(this.label2);
             this.tabTamThu.Controls.Add(this.btnInDSTamThu);
@@ -362,7 +366,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(207, 9);
+            this.dateTu.Location = new System.Drawing.Point(229, 9);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 23;
@@ -370,7 +374,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(150, 11);
+            this.label2.Location = new System.Drawing.Point(172, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 22;
@@ -378,7 +382,7 @@
             // 
             // btnInDSTamThu
             // 
-            this.btnInDSTamThu.Location = new System.Drawing.Point(645, 6);
+            this.btnInDSTamThu.Location = new System.Drawing.Point(667, 6);
             this.btnInDSTamThu.Name = "btnInDSTamThu";
             this.btnInDSTamThu.Size = new System.Drawing.Size(90, 23);
             this.btnInDSTamThu.TabIndex = 21;
@@ -388,7 +392,7 @@
             // 
             // btnInTamThu
             // 
-            this.btnInTamThu.Location = new System.Drawing.Point(564, 6);
+            this.btnInTamThu.Location = new System.Drawing.Point(586, 6);
             this.btnInTamThu.Name = "btnInTamThu";
             this.btnInTamThu.Size = new System.Drawing.Size(75, 23);
             this.btnInTamThu.TabIndex = 19;
@@ -398,7 +402,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(483, 6);
+            this.btnXem.Location = new System.Drawing.Point(505, 6);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 19;
@@ -409,7 +413,7 @@
             // btnXoa
             // 
             this.btnXoa.Enabled = false;
-            this.btnXoa.Location = new System.Drawing.Point(741, 6);
+            this.btnXoa.Location = new System.Drawing.Point(763, 6);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 17;
@@ -421,7 +425,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(377, 9);
+            this.dateDen.Location = new System.Drawing.Point(399, 9);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 18;
@@ -429,7 +433,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(313, 11);
+            this.label3.Location = new System.Drawing.Point(335, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 17;
@@ -842,6 +846,22 @@
             this.btnInTamThuKhong.UseVisualStyleBackColor = true;
             this.btnInTamThuKhong.Click += new System.EventHandler(this.btnInTamThuKhong_Click);
             // 
+            // txtDanhBo_TT
+            // 
+            this.txtDanhBo_TT.Location = new System.Drawing.Point(64, 8);
+            this.txtDanhBo_TT.Name = "txtDanhBo_TT";
+            this.txtDanhBo_TT.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBo_TT.TabIndex = 25;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Danh Bộ:";
+            // 
             // frmTamThuQuay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -950,5 +970,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChuTra_TT;
         private System.Windows.Forms.Button btnInTamThuKhong;
+        private System.Windows.Forms.TextBox txtDanhBo_TT;
+        private System.Windows.Forms.Label label5;
     }
 }

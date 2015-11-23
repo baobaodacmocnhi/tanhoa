@@ -318,7 +318,7 @@ namespace ThuTien.GUI.Doi
             rptToTrinhCatHuy rpt = new rptToTrinhCatHuy();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dgvToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

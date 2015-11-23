@@ -352,7 +352,7 @@ namespace ThuTien.GUI.ToTruong
             rptNangSuatThuTien_To rpt = new rptNangSuatThuTien_To();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void chkNgayKiemTra_CheckedChanged(object sender, EventArgs e)
@@ -361,6 +361,51 @@ namespace ThuTien.GUI.ToTruong
                 dateGiaiTrach.Enabled = true;
             else
                 dateGiaiTrach.Enabled = false;
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            if (cmbKy.SelectedIndex != -1)
+            {
+                DateTime NgayGiaiTrachNow = new DateTime(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), DateTime.DaysInMonth(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
+                DateTime NgayGiaiTrachOld = NgayGiaiTrachNow.AddMonths(-1);
+                NgayGiaiTrachOld = new DateTime(NgayGiaiTrachOld.Year, NgayGiaiTrachOld.Month, DateTime.DaysInMonth(NgayGiaiTrachOld.Year, NgayGiaiTrachOld.Month));
+
+                dsBaoCao ds = new dsBaoCao();
+
+                DataTable dtTo = _cHoaDon.GetBaoCaoTongHop_NV("TG",CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld);
+                dtTo.Merge(_cHoaDon.GetBaoCaoTongHop_NV("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld));
+
+                foreach (DataRow item in dtTo.Rows)
+                {
+                    DataRow dr = ds.Tables["BaoCaoTongHop"].NewRow();
+
+                    dr["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
+                    dr["To"] = CNguoiDung.TenTo;
+                    dr["STT"]=item["STT"];
+                    dr["HanhThu"] = item["HoTen"];
+                    dr["Loai"] = item["Loai"];
+                    dr["TonCu"] = item["HDTonCu"];
+                    dr["TyLeTonCu"] = item["GTTonCu"];
+                    dr["ChuanThu"] = item["HDChuanThu"];
+                    dr["TyLeChuanThu"] = item["GTChuanThu"];
+                    if (string.IsNullOrEmpty(item["HDTongTon"].ToString()))
+                        dr["TongTon"] = 0;
+                    else
+                        dr["TongTon"] = item["HDTongTon"];
+                    if (string.IsNullOrEmpty(item["GTTongTon"].ToString()))
+                        dr["TyLeTongTon"] = 0;
+                    else
+                        dr["TyLeTongTon"] = item["GTTongTon"];
+                    dr["NhanVien"] = CNguoiDung.HoTen;
+                    ds.Tables["BaoCaoTongHop"].Rows.Add(dr);
+                }
+
+                rptBaoCaoTo rpt = new rptBaoCaoTo();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.ShowDialog();
+            }
         }
 
 

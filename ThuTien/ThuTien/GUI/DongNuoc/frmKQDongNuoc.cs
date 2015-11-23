@@ -512,7 +512,7 @@ namespace ThuTien.GUI.DongNuoc
                     rptPhieuBaoDongMoNuoc rpt = new rptPhieuBaoDongMoNuoc();
                     rpt.SetDataSource(dsBaoCao);
                     frmBaoCao frm = new frmBaoCao(rpt);
-                    frm.ShowDialog();
+                    frm.Show();
 
                     //btnXem.PerformClick();
                 }

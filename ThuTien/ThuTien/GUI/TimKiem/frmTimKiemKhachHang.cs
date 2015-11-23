@@ -173,6 +173,7 @@ namespace ThuTien.GUI.TimKiem
                     DataRow dr = ds.Tables["TieuThu"].NewRow();
                     dr["Ky"] = dgvHoaDon["Ky", i].Value.ToString();
                     dr["NgayDoc"] = dgvHoaDon["NgayDoc", i].Value.ToString();
+                    dr["Code"] = dgvHoaDon["Code", i].Value.ToString();
                     dr["ChiSo"] = dgvHoaDon["ChiSo", i].Value.ToString();
                     dr["TieuThu"] = dgvHoaDon["TieuThu", i].Value.ToString();
                     dr["TongCong"] = dgvHoaDon["TongCong", i].Value.ToString();
@@ -185,6 +186,7 @@ namespace ThuTien.GUI.TimKiem
                     DataRow dr = ds.Tables["TieuThu"].NewRow();
                     dr["Ky"] = dgvHoaDon["Ky", i].Value.ToString();
                     dr["NgayDoc"] = dgvHoaDon["NgayDoc", i].Value.ToString();
+                    dr["Code"] = dgvHoaDon["Code", i].Value.ToString();
                     dr["ChiSo"] = dgvHoaDon["ChiSo", i].Value.ToString();
                     dr["TieuThu"] = dgvHoaDon["TieuThu", i].Value.ToString();
                     dr["TongCong"] = dgvHoaDon["TongCong", i].Value.ToString();
@@ -203,7 +205,7 @@ namespace ThuTien.GUI.TimKiem
             rptPhieuTieuThu rpt = new rptPhieuTieuThu();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnXemPKinhDoanh_Click(object sender, EventArgs e)

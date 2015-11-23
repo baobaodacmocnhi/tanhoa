@@ -33,7 +33,8 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             this.Location = new Point(200, 150);
 
-            txtDanhBoCTA.Text = txtDanhBoSuaTien.Text = _DanhBo.Insert(7, " ").Insert(4, " ");
+            if (_DanhBo.Length == 11)
+                txtDanhBoCTA.Text = txtDanhBoSuaTien.Text = _DanhBo.Insert(7, " ").Insert(4, " ");
             txtSoTienCTA.Text = txtSoTienCu.Text = _SoTien;
 
             if (CNguoiDung.MaND == 0||CNguoiDung.MaND == 1)
@@ -46,13 +47,18 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (e.KeyChar == 13 && txtDanhBoCTB.Text.Trim().Length == 11)
             {
-                if (_cTienDu.CheckExist(txtDanhBoCTB.Text.Trim().Replace(" ", "")))
-                {
+                //if (_cTienDu.CheckExist(txtDanhBoCTB.Text.Trim().Replace(" ", "")))
+                //{
                     txtSoTienCTB.Text = _cTienDu.GetTienDu(txtDanhBoCTB.Text.Trim().Replace(" ", "")).ToString();
-                }
-                else
-                    MessageBox.Show("Danh Bộ này chưa được Thêm vào Tiền Dư, Xin liên hệ T.CNTT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
+                //else
+                //    MessageBox.Show("Danh Bộ này chưa được Thêm vào Tiền Dư, Xin liên hệ T.CNTT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void txtDanhBoCTB_Leave(object sender, EventArgs e)
+        {
+            txtSoTienCTB.Text = _cTienDu.GetTienDu(txtDanhBoCTB.Text.Trim().Replace(" ", "")).ToString();
         }
 
         private void txtSoTienChuyen_TextChanged(object sender, EventArgs e)
@@ -67,7 +73,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if (txtDanhBoCTA.Text.Trim().Replace(" ", "").Length == 11 && txtDanhBoCTB.Text.Trim().Replace(" ", "").Length == 11 && int.Parse(txtSoTienChuyen.Text.Trim()) > 0 && int.Parse(txtSoTienCTA.Text.Trim()) > 0)
+                    if (txtDanhBoCTB.Text.Trim().Replace(" ", "").Length == 11 && int.Parse(txtSoTienChuyen.Text.Trim()) > 0 && int.Parse(txtSoTienCTA.Text.Trim()) > 0)
                         if (_cTienDu.Update(txtDanhBoCTA.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()) * -1, "Chuyển Tiền", txtGhiChuChuyen.Text.Trim(), txtDanhBoCTB.Text.Trim().Replace(" ", "")))
                             if (_cTienDu.Update(txtDanhBoCTB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Nhận Tiền", txtGhiChuChuyen.Text.Trim(), txtDanhBoCTA.Text.Trim().Replace(" ", "")))
                             {

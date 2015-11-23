@@ -26,10 +26,10 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
 
-            btnRefresh.PerformClick();
+            btnXem.PerformClick();
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnXem_Click(object sender, EventArgs e)
         {
             dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(CNguoiDung.MaTo);
         }

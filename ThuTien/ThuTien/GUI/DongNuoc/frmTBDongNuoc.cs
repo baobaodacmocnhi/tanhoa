@@ -345,7 +345,7 @@ namespace ThuTien.GUI.DongNuoc
             rptDSDongNuoc rpt = new rptDSDongNuoc();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)

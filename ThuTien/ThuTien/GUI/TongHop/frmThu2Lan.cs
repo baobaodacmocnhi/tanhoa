@@ -244,7 +244,7 @@ namespace ThuTien.GUI.TongHop
             rptDSThu2Lan rpt = new rptDSThu2Lan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInDSTra_Click(object sender, EventArgs e)
@@ -297,7 +297,7 @@ namespace ThuTien.GUI.TongHop
             rptDSThu2Lan rpt = new rptDSThu2Lan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
  
     }

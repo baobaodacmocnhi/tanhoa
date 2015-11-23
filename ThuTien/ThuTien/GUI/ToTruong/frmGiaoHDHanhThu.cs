@@ -406,7 +406,7 @@ namespace ThuTien.GUI.ToTruong
             rptDSChiaHoaDon rpt = new rptDSChiaHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
     }

@@ -161,7 +161,7 @@ namespace ThuTien.GUI.Quay
             rptPhieuTamThuTraGop rpt = new rptPhieuTamThuTraGop();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

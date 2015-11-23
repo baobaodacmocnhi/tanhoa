@@ -22,6 +22,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CDichVuThu _cDichVuThu = new CDichVuThu();
         CTo _cTo = new CTo();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
 
         public frmDichVuThu()
         {
@@ -55,14 +56,16 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             ///chọn tất cả tổ
             if (cmbTo.SelectedIndex == 0)
-            {
-                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(),dateTu.Value, dateDen.Value);
-            }
+                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
             ///chọn 1 tổ
             else
-            {
-                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbTo.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
-            }
+                ///chọn tất cả nhân viên
+                if (cmbNhanVien.SelectedIndex == 0)
+                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbTo.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                else
+                    ///chọn 1 nhân viên cụ thể
+                    if (cmbNhanVien.SelectedIndex > 0)
+                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbTo.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
 
             long TongSoTien = 0;
             int TongPhi = 0;
@@ -73,7 +76,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (!string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()))
                     TongPhi += int.Parse(item.Cells["Phi"].Value.ToString());
             }
-            txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",dgvDichVuThu.Rows.Count);
+            txtTongHD.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", dgvDichVuThu.Rows.Count);
             txtTongSoTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
             txtTongPhi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhi);
         }
@@ -84,7 +87,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
-            if (dgvDichVuThu.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            if (dgvDichVuThu.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
@@ -131,7 +134,26 @@ namespace ThuTien.GUI.ChuyenKhoan
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTo.SelectedIndex > 0)
+            {
+                List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                TT_NguoiDung nguoidung = new TT_NguoiDung();
+                nguoidung.MaND = 0;
+                nguoidung.HoTen = "Tất Cả";
+                lstND.Insert(0, nguoidung);
+                cmbNhanVien.DataSource = lstND;
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+            }
+            else
+            {
+                cmbNhanVien.DataSource = null;
+            }
         }
     }
 }

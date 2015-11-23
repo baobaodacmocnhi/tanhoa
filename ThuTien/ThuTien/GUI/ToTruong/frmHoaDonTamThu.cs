@@ -28,7 +28,7 @@ namespace ThuTien.GUI.ToTruong
             dgvHoaDon.AutoGenerateColumns = false;
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnXem_Click(object sender, EventArgs e)
         {
             dgvHoaDon.DataSource = _cTamThu.GetDSTon(CNguoiDung.MaTo, false);
 

@@ -252,7 +252,7 @@ namespace ThuTien.GUI.HanhThu
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -343,7 +343,7 @@ namespace ThuTien.GUI.HanhThu
             rptDSHoaDon_DiaChi rpt = new rptDSHoaDon_DiaChi();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInDSPhanTo_Click(object sender, EventArgs e)
@@ -398,7 +398,7 @@ namespace ThuTien.GUI.HanhThu
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInTBTienNuoc_Click(object sender, EventArgs e)
@@ -478,7 +478,7 @@ namespace ThuTien.GUI.HanhThu
             rptTBTienNuocPhoto rpt = new rptTBTienNuocPhoto();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
 
             //foreach (DataRow item in ds.Tables["TBDongNuoc"].Rows)
             //{
@@ -589,7 +589,7 @@ namespace ThuTien.GUI.HanhThu
             rptTBCatOngPhoto rpt = new rptTBCatOngPhoto();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
 
             //    foreach (DataRow item in ds.Tables["TBDongNuoc"].Rows)
             //    {

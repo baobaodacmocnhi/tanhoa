@@ -237,7 +237,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInDSTamThuChuaDN_Click(object sender, EventArgs e)
@@ -250,6 +250,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                     dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                     dr["LoaiBaoCao"] = "TẠM THU CHUYỂN KHOẢN TỒN";
+                    dr["GhiChu"] = "ĐÃ CHUYỂN KHOẢN";
                     dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
                     dr["MLT"] = item.Cells["MLT_TT"].Value.ToString();
@@ -268,7 +269,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -485,33 +486,23 @@ namespace ThuTien.GUI.ChuyenKhoan
                 Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
                 Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
                 Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
-                oSheet.get_Range(c2a, c3a).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
 
                 Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
                 Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
                 Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
-                oSheet.get_Range(c2b, c3b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-                oSheet.get_Range(c2b, c3b).NumberFormat = "@";
+                c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                c3b.NumberFormat = "@";
 
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
-                oSheet.get_Range(c2c, c3c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
 
                 Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
                 Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
                 Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
-                oSheet.get_Range(c2d, c3d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-
-                //Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
-                //Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
-                //Microsoft.Office.Interop.Excel.Range c3e = oSheet.get_Range(c1e, c2e);
-                //oSheet.get_Range(c2e, c3e).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-
-                //Microsoft.Office.Interop.Excel.Range c1f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 6];
-                //Microsoft.Office.Interop.Excel.Range c2f = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 6];
-                //Microsoft.Office.Interop.Excel.Range c3f = oSheet.get_Range(c1f, c2f);
-                //oSheet.get_Range(c2f, c3f).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                c3d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
 
                 //Điền dữ liệu vào vùng đã thiết lập
                 range.Value2 = arr;

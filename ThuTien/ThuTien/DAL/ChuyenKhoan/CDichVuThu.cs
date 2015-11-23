@@ -69,5 +69,33 @@ namespace ThuTien.DAL.ChuyenKhoan
                         };
             return LINQToDataTable(query);
         }
+        
+        public DataTable GetDS_NV(int MaNV_HanhThu, string TenDichVu, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemDV in _db.TT_DichVuThus
+                        join itemHD in _db.HOADONs on itemDV.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.MaNV_HanhThu == MaNV_HanhThu
+                            && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
+                        select new
+                        {
+                            itemDV.SoHoaDon,
+                            itemDV.SoTien,
+                            itemDV.Phi,
+                            itemDV.TenDichVu,
+                            itemDV.CreateDate,
+                            itemHD.NGAYGIAITRACH,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            GiaBieu = itemHD.GB,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                        };
+            return LINQToDataTable(query);
+        }
     }
 }

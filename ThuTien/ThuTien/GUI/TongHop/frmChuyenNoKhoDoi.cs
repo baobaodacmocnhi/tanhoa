@@ -279,7 +279,7 @@ namespace ThuTien.GUI.TongHop
                 rptChuyenNoKhoDoi rpt = new rptChuyenNoKhoDoi();
                 rpt.SetDataSource(ds);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 

@@ -524,7 +524,7 @@ namespace ThuTien.GUI.ToTruong
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInDSTo_Click(object sender, EventArgs e)
@@ -623,7 +623,7 @@ namespace ThuTien.GUI.ToTruong
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void chkNgayKiemTra_CheckedChanged(object sender, EventArgs e)
@@ -734,7 +734,7 @@ namespace ThuTien.GUI.ToTruong
             rptDSHoaDon rpt = new rptDSHoaDon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void chkKyKiemTra_CheckedChanged(object sender, EventArgs e)

@@ -368,7 +368,7 @@ namespace ThuTien.GUI.TongHop
             ReportDocument rpt = new rptTongHopDangNgan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnTongHopDangNganTG_Click(object sender, EventArgs e)
@@ -483,7 +483,7 @@ namespace ThuTien.GUI.TongHop
             ReportDocument rpt = new rptTongHopDangNganChiTiet();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnTongHopDangNganCQ_Click(object sender, EventArgs e)
@@ -593,7 +593,7 @@ namespace ThuTien.GUI.TongHop
             ReportDocument rpt = new rptTongHopDangNganChiTiet();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
        
     }

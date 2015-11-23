@@ -362,7 +362,7 @@ namespace ThuTien.GUI.Doi
             rptDangKyHD0 rpt = new rptDangKyHD0();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnInThongKe_Click(object sender, EventArgs e)
@@ -393,7 +393,7 @@ namespace ThuTien.GUI.Doi
             rptThongKeDangKyHD0 rpt = new rptThongKeDangKyHD0();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
     }
 }

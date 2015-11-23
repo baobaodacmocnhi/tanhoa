@@ -184,8 +184,11 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (dateDen.Value >= dateTu.Value)
-                dgvTamThu.DataSource = _cTamThu.GetDS(false, dateTu.Value, dateDen.Value);
+            if (!string.IsNullOrEmpty(txtDanhBo_TT.Text.Trim().Replace(" ", "")))
+                dgvTamThu.DataSource = _cTamThu.GetDS(false, txtDanhBo_TT.Text.Trim().Replace(" ", ""));
+            else
+                if (dateDen.Value >= dateTu.Value)
+                    dgvTamThu.DataSource = _cTamThu.GetDS(false, dateTu.Value, dateDen.Value);
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
@@ -388,7 +391,7 @@ namespace ThuTien.GUI.Quay
                 rptXacNhanNo rpt = new rptXacNhanNo();
                 rpt.SetDataSource(ds);
                 frmInQuay frm = new frmInQuay(rpt);
-                frm.ShowDialog();  
+                frm.Show();  
             }
             while (dgvHoaDon.Rows.Count > 0)
             {
@@ -429,7 +432,7 @@ namespace ThuTien.GUI.Quay
                     rptPhieuTamThu rpt = new rptPhieuTamThu();
                     rpt.SetDataSource(ds);
                     frmInQuay frm = new frmInQuay(rpt);
-                    frm.ShowDialog();
+                    frm.Show();
                 }
         }
 
@@ -458,7 +461,7 @@ namespace ThuTien.GUI.Quay
             rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnXem_XacNhanNo_Click(object sender, EventArgs e)
@@ -496,7 +499,7 @@ namespace ThuTien.GUI.Quay
                 rptXacNhanNo rpt = new rptXacNhanNo();
                 rpt.SetDataSource(ds);
                 frmInQuay frm = new frmInQuay(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
 
         }
@@ -655,7 +658,7 @@ namespace ThuTien.GUI.Quay
             rptPhieuTamThu rpt = new rptPhieuTamThu();
             rpt.SetDataSource(ds);
             frmInQuay frm = new frmInQuay(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }  
 
     }

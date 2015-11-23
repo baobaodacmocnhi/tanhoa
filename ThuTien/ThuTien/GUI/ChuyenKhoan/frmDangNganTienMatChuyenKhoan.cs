@@ -205,11 +205,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                             {
-                                if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
                                 {
-                                    if (!_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                    if (!_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
                                     {
-                                        MessageBox.Show("Lỗi Xóa Hóa Đơn, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
                                 }
@@ -220,11 +220,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                             {
                                 foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                 {
-                                    if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                    if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
                                     {
-                                        if (!_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                        if (!_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                         {
-                                            MessageBox.Show("Lỗi Xóa Hóa Đơn, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
                                     }
@@ -343,6 +343,11 @@ namespace ThuTien.GUI.ChuyenKhoan
         }
 
         private void btnInPhieu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
         {
 
         }

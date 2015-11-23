@@ -587,10 +587,20 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["DanhBo"] = item["DanhBo"];
                         dr["HoTen"] = itemdrDN["HoTen"];
                         dr["Ky"] = itemdrDN["Ky"];
-                        dr["GiaBan"] = itemdrDN["GiaBan"];
-                        dr["ThueGTGT"] = itemdrDN["ThueGTGT"];
-                        dr["PhiBVMT"] = itemdrDN["PhiBVMT"];
-                        dr["TongCong"] = itemdrDN["TongCong"];
+                        if (string.IsNullOrEmpty(itemdrDN["TienMat"].ToString()))
+                        {
+                            dr["GiaBan"] = itemdrDN["GiaBan"];
+                            dr["ThueGTGT"] = itemdrDN["ThueGTGT"];
+                            dr["PhiBVMT"] = itemdrDN["PhiBVMT"];
+                            dr["TongCong"] = itemdrDN["TongCong"];
+                        }
+                        else
+                        {
+                            dr["GiaBan"] = int.Parse(itemdrDN["GiaBan"].ToString()) - int.Parse(itemdrDN["TienMat"].ToString());
+                            dr["ThueGTGT"] = itemdrDN["ThueGTGT"];
+                            dr["PhiBVMT"] = itemdrDN["PhiBVMT"];
+                            dr["TongCong"] = int.Parse(itemdrDN["TongCong"].ToString()) - int.Parse(itemdrDN["TienMat"].ToString());
+                        }
                         dr["TienMat"] = itemdrDN["TienMat"];
                         if (int.Parse(itemdrDN["GiaBieu"].ToString()) > 20)
                             dr["Loai"] = "CQ";
@@ -654,10 +664,20 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["DanhBo"] = item["DanhBo"];
                     dr["HoTen"] = item["HoTen"];
                     dr["Ky"] = item["Ky"];
-                    dr["GiaBan"] = item["GiaBan"];
-                    dr["ThueGTGT"] = item["ThueGTGT"];
-                    dr["PhiBVMT"] = item["PhiBVMT"];
-                    dr["TongCong"] = item["TongCong"];
+                    if (string.IsNullOrEmpty(item["TienMat"].ToString()))
+                    {
+                        dr["GiaBan"] = item["GiaBan"];
+                        dr["ThueGTGT"] = item["ThueGTGT"];
+                        dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["TongCong"] = item["TongCong"];
+                    }
+                    else
+                    {
+                        dr["GiaBan"] = int.Parse(item["GiaBan"].ToString()) - int.Parse(item["TienMat"].ToString());
+                        dr["ThueGTGT"] = item["ThueGTGT"];
+                        dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["TongCong"] = int.Parse(item["TongCong"].ToString()) - int.Parse(item["TienMat"].ToString());
+                    }
                     dr["TienMat"] = item["TienMat"];
                     if (int.Parse(item["GiaBieu"].ToString()) > 20)
                         dr["Loai"] = "CQ";
@@ -674,10 +694,20 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["DanhBo"] = item["DanhBo"];
                     dr["HoTen"] = item["HoTen"];
                     dr["Ky"] = item["Ky"];
-                    dr["GiaBan"] = item["GiaBan"];
-                    dr["ThueGTGT"] = item["ThueGTGT"];
-                    dr["PhiBVMT"] = item["PhiBVMT"];
-                    dr["TongCong"] = item["TongCong"];
+                    if (string.IsNullOrEmpty(item["TienMat"].ToString()))
+                    {
+                        dr["GiaBan"] = item["GiaBan"];
+                        dr["ThueGTGT"] = item["ThueGTGT"];
+                        dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["TongCong"] = item["TongCong"];
+                    }
+                    else
+                    {
+                        dr["GiaBan"] = int.Parse(item["GiaBan"].ToString()) - int.Parse(item["TienMat"].ToString());
+                        dr["ThueGTGT"] = item["ThueGTGT"];
+                        dr["PhiBVMT"] = item["PhiBVMT"];
+                        dr["TongCong"] = int.Parse(item["TongCong"].ToString()) - int.Parse(item["TienMat"].ToString());
+                    }
                     dr["TienMat"] = item["TienMat"];
                     if (int.Parse(item["GiaBieu"].ToString()) > 20)
                         dr["Loai"] = "CQ";

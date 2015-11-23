@@ -92,6 +92,7 @@
             this.btnIn = new System.Windows.Forms.Button();
             this.chkNgayKiemTra = new System.Windows.Forms.CheckBox();
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
+            this.btnBaoCao = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -698,11 +699,22 @@
             this.dateGiaiTrach.Size = new System.Drawing.Size(95, 20);
             this.dateGiaiTrach.TabIndex = 46;
             // 
+            // btnBaoCao
+            // 
+            this.btnBaoCao.Location = new System.Drawing.Point(566, 11);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Size = new System.Drawing.Size(75, 23);
+            this.btnBaoCao.TabIndex = 48;
+            this.btnBaoCao.Text = "Báo Cáo";
+            this.btnBaoCao.UseVisualStyleBackColor = true;
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+            // 
             // frmNangSuatThuTienTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 520);
+            this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.chkNgayKiemTra);
             this.Controls.Add(this.dateGiaiTrach);
             this.Controls.Add(this.btnIn);
@@ -790,5 +802,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TiLeTongCong_CQ;
         private System.Windows.Forms.CheckBox chkNgayKiemTra;
         private System.Windows.Forms.DateTimePicker dateGiaiTrach;
+        private System.Windows.Forms.Button btnBaoCao;
     }
 }

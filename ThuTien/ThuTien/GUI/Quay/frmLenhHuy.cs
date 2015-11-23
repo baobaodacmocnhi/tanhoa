@@ -237,7 +237,7 @@ namespace ThuTien.GUI.Quay
             rptDSLenhHuy rpt = new rptDSLenhHuy();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dgvHoaDon_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -297,7 +297,7 @@ namespace ThuTien.GUI.Quay
             rptDSLenhHuy rpt = new rptDSLenhHuy();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)

@@ -167,7 +167,7 @@ namespace ThuTien.GUI.ToTruong
             rptTongHopNo rpt = new rptTongHopNo();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

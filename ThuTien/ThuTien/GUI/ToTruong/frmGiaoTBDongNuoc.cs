@@ -247,7 +247,7 @@ namespace ThuTien.GUI.ToTruong
                 rptDSDongNuoc rpt = new rptDSDongNuoc();
                 rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 
@@ -284,7 +284,7 @@ namespace ThuTien.GUI.ToTruong
                 rptDSDongNuoc rpt = new rptDSDongNuoc();
                 rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 
@@ -322,7 +322,7 @@ namespace ThuTien.GUI.ToTruong
                 rptDSDongNuoc rpt = new rptDSDongNuoc();
                 rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 

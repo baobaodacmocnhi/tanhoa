@@ -394,7 +394,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             rptPhieuDangNgan rpt = new rptPhieuDangNgan();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)

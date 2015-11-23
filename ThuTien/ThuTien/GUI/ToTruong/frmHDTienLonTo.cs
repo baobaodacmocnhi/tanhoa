@@ -288,6 +288,8 @@ namespace ThuTien.GUI.ToTruong
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
                     dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
                     dr["To"] = CNguoiDung.TenTo;
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                        dr["LenhHuy"] = true;
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
             }
@@ -306,13 +308,15 @@ namespace ThuTien.GUI.ToTruong
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
                         dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
                         dr["To"] = CNguoiDung.TenTo;
+                        if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                            dr["LenhHuy"] = true;
                         ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                     }
                 }
             rptDSHoaDonTienLon rpt = new rptDSHoaDonTienLon();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
-            frm.ShowDialog();
+            frm.Show();
         }
  
     }
