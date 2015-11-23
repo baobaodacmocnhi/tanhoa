@@ -9293,41 +9293,9 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnLapPhieu;
             
-            private global::System.Data.DataColumn columnNoiDungXuLy1;
+            private global::System.Data.DataColumn columnNoiDungXuLy;
             
-            private global::System.Data.DataColumn columnNoiDungXuLy2;
-            
-            private global::System.Data.DataColumn columnNoiDungXuLy3;
-            
-            private global::System.Data.DataColumn columnNoiDungXuLy4;
-            
-            private global::System.Data.DataColumn columnNoiDungXuLy5;
-            
-            private global::System.Data.DataColumn columnNoiDungXuLy6;
-            
-            private global::System.Data.DataColumn columnNoiDungXuLy7;
-            
-            private global::System.Data.DataColumn columnNoiDungXuLy8;
-            
-            private global::System.Data.DataColumn columnNoiDungXuLy9;
-            
-            private global::System.Data.DataColumn columnSoLuong1;
-            
-            private global::System.Data.DataColumn columnSoLuong2;
-            
-            private global::System.Data.DataColumn columnSoLuong3;
-            
-            private global::System.Data.DataColumn columnSoLuong4;
-            
-            private global::System.Data.DataColumn columnSoLuong5;
-            
-            private global::System.Data.DataColumn columnSoLuong6;
-            
-            private global::System.Data.DataColumn columnSoLuong7;
-            
-            private global::System.Data.DataColumn columnSoLuong8;
-            
-            private global::System.Data.DataColumn columnSoLuong9;
+            private global::System.Data.DataColumn columnSoLuong;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -9436,145 +9404,17 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy1Column {
+            public global::System.Data.DataColumn NoiDungXuLyColumn {
                 get {
-                    return this.columnNoiDungXuLy1;
+                    return this.columnNoiDungXuLy;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy2Column {
+            public global::System.Data.DataColumn SoLuongColumn {
                 get {
-                    return this.columnNoiDungXuLy2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy3Column {
-                get {
-                    return this.columnNoiDungXuLy3;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy4Column {
-                get {
-                    return this.columnNoiDungXuLy4;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy5Column {
-                get {
-                    return this.columnNoiDungXuLy5;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy6Column {
-                get {
-                    return this.columnNoiDungXuLy6;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy7Column {
-                get {
-                    return this.columnNoiDungXuLy7;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy8Column {
-                get {
-                    return this.columnNoiDungXuLy8;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoiDungXuLy9Column {
-                get {
-                    return this.columnNoiDungXuLy9;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong1Column {
-                get {
-                    return this.columnSoLuong1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong2Column {
-                get {
-                    return this.columnSoLuong2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong3Column {
-                get {
-                    return this.columnSoLuong3;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong4Column {
-                get {
-                    return this.columnSoLuong4;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong5Column {
-                get {
-                    return this.columnSoLuong5;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong6Column {
-                get {
-                    return this.columnSoLuong6;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong7Column {
-                get {
-                    return this.columnSoLuong7;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong8Column {
-                get {
-                    return this.columnSoLuong8;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SoLuong9Column {
-                get {
-                    return this.columnSoLuong9;
+                    return this.columnSoLuong;
                 }
             }
             
@@ -9615,34 +9455,7 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ThongKeCHDBRow AddThongKeCHDBRow(
-                        string TuNgay, 
-                        string DenNgay, 
-                        string LoaiCat, 
-                        string LyDo, 
-                        string DanhBo, 
-                        int TCTBXuLy, 
-                        int TroNgai, 
-                        int ConLai, 
-                        int LapPhieu, 
-                        string NoiDungXuLy1, 
-                        string NoiDungXuLy2, 
-                        string NoiDungXuLy3, 
-                        string NoiDungXuLy4, 
-                        string NoiDungXuLy5, 
-                        string NoiDungXuLy6, 
-                        string NoiDungXuLy7, 
-                        string NoiDungXuLy8, 
-                        string NoiDungXuLy9, 
-                        int SoLuong1, 
-                        int SoLuong2, 
-                        int SoLuong3, 
-                        int SoLuong4, 
-                        int SoLuong5, 
-                        int SoLuong6, 
-                        int SoLuong7, 
-                        int SoLuong8, 
-                        int SoLuong9) {
+            public ThongKeCHDBRow AddThongKeCHDBRow(string TuNgay, string DenNgay, string LoaiCat, string LyDo, string DanhBo, int TCTBXuLy, int TroNgai, int ConLai, bool LapPhieu, string NoiDungXuLy, int SoLuong) {
                 ThongKeCHDBRow rowThongKeCHDBRow = ((ThongKeCHDBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TuNgay,
@@ -9654,24 +9467,8 @@ namespace KTKS_DonKH.BaoCao {
                         TroNgai,
                         ConLai,
                         LapPhieu,
-                        NoiDungXuLy1,
-                        NoiDungXuLy2,
-                        NoiDungXuLy3,
-                        NoiDungXuLy4,
-                        NoiDungXuLy5,
-                        NoiDungXuLy6,
-                        NoiDungXuLy7,
-                        NoiDungXuLy8,
-                        NoiDungXuLy9,
-                        SoLuong1,
-                        SoLuong2,
-                        SoLuong3,
-                        SoLuong4,
-                        SoLuong5,
-                        SoLuong6,
-                        SoLuong7,
-                        SoLuong8,
-                        SoLuong9};
+                        NoiDungXuLy,
+                        SoLuong};
                 rowThongKeCHDBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowThongKeCHDBRow);
                 return rowThongKeCHDBRow;
@@ -9703,24 +9500,8 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnTroNgai = base.Columns["TroNgai"];
                 this.columnConLai = base.Columns["ConLai"];
                 this.columnLapPhieu = base.Columns["LapPhieu"];
-                this.columnNoiDungXuLy1 = base.Columns["NoiDungXuLy1"];
-                this.columnNoiDungXuLy2 = base.Columns["NoiDungXuLy2"];
-                this.columnNoiDungXuLy3 = base.Columns["NoiDungXuLy3"];
-                this.columnNoiDungXuLy4 = base.Columns["NoiDungXuLy4"];
-                this.columnNoiDungXuLy5 = base.Columns["NoiDungXuLy5"];
-                this.columnNoiDungXuLy6 = base.Columns["NoiDungXuLy6"];
-                this.columnNoiDungXuLy7 = base.Columns["NoiDungXuLy7"];
-                this.columnNoiDungXuLy8 = base.Columns["NoiDungXuLy8"];
-                this.columnNoiDungXuLy9 = base.Columns["NoiDungXuLy9"];
-                this.columnSoLuong1 = base.Columns["SoLuong1"];
-                this.columnSoLuong2 = base.Columns["SoLuong2"];
-                this.columnSoLuong3 = base.Columns["SoLuong3"];
-                this.columnSoLuong4 = base.Columns["SoLuong4"];
-                this.columnSoLuong5 = base.Columns["SoLuong5"];
-                this.columnSoLuong6 = base.Columns["SoLuong6"];
-                this.columnSoLuong7 = base.Columns["SoLuong7"];
-                this.columnSoLuong8 = base.Columns["SoLuong8"];
-                this.columnSoLuong9 = base.Columns["SoLuong9"];
+                this.columnNoiDungXuLy = base.Columns["NoiDungXuLy"];
+                this.columnSoLuong = base.Columns["SoLuong"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9742,44 +9523,12 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnTroNgai);
                 this.columnConLai = new global::System.Data.DataColumn("ConLai", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnConLai);
-                this.columnLapPhieu = new global::System.Data.DataColumn("LapPhieu", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnLapPhieu = new global::System.Data.DataColumn("LapPhieu", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLapPhieu);
-                this.columnNoiDungXuLy1 = new global::System.Data.DataColumn("NoiDungXuLy1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy1);
-                this.columnNoiDungXuLy2 = new global::System.Data.DataColumn("NoiDungXuLy2", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy2);
-                this.columnNoiDungXuLy3 = new global::System.Data.DataColumn("NoiDungXuLy3", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy3);
-                this.columnNoiDungXuLy4 = new global::System.Data.DataColumn("NoiDungXuLy4", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy4);
-                this.columnNoiDungXuLy5 = new global::System.Data.DataColumn("NoiDungXuLy5", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy5);
-                this.columnNoiDungXuLy6 = new global::System.Data.DataColumn("NoiDungXuLy6", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy6);
-                this.columnNoiDungXuLy7 = new global::System.Data.DataColumn("NoiDungXuLy7", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy7);
-                this.columnNoiDungXuLy8 = new global::System.Data.DataColumn("NoiDungXuLy8", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy8);
-                this.columnNoiDungXuLy9 = new global::System.Data.DataColumn("NoiDungXuLy9", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNoiDungXuLy9);
-                this.columnSoLuong1 = new global::System.Data.DataColumn("SoLuong1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong1);
-                this.columnSoLuong2 = new global::System.Data.DataColumn("SoLuong2", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong2);
-                this.columnSoLuong3 = new global::System.Data.DataColumn("SoLuong3", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong3);
-                this.columnSoLuong4 = new global::System.Data.DataColumn("SoLuong4", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong4);
-                this.columnSoLuong5 = new global::System.Data.DataColumn("SoLuong5", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong5);
-                this.columnSoLuong6 = new global::System.Data.DataColumn("SoLuong6", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong6);
-                this.columnSoLuong7 = new global::System.Data.DataColumn("SoLuong7", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong7);
-                this.columnSoLuong8 = new global::System.Data.DataColumn("SoLuong8", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong8);
-                this.columnSoLuong9 = new global::System.Data.DataColumn("SoLuong9", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoLuong9);
+                this.columnNoiDungXuLy = new global::System.Data.DataColumn("NoiDungXuLy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoiDungXuLy);
+                this.columnSoLuong = new global::System.Data.DataColumn("SoLuong", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSoLuong);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22874,10 +22623,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LapPhieu {
+            public bool LapPhieu {
                 get {
                     try {
-                        return ((int)(this[this.tableThongKeCHDB.LapPhieuColumn]));
+                        return ((bool)(this[this.tableThongKeCHDB.LapPhieuColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'LapPhieu\' in table \'ThongKeCHDB\' is DBNull.", e);
@@ -22890,289 +22639,33 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy1 {
+            public string NoiDungXuLy {
                 get {
                     try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy1Column]));
+                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy1\' in table \'ThongKeCHDB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy\' in table \'ThongKeCHDB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy1Column] = value;
+                    this[this.tableThongKeCHDB.NoiDungXuLyColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy2 {
+            public int SoLuong {
                 get {
                     try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy2Column]));
+                        return ((int)(this[this.tableThongKeCHDB.SoLuongColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy2\' in table \'ThongKeCHDB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong\' in table \'ThongKeCHDB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy3 {
-                get {
-                    try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy3Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy3\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy3Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy4 {
-                get {
-                    try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy4Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy4\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy4Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy5 {
-                get {
-                    try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy5Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy5\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy5Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy6 {
-                get {
-                    try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy6Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy6\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy6Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy7 {
-                get {
-                    try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy7Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy7\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy7Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy8 {
-                get {
-                    try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy8Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy8\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy8Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NoiDungXuLy9 {
-                get {
-                    try {
-                        return ((string)(this[this.tableThongKeCHDB.NoiDungXuLy9Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NoiDungXuLy9\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.NoiDungXuLy9Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong1 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong1\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong2 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong2Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong2\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong3 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong3Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong3\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong3Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong4 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong4Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong4\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong4Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong5 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong5Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong5\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong5Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong6 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong6Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong6\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong6Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong7 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong7Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong7\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong7Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong8 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong8Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong8\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong8Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SoLuong9 {
-                get {
-                    try {
-                        return ((int)(this[this.tableThongKeCHDB.SoLuong9Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong9\' in table \'ThongKeCHDB\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableThongKeCHDB.SoLuong9Column] = value;
+                    this[this.tableThongKeCHDB.SoLuongColumn] = value;
                 }
             }
             
@@ -23286,218 +22779,26 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy1Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy1Column);
+            public bool IsNoiDungXuLyNull() {
+                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy1Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy1Column] = global::System.Convert.DBNull;
+            public void SetNoiDungXuLyNull() {
+                this[this.tableThongKeCHDB.NoiDungXuLyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy2Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy2Column);
+            public bool IsSoLuongNull() {
+                return this.IsNull(this.tableThongKeCHDB.SoLuongColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy2Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy2Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy3Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy3Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy3Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy3Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy4Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy4Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy4Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy4Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy5Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy5Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy5Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy5Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy6Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy6Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy6Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy6Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy7Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy7Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy7Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy7Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy8Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy8Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy8Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy8Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoiDungXuLy9Null() {
-                return this.IsNull(this.tableThongKeCHDB.NoiDungXuLy9Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoiDungXuLy9Null() {
-                this[this.tableThongKeCHDB.NoiDungXuLy9Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong1Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong1Null() {
-                this[this.tableThongKeCHDB.SoLuong1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong2Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong2Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong2Null() {
-                this[this.tableThongKeCHDB.SoLuong2Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong3Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong3Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong3Null() {
-                this[this.tableThongKeCHDB.SoLuong3Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong4Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong4Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong4Null() {
-                this[this.tableThongKeCHDB.SoLuong4Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong5Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong5Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong5Null() {
-                this[this.tableThongKeCHDB.SoLuong5Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong6Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong6Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong6Null() {
-                this[this.tableThongKeCHDB.SoLuong6Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong7Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong7Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong7Null() {
-                this[this.tableThongKeCHDB.SoLuong7Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong8Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong8Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong8Null() {
-                this[this.tableThongKeCHDB.SoLuong8Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSoLuong9Null() {
-                return this.IsNull(this.tableThongKeCHDB.SoLuong9Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSoLuong9Null() {
-                this[this.tableThongKeCHDB.SoLuong9Column] = global::System.Convert.DBNull;
+            public void SetSoLuongNull() {
+                this[this.tableThongKeCHDB.SoLuongColumn] = global::System.Convert.DBNull;
             }
         }
         
