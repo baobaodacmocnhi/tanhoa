@@ -56,8 +56,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dt = _cTienDu.GetDSLichSu("", dateTu.Value, dateDen.Value);
                         break;
                 }
-                
                 dgvLichSuDieuChinhTienDu.DataSource = dt;
+
+                long TongCong = 0;
+                foreach (DataGridViewRow item in dgvLichSuDieuChinhTienDu.Rows)
+                {
+                    TongCong += int.Parse(item.Cells["SoTien"].Value.ToString());
+                }
+                txtTongCong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
         }
 

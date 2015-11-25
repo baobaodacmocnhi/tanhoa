@@ -65,7 +65,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 else
                     ///chọn 1 nhân viên cụ thể
                     if (cmbNhanVien.SelectedIndex > 0)
-                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbTo.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
 
             long TongSoTien = 0;
             int TongPhi = 0;

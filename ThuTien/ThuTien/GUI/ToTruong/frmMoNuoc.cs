@@ -16,6 +16,7 @@ namespace ThuTien.GUI.ToTruong
     {
         string _mnu = "mnuMoNuoc";
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        CTo _cTo = new CTo();
 
         public frmMoNuoc()
         {
@@ -26,12 +27,38 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
 
+            if (CNguoiDung.Doi)
+            {
+                lbTo.Visible = true;
+                cmbTo.Visible = true;
+
+                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                TT_To to = new TT_To();
+                to.MaTo = 0;
+                to.TenTo = "Tất Cả";
+                lstTo.Insert(0, to);
+                cmbTo.DataSource = lstTo;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+
             btnXem.PerformClick();
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(CNguoiDung.MaTo);
+            if (CNguoiDung.Doi)
+            {
+                ///chọn tất cả các tổ
+                if (cmbTo.SelectedIndex == 0)
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc();
+                else
+                    ///chọn 1 tổ cụ thể
+                    if (cmbTo.SelectedIndex > 0)
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(int.Parse(cmbTo.SelectedValue.ToString()));
+            }
+            else
+                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(CNguoiDung.MaTo);
         }
 
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -164,27 +164,27 @@ namespace ThuTien.DAL.DongNuoc
         /// <param name="TuNgay"></param>
         /// <param name="DenNgay"></param>
         /// <returns></returns>
-        public DataSet GetDSByMaNVCreateDates(string TenTo,int MaNV,DateTime TuNgay, DateTime DenNgay)
+        public DataSet GetDSByMaNVCreateDates(string TenTo, int MaNV, DateTime TuNgay, DateTime DenNgay)
         {
             DataSet ds = new DataSet();
 
             var queryDN = from itemDN in _db.TT_DongNuocs
-                            where itemDN.Huy==false && itemDN.CreateBy==MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
-                          orderby itemDN.MLT ascending  
+                          where itemDN.Huy == false && itemDN.CreateBy == MaNV && itemDN.CreateDate.Value.Date >= TuNgay.Date && itemDN.CreateDate.Value.Date <= DenNgay.Date
+                          orderby itemDN.MLT ascending
                           select new
                             {
-                                In=false,
+                                In = false,
                                 TenTo,
                                 itemDN.MaDN,
                                 itemDN.DanhBo,
                                 itemDN.HoTen,
                                 itemDN.DiaChi,
-                                TongCong=itemDN.TT_CTDongNuocs.Sum(item=>item.TongCong),
+                                TongCong = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
                                 itemDN.MLT,
                                 itemDN.CreateBy,
                                 itemDN.MaNV_DongNuoc,
                                 itemDN.CreateDate,
-                                TinhTrang="",///Phải thêm để GridView lấy cột để edit lại sau
+                                TinhTrang = "",///Phải thêm để GridView lấy cột để edit lại sau
                             };
             DataTable dtDongNuoc = new DataTable();
             dtDongNuoc = LINQToDataTable(queryDN);
@@ -206,7 +206,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemCTDN.ThueGTGT,
                                 itemCTDN.PhiBVMT,
                                 itemCTDN.TongCong,
-                                NgayGiaiTrach=itemHD.NGAYGIAITRACH,
+                                itemHD.NGAYGIAITRACH,
                             };
             DataTable dtCTDongNuoc = new DataTable();
             dtCTDongNuoc = LINQToDataTable(queryCTDN);
@@ -288,6 +288,27 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(_db.TT_KQDongNuocs.Where(item => item.CreateBy == MaNV && item.NgayMN.Value.Date >= TuNgay.Date && item.NgayMN.Value.Date <= DenNgay.Date).ToList());
         }
 
+        public DataTable GetDSCanMoNuoc()
+        {
+            var query = from itemKQ in _db.TT_KQDongNuocs
+                        join itemCT in _db.TT_CTDongNuocs on itemKQ.MaDN equals itemCT.MaDN
+                        join itemHD in _db.HOADONs on itemCT.SoHoaDon equals itemHD.SOHOADON
+                        where itemHD.NGAYGIAITRACH != null && itemKQ.NgayDN != null && itemKQ.NgayMN == null && itemHD.ChuyenNoKhoDoi == false
+                        select new
+                        {
+                            itemKQ.MaKQDN,
+                            itemKQ.MaDN,
+                            itemKQ.CreateDate,
+                            itemKQ.DanhBo,
+                            itemKQ.HoTen,
+                            itemKQ.DiaChi,
+                            itemKQ.NgayDN,
+                            itemHD.NGAYGIAITRACH,
+                            itemKQ.GhiChuTroNgai,
+                        };
+            return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+        }
+
         public DataTable GetDSCanMoNuoc(int MaTo)
         {
             var query = from itemKQ in _db.TT_KQDongNuocs
@@ -331,6 +352,30 @@ namespace ThuTien.DAL.DongNuoc
                             itemHD.NGAYGIAITRACH,
                         };
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
+        }
+
+        public DataTable GetBaoCaoTongHop(int MaTo,int Nam,int Ky)
+        {
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
+                        join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                            && itemDN.Huy == false && itemDN.NgayGiao.Value.Year == Nam && itemDN.NgayGiao.Value.Month == Ky
+                        select new
+                        {
+                            MaNV=itemND.MaND,
+                            itemND.HoTen,
+                            itemND.STT,
+                            itemDN.MaDN,
+                            itemDN.DanhBo,
+                            itemCTDN.SoHoaDon,
+                            itemCTDN.TongCong,
+                            itemHD.NGAYGIAITRACH,
+                        };
+
+            return LINQToDataTable(query);
         }
 
         public bool CheckKQDongNuocByMaDN(decimal MaDN)

@@ -53,6 +53,8 @@
             this.MoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.lbTo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -248,7 +250,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(12, 12);
+            this.btnXem.Location = new System.Drawing.Point(149, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 32;
@@ -256,11 +258,32 @@
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(83, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(60, 21);
+            this.cmbTo.TabIndex = 44;
+            this.cmbTo.Visible = false;
+            // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.Location = new System.Drawing.Point(54, 16);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(23, 13);
+            this.lbTo.TabIndex = 43;
+            this.lbTo.Text = "Tổ:";
+            this.lbTo.Visible = false;
+            // 
             // frmMoNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1123, 523);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.lbTo);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.dgvKQDongNuoc);
             this.Name = "frmMoNuoc";
@@ -268,6 +291,7 @@
             this.Load += new System.EventHandler(this.frmMoNuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -294,5 +318,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LyDo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayMN;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label lbTo;
     }
 }

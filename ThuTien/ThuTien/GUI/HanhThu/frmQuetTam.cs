@@ -23,6 +23,7 @@ namespace ThuTien.GUI.HanhThu
         string _mnu = "mnuQuetTam";
         CHoaDon _cHoaDon = new CHoaDon();
         CQuetTam _cQuetTam = new CQuetTam();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
 
         public frmQuetTam()
         {
@@ -34,8 +35,17 @@ namespace ThuTien.GUI.HanhThu
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
 
-            dateTu.Value = DateTime.Now;
+            if (CNguoiDung.ToTruong)
+            {
+                lbNhanVien.Visible = true;
+                cmbNhanVien.Visible = true;
 
+                cmbNhanVien.DataSource = _cNguoiDung.GetDSByMaTo(CNguoiDung.MaTo);
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+
+                cmbNhanVien.SelectedValue = CNguoiDung.MaND;
+            }
             btnXem.PerformClick();
         }
 
@@ -259,13 +269,19 @@ namespace ThuTien.GUI.HanhThu
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("TG", CNguoiDung.MaND);
+                if (CNguoiDung.ToTruong)
+                    dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                else
+                    dgvHDTuGia.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("TG", CNguoiDung.MaND);
                 CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    dgvHDCoQuan.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("CQ", CNguoiDung.MaND);
+                    if (CNguoiDung.ToTruong)
+                        dgvHDCoQuan.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()));
+                    else
+                        dgvHDCoQuan.DataSource = _cQuetTam.GetDSByMaNVCreatedDate("CQ", CNguoiDung.MaND);
                     CountdgvHDCoQuan();
                 }
         }
@@ -354,8 +370,8 @@ namespace ThuTien.GUI.HanhThu
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                    dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                    dr["DenNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                    dr["TuNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
                     dr["LoaiBaoCao"] = "HÓA ĐƠN TƯ GIA";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TG"].Value.ToString();
@@ -377,8 +393,8 @@ namespace ThuTien.GUI.HanhThu
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {
                         DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                        dr["DenNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dr["TuNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = DateTime.Now.ToString("dd/MM/yyyy");
                         dr["LoaiBaoCao"] = "HÓA ĐƠN CƠ QUAN";
                         dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = item.Cells["HoTen_CQ"].Value.ToString();

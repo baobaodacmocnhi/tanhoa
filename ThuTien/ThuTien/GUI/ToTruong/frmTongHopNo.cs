@@ -104,8 +104,10 @@ namespace ThuTien.GUI.ToTruong
                             DataRow row = dt.NewRow();
                             row["MaHD"] = item["MaHD"];
                             row["DanhBo"] = item["DanhBo"];
+                            row["HoTen"] = item["HoTen"];
                             row["DiaChi"] = item["DiaChi"];
                             row["Ky"] = item["Ky"];
+                            row["GiaBieu"] = item["GiaBieu"];
                             row["TieuThu"] = item["TieuThu"];
                             row["GiaBan"] = item["GiaBan"];
                             row["ThueGTGT"] = item["ThueGTGT"];
@@ -118,17 +120,20 @@ namespace ThuTien.GUI.ToTruong
                 {
                     HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim());
 
-                    DataRow row = dt.NewRow();
-                    row["MaHD"] = hoadon.ID_HOADON;
-                    row["HoTen"] = hoadon.TENKH;
-                    row["DanhBo"] = hoadon.DANHBA;
-                    row["DiaChi"] = hoadon.SO+" "+hoadon.DUONG;
-                    row["GiaBieu"] = hoadon.GB;
-                    if (hoadon.DM != null)
-                        row["DinhMuc"] = hoadon.DM;
-                    row["TieuThu"] = 0;
+                    if (hoadon != null)
+                    {
+                        DataRow row = dt.NewRow();
+                        row["MaHD"] = hoadon.ID_HOADON;
+                        row["HoTen"] = hoadon.TENKH;
+                        row["DanhBo"] = hoadon.DANHBA;
+                        row["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
+                        row["GiaBieu"] = hoadon.GB;
+                        if (hoadon.DM != null)
+                            row["DinhMuc"] = hoadon.DM;
+                        row["TieuThu"] = 0;
 
-                    dt.Rows.Add(row);
+                        dt.Rows.Add(row);
+                    }
                 }
                 bsHoaDon.DataSource = dt;
                 txtDanhBo.Text = "";
@@ -208,7 +213,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void dgvHoaDon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu" && e.FormattedValue.ToString().Replace(",", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu" && e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
             {
                 string ChiTiet = "";
                 int DM = 0;

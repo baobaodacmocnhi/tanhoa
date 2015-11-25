@@ -404,6 +404,48 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
+        public DataTable GetChuanThu_NV(string Loai, int MaNV_HanhThu, int Nam, int Ky)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            where itemHD.MaNV_HanhThu==MaNV_HanhThu && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB >= 11 && itemHD.GB <= 20
+                            select new
+                            {
+                                Loai = "TG",
+                                MaNV = itemHD.MaNV_HanhThu,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                itemHD.NGAYGIAITRACH,
+                                itemDC.GIABAN_BD,
+                                itemDC.TONGCONG_BD,
+                                itemDC.GIABAN_END,
+                                itemDC.TONGCONG_END,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemDC in _db.DIEUCHINH_HDs
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                                where itemHD.MaNV_HanhThu == MaNV_HanhThu && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.GB > 20
+                                select new
+                                {
+                                    Loai = "CQ",
+                                    MaNV = itemHD.MaNV_HanhThu,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
+                                    itemDC.GIABAN_BD,
+                                    itemDC.TONGCONG_BD,
+                                    itemDC.GIABAN_END,
+                                    itemDC.TONGCONG_END,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
         public DataTable GetChuanThuTon(string Loai, int MaTo, int Nam, int Ky, int Dot)
         {
             if (Loai == "TG")
@@ -1054,6 +1096,7 @@ namespace ThuTien.DAL.TongHop
                                     && itemDC.SoPhieu != null && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))&&(itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
+                                Loai="TG",
                                 MaNV = itemHD.MaNV_HanhThu,
                                 _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                 itemHD.NGAYGIAITRACH,
@@ -1073,6 +1116,7 @@ namespace ThuTien.DAL.TongHop
                                         && itemDC.SoPhieu != null && (itemHD.NAM < Nam || (itemHD.NAM == Nam && itemHD.KY <= Ky))&&(itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
                                 select new
                                 {
+                                    Loai = "CQ",
                                     MaNV = itemHD.MaNV_HanhThu,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
                                     itemHD.NGAYGIAITRACH,

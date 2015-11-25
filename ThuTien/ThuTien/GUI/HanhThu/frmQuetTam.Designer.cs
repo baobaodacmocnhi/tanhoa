@@ -57,8 +57,6 @@
             this.HanhThu_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -92,6 +90,8 @@
             this.btnInTBTienNuoc = new System.Windows.Forms.Button();
             this.btnInTBCatOng = new System.Windows.Forms.Button();
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
+            this.lbNhanVien = new System.Windows.Forms.Label();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -185,7 +185,6 @@
             this.dgvHDTuGia.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHDTuGia.Location = new System.Drawing.Point(6, 6);
             this.dgvHDTuGia.Name = "dgvHDTuGia";
-            this.dgvHDTuGia.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -206,7 +205,6 @@
             this.In_TG.DataPropertyName = "In";
             this.In_TG.HeaderText = "In";
             this.In_TG.Name = "In_TG";
-            this.In_TG.ReadOnly = true;
             this.In_TG.Width = 30;
             // 
             // MaQT_TG
@@ -214,7 +212,6 @@
             this.MaQT_TG.DataPropertyName = "MaQT";
             this.MaQT_TG.HeaderText = "MaQT";
             this.MaQT_TG.Name = "MaQT_TG";
-            this.MaQT_TG.ReadOnly = true;
             this.MaQT_TG.Visible = false;
             // 
             // SoHoaDon_TG
@@ -222,14 +219,12 @@
             this.SoHoaDon_TG.DataPropertyName = "SoHoaDon";
             this.SoHoaDon_TG.HeaderText = "Số HĐ";
             this.SoHoaDon_TG.Name = "SoHoaDon_TG";
-            this.SoHoaDon_TG.ReadOnly = true;
             // 
             // Ky_TG
             // 
             this.Ky_TG.DataPropertyName = "Ky";
             this.Ky_TG.HeaderText = "Kỳ";
             this.Ky_TG.Name = "Ky_TG";
-            this.Ky_TG.ReadOnly = true;
             this.Ky_TG.Width = 50;
             // 
             // MLT_TG
@@ -237,28 +232,24 @@
             this.MLT_TG.DataPropertyName = "MLT";
             this.MLT_TG.HeaderText = "MLT";
             this.MLT_TG.Name = "MLT_TG";
-            this.MLT_TG.ReadOnly = true;
             // 
             // SoPhatHanh_TG
             // 
             this.SoPhatHanh_TG.DataPropertyName = "SoPhatHanh";
             this.SoPhatHanh_TG.HeaderText = "Số Phát Hành";
             this.SoPhatHanh_TG.Name = "SoPhatHanh_TG";
-            this.SoPhatHanh_TG.ReadOnly = true;
             // 
             // DanhBo_TG
             // 
             this.DanhBo_TG.DataPropertyName = "DanhBo";
             this.DanhBo_TG.HeaderText = "Danh Bộ";
             this.DanhBo_TG.Name = "DanhBo_TG";
-            this.DanhBo_TG.ReadOnly = true;
             // 
             // HoTen_TG
             // 
             this.HoTen_TG.DataPropertyName = "HoTen";
             this.HoTen_TG.HeaderText = "HoTen";
             this.HoTen_TG.Name = "HoTen_TG";
-            this.HoTen_TG.ReadOnly = true;
             this.HoTen_TG.Visible = false;
             // 
             // DiaChi_TG
@@ -266,7 +257,6 @@
             this.DiaChi_TG.DataPropertyName = "DiaChi";
             this.DiaChi_TG.HeaderText = "DiaChi";
             this.DiaChi_TG.Name = "DiaChi_TG";
-            this.DiaChi_TG.ReadOnly = true;
             this.DiaChi_TG.Visible = false;
             // 
             // HopDong_TG
@@ -274,7 +264,6 @@
             this.HopDong_TG.DataPropertyName = "HopDong";
             this.HopDong_TG.HeaderText = "HopDong";
             this.HopDong_TG.Name = "HopDong_TG";
-            this.HopDong_TG.ReadOnly = true;
             this.HopDong_TG.Visible = false;
             // 
             // TongCong_TG
@@ -282,14 +271,12 @@
             this.TongCong_TG.DataPropertyName = "TongCong";
             this.TongCong_TG.HeaderText = "Tổng Cộng";
             this.TongCong_TG.Name = "TongCong_TG";
-            this.TongCong_TG.ReadOnly = true;
             // 
             // GiaBieu_TG
             // 
             this.GiaBieu_TG.DataPropertyName = "GiaBieu";
             this.GiaBieu_TG.HeaderText = "GiaBieu";
             this.GiaBieu_TG.Name = "GiaBieu_TG";
-            this.GiaBieu_TG.ReadOnly = true;
             this.GiaBieu_TG.Visible = false;
             // 
             // HanhThu_TG
@@ -297,7 +284,6 @@
             this.HanhThu_TG.DataPropertyName = "HanhThu";
             this.HanhThu_TG.HeaderText = "HanhThu";
             this.HanhThu_TG.Name = "HanhThu_TG";
-            this.HanhThu_TG.ReadOnly = true;
             this.HanhThu_TG.Visible = false;
             // 
             // To_TG
@@ -305,7 +291,6 @@
             this.To_TG.DataPropertyName = "To";
             this.To_TG.HeaderText = "To";
             this.To_TG.Name = "To_TG";
-            this.To_TG.ReadOnly = true;
             this.To_TG.Visible = false;
             // 
             // btnXem
@@ -317,26 +302,6 @@
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // dateTu
-            // 
-            this.dateTu.CustomFormat = "dd/MM/yyyy";
-            this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(312, 12);
-            this.dateTu.Name = "dateTu";
-            this.dateTu.Size = new System.Drawing.Size(100, 20);
-            this.dateTu.TabIndex = 8;
-            this.dateTu.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(250, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Ngày Lập:";
-            this.label3.Visible = false;
             // 
             // btnIn
             // 
@@ -467,7 +432,6 @@
             this.dgvHDCoQuan.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvHDCoQuan.Location = new System.Drawing.Point(6, 6);
             this.dgvHDCoQuan.Name = "dgvHDCoQuan";
-            this.dgvHDCoQuan.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -488,7 +452,6 @@
             this.In_CQ.DataPropertyName = "In";
             this.In_CQ.HeaderText = "In";
             this.In_CQ.Name = "In_CQ";
-            this.In_CQ.ReadOnly = true;
             this.In_CQ.Width = 30;
             // 
             // MaQT_CQ
@@ -496,7 +459,6 @@
             this.MaQT_CQ.DataPropertyName = "MaQT";
             this.MaQT_CQ.HeaderText = "MaQT";
             this.MaQT_CQ.Name = "MaQT_CQ";
-            this.MaQT_CQ.ReadOnly = true;
             this.MaQT_CQ.Visible = false;
             // 
             // SoHoaDon_CQ
@@ -504,14 +466,12 @@
             this.SoHoaDon_CQ.DataPropertyName = "SoHoaDon";
             this.SoHoaDon_CQ.HeaderText = "Số HĐ";
             this.SoHoaDon_CQ.Name = "SoHoaDon_CQ";
-            this.SoHoaDon_CQ.ReadOnly = true;
             // 
             // Ky_CQ
             // 
             this.Ky_CQ.DataPropertyName = "Ky";
             this.Ky_CQ.HeaderText = "Kỳ";
             this.Ky_CQ.Name = "Ky_CQ";
-            this.Ky_CQ.ReadOnly = true;
             this.Ky_CQ.Width = 50;
             // 
             // MLT_CQ
@@ -519,28 +479,24 @@
             this.MLT_CQ.DataPropertyName = "MLT";
             this.MLT_CQ.HeaderText = "MLT";
             this.MLT_CQ.Name = "MLT_CQ";
-            this.MLT_CQ.ReadOnly = true;
             // 
             // SoPhatHanh_CQ
             // 
             this.SoPhatHanh_CQ.DataPropertyName = "SoPhatHanh";
             this.SoPhatHanh_CQ.HeaderText = "Số Phát Hành";
             this.SoPhatHanh_CQ.Name = "SoPhatHanh_CQ";
-            this.SoPhatHanh_CQ.ReadOnly = true;
             // 
             // DanhBo_CQ
             // 
             this.DanhBo_CQ.DataPropertyName = "DanhBo";
             this.DanhBo_CQ.HeaderText = "Danh Bộ";
             this.DanhBo_CQ.Name = "DanhBo_CQ";
-            this.DanhBo_CQ.ReadOnly = true;
             // 
             // HoTen_CQ
             // 
             this.HoTen_CQ.DataPropertyName = "HoTen";
             this.HoTen_CQ.HeaderText = "HoTen";
             this.HoTen_CQ.Name = "HoTen_CQ";
-            this.HoTen_CQ.ReadOnly = true;
             this.HoTen_CQ.Visible = false;
             // 
             // DiaChi_CQ
@@ -548,7 +504,6 @@
             this.DiaChi_CQ.DataPropertyName = "DiaChi";
             this.DiaChi_CQ.HeaderText = "DiaChi";
             this.DiaChi_CQ.Name = "DiaChi_CQ";
-            this.DiaChi_CQ.ReadOnly = true;
             this.DiaChi_CQ.Visible = false;
             // 
             // TongCong_CQ
@@ -556,14 +511,12 @@
             this.TongCong_CQ.DataPropertyName = "TongCong";
             this.TongCong_CQ.HeaderText = "Tổng Cộng";
             this.TongCong_CQ.Name = "TongCong_CQ";
-            this.TongCong_CQ.ReadOnly = true;
             // 
             // HopDong_CQ
             // 
             this.HopDong_CQ.DataPropertyName = "HopDong";
             this.HopDong_CQ.HeaderText = "HopDong";
             this.HopDong_CQ.Name = "HopDong_CQ";
-            this.HopDong_CQ.ReadOnly = true;
             this.HopDong_CQ.Visible = false;
             // 
             // GiaBieu_CQ
@@ -571,7 +524,6 @@
             this.GiaBieu_CQ.DataPropertyName = "GiaBieu";
             this.GiaBieu_CQ.HeaderText = "GiaBieu";
             this.GiaBieu_CQ.Name = "GiaBieu_CQ";
-            this.GiaBieu_CQ.ReadOnly = true;
             this.GiaBieu_CQ.Visible = false;
             // 
             // HanhThu_CQ
@@ -579,7 +531,6 @@
             this.HanhThu_CQ.DataPropertyName = "HanhThu";
             this.HanhThu_CQ.HeaderText = "HanhThu";
             this.HanhThu_CQ.Name = "HanhThu_CQ";
-            this.HanhThu_CQ.ReadOnly = true;
             this.HanhThu_CQ.Visible = false;
             // 
             // To_CQ
@@ -587,7 +538,6 @@
             this.To_CQ.DataPropertyName = "To";
             this.To_CQ.HeaderText = "To";
             this.To_CQ.Name = "To_CQ";
-            this.To_CQ.ReadOnly = true;
             this.To_CQ.Visible = false;
             // 
             // label7
@@ -674,11 +624,32 @@
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
             this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
+            // lbNhanVien
+            // 
+            this.lbNhanVien.AutoSize = true;
+            this.lbNhanVien.Location = new System.Drawing.Point(228, 15);
+            this.lbNhanVien.Name = "lbNhanVien";
+            this.lbNhanVien.Size = new System.Drawing.Size(60, 13);
+            this.lbNhanVien.TabIndex = 91;
+            this.lbNhanVien.Text = "Nhân Viên:";
+            this.lbNhanVien.Visible = false;
+            // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(294, 12);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.TabIndex = 92;
+            this.cmbNhanVien.Visible = false;
+            // 
             // frmQuetTam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1063, 652);
+            this.Controls.Add(this.lbNhanVien);
+            this.Controls.Add(this.cmbNhanVien);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.btnInTBCatOng);
             this.Controls.Add(this.btnInTBTienNuoc);
@@ -691,8 +662,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnXem);
-            this.Controls.Add(this.dateTu);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -722,8 +691,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvHDTuGia;
         private System.Windows.Forms.Button btnXem;
-        private System.Windows.Forms.DateTimePicker dateTu;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabControl tabControl;
@@ -771,5 +738,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn To_CQ;
         private System.Windows.Forms.Button btnCopyToClipboard;
+        private System.Windows.Forms.Label lbNhanVien;
+        private System.Windows.Forms.ComboBox cmbNhanVien;
     }
 }

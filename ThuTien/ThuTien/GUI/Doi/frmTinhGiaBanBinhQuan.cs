@@ -41,6 +41,8 @@ namespace ThuTien.GUI.Doi
 
             dgvGiaBanBinhQuan.DataSource = _cHoaDon.TinhGiaBanBinhQuanByNam(int.Parse(cmbNam.SelectedValue.ToString()));
 
+            long TongDoanhThu = 0;
+            long TongSanLuong = 0;
             for (int i = 0; i < dgvGiaBanBinhQuan.RowCount; i++)
             {
                 DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam.SelectedValue.ToString()), i + 1);
@@ -51,7 +53,11 @@ namespace ThuTien.GUI.Doi
                 }
                 else
                     dgvGiaBanBinhQuan["GiaBanBinhQuan", i].Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) / long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString()));
+                TongDoanhThu += long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString());
+                TongSanLuong += long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString());
             }
+            txtTongDoanhThu.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDoanhThu);
+            txtTongSanLuong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSanLuong);
         }
 
         private void dgvGiaBanBinhQuan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
