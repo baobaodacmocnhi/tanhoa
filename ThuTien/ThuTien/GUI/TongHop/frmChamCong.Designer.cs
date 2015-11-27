@@ -33,40 +33,6 @@
             this.dateChamCong = new System.Windows.Forms.DateTimePicker();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvChamCong = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtN1 = new System.Windows.Forms.TextBox();
-            this.txtN2 = new System.Windows.Forms.TextBox();
-            this.txtN3 = new System.Windows.Forms.TextBox();
-            this.txtN4 = new System.Windows.Forms.TextBox();
-            this.txtN5 = new System.Windows.Forms.TextBox();
-            this.txtN6 = new System.Windows.Forms.TextBox();
-            this.txtN7 = new System.Windows.Forms.TextBox();
-            this.txtN8 = new System.Windows.Forms.TextBox();
-            this.txtN9 = new System.Windows.Forms.TextBox();
-            this.txtN10 = new System.Windows.Forms.TextBox();
-            this.txtN11 = new System.Windows.Forms.TextBox();
-            this.txtN12 = new System.Windows.Forms.TextBox();
-            this.txtN13 = new System.Windows.Forms.TextBox();
-            this.txtN14 = new System.Windows.Forms.TextBox();
-            this.txtN15 = new System.Windows.Forms.TextBox();
-            this.txtN16 = new System.Windows.Forms.TextBox();
-            this.txtN17 = new System.Windows.Forms.TextBox();
-            this.txtN18 = new System.Windows.Forms.TextBox();
-            this.txtN19 = new System.Windows.Forms.TextBox();
-            this.txtN20 = new System.Windows.Forms.TextBox();
-            this.txtN21 = new System.Windows.Forms.TextBox();
-            this.txtN22 = new System.Windows.Forms.TextBox();
-            this.txtN23 = new System.Windows.Forms.TextBox();
-            this.txtN24 = new System.Windows.Forms.TextBox();
-            this.txtN25 = new System.Windows.Forms.TextBox();
-            this.txtN26 = new System.Windows.Forms.TextBox();
-            this.txtN27 = new System.Windows.Forms.TextBox();
-            this.txtN28 = new System.Windows.Forms.TextBox();
-            this.txtN29 = new System.Windows.Forms.TextBox();
-            this.txtN30 = new System.Windows.Forms.TextBox();
-            this.txtN31 = new System.Windows.Forms.TextBox();
             this.MaCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +71,41 @@
             this.Nghi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.XS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.KK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtN1 = new System.Windows.Forms.TextBox();
+            this.txtN2 = new System.Windows.Forms.TextBox();
+            this.txtN3 = new System.Windows.Forms.TextBox();
+            this.txtN4 = new System.Windows.Forms.TextBox();
+            this.txtN5 = new System.Windows.Forms.TextBox();
+            this.txtN6 = new System.Windows.Forms.TextBox();
+            this.txtN7 = new System.Windows.Forms.TextBox();
+            this.txtN8 = new System.Windows.Forms.TextBox();
+            this.txtN9 = new System.Windows.Forms.TextBox();
+            this.txtN10 = new System.Windows.Forms.TextBox();
+            this.txtN11 = new System.Windows.Forms.TextBox();
+            this.txtN12 = new System.Windows.Forms.TextBox();
+            this.txtN13 = new System.Windows.Forms.TextBox();
+            this.txtN14 = new System.Windows.Forms.TextBox();
+            this.txtN15 = new System.Windows.Forms.TextBox();
+            this.txtN16 = new System.Windows.Forms.TextBox();
+            this.txtN17 = new System.Windows.Forms.TextBox();
+            this.txtN18 = new System.Windows.Forms.TextBox();
+            this.txtN19 = new System.Windows.Forms.TextBox();
+            this.txtN20 = new System.Windows.Forms.TextBox();
+            this.txtN21 = new System.Windows.Forms.TextBox();
+            this.txtN22 = new System.Windows.Forms.TextBox();
+            this.txtN23 = new System.Windows.Forms.TextBox();
+            this.txtN24 = new System.Windows.Forms.TextBox();
+            this.txtN25 = new System.Windows.Forms.TextBox();
+            this.txtN26 = new System.Windows.Forms.TextBox();
+            this.txtN27 = new System.Windows.Forms.TextBox();
+            this.txtN28 = new System.Windows.Forms.TextBox();
+            this.txtN29 = new System.Windows.Forms.TextBox();
+            this.txtN30 = new System.Windows.Forms.TextBox();
+            this.txtN31 = new System.Windows.Forms.TextBox();
+            this.btnInNam = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChamCong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -188,315 +189,6 @@
             this.dgvChamCong.TabIndex = 35;
             this.dgvChamCong.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChamCong_CellEndEdit);
             this.dgvChamCong.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvChamCong_RowPostPaint);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(1074, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 13);
-            this.label5.TabIndex = 36;
-            this.label5.Text = "Thứ 7 + CN: màu cam";
-            // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(443, 10);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 37;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 13);
-            this.label1.TabIndex = 38;
-            this.label1.Text = "Ghi nhận lại ngày nghỉ phép";
-            // 
-            // txtN1
-            // 
-            this.txtN1.Location = new System.Drawing.Point(303, 610);
-            this.txtN1.Name = "txtN1";
-            this.txtN1.Size = new System.Drawing.Size(30, 20);
-            this.txtN1.TabIndex = 39;
-            this.txtN1.Text = "0";
-            this.txtN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN2
-            // 
-            this.txtN2.Location = new System.Drawing.Point(333, 610);
-            this.txtN2.Name = "txtN2";
-            this.txtN2.Size = new System.Drawing.Size(30, 20);
-            this.txtN2.TabIndex = 40;
-            this.txtN2.Text = "0";
-            this.txtN2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN3
-            // 
-            this.txtN3.Location = new System.Drawing.Point(363, 610);
-            this.txtN3.Name = "txtN3";
-            this.txtN3.Size = new System.Drawing.Size(30, 20);
-            this.txtN3.TabIndex = 41;
-            this.txtN3.Text = "0";
-            this.txtN3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN4
-            // 
-            this.txtN4.Location = new System.Drawing.Point(393, 610);
-            this.txtN4.Name = "txtN4";
-            this.txtN4.Size = new System.Drawing.Size(30, 20);
-            this.txtN4.TabIndex = 42;
-            this.txtN4.Text = "0";
-            this.txtN4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN5
-            // 
-            this.txtN5.Location = new System.Drawing.Point(423, 610);
-            this.txtN5.Name = "txtN5";
-            this.txtN5.Size = new System.Drawing.Size(30, 20);
-            this.txtN5.TabIndex = 43;
-            this.txtN5.Text = "0";
-            this.txtN5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN6
-            // 
-            this.txtN6.Location = new System.Drawing.Point(453, 610);
-            this.txtN6.Name = "txtN6";
-            this.txtN6.Size = new System.Drawing.Size(30, 20);
-            this.txtN6.TabIndex = 44;
-            this.txtN6.Text = "0";
-            this.txtN6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN7
-            // 
-            this.txtN7.Location = new System.Drawing.Point(483, 610);
-            this.txtN7.Name = "txtN7";
-            this.txtN7.Size = new System.Drawing.Size(30, 20);
-            this.txtN7.TabIndex = 45;
-            this.txtN7.Text = "0";
-            this.txtN7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN8
-            // 
-            this.txtN8.Location = new System.Drawing.Point(513, 610);
-            this.txtN8.Name = "txtN8";
-            this.txtN8.Size = new System.Drawing.Size(30, 20);
-            this.txtN8.TabIndex = 46;
-            this.txtN8.Text = "0";
-            this.txtN8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN9
-            // 
-            this.txtN9.Location = new System.Drawing.Point(543, 610);
-            this.txtN9.Name = "txtN9";
-            this.txtN9.Size = new System.Drawing.Size(30, 20);
-            this.txtN9.TabIndex = 47;
-            this.txtN9.Text = "0";
-            this.txtN9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN10
-            // 
-            this.txtN10.Location = new System.Drawing.Point(573, 610);
-            this.txtN10.Name = "txtN10";
-            this.txtN10.Size = new System.Drawing.Size(30, 20);
-            this.txtN10.TabIndex = 48;
-            this.txtN10.Text = "0";
-            this.txtN10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN11
-            // 
-            this.txtN11.Location = new System.Drawing.Point(603, 610);
-            this.txtN11.Name = "txtN11";
-            this.txtN11.Size = new System.Drawing.Size(30, 20);
-            this.txtN11.TabIndex = 49;
-            this.txtN11.Text = "0";
-            this.txtN11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN12
-            // 
-            this.txtN12.Location = new System.Drawing.Point(633, 610);
-            this.txtN12.Name = "txtN12";
-            this.txtN12.Size = new System.Drawing.Size(30, 20);
-            this.txtN12.TabIndex = 50;
-            this.txtN12.Text = "0";
-            this.txtN12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN13
-            // 
-            this.txtN13.Location = new System.Drawing.Point(663, 610);
-            this.txtN13.Name = "txtN13";
-            this.txtN13.Size = new System.Drawing.Size(30, 20);
-            this.txtN13.TabIndex = 51;
-            this.txtN13.Text = "0";
-            this.txtN13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN14
-            // 
-            this.txtN14.Location = new System.Drawing.Point(693, 610);
-            this.txtN14.Name = "txtN14";
-            this.txtN14.Size = new System.Drawing.Size(30, 20);
-            this.txtN14.TabIndex = 52;
-            this.txtN14.Text = "0";
-            this.txtN14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN15
-            // 
-            this.txtN15.Location = new System.Drawing.Point(723, 610);
-            this.txtN15.Name = "txtN15";
-            this.txtN15.Size = new System.Drawing.Size(30, 20);
-            this.txtN15.TabIndex = 53;
-            this.txtN15.Text = "0";
-            this.txtN15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN16
-            // 
-            this.txtN16.Location = new System.Drawing.Point(753, 610);
-            this.txtN16.Name = "txtN16";
-            this.txtN16.Size = new System.Drawing.Size(30, 20);
-            this.txtN16.TabIndex = 54;
-            this.txtN16.Text = "0";
-            this.txtN16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN17
-            // 
-            this.txtN17.Location = new System.Drawing.Point(783, 610);
-            this.txtN17.Name = "txtN17";
-            this.txtN17.Size = new System.Drawing.Size(30, 20);
-            this.txtN17.TabIndex = 55;
-            this.txtN17.Text = "0";
-            this.txtN17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN18
-            // 
-            this.txtN18.Location = new System.Drawing.Point(813, 610);
-            this.txtN18.Name = "txtN18";
-            this.txtN18.Size = new System.Drawing.Size(30, 20);
-            this.txtN18.TabIndex = 56;
-            this.txtN18.Text = "0";
-            this.txtN18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN19
-            // 
-            this.txtN19.Location = new System.Drawing.Point(843, 610);
-            this.txtN19.Name = "txtN19";
-            this.txtN19.Size = new System.Drawing.Size(30, 20);
-            this.txtN19.TabIndex = 57;
-            this.txtN19.Text = "0";
-            this.txtN19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN20
-            // 
-            this.txtN20.Location = new System.Drawing.Point(873, 610);
-            this.txtN20.Name = "txtN20";
-            this.txtN20.Size = new System.Drawing.Size(30, 20);
-            this.txtN20.TabIndex = 58;
-            this.txtN20.Text = "0";
-            this.txtN20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN21
-            // 
-            this.txtN21.Location = new System.Drawing.Point(903, 610);
-            this.txtN21.Name = "txtN21";
-            this.txtN21.Size = new System.Drawing.Size(30, 20);
-            this.txtN21.TabIndex = 59;
-            this.txtN21.Text = "0";
-            this.txtN21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN22
-            // 
-            this.txtN22.Location = new System.Drawing.Point(933, 610);
-            this.txtN22.Name = "txtN22";
-            this.txtN22.Size = new System.Drawing.Size(30, 20);
-            this.txtN22.TabIndex = 60;
-            this.txtN22.Text = "0";
-            this.txtN22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN23
-            // 
-            this.txtN23.Location = new System.Drawing.Point(963, 610);
-            this.txtN23.Name = "txtN23";
-            this.txtN23.Size = new System.Drawing.Size(30, 20);
-            this.txtN23.TabIndex = 61;
-            this.txtN23.Text = "0";
-            this.txtN23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN24
-            // 
-            this.txtN24.Location = new System.Drawing.Point(993, 610);
-            this.txtN24.Name = "txtN24";
-            this.txtN24.Size = new System.Drawing.Size(30, 20);
-            this.txtN24.TabIndex = 62;
-            this.txtN24.Text = "0";
-            this.txtN24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN25
-            // 
-            this.txtN25.Location = new System.Drawing.Point(1023, 610);
-            this.txtN25.Name = "txtN25";
-            this.txtN25.Size = new System.Drawing.Size(30, 20);
-            this.txtN25.TabIndex = 63;
-            this.txtN25.Text = "0";
-            this.txtN25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN26
-            // 
-            this.txtN26.Location = new System.Drawing.Point(1053, 610);
-            this.txtN26.Name = "txtN26";
-            this.txtN26.Size = new System.Drawing.Size(30, 20);
-            this.txtN26.TabIndex = 64;
-            this.txtN26.Text = "0";
-            this.txtN26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN27
-            // 
-            this.txtN27.Location = new System.Drawing.Point(1083, 610);
-            this.txtN27.Name = "txtN27";
-            this.txtN27.Size = new System.Drawing.Size(30, 20);
-            this.txtN27.TabIndex = 65;
-            this.txtN27.Text = "0";
-            this.txtN27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN28
-            // 
-            this.txtN28.Location = new System.Drawing.Point(1113, 610);
-            this.txtN28.Name = "txtN28";
-            this.txtN28.Size = new System.Drawing.Size(30, 20);
-            this.txtN28.TabIndex = 66;
-            this.txtN28.Text = "0";
-            this.txtN28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN29
-            // 
-            this.txtN29.Location = new System.Drawing.Point(1143, 610);
-            this.txtN29.Name = "txtN29";
-            this.txtN29.Size = new System.Drawing.Size(30, 20);
-            this.txtN29.TabIndex = 67;
-            this.txtN29.Text = "0";
-            this.txtN29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN30
-            // 
-            this.txtN30.Location = new System.Drawing.Point(1173, 610);
-            this.txtN30.Name = "txtN30";
-            this.txtN30.Size = new System.Drawing.Size(30, 20);
-            this.txtN30.TabIndex = 68;
-            this.txtN30.Text = "0";
-            this.txtN30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtN31
-            // 
-            this.txtN31.Location = new System.Drawing.Point(1203, 610);
-            this.txtN31.Name = "txtN31";
-            this.txtN31.Size = new System.Drawing.Size(30, 20);
-            this.txtN31.TabIndex = 69;
-            this.txtN31.Text = "0";
-            this.txtN31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // MaCC
             // 
@@ -764,11 +456,330 @@
             this.KK.Name = "KK";
             this.KK.Width = 30;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(1074, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 13);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "Thứ 7 + CN: màu cam";
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(443, 10);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 37;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 13);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Ghi nhận lại ngày nghỉ phép";
+            // 
+            // txtN1
+            // 
+            this.txtN1.Location = new System.Drawing.Point(253, 610);
+            this.txtN1.Name = "txtN1";
+            this.txtN1.Size = new System.Drawing.Size(30, 20);
+            this.txtN1.TabIndex = 39;
+            this.txtN1.Text = "0";
+            this.txtN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN2
+            // 
+            this.txtN2.Location = new System.Drawing.Point(283, 610);
+            this.txtN2.Name = "txtN2";
+            this.txtN2.Size = new System.Drawing.Size(30, 20);
+            this.txtN2.TabIndex = 40;
+            this.txtN2.Text = "0";
+            this.txtN2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN3
+            // 
+            this.txtN3.Location = new System.Drawing.Point(313, 610);
+            this.txtN3.Name = "txtN3";
+            this.txtN3.Size = new System.Drawing.Size(30, 20);
+            this.txtN3.TabIndex = 41;
+            this.txtN3.Text = "0";
+            this.txtN3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN4
+            // 
+            this.txtN4.Location = new System.Drawing.Point(343, 610);
+            this.txtN4.Name = "txtN4";
+            this.txtN4.Size = new System.Drawing.Size(30, 20);
+            this.txtN4.TabIndex = 42;
+            this.txtN4.Text = "0";
+            this.txtN4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN5
+            // 
+            this.txtN5.Location = new System.Drawing.Point(373, 610);
+            this.txtN5.Name = "txtN5";
+            this.txtN5.Size = new System.Drawing.Size(30, 20);
+            this.txtN5.TabIndex = 43;
+            this.txtN5.Text = "0";
+            this.txtN5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN6
+            // 
+            this.txtN6.Location = new System.Drawing.Point(403, 610);
+            this.txtN6.Name = "txtN6";
+            this.txtN6.Size = new System.Drawing.Size(30, 20);
+            this.txtN6.TabIndex = 44;
+            this.txtN6.Text = "0";
+            this.txtN6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN7
+            // 
+            this.txtN7.Location = new System.Drawing.Point(433, 610);
+            this.txtN7.Name = "txtN7";
+            this.txtN7.Size = new System.Drawing.Size(30, 20);
+            this.txtN7.TabIndex = 45;
+            this.txtN7.Text = "0";
+            this.txtN7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN8
+            // 
+            this.txtN8.Location = new System.Drawing.Point(463, 610);
+            this.txtN8.Name = "txtN8";
+            this.txtN8.Size = new System.Drawing.Size(30, 20);
+            this.txtN8.TabIndex = 46;
+            this.txtN8.Text = "0";
+            this.txtN8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN9
+            // 
+            this.txtN9.Location = new System.Drawing.Point(493, 610);
+            this.txtN9.Name = "txtN9";
+            this.txtN9.Size = new System.Drawing.Size(30, 20);
+            this.txtN9.TabIndex = 47;
+            this.txtN9.Text = "0";
+            this.txtN9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN10
+            // 
+            this.txtN10.Location = new System.Drawing.Point(523, 610);
+            this.txtN10.Name = "txtN10";
+            this.txtN10.Size = new System.Drawing.Size(30, 20);
+            this.txtN10.TabIndex = 48;
+            this.txtN10.Text = "0";
+            this.txtN10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN11
+            // 
+            this.txtN11.Location = new System.Drawing.Point(553, 610);
+            this.txtN11.Name = "txtN11";
+            this.txtN11.Size = new System.Drawing.Size(30, 20);
+            this.txtN11.TabIndex = 49;
+            this.txtN11.Text = "0";
+            this.txtN11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN12
+            // 
+            this.txtN12.Location = new System.Drawing.Point(583, 610);
+            this.txtN12.Name = "txtN12";
+            this.txtN12.Size = new System.Drawing.Size(30, 20);
+            this.txtN12.TabIndex = 50;
+            this.txtN12.Text = "0";
+            this.txtN12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN13
+            // 
+            this.txtN13.Location = new System.Drawing.Point(613, 610);
+            this.txtN13.Name = "txtN13";
+            this.txtN13.Size = new System.Drawing.Size(30, 20);
+            this.txtN13.TabIndex = 51;
+            this.txtN13.Text = "0";
+            this.txtN13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN14
+            // 
+            this.txtN14.Location = new System.Drawing.Point(643, 610);
+            this.txtN14.Name = "txtN14";
+            this.txtN14.Size = new System.Drawing.Size(30, 20);
+            this.txtN14.TabIndex = 52;
+            this.txtN14.Text = "0";
+            this.txtN14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN15
+            // 
+            this.txtN15.Location = new System.Drawing.Point(673, 610);
+            this.txtN15.Name = "txtN15";
+            this.txtN15.Size = new System.Drawing.Size(30, 20);
+            this.txtN15.TabIndex = 53;
+            this.txtN15.Text = "0";
+            this.txtN15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN16
+            // 
+            this.txtN16.Location = new System.Drawing.Point(703, 610);
+            this.txtN16.Name = "txtN16";
+            this.txtN16.Size = new System.Drawing.Size(30, 20);
+            this.txtN16.TabIndex = 54;
+            this.txtN16.Text = "0";
+            this.txtN16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN17
+            // 
+            this.txtN17.Location = new System.Drawing.Point(733, 610);
+            this.txtN17.Name = "txtN17";
+            this.txtN17.Size = new System.Drawing.Size(30, 20);
+            this.txtN17.TabIndex = 55;
+            this.txtN17.Text = "0";
+            this.txtN17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN18
+            // 
+            this.txtN18.Location = new System.Drawing.Point(763, 610);
+            this.txtN18.Name = "txtN18";
+            this.txtN18.Size = new System.Drawing.Size(30, 20);
+            this.txtN18.TabIndex = 56;
+            this.txtN18.Text = "0";
+            this.txtN18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN19
+            // 
+            this.txtN19.Location = new System.Drawing.Point(793, 610);
+            this.txtN19.Name = "txtN19";
+            this.txtN19.Size = new System.Drawing.Size(30, 20);
+            this.txtN19.TabIndex = 57;
+            this.txtN19.Text = "0";
+            this.txtN19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN20
+            // 
+            this.txtN20.Location = new System.Drawing.Point(823, 610);
+            this.txtN20.Name = "txtN20";
+            this.txtN20.Size = new System.Drawing.Size(30, 20);
+            this.txtN20.TabIndex = 58;
+            this.txtN20.Text = "0";
+            this.txtN20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN21
+            // 
+            this.txtN21.Location = new System.Drawing.Point(853, 610);
+            this.txtN21.Name = "txtN21";
+            this.txtN21.Size = new System.Drawing.Size(30, 20);
+            this.txtN21.TabIndex = 59;
+            this.txtN21.Text = "0";
+            this.txtN21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN22
+            // 
+            this.txtN22.Location = new System.Drawing.Point(883, 610);
+            this.txtN22.Name = "txtN22";
+            this.txtN22.Size = new System.Drawing.Size(30, 20);
+            this.txtN22.TabIndex = 60;
+            this.txtN22.Text = "0";
+            this.txtN22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN23
+            // 
+            this.txtN23.Location = new System.Drawing.Point(913, 610);
+            this.txtN23.Name = "txtN23";
+            this.txtN23.Size = new System.Drawing.Size(30, 20);
+            this.txtN23.TabIndex = 61;
+            this.txtN23.Text = "0";
+            this.txtN23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN24
+            // 
+            this.txtN24.Location = new System.Drawing.Point(943, 610);
+            this.txtN24.Name = "txtN24";
+            this.txtN24.Size = new System.Drawing.Size(30, 20);
+            this.txtN24.TabIndex = 62;
+            this.txtN24.Text = "0";
+            this.txtN24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN25
+            // 
+            this.txtN25.Location = new System.Drawing.Point(973, 610);
+            this.txtN25.Name = "txtN25";
+            this.txtN25.Size = new System.Drawing.Size(30, 20);
+            this.txtN25.TabIndex = 63;
+            this.txtN25.Text = "0";
+            this.txtN25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN26
+            // 
+            this.txtN26.Location = new System.Drawing.Point(1003, 610);
+            this.txtN26.Name = "txtN26";
+            this.txtN26.Size = new System.Drawing.Size(30, 20);
+            this.txtN26.TabIndex = 64;
+            this.txtN26.Text = "0";
+            this.txtN26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN27
+            // 
+            this.txtN27.Location = new System.Drawing.Point(1033, 610);
+            this.txtN27.Name = "txtN27";
+            this.txtN27.Size = new System.Drawing.Size(30, 20);
+            this.txtN27.TabIndex = 65;
+            this.txtN27.Text = "0";
+            this.txtN27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN28
+            // 
+            this.txtN28.Location = new System.Drawing.Point(1063, 610);
+            this.txtN28.Name = "txtN28";
+            this.txtN28.Size = new System.Drawing.Size(30, 20);
+            this.txtN28.TabIndex = 66;
+            this.txtN28.Text = "0";
+            this.txtN28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN29
+            // 
+            this.txtN29.Location = new System.Drawing.Point(1093, 610);
+            this.txtN29.Name = "txtN29";
+            this.txtN29.Size = new System.Drawing.Size(30, 20);
+            this.txtN29.TabIndex = 67;
+            this.txtN29.Text = "0";
+            this.txtN29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN30
+            // 
+            this.txtN30.Location = new System.Drawing.Point(1123, 610);
+            this.txtN30.Name = "txtN30";
+            this.txtN30.Size = new System.Drawing.Size(30, 20);
+            this.txtN30.TabIndex = 68;
+            this.txtN30.Text = "0";
+            this.txtN30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtN31
+            // 
+            this.txtN31.Location = new System.Drawing.Point(1153, 610);
+            this.txtN31.Name = "txtN31";
+            this.txtN31.Size = new System.Drawing.Size(30, 20);
+            this.txtN31.TabIndex = 69;
+            this.txtN31.Text = "0";
+            this.txtN31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnInNam
+            // 
+            this.btnInNam.Location = new System.Drawing.Point(524, 10);
+            this.btnInNam.Name = "btnInNam";
+            this.btnInNam.Size = new System.Drawing.Size(75, 23);
+            this.btnInNam.TabIndex = 70;
+            this.btnInNam.Text = "In Năm";
+            this.btnInNam.UseVisualStyleBackColor = true;
+            // 
             // frmChamCong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1335, 642);
+            this.Controls.Add(this.btnInNam);
             this.Controls.Add(this.txtN31);
             this.Controls.Add(this.txtN30);
             this.Controls.Add(this.txtN29);
@@ -892,5 +903,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nghi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn XS;
         private System.Windows.Forms.DataGridViewCheckBoxColumn KK;
+        private System.Windows.Forms.Button btnInNam;
     }
 }

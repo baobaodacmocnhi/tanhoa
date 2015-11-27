@@ -4733,6 +4733,11 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public List<HOADON> GetListDSTonByDanhBo(string DanhBo)
+        {
+            return _db.HOADONs.Where(item => item.NGAYGIAITRACH == null && item.DANHBA == DanhBo).ToList();
+        }
+
         public DataTable GetDSTonByDanhBo_ExceptHD0(string DanhBo)
         {
             var query = from itemHD in _db.HOADONs
@@ -5225,7 +5230,7 @@ namespace ThuTien.DAL.Doi
                 var query = from itemHD in _db.HOADONs
                             join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                             from itemtableND in tableND.DefaultIfEmpty()
-                            where itemHD.DangNgan_ChuyenKhoan == true && itemHD.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date && itemHD.GB >= 11 && itemHD.GB <= 20
+                            where itemHD.DangNgan_ChuyenKhoan == true&&itemHD.TienMat==null && itemHD.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date && itemHD.GB >= 11 && itemHD.GB <= 20
                             select new
                             {
                                 itemHD.NGAYGIAITRACH,
@@ -5251,7 +5256,7 @@ namespace ThuTien.DAL.Doi
                     var query = from itemHD in _db.HOADONs
                                 join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
-                                where itemHD.DangNgan_ChuyenKhoan == true && itemHD.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date && itemHD.GB > 20
+                                where itemHD.DangNgan_ChuyenKhoan == true && itemHD.TienMat == null && itemHD.NGAYGIAITRACH.Value.Date >= TuNgayGiaiTrach.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgayGiaiTrach.Date && itemHD.GB > 20
                                 select new
                                 {
                                     itemHD.NGAYGIAITRACH,

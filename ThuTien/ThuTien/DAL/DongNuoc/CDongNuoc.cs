@@ -253,12 +253,12 @@ namespace ThuTien.DAL.DongNuoc
 
         public List<TT_KQDongNuoc> GetDSSoPhieuDN()
         {
-            return _db.TT_KQDongNuocs.Where(item => item.SoPhieuDN != null).GroupBy(item=>item.SoPhieuDN).Select(group=>group.First()).ToList();
+            return _db.TT_KQDongNuocs.Where(item => item.SoPhieuDN != null).GroupBy(item=>item.SoPhieuDN).Select(group=>group.First()).OrderByDescending(item=>item.SoPhieuDN).ToList();
         }
 
         public List<TT_KQDongNuoc> GetDSSoPhieuMN()
         {
-            return _db.TT_KQDongNuocs.Where(item => item.SoPhieuMN != null).GroupBy(item => item.SoPhieuMN).Select(group => group.First()).ToList();
+            return _db.TT_KQDongNuocs.Where(item => item.SoPhieuMN != null).GroupBy(item => item.SoPhieuMN).Select(group => group.First()).OrderByDescending(item=>item.SoPhieuMN).ToList();
         }
 
         public DataTable GetDSKQDongMoNuocByDanhBo(string DanhBo)

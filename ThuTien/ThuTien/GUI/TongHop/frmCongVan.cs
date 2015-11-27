@@ -300,11 +300,23 @@ namespace ThuTien.GUI.TongHop
                     dr["TuNgay"] = item.Cells["ThuTien_NgayNhan_CV"].Value.ToString();
                     dr["LoaiBaoCao"] = item.Cells["Loai_CV"].Value.ToString();
                     dr["DanhBo"] = item.Cells["DanhBo_CV"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                    dr["GhiChu"] = item.Cells["NoiDung_CV"].Value.ToString();
 
                     HOADON hoadon = _cHoaDon.GetMoiNhat(item.Cells["DanhBo_CV"].Value.ToString());
                     if(hoadon.MaNV_HanhThu==null)
                         hoadon = _cHoaDon.GetMoiNhi(item.Cells["DanhBo_CV"].Value.ToString());
                     dr["To"] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
+                    dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
+
+                    List<HOADON> lstHDTon = _cHoaDon.GetListDSTonByDanhBo(item.Cells["DanhBo_CV"].Value.ToString());
+                    foreach (HOADON itemHDTon in lstHDTon)
+                    {
+                        if (string.IsNullOrEmpty(dr["Ky"].ToString()))
+                            dr["Ky"] += itemHDTon.KY.ToString();
+                        else
+                            dr["Ky"] += "," + itemHDTon.KY.ToString();
+                    }
+
 
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }

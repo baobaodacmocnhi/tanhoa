@@ -14,6 +14,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.Quay;
+using ThuTien.DAL.DongNuoc;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -23,6 +24,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CTo _cTo = new CTo();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        CDongNuoc _cDongNuoc = new CDongNuoc();
 
         public frmDichVuThu()
         {
@@ -71,6 +73,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             int TongPhi = 0;
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
             {
+                string HoTen = "", TenTo = "";
+                if (_cDongNuoc.CheckExistBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString(), out HoTen, out TenTo))
+                {
+                    item.Cells["HanhThu"].Value = HoTen;
+                    item.Cells["To"].Value = TenTo;
+                }
+
                 if (!string.IsNullOrEmpty(item.Cells["SoTien"].Value.ToString()))
                     TongSoTien += int.Parse(item.Cells["SoTien"].Value.ToString());
                 if (!string.IsNullOrEmpty(item.Cells["Phi"].Value.ToString()))
@@ -154,6 +163,47 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 cmbNhanVien.DataSource = null;
             }
+        }
+
+        private void btnInKiemTra_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvDichVuThu.Rows)
+                if (!string.IsNullOrEmpty(item.Cells["NgayGiaiTrach"].Value.ToString()) && !bool.Parse(item.Cells["DangNgan_ChuyenKhoan"].Value.ToString()))
+                {
+                    DateTime NgayThu = new DateTime();
+                    DateTime NgayGiaiTrach = new DateTime();
+                    DateTime.TryParse(item.Cells["CreateDate"].Value.ToString(),out NgayThu);
+                    DateTime.TryParse(item.Cells["NgayGiaiTrach"].Value.ToString(), out NgayGiaiTrach);
+                    if (NgayThu.Date != NgayGiaiTrach.Date)
+                    {
+                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                        dr["LoaiBaoCao"] = "KIỂM TRA DỊCH VỤ THU HỘ";
+                        dr["GhiChu"] = "ĐỂ BIẾT, KHÔNG THU";
+                        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT"].Value.ToString();
+                        dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                        dr["TongCong"] = item.Cells["SoTien"].Value.ToString();
+                        dr["HanhThu"] = item.Cells["HanhThu"].Value.ToString();
+                        dr["To"] = item.Cells["To"].Value.ToString();
+                        if (int.Parse(item.Cells["GiaBieu"].Value.ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        dr["NganHang"] = item.Cells["TenDichVu"].Value.ToString();
+
+                        if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                            dr["LenhHuy"] = true;
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    }
+                }
+            rptDSDichVuThu rpt = new rptDSDichVuThu();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
     }
 }

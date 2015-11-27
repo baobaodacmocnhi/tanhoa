@@ -213,6 +213,18 @@ namespace ThuTien.GUI.ToTruong
 
         private void dgvHoaDon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DinhMuc" && e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
+            {
+                string ChiTiet = "";
+                int TieuThu = 0;
+                if (dgvHoaDon["TieuThu", e.RowIndex].Value != null && !string.IsNullOrEmpty(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString()))
+                    TieuThu = int.Parse(dgvHoaDon["TieuThu", e.RowIndex].Value.ToString());
+                int TongTien = _cKTKS_DonKH.TinhTienNuoc(false, 0, dgvHoaDon["DanhBo", e.RowIndex].Value.ToString(), int.Parse(dgvHoaDon["GiaBieu", e.RowIndex].Value.ToString()), int.Parse(e.FormattedValue.ToString().Replace(".", "")),TieuThu, out ChiTiet);
+                dgvHoaDon["GiaBan", e.RowIndex].Value = TongTien;
+                dgvHoaDon["ThueGTGT", e.RowIndex].Value = Math.Round((double)TongTien * 5 / 100);
+                dgvHoaDon["PhiBVMT", e.RowIndex].Value = TongTien * 10 / 100;
+                dgvHoaDon["TongCong", e.RowIndex].Value = TongTien + Math.Round((double)TongTien * 5 / 100) + (TongTien * 10 / 100);
+            }
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TieuThu" && e.FormattedValue.ToString().Replace(".", "") != dgvHoaDon[e.ColumnIndex, e.RowIndex].Value.ToString())
             {
                 string ChiTiet = "";
