@@ -94,6 +94,17 @@ namespace ThuTien.GUI.ToTruong
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (dgvKQDongNuoc.Columns[e.ColumnIndex].Name == "TroNgaiMN" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvKQDongNuoc[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByMaKQDN(int.Parse(dgvKQDongNuoc["MaKQDN", e.RowIndex].Value.ToString()));
+                    kqdongnuoc.TroNgaiMN = bool.Parse(e.FormattedValue.ToString());
+                    _cDongNuoc.SuaKQ(kqdongnuoc);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         

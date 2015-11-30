@@ -4649,6 +4649,8 @@ namespace ThuTien.BaoCao {
             
             private global::System.Data.DataColumn columnNhanVien;
             
+            private global::System.Data.DataColumn columnPhanKy;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TongHopDangNganDataTable() {
@@ -4892,6 +4894,14 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhanKyColumn {
+                get {
+                    return this.columnPhanKy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4953,7 +4963,8 @@ namespace ThuTien.BaoCao {
                         int TongThueGTGTCNKD, 
                         int TongPhiBVMTCNKD, 
                         int TongCongCNKD, 
-                        string NhanVien) {
+                        string NhanVien, 
+                        string PhanKy) {
                 TongHopDangNganRow rowTongHopDangNganRow = ((TongHopDangNganRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Ngay,
@@ -4981,7 +4992,8 @@ namespace ThuTien.BaoCao {
                         TongThueGTGTCNKD,
                         TongPhiBVMTCNKD,
                         TongCongCNKD,
-                        NhanVien};
+                        NhanVien,
+                        PhanKy};
                 rowTongHopDangNganRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTongHopDangNganRow);
                 return rowTongHopDangNganRow;
@@ -5030,6 +5042,7 @@ namespace ThuTien.BaoCao {
                 this.columnTongPhiBVMTCNKD = base.Columns["TongPhiBVMTCNKD"];
                 this.columnTongCongCNKD = base.Columns["TongCongCNKD"];
                 this.columnNhanVien = base.Columns["NhanVien"];
+                this.columnPhanKy = base.Columns["PhanKy"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5087,6 +5100,8 @@ namespace ThuTien.BaoCao {
                 base.Columns.Add(this.columnTongCongCNKD);
                 this.columnNhanVien = new global::System.Data.DataColumn("NhanVien", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNhanVien);
+                this.columnPhanKy = new global::System.Data.DataColumn("PhanKy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhanKy);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13523,6 +13538,22 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PhanKy {
+                get {
+                    try {
+                        return ((string)(this[this.tableTongHopDangNgan.PhanKyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhanKy\' in table \'TongHopDangNgan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTongHopDangNgan.PhanKyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNgayNull() {
                 return this.IsNull(this.tableTongHopDangNgan.NgayColumn);
             }
@@ -13831,6 +13862,18 @@ namespace ThuTien.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNhanVienNull() {
                 this[this.tableTongHopDangNgan.NhanVienColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPhanKyNull() {
+                return this.IsNull(this.tableTongHopDangNgan.PhanKyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPhanKyNull() {
+                this[this.tableTongHopDangNgan.PhanKyColumn] = global::System.Convert.DBNull;
             }
         }
         

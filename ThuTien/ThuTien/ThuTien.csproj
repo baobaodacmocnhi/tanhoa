@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>360</ApplicationRevision>
+    <ApplicationRevision>366</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -169,6 +169,18 @@
     </Compile>
     <Compile Include="BaoCao\DongNuoc\rptTBTienNuocPhoto.cs">
       <DependentUpon>rptTBTienNuocPhoto.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\TongHop\rptTongHopDangNganChiTiet_PhanKy.cs">
+      <DependentUpon>rptTongHopDangNganChiTiet_PhanKy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\TongHop\rptTongHopDangNgan_PhanKy.cs">
+      <DependentUpon>rptTongHopDangNgan_PhanKy.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -881,6 +893,14 @@
     <EmbeddedResource Include="BaoCao\DongNuoc\rptTBTienNuocPhoto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTBTienNuocPhoto.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNganChiTiet_PhanKy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTongHopDangNganChiTiet_PhanKy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\TongHop\rptTongHopDangNgan_PhanKy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTongHopDangNgan_PhanKy.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\TongHop\rptChamCong.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

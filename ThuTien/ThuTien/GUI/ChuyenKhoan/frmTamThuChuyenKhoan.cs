@@ -212,6 +212,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvTamThu.Rows)
+                if (!bool.Parse(item.Cells["TienDu_TT"].Value.ToString()))
             {
                 DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
@@ -659,6 +660,39 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void btnInDSTamThuTienDu_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvTamThu.Rows)
+                if (bool.Parse(item.Cells["TienDu_TT"].Value.ToString()))
+            {
+                DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["LoaiBaoCao"] = "TẠM THU CHUYỂN KHOẢN";
+                dr["GhiChu"] = "ĐÃ CHUYỂN KHOẢN";
+                dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
+                dr["MLT"] = item.Cells["MLT_TT"].Value.ToString();
+                dr["Ky"] = item.Cells["Ky_TT"].Value.ToString();
+                dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
+                dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
+                dr["To"] = item.Cells["To_TT"].Value.ToString();
+                if (int.Parse(item.Cells["GiaBieu_TT"].Value.ToString()) > 20)
+                    dr["Loai"] = "CQ";
+                else
+                    dr["Loai"] = "TG";
+                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                    dr["LenhHuy"] = true;
+
+                ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+            }
+            rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
     }
 }

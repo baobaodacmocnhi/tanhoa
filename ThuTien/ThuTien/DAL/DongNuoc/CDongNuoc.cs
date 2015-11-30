@@ -305,6 +305,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
                             itemKQ.GhiChuTroNgai,
+                            itemKQ.TroNgaiMN,
                         };
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
@@ -328,6 +329,7 @@ namespace ThuTien.DAL.DongNuoc
                             itemKQ.NgayDN,
                             itemHD.NGAYGIAITRACH,
                             itemKQ.GhiChuTroNgai,
+                            itemKQ.TroNgaiMN,
                         };
             return LINQToDataTable(query.GroupBy(item=>item.MaDN).Select(item=>item.First()).ToList());
         }

@@ -58,17 +58,30 @@ namespace ThuTien.GUI.Quay
         {
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
             {
-                dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ",""));
-
-                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if (tabControl.SelectedTab.Name == "tabThongTin")
                 {
-                    item.Cells["Chon"].Value = "True";
-                    if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
-                        item.DefaultCellStyle.BackColor = Color.Yellow;
-                    item.Cells["NgayDN"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
-                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
-                        item.DefaultCellStyle.BackColor = Color.Red;
+                    dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+
+                    foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                    {
+                        item.Cells["Chon"].Value = "True";
+                        if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                            item.DefaultCellStyle.BackColor = Color.Yellow;
+                        item.Cells["NgayDN"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                        if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                            item.DefaultCellStyle.BackColor = Color.Red;
+                    }
                 }
+                else
+                    if (tabControl.SelectedTab.Name == "tabTamThu")
+                    {
+                        dgvTamThu.DataSource = _cTamThu.GetDS(false, txtDanhBo.Text.Trim().Replace(" ", ""));
+                    }
+                    else
+                        if (tabControl.SelectedTab.Name == "tabXacNhanNo")
+                        {
+                            dgvXacNhanNo.DataSource = _cXacNhanNo.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
+                        }
             }
         }
 
@@ -184,11 +197,8 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDanhBo_TT.Text.Trim().Replace(" ", "")))
-                dgvTamThu.DataSource = _cTamThu.GetDS(false, txtDanhBo_TT.Text.Trim().Replace(" ", ""));
-            else
-                if (dateDen.Value >= dateTu.Value)
-                    dgvTamThu.DataSource = _cTamThu.GetDS(false, dateTu.Value, dateDen.Value);
+            if (dateDen.Value >= dateTu.Value)
+                dgvTamThu.DataSource = _cTamThu.GetDS(false, dateTu.Value, dateDen.Value);
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
