@@ -58,10 +58,10 @@
             this.groupBoxCatTamNutBit = new System.Windows.Forms.GroupBox();
             this.btnSua = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.chkNgayXuLy = new System.Windows.Forms.CheckBox();
+            this.chkTroNgai = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cmbNoiDung = new System.Windows.Forms.ComboBox();
-            this.dateXuLy = new System.Windows.Forms.DateTimePicker();
+            this.dateTroNgai = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxCatTamNutBit.SuspendLayout();
@@ -371,16 +371,16 @@
             this.label22.TabIndex = 90;
             this.label22.Text = "Phiếu Hủy";
             // 
-            // chkNgayXuLy
+            // chkTroNgai
             // 
-            this.chkNgayXuLy.AutoSize = true;
-            this.chkNgayXuLy.Location = new System.Drawing.Point(223, 246);
-            this.chkNgayXuLy.Name = "chkNgayXuLy";
-            this.chkNgayXuLy.Size = new System.Drawing.Size(104, 21);
-            this.chkNgayXuLy.TabIndex = 94;
-            this.chkNgayXuLy.Text = "Ngày Xử Lý:";
-            this.chkNgayXuLy.UseVisualStyleBackColor = true;
-            this.chkNgayXuLy.CheckedChanged += new System.EventHandler(this.chkNgayXuLy_CheckedChanged);
+            this.chkTroNgai.AutoSize = true;
+            this.chkTroNgai.Location = new System.Drawing.Point(244, 247);
+            this.chkTroNgai.Name = "chkTroNgai";
+            this.chkTroNgai.Size = new System.Drawing.Size(83, 21);
+            this.chkTroNgai.TabIndex = 94;
+            this.chkTroNgai.Text = "Trở Ngại:";
+            this.chkTroNgai.UseVisualStyleBackColor = true;
+            this.chkTroNgai.CheckedChanged += new System.EventHandler(this.chkNgayXuLy_CheckedChanged);
             // 
             // label19
             // 
@@ -403,15 +403,15 @@
             this.cmbNoiDung.Size = new System.Drawing.Size(194, 25);
             this.cmbNoiDung.TabIndex = 92;
             // 
-            // dateXuLy
+            // dateTroNgai
             // 
-            this.dateXuLy.CustomFormat = "dd/MM/yyyy";
-            this.dateXuLy.Enabled = false;
-            this.dateXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateXuLy.Location = new System.Drawing.Point(333, 243);
-            this.dateXuLy.Name = "dateXuLy";
-            this.dateXuLy.Size = new System.Drawing.Size(109, 25);
-            this.dateXuLy.TabIndex = 91;
+            this.dateTroNgai.CustomFormat = "dd/MM/yyyy";
+            this.dateTroNgai.Enabled = false;
+            this.dateTroNgai.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTroNgai.Location = new System.Drawing.Point(333, 243);
+            this.dateTroNgai.Name = "dateTroNgai";
+            this.dateTroNgai.Size = new System.Drawing.Size(109, 25);
+            this.dateTroNgai.TabIndex = 91;
             // 
             // frmYCCHDB
             // 
@@ -419,10 +419,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(938, 344);
-            this.Controls.Add(this.chkNgayXuLy);
+            this.Controls.Add(this.chkTroNgai);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.cmbNoiDung);
-            this.Controls.Add(this.dateXuLy);
+            this.Controls.Add(this.dateTroNgai);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.groupBoxCatTamNutBit);
@@ -482,9 +482,9 @@
         private System.Windows.Forms.GroupBox groupBoxCatTamNutBit;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckBox chkNgayXuLy;
+        private System.Windows.Forms.CheckBox chkTroNgai;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cmbNoiDung;
-        private System.Windows.Forms.DateTimePicker dateXuLy;
+        private System.Windows.Forms.DateTimePicker dateTroNgai;
     }
 }

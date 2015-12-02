@@ -111,20 +111,21 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
                 }
 
+                DataSetBaoCao dsBaoCaoPhieuHuy = new DataSetBaoCao();
                 foreach (DataRow itemRow in dtYCCHDB.Rows)
                 {
-                    DataRow dr = dsBaoCao.Tables["ThongKeCHDB"].NewRow();
+                    DataRow dr = dsBaoCaoPhieuHuy.Tables["ThongKeCHDB"].NewRow();
                     dr["TuNgay"] = _tuNgay;
                     dr["DenNgay"] = _denNgay;
                     dr["LoaiCat"] = "Lập Phiếu Yêu Cầu Cắt Hủy";
                     dr["LyDo"] = itemRow["LyDo"];
                     dr["DanhBo"] = itemRow["DanhBo"];
-                    if (!string.IsNullOrEmpty(itemRow["NoiDungXuLy"].ToString()))
-                        dr["NoiDungXuLy"] = itemRow["NoiDungXuLy"];
-                    else
-                        dr["NoiDungXuLy"] = "Chưa Xử Lý";
+                    //if (!string.IsNullOrEmpty(itemRow["NoiDungTroNgai"].ToString()))
+                    //    dr["NoiDungTroNgai"] = itemRow["NoiDungTroNgai"];
+                    //else
+                    //    dr["NoiDungTroNgai"] = "Chưa Xử Lý";
 
-                    dsBaoCao.Tables["ThongKeCHDB"].Rows.Add(dr);
+                    dsBaoCaoPhieuHuy.Tables["ThongKeCHDB"].Rows.Add(dr);
                 }
 
                 //dateTu.Value = DateTime.Now;
@@ -133,6 +134,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                 rptThongKeCHDB rpt = new rptThongKeCHDB();
                 rpt.SetDataSource(dsBaoCao);
+                rpt.Subreports[0].SetDataSource(dsBaoCaoPhieuHuy);
                 crystalReportViewer1.ReportSource = rpt;
             }
             ///

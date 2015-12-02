@@ -83,15 +83,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     _ycchdb.NgayCatTamNutBit = null;
                 }
                 ///
-                if (chkNgayXuLy.Checked)
+                if (chkTroNgai.Checked)
                 {
-                    _ycchdb.NgayXuLy = dateXuLy.Value;
-                    _ycchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
+                    _ycchdb.NgayTroNgai = dateTroNgai.Value;
+                    _ycchdb.NoiDungTroNgai = cmbNoiDung.SelectedItem.ToString();
                 }
                 else
                 {
-                    _ycchdb.NgayXuLy = null;
-                    _ycchdb.NoiDungXuLy = null;
+                    _ycchdb.NgayTroNgai = null;
+                    _ycchdb.NoiDungTroNgai = null;
                 }
             }
         }
@@ -145,17 +145,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ycchdb.NgayCatTamNutBit = null;
                     }
                     ///
-                    if (chkNgayXuLy.Checked)
+                    if (chkTroNgai.Checked)
                     {
-                        _ycchdb.NgayXuLy = dateXuLy.Value;
-                        _ycchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
-                        _ycchdb.CreateDate_NgayXuLy = DateTime.Now;
+                        _ycchdb.NgayTroNgai = dateTroNgai.Value;
+                        _ycchdb.NoiDungTroNgai = cmbNoiDung.SelectedItem.ToString();
+                        _ycchdb.CreateDate_NgayTroNgai = DateTime.Now;
                     }
                     else
                     {
-                        _ycchdb.NgayXuLy = null;
-                        _ycchdb.NoiDungXuLy = null;
-                        _ycchdb.CreateDate_NgayXuLy = null;
+                        _ycchdb.NgayTroNgai = null;
+                        _ycchdb.NoiDungTroNgai = null;
+                        _ycchdb.CreateDate_NgayTroNgai = null;
                     }
                     if (_cCHDB.SuaYeuCauCHDB(_ycchdb))
                     {

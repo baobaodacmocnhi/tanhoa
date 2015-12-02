@@ -353,6 +353,7 @@ namespace KTKS_DonKH.GUI.KhachHang
                             if (donkh.SangTen)
                             {
                                 dr["SangTen"] = true;
+                                dr["Ngay"] = "45";
                             }
                             else
                             {

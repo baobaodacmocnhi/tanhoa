@@ -252,7 +252,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtu.YeuCauCat = true;
                                 lichsuchungtu.NhanNK_DanhBo = txtDanhBo.Text.Trim();
                                 lichsuchungtu.NhanNK_HoTen = _source["HoTenKH"];
-                                lichsuchungtu.NhanNK_DiaChi = _source["DiaChiKH"];
+                                //lichsuchungtu.NhanNK_DiaChi = _source["DiaChiKH"];
+                                lichsuchungtu.NhanNK_DiaChi = txtDiaChi.Text.Trim();
                                 //lichsuchungtu.PhieuDuocKy = true;
 
                                 //lichsuchungtu.CatNK_MaCN = int.Parse(cmbChiNhanh.SelectedValue.ToString());

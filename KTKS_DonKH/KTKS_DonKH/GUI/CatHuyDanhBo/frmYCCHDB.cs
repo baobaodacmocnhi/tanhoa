@@ -360,16 +360,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         dateCatTamNutBit.Value = DateTime.Now;
                     }
                     ///
-                    if (_ycchdb.NoiDungXuLy != null)
+                    if (_ycchdb.NoiDungTroNgai != null)
                     {
-                        chkNgayXuLy.Checked = true;
-                        dateXuLy.Value = _ycchdb.NgayXuLy.Value;
-                        cmbNoiDung.SelectedItem = _ycchdb.NoiDungXuLy;
+                        chkTroNgai.Checked = true;
+                        dateTroNgai.Value = _ycchdb.NgayTroNgai.Value;
+                        cmbNoiDung.SelectedItem = _ycchdb.NoiDungTroNgai;
                     }
                     else
                     {
-                        chkNgayXuLy.Checked = false;
-                        dateXuLy.Value = DateTime.Now;
+                        chkTroNgai.Checked = false;
+                        dateTroNgai.Value = DateTime.Now;
                         cmbNoiDung.SelectedIndex = -1;
                     }
                 }
@@ -415,17 +415,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     _ycchdb.NgayCatTamNutBit = null;
                 }
                 ///
-                if (chkNgayXuLy.Checked)
+                if (chkTroNgai.Checked)
                 {
-                    _ycchdb.NgayXuLy = dateXuLy.Value;
-                    _ycchdb.NoiDungXuLy = cmbNoiDung.SelectedItem.ToString();
-                    _ycchdb.CreateDate_NgayXuLy = DateTime.Now;
+                    _ycchdb.NgayTroNgai = dateTroNgai.Value;
+                    _ycchdb.NoiDungTroNgai = cmbNoiDung.SelectedItem.ToString();
+                    _ycchdb.CreateDate_NgayTroNgai = DateTime.Now;
                 }
                 else
                 {
-                    _ycchdb.NgayXuLy = null;
-                    _ycchdb.NoiDungXuLy = null;
-                    _ycchdb.CreateDate_NgayXuLy = null;
+                    _ycchdb.NgayTroNgai = null;
+                    _ycchdb.NoiDungTroNgai = null;
+                    _ycchdb.CreateDate_NgayTroNgai = null;
                 }
                 if (_cCHDB.SuaYeuCauCHDB(_ycchdb))
                 {
@@ -480,14 +480,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void chkNgayXuLy_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkNgayXuLy.Checked)
+            if (chkTroNgai.Checked)
             {
-                dateXuLy.Enabled = true;
+                dateTroNgai.Enabled = true;
                 cmbNoiDung.Enabled = true;
             }
             else
             {
-                dateXuLy.Enabled = false;
+                dateTroNgai.Enabled = false;
                 cmbNoiDung.Enabled = false;
             }
         }

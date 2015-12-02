@@ -410,7 +410,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                return db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongMoi).Value - db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongCu).Value;
+                if (db.CTTruyThuTienNuocs.Any(item => item.MaTTTN == MaTTTN))
+                    return db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongMoi).Value - db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongCu).Value;
+                else
+                    return 0;
             }
             catch (Exception ex)
             {
@@ -423,7 +426,10 @@ namespace KTKS_DonKH.DAL.ToXuLy
         {
             try
             {
-                return (db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongMoi).Value - db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongCu).Value)/8546;
+                if (db.CTTruyThuTienNuocs.Any(item => item.MaTTTN == MaTTTN))
+                    return (db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongMoi).Value - db.CTTruyThuTienNuocs.Where(item => item.MaTTTN == MaTTTN).Sum(item => item.TongCongCu).Value) / 8546;
+                else
+                    return 0;
             }
             catch (Exception ex)
             {

@@ -406,6 +406,48 @@ namespace KTKS_DonKH.GUI.ToXuLy
             frm.ShowDialog();
         }
 
+        private void btnInChiTiet_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+            foreach (DataGridViewRow item in dgvTruyThuTienNuoc.Rows)
+                if (item.Cells["Ky"].Value != null)
+                {
+                    DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
+
+                    dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = txtHoTen.Text.Trim();
+                    dr["DiaChi"] = txtDiaChi.Text.Trim();
+                    dr["HopDong"] = txtHopDong.Text.Trim();
+                    dr["GiaBieu"] = txtGiaBieu.Text.Trim();
+                    dr["DinhMuc"] = txtDinhMuc.Text.Trim();
+
+                    dr["Ky"] = item.Cells["Ky"].Value.ToString();
+                    dr["Nam"] = item.Cells["Nam"].Value.ToString();
+                    dr["GiaBieuCu"] = item.Cells["GiaBieu_Cu"].Value.ToString();
+                    dr["DinhMucCu"] = item.Cells["DinhMuc_Cu"].Value.ToString();
+                    dr["TieuThuCu"] = item.Cells["TieuThu_Cu"].Value.ToString();
+                    dr["GiaBanCu"] = item.Cells["GiaBan_Cu"].Value.ToString();
+                    dr["ThueGTGTCu"] = item.Cells["ThueGTGT_Cu"].Value.ToString();
+                    dr["PhiBVMTCu"] = item.Cells["PhiBVMT_Cu"].Value.ToString();
+                    dr["TongCongCu"] = item.Cells["TongCong_Cu"].Value.ToString();
+                    dr["GiaBieuMoi"] = item.Cells["GiaBieu_Moi"].Value.ToString();
+                    dr["DinhMucMoi"] = item.Cells["DinhMuc_Moi"].Value.ToString();
+                    dr["TieuThuMoi"] = item.Cells["TieuThu_Moi"].Value.ToString();
+                    dr["GiaBanMoi"] = item.Cells["GiaBan_Moi"].Value.ToString();
+                    dr["ThueGTGTMoi"] = item.Cells["ThueGTGT_Moi"].Value.ToString();
+                    dr["PhiBVMTMoi"] = item.Cells["PhiBVMT_Moi"].Value.ToString();
+                    dr["TongCongMoi"] = item.Cells["TongCong_Moi"].Value.ToString();
+                    dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
+                    dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+                }
+
+            rptTruyThuTienNuocChiTiet rpt = new rptTruyThuTienNuocChiTiet();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
         
     }
 }
