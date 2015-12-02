@@ -306,7 +306,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON and GB>=11 and GB<=20 and b.NAM=Nam and b.KY=Ky and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and GB>=11 and GB<=20 and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                 return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -315,7 +315,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON and GB>20 and b.NAM=Nam and b.KY=Ky and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and GB>20 and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                     return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -328,7 +328,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON and GB>=11 and GB<=20 and (b.NAM<Nam or(b.NAM=Nam and b.KY<Ky)) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and GB>=11 and GB<=20 and (b.NAM<" + Nam + " or(b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                 return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -337,7 +337,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON and GB>20 and (b.NAM<Nam or(b.NAM=Nam and b.KY<Ky)) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and GB>20 and (b.NAM<" + Nam + " or(b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                     return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -372,7 +372,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN_DC) as TongGiaBan,SUM(THUE_DC) as TongThueGTGT,SUM(PHI_DC) as TongPhiBVMT,SUM(TONGCONG_DC) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b,DIEUCHINH_HD dchd"
-                        + " where a.SoHoaDon=b.SOHOADON and a.SoHoaDon=dchd.SOHOADON and GB>=11 and GB<=20 and b.NAM=Nam and b.KY=Ky and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and a.SoHoaDon=dchd.SOHOADON and GB>=11 and GB<=20 and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                 return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -381,7 +381,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN_DC) as TongGiaBan,SUM(THUE_DC) as TongThueGTGT,SUM(PHI_DC) as TongPhiBVMT,SUM(TONGCONG_DC) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b,DIEUCHINH_HD dchd"
-                        + " where a.SoHoaDon=b.SOHOADON and a.SoHoaDon=dchd.SOHOADON and GB>20 and b.NAM=Nam and b.KY=Ky and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and a.SoHoaDon=dchd.SOHOADON and GB>20 and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                     return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -394,7 +394,7 @@ namespace ThuTien.DAL.TongHop
             if (Loai == "TG")
             {
                 string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN_DC) as TongGiaBan,SUM(THUE_DC) as TongThueGTGT,SUM(PHI_DC) as TongPhiBVMT,SUM(TONGCONG_DC) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b,DIEUCHINH_HD dchd"
-                        + " where a.SoHoaDon=b.SOHOADON and a.SoHoaDon=dchd.SOHOADON and GB>=11 and GB<=20 and (b.NAM<Nam or (b.NAM=Nam and b.KY<Ky)) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and a.SoHoaDon=dchd.SOHOADON and GB>=11 and GB<=20 and (b.NAM<" + Nam + " or (b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                 return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -403,7 +403,7 @@ namespace ThuTien.DAL.TongHop
                 if (Loai == "CQ")
                 {
                     string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN_DC) as TongGiaBan,SUM(THUE_DC) as TongThueGTGT,SUM(PHI_DC) as TongPhiBVMT,SUM(TONGCONG_DC) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b,DIEUCHINH_HD dchd"
-                        + " where a.SoHoaDon=b.SOHOADON and a.SoHoaDon=dchd.SOHOADON and GB>20 and (b.NAM<Nam or (b.NAM=Nam and b.KY<Ky)) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and a.SoHoaDon=dchd.SOHOADON and GB>20 and (b.NAM<" + Nam + " or (b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
                     return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -437,7 +437,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetTongHopDangNgan_PhanKyLon(int Nam,int Ky,DateTime CreateDate)
         {
             string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON and b.NAM=Nam and b.KY=Ky and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and b.NAM=" + Nam + " and b.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -446,7 +446,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetTongHopDangNgan_PhanKyNho(int Nam, int Ky, DateTime CreateDate)
         {
             string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
-                        + " where a.SoHoaDon=b.SOHOADON and (b.NAM<Nam or (b.NAM=Nam and b.KY<Ky)) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and (b.NAM<" + Nam + " or (b.NAM=" + Nam + " and b.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -464,7 +464,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetTongHopDangNganDCHD_PhanKyLon(int Nam, int Ky, DateTime CreateDate)
         {
             string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN_DC) as TongGiaBan,SUM(THUE_DC) as TongThueGTGT,SUM(PHI_DC) as TongPhiBVMT,SUM(TONGCONG_DC) as TongCong from TT_CTChuyenNoKhoDoi a,DIEUCHINH_HD b,HOADON c"
-                        + " where a.SoHoaDon=b.SOHOADON and b.SOHOADON=c.SOHOADON and b.NAM=Nam and b.KY=Ky and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and b.SOHOADON=c.SOHOADON and c.NAM=" + Nam + " and c.KY=" + Ky + " and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
@@ -473,7 +473,7 @@ namespace ThuTien.DAL.TongHop
         public DataTable GetTongHopDangNganDCHD_PhanKyNho(int Nam, int Ky, DateTime CreateDate)
         {
             string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN_DC) as TongGiaBan,SUM(THUE_DC) as TongThueGTGT,SUM(PHI_DC) as TongPhiBVMT,SUM(TONGCONG_DC) as TongCong from TT_CTChuyenNoKhoDoi a,DIEUCHINH_HD b,HOADON c"
-                        + " where a.SoHoaDon=b.SOHOADON and b.SOHOADON=c.SOHOADON and (b.NAM<Nam or (b.NAM=Nam and b.KY<Ky)) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
+                        + " where a.SoHoaDon=b.SOHOADON and b.SOHOADON=c.SOHOADON and (c.NAM<" + Nam + " or (c.NAM=" + Nam + " and c.KY<" + Ky + ")) and CONVERT(varchar(10),a.CreateDate,103)='" + CreateDate.ToString("dd/MM/yyyy") + "'"
                         + " group by CONVERT(varchar(10),a.CreateDate,103)";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);

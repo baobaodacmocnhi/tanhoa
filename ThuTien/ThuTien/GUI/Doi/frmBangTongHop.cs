@@ -281,7 +281,7 @@ namespace ThuTien.GUI.Doi
                 rpt.SetDataSource(ds);
                 rpt.Subreports[0].SetDataSource(dsBangTinh);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 

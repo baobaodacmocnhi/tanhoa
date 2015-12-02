@@ -32,6 +32,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CTienDu _cTienDu = new CTienDu();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         CBangKe _cBangKe = new CBangKe();
+        CDichVuThu _cDichVuThu = new CDichVuThu();
 
         public frmDangNganChuyenKhoan()
         {
@@ -1000,41 +1001,43 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (lstHD != null && !bool.Parse(item.Cells["ChoXuLy_TienDu"].Value.ToString()) && lstHD[0].DOT >= int.Parse(cmbFromDot.SelectedItem.ToString()) && lstHD[0].DOT <= int.Parse(cmbToDot.SelectedItem.ToString()) && int.Parse(item.Cells["SoTien_TienDu"].Value.ToString()) < lstHD.Sum(itemHD => itemHD.TONGCONG))
                 {
                     foreach (HOADON itemHD in lstHD)
-                    {
-                        DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
-                        dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                        dr["HoTen"] = itemHD.TENKH;
-                        dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
-                        dr["MLT"] = itemHD.MALOTRINH;
-                        dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
-                        dr["TongCong"] = itemHD.TONGCONG;
-                        if (lstHD[0].MaNV_HanhThu != null)
+                        ///nếu có trong dịch vụ thu thì không thu thêm
+                        if (!_cDichVuThu.CheckExist(itemHD.SOHOADON))
                         {
-                            dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
-                            dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
-                        }
-                        ds.Tables["TienDuKhachHang"].Rows.Add(dr);
+                            DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
+                            dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                            dr["HoTen"] = itemHD.TENKH;
+                            dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
+                            dr["MLT"] = itemHD.MALOTRINH;
+                            dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
+                            dr["TongCong"] = itemHD.TONGCONG;
+                            if (lstHD[0].MaNV_HanhThu != null)
+                            {
+                                dr["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                                dr["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                            }
+                            ds.Tables["TienDuKhachHang"].Rows.Add(dr);
 
-                        DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();
-                        drTT["LoaiBaoCao"] = "TIỀN DƯ THU THÊM";
-                        drTT["DanhBo"] = itemHD.DANHBA.Insert(4, " ").Insert(8, " ");
-                        drTT["HoTen"] = itemHD.TENKH;
-                        drTT["MLT"] = itemHD.MALOTRINH;
-                        drTT["Ky"] = itemHD.KY+"/"+itemHD.NAM;
-                        drTT["TongCong"] = itemHD.TONGCONG;
-                        if (itemHD.MaNV_HanhThu != null)
-                        {
-                            drTT["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
-                            drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                            DataRow drTT = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                            drTT["LoaiBaoCao"] = "TIỀN DƯ THU THÊM";
+                            drTT["DanhBo"] = itemHD.DANHBA.Insert(4, " ").Insert(8, " ");
+                            drTT["HoTen"] = itemHD.TENKH;
+                            drTT["MLT"] = itemHD.MALOTRINH;
+                            drTT["Ky"] = itemHD.KY + "/" + itemHD.NAM;
+                            drTT["TongCong"] = itemHD.TONGCONG;
+                            if (itemHD.MaNV_HanhThu != null)
+                            {
+                                drTT["HanhThu"] = _cNguoiDung.GetHoTenByMaND(itemHD.MaNV_HanhThu.Value);
+                                drTT["To"] = _cNguoiDung.GetTenToByMaND(itemHD.MaNV_HanhThu.Value);
+                            }
+                            if (itemHD.GB.Value > 20)
+                                drTT["Loai"] = "CQ";
+                            else
+                                drTT["Loai"] = "TG";
+                            if (_cLenhHuy.CheckExist(itemHD.SOHOADON))
+                                drTT["LenhHuy"] = true;
+                            ds.Tables["TamThuChuyenKhoan"].Rows.Add(drTT);
                         }
-                        if (itemHD.GB.Value > 20)
-                            drTT["Loai"] = "CQ";
-                        else
-                            drTT["Loai"] = "TG";
-                        if (_cLenhHuy.CheckExist(itemHD.SOHOADON))
-                            drTT["LenhHuy"] = true;
-                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(drTT);
-                    }
                 }
             }
             rptTienDuKhachHang rpt = new rptTienDuKhachHang();

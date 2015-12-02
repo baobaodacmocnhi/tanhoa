@@ -8,6 +8,11 @@ namespace ThuTien.DAL.ChuyenKhoan
 {
     class CDichVuThu:CDAL
     {
+        public bool CheckExist(string SoHoaDon)
+        {
+            return _db.TT_DichVuThus.Any(item => item.SoHoaDon == SoHoaDon);
+        }
+
         public DataTable GetDichVuThu()
         {
             return LINQToDataTable(_db.ViewGetDichVuThus.OrderBy(item=>item.TenDichVu));

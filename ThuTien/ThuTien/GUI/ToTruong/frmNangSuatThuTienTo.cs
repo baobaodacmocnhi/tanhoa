@@ -420,6 +420,7 @@ namespace ThuTien.GUI.ToTruong
                 }
 
                 foreach (DataRow item in dtNV.Rows)
+                    if (!string.IsNullOrEmpty(item["HDTonCu"].ToString()) || !string.IsNullOrEmpty(item["HDChuanThu"].ToString()) || !string.IsNullOrEmpty(item["HDTongTon"].ToString()))
                 {
                     DataRow dr = ds.Tables["BaoCaoTongHop"].NewRow();
 
@@ -428,10 +429,26 @@ namespace ThuTien.GUI.ToTruong
                     dr["STT"]=item["STT"];
                     dr["HanhThu"] = item["HoTen"];
                     dr["Loai"] = item["Loai"];
-                    dr["TonCu"] = item["HDTonCu"];
-                    dr["TyLeTonCu"] = item["GTTonCu"];
-                    dr["ChuanThu"] = item["HDChuanThu"];
-                    dr["TyLeChuanThu"] = item["GTChuanThu"];
+                    if (string.IsNullOrEmpty(item["HDTonCu"].ToString()))
+                    {
+                        dr["TonCu"] = 0;
+                        dr["TyLeTonCu"] = 0;
+                    }
+                    else
+                    {
+                        dr["TonCu"] = item["HDTonCu"];
+                        dr["TyLeTonCu"] = item["GTTonCu"];
+                    }
+                    if (string.IsNullOrEmpty(item["HDChuanThu"].ToString()))
+                    {
+                        dr["ChuanThu"] = 0;
+                        dr["TyLeChuanThu"] = 0;
+                    }
+                    else
+                    {
+                        dr["ChuanThu"] = item["HDChuanThu"];
+                        dr["TyLeChuanThu"] = item["GTChuanThu"];
+                    }
                     if (string.IsNullOrEmpty(item["HDTongTon"].ToString()))
                         dr["TongTon"] = 0;
                     else
@@ -453,8 +470,16 @@ namespace ThuTien.GUI.ToTruong
                 drTC["STT"] = dtNV.Compute("SUM(STT)+1","");
                 drTC["HanhThu"] = "Tổng Cộng";
                 drTC["Loai"] = "TG";
-                drTC["TonCu"] = dtNV.Compute("SUM(HDTonCu)", "Loai='TG'");
-                drTC["TyLeTonCu"] = dtNV.Compute("SUM(GTTonCu)", "Loai='TG'");
+                if (string.IsNullOrEmpty(dtNV.Compute("SUM(HDTonCu)", "Loai='TG'").ToString()))
+                {
+                    drTC["TonCu"] = 0;
+                    drTC["TyLeTonCu"] = 0;
+                }
+                else
+                {
+                    drTC["TonCu"] = dtNV.Compute("SUM(HDTonCu)", "Loai='TG'");
+                    drTC["TyLeTonCu"] = dtNV.Compute("SUM(GTTonCu)", "Loai='TG'");
+                }
                 drTC["ChuanThu"] = dtNV.Compute("SUM(HDChuanThu)", "Loai='TG'");
                 drTC["TyLeChuanThu"] = dtNV.Compute("SUM(GTChuanThu)", "Loai='TG'");
                 if (string.IsNullOrEmpty(dtNV.Compute("SUM(HDTongTon)", "Loai='TG'").ToString()))
@@ -476,8 +501,16 @@ namespace ThuTien.GUI.ToTruong
                 drTC["STT"] = dtNV.Compute("SUM(STT)+1", "");
                 drTC["HanhThu"] = "Tổng Cộng";
                 drTC["Loai"] = "CQ";
-                drTC["TonCu"] = dtNV.Compute("SUM(HDTonCu)", "Loai='CQ'");
-                drTC["TyLeTonCu"] = dtNV.Compute("SUM(GTTonCu)", "Loai='CQ'");
+                if (string.IsNullOrEmpty(dtNV.Compute("SUM(HDTonCu)", "Loai='CQ'").ToString()))
+                {
+                    drTC["TonCu"] = 0;
+                    drTC["TyLeTonCu"] = 0;
+                }
+                else
+                {
+                    drTC["TonCu"] = dtNV.Compute("SUM(HDTonCu)", "Loai='CQ'");
+                    drTC["TyLeTonCu"] = dtNV.Compute("SUM(GTTonCu)", "Loai='CQ'");
+                }
                 drTC["ChuanThu"] = dtNV.Compute("SUM(HDChuanThu)", "Loai='CQ'");
                 drTC["TyLeChuanThu"] = dtNV.Compute("SUM(GTChuanThu)", "Loai='CQ'");
                 if (string.IsNullOrEmpty(dtNV.Compute("SUM(HDTongTon)", "Loai='CQ'").ToString()))
