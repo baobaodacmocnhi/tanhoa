@@ -81,6 +81,32 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
+        public bool XoaBamChi(LinQ.BamChi bamchi)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLBamChi_CapNhat || CTaiKhoan.RoleBamChi_CapNhat)
+                {
+                    db.BamChis.DeleteOnSubmit(bamchi);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa BamChi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.BamChis);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         public LinQ.BamChi getBamChibyID(decimal MaBC)
         {
             try

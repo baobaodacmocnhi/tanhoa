@@ -643,11 +643,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctchdb != null)
                 {
+                    CHDB chdb = _ctchdb.CHDB;
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         if (!_ctchdb.DaLapPhieu)
                         {
                             if (_cCHDB.XoaCTCHDB(_ctchdb))
                             {
+                                if (chdb.CTCTDBs.Count == 0 && chdb.CTCHDBs.Count == 0)
+                                    _cCHDB.XoaCHDB(chdb);
                                 MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();

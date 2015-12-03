@@ -314,13 +314,18 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (_ctktxm != null)
+            {
+                KTXM ktxm = _ctktxm.KTXM;
                 if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     if (_cKTXM.XoaCTKTXM(_ctktxm, CTaiKhoan.MaUser))
                     {
+                        if (ktxm.CTKTXMs.Count == 0)
+                            _cKTXM.XoaKTXM(ktxm);
                         MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
+            }
         }
 
         private void frmShowKTXM_FormClosing(object sender, FormClosingEventArgs e)

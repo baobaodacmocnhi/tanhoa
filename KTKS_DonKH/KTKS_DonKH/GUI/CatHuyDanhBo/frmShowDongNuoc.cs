@@ -286,5 +286,29 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 }
             }
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_ctdongnuoc != null)
+                {
+                    LinQ.DongNuoc dongnuoc = _ctdongnuoc.DongNuoc;
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (_cDongNuoc.XoaCTDongNuoc(_ctdongnuoc))
+                        {
+                            if (dongnuoc.CTDongNuocs.Count == 0)
+                                _cDongNuoc.XoaDongNuoc(dongnuoc);
+                            MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

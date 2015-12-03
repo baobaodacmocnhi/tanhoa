@@ -82,6 +82,7 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label22 = new System.Windows.Forms.Label();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBoxXuLyMoNuoc.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxXuLyDongNuoc.SuspendLayout();
@@ -606,12 +607,26 @@
             this.label22.TabIndex = 92;
             this.label22.Text = "Đóng Nước";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_DonKH.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(927, 424);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(67, 35);
+            this.btnXoa.TabIndex = 93;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmShowDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1159, 572);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtMaThongBao_DN);
@@ -702,5 +717,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

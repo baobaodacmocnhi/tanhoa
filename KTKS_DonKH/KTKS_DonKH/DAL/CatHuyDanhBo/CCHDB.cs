@@ -846,6 +846,33 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             }
         }
 
+        public bool XoaCHDB(CHDB chdb)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleCHDB_CapNhat)
+                {
+
+                    db.CHDBs.DeleteOnSubmit(chdb);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa CHDB", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CHDBs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         /// <summary>
         /// Lấy Mã Cắt Hủy Danh Bộ lớn nhất hiện tại
         /// </summary>

@@ -125,6 +125,33 @@ namespace KTKS_DonKH.DAL.DongNuoc
             }
         }
 
+        public bool XoaDongNuoc(LinQ.DongNuoc dongnuoc)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDongNuoc_CapNhat)
+                {
+
+                    db.DongNuocs.DeleteOnSubmit(dongnuoc);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa DongNuoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.DongNuocs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         /// <summary>
         /// Lấy DongNuoc bằng MaDon
         /// </summary>
@@ -251,6 +278,32 @@ namespace KTKS_DonKH.DAL.DongNuoc
                 {
                     ctdongnuoc.ModifyDate = DateTime.Now;
                     ctdongnuoc.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa CTDongNuoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.CTDongNuocs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool XoaCTDongNuoc(CTDongNuoc ctdongnuoc)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleDongNuoc_CapNhat)
+                {
+                    db.CTDongNuocs.DeleteOnSubmit(ctdongnuoc);
                     db.SubmitChanges();
                     //MessageBox.Show("Thành công Sửa CTDongNuoc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -884,6 +937,11 @@ namespace KTKS_DonKH.DAL.DongNuoc
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
+        }
+
+        public int CountCTDongNuoc(decimal MaDN)
+        {
+            return db.CTDongNuocs.Count(item => item.MaDN == MaDN);
         }
 
         #endregion

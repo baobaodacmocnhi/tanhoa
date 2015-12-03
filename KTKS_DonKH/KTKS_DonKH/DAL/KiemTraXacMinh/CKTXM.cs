@@ -81,6 +81,32 @@ namespace KTKS_DonKH.DAL.KiemTraXacMinh
             }
         }
 
+        public bool XoaKTXM(KTXM ktxm)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLKTXM_CapNhat || CTaiKhoan.RoleKTXM_CapNhat)
+                {
+                    db.KTXMs.DeleteOnSubmit(ktxm);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa KTXM", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.KTXMs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
         /// <summary>
         /// Hàm này được dùng trong nội bộ DAL
         /// </summary>

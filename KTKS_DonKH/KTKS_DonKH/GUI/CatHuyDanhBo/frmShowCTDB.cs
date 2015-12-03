@@ -601,11 +601,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 if (_ctctdb != null)
                 {
+                    CHDB chdb = _ctctdb.CHDB;
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         if (!_ctctdb.DaLapPhieu)
                         {
                             if (_cCHDB.XoaCTCTDB(_ctctdb))
                             {
+                                if (chdb.CTCTDBs.Count == 0 && chdb.CTCHDBs.Count == 0)
+                                    _cCHDB.XoaCHDB(chdb);
                                 MessageBox.Show("Xóa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();

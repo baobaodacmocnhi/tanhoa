@@ -236,32 +236,36 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (_ycchdb != null)
             {
-                if (_cCHDB.XoaYeuCauCHDB(_ycchdb))
+
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if (_ycchdb.TBCTDB)
+                    if (_cCHDB.XoaYeuCauCHDB(_ycchdb))
                     {
-                        CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(_ycchdb.MaCTCTDB.Value);
-                        ctctdb.DaLapPhieu = false;
-                        ctctdb.SoPhieu = null;
-                        ctctdb.NgayLapPhieu = null;
-                        ctctdb.PhieuDuocKy = false;
-                        _cCHDB.SuaCTCTDB(ctctdb);
-                    }
-                    else
-                        if (_ycchdb.TBCHDB)
+                        if (_ycchdb.TBCTDB)
                         {
-                            CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(_ycchdb.MaCTCHDB.Value);
-                            ctchdb.DaLapPhieu = false;
-                            ctchdb.SoPhieu = null;
-                            ctchdb.NgayLapPhieu = null;
-                            ctchdb.PhieuDuocKy = false;
-                            _cCHDB.SuaCTCHDB(ctchdb);
+                            CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(_ycchdb.MaCTCTDB.Value);
+                            ctctdb.DaLapPhieu = false;
+                            ctctdb.SoPhieu = null;
+                            ctctdb.NgayLapPhieu = null;
+                            ctctdb.PhieuDuocKy = false;
+                            _cCHDB.SuaCTCTDB(ctctdb);
                         }
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                        else
+                            if (_ycchdb.TBCHDB)
+                            {
+                                CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(_ycchdb.MaCTCHDB.Value);
+                                ctchdb.DaLapPhieu = false;
+                                ctchdb.SoPhieu = null;
+                                ctchdb.NgayLapPhieu = null;
+                                ctchdb.PhieuDuocKy = false;
+                                _cCHDB.SuaCTCHDB(ctchdb);
+                            }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
             }
         }
