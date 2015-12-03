@@ -103,7 +103,6 @@ namespace ThuTien.DAL.ChuyenKhoan
                     {
                         return false;
                     }
-                
             }
             catch (Exception ex)
             {

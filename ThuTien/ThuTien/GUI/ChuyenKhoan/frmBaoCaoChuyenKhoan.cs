@@ -643,8 +643,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt = dt.DefaultView.ToTable();
 
             ///danh sách đăng ngân còn lại
-            dtDN.DefaultView.Sort = "GiaBieu ASC";
-            dtDN = dtDN.DefaultView.ToTable();
+            if (dtDN.Rows.Count > 0)
+            {
+                dtDN.DefaultView.Sort = "GiaBieu ASC";
+                dtDN = dtDN.DefaultView.ToTable();
+            }
             foreach (DataRow item in dtDN.Rows)
             {
                 DataRow[] drBKLui5 = dtBKLui5.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
@@ -972,7 +975,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
 
-            oSheet.Cells[rowEnd + 1, 5] = dt.Compute("sum(SoTien)","");
+            oSheet.Cells[rowEnd + 1, 5] = dt.Compute("sum(SoTien)", "CreateDate >='" + dateGiaiTrach.Value.ToString("yyyy/MM/dd") + "'");
             oSheet.Cells[rowEnd + 1, 9] = dt.Compute("sum(GiaBan)", "");
             oSheet.Cells[rowEnd + 1, 10] = dt.Compute("sum(ThueGTGT)", "");
             oSheet.Cells[rowEnd + 1, 11] = dt.Compute("sum(PhiBVMT)", "");

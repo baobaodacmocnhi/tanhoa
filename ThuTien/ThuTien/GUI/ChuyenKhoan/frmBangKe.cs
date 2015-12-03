@@ -68,7 +68,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     bangke.CreateDate = dateNgayLap.Value;
                                     bangke.CreateBy = CNguoiDung.MaND;
                                     bangke.CreateDate2 = DateTime.Now;
-                                    bangke.CreateBy2 = CNguoiDung.MaND;
                                     if (_cBangKe.Them(bangke))
                                         _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê","Thêm");
                                 }
