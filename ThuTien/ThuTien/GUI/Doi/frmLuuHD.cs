@@ -190,14 +190,31 @@ namespace ThuTien.GUI.Doi
                         //    return false;
                         //}
 
-                        if (!_cHoaDon.CheckBySoHoaDon(hoadon.SOHOADON))
-                            _cHoaDon.Them(hoadon);
+                        ///Nếu chưa có hóa đơn
+                        if (!_cHoaDon.CheckExist(hoadon.SOHOADON))
+                        {
+                            ///Nếu thêm mới
+                            if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value))
+                                _cHoaDon.Them(hoadon);
+                            ///Nếu thay đổi số hóa đơn của hóa đơn đã thêm rồi
+                            else
+                            {
+                                HOADON hoadonCN = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM.Value, hoadon.KY, hoadon.DOT.Value);
+                                Copy(ref hoadonCN, hoadon);
+                                _cHoaDon.Sua(hoadonCN);
+                            }
+                        }
+                        ///Nếu đã có hóa đơn
                         else
                         {
-                            if (hoadon.DM != null)
-                                _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
-                            else
-                                _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                            HOADON hoadonCN = _cHoaDon.Get(hoadon.SOHOADON);
+                            Copy(ref hoadonCN, hoadon);
+                            _cHoaDon.Sua(hoadonCN);
+                            //if (hoadon.DM != null)
+                            //    _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",DM=" + hoadon.DM.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                            //else
+                            //    _cHoaDon.LinQ_ExecuteNonQuery("update HOADON set HOPDONG='" + hoadon.HOPDONG + "',GB=" + hoadon.GB.Value + ",CODE='" + hoadon.CODE + "',CSCU=" + hoadon.CSCU.Value + ",CSMOI=" + hoadon.CSMOI.Value + ",TIEUTHU=" + hoadon.TIEUTHU.Value + ",GIABAN=" + hoadon.GIABAN.Value + ",THUE=" + hoadon.THUE.Value + ",PHI=" + hoadon.PHI.Value + ",TONGCONG=" + hoadon.TONGCONG.Value + ",SOPHATHANH='" + hoadon.SOPHATHANH + "' where SOHOADON='" + hoadon.SOHOADON + "'");
+                            
                             //string sql = "";
                             //if (hoadon.TILESH != null)
                             //    sql += "TILESH=" + hoadon.TILESH;
@@ -330,11 +347,48 @@ namespace ThuTien.GUI.Doi
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Copy(ref HOADON hoadonCu, HOADON hoadonMoi)
         {
-
+                hoadonCu.DOT = hoadonMoi.DOT;
+                hoadonCu.DANHBA = hoadonMoi.DANHBA;
+                hoadonCu.HOPDONG = hoadonMoi.HOPDONG;
+                hoadonCu.TENKH = hoadonMoi.TENKH;
+                hoadonCu.SO = hoadonMoi.SO;
+                hoadonCu.DUONG = hoadonMoi.DUONG;
+                hoadonCu.GB = hoadonMoi.GB;
+                hoadonCu.TILESH = hoadonMoi.TILESH;
+                hoadonCu.TILEHCSN =hoadonMoi.TILEHCSN;
+                hoadonCu.TILESX = hoadonMoi.TILESX;
+                hoadonCu.TILEDV = hoadonMoi.TILEDV;
+                hoadonCu.DM = hoadonMoi.DM;
+                hoadonCu.KY = hoadonMoi.KY;
+                hoadonCu.NAM = hoadonMoi.NAM;
+                hoadonCu.CODE = hoadonMoi.CODE;
+                hoadonCu.CSCU = hoadonMoi.CSCU;
+                hoadonCu.CSMOI = hoadonMoi.CSMOI;
+                hoadonCu.TUNGAY = hoadonMoi.TUNGAY;
+                hoadonCu.DENNGAY = hoadonMoi.DENNGAY;
+                hoadonCu.SONGAY = hoadonMoi.SONGAY;
+                hoadonCu.TIEUTHU = hoadonMoi.TIEUTHU;
+                hoadonCu.TIEUTHUBU = hoadonMoi.TIEUTHUBU;
+                hoadonCu.TIEUTHUSH = hoadonMoi.TIEUTHUSH;
+                hoadonCu.TIEUTHUHCSN = hoadonMoi.TIEUTHUHCSN;
+                hoadonCu.TIEUTHUSX = hoadonMoi.TIEUTHUSX;
+                hoadonCu.TIEUTHUDV = hoadonMoi.TIEUTHUDV;
+                hoadonCu.MAY = hoadonMoi.MAY;
+                hoadonCu.STT = hoadonMoi.STT;
+                hoadonCu.GIABAN =hoadonMoi.GIABAN;
+                hoadonCu.THUE = hoadonMoi.THUE;
+                hoadonCu.PHI = hoadonMoi.PHI;
+                hoadonCu.TONGCONG = hoadonMoi.TONGCONG;
+                hoadonCu.GIABAN_BU = hoadonMoi.GIABAN_BU;
+                hoadonCu.THUE_BU = hoadonMoi.THUE_BU;
+                hoadonCu.PHI_BU = hoadonMoi.PHI_BU;
+                hoadonCu.TONGCONG_BU = hoadonMoi.TONGCONG_BU;
+                hoadonCu.SOPHATHANH = hoadonMoi.SOPHATHANH;
+                hoadonCu.SOHOADON = hoadonMoi.SOHOADON;
+                hoadonCu.MST = hoadonMoi.MST;
+                hoadonCu.MALOTRINH = hoadonMoi.MALOTRINH;
         }
-
-        
     }
 }

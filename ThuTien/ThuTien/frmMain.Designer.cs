@@ -87,6 +87,7 @@
             this.mnuDichVuThu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBangKe = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCaoChuyenKhoan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTienDu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLichSuDieuChinhTienDu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuQuay = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangNganQuay = new System.Windows.Forms.ToolStripMenuItem();
@@ -512,6 +513,7 @@
             this.mnuDichVuThu,
             this.mnuBangKe,
             this.mnuBaoCaoChuyenKhoan,
+            this.mnuTienDu,
             this.mnuLichSuDieuChinhTienDu});
             this.mnuChuyenKhoan.Name = "mnuChuyenKhoan";
             this.mnuChuyenKhoan.Size = new System.Drawing.Size(97, 20);
@@ -579,6 +581,13 @@
             this.mnuBaoCaoChuyenKhoan.Size = new System.Drawing.Size(265, 22);
             this.mnuBaoCaoChuyenKhoan.Text = "Báo Cáo";
             this.mnuBaoCaoChuyenKhoan.Click += new System.EventHandler(this.mnuBaoCaoChuyenKhoan_Click);
+            // 
+            // mnuTienDu
+            // 
+            this.mnuTienDu.Name = "mnuTienDu";
+            this.mnuTienDu.Size = new System.Drawing.Size(265, 22);
+            this.mnuTienDu.Text = "Tiền Dư";
+            this.mnuTienDu.Click += new System.EventHandler(this.mnuTienDu_Click);
             // 
             // mnuLichSuDieuChinhTienDu
             // 
@@ -885,6 +894,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDichVuThu;
         private System.Windows.Forms.ToolStripMenuItem mnuPhiMoNuoc;
         private System.Windows.Forms.ToolStripMenuItem mnuLichSuDieuChinhTienDu;
+        private System.Windows.Forms.ToolStripMenuItem mnuTienDu;
     }
 }
 

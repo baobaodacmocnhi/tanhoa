@@ -345,12 +345,12 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public bool CheckByNamKyDot(int Nam, int Ky, int Dot)
+        public bool CheckExist(string DanhBo,int Nam, int Ky, int Dot)
         {
             return _db.HOADONs.Any(item => item.NAM == Nam && item.KY == Ky && item.DOT == Dot);
         }
 
-        public bool CheckBySoHoaDon(string SoHoaDon)
+        public bool CheckExist(string SoHoaDon)
         {
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon);
         }
@@ -426,14 +426,19 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.MaNV_GiaoTon == MaNV_GiaoTon);
         }
 
-        public HOADON GetByMaHD(int MaHD)
+        public HOADON Get(int MaHD)
         {
             return _db.HOADONs.SingleOrDefault(item => item.ID_HOADON == MaHD);
         }
 
-        public HOADON GetBySoHoaDon(string SoHoaDon)
+        public HOADON Get(string SoHoaDon)
         {
             return _db.HOADONs.SingleOrDefault(item => item.SOHOADON == SoHoaDon);
+        }
+
+        public HOADON Get(string DanhBo, int Nam, int Ky, int Dot)
+        {
+            return _db.HOADONs.SingleOrDefault(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky && item.DOT == Dot);
         }
 
         public HOADON GetMoiNhat(string DanhBo)
@@ -2732,19 +2737,21 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetBaoCaoTongHop_NV(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrachNow, DateTime NgayGiaiTrachOld)
+        public DataTable GetBaoCaoTongHop_NV(string Loai, int MaTo, int Nam, int Ky, DateTime NgayGiaiTrachNow, DateTime NgayGiaiTrachOld, DateTime NgayGiaiTrachFuture)
         {
             if (Loai == "TG")
             {
                 string sql = "declare @NgayGiaiTrachNow date;"
                         + " declare @NgayGiaiTrachOld date;"
+                        + " declare @NgayGiaiTrachFuture date;"
                         + " declare @nam int;"
                         + " declare @ky int;"
                         + " set @nam=" + Nam + ";"
                         + " set @ky=" + Ky + ";"
                         + " set @NgayGiaiTrachNow='" + NgayGiaiTrachNow.ToString("yyyy-MM-dd") + "';"
                         + " set @NgayGiaiTrachOld='" + NgayGiaiTrachOld.ToString("yyyy-MM-dd") + "';"
-                        + " select nd.MaND,nd.HoTen,nd.STT,'TG' as Loai,toncu.HDTonCu,toncu.GTTonCu,chuanthu.HDChuanThu,chuanthu.GTChuanThu,tongton.HDTongTon,tongton.GTTongTon from"
+                        + " set @NgayGiaiTrachFuture='" + NgayGiaiTrachFuture.ToString("yyyy-MM-dd") + "';"
+                        + " select nd.MaND as MaNV,nd.HoTen,nd.STT,'TG' as Loai,toncu.HDTonCu,toncu.GTTonCu,chuanthu.HDChuanThu,chuanthu.GTChuanThu,tonthu.HDTonThu,tonthu.GTTonThu,tongton.HDTongTon,tongton.GTTongTon from"
                         + " (select MaND,HoTen,STT from TT_NguoiDung) nd"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDChuanThu,SUM(TONGCONG) as GTChuanThu"
@@ -2755,6 +2762,11 @@ namespace ThuTien.DAL.Doi
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld))"
                         + " and GB>=11 and GB<=20 group by nd.MaND,nd.HoTen,nd.STT) toncu on nd.MaND=toncu.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDTonThu,SUM(TONGCONG) as GTTonThu"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld))"
+                        + " and GB>=11 and GB<=20 group by nd.MaND,nd.HoTen,nd.STT) tonthu on nd.MaND=tonthu.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
@@ -2769,13 +2781,15 @@ namespace ThuTien.DAL.Doi
                 {
                     string sql = "declare @NgayGiaiTrachNow date;"
                         + " declare @NgayGiaiTrachOld date;"
+                        + " declare @NgayGiaiTrachFuture date;"
                         + " declare @nam int;"
                         + " declare @ky int;"
                         + " set @nam=" + Nam + ";"
                         + " set @ky=" + Ky + ";"
                         + " set @NgayGiaiTrachNow='" + NgayGiaiTrachNow.ToString("yyyy-MM-dd") + "';"
                         + " set @NgayGiaiTrachOld='" + NgayGiaiTrachOld.ToString("yyyy-MM-dd") + "';"
-                        + " select nd.MaND,nd.HoTen,nd.STT,'CQ' as Loai,toncu.HDTonCu,toncu.GTTonCu,chuanthu.HDChuanThu,chuanthu.GTChuanThu,tongton.HDTongTon,tongton.GTTongTon from"
+                        + " set @NgayGiaiTrachFuture='" + NgayGiaiTrachFuture.ToString("yyyy-MM-dd") + "';"
+                        + " select nd.MaND as MaNV,nd.HoTen,nd.STT,'CQ' as Loai,toncu.HDTonCu,toncu.GTTonCu,chuanthu.HDChuanThu,chuanthu.GTChuanThu,tonthu.HDTonThu,tonthu.GTTonThu,tongton.HDTongTon,tongton.GTTongTon from"
                         + " (select MaND,HoTen,STT from TT_NguoiDung) nd"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDChuanThu,SUM(TONGCONG) as GTChuanThu"
@@ -2786,6 +2800,11 @@ namespace ThuTien.DAL.Doi
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld))"
                         + " and GB>20 group by nd.MaND,nd.HoTen,nd.STT) toncu on nd.MaND=toncu.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDTonThu,SUM(TONGCONG) as GTTonThu"
+                        + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld))"
+                        + " and GB>20 group by nd.MaND,nd.HoTen,nd.STT) tonthu on nd.MaND=tonthu.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS

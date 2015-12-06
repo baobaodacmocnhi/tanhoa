@@ -76,7 +76,7 @@ namespace ThuTien.GUI.TongHop
                 List<HOADON> lstHDTemp = new List<HOADON>();
                 foreach (ListViewItem item in lstHD.Items)
                 {
-                    if (!_cHoaDon.CheckBySoHoaDon(item.Text))
+                    if (!_cHoaDon.CheckExist(item.Text))
                     {
                         MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         item.Selected = true;
@@ -90,7 +90,7 @@ namespace ThuTien.GUI.TongHop
                         item.Focused = true;
                         return;
                     }
-                    lstHDTemp.Add(_cHoaDon.GetBySoHoaDon(item.Text));
+                    lstHDTemp.Add(_cHoaDon.Get(item.Text));
                 }
                 try
                 {

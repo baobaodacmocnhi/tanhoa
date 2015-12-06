@@ -156,7 +156,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 foreach (ListViewItem item in lstHD.Items)
                 {
-                    if (!_cHoaDon.CheckBySoHoaDon(item.Text))
+                    if (!_cHoaDon.CheckExist(item.Text))
                     {
                         MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         item.Selected = true;
@@ -955,7 +955,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     foreach (ListViewItem item in lstHD.Items)
                     {
-                        if (!_cHoaDon.CheckBySoHoaDon(item.Text))
+                        if (!_cHoaDon.CheckExist(item.Text))
                         {
                             MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             item.Selected = true;

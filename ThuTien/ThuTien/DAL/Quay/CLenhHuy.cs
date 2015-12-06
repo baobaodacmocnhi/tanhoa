@@ -207,7 +207,7 @@ namespace ThuTien.DAL.Quay
                         };
             return LINQToDataTable(query.Take(1));
         }
-         
+        
         public string GetTinhTrangBySoHoaDon(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).TinhTrang;
@@ -228,5 +228,7 @@ namespace ThuTien.DAL.Quay
             else
                 return false;
         }
+
+        
     }
 }

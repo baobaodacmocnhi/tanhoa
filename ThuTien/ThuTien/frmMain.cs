@@ -647,6 +647,17 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuTienDu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuTienDu", "Xem"))
+            {
+                frmTienDu frm = new frmTienDu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void mnuLichSuDieuChinhTienDu_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.CheckQuyen("mnuLichSuDieuChinhTienDu", "Xem"))
@@ -874,6 +885,8 @@ namespace ThuTien
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
+
+        
 
         
 

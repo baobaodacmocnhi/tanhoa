@@ -117,6 +117,12 @@
             this.txtTongCongTienDu = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvTienDu = new System.Windows.Forms.DataGridView();
+            this.DanhBo_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phi_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModifyDate_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DienThoai_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChoXuLy_TienDu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTienAm = new System.Windows.Forms.DataGridView();
             this.DanhBo_TienAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,12 +135,6 @@
             this.lstHD = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
-            this.DanhBo_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTien_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phi_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModifyDate_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai_TienDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChoXuLy_TienDu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -757,7 +757,7 @@
             this.tabTienDu.Name = "tabTienDu";
             this.tabTienDu.Size = new System.Drawing.Size(1117, 571);
             this.tabTienDu.TabIndex = 2;
-            this.tabTienDu.Text = "Tiền Dư";
+            this.tabTienDu.Text = "abc";
             this.tabTienDu.UseVisualStyleBackColor = true;
             // 
             // cmbToDot
@@ -788,6 +788,7 @@
             this.cmbToDot.Name = "cmbToDot";
             this.cmbToDot.Size = new System.Drawing.Size(40, 21);
             this.cmbToDot.TabIndex = 96;
+            this.cmbToDot.Visible = false;
             // 
             // label10
             // 
@@ -797,6 +798,7 @@
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 95;
             this.label10.Text = "Đến Đợt:";
+            this.label10.Visible = false;
             // 
             // btnInDSDuTien
             // 
@@ -806,6 +808,7 @@
             this.btnInDSDuTien.TabIndex = 94;
             this.btnInDSDuTien.Text = "In DS Đủ Tiền";
             this.btnInDSDuTien.UseVisualStyleBackColor = true;
+            this.btnInDSDuTien.Visible = false;
             this.btnInDSDuTien.Click += new System.EventHandler(this.btnInDSDuTien_Click);
             // 
             // label9
@@ -816,6 +819,7 @@
             this.label9.Size = new System.Drawing.Size(162, 13);
             this.label9.TabIndex = 93;
             this.label9.Text = "Double-Click để Điều Chỉnh Tiền";
+            this.label9.Visible = false;
             // 
             // btnXuatExcelTienDu
             // 
@@ -825,6 +829,7 @@
             this.btnXuatExcelTienDu.TabIndex = 92;
             this.btnXuatExcelTienDu.Text = "Xuất Excel Tiền Dư";
             this.btnXuatExcelTienDu.UseVisualStyleBackColor = true;
+            this.btnXuatExcelTienDu.Visible = false;
             this.btnXuatExcelTienDu.Click += new System.EventHandler(this.btnXuatExcelTienDu_Click);
             // 
             // dateNgayGiaiTrach
@@ -835,6 +840,7 @@
             this.dateNgayGiaiTrach.Name = "dateNgayGiaiTrach";
             this.dateNgayGiaiTrach.Size = new System.Drawing.Size(100, 20);
             this.dateNgayGiaiTrach.TabIndex = 91;
+            this.dateNgayGiaiTrach.Visible = false;
             // 
             // btnChuyenTamThu
             // 
@@ -844,6 +850,7 @@
             this.btnChuyenTamThu.TabIndex = 90;
             this.btnChuyenTamThu.Text = "Chuyển Tạm Thu";
             this.btnChuyenTamThu.UseVisualStyleBackColor = true;
+            this.btnChuyenTamThu.Visible = false;
             this.btnChuyenTamThu.Click += new System.EventHandler(this.btnChuyenTamThu_Click);
             // 
             // cmbFromDot
@@ -874,6 +881,7 @@
             this.cmbFromDot.Name = "cmbFromDot";
             this.cmbFromDot.Size = new System.Drawing.Size(40, 21);
             this.cmbFromDot.TabIndex = 89;
+            this.cmbFromDot.Visible = false;
             // 
             // label7
             // 
@@ -883,6 +891,7 @@
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 88;
             this.label7.Text = "Từ Đợt:";
+            this.label7.Visible = false;
             // 
             // btnInDSThuThem
             // 
@@ -892,6 +901,7 @@
             this.btnInDSThuThem.TabIndex = 49;
             this.btnInDSThuThem.Text = "In DS Thu Thêm";
             this.btnInDSThuThem.UseVisualStyleBackColor = true;
+            this.btnInDSThuThem.Visible = false;
             this.btnInDSThuThem.Click += new System.EventHandler(this.btnInDSThuThem_Click);
             // 
             // txtTongCongTienAm
@@ -902,6 +912,7 @@
             this.txtTongCongTienAm.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongTienAm.TabIndex = 87;
             this.txtTongCongTienAm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTongCongTienAm.Visible = false;
             // 
             // txtTongCongTienDu
             // 
@@ -911,6 +922,7 @@
             this.txtTongCongTienDu.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongTienDu.TabIndex = 86;
             this.txtTongCongTienDu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTongCongTienDu.Visible = false;
             // 
             // label5
             // 
@@ -920,6 +932,7 @@
             this.label5.Size = new System.Drawing.Size(147, 13);
             this.label5.TabIndex = 85;
             this.label5.Text = "Danh Sách Danh Bộ Tiền Dư";
+            this.label5.Visible = false;
             // 
             // dgvTienDu
             // 
@@ -963,10 +976,51 @@
             this.dgvTienDu.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvTienDu.Size = new System.Drawing.Size(621, 520);
             this.dgvTienDu.TabIndex = 84;
+            this.dgvTienDu.Visible = false;
             this.dgvTienDu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTienDu_CellFormatting);
             this.dgvTienDu.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTienDu_CellMouseDoubleClick);
             this.dgvTienDu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvTienDu_CellValidating);
             this.dgvTienDu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTienDu_RowPostPaint);
+            // 
+            // DanhBo_TienDu
+            // 
+            this.DanhBo_TienDu.DataPropertyName = "DanhBo";
+            this.DanhBo_TienDu.HeaderText = "Danh Bộ";
+            this.DanhBo_TienDu.Name = "DanhBo_TienDu";
+            // 
+            // SoTien_TienDu
+            // 
+            this.SoTien_TienDu.DataPropertyName = "SoTien";
+            this.SoTien_TienDu.HeaderText = "Số Tiền";
+            this.SoTien_TienDu.Name = "SoTien_TienDu";
+            this.SoTien_TienDu.Width = 90;
+            // 
+            // Phi_TienDu
+            // 
+            this.Phi_TienDu.DataPropertyName = "Phi";
+            this.Phi_TienDu.HeaderText = "Phí";
+            this.Phi_TienDu.Name = "Phi_TienDu";
+            this.Phi_TienDu.Width = 70;
+            // 
+            // ModifyDate_TienDu
+            // 
+            this.ModifyDate_TienDu.DataPropertyName = "ModifyDate";
+            this.ModifyDate_TienDu.HeaderText = "Cập Nhật";
+            this.ModifyDate_TienDu.Name = "ModifyDate_TienDu";
+            // 
+            // DienThoai_TienDu
+            // 
+            this.DienThoai_TienDu.DataPropertyName = "DienThoai";
+            this.DienThoai_TienDu.HeaderText = "Điện Thoại";
+            this.DienThoai_TienDu.Name = "DienThoai_TienDu";
+            this.DienThoai_TienDu.Width = 150;
+            // 
+            // ChoXuLy_TienDu
+            // 
+            this.ChoXuLy_TienDu.DataPropertyName = "ChoXuLy";
+            this.ChoXuLy_TienDu.HeaderText = "Chờ Xử Lý";
+            this.ChoXuLy_TienDu.Name = "ChoXuLy_TienDu";
+            this.ChoXuLy_TienDu.Width = 50;
             // 
             // label2
             // 
@@ -976,6 +1030,7 @@
             this.label2.Size = new System.Drawing.Size(148, 13);
             this.label2.TabIndex = 83;
             this.label2.Text = "Danh Sách Danh Bộ Tiền Âm";
+            this.label2.Visible = false;
             // 
             // dgvTienAm
             // 
@@ -1016,6 +1071,7 @@
             this.dgvTienAm.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvTienAm.Size = new System.Drawing.Size(362, 520);
             this.dgvTienAm.TabIndex = 82;
+            this.dgvTienAm.Visible = false;
             this.dgvTienAm.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTienAm_CellFormatting);
             this.dgvTienAm.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTienAm_RowPostPaint);
             // 
@@ -1102,46 +1158,6 @@
             this.btnCopyToClipboard.Text = "Copy to Clipboard";
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
             this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
-            // 
-            // DanhBo_TienDu
-            // 
-            this.DanhBo_TienDu.DataPropertyName = "DanhBo";
-            this.DanhBo_TienDu.HeaderText = "Danh Bộ";
-            this.DanhBo_TienDu.Name = "DanhBo_TienDu";
-            // 
-            // SoTien_TienDu
-            // 
-            this.SoTien_TienDu.DataPropertyName = "SoTien";
-            this.SoTien_TienDu.HeaderText = "Số Tiền";
-            this.SoTien_TienDu.Name = "SoTien_TienDu";
-            this.SoTien_TienDu.Width = 90;
-            // 
-            // Phi_TienDu
-            // 
-            this.Phi_TienDu.DataPropertyName = "Phi";
-            this.Phi_TienDu.HeaderText = "Phí";
-            this.Phi_TienDu.Name = "Phi_TienDu";
-            this.Phi_TienDu.Width = 70;
-            // 
-            // ModifyDate_TienDu
-            // 
-            this.ModifyDate_TienDu.DataPropertyName = "ModifyDate";
-            this.ModifyDate_TienDu.HeaderText = "Cập Nhật";
-            this.ModifyDate_TienDu.Name = "ModifyDate_TienDu";
-            // 
-            // DienThoai_TienDu
-            // 
-            this.DienThoai_TienDu.DataPropertyName = "DienThoai";
-            this.DienThoai_TienDu.HeaderText = "Điện Thoại";
-            this.DienThoai_TienDu.Name = "DienThoai_TienDu";
-            this.DienThoai_TienDu.Width = 150;
-            // 
-            // ChoXuLy_TienDu
-            // 
-            this.ChoXuLy_TienDu.DataPropertyName = "ChoXuLy";
-            this.ChoXuLy_TienDu.HeaderText = "Chờ Xử Lý";
-            this.ChoXuLy_TienDu.Name = "ChoXuLy_TienDu";
-            this.ChoXuLy_TienDu.Width = 50;
             // 
             // frmDangNganChuyenKhoan
             // 

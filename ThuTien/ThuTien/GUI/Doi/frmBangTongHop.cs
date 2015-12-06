@@ -191,7 +191,8 @@ namespace ThuTien.GUI.Doi
                     ///chỉ lấy hóa đơn
                     DataRow drBangTinh = dsBangTinh.Tables["BaoCaoTongHop"].NewRow();
 
-                    dr["Ky"] = drBangTinh["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
+                    dr["Ky"] = drBangTinh["Ky"] = cmbKy.SelectedItem.ToString();
+                    dr["Nam"] = drBangTinh["Nam"] = cmbNam.SelectedValue.ToString();
                     dr["To"] = drBangTinh["To"] = item["TenTo"];
                     dr["Loai"] = drBangTinh["Loai"] = item["Loai"];
                     dr["LoaiBaoCao"] = "HĐ";
@@ -215,7 +216,8 @@ namespace ThuTien.GUI.Doi
                     dsBangTinh.Tables["BaoCaoTongHop"].Rows.Add(drBangTinh);
 
                     DataRow dr2 = ds.Tables["BaoCaoTongHop"].NewRow();
-                    dr2["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
+                    dr2["Ky"] = cmbKy.SelectedItem.ToString();
+                    dr2["Nam"] = cmbNam.SelectedValue.ToString();
                     dr2["To"] = item["TenTo"];
                     dr2["Loai"] = item["Loai"];
                     dr2["LoaiBaoCao"] = "GT";
@@ -237,7 +239,8 @@ namespace ThuTien.GUI.Doi
                     ///chỉ lấy hóa đơn
                     DataRow drBangTinh = dsBangTinh.Tables["BaoCaoTongHop"].NewRow();
 
-                    dr["Ky"] = drBangTinh["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
+                    dr["Ky"] = drBangTinh["Ky"] = cmbKy.SelectedItem.ToString();
+                    dr["Nam"] = drBangTinh["Nam"] = cmbNam.SelectedValue.ToString();
                     dr["To"] = drBangTinh["To"] = item["TenTo"];
                     dr["Loai"] = drBangTinh["Loai"] = item["Loai"];
                     dr["LoaiBaoCao"] = "HĐ";
@@ -261,7 +264,8 @@ namespace ThuTien.GUI.Doi
                     dsBangTinh.Tables["BaoCaoTongHop"].Rows.Add(drBangTinh);
 
                     DataRow dr2 = ds.Tables["BaoCaoTongHop"].NewRow();
-                    dr2["Ky"] = cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString();
+                    dr2["Ky"] = cmbKy.SelectedItem.ToString();
+                    dr2["Nam"] = cmbNam.SelectedValue.ToString();
                     dr2["To"] = item["TenTo"];
                     dr2["Loai"] = item["Loai"];
                     dr2["LoaiBaoCao"] = "GT";

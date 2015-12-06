@@ -1130,6 +1130,50 @@ namespace ThuTien.DAL.TongHop
             return null;
         }
 
+        public DataTable GetChuanThuTonTrongKyDenNgay_NV(string Loai, int MaNV, int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+            if (Loai == "TG")
+            {
+                var query = from itemDC in _db.DIEUCHINH_HDs
+                            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                            where itemHD.MaNV_HanhThu == MaNV
+                                    && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB >= 11 && itemHD.GB <= 20
+                            select new
+                            {
+                                Loai = "TG",
+                                MaNV = itemHD.MaNV_HanhThu,
+                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                itemHD.NGAYGIAITRACH,
+                                itemDC.GIABAN_BD,
+                                itemDC.TONGCONG_BD,
+                                itemDC.GIABAN_END,
+                                itemDC.TONGCONG_END,
+                            };
+                return LINQToDataTable(query);
+            }
+            else
+                if (Loai == "CQ")
+                {
+                    var query = from itemDC in _db.DIEUCHINH_HDs
+                                join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                                where itemHD.MaNV_HanhThu == MaNV
+                                        && itemDC.SoPhieu != null && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayGiaiTrach.Date) && itemHD.GB > 20
+                                select new
+                                {
+                                    Loai = "CQ",
+                                    MaNV = itemHD.MaNV_HanhThu,
+                                    _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemHD.MaNV_HanhThu).HoTen,
+                                    itemHD.NGAYGIAITRACH,
+                                    itemDC.GIABAN_BD,
+                                    itemDC.TONGCONG_BD,
+                                    itemDC.GIABAN_END,
+                                    itemDC.TONGCONG_END,
+                                };
+                    return LINQToDataTable(query);
+                }
+            return null;
+        }
+
         //public DataTable GetDSChuaDCHD(int MaNV)
         //{
         //    var query = from itemDC in _db.DIEUCHINH_HDs

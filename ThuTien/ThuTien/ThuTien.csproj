@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>372</ApplicationRevision>
+    <ApplicationRevision>374</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -350,10 +350,10 @@
       <DependentUpon>rptTongHopDangNganChiTiet.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\ToTruong\rptBaoCaoTo.cs">
+    <Compile Include="BaoCao\ToTruong\rptBaoCaoTongHopTo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptBaoCaoTo.rpt</DependentUpon>
+      <DependentUpon>rptBaoCaoTongHopTo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\ToTruong\rptDSChiaHoaDon.cs">
@@ -488,6 +488,12 @@
     </Compile>
     <Compile Include="GUI\ChuyenKhoan\frmTamThuChuyenKhoan.Designer.cs">
       <DependentUpon>frmTamThuChuyenKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmTienDu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\frmTienDu.Designer.cs">
+      <DependentUpon>frmTienDu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Doi\frmBangTongHop.cs">
       <SubType>Form</SubType>
@@ -1006,9 +1012,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopDangNganChiTiet.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ToTruong\rptBaoCaoTo.rpt">
+    <EmbeddedResource Include="BaoCao\ToTruong\rptBaoCaoTongHopTo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptBaoCaoTo.cs</LastGenOutput>
+      <LastGenOutput>rptBaoCaoTongHopTo.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToTruong\rptDSChiaHoaDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1091,6 +1097,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\frmTamThuChuyenKhoan.resx">
       <DependentUpon>frmTamThuChuyenKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\frmTienDu.resx">
+      <DependentUpon>frmTienDu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Doi\frmBangTongHop.resx">
       <DependentUpon>frmBangTongHop.cs</DependentUpon>

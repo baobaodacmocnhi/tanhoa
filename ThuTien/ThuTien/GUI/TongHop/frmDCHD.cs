@@ -86,7 +86,7 @@ namespace ThuTien.GUI.TongHop
                             {
                                 try
                                 {
-                                    HOADON hoadon = _cHoaDon.GetBySoHoaDon(item.Cells["SoHoaDon_DC"].Value.ToString());
+                                    HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DC"].Value.ToString());
                                     hoadon.GIABAN = dchd.GIABAN_BD;
                                     hoadon.THUE = dchd.THUE_BD;
                                     hoadon.PHI = dchd.PHI_BD;

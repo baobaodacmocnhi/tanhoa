@@ -69,7 +69,7 @@ namespace ThuTien.GUI.TongHop
                         _cHoaDon.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
-                            HOADON hoadon = _cHoaDon.GetByMaHD(int.Parse(item.Cells["MaHD"].Value.ToString()));
+                            HOADON hoadon = _cHoaDon.Get(int.Parse(item.Cells["MaHD"].Value.ToString()));
                             hoadon.Thu2Lan = false;
                         }
                         _cHoaDon.SubmitChanges();

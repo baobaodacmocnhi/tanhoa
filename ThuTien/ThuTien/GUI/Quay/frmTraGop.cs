@@ -49,10 +49,10 @@ namespace ThuTien.GUI.Quay
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
-                if (_cHoaDon.CheckBySoHoaDon(txtSoHoaDon.Text.Trim()))
+                if (_cHoaDon.CheckExist(txtSoHoaDon.Text.Trim()))
                 {
                     dgvHoaDon.Rows.Clear();
-                    HOADON hoadon = _cHoaDon.GetBySoHoaDon(txtSoHoaDon.Text.Trim());
+                    HOADON hoadon = _cHoaDon.Get(txtSoHoaDon.Text.Trim());
                     dgvHoaDon.Rows.Add(hoadon.ID_HOADON,hoadon.SOHOADON,hoadon.KY+"/"+hoadon.NAM,hoadon.MALOTRINH,hoadon.SOPHATHANH,hoadon.DANHBA,hoadon.SO+" "+hoadon.DUONG,hoadon.TENKH,hoadon.TONGCONG);
                     txtSoHoaDon.Text = "";
                 }

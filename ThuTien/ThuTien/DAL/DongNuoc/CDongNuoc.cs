@@ -364,7 +364,7 @@ namespace ThuTien.DAL.DongNuoc
                         join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                             && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            && itemDN.Huy == false && itemDN.NgayGiao.Value.Year == Nam && itemDN.NgayGiao.Value.Month == Ky
+                            && itemDN.Huy == false && itemDN.CreateDate.Value.Year == Nam && itemDN.CreateDate.Value.Month == Ky
                         select new
                         {
                             MaNV=itemND.MaND,
@@ -378,6 +378,22 @@ namespace ThuTien.DAL.DongNuoc
                         };
 
             return LINQToDataTable(query);
+        }
+
+        public int CountBaoCaoTongHop_Huy(int MaNV_DongNuoc, int Nam, int Ky)
+        {
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
+                        join itemLH in _db.TT_LenhHuys on itemCTDN.SoHoaDon equals itemLH.SoHoaDon
+                        join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
+                        where itemDN.Huy == false && itemDN.MaNV_DongNuoc == MaNV_DongNuoc && itemDN.CreateDate.Value.Year == Nam && itemDN.CreateDate.Value.Month == Ky
+                        select new
+                        {
+                            itemDN.DanhBo,
+                        };
+
+            return query.Distinct().Count();
         }
 
         public bool CheckKQDongNuocByMaDN(decimal MaDN)

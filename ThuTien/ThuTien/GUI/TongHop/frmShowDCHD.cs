@@ -85,7 +85,7 @@ namespace ThuTien.GUI.TongHop
             ///chưa có điều chỉnh
             else
             {
-                _hoadon = _cHoaDon.GetBySoHoaDon(_SoHoaDon);
+                _hoadon = _cHoaDon.Get(_SoHoaDon);
 
                 txtSoHoaDon.Text = _hoadon.SOHOADON;
                 txtSoPhatHanh.Text = _hoadon.SOPHATHANH.ToString();
