@@ -50,9 +50,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
                 txtMaCT.Text = _ctchungtu.MaCT;
                 txtDiaChi.Text = _ctchungtu.ChungTu.DiaChi;
                 txtGhiChu.Text = _ctchungtu.GhiChu;
-                txtSoNKTong.Text = _ctchungtu.ChungTu.SoNKTong.ToString();
                 txtSoNKDangKy.Text = _ctchungtu.SoNKDangKy.ToString();
-                txtThoiHan.Text = _ctchungtu.ThoiHan.Value.ToString();
                 txtLo.Text = _ctchungtu.Lo;
                 txtPhong.Text = _ctchungtu.Phong;
 
@@ -183,17 +181,12 @@ namespace KTKS_ChungCu.GUI.ChungTu
             LinQ.ChungTu chungtu = new LinQ.ChungTu();
             chungtu.MaCT = txtMaCT.Text.Trim();
             chungtu.DiaChi = txtDiaChi.Text.Trim();
-            chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
             chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
             CTChungTu ctchungtu = new CTChungTu();
             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
             ctchungtu.MaCT = txtMaCT.Text.Trim();
             ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-            if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
-                ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-            else
-                ctchungtu.ThoiHan = null;
 
             ctchungtu.GhiChu = txtGhiChu.Text.Trim();
             ctchungtu.Lo = txtLo.Text.Trim();
@@ -368,6 +361,66 @@ namespace KTKS_ChungCu.GUI.ChungTu
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+        }
+
+        private void chkYCCat1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkYCCat1.Checked)
+            {
+                groupBox1.Enabled = true;
+            }
+            else
+            {
+                groupBox1.Enabled = false;
+            }
+        }
+
+        private void chkYCCat2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkYCCat2.Checked)
+            {
+                groupBox2.Enabled = true;
+            }
+            else
+            {
+                groupBox2.Enabled = false;
+            }
+        }
+
+        private void chkYCCat3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkYCCat3.Checked)
+            {
+                groupBox3.Enabled = true;
+            }
+            else
+            {
+                groupBox3.Enabled = false;
+            }
+        }
+
+        private void chkYCCat4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkYCCat4.Checked)
+            {
+                groupBox4.Enabled = true;
+            }
+            else
+            {
+                groupBox4.Enabled = false;
+            }
+        }
+
+        private void chkYCCat5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkYCCat5.Checked)
+            {
+                groupBox5.Enabled = true;
+            }
+            else
+            {
+                groupBox5.Enabled = false;
             }
         }
     }

@@ -36,7 +36,7 @@ namespace KTKS_ChungCu.DAL
             {
                 var query = from itemCTCT in db.CTChungTus
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
-                            join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                            //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                             where itemCTCT.DanhBo == DanhBo
                             select new
                             {
@@ -44,7 +44,7 @@ namespace KTKS_ChungCu.DAL
                                 itemCTCT.Lo,
                                 itemCTCT.Phong,
                                 itemCT.MaLCT,
-                                itemLCT.TenLCT,
+                                //itemLCT.TenLCT,
                                 itemCTCT.MaCT,
                                 itemCT.HoTen,
                                 itemCT.SoNKTong,
@@ -297,8 +297,10 @@ namespace KTKS_ChungCu.DAL
                         return false;
                     }
                 ///Kiểm tra Địa Chỉ có thay đổi hay không
-                if (chungtuCN.DiaChi != chungtu.DiaChi || chungtuCN.MaLCT != chungtu.MaLCT)
+                if (chungtuCN.HoTen != chungtu.HoTen || chungtuCN.DiaChi != chungtu.DiaChi || chungtuCN.MaLCT != chungtu.MaLCT)
                 {
+                    if (chungtuCN.HoTen != chungtu.HoTen)
+                        chungtuCN.HoTen = chungtu.HoTen;
                     if (chungtuCN.DiaChi != chungtu.DiaChi)
                         chungtuCN.DiaChi = chungtu.DiaChi;
                     if (chungtuCN.MaLCT != chungtu.MaLCT)

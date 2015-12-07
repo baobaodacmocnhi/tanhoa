@@ -63,9 +63,7 @@ namespace KTKS_ChungCu
             cmbLoaiCT.SelectedIndex = 0;
             txtMaCT.Text = "";
             txtHoTenCT.Text = "";
-            txtSoNKTong.Text = "";
             txtSoNKDangKy.Text = "";
-            txtThoiHan.Text = "";
             txtGhiChu.Text = "";
             _ttkhachhang = null;
             _selectedindex = -1;
@@ -108,7 +106,7 @@ namespace KTKS_ChungCu
                     return;
                 }
                 if (txtMaCT.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
-                    if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
+                    //if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
                         ChungTu chungtu = new ChungTu();
                         chungtu.MaCT = txtMaCT.Text.Trim();
@@ -120,10 +118,10 @@ namespace KTKS_ChungCu
                         ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                         ctchungtu.MaCT = txtMaCT.Text.Trim();
                         ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-                        if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
-                            ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                        else
-                            ctchungtu.ThoiHan = null;
+                        //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
+                        //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                        //else
+                        //    ctchungtu.ThoiHan = null;
                         ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                         ctchungtu.Lo = txtLo.Text.Trim();
                         ctchungtu.Phong = txtPhong.Text.Trim();
@@ -142,9 +140,7 @@ namespace KTKS_ChungCu
                             //cmbLoaiCT.SelectedIndex = 0;
                             txtMaCT.Text = "";
                             txtHoTenCT.Text = "";
-                            txtSoNKTong.Text = "";
                             txtSoNKDangKy.Text = "";
-                            txtThoiHan.Text = "";
                             txtGhiChu.Text = "";
                             _selectedindex = -1;
                         }
@@ -165,55 +161,52 @@ namespace KTKS_ChungCu
             {
                 try
                 {
-                    if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
-                    {
-                        MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    //if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
+                    //{
+                    //    MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    return;
+                    //}
                     if (txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
-                        if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
+                    {
+                        ChungTu chungtu = new ChungTu();
+                        chungtu.MaCT = txtMaCT.Text.Trim();
+                        chungtu.HoTen = txtHoTenCT.Text.Trim();
+                        chungtu.SoNKTong = int.Parse(txtSoNKDangKy.Text.Trim());
+                        chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+
+                        CTChungTu ctchungtu = new CTChungTu();
+                        ctchungtu.DanhBo = txtDanhBo.Text.Trim();
+                        ctchungtu.MaCT = txtMaCT.Text.Trim();
+                        ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
+                        //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
+                        //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                        //else
+                        //    ctchungtu.ThoiHan = null;
+                        ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                        ctchungtu.Lo = txtLo.Text.Trim();
+                        ctchungtu.Phong = txtPhong.Text.Trim();
+                        ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+
+                        LichSuChungTu lichsuchungtu = new LichSuChungTu();
+                        lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
+
+                        if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
                         {
-                            ChungTu chungtu = new ChungTu();
-                            chungtu.MaCT = txtMaCT.Text.Trim();
-                            chungtu.HoTen = txtHoTenCT.Text.Trim();
-                            chungtu.SoNKTong = int.Parse(txtSoNKDangKy.Text.Trim());
-                            chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+                            MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
 
-                            CTChungTu ctchungtu = new CTChungTu();
-                            ctchungtu.DanhBo = txtDanhBo.Text.Trim();
-                            ctchungtu.MaCT = txtMaCT.Text.Trim();
-                            ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
-                            if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
-                                ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                            else
-                                ctchungtu.ThoiHan = null;
-                            ctchungtu.GhiChu = txtGhiChu.Text.Trim();
-                            ctchungtu.Lo = txtLo.Text.Trim();
-                            ctchungtu.Phong = txtPhong.Text.Trim();
-                            ctchungtu.GhiChu = txtGhiChu.Text.Trim();
-
-                            LichSuChungTu lichsuchungtu = new LichSuChungTu();
-                            lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
-
-                            if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
-                            {
-                                MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
-
-                                //txtLo.Text = "";
-                                //txtPhong.Text = "";
-                                //cmbLoaiCT.SelectedIndex = 0;
-                                txtMaCT.Text = "";
-                                txtHoTenCT.Text = "";
-                                txtSoNKTong.Text = "";
-                                txtSoNKDangKy.Text = "";
-                                txtThoiHan.Text = "";
-                                txtGhiChu.Text = "";
-                                _selectedindex = -1;
-                            }
+                            //txtLo.Text = "";
+                            //txtPhong.Text = "";
+                            //cmbLoaiCT.SelectedIndex = 0;
+                            txtMaCT.Text = "";
+                            txtHoTenCT.Text = "";
+                            txtSoNKDangKy.Text = "";
+                            txtGhiChu.Text = "";
+                            _selectedindex = -1;
                         }
-                        else
-                            MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                        MessageBox.Show("Số Nhân Khẩu đăng ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -230,9 +223,7 @@ namespace KTKS_ChungCu
             cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["MaLCT", e.RowIndex].Value.ToString());
             txtMaCT.Text = dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString();
             txtHoTenCT.Text = dgvKhachHangChungCu["HoTen", e.RowIndex].Value.ToString();
-            txtSoNKTong.Text = dgvKhachHangChungCu["SoNKTong", e.RowIndex].Value.ToString();
             txtSoNKDangKy.Text = dgvKhachHangChungCu["SoNKDangKy", e.RowIndex].Value.ToString();
-            txtThoiHan.Text = dgvKhachHangChungCu["ThoiHan", e.RowIndex].Value.ToString();
             txtGhiChu.Text = dgvKhachHangChungCu["GhiChu", e.RowIndex].Value.ToString();
         }
 
@@ -281,9 +272,9 @@ namespace KTKS_ChungCu
                     dr["GiaBieu"] = _ttkhachhang.GB;
                     dr["DinhMuc"] = _ttkhachhang.TGDM;
                     dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
-                    dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
+                    //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
-                    dr["SoNKTong"] = dgvKhachHangChungCu["SoNKTong", i].Value.ToString();
+                    //dr["SoNKTong"] = dgvKhachHangChungCu["SoNKTong", i].Value.ToString();
                     dr["SoNKDangKy"] = dgvKhachHangChungCu["SoNKDangKy", i].Value.ToString();
                     dr["GhiChu"] = dgvKhachHangChungCu["GhiChu", i].Value.ToString();
                     dr["Lo"] = dgvKhachHangChungCu["Lo", i].Value.ToString();
@@ -311,7 +302,6 @@ namespace KTKS_ChungCu
 
         private void cmbLoaiCT_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtThoiHan.Text = ((LoaiChungTu)cmbLoaiCT.SelectedItem).ThoiHan.ToString();
         }
 
         private void dgvKhachHangChungCu_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
             this.chkYCCat4 = new System.Windows.Forms.CheckBox();
             this.txtSoNKCat_YCC4 = new System.Windows.Forms.TextBox();
@@ -91,16 +91,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.txtThoiHan = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbLoaiCT = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.txtSoNKDangKy = new System.Windows.Forms.TextBox();
-            this.txtSoNKTong = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtMaCT = new System.Windows.Forms.TextBox();
             this.chkYCCat3 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -150,6 +146,7 @@
             this.chkYCCat4.TabIndex = 21;
             this.chkYCCat4.Text = "Yêu Cầu Cắt 4";
             this.chkYCCat4.UseVisualStyleBackColor = true;
+            this.chkYCCat4.CheckedChanged += new System.EventHandler(this.chkYCCat4_CheckedChanged);
             // 
             // txtSoNKCat_YCC4
             // 
@@ -277,6 +274,7 @@
             this.chkYCCat2.TabIndex = 21;
             this.chkYCCat2.Text = "Yêu Cầu Cắt 2";
             this.chkYCCat2.UseVisualStyleBackColor = true;
+            this.chkYCCat2.CheckedChanged += new System.EventHandler(this.chkYCCat2_CheckedChanged);
             // 
             // label20
             // 
@@ -441,14 +439,14 @@
             // 
             this.dgvDSDanhBo.AllowUserToAddRows = false;
             this.dgvDSDanhBo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvDSDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
@@ -479,6 +477,7 @@
             this.chkYCCat5.TabIndex = 21;
             this.chkYCCat5.Text = "Yêu Cầu Cắt 5";
             this.chkYCCat5.UseVisualStyleBackColor = true;
+            this.chkYCCat5.CheckedChanged += new System.EventHandler(this.chkYCCat5_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -708,7 +707,6 @@
             // 
             // btnSua
             // 
-            this.btnSua.Enabled = false;
             this.btnSua.Image = global::KTKS_ChungCu.Properties.Resources.pencil_24x24;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.Location = new System.Drawing.Point(343, 187);
@@ -719,23 +717,6 @@
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // txtThoiHan
-            // 
-            this.txtThoiHan.Location = new System.Drawing.Point(124, 197);
-            this.txtThoiHan.Name = "txtThoiHan";
-            this.txtThoiHan.ReadOnly = true;
-            this.txtThoiHan.Size = new System.Drawing.Size(100, 25);
-            this.txtThoiHan.TabIndex = 40;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 200);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 17);
-            this.label6.TabIndex = 39;
-            this.label6.Text = "Thời Hạn(tháng):";
             // 
             // label5
             // 
@@ -789,23 +770,6 @@
             this.txtSoNKDangKy.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKDangKy.TabIndex = 38;
             // 
-            // txtSoNKTong
-            // 
-            this.txtSoNKTong.Location = new System.Drawing.Point(124, 135);
-            this.txtSoNKTong.Name = "txtSoNKTong";
-            this.txtSoNKTong.ReadOnly = true;
-            this.txtSoNKTong.Size = new System.Drawing.Size(100, 25);
-            this.txtSoNKTong.TabIndex = 36;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 138);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 17);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Tổng NK:";
-            // 
             // txtMaCT
             // 
             this.txtMaCT.Location = new System.Drawing.Point(124, 73);
@@ -823,6 +787,7 @@
             this.chkYCCat3.TabIndex = 21;
             this.chkYCCat3.Text = "Yêu Cầu Cắt 3";
             this.chkYCCat3.UseVisualStyleBackColor = true;
+            this.chkYCCat3.CheckedChanged += new System.EventHandler(this.chkYCCat3_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -971,6 +936,7 @@
             this.chkYCCat1.TabIndex = 45;
             this.chkYCCat1.Text = "Yêu Cầu Cắt 1";
             this.chkYCCat1.UseVisualStyleBackColor = true;
+            this.chkYCCat1.CheckedChanged += new System.EventHandler(this.chkYCCat1_CheckedChanged);
             // 
             // label35
             // 
@@ -1000,16 +966,12 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.txtThoiHan);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbLoaiCT);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDanhBo);
             this.Controls.Add(this.txtSoNKDangKy);
-            this.Controls.Add(this.txtSoNKTong);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMaCT);
             this.Controls.Add(this.panel_YCCat2);
             this.Controls.Add(this.panel_YCCat3);
@@ -1110,16 +1072,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.TextBox txtThoiHan;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbLoaiCT;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.TextBox txtSoNKDangKy;
-        private System.Windows.Forms.TextBox txtSoNKTong;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtMaCT;
         private System.Windows.Forms.CheckBox chkYCCat3;
         private System.Windows.Forms.GroupBox groupBox3;
