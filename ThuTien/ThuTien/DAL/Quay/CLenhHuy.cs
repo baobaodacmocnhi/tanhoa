@@ -194,6 +194,122 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSTon()
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.NGAYGIAITRACH==null
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSTon(int MaTo)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                           && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                           && itemHD.NGAYGIAITRACH == null
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNgan()
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.NGAYGIAITRACH != null
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSDangNgan(int MaTo)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.SoHoaDon equals itemHD.SOHOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                           && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                           && itemHD.NGAYGIAITRACH != null
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            itemHD.NGAYGIAITRACH,
+                            itemLH.SoHoaDon,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOPHATHANH,
+                            itemHD.TONGCONG,
+                            itemLH.TinhTrang,
+                            HanhThu = itemtableND.HoTen,
+                            To = itemtableND.TT_To.TenTo,
+                            GiaBieu = itemHD.GB,
+                            itemLH.Cat,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetTinhTrangMoiNhat(string DanhBo)
         {
             var query = from itemLH in _db.TT_LenhHuys

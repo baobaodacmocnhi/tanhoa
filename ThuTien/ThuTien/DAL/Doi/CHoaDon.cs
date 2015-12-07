@@ -347,7 +347,7 @@ namespace ThuTien.DAL.Doi
         /// <returns></returns>
         public bool CheckExist(string DanhBo,int Nam, int Ky, int Dot)
         {
-            return _db.HOADONs.Any(item => item.NAM == Nam && item.KY == Ky && item.DOT == Dot);
+            return _db.HOADONs.Any(item => item.DANHBA == DanhBo && item.NAM == Nam && item.KY == Ky && item.DOT == Dot);
         }
 
         public bool CheckExist(string SoHoaDon)

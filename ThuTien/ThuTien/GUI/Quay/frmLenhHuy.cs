@@ -170,25 +170,42 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            ///chọn tất cả tổ
-            if (cmbTo.SelectedIndex == 0)
+            if (radTon.Checked)
             {
-                dgvHoaDon.DataSource = _cLenhHuy.GetDS();
+                ///chọn tất cả tổ
+                if (cmbTo.SelectedIndex == 0)
+                {
+                    dgvHoaDon.DataSource = _cLenhHuy.GetDSTon();
+                }
+                ///chọn 1 tổ cụ thể
+                else
+                {
+                    dgvHoaDon.DataSource = _cLenhHuy.GetDSTon(int.Parse(cmbTo.SelectedValue.ToString()));
+                }   
             }
-            ///chọn 1 tổ cụ thể
             else
-            {
-                dgvHoaDon.DataSource = _cLenhHuy.GetDS(int.Parse(cmbTo.SelectedValue.ToString()));
-            }
+                if (radDangNgan.Checked)
+                {
+                    ///chọn tất cả tổ
+                    if (cmbTo.SelectedIndex == 0)
+                    {
+                        dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan();
+                    }
+                    ///chọn 1 tổ cụ thể
+                    else
+                    {
+                        dgvHoaDon.DataSource = _cLenhHuy.GetDSDangNgan(int.Parse(cmbTo.SelectedValue.ToString()));
+                    }   
+                }
 
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
-            if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
-            {
-                TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+                if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+                {
+                    TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
 
-                //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
-                item.Cells["DangNgan"].Value = "CNKĐ";
-            }
+                    //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                    item.Cells["DangNgan"].Value = "CNKĐ";
+                }
         }
 
         private void dgvHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -308,6 +325,18 @@ namespace ThuTien.GUI.Quay
                 str += item.Text + "\n";
             }
             Clipboard.SetText(str);
+        }
+
+        private void dgvHoaDon_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+                {
+                    TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+
+                    //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                    item.Cells["DangNgan"].Value = "CNKĐ";
+                }
         }
     }
 }
