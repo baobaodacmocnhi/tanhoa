@@ -314,6 +314,8 @@ namespace KTKS_ChungCu.BaoCao {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DSChungTuDataTable : global::System.Data.TypedTableBase<DSChungTuRow> {
             
+            private global::System.Data.DataColumn columnSTT;
+            
             private global::System.Data.DataColumn columnDanhBo;
             
             private global::System.Data.DataColumn columnHopDong;
@@ -331,6 +333,8 @@ namespace KTKS_ChungCu.BaoCao {
             private global::System.Data.DataColumn columnTenLCT;
             
             private global::System.Data.DataColumn columnMaCT;
+            
+            private global::System.Data.DataColumn columnHoTenCT;
             
             private global::System.Data.DataColumn columnSoNKTong;
             
@@ -373,6 +377,14 @@ namespace KTKS_ChungCu.BaoCao {
             protected DSChungTuDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn STTColumn {
+                get {
+                    return this.columnSTT;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -444,6 +456,14 @@ namespace KTKS_ChungCu.BaoCao {
             public global::System.Data.DataColumn MaCTColumn {
                 get {
                     return this.columnMaCT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HoTenCTColumn {
+                get {
+                    return this.columnHoTenCT;
                 }
             }
             
@@ -524,9 +544,26 @@ namespace KTKS_ChungCu.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DSChungTuRow AddDSChungTuRow(string DanhBo, string HopDong, string HoTen, string DiaChi, string GiaBieu, string DinhMuc, string LoTrinh, string TenLCT, string MaCT, int SoNKTong, int SoNKDangKy, string GhiChu, string Lo, string Phong) {
+            public DSChungTuRow AddDSChungTuRow(
+                        int STT, 
+                        string DanhBo, 
+                        string HopDong, 
+                        string HoTen, 
+                        string DiaChi, 
+                        string GiaBieu, 
+                        string DinhMuc, 
+                        string LoTrinh, 
+                        string TenLCT, 
+                        string MaCT, 
+                        string HoTenCT, 
+                        int SoNKTong, 
+                        int SoNKDangKy, 
+                        string GhiChu, 
+                        string Lo, 
+                        string Phong) {
                 DSChungTuRow rowDSChungTuRow = ((DSChungTuRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        STT,
                         DanhBo,
                         HopDong,
                         HoTen,
@@ -536,6 +573,7 @@ namespace KTKS_ChungCu.BaoCao {
                         LoTrinh,
                         TenLCT,
                         MaCT,
+                        HoTenCT,
                         SoNKTong,
                         SoNKDangKy,
                         GhiChu,
@@ -563,6 +601,7 @@ namespace KTKS_ChungCu.BaoCao {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnSTT = base.Columns["STT"];
                 this.columnDanhBo = base.Columns["DanhBo"];
                 this.columnHopDong = base.Columns["HopDong"];
                 this.columnHoTen = base.Columns["HoTen"];
@@ -572,6 +611,7 @@ namespace KTKS_ChungCu.BaoCao {
                 this.columnLoTrinh = base.Columns["LoTrinh"];
                 this.columnTenLCT = base.Columns["TenLCT"];
                 this.columnMaCT = base.Columns["MaCT"];
+                this.columnHoTenCT = base.Columns["HoTenCT"];
                 this.columnSoNKTong = base.Columns["SoNKTong"];
                 this.columnSoNKDangKy = base.Columns["SoNKDangKy"];
                 this.columnGhiChu = base.Columns["GhiChu"];
@@ -582,6 +622,8 @@ namespace KTKS_ChungCu.BaoCao {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnSTT = new global::System.Data.DataColumn("STT", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTT);
                 this.columnDanhBo = new global::System.Data.DataColumn("DanhBo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDanhBo);
                 this.columnHopDong = new global::System.Data.DataColumn("HopDong", typeof(string), null, global::System.Data.MappingType.Element);
@@ -600,6 +642,8 @@ namespace KTKS_ChungCu.BaoCao {
                 base.Columns.Add(this.columnTenLCT);
                 this.columnMaCT = new global::System.Data.DataColumn("MaCT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaCT);
+                this.columnHoTenCT = new global::System.Data.DataColumn("HoTenCT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHoTenCT);
                 this.columnSoNKTong = new global::System.Data.DataColumn("SoNKTong", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSoNKTong);
                 this.columnSoNKDangKy = new global::System.Data.DataColumn("SoNKDangKy", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1195,6 +1239,22 @@ namespace KTKS_ChungCu.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int STT {
+                get {
+                    try {
+                        return ((int)(this[this.tableDSChungTu.STTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'STT\' in table \'DSChungTu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSChungTu.STTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string DanhBo {
                 get {
                     try {
@@ -1339,6 +1399,22 @@ namespace KTKS_ChungCu.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HoTenCT {
+                get {
+                    try {
+                        return ((string)(this[this.tableDSChungTu.HoTenCTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HoTenCT\' in table \'DSChungTu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDSChungTu.HoTenCTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int SoNKTong {
                 get {
                     try {
@@ -1415,6 +1491,18 @@ namespace KTKS_ChungCu.BaoCao {
                 set {
                     this[this.tableDSChungTu.PhongColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSTTNull() {
+                return this.IsNull(this.tableDSChungTu.STTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSTTNull() {
+                this[this.tableDSChungTu.STTColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1523,6 +1611,18 @@ namespace KTKS_ChungCu.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMaCTNull() {
                 this[this.tableDSChungTu.MaCTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHoTenCTNull() {
+                return this.IsNull(this.tableDSChungTu.HoTenCTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHoTenCTNull() {
+                this[this.tableDSChungTu.HoTenCTColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

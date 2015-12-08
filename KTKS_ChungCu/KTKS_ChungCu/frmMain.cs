@@ -86,6 +86,7 @@ namespace KTKS_ChungCu
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
                     DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                    txtLo.Focus();
                 }
                 else
                 {
@@ -115,6 +116,7 @@ namespace KTKS_ChungCu
                         chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                         CTChungTu ctchungtu = new CTChungTu();
+                        ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
                         ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                         ctchungtu.MaCT = txtMaCT.Text.Trim();
                         ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
@@ -135,14 +137,16 @@ namespace KTKS_ChungCu
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
 
+                            //txtSTT.Text = "";
                             //txtLo.Text = "";
                             //txtPhong.Text = "";
-                            //cmbLoaiCT.SelectedIndex = 0;
+                            cmbLoaiCT.SelectedIndex = 0;
                             txtMaCT.Text = "";
                             txtHoTenCT.Text = "";
                             txtSoNKDangKy.Text = "";
                             txtGhiChu.Text = "";
                             _selectedindex = -1;
+                            txtSTT.Focus();
                         }
 
                     }
@@ -175,6 +179,7 @@ namespace KTKS_ChungCu
                         chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                         CTChungTu ctchungtu = new CTChungTu();
+                        ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
                         ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                         ctchungtu.MaCT = txtMaCT.Text.Trim();
                         ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
@@ -195,9 +200,10 @@ namespace KTKS_ChungCu
                             MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
 
-                            //txtLo.Text = "";
-                            //txtPhong.Text = "";
-                            //cmbLoaiCT.SelectedIndex = 0;
+                            txtSTT.Text = "";
+                            txtLo.Text = "";
+                            txtPhong.Text = "";
+                            cmbLoaiCT.SelectedIndex = 0;
                             txtMaCT.Text = "";
                             txtHoTenCT.Text = "";
                             txtSoNKDangKy.Text = "";
@@ -218,6 +224,7 @@ namespace KTKS_ChungCu
         private void dgvKhachHangChungCu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             _selectedindex = e.RowIndex;
+            txtSTT.Text = dgvKhachHangChungCu["STT", e.RowIndex].Value.ToString();
             txtLo.Text = dgvKhachHangChungCu["Lo", e.RowIndex].Value.ToString();
             txtPhong.Text = dgvKhachHangChungCu["Phong", e.RowIndex].Value.ToString();
             cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["MaLCT", e.RowIndex].Value.ToString());
@@ -248,7 +255,9 @@ namespace KTKS_ChungCu
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
-        }
+            if (e.KeyChar == 13)
+                txtGhiChu.Focus();
+    }
 
         private void txtThoiHan_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -265,6 +274,7 @@ namespace KTKS_ChungCu
                 {
                     DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
 
+                    dr["STT"] = dgvKhachHangChungCu["STT", i].Value.ToString();
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7," ").Insert(4," ");
                     dr["HoTen"] = txtHoTen.Text.Trim();
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
@@ -273,6 +283,7 @@ namespace KTKS_ChungCu
                     dr["DinhMuc"] = _ttkhachhang.TGDM;
                     dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
                     //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
+                    dr["HoTenCT"] = dgvKhachHangChungCu["HoTen", i].Value.ToString();
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
                     //dr["SoNKTong"] = dgvKhachHangChungCu["SoNKTong", i].Value.ToString();
                     dr["SoNKDangKy"] = dgvKhachHangChungCu["SoNKDangKy", i].Value.ToString();
@@ -321,6 +332,50 @@ namespace KTKS_ChungCu
             frmDSCatChuyenDM frm = new frmDSCatChuyenDM();
             frm.ShowDialog();
         }
+
+        private void txtLo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSTT.Focus();
+        }
+
+        private void txtHoTenCT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtPhong.Focus();
+        }
+
+        private void txtPhong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                cmbLoaiCT.Focus();
+        }
+
+        private void cmbLoaiCT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtMaCT.Focus();
+        }
+
+        private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSoNKDangKy.Focus();
+        }
+
+        private void txtGhiChu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+               btnThem.Focus();
+        }
+
+        private void txtSTT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTenCT.Focus();
+        }
+
+
         
     }
 }

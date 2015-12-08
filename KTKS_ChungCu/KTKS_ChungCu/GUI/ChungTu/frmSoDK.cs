@@ -48,9 +48,11 @@ namespace KTKS_ChungCu.GUI.ChungTu
                 txtDanhBo.Text = _DanhBo;
                 cmbLoaiCT.SelectedValue = _ctchungtu.ChungTu.MaLCT;
                 txtMaCT.Text = _ctchungtu.MaCT;
+                txtHoTenCT.Text = _ctchungtu.ChungTu.HoTen;
                 txtDiaChi.Text = _ctchungtu.ChungTu.DiaChi;
                 txtGhiChu.Text = _ctchungtu.GhiChu;
                 txtSoNKDangKy.Text = _ctchungtu.SoNKDangKy.ToString();
+                txtSTT.Text = _ctchungtu.STT.ToString();
                 txtLo.Text = _ctchungtu.Lo;
                 txtPhong.Text = _ctchungtu.Phong;
 
@@ -181,9 +183,12 @@ namespace KTKS_ChungCu.GUI.ChungTu
             LinQ.ChungTu chungtu = new LinQ.ChungTu();
             chungtu.MaCT = txtMaCT.Text.Trim();
             chungtu.DiaChi = txtDiaChi.Text.Trim();
+            chungtu.HoTen = txtHoTenCT.Text.Trim();
             chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+            chungtu.SoNKTong = int.Parse(txtSoNKDangKy.Text.Trim());
 
             CTChungTu ctchungtu = new CTChungTu();
+            ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
             ctchungtu.MaCT = txtMaCT.Text.Trim();
             ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
@@ -193,6 +198,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
             ctchungtu.Phong = txtPhong.Text.Trim();
 
             LichSuChungTu lichsuchungtu = new LichSuChungTu();
+            lichsuchungtu.STT = ctchungtu.STT;
 
             if (chkYCCat1.Checked)
                 if (txtSoNKCat_YCC1.Text.Trim() == "")
@@ -423,5 +429,89 @@ namespace KTKS_ChungCu.GUI.ChungTu
                 groupBox5.Enabled = false;
             }
         }
+
+        private void cmbChiNhanh_YCC1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDanhBo_Cat_YCC1.Focus();
+        }
+
+        private void txtDanhBo_Cat_YCC1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_Cat_YCC1.Focus();
+        }
+
+        private void txtHoTen_Cat_YCC1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChiKH_Cat_YCC1.Focus();
+        }
+
+        private void txtDiaChiKH_Cat_YCC1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSoNKCat_YCC1.Focus();
+        }
+
+        private void cmbChiNhanh_YCC2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDanhBo_Cat_YCC2.Focus();
+        }
+
+        private void txtDanhBo_Cat_YCC2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_Cat_YCC2.Focus();
+        }
+
+        private void txtHoTen_Cat_YCC2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChiKH_Cat_YCC2.Focus();
+        }
+
+        private void txtDiaChiKH_Cat_YCC2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSoNKCat_YCC2.Focus();
+        }
+
+        private void txtSoNKCat_YCC2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if (e.KeyChar == 13)
+        }
+
+        private void cmbChiNhanh_YCC3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDanhBo_Cat_YCC3.Focus();
+        }
+
+        private void txtDanhBo_Cat_YCC3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen_Cat_YCC3.Focus();
+        }
+
+        private void txtHoTen_Cat_YCC3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChiKH_Cat_YCC3.Focus();
+        }
+
+        private void txtDiaChiKH_Cat_YCC3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtSoNKCat_YCC3.Focus();
+        }
+
+        private void txtSoNKCat_YCC3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if (e.KeyChar == 13)
+        }
+
+
     }
 }

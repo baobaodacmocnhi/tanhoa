@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSTT = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtPhong = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtLo = new System.Windows.Forms.TextBox();
@@ -44,9 +46,9 @@
             this.txtHoTenCT = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtMaCT = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbLoaiCT = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,6 +67,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnShowDSCatChuyenDM = new System.Windows.Forms.Button();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phong = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +88,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtSTT);
+            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtPhong);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtLo);
@@ -105,17 +110,35 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
+            // txtSTT
+            // 
+            this.txtSTT.Location = new System.Drawing.Point(212, 18);
+            this.txtSTT.Name = "txtSTT";
+            this.txtSTT.Size = new System.Drawing.Size(50, 25);
+            this.txtSTT.TabIndex = 15;
+            this.txtSTT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSTT_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(170, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 17);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "STT:";
+            // 
             // txtPhong
             // 
-            this.txtPhong.Location = new System.Drawing.Point(607, 18);
+            this.txtPhong.Location = new System.Drawing.Point(705, 18);
             this.txtPhong.Name = "txtPhong";
             this.txtPhong.Size = new System.Drawing.Size(100, 25);
             this.txtPhong.TabIndex = 5;
+            this.txtPhong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhong_KeyPress);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(553, 21);
+            this.label14.Location = new System.Drawing.Point(651, 21);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 17);
             this.label14.TabIndex = 4;
@@ -127,6 +150,7 @@
             this.txtLo.Name = "txtLo";
             this.txtLo.Size = new System.Drawing.Size(100, 25);
             this.txtLo.TabIndex = 1;
+            this.txtLo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLo_KeyPress);
             // 
             // label13
             // 
@@ -143,6 +167,7 @@
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(315, 25);
             this.txtGhiChu.TabIndex = 13;
+            this.txtGhiChu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGhiChu_KeyPress);
             // 
             // label12
             // 
@@ -172,15 +197,16 @@
             // 
             // txtHoTenCT
             // 
-            this.txtHoTenCT.Location = new System.Drawing.Point(262, 18);
+            this.txtHoTenCT.Location = new System.Drawing.Point(360, 18);
             this.txtHoTenCT.Name = "txtHoTenCT";
             this.txtHoTenCT.Size = new System.Drawing.Size(285, 25);
             this.txtHoTenCT.TabIndex = 3;
+            this.txtHoTenCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTenCT_KeyPress);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(170, 21);
+            this.label8.Location = new System.Drawing.Point(268, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 17);
             this.label8.TabIndex = 2;
@@ -192,6 +218,16 @@
             this.txtMaCT.Name = "txtMaCT";
             this.txtMaCT.Size = new System.Drawing.Size(100, 25);
             this.txtMaCT.TabIndex = 9;
+            this.txtMaCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 17);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Loại Chứng Từ:";
             // 
             // label7
             // 
@@ -210,15 +246,7 @@
             this.cmbLoaiCT.Size = new System.Drawing.Size(100, 25);
             this.cmbLoaiCT.TabIndex = 7;
             this.cmbLoaiCT.SelectedIndexChanged += new System.EventHandler(this.cmbLoaiCT_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 17);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Loại Chứng Từ:";
+            this.cmbLoaiCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbLoaiCT_KeyPress);
             // 
             // groupBox1
             // 
@@ -319,6 +347,7 @@
             this.dgvKhachHangChungCu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKhachHangChungCu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKhachHangChungCu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
             this.DanhBo,
             this.Lo,
             this.Phong,
@@ -428,6 +457,13 @@
             this.btnShowDSCatChuyenDM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnShowDSCatChuyenDM.UseVisualStyleBackColor = true;
             this.btnShowDSCatChuyenDM.Click += new System.EventHandler(this.btnShowDSCatChuyenDM_Click);
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.Width = 50;
             // 
             // DanhBo
             // 
@@ -602,6 +638,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.Button btnShowDSCatChuyenDM;
+        private System.Windows.Forms.TextBox txtSTT;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phong;

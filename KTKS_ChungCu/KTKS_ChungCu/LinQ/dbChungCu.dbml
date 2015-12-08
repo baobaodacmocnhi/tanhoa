@@ -25,49 +25,11 @@
       <Association Name="ChungTu_CTChungTu" Member="CTChungTus" ThisKey="MaCT" OtherKey="MaCT" Type="CTChungTu" />
     </Type>
   </Table>
-  <Table Name="dbo.LichSuChungTu" Member="LichSuChungTus">
-    <Type Name="LichSuChungTu">
-      <Column Name="MaLSCT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Lo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SoNKTong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoNKConLai" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThoiHan" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NgayHetHan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="SoPhieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="CatDM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="SoNKCat" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NhanNK_MaCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NhanNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NhanNK_HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="NhanNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="NhanDM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="YeuCauCat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="SoNKNhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CatNK_MaCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CatNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CatNK_HoTen" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="CatNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="ToXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.CTChungTu" Member="CTChungTus">
     <Type Name="CTChungTu">
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaCT" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SoChinh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -118,6 +80,46 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="ChungTu_CTChungTu" Member="ChungTu" ThisKey="MaCT" OtherKey="MaCT" Type="ChungTu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LichSuChungTu" Member="LichSuChungTus">
+    <Type Name="LichSuChungTu">
+      <Column Name="MaLSCT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Lo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoNKTong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoNKDangKy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoNKConLai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThoiHan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayHetHan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SoPhieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CatDM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SoNKCat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NhanNK_MaCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NhanNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NhanNK_HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NhanDM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="YeuCauCat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SoNKNhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CatNK_MaCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CatNK_DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CatNK_HoTen" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CatNK_DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ToXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaDonTXL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
             this.chkYCCat4 = new System.Windows.Forms.CheckBox();
             this.txtSoNKCat_YCC4 = new System.Windows.Forms.TextBox();
@@ -116,6 +116,9 @@
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.chkYCCat1 = new System.Windows.Forms.CheckBox();
             this.label35 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSTT = new System.Windows.Forms.TextBox();
+            this.txtHoTenCT = new System.Windows.Forms.TextBox();
             this.groupBox4.SuspendLayout();
             this.panel_YCCat4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).BeginInit();
@@ -256,6 +259,7 @@
             this.txtSoNKCat_YCC2.Name = "txtSoNKCat_YCC2";
             this.txtSoNKCat_YCC2.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKCat_YCC2.TabIndex = 9;
+            this.txtSoNKCat_YCC2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKCat_YCC2_KeyPress);
             // 
             // cmbChiNhanh_YCC2
             // 
@@ -264,6 +268,7 @@
             this.cmbChiNhanh_YCC2.Name = "cmbChiNhanh_YCC2";
             this.cmbChiNhanh_YCC2.Size = new System.Drawing.Size(290, 25);
             this.cmbChiNhanh_YCC2.TabIndex = 1;
+            this.cmbChiNhanh_YCC2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbChiNhanh_YCC2_KeyPress);
             // 
             // chkYCCat2
             // 
@@ -291,6 +296,7 @@
             this.txtDanhBo_Cat_YCC2.Name = "txtDanhBo_Cat_YCC2";
             this.txtDanhBo_Cat_YCC2.Size = new System.Drawing.Size(100, 25);
             this.txtDanhBo_Cat_YCC2.TabIndex = 3;
+            this.txtDanhBo_Cat_YCC2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_Cat_YCC2_KeyPress);
             // 
             // label21
             // 
@@ -325,6 +331,7 @@
             this.txtHoTen_Cat_YCC2.Name = "txtHoTen_Cat_YCC2";
             this.txtHoTen_Cat_YCC2.Size = new System.Drawing.Size(290, 25);
             this.txtHoTen_Cat_YCC2.TabIndex = 5;
+            this.txtHoTen_Cat_YCC2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_Cat_YCC2_KeyPress);
             // 
             // label23
             // 
@@ -341,6 +348,7 @@
             this.txtDiaChiKH_Cat_YCC2.Name = "txtDiaChiKH_Cat_YCC2";
             this.txtDiaChiKH_Cat_YCC2.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChiKH_Cat_YCC2.TabIndex = 7;
+            this.txtDiaChiKH_Cat_YCC2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChiKH_Cat_YCC2_KeyPress);
             // 
             // txtSoNKCat_YCC5
             // 
@@ -439,14 +447,14 @@
             // 
             this.dgvDSDanhBo.AllowUserToAddRows = false;
             this.dgvDSDanhBo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
@@ -596,6 +604,7 @@
             this.cmbChiNhanh_YCC1.Name = "cmbChiNhanh_YCC1";
             this.cmbChiNhanh_YCC1.Size = new System.Drawing.Size(290, 25);
             this.cmbChiNhanh_YCC1.TabIndex = 1;
+            this.cmbChiNhanh_YCC1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbChiNhanh_YCC1_KeyPress);
             // 
             // label13
             // 
@@ -612,6 +621,7 @@
             this.txtDanhBo_Cat_YCC1.Name = "txtDanhBo_Cat_YCC1";
             this.txtDanhBo_Cat_YCC1.Size = new System.Drawing.Size(100, 25);
             this.txtDanhBo_Cat_YCC1.TabIndex = 3;
+            this.txtDanhBo_Cat_YCC1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_Cat_YCC1_KeyPress);
             // 
             // label10
             // 
@@ -637,6 +647,7 @@
             this.txtHoTen_Cat_YCC1.Name = "txtHoTen_Cat_YCC1";
             this.txtHoTen_Cat_YCC1.Size = new System.Drawing.Size(290, 25);
             this.txtHoTen_Cat_YCC1.TabIndex = 5;
+            this.txtHoTen_Cat_YCC1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_Cat_YCC1_KeyPress);
             // 
             // label14
             // 
@@ -653,6 +664,7 @@
             this.txtDiaChiKH_Cat_YCC1.Name = "txtDiaChiKH_Cat_YCC1";
             this.txtDiaChiKH_Cat_YCC1.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChiKH_Cat_YCC1.TabIndex = 7;
+            this.txtDiaChiKH_Cat_YCC1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChiKH_Cat_YCC1_KeyPress);
             // 
             // groupBox2
             // 
@@ -824,6 +836,7 @@
             this.txtSoNKCat_YCC3.Name = "txtSoNKCat_YCC3";
             this.txtSoNKCat_YCC3.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKCat_YCC3.TabIndex = 9;
+            this.txtSoNKCat_YCC3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKCat_YCC3_KeyPress);
             // 
             // cmbChiNhanh_YCC3
             // 
@@ -832,6 +845,7 @@
             this.cmbChiNhanh_YCC3.Name = "cmbChiNhanh_YCC3";
             this.cmbChiNhanh_YCC3.Size = new System.Drawing.Size(290, 25);
             this.cmbChiNhanh_YCC3.TabIndex = 1;
+            this.cmbChiNhanh_YCC3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbChiNhanh_YCC3_KeyPress);
             // 
             // label15
             // 
@@ -848,6 +862,7 @@
             this.txtDanhBo_Cat_YCC3.Name = "txtDanhBo_Cat_YCC3";
             this.txtDanhBo_Cat_YCC3.Size = new System.Drawing.Size(100, 25);
             this.txtDanhBo_Cat_YCC3.TabIndex = 3;
+            this.txtDanhBo_Cat_YCC3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_Cat_YCC3_KeyPress);
             // 
             // label16
             // 
@@ -873,6 +888,7 @@
             this.txtHoTen_Cat_YCC3.Name = "txtHoTen_Cat_YCC3";
             this.txtHoTen_Cat_YCC3.Size = new System.Drawing.Size(290, 25);
             this.txtHoTen_Cat_YCC3.TabIndex = 5;
+            this.txtHoTen_Cat_YCC3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_Cat_YCC3_KeyPress);
             // 
             // label18
             // 
@@ -889,6 +905,7 @@
             this.txtDiaChiKH_Cat_YCC3.Name = "txtDiaChiKH_Cat_YCC3";
             this.txtDiaChiKH_Cat_YCC3.Size = new System.Drawing.Size(290, 25);
             this.txtDiaChiKH_Cat_YCC3.TabIndex = 7;
+            this.txtDiaChiKH_Cat_YCC3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChiKH_Cat_YCC3_KeyPress);
             // 
             // panel_YCCat2
             // 
@@ -947,12 +964,40 @@
             this.label35.TabIndex = 59;
             this.label35.Text = "Phòng:";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(145, 138);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 17);
+            this.label4.TabIndex = 61;
+            this.label4.Text = "STT:";
+            // 
+            // txtSTT
+            // 
+            this.txtSTT.Location = new System.Drawing.Point(187, 135);
+            this.txtSTT.Name = "txtSTT";
+            this.txtSTT.ReadOnly = true;
+            this.txtSTT.Size = new System.Drawing.Size(37, 25);
+            this.txtSTT.TabIndex = 62;
+            // 
+            // txtHoTenCT
+            // 
+            this.txtHoTenCT.Location = new System.Drawing.Point(12, 135);
+            this.txtHoTenCT.Name = "txtHoTenCT";
+            this.txtHoTenCT.ReadOnly = true;
+            this.txtHoTenCT.Size = new System.Drawing.Size(127, 25);
+            this.txtHoTenCT.TabIndex = 63;
+            // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(903, 440);
+            this.Controls.Add(this.txtHoTenCT);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtSTT);
             this.Controls.Add(this.panel_YCCat4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPhong);
@@ -1097,6 +1142,9 @@
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.CheckBox chkYCCat1;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtSTT;
+        private System.Windows.Forms.TextBox txtHoTenCT;
 
     }
 }

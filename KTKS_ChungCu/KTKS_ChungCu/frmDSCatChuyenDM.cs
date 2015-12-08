@@ -116,6 +116,8 @@ namespace KTKS_ChungCu
         private void frmDSCatChuyenDM_Load(object sender, EventArgs e)
         {
             this.Location = new Point(50,50);
+            dgvDSCatChuyenDM.AutoGenerateColumns = false;
+
             dateTimKiem.Location = txtNoiDungTimKiem.Location;
         }
 
