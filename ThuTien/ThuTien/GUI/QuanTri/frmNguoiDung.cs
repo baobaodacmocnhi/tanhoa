@@ -68,6 +68,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
                     if (cmbTo.SelectedIndex != -1)
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     if (cmbNhom.SelectedIndex != -1)
@@ -114,6 +115,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
                     nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                     nguoidung.Doi = chkDoi.Checked;
@@ -178,6 +180,7 @@ namespace ThuTien.GUI.QuanTri
                     txtDienThoai.Text = dgvNguoiDung["DienThoai", e.RowIndex].Value.ToString();
                 txtTaiKhoan.Text = dgvNguoiDung["TaiKhoan", e.RowIndex].Value.ToString();
                 txtMatKhau.Text = dgvNguoiDung["MatKhau", e.RowIndex].Value.ToString();
+                txtNam.Text = dgvNguoiDung["NamVaoLam", e.RowIndex].Value.ToString();
                 cmbTo.SelectedValue = int.Parse(dgvNguoiDung["MaTo", e.RowIndex].Value.ToString());
                 cmbNhom.SelectedValue = int.Parse(dgvNguoiDung["MaNhom", e.RowIndex].Value.ToString());
                 chkDoi.Checked = bool.Parse(dgvNguoiDung["Doi", e.RowIndex].Value.ToString());

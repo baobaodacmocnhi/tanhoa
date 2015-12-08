@@ -52,22 +52,27 @@ namespace ThuTien.GUI.ChuyenKhoan
             cmbTo.DataSource = lstTo;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
+
+            cmbFromGio.SelectedItem = "0";
+            cmbToGio.SelectedItem = "16";
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            DateTime FromDate = new DateTime(dateTu.Value.Year, dateTu.Value.Month, dateTu.Value.Day, int.Parse(cmbFromGio.SelectedItem.ToString()), 0, 0);
+            DateTime ToDate = new DateTime(dateDen.Value.Year, dateDen.Value.Month, dateDen.Value.Day, int.Parse(cmbToGio.SelectedItem.ToString()), 59, 59);
             ///chọn tất cả tổ
             if (cmbTo.SelectedIndex == 0)
-                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                dgvDichVuThu.DataSource = _cDichVuThu.GetDS(cmbDichVuThu.SelectedValue.ToString(), FromDate, ToDate);
             ///chọn 1 tổ
             else
                 ///chọn tất cả nhân viên
                 if (cmbNhanVien.SelectedIndex == 0)
-                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbTo.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                    dgvDichVuThu.DataSource = _cDichVuThu.GetDS(int.Parse(cmbTo.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), FromDate, ToDate);
                 else
                     ///chọn 1 nhân viên cụ thể
                     if (cmbNhanVien.SelectedIndex > 0)
-                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
+                        dgvDichVuThu.DataSource = _cDichVuThu.GetDS_NV(int.Parse(cmbNhanVien.SelectedValue.ToString()), cmbDichVuThu.SelectedValue.ToString(), FromDate, ToDate);
 
             long TongSoTien = 0;
             int TongPhi = 0;

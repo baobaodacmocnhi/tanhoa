@@ -2765,7 +2765,7 @@ namespace ThuTien.DAL.Doi
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDTonThu,SUM(TONGCONG) as GTTonThu"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld))"
+                        + " and NAM=@nam and KY=@ky and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachFuture))"
                         + " and GB>=11 and GB<=20 group by nd.MaND,nd.HoTen,nd.STT) tonthu on nd.MaND=tonthu.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
@@ -2803,7 +2803,7 @@ namespace ThuTien.DAL.Doi
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDTonThu,SUM(TONGCONG) as GTTonThu"
                         + " from HOADON hd left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND where MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and (NAM<@nam or (NAM=@nam and KY<=@ky-1)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachOld))"
+                        + " and NAM=@nam and KY=@ky and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachFuture))"
                         + " and GB>20 group by nd.MaND,nd.HoTen,nd.STT) tonthu on nd.MaND=tonthu.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(ID_HOADON) as HDTongTon,SUM(TONGCONG) as GTTongTon"
