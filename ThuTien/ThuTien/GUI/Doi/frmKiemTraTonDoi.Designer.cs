@@ -638,7 +638,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(445, 10);
+            this.btnXem.Location = new System.Drawing.Point(445, 11);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 36;
@@ -859,7 +859,7 @@
             // 
             // btnInDSTo
             // 
-            this.btnInDSTo.Location = new System.Drawing.Point(526, 10);
+            this.btnInDSTo.Location = new System.Drawing.Point(526, 11);
             this.btnInDSTo.Name = "btnInDSTo";
             this.btnInDSTo.Size = new System.Drawing.Size(81, 23);
             this.btnInDSTo.TabIndex = 42;
@@ -869,7 +869,7 @@
             // 
             // btnInDSNhanVien
             // 
-            this.btnInDSNhanVien.Location = new System.Drawing.Point(613, 10);
+            this.btnInDSNhanVien.Location = new System.Drawing.Point(613, 11);
             this.btnInDSNhanVien.Name = "btnInDSNhanVien";
             this.btnInDSNhanVien.Size = new System.Drawing.Size(95, 23);
             this.btnInDSNhanVien.TabIndex = 41;
@@ -879,7 +879,7 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(825, 10);
+            this.btnXuatExcel.Location = new System.Drawing.Point(825, 11);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(81, 23);
             this.btnXuatExcel.TabIndex = 43;
@@ -966,7 +966,7 @@
             // 
             // btnInDSNVThucTe
             // 
-            this.btnInDSNVThucTe.Location = new System.Drawing.Point(714, 10);
+            this.btnInDSNVThucTe.Location = new System.Drawing.Point(714, 11);
             this.btnInDSNVThucTe.Name = "btnInDSNVThucTe";
             this.btnInDSNVThucTe.Size = new System.Drawing.Size(105, 23);
             this.btnInDSNVThucTe.TabIndex = 57;

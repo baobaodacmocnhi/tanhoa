@@ -94,7 +94,7 @@ namespace ThuTien.GUI.TongHop
                 rptPhieuBaoDongMoNuoc rpt = new rptPhieuBaoDongMoNuoc();
                 rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 
@@ -164,7 +164,7 @@ namespace ThuTien.GUI.TongHop
                 rptPhieuBaoDongMoNuoc rpt = new rptPhieuBaoDongMoNuoc();
                 rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 
@@ -324,6 +324,14 @@ namespace ThuTien.GUI.TongHop
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
+        }
+
+        private void dgvKQDongMoNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvKQMoNuoc.Columns[e.ColumnIndex].Name == "SoPhieuMN" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
         }
 
         
