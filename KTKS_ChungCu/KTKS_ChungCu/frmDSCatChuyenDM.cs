@@ -16,6 +16,8 @@ namespace KTKS_ChungCu
     {
         CChungTu _cChungTu = new CChungTu();
         CChiNhanh _cChiNhanh = new CChiNhanh();
+        CTTKH _cTTKH = new CTTKH();
+
         public frmDSCatChuyenDM()
         {
             InitializeComponent();
@@ -290,6 +292,42 @@ namespace KTKS_ChungCu
                 {
                     dgvDSCatChuyenDM["InCatChuyen", i].Value = false;
                 }
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            for (int i = 0; i < dgvDSCatChuyenDM.Rows.Count; i++)
+            {
+                DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
+
+                TTKhachHang _ttkhachhang = _cTTKH.getTTKHbyID(dgvDSCatChuyenDM["CT_NhanNK_DanhBo", i].Value.ToString());
+
+                dr["STT"] = dgvDSCatChuyenDM["STT", i].Value.ToString();
+                dr["DanhBo"] = _ttkhachhang.DanhBo.Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = _ttkhachhang.HoTen;
+                dr["DiaChi"] = _ttkhachhang.DC1 + " " + _ttkhachhang.DC2;
+                dr["HopDong"] = _ttkhachhang.GiaoUoc;
+                dr["GiaBieu"] = _ttkhachhang.GB;
+                dr["DinhMuc"] = _ttkhachhang.TGDM;
+                dr["LoTrinh"] = _ttkhachhang.Dot + _ttkhachhang.CuonGCS + _ttkhachhang.CuonSTT;
+                dr["HoTenCT"] = dgvDSCatChuyenDM["CT_CatNK_HoTen", i].Value.ToString();
+                dr["DiaChiCT"] = dgvDSCatChuyenDM["CT_CatNK_DiaChi", i].Value.ToString();
+                dr["MaCT"] = dgvDSCatChuyenDM["CT_MaCT", i].Value.ToString();
+                dr["SoNKDangKy"] = dgvDSCatChuyenDM["SoNKNhan", i].Value.ToString();
+                if (dgvDSCatChuyenDM["CT_CatNK_DanhBo", i].Value.ToString().Length == 11)
+                    dr["GhiChu"] = dgvDSCatChuyenDM["CT_CatNK_DanhBo", i].Value.ToString().Insert(7, " ").Insert(4, " ");
+                else
+                    dr["GhiChu"] = dgvDSCatChuyenDM["CT_CatNK_DanhBo", i].Value.ToString();
+                dr["Lo"] = dgvDSCatChuyenDM["Lo", i].Value.ToString();
+                dr["Phong"] = dgvDSCatChuyenDM["Phong", i].Value.ToString();
+
+                dsBaoCao.Tables["DSChungTu"].Rows.Add(dr);
+            }
+            rptDSCatChuyen rpt = new rptDSCatChuyen();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.ShowDialog();
         }
 
 

@@ -50,6 +50,13 @@ namespace KTKS_ChungCu.GUI.ChungTu
                 txtMaCT.Text = _ctchungtu.MaCT;
                 txtHoTenCT.Text = _ctchungtu.ChungTu.HoTen;
                 txtDiaChi.Text = _ctchungtu.ChungTu.DiaChi;
+
+                txtDiaChiKH_Cat_YCC1.Text = txtDiaChi.Text;
+                txtDiaChiKH_Cat_YCC2.Text = txtDiaChi.Text;
+                txtDiaChiKH_Cat_YCC3.Text = txtDiaChi.Text;
+                txtDiaChiKH_Cat_YCC4.Text = txtDiaChi.Text;
+                txtDiaChiKH_Cat_YCC5.Text = txtDiaChi.Text;
+
                 txtGhiChu.Text = _ctchungtu.GhiChu;
                 txtSoNKDangKy.Text = _ctchungtu.SoNKDangKy.ToString();
                 txtSTT.Text = _ctchungtu.STT.ToString();
@@ -199,6 +206,8 @@ namespace KTKS_ChungCu.GUI.ChungTu
 
             LichSuChungTu lichsuchungtu = new LichSuChungTu();
             lichsuchungtu.STT = ctchungtu.STT;
+            lichsuchungtu.Lo = ctchungtu.Lo;
+            lichsuchungtu.Phong = ctchungtu.Phong;
 
             if (chkYCCat1.Checked)
                 if (txtSoNKCat_YCC1.Text.Trim() == "")

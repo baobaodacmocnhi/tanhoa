@@ -1581,6 +1581,9 @@ namespace KTKS_ChungCu.DAL
                                 orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
+                                    itemLSCT.STT,
+                                    itemLSCT.Lo,
+                                    itemLSCT.Phong,
                                     In = false,
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
@@ -1712,6 +1715,9 @@ namespace KTKS_ChungCu.DAL
                                 orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
+                                    itemLSCT.STT,
+                                    itemLSCT.Lo,
+                                    itemLSCT.Phong,
                                     In = false,
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
@@ -1840,6 +1846,9 @@ namespace KTKS_ChungCu.DAL
                                 orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
+                                    itemLSCT.STT,
+                                    itemLSCT.Lo,
+                                    itemLSCT.Phong,
                                     In = false,
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
@@ -1968,6 +1977,9 @@ namespace KTKS_ChungCu.DAL
                                 orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
+                                    itemLSCT.STT,
+                                    itemLSCT.Lo,
+                                    itemLSCT.Phong,
                                     In = false,
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
@@ -2096,6 +2108,9 @@ namespace KTKS_ChungCu.DAL
                                 orderby itemLSCT.CreateDate ascending
                                 select new
                                 {
+                                    itemLSCT.STT,
+                                    itemLSCT.Lo,
+                                    itemLSCT.Phong,
                                     In = false,
                                     itemLSCT.MaLSCT,
                                     itemLSCT.SoPhieu,
