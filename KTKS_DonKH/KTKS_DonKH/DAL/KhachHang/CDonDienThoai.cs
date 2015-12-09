@@ -191,6 +191,47 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
+        public DataTable getDSDonDienThoaiByDanhBo(int MaUser, string DanhBo)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from item in db.DonDienThoais
+                                where item.DanhBo == DanhBo && item.CreateBy==MaUser
+                                orderby item.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    LapDon = false,
+                                    item.MaDonDT,
+                                    item.MaDon,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.GiaBieu,
+                                    item.DinhMuc,
+                                    item.NoiDung,
+                                    item.GhiChu,
+                                    item.NguoiBao,
+                                    item.DienThoai,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable getDSDonDienThoaiByDiaChi(string DiaChi)
         {
             try
@@ -199,6 +240,47 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     var query = from item in db.DonDienThoais
                                 where item.DiaChi.Contains(DiaChi)
+                                orderby item.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    LapDon = false,
+                                    item.MaDonDT,
+                                    item.MaDon,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.GiaBieu,
+                                    item.DinhMuc,
+                                    item.NoiDung,
+                                    item.GhiChu,
+                                    item.NguoiBao,
+                                    item.DienThoai,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable getDSDonDienThoaiByDiaChi(int MaUser, string DiaChi)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from item in db.DonDienThoais
+                                where item.DiaChi.Contains(DiaChi) && item.CreateBy == MaUser
                                 orderby item.CreateDate descending
                                 select new
                                 {
@@ -273,6 +355,47 @@ namespace KTKS_DonKH.DAL.KhachHang
             }
         }
 
+        public DataTable getDSDonDienThoaiByDate(int MaUser, DateTime TuNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from item in db.DonDienThoais
+                                where item.CreateDate.Value.Date == TuNgay.Date && item.CreateBy == MaUser
+                                //orderby item.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    LapDon = false,
+                                    item.MaDonDT,
+                                    item.MaDon,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.GiaBieu,
+                                    item.DinhMuc,
+                                    item.NoiDung,
+                                    item.GhiChu,
+                                    item.NguoiBao,
+                                    item.DienThoai,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable getDSDonDienThoaiByDates(DateTime TuNgay, DateTime DenNgay)
         {
             try
@@ -281,6 +404,47 @@ namespace KTKS_DonKH.DAL.KhachHang
                 {
                     var query = from item in db.DonDienThoais
                                 where item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value <= DenNgay.Date
+                                //orderby item.CreateDate descending
+                                select new
+                                {
+                                    In = false,
+                                    LapDon = false,
+                                    item.MaDonDT,
+                                    item.MaDon,
+                                    item.CreateDate,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
+                                    item.GiaBieu,
+                                    item.DinhMuc,
+                                    item.NoiDung,
+                                    item.GhiChu,
+                                    item.NguoiBao,
+                                    item.DienThoai,
+                                };
+                    return CLinQToDataTable.LINQToDataTable(query);
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable getDSDonDienThoaiByDates(int MaUser, DateTime TuNgay, DateTime DenNgay)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleQLDonKH_Xem || CTaiKhoan.RoleQLDonKH_CapNhat)
+                {
+                    var query = from item in db.DonDienThoais
+                                where item.CreateDate.Value.Date >= TuNgay.Date && item.CreateDate.Value <= DenNgay.Date && item.CreateBy == MaUser
                                 //orderby item.CreateDate descending
                                 select new
                                 {

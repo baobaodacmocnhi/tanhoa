@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KTKS_DonKH.BaoCao.KhachHang {
+namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptDSDonDienThoai : ReportClass {
+    public class rptThongBaoDCHD : ReportClass {
         
-        public rptDSDonDienThoai() {
+        public rptThongBaoDCHD() {
         }
         
         public override string ResourceName {
             get {
-                return "rptDSDonDienThoai.rpt";
+                return "rptThongBaoDCHD.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.KhachHang.rptDSDonDienThoai.rpt";
+                return "KTKS_DonKH.BaoCao.DieuChinhBienDong.rptThongBaoDCHD.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptDSDonDienThoai : Component, ICachedReport {
+    public class CachedrptThongBaoDCHD : Component, ICachedReport {
         
-        public CachedrptDSDonDienThoai() {
+        public CachedrptThongBaoDCHD() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace KTKS_DonKH.BaoCao.KhachHang {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptDSDonDienThoai rpt = new rptDSDonDienThoai();
+            rptThongBaoDCHD rpt = new rptThongBaoDCHD();
             rpt.Site = this.Site;
             return rpt;
         }

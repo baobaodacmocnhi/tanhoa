@@ -91,6 +91,7 @@
             this.chkKhauTru = new System.Windows.Forms.CheckBox();
             this.txtSoTienKhauTru = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.btnInA4 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -405,7 +406,7 @@
             this.chkGiaDieuChinh.AutoSize = true;
             this.chkGiaDieuChinh.Location = new System.Drawing.Point(319, 24);
             this.chkGiaDieuChinh.Name = "chkGiaDieuChinh";
-            this.chkGiaDieuChinh.Size = new System.Drawing.Size(100, 17);
+            this.chkGiaDieuChinh.Size = new System.Drawing.Size(120, 21);
             this.chkGiaDieuChinh.TabIndex = 22;
             this.chkGiaDieuChinh.Text = "Giá Điều Chỉnh:";
             this.chkGiaDieuChinh.UseVisualStyleBackColor = true;
@@ -746,12 +747,26 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
+            // btnInA4
+            // 
+            this.btnInA4.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnInA4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInA4.Location = new System.Drawing.Point(713, 301);
+            this.btnInA4.Name = "btnInA4";
+            this.btnInA4.Size = new System.Drawing.Size(114, 35);
+            this.btnInA4.TabIndex = 86;
+            this.btnInA4.Text = "In Phiếu A4";
+            this.btnInA4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInA4.UseVisualStyleBackColor = true;
+            this.btnInA4.Click += new System.EventHandler(this.btnInA4_Click);
+            // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(969, 388);
+            this.Controls.Add(this.btnInA4);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.chkKhauTru);
             this.Controls.Add(this.txtSoTienKhauTru);
@@ -846,5 +861,6 @@
         private System.Windows.Forms.CheckBox chkKhauTru;
         private System.Windows.Forms.TextBox txtSoTienKhauTru;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnInA4;
     }
 }

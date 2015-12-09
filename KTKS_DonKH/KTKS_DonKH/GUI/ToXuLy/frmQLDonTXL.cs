@@ -43,10 +43,10 @@ namespace KTKS_DonKH.GUI.ToXuLy
         {
             dgvDSDonTXL.AutoGenerateColumns = false;
             dgvDSDonTXL.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDonTXL.Font, FontStyle.Bold);
-            DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSDonTXL.Columns["MaChuyen"];
-            cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi();
-            cmbColumn.DisplayMember = "NoiChuyenDi";
-            cmbColumn.ValueMember = "MaChuyen";
+            //DataGridViewComboBoxColumn cmbColumn = (DataGridViewComboBoxColumn)dgvDSDonTXL.Columns["MaChuyen"];
+            //cmbColumn.DataSource = _cChuyenDi.LoadDSChuyenDi();
+            //cmbColumn.DisplayMember = "NoiChuyenDi";
+            //cmbColumn.ValueMember = "MaChuyen";
 
             //dgvDSDonTXL.DataSource = DSDonKH_BS;
             //radAll.Checked = true;
@@ -86,19 +86,19 @@ namespace KTKS_DonKH.GUI.ToXuLy
 
         private void dgvDSDonTXL_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(dgvDSDonTXL["MaDon", e.RowIndex].Value.ToString()));
-            dontxl.Chuyen = true;
-            if (string.IsNullOrEmpty(dgvDSDonTXL["MaChuyen", e.RowIndex].Value.ToString()))
-                dontxl.MaChuyen = "NONE";
-            else
-                dontxl.MaChuyen = dgvDSDonTXL["MaChuyen", e.RowIndex].Value.ToString();
-            dontxl.LyDoChuyen = dgvDSDonTXL["LyDoChuyen", e.RowIndex].Value.ToString();
+            //DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(dgvDSDonTXL["MaDon", e.RowIndex].Value.ToString()));
+            //dontxl.Chuyen = true;
+            //if (string.IsNullOrEmpty(dgvDSDonTXL["MaChuyen", e.RowIndex].Value.ToString()))
+            //    dontxl.MaChuyen = "NONE";
+            //else
+            //    dontxl.MaChuyen = dgvDSDonTXL["MaChuyen", e.RowIndex].Value.ToString();
+            //dontxl.LyDoChuyen = dgvDSDonTXL["LyDoChuyen", e.RowIndex].Value.ToString();
             //if (string.IsNullOrEmpty(dgvDSDonTXL["SoLuongDiaChi", e.RowIndex].ToString()))
             //    dontxl.SoLuongDiaChi = null;
             //else
             //    dontxl.SoLuongDiaChi = int.Parse(dgvDSDonTXL["SoLuongDiaChi", e.RowIndex].ToString());
             //dontxl.NVKiemTra = dgvDSDonTXL["NVKiemTra", e.RowIndex].ToString();
-            _cDonTXL.SuaDonTXL(dontxl);
+            //_cDonTXL.SuaDonTXL(dontxl);
         }
 
         private void dgvDSDonTXL_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -513,27 +513,52 @@ namespace KTKS_DonKH.GUI.ToXuLy
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow itemRow in dt.Rows)
                 if (itemRow["TenLD"].ToString().Contains("Bấm Chì"))
-            {
-                DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
-
-                dr["TuNgay"] = _tuNgay;
-                dr["DenNgay"] = _denNgay;
-                dr["TenLD"] = itemRow["TenLD"];
-                dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                if (_cBamChi.CheckBamChibyMaDon_TXL(decimal.Parse(itemRow["MaDon"].ToString())))
                 {
-                    dr["DaGiaiQuyet"] = "True";
-                }
+                    DataRow dr = dsBaoCao.Tables["DSDonTXL"].NewRow();
 
-                dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
-            }
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["TenLD"] = itemRow["TenLD"];
+                    dr["NgayNhan"] = itemRow["CreateDate"].ToString().Substring(0, 10);
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    if (_cBamChi.CheckBamChibyMaDon_TXL(decimal.Parse(itemRow["MaDon"].ToString())))
+                    {
+                        dr["DaGiaiQuyet"] = "True";
+                    }
+
+                    dsBaoCao.Tables["DSDonTXL"].Rows.Add(dr);
+                }
 
             rptDSDonTXL_BamChi rpt = new rptDSDonTXL_BamChi();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAll.Checked)
+                foreach (DataGridViewRow item in dgvDSDonTXL.Rows)
+                {
+                    item.Cells["Chon"].Value = true;
+                }
+            else
+                foreach (DataGridViewRow item in dgvDSDonTXL.Rows)
+                {
+                    item.Cells["Chon"].Value = false;
+                }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                foreach (DataGridViewRow item in dgvDSDonTXL.Rows)
+                    if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                    {
+                        DonTXL dontxl = _cDonTXL.getDonTXLbyID(decimal.Parse(item.Cells["MaDon"].Value.ToString()));
+                        _cDonTXL.XoaDonTXL(dontxl);
+                    }
         }
     }
 }

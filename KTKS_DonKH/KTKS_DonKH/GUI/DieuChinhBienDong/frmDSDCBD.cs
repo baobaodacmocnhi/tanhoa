@@ -691,7 +691,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         /// <param name="e"></param>
         private void dgvDSCatChuyenDM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "CT_SoPhieu" && e.Value != null&&e.Value.ToString().Length>2)
+            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "CT_SoPhieu" && e.Value != null && e.Value.ToString().Length > 2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -1407,7 +1407,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             else
                                 if (radDSDCBD.Checked)
-                                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByMaDons(CTaiKhoan.MaUser,decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByMaDons(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                             if (radDSDCHD.Checked)
                                 dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByMaDons(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                             else
@@ -1439,7 +1439,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             else
                                 if (radDSDCBD.Checked)
-                                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDBySoPhieus(CTaiKhoan.MaUser,decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
+                                    dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDBySoPhieus(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
                                 else
                                     if (radDSDCHD.Checked)
                                         dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDBySoPhieus(CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")), decimal.Parse(txtNoiDungTimKiem2.Text.Trim().Replace("-", "")));
@@ -1479,7 +1479,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                     if (radDSDCBD.Checked)
-                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByDate(CTaiKhoan.MaUser,dateTu.Value);
+                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByDate(CTaiKhoan.MaUser, dateTu.Value);
                     else
                         if (radDSDCHD.Checked)
                             dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByDate(CTaiKhoan.MaUser, dateTu.Value);
@@ -1519,7 +1519,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                     if (radDSDCBD.Checked)
-                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByDates(CTaiKhoan.MaUser,dateTu.Value, dateDen.Value);
+                        dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCBDByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
                     else
                         if (radDSDCHD.Checked)
                             dgvDSDCBD.DataSource = _cDCBD.LoadDSCTDCHDByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
@@ -1889,6 +1889,114 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void btnInA4_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn chắc chắn In những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (radDSDCHD.Checked)
+                    {
+                        for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                            if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                            {
+                                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                                DataRow dr = dsBaoCao.Tables["DCHD"].NewRow();
 
+                                CTDCHD ctdchd = _cDCBD.getCTDCHDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                                dr["SoPhieu"] = ctdchd.MaCTDCHD.ToString().Insert(ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                                dr["DanhBo"] = ctdchd.DanhBo.Insert(7, " ").Insert(4, " "); ;
+                                dr["HoTen"] = ctdchd.HoTen;
+                                dr["DiaChi"] = ctdchd.DiaChi;
+                                if (ctdchd.DCBD.ToXuLy)
+                                    dr["SoDon"] = "TXL" + ctdchd.DCBD.MaDonTXL.Value.ToString().Insert(ctdchd.DCBD.MaDonTXL.Value.ToString().Length - 2, "-");
+                                else
+                                    dr["SoDon"] = ctdchd.DCBD.MaDon.Value.ToString().Insert(ctdchd.DCBD.MaDon.Value.ToString().Length - 2, "-");
+                                dr["NgayKy"] = ctdchd.NgayKy.Value.ToString("dd/MM/yyyy");
+                                dr["KyHD"] = ctdchd.KyHD;
+                                dr["SoHD"] = ctdchd.SoHD;
+                                ///
+                                dr["TieuThuStart"] = ctdchd.TieuThu;
+                                if (ctdchd.TienNuoc_Start == 0)
+                                    dr["TienNuocStart"] = "0";
+                                else
+                                    dr["TienNuocStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_Start);
+                                if (ctdchd.ThueGTGT_Start == 0)
+                                    dr["ThueGTGTStart"] = 0;
+                                else
+                                    dr["ThueGTGTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_Start);
+                                if (ctdchd.PhiBVMT_Start == 0)
+                                    dr["PhiBVMTStart"] = 0;
+                                else
+                                    dr["PhiBVMTStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_Start);
+                                if (ctdchd.TongCong_Start == 0)
+                                    dr["TongCongStart"] = 0;
+                                else
+                                    dr["TongCongStart"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_Start);
+                                ///
+                                dr["TangGiam"] = ctdchd.TangGiam;
+                                ///
+                                dr["TieuThuBD"] = ctdchd.TieuThu_BD - ctdchd.TieuThu;
+                                if (ctdchd.TienNuoc_BD == 0)
+                                    dr["TienNuocBD"] = 0;
+                                else
+                                    dr["TienNuocBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_BD);
+                                if (ctdchd.ThueGTGT_BD == 0)
+                                    dr["ThueGTGTBD"] = 0;
+                                else
+                                    dr["ThueGTGTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_BD);
+                                if (ctdchd.PhiBVMT_BD == 0)
+                                    dr["PhiBVMTBD"] = 0;
+                                else
+                                    dr["PhiBVMTBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_BD);
+                                if (ctdchd.TongCong_BD == 0)
+                                    dr["TongCongBD"] = 0;
+                                else
+                                    dr["TongCongBD"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_BD);
+                                ///
+                                dr["TieuThuEnd"] = ctdchd.TieuThu_BD;
+                                if (ctdchd.TienNuoc_End == 0)
+                                    dr["TienNuocEnd"] = 0;
+                                else
+                                    dr["TienNuocEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TienNuoc_End);
+                                if (ctdchd.ThueGTGT_End == 0)
+                                    dr["ThueGTGTEnd"] = 0;
+                                else
+                                    dr["ThueGTGTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.ThueGTGT_End);
+                                if (ctdchd.PhiBVMT_End == 0)
+                                    dr["PhiBVMTEnd"] = 0;
+                                else
+                                    dr["PhiBVMTEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.PhiBVMT_End);
+                                if (ctdchd.TongCong_End == 0)
+                                    dr["TongCongEnd"] = 0;
+                                else
+                                    dr["TongCongEnd"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ctdchd.TongCong_End);
+
+                                dr["ChucVu"] = ctdchd.ChucVu;
+                                dr["NguoiKy"] = ctdchd.NguoiKy;
+
+                                dsBaoCao.Tables["DCHD"].Rows.Add(dr);
+
+                                rptThongBaoDCHD rpt = new rptThongBaoDCHD();
+                                rpt.SetDataSource(dsBaoCao);
+
+                                printDialog.AllowSomePages = true;
+                                printDialog.ShowHelp = true;
+
+                                rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                                rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                                rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.FromPage, printDialog.PrinterSettings.ToPage);
+                                rpt.PrintToPrinter(1, false, 1, 1);
+                                //Thread.Sleep(31000);
+                            }
+                    }
+
+                }
+            }
+
+
+        }
     }
 }

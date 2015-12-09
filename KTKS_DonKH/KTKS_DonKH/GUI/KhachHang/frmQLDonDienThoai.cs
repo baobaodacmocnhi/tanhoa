@@ -12,6 +12,7 @@ using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.KhachHang;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.KhachHang
 {
@@ -85,21 +86,38 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             if (txtNoiDungTimKiem.Text.Trim() != "")
             {
-                switch (cmbTimTheo.SelectedItem.ToString())
-                {
-                    //case "Mã Đơn":
-                    //    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
-                    //    break;
-                    case "Danh Bộ":
-                        dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDanhBo(txtNoiDungTimKiem.Text.Trim());
-                        break;
-                    case "Địa Chỉ":
-                        dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDiaChi(txtNoiDungTimKiem.Text.Trim());
-                        break;
-                    //case "Số Công Văn":
-                    //    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
-                    //    break;
-                }
+                if (chkTheoUser.Checked)
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        //case "Mã Đơn":
+                        //    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                        //    break;
+                        case "Danh Bộ":
+                            dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDanhBo(CTaiKhoan.MaUser,txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        case "Địa Chỉ":
+                            dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDiaChi(CTaiKhoan.MaUser, txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        //case "Số Công Văn":
+                        //    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        //    break;
+                    }
+                else
+                    switch (cmbTimTheo.SelectedItem.ToString())
+                    {
+                        //case "Mã Đơn":
+                        //    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHByMaDon(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                        //    break;
+                        case "Danh Bộ":
+                            dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDanhBo(txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        case "Địa Chỉ":
+                            dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDiaChi(txtNoiDungTimKiem.Text.Trim());
+                            break;
+                        //case "Số Công Văn":
+                        //    dgvDSDonKH.DataSource = _cDonKH.LoadDSDonKHBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper());
+                        //    break;
+                    }
             }
         }
 
@@ -107,20 +125,29 @@ namespace KTKS_DonKH.GUI.KhachHang
         {
             _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
             _denNgay = "";
-            dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDate(dateTimKiem.Value);
+            if(chkTheoUser.Checked)
+            dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDate(CTaiKhoan.MaUser,dateTimKiem.Value);
+            else
+                dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDate(dateTimKiem.Value);
         }
 
         private void dateTu_ValueChanged(object sender, EventArgs e)
         {
             _tuNgay = dateTimKiem.Value.ToString("dd/MM/yyyy");
             _denNgay = "";
-            dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDate(dateTimKiem.Value);
+            if (chkTheoUser.Checked)
+                dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDate(CTaiKhoan.MaUser, dateTimKiem.Value);
+            else
+                dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDate(dateTimKiem.Value);
         }
 
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
             _denNgay = dateDen.Value.ToString("dd/MM/yyyy");
-            dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDates(dateTu.Value, dateDen.Value);
+            if (chkTheoUser.Checked)
+                dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDates(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+            else
+                dgvDonDT.DataSource = _cDonDT.getDSDonDienThoaiByDates(dateTu.Value, dateDen.Value);
         }
 
         private void btnIn_Click(object sender, EventArgs e)

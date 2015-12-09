@@ -267,11 +267,11 @@ namespace KTKS_DonKH.GUI.KhachHang
                                 if (item.Cells["NguoiDiVP"].Value != null)
                                 {
                                     string[] date = item.Cells["NgayChuyenVP"].Value.ToString().Split('/');
-                                    donkh.ChuyenKT = true;
-                                    donkh.NgayChuyenKT = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                                    donkh.NguoiDi = int.Parse(item.Cells["NguoiDiVP"].Value.ToString());
+                                    donkh.ChuyenVanPhong = true;
+                                    donkh.NgayChuyenVanPhong = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                                    donkh.NguoiVanPhong = int.Parse(item.Cells["NguoiDiVP"].Value.ToString());
                                     if (item.Cells["GhiChuVP"].Value != null)
-                                        donkh.GhiChuChuyenKT = item.Cells["GhiChuVP"].Value.ToString();
+                                        donkh.GhiChuChuyenVanPhong = item.Cells["GhiChuVP"].Value.ToString();
                                 }
                                 ///
                                 if (_cDonKH.ThemDonKH(donkh))

@@ -58,6 +58,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnInDaLapDon = new System.Windows.Forms.Button();
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
+            this.chkTheoUser = new System.Windows.Forms.CheckBox();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonDT)).BeginInit();
             this.SuspendLayout();
@@ -357,6 +358,16 @@
             this.chkSelectAll.UseVisualStyleBackColor = true;
             this.chkSelectAll.CheckedChanged += new System.EventHandler(this.chkSelectAll_CheckedChanged);
             // 
+            // chkTheoUser
+            // 
+            this.chkTheoUser.AutoSize = true;
+            this.chkTheoUser.Location = new System.Drawing.Point(353, 43);
+            this.chkTheoUser.Name = "chkTheoUser";
+            this.chkTheoUser.Size = new System.Drawing.Size(90, 21);
+            this.chkTheoUser.TabIndex = 26;
+            this.chkTheoUser.Text = "Theo User";
+            this.chkTheoUser.UseVisualStyleBackColor = true;
+            // 
             // frmQLDonDienThoai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -364,6 +375,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1376, 569);
+            this.Controls.Add(this.chkTheoUser);
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.btnInDaLapDon);
             this.Controls.Add(this.panel_KhoangThoiGian);
@@ -420,5 +432,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiBao;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
+        private System.Windows.Forms.CheckBox chkTheoUser;
     }
 }
