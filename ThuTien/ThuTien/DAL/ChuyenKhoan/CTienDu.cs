@@ -56,7 +56,12 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSTienDu()
         {
-            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien > 0||item.Phi>0).ToList());
+            return LINQToDataTable( _db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
+        }
+
+        public DataTable GetDSPhiMoNuoc()
+        {
+            return LINQToDataTable(_db.TT_TienDus.Where(item => item.Phi > 0).ToList());
         }
 
         public DataTable GetDSTienDu(DateTime NgayGiaiTrach)

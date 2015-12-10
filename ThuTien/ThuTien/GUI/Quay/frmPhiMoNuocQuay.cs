@@ -12,12 +12,12 @@ using ThuTien.LinQ;
 
 namespace ThuTien.GUI.Quay
 {
-    public partial class frmPhiMoNuoc : Form
+    public partial class frmPhiMoNuocQuay : Form
     {
         string _mnu = "mnuPhiMoNuoc";
         CDongNuoc _cDongNuoc = new CDongNuoc();
 
-        public frmPhiMoNuoc()
+        public frmPhiMoNuocQuay()
         {
             InitializeComponent();
         }

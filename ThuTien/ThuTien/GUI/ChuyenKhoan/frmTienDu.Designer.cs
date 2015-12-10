@@ -90,7 +90,7 @@
             "18",
             "19",
             "20"});
-            this.cmbToDot.Location = new System.Drawing.Point(1081, 12);
+            this.cmbToDot.Location = new System.Drawing.Point(1009, 12);
             this.cmbToDot.Name = "cmbToDot";
             this.cmbToDot.Size = new System.Drawing.Size(40, 21);
             this.cmbToDot.TabIndex = 9;
@@ -98,7 +98,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1025, 17);
+            this.label10.Location = new System.Drawing.Point(953, 17);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 8;
@@ -106,7 +106,7 @@
             // 
             // btnInDSDuTien
             // 
-            this.btnInDSDuTien.Location = new System.Drawing.Point(1014, 86);
+            this.btnInDSDuTien.Location = new System.Drawing.Point(942, 86);
             this.btnInDSDuTien.Name = "btnInDSDuTien";
             this.btnInDSDuTien.Size = new System.Drawing.Size(94, 23);
             this.btnInDSDuTien.TabIndex = 11;
@@ -117,7 +117,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(709, 21);
+            this.label9.Location = new System.Drawing.Point(613, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(162, 13);
             this.label9.TabIndex = 5;
@@ -125,7 +125,7 @@
             // 
             // btnXuatExcelTienDu
             // 
-            this.btnXuatExcelTienDu.Location = new System.Drawing.Point(1014, 271);
+            this.btnXuatExcelTienDu.Location = new System.Drawing.Point(942, 271);
             this.btnXuatExcelTienDu.Name = "btnXuatExcelTienDu";
             this.btnXuatExcelTienDu.Size = new System.Drawing.Size(107, 23);
             this.btnXuatExcelTienDu.TabIndex = 14;
@@ -137,14 +137,14 @@
             // 
             this.dateNgayGiaiTrach.CustomFormat = "dd/MM/yyyy";
             this.dateNgayGiaiTrach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNgayGiaiTrach.Location = new System.Drawing.Point(1014, 245);
+            this.dateNgayGiaiTrach.Location = new System.Drawing.Point(942, 245);
             this.dateNgayGiaiTrach.Name = "dateNgayGiaiTrach";
             this.dateNgayGiaiTrach.Size = new System.Drawing.Size(100, 20);
             this.dateNgayGiaiTrach.TabIndex = 13;
             // 
             // btnChuyenTamThu
             // 
-            this.btnChuyenTamThu.Location = new System.Drawing.Point(1014, 115);
+            this.btnChuyenTamThu.Location = new System.Drawing.Point(942, 115);
             this.btnChuyenTamThu.Name = "btnChuyenTamThu";
             this.btnChuyenTamThu.Size = new System.Drawing.Size(100, 23);
             this.btnChuyenTamThu.TabIndex = 12;
@@ -176,7 +176,7 @@
             "18",
             "19",
             "20"});
-            this.cmbFromDot.Location = new System.Drawing.Point(979, 12);
+            this.cmbFromDot.Location = new System.Drawing.Point(907, 12);
             this.cmbFromDot.Name = "cmbFromDot";
             this.cmbFromDot.Size = new System.Drawing.Size(40, 21);
             this.cmbFromDot.TabIndex = 7;
@@ -184,7 +184,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(930, 15);
+            this.label7.Location = new System.Drawing.Point(858, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 6;
@@ -192,7 +192,7 @@
             // 
             // btnInDSThuThem
             // 
-            this.btnInDSThuThem.Location = new System.Drawing.Point(1014, 57);
+            this.btnInDSThuThem.Location = new System.Drawing.Point(942, 57);
             this.btnInDSThuThem.Name = "btnInDSThuThem";
             this.btnInDSThuThem.Size = new System.Drawing.Size(94, 23);
             this.btnInDSThuThem.TabIndex = 10;
@@ -203,7 +203,7 @@
             // txtTongCongTienAm
             // 
             this.txtTongCongTienAm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCongTienAm.Location = new System.Drawing.Point(160, 610);
+            this.txtTongCongTienAm.Location = new System.Drawing.Point(153, 610);
             this.txtTongCongTienAm.Name = "txtTongCongTienAm";
             this.txtTongCongTienAm.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongTienAm.TabIndex = 103;
@@ -212,7 +212,7 @@
             // txtTongCongTienDu
             // 
             this.txtTongCongTienDu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongCongTienDu.Location = new System.Drawing.Point(528, 610);
+            this.txtTongCongTienDu.Location = new System.Drawing.Point(521, 610);
             this.txtTongCongTienDu.Name = "txtTongCongTienDu";
             this.txtTongCongTienDu.Size = new System.Drawing.Size(100, 20);
             this.txtTongCongTienDu.TabIndex = 102;
@@ -221,7 +221,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(384, 21);
+            this.label5.Location = new System.Drawing.Point(377, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(147, 13);
             this.label5.TabIndex = 3;
@@ -255,7 +255,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTienDu.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTienDu.Location = new System.Drawing.Point(387, 41);
+            this.dgvTienDu.Location = new System.Drawing.Point(380, 41);
             this.dgvTienDu.Name = "dgvTienDu";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -267,7 +267,7 @@
             this.dgvTienDu.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTienDu.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTienDu.Size = new System.Drawing.Size(621, 569);
+            this.dgvTienDu.Size = new System.Drawing.Size(551, 569);
             this.dgvTienDu.TabIndex = 4;
             this.dgvTienDu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTienDu_CellFormatting);
             this.dgvTienDu.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTienDu_CellMouseDoubleClick);
@@ -292,6 +292,7 @@
             this.Phi_TienDu.DataPropertyName = "Phi";
             this.Phi_TienDu.HeaderText = "Phí";
             this.Phi_TienDu.Name = "Phi_TienDu";
+            this.Phi_TienDu.Visible = false;
             this.Phi_TienDu.Width = 70;
             // 
             // ModifyDate_TienDu
@@ -317,7 +318,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 21);
+            this.label2.Location = new System.Drawing.Point(9, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 13);
             this.label2.TabIndex = 1;
@@ -348,7 +349,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTienAm.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvTienAm.Location = new System.Drawing.Point(19, 41);
+            this.dgvTienAm.Location = new System.Drawing.Point(12, 41);
             this.dgvTienAm.Name = "dgvTienAm";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -385,7 +386,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(306, 12);
+            this.btnXem.Location = new System.Drawing.Point(299, 12);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 0;
@@ -441,18 +442,18 @@
         private System.Windows.Forms.TextBox txtTongCongTienDu;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvTienDu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_TienDu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_TienDu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Phi_TienDu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ModifyDate_TienDu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai_TienDu;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ChoXuLy_TienDu;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvTienAm;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_TienAm;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_TienAm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyDate_TienAm;
         private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_TienDu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTien_TienDu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phi_TienDu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModifyDate_TienDu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai_TienDu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ChoXuLy_TienDu;
 
 
     }

@@ -59,6 +59,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dateThanhToan = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtNguoiKy = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +94,7 @@
             // 
             this.txtKinhGui.Location = new System.Drawing.Point(277, 12);
             this.txtKinhGui.Name = "txtKinhGui";
-            this.txtKinhGui.Size = new System.Drawing.Size(318, 20);
+            this.txtKinhGui.Size = new System.Drawing.Size(250, 20);
             this.txtKinhGui.TabIndex = 19;
             // 
             // dgvHoaDon
@@ -213,7 +215,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(601, 10);
+            this.btnIn.Location = new System.Drawing.Point(533, 10);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 35;
@@ -233,7 +235,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(682, 15);
+            this.label3.Location = new System.Drawing.Point(614, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 37;
@@ -241,14 +243,14 @@
             // 
             // txtCSM
             // 
-            this.txtCSM.Location = new System.Drawing.Point(721, 12);
+            this.txtCSM.Location = new System.Drawing.Point(653, 12);
             this.txtCSM.Name = "txtCSM";
             this.txtCSM.Size = new System.Drawing.Size(50, 20);
             this.txtCSM.TabIndex = 38;
             // 
             // txtCSC
             // 
-            this.txtCSC.Location = new System.Drawing.Point(816, 12);
+            this.txtCSC.Location = new System.Drawing.Point(748, 12);
             this.txtCSC.Name = "txtCSC";
             this.txtCSC.Size = new System.Drawing.Size(50, 20);
             this.txtCSC.TabIndex = 40;
@@ -256,7 +258,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(777, 15);
+            this.label4.Location = new System.Drawing.Point(709, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 39;
@@ -264,7 +266,7 @@
             // 
             // txtTT
             // 
-            this.txtTT.Location = new System.Drawing.Point(902, 12);
+            this.txtTT.Location = new System.Drawing.Point(834, 12);
             this.txtTT.Name = "txtTT";
             this.txtTT.Size = new System.Drawing.Size(50, 20);
             this.txtTT.TabIndex = 42;
@@ -272,7 +274,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(872, 15);
+            this.label6.Location = new System.Drawing.Point(804, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 13);
             this.label6.TabIndex = 41;
@@ -280,7 +282,7 @@
             // 
             // txtDM
             // 
-            this.txtDM.Location = new System.Drawing.Point(991, 12);
+            this.txtDM.Location = new System.Drawing.Point(923, 12);
             this.txtDM.Name = "txtDM";
             this.txtDM.Size = new System.Drawing.Size(50, 20);
             this.txtDM.TabIndex = 44;
@@ -288,7 +290,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(958, 15);
+            this.label7.Location = new System.Drawing.Point(890, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 13);
             this.label7.TabIndex = 43;
@@ -298,7 +300,7 @@
             // 
             this.dateThanhToan.CustomFormat = "dd/MM/yyyy";
             this.dateThanhToan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateThanhToan.Location = new System.Drawing.Point(1105, 13);
+            this.dateThanhToan.Location = new System.Drawing.Point(1037, 13);
             this.dateThanhToan.Name = "dateThanhToan";
             this.dateThanhToan.Size = new System.Drawing.Size(100, 20);
             this.dateThanhToan.TabIndex = 46;
@@ -306,17 +308,35 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1047, 15);
+            this.label8.Location = new System.Drawing.Point(979, 15);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 45;
             this.label8.Text = "Ngày TT:";
             // 
+            // txtNguoiKy
+            // 
+            this.txtNguoiKy.Location = new System.Drawing.Point(1202, 12);
+            this.txtNguoiKy.Name = "txtNguoiKy";
+            this.txtNguoiKy.Size = new System.Drawing.Size(100, 20);
+            this.txtNguoiKy.TabIndex = 48;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1143, 15);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 47;
+            this.label9.Text = "Người Ký:";
+            // 
             // frmTongHopNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1233, 531);
+            this.ClientSize = new System.Drawing.Size(1399, 531);
+            this.Controls.Add(this.txtNguoiKy);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.dateThanhToan);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtDM);
@@ -374,5 +394,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DateTimePicker dateThanhToan;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtNguoiKy;
+        private System.Windows.Forms.Label label9;
     }
 }

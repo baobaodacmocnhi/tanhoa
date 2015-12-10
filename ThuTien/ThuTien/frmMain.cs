@@ -668,6 +668,18 @@ namespace ThuTien
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void mnuPhiMoNuocChuyenKhoan_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuPhiMoNuocChuyenKhoan", "Xem"))
+            {
+                frmPhiMoNuocChuyenKhoan frm = new frmPhiMoNuocChuyenKhoan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Quầy
@@ -738,11 +750,11 @@ namespace ThuTien
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void mnuPhiMoNuoc_Click(object sender, EventArgs e)
+        private void mnuPhiMoNuocQuay_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuPhiMoNuoc", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuPhiMoNuocQuay", "Xem"))
             {
-                frmPhiMoNuoc frm = new frmPhiMoNuoc();
+                frmPhiMoNuocQuay frm = new frmPhiMoNuocQuay();
                 OpenForm(frm);
             }
             else
@@ -885,6 +897,8 @@ namespace ThuTien
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
+
+        
 
         
 

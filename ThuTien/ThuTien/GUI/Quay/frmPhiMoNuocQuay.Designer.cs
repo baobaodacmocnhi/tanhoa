@@ -1,6 +1,6 @@
 ﻿namespace ThuTien.GUI.Quay
 {
-    partial class frmPhiMoNuoc
+    partial class frmPhiMoNuocQuay
     {
         /// <summary>
         /// Required designer variable.

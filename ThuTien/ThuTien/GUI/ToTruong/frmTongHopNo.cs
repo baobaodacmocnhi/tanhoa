@@ -162,6 +162,7 @@ namespace ThuTien.GUI.ToTruong
                 dr["CSC"] = txtCSC.Text.Trim();
                 dr["TT"] = txtTT.Text.Trim();
                 dr["DM"] = txtDM.Text.Trim();
+                dr["NguoiKy"] = txtNguoiKy.Text.Trim();
                 
                 ds.Tables["TongHopNo"].Rows.Add(dr);
             }
