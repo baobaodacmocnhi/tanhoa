@@ -51,11 +51,11 @@ namespace KTKS_ChungCu.GUI.ChungTu
                 txtHoTenCT.Text = _ctchungtu.ChungTu.HoTen;
                 txtDiaChi.Text = _ctchungtu.ChungTu.DiaChi;
 
-                txtDiaChiKH_Cat_YCC1.Text = txtDiaChi.Text;
-                txtDiaChiKH_Cat_YCC2.Text = txtDiaChi.Text;
-                txtDiaChiKH_Cat_YCC3.Text = txtDiaChi.Text;
-                txtDiaChiKH_Cat_YCC4.Text = txtDiaChi.Text;
-                txtDiaChiKH_Cat_YCC5.Text = txtDiaChi.Text;
+                txtHoTen_Cat_YCC1.Text = txtHoTenCT.Text;
+                txtHoTen_Cat_YCC2.Text = txtHoTenCT.Text;
+                txtHoTen_Cat_YCC3.Text = txtHoTenCT.Text;
+                txtHoTen_Cat_YCC4.Text = txtHoTenCT.Text;
+                txtHoTen_Cat_YCC5.Text = txtHoTenCT.Text;
 
                 txtGhiChu.Text = _ctchungtu.GhiChu;
                 txtSoNKDangKy.Text = _ctchungtu.SoNKDangKy.ToString();
