@@ -380,10 +380,10 @@
         <classShapeMoniker Id="d2e9aebc-4400-42be-8da9-98362a2ce2cc" />
       </nodes>
     </associationConnector>
-    <classShape Id="06f6bbec-c868-462d-b84d-ff4552c402de" absoluteBounds="15.5, 11.25, 2, 3.8862125651041666">
-      <DataClassMoniker Name="/dbThuTienDataContext/TT_PhiDongNuoc" />
+    <classShape Id="305a33e5-047b-4d7d-a0a1-96af6ab72ade" absoluteBounds="15.25, 11.375, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/dbThuTienDataContext/TT_PhiMoNuoc" />
       <nestedChildShapes>
-        <elementListCompartment Id="ba365725-ab8c-4275-b3b1-8e716538808c" absoluteBounds="15.515, 11.71, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fa3c1e8f-d835-47f0-867b-ce99bd4dae22" absoluteBounds="15.265, 11.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

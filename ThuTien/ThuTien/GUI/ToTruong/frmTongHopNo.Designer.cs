@@ -59,8 +59,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dateThanhToan = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtNguoiKy = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.radGiamDoc = new System.Windows.Forms.RadioButton();
+            this.radPhoGiamDoc = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -314,29 +314,35 @@
             this.label8.TabIndex = 45;
             this.label8.Text = "Ngày TT:";
             // 
-            // txtNguoiKy
+            // radGiamDoc
             // 
-            this.txtNguoiKy.Location = new System.Drawing.Point(1202, 12);
-            this.txtNguoiKy.Name = "txtNguoiKy";
-            this.txtNguoiKy.Size = new System.Drawing.Size(100, 20);
-            this.txtNguoiKy.TabIndex = 48;
+            this.radGiamDoc.AutoSize = true;
+            this.radGiamDoc.Location = new System.Drawing.Point(1201, 38);
+            this.radGiamDoc.Name = "radGiamDoc";
+            this.radGiamDoc.Size = new System.Drawing.Size(72, 17);
+            this.radGiamDoc.TabIndex = 47;
+            this.radGiamDoc.TabStop = true;
+            this.radGiamDoc.Text = "Giám Đốc";
+            this.radGiamDoc.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // radPhoGiamDoc
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1143, 15);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 47;
-            this.label9.Text = "Người Ký:";
+            this.radPhoGiamDoc.AutoSize = true;
+            this.radPhoGiamDoc.Location = new System.Drawing.Point(1201, 61);
+            this.radPhoGiamDoc.Name = "radPhoGiamDoc";
+            this.radPhoGiamDoc.Size = new System.Drawing.Size(94, 17);
+            this.radPhoGiamDoc.TabIndex = 48;
+            this.radPhoGiamDoc.TabStop = true;
+            this.radPhoGiamDoc.Text = "Phó Giám Đốc";
+            this.radPhoGiamDoc.UseVisualStyleBackColor = true;
             // 
             // frmTongHopNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1399, 531);
-            this.Controls.Add(this.txtNguoiKy);
-            this.Controls.Add(this.label9);
+            this.ClientSize = new System.Drawing.Size(1300, 531);
+            this.Controls.Add(this.radPhoGiamDoc);
+            this.Controls.Add(this.radGiamDoc);
             this.Controls.Add(this.dateThanhToan);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtDM);
@@ -394,7 +400,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
         private System.Windows.Forms.DateTimePicker dateThanhToan;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtNguoiKy;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton radGiamDoc;
+        private System.Windows.Forms.RadioButton radPhoGiamDoc;
     }
 }

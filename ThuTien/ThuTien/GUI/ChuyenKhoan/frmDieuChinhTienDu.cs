@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.DAL.QuanTri;
+using ThuTien.LinQ;
+using ThuTien.DAL.Doi;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -15,7 +17,11 @@ namespace ThuTien.GUI.ChuyenKhoan
     {
         string _DanhBo = "";
         string _SoTien = "";
+        string _mnu = "mnuTienDu";
         CTienDu _cTienDu = new CTienDu();
+        CHoaDon _cHoaDon = new CHoaDon();
+        CBangKe _cBangKe = new CBangKe();
+        CPhiMoNuoc _cPhiMoNuoc = new CPhiMoNuoc();
 
         public frmDieuChinhTienDu()
         {
@@ -45,7 +51,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void txtDanhBoCTB_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtDanhBoCTB.Text.Trim().Length == 11)
+            if (e.KeyChar == 13 && txtDanhBoCTB.Text.Trim().Replace(" ", "").Length == 11)
             {
                 //if (_cTienDu.CheckExist(txtDanhBoCTB.Text.Trim().Replace(" ", "")))
                 //{
@@ -69,7 +75,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnChuyen_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuDangNganChuyenKhoan", "Sua"))
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -89,18 +95,58 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn Sửa?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                if (int.Parse(txtSoTienMoi.Text.Trim()) >= 0)
-                    if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienCu.Text.Trim()) * -1, "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
-                        if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienMoi.Text.Trim()), "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
-                        {
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                            this.Close();
-                        }
+                if (MessageBox.Show("Bạn có chắc chắn Sửa?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    if (int.Parse(txtSoTienMoi.Text.Trim()) >= 0)
+                        if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienCu.Text.Trim()) * -1, "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
+                            if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienMoi.Text.Trim()), "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                this.Close();
+                            }
+                }
             }
         }
 
+        private void btnChuyenPhiMoNuoc_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn Chuyển Phí Mở Nước?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    if (int.Parse(txtSoTienCu.Text.Trim()) >= 50000)
+                    {
+                        if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -50000, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước"))
+                        {
+                            HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
+
+                            TT_PhiMoNuoc phimonuoc = new TT_PhiMoNuoc();
+                            phimonuoc.DanhBo = hoadon.DANHBA;
+                            phimonuoc.HoTen = hoadon.TENKH;
+                            phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;
+                            phimonuoc.NgayBK = dateBangKe.Value;
+                            phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA,dateBangKe.Value);
+                            phimonuoc.TongCong = phimonuoc.SoTien - 50000;
+                            if (_cPhiMoNuoc.Them(phimonuoc))
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                this.Close();
+                            }
+                        }
+                    }
+                    else
+                        MessageBox.Show("Số tiền không đủ 50.000đ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dateBangKe_ValueChanged(object sender, EventArgs e)
+        {
+            txtSoTien.Text = _cBangKe.GetSoTien(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), dateBangKe.Value).ToString() ;
+        }
     }
 }

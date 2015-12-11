@@ -182,5 +182,13 @@ namespace ThuTien.DAL.ChuyenKhoan
                         };
             return LINQToDataTable(query);
         }
+
+        public int GetSoTien(string DanhBo, DateTime CreateDate)
+        {
+            if (_db.TT_BangKes.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date))
+                return _db.TT_TienDus.Where(item => item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date).Sum(item => item.SoTien).Value;
+            else
+                return 0;
+        }
     }
 }

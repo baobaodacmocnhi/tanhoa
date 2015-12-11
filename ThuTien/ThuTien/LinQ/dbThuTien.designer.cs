@@ -144,9 +144,9 @@ namespace ThuTien.LinQ
     partial void InsertTT_NguoiDung(TT_NguoiDung instance);
     partial void UpdateTT_NguoiDung(TT_NguoiDung instance);
     partial void DeleteTT_NguoiDung(TT_NguoiDung instance);
-    partial void InsertTT_PhiDongNuoc(TT_PhiDongNuoc instance);
-    partial void UpdateTT_PhiDongNuoc(TT_PhiDongNuoc instance);
-    partial void DeleteTT_PhiDongNuoc(TT_PhiDongNuoc instance);
+    partial void InsertTT_PhiMoNuoc(TT_PhiMoNuoc instance);
+    partial void UpdateTT_PhiMoNuoc(TT_PhiMoNuoc instance);
+    partial void DeleteTT_PhiMoNuoc(TT_PhiMoNuoc instance);
     #endregion
 		
 		public dbThuTienDataContext() : 
@@ -515,11 +515,11 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<TT_PhiDongNuoc> TT_PhiDongNuocs
+		public System.Data.Linq.Table<TT_PhiMoNuoc> TT_PhiMoNuocs
 		{
 			get
 			{
-				return this.GetTable<TT_PhiDongNuoc>();
+				return this.GetTable<TT_PhiMoNuoc>();
 			}
 		}
 		
@@ -17676,13 +17676,13 @@ namespace ThuTien.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_PhiDongNuoc")]
-	public partial class TT_PhiDongNuoc : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_PhiMoNuoc")]
+	public partial class TT_PhiMoNuoc : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _MaPDN;
+		private decimal _MaPMN;
 		
 		private string _DanhBo;
 		
@@ -17718,8 +17718,8 @@ namespace ThuTien.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaPDNChanging(decimal value);
-    partial void OnMaPDNChanged();
+    partial void OnMaPMNChanging(decimal value);
+    partial void OnMaPMNChanged();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
     partial void OnHoTenChanging(string value);
@@ -17752,27 +17752,27 @@ namespace ThuTien.LinQ
     partial void OnModifyByChanged();
     #endregion
 		
-		public TT_PhiDongNuoc()
+		public TT_PhiMoNuoc()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPDN", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal MaPDN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPMN", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal MaPMN
 		{
 			get
 			{
-				return this._MaPDN;
+				return this._MaPMN;
 			}
 			set
 			{
-				if ((this._MaPDN != value))
+				if ((this._MaPMN != value))
 				{
-					this.OnMaPDNChanging(value);
+					this.OnMaPMNChanging(value);
 					this.SendPropertyChanging();
-					this._MaPDN = value;
-					this.SendPropertyChanged("MaPDN");
-					this.OnMaPDNChanged();
+					this._MaPMN = value;
+					this.SendPropertyChanged("MaPMN");
+					this.OnMaPMNChanged();
 				}
 			}
 		}

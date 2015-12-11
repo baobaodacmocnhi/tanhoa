@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>388</ApplicationRevision>
+    <ApplicationRevision>391</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -137,10 +137,10 @@
       <DependentUpon>rptDSTamThuChuyenKhoan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BaoCao\ChuyenKhoan\rptPhiDongNuoc.cs">
+    <Compile Include="BaoCao\ChuyenKhoan\rptChuyenPhiMoNuoc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rptPhiDongNuoc.rpt</DependentUpon>
+      <DependentUpon>rptChuyenPhiMoNuoc.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\ChuyenKhoan\rptTienDuKhachHang.cs">
@@ -389,6 +389,7 @@
     <Compile Include="DAL\CCAPNUOCTANHOA.cs" />
     <Compile Include="DAL\ChuyenKhoan\CBangKe.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDichVuThu.cs" />
+    <Compile Include="DAL\ChuyenKhoan\CPhiMoNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\CTienDu.cs" />
     <Compile Include="DAL\CKTKS_DonKH.cs" />
     <Compile Include="DAL\CDAL.cs" />
@@ -888,9 +889,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSTamThuChuyenKhoan.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptPhiDongNuoc.rpt">
+    <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptChuyenPhiMoNuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptPhiDongNuoc.cs</LastGenOutput>
+      <LastGenOutput>rptChuyenPhiMoNuoc.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptTienDuKhachHang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
