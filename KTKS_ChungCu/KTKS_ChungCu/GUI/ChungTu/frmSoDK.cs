@@ -58,6 +58,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
                 txtHoTen_Cat_YCC5.Text = txtHoTenCT.Text;
 
                 txtGhiChu.Text = _ctchungtu.GhiChu;
+                txtSoNKTong.Text = _ctchungtu.ChungTu.SoNKTong.ToString();
                 txtSoNKDangKy.Text = _ctchungtu.SoNKDangKy.ToString();
                 txtSTT.Text = _ctchungtu.STT.ToString();
                 txtLo.Text = _ctchungtu.Lo;
@@ -192,7 +193,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
             chungtu.DiaChi = txtDiaChi.Text.Trim();
             chungtu.HoTen = txtHoTenCT.Text.Trim();
             chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
-            chungtu.SoNKTong = int.Parse(txtSoNKDangKy.Text.Trim());
+            chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
 
             CTChungTu ctchungtu = new CTChungTu();
             ctchungtu.STT = int.Parse(txtSTT.Text.Trim());

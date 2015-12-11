@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSoNKTong = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtSTT = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPhong = new System.Windows.Forms.TextBox();
@@ -88,6 +90,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtSoNKTong);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtSTT);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtPhong);
@@ -109,6 +113,23 @@
             this.groupBox2.Size = new System.Drawing.Size(1035, 87);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // txtSoNKTong
+            // 
+            this.txtSoNKTong.Location = new System.Drawing.Point(472, 49);
+            this.txtSoNKTong.Name = "txtSoNKTong";
+            this.txtSoNKTong.Size = new System.Drawing.Size(50, 25);
+            this.txtSoNKTong.TabIndex = 17;
+            this.txtSoNKTong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKTong_KeyPress_1);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(380, 52);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(86, 17);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Số NK Tổng:";
             // 
             // txtSTT
             // 
@@ -163,16 +184,16 @@
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(616, 49);
+            this.txtGhiChu.Location = new System.Drawing.Point(764, 49);
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(315, 25);
+            this.txtGhiChu.Size = new System.Drawing.Size(265, 25);
             this.txtGhiChu.TabIndex = 13;
             this.txtGhiChu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGhiChu_KeyPress);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(552, 52);
+            this.label12.Location = new System.Drawing.Point(700, 52);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(59, 17);
             this.label12.TabIndex = 12;
@@ -180,7 +201,7 @@
             // 
             // txtSoNKDangKy
             // 
-            this.txtSoNKDangKy.Location = new System.Drawing.Point(496, 49);
+            this.txtSoNKDangKy.Location = new System.Drawing.Point(644, 49);
             this.txtSoNKDangKy.Name = "txtSoNKDangKy";
             this.txtSoNKDangKy.Size = new System.Drawing.Size(50, 25);
             this.txtSoNKDangKy.TabIndex = 11;
@@ -189,7 +210,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(380, 52);
+            this.label10.Location = new System.Drawing.Point(528, 52);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(110, 17);
             this.label10.TabIndex = 10;
@@ -527,7 +548,6 @@
             this.SoNKTong.HeaderText = "Tổng NK";
             this.SoNKTong.Name = "SoNKTong";
             this.SoNKTong.ReadOnly = true;
-            this.SoNKTong.Visible = false;
             this.SoNKTong.Width = 50;
             // 
             // SoNKDangKy
@@ -640,6 +660,8 @@
         private System.Windows.Forms.Button btnShowDSCatChuyenDM;
         private System.Windows.Forms.TextBox txtSTT;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtSoNKTong;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lo;

@@ -119,6 +119,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtSTT = new System.Windows.Forms.TextBox();
             this.txtHoTenCT = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSoNKTong = new System.Windows.Forms.TextBox();
             this.groupBox4.SuspendLayout();
             this.panel_YCCat4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).BeginInit();
@@ -733,7 +735,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 169);
+            this.label5.Location = new System.Drawing.Point(8, 200);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 17);
             this.label5.TabIndex = 37;
@@ -776,7 +778,7 @@
             // 
             // txtSoNKDangKy
             // 
-            this.txtSoNKDangKy.Location = new System.Drawing.Point(124, 166);
+            this.txtSoNKDangKy.Location = new System.Drawing.Point(124, 197);
             this.txtSoNKDangKy.Name = "txtSoNKDangKy";
             this.txtSoNKDangKy.ReadOnly = true;
             this.txtSoNKDangKy.Size = new System.Drawing.Size(100, 25);
@@ -989,12 +991,31 @@
             this.txtHoTenCT.Size = new System.Drawing.Size(127, 25);
             this.txtHoTenCT.TabIndex = 63;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 169);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 17);
+            this.label6.TabIndex = 64;
+            this.label6.Text = "Số NK Tổng:";
+            // 
+            // txtSoNKTong
+            // 
+            this.txtSoNKTong.Location = new System.Drawing.Point(124, 166);
+            this.txtSoNKTong.Name = "txtSoNKTong";
+            this.txtSoNKTong.ReadOnly = true;
+            this.txtSoNKTong.Size = new System.Drawing.Size(100, 25);
+            this.txtSoNKTong.TabIndex = 65;
+            // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(903, 440);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtSoNKTong);
             this.Controls.Add(this.txtHoTenCT);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSTT);
@@ -1145,6 +1166,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSTT;
         private System.Windows.Forms.TextBox txtHoTenCT;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtSoNKTong;
 
     }
 }

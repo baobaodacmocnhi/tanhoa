@@ -101,22 +101,33 @@ namespace KTKS_ChungCu
         {
             try
             {
+                List<CTChungTu> lstCT = _cChungTu.GetDS(txtMaCT.Text.Trim());
+                if (lstCT.Count > 0)
+                {
+                    string DanhBo = "";
+                    foreach (CTChungTu item in lstCT)
+                    {
+                        DanhBo += item.DanhBo+",";
+                    }
+                    MessageBox.Show("Sổ này đã được lưu tại Danh Bộ: " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 if (_cChungTu.CheckCTChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), txtLo.Text.Trim(), txtPhong.Text.Trim()))
                 {
                     MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (txtMaCT.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
-                    //if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
+                if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
+                    if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
                         ChungTu chungtu = new ChungTu();
                         chungtu.MaCT = txtMaCT.Text.Trim();
                         chungtu.HoTen = txtHoTenCT.Text.Trim();
-                        chungtu.SoNKTong = int.Parse(txtSoNKDangKy.Text.Trim());
+                        chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                         chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                         CTChungTu ctchungtu = new CTChungTu();
-                        ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
+                        if (!string.IsNullOrEmpty(txtSTT.Text.Trim()))
+                            ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
                         ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                         ctchungtu.MaCT = txtMaCT.Text.Trim();
                         ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
@@ -170,12 +181,13 @@ namespace KTKS_ChungCu
                     //    MessageBox.Show("Sổ này đã được lưu tại Lô, Phòng trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //    return;
                     //}
-                    if (txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
+                    if (txtSoNKTong.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0"&&txtSoNKDangKy.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "0")
+                        if (int.Parse(txtSoNKTong.Text.Trim()) >= int.Parse(txtSoNKDangKy.Text.Trim()))
                     {
                         ChungTu chungtu = new ChungTu();
                         chungtu.MaCT = txtMaCT.Text.Trim();
                         chungtu.HoTen = txtHoTenCT.Text.Trim();
-                        chungtu.SoNKTong = int.Parse(txtSoNKDangKy.Text.Trim());
+                        chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                         chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
 
                         CTChungTu ctchungtu = new CTChungTu();
@@ -230,6 +242,7 @@ namespace KTKS_ChungCu
             cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["MaLCT", e.RowIndex].Value.ToString());
             txtMaCT.Text = dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString();
             txtHoTenCT.Text = dgvKhachHangChungCu["HoTen", e.RowIndex].Value.ToString();
+            txtSoNKTong.Text = dgvKhachHangChungCu["SoNKTong", e.RowIndex].Value.ToString();
             txtSoNKDangKy.Text = dgvKhachHangChungCu["SoNKDangKy", e.RowIndex].Value.ToString();
             txtGhiChu.Text = dgvKhachHangChungCu["GhiChu", e.RowIndex].Value.ToString();
         }
@@ -238,7 +251,7 @@ namespace KTKS_ChungCu
         {
             if (txtMaCT_TimKiem.Text.Trim() != "")
             {
-                string expression = String.Format("MaCT = {0}", txtMaCT_TimKiem.Text.Trim());
+                string expression = String.Format("MaCT like '{0}'", txtMaCT_TimKiem.Text.Trim());
                 DSKHCC_BS.Filter = expression;
             }
             else
@@ -360,6 +373,12 @@ namespace KTKS_ChungCu
         private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
+                txtSoNKTong.Focus();
+        }
+
+        private void txtSoNKTong_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
                 txtSoNKDangKy.Focus();
         }
 
@@ -374,6 +393,8 @@ namespace KTKS_ChungCu
             if (e.KeyChar == 13)
                 txtHoTenCT.Focus();
         }
+
+        
 
 
         

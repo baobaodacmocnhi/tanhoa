@@ -122,6 +122,11 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
+        public List<CTChungTu> GetDS(string MaCT)
+        {
+            return db.CTChungTus.Where(itemCT => itemCT.MaCT == MaCT).ToList() ;
+        }
+
         public ChungTu getChungTubyID(string MaCT)
         {
             try
@@ -219,6 +224,22 @@ namespace KTKS_ChungCu.DAL
                 if (!CheckCTChungTu(ctchungtu.DanhBo, ctchungtu.MaCT))
                 {
                     ChungTu chungtuCN = getChungTubyID(ctchungtu.MaCT);
+                    ///Kiểm tra Tổng Nhân Khẩu có thay đổi hay không
+                    if (chungtuCN.SoNKTong != chungtu.SoNKTong)
+                        if (chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai >= 0)
+                        {
+                            chungtuCN.SoNKConLai = chungtu.SoNKTong - chungtuCN.SoNKTong + chungtuCN.SoNKConLai;
+                            chungtuCN.SoNKTong = chungtu.SoNKTong;
+                            chungtuCN.ModifyDate = DateTime.Now;
+                        }
+                        else
+                        {
+                            chungtuCN.SoNKConLai = chungtu.SoNKTong;
+                            chungtuCN.SoNKTong = chungtu.SoNKTong;
+                            chungtuCN.ModifyDate = DateTime.Now;
+                            //MessageBox.Show("Sổ Đăng Ký vượt định mức", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //return false;
+                        }
                     ///Kiểm tra Số Nhân Khẩu còn có thể cấp
                     if (chungtuCN.SoNKConLai >= ctchungtu.SoNKDangKy)
                     {
