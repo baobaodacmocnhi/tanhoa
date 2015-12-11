@@ -49,6 +49,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.NoiDung,
                                     itemCTKTXM.NgayDongTien,
                                     itemCTKTXM.SoTien,
                                 };
@@ -315,6 +316,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy=itemUser.HoTen,
+                                    itemCTKTXM.NoiDung,
                                     itemCTKTXM.NgayDongTien,
                                     itemCTKTXM.SoTien,
                                 };
@@ -565,6 +567,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.NoiDung,
                                     itemCTKTXM.NgayDongTien,
                                     itemCTKTXM.SoTien,
                                 };
@@ -1263,6 +1266,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.NoiDung,
                                     itemCTKTXM.NgayDongTien,
                                     itemCTKTXM.SoTien,
                                 };
@@ -1962,6 +1966,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     itemCTKTXM.DiaChi,
                                     itemCTKTXM.NoiDungKiemTra,
                                     CreateBy = itemUser.HoTen,
+                                    itemCTKTXM.NoiDung,
                                     itemCTKTXM.NgayDongTien,
                                     itemCTKTXM.SoTien,
                                 };
