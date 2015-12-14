@@ -61,14 +61,6 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvKhachHangChungCu = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtMaCT_TimKiem = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnShowDSCatChuyenDM = new System.Windows.Forms.Button();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +74,15 @@
             this.ThoiHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtMaCT_TimKiem = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnShowDSCatChuyenDM = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHangChungCu)).BeginInit();
@@ -389,96 +390,6 @@
             this.dgvKhachHangChungCu.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvKhachHangChungCu_CellMouseDoubleClick);
             this.dgvKhachHangChungCu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKhachHangChungTu_RowPostPaint);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 688);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1360, 22);
-            this.statusStrip1.TabIndex = 19;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripStatusLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(475, 17);
-            this.toolStripStatusLabel1.Text = "Bản quyền(2014) thuộc Công ty TNHH MTV Cấp Nước Tân Hòa. Được P.CNTT phát triển";
-            // 
-            // txtMaCT_TimKiem
-            // 
-            this.txtMaCT_TimKiem.Location = new System.Drawing.Point(929, 67);
-            this.txtMaCT_TimKiem.Name = "txtMaCT_TimKiem";
-            this.txtMaCT_TimKiem.Size = new System.Drawing.Size(100, 25);
-            this.txtMaCT_TimKiem.TabIndex = 6;
-            this.txtMaCT_TimKiem.TextChanged += new System.EventHandler(this.txtMaCT_TimKiem_TextChanged);
-            this.txtMaCT_TimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_TimKiem_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(926, 47);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 17);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Số Chứng Từ Tìm Kiếm";
-            // 
-            // btnIn
-            // 
-            this.btnIn.Image = global::KTKS_ChungCu.Properties.Resources.print_24x24;
-            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(1225, 80);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(123, 35);
-            this.btnIn.TabIndex = 8;
-            this.btnIn.Text = "In Danh Sách";
-            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Image = global::KTKS_ChungCu.Properties.Resources.pencil_24x24;
-            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(1169, 150);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(66, 35);
-            this.btnSua.TabIndex = 3;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Image = global::KTKS_ChungCu.Properties.Resources.add_24x24;
-            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(1053, 150);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(76, 35);
-            this.btnThem.TabIndex = 2;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // btnShowDSCatChuyenDM
-            // 
-            this.btnShowDSCatChuyenDM.Image = global::KTKS_ChungCu.Properties.Resources.print_24x24;
-            this.btnShowDSCatChuyenDM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnShowDSCatChuyenDM.Location = new System.Drawing.Point(1185, 38);
-            this.btnShowDSCatChuyenDM.Margin = new System.Windows.Forms.Padding(4);
-            this.btnShowDSCatChuyenDM.Name = "btnShowDSCatChuyenDM";
-            this.btnShowDSCatChuyenDM.Size = new System.Drawing.Size(163, 35);
-            this.btnShowDSCatChuyenDM.TabIndex = 7;
-            this.btnShowDSCatChuyenDM.Text = "DS Cắt Chuyển ĐM";
-            this.btnShowDSCatChuyenDM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnShowDSCatChuyenDM.UseVisualStyleBackColor = true;
-            this.btnShowDSCatChuyenDM.Click += new System.EventHandler(this.btnShowDSCatChuyenDM_Click);
-            // 
             // STT
             // 
             this.STT.DataPropertyName = "STT";
@@ -586,12 +497,117 @@
             this.GhiChu.ReadOnly = true;
             this.GhiChu.Width = 300;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 688);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1360, 22);
+            this.statusStrip1.TabIndex = 19;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripStatusLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(475, 17);
+            this.toolStripStatusLabel1.Text = "Bản quyền(2014) thuộc Công ty TNHH MTV Cấp Nước Tân Hòa. Được P.CNTT phát triển";
+            // 
+            // txtMaCT_TimKiem
+            // 
+            this.txtMaCT_TimKiem.Location = new System.Drawing.Point(929, 67);
+            this.txtMaCT_TimKiem.Name = "txtMaCT_TimKiem";
+            this.txtMaCT_TimKiem.Size = new System.Drawing.Size(100, 25);
+            this.txtMaCT_TimKiem.TabIndex = 6;
+            this.txtMaCT_TimKiem.TextChanged += new System.EventHandler(this.txtMaCT_TimKiem_TextChanged);
+            this.txtMaCT_TimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_TimKiem_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(926, 47);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(150, 17);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Số Chứng Từ Tìm Kiếm";
+            // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::KTKS_ChungCu.Properties.Resources.print_24x24;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(1225, 80);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(123, 35);
+            this.btnIn.TabIndex = 8;
+            this.btnIn.Text = "In Danh Sách";
+            this.btnIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Image = global::KTKS_ChungCu.Properties.Resources.pencil_24x24;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(1169, 150);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(66, 35);
+            this.btnSua.TabIndex = 3;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Image = global::KTKS_ChungCu.Properties.Resources.add_24x24;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(1053, 150);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(76, 35);
+            this.btnThem.TabIndex = 2;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnShowDSCatChuyenDM
+            // 
+            this.btnShowDSCatChuyenDM.Image = global::KTKS_ChungCu.Properties.Resources.print_24x24;
+            this.btnShowDSCatChuyenDM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnShowDSCatChuyenDM.Location = new System.Drawing.Point(1185, 38);
+            this.btnShowDSCatChuyenDM.Margin = new System.Windows.Forms.Padding(4);
+            this.btnShowDSCatChuyenDM.Name = "btnShowDSCatChuyenDM";
+            this.btnShowDSCatChuyenDM.Size = new System.Drawing.Size(163, 35);
+            this.btnShowDSCatChuyenDM.TabIndex = 7;
+            this.btnShowDSCatChuyenDM.Text = "DS Cắt Chuyển ĐM";
+            this.btnShowDSCatChuyenDM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnShowDSCatChuyenDM.UseVisualStyleBackColor = true;
+            this.btnShowDSCatChuyenDM.Click += new System.EventHandler(this.btnShowDSCatChuyenDM_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::KTKS_ChungCu.Properties.Resources.delete_24x24;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(1282, 149);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(66, 35);
+            this.btnXoa.TabIndex = 20;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 710);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnShowDSCatChuyenDM);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtMaCT_TimKiem);
@@ -675,6 +691,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ThoiHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayHetHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
 

@@ -1100,6 +1100,26 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
+        public bool XoaChungTu(string DanhBo, string MaCT)
+        {
+            try
+            {
+                ChungTu chungtuCN = getChungTubyID(MaCT);
+                CTChungTu ctchungtuCN = getCTChungTubyID(DanhBo,MaCT);
+
+                chungtuCN.SoNKConLai += ctchungtuCN.SoNKDangKy;
+                db.CTChungTus.DeleteOnSubmit(ctchungtuCN);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new dbChungCuDataContext();
+                return false;
+            }
+        }
+
         #region LichSuChungTu
 
         public bool ThemLichSuChungTu(LichSuChungTu lichsuchungtu)

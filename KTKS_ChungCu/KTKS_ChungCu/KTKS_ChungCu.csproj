@@ -31,7 +31,7 @@
     <PublisherName>P.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>34</ApplicationRevision>
+    <ApplicationRevision>36</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -390,6 +390,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Office building.ico" />
+    <None Include="Resources\delete 24x24.png" />
     <None Include="Resources\save 24x24.png" />
   </ItemGroup>
   <ItemGroup />
