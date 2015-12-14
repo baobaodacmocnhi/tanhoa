@@ -70,6 +70,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmSoDK_Load(object sender, EventArgs e)
         {
+            if (CTaiKhoan.RoleDCBD_CapNhat)
+            {
+                btnThem.Enabled = true;
+                btnSua.Enabled = true;
+            }
+            else
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+            }
             dgvDSDanhBo.AutoGenerateColumns = false;
             dgvDSDanhBo.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDanhBo.Font, FontStyle.Bold);
             try
