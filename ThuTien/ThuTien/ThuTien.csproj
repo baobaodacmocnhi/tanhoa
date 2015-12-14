@@ -113,6 +113,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\ChuyenKhoan\rptChuyenTienHoaDon.cs">
+      <DependentUpon>rptChuyenTienHoaDon.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BaoCao\ChuyenKhoan\rptDeNghiThanhToan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDeNghiThanhToan.rpt</DependentUpon>
+    </Compile>
     <Compile Include="BaoCao\ChuyenKhoan\rptDSDichVuThu.cs">
       <DependentUpon>rptDSDichVuThu.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -873,6 +884,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptChuyenTienHoaDon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptChuyenTienHoaDon.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptDeNghiThanhToan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDeNghiThanhToan.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ChuyenKhoan\rptDSDichVuThu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSDichVuThu.cs</LastGenOutput>
