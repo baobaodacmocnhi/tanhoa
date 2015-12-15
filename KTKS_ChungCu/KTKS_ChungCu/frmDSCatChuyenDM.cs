@@ -321,6 +321,7 @@ namespace KTKS_ChungCu
                     dr["GhiChu"] = dgvDSCatChuyenDM["CT_CatNK_DanhBo", i].Value.ToString();
                 dr["Lo"] = dgvDSCatChuyenDM["Lo", i].Value.ToString();
                 dr["Phong"] = dgvDSCatChuyenDM["Phong", i].Value.ToString();
+                dr["ChiNhanhCat"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSCatChuyenDM["CT_CatNK_MaCN", i].Value.ToString()));
 
                 dsBaoCao.Tables["DSChungTu"].Rows.Add(dr);
             }
@@ -328,6 +329,15 @@ namespace KTKS_ChungCu
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void dgvDSCatChuyenDM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSCatChuyenDM.Columns[e.ColumnIndex].Name == "CT_CatNK_MaCN")
+                if (dgvDSCatChuyenDM["CT_CatNK_MaCN", e.RowIndex].Value.ToString() != "")
+                    e.Value = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSCatChuyenDM["CT_CatNK_MaCN", e.RowIndex].Value.ToString()));
+                else
+                    e.Value = _cChiNhanh.getTenChiNhanhbyID(1);
         }
 
 
