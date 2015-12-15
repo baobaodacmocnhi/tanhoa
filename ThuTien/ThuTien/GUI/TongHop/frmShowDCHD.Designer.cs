@@ -71,12 +71,16 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtSoHoaDonMoi = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtSoHoaDonMoi);
             this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.txtTieuThu_Start);
             this.groupBox3.Controls.Add(this.txtTongCong_End);
@@ -101,7 +105,7 @@
             this.groupBox3.Controls.Add(this.txtTieuThu_BD);
             this.groupBox3.Location = new System.Drawing.Point(12, 107);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(507, 135);
+            this.groupBox3.Size = new System.Drawing.Size(507, 150);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh";
@@ -110,7 +114,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Location = new System.Drawing.Point(72, 27);
+            this.label12.Location = new System.Drawing.Point(72, 44);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 15);
             this.label12.TabIndex = 0;
@@ -120,7 +124,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 52);
+            this.label11.Location = new System.Drawing.Point(13, 69);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 5;
@@ -128,7 +132,7 @@
             // 
             // txtTieuThu_Start
             // 
-            this.txtTieuThu_Start.Location = new System.Drawing.Point(71, 49);
+            this.txtTieuThu_Start.Location = new System.Drawing.Point(71, 66);
             this.txtTieuThu_Start.Name = "txtTieuThu_Start";
             this.txtTieuThu_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTieuThu_Start.Size = new System.Drawing.Size(80, 20);
@@ -138,7 +142,7 @@
             // 
             // txtTongCong_End
             // 
-            this.txtTongCong_End.Location = new System.Drawing.Point(411, 101);
+            this.txtTongCong_End.Location = new System.Drawing.Point(411, 118);
             this.txtTongCong_End.Name = "txtTongCong_End";
             this.txtTongCong_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTongCong_End.Size = new System.Drawing.Size(80, 20);
@@ -147,7 +151,7 @@
             // 
             // txtTienNuoc_Start
             // 
-            this.txtTienNuoc_Start.Location = new System.Drawing.Point(157, 49);
+            this.txtTienNuoc_Start.Location = new System.Drawing.Point(157, 66);
             this.txtTienNuoc_Start.Name = "txtTienNuoc_Start";
             this.txtTienNuoc_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTienNuoc_Start.Size = new System.Drawing.Size(80, 20);
@@ -156,7 +160,7 @@
             // 
             // txtPhiBVMT_End
             // 
-            this.txtPhiBVMT_End.Location = new System.Drawing.Point(328, 101);
+            this.txtPhiBVMT_End.Location = new System.Drawing.Point(328, 118);
             this.txtPhiBVMT_End.Name = "txtPhiBVMT_End";
             this.txtPhiBVMT_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPhiBVMT_End.Size = new System.Drawing.Size(77, 20);
@@ -165,7 +169,7 @@
             // 
             // txtThueGTGT_Start
             // 
-            this.txtThueGTGT_Start.Location = new System.Drawing.Point(243, 49);
+            this.txtThueGTGT_Start.Location = new System.Drawing.Point(243, 66);
             this.txtThueGTGT_Start.Name = "txtThueGTGT_Start";
             this.txtThueGTGT_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtThueGTGT_Start.Size = new System.Drawing.Size(79, 20);
@@ -174,7 +178,7 @@
             // 
             // txtThueGTGT_End
             // 
-            this.txtThueGTGT_End.Location = new System.Drawing.Point(243, 101);
+            this.txtThueGTGT_End.Location = new System.Drawing.Point(243, 118);
             this.txtThueGTGT_End.Name = "txtThueGTGT_End";
             this.txtThueGTGT_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtThueGTGT_End.Size = new System.Drawing.Size(79, 20);
@@ -183,7 +187,7 @@
             // 
             // txtPhiBVMT_Start
             // 
-            this.txtPhiBVMT_Start.Location = new System.Drawing.Point(328, 49);
+            this.txtPhiBVMT_Start.Location = new System.Drawing.Point(328, 66);
             this.txtPhiBVMT_Start.Name = "txtPhiBVMT_Start";
             this.txtPhiBVMT_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPhiBVMT_Start.Size = new System.Drawing.Size(77, 20);
@@ -192,7 +196,7 @@
             // 
             // txtTienNuoc_End
             // 
-            this.txtTienNuoc_End.Location = new System.Drawing.Point(157, 101);
+            this.txtTienNuoc_End.Location = new System.Drawing.Point(157, 118);
             this.txtTienNuoc_End.Name = "txtTienNuoc_End";
             this.txtTienNuoc_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTienNuoc_End.Size = new System.Drawing.Size(80, 20);
@@ -203,7 +207,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Location = new System.Drawing.Point(157, 27);
+            this.label13.Location = new System.Drawing.Point(157, 44);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(80, 15);
             this.label13.TabIndex = 1;
@@ -211,7 +215,7 @@
             // 
             // txtTieuThu_End
             // 
-            this.txtTieuThu_End.Location = new System.Drawing.Point(71, 101);
+            this.txtTieuThu_End.Location = new System.Drawing.Point(71, 118);
             this.txtTieuThu_End.Name = "txtTieuThu_End";
             this.txtTieuThu_End.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTieuThu_End.Size = new System.Drawing.Size(80, 20);
@@ -223,7 +227,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label14.Location = new System.Drawing.Point(243, 27);
+            this.label14.Location = new System.Drawing.Point(243, 44);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(79, 15);
             this.label14.TabIndex = 2;
@@ -232,7 +236,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(13, 104);
+            this.label18.Location = new System.Drawing.Point(13, 121);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(50, 13);
             this.label18.TabIndex = 17;
@@ -242,7 +246,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label15.Location = new System.Drawing.Point(328, 27);
+            this.label15.Location = new System.Drawing.Point(328, 44);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(77, 15);
             this.label15.TabIndex = 3;
@@ -251,7 +255,7 @@
             // txtTongCong_BD
             // 
             this.txtTongCong_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtTongCong_BD.Location = new System.Drawing.Point(411, 75);
+            this.txtTongCong_BD.Location = new System.Drawing.Point(411, 92);
             this.txtTongCong_BD.Name = "txtTongCong_BD";
             this.txtTongCong_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTongCong_BD.Size = new System.Drawing.Size(80, 20);
@@ -260,7 +264,7 @@
             // 
             // txtTongCong_Start
             // 
-            this.txtTongCong_Start.Location = new System.Drawing.Point(411, 49);
+            this.txtTongCong_Start.Location = new System.Drawing.Point(411, 66);
             this.txtTongCong_Start.Name = "txtTongCong_Start";
             this.txtTongCong_Start.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTongCong_Start.Size = new System.Drawing.Size(80, 20);
@@ -270,7 +274,7 @@
             // txtPhiBVMT_BD
             // 
             this.txtPhiBVMT_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtPhiBVMT_BD.Location = new System.Drawing.Point(328, 75);
+            this.txtPhiBVMT_BD.Location = new System.Drawing.Point(328, 92);
             this.txtPhiBVMT_BD.Name = "txtPhiBVMT_BD";
             this.txtPhiBVMT_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPhiBVMT_BD.Size = new System.Drawing.Size(77, 20);
@@ -281,7 +285,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label16.Location = new System.Drawing.Point(411, 27);
+            this.label16.Location = new System.Drawing.Point(411, 44);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(80, 15);
             this.label16.TabIndex = 4;
@@ -290,7 +294,7 @@
             // txtThueGTGT_BD
             // 
             this.txtThueGTGT_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtThueGTGT_BD.Location = new System.Drawing.Point(243, 75);
+            this.txtThueGTGT_BD.Location = new System.Drawing.Point(243, 92);
             this.txtThueGTGT_BD.Name = "txtThueGTGT_BD";
             this.txtThueGTGT_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtThueGTGT_BD.Size = new System.Drawing.Size(79, 20);
@@ -309,7 +313,7 @@
             // txtTienNuoc_BD
             // 
             this.txtTienNuoc_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtTienNuoc_BD.Location = new System.Drawing.Point(157, 75);
+            this.txtTienNuoc_BD.Location = new System.Drawing.Point(157, 92);
             this.txtTienNuoc_BD.Name = "txtTienNuoc_BD";
             this.txtTienNuoc_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTienNuoc_BD.Size = new System.Drawing.Size(80, 20);
@@ -319,7 +323,7 @@
             // txtTieuThu_BD
             // 
             this.txtTieuThu_BD.ForeColor = System.Drawing.Color.Red;
-            this.txtTieuThu_BD.Location = new System.Drawing.Point(71, 75);
+            this.txtTieuThu_BD.Location = new System.Drawing.Point(71, 92);
             this.txtTieuThu_BD.Name = "txtTieuThu_BD";
             this.txtTieuThu_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTieuThu_BD.Size = new System.Drawing.Size(80, 20);
@@ -428,7 +432,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(444, 248);
+            this.btnSua.Location = new System.Drawing.Point(525, 223);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 13;
@@ -491,11 +495,27 @@
             this.textBox5.TabIndex = 27;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // txtSoHoaDonMoi
+            // 
+            this.txtSoHoaDonMoi.Location = new System.Drawing.Point(243, 15);
+            this.txtSoHoaDonMoi.Name = "txtSoHoaDonMoi";
+            this.txtSoHoaDonMoi.Size = new System.Drawing.Size(100, 20);
+            this.txtSoHoaDonMoi.TabIndex = 30;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(148, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Số Hóa Đơn Mới:";
+            // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 284);
+            this.ClientSize = new System.Drawing.Size(609, 265);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox2);
@@ -574,5 +594,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtSoHoaDonMoi;
+        private System.Windows.Forms.Label label8;
     }
 }

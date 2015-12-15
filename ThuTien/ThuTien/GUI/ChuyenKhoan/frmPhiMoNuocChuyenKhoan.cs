@@ -130,8 +130,8 @@ namespace ThuTien.GUI.ChuyenKhoan
             DateTime NgayBK=new DateTime();
             DateTime.TryParse(dgvPhiMoNuoc.SelectedRows[0].Cells["NgayBK_PMN"].Value.ToString(), out NgayBK);
             dr["NgayBK"] = NgayBK.ToString("dd/MM/yyyy");
-            dr["SoTien"] = dgvPhiMoNuoc.SelectedRows[0].Cells["SoTien_PMN"].Value.ToString();
-            dr["TongCong"] = dgvPhiMoNuoc.SelectedRows[0].Cells["TongCong_PMN"].Value.ToString();
+            dr["SoTien"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(dgvPhiMoNuoc.SelectedRows[0].Cells["SoTien_PMN"].Value.ToString()));
+            dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",int.Parse( dgvPhiMoNuoc.SelectedRows[0].Cells["TongCong_PMN"].Value.ToString()));
             ds.Tables["PhiMoNuoc"].Rows.Add(dr);
 
             rptChuyenPhiMoNuoc rpt = new rptChuyenPhiMoNuoc();

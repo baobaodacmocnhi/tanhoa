@@ -15,6 +15,7 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.Quay;
 using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.GUI.BaoCao;
+using ThuTien.GUI.TimKiem;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -117,9 +118,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 //if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 //{
-                    TT_TienDu tiendu = _cTienDu.Get(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString());
-                    tiendu.DienThoai = e.FormattedValue.ToString();
-                    _cTienDu.Sua(tiendu);
+                TT_TienDu tiendu = _cTienDu.Get(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString());
+                tiendu.DienThoai = e.FormattedValue.ToString();
+                _cTienDu.Sua(tiendu);
                 //}
                 //else
                 //    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -447,5 +448,53 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.get_Range(c1d, c2d).NumberFormat = "#,##0";
         }
 
+        private int _searchIndex = -1;
+        private string _searchNoiDung = "";
+
+        private void GetNoiDungfrmTimKiem(string NoiDung)
+        {
+            if (_searchNoiDung != NoiDung)
+                _searchIndex = -1;
+
+            for (int i = 0; i < dgvTienDu.Rows.Count; i++)
+            {
+                if (_searchNoiDung != NoiDung)
+                    _searchNoiDung = NoiDung;
+
+                _searchIndex = (_searchIndex + 1) % dgvTienDu.Rows.Count;
+                DataGridViewRow row = dgvTienDu.Rows[_searchIndex];
+                if (row.Cells["DanhBo_TienDu"].Value == null)
+                {
+                    continue;
+                }
+                if (row.Cells["DanhBo_TienDu"].Value.ToString() == NoiDung)
+                {
+                    dgvTienDu.CurrentCell = row.Cells["DanhBo_TienDu"];
+                    dgvTienDu.Rows[_searchIndex].Selected = true;
+                    return;
+                }
+            }
+        }
+
+        private void frmTienDu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                frmTimKiemForm frm = new frmTimKiemForm();
+                bool flag = false;
+                foreach (var item in this.OwnedForms)
+                    if (item.Name == frm.Name)
+                    {
+                        item.Activate();
+                        flag = true;
+                    }
+                if (flag == false)
+                {
+                    frm.MyGetNoiDung = new frmTimKiemForm.GetNoiDung(GetNoiDungfrmTimKiem);
+                    frm.Owner = this;
+                    frm.Show();
+                }
+            }
+        }
     }
 }

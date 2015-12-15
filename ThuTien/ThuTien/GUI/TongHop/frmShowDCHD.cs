@@ -159,6 +159,15 @@ namespace ThuTien.GUI.TongHop
                     ///đã có điều chỉnh
                     if (_dchd != null)
                     {
+                        ///sửa số hóa đơn
+                        if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
+                        {
+                            _dchd.SoHoaDon = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                            _dchd.HOADON.SoHoaDonCu = _dchd.HOADON.SOHOADON;
+                            _dchd.HOADON.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                            _cHoaDon.Sua(_dchd.HOADON);
+                        }
+
                         if (_ctdchd.DCBD.ToXuLy)
                         {
                             _dchd.PHIEU_DC = (int)_ctdchd.DCBD.MaDonTXL;
@@ -219,6 +228,14 @@ namespace ThuTien.GUI.TongHop
                             {
                                 MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
+                            }
+                            
+                            ///sửa số hóa đơn
+                            if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
+                            {
+                                _hoadon.SoHoaDonCu = _hoadon.SOHOADON;
+                                _hoadon.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                                _cHoaDon.Sua(_hoadon);
                             }
 
                             DIEUCHINH_HD dchd = new DIEUCHINH_HD();

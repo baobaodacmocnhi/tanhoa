@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>391</ApplicationRevision>
+    <ApplicationRevision>394</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -123,6 +123,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptDeNghiThanhToan.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BaoCao\ChuyenKhoan\rptDSDichVuThu.cs">
       <DependentUpon>rptDSDichVuThu.rpt</DependentUpon>
