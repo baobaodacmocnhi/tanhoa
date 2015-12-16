@@ -34,13 +34,16 @@ namespace ThuTien.GUI.TongHop
         private void frmShowDCHD_Load(object sender, EventArgs e)
         {
             Location = new Point(100, 100);
+            _hoadon = _cHoaDon.Get(_SoHoaDon);
             _dchd = _cDCHD.GetBySoHoaDon(_SoHoaDon);
             ///đã có điều chỉnh
             if (_dchd != null)
             {
-                txtSoHoaDon.Text = _dchd.HOADON.SOHOADON;
-                txtSoPhatHanh.Text = _dchd.HOADON.SOPHATHANH.ToString();
-                txtKy.Text = _dchd.HOADON.KY + "/" + _dchd.HOADON.NAM;
+                //HOADON hoadon = _cHoaDon.Get(_dchd.SoHoaDon);
+
+                txtSoHoaDon.Text = _hoadon.SOHOADON;
+                txtSoPhatHanh.Text = _hoadon.SOPHATHANH.ToString();
+                txtKy.Text = _hoadon.KY + "/" + _hoadon.NAM;
 
                 textBox1.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TIEUTHU_BD.Value);
                 textBox2.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.GIABAN_BD.Value);
@@ -63,6 +66,7 @@ namespace ThuTien.GUI.TongHop
                 if (_dchd.TangGiam != null)
                 {
                     txtSoPhieu.Text = _dchd.SoPhieu.ToString().Insert(_dchd.SoPhieu.ToString().Length - 2, "-");
+                    _ctdchd = _cDCHD.GetCTDCHDBySoPhieu(_dchd.SoPhieu.Value);
                     ///
                     lbTangGiam.Text = _dchd.TangGiam;
                     txtTienNuoc_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.GIABAN_BD.Value);
@@ -163,9 +167,9 @@ namespace ThuTien.GUI.TongHop
                         if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
                         {
                             _dchd.SoHoaDon = txtSoHoaDonMoi.Text.Trim().ToUpper();
-                            _dchd.HOADON.SoHoaDonCu = _dchd.HOADON.SOHOADON;
-                            _dchd.HOADON.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
-                            _cHoaDon.Sua(_dchd.HOADON);
+                            _hoadon.SoHoaDonCu = txtSoHoaDon.Text.Trim();
+                            _hoadon.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                            _cHoaDon.Sua(_hoadon);
                         }
 
                         if (_ctdchd.DCBD.ToXuLy)
@@ -206,11 +210,11 @@ namespace ThuTien.GUI.TongHop
                             ///lưu lịch sử
                             LuuLichSuDC(_dchd);
 
-                            _dchd.HOADON.GIABAN = _ctdchd.TienNuoc_End.Value;
-                            _dchd.HOADON.THUE = _ctdchd.ThueGTGT_End.Value;
-                            _dchd.HOADON.PHI = _ctdchd.PhiBVMT_End.Value;
-                            _dchd.HOADON.TONGCONG = _ctdchd.TongCong_End.Value;
-                            if (_cHoaDon.Sua(_dchd.HOADON))
+                            _hoadon.GIABAN = _ctdchd.TienNuoc_End.Value;
+                            _hoadon.THUE = _ctdchd.ThueGTGT_End.Value;
+                            _hoadon.PHI = _ctdchd.PhiBVMT_End.Value;
+                            _hoadon.TONGCONG = _ctdchd.TongCong_End.Value;
+                            if (_cHoaDon.Sua(_hoadon))
                             {
                                 _cDCHD.CommitTransaction();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -233,7 +237,7 @@ namespace ThuTien.GUI.TongHop
                             ///sửa số hóa đơn
                             if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
                             {
-                                _hoadon.SoHoaDonCu = _hoadon.SOHOADON;
+                                _hoadon.SoHoaDonCu = txtSoHoaDon.Text.Trim();
                                 _hoadon.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
                                 _cHoaDon.Sua(_hoadon);
                             }
@@ -287,11 +291,11 @@ namespace ThuTien.GUI.TongHop
                                 ///lưu lịch sử
                                 LuuLichSuDC(dchd);
 
-                                dchd.HOADON.GIABAN = _ctdchd.TienNuoc_End.Value;
-                                dchd.HOADON.THUE = _ctdchd.ThueGTGT_End.Value;
-                                dchd.HOADON.PHI = _ctdchd.PhiBVMT_End.Value;
-                                dchd.HOADON.TONGCONG = _ctdchd.TongCong_End.Value;
-                                if (_cHoaDon.Sua(dchd.HOADON))
+                                _hoadon.GIABAN = _ctdchd.TienNuoc_End.Value;
+                                _hoadon.THUE = _ctdchd.ThueGTGT_End.Value;
+                                _hoadon.PHI = _ctdchd.PhiBVMT_End.Value;
+                                _hoadon.TONGCONG = _ctdchd.TongCong_End.Value;
+                                if (_cHoaDon.Sua(_hoadon))
                                 {
                                     _cDCHD.CommitTransaction();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -302,7 +306,6 @@ namespace ThuTien.GUI.TongHop
                         }
                         else
                             MessageBox.Show("Hóa Đơn này đã Rút Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    _cDCHD.CommitTransaction();
                 }
                 catch (Exception ex)
                 {

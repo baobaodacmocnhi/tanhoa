@@ -530,9 +530,9 @@
             // cmbTo
             // 
             this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(44, 12);
+            this.cmbTo.Location = new System.Drawing.Point(112, 12);
             this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(118, 21);
+            this.cmbTo.Size = new System.Drawing.Size(50, 21);
             this.cmbTo.TabIndex = 40;
             // 
             // tabControl
@@ -697,7 +697,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 16);
+            this.label4.Location = new System.Drawing.Point(83, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 39;

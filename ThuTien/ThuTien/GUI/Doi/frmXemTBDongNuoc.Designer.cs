@@ -48,6 +48,7 @@
             this.DanhBo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.To = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,7 +70,6 @@
             this.TongThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -235,6 +235,14 @@
             this.DiaChi.VisibleIndex = 3;
             this.DiaChi.Width = 180;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Tổng Cộng";
+            this.gridColumn1.FieldName = "TongCong";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            // 
             // MLT
             // 
             this.MLT.Caption = "Mã Lộ Trình";
@@ -288,16 +296,16 @@
             // cmbTo
             // 
             this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(85, 12);
+            this.cmbTo.Location = new System.Drawing.Point(153, 11);
             this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(118, 21);
+            this.cmbTo.Size = new System.Drawing.Size(50, 21);
             this.cmbTo.TabIndex = 42;
             this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 16);
+            this.label4.Location = new System.Drawing.Point(124, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 41;
@@ -450,14 +458,6 @@
             this.TongTon.Name = "TongTon";
             this.TongTon.ReadOnly = true;
             this.TongTon.Width = 50;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Tổng Cộng";
-            this.gridColumn1.FieldName = "TongCong";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 4;
             // 
             // frmXemTBDongNuocDoi
             // 

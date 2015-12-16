@@ -15,6 +15,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.LinQ;
 using ThuTien.DAL.Doi;
 using ThuTien.BaoCao.DongNuoc;
+using ThuTien.DAL.TongHop;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -25,6 +26,7 @@ namespace ThuTien.GUI.TongHop
         CKTKS_DonKH _cKinhDoanh = new CKTKS_DonKH();
         CHoaDon _cHoaDon = new CHoaDon();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        CCongVan _cCongVan = new CCongVan();
 
         public frmCongVan()
         {
@@ -194,13 +196,20 @@ namespace ThuTien.GUI.TongHop
         {
             if (e.KeyChar == 13 && txtDanhBo_KD.Text.Trim().Replace(" ", "").Length == 11)
             {
-                dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo_KD.Text.Trim().Replace(" ", ""));
+                DataTable dt = new DataTable();
+                dt.Merge(_cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo_KD.Text.Trim().Replace(" ", "")));
+                dt.Merge(_cCongVan.GetDS(txtDanhBo_KD.Text.Trim().Replace(" ", "")));
+                dgvKinhDoanh.DataSource = dt;
+
+                cmbLoaiVanBan_KD_Them.SelectedIndex = -1;
+                txtNoiDung_KD.Text = "";
+                txtGhiChu_KD.Text = "";
             }
         }
 
         private void dgvKinhDoanh_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "ThuTien_Nhan" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvKinhDoanh[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "ThuTien_Nhan" &&dgvKinhDoanh["db",e.RowIndex].Value.ToString()=="Kinh Doanh"&& bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvKinhDoanh[e.ColumnIndex, e.RowIndex].Value.ToString()))
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
@@ -218,7 +227,10 @@ namespace ThuTien.GUI.TongHop
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
+                    if (dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Kinh Doanh")
                     _cKinhDoanh.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set ThuTien_GhiChu=N'" + e.FormattedValue.ToString().Trim() + "' where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
+                    if (dgvKinhDoanh["db", e.RowIndex].Value.ToString() == "Thu Tiền")
+                        _cCongVan.LinQ_ExecuteNonQuery("update " + dgvKinhDoanh["Table", e.RowIndex].Value.ToString() + " set GhiChu=N'" + e.FormattedValue.ToString().Trim() + "' where " + dgvKinhDoanh["Column", e.RowIndex].Value.ToString() + "=" + dgvKinhDoanh["Ma", e.RowIndex].Value.ToString());
                     //dgvKinhDoanh.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo_KD.Text.Trim().Replace(" ", ""));
                 }
                 else
@@ -228,7 +240,7 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvKinhDoanh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "Ma" && e.Value != null)
+            if (dgvKinhDoanh.Columns[e.ColumnIndex].Name == "Ma" && e.Value != null && e.Value.ToString().Length>2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -257,13 +269,19 @@ namespace ThuTien.GUI.TongHop
                 ///chọn tất cả văn bản
                 if (cmbLoaiVanBan_KD.SelectedIndex == 0)
                 {
-                    dgvDSCongVan.DataSource = _cKinhDoanh.GetDSP_KinhDoanh("", dateTu_KD.Value, dateDen_KD.Value);
+                    DataTable dt = new DataTable();
+                    dt.Merge(_cKinhDoanh.GetDSP_KinhDoanh("", dateTu_KD.Value, dateDen_KD.Value));
+                    dt.Merge(_cCongVan.GetDS("", dateTu_KD.Value, dateDen_KD.Value));
+                    dgvDSCongVan.DataSource = dt;
                 }
                 else
                     ///chọn 1 văn bản cụ thể
                     if (cmbLoaiVanBan_KD.SelectedIndex > 0)
                     {
-                        dgvDSCongVan.DataSource = _cKinhDoanh.GetDSP_KinhDoanh(cmbLoaiVanBan_KD.SelectedItem.ToString(), dateTu_KD.Value, dateDen_KD.Value);
+                        DataTable dt = new DataTable();
+                        dt.Merge(_cKinhDoanh.GetDSP_KinhDoanh(cmbLoaiVanBan_KD.SelectedItem.ToString(), dateTu_KD.Value, dateDen_KD.Value));
+                        dt.Merge(_cCongVan.GetDS(cmbLoaiVanBan_KD.SelectedItem.ToString(), dateTu_KD.Value, dateDen_KD.Value));
+                        dgvDSCongVan.DataSource = dt;
                     }
 
                 foreach (DataGridViewRow item in dgvDSCongVan.Rows)
@@ -331,6 +349,36 @@ namespace ThuTien.GUI.TongHop
             if (dgvKQMoNuoc.Columns[e.ColumnIndex].Name == "SoPhieuMN" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
+            }
+        }
+
+        private void btnThem_KD_Click(object sender, EventArgs e)
+        {
+            if (txtDanhBo_KD.Text.Trim().Replace(" ","").Length==11&&cmbLoaiVanBan_KD_Them.SelectedIndex != -1)
+            {
+                if (_cCongVan.CheckExist(cmbLoaiVanBan_KD_Them.SelectedItem.ToString(), txtDanhBo_KD.Text.Trim().Replace(" ", ""), DateTime.Now))
+                {
+                    MessageBox.Show("Đã Thêm Rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                TT_CongVan congvan = new TT_CongVan();
+                congvan.Loai = cmbLoaiVanBan_KD_Them.SelectedItem.ToString();
+                congvan.DanhBo = txtDanhBo_KD.Text.Trim().Replace(" ","");
+                congvan.NoiDung = txtNoiDung_KD.Text.Trim();
+                congvan.GhiChu = txtGhiChu_KD.Text.Trim();
+
+                if (_cCongVan.Them(congvan))
+                {
+                    DataTable dt = new DataTable();
+                    dt.Merge(_cKinhDoanh.GetDSP_KinhDoanh(txtDanhBo_KD.Text.Trim().Replace(" ", "")));
+                    dt.Merge(_cCongVan.GetDS(txtDanhBo_KD.Text.Trim().Replace(" ", "")));
+                    dgvKinhDoanh.DataSource = dt;
+
+                    cmbLoaiVanBan_KD_Them.SelectedIndex = -1;
+                    txtNoiDung_KD.Text = "";
+                    txtGhiChu_KD.Text = "";
+                }
             }
         }
 

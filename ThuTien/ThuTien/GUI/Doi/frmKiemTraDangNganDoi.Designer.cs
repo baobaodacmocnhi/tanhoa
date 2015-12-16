@@ -137,7 +137,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 15);
+            this.label1.Location = new System.Drawing.Point(181, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 0;
@@ -146,9 +146,9 @@
             // cmbTo
             // 
             this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(139, 12);
+            this.cmbTo.Location = new System.Drawing.Point(210, 11);
             this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(121, 21);
+            this.cmbTo.Size = new System.Drawing.Size(50, 21);
             this.cmbTo.TabIndex = 1;
             // 
             // label2

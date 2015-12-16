@@ -46,9 +46,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.lbTo = new System.Windows.Forms.Label();
+            this.lbNhanVien = new System.Windows.Forms.Label();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTTKH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,9 +105,9 @@
             this.dgvTTKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MLT,
             this.DanhBo,
+            this.DiaChi,
             this.DienThoai,
-            this.HoTen,
-            this.DiaChi});
+            this.HoTen});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -125,7 +129,7 @@
             this.dgvTTKH.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTTKH.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTTKH.Size = new System.Drawing.Size(393, 547);
+            this.dgvTTKH.Size = new System.Drawing.Size(593, 547);
             this.dgvTTKH.TabIndex = 32;
             this.dgvTTKH.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTTKH_CellFormatting);
             this.dgvTTKH.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTTKH_RowPostPaint);
@@ -164,7 +168,7 @@
             "18",
             "19",
             "20"});
-            this.cmbDenDot.Location = new System.Drawing.Point(404, 38);
+            this.cmbDenDot.Location = new System.Drawing.Point(586, 38);
             this.cmbDenDot.Name = "cmbDenDot";
             this.cmbDenDot.Size = new System.Drawing.Size(50, 21);
             this.cmbDenDot.TabIndex = 67;
@@ -172,7 +176,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(371, 41);
+            this.label4.Location = new System.Drawing.Point(553, 41);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 66;
@@ -202,7 +206,7 @@
             "18",
             "19",
             "20"});
-            this.cmbDot.Location = new System.Drawing.Point(404, 11);
+            this.cmbDot.Location = new System.Drawing.Point(586, 11);
             this.cmbDot.Name = "cmbDot";
             this.cmbDot.Size = new System.Drawing.Size(50, 21);
             this.cmbDot.TabIndex = 65;
@@ -210,7 +214,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(371, 14);
+            this.label3.Location = new System.Drawing.Point(553, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 64;
@@ -218,7 +222,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(460, 9);
+            this.btnXem.Location = new System.Drawing.Point(642, 9);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 68;
@@ -250,6 +254,14 @@
             this.DanhBo.Name = "DanhBo";
             this.DanhBo.ReadOnly = true;
             // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Width = 200;
+            // 
             // DienThoai
             // 
             this.DienThoai.DataPropertyName = "DienThoai";
@@ -266,19 +278,49 @@
             this.HoTen.ReadOnly = true;
             this.HoTen.Visible = false;
             // 
-            // DiaChi
+            // cmbTo
             // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "DiaChi";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Visible = false;
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(497, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(50, 21);
+            this.cmbTo.TabIndex = 71;
+            // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.Location = new System.Drawing.Point(468, 16);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(23, 13);
+            this.lbTo.TabIndex = 70;
+            this.lbTo.Text = "Tổ:";
+            // 
+            // lbNhanVien
+            // 
+            this.lbNhanVien.AutoSize = true;
+            this.lbNhanVien.Location = new System.Drawing.Point(363, 41);
+            this.lbNhanVien.Name = "lbNhanVien";
+            this.lbNhanVien.Size = new System.Drawing.Size(60, 13);
+            this.lbNhanVien.TabIndex = 72;
+            this.lbNhanVien.Text = "Nhân Viên:";
+            // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(429, 38);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.TabIndex = 73;
             // 
             // frmThongTinKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 627);
+            this.ClientSize = new System.Drawing.Size(1031, 627);
+            this.Controls.Add(this.lbNhanVien);
+            this.Controls.Add(this.cmbNhanVien);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.lbTo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.cmbDenDot);
@@ -316,8 +358,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label lbTo;
+        private System.Windows.Forms.Label lbNhanVien;
+        private System.Windows.Forms.ComboBox cmbNhanVien;
     }
 }
