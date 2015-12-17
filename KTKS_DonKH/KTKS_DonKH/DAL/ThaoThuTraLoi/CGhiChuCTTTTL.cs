@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.HeThong;
+using System.Windows.Forms;
+using System.Data;
+
+namespace KTKS_DonKH.DAL.ThaoThuTraLoi
+{
+    class CGhiChuCTTTTL:CDAL
+    {
+        public bool Them(GhiChuCTTTTL ghichu)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    if (db.GhiChuCTTTTLs.Count() > 0)
+                    {
+                        ghichu.ID = db.GhiChuCTTTTLs.Max(item => item.ID) + 1;
+                    }
+                    else
+                        ghichu.ID = 1;
+                    ghichu.CreateDate = DateTime.Now;
+                    ghichu.CreateBy = CTaiKhoan.MaUser;
+                    db.GhiChuCTTTTLs.InsertOnSubmit(ghichu);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Thêm TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.GhiChuCTTTTLs);
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                db = new DB_KTKS_DonKHDataContext();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Sua(GhiChuCTTTTL ghichu)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    ghichu.ModifyDate = DateTime.Now;
+                    ghichu.ModifyBy = CTaiKhoan.MaUser;
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.GhiChuCTTTTLs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public bool Xoa(GhiChuCTTTTL ghichu)
+        {
+            try
+            {
+                if (CTaiKhoan.RoleTTTL_CapNhat)
+                {
+                    db.GhiChuCTTTTLs.DeleteOnSubmit(ghichu);
+                    db.SubmitChanges();
+                    //MessageBox.Show("Thành công Sửa TTTL", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản này không có quyền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.GhiChuCTTTTLs);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                db = new DB_KTKS_DonKHDataContext();
+                return false;
+            }
+        }
+
+        public GhiChuCTTTTL Get(int ID)
+        {
+            return db.GhiChuCTTTTLs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        public DataTable GetDS(decimal MaCTTTTL)
+        {
+            return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(db.GhiChuCTTTTLs.Where(item => item.MaCTTTTL == MaCTTTTL).ToList());
+        }
+    }
+}

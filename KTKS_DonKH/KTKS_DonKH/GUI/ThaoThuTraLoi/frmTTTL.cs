@@ -26,11 +26,13 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
         DonKH _donkh = null;
         DonTXL _dontxl = null;
         TTKhachHang _ttkhachhang = null;
+        CTTTTL _cttttl = null;
         CCHDB _cCHDB = new CCHDB();
         CDonKH _cDonKH = new CDonKH();
         CDonTXL _cDonTXL = new CDonTXL();
         CKTXM _cKTXM = new CKTXM();
         CTTTL _cTTTL = new CTTTL();
+        CGhiChuCTTTTL _cGhiChuCTTTTL = new CGhiChuCTTTTL();
         CPhuongQuan _cPhuongQuan = new CPhuongQuan();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CVeViecTTTL _cVeViecTTTL = new CVeViecTTTL();
@@ -98,6 +100,9 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
 
         private void frmTTTL_Load(object sender, EventArgs e)
         {
+            dgvLichSuTTTL.AutoGenerateColumns = false;
+            dgvGhiChu.AutoGenerateColumns = false;
+
             cmbVeViec.DataSource = _cVeViecTTTL.LoadDS();
             cmbVeViec.DisplayMember = "TenVV";
             cmbVeViec.SelectedIndex = -1;
@@ -486,5 +491,88 @@ namespace KTKS_DonKH.GUI.ThaoThuTraLoi
             }
         }
 
+        private void txtMaCTTTTL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                _cttttl = _cTTTL.getCTTTTLbyID(decimal.Parse(txtMaCTTTTL.Text.Trim().Replace("-", "")));
+                if (_cttttl != null)
+                {
+                     
+                    if (_cttttl.TTTL.ToXuLy)
+                        txtMaDon.Text = "TXL" + _cttttl.TTTL.MaDonTXL.Value.ToString().Insert(_cttttl.TTTL.MaDonTXL.Value.ToString().Length - 2, "-");
+                    else
+                        txtMaDon.Text = _cttttl.TTTL.MaDon.Value.ToString().Insert(_cttttl.TTTL.MaDon.Value.ToString().Length - 2, "-");
+                    txtDanhBo.Text = _cttttl.DanhBo;
+                    txtHopDong.Text = _cttttl.HopDong;
+                    txtLoTrinh.Text = _cttttl.LoTrinh;
+                    txtHoTen.Text = _cttttl.HoTen;
+                    txtDiaChi.Text = _cttttl.DiaChi;
+                    txtGiaBieu.Text = _cttttl.GiaBieu;
+                    txtDinhMuc.Text = _cttttl.DinhMuc;
+                    txtVeViec.Text = _cttttl.VeViec;
+                    txtNoiDung.Text = _cttttl.NoiDung;
+                    txtNoiNhan.Text = _cttttl.NoiNhan;
+                    if (_cttttl.GiamNuocXaBo)
+                        chkGiamNuocXaBo.Checked = true;
+                    if (_cttttl.KiemDinhDHN_Dung)
+                        chkKiemDinhDHN_Dung.Checked = true;
+                    if (_cttttl.KiemDinhDHN_Sai)
+                        chkKiemDinhDHN_Sai.Checked = true;
+                    if (_cttttl.ThayDHN)
+                        chkThayDHN.Checked = true;
+                    if (_cttttl.DieuChinh_GB_DM)
+                        chkDieuChinh_GB_DM.Checked = true;
+                    if (_cttttl.ThuMoi)
+                        chkThuMoi.Checked = true;
+                    if (_cttttl.ThuBao)
+                        chkThuBao.Checked = true;
+
+                    dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(_cttttl.MaCTTTTL);
+                }
+            }
+        }
+
+        private void btnCapNhatGhiChu_Click(object sender, EventArgs e)
+        {
+            if (_cttttl != null)
+            {
+                GhiChuCTTTTL ghichu = new GhiChuCTTTTL();
+                ghichu.NgayGhiChu = dateGhiChu.Value;
+                ghichu.GhiChu = txtGhiChu.Text.Trim();
+                ghichu.MaCTTTTL=_cttttl.MaCTTTTL;
+                if (_cGhiChuCTTTTL.Them(ghichu))
+                    dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(_cttttl.MaCTTTTL);
+            }
+        }
+
+        private void dgvGhiChu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvGhiChu.CurrentCell = dgvGhiChu.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void dgvGhiChu_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && (_donkh != null))
+            {
+                contextMenuStrip1.Show(dgvGhiChu, new Point(e.X, e.Y));
+            }
+
+        }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (_cGhiChuCTTTTL.Xoa(_cGhiChuCTTTTL.Get(int.Parse(dgvGhiChu.CurrentRow.Cells["ID"].Value.ToString()))))
+                {
+                    dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(_cttttl.MaCTTTTL);
+                }
+            }
+        }
     }
 }

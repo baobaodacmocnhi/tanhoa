@@ -3147,7 +3147,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
@@ -3224,7 +3224,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu2 = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu2 = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN2;
@@ -3299,7 +3299,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu3 = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu3 = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN3;
@@ -3374,7 +3374,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu4 = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu4 = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN4;
@@ -3449,7 +3449,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu5 = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu5 = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN5;

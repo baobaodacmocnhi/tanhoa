@@ -1423,6 +1423,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
                             CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                            dr["SoPhieu"] = "CT "+ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                             dr["HoTen"] = ctctdb.HoTen;
                             dr["DiaChi"] = ctctdb.DiaChi;
 
@@ -1434,6 +1435,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
 
                             CTCTDB ctctdb = _cCHDB.getCTCTDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                            dr["SoPhieu"] = "CT " + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                             dr["HoTen"] = ctctdb.HoTen;
                             dr["DiaChi"] = ctctdb.DiaChi;
 
@@ -1458,6 +1460,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
                             CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                            dr["SoPhieu"] = "CH " + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                             dr["HoTen"] = ctchdb.HoTen;
                             dr["DiaChi"] = ctchdb.DiaChi;
 
@@ -1469,6 +1472,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
 
                             CTCHDB ctchdb = _cCHDB.getCTCHDBbyID(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
+                            dr["SoPhieu"] = "CH " + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                             dr["HoTen"] = ctchdb.HoTen;
                             dr["DiaChi"] = ctchdb.DiaChi;
 
