@@ -30,7 +30,7 @@ namespace KTKS_ChungCu.DAL
             return decimal.Parse(stt + nam);
         }
 
-        public DataTable LoadDSChungTu(string DanhBo)
+        public DataTable LoadDSChungTu_DB(string DanhBo)
         {
             try
             {
@@ -38,6 +38,142 @@ namespace KTKS_ChungCu.DAL
                             join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
                             //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                             where itemCTCT.DanhBo == DanhBo
+                            orderby itemCTCT.STT ascending
+                            select new
+                            {
+                                itemCTCT.STT,
+                                itemCTCT.DanhBo,
+                                itemCTCT.Lo,
+                                itemCTCT.Phong,
+                                itemCT.MaLCT,
+                                //itemLCT.TenLCT,
+                                itemCTCT.MaCT,
+                                itemCT.HoTen,
+                                itemCT.SoNKTong,
+                                itemCTCT.SoNKDangKy,
+                                itemCTCT.NgayHetHan,
+                                itemCTCT.ThoiHan,
+                                itemCTCT.GhiChu,
+                            };
+                return Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSChungTu_CT(string MaCT)
+        {
+            try
+            {
+                var query = from itemCTCT in db.CTChungTus
+                            join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
+                            //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                            where itemCTCT.MaCT == MaCT
+                            orderby itemCTCT.STT ascending
+                            select new
+                            {
+                                itemCTCT.STT,
+                                itemCTCT.DanhBo,
+                                itemCTCT.Lo,
+                                itemCTCT.Phong,
+                                itemCT.MaLCT,
+                                //itemLCT.TenLCT,
+                                itemCTCT.MaCT,
+                                itemCT.HoTen,
+                                itemCT.SoNKTong,
+                                itemCTCT.SoNKDangKy,
+                                itemCTCT.NgayHetHan,
+                                itemCTCT.ThoiHan,
+                                itemCTCT.GhiChu,
+                            };
+                return Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSChungTu_HoTen(string HoTen)
+        {
+            try
+            {
+                var query = from itemCTCT in db.CTChungTus
+                            join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
+                            //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                            where itemCTCT.ChungTu.HoTen == HoTen
+                            orderby itemCTCT.STT ascending
+                            select new
+                            {
+                                itemCTCT.STT,
+                                itemCTCT.DanhBo,
+                                itemCTCT.Lo,
+                                itemCTCT.Phong,
+                                itemCT.MaLCT,
+                                //itemLCT.TenLCT,
+                                itemCTCT.MaCT,
+                                itemCT.HoTen,
+                                itemCT.SoNKTong,
+                                itemCTCT.SoNKDangKy,
+                                itemCTCT.NgayHetHan,
+                                itemCTCT.ThoiHan,
+                                itemCTCT.GhiChu,
+                            };
+                return Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSChungTu_Lo(string Lo)
+        {
+            try
+            {
+                var query = from itemCTCT in db.CTChungTus
+                            join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
+                            //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                            where itemCTCT.Lo == Lo
+                            orderby itemCTCT.STT ascending
+                            select new
+                            {
+                                itemCTCT.STT,
+                                itemCTCT.DanhBo,
+                                itemCTCT.Lo,
+                                itemCTCT.Phong,
+                                itemCT.MaLCT,
+                                //itemLCT.TenLCT,
+                                itemCTCT.MaCT,
+                                itemCT.HoTen,
+                                itemCT.SoNKTong,
+                                itemCTCT.SoNKDangKy,
+                                itemCTCT.NgayHetHan,
+                                itemCTCT.ThoiHan,
+                                itemCTCT.GhiChu,
+                            };
+                return Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSChungTu_Phong(string Phong)
+        {
+            try
+            {
+                var query = from itemCTCT in db.CTChungTus
+                            join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
+                            //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                            where itemCTCT.Phong == Phong
                             orderby itemCTCT.STT ascending
                             select new
                             {
@@ -735,7 +871,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN;
@@ -812,7 +948,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu2 = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu2 = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN2;
@@ -887,7 +1023,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu3 = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu3 = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN3;
@@ -962,7 +1098,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu4 = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu4 = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN4;
@@ -1037,7 +1173,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
                         ///
                         lichsuchungtu.SoPhieu = getMaxNextSoPhieuLSCT();
-                        ctchungtuCN.SoPhieu5 = lichsuchungtu.SoPhieu;
+                        //ctchungtuCN.SoPhieu5 = lichsuchungtu.SoPhieu;
                         lichsuchungtu.YeuCauCat = true;
 
                         lichsuchungtu.CatNK_MaCN = ctchungtu.CatNK_MaCN5;

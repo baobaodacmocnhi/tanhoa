@@ -64,23 +64,23 @@ namespace KTKS_ChungCu.GUI.ChungTu
                 txtLo.Text = _ctchungtu.Lo;
                 txtPhong.Text = _ctchungtu.Phong;
 
-                cmbChiNhanh_YCC1.DataSource = _cChiNhanh.LoadDSChiNhanh(true, "Tân Hòa");
+                cmbChiNhanh_YCC1.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
                 cmbChiNhanh_YCC1.DisplayMember = "TenCN";
                 cmbChiNhanh_YCC1.ValueMember = "MaCN";
 
-                cmbChiNhanh_YCC2.DataSource = _cChiNhanh.LoadDSChiNhanh(true, "Tân Hòa");
+                cmbChiNhanh_YCC2.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
                 cmbChiNhanh_YCC2.DisplayMember = "TenCN";
                 cmbChiNhanh_YCC2.ValueMember = "MaCN";
 
-                cmbChiNhanh_YCC3.DataSource = _cChiNhanh.LoadDSChiNhanh(true, "Tân Hòa");
+                cmbChiNhanh_YCC3.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
                 cmbChiNhanh_YCC3.DisplayMember = "TenCN";
                 cmbChiNhanh_YCC3.ValueMember = "MaCN";
 
-                cmbChiNhanh_YCC4.DataSource = _cChiNhanh.LoadDSChiNhanh(true, "Tân Hòa");
+                cmbChiNhanh_YCC4.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
                 cmbChiNhanh_YCC4.DisplayMember = "TenCN";
                 cmbChiNhanh_YCC4.ValueMember = "MaCN";
 
-                cmbChiNhanh_YCC5.DataSource = _cChiNhanh.LoadDSChiNhanh(true, "Tân Hòa");
+                cmbChiNhanh_YCC5.DataSource = _cChiNhanh.LoadDSChiNhanh(true);
                 cmbChiNhanh_YCC5.DisplayMember = "TenCN";
                 cmbChiNhanh_YCC5.ValueMember = "MaCN";
 
@@ -520,6 +520,11 @@ namespace KTKS_ChungCu.GUI.ChungTu
         private void txtSoNKCat_YCC3_KeyPress(object sender, KeyPressEventArgs e)
         {
             //if (e.KeyChar == 13)
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+
         }
 
 

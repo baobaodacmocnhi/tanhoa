@@ -85,7 +85,7 @@ namespace KTKS_ChungCu
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
                     dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                     txtLo.Focus();
                 }
@@ -147,7 +147,7 @@ namespace KTKS_ChungCu
                         if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu))
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                            DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             //txtSTT.Text = "";
                             //txtLo.Text = "";
@@ -212,7 +212,7 @@ namespace KTKS_ChungCu
                             if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
                             {
                                 MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
                                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                                 txtSTT.Text = "";
                                 txtLo.Text = "";
@@ -250,16 +250,16 @@ namespace KTKS_ChungCu
             txtGhiChu.Text = dgvKhachHangChungCu["GhiChu", e.RowIndex].Value.ToString();
         }
 
-        private void txtMaCT_TimKiem_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txtMaCT_TimKiem.Text.Trim() != "")
-            {
-                string expression = String.Format("MaCT like '{0}'", txtMaCT_TimKiem.Text.Trim());
-                DSKHCC_BS.Filter = expression;
-            }
-            else
-                DSKHCC_BS.RemoveFilter();
-        }
+        //private void txtMaCT_TimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (txtNoiDungTimKiem.Text.Trim() != "")
+        //    {
+        //        string expression = String.Format("MaCT like '{0}'", txtNoiDungTimKiem.Text.Trim());
+        //        DSKHCC_BS.Filter = expression;
+        //    }
+        //    else
+        //        DSKHCC_BS.RemoveFilter();
+        //}
 
         private void txtSoNKTong_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -322,13 +322,9 @@ namespace KTKS_ChungCu
 
         }
 
-        private void txtMaCT_TimKiem_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void cmbLoaiCT_SelectedIndexChanged(object sender, EventArgs e)
         {
+
         }
 
         private void dgvKhachHangChungCu_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -408,7 +404,7 @@ namespace KTKS_ChungCu
                         if (_cChungTu.XoaChungTu(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim()))
                         {
                             MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu(_ttkhachhang.DanhBo);
+                            DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             txtSTT.Text = "";
                             txtLo.Text = "";
@@ -427,6 +423,25 @@ namespace KTKS_ChungCu
                         MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Số Chứng Từ":
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_CT(txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Họ Tên":
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_HoTen(txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Lô":
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Lo(txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Phòng":
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
+                    break;
             }
         }
 

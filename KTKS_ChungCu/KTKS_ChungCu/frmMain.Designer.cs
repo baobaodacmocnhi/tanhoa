@@ -76,13 +76,15 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtMaCT_TimKiem = new System.Windows.Forms.TextBox();
+            this.txtNoiDungTimKiem = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnShowDSCatChuyenDM = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cmbTimTheo = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHangChungCu)).BeginInit();
@@ -515,23 +517,22 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(475, 17);
             this.toolStripStatusLabel1.Text = "Bản quyền(2014) thuộc Công ty TNHH MTV Cấp Nước Tân Hòa. Được P.CNTT phát triển";
             // 
-            // txtMaCT_TimKiem
+            // txtNoiDungTimKiem
             // 
-            this.txtMaCT_TimKiem.Location = new System.Drawing.Point(929, 67);
-            this.txtMaCT_TimKiem.Name = "txtMaCT_TimKiem";
-            this.txtMaCT_TimKiem.Size = new System.Drawing.Size(100, 25);
-            this.txtMaCT_TimKiem.TabIndex = 6;
-            this.txtMaCT_TimKiem.TextChanged += new System.EventHandler(this.txtMaCT_TimKiem_TextChanged);
-            this.txtMaCT_TimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_TimKiem_KeyPress);
+            this.txtNoiDungTimKiem.Location = new System.Drawing.Point(1003, 51);
+            this.txtNoiDungTimKiem.Name = "txtNoiDungTimKiem";
+            this.txtNoiDungTimKiem.Size = new System.Drawing.Size(126, 25);
+            this.txtNoiDungTimKiem.TabIndex = 6;
+            this.txtNoiDungTimKiem.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(926, 47);
+            this.label5.Location = new System.Drawing.Point(929, 54);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 17);
+            this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Số Chứng Từ Tìm Kiếm";
+            this.label5.Text = "Nội Dung:";
             // 
             // btnIn
             // 
@@ -601,16 +602,40 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(929, 23);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 17);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "Tìm Theo:";
+            // 
+            // cmbTimTheo
+            // 
+            this.cmbTimTheo.FormattingEnabled = true;
+            this.cmbTimTheo.Items.AddRange(new object[] {
+            "Số Chứng Từ",
+            "Họ Tên",
+            "Lô",
+            "Phòng"});
+            this.cmbTimTheo.Location = new System.Drawing.Point(1003, 20);
+            this.cmbTimTheo.Name = "cmbTimTheo";
+            this.cmbTimTheo.Size = new System.Drawing.Size(126, 25);
+            this.cmbTimTheo.TabIndex = 22;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 710);
+            this.Controls.Add(this.cmbTimTheo);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnShowDSCatChuyenDM);
             this.Controls.Add(this.btnIn);
-            this.Controls.Add(this.txtMaCT_TimKiem);
+            this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -656,7 +681,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.TextBox txtMaCT_TimKiem;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtLo;
         private System.Windows.Forms.Label label13;
@@ -692,6 +717,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayHetHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cmbTimTheo;
     }
 }
 
