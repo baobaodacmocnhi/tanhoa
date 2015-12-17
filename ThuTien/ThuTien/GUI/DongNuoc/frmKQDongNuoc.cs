@@ -117,6 +117,11 @@ namespace ThuTien.GUI.DongNuoc
             {
                 if (_dongnuoc != null)
                 {
+                    if (_cDongNuoc.CheckDangNganByMaDN(_dongnuoc.MaDN))
+                    {
+                        MessageBox.Show("Hóa Đơn trong Lệnh này đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (_cDongNuoc.CheckKQDongNuocByMaDN(_dongnuoc.MaDN))
                     {
                         MessageBox.Show("Lệnh này đã nhập Kết Quả", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -150,7 +150,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     {
                         TT_PhiMoNuoc phimonuoc = _cPhiMoNuoc.Get(decimal.Parse(dgvPhiMoNuoc.SelectedRows[0].Cells["MaPMN"].Value.ToString()));
                         if (_cPhiMoNuoc.Xoa(phimonuoc))
+                        {
+                            btnXem.PerformClick();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }

@@ -68,6 +68,7 @@
             this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,7 +81,6 @@
             this.NgayDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKinhDoanh)).BeginInit();
@@ -171,6 +171,7 @@
             this.DinhMuc,
             this.Ky,
             this.SoHoaDon,
+            this.Code,
             this.TieuThu,
             this.GiaBan,
             this.ThueGTGT,
@@ -183,7 +184,6 @@
             this.NgayDN,
             this.NgayMN,
             this.NgayDoc,
-            this.Code,
             this.ChiSo});
             this.dgvHoaDon.Location = new System.Drawing.Point(1, 80);
             this.dgvHoaDon.Name = "dgvHoaDon";
@@ -424,7 +424,7 @@
             this.GiaBieu.HeaderText = "Giá Biểu";
             this.GiaBieu.Name = "GiaBieu";
             this.GiaBieu.ReadOnly = true;
-            this.GiaBieu.Width = 50;
+            this.GiaBieu.Width = 40;
             // 
             // DinhMuc
             // 
@@ -432,7 +432,7 @@
             this.DinhMuc.HeaderText = "Định Mức";
             this.DinhMuc.Name = "DinhMuc";
             this.DinhMuc.ReadOnly = true;
-            this.DinhMuc.Width = 50;
+            this.DinhMuc.Width = 40;
             // 
             // Ky
             // 
@@ -448,6 +448,14 @@
             this.SoHoaDon.HeaderText = "Số Hóa Đơn";
             this.SoHoaDon.Name = "SoHoaDon";
             this.SoHoaDon.ReadOnly = true;
+            // 
+            // Code
+            // 
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            this.Code.ReadOnly = true;
+            this.Code.Width = 30;
             // 
             // TieuThu
             // 
@@ -503,6 +511,7 @@
             this.DangNgan.HeaderText = "Đăng Ngân";
             this.DangNgan.Name = "DangNgan";
             this.DangNgan.ReadOnly = true;
+            this.DangNgan.Width = 80;
             // 
             // HanhThu
             // 
@@ -510,6 +519,7 @@
             this.HanhThu.HeaderText = "Hành Thu";
             this.HanhThu.Name = "HanhThu";
             this.HanhThu.ReadOnly = true;
+            this.HanhThu.Width = 80;
             // 
             // MaDN
             // 
@@ -542,14 +552,6 @@
             this.NgayDoc.Name = "NgayDoc";
             this.NgayDoc.ReadOnly = true;
             this.NgayDoc.Visible = false;
-            // 
-            // Code
-            // 
-            this.Code.DataPropertyName = "Code";
-            this.Code.HeaderText = "Code";
-            this.Code.Name = "Code";
-            this.Code.ReadOnly = true;
-            this.Code.Visible = false;
             // 
             // ChiSo
             // 
@@ -631,6 +633,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT;
@@ -643,7 +646,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayMN;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSo;
     }
 }

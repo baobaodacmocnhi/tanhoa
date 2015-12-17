@@ -70,6 +70,8 @@
             this.TongThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -187,6 +189,8 @@
             this.gridColumn1,
             this.MLT,
             this.To,
+            this.CreateDate,
+            this.gridColumn2,
             this.CreateBy,
             this.MaNV_DongNuoc,
             this.TinhTrang});
@@ -266,8 +270,8 @@
             this.CreateBy.FieldName = "CreateBy";
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
-            this.CreateBy.VisibleIndex = 7;
-            this.CreateBy.Width = 110;
+            this.CreateBy.VisibleIndex = 9;
+            this.CreateBy.Width = 100;
             // 
             // MaNV_DongNuoc
             // 
@@ -275,8 +279,8 @@
             this.MaNV_DongNuoc.FieldName = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
-            this.MaNV_DongNuoc.VisibleIndex = 8;
-            this.MaNV_DongNuoc.Width = 110;
+            this.MaNV_DongNuoc.VisibleIndex = 10;
+            this.MaNV_DongNuoc.Width = 100;
             // 
             // TinhTrang
             // 
@@ -284,8 +288,8 @@
             this.TinhTrang.FieldName = "TinhTrang";
             this.TinhTrang.Name = "TinhTrang";
             this.TinhTrang.Visible = true;
-            this.TinhTrang.VisibleIndex = 9;
-            this.TinhTrang.Width = 70;
+            this.TinhTrang.VisibleIndex = 11;
+            this.TinhTrang.Width = 60;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -459,6 +463,22 @@
             this.TongTon.ReadOnly = true;
             this.TongTon.Width = 50;
             // 
+            // CreateDate
+            // 
+            this.CreateDate.Caption = "Ngày Lập";
+            this.CreateDate.FieldName = "CreateDate";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Visible = true;
+            this.CreateDate.VisibleIndex = 7;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Ngày Giải Trách";
+            this.gridColumn2.FieldName = "NgayGiaiTrach";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 8;
+            // 
             // frmXemTBDongNuocDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,5 +547,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTon;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

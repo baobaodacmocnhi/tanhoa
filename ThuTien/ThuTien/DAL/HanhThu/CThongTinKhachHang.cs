@@ -55,37 +55,71 @@ namespace ThuTien.DAL.HanhThu
             return _db.TT_ThongTinKhachHangs.SingleOrDefault(item => item.DanhBo == DanhBo);
         }
 
-        public DataTable GetDS()
+        public DataTable GetDS(string Loai)
         {
-            string sql = "select * from"
-                    + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
-                    + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND) hd"
-                    + " left join"
-                    + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
-                    + " order by hd.MLT asc";
+            string sql = "";
+            if (Loai == "TG")
+                sql = "select * from"
+                       + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                       + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                       + " where GB<=20) hd"
+                       + " left join"
+                       + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                       + " order by hd.MLT asc";
+            else
+                if (Loai == "CQ")
+                    sql = "select * from"
+                           + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                           + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                           + " where GB>20) hd"
+                           + " left join"
+                           + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                           + " order by hd.MLT asc";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-        public DataTable GetDS(int MaNV, int Dot)
+        public DataTable GetDS(string Loai, int MaNV, int Dot)
         {
-            string sql = "select * from"
-                    + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
-                    + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
-                    + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + ") hd"
-                    + " left join"
-                    + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
-                    + " order by hd.MLT asc";
+            string sql = "";
+            if (Loai == "TG")
+                sql = "select * from"
+                       + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                       + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                       + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + " and GB<=20) hd"
+                       + " left join"
+                       + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                       + " order by hd.MLT asc";
+            else
+                if (Loai == "CQ")
+                    sql = "select * from"
+                           + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                           + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                           + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + " and GB>20) hd"
+                           + " left join"
+                           + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                           + " order by hd.MLT asc";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-        public DataTable GetDS(int MaNV, int FromDot, int ToDot)
+        public DataTable GetDS(string Loai, int MaNV, int FromDot, int ToDot)
         {
-            string sql = "select * from"
+            string sql = "";
+            if (Loai == "TG")
+                sql = "select * from"
+                       + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                       + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                       + " where DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV + " and GB<=20) hd"
+                       + " left join"
+                       + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                       + " order by hd.MLT asc";
+            else
+                if (Loai == "CQ")
+                    sql = "select * from"
                     + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
                     + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
-                    + " where DOT>="+FromDot+" and DOT<="+ToDot+" and MaNV_HanhThu="+MaNV+") hd"
+                    + " where DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV + " and GB>20) hd"
                     + " left join"
                     + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
                     + " order by hd.MLT asc";

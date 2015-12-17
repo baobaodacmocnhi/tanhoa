@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using ThuTien.DAL.HanhThu;
 using ThuTien.LinQ;
 using ThuTien.DAL.QuanTri;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.NhanVien;
+using ThuTien.GUI.BaoCao;
 
 namespace ThuTien.GUI.HanhThu
 {
@@ -16,6 +19,9 @@ namespace ThuTien.GUI.HanhThu
     {
         string _mnu = "mnuThongTinKhachHang";
         CThongTinKhachHang _cTTKH = new CThongTinKhachHang();
+        CTo _cTo = new CTo();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
+        bool _flagFirstLoad = true;
 
         public frmThongTinKhachHang()
         {
@@ -25,15 +31,68 @@ namespace ThuTien.GUI.HanhThu
         private void frmThongTinKhachHang_Load(object sender, EventArgs e)
         {
             dgvTTKH.AutoGenerateColumns = false;
+
+            if (CNguoiDung.Doi)
+            {
+                lbTo.Visible = true;
+                cmbTo.Visible = true;
+                lbNhanVien.Visible = true;
+                cmbNhanVien.Visible = true;
+
+                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                //TT_To to = new TT_To();
+                //to.MaTo = 0;
+                //to.TenTo = "Tất Cả";
+                //lstTo.Insert(0, to);
+                cmbTo.DataSource = lstTo;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            else
+                if (CNguoiDung.ToTruong)
+                {
+                    lbNhanVien.Visible = true;
+                    cmbNhanVien.Visible = true;
+
+                    List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                    //TT_NguoiDung nguoidung = new TT_NguoiDung();
+                    //nguoidung.MaND = 0;
+                    //nguoidung.HoTen = "Tất Cả";
+                    //lstND.Insert(0, nguoidung);
+                    cmbNhanVien.DataSource = lstND;
+                    cmbNhanVien.DisplayMember = "HoTen";
+                    cmbNhanVien.ValueMember = "MaND";
+                }
+                else
+                {
+                    List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                    //TT_NguoiDung nguoidung = new TT_NguoiDung();
+                    //nguoidung.MaND = 0;
+                    //nguoidung.HoTen = "Tất Cả";
+                    //lstND.Insert(0, nguoidung);
+                    cmbNhanVien.DataSource = lstND;
+                    cmbNhanVien.DisplayMember = "HoTen";
+                    cmbNhanVien.ValueMember = "MaND";
+
+                    cmbNhanVien.SelectedValue = CNguoiDung.MaND;
+                }
+            _flagFirstLoad = false;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            string Loai = "";
+            if (radTG.Checked)
+                Loai = "TG";
+            else
+                if (radCQ.Checked)
+                    Loai = "CQ";
+
             if (cmbDot.SelectedIndex >= 0 && cmbDenDot.SelectedIndex < 0)
-                dgvTTKH.DataSource = _cTTKH.GetDS(CNguoiDung.MaND, int.Parse(cmbDot.SelectedItem.ToString()));
+                dgvTTKH.DataSource = _cTTKH.GetDS(Loai,int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
             else
                 if (cmbDot.SelectedIndex >= 0 && cmbDenDot.SelectedIndex >= 0)
-                    dgvTTKH.DataSource = _cTTKH.GetDS(CNguoiDung.MaND, int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()));
+                    dgvTTKH.DataSource = _cTTKH.GetDS(Loai, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()));
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -89,6 +148,45 @@ namespace ThuTien.GUI.HanhThu
                     txtDienThoai.Text = ttkh.DienThoai;
                 }
             }
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_flagFirstLoad == false && cmbTo.SelectedIndex > -1)
+            {
+                List<TT_NguoiDung> lstND = _cNguoiDung.GetDSHanhThuByMaTo(int.Parse(cmbTo.SelectedValue.ToString()));
+                //TT_NguoiDung nguoidung = new TT_NguoiDung();
+                //nguoidung.MaND = 0;
+                //nguoidung.HoTen = "Tất Cả";
+                //lstND.Insert(0, nguoidung);
+                cmbNhanVien.DataSource = lstND;
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+            }
+            else
+            {
+                cmbNhanVien.DataSource = null;
+            }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvTTKH.Rows)
+            {
+                DataRow dr = ds.Tables["ThongTinKhachHang"].NewRow();
+                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                dr["HoTen"] = item.Cells["HoTen"].Value;
+                dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                dr["DienThoai"] = item.Cells["DienThoai"].Value;
+
+                ds.Tables["ThongTinKhachHang"].Rows.Add(dr);
+            }
+
+            rptThongTinKhachHang rpt = new rptThongTinKhachHang();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
     }

@@ -406,6 +406,7 @@ namespace ThuTien.GUI.Doi
                             {
                                 TT_LenhHuy lenhhuy = new TT_LenhHuy();
                                 lenhhuy.SoHoaDon = itemTon["SoHoaDon"].ToString();
+                                lenhhuy.TinhTrang = lst.SingleOrDefault(itemLst => itemLst.DanhBo == itemTon["DanhBo"].ToString()).GhiChu;
                                 _cLenhHuy.Them(lenhhuy);
                             }
                         }

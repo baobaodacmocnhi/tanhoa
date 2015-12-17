@@ -77,7 +77,11 @@ namespace ThuTien.GUI.ToTruong
 
                 string TinhTrang = "Tồn";
                 foreach (DataRow itemChild in childRows)
-                    if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
+                {
+                    DateTime NgayGiaiTrach;
+                    DateTime.TryParse(itemChild["NgayGiaiTrach"].ToString(), out NgayGiaiTrach);
+                    ///xét ngày đăng ngân để lấy tồn lùi
+                    if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()) && NgayGiaiTrach.Date <= dateDen.Value.Date)
                     {
                         TinhTrang = "Đăng Ngân";
                     }
@@ -86,6 +90,7 @@ namespace ThuTien.GUI.ToTruong
                         {
                             TinhTrang = "Đã Khóa Nước";
                         }
+                }
                 gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
             }
         }

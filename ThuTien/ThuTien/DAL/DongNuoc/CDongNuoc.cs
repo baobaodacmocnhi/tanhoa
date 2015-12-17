@@ -182,6 +182,7 @@ namespace ThuTien.DAL.DongNuoc
                                 TongCong = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
                                 itemDN.MLT,
                                 itemDN.CreateBy,
+                                NgayGiaiTrach=itemDN.TT_CTDongNuocs.FirstOrDefault().HOADON.NGAYGIAITRACH,
                                 itemDN.MaNV_DongNuoc,
                                 itemDN.CreateDate,
                                 TinhTrang = "",///Phải thêm để GridView lấy cột để edit lại sau
@@ -206,7 +207,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemCTDN.ThueGTGT,
                                 itemCTDN.PhiBVMT,
                                 itemCTDN.TongCong,
-                                itemHD.NGAYGIAITRACH,
+                                NgayGiaiTrach=itemHD.NGAYGIAITRACH,
                             };
             DataTable dtCTDongNuoc = new DataTable();
             dtCTDongNuoc = LINQToDataTable(queryCTDN);
@@ -394,6 +395,16 @@ namespace ThuTien.DAL.DongNuoc
                         };
 
             return query.Distinct().Count();
+        }
+
+        /// <summary>
+        /// Kiểm tra lệnh đóng nước của hóa đơn có được đăng ngân chưa, nếu đăng ngân rồi thì không có lập Kết Quả Đóng Nước
+        /// </summary>
+        /// <param name="MaDN"></param>
+        /// <returns></returns>
+        public bool CheckDangNganByMaDN(decimal MaDN)
+        {
+            return _db.TT_CTDongNuocs.Any(item => item.MaDN == MaDN && item.HOADON.NGAYGIAITRACH != null);
         }
 
         public bool CheckKQDongNuocByMaDN(decimal MaDN)
