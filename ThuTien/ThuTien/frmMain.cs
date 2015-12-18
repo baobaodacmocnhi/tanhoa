@@ -837,9 +837,9 @@ namespace ThuTien
 
         private void mnuTimKiemDienThoai_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen("mnuThongTinKhachHang", "Xem"))
+            if (CNguoiDung.CheckQuyen("mnuTimKiemDienThoai", "Xem"))
             {
-                frmThongTinKhachHang frm = new frmThongTinKhachHang();
+                frmTimKiemDienThoai frm = new frmTimKiemDienThoai();
                 OpenForm(frm);
             }
             else

@@ -38,6 +38,7 @@ namespace ThuTien.GUI.Doi
                         where item.CreateDate.Value.Month == dateNgayLap2.Value.Month && item.CreateDate.Value.Year == dateNgayLap2.Value.Year
                         select new
                         {
+                            item.MaHD,
                             item.Loai,
                             item.SoHoaDon,
                             Ky = item.Ky + "/" + item.Nam,
@@ -213,7 +214,7 @@ namespace ThuTien.GUI.Doi
                         //TT_TestHoaDonTon hoadon = _db.TT_TestHoaDonTons.SingleOrDefault(itemHD => itemHD.SoHoaDon == item.Cells["SoHoaDon"].Value.ToString());
                         //_db.TT_TestHoaDonTons.DeleteOnSubmit(hoadon);
                         //_db.SubmitChanges();
-                        _db.ExecuteCommand("delete TT_TestHoaDonTon where MaHD='" + item.Cells["MaHD"].Value.ToString() + "'");
+                        _db.ExecuteCommand("delete TT_TestHoaDonTon where MaHD=" + item.Cells["MaHD"].Value.ToString());
                     }
                 lstHD.Items.Clear();
                 LoadDSHoaDon();

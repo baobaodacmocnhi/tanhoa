@@ -99,7 +99,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Sửa?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if (int.Parse(txtSoTienMoi.Text.Trim()) >= 0)
+                    //if (int.Parse(txtSoTienMoi.Text.Trim()) >= 0)
                         if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienCu.Text.Trim()) * -1, "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
                             if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienMoi.Text.Trim()), "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
                             {
@@ -147,6 +147,26 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void dateBangKe_ValueChanged(object sender, EventArgs e)
         {
             txtSoTien.Text = _cBangKe.GetSoTien(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), dateBangKe.Value).ToString() ;
+        }
+
+        private void txtDanhBoSuaTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBoSuaTien.Text.Trim().Replace(" ", "").Length == 11)
+            {
+                txtSoTienCu.Text = _cTienDu.GetTienDu(txtDanhBoSuaTien.Text.Trim().Replace(" ", "")).ToString();
+            }
+        }
+
+        private void txtSoTienDieuChinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar)&&e.KeyChar!='-')
+            e.Handled = true;
+        }
+
+        private void txtSoTienDieuChinh_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSoTienDieuChinh.Text.Trim() != "-")
+                txtSoTienMoi.Text = (int.Parse(txtSoTienCu.Text.Trim()) + int.Parse(txtSoTienDieuChinh.Text.Trim())).ToString();
         }
     }
 }

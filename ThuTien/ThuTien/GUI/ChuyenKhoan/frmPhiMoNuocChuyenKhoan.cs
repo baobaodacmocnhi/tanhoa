@@ -122,17 +122,20 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dsBaoCao ds = new dsBaoCao();
 
-            DataRow dr = ds.Tables["PhiMoNuoc"].NewRow();
-            dr["SoPhieu"] = dgvPhiMoNuoc.SelectedRows[0].Cells["MaPMN"].Value.ToString().Insert(dgvPhiMoNuoc.SelectedRows[0].Cells["MaPMN"].Value.ToString().Length-2, "-");
-            dr["DanhBo"] = dgvPhiMoNuoc.SelectedRows[0].Cells["DanhBo_PMN"].Value.ToString();
-            dr["HoTen"] = dgvPhiMoNuoc.SelectedRows[0].Cells["HoTen_PMN"].Value.ToString();
-            dr["DiaChi"] = dgvPhiMoNuoc.SelectedRows[0].Cells["DiaChi_PMN"].Value.ToString();
-            DateTime NgayBK=new DateTime();
-            DateTime.TryParse(dgvPhiMoNuoc.SelectedRows[0].Cells["NgayBK_PMN"].Value.ToString(), out NgayBK);
-            dr["NgayBK"] = NgayBK.ToString("dd/MM/yyyy");
-            dr["SoTien"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(dgvPhiMoNuoc.SelectedRows[0].Cells["SoTien_PMN"].Value.ToString()));
-            dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",int.Parse( dgvPhiMoNuoc.SelectedRows[0].Cells["TongCong_PMN"].Value.ToString()));
-            ds.Tables["PhiMoNuoc"].Rows.Add(dr);
+            foreach (DataGridViewRow item in dgvPhiMoNuoc.SelectedRows)
+            {
+                DataRow dr = ds.Tables["PhiMoNuoc"].NewRow();
+                dr["SoPhieu"] = item.Cells["MaPMN"].Value.ToString().Insert(item.Cells["MaPMN"].Value.ToString().Length - 2, "-");
+                dr["DanhBo"] = item.Cells["DanhBo_PMN"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["HoTen"] = item.Cells["HoTen_PMN"].Value.ToString();
+                dr["DiaChi"] = item.Cells["DiaChi_PMN"].Value.ToString();
+                DateTime NgayBK = new DateTime();
+                DateTime.TryParse(item.Cells["NgayBK_PMN"].Value.ToString(), out NgayBK);
+                dr["NgayBK"] = NgayBK.ToString("dd/MM/yyyy");
+                dr["SoTien"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["SoTien_PMN"].Value.ToString()));
+                dr["TongCong"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", int.Parse(item.Cells["TongCong_PMN"].Value.ToString()));
+                ds.Tables["PhiMoNuoc"].Rows.Add(dr);
+            }
 
             rptChuyenPhiMoNuoc rpt = new rptChuyenPhiMoNuoc();
             rpt.SetDataSource(ds);

@@ -13,17 +13,17 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.NhanVien;
 using ThuTien.GUI.BaoCao;
 
-namespace ThuTien.GUI.HanhThu
+namespace ThuTien.GUI.TimKiem
 {
-    public partial class frmThongTinKhachHang : Form
+    public partial class frmTimKiemDienThoai : Form
     {
-        string _mnu = "mnuThongTinKhachHang";
+        string _mnu = "mnuTimKiemDienThoai";
         CThongTinKhachHang _cTTKH = new CThongTinKhachHang();
         CTo _cTo = new CTo();
         CNguoiDung _cNguoiDung = new CNguoiDung();
         bool _flagFirstLoad = true;
 
-        public frmThongTinKhachHang()
+        public frmTimKiemDienThoai()
         {
             InitializeComponent();
         }
@@ -175,7 +175,10 @@ namespace ThuTien.GUI.HanhThu
             foreach (DataGridViewRow item in dgvTTKH.Rows)
             {
                 DataRow dr = ds.Tables["ThongTinKhachHang"].NewRow();
+                if (item.Cells["DanhBo"].Value.ToString().Length==11)
                 dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                else
+                    MessageBox.Show(item.Cells["DanhBo"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dr["HoTen"] = item.Cells["HoTen"].Value;
                 dr["DiaChi"] = item.Cells["DiaChi"].Value;
                 dr["DienThoai"] = item.Cells["DienThoai"].Value;

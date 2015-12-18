@@ -1,6 +1,6 @@
-﻿namespace ThuTien.GUI.HanhThu
+﻿namespace ThuTien.GUI.TimKiem
 {
-    partial class frmThongTinKhachHang
+    partial class frmTimKiemDienThoai
     {
         /// <summary>
         /// Required designer variable.

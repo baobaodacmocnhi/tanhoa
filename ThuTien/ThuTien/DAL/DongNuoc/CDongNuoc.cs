@@ -357,44 +357,42 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(query.GroupBy(item => item.MaDN).Select(item => item.First()).ToList());
         }
 
-        public DataTable GetBaoCaoTongHop(int MaTo,int Nam,int Ky)
+        public DataTable GetBaoCaoTongHop(int MaTo,DateTime FromDate, DateTime ToDate)
         {
-            var query = from itemDN in _db.TT_DongNuocs
-                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
-                        join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON
-                        join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
-                        where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
-                            && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                            && itemDN.Huy == false && itemDN.CreateDate.Value.Year == Nam && itemDN.CreateDate.Value.Month == Ky
-                        select new
-                        {
-                            MaNV=itemND.MaND,
-                            itemND.HoTen,
-                            itemND.STT,
-                            itemDN.MaDN,
-                            itemDN.DanhBo,
-                            itemCTDN.SoHoaDon,
-                            itemCTDN.TongCong,
-                            itemHD.NGAYGIAITRACH,
-                        };
+            string sql = "declare @FromDate date;"
+                        + " declare @ToDate date;"
+                        + " set @FromDate='" + FromDate.ToString("yyyy-MM-dd") + "';"
+                        + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "';"
+                        + " select nd.MaND as MaNV,nd.HoTen,nd.STT,toncu.DCTonCu,toncu.HDTonCu,toncu.TCTonCu,nhan.DCNhan,nhan.HDNhan,nhan.TCNhan"
+                        + ",dangngan.DCDangNgan,dangngan.HDDangNgan,dangngan.TCDangNgan,lenhhuy.DCHuy,lenhhuy.HDHuy,lenhhuy.TCHuy from"
+                        + " (select MaND,HoTen,STT from TT_NguoiDung) nd"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCTonCu,COUNT(ID_HOADON) as HDTonCu,SUM(hd.TONGCONG) as TCTonCu"
+                        + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(dn.NgayGiao as date)<@FromDate and (hd.NGAYGIAITRACH is null or (CAST(hd.NGAYGIAITRACH as date)>@FromDate))"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) toncu on nd.MaND=toncu.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCNhan,COUNT(ID_HOADON) as HDNhan,SUM(hd.TONGCONG) as TCNhan"
+                        + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(dn.NgayGiao as date)>=@FromDate and CAST(dn.NgayGiao as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) nhan on nd.MaND=nhan.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCDangNgan,COUNT(ID_HOADON) as HDDangNgan,SUM(hd.TONGCONG) as TCDangNgan"
+                        + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(dn.NgayGiao as date)>=@FromDate and CAST(dn.NgayGiao as date)<=@ToDate and CAST(NGAYGIAITRACH as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) dangngan on nd.MaND=dangngan.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCHuy,COUNT(ID_HOADON) as HDHuy,SUM(hd.TONGCONG) as TCHuy"
+                        + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_LenhHuy lenhhuy,TT_NguoiDung nd"
+                        + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and lenhhuy.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(lenhhuy.CreateDate as date)>=@FromDate and CAST(lenhhuy.CreateDate as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) lenhhuy on nd.MaND=lenhhuy.MaND"
+                        + " order by nd.STT asc";
 
-            return LINQToDataTable(query);
-        }
-
-        public int CountBaoCaoTongHop_Huy(int MaNV_DongNuoc, int Nam, int Ky)
-        {
-            var query = from itemDN in _db.TT_DongNuocs
-                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
-                        join itemLH in _db.TT_LenhHuys on itemCTDN.SoHoaDon equals itemLH.SoHoaDon
-                        join itemHD in _db.HOADONs on itemCTDN.SoHoaDon equals itemHD.SOHOADON
-                        join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
-                        where itemDN.Huy == false && itemDN.MaNV_DongNuoc == MaNV_DongNuoc && itemDN.CreateDate.Value.Year == Nam && itemDN.CreateDate.Value.Month == Ky
-                        select new
-                        {
-                            itemDN.DanhBo,
-                        };
-
-            return query.Distinct().Count();
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
         /// <summary>

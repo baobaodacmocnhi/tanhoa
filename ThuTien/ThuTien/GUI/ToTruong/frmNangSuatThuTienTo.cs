@@ -657,31 +657,25 @@ namespace ThuTien.GUI.ToTruong
                 ds.Tables["BaoCaoTongHop"].Rows.Add(drTC);
 
                 ///Thêm Đóng Nước
-                DataTable dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                DataTable dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value,dateDen.Value);
                 foreach (DataRow item in dtDongNuoc.Rows)
                 {
                     DataRow dr = ds.Tables["DSDongNuoc"].NewRow();
 
                     dr["STT"] = item["STT"];
                     dr["HanhThu"] = item["HoTen"];
-                    dr["DanhBo"] = item["DanhBo"];
-                    dr["SoHoaDon"] = item["SoHoaDon"];
-                    DIEUCHINH_HD dchd = _cDCHD.GetBySoHoaDon(item["SoHoaDon"].ToString());
-                    if (dchd != null)
-                    {
-                        //DIEUCHINH_HD dchd = _cDCHD.GetBySoHoaDon(item["SoHoaDon"].ToString());
-                        dr["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_END + dchd.TONGCONG_BD;
-                    }
-                    else
-                        dr["TongCong"] = item["TongCong"];
-                    dr["NgayGiaiTrach"] = item["NgayGiaiTrach"];
-                    dr["MaKQDN"] = _cDongNuoc.GetKQDongNuocByMaDN(decimal.Parse(item["MaDN"].ToString()));
-                    //if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
-                    //    dr["LenhHuy"] = true;
-                    //else
-                    //    dr["LenhHuy"] = false;
-
-                    dr["DCHuy"] = _cDongNuoc.CountBaoCaoTongHop_Huy(int.Parse(item["MaNV"].ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                    dr["DCTonCu"] = item["DCTonCu"];
+                    dr["HDTonCu"] = item["HDTonCu"];
+                    dr["TCTonCu"] = item["TCTonCu"];
+                    dr["DCNhan"] = item["DCNhan"];
+                    dr["HDNhan"] = item["HDNhan"];
+                    dr["TCNhan"] = item["TCNhan"];
+                    dr["DCDangNgan"] = item["DCDangNgan"];
+                    dr["HDDangNgan"] = item["HDDangNgan"];
+                    dr["TCDangNgan"] = item["TCDangNgan"];
+                    dr["DCHuy"] = item["DCHuy"];
+                    dr["HDHuy"] = item["HDHuy"];
+                    dr["TCHuy"] = item["TCHuy"];
 
                     ds.Tables["DSDongNuoc"].Rows.Add(dr);
                 }

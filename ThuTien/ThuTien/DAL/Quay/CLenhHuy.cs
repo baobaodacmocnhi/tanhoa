@@ -79,6 +79,11 @@ namespace ThuTien.DAL.Quay
             return _db.TT_LenhHuys.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
+        public bool CheckExist(string SoHoaDon,int Nam,int Ky)
+        {
+            return _db.TT_LenhHuys.Any(item => item.SoHoaDon == SoHoaDon && item.CreateDate.Value.Year == Nam && item.CreateDate.Value.Month == Ky);
+        }
+
         public TT_LenhHuy GetBySoHoaDon(string SoHoaDon)
         {
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
