@@ -245,7 +245,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
-                        if (_cBamChi.CheckCTBamChibyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(),dateBamChi.Value))
+                        if (txtDanhBo.Text.Trim() != "" && _cBamChi.CheckCTBamChibyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), dateBamChi.Value))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

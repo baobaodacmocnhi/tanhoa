@@ -276,7 +276,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                                 _cDonTXL.SuaDonTXL(_dontxl, true);
                             }
                         }
-                        if (_cKTXM.CheckCTKTXMbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
+                        if (txtDanhBo.Text.Trim()!="" &&_cKTXM.CheckCTKTXMbyMaDonDanhBo_TXL(_dontxl.MaDon, txtDanhBo.Text.Trim(), dateKTXM.Value))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Nội Dung Kiểm Tra", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

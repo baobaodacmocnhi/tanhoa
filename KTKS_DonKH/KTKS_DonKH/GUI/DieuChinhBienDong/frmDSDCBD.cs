@@ -1917,6 +1917,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["KyHD"] = ctdchd.KyHD;
                                 dr["SoHD"] = ctdchd.SoHD;
                                 ///
+                                dr["GiaBieuStart"] = ctdchd.GiaBieu;
+                                dr["GiaBieuEnd"] = ctdchd.GiaBieu_BD;
+                                dr["DinhMucStart"] = ctdchd.DinhMuc;
+                                dr["DinhMucEnd"] = ctdchd.DinhMuc_BD;
                                 dr["TieuThuStart"] = ctdchd.TieuThu;
                                 if (ctdchd.TienNuoc_Start == 0)
                                     dr["TienNuocStart"] = "0";
