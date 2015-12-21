@@ -93,9 +93,9 @@ namespace ThuTien.DAL.Quay
             if (_db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon))
             {
                 if (_db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).ChuyenKhoan)
-                    Loai = "Chuyển Khoản";
+                    Loai = "Chuyển Khoản, ngày "+_db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).CreateDate.Value.ToString("dd/MM/yyyy");
                 else
-                    Loai = "Quầy";
+                    Loai = "Quầy, ngày " + _db.TAMTHUs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon).CreateDate.Value.ToString("dd/MM/yyyy");
                 return true;
             }
             else

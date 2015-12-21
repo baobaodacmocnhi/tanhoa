@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtSoHoaDonMoi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTieuThu_Start = new System.Windows.Forms.TextBox();
             this.txtTongCong_End = new System.Windows.Forms.TextBox();
@@ -71,8 +73,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.txtSoHoaDonMoi = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,6 +110,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Điều Chỉnh";
             // 
+            // txtSoHoaDonMoi
+            // 
+            this.txtSoHoaDonMoi.Location = new System.Drawing.Point(243, 15);
+            this.txtSoHoaDonMoi.Name = "txtSoHoaDonMoi";
+            this.txtSoHoaDonMoi.Size = new System.Drawing.Size(100, 20);
+            this.txtSoHoaDonMoi.TabIndex = 30;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -120,6 +127,15 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "    Tiêu Thụ     ";
             this.label12.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(148, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Số Hóa Đơn Mới:";
             // 
             // label11
             // 
@@ -305,7 +321,7 @@
             // 
             this.lbTangGiam.AutoSize = true;
             this.lbTangGiam.ForeColor = System.Drawing.Color.Red;
-            this.lbTangGiam.Location = new System.Drawing.Point(13, 78);
+            this.lbTangGiam.Location = new System.Drawing.Point(13, 95);
             this.lbTangGiam.Name = "lbTangGiam";
             this.lbTangGiam.Size = new System.Drawing.Size(0, 13);
             this.lbTangGiam.TabIndex = 11;
@@ -494,22 +510,6 @@
             this.textBox5.Size = new System.Drawing.Size(80, 20);
             this.textBox5.TabIndex = 27;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtSoHoaDonMoi
-            // 
-            this.txtSoHoaDonMoi.Location = new System.Drawing.Point(243, 15);
-            this.txtSoHoaDonMoi.Name = "txtSoHoaDonMoi";
-            this.txtSoHoaDonMoi.Size = new System.Drawing.Size(100, 20);
-            this.txtSoHoaDonMoi.TabIndex = 30;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(148, 18);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 13);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "Số Hóa Đơn Mới:";
             // 
             // frmShowDCHD
             // 

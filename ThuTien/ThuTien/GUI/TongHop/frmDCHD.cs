@@ -51,7 +51,9 @@ namespace ThuTien.GUI.TongHop
             {
                 frmShowDCHD frm = new frmShowDCHD(dgvHoaDon.SelectedRows[0].Cells["SoHoaDon"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    btnXem.PerformClick();
+                {
+                    dgvHoaDon.DataSource = _cHoaDon.GetDSByDanhBo(txtDanhBo.Text.Trim());
+                }
             }
         }
 

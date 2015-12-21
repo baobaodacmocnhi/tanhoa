@@ -128,12 +128,22 @@ namespace ThuTien.GUI.Quay
                 {
                     dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("TG", dateTu.Value,dateDen.Value);
                     CountdgvHDTuGia();
+                    foreach (DataGridViewRow item in dgvHDTuGia.Rows)
+                    {
+                        if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                            item.DefaultCellStyle.BackColor = Color.Red;
+                    }
                 }
                 else
                     if (tabControl.SelectedTab.Name == "tabCoQuan")
                     {
                         dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganQuayByMaNVNgayGiaiTrach("CQ", dateTu.Value, dateDen.Value);
                         CountdgvHDCoQuan();
+                        foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
+                        {
+                            if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                item.DefaultCellStyle.BackColor = Color.Red;
+                        }
                     }
         }
 

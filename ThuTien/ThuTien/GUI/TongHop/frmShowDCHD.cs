@@ -34,16 +34,16 @@ namespace ThuTien.GUI.TongHop
         private void frmShowDCHD_Load(object sender, EventArgs e)
         {
             Location = new Point(100, 100);
-            _hoadon = _cHoaDon.Get(_SoHoaDon);
+            //_hoadon = _cHoaDon.Get(_SoHoaDon);
             _dchd = _cDCHD.GetBySoHoaDon(_SoHoaDon);
             ///đã có điều chỉnh
             if (_dchd != null)
             {
                 //HOADON hoadon = _cHoaDon.Get(_dchd.SoHoaDon);
 
-                txtSoHoaDon.Text = _hoadon.SOHOADON;
-                txtSoPhatHanh.Text = _hoadon.SOPHATHANH.ToString();
-                txtKy.Text = _hoadon.KY + "/" + _hoadon.NAM;
+                txtSoHoaDon.Text = _dchd.HOADON.SOHOADON;
+                txtSoPhatHanh.Text = _dchd.HOADON.SOPHATHANH.ToString();
+                txtKy.Text = _dchd.HOADON.KY + "/" + _dchd.HOADON.NAM;
 
                 textBox1.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TIEUTHU_BD.Value);
                 textBox2.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.GIABAN_BD.Value);
@@ -159,17 +159,18 @@ namespace ThuTien.GUI.TongHop
             {
                 try
                 {
-                    _cDCHD.BeginTransaction();
+                    //_cDCHD.BeginTransaction();
                     ///đã có điều chỉnh
                     if (_dchd != null)
                     {
                         ///sửa số hóa đơn
                         if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
                         {
-                            _dchd.SoHoaDon = txtSoHoaDonMoi.Text.Trim().ToUpper();
-                            _hoadon.SoHoaDonCu = txtSoHoaDon.Text.Trim();
-                            _hoadon.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
-                            _cHoaDon.Sua(_hoadon);
+                            _dchd.HOADON.SoHoaDonCu = txtSoHoaDon.Text.Trim();
+                            _dchd.HOADON.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                            _cHoaDon.Sua(_dchd.HOADON);
+                            //_dchd.SoHoaDon = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                            _cDCHD.Refresh(_dchd);
                         }
 
                         if (_ctdchd.DCBD.ToXuLy)
@@ -210,13 +211,13 @@ namespace ThuTien.GUI.TongHop
                             ///lưu lịch sử
                             LuuLichSuDC(_dchd);
 
-                            _hoadon.GIABAN = _ctdchd.TienNuoc_End.Value;
-                            _hoadon.THUE = _ctdchd.ThueGTGT_End.Value;
-                            _hoadon.PHI = _ctdchd.PhiBVMT_End.Value;
-                            _hoadon.TONGCONG = _ctdchd.TongCong_End.Value;
-                            if (_cHoaDon.Sua(_hoadon))
+                            _dchd.HOADON.GIABAN = _ctdchd.TienNuoc_End.Value;
+                            _dchd.HOADON.THUE = _ctdchd.ThueGTGT_End.Value;
+                            _dchd.HOADON.PHI = _ctdchd.PhiBVMT_End.Value;
+                            _dchd.HOADON.TONGCONG = _ctdchd.TongCong_End.Value;
+                            if (_cHoaDon.Sua(_dchd.HOADON))
                             {
-                                _cDCHD.CommitTransaction();
+                                //_cDCHD.CommitTransaction();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                 Close();
@@ -243,7 +244,7 @@ namespace ThuTien.GUI.TongHop
                             }
 
                             DIEUCHINH_HD dchd = new DIEUCHINH_HD();
-                            dchd.FK_HOADON = _hoadon.ID_HOADON;
+                            //dchd.FK_HOADON = _hoadon.ID_HOADON;
                             dchd.SoHoaDon = _hoadon.SOHOADON;
                             dchd.GiaBieu = _hoadon.GB;
                             dchd.DinhMuc = (int)_hoadon.DM;
@@ -291,13 +292,13 @@ namespace ThuTien.GUI.TongHop
                                 ///lưu lịch sử
                                 LuuLichSuDC(dchd);
 
-                                _hoadon.GIABAN = _ctdchd.TienNuoc_End.Value;
-                                _hoadon.THUE = _ctdchd.ThueGTGT_End.Value;
-                                _hoadon.PHI = _ctdchd.PhiBVMT_End.Value;
-                                _hoadon.TONGCONG = _ctdchd.TongCong_End.Value;
-                                if (_cHoaDon.Sua(_hoadon))
+                                _dchd.HOADON.GIABAN = _ctdchd.TienNuoc_End.Value;
+                                _dchd.HOADON.THUE = _ctdchd.ThueGTGT_End.Value;
+                                _dchd.HOADON.PHI = _ctdchd.PhiBVMT_End.Value;
+                                _dchd.HOADON.TONGCONG = _ctdchd.TongCong_End.Value;
+                                if (_cHoaDon.Sua(_dchd.HOADON))
                                 {
-                                    _cDCHD.CommitTransaction();
+                                    //_cDCHD.CommitTransaction();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                     Close();
@@ -309,7 +310,7 @@ namespace ThuTien.GUI.TongHop
                 }
                 catch (Exception ex)
                 {
-                    _cDCHD.Rollback();
+                    //_cDCHD.Rollback();
                     MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -321,7 +322,7 @@ namespace ThuTien.GUI.TongHop
         {
             TT_LichSuDieuChinhHD lsdc = new TT_LichSuDieuChinhHD();
 
-            lsdc.FK_HOADON= dchd.FK_HOADON;
+            //lsdc.FK_HOADON= dchd.FK_HOADON;
             lsdc.SoHoaDon = dchd.SoHoaDon;
             lsdc.GiaBieu = dchd.GiaBieu;
             lsdc.DinhMuc = dchd.DinhMuc;

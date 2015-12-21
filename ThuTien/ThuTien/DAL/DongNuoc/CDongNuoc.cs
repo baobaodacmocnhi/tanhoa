@@ -11,6 +11,11 @@ namespace ThuTien.DAL.DongNuoc
 {
     class CDongNuoc : CDAL
     {
+        public void Refresh(TT_CTDongNuoc ctdongnuoc)
+        {
+            _db.Refresh(System.Data.Linq.RefreshMode.KeepChanges, ctdongnuoc);
+        }
+
         public bool ThemDN(TT_DongNuoc dongnuoc)
         {
             try
@@ -365,7 +370,7 @@ namespace ThuTien.DAL.DongNuoc
                         + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "';"
                         + " select nd.MaND as MaNV,nd.HoTen,nd.STT,toncu.DCTonCu,toncu.HDTonCu,toncu.TCTonCu,nhan.DCNhan,nhan.HDNhan,nhan.TCNhan"
                         + ",dangngan.DCDangNgan,dangngan.HDDangNgan,dangngan.TCDangNgan,lenhhuy.DCHuy,lenhhuy.HDHuy,lenhhuy.TCHuy from"
-                        + " (select MaND,HoTen,STT from TT_NguoiDung) nd"
+                        + " (select MaND,HoTen,STT from TT_NguoiDung where DongNuoc=1 and MaTo="+MaTo+") nd"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCTonCu,COUNT(ID_HOADON) as HDTonCu,SUM(hd.TONGCONG) as TCTonCu"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"

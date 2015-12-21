@@ -658,24 +658,78 @@ namespace ThuTien.GUI.ToTruong
 
                 ///Thêm Đóng Nước
                 DataTable dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value,dateDen.Value);
+                DataTable dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+
+                foreach (DataRow item in dtDCHD_DongNuoc.Rows)
+                {
+                    DataRow[] drDN = dtDongNuoc.Select("MaNV=" + item["MaNV"]);
+                    if (!string.IsNullOrEmpty(item["TCTonCu_END"].ToString()))
+                        drDN[0]["TCTonCu"] = long.Parse(drDN[0]["TCTonCu"].ToString()) - long.Parse(item["TCTonCu_END"].ToString()) + long.Parse(item["TCTonCu_BD"].ToString());
+                    if (!string.IsNullOrEmpty(item["TCNhan_END"].ToString()))
+                        drDN[0]["TCNhan"] = long.Parse(drDN[0]["TCNhan"].ToString()) - long.Parse(item["TCNhan_END"].ToString()) + long.Parse(item["TCNhan_BD"].ToString());
+                    if (!string.IsNullOrEmpty(item["TCDangNgan_END"].ToString()))
+                        drDN[0]["TCDangNgan"] = long.Parse(drDN[0]["TCDangNgan"].ToString()) - long.Parse(item["TCDangNgan_END"].ToString()) + long.Parse(item["TCDangNgan_BD"].ToString());
+                    if (!string.IsNullOrEmpty(item["TCHuy_END"].ToString()))
+                        drDN[0]["TCHuy"] = long.Parse(drDN[0]["TCHuy"].ToString()) - long.Parse(item["TCHuy_END"].ToString()) + long.Parse(item["TCHuy_BD"].ToString());
+                }
+
                 foreach (DataRow item in dtDongNuoc.Rows)
                 {
                     DataRow dr = ds.Tables["DSDongNuoc"].NewRow();
 
                     dr["STT"] = item["STT"];
                     dr["HanhThu"] = item["HoTen"];
-                    dr["DCTonCu"] = item["DCTonCu"];
-                    dr["HDTonCu"] = item["HDTonCu"];
-                    dr["TCTonCu"] = item["TCTonCu"];
-                    dr["DCNhan"] = item["DCNhan"];
-                    dr["HDNhan"] = item["HDNhan"];
-                    dr["TCNhan"] = item["TCNhan"];
-                    dr["DCDangNgan"] = item["DCDangNgan"];
-                    dr["HDDangNgan"] = item["HDDangNgan"];
-                    dr["TCDangNgan"] = item["TCDangNgan"];
-                    dr["DCHuy"] = item["DCHuy"];
-                    dr["HDHuy"] = item["HDHuy"];
-                    dr["TCHuy"] = item["TCHuy"];
+                    if (string.IsNullOrEmpty(item["DCTonCu"].ToString()))
+                    {
+                        dr["DCTonCu"] = 0;
+                        dr["HDTonCu"] = 0;
+                        dr["TCTonCu"] = 0;
+                    }
+                    else
+                    {
+                        dr["DCTonCu"] = item["DCTonCu"];
+                        dr["HDTonCu"] = item["HDTonCu"];
+                        dr["TCTonCu"] = item["TCTonCu"];
+                    }
+
+                    if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
+                    {
+                        dr["DCNhan"] = 0;
+                        dr["HDNhan"] = 0;
+                        dr["TCNhan"] = 0;
+                    }
+                    else
+                    {
+                        dr["DCNhan"] = item["DCNhan"];
+                        dr["HDNhan"] = item["HDNhan"];
+                        dr["TCNhan"] = item["TCNhan"];
+                    }
+
+                    if (string.IsNullOrEmpty(item["DCNhan"].ToString()))
+                    {
+                        dr["DCDangNgan"] = 0;
+                        dr["HDDangNgan"] = 0;
+                        dr["TCDangNgan"] = 0;
+                    }
+                    else
+                    {
+                        dr["DCDangNgan"] = item["DCDangNgan"];
+                        dr["HDDangNgan"] = item["HDDangNgan"];
+                        dr["TCDangNgan"] = item["TCDangNgan"];
+                    }
+
+                    if (string.IsNullOrEmpty(item["DCHuy"].ToString()))
+                    {
+                        dr["DCHuy"] = 0;
+                        dr["HDHuy"] = 0;
+                        dr["TCHuy"] = 0;
+                    }
+                    else
+                    {
+                        dr["DCHuy"] = item["DCHuy"];
+                        dr["HDHuy"] = item["HDHuy"];
+                        dr["TCHuy"] = item["TCHuy"];
+                    }
 
                     ds.Tables["DSDongNuoc"].Rows.Add(dr);
                 }

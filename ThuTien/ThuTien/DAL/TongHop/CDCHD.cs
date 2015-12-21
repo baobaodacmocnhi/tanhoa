@@ -28,6 +28,11 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
+        public void Refresh(DIEUCHINH_HD dchd)
+        {
+            _db.Refresh(System.Data.Linq.RefreshMode.KeepChanges,dchd);
+        }
+
         public bool Them(DIEUCHINH_HD dchd)
         {
             try
@@ -1174,6 +1179,48 @@ namespace ThuTien.DAL.TongHop
             return null;
         }
 
+        public DataTable GetChuanThu_DongNuoc_BaoCaoTongHop(int MaTo, DateTime FromDate, DateTime ToDate)
+        {
+            string sql = "declare @FromDate date;"
+                        + " declare @ToDate date;"
+                        + " set @FromDate='" + FromDate.ToString("yyyy-MM-dd") + "';"
+                        + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "';"
+                        + " select nd.MaND as MaNV,nd.HoTen,nd.STT,toncu.TCTonCu_BD,toncu.TCTonCu_END,nhan.TCNhan_BD,nhan.TCNhan_END"
+                        + ",dangngan.TCDangNgan_BD,dangngan.TCDangNgan_END,lenhhuy.TCHuy_BD,lenhhuy.TCHuy_END from"
+                        + " (select MaND,HoTen,STT from TT_NguoiDung where DongNuoc=1 and MaTo=" + MaTo + ") nd"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,SUM(dchd.TONGCONG_BD) as TCTonCu_BD,SUM(dchd.TONGCONG_END) as TCTonCu_END"
+                        + " from DIEUCHINH_HD dchd,TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dchd.SoHoaDon=hd.SOHOADON and dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(dn.NgayGiao as date)<@FromDate and (hd.NGAYGIAITRACH is null or (CAST(hd.NGAYGIAITRACH as date)>@FromDate))"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) toncu on nd.MaND=toncu.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,SUM(dchd.TONGCONG_BD) as TCNhan_BD,SUM(dchd.TONGCONG_END) as TCNhan_END"
+                        + " from DIEUCHINH_HD dchd,TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dchd.SoHoaDon=hd.SOHOADON and dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(dn.NgayGiao as date)>=@FromDate and CAST(dn.NgayGiao as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) nhan on nd.MaND=nhan.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,SUM(dchd.TONGCONG_BD) as TCDangNgan_BD,SUM(dchd.TONGCONG_END) as TCDangNgan_END"
+                        + " from DIEUCHINH_HD dchd,TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dchd.SoHoaDon=hd.SOHOADON and dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(dn.NgayGiao as date)>=@FromDate and CAST(dn.NgayGiao as date)<=@ToDate and CAST(NGAYGIAITRACH as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) dangngan on nd.MaND=dangngan.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,SUM(dchd.TONGCONG_BD) as TCHuy_BD,SUM(dchd.TONGCONG_END) as TCHuy_END"
+                        + " from DIEUCHINH_HD dchd,TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_LenhHuy lenhhuy,TT_NguoiDung nd"
+                        + " where dchd.SoHoaDon=hd.SOHOADON and dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and lenhhuy.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0"
+                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(lenhhuy.CreateDate as date)>=@FromDate and CAST(lenhhuy.CreateDate as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) lenhhuy on nd.MaND=lenhhuy.MaND"
+                        + " order by nd.STT asc";
+
+            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
+        }
+
         //public DataTable GetDSChuaDCHD(int MaNV)
         //{
         //    var query = from itemDC in _db.DIEUCHINH_HDs
@@ -1522,5 +1569,6 @@ namespace ThuTien.DAL.TongHop
         {
             return _dbKTKS_DonKH.CTDCHDs.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
         }
+
     }
 }
