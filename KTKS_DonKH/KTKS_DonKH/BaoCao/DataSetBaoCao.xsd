@@ -147,6 +147,7 @@
               <xs:element name="GiaBieuBD" msprop:Generator_ColumnVarNameInTable="columnGiaBieuBD" msprop:Generator_ColumnPropNameInRow="GiaBieuBD" msprop:Generator_ColumnPropNameInTable="GiaBieuBDColumn" msprop:Generator_UserColumnName="GiaBieuBD" type="xs:string" minOccurs="0" />
               <xs:element name="GiaBieuEnd" msprop:Generator_ColumnVarNameInTable="columnGiaBieuEnd" msprop:Generator_ColumnPropNameInRow="GiaBieuEnd" msprop:Generator_ColumnPropNameInTable="GiaBieuEndColumn" msprop:Generator_UserColumnName="GiaBieuEnd" type="xs:string" minOccurs="0" />
               <xs:element name="DiaChi" msprop:Generator_ColumnVarNameInTable="columnDiaChi" msprop:Generator_ColumnPropNameInRow="DiaChi" msprop:Generator_ColumnPropNameInTable="DiaChiColumn" msprop:Generator_UserColumnName="DiaChi" type="xs:string" minOccurs="0" />
+              <xs:element name="DieuChinh" msprop:Generator_ColumnVarNameInTable="columnDieuChinh" msprop:Generator_ColumnPropNameInRow="DieuChinh" msprop:Generator_ColumnPropNameInTable="DieuChinhColumn" msprop:Generator_UserColumnName="DieuChinh" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -414,6 +415,7 @@
             <xs:sequence>
               <xs:element name="SoPhieu" msprop:Generator_ColumnVarNameInTable="columnSoPhieu" msprop:Generator_ColumnPropNameInRow="SoPhieu" msprop:Generator_ColumnPropNameInTable="SoPhieuColumn" msprop:Generator_UserColumnName="SoPhieu" type="xs:string" minOccurs="0" />
               <xs:element name="LoaiCatChuyen" msdata:Caption="TangGiam" msprop:Generator_ColumnVarNameInTable="columnLoaiCatChuyen" msprop:Generator_ColumnPropNameInRow="LoaiCatChuyen" msprop:Generator_ColumnPropNameInTable="LoaiCatChuyenColumn" msprop:Generator_UserColumnName="LoaiCatChuyen" type="xs:string" minOccurs="0" />
+              <xs:element name="SoNK" msprop:Generator_ColumnVarNameInTable="columnSoNK" msprop:Generator_ColumnPropNameInRow="SoNK" msprop:Generator_ColumnPropNameInTable="SoNKColumn" msprop:Generator_UserColumnName="SoNK" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

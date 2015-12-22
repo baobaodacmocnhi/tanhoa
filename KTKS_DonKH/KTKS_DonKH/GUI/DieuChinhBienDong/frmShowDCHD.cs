@@ -562,6 +562,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["KyHD"] = _ctdchd.KyHD;
                 dr["SoHD"] = _ctdchd.SoHD;
                 ///
+                dr["DieuChinh"] = "";
+                if (_ctdchd.GiaBieu != _ctdchd.GiaBieu_BD)
+                    dr["DieuChinh"] = "Giá Biểu từ " + _ctdchd.GiaBieu + " -> " + _ctdchd.GiaBieu_BD;
+                if (_ctdchd.DinhMuc != _ctdchd.DinhMuc_BD)
+                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                        dr["DieuChinh"] = "Định Mức từ " + _ctdchd.DinhMuc + " -> " + _ctdchd.DinhMuc_BD;
+                    else
+                        dr["DieuChinh"] = ", Định Mức từ " + _ctdchd.DinhMuc + " -> " + _ctdchd.DinhMuc_BD;
+                if (_ctdchd.TieuThu != _ctdchd.TieuThu_BD)
+                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                        dr["DieuChinh"] = "Tiêu Thụ từ " + _ctdchd.TieuThu + " -> " + _ctdchd.TieuThu_BD;
+                    else
+                        dr["DieuChinh"] = ", Tiêu Thụ từ " + _ctdchd.TieuThu + " -> " + _ctdchd.TieuThu_BD;
+                if (_ctdchd.DieuChinhGia==true)
+                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                        dr["DieuChinh"] = "Áp giá " + _ctdchd.GiaDieuChinh;
+                    else
+                        dr["DieuChinh"] = ", Áp giá " + _ctdchd.GiaDieuChinh;
+                ///
                 dr["GiaBieuStart"] = _ctdchd.GiaBieu;
                 dr["GiaBieuEnd"] = _ctdchd.GiaBieu_BD;
                 dr["DinhMucStart"] = _ctdchd.DinhMuc;

@@ -2431,6 +2431,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemLSCT.CatDM,
                                     itemLSCT.YeuCauCat,
                                     itemLSCT.NhanDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.SoNKNhan,
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -2474,6 +2476,8 @@ namespace KTKS_DonKH.DAL.CapNhat
                                     itemLSCT.CatDM,
                                     itemLSCT.YeuCauCat,
                                     itemLSCT.NhanDM,
+                                    itemLSCT.SoNKCat,
+                                    itemLSCT.SoNKNhan
                                 };
                     return CLinQToDataTable.LINQToDataTable(query);
                 }

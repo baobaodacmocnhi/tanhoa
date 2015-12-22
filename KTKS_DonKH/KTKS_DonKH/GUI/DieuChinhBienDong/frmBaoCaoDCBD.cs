@@ -515,6 +515,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 int DanhBoGiamDM = 0;
                 int DinhMucTang = 0;
                 int DinhMucGiam = 0;
+                int DanhBoTangDM_CC = 0;
+                int DanhBoGiamDM_CC = 0;
+                int DinhMucTang_CC = 0;
+                int DinhMucGiam_CC = 0;
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dtDCBD.Rows)
@@ -544,16 +548,28 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             a = int.Parse(itemRow["DinhMuc"].ToString());
 
-                        if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
-                        {
-                            DanhBoTangDM++;
-                            DinhMucTang += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
-                        }
+                        if (int.Parse(itemRow["GiaBieu"].ToString()) != 51)
+                            if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
+                            {
+                                DanhBoTangDM++;
+                                DinhMucTang += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
+                            }
+                            else
+                            {
+                                DanhBoGiamDM++;
+                                DinhMucGiam += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
+                            }
                         else
-                        {
-                            DanhBoGiamDM++;
-                            DinhMucGiam += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
-                        }
+                            if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
+                            {
+                                DanhBoTangDM_CC++;
+                                DinhMucTang_CC += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
+                            }
+                            else
+                            {
+                                DanhBoGiamDM_CC++;
+                                DinhMucGiam_CC += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
+                            }
                     }
 
                     dsBaoCao.Tables["ThongKeDCBD"].Rows.Add(dr);
@@ -576,19 +592,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (itemRow["CatDM"].ToString() != "")
                     {
                         if (bool.Parse(itemRow["CatDM"].ToString()))
+                        {
                             dr["LoaiCatChuyen"] = "Cắt Chuyển đến Công ty khác";
+                            dr["SoNK"] = itemRow["SoNKCat"];
+                        }   
                     }
                     else
                         if (itemRow["YeuCauCat"].ToString() != "")
                         {
                             if (bool.Parse(itemRow["YeuCauCat"].ToString()))
+                            {
                                 dr["LoaiCatChuyen"] = "Yêu Cầu Công ty khác Cắt";
+                                dr["SoNK"] = itemRow["SoNKNhan"];
+                            }
                         }
                         else
                             if (itemRow["NhanDM"].ToString() != "")
                                 if (bool.Parse(itemRow["NhanDM"].ToString()))
+                                {
                                     dr["LoaiCatChuyen"] = "Nhận từ Công ty khác";
-
+                                    dr["SoNK"] = itemRow["SoNKNhan"];
+                                }
                     dsBaoCao.Tables["ThongKeCatChuyenDM"].Rows.Add(dr);
                 }
 
@@ -605,6 +629,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rpt.SetParameterValue(1, DinhMucTang);
                 rpt.SetParameterValue(2, DanhBoGiamDM);
                 rpt.SetParameterValue(3, DinhMucGiam);
+                rpt.SetParameterValue(4, DanhBoTangDM_CC);
+                rpt.SetParameterValue(5, DinhMucTang_CC);
+                rpt.SetParameterValue(6, DanhBoGiamDM_CC);
+                rpt.SetParameterValue(7, DinhMucGiam_CC);
 
                 crystalReportViewer1.ReportSource = rpt;
             }
