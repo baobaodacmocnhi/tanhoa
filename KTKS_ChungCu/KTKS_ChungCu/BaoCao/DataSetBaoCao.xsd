@@ -33,6 +33,7 @@
               <xs:element name="Lo" msprop:Generator_ColumnVarNameInTable="columnLo" msprop:Generator_ColumnPropNameInRow="Lo" msprop:Generator_ColumnPropNameInTable="LoColumn" msprop:Generator_UserColumnName="Lo" type="xs:string" minOccurs="0" />
               <xs:element name="Phong" msprop:Generator_ColumnVarNameInTable="columnPhong" msprop:Generator_ColumnPropNameInRow="Phong" msprop:Generator_ColumnPropNameInTable="PhongColumn" msprop:Generator_UserColumnName="Phong" type="xs:string" minOccurs="0" />
               <xs:element name="ChiNhanhCat" msprop:Generator_ColumnVarNameInTable="columnChiNhanhCat" msprop:Generator_ColumnPropNameInRow="ChiNhanhCat" msprop:Generator_ColumnPropNameInTable="ChiNhanhCatColumn" msprop:Generator_UserColumnName="ChiNhanhCat" type="xs:string" minOccurs="0" />
+              <xs:element name="DanhBoCat" msprop:Generator_ColumnVarNameInTable="columnDanhBoCat" msprop:Generator_ColumnPropNameInRow="DanhBoCat" msprop:Generator_ColumnPropNameInTable="DanhBoCatColumn" msprop:Generator_UserColumnName="DanhBoCat" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

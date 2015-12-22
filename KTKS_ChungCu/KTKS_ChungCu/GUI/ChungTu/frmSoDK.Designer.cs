@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
             this.chkYCCat4 = new System.Windows.Forms.CheckBox();
             this.txtSoNKCat_YCC4 = new System.Windows.Forms.TextBox();
@@ -121,6 +121,16 @@
             this.txtHoTenCT = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSoNKTong = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtGhiChu_YCC1 = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtGhiChu_YCC2 = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.txtGhiChu_YCC3 = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.txtGhiChu_YCC4 = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.txtGhiChu_YCC5 = new System.Windows.Forms.TextBox();
             this.groupBox4.SuspendLayout();
             this.panel_YCCat4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).BeginInit();
@@ -159,9 +169,12 @@
             this.txtSoNKCat_YCC4.Name = "txtSoNKCat_YCC4";
             this.txtSoNKCat_YCC4.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKCat_YCC4.TabIndex = 9;
+            this.txtSoNKCat_YCC4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKCat_YCC4_KeyPress);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label39);
+            this.groupBox4.Controls.Add(this.txtGhiChu_YCC4);
             this.groupBox4.Controls.Add(this.label24);
             this.groupBox4.Controls.Add(this.txtSoNKCat_YCC4);
             this.groupBox4.Controls.Add(this.cmbChiNhanh_YCC4);
@@ -358,6 +371,7 @@
             this.txtSoNKCat_YCC5.Name = "txtSoNKCat_YCC5";
             this.txtSoNKCat_YCC5.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKCat_YCC5.TabIndex = 9;
+            this.txtSoNKCat_YCC5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKCat_YCC5_KeyPress);
             // 
             // SoNKDangKy
             // 
@@ -449,14 +463,14 @@
             // 
             this.dgvDSDanhBo.AllowUserToAddRows = false;
             this.dgvDSDanhBo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSDanhBo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDSDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
@@ -491,6 +505,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label40);
+            this.groupBox5.Controls.Add(this.txtGhiChu_YCC5);
             this.groupBox5.Controls.Add(this.label29);
             this.groupBox5.Controls.Add(this.txtSoNKCat_YCC5);
             this.groupBox5.Controls.Add(this.cmbChiNhanh_YCC5);
@@ -565,6 +581,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label36);
+            this.groupBox1.Controls.Add(this.txtGhiChu_YCC1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtSoNKCat_YCC1);
             this.groupBox1.Controls.Add(this.cmbChiNhanh_YCC1);
@@ -598,6 +616,7 @@
             this.txtSoNKCat_YCC1.Name = "txtSoNKCat_YCC1";
             this.txtSoNKCat_YCC1.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKCat_YCC1.TabIndex = 9;
+            this.txtSoNKCat_YCC1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNKCat_YCC1_KeyPress);
             // 
             // cmbChiNhanh_YCC1
             // 
@@ -670,7 +689,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label37);
             this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.txtGhiChu_YCC2);
             this.groupBox2.Controls.Add(this.txtSoNKCat_YCC2);
             this.groupBox2.Controls.Add(this.cmbChiNhanh_YCC2);
             this.groupBox2.Controls.Add(this.label20);
@@ -806,6 +827,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label38);
+            this.groupBox3.Controls.Add(this.txtGhiChu_YCC3);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.txtSoNKCat_YCC3);
             this.groupBox3.Controls.Add(this.cmbChiNhanh_YCC3);
@@ -1009,6 +1032,86 @@
             this.txtSoNKTong.Size = new System.Drawing.Size(100, 25);
             this.txtSoNKTong.TabIndex = 65;
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(239, 151);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(59, 17);
+            this.label36.TabIndex = 10;
+            this.label36.Text = "Ghi Chú:";
+            // 
+            // txtGhiChu_YCC1
+            // 
+            this.txtGhiChu_YCC1.Location = new System.Drawing.Point(304, 148);
+            this.txtGhiChu_YCC1.Name = "txtGhiChu_YCC1";
+            this.txtGhiChu_YCC1.Size = new System.Drawing.Size(118, 25);
+            this.txtGhiChu_YCC1.TabIndex = 11;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(239, 149);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(59, 17);
+            this.label37.TabIndex = 12;
+            this.label37.Text = "Ghi Chú:";
+            // 
+            // txtGhiChu_YCC2
+            // 
+            this.txtGhiChu_YCC2.Location = new System.Drawing.Point(304, 146);
+            this.txtGhiChu_YCC2.Name = "txtGhiChu_YCC2";
+            this.txtGhiChu_YCC2.Size = new System.Drawing.Size(118, 25);
+            this.txtGhiChu_YCC2.TabIndex = 13;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(239, 149);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(59, 17);
+            this.label38.TabIndex = 12;
+            this.label38.Text = "Ghi Chú:";
+            // 
+            // txtGhiChu_YCC3
+            // 
+            this.txtGhiChu_YCC3.Location = new System.Drawing.Point(304, 146);
+            this.txtGhiChu_YCC3.Name = "txtGhiChu_YCC3";
+            this.txtGhiChu_YCC3.Size = new System.Drawing.Size(118, 25);
+            this.txtGhiChu_YCC3.TabIndex = 13;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(239, 149);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(59, 17);
+            this.label39.TabIndex = 12;
+            this.label39.Text = "Ghi Chú:";
+            // 
+            // txtGhiChu_YCC4
+            // 
+            this.txtGhiChu_YCC4.Location = new System.Drawing.Point(304, 146);
+            this.txtGhiChu_YCC4.Name = "txtGhiChu_YCC4";
+            this.txtGhiChu_YCC4.Size = new System.Drawing.Size(118, 25);
+            this.txtGhiChu_YCC4.TabIndex = 13;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(239, 149);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(59, 17);
+            this.label40.TabIndex = 12;
+            this.label40.Text = "Ghi Chú:";
+            // 
+            // txtGhiChu_YCC5
+            // 
+            this.txtGhiChu_YCC5.Location = new System.Drawing.Point(304, 146);
+            this.txtGhiChu_YCC5.Name = "txtGhiChu_YCC5";
+            this.txtGhiChu_YCC5.Size = new System.Drawing.Size(118, 25);
+            this.txtGhiChu_YCC5.TabIndex = 13;
+            // 
             // frmSoDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1169,6 +1272,16 @@
         private System.Windows.Forms.TextBox txtHoTenCT;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSoNKTong;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox txtGhiChu_YCC4;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox txtGhiChu_YCC5;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtGhiChu_YCC1;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txtGhiChu_YCC2;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox txtGhiChu_YCC3;
 
     }
 }

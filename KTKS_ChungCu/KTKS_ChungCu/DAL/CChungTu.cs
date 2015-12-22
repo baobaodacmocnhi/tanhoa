@@ -838,6 +838,7 @@ namespace KTKS_ChungCu.DAL
                     ctchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
                     ctchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
                     ctchungtuCN.CatNK_SoNKCat = ctchungtu.CatNK_SoNKCat;
+                    ctchungtuCN.CatNK_GhiChu = ctchungtu.CatNK_GhiChu;
                     ///Nếu phiếu đã có
                     if (ctchungtuCN.SoPhieu.HasValue)
                     {
@@ -847,6 +848,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtuCN.CatNK_HoTen = ctchungtu.CatNK_HoTen;
                         lichsuchungtuCN.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
                         lichsuchungtuCN.SoNKNhan = ctchungtu.CatNK_SoNKCat;
+                        lichsuchungtuCN.GhiChu = ctchungtu.CatNK_GhiChu;
                         if (SuaLichSuChungTu(lichsuchungtuCN))
                         {
                             //CatChuyenDM catchuyendm = _cCatChuyenDM.getCatChuyenDMbySoPhieu(ctchungtuCN.SoPhieu.Value);
@@ -879,6 +881,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen;
                         lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi;
                         lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat;
+                        lichsuchungtu.GhiChu = ctchungtu.CatNK_GhiChu;
                         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -916,6 +919,7 @@ namespace KTKS_ChungCu.DAL
                     ctchungtuCN.CatNK_HoTen2 = ctchungtu.CatNK_HoTen2;
                     ctchungtuCN.CatNK_DiaChi2 = ctchungtu.CatNK_DiaChi2;
                     ctchungtuCN.CatNK_SoNKCat2 = ctchungtu.CatNK_SoNKCat2;
+                    ctchungtuCN.CatNK_GhiChu2 = ctchungtu.CatNK_GhiChu2;
                     ///
                     if (ctchungtuCN.SoPhieu2.HasValue)
                     {
@@ -925,6 +929,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtuCN2.CatNK_HoTen = ctchungtu.CatNK_HoTen2;
                         lichsuchungtuCN2.CatNK_DiaChi = ctchungtu.CatNK_DiaChi2;
                         lichsuchungtuCN2.SoNKNhan = ctchungtu.CatNK_SoNKCat2;
+                        lichsuchungtuCN2.GhiChu = ctchungtu.CatNK_GhiChu2;
                         if (SuaLichSuChungTu(lichsuchungtuCN2))
                         {
                             //CatChuyenDM catchuyendm = _cCatChuyenDM.getCatChuyenDMbySoPhieu(ctchungtuCN.SoPhieu2.Value);
@@ -956,6 +961,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen2;
                         lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi2;
                         lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat2;
+                        lichsuchungtu.GhiChu = ctchungtu.CatNK_GhiChu2;
                         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -991,6 +997,7 @@ namespace KTKS_ChungCu.DAL
                     ctchungtuCN.CatNK_HoTen3 = ctchungtu.CatNK_HoTen3;
                     ctchungtuCN.CatNK_DiaChi3 = ctchungtu.CatNK_DiaChi3;
                     ctchungtuCN.CatNK_SoNKCat3 = ctchungtu.CatNK_SoNKCat3;
+                    ctchungtuCN.CatNK_GhiChu3 = ctchungtu.CatNK_GhiChu3;
                     ///
                     if (ctchungtuCN.SoPhieu3.HasValue)
                     {
@@ -1000,6 +1007,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtuCN3.CatNK_HoTen = ctchungtu.CatNK_HoTen3;
                         lichsuchungtuCN3.CatNK_DiaChi = ctchungtu.CatNK_DiaChi3;
                         lichsuchungtuCN3.SoNKNhan = ctchungtu.CatNK_SoNKCat3;
+                        lichsuchungtuCN3.GhiChu = ctchungtu.CatNK_GhiChu3;
                         if (SuaLichSuChungTu(lichsuchungtuCN3))
                         {
                             //CatChuyenDM catchuyendm = _cCatChuyenDM.getCatChuyenDMbySoPhieu(ctchungtuCN.SoPhieu3.Value);
@@ -1031,6 +1039,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen3;
                         lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi3;
                         lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat3;
+                        lichsuchungtu.GhiChu = ctchungtu.CatNK_GhiChu3;
                         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -1066,6 +1075,7 @@ namespace KTKS_ChungCu.DAL
                     ctchungtuCN.CatNK_HoTen4 = ctchungtu.CatNK_HoTen4;
                     ctchungtuCN.CatNK_DiaChi4 = ctchungtu.CatNK_DiaChi4;
                     ctchungtuCN.CatNK_SoNKCat4 = ctchungtu.CatNK_SoNKCat4;
+                    ctchungtuCN.CatNK_GhiChu4 = ctchungtu.CatNK_GhiChu4;
                     ///
                     if (ctchungtuCN.SoPhieu4.HasValue)
                     {
@@ -1075,6 +1085,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtuCN4.CatNK_HoTen = ctchungtu.CatNK_HoTen4;
                         lichsuchungtuCN4.CatNK_DiaChi = ctchungtu.CatNK_DiaChi4;
                         lichsuchungtuCN4.SoNKNhan = ctchungtu.CatNK_SoNKCat4;
+                        lichsuchungtuCN4.GhiChu = ctchungtu.CatNK_GhiChu4;
                         if (SuaLichSuChungTu(lichsuchungtuCN4))
                         {
                             //CatChuyenDM catchuyendm = _cCatChuyenDM.getCatChuyenDMbySoPhieu(ctchungtuCN.SoPhieu4.Value);
@@ -1106,6 +1117,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen4;
                         lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi4;
                         lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat4;
+                        lichsuchungtu.GhiChu = ctchungtu.CatNK_GhiChu4;
                         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -1141,6 +1153,7 @@ namespace KTKS_ChungCu.DAL
                     ctchungtuCN.CatNK_HoTen5 = ctchungtu.CatNK_HoTen5;
                     ctchungtuCN.CatNK_DiaChi5 = ctchungtu.CatNK_DiaChi5;
                     ctchungtuCN.CatNK_SoNKCat5 = ctchungtu.CatNK_SoNKCat5;
+                    ctchungtuCN.CatNK_GhiChu5 = ctchungtu.CatNK_GhiChu5;
                     ///
                     if (ctchungtuCN.SoPhieu5.HasValue)
                     {
@@ -1150,6 +1163,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtuCN5.CatNK_HoTen = ctchungtu.CatNK_HoTen5;
                         lichsuchungtuCN5.CatNK_DiaChi = ctchungtu.CatNK_DiaChi5;
                         lichsuchungtuCN5.SoNKNhan = ctchungtu.CatNK_SoNKCat5;
+                        lichsuchungtuCN5.GhiChu = ctchungtu.CatNK_GhiChu5;
                         if (SuaLichSuChungTu(lichsuchungtuCN5))
                         {
                             //CatChuyenDM catchuyendm = _cCatChuyenDM.getCatChuyenDMbySoPhieu(ctchungtuCN.SoPhieu5.Value);
@@ -1181,6 +1195,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu.CatNK_HoTen = ctchungtu.CatNK_HoTen5;
                         lichsuchungtu.CatNK_DiaChi = ctchungtu.CatNK_DiaChi5;
                         lichsuchungtu.SoNKNhan = ctchungtu.CatNK_SoNKCat5;
+                        lichsuchungtu.GhiChu = ctchungtu.CatNK_GhiChu5;
                         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
@@ -1783,6 +1798,7 @@ namespace KTKS_ChungCu.DAL
                                     itemLSCT.CatNK_DanhBo,
                                     itemLSCT.CatNK_HoTen,
                                     itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.GhiChu,
                                     itemLSCT.PhieuDuocKy,
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
@@ -1917,6 +1933,7 @@ namespace KTKS_ChungCu.DAL
                                     itemLSCT.CatNK_DanhBo,
                                     itemLSCT.CatNK_HoTen,
                                     itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.GhiChu,
                                     itemLSCT.PhieuDuocKy,
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
@@ -2048,6 +2065,7 @@ namespace KTKS_ChungCu.DAL
                                     itemLSCT.CatNK_DanhBo,
                                     itemLSCT.CatNK_HoTen,
                                     itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.GhiChu,
                                     itemLSCT.PhieuDuocKy,
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
@@ -2179,6 +2197,7 @@ namespace KTKS_ChungCu.DAL
                                     itemLSCT.CatNK_DanhBo,
                                     itemLSCT.CatNK_HoTen,
                                     itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.GhiChu,
                                     itemLSCT.PhieuDuocKy,
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
@@ -2310,6 +2329,7 @@ namespace KTKS_ChungCu.DAL
                                     itemLSCT.CatNK_DanhBo,
                                     itemLSCT.CatNK_HoTen,
                                     itemLSCT.CatNK_DiaChi,
+                                    itemLSCT.GhiChu,
                                     itemLSCT.PhieuDuocKy,
                                     itemLSCT.MaDon,
                                     itemLSCT.NguoiKy,
