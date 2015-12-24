@@ -65,7 +65,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     bangke.DanhBo = item[0].ToString().Trim();
                                     bangke.SoTien = int.Parse(item[1].ToString().Trim());
                                     bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
-                                    bangke.CreateDate = dateNgayLap.Value;
+                                    bangke.CreateDate = DateTime.Now;
                                     bangke.CreateBy = CNguoiDung.MaND;
                                     bangke.CreateDate2 = DateTime.Now;
                                     if (_cBangKe.Them(bangke))

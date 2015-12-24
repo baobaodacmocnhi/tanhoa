@@ -244,7 +244,7 @@ namespace ThuTien.GUI.TongHop
                             }
 
                             DIEUCHINH_HD dchd = new DIEUCHINH_HD();
-                            //dchd.FK_HOADON = _hoadon.ID_HOADON;
+                            dchd.FK_HOADON = _hoadon.ID_HOADON;
                             dchd.SoHoaDon = _hoadon.SOHOADON;
                             dchd.GiaBieu = _hoadon.GB;
                             dchd.DinhMuc = (int)_hoadon.DM;
@@ -292,11 +292,11 @@ namespace ThuTien.GUI.TongHop
                                 ///lưu lịch sử
                                 LuuLichSuDC(dchd);
 
-                                _dchd.HOADON.GIABAN = _ctdchd.TienNuoc_End.Value;
-                                _dchd.HOADON.THUE = _ctdchd.ThueGTGT_End.Value;
-                                _dchd.HOADON.PHI = _ctdchd.PhiBVMT_End.Value;
-                                _dchd.HOADON.TONGCONG = _ctdchd.TongCong_End.Value;
-                                if (_cHoaDon.Sua(_dchd.HOADON))
+                                dchd.HOADON.GIABAN = _ctdchd.TienNuoc_End.Value;
+                                dchd.HOADON.THUE = _ctdchd.ThueGTGT_End.Value;
+                                dchd.HOADON.PHI = _ctdchd.PhiBVMT_End.Value;
+                                dchd.HOADON.TONGCONG = _ctdchd.TongCong_End.Value;
+                                if (_cHoaDon.Sua(dchd.HOADON))
                                 {
                                     //_cDCHD.CommitTransaction();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -322,7 +322,7 @@ namespace ThuTien.GUI.TongHop
         {
             TT_LichSuDieuChinhHD lsdc = new TT_LichSuDieuChinhHD();
 
-            //lsdc.FK_HOADON= dchd.FK_HOADON;
+            lsdc.FK_HOADON = dchd.FK_HOADON;
             lsdc.SoHoaDon = dchd.SoHoaDon;
             lsdc.GiaBieu = dchd.GiaBieu;
             lsdc.DinhMuc = dchd.DinhMuc;
