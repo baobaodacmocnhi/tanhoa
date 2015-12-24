@@ -519,6 +519,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 int DanhBoGiamDM_CC = 0;
                 int DinhMucTang_CC = 0;
                 int DinhMucGiam_CC = 0;
+                int DanhBoTangDM_NT = 0;
+                int DanhBoGiamDM_NT = 0;
+                int DinhMucTang_NT = 0;
+                int DinhMucGiam_NT = 0;
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 foreach (DataRow itemRow in dtDCBD.Rows)
@@ -539,6 +543,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["SX"] = itemRow["SX_BD"];
                     dr["DV"] = itemRow["DV_BD"];
                     dr["HCSN"] = itemRow["HCSN_BD"];
+                    dr["NhaTro"] = _cChungTu.CheckDinhMucNhaTro(itemRow["DanhBo"].ToString());
 
                     if (!string.IsNullOrEmpty(itemRow["DinhMuc_BD"].ToString()))
                     {
@@ -548,28 +553,40 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             a = int.Parse(itemRow["DinhMuc"].ToString());
 
-                        if (int.Parse(itemRow["GiaBieu"].ToString()) != 51)
+                        if (bool.Parse(dr["NhaTro"].ToString()))
                             if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
                             {
-                                DanhBoTangDM++;
-                                DinhMucTang += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
+                                DanhBoTangDM_NT++;
+                                DinhMucTang_NT += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
                             }
                             else
                             {
-                                DanhBoGiamDM++;
-                                DinhMucGiam += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
+                                DanhBoGiamDM_NT++;
+                                DinhMucGiam_NT += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
                             }
                         else
-                            if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
-                            {
-                                DanhBoTangDM_CC++;
-                                DinhMucTang_CC += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
-                            }
+                            if (int.Parse(itemRow["GiaBieu"].ToString()) != 51)
+                                if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
+                                {
+                                    DanhBoTangDM++;
+                                    DinhMucTang += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
+                                }
+                                else
+                                {
+                                    DanhBoGiamDM++;
+                                    DinhMucGiam += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
+                                }
                             else
-                            {
-                                DanhBoGiamDM_CC++;
-                                DinhMucGiam_CC += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
-                            }
+                                if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
+                                {
+                                    DanhBoTangDM_CC++;
+                                    DinhMucTang_CC += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
+                                }
+                                else
+                                {
+                                    DanhBoGiamDM_CC++;
+                                    DinhMucGiam_CC += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
+                                }
                     }
 
                     dsBaoCao.Tables["ThongKeDCBD"].Rows.Add(dr);
@@ -633,6 +650,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 rpt.SetParameterValue(5, DinhMucTang_CC);
                 rpt.SetParameterValue(6, DanhBoGiamDM_CC);
                 rpt.SetParameterValue(7, DinhMucGiam_CC);
+                rpt.SetParameterValue(8, DanhBoTangDM_NT);
+                rpt.SetParameterValue(9, DinhMucTang_NT);
+                rpt.SetParameterValue(10, DanhBoGiamDM_NT);
+                rpt.SetParameterValue(11, DinhMucGiam_NT);
 
                 crystalReportViewer1.ReportSource = rpt;
             }

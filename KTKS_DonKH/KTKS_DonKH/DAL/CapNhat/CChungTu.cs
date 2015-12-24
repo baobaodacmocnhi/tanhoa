@@ -177,6 +177,11 @@ namespace KTKS_DonKH.DAL.CapNhat
             }
         }
 
+        public bool CheckDinhMucNhaTro(string DanhBo)
+        {
+            return db.CTChungTus.Any(item => item.DanhBo == DanhBo && item.Cat == false && (item.ChungTu.LoaiChungTu.MaLCT == 7||item.ChungTu.LoaiChungTu.MaLCT == 8));
+        }
+
         public CTChungTu getCTChungTubyID(string DanhBo, string MaCT)
         {
             try
