@@ -71,6 +71,7 @@
             this.SoNKCat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CatNK_MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_KhoangThoiGian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCatChuyenDM)).BeginInit();
             this.SuspendLayout();
@@ -223,7 +224,8 @@
             this.SoNKNhan,
             this.SoNKCat,
             this.CreateBy_CC,
-            this.GhiChu});
+            this.GhiChu,
+            this.CatNK_MaCT});
             this.dgvDSCatChuyenDM.Location = new System.Drawing.Point(0, 71);
             this.dgvDSCatChuyenDM.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDSCatChuyenDM.MultiSelect = false;
@@ -450,6 +452,13 @@
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.Visible = false;
             // 
+            // CatNK_MaCT
+            // 
+            this.CatNK_MaCT.DataPropertyName = "CatNK_MaCT";
+            this.CatNK_MaCT.HeaderText = "CatNK_MaCT";
+            this.CatNK_MaCT.Name = "CatNK_MaCT";
+            this.CatNK_MaCT.Visible = false;
+            // 
             // frmDSCatChuyenDM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -520,6 +529,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKCat;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_CC;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CatNK_MaCT;
 
     }
 }

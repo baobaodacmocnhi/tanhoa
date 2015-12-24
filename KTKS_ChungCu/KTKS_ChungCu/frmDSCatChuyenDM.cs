@@ -320,6 +320,7 @@ namespace KTKS_ChungCu
                 else
                     dr["DanhBoCat"] = dgvDSCatChuyenDM["CT_CatNK_DanhBo", i].Value.ToString();
                 dr["GhiChu"] = dgvDSCatChuyenDM["GhiChu", i].Value.ToString();
+                dr["MaCTCat"] = dgvDSCatChuyenDM["CatNK_MaCT", i].Value.ToString();
                 dr["Lo"] = dgvDSCatChuyenDM["Lo", i].Value.ToString();
                 dr["Phong"] = dgvDSCatChuyenDM["Phong", i].Value.ToString();
                 dr["ChiNhanhCat"] = _cChiNhanh.getTenChiNhanhbyID(int.Parse(dgvDSCatChuyenDM["CT_CatNK_MaCN", i].Value.ToString()));

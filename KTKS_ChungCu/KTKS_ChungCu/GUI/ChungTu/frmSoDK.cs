@@ -233,6 +233,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     ctchungtu.CatNK_DiaChi = txtDiaChiKH_Cat_YCC1.Text.Trim();
                     ctchungtu.CatNK_SoNKCat = int.Parse(txtSoNKCat_YCC1.Text.Trim());
                     ctchungtu.CatNK_GhiChu = txtGhiChu_YCC1.Text.Trim();
+                    ctchungtu.CatNK_MaCT = txtMaCT_YCC1.Text.Trim();
                     ctchungtu.SoLuongDC_YCC = 1;
                     ///
                     lichsuchungtu.YeuCauCat = true;
@@ -266,6 +267,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     ctchungtu.CatNK_DiaChi2 = txtDiaChiKH_Cat_YCC2.Text.Trim();
                     ctchungtu.CatNK_SoNKCat2 = int.Parse(txtSoNKCat_YCC2.Text.Trim());
                     ctchungtu.CatNK_GhiChu2 = txtGhiChu_YCC2.Text.Trim();
+                    ctchungtu.CatNK_MaCT2 = txtMaCT_YCC2.Text.Trim();
                     ctchungtu.SoLuongDC_YCC = 2;
                     ///
                     lichsuchungtu2.YeuCauCat = true;
@@ -297,6 +299,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     ctchungtu.CatNK_DiaChi3 = txtDiaChiKH_Cat_YCC3.Text.Trim();
                     ctchungtu.CatNK_SoNKCat3 = int.Parse(txtSoNKCat_YCC3.Text.Trim());
                     ctchungtu.CatNK_GhiChu3 = txtGhiChu_YCC3.Text.Trim();
+                    ctchungtu.CatNK_MaCT3 = txtMaCT_YCC3.Text.Trim();
                     ctchungtu.SoLuongDC_YCC = 3;
                     ///
                     lichsuchungtu3.YeuCauCat = true;
@@ -328,6 +331,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     ctchungtu.CatNK_DiaChi4 = txtDiaChiKH_Cat_YCC4.Text.Trim();
                     ctchungtu.CatNK_SoNKCat4 = int.Parse(txtSoNKCat_YCC4.Text.Trim());
                     ctchungtu.CatNK_GhiChu4 = txtGhiChu_YCC4.Text.Trim();
+                    ctchungtu.CatNK_MaCT4 = txtMaCT_YCC4.Text.Trim();
                     ctchungtu.SoLuongDC_YCC = 4;
                     ///
                     lichsuchungtu4.YeuCauCat = true;
@@ -359,6 +363,7 @@ namespace KTKS_ChungCu.GUI.ChungTu
                     ctchungtu.CatNK_DiaChi5 = txtDiaChiKH_Cat_YCC5.Text.Trim();
                     ctchungtu.CatNK_SoNKCat5 = int.Parse(txtSoNKCat_YCC5.Text.Trim());
                     ctchungtu.CatNK_GhiChu5 = txtGhiChu_YCC5.Text.Trim();
+                    ctchungtu.CatNK_MaCT5 = txtMaCT_YCC5.Text.Trim();
                     ctchungtu.SoLuongDC_YCC = 5;
                     ///
                     lichsuchungtu5.YeuCauCat = true;
