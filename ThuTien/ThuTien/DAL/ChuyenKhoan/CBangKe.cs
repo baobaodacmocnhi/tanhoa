@@ -150,7 +150,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS_BangKe_DangNgan(DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS_BangKe_DangNgan1(DateTime TuNgay, DateTime DenNgay)
         {
             string sql = "declare @FromNgayGiaiTrach date;"
                 + " declare @ToNgayGiaiTrach date;"
@@ -167,14 +167,14 @@ namespace ThuTien.DAL.ChuyenKhoan
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
-        public DataTable GetDS_BangKe_DangNgan1(DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS_BangKe_DangNgan(DateTime TuNgay, DateTime DenNgay)
         {
             string sql = "declare @FromNgayGiaiTrach date;"
                 + " declare @ToNgayGiaiTrach date;"
                 + " set @FromNgayGiaiTrach='" + TuNgay.ToString("yyyy-MM-dd") + "';"
                 + " set @ToNgayGiaiTrach='" + DenNgay.ToString("yyyy-MM-dd") + "';"
                 + " select t1.* from"
-                + " (select MaBK,bk.DanhBo,HoTen,GiaBieu,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong,row_number() over (partition by bk.DanhBo order by hd.ID_HOADON desc) as RowNumber from"
+                + " (select MaBK,bk.DanhBo,HoTen,GiaBieu,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong,row_number() over (partition by MaBK order by MaBK asc) as RowNumber from"
                 + " (select MaBK,DanhBo,SoTien,Phi,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@FromNgayGiaiTrach and CAST(CreateDate as date)<=@ToNgayGiaiTrach) bk"
                 + " left join"
                 + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"

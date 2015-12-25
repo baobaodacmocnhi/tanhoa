@@ -182,7 +182,7 @@ namespace ThuTien.GUI.Doi
                     {
                         //_cHoaDon.SqlBeginTransaction();
                         foreach (ListViewItem item in lstHD.Items)
-                            if (_cHoaDon.DangNgan("HanhThu", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                            if (_cHoaDon.DangNgan("", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                             {
                                 //if (_cLenhHuy.CheckExist(item.ToString()))
                                 //    if (!_cLenhHuy.Xoa(item.ToString()))

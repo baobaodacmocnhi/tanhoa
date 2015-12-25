@@ -87,7 +87,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan(dateTu.Value, dateDen.Value);
+            dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan1(dateTu.Value, dateDen.Value);
             long TongSoTien = 0;
             int TongHD = 0;
             long TongCong = 0;

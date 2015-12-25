@@ -3948,7 +3948,7 @@ namespace ThuTien.DAL.Doi
                         var query = from item in _db.HOADONs
                                     where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
                                     && item.ChuyenNoKhoDoi == false && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.GB > 20
-                                    orderby item.STT ascending
+                                    //orderby item.STT ascending
                                     group item by item.MaNV_DangNgan into itemGroup
                                     select new
                                     {

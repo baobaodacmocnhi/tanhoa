@@ -193,7 +193,7 @@ namespace ThuTien.GUI.ToTruong
                     {
                         //_cHoaDon.SqlBeginTransaction();
                         foreach (ListViewItem item in lstHD.Items)
-                            if (_cHoaDon.DangNgan("HanhThu", item.Text, (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
+                            if (_cHoaDon.DangNgan("", item.Text, (int)cmbNhanVien.SelectedValue, dateGiaiTrachSua.Value))
                             {
                                 ///ưu tiên đăng ngân hành thu, tự động xóa tạm thu chuyển qua thu 2 lần
                                 bool ChuyenKhoan = false;

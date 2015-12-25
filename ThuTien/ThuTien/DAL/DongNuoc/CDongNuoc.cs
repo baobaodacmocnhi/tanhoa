@@ -369,25 +369,25 @@ namespace ThuTien.DAL.DongNuoc
                         + " set @FromDate='" + FromDate.ToString("yyyy-MM-dd") + "';"
                         + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "';"
                         + " select nd.MaND as MaNV,nd.HoTen,nd.STT,toncu.DCTonCu,toncu.HDTonCu,toncu.TCTonCu,nhan.DCNhan,nhan.HDNhan,nhan.TCNhan"
-                        + ",dangngan.DCDangNgan,dangngan.HDDangNgan,dangngan.TCDangNgan,lenhhuy.DCHuy,lenhhuy.HDHuy,lenhhuy.TCHuy from"
+                        + ",dangngan.DCDangNgan,dangngan.HDDangNgan,dangngan.TCDangNgan,lenhhuy.DCHuy,lenhhuy.HDHuy,lenhhuy.TCHuy,khoanuoc.DCKhoaNuoc from"
                         + " (select MaND,HoTen,STT from TT_NguoiDung where DongNuoc=1 and MaTo="+MaTo+") nd"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCTonCu,COUNT(ID_HOADON) as HDTonCu,SUM(hd.TONGCONG) as TCTonCu"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and CAST(dn.NgayGiao as date)<@FromDate and (hd.NGAYGIAITRACH is null or (CAST(hd.NGAYGIAITRACH as date)>@FromDate))"
+                        + " and CAST(dn.CreateDate as date)<@FromDate and (hd.NGAYGIAITRACH is null or (CAST(hd.NGAYGIAITRACH as date)>@FromDate))"
                         + " group by nd.MaND,nd.HoTen,nd.STT) toncu on nd.MaND=toncu.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCNhan,COUNT(ID_HOADON) as HDNhan,SUM(hd.TONGCONG) as TCNhan"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and CAST(dn.NgayGiao as date)>=@FromDate and CAST(dn.NgayGiao as date)<=@ToDate"
+                        + " and CAST(dn.CreateDate as date)>=@FromDate and CAST(dn.CreateDate as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) nhan on nd.MaND=nhan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCDangNgan,COUNT(ID_HOADON) as HDDangNgan,SUM(hd.TONGCONG) as TCDangNgan"
                         + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
                         + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        + " and CAST(dn.NgayGiao as date)>=@FromDate and CAST(dn.NgayGiao as date)<=@ToDate and CAST(NGAYGIAITRACH as date)<=@ToDate"
+                        + " and CAST(dn.CreateDate as date)>=@FromDate and CAST(dn.CreateDate as date)<=@ToDate and CAST(NGAYGIAITRACH as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) dangngan on nd.MaND=dangngan.MaND"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT DanhBo) as DCHuy,COUNT(ID_HOADON) as HDHuy,SUM(hd.TONGCONG) as TCHuy"
@@ -395,6 +395,12 @@ namespace ThuTien.DAL.DongNuoc
                         + " where dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and lenhhuy.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and CAST(lenhhuy.CreateDate as date)>=@FromDate and CAST(lenhhuy.CreateDate as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) lenhhuy on nd.MaND=lenhhuy.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,COUNT(DISTINCT kqdn.DanhBo) as DCKhoaNuoc"
+                        + " from TT_DongNuoc dn,TT_CTDongNuoc ctdn,TT_KQDongNuoc kqdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dn.MaDN=ctdn.MaDN and dn.MaDN=kqdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and CAST(kqdn.NgayDN as date)>=@FromDate and CAST(kqdn.NgayDN as date)<=@ToDate"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) khoanuoc on nd.MaND=khoanuoc.MaND"
                         + " order by nd.STT asc";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);

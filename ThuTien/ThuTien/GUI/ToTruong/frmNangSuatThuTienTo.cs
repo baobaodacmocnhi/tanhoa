@@ -731,6 +731,15 @@ namespace ThuTien.GUI.ToTruong
                         dr["TCHuy"] = item["TCHuy"];
                     }
 
+                    if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))
+                    {
+                        dr["DCDongNuoc"] = 0;
+                    }
+                    else
+                    {
+                        dr["DCDongNuoc"] = item["DCKhoaNuoc"];
+                    }
+
                     ds.Tables["DSDongNuoc"].Rows.Add(dr);
                 }
 

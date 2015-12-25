@@ -14,12 +14,16 @@ using System.Globalization;
 using ThuTien.DAL.Quay;
 using ThuTien.LinQ;
 using ThuTien.DAL;
+using ThuTien.DAL.ToTruong;
+using ThuTien.DAL.QuanTri;
 
 namespace ThuTien.GUI.ToTruong
 {
     public partial class frmTongHopNo : Form
     {
         CHoaDon _cHoaDon = new CHoaDon();
+        CTongHopNo _cTHN = new CTongHopNo();
+        CTo _cTo = new CTo();
         CKTKS_DonKH _cKTKS_DonKH = new CKTKS_DonKH();
         BindingSource bsHoaDon = new BindingSource();
         DataTable dt = new DataTable();
@@ -35,6 +39,21 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvHoaDon.DataSource = bsHoaDon;
+
+            if (CNguoiDung.Doi)
+            {
+                lbTo.Visible = true;
+                cmbTo.Visible = true;
+
+                List<TT_To> lstTo = _cTo.GetDSHanhThu();
+                TT_To to = new TT_To();
+                to.MaTo = 0;
+                to.TenTo = "Tất Cả";
+                lstTo.Insert(0, to);
+                cmbTo.DataSource = lstTo;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
 
             //DataTable dt = new DataTable();
             DataColumn col = new DataColumn("MaHD");
@@ -142,6 +161,36 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            TT_TongHopNo tonghopno = new TT_TongHopNo();
+            tonghopno.KinhGui = txtKinhGui.Text.Trim();
+            tonghopno.ChiSoMoi = int.Parse(txtCSM.Text.Trim());
+            tonghopno.ChiSoCu = int.Parse(txtCSC.Text.Trim());
+            tonghopno.DinhMuc = int.Parse(txtDM.Text.Trim());
+            tonghopno.TieuThu = int.Parse(txtTT.Text.Trim());
+            tonghopno.NgayThanhToan = dateThanhToan.Value;
+            if (radGiamDoc.Checked)
+                tonghopno.NguoiKy = "GIÁM ĐỐC";
+            else
+                if (radPhoGiamDoc.Checked)
+                    tonghopno.NguoiKy = "P.GIÁM ĐỐC";
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            {
+                TT_CTTongHopNo cttonghopno = new TT_CTTongHopNo();
+                cttonghopno.ID = _cTHN.GetNextID_CTTongHopNo();
+                cttonghopno.DanhBo = item.Cells["DanhBo"].Value.ToString();
+                cttonghopno.DiaChi = item.Cells["DiaChi"].Value.ToString();
+                cttonghopno.Ky = item.Cells["Ky"].Value.ToString();
+                cttonghopno.GiaBieu = int.Parse(item.Cells["GiaBieu"].Value.ToString());
+                cttonghopno.DinhMuc = int.Parse(item.Cells["DinhMuc"].Value.ToString());
+                cttonghopno.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
+                cttonghopno.GiaBan = decimal.Parse(item.Cells["GiaBan"].Value.ToString());
+                cttonghopno.ThueGTGT = decimal.Parse(item.Cells["ThueGTGT"].Value.ToString());
+                cttonghopno.PhiBVMT = decimal.Parse(item.Cells["PhiBVMT"].Value.ToString());
+                cttonghopno.TongCong = decimal.Parse(item.Cells["TongCong"].Value.ToString());
+                tonghopno.TT_CTTongHopNos.Add(cttonghopno);
+            }
+            _cTHN.Them(tonghopno);
+
             CTamThu _cTamThu = new CTamThu();
             dsBaoCao ds = new dsBaoCao();
             int TongCongSo = 0;
@@ -273,6 +322,38 @@ namespace ThuTien.GUI.ToTruong
             }
             catch
             {
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.Doi)
+            {
+                ///chọn tất cả các tổ
+                if (cmbTo.SelectedIndex == 0)
+                    dgvTongHopNo.DataSource = _cTHN.GetDS(dateTu.Value,dateDen.Value);
+                else
+                    ///chọn 1 tổ cụ thể
+                    if (cmbTo.SelectedIndex > 0)
+                        dgvTongHopNo.DataSource = _cTHN.GetDS(int.Parse(cmbTo.SelectedValue.ToString()),dateTu.Value, dateDen.Value);
+            }
+            else
+                dgvTongHopNo.DataSource = _cTHN.GetDS(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+        }
+
+        private void dgvTongHopNo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "MaTHN" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2,"-");
+            }
+        }
+
+        private void dgvTongHopNo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvTongHopNo.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
 
