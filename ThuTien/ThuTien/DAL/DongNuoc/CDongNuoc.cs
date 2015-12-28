@@ -407,13 +407,17 @@ namespace ThuTien.DAL.DongNuoc
         }
 
         /// <summary>
-        /// Kiểm tra lệnh đóng nước của hóa đơn có được đăng ngân chưa, nếu đăng ngân rồi thì không có lập Kết Quả Đóng Nước
+        /// Kiểm tra lệnh đóng nước của hóa đơn có được đăng ngân chưa, nếu đăng ngân tất cả rồi thì không có nhập Kết Quả Đóng Nước. 1 hóa đơn còn tồn vẫn cho Nhập
         /// </summary>
         /// <param name="MaDN"></param>
         /// <returns></returns>
         public bool CheckDangNganByMaDN(decimal MaDN)
         {
-            return _db.TT_CTDongNuocs.Any(item => item.MaDN == MaDN && item.HOADON.NGAYGIAITRACH != null);
+            //return _db.TT_CTDongNuocs.Any(item => item.MaDN == MaDN && item.HOADON.NGAYGIAITRACH != null);
+            foreach (TT_CTDongNuoc item in _db.TT_CTDongNuocs.Where(item => item.MaDN == MaDN))
+                if (item.HOADON.NGAYGIAITRACH == null)
+                    return false;
+            return true;
         }
 
         public bool CheckKQDongNuocByMaDN(decimal MaDN)
