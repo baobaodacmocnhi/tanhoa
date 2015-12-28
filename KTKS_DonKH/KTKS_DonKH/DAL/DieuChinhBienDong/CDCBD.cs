@@ -1836,6 +1836,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DV_BD,
                                     itemCTDCBD.HCSN_BD,
                                     itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.HieuLucKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
@@ -1891,6 +1892,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                                     itemCTDCBD.DV_BD,
                                     itemCTDCBD.HCSN_BD,
                                     itemCTDCBD.NguoiKy,
+                                    itemCTDCBD.HieuLucKy,
                                 };
                     return KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(query);
                 }
