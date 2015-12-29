@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>422</ApplicationRevision>
+    <ApplicationRevision>427</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -810,12 +810,6 @@
     <Compile Include="GUI\Quay\frmTamThuQuay.Designer.cs">
       <DependentUpon>frmTamThuQuay.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\TongHop\frmDCHD_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\TongHop\frmDCHD_old.Designer.cs">
-      <DependentUpon>frmDCHD_old.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\TongHop\frmShowDCHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1293,9 +1287,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Quay\frmTamThuQuay.resx">
       <DependentUpon>frmTamThuQuay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\TongHop\frmDCHD_old.resx">
-      <DependentUpon>frmDCHD_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmShowDCHD.resx">
       <DependentUpon>frmShowDCHD.cs</DependentUpon>

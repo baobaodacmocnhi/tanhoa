@@ -81,7 +81,7 @@ namespace ThuTien.GUI.TongHop
                     _cDCHD.BeginTransaction();
                     foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                     {
-                        DIEUCHINH_HD dchd = _cDCHD.GetByMaDCHD(int.Parse(item.Cells["MaDCHD"].Value.ToString()));
+                        DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item.Cells["MaDCHD"].Value.ToString()));
                         if (!_cHoaDon.CheckDangNganBySoHoaDon(dchd.SoHoaDon))
                         {
                             if (_cDCHD.Xoa(dchd))
@@ -259,6 +259,19 @@ namespace ThuTien.GUI.TongHop
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void dgvDCHD_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvDCHD.Columns[e.ColumnIndex].Name == "ChuanThu1" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvDCHD[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(dgvDCHD["MaDCHD", e.RowIndex].Value.ToString()));
+                    dchd.ChuanThu1 = bool.Parse(e.FormattedValue.ToString());
+                    _cDCHD.Sua(dchd);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     
     }

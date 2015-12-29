@@ -1465,13 +1465,13 @@ namespace ThuTien.GUI.Doi
 
                 foreach (DataRow item in dt.Rows)
                 {
-                    if (_cDCHD.CheckExist(item["SoHoaDon"].ToString()))
+                    if (_cDCHD.CheckExist_ChuanThu(item["SoHoaDon"].ToString()))
                     {
-                        DataTable dtDCHD = _cDCHD.GetChuanThu(item["SoHoaDon"].ToString());
-                        item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - int.Parse(dtDCHD.Rows[0]["GIABAN_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
-                        item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - int.Parse(dtDCHD.Rows[0]["THUEGTGT_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["THUEGTGT_BD"].ToString());
-                        item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - int.Parse(dtDCHD.Rows[0]["PHIBVMT_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["PHIBVMT_BD"].ToString());
-                        item["TongCong"] = long.Parse(item["TongCong"].ToString()) - int.Parse(dtDCHD.Rows[0]["TONGCONG_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
+                        DIEUCHINH_HD dchd = _cDCHD.Get(item["SoHoaDon"].ToString());
+                        item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - dchd.GIABAN_END + dchd.GIABAN_BD;
+                        item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - dchd.THUE_END + dchd.THUE_BD;
+                        item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - dchd.PHI_END + dchd.PHI_BD;
+                        item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_END + dchd.TONGCONG_BD;
                     }
                 }
 
@@ -1592,13 +1592,13 @@ namespace ThuTien.GUI.Doi
 
                     foreach (DataRow item in dt.Rows)
                     {
-                        if (_cDCHD.CheckExist(item["SoHoaDon"].ToString()))
+                        if (_cDCHD.CheckExist_ChuanThu(item["SoHoaDon"].ToString()))
                         {
-                            DataTable dtDCHD = _cDCHD.GetChuanThu(item["SoHoaDon"].ToString());
-                            item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - int.Parse(dtDCHD.Rows[0]["GIABAN_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["GIABAN_BD"].ToString());
-                            item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - int.Parse(dtDCHD.Rows[0]["THUEGTGT_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["THUEGTGT_BD"].ToString());
-                            item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - int.Parse(dtDCHD.Rows[0]["PHIBVMT_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["PHIBVMT_BD"].ToString());
-                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - int.Parse(dtDCHD.Rows[0]["TONGCONG_END"].ToString()) + int.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
+                            DIEUCHINH_HD dchd = _cDCHD.Get(item["SoHoaDon"].ToString());
+                            item["GiaBan"] = long.Parse(item["GiaBan"].ToString()) - dchd.GIABAN_END + dchd.GIABAN_BD;
+                            item["ThueGTGT"] = long.Parse(item["ThueGTGT"].ToString()) - dchd.THUE_END + dchd.THUE_BD;
+                            item["PhiBVMT"] = long.Parse(item["PhiBVMT"].ToString()) - dchd.PHI_END + dchd.PHI_BD;
+                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_END + dchd.TONGCONG_BD;
                         }
                     }
 

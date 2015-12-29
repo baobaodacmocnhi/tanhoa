@@ -726,7 +726,7 @@
             this.groupBox1.Size = new System.Drawing.Size(342, 50);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ngày Giao Lệnh Đóng Nước";
+            this.groupBox1.Text = "Ngày Lập Lệnh Đóng Nước";
             // 
             // dateTu
             // 

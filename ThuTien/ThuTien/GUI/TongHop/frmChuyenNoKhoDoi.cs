@@ -207,7 +207,7 @@ namespace ThuTien.GUI.TongHop
         {
             dgvHoaDon.DataSource = _cCNKD.GetDSCT(dateTu.Value, dateDen.Value);
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
-                if (_cDCHD.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                if (_cDCHD.CheckExist_ChuanThu(item.Cells["SoHoaDon"].Value.ToString()))
                 {
                     DIEUCHINH_HD dchd = _cDCHD.Get(item.Cells["SoHoaDon"].Value.ToString());
                     item.Cells["TongCong"].Value = dchd.TONGCONG_BD;
@@ -260,11 +260,11 @@ namespace ThuTien.GUI.TongHop
                     dr["Ky"] = item["Ky"];
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["TieuThu"] = item["TieuThu"];
-                    if (_cDCHD.CheckExist(item["SoHoaDon"].ToString()))
+                    if (_cDCHD.CheckExist_ChuanThu(item["SoHoaDon"].ToString()))
                     {
                         DIEUCHINH_HD dchd = _cDCHD.Get(item["SoHoaDon"].ToString());
                         dr["GiaBan"] = dchd.GIABAN_BD;
-                        dr["ThueGTGT"] = dchd.THUE_BD;
+                        dr["ThueGTGT"] =  dchd.THUE_BD;
                         dr["PhiBVMT"] = dchd.PHI_BD;
                     }
                     else

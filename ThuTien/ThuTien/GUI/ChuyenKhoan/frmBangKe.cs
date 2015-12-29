@@ -193,12 +193,18 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
-                    bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
-                    if (_cBangKe.Sua(bangke))
+                    try
                     {
-                        _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * -1, "Bảng Kê","Sửa Từ Danh Bộ");
-                        _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Sửa Đến Danh Bộ");
+                        TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
+                        bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
+                        if (_cBangKe.Sua(bangke))
+                        {
+                            _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Insert(4, " ").Insert(7, " "));
+                            _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Insert(4, " ").Insert(7, " "));
+                        }
+                    }
+                    catch (Exception)
+                    {
                     }
                 }
                 else

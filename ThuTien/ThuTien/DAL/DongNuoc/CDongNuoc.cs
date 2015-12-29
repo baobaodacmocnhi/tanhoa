@@ -406,6 +406,11 @@ namespace ThuTien.DAL.DongNuoc
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
+        public bool CheckHuyLenh(decimal MaDN)
+        {
+            return _db.TT_DongNuocs.Any(item => item.MaDN == MaDN && item.Huy == true);
+        }
+
         /// <summary>
         /// Kiểm tra lệnh đóng nước của hóa đơn có được đăng ngân chưa, nếu đăng ngân tất cả rồi thì không có nhập Kết Quả Đóng Nước. 1 hóa đơn còn tồn vẫn cho Nhập
         /// </summary>

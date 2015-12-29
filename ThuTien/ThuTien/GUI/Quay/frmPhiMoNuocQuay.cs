@@ -14,7 +14,7 @@ namespace ThuTien.GUI.Quay
 {
     public partial class frmPhiMoNuocQuay : Form
     {
-        string _mnu = "mnuPhiMoNuoc";
+        string _mnu = "mnuPhiMoNuocQuay";
         CDongNuoc _cDongNuoc = new CDongNuoc();
 
         public frmPhiMoNuocQuay()

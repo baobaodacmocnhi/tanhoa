@@ -388,9 +388,9 @@ namespace ThuTien.GUI.ToTruong
                 DataTable dtCNKD=_cCNKD.GetBaoCaoTongHop("TG",CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                 dtCNKD.Merge(_cCNKD.GetBaoCaoTongHop("CQ",CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                 foreach (DataRow item in dtCNKD.Rows)
-                    if (_cDCHD.CheckExist(item["SoHoaDon"].ToString()))
+                    if (_cDCHD.CheckExist_ChuanThu(item["SoHoaDon"].ToString()))
                     {
-                        DIEUCHINH_HD dchd = _cDCHD.GetBySoHoaDon(item["SoHoaDon"].ToString());
+                        DIEUCHINH_HD dchd = _cDCHD.Get(item["SoHoaDon"].ToString());
                         item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_END + dchd.TONGCONG_BD;
                     }
 
@@ -747,7 +747,7 @@ namespace ThuTien.GUI.ToTruong
                 rpt.SetDataSource(ds);
                 rpt.Subreports[0].SetDataSource(ds);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 

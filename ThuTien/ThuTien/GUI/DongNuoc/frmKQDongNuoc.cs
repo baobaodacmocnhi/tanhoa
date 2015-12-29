@@ -127,6 +127,11 @@ namespace ThuTien.GUI.DongNuoc
                         MessageBox.Show("Lệnh này đã nhập Kết Quả", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    if (_cDongNuoc.CheckHuyLenh(_dongnuoc.MaDN))
+                    {
+                        MessageBox.Show("Lệnh này đã bị Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (!CNguoiDung.ToTruong)
                         if (!_cDongNuoc.CheckDongNuocByMaDNMaNV_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
                         {
@@ -167,7 +172,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (_cDongNuoc.ThemKQ(kqdongnuoc))
                     {
                         Clear();
-                        //btnXem.PerformClick();
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -216,7 +221,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (_cDongNuoc.SuaKQ(_kqdongnuoc))
                     {
                         Clear();
-                        ////btnXem.PerformClick();
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -257,7 +262,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (_cDongNuoc.SuaKQ(kqdongnuoc))
                     {
                         Clear();
-                        ////btnXem.PerformClick();
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -276,7 +281,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (_cDongNuoc.XoaKQ(kqdongnuoc))
                     {
                         Clear();
-                        //btnXem.PerformClick();
+                        btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
