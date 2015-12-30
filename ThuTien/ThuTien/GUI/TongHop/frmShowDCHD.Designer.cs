@@ -73,11 +73,13 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.chkChuanThu1 = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chkChuanThu1);
             this.groupBox3.Controls.Add(this.txtSoHoaDonMoi);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label8);
@@ -511,11 +513,21 @@
             this.textBox5.TabIndex = 27;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // chkChuanThu1
+            // 
+            this.chkChuanThu1.AutoSize = true;
+            this.chkChuanThu1.Location = new System.Drawing.Point(349, 17);
+            this.chkChuanThu1.Name = "chkChuanThu1";
+            this.chkChuanThu1.Size = new System.Drawing.Size(88, 17);
+            this.chkChuanThu1.TabIndex = 29;
+            this.chkChuanThu1.Text = "Chuẩn Thu 1";
+            this.chkChuanThu1.UseVisualStyleBackColor = true;
+            // 
             // frmShowDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 265);
+            this.ClientSize = new System.Drawing.Size(611, 265);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox2);
@@ -596,5 +608,6 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox txtSoHoaDonMoi;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chkChuanThu1;
     }
 }

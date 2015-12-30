@@ -51,6 +51,8 @@ namespace ThuTien.GUI.TongHop
                 textBox4.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.PHI_BD.Value);
                 textBox5.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TONGCONG_BD.Value);
 
+                chkChuanThu1.Checked=_dchd.ChuanThu1;
+
                 if (_dchd.PHIEU_DC != null)
                     if (!_dchd.TXL)
                     {
@@ -175,7 +177,7 @@ namespace ThuTien.GUI.TongHop
                             //_dchd.SoHoaDon = txtSoHoaDonMoi.Text.Trim().ToUpper();
                             _cDCHD.Refresh(_dchd);
                         }
-
+                        _dchd.ChuanThu1 = chkChuanThu1.Checked;
                         if (_ctdchd != null)
                         {
                             if (_ctdchd.DCBD.ToXuLy)
@@ -281,7 +283,7 @@ namespace ThuTien.GUI.TongHop
                             dchd.THUE_BD = _hoadon.THUE;
                             dchd.TONGCONG_BD = _hoadon.TONGCONG;
                             dchd.NGAY_DC = DateTime.Now;
-
+                            dchd.ChuanThu1 = chkChuanThu1.Checked;
                             if (_ctdchd != null)
                             {
                                 if (_ctdchd.DCBD.ToXuLy)

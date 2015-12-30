@@ -37,6 +37,24 @@ namespace ThuTien.GUI.TongHop
                 {
                     List<TT_NguoiDung> lstND = _cNguoiDung.GetDSChamCong();
 
+                    ///xét năm mới
+                    if (DateTime.Now.Month == 1)
+                    {
+                        int SoNgayPhep = 12;
+                        foreach (TT_NguoiDung item in lstND)
+                        {
+                            item.NgayPhepNamCu = item.NgayPhepNamMoi;
+                            item.NgayPhepNamMoi = SoNgayPhep + (DateTime.Now.Year - item.NamVaoLam.Value) / 5;
+                        }
+                    }
+
+                    ///ngày phép cũ chỉ dữ hết tháng 3
+                    if (DateTime.Now.Month == 4)
+                        foreach (TT_NguoiDung item in lstND)
+                        {
+                            item.NgayPhepNamCu = 0;
+                        }
+
                     TT_ChamCong chamcong = new TT_ChamCong();
                     chamcong.Thang = DateTime.Now.Month;
                     chamcong.Nam = DateTime.Now.Year;
@@ -519,7 +537,16 @@ namespace ThuTien.GUI.TongHop
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
-                _cChamCong.ChamCong(int.Parse(dgvChamCong["MaCC", e.RowIndex].Value.ToString()), int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()), dgvChamCong.Columns[e.ColumnIndex].Name, bool.Parse(dgvChamCong[e.ColumnIndex, e.RowIndex].Value.ToString()));
+                if(_cChamCong.ChamCong(int.Parse(dgvChamCong["MaCC", e.RowIndex].Value.ToString()), int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()), dgvChamCong.Columns[e.ColumnIndex].Name, bool.Parse(dgvChamCong[e.ColumnIndex, e.RowIndex].Value.ToString())))
+                    if (bool.Parse(dgvChamCong[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                    {
+                        TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()));
+                        if (nguoidung.NgayPhepNamCu > 0)
+                            nguoidung.NgayPhepNamCu -= 1;
+                        else
+                            nguoidung.NgayPhepNamMoi -= 1;
+                        _cNguoiDung.Sua(nguoidung);
+                    }
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -580,5 +607,6 @@ namespace ThuTien.GUI.TongHop
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();
         }
+
     }
 }

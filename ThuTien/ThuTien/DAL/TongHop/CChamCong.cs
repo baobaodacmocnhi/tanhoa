@@ -104,7 +104,7 @@ namespace ThuTien.DAL.TongHop
         public bool ChamCong(int MaCC, int MaNV, string Ngay, bool DiLam)
         {
             string sql = "update TT_CTChamCong set " + Ngay + "='" + DiLam + "' where MaCC=" + MaCC + " and MaND=" + MaNV;
-            return ExecuteNonQuery(sql, false);
+            return LinQ_ExecuteNonQuery(sql);
         }
 
         public int GetMaxMaCC()
