@@ -525,10 +525,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 int DinhMucGiam_NT = 0;
 
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-                foreach (DataRow itemRow in dtDCBD.Rows)
+                ///không nhập hiệu lực kỳ, tính tất cả
+                if (string.IsNullOrEmpty(txtHieuLucKy.Text.Trim()))
                 {
-                    string[] hieulucky = itemRow["HieuLucKy"].ToString().Split('/');
-                    if (int.Parse(hieulucky[0]) <= dateDen.Value.Month && int.Parse(hieulucky[1]) <= dateDen.Value.Year)
+                    foreach (DataRow itemRow in dtDCBD.Rows)
                     {
                         DataRow dr = dsBaoCao.Tables["ThongKeDCBD"].NewRow();
 
@@ -591,11 +591,84 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         DinhMucGiam_CC += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
                                     }
                         }
-
                         dsBaoCao.Tables["ThongKeDCBD"].Rows.Add(dr);
                     }
                 }
+                ///tính theo hiệu lực kỳ
+                else
+                {
+                    string[] hieulucky = txtHieuLucKy.Text.Trim().Split('/');
+                    foreach (DataRow itemRow in dtDCBD.Rows)
+                    {
+                        string[] itemHLK = itemRow["HieuLucKy"].ToString().Split('/');
+                        if (int.Parse(itemHLK[1]) < int.Parse(hieulucky[1]) || (int.Parse(itemHLK[1]) == int.Parse(hieulucky[1]) && int.Parse(itemHLK[0]) <= int.Parse(hieulucky[0])))
+                        {
+                            DataRow dr = dsBaoCao.Tables["ThongKeDCBD"].NewRow();
 
+                            dr["TuNgay"] = _tuNgay;
+                            dr["DenNgay"] = _denNgay;
+                            dr["DanhBo"] = itemRow["DanhBo"];
+                            dr["HoTen"] = itemRow["HoTen_BD"];
+                            dr["GiaBieuCu"] = itemRow["GiaBieu"];
+                            dr["GiaBieuMoi"] = itemRow["GiaBieu_BD"];
+                            dr["DinhMucCu"] = itemRow["DinhMuc"];
+                            dr["DinhMucMoi"] = itemRow["DinhMuc_BD"];
+                            dr["DiaChi"] = itemRow["DiaChi_BD"];
+                            dr["MSThue"] = itemRow["MSThue_BD"];
+                            dr["SH"] = itemRow["SH_BD"];
+                            dr["SX"] = itemRow["SX_BD"];
+                            dr["DV"] = itemRow["DV_BD"];
+                            dr["HCSN"] = itemRow["HCSN_BD"];
+                            dr["NhaTro"] = _cChungTu.CheckDinhMucNhaTro(itemRow["DanhBo"].ToString());
+
+                            if (!string.IsNullOrEmpty(itemRow["DinhMuc_BD"].ToString()))
+                            {
+                                int a = 0;
+                                if (string.IsNullOrEmpty(itemRow["DinhMuc"].ToString()))
+                                    a = 0;
+                                else
+                                    a = int.Parse(itemRow["DinhMuc"].ToString());
+
+                                if (bool.Parse(dr["NhaTro"].ToString()))
+                                    if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
+                                    {
+                                        DanhBoTangDM_NT++;
+                                        DinhMucTang_NT += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
+                                    }
+                                    else
+                                    {
+                                        DanhBoGiamDM_NT++;
+                                        DinhMucGiam_NT += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
+                                    }
+                                else
+                                    if (int.Parse(itemRow["GiaBieu"].ToString()) != 51)
+                                        if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
+                                        {
+                                            DanhBoTangDM++;
+                                            DinhMucTang += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
+                                        }
+                                        else
+                                        {
+                                            DanhBoGiamDM++;
+                                            DinhMucGiam += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
+                                        }
+                                    else
+                                        if (int.Parse(itemRow["DinhMuc_BD"].ToString()) > a)
+                                        {
+                                            DanhBoTangDM_CC++;
+                                            DinhMucTang_CC += int.Parse(itemRow["DinhMuc_BD"].ToString()) - a;
+                                        }
+                                        else
+                                        {
+                                            DanhBoGiamDM_CC++;
+                                            DinhMucGiam_CC += a - int.Parse(itemRow["DinhMuc_BD"].ToString());
+                                        }
+                            }
+                            dsBaoCao.Tables["ThongKeDCBD"].Rows.Add(dr);
+                        }
+                    }
+                }
+                
                 foreach (DataRow itemRow in dtDCHD.Rows)
                 {
                     DataRow dr = dsBaoCao.Tables["ThongKeDCHD"].NewRow();

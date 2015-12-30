@@ -49,6 +49,8 @@
             this.radThongKeDCSoCT = new System.Windows.Forms.RadioButton();
             this.radDSDMCapHetHan = new System.Windows.Forms.RadioButton();
             this.radThongKeCapDMCoThoiHanTangGiam = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtHieuLucKy = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +80,7 @@
             this.panel_KhoangThoiGian.Controls.Add(this.dateDen);
             this.panel_KhoangThoiGian.Controls.Add(this.label3);
             this.panel_KhoangThoiGian.Controls.Add(this.label4);
-            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(768, 1);
+            this.panel_KhoangThoiGian.Location = new System.Drawing.Point(787, 1);
             this.panel_KhoangThoiGian.Name = "panel_KhoangThoiGian";
             this.panel_KhoangThoiGian.Size = new System.Drawing.Size(192, 64);
             this.panel_KhoangThoiGian.TabIndex = 6;
@@ -125,7 +127,7 @@
             // 
             this.btnBaoCao.Image = global::KTKS_DonKH.Properties.Resources.find_24x24;
             this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.Location = new System.Drawing.Point(1181, 6);
+            this.btnBaoCao.Location = new System.Drawing.Point(1150, 6);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Size = new System.Drawing.Size(94, 35);
             this.btnBaoCao.TabIndex = 11;
@@ -159,7 +161,7 @@
             // radDSChuyenDocSo
             // 
             this.radDSChuyenDocSo.AutoSize = true;
-            this.radDSChuyenDocSo.Location = new System.Drawing.Point(531, 6);
+            this.radDSChuyenDocSo.Location = new System.Drawing.Point(550, 6);
             this.radDSChuyenDocSo.Name = "radDSChuyenDocSo";
             this.radDSChuyenDocSo.Size = new System.Drawing.Size(188, 21);
             this.radDSChuyenDocSo.TabIndex = 4;
@@ -169,7 +171,7 @@
             // radDSChuyenDocSo_LocUser
             // 
             this.radDSChuyenDocSo_LocUser.AutoSize = true;
-            this.radDSChuyenDocSo_LocUser.Location = new System.Drawing.Point(531, 33);
+            this.radDSChuyenDocSo_LocUser.Location = new System.Drawing.Point(550, 33);
             this.radDSChuyenDocSo_LocUser.Name = "radDSChuyenDocSo_LocUser";
             this.radDSChuyenDocSo_LocUser.Size = new System.Drawing.Size(231, 21);
             this.radDSChuyenDocSo_LocUser.TabIndex = 5;
@@ -199,15 +201,15 @@
             // cmbPhuong
             // 
             this.cmbPhuong.FormattingEnabled = true;
-            this.cmbPhuong.Location = new System.Drawing.Point(1025, 36);
+            this.cmbPhuong.Location = new System.Drawing.Point(1044, 36);
             this.cmbPhuong.Name = "cmbPhuong";
-            this.cmbPhuong.Size = new System.Drawing.Size(150, 25);
+            this.cmbPhuong.Size = new System.Drawing.Size(100, 25);
             this.cmbPhuong.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(962, 39);
+            this.label2.Location = new System.Drawing.Point(981, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 17);
             this.label2.TabIndex = 9;
@@ -216,16 +218,16 @@
             // cmbQuan
             // 
             this.cmbQuan.FormattingEnabled = true;
-            this.cmbQuan.Location = new System.Drawing.Point(1025, 5);
+            this.cmbQuan.Location = new System.Drawing.Point(1044, 5);
             this.cmbQuan.Name = "cmbQuan";
-            this.cmbQuan.Size = new System.Drawing.Size(150, 25);
+            this.cmbQuan.Size = new System.Drawing.Size(100, 25);
             this.cmbQuan.TabIndex = 8;
             this.cmbQuan.SelectedIndexChanged += new System.EventHandler(this.cmbQuan_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(962, 8);
+            this.label1.Location = new System.Drawing.Point(981, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 17);
             this.label1.TabIndex = 7;
@@ -244,7 +246,7 @@
             // radDSDMCapHetHan
             // 
             this.radDSDMCapHetHan.AutoSize = true;
-            this.radDSDMCapHetHan.Location = new System.Drawing.Point(531, 60);
+            this.radDSDMCapHetHan.Location = new System.Drawing.Point(550, 60);
             this.radDSDMCapHetHan.Name = "radDSDMCapHetHan";
             this.radDSDMCapHetHan.Size = new System.Drawing.Size(204, 21);
             this.radDSDMCapHetHan.TabIndex = 13;
@@ -262,12 +264,30 @@
             this.radThongKeCapDMCoThoiHanTangGiam.Text = "Thống Kê ĐM Cấp (có thời hạn, ngày tạo)";
             this.radThongKeCapDMCoThoiHanTangGiam.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(446, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 17);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "HLK:";
+            // 
+            // txtHieuLucKy
+            // 
+            this.txtHieuLucKy.Location = new System.Drawing.Point(488, 32);
+            this.txtHieuLucKy.Name = "txtHieuLucKy";
+            this.txtHieuLucKy.Size = new System.Drawing.Size(55, 25);
+            this.txtHieuLucKy.TabIndex = 16;
+            // 
             // frmBaoCaoDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 598);
+            this.Controls.Add(this.txtHieuLucKy);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.radThongKeCapDMCoThoiHanTangGiam);
             this.Controls.Add(this.radDSDMCapHetHan);
             this.Controls.Add(this.radThongKeDCSoCT);
@@ -320,5 +340,7 @@
         private System.Windows.Forms.RadioButton radThongKeDCSoCT;
         private System.Windows.Forms.RadioButton radDSDMCapHetHan;
         private System.Windows.Forms.RadioButton radThongKeCapDMCoThoiHanTangGiam;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtHieuLucKy;
     }
 }
