@@ -547,6 +547,18 @@ namespace ThuTien.GUI.TongHop
                             nguoidung.NgayPhepNamMoi -= 1;
                         _cNguoiDung.Sua(nguoidung);
                     }
+                    else
+                    {
+                        TT_NguoiDung nguoidung = _cNguoiDung.GetByMaND(int.Parse(dgvChamCong["MaNV", e.RowIndex].Value.ToString()));
+                        if (DateTime.Now.Month <= 3)
+                            if (nguoidung.NgayPhepNamCu > 0)
+                                nguoidung.NgayPhepNamCu += 1;
+                            else
+                                nguoidung.NgayPhepNamMoi += 1;
+                        else
+                            nguoidung.NgayPhepNamMoi += 1;
+                        _cNguoiDung.Sua(nguoidung);
+                    }
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

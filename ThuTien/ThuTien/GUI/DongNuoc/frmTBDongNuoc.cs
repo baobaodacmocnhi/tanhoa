@@ -183,7 +183,7 @@ namespace ThuTien.GUI.DongNuoc
 
                         for (int i = 0; i < gridViewDN.SelectedRowsCount; i++)
                             if (gridViewDN.GetSelectedRows()[i] >= 0)
-                                if (!_cDongNuoc.CheckKQDongNuocByMaDN(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
+                                if (!_cDongNuoc.CheckKQDongNuoc(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
                                     if (!_cDongNuoc.Xoa(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
                                     {
                                         _cHoaDon.SqlRollbackTransaction();

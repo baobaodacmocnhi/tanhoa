@@ -63,7 +63,7 @@ namespace ThuTien.GUI.DongNuoc
             if (!string.IsNullOrEmpty(txtMaDN.Text.Trim()) && e.KeyChar == 13)
             {
                 Clear();
-                if (_cDongNuoc.CheckKQDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))))
+                if (_cDongNuoc.CheckKQDongNuoc(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))))
                 {
                     _dongnuoc = _cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", "")));
 
@@ -117,12 +117,12 @@ namespace ThuTien.GUI.DongNuoc
             {
                 if (_dongnuoc != null)
                 {
-                    if (_cDongNuoc.CheckDangNganByMaDN(_dongnuoc.MaDN))
+                    if (_cDongNuoc.CheckDangNgan(_dongnuoc.MaDN))
                     {
                         MessageBox.Show("Hóa Đơn trong Lệnh này đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (_cDongNuoc.CheckKQDongNuocByMaDN(_dongnuoc.MaDN))
+                    if (_cDongNuoc.CheckKQDongNuoc(_dongnuoc.MaDN))
                     {
                         MessageBox.Show("Lệnh này đã nhập Kết Quả", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

@@ -164,6 +164,11 @@ namespace ThuTien.GUI.TongHop
             {
                 try
                 {
+                    if (_cHoaDon.CheckDangNganBySoHoaDon(_SoHoaDon))
+                    {
+                        MessageBox.Show("Hóa đơn đã đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     //_cDCHD.BeginTransaction();
                     ///đã có điều chỉnh
                     if (_dchd != null)

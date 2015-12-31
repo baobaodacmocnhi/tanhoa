@@ -85,11 +85,10 @@ namespace ThuTien.GUI.ToTruong
                     {
                         TinhTrang = "Đăng Ngân";
                     }
-                    else
-                        if (_cDongNuoc.CheckKQDongNuocByMaDN(int.Parse(row["MaDN"].ToString())))
-                        {
-                            TinhTrang = "Đã Khóa Nước";
-                        }
+                    if (_cDongNuoc.CheckKQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
+                    {
+                        TinhTrang = "Đã Khóa Nước";
+                    }
                 }
                 gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
             }

@@ -421,7 +421,7 @@ namespace ThuTien.DAL.DongNuoc
         /// </summary>
         /// <param name="MaDN"></param>
         /// <returns></returns>
-        public bool CheckDangNganByMaDN(decimal MaDN)
+        public bool CheckDangNgan(decimal MaDN)
         {
             //return _db.TT_CTDongNuocs.Any(item => item.MaDN == MaDN && item.HOADON.NGAYGIAITRACH != null);
             foreach (TT_CTDongNuoc item in _db.TT_CTDongNuocs.Where(item => item.MaDN == MaDN))
@@ -430,14 +430,14 @@ namespace ThuTien.DAL.DongNuoc
             return true;
         }
 
-        public bool CheckKQDongNuocByMaDN(decimal MaDN)
+        public bool CheckKQDongNuoc(decimal MaDN)
         {
             return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN);
         }
 
-        public bool CheckKQDongNuocByMaDNNgayDN(decimal MaDN, DateTime NgayDN)
+        public bool CheckKQDongNuoc(decimal MaDN, DateTime NgayDN)
         {
-            return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateDate.Value.Date == NgayDN.Date);
+            return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateDate.Value.Date <= NgayDN.Date);
         }
 
         /// <summary>

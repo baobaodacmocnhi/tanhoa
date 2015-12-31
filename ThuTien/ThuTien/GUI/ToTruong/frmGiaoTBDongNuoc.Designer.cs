@@ -48,6 +48,7 @@
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -70,7 +71,6 @@
             this.btnInDSTBTonNguoiGiao = new System.Windows.Forms.Button();
             this.btnInTB = new System.Windows.Forms.Button();
             this.chkAll = new System.Windows.Forms.CheckBox();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -270,6 +270,14 @@
             this.CreateDate.Visible = true;
             this.CreateDate.VisibleIndex = 6;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Ngày Giải Trách";
+            this.gridColumn1.FieldName = "NgayGiaiTrach";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 7;
+            // 
             // CreateBy
             // 
             this.CreateBy.Caption = "Người Lập";
@@ -277,7 +285,7 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
             this.CreateBy.VisibleIndex = 8;
-            this.CreateBy.Width = 100;
+            this.CreateBy.Width = 80;
             // 
             // MaNV_DongNuoc
             // 
@@ -286,7 +294,7 @@
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
             this.MaNV_DongNuoc.VisibleIndex = 9;
-            this.MaNV_DongNuoc.Width = 100;
+            this.MaNV_DongNuoc.Width = 80;
             // 
             // TinhTrang
             // 
@@ -295,7 +303,7 @@
             this.TinhTrang.Name = "TinhTrang";
             this.TinhTrang.Visible = true;
             this.TinhTrang.VisibleIndex = 10;
-            this.TinhTrang.Width = 60;
+            this.TinhTrang.Width = 80;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -474,14 +482,6 @@
             this.chkAll.Text = "Chọn Tất Cả";
             this.chkAll.UseVisualStyleBackColor = true;
             this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Ngày Giải Trách";
-            this.gridColumn1.FieldName = "NgayGiaiTrach";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 7;
             // 
             // frmGiaoTBDongNuoc
             // 

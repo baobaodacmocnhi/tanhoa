@@ -51,6 +51,8 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MLT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.To = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNV_DongNuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -70,8 +72,6 @@
             this.TongThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -264,6 +264,22 @@
             this.To.VisibleIndex = 6;
             this.To.Width = 30;
             // 
+            // CreateDate
+            // 
+            this.CreateDate.Caption = "Ngày Lập";
+            this.CreateDate.FieldName = "CreateDate";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Visible = true;
+            this.CreateDate.VisibleIndex = 7;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Ngày Giải Trách";
+            this.gridColumn2.FieldName = "NgayGiaiTrach";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 8;
+            // 
             // CreateBy
             // 
             this.CreateBy.Caption = "Người Lập";
@@ -271,7 +287,7 @@
             this.CreateBy.Name = "CreateBy";
             this.CreateBy.Visible = true;
             this.CreateBy.VisibleIndex = 9;
-            this.CreateBy.Width = 100;
+            this.CreateBy.Width = 80;
             // 
             // MaNV_DongNuoc
             // 
@@ -280,7 +296,7 @@
             this.MaNV_DongNuoc.Name = "MaNV_DongNuoc";
             this.MaNV_DongNuoc.Visible = true;
             this.MaNV_DongNuoc.VisibleIndex = 10;
-            this.MaNV_DongNuoc.Width = 100;
+            this.MaNV_DongNuoc.Width = 80;
             // 
             // TinhTrang
             // 
@@ -289,7 +305,7 @@
             this.TinhTrang.Name = "TinhTrang";
             this.TinhTrang.Visible = true;
             this.TinhTrang.VisibleIndex = 11;
-            this.TinhTrang.Width = 60;
+            this.TinhTrang.Width = 80;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -462,22 +478,6 @@
             this.TongTon.Name = "TongTon";
             this.TongTon.ReadOnly = true;
             this.TongTon.Width = 50;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.Caption = "Ngày Lập";
-            this.CreateDate.FieldName = "CreateDate";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.Visible = true;
-            this.CreateDate.VisibleIndex = 7;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Ngày Giải Trách";
-            this.gridColumn2.FieldName = "NgayGiaiTrach";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 8;
             // 
             // frmXemTBDongNuocDoi
             // 
