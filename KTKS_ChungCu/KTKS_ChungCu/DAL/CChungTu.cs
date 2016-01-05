@@ -30,6 +30,40 @@ namespace KTKS_ChungCu.DAL
             return decimal.Parse(stt + nam);
         }
 
+        public DataTable LoadDSChungTu_DB_Lo(string DanhBo,string Lo)
+        {
+            try
+            {
+                var query = from itemCTCT in db.CTChungTus
+                            join itemCT in db.ChungTus on itemCTCT.MaCT equals itemCT.MaCT
+                            //join itemLCT in dbDonKH.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                            where itemCTCT.DanhBo == DanhBo && itemCTCT.Lo == Lo
+                            orderby itemCTCT.STT ascending
+                            select new
+                            {
+                                itemCTCT.STT,
+                                itemCTCT.DanhBo,
+                                itemCTCT.Lo,
+                                itemCTCT.Phong,
+                                itemCT.MaLCT,
+                                //itemLCT.TenLCT,
+                                itemCTCT.MaCT,
+                                itemCT.HoTen,
+                                itemCT.SoNKTong,
+                                itemCTCT.SoNKDangKy,
+                                itemCTCT.NgayHetHan,
+                                itemCTCT.ThoiHan,
+                                itemCTCT.GhiChu,
+                            };
+                return Function.CLinQToDataTable.LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable LoadDSChungTu_DB(string DanhBo)
         {
             try

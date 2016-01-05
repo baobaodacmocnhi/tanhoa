@@ -85,7 +85,10 @@ namespace KTKS_ChungCu
                 {
                     _ttkhachhang = _cTTKH.getTTKHbyID(txtDanhBo.Text.Trim());
                     LoadTTKH(_ttkhachhang);
-                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                    if (string.IsNullOrEmpty(txtLo.Text.Trim()))
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                    else
+                        DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
                     dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                     txtLo.Focus();
                 }
@@ -147,7 +150,10 @@ namespace KTKS_ChungCu
                         if (_cChungTu.ThemChungTu(chungtu, ctchungtu, lichsuchungtu))
                         {
                             MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                            if (string.IsNullOrEmpty(txtLo.Text.Trim()))
+                                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                            else
+                                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
                             dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                             //txtSTT.Text = "";
                             //txtLo.Text = "";
@@ -212,7 +218,10 @@ namespace KTKS_ChungCu
                             if (_cChungTu.SuaChungTu(chungtu, ctchungtu, lichsuchungtu))
                             {
                                 MessageBox.Show("Sửa Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                                if (string.IsNullOrEmpty(txtLo.Text.Trim()))
+                                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                                else
+                                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
                                 dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
                                 txtSTT.Text = "";
                                 txtLo.Text = "";
@@ -348,7 +357,14 @@ namespace KTKS_ChungCu
         private void txtLo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
+            {
                 txtSTT.Focus();
+                if (string.IsNullOrEmpty(txtLo.Text.Trim()))
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB(_ttkhachhang.DanhBo);
+                else
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_DB_Lo(_ttkhachhang.DanhBo, txtLo.Text.Trim());
+                dgvKhachHangChungCu.CurrentCell = dgvKhachHangChungCu.Rows[dgvKhachHangChungCu.RowCount - 1].Cells[0];
+            }
         }
 
         private void txtHoTenCT_KeyPress(object sender, KeyPressEventArgs e)
