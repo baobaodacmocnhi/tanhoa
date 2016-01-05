@@ -358,7 +358,7 @@ namespace ThuTien.GUI.ToTruong
                         ds.Tables["NangSuatThuTien"].Rows.Add(dr);
                     }
 
-            rptNangSuatThuTien_To rpt = new rptNangSuatThuTien_To();
+            rptNangSuatThuTienTo rpt = new rptNangSuatThuTienTo();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
@@ -670,7 +670,9 @@ namespace ThuTien.GUI.ToTruong
                     if (!string.IsNullOrEmpty(item["TCDangNgan_END"].ToString()))
                         drDN[0]["TCDangNgan"] = long.Parse(drDN[0]["TCDangNgan"].ToString()) - long.Parse(item["TCDangNgan_END"].ToString()) + long.Parse(item["TCDangNgan_BD"].ToString());
                     if (!string.IsNullOrEmpty(item["TCHuy_END"].ToString()))
-                        drDN[0]["TCHuy"] = long.Parse(drDN[0]["TCHuy"].ToString()) - long.Parse(item["TCHuy_END"].ToString()) + long.Parse(item["TCHuy_BD"].ToString());
+                        drDN[0]["TCHuy"] = long.Parse(drDN[0]["TCTongTon"].ToString()) - long.Parse(item["TCHuy_END"].ToString()) + long.Parse(item["TCHuy_BD"].ToString());
+                    if (!string.IsNullOrEmpty(item["TCTongTon_END"].ToString()))
+                        drDN[0]["TCTongTon"] = long.Parse(drDN[0]["TCTongTon"].ToString()) - long.Parse(item["TCTongTon_END"].ToString()) + long.Parse(item["TCTongTon_BD"].ToString());
                 }
 
                 foreach (DataRow item in dtDongNuoc.Rows)
@@ -729,6 +731,19 @@ namespace ThuTien.GUI.ToTruong
                         dr["DCHuy"] = item["DCHuy"];
                         dr["HDHuy"] = item["HDHuy"];
                         dr["TCHuy"] = item["TCHuy"];
+                    }
+
+                    if (string.IsNullOrEmpty(item["DCTongTon"].ToString()))
+                    {
+                        dr["DCTongTon"] = 0;
+                        dr["HDTongTon"] = 0;
+                        dr["TCTongTon"] = 0;
+                    }
+                    else
+                    {
+                        dr["DCTongTon"] = item["DCTongTon"];
+                        dr["HDTongTon"] = item["HDTongTon"];
+                        dr["TCTongTon"] = item["TCTongTon"];
                     }
 
                     if (string.IsNullOrEmpty(item["DCKhoaNuoc"].ToString()))

@@ -1185,7 +1185,7 @@ namespace ThuTien.DAL.TongHop
                         + " set @FromDate='" + FromDate.ToString("yyyy-MM-dd") + "';"
                         + " set @ToDate='" + ToDate.ToString("yyyy-MM-dd") + "';"
                         + " select nd.MaND as MaNV,nd.HoTen,nd.STT,toncu.TCTonCu_BD,toncu.TCTonCu_END,nhan.TCNhan_BD,nhan.TCNhan_END"
-                        + ",dangngan.TCDangNgan_BD,dangngan.TCDangNgan_END,lenhhuy.TCHuy_BD,lenhhuy.TCHuy_END from"
+                        + ",dangngan.TCDangNgan_BD,dangngan.TCDangNgan_END,lenhhuy.TCHuy_BD,lenhhuy.TCHuy_END,tongton.TCTongTon_BD,tongton.TCTongTon_END from"
                         + " (select MaND,HoTen,STT from TT_NguoiDung where DongNuoc=1 and MaTo=" + MaTo + ") nd"
                         + " left join"
                         + " (select nd.MaND,nd.HoTen,nd.STT,SUM(dchd.TONGCONG_BD) as TCTonCu_BD,SUM(dchd.TONGCONG_END) as TCTonCu_END"
@@ -1215,6 +1215,13 @@ namespace ThuTien.DAL.TongHop
                         + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
                         + " and CAST(lenhhuy.CreateDate as date)>=@FromDate and CAST(lenhhuy.CreateDate as date)<=@ToDate"
                         + " group by nd.MaND,nd.HoTen,nd.STT) lenhhuy on nd.MaND=lenhhuy.MaND"
+                        + " left join"
+                        + " (select nd.MaND,nd.HoTen,nd.STT,SUM(dchd.TONGCONG_BD) as TCTongTon_BD,SUM(dchd.TONGCONG_END) as TCTongTon_END"
+                        + " from DIEUCHINH_HD dchd,TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd,TT_NguoiDung nd"
+                        + " where dchd.SoHoaDon=hd.SOHOADON and dn.MaDN=ctdn.MaDN and ctdn.SoHoaDon=hd.SOHOADON and dn.MaNV_DongNuoc=nd.MaND and dn.Huy=0 and dchd.ChuanThu1=0"
+                        + " and MAY>=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS + " and MAY<=" + _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        + " and (hd.NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@ToDate)"
+                        + " group by nd.MaND,nd.HoTen,nd.STT) tongton on nd.MaND=tongton.MaND"
                         + " order by nd.STT asc";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);

@@ -506,7 +506,7 @@ namespace ThuTien.GUI.Doi
                         ds.Tables["NangSuatThuTien"].Rows.Add(dr);
                     }
 
-            rptChuanThu_Doi rpt = new rptChuanThu_Doi();
+            rptChuanThuDoi rpt = new rptChuanThuDoi();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
@@ -563,7 +563,7 @@ namespace ThuTien.GUI.Doi
                         ds.Tables["NangSuatThuTien"].Rows.Add(dr);
                     }
 
-            rptChuanThu_To rpt = new rptChuanThu_To();
+            rptChuanThuTo rpt = new rptChuanThuTo();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();

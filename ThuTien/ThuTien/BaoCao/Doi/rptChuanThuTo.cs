@@ -16,14 +16,14 @@ namespace ThuTien.BaoCao.Doi {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptChuanThu_To : ReportClass {
+    public class rptChuanThuTo : ReportClass {
         
-        public rptChuanThu_To() {
+        public rptChuanThuTo() {
         }
         
         public override string ResourceName {
             get {
-                return "rptChuanThu_To.rpt";
+                return "rptChuanThuTo.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ThuTien.BaoCao.Doi {
         
         public override string FullResourceName {
             get {
-                return "ThuTien.BaoCao.Doi.rptChuanThu_To.rpt";
+                return "ThuTien.BaoCao.Doi.rptChuanThuTo.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +106,9 @@ namespace ThuTien.BaoCao.Doi {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptChuanThu_To : Component, ICachedReport {
+    public class CachedrptChuanThuTo : Component, ICachedReport {
         
-        public CachedrptChuanThu_To() {
+        public CachedrptChuanThuTo() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace ThuTien.BaoCao.Doi {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptChuanThu_To rpt = new rptChuanThu_To();
+            rptChuanThuTo rpt = new rptChuanThuTo();
             rpt.Site = this.Site;
             return rpt;
         }
