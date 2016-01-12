@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTTKH));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDuongDan = new System.Windows.Forms.TextBox();
             this.btnChonFile = new System.Windows.Forms.Button();
@@ -42,6 +42,8 @@
             this.ModifyBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnXuatAccess = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTTKHDate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,14 +97,14 @@
             // 
             this.dgvDSTTKHDate.AllowUserToAddRows = false;
             this.dgvDSTTKHDate.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSTTKHDate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSTTKHDate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSTTKHDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSTTKHDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nam,
@@ -114,6 +116,7 @@
             this.dgvDSTTKHDate.MultiSelect = false;
             this.dgvDSTTKHDate.Name = "dgvDSTTKHDate";
             this.dgvDSTTKHDate.ReadOnly = true;
+            this.dgvDSTTKHDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDSTTKHDate.Size = new System.Drawing.Size(613, 468);
             this.dgvDSTTKHDate.TabIndex = 4;
             // 
@@ -172,12 +175,26 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Cập Nhật theo Đợt mất khoảng 2 phút";
             // 
+            // btnXuatAccess
+            // 
+            this.btnXuatAccess.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
+            this.btnXuatAccess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXuatAccess.Location = new System.Drawing.Point(387, 48);
+            this.btnXuatAccess.Name = "btnXuatAccess";
+            this.btnXuatAccess.Size = new System.Drawing.Size(115, 35);
+            this.btnXuatAccess.TabIndex = 12;
+            this.btnXuatAccess.Text = "Xuất Access";
+            this.btnXuatAccess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXuatAccess.UseVisualStyleBackColor = true;
+            this.btnXuatAccess.Click += new System.EventHandler(this.btnXuatAccess_Click);
+            // 
             // frmTTKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(873, 570);
+            this.Controls.Add(this.btnXuatAccess);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvDSTTKHDate);
@@ -210,5 +227,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyBy;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnXuatAccess;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

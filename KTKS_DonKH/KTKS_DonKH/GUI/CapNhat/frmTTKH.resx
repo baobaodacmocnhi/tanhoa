@@ -121,7 +121,7 @@
   <data name="btnChonFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAPISURBVEhL7ZNbbBR1FMYH252Zvc1u9yaYeE186gPRBxN4
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAPISURBVEhL7ZNbbBR1FMYH252Zvc1u9yaYeE186gPRBxN4
         whcf6IuJL6Y2TfRFpV4iwWwpacEYY0AoCRZNLxsUtGJLC20xAZtYpS7ZFVoBqQsldC+KLbstdGl3rjvn
         +J/ZcTuztYnE+OaX/DLfnP1/35nJZqj/9Y+V7PBJasKF6jThhgnt/joh4cbizxzG33G+ZUTuT/KIDZQJ
         O8oTdqhEmTTmMRYuhZnZ6HZnUzTsbIrt1LDr16gGmUV3OJsutHDPGLUrErrckOrxYbLbB5WY56lDHCb3
@@ -154,5 +154,8 @@
   </metadata>
   <metadata name="ModifyBy.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>
