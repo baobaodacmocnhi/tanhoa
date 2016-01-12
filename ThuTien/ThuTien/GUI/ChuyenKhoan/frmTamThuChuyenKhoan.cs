@@ -148,7 +148,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (bool.Parse(item.Cells["TienDu_TT"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Yellow;
-                if (_cDongNuoc.CheckExistBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
+                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
                 {
                     item.Cells["HanhThu_TT"].Value = HoTen;
                     item.Cells["To_TT"].Value = TenTo;

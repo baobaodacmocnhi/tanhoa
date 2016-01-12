@@ -134,7 +134,7 @@
             this.mnuTimKiem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(761, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1184, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -727,14 +727,14 @@
             // mnuTimKiemKhachHang
             // 
             this.mnuTimKiemKhachHang.Name = "mnuTimKiemKhachHang";
-            this.mnuTimKiemKhachHang.Size = new System.Drawing.Size(152, 22);
+            this.mnuTimKiemKhachHang.Size = new System.Drawing.Size(139, 22);
             this.mnuTimKiemKhachHang.Text = "Khách Hàng";
             this.mnuTimKiemKhachHang.Click += new System.EventHandler(this.mnuTimKiemKhachHang_Click);
             // 
             // mnuTimKiemDienThoai
             // 
             this.mnuTimKiemDienThoai.Name = "mnuTimKiemDienThoai";
-            this.mnuTimKiemDienThoai.Size = new System.Drawing.Size(152, 22);
+            this.mnuTimKiemDienThoai.Size = new System.Drawing.Size(139, 22);
             this.mnuTimKiemDienThoai.Text = "Điện Thoại";
             this.mnuTimKiemDienThoai.Click += new System.EventHandler(this.mnuTimKiemDienThoai_Click);
             // 
@@ -745,9 +745,9 @@
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel5,
             this.StripStatus_HoTen});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 391);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(761, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1184, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -766,13 +766,13 @@
             // toolStripStatusLabel5
             // 
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(172, 15);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(172, 17);
             this.toolStripStatusLabel5.Text = "                                                       ";
             // 
             // StripStatus_HoTen
             // 
             this.StripStatus_HoTen.Name = "StripStatus_HoTen";
-            this.StripStatus_HoTen.Size = new System.Drawing.Size(58, 15);
+            this.StripStatus_HoTen.Size = new System.Drawing.Size(58, 17);
             this.StripStatus_HoTen.Text = "Xin Chào:";
             this.StripStatus_HoTen.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
@@ -782,7 +782,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 24);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(761, 26);
+            this.tabControl.Size = new System.Drawing.Size(1184, 26);
             this.tabControl.TabIndex = 5;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -796,7 +796,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(761, 413);
+            this.ClientSize = new System.Drawing.Size(1184, 562);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip);
@@ -804,6 +804,7 @@
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
+            this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "frmMain";
             this.Text = "Quản Lý Thu Ngân";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

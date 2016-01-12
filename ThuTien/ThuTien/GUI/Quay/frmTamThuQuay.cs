@@ -65,7 +65,7 @@ namespace ThuTien.GUI.Quay
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
                         item.Cells["Chon"].Value = "True";
-                        if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                        if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Yellow;
                         item.Cells["NgayDN"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
                         if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
@@ -202,7 +202,7 @@ namespace ThuTien.GUI.Quay
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
-                if (_cDongNuoc.CheckExistBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
+                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
                 {
                     item.Cells["HanhThu_TT"].Value = HoTen;
                     item.Cells["To_TT"].Value = TenTo;

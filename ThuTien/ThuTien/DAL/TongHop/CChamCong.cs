@@ -97,6 +97,8 @@ namespace ThuTien.DAL.TongHop
                             Nghi=0,
                             item.XS,
                             item.KK,
+                            item.TT_NguoiDung.NgayPhepNamCu,
+                            item.TT_NguoiDung.NgayPhepNamMoi,
                         };
             return LINQToDataTable(query);
         }

@@ -50,7 +50,7 @@ namespace ThuTien.GUI.TimKiem
 
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {
-                if(_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Yellow;
                 if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
                 {

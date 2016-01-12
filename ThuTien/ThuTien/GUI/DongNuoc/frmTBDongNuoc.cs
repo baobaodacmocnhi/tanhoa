@@ -37,6 +37,9 @@ namespace ThuTien.GUI.DongNuoc
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
+
+            if (CNguoiDung.Doi)
+                groupBox_ThemDN.Visible = true;
         }
 
         private void txtSoHoaDon_KeyPress(object sender, KeyPressEventArgs e)
@@ -81,7 +84,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (!_cHoaDon.CheckExist(item.Text))
                     {
                         MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        item.Selected=true;
+                        item.Selected = true;
                         item.Focused = true;
                         return;
                     }
@@ -92,7 +95,7 @@ namespace ThuTien.GUI.DongNuoc
                         item.Focused = true;
                         return;
                     }
-                    if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.ToString()))
+                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.ToString()))
                     {
                         MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         item.Selected = true;
@@ -124,7 +127,7 @@ namespace ThuTien.GUI.DongNuoc
                         ctdongnuoc.PhiBVMT = (int)lstHDTemp[0].PHI;
                         ctdongnuoc.TongCong = (int)lstHDTemp[0].TONGCONG;
                         ctdongnuoc.CreateBy = CNguoiDung.MaND;
-                        ctdongnuoc.CreateDate=DateTime.Now;
+                        ctdongnuoc.CreateDate = DateTime.Now;
 
                         dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
 
@@ -183,7 +186,7 @@ namespace ThuTien.GUI.DongNuoc
 
                         for (int i = 0; i < gridViewDN.SelectedRowsCount; i++)
                             if (gridViewDN.GetSelectedRows()[i] >= 0)
-                                if (!_cDongNuoc.CheckKQDongNuoc(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
+                                if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
                                     if (!_cDongNuoc.Xoa(decimal.Parse(gridViewDN.GetDataRow(gridViewDN.GetSelectedRows()[i])["MaDN"].ToString())))
                                     {
                                         _cHoaDon.SqlRollbackTransaction();
@@ -340,7 +343,7 @@ namespace ThuTien.GUI.DongNuoc
                     dr["TongCong"] = itemChild["TongCong"];
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
-                }    
+                }
             }
             rptDSDongNuoc rpt = new rptDSDongNuoc();
             rpt.SetDataSource(dsBaoCao);
@@ -358,8 +361,63 @@ namespace ThuTien.GUI.DongNuoc
             Clipboard.SetText(str);
         }
 
+        private void btnThemDN_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                if (!string.IsNullOrEmpty(txtMaDN.Text.Trim()) && _cDongNuoc.CheckExist_DongNuoc(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))))
+                {
+                    foreach (ListViewItem item in lstHD.Items)
+                    {
+                        if (!_cHoaDon.CheckExist(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn sai: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        if (_cHoaDon.CheckDangNganBySoHoaDon(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn đã Đăng Ngân: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                        if (_cDongNuoc.CheckExist_CTDongNuoc(item.Text))
+                        {
+                            MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            item.Selected = true;
+                            item.Focused = true;
+                            return;
+                        }
+                    }
 
-       
- 
+                    TT_DongNuoc dongnuoc = _cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", "")));
+                    foreach (ListViewItem item in lstHD.Items)
+                    {
+                        HOADON hoadon = _cHoaDon.Get(item.Text);
+                        TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
+                        ctdongnuoc.MaDN = dongnuoc.MaDN;
+                        ctdongnuoc.MaHD = hoadon.ID_HOADON;
+                        ctdongnuoc.SoHoaDon = hoadon.SOHOADON;
+                        ctdongnuoc.Ky = hoadon.KY + "/" + hoadon.NAM;
+                        ctdongnuoc.TieuThu = (int)hoadon.TIEUTHU;
+                        ctdongnuoc.GiaBan = (int)hoadon.GIABAN;
+                        ctdongnuoc.ThueGTGT = (int)hoadon.THUE;
+                        ctdongnuoc.PhiBVMT = (int)hoadon.PHI;
+                        ctdongnuoc.TongCong = (int)hoadon.TONGCONG;
+                        ctdongnuoc.CreateBy = CNguoiDung.MaND;
+                        ctdongnuoc.CreateDate = DateTime.Now;
+
+                        dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
+                    }
+                    if(_cDongNuoc.SuaDN(dongnuoc))
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
     }
 }

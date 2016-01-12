@@ -51,6 +51,7 @@
               <xs:element name="HopDong" msprop:Generator_ColumnVarNameInTable="columnHopDong" msprop:Generator_ColumnPropNameInRow="HopDong" msprop:Generator_ColumnPropNameInTable="HopDongColumn" msprop:Generator_UserColumnName="HopDong" type="xs:string" minOccurs="0" />
               <xs:element name="NgayDongMoNuoc" msprop:Generator_ColumnVarNameInTable="columnNgayDongMoNuoc" msprop:Generator_ColumnPropNameInRow="NgayDongMoNuoc" msprop:Generator_ColumnPropNameInTable="NgayDongMoNuocColumn" msprop:Generator_UserColumnName="NgayDongMoNuoc" type="xs:string" minOccurs="0" />
               <xs:element name="ChiSoDongMoNuoc" msprop:Generator_ColumnVarNameInTable="columnChiSoDongMoNuoc" msprop:Generator_ColumnPropNameInRow="ChiSoDongMoNuoc" msprop:Generator_ColumnPropNameInTable="ChiSoDongMoNuocColumn" msprop:Generator_UserColumnName="ChiSoDongMoNuoc" type="xs:string" minOccurs="0" />
+              <xs:element name="LenhHuy" msprop:Generator_ColumnVarNameInTable="columnLenhHuy" msprop:Generator_ColumnPropNameInRow="LenhHuy" msprop:Generator_ColumnPropNameInTable="LenhHuyColumn" msprop:Generator_UserColumnName="LenhHuy" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -114,7 +114,7 @@ namespace ThuTien.GUI.ToTruong
                 dgvHDTuGia.Sort(dgvHDTuGia.Columns["NgayGiaiTrach_TG"], ListSortDirection.Ascending);
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
-                    if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Yellow;
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TG"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Red;
@@ -178,7 +178,7 @@ namespace ThuTien.GUI.ToTruong
                     dgvHDCoQuan.Sort(dgvHDCoQuan.Columns["NgayGiaiTrach_CQ"], ListSortDirection.Ascending);
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {
-                        if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                        if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Yellow;
                         if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Red;

@@ -16,6 +16,7 @@ using ThuTien.LinQ;
 using ThuTien.DAL.TongHop;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.Quay;
+using ThuTien.BaoCao.DongNuoc;
 
 namespace ThuTien.GUI.ToTruong
 {
@@ -764,6 +765,55 @@ namespace ThuTien.GUI.ToTruong
                 frmBaoCao frm = new frmBaoCao(rpt);
                 frm.Show();
             }
+        }
+
+        private void btnInDSTon_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cDongNuoc.GetDSCTDongNuocTon(CNguoiDung.MaTo, dateDen.Value);
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                dr["Loai"] = "CHUYỂN CÒN TỒN";
+                dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
+                dr["To"] = item["TenTo"];
+                dr["HoTen"] = item["HoTen"];
+                dr["DiaChi"] = item["DiaChi"];
+                if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["MLT"] = item["MLT"];
+                dr["Ky"] = item["Ky"];
+                dr["TongCong"] = item["TongCong"];
+                dr["NhanVien"] = item["NhanVien"];
+                if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
+                    dr["LenhHuy"] = true;
+                dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+            }
+            
+            dt = _cLenhHuy.GetDSTon_ExceptDongNuoc(CNguoiDung.MaTo, dateDen.Value);
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                dr["Loai"] = "CHUYỂN CÒN TỒN";
+                //dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
+                dr["To"] = item["TenTo"];
+                dr["HoTen"] = item["HoTen"];
+                dr["DiaChi"] = item["DiaChi"];
+                if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["MLT"] = item["MLT"];
+                dr["Ky"] = item["Ky"];
+                dr["TongCong"] = item["TongCong"];
+                dr["NhanVien"] = item["NhanVien"];
+                if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()))
+                    dr["LenhHuy"] = true;
+                dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+            }
+
+            rptDSDongNuoc rpt = new rptDSDongNuoc();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
 

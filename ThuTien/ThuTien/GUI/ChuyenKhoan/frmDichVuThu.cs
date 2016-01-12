@@ -74,7 +74,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             foreach (DataGridViewRow item in dgvDichVuThu.Rows)
             {
                 string HoTen = "", TenTo = "";
-                if (_cDongNuoc.CheckExistBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString(), out HoTen, out TenTo))
+                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString(), out HoTen, out TenTo))
                 {
                     item.Cells["HanhThu"].Value = HoTen;
                     item.Cells["To"].Value = TenTo;

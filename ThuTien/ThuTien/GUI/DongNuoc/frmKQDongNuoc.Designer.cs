@@ -70,14 +70,6 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvKQDongNuoc = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.chkHuy = new System.Windows.Forms.CheckBox();
-            this.radDongNuoc = new System.Windows.Forms.RadioButton();
-            this.radMoNuoc = new System.Windows.Forms.RadioButton();
-            this.btnInPhieu = new System.Windows.Forms.Button();
-            this.btnXoaPhieu = new System.Windows.Forms.Button();
             this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +91,14 @@
             this.ChiKhoaGoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.chkHuy = new System.Windows.Forms.CheckBox();
+            this.radDongNuoc = new System.Windows.Forms.RadioButton();
+            this.radMoNuoc = new System.Windows.Forms.RadioButton();
+            this.btnInPhieu = new System.Windows.Forms.Button();
+            this.btnXoaPhieu = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -408,9 +408,9 @@
             // 
             this.txtMaDN.Location = new System.Drawing.Point(180, 12);
             this.txtMaDN.Name = "txtMaDN";
-            this.txtMaDN.Size = new System.Drawing.Size(89, 20);
+            this.txtMaDN.Size = new System.Drawing.Size(80, 20);
             this.txtMaDN.TabIndex = 5;
-            this.txtMaDN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDon_KeyPress);
+            this.txtMaDN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDN_KeyPress);
             // 
             // label21
             // 
@@ -528,89 +528,6 @@
             this.dgvKQDongNuoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKQDongNuoc_CellContentClick);
             this.dgvKQDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKQDongNuoc_CellFormatting);
             this.dgvKQDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvKQDongNuoc_RowPostPaint);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(365, 117);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 33;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(365, 88);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 32;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(365, 59);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 31;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // chkHuy
-            // 
-            this.chkHuy.AutoSize = true;
-            this.chkHuy.Location = new System.Drawing.Point(275, 12);
-            this.chkHuy.Name = "chkHuy";
-            this.chkHuy.Size = new System.Drawing.Size(81, 17);
-            this.chkHuy.TabIndex = 34;
-            this.chkHuy.Text = "Hủy TB ĐN";
-            this.chkHuy.UseVisualStyleBackColor = true;
-            this.chkHuy.CheckedChanged += new System.EventHandler(this.chkHuy_CheckedChanged);
-            // 
-            // radDongNuoc
-            // 
-            this.radDongNuoc.AutoSize = true;
-            this.radDongNuoc.Checked = true;
-            this.radDongNuoc.Location = new System.Drawing.Point(446, 3);
-            this.radDongNuoc.Name = "radDongNuoc";
-            this.radDongNuoc.Size = new System.Drawing.Size(80, 17);
-            this.radDongNuoc.TabIndex = 35;
-            this.radDongNuoc.TabStop = true;
-            this.radDongNuoc.Text = "Đóng Nước";
-            this.radDongNuoc.UseVisualStyleBackColor = true;
-            // 
-            // radMoNuoc
-            // 
-            this.radMoNuoc.AutoSize = true;
-            this.radMoNuoc.Location = new System.Drawing.Point(446, 26);
-            this.radMoNuoc.Name = "radMoNuoc";
-            this.radMoNuoc.Size = new System.Drawing.Size(69, 17);
-            this.radMoNuoc.TabIndex = 36;
-            this.radMoNuoc.Text = "Mở Nước";
-            this.radMoNuoc.UseVisualStyleBackColor = true;
-            // 
-            // btnInPhieu
-            // 
-            this.btnInPhieu.Location = new System.Drawing.Point(953, 10);
-            this.btnInPhieu.Name = "btnInPhieu";
-            this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
-            this.btnInPhieu.TabIndex = 37;
-            this.btnInPhieu.Text = "In Phiếu";
-            this.btnInPhieu.UseVisualStyleBackColor = true;
-            this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
-            // 
-            // btnXoaPhieu
-            // 
-            this.btnXoaPhieu.Location = new System.Drawing.Point(1034, 10);
-            this.btnXoaPhieu.Name = "btnXoaPhieu";
-            this.btnXoaPhieu.Size = new System.Drawing.Size(75, 23);
-            this.btnXoaPhieu.TabIndex = 38;
-            this.btnXoaPhieu.Text = "Xóa Phiếu";
-            this.btnXoaPhieu.UseVisualStyleBackColor = true;
-            this.btnXoaPhieu.Click += new System.EventHandler(this.btnXoaPhieu_Click);
             // 
             // Chon
             // 
@@ -760,6 +677,89 @@
             this.NgayMN.HeaderText = "NgayMN";
             this.NgayMN.Name = "NgayMN";
             this.NgayMN.Visible = false;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(365, 117);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 33;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(365, 88);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 32;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(365, 59);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 31;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // chkHuy
+            // 
+            this.chkHuy.AutoSize = true;
+            this.chkHuy.Location = new System.Drawing.Point(275, 12);
+            this.chkHuy.Name = "chkHuy";
+            this.chkHuy.Size = new System.Drawing.Size(81, 17);
+            this.chkHuy.TabIndex = 34;
+            this.chkHuy.Text = "Hủy TB ĐN";
+            this.chkHuy.UseVisualStyleBackColor = true;
+            this.chkHuy.CheckedChanged += new System.EventHandler(this.chkHuy_CheckedChanged);
+            // 
+            // radDongNuoc
+            // 
+            this.radDongNuoc.AutoSize = true;
+            this.radDongNuoc.Checked = true;
+            this.radDongNuoc.Location = new System.Drawing.Point(446, 3);
+            this.radDongNuoc.Name = "radDongNuoc";
+            this.radDongNuoc.Size = new System.Drawing.Size(80, 17);
+            this.radDongNuoc.TabIndex = 35;
+            this.radDongNuoc.TabStop = true;
+            this.radDongNuoc.Text = "Đóng Nước";
+            this.radDongNuoc.UseVisualStyleBackColor = true;
+            // 
+            // radMoNuoc
+            // 
+            this.radMoNuoc.AutoSize = true;
+            this.radMoNuoc.Location = new System.Drawing.Point(446, 26);
+            this.radMoNuoc.Name = "radMoNuoc";
+            this.radMoNuoc.Size = new System.Drawing.Size(69, 17);
+            this.radMoNuoc.TabIndex = 36;
+            this.radMoNuoc.Text = "Mở Nước";
+            this.radMoNuoc.UseVisualStyleBackColor = true;
+            // 
+            // btnInPhieu
+            // 
+            this.btnInPhieu.Location = new System.Drawing.Point(953, 10);
+            this.btnInPhieu.Name = "btnInPhieu";
+            this.btnInPhieu.Size = new System.Drawing.Size(75, 23);
+            this.btnInPhieu.TabIndex = 37;
+            this.btnInPhieu.Text = "In Phiếu";
+            this.btnInPhieu.UseVisualStyleBackColor = true;
+            this.btnInPhieu.Click += new System.EventHandler(this.btnInPhieu_Click);
+            // 
+            // btnXoaPhieu
+            // 
+            this.btnXoaPhieu.Location = new System.Drawing.Point(1034, 10);
+            this.btnXoaPhieu.Name = "btnXoaPhieu";
+            this.btnXoaPhieu.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaPhieu.TabIndex = 38;
+            this.btnXoaPhieu.Text = "Xóa Phiếu";
+            this.btnXoaPhieu.UseVisualStyleBackColor = true;
+            this.btnXoaPhieu.Click += new System.EventHandler(this.btnXoaPhieu_Click);
             // 
             // frmKQDongNuoc
             // 

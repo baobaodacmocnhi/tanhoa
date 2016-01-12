@@ -58,12 +58,12 @@ namespace ThuTien.GUI.DongNuoc
             _kqdongnuoc = null;
         }
 
-        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMaDN_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtMaDN.Text.Trim()) && e.KeyChar == 13)
             {
                 Clear();
-                if (_cDongNuoc.CheckKQDongNuoc(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))))
+                if (_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(txtMaDN.Text.Trim().Replace("-", ""))))
                 {
                     _dongnuoc = _cDongNuoc.GetDongNuocByMaDN(decimal.Parse(txtMaDN.Text.Trim().Replace("-", "")));
 
@@ -122,7 +122,7 @@ namespace ThuTien.GUI.DongNuoc
                         MessageBox.Show("Hóa Đơn trong Lệnh này đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (_cDongNuoc.CheckKQDongNuoc(_dongnuoc.MaDN))
+                    if (_cDongNuoc.CheckExist_KQDongNuoc(_dongnuoc.MaDN))
                     {
                         MessageBox.Show("Lệnh này đã nhập Kết Quả", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -133,7 +133,7 @@ namespace ThuTien.GUI.DongNuoc
                         return;
                     }
                     if (!CNguoiDung.ToTruong)
-                        if (!_cDongNuoc.CheckDongNuocByMaDNMaNV_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
+                        if (!_cDongNuoc.CheckExist_DongNuoc(_dongnuoc.MaDN, CNguoiDung.MaND))
                         {
                             MessageBox.Show("Thông báo này không được giao cho bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -460,9 +460,15 @@ namespace ThuTien.GUI.DongNuoc
                             foreach (TT_CTDongNuoc itemDN in item.TT_DongNuoc.TT_CTDongNuocs.ToList())
                             {
                                 if (string.IsNullOrEmpty(Ky))
-                                    Ky = itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                {
+                                    //Ky = itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                    Ky = itemDN.Ky;
+                                }
                                 else
-                                    Ky += ", " + itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                {
+                                    //Ky += ", " + itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                    Ky += ", " + itemDN.Ky;
+                                }
                             }
                             dr["Ky"] = Ky;
                             dr["NgayDongMoNuoc"] = item.NgayDN;
@@ -507,9 +513,15 @@ namespace ThuTien.GUI.DongNuoc
                                 foreach (TT_CTDongNuoc itemDN in item.TT_DongNuoc.TT_CTDongNuocs.ToList())
                                 {
                                     if (string.IsNullOrEmpty(Ky))
-                                        Ky = itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                    {
+                                        //Ky = itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                        Ky = itemDN.Ky;
+                                    }
                                     else
-                                        Ky += ", " + itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                    {
+                                        //Ky += ", " + itemDN.Ky.Substring(0, itemDN.Ky.Length - 5);
+                                        Ky += ", " + itemDN.Ky;
+                                    }
                                 }
                                 dr["Ky"] = Ky;
                                 dr["NgayDongMoNuoc"] = item.NgayMN;

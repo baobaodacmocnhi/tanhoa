@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -67,10 +67,15 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label6 = new System.Windows.Forms.Label();
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
+            this.groupBox_ThemDN = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtMaDN = new System.Windows.Forms.TextBox();
+            this.btnThemDN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            this.groupBox_ThemDN.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridViewCTDN
@@ -148,10 +153,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(247, 40);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -435,11 +440,51 @@
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
             this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
+            // groupBox_ThemDN
+            // 
+            this.groupBox_ThemDN.Controls.Add(this.btnThemDN);
+            this.groupBox_ThemDN.Controls.Add(this.label2);
+            this.groupBox_ThemDN.Controls.Add(this.txtMaDN);
+            this.groupBox_ThemDN.Location = new System.Drawing.Point(12, 334);
+            this.groupBox_ThemDN.Name = "groupBox_ThemDN";
+            this.groupBox_ThemDN.Size = new System.Drawing.Size(204, 85);
+            this.groupBox_ThemDN.TabIndex = 72;
+            this.groupBox_ThemDN.TabStop = false;
+            this.groupBox_ThemDN.Text = "Thêm Hóa Đơn vào Lệnh đã có";
+            this.groupBox_ThemDN.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Mã TB Đóng Nước:";
+            // 
+            // txtMaDN
+            // 
+            this.txtMaDN.Location = new System.Drawing.Point(112, 24);
+            this.txtMaDN.Name = "txtMaDN";
+            this.txtMaDN.Size = new System.Drawing.Size(80, 20);
+            this.txtMaDN.TabIndex = 43;
+            // 
+            // btnThemDN
+            // 
+            this.btnThemDN.Location = new System.Drawing.Point(112, 50);
+            this.btnThemDN.Name = "btnThemDN";
+            this.btnThemDN.Size = new System.Drawing.Size(75, 23);
+            this.btnThemDN.TabIndex = 45;
+            this.btnThemDN.Text = "Thêm";
+            this.btnThemDN.UseVisualStyleBackColor = true;
+            this.btnThemDN.Click += new System.EventHandler(this.btnThemDN_Click);
+            // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 666);
+            this.Controls.Add(this.groupBox_ThemDN);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lstHD);
@@ -466,6 +511,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            this.groupBox_ThemDN.ResumeLayout(false);
+            this.groupBox_ThemDN.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,6 +558,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCopyToClipboard;
+        private System.Windows.Forms.GroupBox groupBox_ThemDN;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtMaDN;
+        private System.Windows.Forms.Button btnThemDN;
 
     }
 }

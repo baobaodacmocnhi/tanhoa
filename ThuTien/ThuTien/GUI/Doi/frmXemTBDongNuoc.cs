@@ -159,7 +159,7 @@ namespace ThuTien.GUI.Doi
                     {
                         TinhTrang = "Đăng Ngân";
                     }
-                    if (_cDongNuoc.CheckKQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
+                    if (_cDongNuoc.CheckExist_KQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
                     {
                         TinhTrang = "Đã Khóa Nước";
                     }

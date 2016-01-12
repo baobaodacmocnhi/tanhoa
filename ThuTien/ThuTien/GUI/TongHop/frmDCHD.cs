@@ -78,49 +78,42 @@ namespace ThuTien.GUI.TongHop
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    _cDCHD.BeginTransaction();
                     foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
-                    {
-                        DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item.Cells["MaDCHD"].Value.ToString()));
-                        if (!_cHoaDon.CheckDangNganBySoHoaDon(dchd.SoHoaDon))
+                        if (_cHoaDon.CheckDangNganBySoHoaDon(item.Cells["SoHoaDon_DC"].Value.ToString()))
                         {
-                            if (_cDCHD.Xoa(dchd))
-                            {
-                                try
-                                {
-                                    HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DC"].Value.ToString());
-                                    hoadon.GIABAN = dchd.GIABAN_BD;
-                                    hoadon.THUE = dchd.THUE_BD;
-                                    hoadon.PHI = dchd.PHI_BD;
-                                    hoadon.TONGCONG = dchd.TONGCONG_BD;
-                                    _cHoaDon.Sua(hoadon);
-                                }
-                                catch (Exception)
-                                {
-                                    _cDCHD.Rollback();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                            }
-                            else
-                            {
-                                _cDCHD.Rollback();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            _cDCHD.Rollback();
                             dgvDCHD.ClearSelection();
                             dgvDCHD.Rows[item.Index].Selected = true;
                             MessageBox.Show("Hóa đơn đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                    try
+                    {
+                        _cDCHD.BeginTransaction();
+                        foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
+                        {
+                            DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item.Cells["MaDCHD"].Value.ToString()));
+                            if (dchd.HOADON.SoHoaDonCu != null)
+                            {
+                                dchd.HOADON.SOHOADON = dchd.HOADON.SoHoaDonCu;
+                                dchd.HOADON.SoHoaDonCu = null;
+                            }
+                            dchd.HOADON.GIABAN = dchd.GIABAN_BD;
+                            dchd.HOADON.THUE = dchd.THUE_BD;
+                            dchd.HOADON.PHI = dchd.PHI_BD;
+                            dchd.HOADON.TONGCONG = dchd.TONGCONG_BD;
+                            if (_cHoaDon.Sua(dchd.HOADON))
+                                _cDCHD.Xoa(dchd);
+                        }
+                        _cDCHD.CommitTransaction();
+                        btnXem.PerformClick();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    _cDCHD.CommitTransaction();
-                    btnXem.PerformClick();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    catch (Exception)
+                    {
+                        _cDCHD.Rollback();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             else
