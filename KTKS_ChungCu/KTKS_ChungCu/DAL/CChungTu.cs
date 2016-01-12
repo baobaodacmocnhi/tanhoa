@@ -748,6 +748,10 @@ namespace KTKS_ChungCu.DAL
         {
             try
             {
+                if (db.Connection.State == System.Data.ConnectionState.Closed)
+                    db.Connection.Open();
+                db.Transaction = db.Connection.BeginTransaction();
+
                 bool flagEdited = false;
                 bool flagGiam = false;
                 ///Cập Nhật bảng ChungTu khi thay đổi Tổng Nhân Khẩu (frmSoDK)
@@ -1289,11 +1293,13 @@ namespace KTKS_ChungCu.DAL
                     flagEdited = false;
                 }
                 db.SubmitChanges();
+                db.Transaction.Commit();
                 //MessageBox.Show("Thành công Sửa ChungTu Method", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (Exception ex)
             {
+                db.Transaction.Rollback();
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db = new dbChungCuDataContext();
                 return false;
