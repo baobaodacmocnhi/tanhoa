@@ -163,10 +163,14 @@ namespace ThuTien.GUI.ToTruong
         {
             TT_TongHopNo tonghopno = new TT_TongHopNo();
             tonghopno.KinhGui = txtKinhGui.Text.Trim();
-            tonghopno.ChiSoMoi = int.Parse(txtCSM.Text.Trim());
-            tonghopno.ChiSoCu = int.Parse(txtCSC.Text.Trim());
-            tonghopno.DinhMuc = int.Parse(txtDM.Text.Trim());
-            tonghopno.TieuThu = int.Parse(txtTT.Text.Trim());
+            if (!string.IsNullOrEmpty(txtCSM.Text.Trim()))
+                tonghopno.ChiSoMoi = int.Parse(txtCSM.Text.Trim());
+            if (!string.IsNullOrEmpty(txtCSC.Text.Trim()))
+                tonghopno.ChiSoCu = int.Parse(txtCSC.Text.Trim());
+            if (!string.IsNullOrEmpty(txtDM.Text.Trim()))
+                tonghopno.DinhMuc = int.Parse(txtDM.Text.Trim());
+            if (!string.IsNullOrEmpty(txtTT.Text.Trim()))
+                tonghopno.TieuThu = int.Parse(txtTT.Text.Trim());
             tonghopno.NgayThanhToan = dateThanhToan.Value;
             if (radGiamDoc.Checked)
                 tonghopno.NguoiKy = "GIÁM ĐỐC";
@@ -180,8 +184,11 @@ namespace ThuTien.GUI.ToTruong
                 cttonghopno.DanhBo = item.Cells["DanhBo"].Value.ToString();
                 cttonghopno.DiaChi = item.Cells["DiaChi"].Value.ToString();
                 cttonghopno.Ky = item.Cells["Ky"].Value.ToString();
+                if (item.Cells["GiaBieu"].Value !=null&& !string.IsNullOrEmpty(item.Cells["GiaBieu"].Value.ToString()))
                 cttonghopno.GiaBieu = int.Parse(item.Cells["GiaBieu"].Value.ToString());
+                if (item.Cells["DinhMuc"].Value != null && !string.IsNullOrEmpty(item.Cells["DinhMuc"].Value.ToString()))
                 cttonghopno.DinhMuc = int.Parse(item.Cells["DinhMuc"].Value.ToString());
+                if (item.Cells["TieuThu"].Value != null && !string.IsNullOrEmpty(item.Cells["TieuThu"].Value.ToString()))
                 cttonghopno.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
                 cttonghopno.GiaBan = decimal.Parse(item.Cells["GiaBan"].Value.ToString());
                 cttonghopno.ThueGTGT = decimal.Parse(item.Cells["ThueGTGT"].Value.ToString());
@@ -338,7 +345,7 @@ namespace ThuTien.GUI.ToTruong
                         dgvTongHopNo.DataSource = _cTHN.GetDS(int.Parse(cmbTo.SelectedValue.ToString()),dateTu.Value, dateDen.Value);
             }
             else
-                dgvTongHopNo.DataSource = _cTHN.GetDS(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dgvTongHopNo.DataSource = _cTHN.GetDS(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
         }
 
         private void dgvTongHopNo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

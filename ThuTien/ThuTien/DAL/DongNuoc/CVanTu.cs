@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ThuTien.DAL.DongNuoc
 {
-    class CVanTu:CDAL
+    class CVanTu : CDAL
     {
         public bool Them(TT_VanTu vantu)
         {
@@ -59,13 +59,37 @@ namespace ThuTien.DAL.DongNuoc
                         join itemHD in _db.HOADONs on itemVT.DanhBo equals itemHD.DANHBA
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.ID_HOADON == _db.HOADONs.Where(item=>item.DANHBA==itemVT.DanhBo).Max(item=>item.ID_HOADON)
+                        where itemHD.ID_HOADON == _db.HOADONs.Where(item => item.DANHBA == itemVT.DanhBo).Max(item => item.ID_HOADON)
                         select new
                         {
                             itemVT.DanhBo,
-                            DiaChi=itemHD.SO+ " "+itemHD.DUONG,
-                            To=itemtableND.TT_To.TenTo,
-                            HanhThu=itemtableND.HoTen,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            MLT = itemHD.MALOTRINH,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                        };
+
+            return LINQToDataTable(query.Distinct());
+        }
+
+        public DataTable GetDS(int MaTo)
+        {
+            var query = from itemVT in _db.TT_VanTus
+                        join itemHD in _db.HOADONs on itemVT.DanhBo equals itemHD.DANHBA
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.ID_HOADON == _db.HOADONs.Where(item => item.DANHBA == itemVT.DanhBo).Max(item => item.ID_HOADON)
+                        && Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                        && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                        select new
+                        {
+                            itemVT.DanhBo,
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            MLT = itemHD.MALOTRINH,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
                         };
 
             return LINQToDataTable(query.Distinct());

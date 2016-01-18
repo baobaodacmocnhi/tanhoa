@@ -38,7 +38,7 @@ namespace ThuTien.GUI.DongNuoc
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
 
-            if (CNguoiDung.Doi)
+            if (CNguoiDung.Doi || CNguoiDung.ToTruong)
                 groupBox_ThemDN.Visible = true;
         }
 

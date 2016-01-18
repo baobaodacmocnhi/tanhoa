@@ -36,7 +36,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.dgvVanTu = new System.Windows.Forms.DataGridView();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.lbTo = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,7 +100,9 @@
             this.dgvVanTu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVanTu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVanTu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MLT,
             this.DanhBo,
+            this.HoTen,
             this.DiaChi,
             this.To,
             this.HanhThu});
@@ -106,21 +114,74 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvVanTu.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvVanTu.Location = new System.Drawing.Point(12, 38);
+            this.dgvVanTu.Location = new System.Drawing.Point(12, 39);
             this.dgvVanTu.Name = "dgvVanTu";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvVanTu.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVanTu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVanTu.Size = new System.Drawing.Size(992, 381);
+            this.dgvVanTu.Size = new System.Drawing.Size(747, 587);
             this.dgvVanTu.TabIndex = 78;
             this.dgvVanTu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVanTu_CellFormatting);
             this.dgvVanTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvVanTu_RowPostPaint);
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(435, 12);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(60, 21);
+            this.cmbTo.TabIndex = 80;
+            this.cmbTo.Visible = false;
+            // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.Location = new System.Drawing.Point(406, 16);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(23, 13);
+            this.lbTo.TabIndex = 79;
+            this.lbTo.Text = "Tổ:";
+            this.lbTo.Visible = false;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(501, 10);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 81;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(582, 10);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 82;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // MLT
+            // 
+            this.MLT.DataPropertyName = "MLT";
+            this.MLT.HeaderText = "MLT";
+            this.MLT.Name = "MLT";
+            this.MLT.Width = 80;
             // 
             // DanhBo
             // 
             this.DanhBo.DataPropertyName = "DanhBo";
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
             // 
             // DiaChi
             // 
@@ -141,13 +202,16 @@
             this.HanhThu.DataPropertyName = "HanhThu";
             this.HanhThu.HeaderText = "Hành Thu";
             this.HanhThu.Name = "HanhThu";
-            this.HanhThu.Width = 150;
             // 
             // frmVanTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 448);
+            this.ClientSize = new System.Drawing.Size(1016, 633);
+            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.btnXem);
+            this.Controls.Add(this.cmbTo);
+            this.Controls.Add(this.lbTo);
             this.Controls.Add(this.dgvVanTu);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThem);
@@ -169,7 +233,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtDanhBo;
         private System.Windows.Forms.DataGridView dgvVanTu;
+        private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Label lbTo;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn To;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;

@@ -44,6 +44,12 @@ namespace ThuTien.GUI.HanhThu
 
             cmbKy.SelectedItem = DateTime.Now.Month.ToString();
             tabControl.SelectedTab = tabControl.TabPages["tabChuaThu"];
+
+            if (CNguoiDung.ToTruong)
+            {
+                lbNhanVien.Visible = true;
+                cmbNhanVien.Visible = true;
+            }
         }
 
         public void LoadDataGridView()
@@ -94,8 +100,16 @@ namespace ThuTien.GUI.HanhThu
         {
             if (cmbKy.SelectedIndex != -1 && cmbDot.SelectedIndex != -1)
             {
-                dgvTongHD.DataSource = _cHoaDon.GetTongTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-                dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNganByMaNV_HanhThuNamKyDot("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                if (CNguoiDung.ToTruong)
+                {
+                    dgvTongHD.DataSource = _cHoaDon.GetTongTGByMaNVNamKyDot(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNganByMaNV_HanhThuNamKyDot("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                }
+                else
+                {
+                    dgvTongHD.DataSource = _cHoaDon.GetTongTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNganByMaNV_HanhThuNamKyDot("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                }
                 LoadDataGridView();
             }
         }

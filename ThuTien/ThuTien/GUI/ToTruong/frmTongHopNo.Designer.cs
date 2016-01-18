@@ -340,13 +340,13 @@
             this.radGiamDoc.Name = "radGiamDoc";
             this.radGiamDoc.Size = new System.Drawing.Size(72, 17);
             this.radGiamDoc.TabIndex = 47;
-            this.radGiamDoc.TabStop = true;
             this.radGiamDoc.Text = "Giám Đốc";
             this.radGiamDoc.UseVisualStyleBackColor = true;
             // 
             // radPhoGiamDoc
             // 
             this.radPhoGiamDoc.AutoSize = true;
+            this.radPhoGiamDoc.Checked = true;
             this.radPhoGiamDoc.Location = new System.Drawing.Point(1201, 61);
             this.radPhoGiamDoc.Name = "radPhoGiamDoc";
             this.radPhoGiamDoc.Size = new System.Drawing.Size(94, 17);

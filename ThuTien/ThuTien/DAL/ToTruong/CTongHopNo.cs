@@ -67,9 +67,9 @@ namespace ThuTien.DAL.ToTruong
             return LINQToDataTable(_db.TT_TongHopNos.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date));
         }
 
-        public DataTable GetDS(int MaTo,DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable GetDS(int CreateBy,DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_TongHopNos.Where(item => _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == item.CreateBy.Value).TT_To.MaTo == MaTo && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date));
+            return LINQToDataTable(_db.TT_TongHopNos.Where(item => item.CreateBy==CreateBy && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date));
         }
     }
 }

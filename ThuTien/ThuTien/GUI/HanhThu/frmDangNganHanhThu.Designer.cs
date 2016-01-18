@@ -118,6 +118,8 @@
             this.lstHD = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
+            this.lbNhanVien = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHD)).BeginInit();
@@ -973,11 +975,32 @@
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
             this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
             // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(815, 14);
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(118, 21);
+            this.cmbNhanVien.TabIndex = 73;
+            this.cmbNhanVien.Visible = false;
+            // 
+            // lbNhanVien
+            // 
+            this.lbNhanVien.AutoSize = true;
+            this.lbNhanVien.Location = new System.Drawing.Point(749, 17);
+            this.lbNhanVien.Name = "lbNhanVien";
+            this.lbNhanVien.Size = new System.Drawing.Size(60, 13);
+            this.lbNhanVien.TabIndex = 72;
+            this.lbNhanVien.Text = "Nhân Viên:";
+            this.lbNhanVien.Visible = false;
+            // 
             // frmDangNganHanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 670);
+            this.Controls.Add(this.cmbNhanVien);
+            this.Controls.Add(this.lbNhanVien);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.lstHD);
             this.Controls.Add(this.groupBox3);
@@ -1108,5 +1131,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongThueGTGT_Dum;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongPhiBVMT_Dum;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_Dum;
+        private System.Windows.Forms.ComboBox cmbNhanVien;
+        private System.Windows.Forms.Label lbNhanVien;
     }
 }
