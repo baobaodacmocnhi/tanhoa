@@ -10,6 +10,9 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.LinQ;
 using ThuTien.DAL.Doi;
 using System.Globalization;
+using ThuTien.BaoCao;
+using ThuTien.BaoCao.ChuyenKhoan;
+using ThuTien.GUI.BaoCao;
 
 namespace ThuTien.GUI.Doi
 {
@@ -301,6 +304,44 @@ namespace ThuTien.GUI.Doi
             using (SolidBrush b = new SolidBrush(dgvNhanVien_TC.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvNhanVien_TC_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvNhanVien_TC.RowCount > 0 && e.Button == MouseButtons.Left)
+            {
+                DateTime FromNgayGiaiTrach;
+                DateTime ToNgayGiaiTrach;
+                DateTime.TryParse(dgvNhanVien_TC["FromNgayGiaiTrach",e.RowIndex].Value.ToString(),out FromNgayGiaiTrach);
+                DateTime.TryParse(dgvNhanVien_TC["ToNgayGiaiTrach",e.RowIndex].Value.ToString(),out ToNgayGiaiTrach);
+
+                DataTable dt = _cHoaDon.GetDSDangNgan(int.Parse(dgvNhanVien_TC["MaNV_TC", e.RowIndex].Value.ToString()), FromNgayGiaiTrach, ToNgayGiaiTrach);
+                dsBaoCao ds = new dsBaoCao();
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();
+                        dr["TuNgay"] = FromNgayGiaiTrach.ToString("dd/MM/yyyy");
+                        dr["DenNgay"] = ToNgayGiaiTrach.ToString("dd/MM/yyyy");
+                        dr["LoaiBaoCao"] = "HÓA ĐƠN ĐĂNG NGÂN";
+                        dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                        dr["HoTen"] = item["HoTen"].ToString();
+                        dr["MLT"] = item["MLT"].ToString();
+                        dr["Ky"] = item["Ky"].ToString();
+                        dr["TongCong"] = item["TongCong"].ToString();
+                        dr["HanhThu"] = item["HanhThu"].ToString();
+                        dr["To"] = item["To"].ToString();
+                        if (int.Parse(item["GiaBieu"].ToString()) > 20)
+                            dr["Loai"] = "CQ";
+                        else
+                            dr["Loai"] = "TG";
+                        ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
+                    }
+
+                rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.Show();
             }
         }
     }
