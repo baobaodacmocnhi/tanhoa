@@ -699,23 +699,6 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_TongHopNo" Member="TT_TongHopNos">
-    <Type Name="TT_TongHopNo">
-      <Column Name="MaTHN" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="KinhGui" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ChiSoCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChiSoMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NgayThanhToan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TT_TongHopNo_TT_CTTongHopNo" Member="TT_CTTongHopNos" ThisKey="MaTHN" OtherKey="MaTHN" Type="TT_CTTongHopNo" />
-    </Type>
-  </Table>
   <Table Name="dbo.TT_CTTongHopNo" Member="TT_CTTongHopNos">
     <Type Name="TT_CTTongHopNo">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -790,6 +773,25 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Cat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="HOADON_TT_LenhHuy" Member="HOADON" ThisKey="SoHoaDon" OtherKey="SOHOADON" Type="HOADON" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_TongHopNo" Member="TT_TongHopNos">
+    <Type Name="TT_TongHopNo">
+      <Column Name="MaTHN" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="KinhGui" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ChiSoCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiSoMoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayThanhToan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TuNgay" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DenNgay" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TT_TongHopNo_TT_CTTongHopNo" Member="TT_CTTongHopNos" ThisKey="MaTHN" OtherKey="MaTHN" Type="TT_CTTongHopNo" />
     </Type>
   </Table>
   <Table Name="dbo.HOADON" Member="HOADONs">
@@ -877,6 +879,9 @@
       <Column Name="SoHoaDonCu" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="ChanTienDu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NgayChanTienDu" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HIEULUC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NAMLD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HIEUDH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="HOADON_TT_TraGop" Member="TT_TraGops" ThisKey="SOHOADON" OtherKey="SoHoaDon" Type="TT_TraGop" />
       <Association Name="HOADON_TT_CTChuyenNoKhoDoi" Member="TT_CTChuyenNoKhoDois" ThisKey="SOHOADON" OtherKey="SoHoaDon" Type="TT_CTChuyenNoKhoDoi" />
       <Association Name="HOADON_TAMTHU" Member="TAMTHUs" ThisKey="ID_HOADON" OtherKey="FK_HOADON" Type="TAMTHU" />

@@ -27,12 +27,18 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvHoaDon.AutoGenerateColumns = false;
             dgvDSChanTienDu.AutoGenerateColumns = false;
+
+            dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()) && e.KeyChar == 13)
                 dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            {
+                item.Cells["Chon"].Value = "True";
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)

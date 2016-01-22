@@ -161,43 +161,47 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            TT_TongHopNo tonghopno = new TT_TongHopNo();
-            tonghopno.KinhGui = txtKinhGui.Text.Trim();
-            if (!string.IsNullOrEmpty(txtCSM.Text.Trim()))
-                tonghopno.ChiSoMoi = int.Parse(txtCSM.Text.Trim());
-            if (!string.IsNullOrEmpty(txtCSC.Text.Trim()))
-                tonghopno.ChiSoCu = int.Parse(txtCSC.Text.Trim());
-            if (!string.IsNullOrEmpty(txtDM.Text.Trim()))
-                tonghopno.DinhMuc = int.Parse(txtDM.Text.Trim());
-            if (!string.IsNullOrEmpty(txtTT.Text.Trim()))
-                tonghopno.TieuThu = int.Parse(txtTT.Text.Trim());
-            tonghopno.NgayThanhToan = dateThanhToan.Value;
-            if (radGiamDoc.Checked)
-                tonghopno.NguoiKy = "GIÁM ĐỐC";
-            else
-                if (radPhoGiamDoc.Checked)
-                    tonghopno.NguoiKy = "P.GIÁM ĐỐC";
-            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+            if (!_cTHN.CheckExist(txtKinhGui.Text.Trim(), DateTime.Now))
             {
-                TT_CTTongHopNo cttonghopno = new TT_CTTongHopNo();
-                cttonghopno.ID = _cTHN.GetNextID_CTTongHopNo();
-                cttonghopno.DanhBo = item.Cells["DanhBo"].Value.ToString();
-                cttonghopno.DiaChi = item.Cells["DiaChi"].Value.ToString();
-                cttonghopno.Ky = item.Cells["Ky"].Value.ToString();
-                if (item.Cells["GiaBieu"].Value !=null&& !string.IsNullOrEmpty(item.Cells["GiaBieu"].Value.ToString()))
-                cttonghopno.GiaBieu = int.Parse(item.Cells["GiaBieu"].Value.ToString());
-                if (item.Cells["DinhMuc"].Value != null && !string.IsNullOrEmpty(item.Cells["DinhMuc"].Value.ToString()))
-                cttonghopno.DinhMuc = int.Parse(item.Cells["DinhMuc"].Value.ToString());
-                if (item.Cells["TieuThu"].Value != null && !string.IsNullOrEmpty(item.Cells["TieuThu"].Value.ToString()))
-                cttonghopno.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
-                cttonghopno.GiaBan = decimal.Parse(item.Cells["GiaBan"].Value.ToString());
-                cttonghopno.ThueGTGT = decimal.Parse(item.Cells["ThueGTGT"].Value.ToString());
-                cttonghopno.PhiBVMT = decimal.Parse(item.Cells["PhiBVMT"].Value.ToString());
-                cttonghopno.TongCong = decimal.Parse(item.Cells["TongCong"].Value.ToString());
-                tonghopno.TT_CTTongHopNos.Add(cttonghopno);
+                TT_TongHopNo tonghopno = new TT_TongHopNo();
+                tonghopno.KinhGui = txtKinhGui.Text.Trim();
+                if (!string.IsNullOrEmpty(txtCSM.Text.Trim()))
+                    tonghopno.ChiSoMoi = int.Parse(txtCSM.Text.Trim());
+                if (!string.IsNullOrEmpty(txtCSC.Text.Trim()))
+                    tonghopno.ChiSoCu = int.Parse(txtCSC.Text.Trim());
+                if (!string.IsNullOrEmpty(txtDM.Text.Trim()))
+                    tonghopno.DinhMuc = int.Parse(txtDM.Text.Trim());
+                if (!string.IsNullOrEmpty(txtTT.Text.Trim()))
+                    tonghopno.TieuThu = int.Parse(txtTT.Text.Trim());
+                tonghopno.NgayThanhToan = dateThanhToan.Value;
+                tonghopno.TuNgay = txtTuNgay.Text.Trim();
+                tonghopno.DenNgay = txtDenNgay.Text.Trim();
+                if (radGiamDoc.Checked)
+                    tonghopno.NguoiKy = "GIÁM ĐỐC";
+                else
+                    if (radPhoGiamDoc.Checked)
+                        tonghopno.NguoiKy = "P.GIÁM ĐỐC";
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                {
+                    TT_CTTongHopNo cttonghopno = new TT_CTTongHopNo();
+                    cttonghopno.ID = _cTHN.GetNextID_CTTongHopNo();
+                    cttonghopno.DanhBo = item.Cells["DanhBo"].Value.ToString();
+                    cttonghopno.DiaChi = item.Cells["DiaChi"].Value.ToString();
+                    cttonghopno.Ky = item.Cells["Ky"].Value.ToString();
+                    if (item.Cells["GiaBieu"].Value != null && !string.IsNullOrEmpty(item.Cells["GiaBieu"].Value.ToString()))
+                        cttonghopno.GiaBieu = int.Parse(item.Cells["GiaBieu"].Value.ToString());
+                    if (item.Cells["DinhMuc"].Value != null && !string.IsNullOrEmpty(item.Cells["DinhMuc"].Value.ToString()))
+                        cttonghopno.DinhMuc = int.Parse(item.Cells["DinhMuc"].Value.ToString());
+                    if (item.Cells["TieuThu"].Value != null && !string.IsNullOrEmpty(item.Cells["TieuThu"].Value.ToString()))
+                        cttonghopno.TieuThu = int.Parse(item.Cells["TieuThu"].Value.ToString());
+                    cttonghopno.GiaBan = decimal.Parse(item.Cells["GiaBan"].Value.ToString());
+                    cttonghopno.ThueGTGT = decimal.Parse(item.Cells["ThueGTGT"].Value.ToString());
+                    cttonghopno.PhiBVMT = decimal.Parse(item.Cells["PhiBVMT"].Value.ToString());
+                    cttonghopno.TongCong = decimal.Parse(item.Cells["TongCong"].Value.ToString());
+                    tonghopno.TT_CTTongHopNos.Add(cttonghopno);
+                }
+                _cTHN.Them(tonghopno);
             }
-            _cTHN.Them(tonghopno);
-
             CTamThu _cTamThu = new CTamThu();
             dsBaoCao ds = new dsBaoCao();
             int TongCongSo = 0;
@@ -218,6 +222,8 @@ namespace ThuTien.GUI.ToTruong
                 dr["CSC"] = txtCSC.Text.Trim();
                 dr["TT"] = txtTT.Text.Trim();
                 dr["DM"] = txtDM.Text.Trim();
+                dr["TuNgay"] = txtTuNgay.Text.Trim();
+                dr["DenNgay"] = txtDenNgay.Text.Trim();
 
                 ds.Tables["TongHopNo"].Rows.Add(dr);
             }

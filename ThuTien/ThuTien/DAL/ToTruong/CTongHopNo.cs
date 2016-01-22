@@ -54,6 +54,11 @@ namespace ThuTien.DAL.ToTruong
             }
         }
 
+        public bool CheckExist(string KinhGui,DateTime CreateDate)
+        {
+            return _db.TT_TongHopNos.Any(item => item.KinhGui == KinhGui && item.CreateDate.Value.Date == CreateDate.Date);
+        }
+
         public int GetNextID_CTTongHopNo()
         {
             if (_db.TT_CTTongHopNos.Count() > 0)
