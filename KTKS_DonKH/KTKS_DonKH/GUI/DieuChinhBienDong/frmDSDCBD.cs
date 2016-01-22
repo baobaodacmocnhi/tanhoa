@@ -1670,7 +1670,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 TB_DULIEUKHACHHANG dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
 
                                                 if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
-                                                    while (dlkhFinal.GIABIEU != ctdcbd.GiaBieu_BD.ToString())
+                                                    while (int.Parse(dlkhFinal.GIABIEU) != ctdcbd.GiaBieu_BD.Value)
                                                     {
                                                         dlkhFinal.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
                                                         _cDLKH.SuaDLKH(dlkhFinal);
@@ -1678,7 +1678,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     }
 
                                                 if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
-                                                    while (dlkhFinal.DINHMUC != ctdcbd.DinhMuc_BD.ToString())
+                                                    while (int.Parse(dlkhFinal.DINHMUC) != ctdcbd.DinhMuc_BD.Value)
                                                     {
                                                         dlkhFinal.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
                                                         _cDLKH.SuaDLKH(dlkhFinal);
@@ -1931,10 +1931,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                         dr["DieuChinh"] = ", Tiêu Thụ từ " + ctdchd.TieuThu + " -> " + ctdchd.TieuThu_BD;
                                 if (ctdchd.DieuChinhGia == true)
+                                {
                                     if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
                                         dr["DieuChinh"] = "Áp giá " + ctdchd.GiaDieuChinh;
                                     else
                                         dr["DieuChinh"] = ", Áp giá " + ctdchd.GiaDieuChinh;
+                                    dr["ChiTietCu"] = ctdchd.ChiTietCu;
+                                    dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
+                                }
                                 ///
                                 dr["GiaBieuStart"] = ctdchd.GiaBieu;
                                 dr["GiaBieuEnd"] = ctdchd.GiaBieu_BD;

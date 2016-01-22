@@ -13,6 +13,7 @@ using KTKS_DonKH.DAL.CapNhat;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.ToXuLy;
 using KTKS_DonKH.GUI.BaoCao;
+using KTKS_DonKH.DAL.HeThong;
 
 namespace KTKS_DonKH.GUI.ToXuLy
 {
@@ -612,6 +613,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dr["PhiBVMTMoi"] = item.Cells["PhiBVMT_Moi"].Value.ToString();
                     dr["TongCongMoi"] = item.Cells["TongCong_Moi"].Value.ToString();
                     dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
+                    dr["NhanVien"] = CTaiKhoan.HoTen;
                     dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 }
 
@@ -657,6 +659,7 @@ namespace KTKS_DonKH.GUI.ToXuLy
                     dr["TongCongMoi"] = item.Cells["TongCong_Moi"].Value.ToString();
                     if (item.Cells["TangGiam"].Value!=null)
                     dr["TangGiam"] = item.Cells["TangGiam"].Value.ToString();
+                    dr["NhanVien"] = CTaiKhoan.HoTen;
                     dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
                 }
 

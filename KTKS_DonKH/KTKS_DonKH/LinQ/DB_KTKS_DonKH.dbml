@@ -388,53 +388,6 @@
       <Association Name="DCBD_CTDCBD" Member="DCBD" ThisKey="MaDCBD" OtherKey="MaDCBD" Type="DCBD" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.CTDCHD" Member="CTDCHDs">
-    <Type Name="CTDCHD">
-      <Column Name="MaCTDCHD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="SoVB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NgayKy" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="KyHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SoHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaBieu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DinhMuc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TieuThu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienNuoc_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThueGTGT_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMT_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TongCong_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DieuChinhGia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="GiaDieuChinh" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="KhauTru" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="SoTienKhauTru" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TongCong_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienNuoc_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThueGTGT_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhiBVMT_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TongCong_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ThuTien_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ThuTien_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ThuTien_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="DCBD_CTDCHD" Member="DCBD" ThisKey="MaDCBD" OtherKey="MaDCBD" Type="DCBD" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.CTDongNuoc" Member="CTDongNuocs">
     <Type Name="CTDongNuoc">
       <Column Name="MaCTDN" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1327,6 +1280,58 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTDCHD" Member="CTDCHDs">
+    <Type Name="CTDCHD">
+      <Column Name="MaCTDCHD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SoVB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayKy" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="KyHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GiaBieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBieu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DinhMuc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuThu_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienNuoc_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGT_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongCong_Start" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiTietCu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="TangGiam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DieuChinhGia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GiaDieuChinh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KhauTru" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SoTienKhauTru" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaDieuChinh2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TieuThu_GiaDieuChinh2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoTien_GiaDieuChinh2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongCong_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienNuoc_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThueGTGT_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhiBVMT_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongCong_End" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiTietMoi" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="MaDCBD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="NguoiKy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PhieuDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThuTien_Nhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ThuTien_NgayNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ThuTien_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="DCBD_CTDCHD" Member="DCBD" ThisKey="MaDCBD" OtherKey="MaDCBD" Type="DCBD" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

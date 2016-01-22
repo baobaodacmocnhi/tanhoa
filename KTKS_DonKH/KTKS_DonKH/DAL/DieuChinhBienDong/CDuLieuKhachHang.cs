@@ -47,6 +47,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 dulieukhachhang.MODIFYDATE = DateTime.Now;
                 dulieukhachhang.MODIFYBY = CTaiKhoan.HoTen;
                 db.SubmitChanges();
+                db = new DB_CAPNUOCTANHOADataContext();
                 return true;
             }
             catch (Exception ex)
