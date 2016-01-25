@@ -76,5 +76,11 @@ namespace ThuTien.DAL.ToTruong
         {
             return LINQToDataTable(_db.TT_TongHopNos.Where(item => item.CreateBy==CreateBy && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date));
         }
+
+        public TT_TongHopNo Get(decimal MaTHN)
+        {
+            return _db.TT_TongHopNos.SingleOrDefault(item => item.MaTHN == MaTHN);
+        }
+
     }
 }

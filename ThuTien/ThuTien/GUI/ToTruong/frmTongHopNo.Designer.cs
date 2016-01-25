@@ -49,7 +49,7 @@
             this.ThueGTGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhiBVMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCSM = new System.Windows.Forms.TextBox();
@@ -83,6 +83,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtDenNgay = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTongHopNo)).BeginInit();
             this.SuspendLayout();
@@ -236,15 +237,15 @@
             this.TongCong.HeaderText = "Tổng Cộng";
             this.TongCong.Name = "TongCong";
             // 
-            // btnIn
+            // btnLuu
             // 
-            this.btnIn.Location = new System.Drawing.Point(533, 10);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 35;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.btnLuu.Location = new System.Drawing.Point(533, 10);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.TabIndex = 35;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // label2
             // 
@@ -446,12 +447,15 @@
             this.NgayThanhToan,
             this.CreateDate});
             this.dgvTongHopNo.Location = new System.Drawing.Point(12, 399);
+            this.dgvTongHopNo.MultiSelect = false;
             this.dgvTongHopNo.Name = "dgvTongHopNo";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTongHopNo.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTongHopNo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTongHopNo.Size = new System.Drawing.Size(1183, 250);
             this.dgvTongHopNo.TabIndex = 56;
             this.dgvTongHopNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTongHopNo_CellFormatting);
+            this.dgvTongHopNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTongHopNo_CellMouseDoubleClick);
             this.dgvTongHopNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTongHopNo_RowPostPaint);
             // 
             // MaTHN
@@ -541,11 +545,22 @@
             this.label12.TabIndex = 59;
             this.label12.Text = "Đến Ngày:";
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(659, 370);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 61;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // frmTongHopNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 675);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.txtDenNgay);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtTuNgay);
@@ -571,7 +586,7 @@
             this.Controls.Add(this.txtCSM);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.dgvHoaDon);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtKinhGui);
@@ -594,7 +609,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtKinhGui;
         private System.Windows.Forms.DataGridView dgvHoaDon;
-        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCSM;
@@ -640,5 +655,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDenNgay;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnIn;
     }
 }

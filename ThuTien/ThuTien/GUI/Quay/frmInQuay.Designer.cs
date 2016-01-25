@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnIn = new System.Windows.Forms.Button();
+            this.btnInKim = new System.Windows.Forms.Button();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // btnIn
+            // btnInKim
             // 
-            this.btnIn.Location = new System.Drawing.Point(440, 0);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 0;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.btnInKim.Location = new System.Drawing.Point(398, 0);
+            this.btnInKim.Name = "btnInKim";
+            this.btnInKim.Size = new System.Drawing.Size(75, 23);
+            this.btnInKim.TabIndex = 0;
+            this.btnInKim.Text = "In Kim";
+            this.btnInKim.UseVisualStyleBackColor = true;
+            this.btnInKim.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // crystalReportViewer1
             // 
@@ -50,7 +50,6 @@
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.DisplayStatusBar = false;
-            this.crystalReportViewer1.DisplayToolbar = false;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 25);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(967, 548);
@@ -68,7 +67,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 574);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.btnInKim);
             this.Name = "frmInQuay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hiện Thị Dữ Liệu Để In";
@@ -80,7 +79,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnInKim;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private System.Windows.Forms.Timer timer;
     }

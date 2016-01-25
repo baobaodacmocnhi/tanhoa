@@ -224,15 +224,6 @@
       <Column Name="ID" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TT_DuLieuKhachHang_SoHoaDon" Member="TT_DuLieuKhachHang_SoHoaDons">
-    <Type Name="TT_DuLieuKhachHang_SoHoaDon">
-      <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.TT_CTToTrinhCatHuy" Member="TT_CTToTrinhCatHuys">
     <Type Name="TT_CTToTrinhCatHuy">
       <Column Name="MaCTTT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -888,6 +879,16 @@
       <Association Name="HOADON_TT_CTDongNuoc" Member="TT_CTDongNuocs" ThisKey="SOHOADON" OtherKey="SoHoaDon" Type="TT_CTDongNuoc" />
       <Association Name="HOADON_DIEUCHINH_HD" Member="DIEUCHINH_HDs" ThisKey="SOHOADON" OtherKey="SoHoaDon" Type="DIEUCHINH_HD" />
       <Association Name="HOADON_TT_LenhHuy" Member="TT_LenhHuy" ThisKey="SOHOADON" OtherKey="SoHoaDon" Type="TT_LenhHuy" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_DuLieuKhachHang_SoHoaDon" Member="TT_DuLieuKhachHang_SoHoaDons">
+    <Type Name="TT_DuLieuKhachHang_SoHoaDon">
+      <Column Name="SoHoaDon" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Tra" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

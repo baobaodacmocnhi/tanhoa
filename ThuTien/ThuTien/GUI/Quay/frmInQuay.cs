@@ -60,5 +60,14 @@ namespace ThuTien.GUI.Quay
         {
             timer.Stop();
         }
+
+        private void btnInLaser_Click(object sender, EventArgs e)
+        {
+            System.Drawing.Printing.PrinterSettings settings = new System.Drawing.Printing.PrinterSettings();
+            _rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
+            _rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+            _rpt.PrintOptions.PrinterName = settings.PrinterName;
+            _rpt.PrintToPrinter(1, false, 1, 1);
+        }
     }
 }

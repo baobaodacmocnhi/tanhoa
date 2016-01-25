@@ -37,6 +37,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabDLKH1 = new System.Windows.Forms.TabPage();
+            this.cmbDenDot = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnXemDanhBo = new System.Windows.Forms.Button();
             this.cmbDot = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -111,8 +113,6 @@
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.txtSoHoaDon = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbDenDot = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabDLKH1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
@@ -128,7 +128,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1317, 636);
+            this.tabControl.Size = new System.Drawing.Size(1393, 636);
             this.tabControl.TabIndex = 0;
             // 
             // tabDLKH1
@@ -155,6 +155,45 @@
             this.tabDLKH1.TabIndex = 0;
             this.tabDLKH1.Text = "Danh Bộ";
             this.tabDLKH1.UseVisualStyleBackColor = true;
+            // 
+            // cmbDenDot
+            // 
+            this.cmbDenDot.FormattingEnabled = true;
+            this.cmbDenDot.Items.AddRange(new object[] {
+            "",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbDenDot.Location = new System.Drawing.Point(438, 6);
+            this.cmbDenDot.Name = "cmbDenDot";
+            this.cmbDenDot.Size = new System.Drawing.Size(50, 21);
+            this.cmbDenDot.TabIndex = 63;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(405, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(27, 13);
+            this.label4.TabIndex = 62;
+            this.label4.Text = "Đợt:";
             // 
             // btnXemDanhBo
             // 
@@ -539,7 +578,7 @@
             this.tabDLKH2.Location = new System.Drawing.Point(4, 22);
             this.tabDLKH2.Name = "tabDLKH2";
             this.tabDLKH2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDLKH2.Size = new System.Drawing.Size(1309, 610);
+            this.tabDLKH2.Size = new System.Drawing.Size(1385, 610);
             this.tabDLKH2.TabIndex = 1;
             this.tabDLKH2.Text = "Hóa Đơn";
             this.tabDLKH2.UseVisualStyleBackColor = true;
@@ -574,7 +613,7 @@
             // 
             // btnTra
             // 
-            this.btnTra.Location = new System.Drawing.Point(150, 163);
+            this.btnTra.Location = new System.Drawing.Point(140, 163);
             this.btnTra.Name = "btnTra";
             this.btnTra.Size = new System.Drawing.Size(75, 23);
             this.btnTra.TabIndex = 62;
@@ -584,7 +623,7 @@
             // 
             // btnXuatExcelTon
             // 
-            this.btnXuatExcelTon.Location = new System.Drawing.Point(937, 6);
+            this.btnXuatExcelTon.Location = new System.Drawing.Point(913, 6);
             this.btnXuatExcelTon.Name = "btnXuatExcelTon";
             this.btnXuatExcelTon.Size = new System.Drawing.Size(90, 23);
             this.btnXuatExcelTon.TabIndex = 61;
@@ -594,7 +633,7 @@
             // 
             // btnInDSTon
             // 
-            this.btnInDSTon.Location = new System.Drawing.Point(1033, 6);
+            this.btnInDSTon.Location = new System.Drawing.Point(1009, 6);
             this.btnInDSTon.Name = "btnInDSTon";
             this.btnInDSTon.Size = new System.Drawing.Size(85, 23);
             this.btnInDSTon.TabIndex = 60;
@@ -604,7 +643,7 @@
             // 
             // btnXuatExcelDangNgan
             // 
-            this.btnXuatExcelDangNgan.Location = new System.Drawing.Point(846, 6);
+            this.btnXuatExcelDangNgan.Location = new System.Drawing.Point(822, 6);
             this.btnXuatExcelDangNgan.Name = "btnXuatExcelDangNgan";
             this.btnXuatExcelDangNgan.Size = new System.Drawing.Size(85, 23);
             this.btnXuatExcelDangNgan.TabIndex = 59;
@@ -614,7 +653,7 @@
             // 
             // btnXuatExcelQuet
             // 
-            this.btnXuatExcelQuet.Location = new System.Drawing.Point(743, 6);
+            this.btnXuatExcelQuet.Location = new System.Drawing.Point(719, 6);
             this.btnXuatExcelQuet.Name = "btnXuatExcelQuet";
             this.btnXuatExcelQuet.Size = new System.Drawing.Size(97, 23);
             this.btnXuatExcelQuet.TabIndex = 58;
@@ -624,7 +663,7 @@
             // 
             // btnXuatExcel2
             // 
-            this.btnXuatExcel2.Location = new System.Drawing.Point(662, 6);
+            this.btnXuatExcel2.Location = new System.Drawing.Point(638, 6);
             this.btnXuatExcel2.Name = "btnXuatExcel2";
             this.btnXuatExcel2.Size = new System.Drawing.Size(75, 23);
             this.btnXuatExcel2.TabIndex = 57;
@@ -636,7 +675,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(475, 9);
+            this.dateDen.Location = new System.Drawing.Point(451, 9);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 56;
@@ -644,7 +683,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(411, 12);
+            this.label9.Location = new System.Drawing.Point(387, 12);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 13);
             this.label9.TabIndex = 55;
@@ -691,12 +730,12 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvHoaDon.Location = new System.Drawing.Point(245, 35);
+            this.dgvHoaDon.Location = new System.Drawing.Point(221, 35);
             this.dgvHoaDon.Name = "dgvHoaDon";
             this.dgvHoaDon.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1047, 567);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1141, 567);
             this.dgvHoaDon.TabIndex = 54;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
@@ -847,7 +886,7 @@
             // 
             // btnXem2
             // 
-            this.btnXem2.Location = new System.Drawing.Point(581, 6);
+            this.btnXem2.Location = new System.Drawing.Point(557, 6);
             this.btnXem2.Name = "btnXem2";
             this.btnXem2.Size = new System.Drawing.Size(75, 23);
             this.btnXem2.TabIndex = 53;
@@ -859,7 +898,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(305, 9);
+            this.dateTu.Location = new System.Drawing.Point(281, 9);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 52;
@@ -867,7 +906,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(248, 12);
+            this.label7.Location = new System.Drawing.Point(224, 12);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 51;
@@ -875,7 +914,7 @@
             // 
             // btnXoa2
             // 
-            this.btnXoa2.Location = new System.Drawing.Point(150, 134);
+            this.btnXoa2.Location = new System.Drawing.Point(140, 134);
             this.btnXoa2.Name = "btnXoa2";
             this.btnXoa2.Size = new System.Drawing.Size(75, 23);
             this.btnXoa2.TabIndex = 50;
@@ -885,7 +924,7 @@
             // 
             // btnThem2
             // 
-            this.btnThem2.Location = new System.Drawing.Point(150, 76);
+            this.btnThem2.Location = new System.Drawing.Point(140, 76);
             this.btnThem2.Name = "btnThem2";
             this.btnThem2.Size = new System.Drawing.Size(75, 23);
             this.btnThem2.TabIndex = 49;
@@ -936,50 +975,11 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Số Hóa Đơn:";
             // 
-            // cmbDenDot
-            // 
-            this.cmbDenDot.FormattingEnabled = true;
-            this.cmbDenDot.Items.AddRange(new object[] {
-            "",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.cmbDenDot.Location = new System.Drawing.Point(438, 6);
-            this.cmbDenDot.Name = "cmbDenDot";
-            this.cmbDenDot.Size = new System.Drawing.Size(50, 21);
-            this.cmbDenDot.TabIndex = 63;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(405, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(27, 13);
-            this.label4.TabIndex = 62;
-            this.label4.Text = "Đợt:";
-            // 
             // frmDuLieuKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1317, 636);
+            this.ClientSize = new System.Drawing.Size(1393, 636);
             this.Controls.Add(this.tabControl);
             this.KeyPreview = true;
             this.Name = "frmDuLieuKhachHang";
