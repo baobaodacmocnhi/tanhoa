@@ -85,6 +85,7 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
+            this.txtNoiDungTimKiem2 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHangChungCu)).BeginInit();
@@ -618,11 +619,21 @@
             "Số Chứng Từ",
             "Họ Tên",
             "Lô",
-            "Phòng"});
+            "Phòng",
+            "Số Thứ Tự"});
             this.cmbTimTheo.Location = new System.Drawing.Point(1003, 20);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(126, 25);
             this.cmbTimTheo.TabIndex = 22;
+            this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
+            // 
+            // txtNoiDungTimKiem2
+            // 
+            this.txtNoiDungTimKiem2.Location = new System.Drawing.Point(1003, 80);
+            this.txtNoiDungTimKiem2.Name = "txtNoiDungTimKiem2";
+            this.txtNoiDungTimKiem2.Size = new System.Drawing.Size(126, 25);
+            this.txtNoiDungTimKiem2.TabIndex = 23;
+            this.txtNoiDungTimKiem2.TextChanged += new System.EventHandler(this.txtNoiDungTimKiem2_TextChanged);
             // 
             // frmMain
             // 
@@ -630,6 +641,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1360, 710);
+            this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.cmbTimTheo);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.btnXoa);
@@ -719,6 +731,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cmbTimTheo;
+        private System.Windows.Forms.TextBox txtNoiDungTimKiem2;
     }
 }
 

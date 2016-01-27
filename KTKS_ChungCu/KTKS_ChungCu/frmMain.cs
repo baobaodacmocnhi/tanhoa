@@ -444,6 +444,7 @@ namespace KTKS_ChungCu
 
         private void txtNoiDungTimKiem_TextChanged(object sender, EventArgs e)
         {
+            txtNoiDungTimKiem2.Text = "";
             switch (cmbTimTheo.SelectedItem.ToString())
             {
                 case "Số Chứng Từ":
@@ -457,6 +458,26 @@ namespace KTKS_ChungCu
                     break;
                 case "Phòng":
                     DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_Phong(txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Số Thứ Tự":
+                    if (txtNoiDungTimKiem.Text.Trim()!="")
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_STT(txtDanhBo.Text.Trim(),int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                    break;
+            }
+        }
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Số Thứ Tự":
+                    if (txtNoiDungTimKiem.Text.Trim() != ""&&txtNoiDungTimKiem2.Text.Trim() != "")
+                    DSKHCC_BS.DataSource = _cChungTu.LoadDSChungTu_STTs(txtDanhBo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
                     break;
             }
         }
