@@ -150,40 +150,22 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS_BangKe_DangNgan1(DateTime TuNgay, DateTime DenNgay)
-        {
-            string sql = "declare @FromNgayGiaiTrach date;"
-                + " declare @ToNgayGiaiTrach date;"
-                + " set @FromNgayGiaiTrach='" + TuNgay.ToString("yyyy-MM-dd") + "';"
-                + " set @ToNgayGiaiTrach='" + DenNgay.ToString("yyyy-MM-dd") + "';"
-                + " select MaBK,bk.DanhBo,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong from"
-                + " (select MaBK,DanhBo,SoTien,Phi,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@FromNgayGiaiTrach and CAST(CreateDate as date)<=@ToNgayGiaiTrach) bk"
-                + " left join"
-                + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"
-                + " left join"
-                + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where DangNgan_ChuyenKhoan=1"
-                + " and CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach group by DANHBA) dn on bk.DanhBo=dn.DANHBA";
-
-            return ExecuteQuery_SqlDataAdapter_DataTable(sql);
-        }
-
         public DataTable GetDS_BangKe_DangNgan(DateTime TuNgay, DateTime DenNgay)
         {
             string sql = "declare @FromNgayGiaiTrach date;"
                 + " declare @ToNgayGiaiTrach date;"
                 + " set @FromNgayGiaiTrach='" + TuNgay.ToString("yyyy-MM-dd") + "';"
                 + " set @ToNgayGiaiTrach='" + DenNgay.ToString("yyyy-MM-dd") + "';"
-                + " select t1.* from"
-                + " (select MaBK,bk.DanhBo,HoTen,GiaBieu,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong,row_number() over (partition by MaBK order by MaBK asc) as RowNumber from"
+                + " select * from"
+                + " (select MaBK,bk.DanhBo,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong from"
                 + " (select MaBK,DanhBo,SoTien,Phi,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@FromNgayGiaiTrach and CAST(CreateDate as date)<=@ToNgayGiaiTrach) bk"
                 + " left join"
                 + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"
                 + " left join"
-                + " (select ID_HOADON,DANHBA,TENKH as HoTen,GB as GIABIEU from HOADON) hd on bk.DanhBo=hd.DANHBA"
-                + " left join"
                 + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where DangNgan_ChuyenKhoan=1"
-                + " and CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach group by DANHBA) dn on bk.DanhBo=dn.DANHBA) t1"
-                + " where RowNumber=1";
+                + " and CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach group by DANHBA) dn on bk.DanhBo=dn.DANHBA) as t1"
+                + " outer apply"
+                + " (select top 1 TENKH as HoTen from HOADON where DANHBA=t1.DanhBo order by ID_HOADON desc) as la";
 
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }

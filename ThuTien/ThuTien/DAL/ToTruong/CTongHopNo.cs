@@ -69,12 +69,40 @@ namespace ThuTien.DAL.ToTruong
 
         public DataTable GetDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_TongHopNos.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date));
+            var query = from item in _db.TT_TongHopNos
+                        where  item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new 
+                        {
+                            item.MaTHN,
+                            item.KinhGui,
+                            TongCong=item.TT_CTTongHopNos.Sum(itemCT=>itemCT.TongCong),
+                            item.ChiSoCu,
+                            item.ChiSoMoi,
+                            item.TieuThu,
+                            item.DinhMuc,
+                            item.NgayThanhToan,
+                            item.CreateDate,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable GetDS(int CreateBy,DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return LINQToDataTable(_db.TT_TongHopNos.Where(item => item.CreateBy==CreateBy && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date));
+            var query = from item in _db.TT_TongHopNos
+                        where item.CreateBy == CreateBy && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            item.MaTHN,
+                            item.KinhGui,
+                            TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
+                            item.ChiSoCu,
+                            item.ChiSoMoi,
+                            item.TieuThu,
+                            item.DinhMuc,
+                            item.NgayThanhToan,
+                            item.CreateDate,
+                        };
+            return LINQToDataTable(query);
         }
 
         public TT_TongHopNo Get(decimal MaTHN)

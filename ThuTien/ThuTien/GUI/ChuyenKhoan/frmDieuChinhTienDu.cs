@@ -132,6 +132,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                             phimonuoc.TongCong = phimonuoc.SoTien - 50000;
                             if (_cPhiMoNuoc.Them(phimonuoc))
                             {
+                                if (_cTienDu.GetTienDu(hoadon.DANHBA) == 0)
+                                {
+                                    TT_TienDu tiendu = _cTienDu.Get(hoadon.DANHBA);
+                                    tiendu.ChoXuLy = false;
+                                    _cTienDu.Sua(tiendu);
+                                }
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                 this.Close();

@@ -6711,10 +6711,11 @@ namespace ThuTien.DAL.Doi
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.ChanTienDu==true
+                        where itemHD.KhoaTienDu==true
                         orderby itemHD.NgayChanTienDu descending
                         select new
                         {
+                            itemHD.ChanTienDu,
                             itemHD.NgayChanTienDu,
                             MaHD = itemHD.ID_HOADON,
                             itemHD.SOHOADON,

@@ -87,7 +87,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan1(dateTu.Value, dateDen.Value);
+            dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan(dateTu.Value, dateDen.Value);
             long TongSoTien = 0;
             int TongHD = 0;
             long TongCong = 0;
@@ -99,7 +99,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (!string.IsNullOrEmpty(item.Cells["HoaDon"].Value.ToString()))
                         TongHD += int.Parse(item.Cells["HoaDon"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
+                    {
                         TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
+                        item.Cells["ChenhLech"].Value = long.Parse(item.Cells["SoTien"].Value.ToString()) - long.Parse(item.Cells["TongCong"].Value.ToString());
+                    }
+                    else
+                        item.Cells["ChenhLech"].Value = item.Cells["SoTien"].Value;
                 }
                 txtTongDanhBo.Text = dgvBangKe.RowCount.ToString();
                 txtTongSoTien.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
@@ -174,6 +179,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
             if (dgvBangKe.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+            if (dgvBangKe.Columns[e.ColumnIndex].Name == "ChenhLech" && e.Value != null)
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }

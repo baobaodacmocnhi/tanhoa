@@ -368,6 +368,10 @@ namespace ThuTien.GUI.ToTruong
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2,"-");
             }
+            if (dgvTongHopNo.Columns[e.ColumnIndex].Name == "TongCong_THN" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
         }
 
         private void dgvTongHopNo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

@@ -51,6 +51,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                         {
                             HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD"].Value.ToString());
+                            hoadon.KhoaTienDu = true;
                             hoadon.ChanTienDu = true;
                             hoadon.NgayChanTienDu = DateTime.Now;
                             hoadon.NGAYGIAITRACH = DateTime.Now;
@@ -77,6 +78,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     foreach (DataGridViewRow item in dgvDSChanTienDu.SelectedRows)
                     {
                         HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_Chan"].Value.ToString());
+                        hoadon.KhoaTienDu = false;
                         hoadon.ChanTienDu = false;
                         hoadon.NGAYGIAITRACH = null;
                         _cHoaDon.Sua(hoadon);
@@ -131,6 +133,39 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
+        }
+
+        private void dgvDSChanTienDu_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dgvDSChanTienDu.Columns[e.ColumnIndex].Name == "ChanTienDu" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvDSChanTienDu[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    HOADON hoadon = _cHoaDon.Get(dgvDSChanTienDu["SoHoaDon_Chan", e.RowIndex].Value.ToString());
+                    if (bool.Parse(e.FormattedValue.ToString()))
+                        hoadon.NGAYGIAITRACH = DateTime.Now;
+                    else
+                        hoadon.NGAYGIAITRACH = null;
+                    hoadon.ChanTienDu = bool.Parse(e.FormattedValue.ToString());
+                    _cHoaDon.Sua(hoadon);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkAll.Checked)
+                foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
+                {
+                    item.Cells["ChanTienDu"].Value = true;
+                }
+            else
+                foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
+                {
+                    item.Cells["ChanTienDu"].Value = false;
+                }
         }
     }
 }
