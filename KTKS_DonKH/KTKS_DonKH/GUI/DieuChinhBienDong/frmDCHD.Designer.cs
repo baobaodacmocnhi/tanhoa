@@ -625,7 +625,7 @@
             this.groupBox2.Controls.Add(this.txtTieuThu_Moi);
             this.groupBox2.Location = new System.Drawing.Point(415, 43);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(541, 151);
+            this.groupBox2.Size = new System.Drawing.Size(541, 181);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin Điều Chỉnh";
@@ -659,7 +659,7 @@
             this.txtChiTietMoi.Location = new System.Drawing.Point(429, 53);
             this.txtChiTietMoi.Multiline = true;
             this.txtChiTietMoi.Name = "txtChiTietMoi";
-            this.txtChiTietMoi.Size = new System.Drawing.Size(100, 87);
+            this.txtChiTietMoi.Size = new System.Drawing.Size(100, 100);
             this.txtChiTietMoi.TabIndex = 15;
             // 
             // txtChiTietCu
@@ -668,7 +668,7 @@
             this.txtChiTietCu.Location = new System.Drawing.Point(164, 53);
             this.txtChiTietCu.Multiline = true;
             this.txtChiTietCu.Name = "txtChiTietCu";
-            this.txtChiTietCu.Size = new System.Drawing.Size(100, 87);
+            this.txtChiTietCu.Size = new System.Drawing.Size(100, 100);
             this.txtChiTietCu.TabIndex = 14;
             // 
             // txtTieuThu_GiaDieuChinh2
@@ -728,7 +728,7 @@
             this.groupBox3.Controls.Add(this.lbTangGiam);
             this.groupBox3.Controls.Add(this.txtTienNuoc_BD);
             this.groupBox3.Controls.Add(this.txtTieuThu_BD);
-            this.groupBox3.Location = new System.Drawing.Point(12, 230);
+            this.groupBox3.Location = new System.Drawing.Point(12, 256);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(632, 147);
             this.groupBox3.TabIndex = 5;
@@ -739,7 +739,7 @@
             // 
             this.btnLuu.Image = global::KTKS_DonKH.Properties.Resources.save_24x24;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(726, 282);
+            this.btnLuu.Location = new System.Drawing.Point(726, 308);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(70, 35);
             this.btnLuu.TabIndex = 4;
@@ -751,7 +751,7 @@
             // chkKhauTru
             // 
             this.chkKhauTru.AutoSize = true;
-            this.chkKhauTru.Location = new System.Drawing.Point(415, 204);
+            this.chkKhauTru.Location = new System.Drawing.Point(415, 230);
             this.chkKhauTru.Name = "chkKhauTru";
             this.chkKhauTru.Size = new System.Drawing.Size(87, 21);
             this.chkKhauTru.TabIndex = 16;
@@ -761,7 +761,7 @@
             // 
             // txtSoTienKhauTru
             // 
-            this.txtSoTienKhauTru.Location = new System.Drawing.Point(508, 200);
+            this.txtSoTienKhauTru.Location = new System.Drawing.Point(508, 226);
             this.txtSoTienKhauTru.Name = "txtSoTienKhauTru";
             this.txtSoTienKhauTru.ReadOnly = true;
             this.txtSoTienKhauTru.Size = new System.Drawing.Size(84, 25);
@@ -772,7 +772,7 @@
             // 
             this.btnIn.Image = global::KTKS_DonKH.Properties.Resources.print_24x24;
             this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(854, 282);
+            this.btnIn.Location = new System.Drawing.Point(854, 308);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(102, 35);
             this.btnIn.TabIndex = 18;
@@ -890,7 +890,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1269, 388);
+            this.ClientSize = new System.Drawing.Size(1269, 418);
             this.Controls.Add(this.txtHCSN);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.txtDV);
