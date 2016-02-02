@@ -29762,11 +29762,21 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _SoTienKhauTru;
 		
-		private bool _GiaDieuChinh2;
+		private bool _DieuChinhGia2;
 		
-		private System.Nullable<int> _TieuThu_GiaDieuChinh2;
+		private System.Nullable<int> _TieuThu_DieuChinhGia2;
 		
-		private System.Nullable<int> _SoTien_GiaDieuChinh2;
+		private System.Nullable<int> _GiaDieuChinh2;
+		
+		private bool _TyLe;
+		
+		private System.Nullable<int> _SH;
+		
+		private System.Nullable<int> _SX;
+		
+		private System.Nullable<int> _DV;
+		
+		private System.Nullable<int> _HCSN;
 		
 		private System.Nullable<int> _TienNuoc_BD;
 		
@@ -29862,12 +29872,22 @@ namespace KTKS_DonKH.LinQ
     partial void OnKhauTruChanged();
     partial void OnSoTienKhauTruChanging(System.Nullable<int> value);
     partial void OnSoTienKhauTruChanged();
-    partial void OnGiaDieuChinh2Changing(bool value);
+    partial void OnDieuChinhGia2Changing(bool value);
+    partial void OnDieuChinhGia2Changed();
+    partial void OnTieuThu_DieuChinhGia2Changing(System.Nullable<int> value);
+    partial void OnTieuThu_DieuChinhGia2Changed();
+    partial void OnGiaDieuChinh2Changing(System.Nullable<int> value);
     partial void OnGiaDieuChinh2Changed();
-    partial void OnTieuThu_GiaDieuChinh2Changing(System.Nullable<int> value);
-    partial void OnTieuThu_GiaDieuChinh2Changed();
-    partial void OnSoTien_GiaDieuChinh2Changing(System.Nullable<int> value);
-    partial void OnSoTien_GiaDieuChinh2Changed();
+    partial void OnTyLeChanging(bool value);
+    partial void OnTyLeChanged();
+    partial void OnSHChanging(System.Nullable<int> value);
+    partial void OnSHChanged();
+    partial void OnSXChanging(System.Nullable<int> value);
+    partial void OnSXChanged();
+    partial void OnDVChanging(System.Nullable<int> value);
+    partial void OnDVChanged();
+    partial void OnHCSNChanging(System.Nullable<int> value);
+    partial void OnHCSNChanged();
     partial void OnTienNuoc_BDChanging(System.Nullable<int> value);
     partial void OnTienNuoc_BDChanged();
     partial void OnThueGTGT_BDChanging(System.Nullable<int> value);
@@ -30396,8 +30416,48 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaDieuChinh2", DbType="Bit NOT NULL")]
-		public bool GiaDieuChinh2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DieuChinhGia2", DbType="Bit NOT NULL")]
+		public bool DieuChinhGia2
+		{
+			get
+			{
+				return this._DieuChinhGia2;
+			}
+			set
+			{
+				if ((this._DieuChinhGia2 != value))
+				{
+					this.OnDieuChinhGia2Changing(value);
+					this.SendPropertyChanging();
+					this._DieuChinhGia2 = value;
+					this.SendPropertyChanged("DieuChinhGia2");
+					this.OnDieuChinhGia2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThu_DieuChinhGia2", DbType="Int")]
+		public System.Nullable<int> TieuThu_DieuChinhGia2
+		{
+			get
+			{
+				return this._TieuThu_DieuChinhGia2;
+			}
+			set
+			{
+				if ((this._TieuThu_DieuChinhGia2 != value))
+				{
+					this.OnTieuThu_DieuChinhGia2Changing(value);
+					this.SendPropertyChanging();
+					this._TieuThu_DieuChinhGia2 = value;
+					this.SendPropertyChanged("TieuThu_DieuChinhGia2");
+					this.OnTieuThu_DieuChinhGia2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaDieuChinh2", DbType="Int")]
+		public System.Nullable<int> GiaDieuChinh2
 		{
 			get
 			{
@@ -30416,42 +30476,102 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuThu_GiaDieuChinh2", DbType="Int")]
-		public System.Nullable<int> TieuThu_GiaDieuChinh2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TyLe", DbType="Bit NOT NULL")]
+		public bool TyLe
 		{
 			get
 			{
-				return this._TieuThu_GiaDieuChinh2;
+				return this._TyLe;
 			}
 			set
 			{
-				if ((this._TieuThu_GiaDieuChinh2 != value))
+				if ((this._TyLe != value))
 				{
-					this.OnTieuThu_GiaDieuChinh2Changing(value);
+					this.OnTyLeChanging(value);
 					this.SendPropertyChanging();
-					this._TieuThu_GiaDieuChinh2 = value;
-					this.SendPropertyChanged("TieuThu_GiaDieuChinh2");
-					this.OnTieuThu_GiaDieuChinh2Changed();
+					this._TyLe = value;
+					this.SendPropertyChanged("TyLe");
+					this.OnTyLeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien_GiaDieuChinh2", DbType="Int")]
-		public System.Nullable<int> SoTien_GiaDieuChinh2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SH", DbType="Int")]
+		public System.Nullable<int> SH
 		{
 			get
 			{
-				return this._SoTien_GiaDieuChinh2;
+				return this._SH;
 			}
 			set
 			{
-				if ((this._SoTien_GiaDieuChinh2 != value))
+				if ((this._SH != value))
 				{
-					this.OnSoTien_GiaDieuChinh2Changing(value);
+					this.OnSHChanging(value);
 					this.SendPropertyChanging();
-					this._SoTien_GiaDieuChinh2 = value;
-					this.SendPropertyChanged("SoTien_GiaDieuChinh2");
-					this.OnSoTien_GiaDieuChinh2Changed();
+					this._SH = value;
+					this.SendPropertyChanged("SH");
+					this.OnSHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SX", DbType="Int")]
+		public System.Nullable<int> SX
+		{
+			get
+			{
+				return this._SX;
+			}
+			set
+			{
+				if ((this._SX != value))
+				{
+					this.OnSXChanging(value);
+					this.SendPropertyChanging();
+					this._SX = value;
+					this.SendPropertyChanged("SX");
+					this.OnSXChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV", DbType="Int")]
+		public System.Nullable<int> DV
+		{
+			get
+			{
+				return this._DV;
+			}
+			set
+			{
+				if ((this._DV != value))
+				{
+					this.OnDVChanging(value);
+					this.SendPropertyChanging();
+					this._DV = value;
+					this.SendPropertyChanged("DV");
+					this.OnDVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HCSN", DbType="Int")]
+		public System.Nullable<int> HCSN
+		{
+			get
+			{
+				return this._HCSN;
+			}
+			set
+			{
+				if ((this._HCSN != value))
+				{
+					this.OnHCSNChanging(value);
+					this.SendPropertyChanging();
+					this._HCSN = value;
+					this.SendPropertyChanged("HCSN");
+					this.OnHCSNChanged();
 				}
 			}
 		}

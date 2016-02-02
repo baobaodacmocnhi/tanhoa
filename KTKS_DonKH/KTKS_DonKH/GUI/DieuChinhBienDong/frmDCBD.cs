@@ -621,6 +621,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ThongTin += "ĐM. ";
                             ctdcbd.DinhMuc_BD = int.Parse(txtDinhMuc_BD.Text.Trim());
                         }
+                        if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
+                            ThongTin += "Tỷ Lệ. ";
                         ///SH
                         if (txtSH_BD.Text.Trim() != "")
                             ctdcbd.SH_BD = txtSH_BD.Text.Trim();

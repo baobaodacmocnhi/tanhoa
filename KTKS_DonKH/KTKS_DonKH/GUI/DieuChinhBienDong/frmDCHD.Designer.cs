@@ -81,19 +81,19 @@
             this.txtSoVB = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chkGiaDieuChinh = new System.Windows.Forms.CheckBox();
+            this.chkDieuChinhGia = new System.Windows.Forms.CheckBox();
             this.txtGiaDieuChinh = new System.Windows.Forms.TextBox();
             this.txtChiTietMoi = new System.Windows.Forms.TextBox();
             this.txtChiTietCu = new System.Windows.Forms.TextBox();
-            this.txtTieuThu_GiaDieuChinh2 = new System.Windows.Forms.TextBox();
+            this.txtTieuThu_DieuChinhGia2 = new System.Windows.Forms.TextBox();
             this.chkTyLe = new System.Windows.Forms.CheckBox();
-            this.chkGiaDieuChinh2 = new System.Windows.Forms.CheckBox();
+            this.chkDieuChinhGia2 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.chkKhauTru = new System.Windows.Forms.CheckBox();
             this.txtSoTienKhauTru = new System.Windows.Forms.TextBox();
             this.btnIn = new System.Windows.Forms.Button();
-            this.txtGiaTien_GiaDieuChinh2 = new System.Windows.Forms.TextBox();
+            this.txtGiaDieuChinh2 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.txtHCSN = new System.Windows.Forms.TextBox();
@@ -607,7 +607,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.chkGiaDieuChinh);
+            this.groupBox2.Controls.Add(this.chkDieuChinhGia);
             this.groupBox2.Controls.Add(this.txtGiaDieuChinh);
             this.groupBox2.Controls.Add(this.txtChiTietMoi);
             this.groupBox2.Controls.Add(this.txtChiTietCu);
@@ -630,17 +630,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin Điều Chỉnh";
             // 
-            // chkGiaDieuChinh
+            // chkDieuChinhGia
             // 
-            this.chkGiaDieuChinh.AutoSize = true;
-            this.chkGiaDieuChinh.Location = new System.Drawing.Point(319, 24);
-            this.chkGiaDieuChinh.Name = "chkGiaDieuChinh";
-            this.chkGiaDieuChinh.Size = new System.Drawing.Size(120, 21);
-            this.chkGiaDieuChinh.TabIndex = 6;
-            this.chkGiaDieuChinh.Text = "Giá Điều Chỉnh:";
-            this.chkGiaDieuChinh.UseVisualStyleBackColor = true;
-            this.chkGiaDieuChinh.CheckedChanged += new System.EventHandler(this.chkGiaDieuChinh_CheckedChanged);
-            this.chkGiaDieuChinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.chkGiaDieuChinh_KeyPress);
+            this.chkDieuChinhGia.AutoSize = true;
+            this.chkDieuChinhGia.Location = new System.Drawing.Point(319, 24);
+            this.chkDieuChinhGia.Name = "chkDieuChinhGia";
+            this.chkDieuChinhGia.Size = new System.Drawing.Size(120, 21);
+            this.chkDieuChinhGia.TabIndex = 6;
+            this.chkDieuChinhGia.Text = "Điều Chỉnh Giá:";
+            this.chkDieuChinhGia.UseVisualStyleBackColor = true;
+            this.chkDieuChinhGia.CheckedChanged += new System.EventHandler(this.chkGiaDieuChinh_CheckedChanged);
+            this.chkDieuChinhGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.chkGiaDieuChinh_KeyPress);
             // 
             // txtGiaDieuChinh
             // 
@@ -671,15 +671,15 @@
             this.txtChiTietCu.Size = new System.Drawing.Size(100, 100);
             this.txtChiTietCu.TabIndex = 14;
             // 
-            // txtTieuThu_GiaDieuChinh2
+            // txtTieuThu_DieuChinhGia2
             // 
-            this.txtTieuThu_GiaDieuChinh2.Location = new System.Drawing.Point(1099, 63);
-            this.txtTieuThu_GiaDieuChinh2.Name = "txtTieuThu_GiaDieuChinh2";
-            this.txtTieuThu_GiaDieuChinh2.ReadOnly = true;
-            this.txtTieuThu_GiaDieuChinh2.Size = new System.Drawing.Size(50, 25);
-            this.txtTieuThu_GiaDieuChinh2.TabIndex = 18;
-            this.txtTieuThu_GiaDieuChinh2.Text = "0";
-            this.txtTieuThu_GiaDieuChinh2.TextChanged += new System.EventHandler(this.txtTieuThu_GiaDieuChinh2_TextChanged);
+            this.txtTieuThu_DieuChinhGia2.Location = new System.Drawing.Point(1099, 63);
+            this.txtTieuThu_DieuChinhGia2.Name = "txtTieuThu_DieuChinhGia2";
+            this.txtTieuThu_DieuChinhGia2.ReadOnly = true;
+            this.txtTieuThu_DieuChinhGia2.Size = new System.Drawing.Size(50, 25);
+            this.txtTieuThu_DieuChinhGia2.TabIndex = 18;
+            this.txtTieuThu_DieuChinhGia2.Text = "0";
+            this.txtTieuThu_DieuChinhGia2.TextChanged += new System.EventHandler(this.txtTieuThu_GiaDieuChinh2_TextChanged);
             // 
             // chkTyLe
             // 
@@ -692,16 +692,16 @@
             this.chkTyLe.UseVisualStyleBackColor = true;
             this.chkTyLe.CheckedChanged += new System.EventHandler(this.chkTyLe_CheckedChanged);
             // 
-            // chkGiaDieuChinh2
+            // chkDieuChinhGia2
             // 
-            this.chkGiaDieuChinh2.AutoSize = true;
-            this.chkGiaDieuChinh2.Location = new System.Drawing.Point(962, 66);
-            this.chkGiaDieuChinh2.Name = "chkGiaDieuChinh2";
-            this.chkGiaDieuChinh2.Size = new System.Drawing.Size(131, 21);
-            this.chkGiaDieuChinh2.TabIndex = 16;
-            this.chkGiaDieuChinh2.Text = "Giá Điều Chỉnh 2:";
-            this.chkGiaDieuChinh2.UseVisualStyleBackColor = true;
-            this.chkGiaDieuChinh2.CheckedChanged += new System.EventHandler(this.chkGiaDieuChinh2_CheckedChanged);
+            this.chkDieuChinhGia2.AutoSize = true;
+            this.chkDieuChinhGia2.Location = new System.Drawing.Point(962, 66);
+            this.chkDieuChinhGia2.Name = "chkDieuChinhGia2";
+            this.chkDieuChinhGia2.Size = new System.Drawing.Size(131, 21);
+            this.chkDieuChinhGia2.TabIndex = 16;
+            this.chkDieuChinhGia2.Text = "Điều Chỉnh Giá 2:";
+            this.chkDieuChinhGia2.UseVisualStyleBackColor = true;
+            this.chkDieuChinhGia2.CheckedChanged += new System.EventHandler(this.chkGiaDieuChinh2_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -781,15 +781,15 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
-            // txtGiaTien_GiaDieuChinh2
+            // txtGiaDieuChinh2
             // 
-            this.txtGiaTien_GiaDieuChinh2.Location = new System.Drawing.Point(1155, 63);
-            this.txtGiaTien_GiaDieuChinh2.Name = "txtGiaTien_GiaDieuChinh2";
-            this.txtGiaTien_GiaDieuChinh2.ReadOnly = true;
-            this.txtGiaTien_GiaDieuChinh2.Size = new System.Drawing.Size(84, 25);
-            this.txtGiaTien_GiaDieuChinh2.TabIndex = 16;
-            this.txtGiaTien_GiaDieuChinh2.Text = "0";
-            this.txtGiaTien_GiaDieuChinh2.TextChanged += new System.EventHandler(this.txtGiaTien_GiaDieuChinh2_TextChanged);
+            this.txtGiaDieuChinh2.Location = new System.Drawing.Point(1155, 63);
+            this.txtGiaDieuChinh2.Name = "txtGiaDieuChinh2";
+            this.txtGiaDieuChinh2.ReadOnly = true;
+            this.txtGiaDieuChinh2.Size = new System.Drawing.Size(84, 25);
+            this.txtGiaDieuChinh2.TabIndex = 16;
+            this.txtGiaDieuChinh2.Text = "0";
+            this.txtGiaDieuChinh2.TextChanged += new System.EventHandler(this.txtGiaTien_GiaDieuChinh2_TextChanged);
             // 
             // label22
             // 
@@ -901,12 +901,12 @@
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.txtGiaTien_GiaDieuChinh2);
+            this.Controls.Add(this.txtGiaDieuChinh2);
             this.Controls.Add(this.chkTyLe);
-            this.Controls.Add(this.txtTieuThu_GiaDieuChinh2);
+            this.Controls.Add(this.txtTieuThu_DieuChinhGia2);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.chkKhauTru);
-            this.Controls.Add(this.chkGiaDieuChinh2);
+            this.Controls.Add(this.chkDieuChinhGia2);
             this.Controls.Add(this.txtSoTienKhauTru);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.groupBox3);
@@ -990,16 +990,16 @@
         private System.Windows.Forms.TextBox txtChiTietMoi;
         private System.Windows.Forms.TextBox txtChiTietCu;
         private System.Windows.Forms.TextBox txtGiaDieuChinh;
-        private System.Windows.Forms.CheckBox chkGiaDieuChinh;
+        private System.Windows.Forms.CheckBox chkDieuChinhGia;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.CheckBox chkKhauTru;
         private System.Windows.Forms.TextBox txtSoTienKhauTru;
         private System.Windows.Forms.Button btnIn;
-        private System.Windows.Forms.TextBox txtTieuThu_GiaDieuChinh2;
+        private System.Windows.Forms.TextBox txtTieuThu_DieuChinhGia2;
         private System.Windows.Forms.CheckBox chkTyLe;
-        private System.Windows.Forms.CheckBox chkGiaDieuChinh2;
-        private System.Windows.Forms.TextBox txtGiaTien_GiaDieuChinh2;
+        private System.Windows.Forms.CheckBox chkDieuChinhGia2;
+        private System.Windows.Forms.TextBox txtGiaDieuChinh2;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtHCSN;

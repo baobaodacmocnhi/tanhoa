@@ -1308,9 +1308,14 @@
       <Column Name="GiaDieuChinh" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="KhauTru" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoTienKhauTru" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaDieuChinh2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="TieuThu_GiaDieuChinh2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoTien_GiaDieuChinh2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DieuChinhGia2" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TieuThu_DieuChinhGia2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaDieuChinh2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TyLe" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SX" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HCSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TienNuoc_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThueGTGT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PhiBVMT_BD" Type="System.Int32" DbType="Int" CanBeNull="true" />

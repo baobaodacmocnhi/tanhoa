@@ -1062,6 +1062,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     dr["DiaChiBD"] = ctdcbd.DiaChi_BD;
                                     dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
                                     dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                                    if (!string.IsNullOrEmpty(ctdcbd.SH_BD))
+                                        dr["TyLe"] = "Tỷ Lệ SH: " + ctdcbd.SH_BD;
+
+                                    if (!string.IsNullOrEmpty(ctdcbd.SX_BD))
+                                        if (string.IsNullOrEmpty(ctdcbd.SX_BD))
+                                            dr["TyLe"] = "Tỷ Lệ SX: " + ctdcbd.SX_BD;
+                                        else
+                                            dr["TyLe"] = ", SX: " + ctdcbd.SX_BD;
+
+                                    if (!string.IsNullOrEmpty(ctdcbd.DV_BD))
+                                        if (string.IsNullOrEmpty(ctdcbd.DV_BD))
+                                            dr["TyLe"] = "Tỷ Lệ DV: " + ctdcbd.DV_BD;
+                                        else
+                                            dr["TyLe"] = ", DV: " + ctdcbd.DV_BD;
+
+                                    if (!string.IsNullOrEmpty(ctdcbd.HCSN_BD))
+                                        if (string.IsNullOrEmpty(ctdcbd.HCSN_BD))
+                                            dr["TyLe"] = "Tỷ Lệ HCSN: " + ctdcbd.HCSN_BD;
+                                        else
+                                            dr["TyLe"] = ", HCSN: " + ctdcbd.HCSN_BD;
                                     ///Ký Tên
                                     if (ctdcbd.DMGiuNguyen)
                                         dr["KhongBD"] = "ĐM Giữ Nguyên";

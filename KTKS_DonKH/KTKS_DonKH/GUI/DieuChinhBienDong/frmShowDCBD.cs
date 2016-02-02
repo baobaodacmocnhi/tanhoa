@@ -127,6 +127,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dr["DiaChiBD"] = _ctdcbd.DiaChi_BD;
                 dr["GiaBieuBD"] = _ctdcbd.GiaBieu_BD;
                 dr["DinhMucBD"] = _ctdcbd.DinhMuc_BD;
+                if (!string.IsNullOrEmpty(_ctdcbd.SH_BD))
+                    dr["TyLe"] = "Tỷ Lệ SH: " + _ctdcbd.SH_BD;
+
+                if (!string.IsNullOrEmpty(_ctdcbd.SX_BD))
+                    if (string.IsNullOrEmpty(_ctdcbd.SX_BD))
+                        dr["TyLe"] = "Tỷ Lệ SX: " + _ctdcbd.SX_BD;
+                    else
+                        dr["TyLe"] = ", SX: " + _ctdcbd.SX_BD;
+
+                if (!string.IsNullOrEmpty(_ctdcbd.DV_BD))
+                    if (string.IsNullOrEmpty(_ctdcbd.DV_BD))
+                        dr["TyLe"] = "Tỷ Lệ DV: " + _ctdcbd.DV_BD;
+                    else
+                        dr["TyLe"] = ", DV: " + _ctdcbd.DV_BD;
+
+                if (!string.IsNullOrEmpty(_ctdcbd.HCSN_BD))
+                    if (string.IsNullOrEmpty(_ctdcbd.HCSN_BD))
+                        dr["TyLe"] = "Tỷ Lệ HCSN: " + _ctdcbd.HCSN_BD;
+                    else
+                        dr["TyLe"] = ", HCSN: " + _ctdcbd.HCSN_BD;
                 ///Ký Tên
                 if (_ctdcbd.DMGiuNguyen)
                     dr["KhongBD"] = "ĐM Giữ Nguyên";
@@ -251,6 +271,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ThongTin.Replace("ĐM. ", "");
                         _ctdcbd.DinhMuc_BD = null;
                     }
+
+                    if (txtSH_BD.Text.Trim() == "" && txtSX_BD.Text.Trim() == "" && txtDV_BD.Text.Trim() == "" && txtHCSN_BD.Text.Trim() == "")
+                        ThongTin.Replace("Tỷ Lệ. ", "");
+                        
                     ///SH
                     if (txtSH_BD.Text.Trim() != "")
                         _ctdcbd.SH_BD = txtSH_BD.Text.Trim();
