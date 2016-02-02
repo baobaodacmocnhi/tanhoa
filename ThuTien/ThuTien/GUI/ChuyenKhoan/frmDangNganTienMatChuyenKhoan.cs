@@ -147,6 +147,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 try
                 {
+                    _cHoaDon.BeginTransaction();
                     foreach (ListViewItem item in lstHD.Items)
                         if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, CNguoiDung.MaND))
                         {
@@ -156,12 +157,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 return;
                             }
                         }
+                    _cHoaDon.BeginTransaction();
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
                 {
+                    _cHoaDon.Rollback();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -201,6 +204,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                     try
                     {
+                        _cHoaDon.BeginTransaction();
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
@@ -222,11 +226,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         }
                                 }
                             }
+                        _cHoaDon.CommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
+                        _cHoaDon.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 

@@ -80,6 +80,7 @@
             this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HanhThu_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChuanThu1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).BeginInit();
             this.SuspendLayout();
@@ -322,15 +323,17 @@
             this.TangGiam,
             this.TongCong_BD,
             this.To_DC,
-            this.HanhThu_DC});
+            this.HanhThu_DC,
+            this.ChuanThu1});
             this.dgvDCHD.Location = new System.Drawing.Point(12, 270);
             this.dgvDCHD.Name = "dgvDCHD";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDCHD.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvDCHD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDCHD.Size = new System.Drawing.Size(1211, 300);
+            this.dgvDCHD.Size = new System.Drawing.Size(1264, 300);
             this.dgvDCHD.TabIndex = 34;
             this.dgvDCHD.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDCHD_CellFormatting);
+            this.dgvDCHD.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDCHD_CellValidating);
             this.dgvDCHD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDCHD_RowPostPaint);
             this.dgvDCHD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvDCHD_MouseDoubleClick);
             // 
@@ -494,6 +497,13 @@
             this.HanhThu_DC.HeaderText = "Hành Thu";
             this.HanhThu_DC.Name = "HanhThu_DC";
             // 
+            // ChuanThu1
+            // 
+            this.ChuanThu1.DataPropertyName = "ChuanThu1";
+            this.ChuanThu1.HeaderText = "Chuẩn Thu 1";
+            this.ChuanThu1.Name = "ChuanThu1";
+            this.ChuanThu1.Width = 50;
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,5 +579,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_BD;
         private System.Windows.Forms.DataGridViewTextBoxColumn To_DC;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_DC;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ChuanThu1;
     }
 }

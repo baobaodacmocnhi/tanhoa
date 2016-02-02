@@ -262,5 +262,13 @@ namespace ThuTien.DAL.QuanTri
         {
             return _db.TT_NguoiDungs.SingleOrDefault(item => item.MaND == MaND).DienThoai;
         }
+
+        public int GetMaxSTT()
+        {
+            if (_db.TT_NguoiDungs.Count() == 0)
+                return 0;
+            else
+                return _db.TT_NguoiDungs.Max(item => item.STT).Value;
+        }
     }
 }

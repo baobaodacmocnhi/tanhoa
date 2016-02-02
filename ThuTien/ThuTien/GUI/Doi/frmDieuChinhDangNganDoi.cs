@@ -11,6 +11,7 @@ using System.Globalization;
 using ThuTien.DAL.Doi;
 using ThuTien.DAL.Quay;
 using ThuTien.DAL.TongHop;
+using ThuTien.DAL.ChuyenKhoan;
 
 namespace ThuTien.GUI.Doi
 {
@@ -22,6 +23,7 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDCHD _cDCHD = new CDCHD();
+        CTienDu _cTienDu = new CTienDu();
         bool _flagLoadFirst = false;
 
         public frmDieuChinhDangNganDoi()
@@ -180,32 +182,45 @@ namespace ThuTien.GUI.Doi
                     }
                     try
                     {
-                        //_cHoaDon.SqlBeginTransaction();
-                        foreach (ListViewItem item in lstHD.Items)
-                            if (_cHoaDon.DangNgan("", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
-                            {
-                                //if (_cLenhHuy.CheckExist(item.ToString()))
-                                //    if (!_cLenhHuy.Xoa(item.ToString()))
-                                //    {
-                                //        _cHoaDon.SqlRollbackTransaction();
-                                //        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //        return;
-                                //    }
-                            }
-                            else
-                            {
-                                //_cHoaDon.SqlRollbackTransaction();
-                                //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //return;
-                            }
-                        //_cHoaDon.SqlCommitTransaction();
+                        _cHoaDon.BeginTransaction();
+                        if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52)
+                        {
+                            foreach (ListViewItem item in lstHD.Items)
+                                if (_cHoaDon.DangNgan("", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                {
+                                    if (!_cTienDu.UpdateThem(item.Text))
+                                    {
+                                        MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
+                        }
+                        else
+                            foreach (ListViewItem item in lstHD.Items)
+                                if (_cHoaDon.DangNgan("", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                {
+                                    //if (_cLenhHuy.CheckExist(item.ToString()))
+                                    //    if (!_cLenhHuy.Xoa(item.ToString()))
+                                    //    {
+                                    //        _cHoaDon.SqlRollbackTransaction();
+                                    //        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    //        return;
+                                    //    }
+                                }
+                                else
+                                {
+                                    //_cHoaDon.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                        _cHoaDon.CommitTransaction();
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        //_cHoaDon.SqlRollbackTransaction();
+                        _cHoaDon.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -222,43 +237,104 @@ namespace ThuTien.GUI.Doi
                 {
                     try
                     {
-                        //_cHoaDon.SqlBeginTransaction();
+                        _cHoaDon.BeginTransaction();
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
-                            foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                            if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52)
+                                foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                    ///đăng ngân tiền mặt
+                                    if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                        if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                        {
+                                            if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                            {
+                                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    ///đăng ngân bình thường
+                                    else
+                                        if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                        {
+                                            if (!_cTienDu.UpdateXoa(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                            {
+                                                MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                            ///nhân viên khác
+                            else
                             {
-                                if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                                {
-                                    //_cHoaDon.SqlRollbackTransaction();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                                foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                    if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                                    {
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
                             }
                         }
                         else
                             if (tabControl.SelectedTab.Name == "tabCoQuan")
                             {
-                                foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
-                                {
-                                    if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                                    {
-                                        //_cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
+                                if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52)
+                                    foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
+                                        ///đăng ngân tiền mặt
+                                        if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                            if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                            {
+                                                if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                                {
+                                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    return;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                        ///đăng ngân bình thường
+                                        else
+                                            if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                            {
+                                                if (!_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                                {
+                                                    MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    return;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                else
+                                    foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
+                                        if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                                        {
+                                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
                             }
-
-                        //_cHoaDon.SqlCommitTransaction();
+                        _cHoaDon.CommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        //_cHoaDon.SqlRollbackTransaction();
+                        _cHoaDon.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
             }
             else

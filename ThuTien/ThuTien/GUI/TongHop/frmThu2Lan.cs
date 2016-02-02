@@ -30,10 +30,13 @@ namespace ThuTien.GUI.TongHop
         {
             dgvHoaDon.AutoGenerateColumns = false;
 
-            cmbNam.DataSource = _cHoaDon.GetNam();
-            cmbNam.DisplayMember = "Nam";
+            DataTable dtNam = _cHoaDon.GetNam();
+            DataRow dr = dtNam.NewRow();
+            dr["ID"] = "Tất Cả";
+            dtNam.Rows.InsertAt(dr, 0);
+            cmbNam.DataSource = dtNam;
+            cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
-
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -47,9 +50,9 @@ namespace ThuTien.GUI.TongHop
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
                 bool ChuyenKhoan = true;
-                if (radChuyenKhoan.Checked)
+                if (radDaTra.Checked)
                     ChuyenKhoan = true;
-                if (radQuay.Checked)
+                if (radChuaTra.Checked)
                     ChuyenKhoan = false;
 
                 if (_cHoaDon.Thu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()),txtDanhBo.Text.Trim(), ChuyenKhoan))
@@ -88,48 +91,60 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (radChuyenKhoan.Checked)
+            if (radDaTra.Checked)
             {
                 if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
                 {
-                    dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtDanhBo.Text.Trim().Replace(" ", ""),true);
+                    dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtDanhBo.Text.Trim().Replace(" ", ""), false, true);
                 }
                 else
-                    if (cmbKy.SelectedIndex == 0)
+                    if (cmbNam.SelectedIndex == 0)
                     {
-                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()),true);
+                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(false, true);
                     }
                     else
-                        if (cmbKy.SelectedIndex > 0)
-                            if (cmbDot.SelectedIndex == 0)
+                        if (cmbNam.SelectedIndex > 0)
+                            if (cmbKy.SelectedIndex == 0)
                             {
-                                dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), true);
+                                dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), false, true);
                             }
                             else
-                                if (cmbDot.SelectedIndex > 0)
-                                    dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), true);
+                                if (cmbKy.SelectedIndex > 0)
+                                    if (cmbDot.SelectedIndex == 0)
+                                    {
+                                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), false, true);
+                                    }
+                                    else
+                                        if (cmbDot.SelectedIndex > 0)
+                                            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), false, true);
             }
             else
-                if(radQuay.Checked)
+                if (radChuaTra.Checked)
                 {
                     if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
                     {
-                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtDanhBo.Text.Trim().Replace(" ", ""),false);
+                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(txtDanhBo.Text.Trim().Replace(" ", ""), false, false);
                     }
                     else
-                        if (cmbKy.SelectedIndex == 0)
+                        if (cmbNam.SelectedIndex == 0)
                         {
-                            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), false);
+                            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(false, false);
                         }
                         else
-                            if (cmbKy.SelectedIndex > 0)
-                                if (cmbDot.SelectedIndex == 0)
+                            if (cmbNam.SelectedIndex > 0)
+                                if (cmbKy.SelectedIndex == 0)
                                 {
-                                    dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), false);
+                                    dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), false, false);
                                 }
                                 else
-                                    if (cmbDot.SelectedIndex > 0)
-                                        dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), false);
+                                    if (cmbKy.SelectedIndex > 0)
+                                        if (cmbDot.SelectedIndex == 0)
+                                        {
+                                            dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), false, false);
+                                        }
+                                        else
+                                            if (cmbDot.SelectedIndex > 0)
+                                                dgvHoaDon.DataSource = _cHoaDon.GetDSThu2Lan(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), false, false);
                 }
         }
 
@@ -197,7 +212,7 @@ namespace ThuTien.GUI.TongHop
         private void btnInDSTon_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            if (radChuyenKhoan.Checked)
+            if (radDaTra.Checked)
             {
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     if (bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["Tra"].Value.ToString()))
@@ -219,7 +234,7 @@ namespace ThuTien.GUI.TongHop
                     }
             }
             else
-                if (radQuay.Checked)
+                if (radChuaTra.Checked)
                 {
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (!bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && !bool.Parse(item.Cells["Tra"].Value.ToString()))
@@ -250,7 +265,7 @@ namespace ThuTien.GUI.TongHop
         private void btnInDSTra_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-            if (radChuyenKhoan.Checked)
+            if (radDaTra.Checked)
             {
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     if (bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && bool.Parse(item.Cells["Tra"].Value.ToString()))
@@ -272,7 +287,7 @@ namespace ThuTien.GUI.TongHop
                     }
             }
             else
-                if (radQuay.Checked)
+                if (radChuaTra.Checked)
                 {
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (!bool.Parse(item.Cells["ChuyenKhoan"].Value.ToString()) && bool.Parse(item.Cells["Tra"].Value.ToString()))

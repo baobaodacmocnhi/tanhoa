@@ -156,16 +156,28 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkAll.Checked)
-                foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
-                {
-                    item.Cells["ChanTienDu"].Value = true;
-                }
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (chkAll.Checked)
+                    foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
+                    {
+                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_Chan"].Value.ToString());
+                        hoadon.NGAYGIAITRACH = DateTime.Now;
+                        hoadon.ChanTienDu = true;
+                        _cHoaDon.Sua(hoadon);
+                    }
+                else
+                    foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
+                    {
+                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_Chan"].Value.ToString());
+                        hoadon.NGAYGIAITRACH = null;
+                        hoadon.ChanTienDu = false;
+                        _cHoaDon.Sua(hoadon);
+                    }
+                dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu();
+            }
             else
-                foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
-                {
-                    item.Cells["ChanTienDu"].Value = false;
-                }
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

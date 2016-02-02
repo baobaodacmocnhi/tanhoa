@@ -411,12 +411,51 @@ namespace ThuTien.GUI.DongNuoc
 
                         dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
                     }
-                    if(_cDongNuoc.SuaDN(dongnuoc))
+                    if (_cDongNuoc.SuaDN(dongnuoc))
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnInGiayXN_Click(object sender, EventArgs e)
+        {
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+            foreach (DataRow item in dt.Rows)
+                if (bool.Parse(item["In"].ToString()))
+                {
+                    string Ky = "";
+                    int TongCong = 0;
+                    List<HOADON> lstHD = null;
+                    if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                        lstHD = _cHoaDon.GetDSTon(item["DanhBo"].ToString());
+                    if (lstHD != null)
+                    {
+                        foreach (HOADON itemHD in lstHD)
+                        {
+                            if (string.IsNullOrEmpty(Ky))
+                                Ky += itemHD.KY + "/" + itemHD.NAM;
+                            else
+                                Ky += ", " + itemHD.KY + "/" + itemHD.NAM;
+                            TongCong += (int)itemHD.TONGCONG;
+                        }
+
+                        DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                        dr["DiaChi"] = item["DiaChi"];
+                        if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                            dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                        dr["Ky"] = Ky;
+                        dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+
+                        dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+                    }
+                }
+            rptGiayXacNhanNoKhoDoi rpt = new rptGiayXacNhanNoKhoDoi();
+            rpt.SetDataSource(dsBaoCao);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
         }
 
     }

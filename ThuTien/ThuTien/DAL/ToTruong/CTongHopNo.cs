@@ -86,6 +86,25 @@ namespace ThuTien.DAL.ToTruong
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDS_To(int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in _db.TT_TongHopNos
+                        where _db.TT_NguoiDungs.SingleOrDefault(itemND=>itemND.MaND==item.CreateBy.Value).MaTo == MaTo && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            item.MaTHN,
+                            item.KinhGui,
+                            TongCong = item.TT_CTTongHopNos.Sum(itemCT => itemCT.TongCong),
+                            item.ChiSoCu,
+                            item.ChiSoMoi,
+                            item.TieuThu,
+                            item.DinhMuc,
+                            item.NgayThanhToan,
+                            item.CreateDate,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDS(int CreateBy,DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.TT_TongHopNos

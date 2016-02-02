@@ -356,7 +356,7 @@ namespace ThuTien.GUI.ToTruong
                 else
                     ///chọn 1 tổ cụ thể
                     if (cmbTo.SelectedIndex > 0)
-                        dgvTongHopNo.DataSource = _cTHN.GetDS(int.Parse(cmbTo.SelectedValue.ToString()),dateTu.Value, dateDen.Value);
+                        dgvTongHopNo.DataSource = _cTHN.GetDS_To(int.Parse(cmbTo.SelectedValue.ToString()),dateTu.Value, dateDen.Value);
             }
             else
                 dgvTongHopNo.DataSource = _cTHN.GetDS(CNguoiDung.MaND, dateTu.Value, dateDen.Value);

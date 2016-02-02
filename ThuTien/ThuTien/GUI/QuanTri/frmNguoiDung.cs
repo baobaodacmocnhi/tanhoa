@@ -68,6 +68,7 @@ namespace ThuTien.GUI.QuanTri
                     nguoidung.DienThoai = txtDienThoai.Text.Trim();
                     nguoidung.TaiKhoan = txtTaiKhoan.Text.Trim();
                     nguoidung.MatKhau = txtMatKhau.Text.Trim();
+                    nguoidung.STT = _cNguoiDung.GetMaxSTT()+1;
                     if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                     {
                         nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());

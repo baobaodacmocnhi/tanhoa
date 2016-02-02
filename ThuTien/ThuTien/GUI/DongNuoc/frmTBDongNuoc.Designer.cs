@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridViewCTDN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ky = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -68,9 +68,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
             this.groupBox_ThemDN = new System.Windows.Forms.GroupBox();
+            this.btnThemDN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMaDN = new System.Windows.Forms.TextBox();
-            this.btnThemDN = new System.Windows.Forms.Button();
+            this.btnInGiayXN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -153,10 +154,10 @@
             // 
             // gridControl
             // 
-            gridLevelNode2.LevelTemplate = this.gridViewCTDN;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.gridViewCTDN;
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl.Location = new System.Drawing.Point(247, 40);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
@@ -453,6 +454,16 @@
             this.groupBox_ThemDN.Text = "Thêm Hóa Đơn vào Lệnh đã có";
             this.groupBox_ThemDN.Visible = false;
             // 
+            // btnThemDN
+            // 
+            this.btnThemDN.Location = new System.Drawing.Point(112, 50);
+            this.btnThemDN.Name = "btnThemDN";
+            this.btnThemDN.Size = new System.Drawing.Size(75, 23);
+            this.btnThemDN.TabIndex = 45;
+            this.btnThemDN.Text = "Thêm";
+            this.btnThemDN.UseVisualStyleBackColor = true;
+            this.btnThemDN.Click += new System.EventHandler(this.btnThemDN_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -469,21 +480,22 @@
             this.txtMaDN.Size = new System.Drawing.Size(80, 20);
             this.txtMaDN.TabIndex = 43;
             // 
-            // btnThemDN
+            // btnInGiayXN
             // 
-            this.btnThemDN.Location = new System.Drawing.Point(112, 50);
-            this.btnThemDN.Name = "btnThemDN";
-            this.btnThemDN.Size = new System.Drawing.Size(75, 23);
-            this.btnThemDN.TabIndex = 45;
-            this.btnThemDN.Text = "Thêm";
-            this.btnThemDN.UseVisualStyleBackColor = true;
-            this.btnThemDN.Click += new System.EventHandler(this.btnThemDN_Click);
+            this.btnInGiayXN.Location = new System.Drawing.Point(1017, 10);
+            this.btnInGiayXN.Name = "btnInGiayXN";
+            this.btnInGiayXN.Size = new System.Drawing.Size(95, 23);
+            this.btnInGiayXN.TabIndex = 73;
+            this.btnInGiayXN.Text = "In Giấy XN NKĐ";
+            this.btnInGiayXN.UseVisualStyleBackColor = true;
+            this.btnInGiayXN.Click += new System.EventHandler(this.btnInGiayXN_Click);
             // 
             // frmTBDongNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 666);
+            this.Controls.Add(this.btnInGiayXN);
             this.Controls.Add(this.groupBox_ThemDN);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.label6);
@@ -562,6 +574,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaDN;
         private System.Windows.Forms.Button btnThemDN;
+        private System.Windows.Forms.Button btnInGiayXN;
 
     }
 }

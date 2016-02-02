@@ -415,6 +415,11 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.MaNV_DangNgan != null);
         }
 
+        public bool CheckDangNganChuyenKhoanTienMat(string SoHoaDon)
+        {
+            return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.DangNgan_ChuyenKhoan == true && item.TienMat != null);
+        }
+
         /// <summary>
         /// Kiểm tra hóa đơn tồn được giao cho ai
         /// </summary>
@@ -6200,12 +6205,12 @@ namespace ThuTien.DAL.Doi
         /// <param name="ky"></param>
         /// <param name="dot"></param>
         /// <returns></returns>
-        public DataTable GetDSThu2Lan(int Nam,int Ky,int Dot,bool ChuyenKhoan)
+        public DataTable GetDSThu2Lan(int Nam,int Ky,int Dot,bool ChuyenKhoan,bool Tra)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.NAM==Nam && itemHD.KY==Ky && itemHD.DOT==Dot && itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan==ChuyenKhoan
+                        where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan == ChuyenKhoan && itemHD.Thu2Lan_Tra == Tra
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -6232,12 +6237,12 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSThu2Lan(int Nam, int Ky, bool ChuyenKhoan)
+        public DataTable GetDSThu2Lan(int Nam, int Ky, bool ChuyenKhoan,bool Tra)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan == ChuyenKhoan
+                        where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan == ChuyenKhoan && itemHD.Thu2Lan_Tra == Tra
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -6264,12 +6269,12 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSThu2Lan(int Nam, bool ChuyenKhoan)
+        public DataTable GetDSThu2Lan(bool ChuyenKhoan, bool Tra)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.NAM == Nam && itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan == ChuyenKhoan
+                        where itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan == ChuyenKhoan && itemHD.Thu2Lan_Tra == Tra
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
@@ -6296,12 +6301,44 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSThu2Lan(string DanhBo, bool ChuyenKhoan)
+        public DataTable GetDSThu2Lan(int Nam, bool ChuyenKhoan,bool Tra)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHD.DANHBA == DanhBo && itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan == ChuyenKhoan
+                        where itemHD.NAM == Nam && itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan == ChuyenKhoan && itemHD.Thu2Lan_Tra == Tra
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            MaHD = itemHD.ID_HOADON,
+                            itemHD.NGAYGIAITRACH,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.TIEUTHU,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            itemHD.TONGCONG,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            GiaBieu = itemHD.GB,
+                            ChuyenKhoan = itemHD.Thu2Lan_ChuyenKhoan,
+                            Tra = itemHD.Thu2Lan_Tra,
+                            NgayTra = itemHD.Thu2Lan_NgayTra,
+                            GhiChu = itemHD.Thu2Lan_GhiChu,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDSThu2Lan(string DanhBo, bool ChuyenKhoan,bool Tra)
+        {
+            var query = from itemHD in _db.HOADONs
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.DANHBA == DanhBo && itemHD.Thu2Lan == true && itemHD.Thu2Lan_ChuyenKhoan == ChuyenKhoan &&itemHD.Thu2Lan_Tra==Tra
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
