@@ -575,9 +575,9 @@ namespace ThuTien.GUI.HanhThu
                     int stt = 1;
                     ds.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { ds.Tables["TBDongNuoc"].Columns["DanhBo"] };
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
-                        if (!ds.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ")))
+                        if (!ds.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ")))
                         {
-                            DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo"].Value.ToString() + "'");
+                            DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_CQ"].Value.ToString() + "'");
 
                             string Ky = "";
                             int TongCong = 0;

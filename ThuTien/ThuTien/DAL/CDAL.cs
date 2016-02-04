@@ -31,6 +31,11 @@ namespace ThuTien.DAL
             _db.Transaction.Rollback();
         }
 
+        public void NullTransaction()
+        {
+            _db.Transaction = null;
+        }
+
         public void SubmitChanges()
         {
             _db.SubmitChanges();
@@ -40,12 +45,10 @@ namespace ThuTien.DAL
         {
             if (_db.ExecuteCommand(sql) == 0)
             {
-                 _db = new dbThuTienDataContext();
                 return false;
             }
             else
             {
-                 _db = new dbThuTienDataContext();
                 return true;
             }
         }

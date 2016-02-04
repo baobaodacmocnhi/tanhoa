@@ -78,16 +78,43 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển?", "Xác nhận chuyển", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
                     if (txtDanhBoCTB.Text.Trim().Replace(" ", "").Length == 11 && int.Parse(txtSoTienChuyen.Text.Trim()) > 0 && int.Parse(txtSoTienCTA.Text.Trim()) > 0)
-                        if (_cTienDu.Update(txtDanhBoCTA.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()) * -1, "Chuyển Tiền", txtGhiChuChuyen.Text.Trim(), txtDanhBoCTB.Text.Trim().Replace(" ", "")))
-                            if (_cTienDu.Update(txtDanhBoCTB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Nhận Tiền", txtGhiChuChuyen.Text.Trim(), txtDanhBoCTA.Text.Trim().Replace(" ", "")))
+                    {
+                        try
+                        {
+                            _cTienDu.BeginTransaction();
+                            if (_cTienDu.Update(txtDanhBoCTA.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()) * -1, "Chuyển Tiền", txtGhiChuChuyen.Text.Trim(), txtDanhBoCTB.Text.Trim().Replace(" ", "")))
                             {
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                                this.Close();
+                                if (_cTienDu.Update(txtDanhBoCTB.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienChuyen.Text.Trim()), "Nhận Tiền", txtGhiChuChuyen.Text.Trim(), txtDanhBoCTA.Text.Trim().Replace(" ", "")))
+                                {
+                                    _cTienDu.SubmitChanges();
+                                    _cTienDu.CommitTransaction();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    _cTienDu.Rollback();
+                                    MessageBox.Show("Lỗi Update Tiền Dư B, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
-                }
+                            else
+                            {
+                                _cTienDu.Rollback();
+                                MessageBox.Show("Lỗi Update Tiền Dư A, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            _cTienDu.Rollback();
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            _cTienDu.NullTransaction();
+                        }
+                    }
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -99,14 +126,40 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (MessageBox.Show("Bạn có chắc chắn Sửa?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    //if (int.Parse(txtSoTienMoi.Text.Trim()) >= 0)
+                    try
+                    {
+                        _cTienDu.BeginTransaction();
                         if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienCu.Text.Trim()) * -1, "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
+                        {
                             if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), int.Parse(txtSoTienMoi.Text.Trim()), "Điều Chỉnh Tiền", txtGhiChuSua.Text.Trim()))
                             {
+                                _cTienDu.SubmitChanges();
+                                _cTienDu.CommitTransaction();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                                 this.Close();
                             }
+                            else
+                            {
+                                _cTienDu.Rollback();
+                                MessageBox.Show("Lỗi Update Tiền Dư Cũ, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            _cTienDu.Rollback();
+                            MessageBox.Show("Lỗi Update Tiền Dư Mới, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        _cTienDu.Rollback();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        _cTienDu.NullTransaction();
+                    }
                 }
             }
         }
@@ -116,37 +169,65 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
                 if (MessageBox.Show("Bạn có chắc chắn Chuyển Phí Mở Nước?", "Xác nhận sửa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
                     if (int.Parse(txtSoTienCu.Text.Trim()) >= 50000)
                     {
-                        if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -50000, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước"))
+                        try
                         {
-                            HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
-
-                            TT_PhiMoNuoc phimonuoc = new TT_PhiMoNuoc();
-                            phimonuoc.DanhBo = hoadon.DANHBA;
-                            phimonuoc.HoTen = hoadon.TENKH;
-                            phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;
-                            phimonuoc.NgayBK = dateBangKe.Value;
-                            phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA,dateBangKe.Value);
-                            phimonuoc.TongCong = phimonuoc.SoTien - 50000;
-                            if (_cPhiMoNuoc.Them(phimonuoc))
+                            _cTienDu.BeginTransaction();
+                            if (_cTienDu.Update(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""), -50000, "Điều Chỉnh Tiền", "Thêm Chuyển Phí Mở Nước"))
                             {
-                                if (_cTienDu.GetTienDu(hoadon.DANHBA) == 0)
+                                HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
+
+                                TT_PhiMoNuoc phimonuoc = new TT_PhiMoNuoc();
+                                phimonuoc.DanhBo = hoadon.DANHBA;
+                                phimonuoc.HoTen = hoadon.TENKH;
+                                phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;
+                                phimonuoc.NgayBK = dateBangKe.Value;
+                                phimonuoc.SoTien = _cBangKe.GetSoTien(hoadon.DANHBA, dateBangKe.Value);
+                                phimonuoc.TongCong = phimonuoc.SoTien - 50000;
+                                if (_cPhiMoNuoc.Them(phimonuoc))
                                 {
-                                    TT_TienDu tiendu = _cTienDu.Get(hoadon.DANHBA);
-                                    tiendu.ChoXuLy = false;
-                                    _cTienDu.Sua(tiendu);
+                                    if (_cTienDu.GetTienDu(hoadon.DANHBA) == 0)
+                                    {
+                                        TT_TienDu tiendu = _cTienDu.Get(hoadon.DANHBA);
+                                        tiendu.ChoXuLy = false;
+                                        _cTienDu.Sua(tiendu);
+                                        _cTienDu.SubmitChanges();
+                                        _cTienDu.Rollback();
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                                        this.Close();
+                                    }
+                                    else
+                                    {
+                                        _cTienDu.Rollback();
+                                        MessageBox.Show("Lỗi Cập Nhật Chờ Xử Lý Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                                this.Close();
+                                else
+                                {
+                                    _cTienDu.Rollback();
+                                    MessageBox.Show("Lỗi Thêm Phí Mở Nước, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
+                            else
+                            {
+                                _cTienDu.Rollback();
+                                MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            _cTienDu.Rollback();
+                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            _cTienDu.NullTransaction();
                         }
                     }
                     else
                         MessageBox.Show("Số tiền không đủ 50.000đ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
         }
 

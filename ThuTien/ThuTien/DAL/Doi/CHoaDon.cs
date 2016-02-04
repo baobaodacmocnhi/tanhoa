@@ -6951,6 +6951,22 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool DangNganTienMatChuyenKhoan(string SoHoaDon, int MaNV_DangNgan, DateTime NgayGiaiTrach)
+        {
+            try
+            {
+                string sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV_DangNgan + ",NGAYGIAITRACH='" + NgayGiaiTrach.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',"
+                    + "TienDu=(select td.SoTien from TT_TienDu td,HOADON hd where td.DanhBo=hd.DANHBA and SOHOADON='" + SoHoaDon + "'),TienMat=(select TONGCONG from HOADON where SOHOADON='" + SoHoaDon + "')-(select td.SoTien from TT_TienDu td,HOADON hd where td.DanhBo=hd.DANHBA and SOHOADON='" + SoHoaDon + "')"
+                    + " where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null ";
+                return ExecuteNonQuery(sql, false);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool XoaDangNgan(string Loai, string SoHoaDon, int MaNV_DangNgan)
         {
             try

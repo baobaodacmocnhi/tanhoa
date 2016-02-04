@@ -182,18 +182,50 @@ namespace ThuTien.GUI.Doi
                     }
                     try
                     {
+                        if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52 && chkChuyenKhoanBinhThuong.Checked == false && chkChuyenKhoanTienMat.Checked == false)
+                        {
+                            MessageBox.Show("Bạn chưa chọn Chuyển Khoản Bình Thường hay Tiền Mặt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         _cHoaDon.BeginTransaction();
                         if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52)
                         {
-                            foreach (ListViewItem item in lstHD.Items)
-                                if (_cHoaDon.DangNgan("", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
-                                {
-                                    if (!_cTienDu.UpdateThem(item.Text))
+                            if (chkChuyenKhoanBinhThuong.Checked)
+                                foreach (ListViewItem item in lstHD.Items)
+                                    if (_cHoaDon.DangNgan("", item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
                                     {
-                                        MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        if (!_cTienDu.UpdateThem(item.Text))
+                                        {
+                                            _cHoaDon.Rollback();
+                                            MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        _cHoaDon.Rollback();
+                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
-                                }
+                            else
+                                if (chkChuyenKhoanTienMat.Checked)
+                                    foreach (ListViewItem item in lstHD.Items)
+                                        if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, int.Parse(cmbNhanVien.SelectedValue.ToString()), dateGiaiTrachSua.Value))
+                                        {
+                                            if (!_cTienDu.UpdateThemTienMat(item.Text))
+                                            {
+                                                _cHoaDon.Rollback();
+                                                MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            _cHoaDon.Rollback();
+                                            MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
                         }
                         else
                             foreach (ListViewItem item in lstHD.Items)
@@ -209,10 +241,11 @@ namespace ThuTien.GUI.Doi
                                 }
                                 else
                                 {
-                                    //_cHoaDon.SqlRollbackTransaction();
+                                    _cHoaDon.Rollback();
                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
+                        _cHoaDon.SubmitChanges();
                         _cHoaDon.CommitTransaction();
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
@@ -222,6 +255,10 @@ namespace ThuTien.GUI.Doi
                     {
                         _cHoaDon.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        _cHoaDon.NullTransaction();
                     }
                 }
             }
@@ -246,14 +283,16 @@ namespace ThuTien.GUI.Doi
                                     if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
                                         if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
                                         {
-                                            if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                            if (!_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
                                             {
+                                                _cHoaDon.Rollback();
                                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 return;
                                             }
                                         }
                                         else
                                         {
+                                            _cHoaDon.Rollback();
                                             MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
@@ -263,12 +302,14 @@ namespace ThuTien.GUI.Doi
                                         {
                                             if (!_cTienDu.UpdateXoa(item.Cells["SoHoaDon_TG"].Value.ToString()))
                                             {
+                                                _cHoaDon.Rollback();
                                                 MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 return;
                                             }
                                         }
                                         else
                                         {
+                                            _cHoaDon.Rollback();
                                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
@@ -278,6 +319,7 @@ namespace ThuTien.GUI.Doi
                                 foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                                     if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                     {
+                                        _cHoaDon.Rollback();
                                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
@@ -294,12 +336,14 @@ namespace ThuTien.GUI.Doi
                                             {
                                                 if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
                                                 {
+                                                    _cHoaDon.Rollback();
                                                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                     return;
                                                 }
                                             }
                                             else
                                             {
+                                                _cHoaDon.Rollback();
                                                 MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 return;
                                             }
@@ -309,12 +353,14 @@ namespace ThuTien.GUI.Doi
                                             {
                                                 if (!_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                                 {
+                                                    _cHoaDon.Rollback();
                                                     MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                     return;
                                                 }
                                             }
                                             else
                                             {
+                                                _cHoaDon.Rollback();
                                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 return;
                                             }
@@ -322,10 +368,12 @@ namespace ThuTien.GUI.Doi
                                     foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                         if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                         {
+                                            _cHoaDon.Rollback();
                                             MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
                             }
+                        _cHoaDon.SubmitChanges();
                         _cHoaDon.CommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -334,6 +382,10 @@ namespace ThuTien.GUI.Doi
                     {
                         _cHoaDon.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        _cHoaDon.NullTransaction();
                     }
                 }
             }
@@ -421,6 +473,18 @@ namespace ThuTien.GUI.Doi
                 str += item.Text + "\n";
             }
             Clipboard.SetText(str);
+        }
+
+        private void chkChuyenKhoanBinhThuong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkChuyenKhoanBinhThuong.Checked)
+                chkChuyenKhoanTienMat.Checked = false;
+        }
+
+        private void chkChuyenKhoanTienMat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkChuyenKhoanTienMat.Checked)
+                chkChuyenKhoanBinhThuong.Checked = false;
         }
     }
 }
