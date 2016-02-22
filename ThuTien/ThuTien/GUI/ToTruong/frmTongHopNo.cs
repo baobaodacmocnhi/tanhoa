@@ -186,10 +186,12 @@ namespace ThuTien.GUI.ToTruong
                     else
                         if (radPhoGiamDoc.Checked)
                             tonghopno.NguoiKy = "P.GIÁM ĐỐC";
+
+                    int ID = _cTHN.GetNextID_CTTongHopNo();
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
                         TT_CTTongHopNo cttonghopno = new TT_CTTongHopNo();
-                        cttonghopno.ID = _cTHN.GetNextID_CTTongHopNo();
+                        cttonghopno.ID = ID++;
                         cttonghopno.DanhBo = item.Cells["DanhBo"].Value.ToString();
                         cttonghopno.DiaChi = item.Cells["DiaChi"].Value.ToString();
                         cttonghopno.Ky = item.Cells["Ky"].Value.ToString();

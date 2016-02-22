@@ -24,6 +24,7 @@ namespace ThuTien.GUI.HanhThu
         CTamThu _cTamThu = new CTamThu();
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
+        CNguoiDung _cNguoiDung = new CNguoiDung();
         //int _selectedindexDaThu = -1;
 
         public frmDangNganHanhThu()
@@ -49,6 +50,9 @@ namespace ThuTien.GUI.HanhThu
             {
                 lbNhanVien.Visible = true;
                 cmbNhanVien.Visible = true;
+                cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
             }
         }
 

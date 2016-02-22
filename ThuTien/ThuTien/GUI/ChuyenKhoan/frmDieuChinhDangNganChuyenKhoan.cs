@@ -15,6 +15,7 @@ using ThuTien.BaoCao;
 using ThuTien.BaoCao.NhanVien;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.ChuyenKhoan;
+using System.Transactions;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -170,38 +171,19 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                     try
                     {
-                        //_cHoaDon.SqlBeginTransaction();
                         foreach (ListViewItem item in lstHD.Items)
-                            if (_cHoaDon.DangNgan("ChuyenKhoan", item.Text, CNguoiDung.MaND, dateGiaiTrachSua.Value))
+                            using (var scope = new TransactionScope())
                             {
-                                //if (_cLenhHuy.CheckExist(item.ToString()))
-                                //    if (!_cLenhHuy.Xoa(item.ToString()))
-                                //    {
-                                //        _cHoaDon.SqlRollbackTransaction();
-                                //        MessageBox.Show("Lỗi Xóa Lệnh Hủy, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //        return;
-                                //    }
-                                if(!_cTienDu.UpdateThem(item.Text))
-                                {
-                                    //_cHoaDon.SqlRollbackTransaction();
-                                    MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                                if (_cHoaDon.DangNgan("ChuyenKhoan", item.Text, CNguoiDung.MaND, dateGiaiTrachSua.Value))
+                                    if (_cTienDu.UpdateThem(item.Text))
+                                        scope.Complete();
                             }
-                            else
-                            {
-                                //_cHoaDon.SqlRollbackTransaction();
-                                //MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //return;
-                            }
-                        //_cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
                         lstHD.Items.Clear();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        //_cHoaDon.SqlRollbackTransaction();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -218,58 +200,32 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     try
                     {
-                        //_cHoaDon.SqlBeginTransaction();
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
-                            {
-                                if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                using (var scope = new TransactionScope())
                                 {
-                                    if (!_cTienDu.UpdateXoa(item.Cells["SoHoaDon_TG"].Value.ToString()))
-                                    {
-                                        //_cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
+                                    if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                        if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                            scope.Complete();
                                 }
-                                else
-                                {
-                                //    _cHoaDon.SqlRollbackTransaction();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                            }
                         }
                         else
                             if (tabControl.SelectedTab.Name == "tabCoQuan")
                             {
                                 foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
-                                {
-                                    if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                    using (var scope = new TransactionScope())
                                     {
-                                        if (!_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
-                                        {
-                                            //_cHoaDon.SqlRollbackTransaction();
-                                            MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
+                                        if (_cHoaDon.XoaDangNgan("ChuyenKhoan", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                            if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                                scope.Complete();
                                     }
-                                    else
-                                    {
-                                        //_cHoaDon.SqlRollbackTransaction();
-                                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
                             }
-
-                        //_cHoaDon.SqlCommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        //_cHoaDon.SqlRollbackTransaction();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 

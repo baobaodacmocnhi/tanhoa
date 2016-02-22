@@ -69,7 +69,7 @@ namespace ThuTien.DAL.Quay
             {
                 string sql = "";
                 sql = "update TAMTHU set Xoa=1 where SoHoaDon='" + SoHoaDon + "'";
-                return ExecuteNonQuery_Transaction(sql);
+                return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
             {

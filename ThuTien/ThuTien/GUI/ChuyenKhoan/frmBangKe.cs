@@ -11,6 +11,7 @@ using ThuTien.DAL.ChuyenKhoan;
 using ThuTien.LinQ;
 using System.Globalization;
 using ThuTien.GUI.TimKiem;
+using System.Transactions;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -52,42 +53,28 @@ namespace ThuTien.GUI.ChuyenKhoan
                         {
                             Excel fileExcel = new Excel(dialog.FileName);
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-                            
-                            _cBangKe.BeginTransaction();
+
                             foreach (DataRow item in dtExcel.Rows)
                                 if (!string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
-                                {
-                                    //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
-                                    //{
-                                    //    MessageBox.Show("Danh Bộ: " + item[0].ToString() + " đã thêm trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    //    continue;
-                                    //}
-                                    TT_BangKe bangke = new TT_BangKe();
-                                    bangke.DanhBo = item[0].ToString().Trim();
-                                    bangke.SoTien = int.Parse(item[1].ToString().Trim());
-                                    bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
-                                    bangke.CreateDate = DateTime.Now;
-                                    //bangke.CreateDate = dateNgayLap.Value;
-                                    bangke.CreateBy = CNguoiDung.MaND;
-                                    bangke.CreateDate2 = DateTime.Now;
-                                    if (_cBangKe.Them(bangke))
+                                    using (var scope = new TransactionScope())
                                     {
-                                        if (!_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm"))
-                                        {
-                                            _cBangKe.Rollback();
-                                            MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
+                                        //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
+                                        //{
+                                        //    MessageBox.Show("Danh Bộ: " + item[0].ToString() + " đã thêm trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        //    continue;
+                                        //}
+                                        TT_BangKe bangke = new TT_BangKe();
+                                        bangke.DanhBo = item[0].ToString().Trim();
+                                        bangke.SoTien = int.Parse(item[1].ToString().Trim());
+                                        bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
+                                        bangke.CreateDate = DateTime.Now;
+                                        //bangke.CreateDate = dateNgayLap.Value;
+                                        bangke.CreateBy = CNguoiDung.MaND;
+                                        bangke.CreateDate2 = DateTime.Now;
+                                        if (_cBangKe.Them(bangke))
+                                            if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm"))
+                                                scope.Complete();
                                     }
-                                    else
-                                    {
-                                        _cBangKe.Rollback();
-                                        MessageBox.Show("Lỗi Thêm Bảng Kê, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
-                            _cBangKe.SubmitChanges();
-                            _cBangKe.CommitTransaction();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
@@ -95,10 +82,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 catch (Exception)
                 {
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    _cBangKe.NullTransaction();
                 }
             }
             else
@@ -143,37 +126,19 @@ namespace ThuTien.GUI.ChuyenKhoan
                     try
                     {
                         foreach (DataGridViewRow item in dgvBangKe.SelectedRows)
-                        {
-                            TT_BangKe bangke = _cBangKe.Get(int.Parse(item.Cells["MaBK"].Value.ToString()));
-                            if (_cBangKe.Xoa(bangke))
+                            using (var scope = new TransactionScope())
                             {
-                                if (!_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa"))
-                                {
-                                    _cBangKe.Rollback();
-                                    MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                                TT_BangKe bangke = _cBangKe.Get(int.Parse(item.Cells["MaBK"].Value.ToString()));
+                                if (_cBangKe.Xoa(bangke))
+                                    if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value * -1, "Bảng Kê", "Xóa"))
+                                        scope.Complete();
                             }
-                            else
-                            {
-                                _cBangKe.Rollback();
-                                MessageBox.Show("Lỗi Xóa Bảng Kê, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        }
-                        _cBangKe.SubmitChanges();
-                        _cBangKe.CommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        _cBangKe.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        _cBangKe.NullTransaction();
                     }
             }
             else

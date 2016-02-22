@@ -225,7 +225,7 @@ namespace ThuTien.DAL
                         return false;
                     else
                     {
-                        _db = new dbThuTienDataContext();
+                        //_db = new dbThuTienDataContext();
                         return true;
                     }
                 }

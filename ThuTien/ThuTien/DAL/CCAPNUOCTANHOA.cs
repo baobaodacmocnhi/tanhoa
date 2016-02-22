@@ -150,9 +150,44 @@ namespace ThuTien.DAL
         public DataTable GetTTKH(string DanhBo)
         {
             return LINQToDataTable(_dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.Where(item => item.DANHBO == DanhBo)
-                .Select(item => new { DanhBo = item.DANHBO, item.HOPDONG, item.GIABIEU, item.DINHMUC, MLT = item.LOTRINH
-                , Hieu = item.HIEUDH, Co = item.CODH, SoThan = item.SOTHANDH, ViTri = item.VITRIDHN, HoTen = item.HOTEN
-                , DiaChi = item.SONHA + "  " + item.TENDUONG, item.DIENTHOAI,HanhThu="" }).Take(1).ToList());
+                .Select(item => new
+                {
+                    DanhBo = item.DANHBO,
+                    item.HOPDONG,
+                    item.GIABIEU,
+                    item.DINHMUC,
+                    MLT = item.LOTRINH
+                    ,
+                    Hieu = item.HIEUDH,
+                    Co = item.CODH,
+                    SoThan = item.SOTHANDH,
+                    ViTri = item.VITRIDHN,
+                    HoTen = item.HOTEN
+                    ,
+                    DiaChi = item.SONHA + "  " + item.TENDUONG,
+                    item.DIENTHOAI,
+                    HanhThu = ""
+                }).Take(1).ToList());
+        }
+
+        public DataTable GetTTKH(string HoTen, string SoNha, string TenDuong)
+        {
+            return LINQToDataTable(_dbCapNuocTanHoa.TB_DULIEUKHACHHANGs.Where(item => item.HOTEN.Contains(HoTen.ToUpper()) && item.SONHA.Contains(SoNha.ToUpper()) && item.TENDUONG.Contains(TenDuong.ToUpper()))
+                .Select(item => new
+                {
+                    DanhBo = item.DANHBO,
+                    item.GIABIEU,
+                    item.DINHMUC,
+                    MLT = item.LOTRINH
+                    ,
+                    Hieu = item.HIEUDH,
+                    Co = item.CODH,
+                    SoThan = item.SOTHANDH,
+                    ViTri = item.VITRIDHN,
+                    HoTen = item.HOTEN
+                    ,
+                    DiaChi = item.SONHA + "  " + item.TENDUONG,
+                }).ToList());
         }
 
         public string GetDienThoaiKH(string DanhBo)

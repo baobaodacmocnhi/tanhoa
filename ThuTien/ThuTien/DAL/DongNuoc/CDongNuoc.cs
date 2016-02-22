@@ -107,7 +107,7 @@ namespace ThuTien.DAL.DongNuoc
             try
             {
                 string sql = "update TT_DongNuoc set MaNV_DongNuoc=" + MaNV_DongNuoc + ",NgayGiao='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where MaDN=" + MaDN;
-                return ExecuteNonQuery_Transaction(sql);
+                return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
             {
@@ -121,7 +121,7 @@ namespace ThuTien.DAL.DongNuoc
             try
             {
                 string sql = "update TT_DongNuoc set MaNV_DongNuoc=null,NgayGiao=null,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate='" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "' where MaDN=" + MaDN;
-                return ExecuteNonQuery_Transaction(sql);
+                return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
             {
@@ -137,7 +137,7 @@ namespace ThuTien.DAL.DongNuoc
                 string sql = "";
                 sql = "delete TT_CTDongNuoc where MaDN=" + MaDN;
                 sql += " delete TT_DongNuoc where MaDN=" + MaDN;
-                return ExecuteNonQuery_Transaction(sql);
+                return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
             {

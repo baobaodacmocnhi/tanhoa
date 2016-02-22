@@ -62,7 +62,7 @@ namespace ThuTien.DAL.TongHop
             {
                 string sql = "";
                 sql = "delete TT_ChuyenNoKhoDoi where MaCNKD=" + MaCNKD;
-                return ExecuteNonQuery_Transaction(sql);
+                return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
             {
@@ -127,7 +127,7 @@ namespace ThuTien.DAL.TongHop
             {
                 string sql = "";
                 sql = "delete TT_CTChuyenNoKhoDoi where SoHoaDon='" + SoHoaDon + "'";
-                return ExecuteNonQuery_Transaction(sql);
+                return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
             {

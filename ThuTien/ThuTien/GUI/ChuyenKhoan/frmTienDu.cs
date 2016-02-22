@@ -496,5 +496,20 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
             }
         }
+
+        private void dgvTienAm_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvTienAm.RowCount > 0 && e.Button == MouseButtons.Left)
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmDieuChinhTienDu frm = new frmDieuChinhTienDu(dgvTienAm["DanhBo_TienAm", e.RowIndex].Value.ToString(), dgvTienAm["SoTien_TienAm", e.RowIndex].Value.ToString());
+                    if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        btnXem.PerformClick();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

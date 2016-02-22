@@ -895,8 +895,6 @@
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">
     <Parameter Name="DanhBo" Parameter="danhBo" Type="System.String" DbType="VarChar(11)" />
     <Parameter Name="MLT" Parameter="mLT" Type="System.String" DbType="VarChar(11)" />
-    <Parameter Name="HoTen" Parameter="hoTen" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="DiaChi" Parameter="diaChi" Type="System.String" DbType="VarChar(200)" />
     <ElementType Name="TimKiemResult">
       <Column Name="MaHD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DanhBo" Type="System.String" DbType="NVarChar(11) NOT NULL" CanBeNull="false" />

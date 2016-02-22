@@ -41,30 +41,34 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtMLT.Text.Trim(), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim());
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) || !string.IsNullOrEmpty(txtMLT.Text.Trim().Replace(" ", "")))
+                dgvHoaDon.DataSource = _cHoaDon.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), txtMLT.Text.Trim());
+            else
+                dgvHoaDon.DataSource = _cCapNuocTanHoa.GetTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
             dgvKinhDoanh.DataSource = null;
             dgvKinhDoanh.Visible = false;
 
             dgvLenhHuy.DataSource = null;
             dgvLenhHuy.Visible = false;
 
-            foreach (DataGridViewRow item in dgvHoaDon.Rows)
-            {
-                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
-                    item.DefaultCellStyle.BackColor = Color.Yellow;
-                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+            if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) || !string.IsNullOrEmpty(txtMLT.Text.Trim().Replace(" ", "")))
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
                 {
-                    //item.Cells["TinhTrang"].Value = _cLenhHuy.GetTinhTrangBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
-                    item.DefaultCellStyle.BackColor = Color.Red;
-                }
-                if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
-                {
-                    TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
+                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
+                        item.DefaultCellStyle.BackColor = Color.Yellow;
+                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                    {
+                        //item.Cells["TinhTrang"].Value = _cLenhHuy.GetTinhTrangBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                        item.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                    if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
+                    {
+                        TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
 
-                    //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
-                    item.Cells["DangNgan"].Value = "CNKĐ";
+                        //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
+                        item.Cells["DangNgan"].Value = "CNKĐ";
+                    }
                 }
-            }
         }
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -89,7 +93,7 @@ namespace ThuTien.GUI.TimKiem
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "MaDN" && e.Value.ToString().Length>2)
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "MaDN" && e.Value != null && e.Value.ToString().Length > 2)
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
@@ -228,7 +232,7 @@ namespace ThuTien.GUI.TimKiem
             txtDanhBo.Text = "";
             txtMLT.Text = "";
             txtHoTen.Text = "";
-            txtDiaChi.Text = "";
+            txtSoNha.Text = "";
             txtDanhBo.Focus();
         }
 

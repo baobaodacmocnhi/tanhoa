@@ -35,7 +35,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             {
                 string sql = "insert into TT_DuLieuKhachHang(DanhBo,CreateDate,CreateBy) values ('" + DanhBo + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'," + CNguoiDung.MaND + ")";
 
-                ExecuteNonQuery_Transaction(sql);
+                LinQ_ExecuteNonQuery(sql);
                 return true;
             }
             catch (Exception ex)

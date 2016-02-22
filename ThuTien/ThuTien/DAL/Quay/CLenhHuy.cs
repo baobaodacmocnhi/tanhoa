@@ -65,7 +65,7 @@ namespace ThuTien.DAL.Quay
             {
                 string sql = "";
                 sql = "delete TT_LenhHuy where SoHoaDon='" + SoHoaDon + "'";
-                return ExecuteNonQuery_Transaction(sql);
+                return LinQ_ExecuteNonQuery(sql);
             }
             catch (Exception ex)
             {

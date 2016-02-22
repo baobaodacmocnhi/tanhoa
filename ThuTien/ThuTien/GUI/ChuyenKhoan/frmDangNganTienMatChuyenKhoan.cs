@@ -10,6 +10,7 @@ using ThuTien.DAL.Doi;
 using ThuTien.DAL.QuanTri;
 using ThuTien.DAL.ChuyenKhoan;
 using System.Globalization;
+using System.Transactions;
 
 namespace ThuTien.GUI.ChuyenKhoan
 {
@@ -147,37 +148,20 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 try
                 {
-                    _cHoaDon.BeginTransaction();
                     foreach (ListViewItem item in lstHD.Items)
-                        if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, CNguoiDung.MaND))
+                        using (var scope = new TransactionScope())
                         {
-                            if (!_cTienDu.UpdateThemTienMat(item.Text))
-                            {
-                                _cHoaDon.Rollback();
-                                MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            if (_cHoaDon.DangNganTienMatChuyenKhoan(item.Text, CNguoiDung.MaND))
+                                if (_cTienDu.UpdateThemTienMat(item.Text))
+                                    scope.Complete();
                         }
-                        else
-                        {
-                            _cHoaDon.Rollback();
-                            MessageBox.Show("Lỗi Đăng Ngân, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    _cHoaDon.SubmitChanges();
-                    _cHoaDon.CommitTransaction();
                     lstHD.Items.Clear();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
                 {
-                    _cHoaDon.Rollback();
                     MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    _cHoaDon.NullTransaction();
                 }
             }
             else
@@ -216,63 +200,33 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                     try
                     {
-                        _cHoaDon.BeginTransaction();
                         if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
                             foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
-                            {
-                                if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                using (var scope = new TransactionScope())
                                 {
-                                    if (!_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
-                                    {
-                                        _cHoaDon.Rollback();
-                                        MessageBox.Show("Lỗi Xóa Đăng Ngân, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
+                                    if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                                        if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                            scope.Complete();
                                 }
-                                else
-                                {
-                                    _cHoaDon.Rollback();
-                                    MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                            }
                         }
                         else
                             if (tabControl.SelectedTab.Name == "tabCoQuan")
                             {
                                 foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
-                                {
-                                    if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                    using (var scope = new TransactionScope())
                                     {
-                                        if (!_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
-                                        {
-                                            _cHoaDon.Rollback();
-                                            MessageBox.Show("Lỗi Xóa Đăng Ngân, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
+                                        if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                                            if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                                scope.Complete();
                                     }
-                                    else
-                                    {
-                                        _cHoaDon.Rollback();
-                                        MessageBox.Show("Lỗi Update Tiền Dư, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                }
                             }
-                        _cHoaDon.SubmitChanges();
-                        _cHoaDon.CommitTransaction();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception)
                     {
-                        _cHoaDon.Rollback();
                         MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        _cHoaDon.NullTransaction();
                     }
                 }
             }

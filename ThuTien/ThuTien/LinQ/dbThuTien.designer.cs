@@ -557,9 +557,9 @@ namespace ThuTien.LinQ
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TimKiem", IsComposable=true)]
-		public IQueryable<TimKiemResult> TimKiem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DanhBo", DbType="VarChar(11)")] string danhBo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MLT", DbType="VarChar(11)")] string mLT, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="HoTen", DbType="VarChar(200)")] string hoTen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DiaChi", DbType="VarChar(200)")] string diaChi)
+		public IQueryable<TimKiemResult> TimKiem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DanhBo", DbType="VarChar(11)")] string danhBo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MLT", DbType="VarChar(11)")] string mLT)
 		{
-			return this.CreateMethodCallQuery<TimKiemResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), danhBo, mLT, hoTen, diaChi);
+			return this.CreateMethodCallQuery<TimKiemResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), danhBo, mLT);
 		}
 	}
 	
