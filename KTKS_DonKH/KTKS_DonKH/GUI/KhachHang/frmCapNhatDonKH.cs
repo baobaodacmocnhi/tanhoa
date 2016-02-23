@@ -569,10 +569,12 @@ namespace KTKS_DonKH.GUI.KhachHang
             if (chkChuyenVanPhong.Checked)
             {
                 groupBoxChuyenVanPhong.Enabled = true;
+                cmbVanPhong.SelectedValue = 8;
             }
             else
             {
                 groupBoxChuyenVanPhong.Enabled = false;
+                cmbVanPhong.SelectedIndex = -1;
             }
         }
 
