@@ -136,6 +136,7 @@ namespace ThuTien.GUI.Doi
                 {
                     if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Yellow;
+                    item.Cells["NgayDN_TG"].Value = _cDongNuoc.GetNgayDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString());
                     if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TG"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Red;
                 }
@@ -223,6 +224,7 @@ namespace ThuTien.GUI.Doi
                     {
                         if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Yellow;
+                        item.Cells["NgayDN_CQ"].Value = _cDongNuoc.GetNgayDongNuoc(item.Cells["SoHoaDon_CQ"].Value.ToString());
                         if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Red;
                     }
@@ -318,6 +320,7 @@ namespace ThuTien.GUI.Doi
             {
                 if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Yellow;
+                item.Cells["NgayDN_TG"].Value = _cDongNuoc.GetNgayDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString());
                 if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TG"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Red;
             }
@@ -329,6 +332,7 @@ namespace ThuTien.GUI.Doi
             {
                 if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Yellow;
+                item.Cells["NgayDN_CQ"].Value = _cDongNuoc.GetNgayDongNuoc(item.Cells["SoHoaDon_CQ"].Value.ToString());
                 if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                     item.DefaultCellStyle.BackColor = Color.Red;
             }

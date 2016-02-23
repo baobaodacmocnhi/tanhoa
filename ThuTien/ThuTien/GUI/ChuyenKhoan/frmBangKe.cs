@@ -21,7 +21,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         CBangKe _cBangKe = new CBangKe();
         CNganHang _cNganHang = new CNganHang();
         CTienDu _cTienDu = new CTienDu();
-        
+
         public frmBangKe()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvBangKe.AutoGenerateColumns = false;
             dgvBangKeGroup.AutoGenerateColumns = false;
-           
+
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
             dateNgayLap.Value = DateTime.Now;
@@ -153,7 +153,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (_searchNoiDung != NoiDung)
                 _searchIndex = -1;
 
-            for(int i = 0; i < dgvBangKe.Rows.Count; i++)
+            for (int i = 0; i < dgvBangKe.Rows.Count; i++)
             {
                 if (_searchNoiDung != NoiDung)
                     _searchNoiDung = NoiDung;
@@ -175,7 +175,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvBangKe_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length==11)
+            if (dgvBangKe.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length == 11)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
             }
@@ -260,6 +260,19 @@ namespace ThuTien.GUI.ChuyenKhoan
             using (SolidBrush b = new SolidBrush(dgvBangKeGroup.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvBangKe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvBangKe.Rows)
+            {
+                if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
+                {
+                    item.Cells["ChenhLech"].Value = long.Parse(item.Cells["SoTien"].Value.ToString()) - long.Parse(item.Cells["TongCong"].Value.ToString());
+                }
+                else
+                    item.Cells["ChenhLech"].Value = item.Cells["SoTien"].Value;
             }
         }
 

@@ -469,16 +469,6 @@ namespace ThuTien.DAL.DongNuoc
             return true;
         }
 
-        public bool CheckExist_KQDongNuoc(decimal MaDN)
-        {
-            return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN);
-        }
-
-        public bool CheckExist_KQDongNuoc(decimal MaDN, DateTime NgayDN)
-        {
-            return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateDate.Value.Date <= NgayDN.Date);
-        }
-
         /// <summary>
         /// Kiểm tra thông báo đóng nước có được giao cho nhân viên hay không
         /// </summary>
@@ -488,6 +478,21 @@ namespace ThuTien.DAL.DongNuoc
         public bool CheckExist_DongNuoc(decimal MaDN, int MaNV_DongNuoc)
         {
             return _db.TT_DongNuocs.Any(item => item.MaDN == MaDN && item.MaNV_DongNuoc == MaNV_DongNuoc);
+        }
+
+        public bool CheckExist_DongNuoc(decimal MaDN)
+        {
+            return _db.TT_DongNuocs.Any(item => item.MaDN == MaDN);
+        }
+
+        public bool CheckExist_KQDongNuoc(decimal MaDN)
+        {
+            return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN);
+        }
+
+        public bool CheckExist_KQDongNuoc(decimal MaDN, DateTime NgayDN)
+        {
+            return _db.TT_KQDongNuocs.Any(item => item.MaDN == MaDN && item.CreateDate.Value.Date <= NgayDN.Date);
         }
 
         /// <summary>
@@ -539,12 +544,6 @@ namespace ThuTien.DAL.DongNuoc
             }
             else
                 return false;
-            
-        }
-
-        public bool CheckExist_DongNuoc(decimal MaDN)
-        {
-            return _db.TT_DongNuocs.Any(item => item.MaDN == MaDN);
         }
 
         public TT_DongNuoc GetDongNuocByMaDN(decimal MaDN)
@@ -611,6 +610,13 @@ namespace ThuTien.DAL.DongNuoc
                     "select MAX(" + ID + ") from " + Table + " where SUBSTRING(CONVERT(nvarchar(50)," + ID + "),LEN(CONVERT(nvarchar(50)," + ID + "))-1,2)=@Ma").Single();
                 return getMaxNextIDTable(SoPhieu);
             }
+        }
+
+        public string GetNgayDongNuoc(string SoHoaDon)
+        {
+            if (_db.TT_KQDongNuocs.Any(item => item.TT_DongNuoc.TT_CTDongNuocs.Any(itemCTDN => itemCTDN.SoHoaDon == SoHoaDon) == true && item.NgayDN != null) == true)
+                return _db.TT_KQDongNuocs.SingleOrDefault(item => item.TT_DongNuoc.TT_CTDongNuocs.Any(itemCTDN => itemCTDN.SoHoaDon == SoHoaDon) == true && item.NgayDN != null).NgayDN.Value.ToString("dd/MM/yyyy");
+            return "";
         }
 
         //public DataTable GetTongDongNuoc(int MaNV, DateTime TuNgay, DateTime DenNgay)

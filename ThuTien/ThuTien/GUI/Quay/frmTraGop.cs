@@ -160,7 +160,7 @@ namespace ThuTien.GUI.Quay
 
             rptPhieuTamThuTraGop rpt = new rptPhieuTamThuTraGop();
             rpt.SetDataSource(ds);
-            frmBaoCao frm = new frmBaoCao(rpt);
+            frmInQuay frm = new frmInQuay(rpt);
             frm.Show();
         }
 

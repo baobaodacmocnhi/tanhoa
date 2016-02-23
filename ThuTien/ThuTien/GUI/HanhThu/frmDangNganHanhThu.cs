@@ -58,8 +58,7 @@ namespace ThuTien.GUI.HanhThu
 
         public void LoadDataGridView()
         {
-            dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-            dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
+            
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
@@ -108,11 +107,15 @@ namespace ThuTien.GUI.HanhThu
                 {
                     dgvTongHD.DataSource = _cHoaDon.GetTongTGByMaNVNamKyDot(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                     dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNganByMaNV_HanhThuNamKyDot("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuTGByMaNVNamKyDot(int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
                 }
                 else
                 {
                     dgvTongHD.DataSource = _cHoaDon.GetTongTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
                     dgvHDDaThuDum.DataSource = _cHoaDon.GetTongDangNganByMaNV_HanhThuNamKyDot("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDDaThu.DataSource = _cHoaDon.GetDSDangNganHanhThuTGByMaNVNamKyDot(CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    dgvHDChuaThu.DataSource = _cHoaDon.GetDSTon_NV("TG", CNguoiDung.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), 1);
                 }
                 LoadDataGridView();
             }
