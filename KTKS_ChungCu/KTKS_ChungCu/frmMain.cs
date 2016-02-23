@@ -247,16 +247,23 @@ namespace KTKS_ChungCu
 
         private void dgvKhachHangChungCu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _selectedindex = e.RowIndex;
-            txtSTT.Text = dgvKhachHangChungCu["STT", e.RowIndex].Value.ToString();
-            txtLo.Text = dgvKhachHangChungCu["Lo", e.RowIndex].Value.ToString();
-            txtPhong.Text = dgvKhachHangChungCu["Phong", e.RowIndex].Value.ToString();
-            cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["MaLCT", e.RowIndex].Value.ToString());
-            txtMaCT.Text = dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString();
-            txtHoTenCT.Text = dgvKhachHangChungCu["HoTen", e.RowIndex].Value.ToString();
-            txtSoNKTong.Text = dgvKhachHangChungCu["SoNKTong", e.RowIndex].Value.ToString();
-            txtSoNKDangKy.Text = dgvKhachHangChungCu["SoNKDangKy", e.RowIndex].Value.ToString();
-            txtGhiChu.Text = dgvKhachHangChungCu["GhiChu", e.RowIndex].Value.ToString();
+            try
+            {
+                _selectedindex = e.RowIndex;
+                txtSTT.Text = dgvKhachHangChungCu["STT", e.RowIndex].Value.ToString();
+                txtLo.Text = dgvKhachHangChungCu["Lo", e.RowIndex].Value.ToString();
+                txtPhong.Text = dgvKhachHangChungCu["Phong", e.RowIndex].Value.ToString();
+                cmbLoaiCT.SelectedValue = int.Parse(dgvKhachHangChungCu["MaLCT", e.RowIndex].Value.ToString());
+                txtMaCT.Text = dgvKhachHangChungCu["MaCT", e.RowIndex].Value.ToString();
+                txtHoTenCT.Text = dgvKhachHangChungCu["HoTen", e.RowIndex].Value.ToString();
+                txtSoNKTong.Text = dgvKhachHangChungCu["SoNKTong", e.RowIndex].Value.ToString();
+                txtSoNKDangKy.Text = dgvKhachHangChungCu["SoNKDangKy", e.RowIndex].Value.ToString();
+                txtGhiChu.Text = dgvKhachHangChungCu["GhiChu", e.RowIndex].Value.ToString();
+            }
+            catch
+            {
+            }
+            
         }
 
         //private void txtMaCT_TimKiem_KeyPress(object sender, KeyPressEventArgs e)
@@ -310,7 +317,7 @@ namespace KTKS_ChungCu
                     //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["HoTenCT"] = dgvKhachHangChungCu["HoTen", i].Value.ToString();
                     dr["MaCT"] = dgvKhachHangChungCu["MaCT", i].Value.ToString();
-                    //dr["SoNKTong"] = dgvKhachHangChungCu["SoNKTong", i].Value.ToString();
+                    dr["SoNKTong"] = _cChungTu.GetTongNKDangKy(txtDanhBo.Text.Trim());
                     dr["SoNKDangKy"] = dgvKhachHangChungCu["SoNKDangKy", i].Value.ToString();
                     dr["GhiChu"] = dgvKhachHangChungCu["GhiChu", i].Value.ToString();
                     dr["Lo"] = dgvKhachHangChungCu["Lo", i].Value.ToString();

@@ -302,6 +302,42 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
+        public ChungTu getChungTubyID(string MaCT)
+        {
+            try
+            {
+                return db.ChungTus.Single(itemCT => itemCT.MaCT == MaCT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public List<CTChungTu> GetDS(string MaCT)
+        {
+            return db.CTChungTus.Where(itemCT => itemCT.MaCT == MaCT).ToList();
+        }
+
+        public CTChungTu getCTChungTubyID(string DanhBo, string MaCT)
+        {
+            try
+            {
+                return db.CTChungTus.SingleOrDefault(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public int GetTongNKDangKy(string DanhBo)
+        {
+            return db.CTChungTus.Where(item => item.DanhBo == DanhBo).Sum(item => item.SoNKDangKy);
+        }
+
         public bool CheckChungTu(string MaCT)
         {
             try
@@ -360,24 +396,6 @@ namespace KTKS_ChungCu.DAL
             }
         }
 
-        public List<CTChungTu> GetDS(string MaCT)
-        {
-            return db.CTChungTus.Where(itemCT => itemCT.MaCT == MaCT).ToList() ;
-        }
-
-        public ChungTu getChungTubyID(string MaCT)
-        {
-            try
-            {
-                return db.ChungTus.Single(itemCT => itemCT.MaCT == MaCT);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
         public bool ThemCTChungTu(CTChungTu ctchungtu)
         {
             try
@@ -422,19 +440,6 @@ namespace KTKS_ChungCu.DAL
         //        return false;
         //    }
         //}
-
-        public CTChungTu getCTChungTubyID(string DanhBo, string MaCT)
-        {
-            try
-            {
-                return db.CTChungTus.SingleOrDefault(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
 
         /// <summary>
         /// Dùng cho Form Cập Nhật Sổ Đăng Ký, khi có >2 yêu cầu cắt nhân khẩu
