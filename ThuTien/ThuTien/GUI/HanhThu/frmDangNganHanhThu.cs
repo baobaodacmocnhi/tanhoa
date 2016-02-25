@@ -58,7 +58,6 @@ namespace ThuTien.GUI.HanhThu
 
         public void LoadDataGridView()
         {
-            
             int TongGiaBan = 0;
             int TongThueGTGT = 0;
             int TongPhiBVMT = 0;
@@ -236,7 +235,7 @@ namespace ThuTien.GUI.HanhThu
                                     //return;
                                 }
                             //_cHoaDon.SqlCommitTransaction();
-                            LoadDataGridView();
+                            btnXem.PerformClick();
                             lstHD.Items.Clear();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -319,7 +318,7 @@ namespace ThuTien.GUI.HanhThu
                                     }
 
                                 //_cHoaDon.SqlCommitTransaction();
-                                LoadDataGridView();
+                                btnXem.PerformClick();
                                 lstHD.Items.Clear();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }

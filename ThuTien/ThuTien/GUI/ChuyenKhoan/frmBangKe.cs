@@ -102,19 +102,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (!string.IsNullOrEmpty(item.Cells["HoaDon"].Value.ToString()))
                         TongHD += int.Parse(item.Cells["HoaDon"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
-                    {
                         TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
-                        item.Cells["ChenhLech"].Value = long.Parse(item.Cells["SoTien"].Value.ToString()) - long.Parse(item.Cells["TongCong"].Value.ToString());
-                    }
-                    else
-                        item.Cells["ChenhLech"].Value = item.Cells["SoTien"].Value;
                 }
                 txtTongDanhBo.Text = dgvBangKe.RowCount.ToString();
                 txtTongSoTien.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSoTien);
                 txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
-
             dgvBangKeGroup.DataSource = _cBangKe.GetDS_Group(dateTu.Value, dateDen.Value);
         }
 
@@ -260,19 +254,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             using (SolidBrush b = new SolidBrush(dgvBangKeGroup.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvBangKe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            foreach (DataGridViewRow item in dgvBangKe.Rows)
-            {
-                if (!string.IsNullOrEmpty(item.Cells["TongCong"].Value.ToString()))
-                {
-                    item.Cells["ChenhLech"].Value = long.Parse(item.Cells["SoTien"].Value.ToString()) - long.Parse(item.Cells["TongCong"].Value.ToString());
-                }
-                else
-                    item.Cells["ChenhLech"].Value = item.Cells["SoTien"].Value;
             }
         }
 

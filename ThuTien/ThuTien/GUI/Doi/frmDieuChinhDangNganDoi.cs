@@ -244,14 +244,14 @@ namespace ThuTien.GUI.Doi
                                         using (var scope = new TransactionScope())
                                         {
                                             if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
-                                                if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                                if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                     scope.Complete();
                                         }
                                     ///đăng ngân bình thường
                                     else
                                         using (var scope = new TransactionScope())
                                         {
-                                            if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), CNguoiDung.MaND))
+                                            if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                 if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_TG"].Value.ToString()))
                                                     scope.Complete();
                                         }
@@ -272,14 +272,14 @@ namespace ThuTien.GUI.Doi
                                             using (var scope = new TransactionScope())
                                             {
                                                 if (_cTienDu.UpdateXoaTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
-                                                    if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                                    if (_cHoaDon.XoaDangNganTienMatChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                         scope.Complete();
                                             }
                                         ///đăng ngân bình thường
                                         else
                                             using (var scope = new TransactionScope())
                                             {
-                                                if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), CNguoiDung.MaND))
+                                                if (_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                                     if (_cTienDu.UpdateXoa(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                                         scope.Complete();
                                             }

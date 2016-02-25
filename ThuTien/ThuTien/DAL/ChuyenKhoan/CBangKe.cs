@@ -157,7 +157,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                 + " set @FromNgayGiaiTrach='" + TuNgay.ToString("yyyy-MM-dd") + "';"
                 + " set @ToNgayGiaiTrach='" + DenNgay.ToString("yyyy-MM-dd") + "';"
                 + " select * from"
-                + " (select MaBK,bk.DanhBo,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong from"
+                + " (select MaBK,bk.DanhBo,SoTien,Phi,CreateDate,TenNH,HoaDon,TongCong,CASE WHEN TongCong is null THEN SoTien ELSE SoTien-TongCong END as ChenhLech from"
                 + " (select MaBK,DanhBo,SoTien,Phi,MaNH,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@FromNgayGiaiTrach and CAST(CreateDate as date)<=@ToNgayGiaiTrach) bk"
                 + " left join"
                 + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"

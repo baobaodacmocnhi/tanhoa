@@ -46,6 +46,8 @@
             this.txtGhiChuChuyen = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtSoTienDieuChinh = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtGhiChuSua = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -62,8 +64,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.dateBangKe = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtSoTienDieuChinh = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -256,6 +256,24 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Điều Chỉnh Tiền";
             // 
+            // txtSoTienDieuChinh
+            // 
+            this.txtSoTienDieuChinh.Location = new System.Drawing.Point(142, 76);
+            this.txtSoTienDieuChinh.Name = "txtSoTienDieuChinh";
+            this.txtSoTienDieuChinh.Size = new System.Drawing.Size(100, 20);
+            this.txtSoTienDieuChinh.TabIndex = 6;
+            this.txtSoTienDieuChinh.TextChanged += new System.EventHandler(this.txtSoTienDieuChinh_TextChanged);
+            this.txtSoTienDieuChinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTienDieuChinh_KeyPress);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(11, 79);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(125, 13);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "Số Tiền Tăng(+)/Giảm(-):";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -402,29 +420,11 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Ngày Bảng Kê:";
             // 
-            // txtSoTienDieuChinh
-            // 
-            this.txtSoTienDieuChinh.Location = new System.Drawing.Point(142, 76);
-            this.txtSoTienDieuChinh.Name = "txtSoTienDieuChinh";
-            this.txtSoTienDieuChinh.Size = new System.Drawing.Size(100, 20);
-            this.txtSoTienDieuChinh.TabIndex = 6;
-            this.txtSoTienDieuChinh.TextChanged += new System.EventHandler(this.txtSoTienDieuChinh_TextChanged);
-            this.txtSoTienDieuChinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTienDieuChinh_KeyPress);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 79);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(125, 13);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "Số Tiền Tăng(+)/Giảm(-):";
-            // 
             // frmDieuChinhTienDu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 378);
+            this.ClientSize = new System.Drawing.Size(817, 275);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);

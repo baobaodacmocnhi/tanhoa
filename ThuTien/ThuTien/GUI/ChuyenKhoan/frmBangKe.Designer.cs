@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -49,6 +49,13 @@
             this.dateNgayLap = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvBangKe = new System.Windows.Forms.DataGridView();
+            this.txtTongHD = new System.Windows.Forms.TextBox();
+            this.txtTongCong = new System.Windows.Forms.TextBox();
+            this.dgvBangKeGroup = new System.Windows.Forms.DataGridView();
+            this.TenNH_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
             this.MaBK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,13 +67,6 @@
             this.TongCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChenhLech = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtTongHD = new System.Windows.Forms.TextBox();
-            this.txtTongCong = new System.Windows.Forms.TextBox();
-            this.dgvBangKeGroup = new System.Windows.Forms.DataGridView();
-            this.TenNH_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup)).BeginInit();
             this.SuspendLayout();
@@ -225,83 +225,7 @@
             this.dgvBangKe.TabIndex = 62;
             this.dgvBangKe.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBangKe_CellFormatting);
             this.dgvBangKe.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBangKe_CellValidating);
-            this.dgvBangKe.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvBangKe_ColumnHeaderMouseClick);
             this.dgvBangKe.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBangKe_RowPostPaint);
-            // 
-            // MaBK
-            // 
-            this.MaBK.DataPropertyName = "MaBK";
-            this.MaBK.HeaderText = "MaBK";
-            this.MaBK.Name = "MaBK";
-            this.MaBK.Visible = false;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // SoTien
-            // 
-            this.SoTien.DataPropertyName = "SoTien";
-            this.SoTien.HeaderText = "Số Tiền";
-            this.SoTien.Name = "SoTien";
-            this.SoTien.Width = 80;
-            // 
-            // Phi
-            // 
-            this.Phi.DataPropertyName = "Phi";
-            this.Phi.HeaderText = "Phí";
-            this.Phi.Name = "Phi";
-            this.Phi.Width = 70;
-            // 
-            // TenNH
-            // 
-            this.TenNH.DataPropertyName = "TenNH";
-            this.TenNH.HeaderText = "Ngân Hàng";
-            this.TenNH.Name = "TenNH";
-            // 
-            // HoaDon
-            // 
-            this.HoaDon.DataPropertyName = "HoaDon";
-            this.HoaDon.HeaderText = "HĐ";
-            this.HoaDon.Name = "HoaDon";
-            this.HoaDon.Width = 50;
-            // 
-            // TongCong
-            // 
-            this.TongCong.DataPropertyName = "TongCong";
-            this.TongCong.HeaderText = "Tổng Cộng";
-            this.TongCong.Name = "TongCong";
-            this.TongCong.Width = 80;
-            // 
-            // ChenhLech
-            // 
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Red;
-            this.ChenhLech.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ChenhLech.HeaderText = "Chênh Lệch";
-            this.ChenhLech.Name = "ChenhLech";
-            this.ChenhLech.Width = 80;
-            // 
-            // GiaBieu
-            // 
-            this.GiaBieu.DataPropertyName = "GiaBieu";
-            this.GiaBieu.HeaderText = "GB";
-            this.GiaBieu.Name = "GiaBieu";
-            this.GiaBieu.Width = 30;
             // 
             // txtTongHD
             // 
@@ -391,6 +315,82 @@
             this.label6.Size = new System.Drawing.Size(94, 13);
             this.label6.TabIndex = 87;
             this.label6.Text = "Group Ngân Hàng";
+            // 
+            // MaBK
+            // 
+            this.MaBK.DataPropertyName = "MaBK";
+            this.MaBK.HeaderText = "MaBK";
+            this.MaBK.Name = "MaBK";
+            this.MaBK.Visible = false;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // SoTien
+            // 
+            this.SoTien.DataPropertyName = "SoTien";
+            this.SoTien.HeaderText = "Số Tiền";
+            this.SoTien.Name = "SoTien";
+            this.SoTien.Width = 80;
+            // 
+            // Phi
+            // 
+            this.Phi.DataPropertyName = "Phi";
+            this.Phi.HeaderText = "Phí";
+            this.Phi.Name = "Phi";
+            this.Phi.Width = 70;
+            // 
+            // TenNH
+            // 
+            this.TenNH.DataPropertyName = "TenNH";
+            this.TenNH.HeaderText = "Ngân Hàng";
+            this.TenNH.Name = "TenNH";
+            // 
+            // HoaDon
+            // 
+            this.HoaDon.DataPropertyName = "HoaDon";
+            this.HoaDon.HeaderText = "HĐ";
+            this.HoaDon.Name = "HoaDon";
+            this.HoaDon.Width = 50;
+            // 
+            // TongCong
+            // 
+            this.TongCong.DataPropertyName = "TongCong";
+            this.TongCong.HeaderText = "Tổng Cộng";
+            this.TongCong.Name = "TongCong";
+            this.TongCong.Width = 80;
+            // 
+            // ChenhLech
+            // 
+            this.ChenhLech.DataPropertyName = "ChenhLech";
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Red;
+            this.ChenhLech.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ChenhLech.HeaderText = "Chênh Lệch";
+            this.ChenhLech.Name = "ChenhLech";
+            this.ChenhLech.Width = 80;
+            // 
+            // GiaBieu
+            // 
+            this.GiaBieu.DataPropertyName = "GiaBieu";
+            this.GiaBieu.HeaderText = "GB";
+            this.GiaBieu.Name = "GiaBieu";
+            this.GiaBieu.Width = 30;
             // 
             // frmBangKe
             // 
