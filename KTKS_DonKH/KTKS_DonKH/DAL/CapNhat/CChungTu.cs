@@ -3174,6 +3174,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         if (ThemLichSuChungTu(lichsuchungtu))
                         {
                             ctchungtuCN.SoPhieu = lichsuchungtu.SoPhieu;
+                            
                             //CatChuyenDM catchuyendm = new CatChuyenDM();
                             //LSCTtoCCDM(lichsuchungtu, ref catchuyendm);
                             //_cCatChuyenDM.ThemCatChuyenDM(catchuyendm);

@@ -47,7 +47,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 dulieukhachhang.MODIFYDATE = DateTime.Now;
                 dulieukhachhang.MODIFYBY = CTaiKhoan.HoTen;
                 db.SubmitChanges();
-                db = new DB_CAPNUOCTANHOADataContext();
+                //db = new DB_CAPNUOCTANHOADataContext();
                 return true;
             }
             catch (Exception ex)
@@ -182,6 +182,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        public bool LinQ_ExecuteNonQuery(string sql)
+        {
+            if (db.ExecuteCommand(sql) == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
