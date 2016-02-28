@@ -103,7 +103,7 @@ namespace KTKS_ChungCu
 
         private void txtNoiDungTimKiem2_TextChanged(object sender, EventArgs e)
         {
-            if (txtNoiDungTimKiem.Text.Trim() != "" && txtNoiDungTimKiem.Text.Trim().Length > 2 && txtNoiDungTimKiem2.Text.Trim() != "" && txtNoiDungTimKiem2.Text.Trim().Length > 2)
+            if (txtNoiDungTimKiem.Text.Trim() != ""  && txtNoiDungTimKiem2.Text.Trim() != "" )
             {
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
