@@ -142,19 +142,19 @@ namespace ThuTien.GUI.Quay
             dsBaoCao ds = new dsBaoCao();
             DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
             TT_TraGop tragop = _cTraGop.GetByMaTG(int.Parse(dgvTraGop.SelectedRows[0].Cells["MaTG"].Value.ToString()));
-
+            HOADON hd = _cHoaDon.Get(tragop.SoHoaDon);
             dr["SoPhieu"] = tragop.MaTG.ToString().Insert(tragop.MaTG.ToString().Length - 2, "-");
-            dr["DanhBo"] = tragop.HOADON.DANHBA.Insert(4, " ").Insert(8, " ");
-            dr["HoTen"] = tragop.HOADON.TENKH;
-            dr["DiaChi"] = tragop.HOADON.SO + " " + tragop.HOADON.DUONG;
-            dr["MLT"] = tragop.HOADON.MALOTRINH;
-            dr["GiaBieu"] = tragop.HOADON.GB;
-            dr["DinhMuc"] = tragop.HOADON.DM;
-            dr["Ky"] = tragop.HOADON.KY+"/"+tragop.HOADON.NAM;
+            dr["DanhBo"] = hd.DANHBA.Insert(4, " ").Insert(8, " ");
+            dr["HoTen"] = hd.TENKH;
+            dr["DiaChi"] = hd.SO + " " + hd.DUONG;
+            dr["MLT"] = hd.MALOTRINH;
+            dr["GiaBieu"] = hd.GB;
+            dr["DinhMuc"] = hd.DM;
+            dr["Ky"] = hd.KY + "/" + hd.NAM;
             dr["TongCongSo"] = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", tragop.SoTien);
             dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(tragop.SoTien.ToString());
-            if (tragop.HOADON.MaNV_HanhThu != null)
-                dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(tragop.HOADON.MaNV_HanhThu.Value);
+            if (hd.MaNV_HanhThu != null)
+                dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hd.MaNV_HanhThu.Value);
             dr["NhanVienQuay"] = CNguoiDung.HoTen;
             ds.Tables["PhieuTamThu"].Rows.Add(dr);
 

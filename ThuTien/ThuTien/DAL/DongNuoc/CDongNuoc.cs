@@ -187,7 +187,8 @@ namespace ThuTien.DAL.DongNuoc
                                 TongCong = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
                                 itemDN.MLT,
                                 itemDN.CreateBy,
-                                NgayGiaiTrach=itemDN.TT_CTDongNuocs.FirstOrDefault().HOADON.NGAYGIAITRACH,
+                                //NgayGiaiTrach=itemDN.TT_CTDongNuocs.FirstOrDefault().HOADON.NGAYGIAITRACH,
+                                NgayGiaiTrach = from itemHD in _db.HOADONs where itemHD.SOHOADON == itemDN.TT_CTDongNuocs.FirstOrDefault().SoHoaDon select new { itemHD.NGAYGIAITRACH }.NGAYGIAITRACH,
                                 itemDN.MaNV_DongNuoc,
                                 itemDN.CreateDate,
                                 TinhTrang = "",///Phải thêm để GridView lấy cột để edit lại sau
@@ -464,7 +465,7 @@ namespace ThuTien.DAL.DongNuoc
         {
             //return _db.TT_CTDongNuocs.Any(item => item.MaDN == MaDN && item.HOADON.NGAYGIAITRACH != null);
             foreach (TT_CTDongNuoc item in _db.TT_CTDongNuocs.Where(item => item.MaDN == MaDN))
-                if (item.HOADON.NGAYGIAITRACH == null)
+                if (_db.HOADONs.FirstOrDefault(itemHD=>itemHD.SOHOADON==item.SoHoaDon).NGAYGIAITRACH == null)
                     return false;
             return true;
         }

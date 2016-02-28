@@ -64,6 +64,7 @@
             this.btnInDSTon = new System.Windows.Forms.Button();
             this.Ngay_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDCHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaHD_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT_DC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -308,6 +309,7 @@
             this.dgvDCHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ngay_DC,
             this.MaDCHD,
+            this.MaHD_DC,
             this.SoHoaDon_DC,
             this.Ky_DC,
             this.MLT_DC,
@@ -379,6 +381,12 @@
             this.MaDCHD.HeaderText = "MaDCHD";
             this.MaDCHD.Name = "MaDCHD";
             this.MaDCHD.Visible = false;
+            // 
+            // MaHD_DC
+            // 
+            this.MaHD_DC.DataPropertyName = "MaHD";
+            this.MaHD_DC.HeaderText = "MaHD";
+            this.MaHD_DC.Name = "MaHD_DC";
             // 
             // SoHoaDon_DC
             // 
@@ -508,7 +516,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 662);
+            this.ClientSize = new System.Drawing.Size(1360, 662);
             this.Controls.Add(this.btnInDSTon);
             this.Controls.Add(this.btnInDSDangNgan);
             this.Controls.Add(this.btnXoa);
@@ -563,6 +571,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_DC;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaDCHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_DC;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_DC;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_DC;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT_DC;

@@ -49,7 +49,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (dgvHoaDon.RowCount > 0 && e.Button == MouseButtons.Left)
             {
-                frmShowDCHD frm = new frmShowDCHD(dgvHoaDon.SelectedRows[0].Cells["SoHoaDon"].Value.ToString());
+                frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.SelectedRows[0].Cells["MaHD_DC"].Value.ToString()), dgvHoaDon.SelectedRows[0].Cells["SoHoaDon"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     dgvHoaDon.DataSource = _cHoaDon.GetDSByDanhBo(txtDanhBo.Text.Trim());
@@ -61,7 +61,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (dgvDCHD.RowCount > 0 && e.Button==MouseButtons.Left)
             {
-                frmShowDCHD frm = new frmShowDCHD(dgvDCHD.SelectedRows[0].Cells["SoHoaDon_DC"].Value.ToString());
+                frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.SelectedRows[0].Cells["MaHD_DC"].Value.ToString()), dgvDCHD.SelectedRows[0].Cells["SoHoaDon_DC"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     btnXem.PerformClick();
             }
@@ -91,17 +91,18 @@ namespace ThuTien.GUI.TongHop
                         _cDCHD.BeginTransaction();
                         foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                         {
-                            DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item.Cells["MaDCHD"].Value.ToString()));
-                            if (dchd.HOADON.SoHoaDonCu != null)
+                            DIEUCHINH_HD dchd = _cDCHD.GetByMaDC(int.Parse(item.Cells["MaDCHD"].Value.ToString()));
+                            HOADON hd = _cHoaDon.Get(dchd.SoHoaDon);
+                            if (hd.SoHoaDonCu != null)
                             {
-                                dchd.HOADON.SOHOADON = dchd.HOADON.SoHoaDonCu;
-                                dchd.HOADON.SoHoaDonCu = null;
+                                hd.SOHOADON = hd.SoHoaDonCu;
+                                hd.SoHoaDonCu = null;
                             }
-                            dchd.HOADON.GIABAN = dchd.GIABAN_BD;
-                            dchd.HOADON.THUE = dchd.THUE_BD;
-                            dchd.HOADON.PHI = dchd.PHI_BD;
-                            dchd.HOADON.TONGCONG = dchd.TONGCONG_BD;
-                            if (_cHoaDon.Sua(dchd.HOADON))
+                            hd.GIABAN = dchd.GIABAN_BD;
+                            hd.THUE = dchd.THUE_BD;
+                            hd.PHI = dchd.PHI_BD;
+                            hd.TONGCONG = dchd.TONGCONG_BD;
+                            if (_cHoaDon.Sua(hd))
                                 _cDCHD.Xoa(dchd);
                         }
                         _cDCHD.CommitTransaction();

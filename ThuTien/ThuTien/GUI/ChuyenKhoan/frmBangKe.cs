@@ -55,7 +55,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
 
                             foreach (DataRow item in dtExcel.Rows)
-                                if (!string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                                if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                                     using (var scope = new TransactionScope())
                                     {
                                         //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
@@ -201,18 +201,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    try
+                    using (var scope = new TransactionScope())
                     {
                         TT_BangKe bangke = _cBangKe.Get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
                         bangke.DanhBo = e.FormattedValue.ToString().Replace(" ", "");
                         if (_cBangKe.Sua(bangke))
-                        {
-                            _cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Insert(4, " ").Insert(7, " "));
-                            _cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Insert(4, " ").Insert(7, " "));
-                        }
-                    }
-                    catch (Exception)
-                    {
+                            if (_cTienDu.Update(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value * (-1), "Bảng Kê", "Sửa Đến Danh Bộ " + e.FormattedValue.ToString().Insert(4, " ").Insert(7, " ")))
+                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Sửa Từ Danh Bộ " + dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Insert(4, " ").Insert(7, " ")))
+                                    scope.Complete();
                     }
                 }
                 else

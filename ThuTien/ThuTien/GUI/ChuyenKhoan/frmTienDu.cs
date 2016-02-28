@@ -517,5 +517,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

@@ -17,6 +17,7 @@ namespace ThuTien.GUI.TongHop
 {
     public partial class frmShowDCHD : Form
     {
+        int _MaHD;
         string _SoHoaDon;
         DIEUCHINH_HD _dchd = null;
         CTDCHD _ctdchd;
@@ -25,9 +26,10 @@ namespace ThuTien.GUI.TongHop
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
 
-        public frmShowDCHD(string SoHoaDon)
+        public frmShowDCHD(int MaHD,string SoHoaDon)
         {
             InitializeComponent();
+            _MaHD = MaHD;
             _SoHoaDon = SoHoaDon;
         }
 
@@ -39,11 +41,11 @@ namespace ThuTien.GUI.TongHop
             ///đã có điều chỉnh
             if (_dchd != null)
             {
-                //HOADON hoadon = _cHoaDon.Get(_dchd.SoHoaDon);
+                HOADON hd = _cHoaDon.Get(_dchd.SoHoaDon);
 
-                txtSoHoaDon.Text = _dchd.HOADON.SOHOADON;
-                txtSoPhatHanh.Text = _dchd.HOADON.SOPHATHANH.ToString();
-                txtKy.Text = _dchd.HOADON.KY + "/" + _dchd.HOADON.NAM;
+                txtSoHoaDon.Text = hd.SOHOADON;
+                txtSoPhatHanh.Text = hd.SOPHATHANH.ToString();
+                txtKy.Text = hd.KY + "/" + hd.NAM;
 
                 textBox1.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.TIEUTHU_BD.Value);
                 textBox2.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _dchd.GIABAN_BD.Value);
@@ -94,7 +96,7 @@ namespace ThuTien.GUI.TongHop
             ///chưa có điều chỉnh
             else
             {
-                _hoadon = _cHoaDon.Get(_SoHoaDon);
+                _hoadon = _cHoaDon.Get(_MaHD);
 
                 txtSoHoaDon.Text = _hoadon.SOHOADON;
                 txtSoPhatHanh.Text = _hoadon.SOPHATHANH.ToString();
@@ -174,11 +176,12 @@ namespace ThuTien.GUI.TongHop
                     if (_dchd != null)
                     {
                         ///sửa số hóa đơn
+                        HOADON hd = _cHoaDon.Get(_dchd.SoHoaDon);
                         if (!string.IsNullOrEmpty(txtSoHoaDonMoi.Text.Trim()) && txtSoHoaDon.Text.Trim() != txtSoHoaDonMoi.Text.Trim())
                         {
-                            _dchd.HOADON.SoHoaDonCu = txtSoHoaDon.Text.Trim();
-                            _dchd.HOADON.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
-                            _cHoaDon.Sua(_dchd.HOADON);
+                            hd.SoHoaDonCu = txtSoHoaDon.Text.Trim();
+                            hd.SOHOADON = txtSoHoaDonMoi.Text.Trim().ToUpper();
+                            _cHoaDon.Sua(hd);
                             //_dchd.SoHoaDon = txtSoHoaDonMoi.Text.Trim().ToUpper();
                             _cDCHD.Refresh(_dchd);
                         }
@@ -245,11 +248,11 @@ namespace ThuTien.GUI.TongHop
                             ///lưu lịch sử
                             LuuLichSuDC(_dchd);
 
-                            _dchd.HOADON.GIABAN = _dchd.GIABAN_END;
-                            _dchd.HOADON.THUE = _dchd.THUE_END;
-                            _dchd.HOADON.PHI = _dchd.PHI_END;
-                            _dchd.HOADON.TONGCONG = _dchd.TONGCONG_END;
-                            if (_cHoaDon.Sua(_dchd.HOADON))
+                            hd.GIABAN = _dchd.GIABAN_END;
+                            hd.THUE = _dchd.THUE_END;
+                            hd.PHI = _dchd.PHI_END;
+                            hd.TONGCONG = _dchd.TONGCONG_END;
+                            if (_cHoaDon.Sua(hd))
                             {
                                 //_cDCHD.CommitTransaction();
                                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -350,11 +353,11 @@ namespace ThuTien.GUI.TongHop
                             ///lưu lịch sử
                             LuuLichSuDC(dchd);
 
-                            dchd.HOADON.GIABAN = dchd.GIABAN_END;
-                            dchd.HOADON.THUE = dchd.THUE_END;
-                            dchd.HOADON.PHI = dchd.PHI_END;
-                            dchd.HOADON.TONGCONG = dchd.TONGCONG_END;
-                            if (_cHoaDon.Sua(dchd.HOADON))
+                            _hoadon.GIABAN = dchd.GIABAN_END;
+                            _hoadon.THUE = dchd.THUE_END;
+                            _hoadon.PHI = dchd.PHI_END;
+                            _hoadon.TONGCONG = dchd.TONGCONG_END;
+                            if (_cHoaDon.Sua(_hoadon))
                             {
                                 //_cDCHD.CommitTransaction();
                                 //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

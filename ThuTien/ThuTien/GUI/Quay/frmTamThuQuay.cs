@@ -147,27 +147,29 @@ namespace ThuTien.GUI.Quay
                 Int32 TongCongSo = 0;
                 foreach (var item in lstTamThu)
                 {
+                    HOADON hd = _cHoaDon.Get(item.SoHoaDon);
                     if(Ky=="")
-                    Ky += item.HOADON.KY + "/" + item.HOADON.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)item.HOADON.TONGCONG);
+                        Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG);
                     else
-                        Ky += ", "+item.HOADON.KY + "/" + item.HOADON.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)item.HOADON.TONGCONG);
-                    TongCongSo += (Int32)item.HOADON.TONGCONG;
+                        Ky += ", " + hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG);
+                    TongCongSo += (Int32)hd.TONGCONG;
                 }
 
                 dsBaoCao ds = new dsBaoCao();
+                HOADON hdIn = _cHoaDon.Get(lstTamThu[0].SoHoaDon);
                 DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
                 dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
                 dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(7, " ").Insert(4, " ");
-                dr["HoTen"] = lstTamThu[0].HOADON.TENKH;
-                dr["DiaChi"] = lstTamThu[0].HOADON.SO + " " + lstTamThu[0].HOADON.DUONG;
-                dr["MLT"] = lstTamThu[0].HOADON.MALOTRINH;
-                dr["GiaBieu"] = lstTamThu[0].HOADON.GB;
-                dr["DinhMuc"] = lstTamThu[0].HOADON.DM;
+                dr["HoTen"] = hdIn.TENKH;
+                dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
+                dr["MLT"] = hdIn.MALOTRINH;
+                dr["GiaBieu"] = hdIn.GB;
+                dr["DinhMuc"] = hdIn.DM;
                 dr["Ky"] = Ky;
                 dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongSo);
                 dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
-                if (lstTamThu[0].HOADON.MaNV_HanhThu != null)
-                    dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(lstTamThu[0].HOADON.MaNV_HanhThu.Value);
+                if (hdIn.MaNV_HanhThu != null)
+                    dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
                 dr["NhanVienQuay"] = CNguoiDung.HoTen;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
@@ -418,24 +420,26 @@ namespace ThuTien.GUI.Quay
                     List<TAMTHU> lstTamThu = _cTamThu.GetDSBySoPhieu(decimal.Parse(item.Cells["SoPhieu_TT"].Value.ToString()));
                     foreach (var itemTT in lstTamThu)
                     {
-                        Ky += itemTT.HOADON.KY + "/" + itemTT.HOADON.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)itemTT.HOADON.TONGCONG)+", ";
-                        TongCongSo += (Int32)itemTT.HOADON.TONGCONG;
+                        HOADON hd = _cHoaDon.Get(itemTT.SoHoaDon);
+                        Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG) + ", ";
+                        TongCongSo += (Int32)hd.TONGCONG;
                     }
 
                     dsBaoCao ds = new dsBaoCao();
+                    HOADON hdIn = _cHoaDon.Get(lstTamThu[0].SoHoaDon);
                     DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
                     dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
                     dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(4, " ").Insert(8, " ");
-                    dr["HoTen"] = lstTamThu[0].HOADON.TENKH;
-                    dr["DiaChi"] = lstTamThu[0].HOADON.SO + " " + lstTamThu[0].HOADON.DUONG;
-                    dr["MLT"] = lstTamThu[0].HOADON.MALOTRINH;
-                    dr["GiaBieu"] = lstTamThu[0].HOADON.GB;
-                    dr["DinhMuc"] = lstTamThu[0].HOADON.DM;
+                    dr["HoTen"] = hdIn.TENKH;
+                    dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
+                    dr["MLT"] = hdIn.MALOTRINH;
+                    dr["GiaBieu"] = hdIn.GB;
+                    dr["DinhMuc"] = hdIn.DM;
                     dr["Ky"] = Ky;
                     dr["TongCongSo"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCongSo);
                     dr["TongCongChu"] = _cTamThu.ConvertMoneyToWord(TongCongSo.ToString());
-                    if (lstTamThu[0].HOADON.MaNV_HanhThu != null)
-                        dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(lstTamThu[0].HOADON.MaNV_HanhThu.Value);
+                    if (hdIn.MaNV_HanhThu != null)
+                        dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
                     //dr["NhanVienQuay"] = CNguoiDung.HoTen;
                     ds.Tables["PhieuTamThu"].Rows.Add(dr);
 

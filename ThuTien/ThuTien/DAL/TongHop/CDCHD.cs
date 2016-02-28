@@ -110,7 +110,12 @@ namespace ThuTien.DAL.TongHop
             return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
-        public DIEUCHINH_HD Get(int MaDC)
+        public DIEUCHINH_HD GetByMaHD(int MaHD)
+        {
+            return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.FK_HOADON == MaHD);
+        }
+
+        public DIEUCHINH_HD GetByMaDC(int MaDC)
         {
             return _db.DIEUCHINH_HDs.SingleOrDefault(item => item.ID_DIEUCHINH_HD == MaDC);
         }
@@ -1238,6 +1243,7 @@ namespace ThuTien.DAL.TongHop
                         {
                             NgayDC = itemDC.NGAY_DC,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            MaHD=itemDC.FK_HOADON,
                             itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             DanhBo = itemHD.DANHBA,
