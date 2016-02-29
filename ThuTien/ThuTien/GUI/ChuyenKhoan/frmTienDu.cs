@@ -147,7 +147,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     frmDieuChinhTienDu frm = new frmDieuChinhTienDu(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString(), dgvTienDu["SoTien_TienDu", e.RowIndex].Value.ToString());
                     if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        _cTienDu.SubmitChanges();
+                        _cTienDu.Refresh();
                         btnXem.PerformClick();
                     }
                 }
@@ -509,7 +509,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     frmDieuChinhTienDu frm = new frmDieuChinhTienDu(dgvTienAm["DanhBo_TienAm", e.RowIndex].Value.ToString(), dgvTienAm["SoTien_TienAm", e.RowIndex].Value.ToString());
                     if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        _cTienDu.SubmitChanges();
+                        _cTienDu.Refresh();
                         btnXem.PerformClick();
                     }
                 }

@@ -53,6 +53,11 @@ namespace ThuTien.DAL
             }
         }
 
+        public void Refresh()
+        {
+            _db = new dbThuTienDataContext();
+        }
+
         //public void SubmitChanges()
         //{
         //    _db.SubmitChanges();
