@@ -282,6 +282,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
                     dr["TuNgay"] = _tuNgay;
                     dr["DenNgay"] = _denNgay;
+                    dr["TieuDe"] = "TCTB CHƯA HOÀN LỆNH";
                     dr["Loai"] = "CẮT TẠM";
                     dr["SoPhieu"] = itemRow["MaCTCTDB"].ToString().Insert(itemRow["MaCTCTDB"].ToString().Length-2,"-");
                     dr["NgayLap"] = itemRow["CreateDate"];
@@ -300,6 +301,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
                     dr["TuNgay"] = _tuNgay;
                     dr["DenNgay"] = _denNgay;
+                    dr["TieuDe"] = "TCTB CHƯA HOÀN LỆNH";
                     dr["Loai"] = "CẮT HỦY";
                     dr["SoPhieu"] = itemRow["MaCTCHDB"].ToString().Insert(itemRow["MaCTCHDB"].ToString().Length - 2, "-");
                     dr["NgayLap"] = itemRow["CreateDate"];
@@ -309,6 +311,71 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     dr["DiaChi"] = itemRow["DiaChi"];
                     dr["LyDo"] = itemRow["LyDo"];
                     dr["GhiChuLyDo"] = itemRow["GhiChuLyDo"];
+
+                    dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                }
+                //dateTu.Value = DateTime.Now;
+                //dateDen.Value = DateTime.Now;
+                //_tuNgay = _denNgay = "";
+
+                rptDSCHDB rpt = new rptDSCHDB();
+                rpt.SetDataSource(dsBaoCao);
+                crystalReportViewer1.ReportSource = rpt;
+            }
+
+            if (radDSCTCTDaXuLy.Checked)
+            {
+                DataTable dtCTDB = new DataTable();
+                DataTable dtCHDB = new DataTable();
+
+                if (!string.IsNullOrEmpty(_tuNgay) && !string.IsNullOrEmpty(_denNgay))
+                {
+                    dtCTDB = _cCHDB.LoadDSCTCTDB_DaXuLy(dateTu.Value, dateDen.Value);
+                    dtCHDB = _cCHDB.LoadDSCTCHDB_DaXuLy(dateTu.Value, dateDen.Value);
+                }
+                else
+                    if (!string.IsNullOrEmpty(_tuNgay))
+                    {
+                        dtCTDB = _cCHDB.LoadDSCTCTDB_DaXuLy(dateTu.Value);
+                        dtCHDB = _cCHDB.LoadDSCTCHDB_DaXuLy(dateTu.Value);
+                    }
+
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+
+                foreach (DataRow itemRow in dtCTDB.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["TieuDe"] = "ĐÃ XỬ LÝ";
+                    dr["Loai"] = "CẮT TẠM";
+                    dr["SoPhieu"] = itemRow["MaCTCTDB"].ToString().Insert(itemRow["MaCTCTDB"].ToString().Length - 2, "-");
+                    dr["NgayLap"] = itemRow["CreateDate"];
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["LyDo"] = itemRow["LyDo"];
+                    dr["GhiChuLyDo"] = itemRow["NoiDungXuLy"];
+
+                    dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
+                }
+
+                foreach (DataRow itemRow in dtCHDB.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSYCCHDB"].NewRow();
+                    dr["TuNgay"] = _tuNgay;
+                    dr["DenNgay"] = _denNgay;
+                    dr["TieuDe"] = "ĐÃ XỬ LÝ";
+                    dr["Loai"] = "CẮT HỦY";
+                    dr["SoPhieu"] = itemRow["MaCTCHDB"].ToString().Insert(itemRow["MaCTCHDB"].ToString().Length - 2, "-");
+                    dr["NgayLap"] = itemRow["CreateDate"];
+                    if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
+                        dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = itemRow["HoTen"];
+                    dr["DiaChi"] = itemRow["DiaChi"];
+                    dr["LyDo"] = itemRow["LyDo"];
+                    dr["GhiChuLyDo"] = itemRow["NoiDungXuLy"];
 
                     dsBaoCao.Tables["DSYCCHDB"].Rows.Add(dr);
                 }

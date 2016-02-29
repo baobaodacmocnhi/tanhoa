@@ -41,6 +41,7 @@
             this.radDSYCCHDBNutBit = new System.Windows.Forms.RadioButton();
             this.radDSCTDBtheocamket = new System.Windows.Forms.RadioButton();
             this.radDSCTCTTon = new System.Windows.Forms.RadioButton();
+            this.radDSCTCTDaXuLy = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel_KhoangThoiGian.SuspendLayout();
             this.SuspendLayout();
@@ -178,12 +179,23 @@
             this.radDSCTCTTon.Text = "Danh Sách CT-CH Tồn";
             this.radDSCTCTTon.UseVisualStyleBackColor = true;
             // 
+            // radDSCTCTDaXuLy
+            // 
+            this.radDSCTCTDaXuLy.AutoSize = true;
+            this.radDSCTCTDaXuLy.Location = new System.Drawing.Point(432, 39);
+            this.radDSCTCTDaXuLy.Name = "radDSCTCTDaXuLy";
+            this.radDSCTCTDaXuLy.Size = new System.Drawing.Size(157, 21);
+            this.radDSCTCTDaXuLy.TabIndex = 34;
+            this.radDSCTCTDaXuLy.Text = "DS CT-CH Đã Xử Lý";
+            this.radDSCTCTDaXuLy.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1297, 598);
+            this.Controls.Add(this.radDSCTCTDaXuLy);
             this.Controls.Add(this.radDSCTCTTon);
             this.Controls.Add(this.radDSCTDBtheocamket);
             this.Controls.Add(this.radDSYCCHDBNutBit);
@@ -220,6 +232,7 @@
         private System.Windows.Forms.RadioButton radDSYCCHDBNutBit;
         private System.Windows.Forms.RadioButton radDSCTDBtheocamket;
         private System.Windows.Forms.RadioButton radDSCTCTTon;
+        private System.Windows.Forms.RadioButton radDSCTCTDaXuLy;
 
     }
 }
