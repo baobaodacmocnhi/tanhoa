@@ -6739,6 +6739,17 @@ namespace ThuTien.DAL.Doi
             return ExecuteQuery_SqlDataAdapter_DataTable(sql);
         }
 
+        public DataTable GetDSTimKiemTatCa(string DanhBo, string MLT)
+        {
+            string sqlCu = "select * from TimKiemCu('" + DanhBo + "','" + MLT + "')";
+            string sql = "select * from TimKiem('" + DanhBo + "','" + MLT + "')";
+
+            DataTable dt = ExecuteQuery_SqlDataAdapter_DataTable(sql);
+            dt.Merge(ExecuteQuery_SqlDataAdapter_DataTable(sqlCu));
+            dt.DefaultView.Sort = "MaHD DESC";
+            return dt;
+        }
+
         /// <summary>
         /// lấy danh sách chặn tiền dư
         /// </summary>
