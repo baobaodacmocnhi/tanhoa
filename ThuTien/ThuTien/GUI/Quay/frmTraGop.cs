@@ -147,7 +147,7 @@ namespace ThuTien.GUI.Quay
             dr["DanhBo"] = hd.DANHBA.Insert(4, " ").Insert(8, " ");
             dr["HoTen"] = hd.TENKH;
             dr["DiaChi"] = hd.SO + " " + hd.DUONG;
-            dr["MLT"] = hd.MALOTRINH;
+            dr["MLT"] = hd.MALOTRINH.Insert(4, " ").Insert(2, " ");
             dr["GiaBieu"] = hd.GB;
             dr["DinhMuc"] = hd.DM;
             dr["Ky"] = hd.KY + "/" + hd.NAM;

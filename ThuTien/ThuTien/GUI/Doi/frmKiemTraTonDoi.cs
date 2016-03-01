@@ -812,7 +812,7 @@ namespace ThuTien.GUI.Doi
                     dr["LoaiBaoCao"] = "TƯ GIA TỒN";
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item["Ky"];
-                    dr["MLT"] = item["MLT"];
+                    dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = item["TongCong"];
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["SoHoaDon"] = item["SoHoaDon"];
@@ -861,7 +861,7 @@ namespace ThuTien.GUI.Doi
                         dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
                         dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                         dr["Ky"] = item["Ky"];
-                        dr["MLT"] = item["MLT"];
+                        dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                         dr["TongCong"] = item["TongCong"];
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
@@ -918,7 +918,7 @@ namespace ThuTien.GUI.Doi
                     dr["LoaiBaoCao"] = "TƯ GIA TỒN";
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item["Ky"];
-                    dr["MLT"] = item["MLT"];
+                    dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = item["TongCong"];
                     dr["SoPhatHanh"] = item["SoPhatHanh"];
                     dr["SoHoaDon"] = item["SoHoaDon"];
@@ -966,7 +966,7 @@ namespace ThuTien.GUI.Doi
                         dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
                         dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                         dr["Ky"] = item["Ky"];
-                        dr["MLT"] = item["MLT"];
+                        dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                         dr["TongCong"] = item["TongCong"];
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
@@ -1791,7 +1791,7 @@ namespace ThuTien.GUI.Doi
                         dr["LoaiBaoCao"] = "TƯ GIA TỒN";
                         dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                         dr["Ky"] = item["Ky"];
-                        dr["MLT"] = item["MLT"];
+                        dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                         dr["TongCong"] = item["TongCong"];
                         dr["SoPhatHanh"] = item["SoPhatHanh"];
                         dr["SoHoaDon"] = item["SoHoaDon"];
@@ -1835,7 +1835,7 @@ namespace ThuTien.GUI.Doi
                             dr["LoaiBaoCao"] = "CƠ QUAN TỒN";
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                             dr["Ky"] = item["Ky"];
-                            dr["MLT"] = item["MLT"];
+                            dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                             dr["TongCong"] = item["TongCong"];
                             dr["SoPhatHanh"] = item["SoPhatHanh"];
                             dr["SoHoaDon"] = item["SoHoaDon"];

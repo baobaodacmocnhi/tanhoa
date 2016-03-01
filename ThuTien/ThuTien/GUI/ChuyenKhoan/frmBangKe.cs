@@ -31,6 +31,7 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvBangKe.AutoGenerateColumns = false;
             dgvBangKeGroup.AutoGenerateColumns = false;
+            dgvBangKeGroup3.AutoGenerateColumns = false;
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
@@ -110,6 +111,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
             dgvBangKeGroup.DataSource = _cBangKe.GetDS_Group(dateTu.Value, dateDen.Value);
+            dgvBangKeGroup3.DataSource = _cBangKe.GetDS_Group3(dateTu.Value, dateDen.Value);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

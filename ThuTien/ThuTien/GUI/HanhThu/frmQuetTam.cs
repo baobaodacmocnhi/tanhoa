@@ -234,7 +234,7 @@ namespace ThuTien.GUI.HanhThu
                     dr["LoaiBaoCao"] = "TƯ GIA";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item.Cells["Ky_TG"].Value;
-                    dr["MLT"] = item.Cells["MLT_TG"].Value;
+                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh_TG"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_TG"].Value;
@@ -251,7 +251,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["LoaiBaoCao"] = "CƠ QUAN";
                         dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["Ky"] = item.Cells["Ky_CQ"].Value;
-                        dr["MLT"] = item.Cells["MLT_CQ"].Value;
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value;
                         dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CQ"].Value;
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CQ"].Value;
@@ -337,7 +337,7 @@ namespace ThuTien.GUI.HanhThu
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TG"].Value;
                     dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
-                    dr["MLT"] = item.Cells["MLT_TG"].Value;
+                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }
@@ -351,7 +351,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = item.Cells["HoTen_CQ"].Value;
                         dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
-                        dr["MLT"] = item.Cells["MLT_CQ"].Value;
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         ds.Tables["DSHoaDon"].Rows.Add(dr);
                     }
@@ -375,7 +375,7 @@ namespace ThuTien.GUI.HanhThu
                     dr["LoaiBaoCao"] = "HÓA ĐƠN TƯ GIA";
                     dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_TG"].Value.ToString();
-                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString();
+                    dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().ToString().Insert(4, " ").Insert(2, " ");
                     dr["Ky"] = item.Cells["Ky_TG"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong_TG"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_TG"].Value.ToString();
@@ -398,7 +398,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["LoaiBaoCao"] = "HÓA ĐƠN CƠ QUAN";
                         dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = item.Cells["HoTen_CQ"].Value.ToString();
-                        dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString();
+                        dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = item.Cells["Ky_CQ"].Value.ToString();
                         dr["TongCong"] = item.Cells["TongCong_CQ"].Value.ToString();
                         dr["HanhThu"] = item.Cells["HanhThu_CQ"].Value.ToString();
@@ -450,7 +450,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
                             dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = item.Cells["MLT_TG"].Value;
+                        dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
                         dr["SoTien"] = SoTien;
                         dr["TongCong"] = TongCong;
@@ -482,7 +482,7 @@ namespace ThuTien.GUI.HanhThu
                             dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
                                 dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                            dr["MLT"] = item.Cells["MLT_CQ"].Value;
+                            dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
                             dr["Ky"] = Ky;
                             dr["SoTien"] = SoTien;
                             dr["TongCong"] = TongCong;
@@ -559,7 +559,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["DiaChi"] = item.Cells["DiaChi_TG"].Value;
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
                             dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = item.Cells["MLT_TG"].Value;
+                        dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["HopDong"] = item.Cells["HopDong_TG"].Value;
                         dr["Ky"] = Ky;
                         dr["TongCong"] = TongCong;
@@ -593,7 +593,7 @@ namespace ThuTien.GUI.HanhThu
                             dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value;
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
                                 dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                            dr["MLT"] = item.Cells["MLT_CQ"].Value;
+                            dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
                             dr["HopDong"] = item.Cells["HopDong_CQ"].Value;
                             dr["Ky"] = Ky;
                             dr["TongCong"] = TongCong;

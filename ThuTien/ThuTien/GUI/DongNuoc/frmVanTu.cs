@@ -129,7 +129,7 @@ namespace ThuTien.GUI.DongNuoc
                 dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen"].Value;
                 dr["DiaChi"] = item.Cells["DiaChi"].Value;
-                dr["MLT"] = item.Cells["MLT"].Value;
+                dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["NhanVien"] = item.Cells["HanhThu"].Value;
                 ds.Tables["DSHoaDon"].Rows.Add(dr);
             }

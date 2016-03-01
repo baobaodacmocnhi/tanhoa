@@ -342,6 +342,16 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         }
 
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInDSKhongTamThu_Click(object sender, EventArgs e)
+        {
+
+        }
+
         
     }
 }

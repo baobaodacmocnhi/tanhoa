@@ -241,7 +241,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["DiaChi"] = row["DiaChi"];
                         if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
                             dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = row["MLT"];
+                        dr["MLT"] = row["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = itemChild["Ky"];
                         dr["TongCong"] = itemChild["TongCong"];
                         dr["NhanVien"] = cmbNhanVienLap.Text;
@@ -277,7 +277,7 @@ namespace ThuTien.GUI.ToTruong
                             dr["DiaChi"] = row["DiaChi"];
                             if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
                                 dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                            dr["MLT"] = row["MLT"];
+                            dr["MLT"] = row["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                             dr["Ky"] = itemChild["Ky"];
                             dr["TongCong"] = itemChild["TongCong"];
                             dr["NhanVien"] = cmbNhanVienGiao.Text;
@@ -315,7 +315,7 @@ namespace ThuTien.GUI.ToTruong
                                 dr["DiaChi"] = row["DiaChi"];
                                 if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
                                     dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                                dr["MLT"] = row["MLT"];
+                                dr["MLT"] = row["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                                 dr["Ky"] = itemChild["Ky"];
                                 dr["TongCong"] = itemChild["TongCong"];
                                 dr["NhanVien"] = cmbNhanVienGiao.Text;
@@ -366,7 +366,7 @@ namespace ThuTien.GUI.ToTruong
                         dr["DienThoai"] = _cCapNuocTanHoa.GetTTKH(item["DanhBo"].ToString()).Rows[0]["DienThoai"];
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = item["MLT"];
+                        dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
                         dr["TongCong"] = TongCong;
                         dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(int.Parse(item["CreateBy"].ToString())); ;

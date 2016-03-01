@@ -238,7 +238,7 @@ namespace ThuTien.GUI.Quay
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["DiaChi"] = item.Cells["DiaChi"].Value;
                     dr["Ky"] = item.Cells["Ky"].Value;
-                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = item.Cells["TongCong"].Value;
                     dr["TinhTrang"] = item.Cells["TinhTrang"].Value;
                     dr["Cat"] = item.Cells["Cat"].Value;
@@ -298,7 +298,7 @@ namespace ThuTien.GUI.Quay
                     dr["DanhBo"] = drDGV[drDGV.Count() - 1]["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                     dr["DiaChi"] = drDGV[drDGV.Count() - 1]["DiaChi"];
                     dr["Ky"] = Ky;
-                    dr["MLT"] = drDGV[drDGV.Count() - 1]["MLT"];
+                    dr["MLT"] = drDGV[drDGV.Count() - 1]["MLT"].ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = TongCong;
                     dr["TinhTrang"] = drDGV[drDGV.Count() - 1]["TinhTrang"];
                     dr["Cat"] = drDGV[drDGV.Count() - 1]["Cat"];

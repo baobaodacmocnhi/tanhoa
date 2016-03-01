@@ -236,7 +236,7 @@ namespace ThuTien.GUI.Doi
                     dr["LoaiBaoCao"] = "TỒN";
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item.Cells["Ky"].Value;
-                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = item.Cells["TongCong"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;

@@ -75,7 +75,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                 HOADON hoadon = _cHoaDon.GetMoiNhat(item.DanhBo);
                 dr["HoTen"] = hoadon.TENKH;
-                dr["MLT"] = hoadon.MALOTRINH;
+                dr["MLT"] = hoadon.MALOTRINH.Insert(4, " ").Insert(2, " ");
                 if (hoadon.MaNV_HanhThu == null)
                 {
                     hoadon = _cHoaDon.GetMoiNhi(item.DanhBo);
@@ -578,7 +578,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dr["LoaiBaoCao"] = "CHUYỂN KHOẢN CẦN RÚT";
                 dr["DanhBo"] = item.Cells["DanhBo_DB"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_DB"].Value.ToString();
-                dr["MLT"] = item.Cells["MLT_DB"].Value.ToString();
+                dr["MLT"] = item.Cells["MLT_DB"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["Ky"] = item.Cells["Ky_DB"].Value.ToString();
                 dr["TongCong"] = item.Cells["TongCong_DB"].Value.ToString();
                 dr["HanhThu"] = item.Cells["HanhThu_DB"].Value.ToString();
@@ -930,7 +930,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                     dr["DanhBo"] = item.Cells["DanhBo_HD"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = item.Cells["HoTen_HD"].Value.ToString();
-                    dr["MLT"] = item.Cells["MLT_HD"].Value.ToString();
+                    dr["MLT"] = item.Cells["MLT_HD"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["Ky"] = item.Cells["Ky_HD"].Value.ToString() + "/" + item.Cells["Nam_HD"].Value.ToString();
                     dr["TongCong"] = item.Cells["TongCong_HD"].Value.ToString();
                     dr["HanhThu"] = item.Cells["HanhThu_HD"].Value.ToString();

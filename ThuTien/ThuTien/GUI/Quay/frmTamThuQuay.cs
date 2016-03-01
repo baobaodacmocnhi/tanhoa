@@ -162,7 +162,7 @@ namespace ThuTien.GUI.Quay
                 dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(7, " ").Insert(4, " ");
                 dr["HoTen"] = hdIn.TENKH;
                 dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
-                dr["MLT"] = hdIn.MALOTRINH;
+                dr["MLT"] = hdIn.MALOTRINH.Insert(4, " ").Insert(2, " ");
                 dr["GiaBieu"] = hdIn.GB;
                 dr["DinhMuc"] = hdIn.DM;
                 dr["Ky"] = Ky;
@@ -356,7 +356,7 @@ namespace ThuTien.GUI.Quay
                 xacnhanno.DanhBo = dgvHoaDon["DanhBo", 0].Value.ToString();
                 xacnhanno.HoTen = dgvHoaDon["HoTen", 0].Value.ToString();
                 xacnhanno.DiaChi = dgvHoaDon["DiaChi", 0].Value.ToString();
-                xacnhanno.MLT = dgvHoaDon["MLT", 0].Value.ToString();
+                xacnhanno.MLT = dgvHoaDon["MLT", 0].Value.ToString().Insert(4, " ").Insert(2, " ");
                 xacnhanno.GiaBieu = int.Parse(dgvHoaDon["GiaBieu", 0].Value.ToString());
                 if (!string.IsNullOrEmpty(dgvHoaDon["DinhMuc", 0].Value.ToString()))
                     xacnhanno.DinhMuc = int.Parse(dgvHoaDon["DinhMuc", 0].Value.ToString());
@@ -386,7 +386,7 @@ namespace ThuTien.GUI.Quay
                 dr["DanhBo"] = xacnhanno.DanhBo.Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = xacnhanno.HoTen;
                 dr["DiaChi"] = xacnhanno.DiaChi;
-                dr["MLT"] = xacnhanno.MLT;
+                dr["MLT"] = xacnhanno.MLT.Insert(4, " ").Insert(2, " ");
                 dr["GiaBieu"] = xacnhanno.GiaBieu;
                 if (xacnhanno.DinhMuc == null)
                     dr["DinhMuc"] = 0;
@@ -432,7 +432,7 @@ namespace ThuTien.GUI.Quay
                     dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(4, " ").Insert(8, " ");
                     dr["HoTen"] = hdIn.TENKH;
                     dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
-                    dr["MLT"] = hdIn.MALOTRINH;
+                    dr["MLT"] = hdIn.MALOTRINH.Insert(4, " ").Insert(2, " ");
                     dr["GiaBieu"] = hdIn.GB;
                     dr["DinhMuc"] = hdIn.DM;
                     dr["Ky"] = Ky;
@@ -461,7 +461,7 @@ namespace ThuTien.GUI.Quay
                 dr["LoaiBaoCao"] = "TẠM THU QUẦY";
                 dr["DanhBo"] = item.Cells["DanhBo_TT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_TT"].Value.ToString();
-                dr["MLT"] = item.Cells["MLT_TT"].Value.ToString();
+                dr["MLT"] = item.Cells["MLT_TT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["Ky"] = item.Cells["Ky_TT"].Value.ToString();
                 dr["TongCong"] = item.Cells["TongCong_TT"].Value.ToString();
                 dr["HanhThu"] = item.Cells["HanhThu_TT"].Value.ToString();
@@ -493,7 +493,7 @@ namespace ThuTien.GUI.Quay
                 dr["DanhBo"] = item.Cells["DanhBo_XacNhanNo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_XacNhanNo"].Value.ToString();
                 dr["DiaChi"] = item.Cells["DiaChi_XacNhanNo"].Value.ToString();
-                dr["MLT"] = item.Cells["MLT_XacNhanNo"].Value.ToString();
+                dr["MLT"] = item.Cells["MLT_XacNhanNo"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["GiaBieu"] = item.Cells["GiaBieu_XacNhanNo"].Value.ToString();
                 if (item.Cells["DinhMuc_XacNhanNo"].Value == null)
                     dr["DinhMuc"] = 0;

@@ -405,7 +405,7 @@ namespace ThuTien.GUI.HanhThu
                     dr["LoaiBaoCao"] = "TƯ GIA ĐÃ THU";
                     dr["DanhBo"] = item.Cells["DanhBo_DT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["Ky"] = item.Cells["Ky_DT"].Value;
-                    dr["MLT"] = item.Cells["MLT_DT"].Value;
+                    dr["MLT"] = item.Cells["MLT_DT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["TongCong"] = item.Cells["TongCong_DT"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh_DT"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon_DT"].Value;
@@ -422,7 +422,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["LoaiBaoCao"] = "TƯ GIA CHƯA THU";
                         dr["DanhBo"] = item.Cells["DanhBo_CT"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["Ky"] = item.Cells["Ky_CT"].Value;
-                        dr["MLT"] = item.Cells["MLT_CT"].Value;
+                        dr["MLT"] = item.Cells["MLT_CT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["TongCong"] = item.Cells["TongCong_CT"].Value;
                         dr["SoPhatHanh"] = item.Cells["SoPhatHanh_CT"].Value;
                         dr["SoHoaDon"] = item.Cells["SoHoaDon_CT"].Value;

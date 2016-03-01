@@ -272,7 +272,7 @@ namespace ThuTien.GUI.Doi
                     dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 2, "-");
                     dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["CoDHN"] = item.Cells["CoDHN"].Value;
                     dr["HoTen"] = item.Cells["HoTen"].Value;
                     dr["DiaChi"] = item.Cells["DiaChi"].Value;
@@ -304,7 +304,7 @@ namespace ThuTien.GUI.Doi
                     dr["MaTT"] = item.Cells["MaTT_CT"].Value.ToString().Insert(item.Cells["MaTT_CT"].Value.ToString().Length - 2, "-");
                     dr["ThoiGian"] = DateTime.Parse(item.Cells["CreateDate_CT"].Value.ToString()).ToString("MM/yyyy");
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
-                    dr["MLT"] = item.Cells["MLT"].Value;
+                    dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["CoDHN"] = item.Cells["CoDHN"].Value;
                     dr["HoTen"] = item.Cells["HoTen"].Value;
                     dr["DiaChi"] = item.Cells["DiaChi"].Value;
