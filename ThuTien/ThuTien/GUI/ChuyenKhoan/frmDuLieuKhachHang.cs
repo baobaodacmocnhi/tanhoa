@@ -510,6 +510,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "MLT_HD" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo_HD" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");

@@ -72,9 +72,9 @@
             this.TongCong_Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvBangKeGroup3 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNH_Group3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong_Group3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_Group3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup3)).BeginInit();
@@ -415,9 +415,9 @@
             this.dgvBangKeGroup3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvBangKeGroup3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBangKeGroup3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.TenNH_Group3,
+            this.SoLuong_Group3,
+            this.TongCong_Group3});
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -441,25 +441,26 @@
             this.dgvBangKeGroup3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBangKeGroup3.Size = new System.Drawing.Size(313, 100);
             this.dgvBangKeGroup3.TabIndex = 88;
+            this.dgvBangKeGroup3.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBangKeGroup3_CellFormatting);
             // 
-            // dataGridViewTextBoxColumn1
+            // TenNH_Group3
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TenNH";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Ngân Hàng";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.TenNH_Group3.DataPropertyName = "TenNH";
+            this.TenNH_Group3.HeaderText = "Ngân Hàng";
+            this.TenNH_Group3.Name = "TenNH_Group3";
             // 
-            // dataGridViewTextBoxColumn2
+            // SoLuong_Group3
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "SoLuong";
-            this.dataGridViewTextBoxColumn2.HeaderText = "SL";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 50;
+            this.SoLuong_Group3.DataPropertyName = "SoLuong";
+            this.SoLuong_Group3.HeaderText = "SL";
+            this.SoLuong_Group3.Name = "SoLuong_Group3";
+            this.SoLuong_Group3.Width = 50;
             // 
-            // dataGridViewTextBoxColumn3
+            // TongCong_Group3
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "TongCong";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tổng Cộng";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.TongCong_Group3.DataPropertyName = "TongCong";
+            this.TongCong_Group3.HeaderText = "Tổng Cộng";
+            this.TongCong_Group3.Name = "TongCong_Group3";
             // 
             // frmBangKe
             // 
@@ -529,8 +530,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChenhLech;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
         private System.Windows.Forms.DataGridView dgvBangKeGroup3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenNH_Group3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong_Group3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_Group3;
     }
 }

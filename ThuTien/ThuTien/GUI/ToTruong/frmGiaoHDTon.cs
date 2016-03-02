@@ -166,6 +166,10 @@ namespace ThuTien.GUI.ToTruong
 
         private void dgvHDTon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvHDTon.Columns[e.ColumnIndex].Name == "MLT_CQ" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvHDTon.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");

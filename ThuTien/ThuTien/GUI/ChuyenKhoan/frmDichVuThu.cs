@@ -111,6 +111,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvDichVuThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvDichVuThu.Columns[e.ColumnIndex].Name == "MLT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvDichVuThu.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null && e.Value.ToString().Length == 11)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");

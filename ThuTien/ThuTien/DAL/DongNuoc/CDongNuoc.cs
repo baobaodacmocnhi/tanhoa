@@ -187,8 +187,8 @@ namespace ThuTien.DAL.DongNuoc
                                 TongCong = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
                                 itemDN.MLT,
                                 itemDN.CreateBy,
-                                //NgayGiaiTrach=itemDN.TT_CTDongNuocs.FirstOrDefault().HOADON.NGAYGIAITRACH,
-                                NgayGiaiTrach = from itemHD in _db.HOADONs where itemHD.SOHOADON == itemDN.TT_CTDongNuocs.FirstOrDefault().SoHoaDon select new { itemHD.NGAYGIAITRACH }.NGAYGIAITRACH,
+                                //NgayGiaiTrach = itemDN.TT_CTDongNuocs.FirstOrDefault().HOADON.NGAYGIAITRACH,
+                                NgayGiaiTrach = _db.HOADONs.SingleOrDefault(itemHD=>itemHD.SOHOADON == itemDN.TT_CTDongNuocs.FirstOrDefault().SoHoaDon).NGAYGIAITRACH,
                                 itemDN.MaNV_DongNuoc,
                                 itemDN.CreateDate,
                                 TinhTrang = "",///Phải thêm để GridView lấy cột để edit lại sau

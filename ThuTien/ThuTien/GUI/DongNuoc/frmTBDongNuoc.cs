@@ -294,6 +294,10 @@ namespace ThuTien.GUI.DongNuoc
 
         private void gridViewDN_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
+            if (e.Column.FieldName == "MLT" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (e.Column.FieldName == "DanhBo" && e.Value != null)
             {
                 e.DisplayText = e.Value.ToString().Insert(4, " ").Insert(8, " ");

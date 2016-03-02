@@ -523,6 +523,10 @@ namespace ThuTien.GUI.HanhThu
 
         private void dgvHDDaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "MLT_DT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvHDDaThu.Columns[e.ColumnIndex].Name == "DanhBo_DT" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
@@ -551,6 +555,10 @@ namespace ThuTien.GUI.HanhThu
 
         private void dgvHDChuaThu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "MLT_CT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvHDChuaThu.Columns[e.ColumnIndex].Name == "DanhBo_CT" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");

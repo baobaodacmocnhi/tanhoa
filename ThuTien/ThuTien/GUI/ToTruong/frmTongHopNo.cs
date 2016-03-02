@@ -82,6 +82,10 @@ namespace ThuTien.GUI.ToTruong
             col.DataType = System.Type.GetType("System.String");
             dt.Columns.Add(col);
 
+            col = new DataColumn("SoHoaDon");
+            col.DataType = System.Type.GetType("System.String");
+            dt.Columns.Add(col);
+
             col = new DataColumn("GiaBieu");
             col.DataType = System.Type.GetType("System.Int32");
             dt.Columns.Add(col);
@@ -129,6 +133,7 @@ namespace ThuTien.GUI.ToTruong
                             row["HoTen"] = item["HoTen"];
                             row["DiaChi"] = item["DiaChi"];
                             row["Ky"] = item["Ky"];
+                            row["SoHoaDon"] = item["SoHoaDon"];
                             row["GiaBieu"] = item["GiaBieu"];
                             row["TieuThu"] = item["TieuThu"];
                             row["GiaBan"] = item["GiaBan"];

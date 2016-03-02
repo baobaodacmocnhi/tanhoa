@@ -255,5 +255,13 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
+        private void dgvBangKeGroup3_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvBangKeGroup.Columns[e.ColumnIndex].Name == "TongCong_Group3" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
     }
 }

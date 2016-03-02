@@ -92,6 +92,10 @@ namespace ThuTien.GUI.DongNuoc
 
         private void dgvVanTu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvVanTu.Columns[e.ColumnIndex].Name == "MLT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvVanTu.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");

@@ -211,6 +211,10 @@ namespace ThuTien.GUI.Doi
 
         private void gridViewCTDN_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
+            if (e.Column.FieldName == "MLT" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (e.Column.FieldName == "TieuThu" && e.Value != null)
             {
                 e.DisplayText = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
