@@ -3440,5 +3440,39 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         #endregion
+
+        public DataTable GetLichSuCHDB(string DanhBo)
+        {
+            DataTable dt = new DataTable();
+            var queryCTDB = from itemCTCTDB in db.CTCTDBs
+                            where itemCTCTDB.DanhBo == DanhBo
+                            select new
+                            {
+                                Loai="Cắt Tạm",
+                                itemCTCTDB.CreateDate,
+                            };
+            dt = KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCTDB);
+
+            var queryCHDB = from itemCTCHDB in db.CTCHDBs
+                            where itemCTCHDB.DanhBo == DanhBo
+                            select new
+                            {
+                                Loai = "Cắt Hủy",
+                                itemCTCHDB.CreateDate,
+                            };
+            dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryCHDB));
+
+            var queryYCCHDB = from itemYCCHDB in db.YeuCauCHDBs
+                              where itemYCCHDB.DanhBo == DanhBo
+                            select new
+                            {
+                                Loai = "Phiếu Hủy",
+                                itemYCCHDB.CreateDate,
+                            };
+            dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB));
+            
+            dt.DefaultView.Sort = "CreateDate DESC";
+            return dt;
+        }
     }
 }

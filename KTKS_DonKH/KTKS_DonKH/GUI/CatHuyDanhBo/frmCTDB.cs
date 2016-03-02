@@ -66,6 +66,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtHopDong.Text = ttkhachhang.GiaoUoc;
             txtHoTen.Text = ttkhachhang.HoTen;
             txtDiaChi.Text = ttkhachhang.DC1 + " " + ttkhachhang.DC2 + _cPhuongQuan.getPhuongQuanByID(ttkhachhang.Quan, ttkhachhang.Phuong);
+            dgvLichSuCHDB.DataSource = _cCHDB.GetLichSuCHDB(ttkhachhang.DanhBo);
         }
 
         public void Clear()
@@ -129,6 +130,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         auto2.Add(item["NoiNhan"].ToString());
                     }
                     txtNoiNhanXuLy.AutoCompleteCustomSource = auto2;
+
+                    dgvLichSuCHDB.AutoGenerateColumns = false;
                 }
                 catch (Exception ex)
                 {

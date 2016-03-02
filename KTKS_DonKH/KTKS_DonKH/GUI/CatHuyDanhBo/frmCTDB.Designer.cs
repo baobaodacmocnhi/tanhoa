@@ -91,12 +91,16 @@
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.dgvLichSuCHDB = new System.Windows.Forms.DataGridView();
+            this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
             this.groupBoxKetQuaCapTrenXuLy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuXuLy)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuCHDB)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMaDon
@@ -715,7 +719,7 @@
             this.txtNoiNhan.Location = new System.Drawing.Point(929, 123);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
-            this.txtNoiNhan.Size = new System.Drawing.Size(252, 100);
+            this.txtNoiNhan.Size = new System.Drawing.Size(255, 100);
             this.txtNoiNhan.TabIndex = 12;
             // 
             // label17
@@ -738,12 +742,41 @@
             this.label22.TabIndex = 61;
             this.label22.Text = "Cắt Tạm";
             // 
+            // dgvLichSuCHDB
+            // 
+            this.dgvLichSuCHDB.AllowUserToAddRows = false;
+            this.dgvLichSuCHDB.AllowUserToDeleteRows = false;
+            this.dgvLichSuCHDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLichSuCHDB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Loai,
+            this.CreateDate});
+            this.dgvLichSuCHDB.Location = new System.Drawing.Point(929, 229);
+            this.dgvLichSuCHDB.Name = "dgvLichSuCHDB";
+            this.dgvLichSuCHDB.ReadOnly = true;
+            this.dgvLichSuCHDB.Size = new System.Drawing.Size(255, 200);
+            this.dgvLichSuCHDB.TabIndex = 62;
+            // 
+            // Loai
+            // 
+            this.Loai.DataPropertyName = "Loai";
+            this.Loai.HeaderText = "Loại";
+            this.Loai.Name = "Loai";
+            this.Loai.ReadOnly = true;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            // 
             // frmCTDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1186, 683);
+            this.ClientSize = new System.Drawing.Size(1223, 683);
+            this.Controls.Add(this.dgvLichSuCHDB);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.dgvLichSuXuLy);
@@ -779,6 +812,7 @@
             this.groupBoxKetQuaCapTrenXuLy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuXuLy)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuCHDB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -848,5 +882,8 @@
         private System.Windows.Forms.DateTimePicker dateXuLy;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.CheckBox chkNgayXuLy;
+        private System.Windows.Forms.DataGridView dgvLichSuCHDB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
     }
 }

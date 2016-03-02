@@ -94,12 +94,16 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label22 = new System.Windows.Forms.Label();
+            this.dgvLichSuCHDB = new System.Windows.Forms.DataGridView();
+            this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxKetQuaCapTrenXuLy.SuspendLayout();
             this.groupBoxKetQuaTCTBXuLy.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxNguyenNhanXuLy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuXuLy)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuCHDB)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -770,12 +774,41 @@
             this.label22.TabIndex = 60;
             this.label22.Text = "Cắt Hủy";
             // 
+            // dgvLichSuCHDB
+            // 
+            this.dgvLichSuCHDB.AllowUserToAddRows = false;
+            this.dgvLichSuCHDB.AllowUserToDeleteRows = false;
+            this.dgvLichSuCHDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLichSuCHDB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Loai,
+            this.CreateDate});
+            this.dgvLichSuCHDB.Location = new System.Drawing.Point(929, 228);
+            this.dgvLichSuCHDB.Name = "dgvLichSuCHDB";
+            this.dgvLichSuCHDB.ReadOnly = true;
+            this.dgvLichSuCHDB.Size = new System.Drawing.Size(255, 200);
+            this.dgvLichSuCHDB.TabIndex = 61;
+            // 
+            // Loai
+            // 
+            this.Loai.DataPropertyName = "Loai";
+            this.Loai.HeaderText = "Loại";
+            this.Loai.Name = "Loai";
+            this.Loai.ReadOnly = true;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1220, 690);
+            this.Controls.Add(this.dgvLichSuCHDB);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.dgvLichSuXuLy);
@@ -813,6 +846,7 @@
             this.groupBoxNguyenNhanXuLy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuXuLy)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuCHDB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -885,6 +919,9 @@
         private System.Windows.Forms.DateTimePicker dateXuLy;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.CheckBox chkNgayXuLy;
+        private System.Windows.Forms.DataGridView dgvLichSuCHDB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
 
     }
 }
