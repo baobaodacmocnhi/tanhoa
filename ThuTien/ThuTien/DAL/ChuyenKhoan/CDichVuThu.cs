@@ -196,7 +196,8 @@ namespace ThuTien.DAL.ChuyenKhoan
                               To = itemtableND.TT_To.TenTo,
                           };
             dt.Merge(LINQToDataTable(queryDN));
-            dt.DefaultView.Sort = "CreateDate ASC";
+            if (dt.Rows.Count > 0)
+                dt.DefaultView.Sort = "CreateDate ASC";
             dt = dt.DefaultView.ToTable();
 
             return dt;
@@ -259,6 +260,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                               To = itemtableND.TT_To.TenTo,
                           };
             dt.Merge(LINQToDataTable(queryDN));
+            if (dt.Rows.Count > 0)
             dt.DefaultView.Sort = "CreateDate ASC";
             dt = dt.DefaultView.ToTable();
 

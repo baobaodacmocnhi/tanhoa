@@ -52,6 +52,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             cmbTo.DataSource = lstTo;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
+
+            cmbFromDot.SelectedIndex = 0;
+            cmbToDot.SelectedIndex = 0;
         }
 
         private void btnXem_Click(object sender, EventArgs e)

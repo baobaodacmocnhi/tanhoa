@@ -22,6 +22,7 @@ namespace ThuTien.GUI.QuanTri
         CChamCong _cChamCong = new CChamCong();
         int _selectedindex = -1;
         string _mnu = "mnuNguoiDung";
+        BindingList<TT_NguoiDung> _blNguoiDung;
 
         public frmNguoiDung()
         {
@@ -38,7 +39,8 @@ namespace ThuTien.GUI.QuanTri
             chkHanhThu.Checked = false;
             chkDongNuoc.Checked = false;
             chkVanPhong.Checked = false;
-            dgvNguoiDung.DataSource = _cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND);
+            _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+            dgvNguoiDung.DataSource = _blNguoiDung;
         }
 
         private void frmNguoiDung_Load(object sender, EventArgs e)
@@ -54,7 +56,8 @@ namespace ThuTien.GUI.QuanTri
             //cmbNhom.SelectedIndex = -1;
 
             dgvNguoiDung.AutoGenerateColumns = false;
-            dgvNguoiDung.DataSource = _cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND);
+            _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+            dgvNguoiDung.DataSource = _blNguoiDung;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -236,6 +239,125 @@ namespace ThuTien.GUI.QuanTri
                     gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Sua"], "False");
                     gridView.SetRowCellValue(e.RowHandle, gridView.Columns["Xoa"], "False");
                 }
+        }
+
+        //private void dgvNguoiDung_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode.Equals(Keys.Up))
+        //    {
+        //        moveUp();
+        //    }
+        //    if (e.KeyCode.Equals(Keys.Down))
+        //    {
+        //        moveDown();
+        //    }
+        //    e.Handled = true;
+        //}
+
+        //private void moveUp()
+        //{
+        //    if (dgvNguoiDung.RowCount > 0)
+        //    {
+        //        if (dgvNguoiDung.SelectedRows.Count > 0)
+        //        {
+        //            int rowCount = dgvNguoiDung.Rows.Count;
+        //            int index = dgvNguoiDung.SelectedCells[0].OwningRow.Index;
+
+        //            if (index == 0)
+        //            {
+        //                return;
+        //            }
+        //            //DataGridViewRowCollection rows = dgvNguoiDung.Rows;
+
+        //            // remove the previous row and add it behind the selected row.
+        //            //DataGridViewRow prevRow = rows[index - 1];
+        //            //rows.Remove(prevRow);
+        //            //prevRow.Frozen = false;
+        //            //rows.Insert(index, prevRow);
+        //            //dgvNguoiDung.ClearSelection();
+        //            //dgvNguoiDung.Rows[index - 1].Selected = true;
+        //            var itemToMoveUp = this._blNguoiDung[index];
+        //            this._blNguoiDung.RemoveAt(index);
+        //            this._blNguoiDung.Insert(index - 1, itemToMoveUp);
+        //            dgvNguoiDung.ClearSelection();
+        //            dgvNguoiDung.Rows[index - 1].Selected = true;
+        //        }
+        //    }
+        //}
+
+        //private void moveDown()
+        //{
+        //    if (dgvNguoiDung.RowCount > 0)
+        //    {
+        //        if (dgvNguoiDung.SelectedRows.Count > 0)
+        //        {
+        //            int rowCount = dgvNguoiDung.Rows.Count;
+        //            int index = dgvNguoiDung.SelectedCells[0].OwningRow.Index;
+
+        //            if (index == (rowCount - 2)) // include the header row
+        //            {
+        //                return;
+        //            }
+        //            //DataGridViewRowCollection rows = dgvNguoiDung.Rows;
+
+        //            // remove the next row and add it in front of the selected row.
+        //            //DataGridViewRow nextRow = rows[index + 1];
+        //            //rows.Remove(nextRow);
+        //            //nextRow.Frozen = false;
+        //            //rows.Insert(index, nextRow);
+        //            //dgvNguoiDung.ClearSelection();
+        //            //dgvNguoiDung.Rows[index + 1].Selected = true;
+        //            var itemToMoveDown = this._blNguoiDung[index];
+        //            this._blNguoiDung.RemoveAt(index);
+        //            this._blNguoiDung.Insert(index + 1, itemToMoveDown);
+        //            dgvNguoiDung.ClearSelection();
+        //            dgvNguoiDung.Rows[index + 1].Selected = true;
+        //        }
+        //    }
+        //}
+
+        int rowIndexFromMouseDown;
+        DataGridViewRow rw;
+        private void dgvNguoiDung_DragDrop(object sender, DragEventArgs e)
+        {
+            int rowIndexOfItemUnderMouseToDrop;
+            Point clientPoint = dgvNguoiDung.PointToClient(new Point(e.X, e.Y));
+            rowIndexOfItemUnderMouseToDrop = dgvNguoiDung.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            if (e.Effect == DragDropEffects.Move)
+            {
+                var item = this._blNguoiDung[rowIndexFromMouseDown];
+                _blNguoiDung.RemoveAt(rowIndexFromMouseDown);
+                _blNguoiDung.Insert(rowIndexOfItemUnderMouseToDrop,item);
+                
+                ///update STT dô database
+                for (int i = 0; i < _blNguoiDung.Count; i++)
+                {
+                    _blNguoiDung[i].STT = i + 1;
+                }
+                _cNguoiDung.SubmitChanges();
+            }
+        }
+
+        private void dgvNguoiDung_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dgvNguoiDung.SelectedRows.Count > 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void dgvNguoiDung_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dgvNguoiDung.SelectedRows.Count == 1)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    rw = dgvNguoiDung.SelectedRows[0];
+                    rowIndexFromMouseDown = dgvNguoiDung.SelectedRows[0].Index;
+                    dgvNguoiDung.DoDragDrop(rw, DragDropEffects.Move);
+                }
+            }
         }
     }
 }

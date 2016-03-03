@@ -156,6 +156,20 @@ namespace ThuTien.DAL.QuanTri
             }
         }
 
+        public bool Sua(List<TT_NguoiDung> lstND)
+        {
+            try
+            {
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool Xoa(TT_NguoiDung nguoidung)
         {
             try
