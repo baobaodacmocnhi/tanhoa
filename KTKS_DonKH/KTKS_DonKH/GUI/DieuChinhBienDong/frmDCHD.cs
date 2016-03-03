@@ -370,6 +370,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctdchd.TieuThu_DieuChinhGia2 = int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim().Replace(".", ""));
                             ctdchd.GiaDieuChinh2 = int.Parse(txtGiaDieuChinh2.Text.Trim().Replace(".", ""));
                         }
+                        ///
                         if (chkTyLe.Checked)
                         {
                             ctdchd.TyLe = true;
@@ -511,6 +512,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ctdchd.KhauTru = true;
                             ctdchd.SoTienKhauTru = int.Parse(txtSoTienKhauTru.Text.Trim().Replace(".", ""));
+                        }
+                        ///
+                        if (chkDieuChinhGia2.Checked)
+                        {
+                            ctdchd.DieuChinhGia2 = true;
+                            ctdchd.TieuThu_DieuChinhGia2 = int.Parse(txtTieuThu_DieuChinhGia2.Text.Trim().Replace(".", ""));
+                            ctdchd.GiaDieuChinh2 = int.Parse(txtGiaDieuChinh2.Text.Trim().Replace(".", ""));
+                        }
+                        ///
+                        if (chkTyLe.Checked)
+                        {
+                            ctdchd.TyLe = true;
+                            ctdchd.SH = int.Parse(txtSH.Text.Trim().Replace(".", ""));
+                            ctdchd.SX = int.Parse(txtSX.Text.Trim().Replace(".", ""));
+                            ctdchd.DV = int.Parse(txtDV.Text.Trim().Replace(".", ""));
+                            ctdchd.HCSN = int.Parse(txtHCSN.Text.Trim().Replace(".", ""));
                         }
                         ///
                         ctdchd.TienNuoc_BD = int.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));

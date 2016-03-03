@@ -1770,7 +1770,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             //}
                             //else
                                 ///Nếu có tỉ lệ SH + SX
-                            if (SH != 0 && SX != 0)
+                            //if (SH != 0 && SX != 0)
                                 {
                                     int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                     int _SX = (int)Math.Round((double)TieuThu * SX / 100);
@@ -1832,7 +1832,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             //}
                             //else
                                 ///Nếu có tỉ lệ SH + DV
-                                if (SH != 0 && DV != 0)
+                                //if (SH != 0 && DV != 0)
                                 {
                                     int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                     int _DV = (int)Math.Round((double)TieuThu * DV / 100);
@@ -1871,7 +1871,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
                         if (ttkhachhang != null)
                             ///Nếu chỉ có tỉ lệ SX + DV mà không có tỉ lệ SH, không xét Định Mức
-                            if (SX != 0 && DV != 0 && SH == 0)
+                            //if (SX != 0 && DV != 0 && SH == 0)
                             {
                                 int _SX = (int)Math.Round((double)TieuThu * SX / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * DV / 100);
@@ -1881,7 +1881,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             }
                             else
                                 ///Nếu có đủ 3 tỉ lệ SH + SX + DV
-                                if (SX != 0 && DV != 0 && SH != 0)
+                                //if (SX != 0 && DV != 0 && SH != 0)
                                 {
                                     int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                     int _SX = (int)Math.Round((double)TieuThu * SX / 100);
@@ -1959,7 +1959,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             //}
                             //else
                                 ///Nếu có tỉ lệ SH + HCSN
-                            if (SH != 0 && HCSN != 0)
+                            //if (SH != 0 && HCSN != 0)
                                 {
                                     int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                     int _HCSN = (int)Math.Round((double)TieuThu * HCSN / 100);
@@ -1998,7 +1998,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 39:///SH + HCSN + SX + DV
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
                         if (ttkhachhang != null)
-                            if (SH != 0 && HCSN != 0 && SX != 0 && DV != 0)
+                            //if (SH != 0 && HCSN != 0 && SX != 0 && DV != 0)
                             {
                                 int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                 int _HCSN = (int)Math.Round((double)TieuThu * HCSN / 100);
@@ -2106,7 +2106,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                             //}
                             //else
                                 ///Nếu có tỉ lệ
-                            if (HCSN != 0 && SX != 0)
+                            //if (HCSN != 0 && SX != 0)
                                 {
                                     int _HCSN = (int)Math.Round((double)TieuThu * HCSN / 100);
                                     int _SX = (int)Math.Round((double)TieuThu * SX / 100);
@@ -2138,7 +2138,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 36:///HCSN + SX + DV
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
                         if (ttkhachhang != null)
-                            if (HCSN != 0 && SX != 0 && DV != 0)
+                            //if (HCSN != 0 && SX != 0 && DV != 0)
                             {
                                 int _HCSN = (int)Math.Round((double)TieuThu * HCSN / 100);
                                 int _SX = (int)Math.Round((double)TieuThu * SX / 100);
@@ -2177,7 +2177,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 44:///SH + SX
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
                         if (ttkhachhang != null)
-                            if (SH != 0 && SX !=0)
+                            //if (SH != 0 && SX !=0)
                             {
                                 int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                 int _SX = (int)Math.Round((double)TieuThu * SX / 100);
@@ -2189,7 +2189,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 45:///SH + DV
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
                         if (ttkhachhang != null)
-                            if (SH != 0 && DV != 0)
+                            //if (SH != 0 && DV != 0)
                             {
                                 int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * DV / 100);
@@ -2201,7 +2201,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 46:///SH + SX + DV
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
                         if (ttkhachhang != null)
-                            if (SH!= 0 && SX != 0 && DV != 0)
+                            //if (SH!= 0 && SX != 0 && DV != 0)
                             {
                                 int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                 int _SX = (int)Math.Round((double)TieuThu * SX / 100);
@@ -2291,7 +2291,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 59:///sỉ phức tạp
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
                         if (ttkhachhang != null)
-                            if (SH != 0 && HCSN !=0 && SX != 0 && DV != 0)
+                            //if (SH != 0 && HCSN !=0 && SX != 0 && DV != 0)
                             {
                                 int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                 int _HCSN = (int)Math.Round((double)TieuThu * HCSN / 100);
@@ -2333,7 +2333,7 @@ namespace KTKS_DonKH.DAL.CapNhat
                     case 68:///SH giá sỉ - KD giá lẻ
                         ttkhachhang = _cTTKH.getTTKHbyID(DanhBo);
                         if (ttkhachhang != null)
-                            if (SH != 0 && DV != 0)
+                            //if (SH != 0 && DV != 0)
                             {
                                 int _SH = (int)Math.Round((double)TieuThu * SH / 100);
                                 int _DV = (int)Math.Round((double)TieuThu * DV / 100);

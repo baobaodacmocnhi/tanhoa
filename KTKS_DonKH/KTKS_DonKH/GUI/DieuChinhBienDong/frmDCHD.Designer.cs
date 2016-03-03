@@ -659,7 +659,7 @@
             this.txtChiTietMoi.Location = new System.Drawing.Point(429, 53);
             this.txtChiTietMoi.Multiline = true;
             this.txtChiTietMoi.Name = "txtChiTietMoi";
-            this.txtChiTietMoi.Size = new System.Drawing.Size(100, 100);
+            this.txtChiTietMoi.Size = new System.Drawing.Size(100, 120);
             this.txtChiTietMoi.TabIndex = 15;
             // 
             // txtChiTietCu
@@ -668,7 +668,7 @@
             this.txtChiTietCu.Location = new System.Drawing.Point(164, 53);
             this.txtChiTietCu.Multiline = true;
             this.txtChiTietCu.Name = "txtChiTietCu";
-            this.txtChiTietCu.Size = new System.Drawing.Size(100, 100);
+            this.txtChiTietCu.Size = new System.Drawing.Size(100, 120);
             this.txtChiTietCu.TabIndex = 14;
             // 
             // txtTieuThu_DieuChinhGia2

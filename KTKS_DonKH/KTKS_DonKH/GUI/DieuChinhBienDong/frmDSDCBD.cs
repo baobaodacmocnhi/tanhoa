@@ -1941,18 +1941,35 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
                                         dr["DieuChinh"] = "Định Mức từ " + ctdchd.DinhMuc + " -> " + ctdchd.DinhMuc_BD;
                                     else
-                                        dr["DieuChinh"] = ", Định Mức từ " + ctdchd.DinhMuc + " -> " + ctdchd.DinhMuc_BD;
+                                        dr["DieuChinh"] = dr["DieuChinh"]+", Định Mức từ " + ctdchd.DinhMuc + " -> " + ctdchd.DinhMuc_BD;
                                 if (ctdchd.TieuThu != ctdchd.TieuThu_BD)
                                     if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
                                         dr["DieuChinh"] = "Tiêu Thụ từ " + ctdchd.TieuThu + " -> " + ctdchd.TieuThu_BD;
                                     else
-                                        dr["DieuChinh"] = ", Tiêu Thụ từ " + ctdchd.TieuThu + " -> " + ctdchd.TieuThu_BD;
+                                        dr["DieuChinh"] = dr["DieuChinh"]+", Tiêu Thụ từ " + ctdchd.TieuThu + " -> " + ctdchd.TieuThu_BD;
                                 if (ctdchd.DieuChinhGia == true)
                                 {
                                     if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
                                         dr["DieuChinh"] = "Áp giá " + ctdchd.GiaDieuChinh;
                                     else
-                                        dr["DieuChinh"] = ", Áp giá " + ctdchd.GiaDieuChinh;
+                                        dr["DieuChinh"] = dr["DieuChinh"] + ", Áp giá " + ctdchd.GiaDieuChinh;
+                                    dr["ChiTietCu"] = ctdchd.ChiTietCu;
+                                    dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
+                                }
+                                if (ctdchd.TyLe)
+                                {
+                                    if (string.IsNullOrEmpty(dr["DieuChinh"].ToString()))
+                                            dr["DieuChinh"] = "Tỷ lệ" ;
+                                        else
+                                            dr["DieuChinh"] = dr["DieuChinh"] + ", Tỷ lệ" ;
+                                    if (ctdchd.SH != 0)
+                                        dr["DieuChinh"] = dr["DieuChinh"] + " SH: " + ctdchd.SH.Value.ToString()+"%";
+                                    if (ctdchd.SX != 0)
+                                        dr["DieuChinh"] = dr["DieuChinh"] + " SX: " + ctdchd.SX.Value.ToString() + "%";
+                                    if (ctdchd.DV != 0)
+                                        dr["DieuChinh"] = dr["DieuChinh"] + " DV: " + ctdchd.DV.Value.ToString() + "%";
+                                    if (ctdchd.HCSN != 0)
+                                        dr["DieuChinh"] = dr["DieuChinh"] + " HCSN: " + ctdchd.HCSN.Value.ToString() + "%";
                                     dr["ChiTietCu"] = ctdchd.ChiTietCu;
                                     dr["ChiTietMoi"] = ctdchd.ChiTietMoi;
                                 }
