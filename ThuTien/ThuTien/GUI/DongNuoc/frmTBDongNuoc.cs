@@ -95,13 +95,15 @@ namespace ThuTien.GUI.DongNuoc
                         item.Focused = true;
                         return;
                     }
-                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.ToString()))
+                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Text))
                     {
                         MessageBox.Show("Hóa Đơn đã Lập TB Đóng Nước: " + item.Text, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         item.Selected = true;
                         item.Focused = true;
                         return;
                     }
+                    else
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lstHDTemp.Add(_cHoaDon.Get(item.Text));
                 }
 

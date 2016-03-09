@@ -515,6 +515,11 @@ namespace ThuTien.DAL.DongNuoc
         public bool CheckExist_CTDongNuoc(string SoHoaDon)
         {
             return _db.TT_CTDongNuocs.Any(item => item.SoHoaDon == SoHoaDon && item.TT_DongNuoc.Huy == false);
+            //string sql = "select ctdn.* from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.MaDN=ctdn.MaDN and SoHoaDon='" + SoHoaDon + "' and dn.Huy=0";
+            //if (ExecuteQuery_SqlDataAdapter_DataTable(sql).Rows.Count > 0)
+            //    return true;
+            //else
+            //    return false;
         }
 
         /// <summary>

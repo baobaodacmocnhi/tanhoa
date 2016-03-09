@@ -35,6 +35,10 @@ namespace ThuTien.GUI.Doi
         public void LoadDSHoaDon()
         {
             var query = from item in _db.TT_TestHoaDonTons
+                        join itemHD in _db.HOADONs on item.SoHoaDon equals itemHD.SOHOADON into tableHD
+                        from itemtableHD in tableHD.DefaultIfEmpty()
+                        join itemND in _db.TT_NguoiDungs on itemtableHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
                         where item.CreateDate.Value.Month == dateNgayLap2.Value.Month && item.CreateDate.Value.Year == dateNgayLap2.Value.Year
                         select new
                         {
@@ -51,6 +55,7 @@ namespace ThuTien.GUI.Doi
                             TongCong = item.GiaBan + item.ThueGTGT + item.PhiBVMT,
                             item.SoPhatHanh,
                             item.Xoa,
+                            HanhThu=itemtableND.HoTen,
                         };
 
             dgvHoaDon.DataSource = _cDAL.LINQToDataTable(query);
@@ -240,6 +245,7 @@ namespace ThuTien.GUI.Doi
                     dr["TongCong"] = item.Cells["TongCong"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
+                    dr["HanhThu"] = item.Cells["HanhThu"].Value;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             rptDSHoaDon rpt = new rptDSHoaDon();
@@ -302,6 +308,7 @@ namespace ThuTien.GUI.Doi
                     dr["TongCong"] = item.Cells["TongCong"].Value;
                     dr["SoPhatHanh"] = item.Cells["SoPhatHanh"].Value;
                     dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value;
+                    dr["HanhThu"] = item.Cells["HanhThu"].Value;
                     ds.Tables["DSHoaDon"].Rows.Add(dr);
                 }
             rptDSHoaDon rpt = new rptDSHoaDon();

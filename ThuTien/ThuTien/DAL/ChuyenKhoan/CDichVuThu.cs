@@ -175,7 +175,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
                           join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
                           from itemtableND in tableND.DefaultIfEmpty()
-                          where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu
+                          where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy==false
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                           select new
                           {
@@ -238,7 +238,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                           join itemCTDN in _db.TT_CTDongNuocs on itemDV.SoHoaDon equals itemCTDN.SoHoaDon
                           join itemND in _db.TT_NguoiDungs on itemCTDN.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
                           from itemtableND in tableND.DefaultIfEmpty()
-                          where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu
+                          where itemCTDN.TT_DongNuoc.MaNV_DongNuoc == MaNV_HanhThu && itemCTDN.TT_DongNuoc.Huy == false
                             && itemDV.CreateDate >= FromCreateDate && itemDV.CreateDate <= ToCreateDate && itemDV.TenDichVu.Contains(TenDichVu)
                             && itemHD.DOT.Value >= FromDot && itemHD.DOT.Value <= ToDot
                           select new

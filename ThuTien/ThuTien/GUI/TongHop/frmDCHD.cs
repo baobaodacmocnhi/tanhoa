@@ -49,7 +49,7 @@ namespace ThuTien.GUI.TongHop
         {
             if (dgvHoaDon.RowCount > 0 && e.Button == MouseButtons.Left)
             {
-                frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvDCHD.SelectedRows[0].Cells["MaHD_DC"].Value.ToString()), dgvHoaDon.SelectedRows[0].Cells["SoHoaDon"].Value.ToString());
+                frmShowDCHD frm = new frmShowDCHD(int.Parse(dgvHoaDon.SelectedRows[0].Cells["MaHD"].Value.ToString()), dgvHoaDon.SelectedRows[0].Cells["SoHoaDon"].Value.ToString());
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     dgvHoaDon.DataSource = _cHoaDon.GetDSByDanhBo(txtDanhBo.Text.Trim());
