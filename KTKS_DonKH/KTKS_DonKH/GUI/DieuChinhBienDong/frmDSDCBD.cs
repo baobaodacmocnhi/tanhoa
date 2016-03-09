@@ -1598,7 +1598,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["PhieuDuocKy", i].Value.ToString()) == true && bool.Parse(dgvDSDCBD["ChuyenDocSo", i].Value.ToString()) == false)
                             {
                                 CTDCBD ctdcbd = _cDCBD.getCTDCBDbyID(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
-                                k++;
+
                                 log.Write(k.ToString() + "/ " + ctdcbd.MaCTDCBD + "; " + ctdcbd.ThongTin + "; " + ctdcbd.DanhBo + "; ");
                                 //if(k==8)
                                 //    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1684,75 +1684,74 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             }
                                         }
                                         else
-                                        {
-                                            using (var scope = new TransactionScope())
-                                                if (_cDLKH.SuaDLKH(dlkh))
+                                            if (_cDLKH.SuaDLKH(dlkh))
+                                            {
+                                                TB_DULIEUKHACHHANG dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
+
+                                                if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
+                                                    while (int.Parse(dlkhFinal.GIABIEU) != ctdcbd.GiaBieu_BD.Value)
+                                                    {
+                                                        dlkhFinal.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
+                                                        _cDLKH.SuaDLKH(dlkhFinal);
+                                                        _cDLKH.Refresh();
+                                                        dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
+                                                    }
+
+                                                if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
+                                                    while (int.Parse(dlkhFinal.DINHMUC) != ctdcbd.DinhMuc_BD.Value)
+                                                    {
+                                                        dlkhFinal.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
+                                                        _cDLKH.SuaDLKH(dlkhFinal);
+                                                        _cDLKH.Refresh();
+                                                        dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
+                                                    }
+
+                                                TB_GHICHU ghichu = new TB_GHICHU();
+                                                ghichu.DANHBO = ctdcbd.DanhBo;
+                                                ghichu.DONVI = "KTKS";
+                                                ghichu.NOIDUNG = "PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
+                                                ghichu.NOIDUNG += " ," + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
+                                                ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - ĐC";
+                                                if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                                 {
-                                                    TB_DULIEUKHACHHANG dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
-
-                                                    if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
-                                                        while (int.Parse(dlkhFinal.GIABIEU) != ctdcbd.GiaBieu_BD.Value)
-                                                        {
-                                                            dlkhFinal.GIABIEU = ctdcbd.GiaBieu_BD.ToString();
-                                                            _cDLKH.SuaDLKH(dlkhFinal);
-                                                            dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
-                                                        }
-
-                                                    if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
-                                                        while (int.Parse(dlkhFinal.DINHMUC) != ctdcbd.DinhMuc_BD.Value)
-                                                        {
-                                                            dlkhFinal.DINHMUC = ctdcbd.DinhMuc_BD.ToString();
-                                                            _cDLKH.SuaDLKH(dlkhFinal);
-                                                            dlkhFinal = _cDLKH.getDLKH(ctdcbd.DanhBo);
-                                                        }
-
-                                                    TB_GHICHU ghichu = new TB_GHICHU();
-                                                    ghichu.DANHBO = ctdcbd.DanhBo;
-                                                    ghichu.DONVI = "KTKS";
-                                                    ghichu.NOIDUNG = "PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
-                                                    ghichu.NOIDUNG += " ," + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
-                                                    ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - ĐC";
-                                                    if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
-                                                    {
-                                                        ghichu.NOIDUNG += " Tên: " + ctdcbd.HoTen_BD + ",";
-                                                    }
-                                                    if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
-                                                    {
-                                                        ghichu.NOIDUNG += " Địa Chỉ: " + ctdcbd.DiaChi_BD + ",";
-                                                    }
-                                                    if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
-                                                    {
-                                                        ghichu.NOIDUNG += " MST: " + ctdcbd.MSThue_BD + ",";
-                                                    }
-                                                    if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
-                                                    {
-                                                        ghichu.NOIDUNG += " Giá Biểu Từ " + ctdcbd.GiaBieu + " -> " + ctdcbd.GiaBieu_BD + ",";
-                                                    }
-                                                    if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
-                                                    {
-                                                        ghichu.NOIDUNG += " Định Mức Từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD + ",";
-                                                    }
-
-                                                    //_cDLKH.ThemGhiChu(ghichu);
-
-                                                    string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',N'" + CTaiKhoan.HoTen + "')";
-                                                    if (_cDLKH.LinQ_ExecuteNonQuery(sqlGhiChu))
-                                                    {
-                                                        ctdcbd.ChuyenDocSo = true;
-                                                        ctdcbd.NgayChuyenDocSo = DateTime.Now;
-                                                        ctdcbd.NguoiChuyenDocSo = CTaiKhoan.MaUser;
-                                                        if (_cDCBD.SuaCTDCBD(ctdcbd))
-                                                            scope.Complete();
-                                                    }
+                                                    ghichu.NOIDUNG += " Tên: " + ctdcbd.HoTen_BD + ",";
                                                 }
-                                                else
+                                                if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                                 {
-                                                    log.WriteLine("=============================================");
-                                                    log.Close();
-                                                    log.Dispose();
-                                                    MessageBox.Show("Lỗi tại Số Phiếu: " + dgvDSDCBD["SoPhieu", i].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    ghichu.NOIDUNG += " Địa Chỉ: " + ctdcbd.DiaChi_BD + ",";
                                                 }
-                                        }
+                                                if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
+                                                {
+                                                    ghichu.NOIDUNG += " MST: " + ctdcbd.MSThue_BD + ",";
+                                                }
+                                                if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
+                                                {
+                                                    ghichu.NOIDUNG += " Giá Biểu Từ " + ctdcbd.GiaBieu + " -> " + ctdcbd.GiaBieu_BD + ",";
+                                                }
+                                                if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
+                                                {
+                                                    ghichu.NOIDUNG += " Định Mức Từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD + ",";
+                                                }
+
+                                                //_cDLKH.ThemGhiChu(ghichu);
+
+                                                string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',N'" + CTaiKhoan.HoTen + "')";
+                                                if (_cDLKH.LinQ_ExecuteNonQuery(sqlGhiChu))
+                                                {
+                                                    ctdcbd.ChuyenDocSo = true;
+                                                    ctdcbd.NgayChuyenDocSo = DateTime.Now;
+                                                    ctdcbd.NguoiChuyenDocSo = CTaiKhoan.MaUser;
+                                                    _cDCBD.SuaCTDCBD(ctdcbd);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                log.WriteLine("=============================================");
+                                                log.Close();
+                                                log.Dispose();
+                                                MessageBox.Show("Lỗi tại Số Phiếu: " + dgvDSDCBD["SoPhieu", i].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
+                                    k++;
                                 }
                                 else
                                     MessageBox.Show("Danh Bộ: " + ctdcbd.DanhBo + " thuộc Số Phiếu: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-")

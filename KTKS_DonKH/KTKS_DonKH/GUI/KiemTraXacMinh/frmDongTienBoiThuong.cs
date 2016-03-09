@@ -239,8 +239,8 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
+            //if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            //    e.Handled = true;
         }
 
         private void dgvDSKetQuaKiemTra_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

@@ -3471,6 +3471,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                             };
             dt.Merge(KTKS_DonKH.Function.CLinQToDataTable.LINQToDataTable(queryYCCHDB));
             
+            if(dt.Rows.Count>0)
             dt.DefaultView.Sort = "CreateDate DESC";
             return dt;
         }

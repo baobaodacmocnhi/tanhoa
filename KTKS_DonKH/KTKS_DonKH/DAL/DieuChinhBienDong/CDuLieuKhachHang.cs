@@ -74,6 +74,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public void Refresh()
+        {
+            db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues,db.TB_DULIEUKHACHHANGs);
+        }
+
         public void beginTransaction()
         {
             if (db.Connection.State == System.Data.ConnectionState.Closed)
